@@ -12,7 +12,7 @@ summary: Notes on chapter 1.3
 
 Two statement $a$ and $b$ are logically equivalent if $a \leftrightarrow b$ is a tautology, i.e they have the same truth values for all models.
 
-**Idempotent laws**
+##### Idempotent laws
 
 $$
 \begin{array}{|r|c c|c c|}
@@ -23,7 +23,7 @@ p \land p \equiv p & \T & \F \\
 \end{array}
 $$
 
-**Double negation law**
+##### Double negation law
 
 $$
 \begin{array}{|r|c c|c c|}
@@ -33,7 +33,7 @@ p & \T & \F \\
 \end{array}
 $$
 
-**Identity Laws**
+##### Identity Laws
 
 $$
 \begin{array}{|r|c c|c c|}
@@ -46,7 +46,7 @@ p \land \bold{T} \equiv p & \T & \F \\
 \end{array}
 $$
 
-**Domination Laws**
+##### Domination Laws
 
 $$
 \begin{array}{|r|c c|c c|}
@@ -59,7 +59,7 @@ p \land \bold{F} \equiv \bold{F} & \F & \F \\
 \end{array}
 $$
 
-**Negation laws**
+##### Negation laws
 
 $$
 \begin{array}{|r|c c|c c|}
@@ -72,7 +72,7 @@ p \land \lnot p \equiv \bold{F} & \F & \F \\
 \end{array}
 $$
 
-**Commutative laws**
+##### Commutative laws
 
 $$
 \begin{array}{|r|c c|c c|}
@@ -84,7 +84,7 @@ p \land q \equiv q \land p & \T & \F & \F & \F \\
 \end{array}
 $$
 
-**Associative laws**
+##### Associative laws
 
 $$
 \begin{array}{|r|c c|c c|}
@@ -97,7 +97,7 @@ r & \T & \F & \T & \F & \T & \F & \T & \F \\
 \end{array}
 $$
 
-**Distributive laws**
+##### Distributive laws
 
 $$
 \begin{array}{|r|c c|c c|}
@@ -110,7 +110,7 @@ p \land (q \lor r) \equiv (p \land q) \lor (p \land r) & \T & \T & \T & \T & \T 
 \end{array}
 $$
 
-**De Morgan's Laws**
+##### De Morgan's Laws
 
 $$
 \begin{array}{|r|c c|c c|}
@@ -131,7 +131,7 @@ $$
 \end{align*}
 $$
 
-**Absorption laws**
+##### Absorption laws
 
 $$
 
@@ -146,7 +146,7 @@ p \land (p \lor q) \equiv p & \T & \T & \F & \F \\
 
 $$
 
-**Logical equivalences involving conditional statements**
+##### Logical equivalences involving conditional statements
 
 $$
 
@@ -184,7 +184,7 @@ r & \T & \F & \T & \F & \T & \F & \T & \F \\
 
 $$
 
-**Logical equivalences involving biconditional statements**
+##### Logical equivalences involving biconditional statements
 
 $$
 
