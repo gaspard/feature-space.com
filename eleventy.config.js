@@ -13,7 +13,7 @@ async function makeImage(pathWithRoot, alt, widths, sizes) {
       widths,
       formats: ["webp"],
       urlPath: path.join("/", dirpath, "img"),
-      outputDir: path.join("_site", dirpath, "img"),
+      outputDir: path.join(root, dirpath, "img"),
       filenameFormat: function (id, src, width, format, options) {
         const extension = path.extname(src);
         const name = path.basename(src, extension);
@@ -38,9 +38,11 @@ async function makeImage(pathWithRoot, alt, widths, sizes) {
 }
 
 module.exports = function (eleventyConfig) {
+  // We store generates tailwind.gen.css in src to force reload on change.
   eleventyConfig.addPassthroughCopy(`${root}/css`);
-  // eleventyConfig.addPassthroughCopy(`${root}/article/**/*.webp`);
-  // eleventyConfig.addPassthroughCopy(`${root}/bibliography/**/*.webp`);
+  // We store generated images in src to force reload on change.
+  eleventyConfig.addPassthroughCopy(`${root}/article/**/*.webp`);
+  eleventyConfig.addPassthroughCopy(`${root}/bibliography/**/*.webp`);
 
   eleventyConfig.addFilter(
     "latex",
