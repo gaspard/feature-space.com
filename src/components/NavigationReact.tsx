@@ -12,7 +12,6 @@ const NavigationReact: React.FC<NavigationProps> = ({
 	currentPath,
 	isMobile = false,
 }) => {
-
 	return (
 		<nav
 			className={`bg-gray-400 shadow-sm border-r border-gray-200 overflow-y-auto ${
@@ -21,7 +20,7 @@ const NavigationReact: React.FC<NavigationProps> = ({
 		>
 			<div className="pl-3 py-2">
 				<h2 className="text-lg font-semibold text-gray-900 mb-4">Navigation</h2>
-				
+
 				<ul className="space-y-1">
 					{navigationItems.map((item, index) => (
 						<FileOrFolder

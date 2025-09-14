@@ -18,7 +18,7 @@ order: 1
 Soit $f : \mathbb{R} \to \mathbb{R}$ définie par $f(x) = \sqrt{x}$. Cette définition est-elle correcte ?
 
 - [ ] **A)** Oui, car $\sqrt{x}$ est bien défini pour tout $x \in \mathbb{R}$
-- [x] **B)** Non, car $\sqrt{x}$ n'est pas défini pour $x < 0$
+- [ ] **B)** Non, car $\sqrt{x}$ n'est pas défini pour $x < 0$
 - [ ] **C)** Oui, mais seulement si on considère les nombres complexes
 - [ ] **D)** Non, car une application doit être bijective
 
