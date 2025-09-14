@@ -2,6 +2,7 @@
 title: "Quiz 3: Morphismes"
 layout: "../../../layouts/Layout.astro"
 order: 3
+quizId: "i9j0k1l2"
 ---
 
 # Quiz 3 : Morphismes de structures algébriques

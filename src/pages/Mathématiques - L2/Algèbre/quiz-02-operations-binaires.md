@@ -2,14 +2,14 @@
 title: "Quiz 2: Opérations binaires"
 layout: "../../../layouts/Layout.astro"
 order: 2
+quizId: "e5f6g7h8"
 ---
 
 # Quiz 2 : Opérations binaires et structures algébriques
 
 ## Instructions
-- Choisissez la meilleure réponse pour chaque question
-- Certaines questions peuvent avoir plusieurs bonnes réponses
-- Les réponses sont données à la fin du quiz
+- Choisissez la meilleure réponse pour chaque question.
+- Certaines questions peuvent avoir plusieurs bonnes réponses.
 
 ---
 

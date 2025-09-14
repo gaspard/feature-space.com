@@ -2,6 +2,7 @@
 title: "Quiz 1: Ensembles et applications"
 layout: "../../../layouts/Layout.astro"
 order: 1
+quizId: "a1b2c3d4"
 ---
 
 # Quiz 1 : Ensembles et applications

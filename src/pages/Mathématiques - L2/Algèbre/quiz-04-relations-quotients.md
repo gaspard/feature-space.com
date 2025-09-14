@@ -2,6 +2,7 @@
 title: "Quiz 4: Relations et quotients"
 layout: "../../../layouts/Layout.astro"
 order: 4
+quizId: "m3n4o5p6"
 ---
 
 # Quiz 4 : Relations d'équivalence et quotients

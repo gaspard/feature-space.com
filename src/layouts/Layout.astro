@@ -5,9 +5,24 @@ import QuizEnhancer from "../components/QuizEnhancer.tsx";
 
 export interface Props {
 	title?: string;
+	description?: string;
+	image?: string;
+	canonical?: string;
+	frontmatter?: {
+	  quizId?: string;
+	}
 }
 
-const { title = "Astro Basics" } = Astro.props;
+const { 
+	title = "Feature Space - Interactive Mathematical Learning", 
+	description = "Explore mathematics through interactive content, quizzes, and comprehensive learning materials. Master algebra, calculus, and advanced mathematical concepts with KaTeX-powered equations.",
+	image = "/og-image.png",
+	canonical,
+} = Astro.props;
+
+const quizId = Astro.props.frontmatter?.quizId
+const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site);
+const socialImage = new URL(image, Astro.site);
 ---
 <!doctype html>
 <html lang="en">
@@ -16,9 +31,55 @@ const { title = "Astro Basics" } = Astro.props;
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		
+		<!-- Primary Meta Tags -->
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		<meta name="keywords" content="mathematics, algebra, calculus, interactive learning, quizzes, KaTeX, mathematical education, feature space" />
+		<meta name="author" content="Feature Space" />
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href={canonicalURL} />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={socialImage} />
+		<meta property="og:site_name" content="Feature Space" />
+		<meta property="og:locale" content="en_US" />
+		
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalURL} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={socialImage} />
+		
+		<!-- Additional SEO -->
+		<meta name="theme-color" content="#3b82f6" />
+		<meta name="msapplication-TileColor" content="#3b82f6" />
+		
+		<!-- Quiz ID for interactive checkboxes -->
+		{quizId && <meta name="quiz-id" content={quizId} />}
+		
+		<!-- Structured Data -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "EducationalOrganization",
+			"name": "Feature Space",
+			"url": "https://feature-space.com",
+			"description": "Interactive mathematical learning platform with comprehensive content and quizzes",
+			"educationalLevel": "University",
+			"subject": ["Mathematics", "Algebra", "Calculus"],
+			"teaches": "Advanced mathematical concepts through interactive content"
+		}
+		</script>
+		
 		<!-- KaTeX CSS for mathematical rendering -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
-		<title>{title}</title>
 	</head>
 	<body class="bg-gray-50">
 		<!-- Mobile navigation toggle button -->
@@ -63,7 +124,7 @@ const { title = "Astro Basics" } = Astro.props;
 				<div class="main-content max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 					<slot />
 				</div>
-				<QuizEnhancer client:load />
+				<QuizEnhancer quizId={quizId || ""} client:load />
 			</main>
 		</div>
 
