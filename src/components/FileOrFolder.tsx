@@ -14,10 +14,18 @@ const FileOrFolder: React.FC<FileOrFolderProps> = ({
 	path,
 	level = 0,
 }) => {
-	const [expanded, setExpanded] = useStorage(path, false);
+	// Check if any child is active (current page is within this folder)
+	const hasActiveChild = item.children?.some(child => 
+		isActiveNavItem(child, currentPath)
+	) || false;
+
+	const [storedExpanded, setStoredExpanded] = useStorage(path, false);
+	
+	// Force expansion if current page is within this folder, otherwise use stored state
+	const expanded = hasActiveChild || storedExpanded;
 
 	const toggleExpanded = () => {
-		setExpanded(!expanded);
+		setStoredExpanded(!storedExpanded);
 	};
 
 	const isActive = item.path === currentPath;
@@ -102,5 +110,14 @@ const FileOrFolder: React.FC<FileOrFolderProps> = ({
 		</li>
 	);
 };
+
+// Helper function to check if navigation item is active (including nested children)
+function isActiveNavItem(item: NavigationItem, currentPath: string): boolean {
+	if (item.path === currentPath) return true;
+	if (item.children) {
+		return item.children.some((child) => isActiveNavItem(child, currentPath));
+	}
+	return false;
+}
 
 export default FileOrFolder;
