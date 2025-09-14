@@ -1,5 +1,6 @@
 ---
 import { generateNavigation, getCurrentPagePath } from '../utils/navigation.ts';
+import NavigationReact from './NavigationReact';
 
 interface Props {
   currentPath?: string;
@@ -12,77 +13,14 @@ const activePath = currentPath || getCurrentPagePath(url);
 
 // Generate navigation structure
 const navigationItems = await generateNavigation();
-
-// Helper function to check if navigation item is active
-function isActiveNavItem(item: any, currentPath: string): boolean {
-  if (item.path === currentPath) return true;
-  if (item.children) {
-    return item.children.some((child: any) => child.path === currentPath);
-  }
-  return false;
-}
 ---
 
-<nav class={`bg-gray-400 shadow-sm border-r border-gray-200 overflow-y-auto ${isMobile ? 'w-full' : 'w-64 min-h-screen hidden md:block'}`}>
-  <div class="pl-3 py-2">
-    <h2 class="text-lg font-semibold text-gray-900 mb-4">Navigation</h2>
-    
-    <ul class="space-y-1">
-      {navigationItems.map((item) => (
-        <li>
-          {item.children ? (
-            <!-- Parent item with children -->
-            <div class="mb-1">
-              <div class={`
-                flex items-center px-0 py-1 text-sm font-medium 
-                ${isActiveNavItem(item, activePath) 
-                  ? 'text-gray-700 hover:bg-gray-50'
-                  : 'text-gray-700 hover:bg-gray-50'
-                }
-              `}>
-                <span>{item.title}</span>
-              </div>
-              
-              <!-- Children items -->
-              <ul class="ml-4 mt-1 space-y-1">
-                {item.children.map((child) => (
-                  <li>
-                    <a
-                      href={child.path}
-                      class={`
-                        block px-3 py-2 text-sm transition-colors duration-150
-                        ${child.path === activePath
-                          ? 'bg-blue-100 text-blue-800 font-medium border-l-4 border-blue-500'
-                          : 'text-gray-600 hover:bg-blue-400 hover:saturate-20 border-l-4 border-transparent hover:text-gray-900'
-                        }
-                      `}
-                    >
-                      {child.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : (
-            <!-- Single item without children -->
-            <a
-              href={item.path}
-              class={`
-                block px-3 py-2 text-sm font-medium rounded-md transition-colors duration-150
-                ${item.path === activePath
-                  ? 'bg-blue-50 text-blue-700 border-l-4 border-blue-500'
-                  : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
-                }
-              `}
-            >
-              {item.title}
-            </a>
-          )}
-        </li>
-      ))}
-    </ul>
-  </div>
-</nav>
+<NavigationReact 
+  navigationItems={navigationItems}
+  currentPath={activePath}
+  isMobile={isMobile}
+  client:load
+/>
 
 <style>
   /* Additional custom styles if needed */

@@ -8,10 +8,9 @@ body {
 } 
 
 a {outline:none !important; text-decoration:none; color: inherit;}
-main {
+.main-content {
   padding:2em 2em 5em; 
   a:hover {color:#606;}
-  text-align:center; 
   max-width: 44em;
 
   a {
@@ -27,7 +26,8 @@ main {
   }
 
   h1 {
-    font-size:320%;
+    text-align: center;
+    font-size:220%;
     line-height:1.35;
     font-style:normal;
     margin:1.5em 0 0.8em;
@@ -36,11 +36,13 @@ main {
   h2 {
     font-weight:bold;
     font-size:200%;
+    text-align: center;
     margin:1em 0 0.8em;
   }
 
   h3 {
     font-weight:normal;
+    text-align: center;
     text-transform:uppercase;
     font-size:150%;
     letter-spacing:0.15em;
@@ -48,8 +50,10 @@ main {
   }
 
   h4 {
-    font-weight:normal;
-    font-size:150%;
+    font-size:120%;
+    font-weight: bold;
+    color:hsl(0, 0%, 20%);
+    text-align: left;
     letter-spacing:0.1em;
     margin:1.5em 0 0.8em;
   }
@@ -70,9 +74,12 @@ main {
   }
 
   p {
-    text-align:left;
     font-size:100%;
-    margin:1em 0 0;
+    margin:1em 0 0 2em;
+  }
+
+  details {
+    padding: 1em 0;
   }
 
   p.lead {
@@ -85,20 +92,24 @@ main {
     text-indent:1.5em;
   }
 
+  details p + p {
+    margin:1em 0 0 2em;
+  }
+
   p + ul, p + ol, p + dl { margin-bottom:1.5em; }
   p.lead + p {
     text-indent:0;
   }
 
-  ul, ol { margin: 1em 1em}
+  ul, ol { margin: 1em 2em}
 
   ol li, ul li {
     text-indent: 0.8em;
-    margin-left: 2em;
+    margin-left: 1em;
   }
 
   ul li {
-    list-style: disc;
+    list-style: none;
   }
 
   ol li {
@@ -182,7 +193,6 @@ main {
     cursor: pointer;
     background: hsl(208deg 43% 99%);
     padding: 0.1em 0.5em;
-    font-family: monospace;
   }
   .fold {
     position: relative;
@@ -212,18 +222,18 @@ main {
   }
 }
 
-main-content>table {
+.main-content>table {
   margin: 1.5em auto;
 }
-main-content>table th {
+.main-content>table th {
   font-size:90%;
   background:#ddd;
   font-weight: bold;
 }
-main-content>table td {
+.main-content>table td {
   font-weight: normal;
 }
-main-content>table th,td {
+.main-content>table th,td {
   font-size:90%;
   padding: 0.5em;
   border-collapse: collapse;

@@ -25,38 +25,13 @@ export interface PageFrontmatter {
 
 /**
  * Generates navigation structure from the pages directory
- * Supports two-level directory hierarchy
+ * Supports unlimited directory hierarchy depth
  */
 export async function generateNavigation(): Promise<NavigationItem[]> {
   const pagesDir = join(process.cwd(), 'src/pages');
-  const navigationItems: NavigationItem[] = [];
   
   try {
-    const entries = await readdir(pagesDir, { withFileTypes: true });
-    
-    for (const entry of entries) {
-      const fullPath = join(pagesDir, entry.name);
-      
-      if (entry.isFile() && isValidPageFile(entry.name)) {
-        // Handle top-level files
-        const pageInfo = await getPageInfo(fullPath);
-        if (!pageInfo.hidden) {
-          navigationItems.push({
-            title: pageInfo.title,
-            path: getUrlPath(entry.name),
-            order: pageInfo.order
-          });
-        }
-      } else if (entry.isDirectory()) {
-        // Handle subdirectories (second level)
-        const subNavItem = await processDirectory(fullPath, entry.name);
-        if (subNavItem && subNavItem.children && subNavItem.children.length > 0) {
-          navigationItems.push(subNavItem);
-        }
-      }
-    }
-    
-    return sortNavigationItems(navigationItems);
+    return await processDirectoryRecursive(pagesDir, '');
   } catch (error) {
     console.warn('Error generating navigation:', error);
     return [];
@@ -64,40 +39,46 @@ export async function generateNavigation(): Promise<NavigationItem[]> {
 }
 
 /**
- * Processes a directory to create navigation items with children
+ * Recursively processes directories to create navigation items with unlimited depth
  */
-async function processDirectory(dirPath: string, dirName: string): Promise<NavigationItem | null> {
+async function processDirectoryRecursive(dirPath: string, relativePath: string): Promise<NavigationItem[]> {
   try {
     const entries = await readdir(dirPath, { withFileTypes: true });
-    const children: NavigationItem[] = [];
+    const navigationItems: NavigationItem[] = [];
     
     for (const entry of entries) {
+      const fullPath = join(dirPath, entry.name);
+      const currentRelativePath = relativePath ? `${relativePath}/${entry.name}` : entry.name;
+      
       if (entry.isFile() && isValidPageFile(entry.name)) {
-        const filePath = join(dirPath, entry.name);
-        const pageInfo = await getPageInfo(filePath);
-        
+        // Handle files
+        const pageInfo = await getPageInfo(fullPath);
         if (!pageInfo.hidden) {
-          children.push({
+          navigationItems.push({
             title: pageInfo.title,
-            path: getUrlPath(entry.name, dirName),
+            path: getUrlPath(entry.name, relativePath),
             order: pageInfo.order
+          });
+        }
+      } else if (entry.isDirectory()) {
+        // Handle subdirectories recursively
+        const children = await processDirectoryRecursive(fullPath, currentRelativePath);
+        
+        if (children.length > 0) {
+          navigationItems.push({
+            title: formatDirectoryTitle(entry.name),
+            path: `/${currentRelativePath}`,
+            children: sortNavigationItems(children),
+            order: undefined // Directories don't have order by default
           });
         }
       }
     }
     
-    if (children.length === 0) {
-      return null;
-    }
-    
-    return {
-      title: formatDirectoryTitle(dirName),
-      path: `/${dirName}`,
-      children: sortNavigationItems(children)
-    };
+    return sortNavigationItems(navigationItems);
   } catch (error) {
-    console.warn(`Error processing directory ${dirName}:`, error);
-    return null;
+    console.warn(`Error processing directory ${dirPath}:`, error);
+    return [];
   }
 }
 
@@ -110,17 +91,17 @@ function isValidPageFile(filename: string): boolean {
 }
 
 /**
- * Converts filename to URL path
+ * Converts filename to URL path with support for nested directories
  */
-function getUrlPath(filename: string, directory?: string): string {
+function getUrlPath(filename: string, relativePath?: string): string {
   const name = basename(filename, extname(filename));
   
   // Handle index files
   if (name === 'index') {
-    return directory ? `/${directory}/` : '/';
+    return relativePath ? `/${relativePath}/` : '/';
   }
   
-  return directory ? `/${directory}/${name}` : `/${name}`;
+  return relativePath ? `/${relativePath}/${name}` : `/${name}`;
 }
 
 /**
@@ -227,8 +208,9 @@ export function isActiveNavItem(item: NavigationItem, currentPath: string): bool
   
   // Check children for match
   if (item.children) {
-    return item.children.some(child => child.path === currentPath);
+    return item.children.some(child => isActiveNavItem(child, currentPath));
   }
   
   return false;
 }
+
