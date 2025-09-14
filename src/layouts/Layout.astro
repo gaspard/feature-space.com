@@ -1,17 +1,105 @@
 ---
 import "../global.css";
+import Navigation from "../components/Navigation.astro";
+
+export interface Props {
+	title?: string;
+}
+
+const { title = "Astro Basics" } = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<!-- KaTeX CSS for mathematical rendering -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+		<title>{title}</title>
 	</head>
-	<body>
-		<slot />
+	<body class="bg-gray-50">
+		<!-- Mobile navigation toggle button -->
+		<div class="md:hidden bg-white shadow-sm border-b border-gray-200 p-4">
+			<button 
+				id="mobile-menu-toggle"
+				class="flex items-center justify-center w-8 h-8 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md"
+				aria-label="Toggle navigation menu"
+			>
+				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+				</svg>
+			</button>
+		</div>
+
+		<!-- Mobile navigation overlay -->
+		<div id="mobile-menu-overlay" class="fixed inset-0 z-40 bg-black bg-opacity-50 hidden md:hidden">
+			<div class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg">
+				<div class="flex items-center justify-between p-4 border-b border-gray-200">
+					<h2 class="text-lg font-semibold text-gray-900">Menu</h2>
+					<button 
+						id="mobile-menu-close"
+						class="w-8 h-8 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md"
+						aria-label="Close navigation menu"
+					>
+						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+						</svg>
+					</button>
+				</div>
+				<Navigation currentPath={Astro.url.pathname} isMobile={true} />
+			</div>
+		</div>
+
+		<!-- Main layout container -->
+		<div class="flex min-h-screen">
+			<!-- Desktop navigation sidebar -->
+			<Navigation currentPath={Astro.url.pathname} />
+			
+			<!-- Main content area -->
+			<main class="flex-1 md:ml-0 min-h-screen">
+				<div class="main-content max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+					<slot />
+				</div>
+			</main>
+		</div>
+
+		<!-- Mobile menu JavaScript -->
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				const mobileToggle = document.getElementById('mobile-menu-toggle');
+				const mobileOverlay = document.getElementById('mobile-menu-overlay');
+				const mobileClose = document.getElementById('mobile-menu-close');
+
+				function openMobileMenu() {
+					mobileOverlay?.classList.remove('hidden');
+					document.body.style.overflow = 'hidden';
+				}
+
+				function closeMobileMenu() {
+					mobileOverlay?.classList.add('hidden');
+					document.body.style.overflow = '';
+				}
+
+				mobileToggle?.addEventListener('click', openMobileMenu);
+				mobileClose?.addEventListener('click', closeMobileMenu);
+				
+				// Close menu when clicking overlay
+				mobileOverlay?.addEventListener('click', function(e) {
+					if (e.target === mobileOverlay) {
+						closeMobileMenu();
+					}
+				});
+
+				// Close menu on escape key
+				document.addEventListener('keydown', function(e) {
+					if (e.key === 'Escape' && !mobileOverlay?.classList.contains('hidden')) {
+						closeMobileMenu();
+					}
+				});
+			});
+		</script>
 	</body>
 </html>
 
@@ -20,6 +108,42 @@ import "../global.css";
 	body {
 		margin: 0;
 		width: 100%;
-		height: 100%;
+		min-height: 100%;
+		font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	}
+
+	/* Ensure KaTeX math expressions are properly styled */
+	.katex {
+		font-size: 1.1em;
+	}
+
+	.katex-display {
+		margin: 1em 0;
+		text-align: center;
+	}
+
+	/* Responsive typography for math content */
+	@media (max-width: 640px) {
+		.katex {
+			font-size: 1em;
+		}
+		
+		.katex-display {
+			margin: 0.8em 0;
+			overflow-x: auto;
+			overflow-y: hidden;
+		}
+	}
+
+	/* Smooth transitions for mobile menu */
+	#mobile-menu-overlay {
+		transition: opacity 0.3s ease-in-out;
+	}
+
+	/* Ensure proper scrolling on mobile */
+	@media (max-width: 768px) {
+		body.menu-open {
+			overflow: hidden;
+		}
 	}
 </style>

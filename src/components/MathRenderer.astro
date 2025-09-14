@@ -1,0 +1,65 @@
+---
+export interface Props {
+  expression: string;
+  displayMode?: boolean;
+}
+
+const { expression, displayMode = false } = Astro.props;
+---
+
+<span class="math-renderer" data-expression={expression} data-display-mode={displayMode}>
+  {expression}
+</span>
+
+<script>
+  import katex from 'katex';
+
+  // Process all math renderer elements on the page
+  document.addEventListener('DOMContentLoaded', () => {
+    const mathElements = document.querySelectorAll('.math-renderer');
+    
+    mathElements.forEach((element) => {
+      const expression = element.getAttribute('data-expression');
+      const displayMode = element.getAttribute('data-display-mode') === 'true';
+      
+      if (expression) {
+        try {
+          const rendered = katex.renderToString(expression, {
+            displayMode,
+            throwOnError: false,
+            errorColor: '#cc0000',
+            strict: 'warn'
+          });
+          
+          element.innerHTML = rendered;
+          element.classList.add('math-rendered');
+        } catch (error) {
+          console.warn('KaTeX rendering error:', error);
+          element.innerHTML = `<span class="math-error" title="LaTeX Error: ${error.message}">
+            ${expression}
+          </span>`;
+          element.classList.add('math-error');
+        }
+      }
+    });
+  });
+</script>
+
+<style>
+  .math-renderer {
+    font-family: 'KaTeX_Main', 'Times New Roman', serif;
+  }
+  
+  .math-error {
+    color: #cc0000;
+    background-color: #ffe6e6;
+    padding: 2px 4px;
+    border-radius: 3px;
+    border: 1px solid #ffcccc;
+    cursor: help;
+  }
+  
+  .math-rendered {
+    /* KaTeX will handle its own styling */
+  }
+</style>
