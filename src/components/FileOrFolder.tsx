@@ -1,5 +1,5 @@
-import type { NavigationItem } from "../utils/navigation";
 import { useStorage } from "../hooks/useStorage";
+import type { NavigationItem } from "../utils/navigation";
 
 interface FileOrFolderProps {
 	item: NavigationItem;

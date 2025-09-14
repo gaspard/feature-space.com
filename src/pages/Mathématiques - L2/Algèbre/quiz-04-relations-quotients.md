@@ -7,9 +7,8 @@ order: 4
 # Quiz 4 : Relations d'équivalence et quotients
 
 ## Instructions
-- Choisissez la meilleure réponse pour chaque question
-- Certaines questions peuvent avoir plusieurs bonnes réponses
-- Les réponses sont données à la fin du quiz
+- Choisissez la meilleure réponse pour chaque question.
+- Certaines questions peuvent avoir plusieurs bonnes réponses.
 
 ---
 

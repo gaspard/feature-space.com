@@ -7,9 +7,8 @@ order: 1
 # Quiz 1 : Ensembles et applications
 
 ## Instructions
-- Choisissez la meilleure réponse pour chaque question
-- Certaines questions peuvent avoir plusieurs bonnes réponses
-- Les réponses sont données à la fin du quiz
+- Choisissez la meilleure réponse pour chaque question.
+- Certaines questions peuvent avoir plusieurs bonnes réponses.
 
 ---
 
@@ -118,7 +117,7 @@ Une application admet une fonction réciproque si et seulement si elle est bijec
 
 #### Question 6 : Contre-exemple
 
-Soit $f : \mathbb{R} \to \mathbb{R}$ définie par $f(x) = x^3 - x$. Quel couple $(a, b)$ avec $a \neq b$ vérifie $f(a) = f(b)$ ?
+Soit $f : \mathbb{R} \to \mathbb{R}$ définie par $f(x) = x^3 - x$. Quel(s) couple(s) $(a, b)$ avec $a \neq b$ vérifie(nt) $f(a) = f(b)$ ?
 
 - [ ] **A)** $(0, 1)$
 - [ ] **B)** $(1, -1)$
@@ -128,9 +127,15 @@ Soit $f : \mathbb{R} \to \mathbb{R}$ définie par $f(x) = x^3 - x$. Quel couple 
 <details>
 <summary>Solution</summary>
 
-**Réponse : B**
+**Réponse : A et B**
 
-$f(1) = 1^3 - 1 = 0$ et $f(-1) = (-1)^3 - (-1) = -1 + 1 = 0$. Donc $f(1) = f(-1)$ avec $1 \neq -1$.
+Car:
+
+- $f(1) = 1^3 - 1 = 0$
+- $f(-1) = (-1)^3 - (-1) = -1 + 1 = 0$
+- $f(0) = 0^3 - 0 = 0$
+
+Ces trois points ont la même image $0$ par la fonction $f$, ce qui montre que $f(a) = f(b)$ pour les couples $(0,1)$ et $(1,-1)$. 
 
 </details>
 

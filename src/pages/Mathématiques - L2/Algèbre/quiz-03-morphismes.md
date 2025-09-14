@@ -7,9 +7,8 @@ order: 3
 # Quiz 3 : Morphismes de structures algébriques
 
 ## Instructions
-- Choisissez la meilleure réponse pour chaque question
-- Certaines questions peuvent avoir plusieurs bonnes réponses
-- Les réponses sont données à la fin du quiz
+- Choisissez la meilleure réponse pour chaque question.
+- Certaines questions peuvent avoir plusieurs bonnes réponses.
 
 ---
 
