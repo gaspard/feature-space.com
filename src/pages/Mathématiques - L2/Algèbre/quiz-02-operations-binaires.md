@@ -235,7 +235,7 @@ La distributivité s'exprime des deux côtés : $a \times (b + c) = ab + ac$ et 
 Dans le groupe $(\mathbb{Z}/6\mathbb{Z}, +)$, l'ordre de l'élément $\overline{4}$ est :
 
 - [ ] **A)** 2
-- [ ] **B)** 3
+- [ ] **B)** 3 <span class="correct"></span>
 - [ ] **C)** 4
 - [ ] **D)** 6
 
@@ -244,8 +244,12 @@ Dans le groupe $(\mathbb{Z}/6\mathbb{Z}, +)$, l'ordre de l'élément $\overline{
 
 **Réponse : B**
 
-L'ordre de $\overline{4}$ est le plus petit entier positif $n$ tel que $n \cdot \overline{4} = \overline{0}$.
-$1 \cdot \overline{4} = \overline{4}$, $2 \cdot \overline{4} = \overline{2}$, $3 \cdot \overline{4} = \overline{0}$.
+L'ordre de $\overline{4}$ est le plus petit entier positif $n$ tel que $n \cdot \overline{4} = \overline{0}$. Ou, exprimé autrement, le nombre d'applications de $\overline{4}$ avec lui-même pour obtenir l'élément neutre: $\overline{4} + \overline{4} + ...= 0$.
+
+- $\overline{4}^1$: $0 + \overline{4} = \overline{4}$
+- $\overline{4}^2$: $0 + \overline{4} + \overline{4} = \overline{2}$
+- $\overline{4}^3$: $0 + \overline{4} + \overline{4} + \overline{4} = 0$
+
 Donc l'ordre est $3$.
 
 </details>
@@ -258,7 +262,7 @@ Soit $(G, \star, e)$ un groupe et $H \subset G$. Pour que $H$ soit un sous-group
 
 - [ ] **A)** $H$ soit stable par $\star$
 - [ ] **B)** $H$ soit stable par $\star$ et contienne $e$
-- [ ] **C)** $H$ soit stable par $\star$, contienne $e$ et soit stable par passage à l'inverse
+- [ ] **C)** $H$ soit stable par $\star$, contienne $e$ et soit stable par passage à l'inverse <span class="correct"></span>
 - [ ] **D)** $H = G$
 
 <details>
