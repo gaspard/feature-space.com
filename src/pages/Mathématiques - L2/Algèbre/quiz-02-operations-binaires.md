@@ -18,7 +18,7 @@ quizId: "e5f6g7h8"
 Une opération binaire sur un ensemble $E$ est :
 
 - [ ] **A)** Une application $E \to E$
-- [ ] **B)** Une application $E \times E \to E$
+- [ ] **B)** Une application $E \times E \to E$<span class="correct"></span>
 - [ ] **C)** Une relation binaire sur $E$
 - [ ] **D)** Un sous-ensemble de $E \times E$
 
@@ -39,7 +39,7 @@ Laquelle des opérations suivantes sur $\mathbb{R}$ est associative ?
 
 - [ ] **A)** $a \star b = a - b$
 - [ ] **B)** $a \star b = \frac{a + b}{2}$
-- [ ] **C)** $a \star b = a + b + ab$
+- [ ] **C)** $a \star b = a + b + ab$<span class="correct"></span>
 - [ ] **D)** $a \star b = |a - b|$
 
 <details>
@@ -61,14 +61,14 @@ Les deux expressions sont égales, donc l'opération est associative.
 Dans $(\mathbb{Z}, \times)$, l'élément neutre est :
 
 - [ ] **A)** $0$
-- [ ] **B)** $1$
-- [ ] **C)** $-1$
-- [ ] **D)** Il n'y en a pas
+- [ ] **B)** $-1$
+- [ ] **C)** Il n'y en a pas
+- [ ] **D)** $1$<span class="correct"></span>
 
 <details>
 <summary>Solution</summary>
 
-**Réponse : B**
+**Réponse : D**
 
 Dans $(\mathbb{Z}, \times)$, l'élément neutre est $1$ car $1 \times a = a \times 1 = a$ pour tout $a \in \mathbb{Z}$.
 
@@ -81,7 +81,7 @@ Dans $(\mathbb{Z}, \times)$, l'élément neutre est $1$ car $1 \times a = a \tim
 Parmi les structures suivantes, laquelle est un monoïde ?
 
 - [ ] **A)** $(\mathbb{N}, -, 0)$
-- [ ] **B)** $(\mathbb{N}, +, 0)$
+- [ ] **B)** $(\mathbb{N}, +, 0)$<span class="correct"></span>
 - [ ] **C)** $(\mathbb{Z} \setminus \{0\}, \times, 1)$
 - [ ] **D)** $(\mathbb{Q}, \div, 1)$
 
@@ -104,7 +104,7 @@ $(\mathbb{N}, +, 0)$ est un monoïde car l'addition est associative et $0$ est l
 Laquelle des structures suivantes est un groupe ?
 
 - [ ] **A)** $(\mathbb{N}, +, 0)$
-- [ ] **B)** $(\mathbb{Z}, +, 0)$
+- [ ] **B)** $(\mathbb{Z}, +, 0)$<span class="correct"></span>
 - [ ] **C)** $(\mathbb{N}, \times, 1)$
 - [ ] **D)** $(\mathbb{Z}, \times, 1)$
 
@@ -126,7 +126,7 @@ $(\mathbb{Z}, +, 0)$ est un groupe car tout élément $a$ a un inverse $-a$.
 Dans le monoïde $(\mathbb{Z}, \times, 1)$, les éléments inversibles sont :
 
 - [ ] **A)** $\{1\}$
-- [ ] **B)** $\{-1, 1\}$
+- [ ] **B)** $\{-1, 1\}$<span class="correct"></span>
 - [ ] **C)** $\mathbb{Z} \setminus \{0\}$
 - [ ] **D)** $\mathbb{Z}$
 
@@ -145,15 +145,15 @@ Les éléments inversibles dans $(\mathbb{Z}, \times, 1)$ sont ceux qui ont un i
 
 Pour qu'une structure $(A, +, \times, 0, 1)$ soit un anneau, il faut que :
 
-- [ ] **A)** $(A, +, 0)$ soit un groupe et $(A, \times, 1)$ soit un monoïde
-- [ ] **B)** $(A, +, 0)$ soit un groupe abélien et $(A, \times, 1)$ soit un monoïde, avec distributivité
+- [ ] **A)** $(A, +, 0)$ soit un groupe abélien et $(A, \times, 1)$ soit un monoïde, avec distributivité<span class="correct"></span>
+- [ ] **B)** $(A, +, 0)$ soit un groupe et $(A, \times, 1)$ soit un monoïde
 - [ ] **C)** $(A, +, 0)$ et $(A, \times, 1)$ soient des groupes
 - [ ] **D)** Toutes les opérations soient commutatives
 
 <details>
 <summary>Solution</summary>
 
-**Réponse : B**
+**Réponse : A**
 
 Un anneau nécessite que $(A, +, 0)$ soit un groupe abélien, $(A, \times, 1)$ soit un monoïde, et que la multiplication soit distributive par rapport à l'addition.
 
@@ -166,7 +166,7 @@ Un anneau nécessite que $(A, +, 0)$ soit un groupe abélien, $(A, \times, 1)$ s
 Lequel des ensembles suivants, muni de ses opérations usuelles, forme un corps ?
 
 - [ ] **A)** $\mathbb{Z}$
-- [ ] **B)** $\mathbb{Q}$
+- [ ] **B)** $\mathbb{Q}$<span class="correct"></span>
 - [ ] **C)** $\mathbb{Z}/4\mathbb{Z}$
 - [ ] **D)** $\mathbb{Z}/6\mathbb{Z}$
 
@@ -196,7 +196,7 @@ Cette opération est :
 
 - [ ] **A)** Associative mais pas commutative
 - [ ] **B)** Commutative mais pas associative
-- [ ] **C)** Associative et commutative
+- [ ] **C)** Associative et commutative<span class="correct"></span>
 - [ ] **D)** Ni associative ni commutative
 
 <details>
@@ -217,7 +217,7 @@ Dans $\mathbb{Z}$, la multiplication est distributive par rapport à l'addition.
 - [ ] **A)** $a + (b \times c) = (a + b) \times (a + c)$
 - [ ] **B)** $a \times (b + c) = (a \times b) + (a \times c)$
 - [ ] **C)** $(a + b) \times c = a \times c + b \times c$
-- [ ] **D)** Les réponses B et C sont correctes
+- [ ] **D)** Les réponses B et C sont correctes<span class="correct"></span>
 
 <details>
 <summary>Solution</summary>
@@ -271,3 +271,5 @@ Un sous-groupe doit être stable par l'opération, contenir l'élément neutre, 
 </details>
 
 ---
+
+<button class="toggle-check">Check</button>

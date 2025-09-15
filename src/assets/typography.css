@@ -299,12 +299,41 @@ td {
 
 li:has(input) {
   cursor: pointer;
-  padding: 2px 0;
-  text-indent: -4rem;
-  margin-left: 4rem;
+  padding: 2px 7px;
+  border-radius: 4px;
 }
 li:has(input:checked) {
   background-color: rgb(239, 246, 252);
+}
+.check li:has(input:checked):not(:has(.correct)) {
+  background-color: rgb(255, 225, 213);
+  input {
+    background-color: rgb(255, 54, 47);
+  }
+}
+.check li:has(input:not(:checked)):has(.correct) {
+  background-color: rgb(254, 251, 222);
+}
+.check li:has(input:checked):has(.correct) {
+  background-color: rgb(225, 254, 222);
+  input {
+    background-color: greenyellow;
+  }
+}
+details[open] {
+  background: hsl(204deg 21.52% 93.36% / 52.3%);
+  padding: 1em;
+  border-radius: 4px;
+}
+button.toggle-check {
+  cursor: pointer;
+  margin: 1rem;
+  padding: 4px 12px;
+  border-radius: 5px;
+  background: #c7e5ff;
+}
+button.toggle-check.high {
+  background: #95ffa7;
 }
 /* Interactive checkboxes for quiz content */
 input[type="checkbox"] {

@@ -20,7 +20,7 @@ Soit $f : (G, \star, e_G) \to (H, \circ, e_H)$ un morphisme de groupes. Alors :
 - [ ] **A)** $f(e_G) = e_H$ et $f(a \star b) = f(a) \circ f(b)$ pour tous $a, b \in G$
 - [ ] **B)** $f(a \star b) = f(a) \circ f(b)$ pour tous $a, b \in G$ (la préservation de l'élément neutre en découle)
 - [ ] **C)** $f$ est bijective
-- [ ] **D)** Les réponses A et B sont correctes
+- [ ] **D)** Les réponses A et B sont correctes<span class="correct"></span>
 
 <details>
 <summary>Solution</summary>
@@ -38,7 +38,7 @@ Un morphisme de groupes doit préserver l'opération. La préservation de l'él�
 Soit $\phi : \mathbb{Z} \to \mathbb{Z}/5\mathbb{Z}$ définie par $\phi(n) = \overline{n}$. Cette application :
 
 - [ ] **A)** N'est pas un morphisme car elle n'est pas injective
-- [ ] **B)** Est un morphisme d'anneaux
+- [ ] **B)** Est un morphisme d'anneaux<span class="correct"></span>
 - [ ] **C)** Est un morphisme de groupes additifs mais pas d'anneaux
 - [ ] **D)** N'est pas un morphisme car $\mathbb{Z}$ et $\mathbb{Z}/5\mathbb{Z}$ sont différents
 
@@ -58,14 +58,14 @@ $\phi(n) = \overline{n}$ préserve l'addition : $\phi(m + n) = \overline{m + n} 
 Soit $f : G \to H$ un morphisme de groupes. Le noyau $\ker(f)$ est :
 
 - [ ] **A)** $\{g \in G \mid f(g) = 0\}$
-- [ ] **B)** $\{g \in G \mid f(g) = e_H\}$ où $e_H$ est l'élément neutre de $H$
-- [ ] **C)** L'ensemble des éléments de $G$ qui n'ont pas d'image
+- [ ] **B)** L'ensemble des éléments de $G$ qui n'ont pas d'image
+- [ ] **C)** $\{g \in G \mid f(g) = e_H\}$ où $e_H$ est l'élément neutre de $H$<span class="correct"></span>
 - [ ] **D)** L'image réciproque de $H$
 
 <details>
 <summary>Solution</summary>
 
-**Réponse : B**
+**Réponse : C**
 
 Le noyau d'un morphisme de groupes $f : G \to H$ est $\ker(f) = \{g \in G \mid f(g) = e_H\}$ où $e_H$ est l'élément neutre de $H$.
 
@@ -78,7 +78,7 @@ Le noyau d'un morphisme de groupes $f : G \to H$ est $\ker(f) = \{g \in G \mid f
 Un morphisme de groupes $f : G \to H$ est injectif si et seulement si :
 
 - [ ] **A)** $\ker(f) = G$
-- [ ] **B)** $\ker(f) = \{e_G\}$
+- [ ] **B)** $\ker(f) = \{e_G\}$<span class="correct"></span>
 - [ ] **C)** $\ker(f) = H$
 - [ ] **D)** $\ker(f) = \emptyset$
 
@@ -98,7 +98,7 @@ Un morphisme de groupes est injectif si et seulement si son noyau est réduit à
 Lequel des couples suivants représente des groupes isomorphes ?
 
 - [ ] **A)** $(\mathbb{Z}, +)$ et $(\mathbb{Q}, +)$
-- [ ] **B)** $(\mathbb{Z}/4\mathbb{Z}, +)$ et $(\{1, -1, i, -i\}, \times)$
+- [ ] **B)** $(\mathbb{Z}/4\mathbb{Z}, +)$ et $(\{1, -1, i, -i\}, \times)$<span class="correct"></span>
 - [ ] **C)** $(\mathbb{R}, +)$ et $(\mathbb{R}^*_+, \times)$
 - [ ] **D)** $(\mathbb{Z}, +)$ et $(\mathbb{Z}/2\mathbb{Z}, +)$
 
@@ -121,7 +121,7 @@ $(\mathbb{Z}/4\mathbb{Z}, +)$ et $(\{1, -1, i, -i\}, \times)$ sont tous deux des
 L'application $\exp : (\mathbb{R}, +) \to (\mathbb{R}^*_+, \times)$ définie par $\exp(x) = e^x$ est :
 
 - [ ] **A)** Un morphisme de groupes
-- [ ] **B)** Un isomorphisme de groupes
+- [ ] **B)** Un isomorphisme de groupes<span class="correct"></span>
 - [ ] **C)** Un morphisme d'anneaux
 - [ ] **D)** Ni un morphisme ni un isomorphisme
 
@@ -140,15 +140,15 @@ $\exp(x + y) = e^{x+y} = e^x \cdot e^y = \exp(x) \cdot \exp(y)$, donc c'est un m
 
 Soit $f : \mathbb{Z} \to \mathbb{Z}$ définie par $f(n) = 2n$. Cette application est :
 
-- [ ] **A)** Un automorphisme de $(\mathbb{Z}, +)$
-- [ ] **B)** Un endomorphisme injectif mais pas surjectif de $(\mathbb{Z}, +)$
+- [ ] **A)** Un endomorphisme injectif mais pas surjectif de $(\mathbb{Z}, +)$<span class="correct"></span>
+- [ ] **B)** Un automorphisme de $(\mathbb{Z}, +)$
 - [ ] **C)** Un endomorphisme surjectif mais pas injectif de $(\mathbb{Z}, +)$
 - [ ] **D)** Pas un morphisme de groupes
 
 <details>
 <summary>Solution</summary>
 
-**Réponse : B**
+**Réponse : A**
 
 $f(m + n) = 2(m + n) = 2m + 2n = f(m) + f(n)$, donc c'est un morphisme. Il est injectif (si $2m = 2n$ alors $m = n$) mais pas surjectif (1 n'a pas d'antécédent).
 
@@ -161,7 +161,7 @@ $f(m + n) = 2(m + n) = 2m + 2n = f(m) + f(n)$, donc c'est un morphisme. Il est i
 Soit $f : G \to H$ un morphisme de groupes. L'image $\text{Im}(f)$ est :
 
 - [ ] **A)** Toujours égale à $H$
-- [ ] **B)** Un sous-groupe de $H$
+- [ ] **B)** Un sous-groupe de $H$<span class="correct"></span>
 - [ ] **C)** Un sous-groupe de $G$
 - [ ] **D)** L'ensemble vide si $f$ n'est pas surjectif
 
@@ -181,7 +181,7 @@ L'image d'un morphisme de groupes est toujours un sous-groupe du groupe d'arriv�
 Si $f : G \to H$ est un morphisme de groupes, alors :
 
 - [ ] **A)** $G \cong H$
-- [ ] **B)** $G/\ker(f) \cong \text{Im}(f)$
+- [ ] **B)** $G/\ker(f) \cong \text{Im}(f)$<span class="correct"></span>
 - [ ] **C)** $\ker(f) \cong \text{Im}(f)$
 - [ ] **D)** $G \cong \ker(f) \times \text{Im}(f)$
 
@@ -200,7 +200,7 @@ Le premier théorème d'isomorphisme énonce que $G/\ker(f) \cong \text{Im}(f)$.
 
 L'application $\det : \text{GL}_2(\mathbb{R}) \to \mathbb{R}^*$ qui à une matrice associe son déterminant est :
 
-- [ ] **A)** Un morphisme de groupes multiplicatifs
+- [ ] **A)** Un morphisme de groupes multiplicatifs<span class="correct"></span>
 - [ ] **B)** Un morphisme d'anneaux
 - [ ] **C)** Un isomorphisme
 - [ ] **D)** Pas un morphisme
@@ -220,7 +220,7 @@ $\det(AB) = \det(A) \det(B)$ et $\det(I) = 1$, donc le déterminant est un morph
 
 Si $f : G \to H$ et $g : H \to K$ sont des morphismes de groupes, alors $g \circ f : G \to K$ est :
 
-- [ ] **A)** Toujours un morphisme de groupes
+- [ ] **A)** Toujours un morphisme de groupes<span class="correct"></span>
 - [ ] **B)** Un morphisme seulement si $f$ et $g$ sont bijectifs
 - [ ] **C)** Un morphisme seulement si $f$ est surjectif
 - [ ] **D)** Pas nécessairement un morphisme
@@ -241,7 +241,7 @@ La composition de morphismes de groupes est toujours un morphisme de groupes : $
 Dans le groupe $(\mathbb{Z}/6\mathbb{Z}, +)$, combien y a-t-il d'automorphismes ?
 
 - [ ] **A)** 1
-- [ ] **B)** 2
+- [ ] **B)** 2<span class="correct"></span>
 - [ ] **C)** 3
 - [ ] **D)** 6
 
@@ -255,3 +255,5 @@ Les automorphismes de $\mathbb{Z}/6\mathbb{Z}$ correspondent aux éléments inve
 </details>
 
 ---
+
+<button class="toggle-check">Check</button>

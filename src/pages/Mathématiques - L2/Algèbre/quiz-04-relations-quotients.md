@@ -17,7 +17,7 @@ quizId: "m3n4o5p6"
 
 Soit $R$ une relation sur un ensemble $E$. Pour que $R$ soit une relation d'équivalence, il faut qu'elle soit :
 
-- [ ] **A)** Réflexive, symétrique et transitive
+- [ ] **A)** Réflexive, symétrique et transitive<span class="correct"></span>
 - [ ] **B)** Réflexive, antisymétrique et transitive
 - [ ] **C)** Symétrique et transitive seulement
 - [ ] **D)** Réflexive et transitive seulement
@@ -39,7 +39,7 @@ Sur $\mathbb{R}$, la relation $aRb \Leftrightarrow a \leq b$ est :
 
 - [ ] **A)** Une relation d'équivalence
 - [ ] **B)** Une relation d'ordre partiel
-- [ ] **C)** Une relation d'ordre total
+- [ ] **C)** Une relation d'ordre total<span class="correct"></span>
 - [ ] **D)** Ni une relation d'équivalence ni une relation d'ordre
 
 <details>
@@ -58,7 +58,7 @@ La relation $\leq$ sur $\mathbb{R}$ est réflexive, antisymétrique et transitiv
 Soit $\sim$ la relation sur $\mathbb{Z}$ définie par $a \sim b \Leftrightarrow a \equiv b \pmod{3}$. Combien y a-t-il de classes d'équivalence ?
 
 - [ ] **A)** 2
-- [ ] **B)** 3
+- [ ] **B)** 3<span class="correct"></span>
 - [ ] **C)** 6
 - [ ] **D)** Une infinité
 
@@ -81,7 +81,7 @@ Les classes d'équivalence modulo 3 sont :
 Si $\sim$ est une relation d'équivalence sur un ensemble $E$, alors les classes d'équivalence :
 
 - [ ] **A)** Peuvent se chevaucher
-- [ ] **B)** Forment une partition de $E$
+- [ ] **B)** Forment une partition de $E$<span class="correct"></span>
 - [ ] **C)** Sont toutes de même cardinal
 - [ ] **D)** Sont au plus dénombrables
 
@@ -101,7 +101,7 @@ Les classes d'équivalence d'une relation d'équivalence forment toujours une pa
 L'ensemble quotient $\mathbb{Z}/\sim$ où $a \sim b \Leftrightarrow |a| = |b|$ est en bijection avec :
 
 - [ ] **A)** $\mathbb{Z}$
-- [ ] **B)** $\mathbb{N}$
+- [ ] **B)** $\mathbb{N}$<span class="correct"></span>
 - [ ] **C)** $\mathbb{Q}$
 - [ ] **D)** $\{0, 1\}$
 
@@ -120,7 +120,7 @@ Chaque classe d'équivalence correspond à une valeur absolue : $\text{cl}(n) = 
 
 Dans $\mathbb{Z}/5\mathbb{Z}$, que vaut $\overline{17} + \overline{23}$ ?
 
-- [ ] **A)** $\overline{0}$
+- [ ] **A)** $\overline{0}$<span class="correct"></span>
 - [ ] **B)** $\overline{1}$
 - [ ] **C)** $\overline{2}$
 - [ ] **D)** $\overline{40}$
@@ -142,7 +142,7 @@ Soit $f : E \to F$ une application et $\sim$ une relation d'équivalence sur $E$
 
 - [ ] **A)** $f$ soit injective
 - [ ] **B)** $f$ soit surjective
-- [ ] **C)** $f$ soit compatible avec $\sim$ (si $a \sim b$ alors $f(a) = f(b)$)
+- [ ] **C)** $f$ soit compatible avec $\sim$ (si $a \sim b$ alors $f(a) = f(b)$)<span class="correct"></span>
 - [ ] **D)** $f$ soit bijective
 
 <details>
@@ -162,7 +162,7 @@ Dans la construction de $\mathbb{Q}$ à partir de $\mathbb{Z} \times (\mathbb{Z}
 
 - [ ] **A)** $(a, b) \sim (c, d) \Leftrightarrow a = c \text{ et } b = d$
 - [ ] **B)** $(a, b) \sim (c, d) \Leftrightarrow a + d = b + c$
-- [ ] **C)** $(a, b) \sim (c, d) \Leftrightarrow ad = bc$
+- [ ] **C)** $(a, b) \sim (c, d) \Leftrightarrow ad = bc$<span class="correct"></span>
 - [ ] **D)** $(a, b) \sim (c, d) \Leftrightarrow a - b = c - d$
 
 <details>
@@ -181,7 +181,7 @@ Dans la construction de $\mathbb{Q}$, on identifie $(a, b)$ et $(c, d)$ si elles
 Soit $F = \mathbb{R}^{\mathbb{R}}$ l'ensemble des fonctions de $\mathbb{R}$ vers $\mathbb{R}$. La relation $f \sim g \Leftrightarrow f(0) = g(0)$ est :
 
 - [ ] **A)** Une relation d'ordre
-- [ ] **B)** Une relation d'équivalence
+- [ ] **B)** Une relation d'équivalence<span class="correct"></span>
 - [ ] **C)** Ni l'une ni l'autre
 - [ ] **D)** Une relation d'équivalence et d'ordre à la fois
 
@@ -203,7 +203,7 @@ Cette relation est :
 
 Soit $G$ un groupe et $H$ un sous-groupe normal de $G$. Alors $G/H$ :
 
-- [ ] **A)** Est toujours un groupe
+- [ ] **A)** Est toujours un groupe<span class="correct"></span>
 - [ ] **B)** N'est un groupe que si $H = \{e\}$
 - [ ] **C)** N'est jamais un groupe
 - [ ] **D)** Est un groupe seulement si $G$ est abélien
@@ -224,9 +224,9 @@ Si $H$ est un sous-groupe normal de $G$, alors $G/H$ hérite naturellement d'une
 Soit $\pi : \mathbb{Z} \to \mathbb{Z}/n\mathbb{Z}$ la projection canonique. Alors :
 
 - [ ] **A)** $\pi$ est injectif
-- [ ] **B)** $\pi$ est surjectif
+- [ ] **B)** $\pi$ est surjectif<span class="correct"></span>
 - [ ] **C)** $\ker(\pi) = \{0\}$
-- [ ] **D)** $\ker(\pi) = n\mathbb{Z}$
+- [ ] **D)** $\ker(\pi) = n\mathbb{Z}$<span class="correct"></span>
 
 <details>
 <summary>Solution</summary>

@@ -49,6 +49,30 @@ const QuizEnhancer = ({quizId}: {quizId: string}) => {
 				"mailto:g.a.bucher@midasum.com?subject=feature-space.com";
 			emailLink.innerHTML = "g.a.bucher@midasum.com";
 		});
+
+		document.querySelectorAll("button.toggle-check").forEach((b) => {
+			const button = b as HTMLButtonElement;
+      button.addEventListener("click", (e) => {
+e.preventDefault();
+        if (!button.classList.contains("high")) {
+          document.documentElement.classList.add("check");
+		      document.querySelectorAll("button.toggle-check").forEach((b) => {
+            b.classList.add("high");
+          })
+          document.querySelectorAll("details").forEach((details) => {
+            details.open = true;
+          });
+        } else {
+          document.documentElement.classList.remove("check");
+		      document.querySelectorAll("button.toggle-check").forEach((b) => {
+            b.classList.remove("high");
+          })
+          document.querySelectorAll("details").forEach((details) => {
+            details.open = false;
+          });
+        }
+      })
+		});
 	}, [quizId]);
 
 	return null;

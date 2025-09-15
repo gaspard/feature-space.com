@@ -18,7 +18,7 @@ quizId: "a1b2c3d4"
 Soit $f : \mathbb{R} \to \mathbb{R}$ définie par $f(x) = \sqrt{x}$. Cette définition est-elle correcte ?
 
 - [ ] **A)** Oui, car $\sqrt{x}$ est bien défini pour tout $x \in \mathbb{R}$
-- [ ] **B)** Non, car $\sqrt{x}$ n'est pas défini pour $x < 0$
+- [ ] **B)** Non, car $\sqrt{x}$ n'est pas défini pour $x < 0$<span class="correct"></span>
 - [ ] **C)** Oui, mais seulement si on considère les nombres complexes
 - [ ] **D)** Non, car une application doit être bijective
 
@@ -38,14 +38,14 @@ La fonction $\sqrt{x}$ n'est définie que pour $x \geq 0$ dans $\mathbb{R}$. Pou
 Laquelle des applications suivantes est injective ?
 
 - [ ] **A)** $f : \mathbb{R} \to \mathbb{R}$, $f(x) = x^2$
-- [ ] **B)** $g : \mathbb{R} \to \mathbb{R}$, $g(x) = 2x + 1$
-- [ ] **C)** $h : \mathbb{R} \to \mathbb{R}$, $h(x) = \sin(x)$
+- [ ] **B)** $h : \mathbb{R} \to \mathbb{R}$, $h(x) = \sin(x)$
+- [ ] **C)** $g : \mathbb{R} \to \mathbb{R}$, $g(x) = 2x + 1$<span class="correct"></span>
 - [ ] **D)** $k : \mathbb{R} \to \mathbb{R}$, $k(x) = |x|$
 
 <details>
 <summary>Solution</summary>
 
-**Réponse : B**
+**Réponse : C**
 
 $g(x) = 2x + 1$ est injective car si $g(x_1) = g(x_2)$, alors $2x_1 + 1 = 2x_2 + 1$, donc $x_1 = x_2$.
 - A) $f(1) = f(-1) = 1$, donc pas injective
@@ -61,7 +61,7 @@ $g(x) = 2x + 1$ est injective car si $g(x_1) = g(x_2)$, alors $2x_1 + 1 = 2x_2 +
 Soit $f : \mathbb{Z} \to \mathbb{N}$ définie par $f(n) = |n|$. Cette application est :
 
 - [ ] **A)** Injective mais pas surjective
-- [ ] **B)** Surjective mais pas injective
+- [ ] **B)** Surjective mais pas injective<span class="correct"></span>
 - [ ] **C)** Bijective
 - [ ] **D)** Ni injective ni surjective
 
@@ -80,7 +80,7 @@ $f(n) = |n|$ est surjective car tout $m \in \mathbb{N}$ est l'image de $m$ (et d
 
 Soient $f : A \to B$ et $g : B \to C$ deux applications. Si $f$ est injective et $g$ est injective, alors $g \circ f$ est :
 
-- [ ] **A)** Toujours injective
+- [ ] **A)** Toujours injective<span class="correct"></span>
 - [ ] **B)** Toujours surjective
 - [ ] **C)** Toujours bijective
 - [ ] **D)** Pas nécessairement injective
@@ -102,7 +102,7 @@ Une application $f : A \to B$ admet une fonction réciproque si et seulement si 
 
 - [ ] **A)** $f$ est injective
 - [ ] **B)** $f$ est surjective
-- [ ] **C)** $f$ est bijective
+- [ ] **C)** $f$ est bijective<span class="correct"></span>
 - [ ] **D)** $A$ et $B$ ont le même cardinal
 
 <details>
@@ -120,8 +120,8 @@ Une application admet une fonction réciproque si et seulement si elle est bijec
 
 Soit $f : \mathbb{R} \to \mathbb{R}$ définie par $f(x) = x^3 - x$. Quel(s) couple(s) $(a, b)$ avec $a \neq b$ vérifie(nt) $f(a) = f(b)$ ?
 
-- [ ] **A)** $(0, 1)$
-- [ ] **B)** $(1, -1)$
+- [ ] **A)** $(0, 1)$<span class="correct"></span>
+- [ ] **B)** $(1, -1)$<span class="correct"></span>
 - [ ] **C)** $(2, -2)$
 - [ ] **D)** $(\sqrt{2}, -\sqrt{2})$
 
@@ -148,7 +148,7 @@ Combien d'applications distinctes peut-on définir de $\{1, 2\}$ vers $\{a, b, c
 
 - [ ] **A)** 6
 - [ ] **B)** 8
-- [ ] **C)** 9
+- [ ] **C)** 9<span class="correct"></span>
 - [ ] **D)** 12
 
 <details>
@@ -167,7 +167,7 @@ Pour chaque élément de $\{1, 2\}$, on a 3 choix dans $\{a, b, c\}$. Donc $3^2 
 Soit $f : X \to Y$ une application surjective. Alors :
 
 - [ ] **A)** $f$ admet un inverse à gauche
-- [ ] **B)** $f$ admet un inverse à droite
+- [ ] **B)** $f$ admet un inverse à droite<span class="correct"></span>
 - [ ] **C)** $f$ est bijective
 - [ ] **D)** $f$ est injective
 
@@ -187,14 +187,14 @@ Une application surjective admet un inverse à droite (axiome du choix). Elle n'
 Soit $f : \mathbb{R} \to \mathbb{R}$ définie par $f(x) = x^2$. Que vaut $f^{-1}(\{4\})$ ?
 
 - [ ] **A)** $\{2\}$
-- [ ] **B)** $\{-2, 2\}$
-- [ ] **C)** $\{4\}$
-- [ ] **D)** $\emptyset$
+- [ ] **B)** $\{4\}$
+- [ ] **C)** $\emptyset$
+- [ ] **D)** $\{-2, 2\}$<span class="correct"></span>
 
 <details>
 <summary>Solution</summary>
 
-**Réponse : B**
+**Réponse : D**
 
 $f^{-1}(\{4\}) = \{x \in \mathbb{R} \mid f(x) = 4\} = \{x \in \mathbb{R} \mid x^2 = 4\} = \{-2, 2\}$.
 
@@ -206,7 +206,7 @@ $f^{-1}(\{4\}) = \{x \in \mathbb{R} \mid f(x) = 4\} = \{x \in \mathbb{R} \mid x^
 
 **Énoncé :** Si $f : A \to B$ et $g : B \to A$ vérifient $f \circ g = \text{id}_B$, alors $f$ est surjective et $g$ est injective.
 
-- [ ] **A)** Vrai
+- [ ] **A)** Vrai<span class="correct"></span>
 - [ ] **B)** Faux
 
 <details>
@@ -219,3 +219,5 @@ Si $f \circ g = \text{id}_B$, alors pour tout $b \in B$, on a $f(g(b)) = b$, don
 </details>
 
 ---
+
+<button class="toggle-check">Check</button>

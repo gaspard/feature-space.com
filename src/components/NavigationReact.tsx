@@ -33,6 +33,7 @@ const NavigationReact: React.FC<NavigationProps> = ({
 					))}
 				</ul>
 			</div>
+      {currentPath.includes("quiz") ?  <button type="button" className="toggle-check">Check</button> : null}
 		</nav>
 	);
 };
