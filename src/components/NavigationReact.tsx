@@ -14,7 +14,7 @@ const NavigationReact: React.FC<NavigationProps> = ({
 }) => {
 	return (
 		<nav
-			className={`bg-gray-400 shadow-sm border-r border-gray-200 overflow-y-auto ${
+			className={`bg-gray-300 shadow-sm border-r border-gray-200 overflow-y-auto ${
 				isMobile ? "w-full" : "w-64 h-screen sticky top-0 hidden md:block"
 			}`}
 		>

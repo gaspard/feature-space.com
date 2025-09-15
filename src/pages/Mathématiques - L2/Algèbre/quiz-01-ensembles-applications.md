@@ -144,7 +144,7 @@ Ces trois points ont la même image $0$ par la fonction $f$, ce qui montre que $
 
 #### Question 7 : Applications entre ensembles finis
 
-Combien d'applications distinctes peut-on définir de $\{1, 2\}$ vers $\{a, b, c\}$ ?
+Combien d'applications distinctes à une variable peut-on définir de $\{1, 2\}$ vers $\{a, b, c\}$ ?
 
 - [ ] **A)** 6
 - [ ] **B)** 8
