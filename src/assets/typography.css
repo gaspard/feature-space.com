@@ -17,12 +17,15 @@ a {
 	color: inherit;
 }
 .main-content {
+	@apply lg:p-4 lg:pb-5 lg:max-w-28;
   font-size: 18px;
+	/*
 	padding: 2em 2em 5em;
+	max-width: 44em;
+	*/
 	a:hover {
 		color: #606;
 	}
-	max-width: 44em;
 
 	a {
 		color: #999;
@@ -66,7 +69,6 @@ a {
 		color: hsl(0, 0%, 20%);
 		text-align: left;
 		letter-spacing: 0.1em;
-		margin: 1.5em 0 0.8em;
 	}
 
 	h5 {
@@ -85,9 +87,9 @@ a {
 	}
 
 	p {
+		@apply sm:indent-2;
 		font-size: 100%;
 		margin: 1em 0 0 0em;
-		text-indent: 1.5em;
 	}
 
 	details {
@@ -104,7 +106,7 @@ a {
 	}
 
 	details p + p {
-		margin: 1em 0 0 2em;
+		@apply sm:ml-4 mt-2;
 	}
 
 	p + ul,
@@ -118,7 +120,7 @@ a {
 
 	ul,
 	ol {
-		margin: 1em 2em;
+		@apply my-2 mx-0 sm:mx-8;
 	}
 
 	ol li:not(:has(input)),
@@ -176,10 +178,10 @@ a {
 		font-size: 100%;
 	}
 	hr {
+		@apply my-24 sm:my-2;
 		height: 0;
 		color: #eee;
 		border: 1px solid #eee;
-		margin: 2em 0 1em;
 	}
 
 	.normal {
