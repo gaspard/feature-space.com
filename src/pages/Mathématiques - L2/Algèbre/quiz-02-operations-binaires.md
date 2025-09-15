@@ -78,22 +78,22 @@ Dans $(\mathbb{Z}, \times)$, l'élément neutre est $1$ car $1 \times a = a \tim
 
 #### Question 4 : Structure de monoïde
 
-Parmi les structures suivantes, laquelle est un monoïde ?
+Parmi les structures suivantes, laquelle ou lesquelles sont des monoïdes ?
 
 - [ ] **A)** $(\mathbb{N}, -, 0)$
 - [ ] **B)** $(\mathbb{N}, +, 0)$<span class="correct"></span>
-- [ ] **C)** $(\mathbb{Z} \setminus \{0\}, \times, 1)$
+- [ ] **C)** $(\mathbb{Z} \setminus \{0\}, \times, 1)$<span class="correct"></span>
 - [ ] **D)** $(\mathbb{Q}, \div, 1)$
 
 <details>
 <summary>Solution</summary>
 
-**Réponse : B**
+**Réponse : B, C**
 
 $(\mathbb{N}, +, 0)$ est un monoïde car l'addition est associative et $0$ est l'élément neutre.
-- A) La soustraction n'est pas associative
-- C) $0 \notin \mathbb{Z} \setminus \{0\}$ mais $0$ est nécessaire comme élément neutre
-- D) La division n'est pas toujours définie
+$(\mathbb{Z} \setminus \{0\}, \times, 1)$ est un monoïde, la multiplication étant associative et $1$ étant l'élément neutre. De plus, aucune multiplication ne donne $0$ (qui est hors de l'ensemble). L'ensemble est stable (fermé) par cette opération.
+
+La soustraction n'est pas associative, $(\mathbb{N}, -, 0)$ n'est donc pas un monoïde. La division n'est pas associative, $(\mathbb{Q}, \div, 1)$ n'est donc pas un monoïde.
 
 </details>
 
