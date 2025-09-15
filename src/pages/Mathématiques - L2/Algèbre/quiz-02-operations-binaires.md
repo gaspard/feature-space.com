@@ -216,13 +216,13 @@ Dans $\mathbb{Z}$, la multiplication est distributive par rapport à l'addition.
 
 - [ ] **A)** $a + (b \times c) = (a + b) \times (a + c)$
 - [ ] **B)** $a \times (b + c) = (a \times b) + (a \times c)$
-- [ ] **C)** $(a + b) \times c = a \times c + b \times c$
-- [ ] **D)** Les réponses B et C sont correctes<span class="correct"></span>
+- [ ] **C)** $(a + b) \times c = (a \times c) + (b \times c)$
+- [ ] **D)** $a \times (b \times c) = (a \times b) + (a \times c)$
 
 <details>
 <summary>Solution</summary>
 
-**Réponse : D**
+**Réponse : B, C**
 
 La distributivité s'exprime des deux côtés : $a \times (b + c) = ab + ac$ et $(b + c) \times a = ba + ca$.
 
