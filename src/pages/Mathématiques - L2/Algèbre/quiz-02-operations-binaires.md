@@ -215,8 +215,8 @@ L'opération est commutative (la table est symétrique) et associative (vérific
 Dans $\mathbb{Z}$, la multiplication est distributive par rapport à l'addition. Cela signifie :
 
 - [ ] **A)** $a + (b \times c) = (a + b) \times (a + c)$
-- [ ] **B)** $a \times (b + c) = (a \times b) + (a \times c)$
-- [ ] **C)** $(a + b) \times c = (a \times c) + (b \times c)$
+- [ ] **B)** $a \times (b + c) = (a \times b) + (a \times c)$ <span class="correct"></span>
+- [ ] **C)** $(a + b) \times c = (a \times c) + (b \times c)$ <span class="correct"></span>
 - [ ] **D)** $a \times (b \times c) = (a \times b) + (a \times c)$
 
 <details>
