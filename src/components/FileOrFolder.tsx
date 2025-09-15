@@ -99,7 +99,7 @@ const FileOrFolder: React.FC<FileOrFolderProps> = ({
 							<FileOrFolder
 								key={`${child.path}-${index}`}
 								item={child}
-								currentPath={currentPath}
+								currentPath={currentPath.replace(/\/$/, '')}
 								path={`${path}/${child.title}`}
 								level={level + 1}
 							/>

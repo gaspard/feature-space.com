@@ -135,12 +135,8 @@ a {
 
 	ol li:not(:has(input)),
 	ul li:not(:has(input)) {
-		text-indent: 0.8em;
+		text-indent: 0;
 		margin-left: 1em;
-	}
-
-	ul li {
-		list-style: none;
 	}
 
 	ol li {
@@ -309,7 +305,11 @@ td {
 	border: 1px solid #222;
 }
 
+li:not(:has(input)) {
+	@apply list-disc p-0 indent-0;
+}
 li:has(input) {
+	@apply list-none;
   cursor: pointer;
   padding: 2px 7px;
   border-radius: 4px;
