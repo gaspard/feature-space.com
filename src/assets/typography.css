@@ -19,6 +19,16 @@ a {
 .main-content {
 	@apply lg:p-4 lg:pb-5 lg:max-w-3xl;
   font-size: 18px;
+
+	.warning {
+		@apply bg-red-100 rounded-md px-2 py-1 text-sm m-4 italic text-gray-800 flex flex-col gap-4;
+		p {
+			@apply m-0 indent-0;
+		}
+		svg {
+			@apply float-left m-3;
+		}
+	}
 	/*
 	padding: 2em 2em 5em;
 	max-width: 44em;
