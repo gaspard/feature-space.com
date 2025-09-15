@@ -9,9 +9,7 @@ quizId: "m3n4o5p6"
 
 ## Instructions
 
-Choisissez la meilleure réponse pour chaque question.
-
-Certaines questions peuvent avoir plusieurs bonnes réponses.
+Choisissez la ou les réponses justes pour chaque question. Certaines questions peuvent avoir plusieurs bonnes réponses.
 
 <div class="warning">
 
