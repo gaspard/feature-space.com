@@ -29,6 +29,26 @@ a {
 			@apply float-left m-3;
 		}
 	}
+
+  audio {
+    /* Style the audio player in blue */
+    @apply rounded-full m-4 border p-2;
+      background-color: #d2eaff !important;
+      border-color: #5daeff !important;
+    box-shadow: 0 2px 8px 0 #3b82f61a;
+    color: #1e3a8a;
+    &::-webkit-media-controls-panel {
+      background-color: #d2eaff !important;
+    }
+    &::-webkit-media-controls-play-button,
+    &::-webkit-media-controls-volume-slider,
+    &::-webkit-media-controls-mute-button,
+    &::-webkit-media-controls-timeline,
+    &::-webkit-media-controls-current-time-display,
+    &::-webkit-media-controls-time-remaining-display {
+      filter: hue-rotate(180deg) brightness(1.1);
+    }
+  }
 	/*
 	padding: 2em 2em 5em;
 	max-width: 44em;
