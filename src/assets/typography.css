@@ -31,7 +31,7 @@ main {
 }
 
 .main-content {
-  @apply lg:p-4 lg:pb-5 lg:max-w-3xl w-full h-full flex bg-green-100;
+  @apply lg:p-4 lg:pb-5 lg:max-w-3xl w-full h-full flex;
   min-height: calc(100vh - 64px);
   font-size: 18px;
 
@@ -362,11 +362,14 @@ main {
   }
 
   .card-container {
-    @apply min-w-screen h-full;
+    @apply min-w-screen lg:min-w-full h-full lg:max-h-140;
   }
 
+  .cards-page {
+    @apply min-w-full lg:flex lg:justify-center lg:items-center;
+  }
   .card {
-    @apply text-slate-800 leading-relaxed flex flex-col items-center justify-center w-full h-full bg-white;
+    @apply text-slate-800 leading-relaxed flex flex-col cursor-pointer items-center justify-center w-full h-full bg-white lg:m-4 lg:rounded-xl lg:min-w-full lg:border lg:border-slate-300;
     p {
       @apply indent-0;
     }
@@ -451,7 +454,7 @@ main {
 .main-content > table {
   margin: 1.5em auto;
 }
-00 transition-colors duration-2 .main-content > table th {
+.main-content > table th {
   font-size: 90%;
   background: #ddd;
   font-weight: bold;
