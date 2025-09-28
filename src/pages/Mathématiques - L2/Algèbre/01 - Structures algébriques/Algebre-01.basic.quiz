@@ -1,0 +1,455 @@
+---
+title: '0 - Quiz de base (Structures algébriques (niveau de base))'
+layout: '../../../../layouts/Layout.astro'
+quizId: 'd4e1f07d'
+order: 1
+level: basic
+chapter: Structures algébriques (niveau de base)
+course: "Structures algébriques et algèbre bilinéaire"
+---
+
+# Quiz : Structures algébriques (niveau de base)
+
+---
+
+#### Question 1 : Définition d'une application
+
+Qu'est-ce qui caractérise une application (ou fonction) $f$ d'un ensemble de départ $X$ vers un ensemble d'arrivée $Y$ ?
+
+- [ ] **A)** Chaque élément de $Y$ doit avoir exactement un antécédent dans $X$.
+- [x] **B)** Chaque élément de $X$ doit avoir une et une seule image dans $Y$.
+- [ ] **C)** Pour chaque élément de $X$, il existe au moins une image dans $Y$.
+- [ ] **D)** L'ensemble de départ $X$ et l'ensemble d'arrivée $Y$ doivent avoir le même nombre d'éléments.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+La définition d'une application $f : X \to Y$ repose sur deux conditions fondamentales :
+
+1.  **Existence** : Chaque élément de l'ensemble de départ $X$ doit avoir une image dans $Y$.
+2.  **Unicité** : Cette image doit être unique.
+
+Analysons les options :
+
+**A.** Ceci décrit une application bijective, où chaque élément de l'ensemble d'arrivée a un unique antécédent. C'est une condition plus forte que celle requise pour une simple application.
+**B.** C'est la définition correcte. Elle combine les deux conditions d'existence ("chaque élément de X") et d'unicité ("une et une seule image").
+**C.** Cette option omet la condition d'unicité. Une règle qui associerait plusieurs images à un même élément de départ ne serait pas une application.
+**D.** Cette condition n'est pas nécessaire. Par exemple, $f : \{1, 2\} \to \{a, b, c\}$ définie par $f(1)=a$ et $f(2)=b$ est une application valide.
+
+</details>
+
+---
+
+#### Question 2 : Composition d'applications
+
+Soient les applications $f: \mathbb{R} \to \mathbb{R}$ définie par $f(x) = x+2$ et $g: \mathbb{R} \to \mathbb{R}$ définie par $g(x) = 3x$. Quelle est l'expression de la composition $g \circ f$ ?
+
+- [ ] **A)** $(g \circ f)(x) = 3x + 2$
+- [x] **B)** $(g \circ f)(x) = 3x + 6$
+- [ ] **C)** $(g \circ f)(x) = (x+2) \times 3x$
+- [x] **D)** $(g \circ f)(x) = 3(x+2)$
+
+<details>
+<summary>Solution</summary>
+
+**Réponses : [B, D]**
+
+La composition $(g \circ f)(x)$ se calcule en appliquant d'abord $f$ à $x$, puis en appliquant $g$ au résultat $f(x)$.
+La définition est : $(g \circ f)(x) = g(f(x))$.
+
+1. On calcule d'abord l'image de $x$ par $f$ : $f(x) = x+2$.
+2. On applique ensuite $g$ à ce résultat : $g(f(x)) = g(x+2)$.
+3. D'après la définition de $g$, on remplace la variable dans $g$ par $(x+2)$ : $g(x+2) = 3(x+2)$.
+
+L'expression de la composition est donc $3(x+2)$. En développant cette expression, on obtient $3x + 6$.
+
+**A.** C'est l'expression de $(f \circ g)(x) = f(g(x)) = f(3x) = 3x+2$. L'ordre de composition est important.
+**B.** C'est la forme développée de l'expression correcte.
+**C.** C'est le produit des deux expressions, ce qui ne correspond pas à la composition.
+**D.** C'est la forme factorisée de l'expression correcte.
+
+</details>
+
+---
+
+#### Question 3 : Injectivité
+
+Quand dit-on qu'une application $f : X \to Y$ est injective ?
+
+- [ ] **A)** Si tout élément de $Y$ a au moins un antécédent par $f$.
+- [x] **B)** Si deux éléments distincts de $X$ ont toujours des images distinctes dans $Y$.
+- [x] **C)** Si chaque élément de $Y$ est l'image d'au plus un élément de $X$.
+- [ ] **D)** Si pour tout $x \in X$, il existe un unique $y \in Y$ tel que $y = f(x)$.
+
+<details>
+<summary>Solution</summary>
+
+**Réponses : [B, C]**
+
+L'injectivité concerne l'unicité des antécédents. Une application est injective s'il n'y a pas de "collision" à l'arrivée : deux points de départ différents ne peuvent pas arriver sur le même point d'arrivée.
+
+**A.** C'est la définition de la **surjectivité**.
+**B.** C'est la définition formelle de l'injectivité. Si $x_1 \neq x_2$, alors $f(x_1) \neq f(x_2)$.
+**C.** C'est une autre façon, tout à fait équivalente, de formuler la définition. Un élément $y$ de l'ensemble d'arrivée peut avoir un antécédent ou zéro antécédent, mais jamais plus d'un.
+**D.** C'est la définition d'une **application**. Chaque application vérifie cette propriété, qu'elle soit injective ou non.
+
+</details>
+
+---
+
+#### Question 4 : Surjectivité
+
+Soit l'application $f: \mathbb{Z} \to \{0, 1\}$ qui associe à un entier $n$ sa parité (0 pour pair, 1 pour impair). Quelles affirmations sont correctes ?
+
+- [ ] **A)** $f$ est injective.
+- [x] **B)** $f$ est surjective.
+- [ ] **C)** $f$ n'est ni injective, ni surjective.
+- [ ] **D)** $f$ est bijective.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Analysons les propriétés de cette application.
+
+- **Surjectivité** : Une application est surjective si tous les éléments de l'ensemble d'arrivée sont atteints. Ici, l'ensemble d'arrivée est $\{0, 1\}$.
+  - L'élément $0$ est atteint, par exemple par $f(2) = 0$.
+  - L'élément $1$ est atteint, par exemple par $f(3) = 1$.
+  Puisque tous les éléments de l'arrivée ont au moins un antécédent, $f$ est surjective.
+
+- **Injectivité** : Une application est injective si des éléments de départ distincts ont des images distinctes. Or, on a $f(2) = 0$ et $f(4) = 0$, mais $2 \neq 4$. L'application n'est donc pas injective.
+
+- **Bijectivité** : Une application est bijective si elle est à la fois injective et surjective. Puisque $f$ n'est pas injective, elle n'est pas bijective.
+
+Par conséquent, la seule affirmation correcte est que $f$ est surjective.
+
+</details>
+
+---
+
+#### Question 5 : Propriétés d'une fonction
+
+On considère l'application $f: \mathbb{R} \to \mathbb{R}$ définie par $f(x)=x^2$. Quelles sont ses propriétés ?
+
+- [ ] **A)** Elle est bijective.
+- [ ] **B)** Elle est surjective.
+- [x] **C)** Elle n'est ni injective, ni surjective.
+- [ ] **D)** Elle est injective.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Analysons les propriétés de $f(x) = x^2$ de $\mathbb{R}$ dans $\mathbb{R}$.
+
+- **Injectivité** : $f$ est-elle injective ? Non, car des éléments distincts peuvent avoir la même image. Par exemple, $f(-2) = (-2)^2 = 4$ et $f(2) = 2^2 = 4$. Comme $-2 \neq 2$ mais $f(-2)=f(2)$, l'application n'est pas injective.
+
+- **Surjectivité** : $f$ est-elle surjective ? Non, car un élément de l'ensemble d'arrivée $\mathbb{R}$ est atteint seulement s'il est positif ou nul. Par exemple, le nombre $-1 \in \mathbb{R}$ n'a aucun antécédent réel, car l'équation $x^2 = -1$ n'a pas de solution dans $\mathbb{R}$. L'application n'est donc pas surjective.
+
+Puisqu'elle n'est ni injective ni surjective, elle n'est pas bijective. La seule proposition correcte est C.
+
+</details>
+
+---
+
+#### Question 6 : Loi de Composition Interne (LCI)
+
+Parmi les opérations suivantes, lesquelles sont des lois de composition interne sur l'ensemble $\mathbb{Z}$ des entiers relatifs ?
+
+- [x] **A)** L'addition (+)
+- [ ] **B)** La division (÷)
+- [x] **C)** La multiplication (×)
+- [x] **D)** La soustraction (-)
+
+<details>
+<summary>Solution</summary>
+
+**Réponses : [A, C, D]**
+
+Une loi de composition interne sur un ensemble $E$ est une opération qui, à deux éléments de $E$, associe un résultat qui appartient toujours à $E$.
+
+**A.** L'addition (+) : La somme de deux entiers est toujours un entier. C'est donc une LCI sur $\mathbb{Z}$.
+**B.** La division (÷) : Le quotient de deux entiers n'est pas toujours un entier. Par exemple, $3 \div 2 = 1.5$, qui n'appartient pas à $\mathbb{Z}$. Ce n'est donc pas une LCI sur $\mathbb{Z}$.
+**C.** La multiplication (×) : Le produit de deux entiers est toujours un entier. C'est donc une LCI sur $\mathbb{Z}$.
+**D.** La soustraction (-) : La différence de deux entiers est toujours un entier. C'est donc une LCI sur $\mathbb{Z}$.
+
+</details>
+
+---
+
+#### Question 7 : Propriétés d'une Loi de Composition Interne
+
+Quelles sont les propriétés de la soustraction ($-$) sur l'ensemble des entiers $\mathbb{Z}$ ?
+
+- [ ] **A)** Elle est associative.
+- [ ] **B)** Elle est commutative.
+- [ ] **C)** Elle admet un élément neutre.
+- [x] **D)** Aucune des réponses ci-dessus.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+Analysons les propriétés de la soustraction sur $\mathbb{Z}$.
+
+- **Associativité** : La loi est-elle associative ? Non.
+  Contre-exemple : $(8 - 4) - 2 = 4 - 2 = 2$, mais $8 - (4 - 2) = 8 - 2 = 6$. Les résultats sont différents.
+
+- **Commutativité** : La loi est-elle commutative ? Non.
+  Contre-exemple : $5 - 3 = 2$, mais $3 - 5 = -2$. Les résultats sont différents.
+
+- **Élément neutre** : Existe-t-il un élément neutre $e \in \mathbb{Z}$ tel que pour tout $a \in \mathbb{Z}$, on ait $a - e = a$ ET $e - a = a$ ?
+  La première condition $a - e = a$ implique que $e=0$.
+  Mais la deuxième condition $e - a = a$ deviendrait $0 - a = a$, soit $-a = a$, ce qui n'est vrai que si $a=0$.
+  Comme la condition n'est pas vérifiée pour tous les entiers, il n'y a pas d'élément neutre.
+
+Puisqu'aucune des propriétés listées n'est vérifiée, la bonne réponse est D.
+
+</details>
+
+---
+
+#### Question 8 : Définition d'un groupe
+
+Quelles sont les trois propriétés fondamentales requises pour qu'un couple $(G, *)$ soit un groupe ?
+
+- [ ] **A)** La loi $*$ est interne, associative et commutative.
+- [x] **B)** La loi $*$ est associative, admet un élément neutre, et chaque élément admet un symétrique (inverse).
+- [ ] **C)** La loi $*$ est associative, et chaque élément admet un symétrique (inverse).
+- [ ] **D)** L'ensemble $G$ est non vide, la loi $*$ est interne et admet un élément neutre.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+La définition d'un groupe $(G, *)$ repose sur la vérification de trois axiomes :
+
+1.  **Associativité** de la loi $*$.
+2.  Existence d'un **élément neutre** $e \in G$.
+3.  Existence d'un **inverse** (ou symétrique) $g^{-1} \in G$ pour chaque élément $g \in G$.
+
+La condition que la loi soit interne est implicite quand on parle du couple $(G, *)$.
+
+**A.** La commutativité n'est pas une condition requise pour tous les groupes. Elle définit un sous-type de groupes appelés groupes abéliens (ou commutatifs).
+**B.** Cette proposition liste correctement les trois axiomes.
+**C.** Cette proposition oublie la nécessité d'un élément neutre, qui est indispensable pour définir la notion d'inverse.
+**D.** Cette proposition oublie la condition d'inversibilité pour chaque élément. Un ensemble avec une loi associative et un élément neutre est un **monoïde**, pas forcément un groupe.
+
+</details>
+
+---
+
+#### Question 9 : Reconnaissance d'un groupe
+
+Parmi les structures suivantes, lesquelles sont des groupes ?
+
+- [x] **A)** $(\mathbb{Z}, +)$, l'ensemble des entiers avec l'addition.
+- [ ] **B)** $(\mathbb{N}, +)$, l'ensemble des entiers naturels avec l'addition.
+- [ ] **C)** $(\mathbb{R}, \times)$, l'ensemble des nombres réels avec la multiplication.
+- [ ] **D)** $(\mathbb{Z}, -)$, l'ensemble des entiers avec la soustraction.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+Analysons chaque structure :
+
+**A) $(\mathbb{Z}, +)$** :
+   - Associativité : Oui, $(a+b)+c = a+(b+c)$.
+   - Élément neutre : Oui, c'est $0$.
+   - Inverse : Oui, l'inverse de tout entier $a$ est son opposé $-a$, qui est aussi dans $\mathbb{Z}$.
+   C'est un **groupe**.
+
+**B) $(\mathbb{N}, +)$** :
+   - Associativité et élément neutre (0) : Oui.
+   - Inverse : Non. Par exemple, l'entier $3$ n'a pas d'inverse dans $\mathbb{N}$, car son opposé $-3$ n'est pas dans $\mathbb{N}$.
+   Ce n'est qu'un monoïde.
+
+**C) $(\mathbb{R}, \times)$** :
+   - Associativité et élément neutre (1) : Oui.
+   - Inverse : Non. L'élément $0 \in \mathbb{R}$ n'a pas d'inverse multiplicatif. (Note : $(\mathbb{R} \setminus \{0\}, \times)$ est un groupe).
+
+**D) $(\mathbb{Z}, -)$** :
+   - Associativité : Non, la soustraction n'est pas associative.
+   Ce n'est même pas un monoïde.
+
+</details>
+
+---
+
+#### Question 10 : Définition d'un anneau
+
+Un triplet $(A, +, \times)$ est un anneau si...
+
+- [ ] **A)** $(A, +)$ est un groupe et $(A, \times)$ est un groupe.
+- [x] **B)** $(A, +)$ est un groupe abélien, $(A, \times)$ est un monoïde, et la multiplication est distributive sur l'addition.
+- [ ] **C)** $(A, +)$ est un monoïde et $(A, \times)$ est un monoïde.
+- [ ] **D)** $(A, +)$ est un groupe abélien et $(A \setminus \{0\}, \times)$ est un groupe.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+La définition d'un anneau $(A, +, \times)$ combine les structures pour les deux lois :
+
+1.  $(A, +)$ doit être un **groupe abélien** (commutatif).
+2.  $(A, \times)$ doit être un **monoïde** (associatif avec un élément neutre).
+3.  La loi $\times$ doit être **distributive** par rapport à la loi $+$.
+
+**A.** C'est incorrect. Exiger que $(A, \times)$ soit un groupe est trop fort. Par exemple dans l'anneau $(\mathbb{Z}, +, \times)$, $(\mathbb{Z}, \times)$ n'est pas un groupe.
+**B.** C'est la définition complète et correcte d'un anneau.
+**C.** C'est incorrect. Les conditions sont trop faibles. Pour l'addition, il faut une structure de groupe, pas seulement de monoïde.
+**D.** C'est la définition d'un **corps**, une structure plus forte qu'un anneau.
+
+</details>
+
+---
+
+#### Question 11 : Anneau vs Corps
+
+Quelle est la principale différence qui distingue un corps d'un anneau commutatif $(A, +, \times)$ où $1 \neq 0$ ?
+
+- [ ] **A)** Dans un corps, l'addition est commutative.
+- [x] **B)** Dans un corps, tout élément non nul est inversible pour la multiplication.
+- [ ] **C)** Un corps ne peut pas avoir de "diviseurs de zéro".
+- [ ] **D)** Un corps doit avoir un élément neutre pour la multiplication.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Un corps est un type particulier d'anneau commutatif. La différence réside dans les propriétés de la multiplication.
+
+**A.** L'addition est déjà commutative dans la structure d'anneau (car $(A,+)$ est un groupe abélien), donc ce n'est pas une différence.
+**B.** C'est la propriété clé qui définit un corps. Dans un anneau comme $\mathbb{Z}$, seul 1 et -1 ont un inverse multiplicatif. Dans un corps comme $\mathbb{Q}$ ou $\mathbb{R}$, tout élément non nul en a un. Structurellement, cela signifie que $(A \setminus \{0\}, \times)$ est un groupe abélien.
+**C.** L'absence de diviseurs de zéro (propriété d'intégrité) est une conséquence du fait d'être un corps, mais ce n'est pas la définition la plus fondamentale. Un anneau peut être intègre sans être un corps (par exemple $\mathbb{Z}$). La propriété B est plus forte et implique la C.
+**D.** Un anneau (par définition ici) a déjà un élément neutre pour la multiplication (car $(A, \times)$ est un monoïde). Ce n'est donc pas une différence.
+
+</details>
+
+---
+
+#### Question 12 : Relation d'équivalence
+
+Une relation binaire $\sim$ sur un ensemble $E$ est une relation d'équivalence si elle possède les trois propriétés suivantes :
+
+- [ ] **A)** Réflexive, antisymétrique et transitive.
+- [x] **B)** Réflexive, symétrique et transitive.
+- [ ] **C)** Symétrique, transitive et commutative.
+- [ ] **D)** Réflexive et symétrique.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Une relation d'équivalence est une relation qui généralise la notion d'égalité. Pour cela, elle doit satisfaire trois axiomes :
+
+1.  **Réflexivité** : Chaque élément est en relation avec lui-même ($a \sim a$).
+2.  **Symétrie** : Si $a$ est en relation avec $b$, alors $b$ est en relation avec $a$ ($a \sim b \implies b \sim a$).
+3.  **Transitivité** : Si $a$ est en relation avec $b$ et $b$ avec $c$, alors $a$ est en relation avec $c$ ($a \sim b \text{ et } b \sim c \implies a \sim c$).
+
+**A.** Réflexive, antisymétrique et transitive définit une **relation d'ordre**. L'antisymétrie ($a \sim b \text{ et } b \sim a \implies a=b$) est contraire à la symétrie.
+**B.** C'est la définition correcte.
+**C.** La commutativité n'est pas une propriété des relations.
+**D.** C'est incomplet, il manque la transitivité.
+
+</details>
+
+---
+
+#### Question 13 : Sous-groupe
+
+Soit $(G, *)$ un groupe et $H$ un sous-ensemble non vide de $G$. Quelle est une condition nécessaire et suffisante pour que $H$ soit un sous-groupe de $G$ ?
+
+- [ ] **A)** Pour tout $x \in H$, son inverse $x^{-1}$ est aussi dans $H$.
+- [ ] **B)** Pour tous $x, y \in H$, le produit $x * y$ est aussi dans $H$.
+- [x] **C)** Pour tous $x, y \in H$, l'élément $x * y^{-1}$ est aussi dans $H$.
+- [ ] **D)** $H$ contient l'élément neutre $e$ et est stable par multiplication.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Pour vérifier que $H$ est un sous-groupe, il faut montrer qu'il est lui-même un groupe avec la loi de $G$. Il existe une caractérisation compacte très utile.
+
+**A.** Ceci est la stabilité par passage à l'inverse. C'est nécessaire, mais pas suffisant (il manque la stabilité de la loi).
+**B.** Ceci est la stabilité (ou clôture) de la loi. C'est nécessaire, mais pas suffisant (il manque la stabilité par inverse).
+**C.** C'est la caractérisation des sous-groupes. Cette seule condition est équivalente à :
+   1. $H$ contient l'élément neutre (en prenant $x=y$, on a $x * x^{-1} = e \in H$).
+   2. $H$ est stable par inverse (en prenant $x=e$, on a $e * y^{-1} = y^{-1} \in H$).
+   3. $H$ est stable par la loi (si $x, y \in H$, alors $y^{-1} \in H$, donc $x * (y^{-1})^{-1} = x * y \in H$).
+**D.** C'est incomplet. Il manque la stabilité par passage à l'inverse. Par exemple, $(\mathbb{N}, +)$ est un sous-ensemble de $(\mathbb{Z}, +)$ qui contient le neutre (0) et est stable par addition, mais ce n'est pas un sous-groupe.
+
+</details>
+
+---
+
+#### Question 14 : Anneau quotient
+
+Dans l'anneau quotient $\mathbb{Z}/6\mathbb{Z}$, quel calcul est correct ?
+
+- [ ] **A)** $\text{cl}(3) + \text{cl}(4) = \text{cl}(7)$
+- [x] **B)** $\text{cl}(3) \times \text{cl}(2) = \text{cl}(0)$
+- [ ] **C)** $\text{cl}(5) = \text{cl}(-5)$
+- [ ] **D)** $\text{cl}(4)^{-1}$ existe.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Les calculs dans $\mathbb{Z}/n\mathbb{Z}$ se font sur les classes d'équivalence, et le résultat est la classe du résultat du calcul usuel modulo $n$.
+
+**A) $\text{cl}(3) + \text{cl}(4) = \text{cl}(7)$**
+Le calcul est $\text{cl}(3+4) = \text{cl}(7)$. Dans $\mathbb{Z}/6\mathbb{Z}$, on réduit le résultat modulo 6. Puisque $7 = 1 \times 6 + 1$, la classe de 7 est la même que la classe de 1. Donc, $\text{cl}(3) + \text{cl}(4) = \text{cl}(1)$. L'écriture $\text{cl}(7)$ est techniquement juste car $\text{cl}(7)=\text{cl}(1)$ mais elle est non standard, et l'affirmation est ambiguë. Cependant la réponse B est clairement correcte et standard.
+
+**B) $\text{cl}(3) \times \text{cl}(2) = \text{cl}(0)$**
+Le calcul est $\text{cl}(3 \times 2) = \text{cl}(6)$. Puisque $6 = 1 \times 6 + 0$, la classe de 6 est la même que la classe de 0. Donc, $\text{cl}(3) \times \text{cl}(2) = \text{cl}(0)$. C'est correct. C'est un exemple de diviseur de zéro.
+
+**C) $\text{cl}(5) = \text{cl}(-5)$**
+Deux nombres sont dans la même classe modulo 6 si leur différence est un multiple de 6.
+$5 - (-5) = 10$. Or, 10 n'est pas un multiple de 6. Donc $\text{cl}(5) \neq \text{cl}(-5)$. En fait, $\text{cl}(5) = \text{cl}(-1)$ et $\text{cl}(-5) = \text{cl}(1)$.
+
+**D) $\text{cl}(4)^{-1}$ existe.**
+Un élément $\text{cl}(a)$ est inversible dans $\mathbb{Z}/n\mathbb{Z}$ si et seulement si $\text{pgcd}(a, n) = 1$.
+Ici, $\text{pgcd}(4, 6) = 2 \neq 1$. Donc, $\text{cl}(4)$ n'est pas inversible pour la multiplication.
+
+</details>
+
+---
+
+#### Question 15 : Ensemble quotient
+
+Dans l'ensemble quotient $\mathbb{Z}/5\mathbb{Z}$, que représente l'élément noté $\bar{2}$ ou $\text{cl}(2)$ ?
+
+- [x] **A)** L'ensemble de tous les entiers qui ont pour reste 2 dans la division par 5.
+- [ ] **B)** Uniquement le nombre 2.
+- [x] **C)** L'ensemble $\{..., -8, -3, 2, 7, 12, ...\}$.
+- [ ] **D)** L'ensemble des nombres pairs.
+
+<details>
+<summary>Solution</summary>
+
+**Réponses : [A, C]**
+
+Un élément d'un ensemble quotient n'est pas un nombre unique, mais un ensemble de nombres : une classe d'équivalence.
+
+Dans le cas de $\mathbb{Z}/5\mathbb{Z}$, la relation d'équivalence est la congruence modulo 5: $x \sim y \iff x-y$ est un multiple de 5.
+
+**A.** La classe de 2, $\text{cl}(2)$, est l'ensemble de tous les entiers $y$ tels que $y \sim 2$, c'est-à-dire $y-2 = 5k$ pour un certain entier $k$. Cela signifie $y = 5k+2$. C'est exactement la définition des nombres ayant pour reste 2 dans la division par 5. Cette proposition est donc correcte.
+**B.** C'est incorrect. Le nombre 2 est un **représentant** de la classe, mais la classe elle-même est un ensemble infini.
+**C.** Cette proposition liste explicitement les éléments de la classe d'équivalence de 2, qui sont bien de la forme $5k+2$. C'est une description correcte de l'ensemble.
+**D.** L'ensemble des nombres pairs n'a pas de lien direct avec la classe de 2 modulo 5. Par exemple, 7 est dans $\text{cl}(2)$ mais il est impair, et 4 est pair mais n'est pas dans $\text{cl}(2)$.
+
+</details>

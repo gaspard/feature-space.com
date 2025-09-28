@@ -1,0 +1,22 @@
+---
+import Layout from "../../../../layouts/Layout.astro";
+import CardRenderer from "../../../../components/CardRenderer.tsx";
+import { parseCards } from "../../../../utils/cardParser.ts";
+import fs from "fs";
+
+const cardsContent = fs.readFileSync(
+  "/Users/anna/git/feature-space.com/src/pages/Mathématiques - L2/Algèbre/01 - Structures algébriques/Algebre-01.basic.cards",
+  "utf8",
+);
+const parsedCards = parseCards(cardsContent, "Algebre-01.basic.cards");
+---
+
+<Layout title="Cards: Structures algébriques">
+  <div class="cards-page">
+    <CardRenderer
+      cards={parsedCards.cards}
+      enableShuffling={true}
+      client:only="react"
+    />
+  </div>
+</Layout>

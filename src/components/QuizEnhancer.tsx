@@ -25,6 +25,11 @@ const QuizEnhancer = ({quizId}: {quizId: string}) => {
 			const savedState = localStorage.getItem(checkboxId);
 			if (savedState !== null) {
 				input.checked = JSON.parse(savedState);
+			} else {
+				if (input.checked) {
+					input.classList.add("correct");
+				}
+				input.checked = false;
 			}
 
 			input.disabled = false;

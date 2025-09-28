@@ -26,8 +26,13 @@ a {
   color: inherit;
 }
 
+main {
+  @apply w-full h-full;
+}
+
 .main-content {
-  @apply lg:p-4 lg:pb-5 lg:max-w-3xl;
+  @apply lg:p-4 lg:pb-5 lg:max-w-3xl w-full h-full flex bg-green-100;
+  min-height: calc(100vh - 64px);
   font-size: 18px;
 
   .warning {
@@ -355,13 +360,98 @@ a {
   input[type='checkbox']:checked ~ label::after {
     content: '-';
   }
+
+  .card-container {
+    @apply min-w-screen h-full;
+  }
+
+  .card {
+    @apply text-slate-800 leading-relaxed flex flex-col items-center justify-center w-full h-full bg-white;
+    p {
+      @apply indent-0;
+    }
+  }
+
+  .card-side-indicator {
+    @apply text-xs font-medium text-slate-500 mb-2 uppercase tracking-wide;
+  }
+
+  .card.card-question {
+    @apply text-slate-800 leading-relaxed text-2xl p-4 flex flex-row items-center justify-center w-full h-full top-0 left-0 right-0 bottom-0;
+    p {
+      @apply m-0 text-center;
+      margin-top: -100px;
+    }
+  }
+
+  .card-solution {
+    @apply p-4 bg-slate-50;
+  }
+
+  .card-solution p {
+    @apply mb-3 text-slate-800 sm:mb-4;
+  }
+
+  .card-solution h1,
+  .card-solution h2,
+  .card-solution h3,
+  .card-solution h4,
+  .card-solution h5,
+  .card-solution h6 {
+    @apply text-slate-900 font-semibold mb-2 sm:mb-3;
+  }
+
+  .card-solution strong {
+    @apply font-semibold text-slate-900;
+  }
+
+  .card-solution code {
+    @apply bg-slate-200 px-1.5 py-0.5 rounded text-xs font-mono sm:px-2 sm:py-1 sm:text-sm;
+  }
+
+  .card-solution pre {
+    @apply bg-slate-200 p-3 rounded-lg overflow-x-auto text-sm sm:p-4;
+  }
+
+  .card-navigation {
+    @apply flex justify-between items-center mt-6 pt-4 border-t border-slate-200 gap-2 sm:mt-8 sm:pt-6 sm:gap-0;
+  }
+
+  .card-navigation button {
+    @apply px-3 py-1.5 text-xs font-medium text-slate-600 hover:text-slate-800 hover:bg-slate-100 rounded-md transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed sm:px-4 sm:py-2 sm:text-sm sm:rounded-lg;
+  }
+
+  .card-navigation button:not(:disabled):hover {
+    @apply shadow-sm;
+  }
+
+  /* Math styling */
+  .katex {
+    @apply text-slate-900;
+  }
+
+  .katex-display {
+    @apply my-6;
+  }
+
+  /* Details/summary styling for collapsible content */
+  .card-question details {
+    @apply mb-4;
+  }
+
+  .card-question summary {
+    @apply cursor-pointer font-semibold text-slate-800 hover:text-slate-900;
+  }
+
+  .card-question details[open] summary {
+    @apply mb-3;
+  }
 }
 
 .main-content > table {
   margin: 1.5em auto;
 }
-
-.main-content > table th {
+00 transition-colors duration-2 .main-content > table th {
   font-size: 90%;
   background: #ddd;
   font-weight: bold;
@@ -394,7 +484,7 @@ li:has(input:checked) {
   background-color: rgb(239, 246, 252);
 }
 
-.check li:has(input:checked):not(:has(.correct)) {
+.check li:has(input:not(.correct):checked) {
   background-color: rgb(255, 225, 213);
 
   input {
@@ -402,11 +492,11 @@ li:has(input:checked) {
   }
 }
 
-.check li:has(input:not(:checked)):has(.correct) {
+.check li:has(input.correct:not(:checked)) {
   background-color: rgb(254, 251, 222);
 }
 
-.check li:has(input:checked):has(.correct) {
+.check li:has(input.correct:checked) {
   background-color: rgb(225, 254, 222);
 
   input {

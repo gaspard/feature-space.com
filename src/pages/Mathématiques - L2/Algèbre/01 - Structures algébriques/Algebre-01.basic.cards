@@ -1,0 +1,331 @@
+---
+title: '1 - Cartes basiques'
+layout: '../../../../layouts/Layout.astro'
+order: 1
+level: 'basic'
+id: 'b4c1a9d8-8e6f-4a3b-9c7d-5f01e2b6a9f1'
+chapter: 'Structures algébriques (basique)'
+course: 'Structures algébriques et algèbre bilinéaire'
+tags:
+  [
+    'définition',
+    'concept',
+    'propriété',
+    'formule',
+    'structure algébrique',
+    'application',
+    'groupe',
+    'anneau',
+    'corps',
+    "relation d'équivalence"
+  ]
+---
+
+# Structures algébriques (basique)
+
+---
+
+Qu'est-ce qu'une **application** (ou fonction) ?
+
+<details>
+<summary>Réponse</summary>
+
+Une **application** $f$ d'un ensemble de départ $X$ vers un ensemble d'arrivée $Y$, notée $f : X \to Y$, est une règle qui associe à **chaque** élément $x \in X$ un **unique** élément $y \in Y$, noté $f(x)$.
+
+Deux conditions sont essentielles :
+
+1.  **Existence** : Chaque élément de l'ensemble de départ $X$ doit avoir une image.
+2.  **Unicité** : Chaque élément de $X$ ne doit avoir qu'une seule image.
+
+**Exemple :**
+Soit $f : \mathbb{R} \to \mathbb{R}$ définie par $f(x) = x^2$.
+C'est une application car chaque nombre réel $x$ a un unique carré $x^2$.
+
+</details>
+
+---
+
+Comment définit-on la **composition** de deux applications ?
+
+<details>
+<summary>Réponse</summary>
+
+Si on a deux applications $f : X \to Y$ et $g : Y \to Z$, on peut les "enchaîner" pour créer une nouvelle application $g \circ f : X \to Z$ (lire "g rond f").
+
+La formule de cette nouvelle application est :
+$$ (g \circ f)(x) = g(f(x)) $$
+
+On applique d'abord $f$ à $x$, puis on applique $g$ au résultat $f(x)$.
+
+**Exemple :**
+Soient $f(x) = x + 3$ et $g(x) = 2x$.
+La composition $g \circ f$ est :
+$(g \circ f)(x) = g(f(x)) = g(x+3) = 2(x+3) = 2x + 6$.
+
+</details>
+
+---
+
+Qu'est-ce qu'une application **injective** ?
+
+<details>
+<summary>Réponse</summary>
+
+Une application $f : X \to Y$ est dite **injective** si deux éléments distincts de l'ensemble de départ $X$ ont toujours des images distinctes dans l'ensemble d'arrivée $Y$.
+
+Formellement, pour tous $x_1, x_2 \in X$ :
+$$ f(x_1) = f(x_2) \implies x_1 = x_2 $$
+
+Intuitivement, chaque élément de $Y$ est l'image d'**au plus un** élément de $X$.
+
+**Exemple :**
+$f : \mathbb{N} \to \mathbb{N}$ définie par $f(n) = n + 1$ est injective. Si $n_1+1 = n_2+1$, alors $n_1=n_2$.
+
+**Contre-exemple :**
+$f : \mathbb{R} \to \mathbb{R}$ définie par $f(x) = x^2$ n'est pas injective car $f(2) = f(-2) = 4$.
+
+</details>
+
+---
+
+Qu'est-ce qu'une application **surjective** ?
+
+<details>
+<summary>Réponse</summary>
+
+Une application $f : X \to Y$ est dite **surjective** si tout élément de l'ensemble d'arrivée $Y$ est l'image d'au moins un élément de l'ensemble de départ $X$.
+
+Formellement :
+$$ \forall y \in Y, \exists x \in X \text{ tel que } f(x) = y $$
+
+Intuitivement, l'image de la fonction "recouvre" entièrement l'ensemble d'arrivée. On dit aussi $f(X) = Y$.
+
+**Exemple :**
+$f : \mathbb{R} \to \mathbb{R}$ définie par $f(x) = 2x + 1$ est surjective. Pour tout $y \in \mathbb{R}$, on peut trouver un antécédent $x = (y-1)/2$.
+
+**Contre-exemple :**
+$f : \mathbb{R} \to \mathbb{R}$ définie par $f(x) = x^2$ n'est pas surjective car les nombres négatifs (comme -1) n'ont pas d'antécédent.
+
+</details>
+
+---
+
+Qu'est-ce qu'une application **bijective** ?
+
+<details>
+<summary>Réponse</summary>
+
+Une application $f : X \to Y$ est dite **bijective** si elle est à la fois **injective et surjective**.
+
+Cela signifie que pour tout élément $y$ de l'ensemble d'arrivée $Y$, il existe **un et un seul** élément $x$ de l'ensemble de départ $X$ tel que $f(x) = y$.
+
+Une application bijective établit une correspondance parfaite "un pour un" entre les ensembles $X$ et $Y$. Elle possède une **application réciproque** $f^{-1} : Y \to X$.
+
+**Exemple :**
+$f : \mathbb{R} \to \mathbb{R}$ définie par $f(x) = 2x + 1$ est bijective.
+
+</details>
+
+---
+
+Qu'est-ce qu'une **loi de composition interne** ?
+
+<details>
+<summary>Réponse</summary>
+
+Une **loi de composition interne** (ou opération binaire) sur un ensemble non vide $X$ est une application qui prend deux éléments de $X$ et leur associe un unique élément qui est aussi dans $X$.
+
+Formellement, c'est une application $* : X \times X \to X$. Le résultat de l'opération sur un couple $(x, y)$ est noté $x * y$.
+
+**Exemple :**
+
+- L'addition $(+)$ est une loi de composition interne sur l'ensemble des entiers $\mathbb{Z}$, car la somme de deux entiers est toujours un entier.
+- La division $(\div)$ n'est pas une loi de composition interne sur $\mathbb{Z}$, car $3 \div 2 = 1.5$ n'est pas un entier.
+
+</details>
+
+---
+
+Quelles sont les propriétés fondamentales d'une loi de composition interne ?
+
+<details>
+<summary>Réponse</summary>
+
+Soit $*$ une loi de composition interne sur un ensemble $X$. Les propriétés les plus courantes sont :
+
+1.  **Associativité** : Pour tous $x, y, z \in X$, $(x * y) * z = x * (y * z)$. L'ordre des calculs n'importe pas.
+2.  **Commutativité** : Pour tous $x, y \in X$, $x * y = y * x$. L'ordre des éléments n'importe pas.
+3.  **Existence d'un élément neutre** : Il existe un élément $e \in X$ tel que pour tout $x \in X$, $e * x = x * e = x$.
+4.  **Existence d'un inverse (ou symétrique)** : Si un élément neutre $e$ existe, un élément $x$ est inversible s'il existe $y \in X$ tel que $x * y = y * x = e$.
+
+</details>
+
+---
+
+Qu'est-ce qu'un **groupe** ?
+
+<details>
+<summary>Réponse</summary>
+
+Un **groupe** est un couple $(G, *)$ où $G$ est un ensemble non vide et $*$ est une loi de composition interne sur $G$ qui vérifie trois axiomes :
+
+1.  **Associativité** : La loi $*$ est associative.
+2.  **Élément neutre** : Il existe un élément neutre $e \in G$.
+3.  **Inverse** : Chaque élément $g \in G$ possède un inverse (ou symétrique) $g^{-1} \in G$.
+
+Si la loi est aussi commutative, on parle de **groupe abélien** (ou commutatif).
+
+**Exemple :**
+$(\mathbb{Z}, +)$ est un groupe abélien. L'élément neutre est 0, et l'inverse de $n$ est $-n$.
+
+</details>
+
+---
+
+Quelle est la définition d'un **anneau** ?
+
+<details>
+<summary>Réponse</summary>
+
+Un **anneau** est un triplet $(A, +, \times)$ où $A$ est un ensemble muni de deux lois de composition interne ($+$ et $\times$) satisfaisant les conditions suivantes :
+
+1.  $(A, +)$ est un **groupe abélien**.
+    - L'élément neutre de $+$ est noté $0$.
+    - L'inverse de $a$ pour $+$ est noté $-a$.
+2.  La loi $\times$ est **associative** et possède un **élément neutre**, noté $1$.
+3.  La multiplication $\times$ est **distributive** par rapport à l'addition $+$. Pour tous $a, b, c \in A$ :
+    - $a \times (b + c) = (a \times b) + (a \times c)$
+    - $(b + c) \times a = (b \times a) + (c \times a)$
+
+Si la multiplication est commutative, l'anneau est dit **commutatif**.
+
+**Exemple :**
+$(\mathbb{Z}, +, \times)$ est un anneau commutatif.
+
+</details>
+
+---
+
+Qu'est-ce qu'un **corps** ?
+
+<details>
+<summary>Réponse</summary>
+
+Un **corps** est un **anneau commutatif** $(K, +, \times)$ dans lequel l'élément neutre de la multiplication $1$ est différent de l'élément neutre de l'addition $0$ ($1 \neq 0$), et où **tout élément non nul est inversible pour la multiplication**.
+
+Cela signifie que $(K \setminus \{0\}, \times)$ est un groupe abélien.
+
+**Exemple :**
+
+- $(\mathbb{Q}, +, \times)$ (nombres rationnels)
+- $(\mathbb{R}, +, \times)$ (nombres réels)
+- $(\mathbb{C}, +, \times)$ (nombres complexes)
+
+$(\mathbb{Z}, +, \times)$ n'est pas un corps car seul $1$ et $-1$ ont un inverse pour la multiplication.
+
+</details>
+
+---
+
+Qu'est-ce qu'une **relation d'équivalence** ?
+
+<details>
+<summary>Réponse</summary>
+
+Une relation binaire $\sim$ sur un ensemble $E$ est une **relation d'équivalence** si elle satisfait les trois propriétés suivantes :
+
+1.  **Réflexivité** : Pour tout $x \in E$, $x \sim x$. (Chaque élément est en relation avec lui-même).
+2.  **Symétrie** : Pour tous $x, y \in E$, si $x \sim y$, alors $y \sim x$. (La relation est réciproque).
+3.  **Transitivité** : Pour tous $x, y, z \in E$, si $x \sim y$ et $y \sim z$, alors $x \sim z$.
+
+**Exemple :**
+Sur $\mathbb{Z}$, la relation "être congru modulo n" ($x \sim y \iff x-y$ est un multiple de $n$) est une relation d'équivalence.
+
+</details>
+
+---
+
+Qu'est-ce qu'une **classe d'équivalence** et un **ensemble quotient** ?
+
+<details>
+<summary>Réponse</summary>
+
+Soit $\sim$ une relation d'équivalence sur un ensemble $E$.
+
+- La **classe d'équivalence** d'un élément $x \in E$ est l'ensemble de tous les éléments de $E$ qui sont en relation avec $x$. Elle est notée $\text{cl}(x)$ ou $\bar{x}$.
+  $$ \text{cl}(x) = \{ y \in E \mid y \sim x \} $$
+- L'**ensemble quotient** de $E$ par $\sim$ est l'ensemble de toutes les classes d'équivalence. Il est noté $E/\sim$.
+  $$ E/\sim = \{ \text{cl}(x) \mid x \in E \} $$
+
+Les classes d'équivalence forment une **partition** de l'ensemble $E$ (elles sont disjointes et leur union est $E$).
+
+**Exemple :**
+Pour la congruence modulo 3 sur $\mathbb{Z}$, il y a 3 classes d'équivalence : $\text{cl}(0)$, $\text{cl}(1)$, et $\text{cl}(2)$. L'ensemble quotient est $\mathbb{Z}/3\mathbb{Z} = \{ \text{cl}(0), \text{cl}(1), \text{cl}(2) \}$.
+
+</details>
+
+---
+
+Comment caractériser un **sous-groupe** ?
+
+<details>
+<summary>Réponse</summary>
+
+Soit $(G, *)$ un groupe et $H$ un sous-ensemble de $G$. $H$ est un **sous-groupe** de $G$ s'il est lui-même un groupe pour la même loi $*$.
+
+Une caractérisation plus simple est la suivante : $H$ est un sous-groupe de $G$ si et seulement si :
+
+1.  $H$ est **non vide** (la manière la plus simple de le vérifier est de montrer que l'élément neutre $e_G$ est dans $H$).
+2.  Pour tous $x, y \in H$, l'élément $x * y^{-1}$ est aussi dans $H$.
+
+**Exemple :**
+L'ensemble des entiers pairs $2\mathbb{Z}$ est un sous-groupe de $(\mathbb{Z}, +)$.
+
+1.  $0 \in 2\mathbb{Z}$.
+2.  Si $x=2k$ et $y=2j$ sont deux entiers pairs, alors $x - y = 2k - 2j = 2(k-j)$, qui est aussi un entier pair.
+
+</details>
+
+---
+
+Qu'est-ce qu'un **idéal** d'un anneau commutatif ?
+
+<details>
+<summary>Réponse</summary>
+
+Soit $(A, +, \times)$ un anneau commutatif. Un sous-ensemble $I \subset A$ est un **idéal** de $A$ s'il satisfait deux conditions :
+
+1.  $I$ est un **sous-groupe** de $(A, +)$.
+2.  $I$ est **absorbant pour la multiplication externe** : pour tout $x \in I$ et pour tout $a \in A$, le produit $a \times x$ est dans $I$.
+
+**Exemple :**
+Pour tout entier $n$, l'ensemble des multiples de $n$, noté $n\mathbb{Z}$, est un idéal de l'anneau $\mathbb{Z}$.
+
+1.  $n\mathbb{Z}$ est un sous-groupe additif de $\mathbb{Z}$.
+2.  Si $x \in n\mathbb{Z}$ (donc $x=nk$) et $a \in \mathbb{Z}$, alors $a \times x = a \times (nk) = n(ak)$, qui est bien un multiple de $n$ et donc dans $n\mathbb{Z}$.
+
+</details>
+
+---
+
+Comment sont définies les opérations dans un **anneau quotient** $A/I$ ?
+
+<details>
+<summary>Réponse</summary>
+
+Soit $A$ un anneau commutatif et $I$ un idéal de $A$. L'**anneau quotient** $A/I$ est l'ensemble des classes d'équivalence pour la relation $a \sim b \iff a-b \in I$. Les opérations sont définies sur les classes de la manière suivante :
+
+- **Addition :**
+  $$ (a+I) + (b+I) = (a+b) + I $$
+- **Multiplication :**
+  $$ (a+I) \times (b+I) = (a \times b) + I $$
+
+Le fait que $I$ soit un idéal garantit que ces opérations sont bien définies (le résultat ne dépend pas du choix des représentants $a$ et $b$).
+
+**Exemple :**
+Dans $\mathbb{Z}/6\mathbb{Z}$ :
+
+- $\text{cl}(4) + \text{cl}(5) = \text{cl}(4+5) = \text{cl}(9) = \text{cl}(3)$.
+- $\text{cl}(4) \times \text{cl}(5) = \text{cl}(4\times5) = \text{cl}(20) = \text{cl}(2)$.
+
+</details>
