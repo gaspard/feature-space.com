@@ -15,12 +15,12 @@ const FileOrFolder: React.FC<FileOrFolderProps> = ({
 	level = 0,
 }) => {
 	// Check if any child is active (current page is within this folder)
-	const hasActiveChild = item.children?.some(child => 
+	const hasActiveChild = item.children?.some(child =>
 		isActiveNavItem(child, currentPath)
 	) || false;
 
 	const [storedExpanded, setStoredExpanded] = useStorage(path, false);
-	
+
 	// Force expansion if current page is within this folder, otherwise use stored state
 	const expanded = hasActiveChild || storedExpanded;
 
@@ -41,10 +41,9 @@ const FileOrFolder: React.FC<FileOrFolderProps> = ({
 					href={item.path}
 					className={`
             block px-3 py-2 text-sm font-medium transition-colors duration-150
-            ${
-							isActive
-								? "bg-blue-50 text-blue-700 border-l-4 border-blue-500"
-								: "text-gray-700 border-l-4 border-transparent hover:bg-blue-500 saturate-20 hover:text-gray-900"
+            ${isActive
+							? "bg-blue-50 text-blue-700 border-l-4 border-blue-500"
+							: "text-gray-700 border-l-4 border-transparent saturate-20 hover:border-amber-100"
 						}
           `}
 					style={indentStyle}
@@ -64,10 +63,9 @@ const FileOrFolder: React.FC<FileOrFolderProps> = ({
 					onClick={toggleExpanded}
 					className={`
             flex items-center w-full px-3 py-2 text-sm font-medium text-left transition-colors duration-150
-            ${
-							isActive
-								? "text-blue-700 bg-blue-50"
-								: "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+            ${isActive
+							? "text-blue-700 bg-blue-50"
+							: "text-gray-700"
 						}
           `}
 					style={indentStyle}
@@ -75,9 +73,8 @@ const FileOrFolder: React.FC<FileOrFolderProps> = ({
 					aria-label={`${expanded ? "Collapse" : "Expand"} ${item.title} folder`}
 				>
 					<svg
-						className={`w-4 h-4 mr-2 transition-transform duration-200 ${
-							expanded ? "transform rotate-90" : ""
-						}`}
+						className={`w-4 h-4 mr-2 transition-transform duration-200 ${expanded ? "transform rotate-90" : ""
+							}`}
 						fill="none"
 						stroke="currentColor"
 						viewBox="0 0 24 24"

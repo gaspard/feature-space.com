@@ -6,42 +6,61 @@ import rehypeKatex from 'rehype-katex';
 
 interface CardRendererProps {
   cards: Card[];
-  enableShuffling?: boolean;
+  title: string;
 }
 
-export default function CardRenderer({ cards, enableShuffling = true }: CardRendererProps) {
+export default function CardRenderer({ cards, title }: CardRendererProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showSolution, setShowSolution] = useState(false);
   const [shuffledCards, setShuffledCards] = useState<Card[]>([]);
+  const [cardGame, setCardGame] = useState(false);
 
-  useEffect(() => {
-    setShuffledCards(enableShuffling ? [...cards].sort(() => Math.random() - 0.5) : cards);
-  }, [cards, enableShuffling]);
-
-  const toggleCard = () => {
+  const toggleCard = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
     setShowSolution(!showSolution);
     if (showSolution) {
       setCurrentIndex((prev) => (prev + 1) % shuffledCards.length);
     }
   };
 
-  if (shuffledCards.length === 0) {
+  useEffect(() => {
+    console.log("Card game");
+    setCardGame(true);
+    setShuffledCards([...cards].sort(() => Math.random() - 0.5));
+    document.getElementById("static-cards-container")?.remove();
+  }, []);
+
+  // Render static cards for SEO
+  if (!cardGame) {
     return (
-      <div className="card-container">
-        <div className="card-header">
-          <span>Loading...</span>
+      <>
+        <h1>{title}</h1>
+        <div className="static-cards-container" id="static-cards-container">
+          {cards.map((card, index) => (
+            <div key={card.id} className="static-card">
+              <details className="card-details">
+                <summary className="card-summary">
+                  <ReactMarkdown
+                    remarkPlugins={[remarkMath]}
+                    rehypePlugins={[rehypeKatex]}
+                  >
+                    {card.content}
+                  </ReactMarkdown>
+                </summary>
+                <div className="card-solution">
+                  <ReactMarkdown
+                    remarkPlugins={[remarkMath]}
+                    rehypePlugins={[rehypeKatex]}
+                  >
+                    {card.solution}
+                  </ReactMarkdown>
+                </div>
+              </details>
+            </div>
+          ))}
         </div>
-        <div className="card-content" onClick={toggleCard}>
-          <div className="card-question">
-            <ReactMarkdown
-              remarkPlugins={[remarkMath]}
-              rehypePlugins={[rehypeKatex]}
-            >
-              {cards[0]?.content || ''}
-            </ReactMarkdown>
-          </div>
-        </div>
-      </div>
+      </>
     );
   }
 

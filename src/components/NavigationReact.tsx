@@ -14,9 +14,8 @@ const NavigationReact: React.FC<NavigationProps> = ({
 }) => {
 	return (
 		<nav
-			className={`bg-gray-300 shadow-sm border-r border-gray-200 overflow-y-auto ${
-				isMobile ? "w-full" : "w-64 h-screen sticky top-0 hidden md:block"
-			}`}
+			className={`bg-gray-300 shadow-sm border-r border-gray-200 overflow-y-auto ${isMobile ? "w-full" : "w-94 h-screen sticky top-0 hidden md:block"
+				}`}
 		>
 			<div className="pl-3 py-2">
 				<h2 className="text-lg font-semibold text-gray-900 mb-4">Feature Space</h2>
@@ -33,7 +32,7 @@ const NavigationReact: React.FC<NavigationProps> = ({
 					))}
 				</ul>
 			</div>
-      {currentPath.includes("quiz") ?  <button type="button" className="toggle-check">Check</button> : null}
+			{currentPath.includes("quiz") ? <button type="button" className="toggle-check">Check</button> : null}
 		</nav>
 	);
 };

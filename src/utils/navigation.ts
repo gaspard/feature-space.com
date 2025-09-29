@@ -1,5 +1,5 @@
-import { readdir, stat } from 'fs/promises';
-import { join, extname, basename, dirname, relative } from 'path';
+import { readdir } from 'fs/promises';
+import { join, extname, basename } from 'path';
 import matter from 'gray-matter';
 import { readFile } from 'fs/promises';
 
@@ -29,7 +29,7 @@ export interface PageFrontmatter {
  */
 export async function generateNavigation(): Promise<NavigationItem[]> {
   const pagesDir = join(process.cwd(), 'src/pages');
-  
+
   try {
     return await processDirectoryRecursive(pagesDir, '');
   } catch (error) {
@@ -45,11 +45,11 @@ async function processDirectoryRecursive(dirPath: string, relativePath: string):
   try {
     const entries = await readdir(dirPath, { withFileTypes: true });
     const navigationItems: NavigationItem[] = [];
-    
+
     for (const entry of entries) {
       const fullPath = join(dirPath, entry.name);
       const currentRelativePath = relativePath ? `${relativePath}/${entry.name}` : entry.name;
-      
+
       if (entry.isFile() && isValidPageFile(entry.name)) {
         // Handle files
         const pageInfo = await getPageInfo(fullPath);
@@ -63,7 +63,7 @@ async function processDirectoryRecursive(dirPath: string, relativePath: string):
       } else if (entry.isDirectory()) {
         // Handle subdirectories recursively
         const children = await processDirectoryRecursive(fullPath, currentRelativePath);
-        
+
         if (children.length > 0) {
           navigationItems.push({
             title: formatDirectoryTitle(entry.name),
@@ -74,7 +74,7 @@ async function processDirectoryRecursive(dirPath: string, relativePath: string):
         }
       }
     }
-    
+
     return sortNavigationItems(navigationItems);
   } catch (error) {
     console.warn(`Error processing directory ${dirPath}:`, error);
@@ -83,10 +83,15 @@ async function processDirectoryRecursive(dirPath: string, relativePath: string):
 }
 
 /**
- * Checks if a file is a valid page file (Astro or Markdown)
+ * Checks if a file is a valid page file (Astro, Markdown, but not Cards or dynamic routes)
+ * Cards files are processed by the Vite plugin, not as standalone pages
  */
 function isValidPageFile(filename: string): boolean {
   const ext = extname(filename).toLowerCase();
+  // Exclude dynamic routes and cards files
+  if (filename.startsWith('[') || filename.endsWith('.cards')) {
+    return false;
+  }
   return ['.astro', '.md', '.mdx'].includes(ext);
 }
 
@@ -95,12 +100,12 @@ function isValidPageFile(filename: string): boolean {
  */
 function getUrlPath(filename: string, relativePath?: string): string {
   const name = basename(filename, extname(filename));
-  
+
   // Handle index files
   if (name === 'index') {
     return relativePath ? `/${relativePath}/` : '/';
   }
-  
+
   return relativePath ? `/${relativePath}/${name}` : `/${name}`;
 }
 
@@ -123,7 +128,7 @@ export function sortNavigationItems(items: NavigationItem[]): NavigationItem[] {
     if (a.order !== undefined && b.order !== undefined) {
       return a.order - b.order;
     }
-    
+
     // Items with order come first
     if (a.order !== undefined && b.order === undefined) {
       return -1;
@@ -131,23 +136,22 @@ export function sortNavigationItems(items: NavigationItem[]): NavigationItem[] {
     if (a.order === undefined && b.order !== undefined) {
       return 1;
     }
-    
+
     // Alphabetical sort for items without order
     return a.title.localeCompare(b.title);
   });
 }
 /**
- * Ext
-racts page information from a file including frontmatter
+ * Extracts page information from a file including frontmatter
  */
 async function getPageInfo(filePath: string): Promise<PageInfo> {
   try {
     const content = await readFile(filePath, 'utf-8');
     const { data: frontmatter } = matter(content);
-    
+
     const filename = basename(filePath, extname(filePath));
     const fallbackTitle = generateTitleFromFilename(filename);
-    
+
     return {
       title: frontmatter.title || fallbackTitle,
       path: filePath,
@@ -173,7 +177,7 @@ export function generateTitleFromFilename(filename: string): string {
   if (filename === 'index') {
     return 'Home';
   }
-  
+
   // Convert kebab-case, snake_case, and camelCase to Title Case
   return filename
     .replace(/[-_]/g, ' ')
@@ -188,12 +192,12 @@ export function generateTitleFromFilename(filename: string): string {
  */
 export function getCurrentPagePath(url: URL): string {
   let pathname = url.pathname;
-  
+
   // Remove trailing slash except for root
   if (pathname !== '/' && pathname.endsWith('/')) {
     pathname = pathname.slice(0, -1);
   }
-  
+
   return pathname;
 }
 
@@ -205,12 +209,12 @@ export function isActiveNavItem(item: NavigationItem, currentPath: string): bool
   if (item.path === currentPath) {
     return true;
   }
-  
+
   // Check children for match
   if (item.children) {
     return item.children.some(child => isActiveNavItem(child, currentPath));
   }
-  
+
   return false;
 }
 
