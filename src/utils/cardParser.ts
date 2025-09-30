@@ -1,4 +1,4 @@
-import { parse } from 'yaml';
+import matter from 'gray-matter';
 
 export interface Card {
   id: string;
@@ -19,15 +19,12 @@ export interface ParsedCards {
 }
 
 export function parseCards(content: string, filename: string): ParsedCards {
-  
-  const parts = content.split('---');
+  // Use gray-matter to parse front matter
+  const { data: metadata, content: body } = matter(content);
 
-  if (parts.length < 3) {
+  if (!metadata || Object.keys(metadata).length === 0) {
     throw new Error('Invalid file format: missing frontmatter');
   }
-
-  const metadata = parse(parts[1]);
-  const body = parts.slice(2).join('---');
 
   // Split by --- to get individual cards
   const sections = body.split('---').filter(section => section.trim());
