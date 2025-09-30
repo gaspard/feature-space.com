@@ -19,6 +19,7 @@ export interface ParsedCards {
 }
 
 export function parseCards(content: string, filename: string): ParsedCards {
+  
   const parts = content.split('---');
 
   if (parts.length < 3) {

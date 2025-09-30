@@ -3,7 +3,11 @@ title: "1 - Cartes basiques"
 order: 1
 layout: "../../../../layouts/Layout.astro"
 ---
-import cards from "./_Algebre-01.basic.cards";
+import cards from "./_Algebre-01.v.basic.v.cards.md";
 import CardRenderer from "../../../../components/CardRenderer.tsx";
 
-<CardRenderer cards={cards.cards} title={cards.title} />
+<div class="cards-page">
+  <h1>{cards.title}</h1>
+  <CardRenderer cards={cards.cards} static={true} />
+  <CardRenderer cards={cards.cards} client:only="react" />
+</div>

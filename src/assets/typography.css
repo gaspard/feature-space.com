@@ -371,14 +371,17 @@ main {
   }
 
   .card-container {
-    @apply min-w-screen lg:min-w-full h-full lg:max-h-140;
+    @apply min-w-screen lg:min-w-full h-full lg:max-h-140 flex flex-col items-center justify-center;
   }
 
-  .xcards-page {
-    @apply min-w-full lg:flex lg:justify-center lg:items-center;
+  .cards-page {
+    h1 {
+      @apply hidden lg:block;
+    }
   }
+
   .card {
-    @apply text-slate-800 leading-relaxed flex flex-col cursor-pointer items-center justify-center w-full h-full bg-white lg:m-4 lg:rounded-xl lg:min-w-full lg:border lg:border-slate-300;
+    @apply text-slate-800 leading-relaxed flex flex-col cursor-pointer items-center justify-center w-full h-full bg-white md:m-4 md:rounded-xl md:max-w-190 md:border md:border-slate-300 min-h-100 border-slate-300 border-t-1 border-b-1 shadow-sm;
     p {
       @apply indent-0;
     }
@@ -397,7 +400,8 @@ main {
   }
 
   .card-solution {
-    @apply p-4 bg-slate-50;
+    @apply p-4;
+    background: hsl(200, 100%, 99%);
   }
 
   .card-solution p {
@@ -460,12 +464,12 @@ main {
   }
 
   /* Static cards for SEO */
-  .static-cards-container {
-    @apply space-y-6 mb-8 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4;
+  .cards-container {
+    @apply space-y-6 m-8 grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4;
   }
 
   .static-card {
-    @apply bg-white border border-slate-300 rounded-xl shadow-sm;
+    @apply bg-white border border-slate-300 rounded-xl shadow-sm overflow-hidden;
   }
 
   .static-card .card-details {
@@ -475,20 +479,16 @@ main {
   .static-card .card-summary {
     @apply cursor-pointer font-semibold text-slate-800 hover:text-slate-900 text-lg mb-4;
     list-style: none;
-  }
 
-  .static-card .card-summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .static-card .card-summary::before {
-    content: '▶';
-    @apply mr-2 text-slate-500;
-    transition: transform 0.2s ease;
-  }
-
-  .static-card .card-details[open] .card-summary::before {
-    transform: rotate(90deg);
+    &::-webkit-details-marker {
+      display: none;
+    }
+    &::marker {
+      display: none;
+    }
+    p {
+      @apply indent-0 text-center;
+    }
   }
 
   .static-card .card-solution {
@@ -577,8 +577,11 @@ li:has(input:checked) {
   }
 }
 
+details[open],
+.static-card:has(details[open]) {
+  background: hsl(200, 100%, 99%);
+}
 details[open] {
-  background: hsla(197, 37%, 96%, 0.523);
   padding: 1em;
   border-radius: 4px;
 }

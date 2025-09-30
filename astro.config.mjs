@@ -26,9 +26,13 @@ export default defineConfig({
       {
         name: 'cards-loader',
         transform(src, id) {
-          if (id.endsWith('.cards')) {
+          if (id.endsWith('.cards.md')) {
             try {
-              const parsedContent = parseCards(src, id.split('/').pop() || 'cards');
+              const fileName = id.split('/').pop()
+              if (!fileName) {
+                throw new Error(`Could not get filename from '${id}'`)
+              }
+              const parsedContent = parseCards(src, fileName);
               return {
                 code: `export default ${JSON.stringify(parsedContent)};`,
                 map: null,

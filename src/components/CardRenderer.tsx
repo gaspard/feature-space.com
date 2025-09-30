@@ -6,10 +6,10 @@ import rehypeKatex from 'rehype-katex';
 
 interface CardRendererProps {
   cards: Card[];
-  title: string;
+  static: boolean;
 }
 
-export default function CardRenderer({ cards, title }: CardRendererProps) {
+export default function CardRenderer({ cards, static: isStatic = false }: CardRendererProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showSolution, setShowSolution] = useState(false);
   const [shuffledCards, setShuffledCards] = useState<Card[]>([]);
@@ -24,19 +24,21 @@ export default function CardRenderer({ cards, title }: CardRendererProps) {
     }
   };
 
-  useEffect(() => {
-    console.log("Card game");
-    setCardGame(true);
+  function toggleCardGame() {
+    setCardGame(game => !game);
     setShuffledCards([...cards].sort(() => Math.random() - 0.5));
+  }
+
+  useEffect(() => {
     document.getElementById("static-cards-container")?.remove();
   }, []);
 
   // Render static cards for SEO
   if (!cardGame) {
     return (
-      <>
-        <h1>{title}</h1>
-        <div className="static-cards-container" id="static-cards-container">
+      <div id={isStatic ? "static-cards-container" : "dynamic-cards-container"}>
+        <button onClick={toggleCardGame} className="cursor-pointer rounded-md bg-gray-100 px-4 py-2 text-center text-sm text-gray-500 border-gray-400 border m-4">Focus sur une carte</button>
+        <div className="cards-container" >
           {cards.map((card, index) => (
             <div key={card.id} className="static-card">
               <details className="card-details">
@@ -60,41 +62,44 @@ export default function CardRenderer({ cards, title }: CardRendererProps) {
             </div>
           ))}
         </div>
-      </>
+      </div>
     );
   }
 
   const currentCard = shuffledCards[currentIndex];
 
   return (
-    <div className="card-container" onClick={toggleCard}>
-      <div className={`card ${showSolution ? "card-solution" : "card-question"}`}>
-        {/*<div className="card-header">
+    <>
+      <button onClick={toggleCardGame} className="cursor-pointer rounded-md bg-gray-100 px-4 py-2 text-center text-sm text-gray-500 border-gray-400 border m-4">Retour aux cartes</button>
+      <div className="card-container" onClick={toggleCard}>
+        <div className={`card ${showSolution ? "card-solution" : "card-question"}`}>
+          {/*<div className="card-header">
           <span>Carte <span className="font-semibold">{currentIndex + 1}</span> sur <span className="font-semibold">{shuffledCards.length}</span>
           </span>
         </div>
         */}
 
-        <div className="card-content" >
-          {!showSolution ? (
-            <ReactMarkdown
-              remarkPlugins={[remarkMath]}
-              rehypePlugins={[rehypeKatex]}
-            >
-              {currentCard.content}
-            </ReactMarkdown>
-          ) : (
-            <>
+          <div className="card-content" >
+            {!showSolution ? (
               <ReactMarkdown
                 remarkPlugins={[remarkMath]}
                 rehypePlugins={[rehypeKatex]}
               >
-                {currentCard.solution}
+                {currentCard.content}
               </ReactMarkdown>
-            </>
-          )}
+            ) : (
+              <>
+                <ReactMarkdown
+                  remarkPlugins={[remarkMath]}
+                  rehypePlugins={[rehypeKatex]}
+                >
+                  {currentCard.solution}
+                </ReactMarkdown>
+              </>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
