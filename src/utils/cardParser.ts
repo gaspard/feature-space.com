@@ -1,14 +1,21 @@
 import matter from 'gray-matter';
 
+export interface QuizOption {
+  text: string;
+  isCorrect: boolean;
+}
+
 export interface Card {
   id: string;
   content: string;
+  options?: QuizOption[];
   solution: string;
 }
 
 export interface ParsedCards {
   title: string;
   cards: Card[];
+  type: 'cards' | 'quiz';
   metadata: {
     id: string;
     level: string;
@@ -60,6 +67,7 @@ export function parseCards(content: string, filename: string): ParsedCards {
   return {
     title: metadata.title || filename.replace(/\.cards$/, ''),
     cards,
+    type: 'cards',
     metadata: {
       id: metadata.id,
       level: metadata.level,

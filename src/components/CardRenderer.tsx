@@ -1,65 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import type { Card } from '../utils/cardParser';
+import React, { useState, useEffect, useRef } from 'react';
+import type { Card, ParsedCards } from '../utils/cardParser';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
+import remarkGfm from 'remark-gfm';
 import rehypeKatex from 'rehype-katex';
+import rehypeRaw from 'rehype-raw';
 
 interface CardRendererProps {
-  cards: Card[];
+  cards: ParsedCards;
   static: boolean;
 }
 
 export default function CardRenderer({ cards, static: isStatic = false }: CardRendererProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [showSolution, setShowSolution] = useState(false);
   const [shuffledCards, setShuffledCards] = useState<Card[]>([]);
-  const [cardGame, setCardGame] = useState(false);
+  const [cardFocus, setCardFocus] = useState(false);
 
-  const toggleCard = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setShowSolution(!showSolution);
-    if (showSolution) {
-      setCurrentIndex((prev) => (prev + 1) % shuffledCards.length);
-    }
+  const nextCard = () => {
+    setCurrentIndex((prev) => (prev + 1) % shuffledCards.length);
   };
 
-  function toggleCardGame() {
-    setCardGame(game => !game);
-    setShuffledCards([...cards].sort(() => Math.random() - 0.5));
+  function toggleCardFocus() {
+    setCardFocus(focus => !focus);
+    setShuffledCards([...cards.cards].sort(() => Math.random() - 0.5));
   }
 
   useEffect(() => {
     document.getElementById("static-cards-container")?.remove();
   }, []);
+  if (!cards.cards) {
+    // no idea why this is happening
+    return null;
+  }
 
   // Render static cards for SEO
-  if (!cardGame) {
+  if (!cardFocus) {
     return (
       <div id={isStatic ? "static-cards-container" : "dynamic-cards-container"}>
-        <button onClick={toggleCardGame} className="cursor-pointer rounded-md bg-gray-100 px-4 py-2 text-center text-sm text-gray-500 border-gray-400 border m-4">Focus sur une carte</button>
+        <button onClick={toggleCardFocus} className="card-focus">Focus sur une carte</button>
         <div className="cards-container" >
-          {cards.map((card, index) => (
-            <div key={card.id} className="static-card">
-              <details className="card-details">
-                <summary className="card-summary">
-                  <ReactMarkdown
-                    remarkPlugins={[remarkMath]}
-                    rehypePlugins={[rehypeKatex]}
-                  >
-                    {card.content}
-                  </ReactMarkdown>
-                </summary>
-                <div className="card-solution">
-                  <ReactMarkdown
-                    remarkPlugins={[remarkMath]}
-                    rehypePlugins={[rehypeKatex]}
-                  >
-                    {card.solution}
-                  </ReactMarkdown>
-                </div>
-              </details>
-            </div>
+          {cards.cards.map((card, index) => (
+            <Card key={card.id} card={card} />
           ))}
         </div>
       </div>
@@ -68,38 +49,50 @@ export default function CardRenderer({ cards, static: isStatic = false }: CardRe
 
   const currentCard = shuffledCards[currentIndex];
 
+  if (!currentCard) {
+    return null;
+  }
+
   return (
     <>
-      <button onClick={toggleCardGame} className="cursor-pointer rounded-md bg-gray-100 px-4 py-2 text-center text-sm text-gray-500 border-gray-400 border m-4">Retour aux cartes</button>
-      <div className="card-container" onClick={toggleCard}>
-        <div className={`card ${showSolution ? "card-solution" : "card-question"}`}>
-          {/*<div className="card-header">
-          <span>Carte <span className="font-semibold">{currentIndex + 1}</span> sur <span className="font-semibold">{shuffledCards.length}</span>
-          </span>
-        </div>
-        */}
-
-          <div className="card-content" >
-            {!showSolution ? (
-              <ReactMarkdown
-                remarkPlugins={[remarkMath]}
-                rehypePlugins={[rehypeKatex]}
-              >
-                {currentCard.content}
-              </ReactMarkdown>
-            ) : (
-              <>
-                <ReactMarkdown
-                  remarkPlugins={[remarkMath]}
-                  rehypePlugins={[rehypeKatex]}
-                >
-                  {currentCard.solution}
-                </ReactMarkdown>
-              </>
-            )}
-          </div>
-        </div>
-      </div>
+      <button onClick={toggleCardFocus} className="card-focus">Retour aux cartes</button>
+      <button onClick={nextCard} className="card-next">Carte suivante</button>
+      <Card key={currentCard.id} card={currentCard} onClick={cards.type === 'cards' ? nextCard : undefined} />
     </>
+  );
+}
+
+function Card({ card, onClick }: { card: Card, onClick?: () => void }) {
+  const ref = useRef<HTMLDetailsElement>(null);
+  const handleClick = onClick ? (e: React.MouseEvent<HTMLDivElement>) => {
+    if (ref.current) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (ref.current.open) {
+        onClick();
+      } else {
+        ref.current.open = true;
+      }
+    }
+  } : undefined;
+  return (
+    <div key={card.id} className="card static" onClick={handleClick}>
+      <div className="card-question">
+        <ReactMarkdown
+          remarkPlugins={[remarkMath, remarkGfm]}
+          rehypePlugins={[rehypeRaw, rehypeKatex]}
+          children={card.content}
+        />
+      </div>
+      <details ref={ref}>
+        <summary><strong>Solution</strong>
+        </summary>
+        <ReactMarkdown
+          remarkPlugins={[remarkMath, remarkGfm]}
+          rehypePlugins={[rehypeRaw, rehypeKatex]}
+          children={card.solution}
+        />
+      </details>
+    </div>
   );
 }

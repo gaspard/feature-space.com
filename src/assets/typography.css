@@ -167,14 +167,6 @@ main {
     margin: 1em 0 0 0em;
   }
 
-  details {
-    padding: 1em 0;
-  }
-
-  summary {
-    cursor: pointer;
-  }
-
   p.lead {
     font-size: 150%;
     margin: 1em 0;
@@ -370,75 +362,36 @@ main {
     content: '-';
   }
 
-  .card-container {
-    @apply min-w-screen lg:min-w-full h-full lg:max-h-140 flex flex-col items-center justify-center;
+  .cards-page,
+  .quiz-page {
+    @apply min-h-100;
   }
 
   .cards-page {
     h1 {
       @apply hidden lg:block;
     }
+    .card {
+      @apply cursor-pointer;
+    }
   }
 
   .card {
-    @apply text-slate-800 leading-relaxed flex flex-col cursor-pointer items-center justify-center w-full h-full bg-white md:m-4 md:rounded-xl md:max-w-190 md:border md:border-slate-300 min-h-100 border-slate-300 border-t-1 border-b-1 shadow-sm;
+    @apply bg-white md:m-4 md:rounded-xl md:border md:border-slate-300 w-full lg:max-w-3xl overflow-hidden;
+
     p {
       @apply indent-0;
     }
-  }
-
-  .card-side-indicator {
-    @apply text-xs font-medium text-slate-500 mb-2 uppercase tracking-wide;
-  }
-
-  .card.card-question {
-    @apply text-slate-800 leading-relaxed text-2xl p-4 flex flex-row items-center justify-center w-full h-full top-0 left-0 right-0 bottom-0;
-    p {
-      @apply m-0 text-center;
-      margin-top: -100px;
+    .card-question {
+      @apply p-4;
+      ul {
+        @apply m-0 mt-8;
+      }
     }
   }
-
-  .card-solution {
-    @apply p-4;
-    background: hsl(200, 100%, 99%);
-  }
-
-  .card-solution p {
-    @apply mb-3 text-slate-800 sm:mb-4;
-  }
-
-  .card-solution h1,
-  .card-solution h2,
-  .card-solution h3,
-  .card-solution h4,
-  .card-solution h5,
-  .card-solution h6 {
-    @apply text-slate-900 font-semibold mb-2 sm:mb-3;
-  }
-
-  .card-solution strong {
-    @apply font-semibold text-slate-900;
-  }
-
-  .card-solution code {
-    @apply bg-slate-200 px-1.5 py-0.5 rounded text-xs font-mono sm:px-2 sm:py-1 sm:text-sm;
-  }
-
-  .card-solution pre {
-    @apply bg-slate-200 p-3 rounded-lg overflow-x-auto text-sm sm:p-4;
-  }
-
-  .card-navigation {
-    @apply flex justify-between items-center mt-6 pt-4 border-t border-slate-200 gap-2 sm:mt-8 sm:pt-6 sm:gap-0;
-  }
-
-  .card-navigation button {
-    @apply px-3 py-1.5 text-xs font-medium text-slate-600 hover:text-slate-800 hover:bg-slate-100 rounded-md transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed sm:px-4 sm:py-2 sm:text-sm sm:rounded-lg;
-  }
-
-  .card-navigation button:not(:disabled):hover {
-    @apply shadow-sm;
+  .card-focus,
+  .card-next {
+    @apply cursor-pointer rounded-md bg-gray-100 md:px-4 md:py-2 text-center text-sm text-gray-500 border-gray-400 border md:m-4 px-2 py-1 mt-1 mx-2;
   }
 
   /* Math styling */
@@ -448,76 +401,6 @@ main {
 
   .katex-display {
     @apply my-6;
-  }
-
-  /* Details/summary styling for collapsible content */
-  .card-question details {
-    @apply mb-4;
-  }
-
-  .card-question summary {
-    @apply cursor-pointer font-semibold text-slate-800 hover:text-slate-900;
-  }
-
-  .card-question details[open] summary {
-    @apply mb-3;
-  }
-
-  /* Static cards for SEO */
-  .cards-container {
-    @apply space-y-6 m-8 grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4;
-  }
-
-  .static-card {
-    @apply bg-white border border-slate-300 rounded-xl shadow-sm overflow-hidden;
-  }
-
-  .static-card .card-details {
-    @apply p-6;
-  }
-
-  .static-card .card-summary {
-    @apply cursor-pointer font-semibold text-slate-800 hover:text-slate-900 text-lg mb-4;
-    list-style: none;
-
-    &::-webkit-details-marker {
-      display: none;
-    }
-    &::marker {
-      display: none;
-    }
-    p {
-      @apply indent-0 text-center;
-    }
-  }
-
-  .static-card .card-solution {
-    @apply mt-4 pt-4 border-t border-slate-50;
-  }
-
-  .static-card .card-solution p {
-    @apply mb-3 text-slate-800;
-  }
-
-  .static-card .card-solution h1,
-  .static-card .card-solution h2,
-  .static-card .card-solution h3,
-  .static-card .card-solution h4,
-  .static-card .card-solution h5,
-  .static-card .card-solution h6 {
-    @apply text-slate-900 font-semibold mb-2;
-  }
-
-  .static-card .card-solution strong {
-    @apply font-semibold text-slate-900;
-  }
-
-  .static-card .card-solution code {
-    @apply bg-slate-50 px-1.5 py-0.5 rounded text-xs font-mono;
-  }
-
-  .static-card .card-solution pre {
-    @apply bg-slate-50 p-3 rounded-lg overflow-x-auto text-sm;
   }
 }
 
@@ -577,13 +460,26 @@ li:has(input:checked) {
   }
 }
 
-details[open],
-.static-card:has(details[open]) {
-  background: hsl(200, 100%, 99%);
+/* Hide empty spans with correct class */
+span.correct:empty {
+  display: none;
+}
+
+details {
+  @apply px-4 md:py-3 py-1 border-t border-t-transparent;
+}
+.main-content details summary + p {
+  @apply mt-1;
+}
+summary {
+  @apply cursor-pointer text-slate-500;
+  strong {
+    @apply pl-2 text-slate-300;
+  }
 }
 details[open] {
-  padding: 1em;
-  border-radius: 4px;
+  @apply border-t border-slate-200 bg-slate-100;
+  background: hsl(204, 50%, 96%);
 }
 
 button.toggle-check {
