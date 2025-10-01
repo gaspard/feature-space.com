@@ -1,0 +1,361 @@
+---
+title: '0 - Quiz de base'
+layout: '../../../../layouts/Layout.astro'
+quizId: '1d0008a2'
+order: 1
+level: basic
+chapter: Untitled Chapter
+course: "Untitled Course"
+---
+
+# Quiz: Structures algébriques
+
+---
+
+#### Question 1 : Définition d'une application injective
+
+Qu'est-ce qu'une application $f : X \to Y$ injective ?
+
+- [ ] **A)** Pour tout $y \in Y$, il existe un unique $x \in X$ tel que $f(x) = y$.
+- [ ] **B)** Pour tout $x \in X$, il existe un unique $y \in Y$ tel que $f(x)=y$.
+- [x] **C)** Pour tous $x_1, x_2 \in X$, si $f(x_1) = f(x_2)$, alors $x_1 = x_2$.
+- [ ] **D)** Pour tout $y \in Y$, il existe au moins un $x \in X$ tel que $f(x) = y$.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Une application est injective si deux éléments distincts de l'ensemble de départ ont toujours des images distinctes dans l'ensemble d'arrivée.
+
+**A.** Ceci est la définition d'une application bijective (à la fois injective et surjective).
+**B.** Ceci est la définition d'une application (ou fonction). Pour chaque élément de l'ensemble de départ, il existe une et une seule image.
+**C.** Ceci est la définition formelle de l'injectivité. Une autre façon de le dire est : si $x_1 \neq x_2$, alors $f(x_1) \neq f(x_2)$.
+**D.** Ceci est la définition d'une application surjective.
+
+</details>
+
+---
+
+#### Question 2 : Propriétés de l'application "carré"
+
+Soit l'application $f : \mathbb{R} \to \mathbb{R}$ définie par $f(x) = x^2$. Quelles propriétés cette application possède-t-elle ?
+
+- [ ] **A)** Injective
+- [ ] **B)** Surjective
+- [ ] **C)** Bijective
+- [x] **D)** Ni injective, ni surjective
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+Analysons les propriétés de $f(x) = x^2$ de $\mathbb{R}$ dans $\mathbb{R}$.
+
+**A.** L'application n'est pas injective car des éléments distincts peuvent avoir la même image. Par exemple, $f(-2) = 4$ et $f(2) = 4$, mais $-2 \neq 2$.
+**B.** L'application n'est pas surjective car certains éléments de l'ensemble d'arrivée $\mathbb{R}$ n'ont aucun antécédent. Par exemple, il n'existe aucun nombre réel $x$ tel que $x^2 = -1$.
+**C.** L'application n'est pas bijective car elle n'est ni injective, ni surjective.
+**D.** Puisque l'application n'est ni injective ni surjective, cette option est correcte.
+
+</details>
+
+---
+
+#### Question 3 : Étapes de la récurrence
+
+Quelles sont les deux étapes fondamentales d'une démonstration par récurrence pour prouver une propriété $P(n)$ pour tout entier naturel $n \ge n_0$ ?
+
+- [x] **A)** Initialisation et Hérédité
+- [ ] **B)** Cas de base et Conclusion
+- [ ] **C)** Hypothèse de récurrence et Hérédité
+- [ ] **D)** Initialisation et Généralisation
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+Le principe de récurrence repose sur deux piliers logiques.
+
+**A.** L'**Initialisation** (ou cas de base) consiste à prouver que la propriété est vraie pour le premier rang (souvent $n=0$ ou $n=1$). L'**Hérédité** consiste à prouver que si la propriété est vraie pour un rang $n$ quelconque, alors elle est aussi vraie pour le rang suivant $n+1$.
+**B.** La conclusion est le résultat de la démonstration, pas une étape de celle-ci.
+**C.** L'hypothèse de récurrence est une supposition que l'on fait à l'intérieur de l'étape d'hérédité, ce n'est pas une étape principale au même titre que l'initialisation et l'hérédité.
+**D.** La "généralisation" est l'objectif de la preuve, pas une étape de la méthode.
+
+</details>
+
+---
+
+#### Question 4 : Loi de composition interne
+
+Comment définit-on une loi de composition interne (ou opération binaire) sur un ensemble non vide $X$ ?
+
+- [ ] **A)** Comme une relation binaire sur $X$.
+- [x] **B)** Comme une application de $X \times X$ dans $X$.
+- [ ] **C)** Comme une application de $X$ dans $X$.
+- [ ] **D)** Comme un sous-ensemble de $X$.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Une loi de composition interne combine deux éléments de l'ensemble pour en donner un troisième, qui appartient toujours au même ensemble.
+
+**A.** Une relation binaire est un sous-ensemble de $X \times X$. Une loi de composition interne est un cas particulier d'application, qui est elle-même un cas particulier de relation binaire, mais cette définition est plus précise.
+**B.** C'est la définition formelle. Une loi $*$ est une fonction qui à un couple $(x, y) \in X \times X$ associe un élément $x * y \in X$.
+**C.** Une application de $X$ dans $X$ est une opération unaire, pas binaire.
+**D.** Un sous-ensemble de $X$ n'est pas une opération.
+
+</details>
+
+---
+
+#### Question 5 : Propriété d'associativité
+
+Soit $*$ une loi de composition interne sur un ensemble $X$. Laquelle des formules suivantes définit la propriété d'associativité ?
+
+- [ ] **A)** $\forall (x, y) \in X^2, x * y = y * x$.
+- [ ] **B)** $\exists e \in X, \forall x \in X, x * e = x$.
+- [ ] **C)** $\forall x \in X, \exists y \in X, x * y = y * x = e$.
+- [x] **D)** $\forall (x, y, z) \in X^3, (x * y) * z = x * (y * z)$.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+L'associativité garantit que l'ordre dans lequel on effectue les opérations n'a pas d'importance quand on compose trois éléments ou plus.
+
+**A.** Ceci est la définition de la **commutativité**.
+**B.** Ceci est une partie de la définition d'un **élément neutre** (ici, un neutre à droite).
+**C.** Ceci est la définition d'un **élément inversible** (ou symétrisable).
+**D.** Ceci est la définition de l'**associativité**. Elle permet de noter sans ambiguïté l'expression $x * y * z$.
+
+</details>
+
+---
+
+#### Question 6 : Différence entre groupe et monoïde
+
+Quelle propriété un groupe possède-t-il obligatoirement, contrairement à un monoïde ?
+
+- [x] **A)** Chaque élément possède un inverse.
+- [ ] **B)** La loi de composition est associative.
+- [ ] **C)** Il possède un élément neutre.
+- [ ] **D)** La loi de composition est commutative.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+Un groupe est un monoïde "enrichi" d'une propriété supplémentaire.
+
+**A.** C'est la différence fondamentale. Dans un groupe, pour tout élément $x$, il existe un élément $x^{-1}$ tel que $x * x^{-1} = x^{-1} * x = e$. Un monoïde n'a pas cette contrainte.
+**B.** L'associativité est requise à la fois pour les monoïdes et pour les groupes.
+**C.** L'élément neutre est requis à la fois pour les monoïdes et pour les groupes.
+**D.** La commutativité n'est requise ni pour les monoïdes en général, ni pour les groupes en général. Un groupe ou un monoïde commutatif est dit "abélien".
+
+</details>
+
+---
+
+#### Question 7 : Identification d'un groupe
+
+Parmi les structures suivantes, laquelle est un groupe ?
+
+- [ ] **A)** L'ensemble des entiers naturels $\mathbb{N}$ muni de l'addition (+).
+- [x] **B)** L'ensemble des entiers relatifs $\mathbb{Z}$ muni de l'addition (+).
+- [ ] **C)** L'ensemble des entiers relatifs $\mathbb{Z}$ muni de la multiplication ($\times$).
+- [ ] **D)** L'ensemble des nombres réels $\mathbb{R}$ muni de la multiplication ($\times$).
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Pour être un groupe, une structure doit être un monoïde où chaque élément est inversible.
+
+**A.** $(\mathbb{N}, +)$ est un monoïde (associatif, élément neutre 0), mais pas un groupe car aucun entier naturel non nul n'a d'inverse dans $\mathbb{N}$ (par exemple, il n'y a pas de $x \in \mathbb{N}$ tel que $3+x=0$).
+**B.** $(\mathbb{Z}, +)$ est un groupe. L'addition est associative, 0 est l'élément neutre, et tout entier $n$ a un inverse (son opposé) $-n$ dans $\mathbb{Z}$.
+**C.** $(\mathbb{Z}, \times)$ est un monoïde (associatif, élément neutre 1), mais pas un groupe car seuls 1 et -1 ont un inverse dans $\mathbb{Z}$.
+**D.** $(\mathbb{R}, \times)$ n'est pas un groupe car 0 n'a pas d'inverse pour la multiplication. $(\mathbb{R} \setminus \{0\}, \times)$ est, lui, un groupe.
+
+</details>
+
+---
+
+#### Question 8 : Définition d'un anneau
+
+Pour qu'un ensemble $A$ muni de deux lois $+$ et $\times$, noté $(A, +, \times)$, soit un anneau, quelles conditions doivent être remplies ?
+
+- [ ] **A)** $(A, +)$ est un groupe et $(A, \times)$ est un groupe.
+- [ ] **B)** $(A, +)$ est un groupe abélien et $(A, \times)$ est un groupe abélien.
+- [ ] **C)** $(A, +)$ est un monoïde et $(A, \times)$ est un monoïde, et $\times$ est distributive sur $+$.
+- [x] **D)** $(A, +)$ est un groupe abélien, $(A, \times)$ est un monoïde, et $\times$ est distributive sur $+$.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+La définition d'un anneau combine les structures de groupe abélien et de monoïde avec la distributivité.
+
+**A.** La structure multiplicative $(A, \times)$ n'est en général pas un groupe (l'élément $0$ n'est jamais inversible, sauf dans l'anneau nul).
+**B.** C'est la définition d'un corps (commutatif), qui est un type d'anneau particulier et plus contraignant.
+**C.** La structure additive $(A, +)$ doit être un groupe abélien, pas seulement un monoïde (il faut que chaque élément ait un opposé).
+**D.** C'est la définition exacte d'un anneau (unitaire).
+
+</details>
+
+---
+
+#### Question 9 : Distinction entre anneau et corps
+
+Qu'est-ce qui caractérise un corps par rapport à un anneau commutatif non nul $(A, +, \times)$ ?
+
+- [ ] **A)** Dans un corps, l'addition est commutative.
+- [ ] **B)** Dans un corps, la multiplication est distributive par rapport à l'addition.
+- [x] **C)** Dans un corps, tout élément non nul est inversible pour la multiplication.
+- [ ] **D)** Un corps possède un élément neutre pour la multiplication, $1 \neq 0$.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Un corps est un anneau commutatif où la division (par un non-nul) est toujours possible.
+
+**A.** L'addition est déjà commutative dans la définition de l'anneau.
+**B.** La distributivité est déjà une propriété requise pour être un anneau.
+**C.** C'est la propriété clé qui distingue un corps. Cela signifie que l'ensemble des éléments non nuls, $A \setminus \{0\}$, forme un groupe pour la multiplication.
+**D.** Un anneau (unitaire) possède déjà un élément neutre $1$. La condition $1 \neq 0$ est aussi requise pour un corps, mais ce n'est pas la propriété la plus distinctive.
+
+</details>
+
+---
+
+#### Question 10 : Morphisme de groupes
+
+Soient $(G, *_G)$ et $(H, *_H)$ deux groupes. Quand une application $f: G \to H$ est-elle un morphisme de groupes ?
+
+- [x] **A)** Quand elle "préserve la structure", c'est-à-dire $f(g_1 *_G g_2) = f(g_1) *_H f(g_2)$ pour tous $g_1, g_2 \in G$.
+- [ ] **B)** Quand elle est injective.
+- [ ] **C)** Quand elle associe l'élément neutre de $G$ à l'élément neutre de $H$.
+- [ ] **D)** Quand l'image de l'inverse est l'inverse de l'image, c'est-à-dire $f(g^{-1}) = (f(g))^{-1}$.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+Un morphisme est une application qui respecte les opérations des structures.
+
+**A.** C'est la définition fondamentale d'un morphisme de groupes. L'image du composé est le composé des images.
+**B.** Un morphisme injectif est un cas particulier (un monomorphisme). Tous les morphismes ne sont pas injectifs.
+**C.** C'est une conséquence de la définition d'un morphisme de groupes, mais ce n'est pas la définition elle-même.
+**D.** C'est aussi une conséquence de la définition d'un morphisme de groupes, pas la définition de base.
+
+</details>
+
+---
+
+#### Question 11 : Relation d'équivalence
+
+Quelles sont les trois propriétés qu'une relation binaire $\sim$ sur un ensemble $E$ doit vérifier pour être une relation d'équivalence ?
+
+- [ ] **A)** Associativité, Réflexivité, Symétrie
+- [ ] **B)** Réflexivité, Antisymétrie, Transitivité
+- [x] **C)** Réflexivité, Symétrie, Transitivité
+- [ ] **D)** Commutativité, Symétrie, Transitivité
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Une relation d'équivalence généralise la notion d'égalité.
+
+**A.** L'associativité est une propriété d'une loi de composition interne, pas d'une relation binaire.
+**B.** Ces trois propriétés (réflexivité, antisymétrie, transitivité) définissent une **relation d'ordre**. L'antisymétrie ($x \sim y$ et $y \sim x \Rightarrow x=y$) est l'opposé de la symétrie.
+**C.** Ces sont les trois propriétés correctes : **Réflexive** ($x \sim x$), **Symétrique** ($x \sim y \Rightarrow y \sim x$), **Transitive** ($x \sim y$ et $y \sim z \Rightarrow x \sim z$).
+**D.** La commutativité est une propriété d'une loi de composition interne, pas d'une relation binaire.
+
+</details>
+
+---
+
+#### Question 12 : Noyau d'un morphisme
+
+Soit $f: G \to H$ un morphisme de groupes, et $e_H$ l'élément neutre de $H$. Qu'est-ce que le noyau de $f$, noté $\text{Ker}(f)$ ?
+
+- [ ] **A)** L'ensemble des images de tous les éléments de $G$, soit $\text{Im}(f) = \{f(g) \mid g \in G\}$.
+- [x] **B)** L'ensemble des éléments de $G$ dont l'image par $f$ est l'élément neutre de $H$.
+- [ ] **C)** Le sous-ensemble de $H$ constitué uniquement de l'élément neutre $\{e_H\}$.
+- [ ] **D)** Le sous-ensemble de $G$ constitué uniquement de l'élément neutre $\{e_G\}$.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Le noyau mesure à quel point un morphisme "ressemble" à l'application nulle.
+
+**A.** Ceci est la définition de l'**image** du morphisme, $\text{Im}(f)$.
+**B.** C'est la définition correcte : $\text{Ker}(f) = \{ g \in G \mid f(g) = e_H \}$.
+**C.** C'est l'image triviale. Le noyau est un sous-ensemble du domaine $G$, pas du codomaine $H$.
+**D.** Ceci est le noyau trivial. Si $\text{Ker}(f) = \{e_G\}$, alors le morphisme est injectif, mais ce n'est pas la définition du noyau en général.
+
+</details>
+
+---
+
+#### Question 13 : Condition d'injectivité d'un morphisme
+
+Un morphisme de groupes $f: G \to H$ est injectif si et seulement si...
+
+- [ ] **A)** son image est égale à $H$.
+- [ ] **B)** son noyau est égal à $G$.
+- [ ] **C)** son image est réduite à l'élément neutre de $H$.
+- [x] **D)** son noyau est réduit à l'élément neutre de $G$.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+Le noyau d'un morphisme de groupes capture toute l'information sur son injectivité.
+
+**A.** Cette condition signifie que le morphisme est **surjectif**.
+**B.** Si le noyau est $G$ tout entier, cela signifie que tous les éléments de $G$ sont envoyés sur l'élément neutre de $H$. C'est l'application "nulle", qui est loin d'être injective (sauf si $G$ est le groupe trivial).
+**C.** Si l'image est réduite à $\{e_H\}$, cela signifie aussi que le morphisme est l'application nulle.
+**D.** C'est un théorème fondamental : $f$ est injectif si et seulement si $\text{Ker}(f) = \{e_G\}$. Cela signifie que seul l'élément neutre de $G$ est envoyé sur l'élément neutre de $H$.
+
+</details>
+
+---
+
+#### Question 14 : Propriété d'absorption d'un idéal
+
+Un sous-ensemble $I$ d'un anneau commutatif $A$ est un idéal s'il est un sous-groupe additif et s'il est "absorbant" pour la multiplication. Que signifie cette propriété d'absorption ?
+
+- [ ] **A)** Pour tous $x, y \in I$, le produit $x \cdot y$ est dans $I$.
+- [x] **B)** Pour tout $a \in A$ et tout $x \in I$, le produit $a \cdot x$ est dans $I$.
+- [ ] **C)** Pour tout $x \in I$ non nul, son inverse $x^{-1}$ est dans $I$.
+- [ ] **D)** L'élément neutre $1$ de l'anneau $A$ doit être dans $I$.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+La propriété d'absorption est ce qui distingue un idéal d'un simple sous-anneau. Un idéal "absorbe" la multiplication par n'importe quel élément de l'anneau parent.
+
+**A.** Ceci est la condition pour qu'un sous-ensemble soit stable par multiplication. C'est une condition pour être un sous-anneau, mais elle est plus faible que la condition d'idéal.
+**B.** C'est la définition exacte. Un élément de $I$, multiplié par n'importe quel élément de $A$ (qu'il soit dans $I$ ou non), reste dans $I$.
+**C.** Ceci est faux en général. La plupart des idéaux ne contiennent pas d'éléments inversibles (à part l'idéal $A$ tout entier).
+**D.** Si un idéal $I$ contient l'élément $1$, alors par la propriété d'absorption, pour tout $a \in A$, $a \cdot 1 = a$ doit être dans $I$. Donc $I=A$. Ce n'est pas une condition générale.
+
+</details>

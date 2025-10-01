@@ -1,0 +1,13 @@
+---
+title: "2 - Cartes intermédiaires"
+order: 2
+layout: "../../../../layouts/Layout.astro"
+---
+import cards from "./_Algebre-01.v.intermediate.v.cards";
+import CardRenderer from "../../../../components/CardRenderer.tsx";
+
+<div class="cards-page">
+  <h1>{cards.title}</h1>
+  <CardRenderer cards={cards} static={true} />
+  <CardRenderer cards={cards} client:only="react" />
+</div>
