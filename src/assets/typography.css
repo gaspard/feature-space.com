@@ -36,7 +36,7 @@ main {
 }
 
 .main-content {
-  @apply lg:p-4 lg:pb-5 w-full h-full flex flex-col;
+  @apply lg:p-4 lg:pb-5 lg:max-w-230 w-full h-full flex flex-col;
   min-height: calc(100vh - 64px);
   font-size: 18px;
 
@@ -280,7 +280,6 @@ main {
     margin: 1.5em 2.1em;
   }
 
-  .high,
   .grey {
     padding: 0.2em 0.4em;
     border-radius: 0.15em;
@@ -389,10 +388,6 @@ main {
       }
     }
   }
-  .card-focus,
-  .card-next {
-    @apply cursor-pointer rounded-md bg-gray-100 md:px-4 md:py-2 text-center text-sm text-gray-500 border-gray-400 border md:m-4 px-2 py-1 mt-1 mx-2;
-  }
 
   /* Math styling */
   .katex {
@@ -434,6 +429,10 @@ li:has(input) {
   cursor: pointer;
   padding: 2px 7px;
   border-radius: 4px;
+  p {
+    @apply m-0;
+    display: inline;
+  }
 }
 
 li:has(input:checked) {
@@ -482,16 +481,16 @@ details[open] {
   background: hsl(204, 50%, 96%);
 }
 
-button.toggle-check {
-  cursor: pointer;
-  margin: 1rem;
-  padding: 4px 12px;
-  border-radius: 5px;
-  background: #c7e5ff;
+button.toggle-check,
+button.card-focus,
+button.card-next {
+  @apply cursor-pointer rounded-md bg-gray-100 md:px-4 md:py-2 text-center text-sm text-gray-500 border-gray-400 border md:m-4 px-2 py-1 mt-1 mx-2;
 }
 
-button.toggle-check.high {
-  background: #95ffa7;
+.check {
+  button.toggle-check {
+    background: #95ffa7;
+  }
 }
 
 /* Interactive checkboxes for quiz content */

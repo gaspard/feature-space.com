@@ -1,361 +1,407 @@
 ---
-title: '0 - Quiz de base'
+id: 'e82f09d4'
+title: 'Quiz Intermédiaire: Structures algébriques'
 layout: '../../../../layouts/Layout.astro'
-quizId: '1d0008a2'
-order: 1
-level: basic
-chapter: Untitled Chapter
-course: "Untitled Course"
+order: 33
+level: intermediate
+chapter: Structures algébriques (intermédiaire)
+course: "Structures algébriques et algèbre bilinéaire"
 ---
 
-# Quiz: Structures algébriques
+# Quiz : Structures algébriques (intermédiaire)
 
 ---
 
-#### Question 1 : Définition d'une application injective
+#### Question 1 : Propriétés de la composition d'applications
 
-Qu'est-ce qu'une application $f : X \to Y$ injective ?
+Soient $f: E \to F$ et $g: F \to G$ deux applications. Quelles affirmations concernant l'application composée $g \circ f$ sont correctes ?
 
-- [ ] **A)** Pour tout $y \in Y$, il existe un unique $x \in X$ tel que $f(x) = y$.
-- [ ] **B)** Pour tout $x \in X$, il existe un unique $y \in Y$ tel que $f(x)=y$.
-- [x] **C)** Pour tous $x_1, x_2 \in X$, si $f(x_1) = f(x_2)$, alors $x_1 = x_2$.
-- [ ] **D)** Pour tout $y \in Y$, il existe au moins un $x \in X$ tel que $f(x) = y$.
+- [x] **A)** Si $g \circ f$ est injective, alors $f$ est injective.
+- [ ] **B)** Si $g$ est surjective, alors $g \circ f$ est surjective.
+- [x] **C)** Si $g \circ f$ est surjective, alors $g$ est surjective.
+- [ ] **D)** Si $f$ et $g$ sont injectives, alors $g \circ f$ est surjective.
+
+<details>
+<summary>Solution</summary>
+
+**Réponses : [A, C]**
+
+Cette question teste la compréhension des liens entre les propriétés d'injectivité et de surjectivité des applications et de leur composée.
+
+**A) Si $g \circ f$ est injective, alors $f$ est injective.**
+C'est **correct**. Supposons que $f(x_1) = f(x_2)$. En appliquant $g$, on obtient $g(f(x_1)) = g(f(x_2))$, c'est-à-dire $(g \circ f)(x_1) = (g \circ f)(x_2)$. Comme $g \circ f$ est injective, on en déduit que $x_1 = x_2$. Donc, $f$ est injective.
+
+**B) Si $g$ est surjective, alors $g \circ f$ est surjective.**
+C'est **incorrect**. La surjectivité de $g \circ f$ dépend aussi de l'image de $f$. Si l'image de $f$ n'est pas $F$ tout entier, $g$ n'aura pas la possibilité d'atteindre tous les éléments de $G$ en partant d'éléments de $E$. Contre-exemple : $E=\{1\}, F=\{1,2\}, G=\{1,2\}$. Soit $f(1)=1$ et $g(x)=x$. $g$ est surjective (et même bijective), mais $\text{Im}(g \circ f) = \{1\} \neq G$, donc $g \circ f$ n'est pas surjective.
+
+**C) Si $g \circ f$ est surjective, alors $g$ est surjective.**
+C'est **correct**. Si $g \circ f$ est surjective, alors pour tout $z \in G$, il existe un $x \in E$ tel que $(g \circ f)(x) = z$. Cela s'écrit $g(f(x))=z$. Posons $y = f(x)$. On a $y \in F$. On a donc montré que pour tout $z \in G$, il existe un $y \in F$ tel que $g(y)=z$. C'est la définition de la surjectivité de $g$.
+
+**D) Si $f$ et $g$ sont injectives, alors $g \circ f$ est surjective.**
+C'est **incorrect**. La composition de deux applications injectives est bien injective, mais pas nécessairement surjective. Par exemple, si $f: \mathbb{N} \to \mathbb{N}$ est $f(n)=2n$ et $g: \mathbb{N} \to \mathbb{N}$ est $g(n)=2n$, les deux sont injectives, mais $g \circ f(n) = 4n$ n'est pas surjective sur $\mathbb{N}$.
+
+</details>
+
+---
+
+#### Question 2 : Analyse d'une preuve par récurrence
+
+Dans la célèbre "preuve" fallacieuse par récurrence que "tous les chevaux d'un ensemble de taille $n$ sont de la même couleur", où se situe l'erreur logique ?
+
+La "preuve" est la suivante :
+1.  **Initialisation** : Pour $n=1$, un ensemble avec un seul cheval contient des chevaux qui sont tous de la même couleur. C'est vrai.
+2.  **Hérédité** : Supposons que pour un $n \ge 1$, tout ensemble de $n$ chevaux a des chevaux de la même couleur. Considérons un ensemble de $n+1$ chevaux $\{C_1, ..., C_{n+1}\}$.
+    - Le sous-ensemble $\{C_1, ..., C_n\}$ est un ensemble de $n$ chevaux, donc ils sont de la même couleur (par hypothèse de récurrence).
+    - Le sous-ensemble $\{C_2, ..., C_{n+1}\}$ est aussi un ensemble de $n$ chevaux, donc ils sont aussi de la même couleur (par hypothèse de récurrence).
+    - Comme les chevaux $\{C_2, ..., C_n\}$ sont dans les deux sous-ensembles, ils "transmettent" la couleur. Donc tous les $n+1$ chevaux sont de la même couleur.
+
+- [ ] **A)** L'initialisation pour $n=1$ est fausse.
+- [ ] **B)** Le principe de récurrence ne peut pas être appliqué à des objets non numériques comme des chevaux.
+- [x] **C)** Le raisonnement de l'hérédité ne fonctionne pas pour la transition de $n=1$ à $n=2$.
+- [ ] **D)** L'hypothèse de récurrence est une supposition invalide en logique.
 
 <details>
 <summary>Solution</summary>
 
 **Réponse : [C]**
 
-Une application est injective si deux éléments distincts de l'ensemble de départ ont toujours des images distinctes dans l'ensemble d'arrivée.
+Cette question demande une analyse critique de la structure d'une preuve par récurrence, plutôt qu'une simple application mécanique.
 
-**A.** Ceci est la définition d'une application bijective (à la fois injective et surjective).
-**B.** Ceci est la définition d'une application (ou fonction). Pour chaque élément de l'ensemble de départ, il existe une et une seule image.
-**C.** Ceci est la définition formelle de l'injectivité. Une autre façon de le dire est : si $x_1 \neq x_2$, alors $f(x_1) \neq f(x_2)$.
-**D.** Ceci est la définition d'une application surjective.
+**A) L'initialisation pour $n=1$ est fausse.**
+C'est **incorrect**. L'initialisation est parfaitement valide. Dans un ensemble contenant un seul cheval, il est trivialement vrai que tous les chevaux de cet ensemble sont de la même couleur.
+
+**B) Le principe de récurrence ne peut pas être appliqué à des objets non numériques comme des chevaux.**
+C'est **incorrect**. Le principe de récurrence s'applique à toute propriété $P(n)$ qui dépend d'un entier naturel $n$. Ici, la propriété est "Dans n'importe quel ensemble de $n$ chevaux, tous les chevaux ont la même couleur". La nature des objets (chevaux) n'est pas le problème.
+
+**C) Le raisonnement de l'hérédité ne fonctionne pas pour la transition de $n=1$ à $n=2$.**
+C'est **correct**. L'erreur se situe dans l'argument de "chevauchement". Le raisonnement prétend que les deux sous-ensembles $\{C_1, ..., C_n\}$ et $\{C_2, ..., C_{n+1}\}$ ont une intersection non vide qui permet de propager la couleur.
+Regardons le passage de $n=1$ à $n+1=2$. On considère un ensemble de 2 chevaux $\{C_1, C_2\}$.
+- Le premier sous-ensemble de taille $n=1$ est $\{C_1\}$.
+- Le second sous-ensemble de taille $n=1$ est $\{C_2\}$.
+L'intersection de ces deux sous-ensembles est vide. Il n'y a donc aucun cheval commun pour "transmettre" la couleur de $C_1$ à $C_2$. Le raisonnement de l'hérédité échoue précisément à cette étape. Pour $n \ge 2$, l'intersection est non vide, mais comme le pont logique est brisé pour passer de 1 à 2, la preuve s'effondre.
+
+**D) L'hypothèse de récurrence est une supposition invalide en logique.**
+C'est **incorrect**. L'hypothèse de récurrence ("supposons que $P(n)$ est vraie pour un certain $n$") est le cœur même du raisonnement par récurrence. Ce n'est pas une supposition invalide, c'est une prémisse dans une implication que l'on cherche à démontrer ($P(n) \Rightarrow P(n+1)$).
 
 </details>
 
 ---
 
-#### Question 2 : Propriétés de l'application "carré"
+#### Question 3 : Structure d'une loi de composition non standard
 
-Soit l'application $f : \mathbb{R} \to \mathbb{R}$ définie par $f(x) = x^2$. Quelles propriétés cette application possède-t-elle ?
+On définit sur l'ensemble des nombres réels $\mathbb{R}$ la loi de composition interne $*$ par $x * y = x + y - xy$. Quelles affirmations concernant la structure $(\mathbb{R}, *)$ sont vraies ?
 
-- [ ] **A)** Injective
-- [ ] **B)** Surjective
-- [ ] **C)** Bijective
-- [x] **D)** Ni injective, ni surjective
+- [ ] **A)** La loi $*$ n'est pas associative.
+- [x] **B)** La loi $*$ possède un élément neutre qui est $0$.
+- [ ] **C)** $(\mathbb{R}, *)$ est un groupe.
+- [x] **D)** L'ensemble $\mathbb{R}\setminus\{1\}$ est stable pour la loi $*$.
 
 <details>
 <summary>Solution</summary>
 
-**Réponse : [D]**
+**Réponses : [B, D]**
 
-Analysons les propriétés de $f(x) = x^2$ de $\mathbb{R}$ dans $\mathbb{R}$.
+Analysons les propriétés de cette loi.
 
-**A.** L'application n'est pas injective car des éléments distincts peuvent avoir la même image. Par exemple, $f(-2) = 4$ et $f(2) = 4$, mais $-2 \neq 2$.
-**B.** L'application n'est pas surjective car certains éléments de l'ensemble d'arrivée $\mathbb{R}$ n'ont aucun antécédent. Par exemple, il n'existe aucun nombre réel $x$ tel que $x^2 = -1$.
-**C.** L'application n'est pas bijective car elle n'est ni injective, ni surjective.
-**D.** Puisque l'application n'est ni injective ni surjective, cette option est correcte.
+**A) La loi $*$ n'est pas associative.**
+C'est **incorrect**. Vérifions l'associativité :
+$(x * y) * z = (x + y - xy) * z = (x + y - xy) + z - (x + y - xy)z = x+y+z - xy - xz - yz + xyz$.
+$x * (y * z) = x * (y + z - yz) = x + (y + z - yz) - x(y + z - yz) = x+y+z - yz - xy - xz + xyz$.
+Les deux expressions sont égales, donc la loi est associative.
 
-</details>
+**B) La loi $*$ possède un élément neutre qui est $0$.**
+C'est **correct**. Cherchons un élément neutre $e$ tel que $x * e = x$ pour tout $x \in \mathbb{R}$.
+$x + e - xe = x \implies e - xe = 0 \implies e(1-x) = 0$.
+Pour que cette équation soit vraie pour tout $x$, il faut que $e=0$.
+Vérifions : $x * 0 = x+0-x(0)=x$ et $0 * x = 0+x-0(x)=x$. Donc $0$ est bien l'élément neutre.
 
----
+**C) $(\mathbb{R}, *)$ est un groupe.**
+C'est **incorrect**. Pour être un groupe, chaque élément doit avoir un inverse. Cherchons l'inverse $y$ de $x$. On doit avoir $x * y = e = 0$.
+$x + y - xy = 0 \implies y(1-x) = -x$.
+Si $x \neq 1$, l'inverse est $y = \frac{-x}{1-x} = \frac{x}{x-1}$.
+Mais si $x=1$, l'équation devient $y(1-1)=-1 \implies 0=-1$, ce qui est impossible. L'élément $1$ n'a pas d'inverse. Donc $(\mathbb{R}, *)$ n'est pas un groupe. C'est un monoïde commutatif.
 
-#### Question 3 : Étapes de la récurrence
-
-Quelles sont les deux étapes fondamentales d'une démonstration par récurrence pour prouver une propriété $P(n)$ pour tout entier naturel $n \ge n_0$ ?
-
-- [x] **A)** Initialisation et Hérédité
-- [ ] **B)** Cas de base et Conclusion
-- [ ] **C)** Hypothèse de récurrence et Hérédité
-- [ ] **D)** Initialisation et Généralisation
-
-<details>
-<summary>Solution</summary>
-
-**Réponse : [A]**
-
-Le principe de récurrence repose sur deux piliers logiques.
-
-**A.** L'**Initialisation** (ou cas de base) consiste à prouver que la propriété est vraie pour le premier rang (souvent $n=0$ ou $n=1$). L'**Hérédité** consiste à prouver que si la propriété est vraie pour un rang $n$ quelconque, alors elle est aussi vraie pour le rang suivant $n+1$.
-**B.** La conclusion est le résultat de la démonstration, pas une étape de celle-ci.
-**C.** L'hypothèse de récurrence est une supposition que l'on fait à l'intérieur de l'étape d'hérédité, ce n'est pas une étape principale au même titre que l'initialisation et l'hérédité.
-**D.** La "généralisation" est l'objectif de la preuve, pas une étape de la méthode.
+**D) L'ensemble $\mathbb{R}\setminus\{1\}$ est stable pour la loi $*$.**
+C'est **correct**. Soient $x, y \in \mathbb{R}\setminus\{1\}$. On doit montrer que $x*y \in \mathbb{R}\setminus\{1\}$, c'est-à-dire $x*y \neq 1$.
+Supposons par l'absurde que $x*y = 1$.
+$x+y-xy = 1 \implies xy - x - y + 1 = 0 \implies (x-1)(y-1) = 0$.
+Cela implique que $x-1=0$ ou $y-1=0$, donc $x=1$ ou $y=1$. Ceci contredit notre hypothèse que $x$ et $y$ sont dans $\mathbb{R}\setminus\{1\}$. Donc, $x*y$ ne peut pas être égal à 1. L'ensemble est stable.
 
 </details>
 
 ---
 
-#### Question 4 : Loi de composition interne
+#### Question 4 : Éléments inversibles d'un monoïde
 
-Comment définit-on une loi de composition interne (ou opération binaire) sur un ensemble non vide $X$ ?
+Considérons le monoïde multiplicatif $(\mathbb{Z}/12\mathbb{Z}, \times, \bar{1})$. Quel est son groupe des unités (l'ensemble de ses éléments inversibles) ?
 
-- [ ] **A)** Comme une relation binaire sur $X$.
-- [x] **B)** Comme une application de $X \times X$ dans $X$.
-- [ ] **C)** Comme une application de $X$ dans $X$.
-- [ ] **D)** Comme un sous-ensemble de $X$.
-
-<details>
-<summary>Solution</summary>
-
-**Réponse : [B]**
-
-Une loi de composition interne combine deux éléments de l'ensemble pour en donner un troisième, qui appartient toujours au même ensemble.
-
-**A.** Une relation binaire est un sous-ensemble de $X \times X$. Une loi de composition interne est un cas particulier d'application, qui est elle-même un cas particulier de relation binaire, mais cette définition est plus précise.
-**B.** C'est la définition formelle. Une loi $*$ est une fonction qui à un couple $(x, y) \in X \times X$ associe un élément $x * y \in X$.
-**C.** Une application de $X$ dans $X$ est une opération unaire, pas binaire.
-**D.** Un sous-ensemble de $X$ n'est pas une opération.
-
-</details>
-
----
-
-#### Question 5 : Propriété d'associativité
-
-Soit $*$ une loi de composition interne sur un ensemble $X$. Laquelle des formules suivantes définit la propriété d'associativité ?
-
-- [ ] **A)** $\forall (x, y) \in X^2, x * y = y * x$.
-- [ ] **B)** $\exists e \in X, \forall x \in X, x * e = x$.
-- [ ] **C)** $\forall x \in X, \exists y \in X, x * y = y * x = e$.
-- [x] **D)** $\forall (x, y, z) \in X^3, (x * y) * z = x * (y * z)$.
-
-<details>
-<summary>Solution</summary>
-
-**Réponse : [D]**
-
-L'associativité garantit que l'ordre dans lequel on effectue les opérations n'a pas d'importance quand on compose trois éléments ou plus.
-
-**A.** Ceci est la définition de la **commutativité**.
-**B.** Ceci est une partie de la définition d'un **élément neutre** (ici, un neutre à droite).
-**C.** Ceci est la définition d'un **élément inversible** (ou symétrisable).
-**D.** Ceci est la définition de l'**associativité**. Elle permet de noter sans ambiguïté l'expression $x * y * z$.
-
-</details>
-
----
-
-#### Question 6 : Différence entre groupe et monoïde
-
-Quelle propriété un groupe possède-t-il obligatoirement, contrairement à un monoïde ?
-
-- [x] **A)** Chaque élément possède un inverse.
-- [ ] **B)** La loi de composition est associative.
-- [ ] **C)** Il possède un élément neutre.
-- [ ] **D)** La loi de composition est commutative.
-
-<details>
-<summary>Solution</summary>
-
-**Réponse : [A]**
-
-Un groupe est un monoïde "enrichi" d'une propriété supplémentaire.
-
-**A.** C'est la différence fondamentale. Dans un groupe, pour tout élément $x$, il existe un élément $x^{-1}$ tel que $x * x^{-1} = x^{-1} * x = e$. Un monoïde n'a pas cette contrainte.
-**B.** L'associativité est requise à la fois pour les monoïdes et pour les groupes.
-**C.** L'élément neutre est requis à la fois pour les monoïdes et pour les groupes.
-**D.** La commutativité n'est requise ni pour les monoïdes en général, ni pour les groupes en général. Un groupe ou un monoïde commutatif est dit "abélien".
-
-</details>
-
----
-
-#### Question 7 : Identification d'un groupe
-
-Parmi les structures suivantes, laquelle est un groupe ?
-
-- [ ] **A)** L'ensemble des entiers naturels $\mathbb{N}$ muni de l'addition (+).
-- [x] **B)** L'ensemble des entiers relatifs $\mathbb{Z}$ muni de l'addition (+).
-- [ ] **C)** L'ensemble des entiers relatifs $\mathbb{Z}$ muni de la multiplication ($\times$).
-- [ ] **D)** L'ensemble des nombres réels $\mathbb{R}$ muni de la multiplication ($\times$).
+- [ ] **A)** $\{\bar{1}, \bar{3}, \bar{5}, \bar{7}, \bar{9}, \overline{11}\}$
+- [x] **B)** $\{\bar{1}, \bar{5}, \bar{7}, \overline{11}\}$
+- [ ] **C)** L'ensemble de tous les éléments non nuls.
+- [ ] **D)** $\{\bar{1}, \overline{11}\}$
 
 <details>
 <summary>Solution</summary>
 
 **Réponse : [B]**
 
-Pour être un groupe, une structure doit être un monoïde où chaque élément est inversible.
+Cette question demande d'appliquer la définition des éléments inversibles dans un anneau quotient $\mathbb{Z}/n\mathbb{Z}$.
 
-**A.** $(\mathbb{N}, +)$ est un monoïde (associatif, élément neutre 0), mais pas un groupe car aucun entier naturel non nul n'a d'inverse dans $\mathbb{N}$ (par exemple, il n'y a pas de $x \in \mathbb{N}$ tel que $3+x=0$).
-**B.** $(\mathbb{Z}, +)$ est un groupe. L'addition est associative, 0 est l'élément neutre, et tout entier $n$ a un inverse (son opposé) $-n$ dans $\mathbb{Z}$.
-**C.** $(\mathbb{Z}, \times)$ est un monoïde (associatif, élément neutre 1), mais pas un groupe car seuls 1 et -1 ont un inverse dans $\mathbb{Z}$.
-**D.** $(\mathbb{R}, \times)$ n'est pas un groupe car 0 n'a pas d'inverse pour la multiplication. $(\mathbb{R} \setminus \{0\}, \times)$ est, lui, un groupe.
+Un élément $\bar{k}$ de $\mathbb{Z}/n\mathbb{Z}$ est inversible pour la multiplication si et seulement si $\text{pgcd}(k, n)=1$ ( $k$ et $n$ sont premiers entre eux).
+Ici, $n=12$. Nous cherchons donc les entiers $k$ entre 0 et 11 tels que $\text{pgcd}(k, 12)=1$.
+
+- $\text{pgcd}(0, 12) = 12 \neq 1$
+- $\text{pgcd}(1, 12) = 1$ -> $\bar{1}$ est inversible.
+- $\text{pgcd}(2, 12) = 2 \neq 1$
+- $\text{pgcd}(3, 12) = 3 \neq 1$
+- $\text{pgcd}(4, 12) = 4 \neq 1$
+- $\text{pgcd}(5, 12) = 1$ -> $\bar{5}$ est inversible.
+- $\text{pgcd}(6, 12) = 6 \neq 1$
+- $\text{pgcd}(7, 12) = 1$ -> $\bar{7}$ est inversible.
+- $\text{pgcd}(8, 12) = 4 \neq 1$
+- $\text{pgcd}(9, 12) = 3 \neq 1$
+- $\text{pgcd}(10, 12) = 2 \neq 1$
+- $\text{pgcd}(11, 12) = 1$ -> $\overline{11}$ (ou $\overline{-1}$) est inversible.
+
+L'ensemble des éléments inversibles, noté $(\mathbb{Z}/12\mathbb{Z})^\times$, est donc $\{\bar{1}, \bar{5}, \bar{7}, \overline{11}\}$.
+
+**A)** est incorrect car $\text{pgcd}(3, 12)=3$ et $\text{pgcd}(9, 12)=3$.
+**B)** est **correct**.
+**C)** est incorrect car, par exemple, $\bar{2}$ n'est pas nul mais n'est pas inversible. En fait, c'est un diviseur de zéro car $\bar{2} \times \bar{6} = \overline{12} = \bar{0}$.
+**D)** est incorrect, il manque $\bar{5}$ et $\bar{7}$.
 
 </details>
 
 ---
 
-#### Question 8 : Définition d'un anneau
+#### Question 5 : Anneaux intègres et corps
 
-Pour qu'un ensemble $A$ muni de deux lois $+$ et $\times$, noté $(A, +, \times)$, soit un anneau, quelles conditions doivent être remplies ?
+Parmi les structures suivantes, lesquelles sont des anneaux intègres ?
 
-- [ ] **A)** $(A, +)$ est un groupe et $(A, \times)$ est un groupe.
-- [ ] **B)** $(A, +)$ est un groupe abélien et $(A, \times)$ est un groupe abélien.
-- [ ] **C)** $(A, +)$ est un monoïde et $(A, \times)$ est un monoïde, et $\times$ est distributive sur $+$.
-- [x] **D)** $(A, +)$ est un groupe abélien, $(A, \times)$ est un monoïde, et $\times$ est distributive sur $+$.
+- [ ] **A)** L'anneau des matrices carrées $M_2(\mathbb{R})$ avec l'addition et la multiplication matricielles.
+- [x] **B)** L'anneau des entiers de Gauss $\mathbb{Z}[i] = \{a+bi \mid a, b \in \mathbb{Z}\}$.
+- [ ] **C)** L'anneau quotient $\mathbb{Z}/6\mathbb{Z}$.
+- [ ] **D)** Le corps $\mathbb{Q}$ des nombres rationnels.
 
 <details>
 <summary>Solution</summary>
 
-**Réponse : [D]**
+**Réponses : [B, D]**
 
-La définition d'un anneau combine les structures de groupe abélien et de monoïde avec la distributivité.
+Un anneau est dit intègre s'il est commutatif, non nul, et ne possède pas de diviseurs de zéro (c'est-à-dire $ab=0 \implies a=0$ ou $b=0$).
 
-**A.** La structure multiplicative $(A, \times)$ n'est en général pas un groupe (l'élément $0$ n'est jamais inversible, sauf dans l'anneau nul).
-**B.** C'est la définition d'un corps (commutatif), qui est un type d'anneau particulier et plus contraignant.
-**C.** La structure additive $(A, +)$ doit être un groupe abélien, pas seulement un monoïde (il faut que chaque élément ait un opposé).
-**D.** C'est la définition exacte d'un anneau (unitaire).
+**A) L'anneau des matrices carrées $M_2(\mathbb{R})$.**
+Cet anneau n'est pas commutatif. De plus, il a des diviseurs de zéro. Par exemple :
+$\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}$.
+Ce n'est donc **pas un anneau intègre**.
+
+**B) L'anneau des entiers de Gauss $\mathbb{Z}[i]$.**
+$\mathbb{Z}[i]$ est un sous-anneau de $\mathbb{C}$ (le corps des nombres complexes). Or, $\mathbb{C}$ est un corps, et tout corps est un anneau intègre. Tout sous-anneau d'un anneau intègre est lui-même intègre. Donc $\mathbb{Z}[i]$ **est un anneau intègre**.
+
+**C) L'anneau quotient $\mathbb{Z}/6\mathbb{Z}$.**
+Dans $\mathbb{Z}/6\mathbb{Z}$, on a $\bar{2} \neq \bar{0}$ et $\bar{3} \neq \bar{0}$, mais $\bar{2} \times \bar{3} = \bar{6} = \bar{0}$. Il y a donc des diviseurs de zéro. Ce n'est **pas un anneau intègre**. (Rappel : $\mathbb{Z}/n\mathbb{Z}$ est intègre si et seulement si $n$ est premier).
+
+**D) Le corps $\mathbb{Q}$ des nombres rationnels.**
+Tout corps est par définition un anneau commutatif non nul où tout élément non nul est inversible. Montrons que cela implique l'intégrité : si $ab=0$ et $a \neq 0$, alors $a$ a un inverse $a^{-1}$. En multipliant par $a^{-1}$, on a $a^{-1}(ab) = a^{-1}0 \implies (a^{-1}a)b=0 \implies 1 \cdot b = 0 \implies b=0$. Donc un corps n'a pas de diviseur de zéro. $\mathbb{Q}$ **est un anneau intègre**.
 
 </details>
 
 ---
 
-#### Question 9 : Distinction entre anneau et corps
+#### Question 6 : Identification de morphismes de groupes
 
-Qu'est-ce qui caractérise un corps par rapport à un anneau commutatif non nul $(A, +, \times)$ ?
+Laquelle (lesquelles) des applications suivantes est (sont) un morphisme de groupes ?
 
-- [ ] **A)** Dans un corps, l'addition est commutative.
-- [ ] **B)** Dans un corps, la multiplication est distributive par rapport à l'addition.
-- [x] **C)** Dans un corps, tout élément non nul est inversible pour la multiplication.
-- [ ] **D)** Un corps possède un élément neutre pour la multiplication, $1 \neq 0$.
+- [x] **A)** $f: (\mathbb{R}, +) \to (\text{GL}_2(\mathbb{R}), \times)$ définie par $f(x) = \begin{pmatrix} \cos(x) & -\sin(x) \\ \sin(x) & \cos(x) \end{pmatrix}$.
+- [ ] **B)** $g: (\mathbb{Z}, +) \to (\mathbb{Z}, +)$ définie par $g(n) = n^2$.
+- [ ] **C)** $h: (\mathbb{R}, +) \to (\mathbb{R}, +)$ définie par $h(x) = x+1$.
+- [x] **D)** $k: (\mathbb{C}^*, \times) \to (\mathbb{R}^*, \times)$ définie par $k(z) = |z|$.
+
+<details>
+<summary>Solution</summary>
+
+**Réponses : [A, D]**
+
+Un morphisme de groupes $f: (G, *) \to (H, \diamond)$ doit vérifier $f(x*y) = f(x) \diamond f(y)$ pour tous $x, y \in G$.
+
+**A) $f(x) = \begin{pmatrix} \cos(x) & -\sin(x) \\ \sin(x) & \cos(x) \end{pmatrix}$**
+C'est **correct**. Il s'agit de la matrice de rotation d'angle $x$. Le groupe de départ est $(\mathbb{R}, +)$ et celui d'arrivée est $(\text{GL}_2(\mathbb{R}), \times)$. On doit vérifier si $f(x+y) = f(x) \times f(y)$.
+$f(x+y) = \begin{pmatrix} \cos(x+y) & -\sin(x+y) \\ \sin(x+y) & \cos(x+y) \end{pmatrix}$.
+$f(x) \times f(y) = \begin{pmatrix} \cos x & -\sin x \\ \sin x & \cos x \end{pmatrix} \begin{pmatrix} \cos y & -\sin y \\ \sin y & \cos y \end{pmatrix} = \begin{pmatrix} \cos x \cos y - \sin x \sin y & -\cos x \sin y - \sin x \cos y \\ \sin x \cos y + \cos x \sin y & -\sin x \sin y + \cos x \cos y \end{pmatrix}$.
+En utilisant les formules d'addition pour le cosinus et le sinus, on retrouve bien la matrice $f(x+y)$. C'est un morphisme de groupes.
+
+**B) $g(n) = n^2$**
+C'est **incorrect**. On doit vérifier si $g(n+m) = g(n) + g(m)$.
+$g(n+m) = (n+m)^2 = n^2 + 2nm + m^2$.
+$g(n) + g(m) = n^2 + m^2$.
+L'égalité n'est pas vérifiée en général (sauf si $n=0$ ou $m=0$).
+
+**C) $h(x) = x+1$**
+C'est **incorrect**. On doit vérifier si $h(x+y) = h(x) + h(y)$.
+$h(x+y) = (x+y)+1$.
+$h(x)+h(y) = (x+1) + (y+1) = x+y+2$.
+Ce n'est pas égal. Autre méthode : l'image de l'élément neutre $0$ de $(\mathbb{R}, +)$ doit être l'élément neutre $0$ de l'ensemble d'arrivée. Or, $h(0) = 1 \neq 0$.
+
+**D) $k(z) = |z|$**
+C'est **correct**. Le groupe de départ est $(\mathbb{C}^*, \times)$ et celui d'arrivée est $(\mathbb{R}^*, \times)$. On doit vérifier si $k(z_1 \times z_2) = k(z_1) \times k(z_2)$.
+$k(z_1 z_2) = |z_1 z_2|$.
+$k(z_1) k(z_2) = |z_1| |z_2|$.
+Une propriété fondamentale du module est que $|z_1 z_2| = |z_1| |z_2|$. L'égalité est donc vérifiée. C'est un morphisme de groupes.
+
+</details>
+
+---
+
+#### Question 7 : Relation d'équivalence et classes
+
+Sur l'ensemble des points du plan $\mathbb{R}^2$, on définit la relation $\mathcal{R}$ par :
+$(x_1, y_1) \mathcal{R} (x_2, y_2) \iff x_1 - x_2 = 2(y_2 - y_1)$.
+Quelles sont les affirmations correctes ?
+
+- [ ] **A)** La relation $\mathcal{R}$ n'est pas transitive.
+- [x] **B)** C'est une relation d'équivalence.
+- [ ] **C)** Toutes les classes d'équivalence sont des cercles.
+- [x] **D)** La classe d'équivalence d'un point $(x_0, y_0)$ est une droite.
+
+<details>
+<summary>Solution</summary>
+
+**Réponses : [B, D]**
+
+Réécrivons d'abord la condition de la relation : $x_1 - x_2 = -2(y_1 - y_2)$, ce qui est équivalent à $x_1 + 2y_1 = x_2 + 2y_2$.
+Donc, $(x_1, y_1) \mathcal{R} (x_2, y_2) \iff x_1 + 2y_1 = x_2 + 2y_2$.
+Cela signifie que deux points sont en relation si et seulement si ils donnent la même valeur pour la fonction $f(x, y) = x+2y$.
+
+Vérifions les propriétés d'une relation d'équivalence.
+1.  **Réflexivité** : $(x, y) \mathcal{R} (x, y)$ ? On a $x+2y = x+2y$. C'est vrai.
+2.  **Symétrie** : Si $(x_1, y_1) \mathcal{R} (x_2, y_2)$, a-t-on $(x_2, y_2) \mathcal{R} (x_1, y_1)$ ? L'hypothèse est $x_1 + 2y_1 = x_2 + 2y_2$. Ceci est équivalent à $x_2 + 2y_2 = x_1 + 2y_1$, ce qui est la condition pour la relation dans l'autre sens. C'est vrai.
+3.  **Transitivité** : Si $(x_1, y_1) \mathcal{R} (x_2, y_2)$ et $(x_2, y_2) \mathcal{R} (x_3, y_3)$, a-t-on $(x_1, y_1) \mathcal{R} (x_3, y_3)$ ?
+    On a $x_1 + 2y_1 = x_2 + 2y_2$ et $x_2 + 2y_2 = x_3 + 2y_3$. Par transitivité de l'égalité, on a $x_1 + 2y_1 = x_3 + 2y_3$. C'est vrai.
+
+**A) La relation $\mathcal{R}$ n'est pas transitive.**
+C'est **incorrect**, nous venons de le prouver.
+
+**B) C'est une relation d'équivalence.**
+C'est **correct**, car elle est réflexive, symétrique et transitive.
+
+**C) Toutes les classes d'équivalence sont des cercles.**
+C'est **incorrect**. La classe d'équivalence d'un point $(x_0, y_0)$ est l'ensemble des points $(x,y)$ tels que $x+2y = x_0+2y_0$. C'est l'équation d'une droite, pas d'un cercle.
+
+**D) La classe d'équivalence d'un point $(x_0, y_0)$ est une droite.**
+C'est **correct**. La classe d'équivalence de $(x_0, y_0)$ est l'ensemble $\{(x,y) \in \mathbb{R}^2 \mid (x,y) \mathcal{R} (x_0, y_0)\}$. C'est l'ensemble des points $(x,y)$ tels que $x+2y = x_0+2y_0$. Si on pose $C = x_0+2y_0$, l'équation est $x+2y=C$, qui est bien l'équation cartésienne d'une droite de vecteur normal $(1, 2)$.
+
+</details>
+
+---
+
+#### Question 8 : Noyau et injectivité
+
+Soit $f: G \to H$ un morphisme de groupes. On suppose qu'il existe deux éléments distincts $a, b \in G$ tels que $f(a) = f(b)$. Que peut-on en conclure ?
+
+- [x] **A)** Le noyau de $f$, $\text{Ker}(f)$, n'est pas réduit à l'élément neutre $\{e_G\}$.
+- [ ] **B)** $f$ est nécessairement surjectif.
+- [ ] **C)** Le groupe $G$ doit être non abélien.
+- [x] **D)** $f$ n'est pas une application injective.
+
+<details>
+<summary>Solution</summary>
+
+**Réponses : [A, D]**
+
+Cette question relie les notions de morphisme, d'injectivité et de noyau.
+
+**D) $f$ n'est pas une application injective.**
+C'est **correct**. La définition d'une application injective est que si $f(a) = f(b)$, alors $a=b$. L'énoncé nous dit qu'il existe $a \neq b$ avec $f(a) = f(b)$. Par conséquent, $f$ n'est pas injective, par définition.
+
+**A) Le noyau de $f$, $\text{Ker}(f)$, n'est pas réduit à l'élément neutre $\{e_G\}$.**
+C'est **correct**. Une propriété fondamentale des morphismes de groupes est que $f$ est injectif si et seulement si son noyau est trivial ($\text{Ker}(f) = \{e_G\}$). Comme nous avons établi en D) que $f$ n'est pas injectif, son noyau ne peut pas être trivial.
+Plus directement :
+$f(a) = f(b) \implies f(a) \cdot (f(b))^{-1} = e_H$.
+Comme $f$ est un morphisme, $(f(b))^{-1} = f(b^{-1})$.
+Donc $f(a) \cdot f(b^{-1}) = e_H \implies f(a \cdot b^{-1}) = e_H$.
+Ceci signifie que l'élément $g = a \cdot b^{-1}$ appartient au noyau de $f$. Or, puisque $a \neq b$, on a $a \cdot b^{-1} \neq e_G$. Donc, le noyau contient un élément différent de l'élément neutre.
+
+**B) $f$ est nécessairement surjectif.**
+C'est **incorrect**. L'injectivité et la surjectivité sont des propriétés indépendantes. Par exemple, l'application $f: \mathbb{Z} \to \mathbb{Z}/10\mathbb{Z}$ définie par $f(n)=\bar{0}$ pour tout $n$ est un morphisme. On a $f(1)=f(2)=\bar{0}$ mais $f$ n'est clairement pas surjective.
+
+**C) Le groupe $G$ doit être non abélien.**
+C'est **incorrect**. Il n'y a aucun lien requis entre la non-injectivité d'un morphisme et la commutativité du groupe de départ. Par exemple, le morphisme $f: (\mathbb{Z}, +) \to (\mathbb{Z}/2\mathbb{Z}, +)$ défini par $f(n) = \bar{n}$ est un morphisme entre groupes abéliens. Il n'est pas injectif car $f(0) = f(2) = \bar{0}$, mais $0 \neq 2$.
+
+</details>
+
+---
+
+#### Question 9 : Identification d'un idéal
+
+Parmi les sous-ensembles suivants, lequel est un idéal de l'anneau $\mathbb{R}[X]$ des polynômes à coefficients réels ?
+
+- [ ] **A)** L'ensemble des polynômes de degré exactement 2.
+- [x] **B)** L'ensemble des polynômes qui sont des multiples de $X^2+1$.
+- [ ] **C)** L'ensemble des polynômes dont le coefficient constant est 1.
+- [ ] **D)** L'ensemble des polynômes à coefficients entiers, $\mathbb{Z}[X]$.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Pour être un idéal $I$ d'un anneau $A$, un sous-ensemble doit être un sous-groupe additif de $A$ et être "absorbant" pour la multiplication externe (pour tout $a \in A$ et $x \in I$, $ax \in I$).
+
+**A) L'ensemble des polynômes de degré exactement 2.**
+Ce n'est **pas un idéal**. Il ne contient même pas le polynôme nul $0$, ce qui est requis pour un sous-groupe additif. De plus, la somme de deux polynômes de degré 2 peut être de degré inférieur à 2 (ex: $(X^2+X) + (-X^2+1) = X+1$).
+
+**B) L'ensemble des polynômes qui sont des multiples de $X^2+1$.**
+C'est **correct**. Notons cet ensemble $I$. Il est de la forme $(X^2+1)\mathbb{R}[X]$. C'est la définition d'un idéal principal engendré par le polynôme $P(X) = X^2+1$.
+Vérifions les axiomes :
+1.  Sous-groupe additif :
+    - Le polynôme nul $0 = 0 \cdot (X^2+1)$ est dans $I$.
+    - Si $P_1(X) = Q_1(X)(X^2+1)$ et $P_2(X) = Q_2(X)(X^2+1)$ sont dans $I$, alors $P_1-P_2 = (Q_1-Q_2)(X^2+1)$, qui est aussi dans $I$.
+2.  Absorption :
+    - Soit $P(X) = Q(X)(X^2+1) \in I$ et $A(X) \in \mathbb{R}[X]$ un polynôme quelconque. Alors $A(X)P(X) = A(X)Q(X)(X^2+1)$, qui est clairement un multiple de $X^2+1$. Donc $A(X)P(X) \in I$.
+C'est bien un idéal.
+
+**C) L'ensemble des polynômes dont le coefficient constant est 1.**
+Ce n'est **pas un idéal**. Il ne contient pas le polynôme nul (dont le coefficient constant est 0). Il n'est donc même pas un sous-groupe additif.
+
+**D) L'ensemble des polynômes à coefficients entiers, $\mathbb{Z}[X]$.**
+C'est un sous-anneau de $\mathbb{R}[X]$, mais ce n'est **pas un idéal**. La propriété d'absorption n'est pas satisfaite. Prenez le polynôme $P(X)=X \in \mathbb{Z}[X]$ et le scalaire $a=\sqrt{2} \in \mathbb{R}$ (qui est un polynôme de degré 0 dans $\mathbb{R}[X]$). Le produit $a \cdot P(X) = \sqrt{2}X$ n'est pas dans $\mathbb{Z}[X]$ car son coefficient n'est pas entier.
+
+</details>
+
+---
+
+#### Question 10 : Application du premier théorème d'isomorphisme
+
+Soit le morphisme d'anneaux $\varphi : \mathbb{R}[X] \to \mathbb{C}$ qui à un polynôme $P(X)$ associe sa valeur en $i$, c'est-à-dire $\varphi(P) = P(i)$. Ce morphisme est surjectif.
+Quel est le noyau de $\varphi$, et à quel anneau connu l'anneau quotient $\mathbb{R}[X]/\text{Ker}(\varphi)$ est-il isomorphe ?
+
+- [ ] **A)** $\text{Ker}(\varphi)=\{0\}$, et donc $\mathbb{R}[X]$ est isomorphe à $\mathbb{C}$.
+- [ ] **B)** $\text{Ker}(\varphi)$ est l'idéal engendré par $(X-i)$, et le quotient est isomorphe à $\mathbb{C}$.
+- [x] **C)** $\text{Ker}(\varphi)$ est l'idéal engendré par $(X^2+1)$, et le quotient est isomorphe à $\mathbb{C}$.
+- [ ] **D)** $\text{Ker}(\varphi)$ est l'ensemble des polynômes constants, et le quotient est isomorphe à $\mathbb{R}$.
 
 <details>
 <summary>Solution</summary>
 
 **Réponse : [C]**
 
-Un corps est un anneau commutatif où la division (par un non-nul) est toujours possible.
+Cette question est une application directe du premier théorème d'isomorphisme pour les anneaux, qui stipule que si $\varphi: A \to B$ est un morphisme d'anneaux, alors $A/\text{Ker}(\varphi) \cong \text{Im}(\varphi)$.
 
-**A.** L'addition est déjà commutative dans la définition de l'anneau.
-**B.** La distributivité est déjà une propriété requise pour être un anneau.
-**C.** C'est la propriété clé qui distingue un corps. Cela signifie que l'ensemble des éléments non nuls, $A \setminus \{0\}$, forme un groupe pour la multiplication.
-**D.** Un anneau (unitaire) possède déjà un élément neutre $1$. La condition $1 \neq 0$ est aussi requise pour un corps, mais ce n'est pas la propriété la plus distinctive.
+1.  **Image de $\varphi$**:
+    L'énoncé précise que $\varphi$ est surjectif, donc $\text{Im}(\varphi) = \mathbb{C}$. Le théorème d'isomorphisme nous donne donc directement $ \mathbb{R}[X]/\text{Ker}(\varphi) \cong \mathbb{C}$. Il ne reste qu'à identifier le noyau.
 
-</details>
+2.  **Noyau de $\varphi$**:
+    Le noyau de $\varphi$ est l'ensemble des polynômes $P(X) \in \mathbb{R}[X]$ tels que $\varphi(P) = P(i) = 0$. Cela signifie que $i$ est une racine de $P$.
+    Comme $P$ est un polynôme à coefficients réels, si $i$ est une racine, alors son conjugué $-i$ doit aussi être une racine.
+    Par conséquent, $P(X)$ doit être divisible par $(X-i)$ et par $(X-(-i))=(X+i)$. Comme ces deux facteurs sont premiers entre eux, $P(X)$ doit être divisible par leur produit : $(X-i)(X+i) = X^2 - i^2 = X^2+1$.
+    Le noyau de $\varphi$ est donc l'ensemble de tous les polynômes de $\mathbb{R}[X]$ qui sont des multiples de $X^2+1$. C'est l'idéal principal engendré par $X^2+1$, noté $(X^2+1)$.
 
----
+**Conclusion**: Le noyau est l'idéal $(X^2+1)$ et, par le théorème d'isomorphisme, $\mathbb{R}[X]/(X^2+1) \cong \mathbb{C}$.
 
-#### Question 10 : Morphisme de groupes
-
-Soient $(G, *_G)$ et $(H, *_H)$ deux groupes. Quand une application $f: G \to H$ est-elle un morphisme de groupes ?
-
-- [x] **A)** Quand elle "préserve la structure", c'est-à-dire $f(g_1 *_G g_2) = f(g_1) *_H f(g_2)$ pour tous $g_1, g_2 \in G$.
-- [ ] **B)** Quand elle est injective.
-- [ ] **C)** Quand elle associe l'élément neutre de $G$ à l'élément neutre de $H$.
-- [ ] **D)** Quand l'image de l'inverse est l'inverse de l'image, c'est-à-dire $f(g^{-1}) = (f(g))^{-1}$.
-
-<details>
-<summary>Solution</summary>
-
-**Réponse : [A]**
-
-Un morphisme est une application qui respecte les opérations des structures.
-
-**A.** C'est la définition fondamentale d'un morphisme de groupes. L'image du composé est le composé des images.
-**B.** Un morphisme injectif est un cas particulier (un monomorphisme). Tous les morphismes ne sont pas injectifs.
-**C.** C'est une conséquence de la définition d'un morphisme de groupes, mais ce n'est pas la définition elle-même.
-**D.** C'est aussi une conséquence de la définition d'un morphisme de groupes, pas la définition de base.
+**A)** est incorrect. $\mathbb{R}[X]$ (ensemble des polynômes) et $\mathbb{C}$ ne sont pas isomorphes (par exemple, leurs dimensions en tant qu'espaces vectoriels sur $\mathbb{R}$ sont infinie et 2, respectivement).
+**B)** est incorrect. Le polynôme $X-i$ n'appartient pas à $\mathbb{R}[X]$ car ses coefficients ne sont pas réels. Le noyau doit être un idéal de l'anneau de départ $\mathbb{R}[X]$.
+**C)** est **correct**.
+**D)** est incorrect. Le noyau n'est pas l'ensemble des polynômes constants (sauf le polynôme nul). Par exemple, le polynôme constant $P(X)=1$ a pour image $P(i)=1 \neq 0$.
 
 </details>
 
----
-
-#### Question 11 : Relation d'équivalence
-
-Quelles sont les trois propriétés qu'une relation binaire $\sim$ sur un ensemble $E$ doit vérifier pour être une relation d'équivalence ?
-
-- [ ] **A)** Associativité, Réflexivité, Symétrie
-- [ ] **B)** Réflexivité, Antisymétrie, Transitivité
-- [x] **C)** Réflexivité, Symétrie, Transitivité
-- [ ] **D)** Commutativité, Symétrie, Transitivité
-
-<details>
-<summary>Solution</summary>
-
-**Réponse : [C]**
-
-Une relation d'équivalence généralise la notion d'égalité.
-
-**A.** L'associativité est une propriété d'une loi de composition interne, pas d'une relation binaire.
-**B.** Ces trois propriétés (réflexivité, antisymétrie, transitivité) définissent une **relation d'ordre**. L'antisymétrie ($x \sim y$ et $y \sim x \Rightarrow x=y$) est l'opposé de la symétrie.
-**C.** Ces sont les trois propriétés correctes : **Réflexive** ($x \sim x$), **Symétrique** ($x \sim y \Rightarrow y \sim x$), **Transitive** ($x \sim y$ et $y \sim z \Rightarrow x \sim z$).
-**D.** La commutativité est une propriété d'une loi de composition interne, pas d'une relation binaire.
-
-</details>
-
----
-
-#### Question 12 : Noyau d'un morphisme
-
-Soit $f: G \to H$ un morphisme de groupes, et $e_H$ l'élément neutre de $H$. Qu'est-ce que le noyau de $f$, noté $\text{Ker}(f)$ ?
-
-- [ ] **A)** L'ensemble des images de tous les éléments de $G$, soit $\text{Im}(f) = \{f(g) \mid g \in G\}$.
-- [x] **B)** L'ensemble des éléments de $G$ dont l'image par $f$ est l'élément neutre de $H$.
-- [ ] **C)** Le sous-ensemble de $H$ constitué uniquement de l'élément neutre $\{e_H\}$.
-- [ ] **D)** Le sous-ensemble de $G$ constitué uniquement de l'élément neutre $\{e_G\}$.
-
-<details>
-<summary>Solution</summary>
-
-**Réponse : [B]**
-
-Le noyau mesure à quel point un morphisme "ressemble" à l'application nulle.
-
-**A.** Ceci est la définition de l'**image** du morphisme, $\text{Im}(f)$.
-**B.** C'est la définition correcte : $\text{Ker}(f) = \{ g \in G \mid f(g) = e_H \}$.
-**C.** C'est l'image triviale. Le noyau est un sous-ensemble du domaine $G$, pas du codomaine $H$.
-**D.** Ceci est le noyau trivial. Si $\text{Ker}(f) = \{e_G\}$, alors le morphisme est injectif, mais ce n'est pas la définition du noyau en général.
-
-</details>
-
----
-
-#### Question 13 : Condition d'injectivité d'un morphisme
-
-Un morphisme de groupes $f: G \to H$ est injectif si et seulement si...
-
-- [ ] **A)** son image est égale à $H$.
-- [ ] **B)** son noyau est égal à $G$.
-- [ ] **C)** son image est réduite à l'élément neutre de $H$.
-- [x] **D)** son noyau est réduit à l'élément neutre de $G$.
-
-<details>
-<summary>Solution</summary>
-
-**Réponse : [D]**
-
-Le noyau d'un morphisme de groupes capture toute l'information sur son injectivité.
-
-**A.** Cette condition signifie que le morphisme est **surjectif**.
-**B.** Si le noyau est $G$ tout entier, cela signifie que tous les éléments de $G$ sont envoyés sur l'élément neutre de $H$. C'est l'application "nulle", qui est loin d'être injective (sauf si $G$ est le groupe trivial).
-**C.** Si l'image est réduite à $\{e_H\}$, cela signifie aussi que le morphisme est l'application nulle.
-**D.** C'est un théorème fondamental : $f$ est injectif si et seulement si $\text{Ker}(f) = \{e_G\}$. Cela signifie que seul l'élément neutre de $G$ est envoyé sur l'élément neutre de $H$.
-
-</details>
-
----
-
-#### Question 14 : Propriété d'absorption d'un idéal
-
-Un sous-ensemble $I$ d'un anneau commutatif $A$ est un idéal s'il est un sous-groupe additif et s'il est "absorbant" pour la multiplication. Que signifie cette propriété d'absorption ?
-
-- [ ] **A)** Pour tous $x, y \in I$, le produit $x \cdot y$ est dans $I$.
-- [x] **B)** Pour tout $a \in A$ et tout $x \in I$, le produit $a \cdot x$ est dans $I$.
-- [ ] **C)** Pour tout $x \in I$ non nul, son inverse $x^{-1}$ est dans $I$.
-- [ ] **D)** L'élément neutre $1$ de l'anneau $A$ doit être dans $I$.
-
-<details>
-<summary>Solution</summary>
-
-**Réponse : [B]**
-
-La propriété d'absorption est ce qui distingue un idéal d'un simple sous-anneau. Un idéal "absorbe" la multiplication par n'importe quel élément de l'anneau parent.
-
-**A.** Ceci est la condition pour qu'un sous-ensemble soit stable par multiplication. C'est une condition pour être un sous-anneau, mais elle est plus faible que la condition d'idéal.
-**B.** C'est la définition exacte. Un élément de $I$, multiplié par n'importe quel élément de $A$ (qu'il soit dans $I$ ou non), reste dans $I$.
-**C.** Ceci est faux en général. La plupart des idéaux ne contiennent pas d'éléments inversibles (à part l'idéal $A$ tout entier).
-**D.** Si un idéal $I$ contient l'élément $1$, alors par la propriété d'absorption, pour tout $a \in A$, $a \cdot 1 = a$ doit être dans $I$. Donc $I=A$. Ce n'est pas une condition générale.
-
-</details>

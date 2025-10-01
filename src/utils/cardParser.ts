@@ -1,6 +1,7 @@
 import matter from 'gray-matter';
 
 export interface QuizOption {
+  id: string;
   text: string;
   isCorrect: boolean;
 }

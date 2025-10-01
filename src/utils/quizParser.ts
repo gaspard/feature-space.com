@@ -26,12 +26,18 @@ export function parseQuiz(content: string, filename: string): ParsedCards {
     if (!detailsMatch) {
       throw new Error('Invalid file format: missing details');
     }
-    const cardContent = detailsMatch[1].split('\n').map(line => {
+    const options: QuizOption[] = [];
+    const content: string[] = [];
+    for (const line of detailsMatch[1].split('\n')) {
       if (line.startsWith('- [x]')) {
-        return line.replace('- [x]', '- [ ]') + '  <span class="correct"></span>';
+        options.push({ id: `option-${questionIndex}-${options.length}`, text: line.replace('- [x]', '').trim(), isCorrect: true });
+      } else if (line.startsWith('- [ ]')) {
+        options.push({ id: `option-${questionIndex}-${options.length}`, text: line.replace('- [ ]', '').trim(), isCorrect: false });
+      } else {
+        content.push(line);
       }
-      return line;
-    }).join('\n');
+    }
+    const cardContent = content.join('\n');
 
     // Extract solution from <details>
     const solutionMatch = section.match(/<details>[\s\S]*?<summary>.*?<\/summary>([\s\S]*?)<\/details>/);
@@ -44,6 +50,7 @@ export function parseQuiz(content: string, filename: string): ParsedCards {
       id: `card-${questionIndex}`,
       content: cardContent,
       solution,
+      options
     });
     questionIndex++;
   }

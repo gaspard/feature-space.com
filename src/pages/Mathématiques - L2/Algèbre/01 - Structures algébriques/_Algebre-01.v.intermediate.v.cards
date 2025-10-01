@@ -1,253 +1,332 @@
 ---
-title: '0 - Cartes de base'
+id: 'f2f1c500'
+title: '2 - Cartes intermédiaires'
 layout: '../../../../layouts/Layout.astro'
-order: 0
-level: basic
-chapter: Untitled Chapter
-course: Untitled Course
-tags: ["structures algébriques", "définition", "algèbre", "groupe", "anneau", "application"]
+order: 22
+level: intermediate
+chapter: Structures algébriques (intermédiaire)
+course: Structures algébriques et algèbre bilinéaire
+tags: ["structures algébriques", "groupes", "anneaux", "morphismes", "récurrence"]
 ---
 
-# Cartes: Untitled Chapter
+# Cartes: Structures algébriques (intermédiaire)
 
 ---
 
-Qu'est-ce qu'une **application** (ou fonction) ?
+Quelle est la relation entre l'injectivité/surjectivité d'une application $f: X \to Y$ et l'existence d'inverses à gauche ou à droite ?
 
 <details>
 <summary>Réponse</summary>
 
-Une **application** $f$ d'un ensemble de départ $X$ vers un ensemble d'arrivée $Y$, notée $f: X \to Y$, est une règle qui associe à **chaque** élément $x$ de $X$ un **unique** élément $y$ de $Y$. On note cet élément $y = f(x)$.
+Pour des ensembles $X$ et $Y$ non vides, il existe une équivalence directe :
 
-**Points clés :**
-- Chaque élément de l'ensemble de départ doit avoir une image.
-- Chaque élément de l'ensemble de départ ne peut avoir qu'une seule image.
+- **Injectivité et inverse à gauche** : Une application $f$ est **injective** si et seulement si elle admet un **inverse à gauche**. Un inverse à gauche est une application $p : Y \to X$ telle que $p \circ f = \text{id}_X$.
+  - *Intuition* : Si $f$ est injective, pour tout $y$ dans l'image de $f$, il y a un unique antécédent $x$. L'inverse à gauche $p$ "retrouve" cet unique $x$. Pour les $y$ qui ne sont pas dans l'image, on peut définir $p(y)$ arbitrairement.
 
-**Exemple :** L'application "carré" $f: \mathbb{R} \to \mathbb{R}$ définie par $f(x) = x^2$. À chaque nombre réel $x$, on associe son carré $x^2$.
+- **Surjectivité et inverse à droite** : Une application $f$ est **surjective** si et seulement si elle admet un **inverse à droite**. Un inverse à droite est une application $s : Y \to X$ telle que $f \circ s = \text{id}_Y$.
+  - *Intuition* : Si $f$ est surjective, pour tout $y \in Y$, l'ensemble de ses antécédents est non vide. L'inverse à droite $s$ "choisit" un de ces antécédents pour chaque $y$. (L'existence de $s$ dépend de l'axiome du choix en général).
+
+- **Bijectivité et inverse** : Une application $f$ est **bijective** si et seulement si elle admet un **inverse** $f^{-1}: Y \to X$, qui est à la fois un inverse à gauche et à droite.
 
 </details>
 
 ---
 
-Qu'est-ce qu'une application **injective** ?
+Comment structurer une démonstration par récurrence (faible) pour une propriété $P(n)$ sur les entiers $n \ge n_0$ ?
 
 <details>
 <summary>Réponse</summary>
 
-Une application $f: X \to Y$ est dite **injective** si deux éléments distincts de l'ensemble de départ ont toujours deux images distinctes.
+**Étapes clés d'une preuve par récurrence :**
 
-Formellement : Pour tous $x_1, x_2 \in X$, si $f(x_1) = f(x_2)$, alors on doit avoir $x_1 = x_2$.
+1.  **Énoncé de la propriété** : Définir clairement la propriété $P(n)$ à démontrer pour tout $n \ge n_0$.
 
-**En d'autres termes :** Chaque élément de l'ensemble d'arrivée $Y$ a au plus un antécédent.
+2.  **Initialisation (ou Cas de base)** :
+    - Vérifier que la propriété $P(n_0)$ est vraie.
+    - Il faut calculer explicitement les deux membres de l'égalité ou de l'inégalité pour $n=n_0$ et montrer qu'ils satisfont la relation.
 
-**Exemple :** $f: \mathbb{N} \to \mathbb{N}$ définie par $f(n) = n+1$ est injective. Si $n_1+1 = n_2+1$, alors $n_1=n_2$.
+3.  **Hérédité** :
+    - **Hypothèse de récurrence (HR)** : Supposer que $P(k)$ est vraie pour un certain entier **fixé** $k \ge n_0$. Il est crucial d'écrire cette hypothèse explicitement.
+    - **Objectif** : Montrer que $P(k+1)$ est vraie, en utilisant l'hypothèse de récurrence.
+    - **Démonstration** : Partir d'un côté de l'expression de $P(k+1)$ et essayer de faire apparaître l'expression de $P(k)$ pour pouvoir utiliser l'HR.
+      Par exemple, pour une somme, on isole le dernier terme : $\sum_{i=n_0}^{k+1} = (\sum_{i=n_0}^{k}) + \text{terme}_{k+1}$.
+    - Conclure que l'implication $P(k) \Rightarrow P(k+1)$ est vraie pour tout $k \ge n_0$.
 
-**Contre-exemple :** $g: \mathbb{R} \to \mathbb{R}$ définie par $g(x) = x^2$ n'est pas injective car $g(-2) = g(2) = 4$.
+4.  **Conclusion** :
+    - Conclure en invoquant le principe de récurrence : "Puisque la propriété est vraie pour $n_0$ et qu'elle est héréditaire, elle est vraie pour tout entier $n \ge n_0$."
+
+**Point clé :** Dans l'étape d'hérédité, on ne démontre pas $P(k)$, on le **suppose**. On démontre l'**implication** $P(k) \Rightarrow P(k+1)$.
 
 </details>
 
 ---
 
-Qu'est-ce qu'une application **surjective** ?
+Quelle est la différence fondamentale entre la récurrence faible et la récurrence forte ? Donnez un exemple où la récurrence forte est plus pratique.
 
 <details>
 <summary>Réponse</summary>
 
-Une application $f: X \to Y$ est dite **surjective** si chaque élément de l'ensemble d'arrivée $Y$ est l'image d'au moins un élément de l'ensemble de départ $X$.
+La différence réside dans l'**hypothèse de récurrence**.
 
-Formellement : Pour tout $y \in Y$, il existe au moins un $x \in X$ tel que $f(x) = y$.
+- **Récurrence faible** : Pour démontrer $P(n+1)$, on suppose uniquement que $P(n)$ est vraie.
+  - $\text{Hypothèse : } P(n)$
+  - $\text{Objectif : } P(n+1)$
 
-**En d'autres termes :** L'ensemble image est égal à l'ensemble d'arrivée.
+- **Récurrence forte** : Pour démontrer $P(n+1)$, on suppose que $P(k)$ est vraie pour **tous** les entiers $k$ entre le cas de base et $n$.
+  - $\text{Hypothèse : } \forall k \in \{0, \dots, n\}, P(k)$
+  - $\text{Objectif : } P(n+1)$
 
-**Exemple :** L'application "projection" $f: \mathbb{R}^2 \to \mathbb{R}$ définie par $f(x, y) = x$ est surjective. Pour n'importe quel réel $z$, on peut trouver un antécédent, par exemple $(z, 0)$, tel que $f(z, 0) = z$.
+**Quand utiliser la récurrence forte ?**
+La récurrence forte est particulièrement utile lorsque la propriété pour $n+1$ ne dépend pas seulement de l'état en $n$, mais aussi d'états antérieurs.
 
-**Contre-exemple :** $g: \mathbb{R} \to \mathbb{R}$ définie par $g(x) = x^2$ n'est pas surjective car les nombres négatifs (comme -1) n'ont aucun antécédent.
+**Exemple : Suite de Fibonacci**
+Soit la suite $(u_n)$ définie par $u_0=0, u_1=1$ et $u_{n+2} = u_{n+1} + u_n$. Montrons que $u_n < 2^n$.
+Pour montrer que $u_{n+2} < 2^{n+2}$, on a besoin de l'hypothèse pour $u_{n+1}$ et $u_n$.
+- **Hypothèse (forte)** : Supposons $u_k < 2^k$ pour tout $k \le n+1$.
+- **Hérédité** : $u_{n+2} = u_{n+1} + u_n$.
+  En utilisant l'HR pour $k=n+1$ et $k=n$, on a :
+  $u_{n+2} < 2^{n+1} + 2^n = 2^n(2+1) = 3 \cdot 2^n$.
+  Pour arriver à $2^{n+2} = 4 \cdot 2^n$, on peut affiner le calcul: $2^{n+1} + 2^n < 2^{n+1} + 2^{n+1} = 2 \cdot 2^{n+1} = 2^{n+2}$.
+Une récurrence faible ne suffirait pas car la connaissance de $u_{n+1} < 2^{n+1}$ seule ne donne pas d'information sur $u_n$.
 
 </details>
 
 ---
 
-Qu'est-ce qu'une application **bijective** ?
+Comparez les structures de Monoïde, Groupe, Anneau et Corps. Quelles propriétés sont ajoutées à chaque étape pour passer d'une structure à la suivante ?
 
 <details>
 <summary>Réponse</summary>
 
-Une application $f: X \to Y$ est dite **bijective** si elle est à la fois **injective et surjective**.
+Ces structures sont emboîtées, chaque nouvelle structure étant une spécialisation de la précédente.
 
-Cela signifie que pour chaque élément $y$ de l'ensemble d'arrivée $Y$, il existe un et un seul élément $x$ de l'ensemble de départ $X$ tel que $f(x) = y$. Une application bijective crée une correspondance "un pour un" parfaite entre les éléments de $X$ et $Y$.
+1.  **Monoïde** $(M, *, e)$ :
+    - Une loi de composition interne $*$.
+    - Associativité de $*$.
+    - Existence d'un élément neutre $e$.
+    - *Exemple* : $(\mathbb{N}, +, 0)$.
 
-**Exemple :** $f: \mathbb{R} \to \mathbb{R}$ définie par $f(x) = 2x+1$ est bijective.
-- **Injective :** Si $2x_1+1 = 2x_2+1$, alors $x_1=x_2$.
-- **Surjective :** Pour tout $y \in \mathbb{R}$, on peut trouver $x = \frac{y-1}{2}$ tel que $f(x)=y$.
+2.  **Groupe** $(G, *, e)$ :
+    - C'est un **monoïde**...
+    - ...où **chaque élément est inversible**.
+    - *Exemple* : $(\mathbb{Z}, +, 0)$. On est passé de $\mathbb{N}$ à $\mathbb{Z}$ pour que chaque élément ait un inverse (son opposé).
+
+3.  **Anneau** $(A, +, \times, 0, 1)$ :
+    - Il possède **deux lois** : $+$ et $\times$.
+    - $(A, +, 0)$ est un **groupe abélien**.
+    - $(A, \times, 1)$ est un **monoïde**.
+    - La multiplication $\times$ est **distributive** par rapport à l'addition $+$.
+    - *Exemple* : $(\mathbb{Z}, +, \times)$. La structure additive est un groupe, la structure multiplicative est un monoïde.
+
+4.  **Corps** $(K, +, \times, 0, 1)$ :
+    - C'est un **anneau commutatif** non nul ($1 \neq 0$)...
+    - ...où **chaque élément non nul est inversible pour la multiplication**.
+    - Autrement dit, $(K \setminus \{0\}, \times)$ est un groupe abélien.
+    - *Exemple* : $(\mathbb{Q}, +, \times)$. On est passé de $\mathbb{Z}$ à $\mathbb{Q}$ pour que chaque élément non nul ait un inverse multiplicatif.
+
+**Résumé des ajouts :**
+- Monoïde $\xrightarrow{\text{+ inverses pour tous}}$ Groupe
+- Groupe (additif) + Monoïde (multiplicatif) $\xrightarrow{\text{+ distributivité}}$ Anneau
+- Anneau $\xrightarrow{\text{+ commutativité de } \times \text{ et inverses pour } \times}$ Corps
 
 </details>
 
 ---
 
-Qu'est-ce qu'une **loi de composition interne** ?
+Soit $f: G \to H$ un morphisme de groupes. Montrez que $f$ est injectif si et seulement si son noyau $\text{Ker}(f)$ est réduit à l'élément neutre $\{e_G\}$.
 
 <details>
 <summary>Réponse</summary>
 
-Une **loi de composition interne** (ou opération binaire) sur un ensemble $X$ est une opération qui prend deux éléments de $X$ et les combine pour donner un résultat qui est aussi dans $X$.
+Soit $f: (G, \cdot) \to (H, *)$ un morphisme de groupes. Le noyau est $\text{Ker}(f) = \{ g \in G \mid f(g) = e_H \}$.
 
-C'est une application de la forme $* : X \times X \to X$. On note généralement le résultat de l'opération sur $(x, y)$ par $x * y$.
+**1. Preuve de ($\Rightarrow$) : Si $f$ est injectif, alors $\text{Ker}(f) = \{e_G\}$.**
+- Supposons $f$ injectif.
+- Soit $g \in \text{Ker}(f)$. Par définition, $f(g) = e_H$.
+- On sait aussi que pour tout morphisme, $f(e_G) = e_H$.
+- On a donc $f(g) = f(e_G)$.
+- Comme $f$ est injectif, cela implique $g=e_G$.
+- Le seul élément dans $\text{Ker}(f)$ est donc $e_G$. D'où $\text{Ker}(f) = \{e_G\}$.
 
-**Exemples :**
-- L'addition $(+)$ sur l'ensemble des entiers $\mathbb{Z}$ est une loi de composition interne, car la somme de deux entiers est toujours un entier.
-- La soustraction $(-)$ sur l'ensemble des entiers naturels $\mathbb{N}$ n'est **pas** une loi de composition interne, car $3 - 5 = -2$, et $-2$ n'est pas dans $\mathbb{N}$.
+**2. Preuve de ($\Leftarrow$) : Si $\text{Ker}(f) = \{e_G\}$, alors $f$ est injectif.**
+- Supposons $\text{Ker}(f) = \{e_G\}$.
+- Soient $g_1, g_2 \in G$ tels que $f(g_1) = f(g_2)$.
+- On veut montrer que $g_1 = g_2$.
+- Multiplions l'équation par $(f(g_2))^{-1}$ à droite (dans $H$).
+  $f(g_1) * (f(g_2))^{-1} = f(g_2) * (f(g_2))^{-1} = e_H$.
+- Comme $f$ est un morphisme, $(f(g_2))^{-1} = f(g_2^{-1})$.
+- L'équation devient : $f(g_1) * f(g_2^{-1}) = e_H$.
+- Encore par propriété de morphisme : $f(g_1 \cdot g_2^{-1}) = e_H$.
+- Ceci signifie que l'élément $g_1 \cdot g_2^{-1}$ appartient au noyau de $f$.
+- Par hypothèse, le noyau est réduit à $\{e_G\}$, donc $g_1 \cdot g_2^{-1} = e_G$.
+- En multipliant par $g_2$ à droite, on obtient $g_1 = g_2$.
+- Ainsi, $f$ est injectif.
 
 </details>
 
 ---
 
-Qu'est-ce que l'**associativité** pour une loi de composition interne ?
+Expliquez pourquoi le noyau d'un morphisme d'anneaux est un idéal, et pas seulement un sous-anneau.
 
 <details>
 <summary>Réponse</summary>
 
-Une loi de composition interne $*$ sur un ensemble $X$ est **associative** si l'ordre dans lequel on effectue les opérations n'a pas d'importance lorsque l'on combine trois éléments ou plus.
+Soit $f: A \to B$ un morphisme d'anneaux. Le noyau est $\text{Ker}(f) = \{a \in A \mid f(a) = 0_B\}$.
 
-Formellement : Pour tous $x, y, z \in X$, on a $(x * y) * z = x * (y * z)$.
+Un **sous-anneau** $S$ de $A$ doit vérifier :
+1. $(S,+)$ est un sous-groupe de $(A,+)$.
+2. $S$ est stable pour la multiplication de $A$.
+3. $1_A \in S$.
 
-**Exemples :**
-- L'addition sur $\mathbb{R}$ est associative : $(2+3)+4 = 5+4=9$ et $2+(3+4) = 2+7=9$.
-- La soustraction sur $\mathbb{R}$ n'est **pas** associative : $(8-3)-2 = 5-2=3$, mais $8-(3-2) = 8-1=7$.
+Un **idéal** $I$ de $A$ doit vérifier :
+1. $(I,+)$ est un sous-groupe de $(A,+)$.
+2. $I$ est **absorbant** pour la multiplication : $\forall a \in A, \forall x \in I, ax \in I$.
+
+Montrons que $\text{Ker}(f)$ est un idéal :
+1.  **Sous-groupe additif** :
+    - $f(0_A) = 0_B$, donc $0_A \in \text{Ker}(f)$.
+    - Si $x, y \in \text{Ker}(f)$, alors $f(x)=0_B$ et $f(y)=0_B$.
+    - $f(x-y) = f(x) - f(y) = 0_B - 0_B = 0_B$, donc $x-y \in \text{Ker}(f)$.
+    - Donc $(\text{Ker}(f), +)$ est un sous-groupe de $(A,+)$.
+
+2.  **Propriété d'absorption** :
+    - Soit $x \in \text{Ker}(f)$ (c-à-d. $f(x)=0_B$) et $a \in A$ (un élément quelconque de l'anneau).
+    - On calcule $f(ax)$:
+      $f(ax) = f(a) \cdot f(x)$ (car $f$ est un morphisme d'anneaux)
+      $f(ax) = f(a) \cdot 0_B = 0_B$.
+    - Donc, $ax \in \text{Ker}(f)$.
+    - Ceci montre que $\text{Ker}(f)$ est absorbant.
+
+**Pourquoi n'est-ce pas (en général) un sous-anneau ?**
+Le noyau $\text{Ker}(f)$ n'est en général pas un sous-anneau car il ne contient pas l'élément unité $1_A$ (sauf si l'anneau d'arrivée $B$ est l'anneau nul). En effet, pour un morphisme d'anneaux, $f(1_A) = 1_B$. Si $1_A \in \text{Ker}(f)$, cela signifie que $f(1_A) = 0_B$, donc $1_B = 0_B$. Cela n'arrive que si $B$ est l'anneau nul.
+
+La propriété d'absorption est plus forte que la simple stabilité interne, et c'est cette propriété qui est nécessaire pour que la multiplication sur l'anneau quotient $A/\text{Ker}(f)$ soit bien définie.
 
 </details>
 
 ---
 
-Qu'est-ce que la **commutativité** pour une loi de composition interne ?
+L'anneau $\mathbb{Z}/6\mathbb{Z}$ est-il un anneau intègre ? Est-il un corps ? Justifiez.
 
 <details>
 <summary>Réponse</summary>
 
-Une loi de composition interne $*$ sur un ensemble $X$ est **commutative** si l'ordre des deux éléments n'a pas d'importance.
+Un anneau $A$ est **intègre** si $A \neq \{0\}$ et s'il n'a pas de diviseur de zéro, c'est-à-dire : $\forall a,b \in A, (ab=0 \Rightarrow a=0 \text{ ou } b=0)$.
+Un **corps** est un anneau commutatif non nul où tout élément non nul est inversible.
 
-Formellement : Pour tous $x, y \in X$, on a $x * y = y * x$.
+Considérons l'anneau $\mathbb{Z}/6\mathbb{Z} = \{\bar{0}, \bar{1}, \bar{2}, \bar{3}, \bar{4}, \bar{5}\}$.
 
-**Exemples :**
-- La multiplication sur $\mathbb{R}$ est commutative : $5 \times 3 = 15$ et $3 \times 5 = 15$.
-- La composition de fonctions $f \circ g$ n'est en général **pas** commutative. Si $f(x)=x+1$ et $g(x)=x^2$, alors $(f \circ g)(x) = x^2+1$ mais $(g \circ f)(x)=(x+1)^2$.
+1.  **Est-il intègre ?**
+    - Cherchons des diviseurs de zéro. Ce sont des éléments non nuls $a, b$ dont le produit est nul.
+    - Calculons $\bar{2} \cdot \bar{3}$ dans $\mathbb{Z}/6\mathbb{Z}$.
+      $\bar{2} \cdot \bar{3} = \overline{2 \times 3} = \bar{6}$.
+    - Dans $\mathbb{Z}/6\mathbb{Z}$, $\bar{6}$ est la classe de 6, qui est la même que la classe de 0. Donc $\bar{6} = \bar{0}$.
+    - On a donc trouvé $\bar{2} \neq \bar{0}$ et $\bar{3} \neq \bar{0}$ tels que $\bar{2} \cdot \bar{3} = \bar{0}$.
+    - **Conclusion** : $\mathbb{Z}/6\mathbb{Z}$ possède des diviseurs de zéro, il n'est donc **pas un anneau intègre**.
+
+2.  **Est-il un corps ?**
+    - Une propriété fondamentale est que **tout corps est un anneau intègre**.
+    - Puisque nous avons montré que $\mathbb{Z}/6\mathbb{Z}$ n'est pas intègre, il ne peut **pas être un corps**.
+    - Alternativement, pour être un corps, tout élément non nul doit être inversible. L'élément $\bar{2}$ n'a pas d'inverse multiplicatif dans $\mathbb{Z}/6\mathbb{Z}$ (on peut tester tous les produits : $\bar{2}\cdot\bar{1}=\bar{2}$, $\bar{2}\cdot\bar{2}=\bar{4}$, $\bar{2}\cdot\bar{3}=\bar{0}$, $\bar{2}\cdot\bar{4}=\bar{8}=\bar{2}$, $\bar{2}\cdot\bar{5}=\overline{10}=\bar{4}$).
+
+**Règle générale :** L'anneau $\mathbb{Z}/n\mathbb{Z}$ est un corps (et donc intègre) si et seulement si $n$ est un nombre premier. Comme 6 n'est pas premier, $\mathbb{Z}/6\mathbb{Z}$ n'est ni l'un ni l'autre.
 
 </details>
 
 ---
 
-Qu'est-ce qu'un **élément neutre** ?
+Soit $M$ un monoïde. Montrez que l'ensemble $M^\times$ de ses éléments inversibles forme un groupe pour la même loi de composition.
 
 <details>
 <summary>Réponse</summary>
 
-Pour une loi de composition interne $*$ sur un ensemble $X$, un **élément neutre** (noté $e$) est un élément spécial qui, lorsqu'il est combiné avec n'importe quel autre élément $x$, ne change pas cet élément.
+Soit $(M, *, e)$ un monoïde. L'ensemble des éléments inversibles est $M^\times = \{x \in M \mid \exists y \in M, x*y = y*x = e\}$.
+Pour montrer que $(M^\times, *, e)$ est un groupe, nous devons vérifier les quatre axiomes du groupe.
 
-Formellement : Il existe un élément $e \in X$ tel que pour tout $x \in X$, on a $e * x = x * e = x$.
+1.  **Stabilité de la loi** : La loi $*$ est-elle une loi de composition interne sur $M^\times$ ?
+    - Soient $a, b \in M^\times$. Il existe $a^{-1}, b^{-1} \in M$ qui sont leurs inverses.
+    - Montrons que $a*b$ est aussi dans $M^\times$. On doit lui trouver un inverse.
+    - Le candidat naturel est $b^{-1}*a^{-1}$. Vérifions :
+      $(a*b)*(b^{-1}*a^{-1}) = a*(b*b^{-1})*a^{-1}$ (par associativité)
+      $= a*e*a^{-1} = a*a^{-1} = e$.
+      De même, $(b^{-1}*a^{-1})*(a*b) = b^{-1}*(a^{-1}*a)*b = b^{-1}*e*b = b^{-1}*b = e$.
+    - Donc, $a*b$ est inversible (d'inverse $b^{-1}*a^{-1}$) et appartient à $M^\times$. La loi est stable.
 
-**Exemples :**
-- Pour l'addition $(+)$ sur $\mathbb{Z}$, l'élément neutre est $0$ car $0+x=x+0=x$.
-- Pour la multiplication $(\times)$ sur $\mathbb{R}$, l'élément neutre est $1$ car $1 \times x = x \times 1 = x$.
-- S'il existe, l'élément neutre est **unique** pour une loi donnée.
+2.  **Associativité** : La loi $*$ est associative sur $M^\times$ car elle est associative sur l'ensemble plus grand $M$.
+
+3.  **Élément neutre** : L'élément neutre $e$ de $M$ est-il dans $M^\times$ ?
+    - Oui, car $e*e = e$, donc $e$ est son propre inverse. $e$ est bien inversible, donc $e \in M^\times$.
+
+4.  **Inverse** : Tout élément de $M^\times$ a-t-il un inverse dans $M^\times$ ?
+    - Soit $a \in M^\times$. Par définition, il existe $a^{-1} \in M$ tel que $a*a^{-1} = a^{-1}*a = e$.
+    - Pour que $a^{-1}$ soit dans $M^\times$, il faut qu'il soit lui-même inversible.
+    - L'équation $a^{-1}*a = e$ montre que $a$ est l'inverse de $a^{-1}$. Donc $a^{-1}$ est inversible.
+    - Ainsi, $a^{-1} \in M^\times$.
+
+Toutes les propriétés sont vérifiées, donc $(M^\times, *)$ est un groupe, appelé le **groupe des unités** du monoïde $M$.
 
 </details>
 
 ---
 
-Qu'est-ce qu'un **groupe** ?
+Comparez le rôle d'un sous-groupe normal dans la construction d'un groupe quotient et le rôle d'un idéal dans la construction d'un anneau quotient.
 
 <details>
 <summary>Réponse</summary>
 
-Un **groupe** est une structure algébrique de base. C'est un ensemble $G$ muni d'une loi de composition interne $*$ qui satisfait quatre propriétés :
+Les sous-groupes normaux et les idéaux sont des sous-structures "spéciales" qui permettent de définir une structure algébrique cohérente sur l'ensemble des classes d'équivalence. Leur rôle est analogue mais adapté à leur contexte respectif.
 
-1.  **Stabilité :** Pour tous $a, b \in G$, le résultat $a * b$ est aussi dans $G$. (Inclus dans la définition de la loi).
-2.  **Associativité :** Pour tous $a, b, c \in G$, on a $(a * b) * c = a * (b * c)$.
-3.  **Élément neutre :** Il existe un élément $e \in G$ tel que pour tout $a \in G$, $a * e = e * a = a$.
-4.  **Inverse :** Pour chaque élément $a \in G$, il existe un élément inverse $a^{-1} \in G$ tel que $a * a^{-1} = a^{-1} * a = e$.
+**Analogies :**
 
-**Exemple :** L'ensemble des entiers relatifs $(\mathbb{Z}, +)$ est un groupe. L'addition est associative, 0 est l'élément neutre, et l'inverse de tout entier $n$ est $-n$.
+| Concept | Groupe | Anneau |
+| :--- | :--- | :--- |
+| **Structure** | $(G, \cdot)$ | $(A, +, \cdot)$ |
+| **Sous-structure spéciale** | Sous-groupe normal $H$ | Idéal $I$ |
+| **Condition de base** | $H$ est un sous-groupe | $I$ est un sous-groupe additif |
+| **Condition "spéciale"** | $\forall g \in G, gHg^{-1} = H$ | $\forall a \in A, aI \subseteq I$ (absorption) |
+| **Relation d'équivalence**| $x \sim y \Leftrightarrow xy^{-1} \in H$ | $x \sim y \Leftrightarrow x-y \in I$ |
+| **Ensemble quotient** | $G/H$ (ensemble des classes $gH$) | $A/I$ (ensemble des classes $a+I$) |
+| **Loi quotient** | $(g_1H)(g_2H) = (g_1g_2)H$ | $(a_1+I)(a_2+I) = (a_1a_2)+I$ |
+| **Noyau d'un morphisme** | Est toujours un sous-groupe normal | Est toujours un idéal |
+
+**Le "Pourquoi" de la condition spéciale :**
+L'objectif est que l'opération sur l'ensemble quotient soit **bien définie**, c'est-à-dire que le résultat ne dépende pas des représentants choisis pour les classes.
+
+- **Pour les groupes** : On veut que $(g_1h_1 H)(g_2h_2 H) = (g_1g_2)H$. Le calcul montre que cela fonctionne si et seulement si le sous-groupe $H$ est **normal**. La condition $gH=Hg$ est cruciale.
+
+- **Pour les anneaux** : La multiplication quotient $(a_1+i_1)(a_2+i_2) = a_1a_2 + a_1i_2 + i_1a_2 + i_1i_2$ doit être dans la classe $a_1a_2 + I$. Les termes $a_1i_2$, $i_1a_2$ et $i_1i_2$ doivent être dans $I$. La condition que $I$ soit un **idéal** (absorbant à gauche et à droite) garantit exactement cela.
+
+**Conclusion :**
+Un idéal est à un anneau ce qu'un sous-groupe normal est à un groupe. C'est la sous-structure minimale requise pour "quotienter" la structure principale tout en préservant une structure algébrique cohérente du même type.
 
 </details>
 
 ---
 
-Qu'est-ce qu'un groupe **abélien** (ou commutatif) ?
+Comment construit-on l'ensemble des nombres rationnels $\mathbb{Q}$ à partir de $\mathbb{Z}$ en utilisant une relation d'équivalence ?
 
 <details>
 <summary>Réponse</summary>
 
-Un groupe $(G, *)$ est dit **abélien** (ou **commutatif**) si sa loi de composition interne est commutative.
+La construction de $\mathbb{Q}$ formalise l'idée qu'une fraction comme $1/2$ est la même que $2/4$ ou $3/6$. On utilise pour cela un ensemble quotient.
 
-En plus des quatre propriétés d'un groupe, un groupe abélien satisfait une cinquième condition :
-5.  **Commutativité :** Pour tous $a, b \in G$, on a $a * b = b * a$.
+**Étapes de la construction :**
 
-**Exemples :**
-- $(\mathbb{Z}, +)$ est un groupe abélien car $a+b=b+a$.
-- Le groupe des rotations dans un plan est abélien.
-- Le groupe des permutations de 3 éléments ou plus n'est **pas** abélien.
+1.  **Définir l'ensemble de départ** : On considère les paires d'entiers $(p, q)$ où le "dénominateur" $q$ n'est pas nul. Soit l'ensemble $E = \mathbb{Z} \times (\mathbb{Z}\setminus\{0\})$. Un élément $(p, q)$ de $E$ est une représentation possible de la fraction $p/q$.
 
-</details>
+2.  **Définir la relation d'équivalence** : On définit une relation $\sim$ sur $E$ qui capture l'égalité des fractions. Deux paires $(p, q)$ et $(r, s)$ sont équivalentes si "les produits en croix sont égaux".
+    $$ (p, q) \sim (r, s) \iff ps = qr $$
+    On doit vérifier que $\sim$ est bien une relation d'équivalence :
+    - **Réflexivité** : $(p,q) \sim (p,q)$ car $pq = qp$.
+    - **Symétrie** : Si $(p,q) \sim (r,s)$, alors $ps=qr$. Donc $rq=sp$, ce qui signifie $(r,s) \sim (p,q)$.
+    - **Transitivité** : Si $(p,q) \sim (r,s)$ et $(r,s) \sim (t,u)$, alors $ps=qr$ et $ru=st$. On multiplie la première par $u$ et la seconde par $q$ : $psu=qru$ et $qru=qst$. Donc $psu=qst$. Comme $s \neq 0$, on peut simplifier par $s$ pour obtenir $pu=qt$, ce qui signifie $(p,q) \sim (t,u)$.
 
----
+3.  **Définir l'ensemble quotient** : L'ensemble des nombres rationnels $\mathbb{Q}$ est défini comme l'ensemble quotient de $E$ par cette relation :
+    $$ \mathbb{Q} := E/\sim = (\mathbb{Z} \times \mathbb{Z}^*)/\sim $$
+    Un nombre rationnel est donc une **classe d'équivalence** de paires. Par exemple, le nombre rationnel "un demi" est la classe d'équivalence de $(1,2)$, qui est l'ensemble :
+    $$ \text{cl}(1,2) = \{ (1,2), (2,4), (-1,-2), (3,6), \dots \} $$
+    On note usuellement cette classe $\frac{p}{q}$ au lieu de $\text{cl}(p,q)$.
 
-Qu'est-ce qu'un **anneau** ?
-
-<details>
-<summary>Réponse</summary>
-
-Un **anneau** est une structure algébrique plus riche qu'un groupe. C'est un ensemble $A$ avec **deux** lois de composition interne, généralement notées $+$ (addition) et $\times$ (multiplication), qui respectent les règles suivantes :
-
-1.  $(A, +)$ est un **groupe abélien**. (L'addition est associative, commutative, a un neutre 0, et chaque élément a un opposé).
-2.  La multiplication $\times$ est **associative** et possède un **élément neutre** (généralement noté 1).
-3.  La multiplication est **distributive** par rapport à l'addition. C'est-à-dire, pour tous $a, b, c \in A$ :
-    - $a \times (b + c) = (a \times b) + (a \times c)$
-    - $(b + c) \times a = (b \times a) + (c \times a)$
-
-**Exemple :** L'ensemble des entiers $(\mathbb{Z}, +, \times)$ est un anneau.
+4.  **Définir les opérations** : On définit ensuite l'addition et la multiplication sur ces classes, et on vérifie qu'elles sont bien définies (indépendantes des représentants choisis).
 
 </details>
-
----
-
-Qu'est-ce qu'un **corps** ?
-
-<details>
-<summary>Réponse</summary>
-
-Un **corps** est un type spécial d'anneau où la division est possible (sauf par zéro). C'est un anneau commutatif $(K, +, \times)$ qui satisfait une condition supplémentaire :
-
-- **Tout élément non nul est inversible pour la multiplication.**
-
-Cela signifie que pour chaque élément $a \in K$ où $a \neq 0$, il existe un inverse multiplicatif $a^{-1}$ tel que $a \times a^{-1} = 1$.
-
-**En résumé, un corps est un ensemble où on peut additionner, soustraire, multiplier et diviser (sauf par zéro) comme on en a l'habitude.**
-
-**Exemples :**
-- L'ensemble des nombres rationnels $(\mathbb{Q}, +, \times)$.
-- L'ensemble des nombres réels $(\mathbb{R}, +, \times)$.
-- L'ensemble des nombres complexes $(\mathbb{C}, +, \times)$.
-- L'anneau $(\mathbb{Z}, +, \times)$ n'est **pas** un corps, car seuls 1 et -1 ont un inverse pour la multiplication dans $\mathbb{Z}$.
-
-</details>
-
----
-
-Qu'est-ce qu'un **sous-groupe** ?
-
-<details>
-<summary>Réponse</summary>
-
-Un **sous-groupe** est une partie d'un groupe qui est elle-même un groupe avec la même loi de composition.
-
-Soit $(G, *)$ un groupe. Un sous-ensemble $H \subset G$ est un sous-groupe de $G$ si :
-1.  $H$ n'est pas vide.
-2.  $H$ est **stable** par la loi $*$ : si $a \in H$ et $b \in H$, alors $a*b \in H$.
-3.  $H$ est **stable** par passage à l'inverse : si $a \in H$, alors son inverse $a^{-1}$ est aussi dans $H$.
-
-**Exemple :** L'ensemble des entiers pairs $(2\mathbb{Z}, +)$ est un sous-groupe de $(\mathbb{Z}, +)$.
-- La somme de deux entiers pairs est un entier pair.
-- L'opposé d'un entier pair est un entier pair.
-
-</details>
-
----
