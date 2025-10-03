@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 import { toggleCheck } from './QuizEnhancer';
+import { useStorage } from '../hooks/useStorage';
 
 interface CardRendererProps {
   cards: ParsedCards;
@@ -122,22 +123,4 @@ function Option({ option }: { option: QuizOption }) {
       />
     </li>
   );
-}
-
-function useStorage(key: string, initialValue: any) {
-  const v = localStorage.getItem(key);
-  const [value, set] = useState(v ? JSON.parse(v) : initialValue);
-  function setValue(value: any) {
-    if (typeof window === 'undefined') return;
-    localStorage.setItem(key, JSON.stringify(value));
-    set(value);
-  }
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const item = localStorage.getItem(key);
-    if (item) {
-      setValue(JSON.parse(item));
-    }
-  }, [key]);
-  return [value, setValue];
 }

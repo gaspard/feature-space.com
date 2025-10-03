@@ -168,7 +168,7 @@ const socialImage = new URL(image, Astro.site);
 				<div class="main-content">
 					<slot />
 				</div>
-				<QuizEnhancer quizId={quizId || ""} client:load />
+				<QuizEnhancer quizId={quizId || ""} client:visible />
 			</main>
 		</div>
 
