@@ -1,0 +1,12 @@
+---
+title: "1 - Quiz basique"
+order: 13
+layout: "../../../../layouts/Layout.astro"
+---
+import quiz from "./_Geometrie-01.basic.v.quiz";
+import CardRenderer from "../../../../components/CardRenderer.tsx";
+
+<div class="quiz-page">
+  <h1>{quiz.title}</h1>
+  <CardRenderer cards={quiz} client:only="react" />
+</div>

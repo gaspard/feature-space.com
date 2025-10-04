@@ -1,0 +1,363 @@
+---
+id: '92d5497a'
+title: '1 - Quiz de base'
+layout: '../../../../layouts/Layout.astro'
+order: 23
+level: basic
+chapter: Untitled Chapter
+course: "Untitled Course"
+---
+
+# Quiz : Espaces Euclidiens et Hermitiens
+
+---
+
+#### Question 1 : Définition d'une forme bilinéaire
+
+Qu'est-ce qui caractérise une forme bilinéaire $\varphi: E \times E \to \mathbb{R}$ sur un espace vectoriel réel $E$ ?
+
+- [ ] **A)** Elle est linéaire par rapport à la somme des deux variables : $\varphi(u+v, u+v) = \varphi(u,u) + \varphi(v,v)$.
+- [ ] **B)** Elle est linéaire par rapport à la première variable et semi-linéaire par rapport à la seconde.
+- [x] **C)** Elle est linéaire par rapport à chacune de ses deux variables, séparément.
+- [ ] **D)** Son résultat est toujours un nombre positif.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+- **A)** Ceci est une propriété incorrecte et ne correspond pas à la définition de la linéarité.
+- **B)** Ceci est la définition d'une forme sesquilinéaire, qui est utilisée sur les espaces vectoriels complexes.
+- **C)** C'est la définition exacte d'une forme bilinéaire : l'application est linéaire par rapport à la première variable lorsque la seconde est fixée, et vice-versa.
+- **D)** C'est une propriété des formes bilinéaires dites "positives", mais ce n'est pas une condition requise pour toutes les formes bilinéaires.
+
+</details>
+
+---
+
+#### Question 2 : Formes sesquilinéaires
+
+Sur un espace vectoriel complexe $E$, quelle propriété distingue une forme sesquilinéaire d'une forme bilinéaire ?
+
+- [x] **A)** La semi-linéarité (ou anti-linéarité) par rapport à la seconde variable.
+- [ ] **B)** Elle est toujours à valeurs dans $\mathbb{R}$.
+- [ ] **C)** Elle n'est linéaire pour aucune de ses variables.
+- [ ] **D)** Elle est symétrique.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+- **A)** C'est la différence fondamentale. Pour une forme sesquilinéaire $\varphi$, on a $\varphi(u, \lambda v) = \bar{\lambda}\varphi(u, v)$, où $\bar{\lambda}$ est le conjugué de $\lambda$. Pour une forme bilinéaire, on aurait $\lambda$ au lieu de $\bar{\lambda}$.
+- **B)** Une forme sesquilinéaire sur un espace complexe est à valeurs dans $\mathbb{C}$. C'est la condition $\varphi(x,x) \in \mathbb{R}$ qui est importante pour les produits scalaires, mais pas une propriété générale des formes sesquilinéaires.
+- **C)** Elle est linéaire par rapport à sa première variable. Le préfixe "sesqui" signifie "un et demi", faisant référence à "une linéarité et une semi-linéarité".
+- **D)** La symétrie hermitienne ($\varphi(x, y) = \overline{\varphi(y, x)}$) est une propriété requise pour les produits scalaires hermitiens, mais pas pour toutes les formes sesquilinéaires.
+
+</details>
+
+---
+
+#### Question 3 : Propriétés d'un produit scalaire
+
+Parmi les propriétés suivantes, lesquelles sont requises pour qu'une application $\langle \cdot, \cdot \rangle$ soit un produit scalaire sur un espace vectoriel réel $E$ ?
+
+- [x] **A)** Elle doit être symétrique.
+- [x] **B)** Elle doit être bilinéaire.
+- [ ] **C)** Pour tout vecteur non nul $x$, $\langle x, x \rangle$ doit être strictement négatif.
+- [x] **D)** Elle doit être définie positive.
+
+<details>
+<summary>Solution</summary>
+
+**Réponses : [A, B, D]**
+
+- **A)** Correct. La symétrie ($\langle x, y \rangle = \langle y, x \rangle$ pour le cas réel) est l'une des trois propriétés fondamentales.
+- **B)** Correct. Un produit scalaire est un cas particulier de forme bilinéaire (dans le cas réel).
+- **C)** Incorrect. La propriété requise est que $\langle x, x \rangle$ soit positif ou nul. Strictement négatif contredit la définition.
+- **D)** Correct. La propriété "définie positive" signifie que $\langle x, x \rangle \ge 0$ pour tout $x$, et que $\langle x, x \rangle = 0$ si et seulement si $x$ est le vecteur nul.
+
+</details>
+
+---
+
+#### Question 4 : Identification d'un non-produit scalaire
+
+Sur $\mathbb{R}^2$, on considère l'application $\varphi(x, y) = x_1y_1$. Cette forme est bilinéaire, symétrique et positive, mais ce n'est pas un produit scalaire. Quelle propriété lui manque ?
+
+- [ ] **A)** Elle n'est pas bilinéaire.
+- [ ] **B)** Elle n'est pas symétrique.
+- [ ] **C)** Elle n'est pas positive.
+- [x] **D)** Elle n'est pas "définie".
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+La propriété "définie positive" a deux parties :
+1. Positive : $\varphi(x,x) \ge 0$. Ici, $\varphi(x,x) = x_1^2 \ge 0$, donc c'est bon.
+2. Définie : $\varphi(x,x) = 0 \iff x = 0_E$.
+
+- **A)** L'application est bien bilinéaire.
+- **B)** L'application est bien symétrique car $x_1y_1 = y_1x_1$.
+- **C)** L'application est positive car $\varphi(x,x) = x_1^2 \ge 0$.
+- **D)** Correct. La partie "définie" de la propriété fait défaut. En effet, prenons le vecteur non nul $x = (0, 1)$. On a $\varphi(x,x) = 0^2 = 0$, mais $x \neq (0,0)$.
+
+</details>
+
+---
+
+#### Question 5 : Définition de la norme
+
+Soit $(E, \langle \cdot, \cdot \rangle)$ un espace euclidien ou hermitien. Comment la norme $\|x\|$ d'un vecteur $x$ est-elle définie ?
+
+- [x] **A)** $\|x\| = \sqrt{\langle x, x \rangle}$
+- [ ] **B)** $\|x\| = \langle x, x \rangle$
+- [ ] **C)** $\|x\| = |\langle x, x \rangle|$
+- [ ] **D)** $\|x\| = \langle x, 1 \rangle$
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+- **A)** C'est la définition correcte de la norme associée à un produit scalaire. Comme $\langle x, x \rangle$ est toujours un réel positif ou nul, la racine carrée est bien définie.
+- **B)** Ceci est le carré de la norme, $\|x\|^2$.
+- **C)** Puisque $\langle x, x \rangle \ge 0$, la valeur absolue est inutile. Cela reste le carré de la norme.
+- **D)** Le produit scalaire $\langle x, 1 \rangle$ n'a pas de sens général car $1$ est un scalaire, pas un vecteur de $E$ (sauf cas très particulier).
+
+</details>
+
+---
+
+#### Question 6 : Inégalité de Cauchy-Schwarz
+
+Quelle est l'inégalité de Cauchy-Schwarz pour deux vecteurs $x$ et $y$ dans un espace préhilbertien ?
+
+- [ ] **A)** $\|x+y\|^2 = \|x\|^2 + \|y\|^2$
+- [ ] **B)** $\|\lambda x\| = \lambda \|x\|$
+- [ ] **C)** $\|x+y\| \le \|x\| + \|y\|$
+- [x] **D)** $|\langle x, y \rangle| \le \|x\| \|y\|$
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+- **A)** C'est le théorème de Pythagore, qui n'est vrai que si $x$ et $y$ sont orthogonaux.
+- **B)** C'est une propriété de la norme (homogénéité), mais la forme correcte est $\|\lambda x\| = |\lambda| \|x\|$.
+- **C)** C'est l'inégalité triangulaire, une conséquence de l'inégalité de Cauchy-Schwarz.
+- **D)** C'est l'énoncé exact de l'inégalité de Cauchy-Schwarz, qui relie le produit scalaire des vecteurs à leurs normes.
+
+</details>
+
+---
+
+#### Question 7 : Orthogonalité
+
+Quand dit-on que deux vecteurs $x$ et $y$ d'un espace euclidien sont orthogonaux ?
+
+- [ ] **A)** Lorsque $x$ et $y$ sont linéairement indépendants.
+- [x] **B)** Lorsque leur produit scalaire est nul.
+- [ ] **C)** Lorsque leurs normes sont égales à 1.
+- [ ] **D)** Lorsque $x-y=0$.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+- **A)** Deux vecteurs orthogonaux non nuls sont toujours linéairement indépendants, mais l'inverse n'est pas vrai. Par exemple, $(1,0)$ et $(1,1)$ sont indépendants mais pas orthogonaux.
+- **B)** C'est la définition de l'orthogonalité : $x \perp y \iff \langle x, y \rangle = 0$.
+- **C)** Avoir une norme égale à 1 signifie que les vecteurs sont unitaires (ou normalisés), ce qui n'a rien à voir avec l'angle entre eux.
+- **D)** Cela signifie que $x=y$. $\langle x, x \rangle = 0$ seulement si $x=0$, donc cette condition n'implique l'orthogonalité que pour le vecteur nul.
+
+</details>
+
+---
+
+#### Question 8 : Théorème de Pythagore
+
+Si les vecteurs $x$ et $y$ sont orthogonaux, à quoi est égal $\|x+y\|^2$ ?
+
+- [ ] **A)** 0
+- [ ] **B)** $(\|x\| + \|y\|)^2$
+- [x] **C)** $\|x\|^2 + \|y\|^2$
+- [ ] **D)** $|\langle x,y \rangle|$
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Le théorème de Pythagore généralisé aux espaces euclidiens est une conséquence directe des propriétés du produit scalaire :
+$\|x+y\|^2 = \langle x+y, x+y \rangle = \langle x,x \rangle + \langle x,y \rangle + \langle y,x \rangle + \langle y,y \rangle$.
+Puisque $x$ et $y$ sont orthogonaux, $\langle x,y \rangle = \langle y,x \rangle = 0$.
+Il reste donc $\|x+y\|^2 = \langle x,x \rangle + \langle y,y \rangle = \|x\|^2 + \|y\|^2$.
+
+</details>
+
+---
+
+#### Question 9 : Base orthonormée
+
+Quelle est la définition d'une base orthonormée $(e_1, ..., e_n)$ ?
+
+- [x] **A)** C'est une base où les vecteurs sont deux à deux orthogonaux et chacun de norme 1.
+- [ ] **B)** C'est une base où tous les vecteurs ont la même norme.
+- [ ] **C)** C'est une base où tous les produits scalaires $\langle e_i, e_j \rangle$ sont non nuls.
+- [ ] **D)** C'est une base orthogonale.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+Une base orthonormée combine deux concepts :
+1.  **Ortho-** : les vecteurs sont deux à deux orthogonaux ($\langle e_i, e_j \rangle = 0$ pour $i \ne j$).
+2.  **-normée** : chaque vecteur est de norme 1 ($\|e_i\| = 1$ pour tout $i$).
+
+- **A)** C'est la définition complète et correcte.
+- **B)** Ceci ne garantit pas l'orthogonalité.
+- **C)** C'est le contraire de la condition d'orthogonalité.
+- **D)** Une base orthogonale a des vecteurs deux à deux orthogonaux, mais leurs normes ne sont pas nécessairement 1. C'est donc une condition nécessaire mais pas suffisante.
+
+</details>
+
+---
+
+#### Question 10 : Coordonnées dans une base orthonormée
+
+Si $\mathcal{B}=(e_1, ..., e_n)$ est une base orthonormée, comment calcule-t-on la coordonnée $x_i$ d'un vecteur $x$ selon le vecteur $e_i$ ?
+
+- [ ] **A)** $x_i = \|x\| / \|e_i\|$
+- [ ] **B)** $x_i$ ne peut pas être calculé avec le produit scalaire.
+- [ ] **C)** $x_i = \langle x, x \rangle$
+- [x] **D)** $x_i = \langle x, e_i \rangle$
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+C'est l'une des propriétés les plus utiles des bases orthonormées. Puisque $x$ s'écrit de manière unique $x = \sum_{j=1}^n x_j e_j$, on peut trouver $x_i$ en faisant le produit scalaire avec $e_i$ :
+$\langle x, e_i \rangle = \langle \sum_{j=1}^n x_j e_j, e_i \rangle = \sum_{j=1}^n x_j \langle e_j, e_i \rangle$.
+Comme la base est orthonormée, $\langle e_j, e_i \rangle = 0$ si $j \ne i$ et $1$ si $j=i$. La somme se réduit donc au seul terme où $j=i$, ce qui donne $\langle x, e_i \rangle = x_i \cdot 1 = x_i$.
+
+</details>
+
+---
+
+#### Question 11 : Utilité du procédé de Gram-Schmidt
+
+Quelle est l'utilité principale du procédé d'orthonormalisation de Gram-Schmidt ?
+
+- [ ] **A)** Inverser une matrice.
+- [ ] **B)** Calculer la distance entre deux vecteurs.
+- [x] **C)** Transformer une base quelconque en une base orthonormée.
+- [ ] **D)** Déterminer si un vecteur appartient à un sous-espace.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+- **A)** Gram-Schmidt n'est pas un algorithme d'inversion de matrice.
+- **B)** La distance entre $x$ et $y$ est simplement $\|x-y\|$, ce qui ne requiert pas ce procédé.
+- **C)** C'est exactement le but de l'algorithme : prendre une famille libre (une base) et produire une famille orthonormée qui engendre le même espace.
+- **D)** Pour cela, on résoudrait un système linéaire, ce n'est pas le rôle de Gram-Schmidt.
+
+</details>
+
+---
+
+#### Question 12 : L'orthogonal d'un sous-espace
+
+Soit $F$ un sous-espace vectoriel d'un espace euclidien $E$. Qu'est-ce que l'orthogonal de F, noté $F^\perp$ ?
+
+- [ ] **A)** Le sous-espace de $E$ de plus grande dimension.
+- [x] **B)** L'ensemble des vecteurs de $E$ qui sont orthogonaux à tous les vecteurs de $F$.
+- [ ] **C)** Un vecteur unique qui est perpendiculaire à $F$.
+- [ ] **D)** L'ensemble des vecteurs qui sont dans $E$ mais pas dans $F$.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+- **A)** C'est $E$ lui-même, pas $F^\perp$ (sauf si $F=\{0_E\}$).
+- **B)** C'est la définition formelle : $F^\perp = \{ x \in E \mid \forall y \in F, \langle x, y \rangle = 0 \}$.
+- **C)** $F^\perp$ est un sous-espace vectoriel, pas un vecteur unique (sauf cas triviaux).
+- **D)** C'est le complémentaire de $F$ dans $E$, qui n'est pas un sous-espace vectoriel.
+
+</details>
+
+---
+
+#### Question 13 : Projection orthogonale
+
+Soit $P_F(x)$ la projection orthogonale d'un vecteur $x$ sur un sous-espace $F$. Quelle est la propriété principale de $P_F(x)$ ?
+
+- [x] **A)** C'est le vecteur de $F$ qui minimise la distance $\|x-y\|$ pour $y \in F$.
+- [ ] **B)** C'est un vecteur orthogonal à $x$.
+- [ ] **C)** C'est un vecteur de norme égale à $x$.
+- [ ] **D)** C'est le vecteur de $F$ le plus éloigné de l'origine.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+- **A)** C'est la propriété de meilleure approximation. Le projeté orthogonal $P_F(x)$ est le point de $F$ le plus proche de $x$. La distance de $x$ à $F$ est $d(x,F) = \|x - P_F(x)\|$.
+- **B)** Le vecteur $x - P_F(x)$ est orthogonal à $F$ (et donc à $P_F(x)$), mais $P_F(x)$ lui-même n'est en général pas orthogonal à $x$.
+- **C)** La projection réduit (ou conserve) la norme : $\|P_F(x)\| \le \|x\|$. L'égalité n'a lieu que si $x$ est déjà dans $F$.
+- **D)** Cette affirmation n'a pas de sens géométrique général.
+
+</details>
+
+---
+
+#### Question 14 : Endomorphisme adjoint
+
+Soit $f$ un endomorphisme d'un espace euclidien $E$. Quelle est la relation qui définit son adjoint $f^*$ ?
+
+- [ ] **A)** $f^*(x) = 1 / f(x)$
+- [x] **B)** $\langle f(x), y \rangle = \langle x, f^*(y) \rangle$ pour tous $x, y \in E$.
+- [ ] **C)** $f^* \circ f = Id$
+- [ ] **D)** La matrice de $f^*$ est l'inverse de la matrice de $f$.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+- **A)** L'inverse d'un vecteur n'est pas une opération définie.
+- **B)** C'est la définition formelle de l'adjoint. Elle signifie que l'on peut "déplacer" l'endomorphisme de l'autre côté du produit scalaire en le transformant en son adjoint.
+- **C)** Cette relation ($f^* \circ f = Id$) définit un endomorphisme orthogonal (ou unitaire), qui est un cas particulier. Ce n'est pas vrai pour un endomorphisme quelconque.
+- **D)** Cela correspond à la propriété $f^{-1}=f^*$, qui définit les endomorphismes orthogonaux/unitaires, pas l'adjoint en général. Dans une base orthonormée, la matrice de l'adjoint est la transposée (ou transposée conjuguée).
+
+</details>
+
+---
+
+#### Question 15 : Théorème de Riesz
+
+Quel est le message principal du théorème de représentation de Riesz dans un espace euclidien de dimension finie ?
+
+- [ ] **A)** Tous les vecteurs ont une norme de 1.
+- [ ] **B)** Tout espace euclidien admet une base orthonormée.
+- [x] **C)** Toute application linéaire de $E$ dans $\mathbb{R}$ (une forme linéaire) peut être représentée par un produit scalaire avec un vecteur unique de $E$.
+- [ ] **D)** Le produit scalaire de deux vecteurs est toujours un nombre réel.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+- **A)** C'est faux.
+- **B)** C'est un résultat vrai (prouvé via Gram-Schmidt), mais ce n'est pas le théorème de Riesz.
+- **C)** C'est exactement ce que dit le théorème. Il établit une correspondance (un isomorphisme) entre l'espace $E$ et son dual $E^*$ (l'espace des formes linéaires). Pour toute forme linéaire $l$, il existe un unique $y_l \in E$ tel que $l(x) = \langle x, y_l \rangle$.
+- **D)** C'est vrai par définition d'un espace euclidien (sur $\mathbb{R}$), mais ce n'est pas le contenu du théorème de Riesz.
+
+</details>

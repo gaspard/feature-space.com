@@ -65,11 +65,17 @@ async function processDirectoryRecursive(dirPath: string, relativePath: string):
         const children = await processDirectoryRecursive(fullPath, currentRelativePath);
 
         if (children.length > 0) {
+          // Try to get title from info.md or index.md in the directory
+          const infoFile = await getDirectoryInfo(fullPath);
+
+          // Generate accent-less path from the actual directory structure
+          const accentLessPath = generateAccentLessPath(currentRelativePath);
+
           navigationItems.push({
-            title: formatDirectoryTitle(entry.name),
-            path: `/${currentRelativePath}`,
+            title: infoFile?.title || formatDirectoryTitle(entry.name),
+            path: `/${accentLessPath}/`,
             children: sortNavigationItems(children),
-            order: undefined // Directories don't have order by default
+            order: infoFile?.order // Use order from info file if available
           });
         }
       }
@@ -96,17 +102,77 @@ function isValidPageFile(filename: string): boolean {
 }
 
 /**
+ * Gets directory information from index.md or info.md files
+ */
+async function getDirectoryInfo(dirPath: string): Promise<PageInfo | null> {
+  try {
+    const infoFiles = ['index.md', 'info.md'];
+
+    for (const infoFile of infoFiles) {
+      const infoPath = join(dirPath, infoFile);
+      try {
+        const content = await readFile(infoPath, 'utf-8');
+        const { data: frontmatter } = matter(content);
+
+        return {
+          title: frontmatter.title,
+          path: infoPath,
+          order: frontmatter.order,
+          hidden: frontmatter.hidden || false
+        };
+      } catch (error) {
+        // File doesn't exist, continue to next
+        continue;
+      }
+    }
+
+    return null;
+  } catch (error) {
+    console.warn(`Error reading directory info for ${dirPath}:`, error);
+    return null;
+  }
+}
+
+/**
+ * Removes accents from a string for URL-safe paths
+ */
+function removeAccents(str: string): string {
+  return str
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '') // Remove combining diacritical marks
+    .replace(/[^a-zA-Z0-9\s-]/g, '') // Remove special characters except spaces and hyphens
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .toLowerCase();
+}
+
+/**
+ * Generates accent-less path from actual file path
+ */
+function generateAccentLessPath(relativePath: string): string {
+  const pathParts = relativePath.split('/');
+  return pathParts.map(part => removeAccents(part)).join('/');
+}
+
+/**
  * Converts filename to URL path with support for nested directories
+ * Uses accent-less paths for better URL compatibility
  */
 function getUrlPath(filename: string, relativePath?: string): string {
   const name = basename(filename, extname(filename));
 
   // Handle index files
   if (name === 'index') {
-    return relativePath ? `/${relativePath}/` : '/';
+    if (relativePath) {
+      return `/${generateAccentLessPath(relativePath)}/`;
+    }
+    return '/';
   }
 
-  return relativePath ? `/${relativePath}/${name}` : `/${name}`;
+  const accentLessName = removeAccents(name);
+  if (relativePath) {
+    return `/${generateAccentLessPath(relativePath)}/${accentLessName}`;
+  }
+  return `/${accentLessName}`;
 }
 
 /**

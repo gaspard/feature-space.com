@@ -1,0 +1,244 @@
+---
+id: '50e91da7'
+title: '1 - Cartes de base (Espaces Euclidiens et Hermitiens)'
+layout: '../../../../layouts/Layout.astro'
+order: 21
+level: basic
+chapter: Espaces Euclidiens et Hermitiens
+course: Untitled Course
+tags: ["algèbre linéaire", "espace euclidien", "produit scalaire", "norme", "orthogonalité"]
+---
+
+# Cartes: Espaces Euclidiens et Hermitiens
+
+---
+
+Qu'est-ce qu'une forme bilinéaire ?
+
+<details>
+<summary>Réponse</summary>
+
+Une **forme bilinéaire** est une application $\varphi : E \times E \to \mathbb{R}$ sur un espace vectoriel réel $E$ qui est linéaire par rapport à chacune de ses deux variables.
+
+Cela signifie que pour tous vecteurs $u, u_1, u_2, v, v_1, v_2 \in E$ et tout scalaire $\lambda \in \mathbb{R}$ :
+1.  **Linéarité à gauche** : $\varphi(u_1 + \lambda u_2, v) = \varphi(u_1, v) + \lambda\varphi(u_2, v)$
+2.  **Linéarité à droite** : $\varphi(u, v_1 + \lambda v_2) = \varphi(u, v_1) + \lambda\varphi(u, v_2)$
+
+En termes simples, c'est une sorte de "produit" généralisé de deux vecteurs qui donne un nombre réel et respecte la distributivité et la multiplication par un scalaire pour chaque position.
+
+**Exemple :** Le produit scalaire usuel sur $\mathbb{R}^2$, défini par $\varphi((x_1, x_2), (y_1, y_2)) = x_1y_1 + x_2y_2$, est une forme bilinéaire.
+
+</details>
+
+---
+
+Qu'est-ce qu'une forme sesquilinéaire ?
+
+<details>
+<summary>Réponse</summary>
+
+Une **forme sesquilinéaire** est l'équivalent d'une forme bilinéaire pour les espaces vectoriels sur les nombres complexes $\mathbb{C}$. C'est une application $\varphi : E \times E \to \mathbb{C}$ qui est :
+- **Linéaire** par rapport à sa première variable.
+- **Semi-linéaire** (ou anti-linéaire) par rapport à sa seconde variable.
+
+Pour tous $u, u_1, u_2, v, v_1, v_2 \in E$ et $\lambda \in \mathbb{C}$ :
+1.  **Linéarité à gauche** : $\varphi(u_1 + \lambda u_2, v) = \varphi(u_1, v) + \lambda\varphi(u_2, v)$
+2.  **Semi-linéarité à droite** : $\varphi(u, v_1 + \lambda v_2) = \varphi(u, v_1) + \bar{\lambda}\varphi(u, v_2)$
+
+Le $\bar{\lambda}$ (conjugué de $\lambda$) dans la deuxième propriété est la différence cruciale. Il assure que $\varphi(x,x)$ soit un nombre réel, ce qui est essentiel pour définir une longueur.
+
+**Exemple :** Le produit scalaire canonique sur $\mathbb{C}^2$, défini par $\varphi((x_1, x_2), (y_1, y_2)) = x_1\bar{y_1} + x_2\bar{y_2}$, est une forme sesquilinéaire.
+
+</details>
+
+---
+
+Qu'est-ce qu'un produit scalaire ?
+
+<details>
+<summary>Réponse</summary>
+
+Un **produit scalaire** est une opération sur un espace vectoriel qui permet d'introduire des notions géométriques comme la longueur, l'angle et l'orthogonalité. C'est une forme bilinéaire (sur $\mathbb{R}$) ou sesquilinéaire (sur $\mathbb{C}$) qui possède trois propriétés fondamentales, notée $\langle x, y \rangle$ :
+
+1.  **Symétrie (ou Hermitienne)** :
+    - Cas réel : $\langle x, y \rangle = \langle y, x \rangle$ (symétrique)
+    - Cas complexe : $\langle x, y \rangle = \overline{\langle y, x \rangle}$ (hermitienne)
+2.  **B linéarité (ou Sesquilinéarité)** : L'application est linéaire par rapport à la première variable.
+3.  **Définie positive** :
+    - Pour tout $x$, $\langle x, x \rangle \ge 0$ (positive).
+    - $\langle x, x \rangle = 0$ si et seulement si $x$ est le vecteur nul (définie).
+
+Un espace vectoriel muni d'un produit scalaire est appelé **espace préhilbertien**.
+
+</details>
+
+---
+
+Quelle est la différence entre un espace euclidien et un espace hermitien ?
+
+<details>
+<summary>Réponse</summary>
+
+La principale différence réside dans le corps sur lequel l'espace vectoriel est défini et les propriétés du produit scalaire associé.
+
+- Un **espace euclidien** est un espace vectoriel de dimension finie sur le corps des **nombres réels** $\mathbb{R}$, muni d'un produit scalaire (qui est une forme bilinéaire symétrique définie positive).
+
+- Un **espace hermitien** est un espace vectoriel de dimension finie sur le corps des **nombres complexes** $\mathbb{C}$, muni d'un produit scalaire (qui est une forme sesquilinéaire hermitienne définie positive).
+
+En résumé :
+- **Euclidien** $\implies$ Réels ($\mathbb{R}$), bilinéaire, symétrique.
+- **Hermitien** $\implies$ Complexes ($\mathbb{C}$), sesquilinéaire, hermitienne (avec conjugaison).
+
+</details>
+
+---
+
+Quelle est la formule de la norme associée à un produit scalaire ?
+
+<details>
+<summary>Réponse</summary>
+
+La **norme** d'un vecteur $x$, notée $\|x\|$, représente sa longueur. Elle est définie à partir du produit scalaire.
+
+$\text{Formule: } \|x\| = \sqrt{\langle x, x \rangle}$
+
+**Où:**
+- $\|x\|$ est la norme du vecteur $x$.
+- $\langle x, x \rangle$ est le produit scalaire du vecteur $x$ avec lui-même.
+
+**Utilisé pour:**
+Calculer la longueur d'un vecteur dans un espace euclidien ou hermitien. La propriété définie positive du produit scalaire ($\langle x, x \rangle \ge 0$) garantit que cette racine carrée est toujours bien définie et donne un résultat réel positif.
+
+**Exemple:** Dans $\mathbb{R}^3$ avec le produit scalaire usuel, si $x = (1, -2, 2)$, alors :
+$\|x\| = \sqrt{\langle x, x \rangle} = \sqrt{1^2 + (-2)^2 + 2^2} = \sqrt{1+4+4} = \sqrt{9} = 3$.
+
+</details>
+
+---
+
+Quand dit-on que deux vecteurs sont orthogonaux ?
+
+<details>
+<summary>Réponse</summary>
+
+Deux vecteurs $x$ et $y$ d'un espace euclidien ou hermitien sont dits **orthogonaux** si leur produit scalaire est nul.
+
+$$ x \perp y \iff \langle x, y \rangle = 0 $$
+
+L'orthogonalité est la généralisation de la notion géométrique de "perpendicularité".
+
+**Exemple :** Dans $\mathbb{R}^3$ avec le produit scalaire usuel, les vecteurs $x = (1, 1, 0)$ et $y = (1, -1, 5)$ sont orthogonaux car :
+$\langle x, y \rangle = 1 \cdot 1 + 1 \cdot (-1) + 0 \cdot 5 = 1 - 1 + 0 = 0$.
+
+</details>
+
+---
+
+Quelle est l'énoncé du théorème de Pythagore dans un espace euclidien ?
+
+<details>
+<summary>Réponse</summary>
+
+Le **théorème de Pythagore** généralisé stipule que si deux vecteurs $x$ et $y$ sont orthogonaux ($\langle x, y \rangle = 0$), alors le carré de la norme de leur somme est égal à la somme des carrés de leurs normes.
+
+$\text{Formule: } \text{Si } x \perp y, \text{ alors } \|x+y\|^2 = \|x\|^2 + \|y\|^2$
+
+**Explication:**
+Cela correspond exactement au théorème de Pythagore pour un triangle rectangle. Les vecteurs $x$ et $y$ forment les côtés adjacents à l'angle droit, et le vecteur $x+y$ forme l'hypoténuse. La formule exprime que le carré de la longueur de l'hypoténuse est la somme des carrés des longueurs des deux autres côtés.
+
+</details>
+
+---
+
+Qu'est-ce qu'une famille orthonormée ?
+
+<details>
+<summary>Réponse</summary>
+
+Une famille de vecteurs $(e_1, e_2, ..., e_n)$ est dite **orthonormée** si elle satisfait deux conditions :
+
+1.  **Orthogonalité** : Les vecteurs sont deux à deux orthogonaux.
+    $\forall i \ne j, \langle e_i, e_j \rangle = 0$
+
+2.  **Normalisation** : Chaque vecteur est de norme 1 (c'est un vecteur unitaire).
+    $\forall i, \|e_i\| = 1$
+
+Ces deux conditions peuvent être résumées par la formule compacte $\langle e_i, e_j \rangle = \delta_{ij}$, où $\delta_{ij}$ est le symbole de Kronecker (1 si $i=j$, 0 sinon).
+
+**Exemple :** La base canonique $((1,0,0), (0,1,0), (0,0,1))$ est une famille orthonormée dans $\mathbb{R}^3$ pour le produit scalaire usuel.
+
+</details>
+
+---
+
+Qu'est-ce qu'une base orthonormée (BON) ?
+
+<details>
+<summary>Réponse</summary>
+
+Une **base orthonormée** (souvent abrégé en **BON**) d'un espace euclidien ou hermitien est une base de cet espace qui est aussi une famille orthonormée.
+
+Cela signifie que c'est une famille de vecteurs qui :
+1.  **Engendre l'espace** (tout vecteur de l'espace est une combinaison linéaire des vecteurs de la base).
+2.  Est **libre** (aucun vecteur n'est une combinaison linéaire des autres).
+3.  Est **orthonormée** (vecteurs deux à deux orthogonaux et de norme 1).
+
+Les bases orthonormées sont extrêmement utiles car elles simplifient grandement les calculs de coordonnées, de produits scalaires et de normes.
+
+</details>
+
+---
+
+Comment calcule-t-on les coordonnées d'un vecteur dans une base orthonormée ?
+
+<details>
+<summary>Réponse</summary>
+
+Si $\mathcal{B}=(e_1, ..., e_n)$ est une base orthonormée d'un espace $E$, le calcul des coordonnées d'un vecteur $x$ devient très simple. La $i$-ème coordonnée de $x$ dans cette base est simplement le produit scalaire de $x$ avec le $i$-ème vecteur de base $e_i$.
+
+$\text{Formule: } x = \sum_{i=1}^n \langle x, e_i \rangle e_i$
+
+La coordonnée $x_i$ associée au vecteur $e_i$ est donc $x_i = \langle x, e_i \rangle$.
+
+**Exemple:** Dans $\mathbb{R}^2$, soit la base orthonormée $e_1 = (\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}})$ et $e_2 = (\frac{1}{\sqrt{2}}, -\frac{1}{\sqrt{2}})$. Pour trouver les coordonnées de $x=(2,3)$ :
+- Coordonnée 1 : $\langle x, e_1 \rangle = 2 \cdot \frac{1}{\sqrt{2}} + 3 \cdot \frac{1}{\sqrt{2}} = \frac{5}{\sqrt{2}}$
+- Coordonnée 2 : $\langle x, e_2 \rangle = 2 \cdot \frac{1}{\sqrt{2}} + 3 \cdot (-\frac{1}{\sqrt{2}}) = -\frac{1}{\sqrt{2}}$
+Donc, $x$ a pour coordonnées $(\frac{5}{\sqrt{2}}, -\frac{1}{\sqrt{2}})$ dans cette base.
+
+</details>
+
+---
+
+Qu'est-ce que l'inégalité de Cauchy-Schwarz ?
+
+<details>
+<summary>Réponse</summary>
+
+L'**inégalité de Cauchy-Schwarz** est une relation fondamentale qui lie le produit scalaire de deux vecteurs à leurs normes. Elle affirme que la valeur absolue (ou le module) du produit scalaire de deux vecteurs est toujours inférieure ou égale au produit de leurs normes.
+
+$\text{Formule: } |\langle x, y \rangle| \le \|x\| \|y\|$
+
+**Où:**
+- $|\langle x, y \rangle|$ est la valeur absolue (cas réel) ou le module (cas complexe) du produit scalaire.
+- $\|x\|$ et $\|y\|$ sont les normes des vecteurs $x$ et $y$.
+
+**Point clé:** L'égalité $|\langle x, y \rangle| = \|x\| \|y\|$ se produit si et seulement si les vecteurs $x$ et $y$ sont colinéaires (c'est-à-dire, l'un est un multiple de l'autre).
+
+</details>
+
+---
+
+Qu'est-ce que l'orthogonal d'un sous-espace vectoriel ?
+
+<details>
+<summary>Réponse</summary>
+
+Soit $F$ un sous-espace vectoriel d'un espace préhilbertien $E$. L'**orthogonal de F**, noté $F^\perp$ (lire "F perp" ou "F orthogonal"), est l'ensemble de tous les vecteurs de $E$ qui sont orthogonaux à _tous_ les vecteurs de $F$.
+
+$\text{Définition: } F^\perp = \{ x \in E \mid \forall y \in F, \langle x, y \rangle = 0 \}$
+
+$F^\perp$ est lui-même un sous-espace vectoriel de $E$.
+
+**Exemple :** Dans $\mathbb{R}^3$, si $F$ est le plan $(xy)$, c'est-à-dire l'ensemble des vecteurs de la forme $(a,b,0)$, alors son orthogonal $F^\perp$ est l'axe des $z$, c'est-à-dire l'ensemble des vecteurs de la forme $(0,0,c)$. En effet, tout vecteur de l'axe des $z$ a un produit scalaire nul avec n'importe quel vecteur du plan $(xy)$.
+
+</details>

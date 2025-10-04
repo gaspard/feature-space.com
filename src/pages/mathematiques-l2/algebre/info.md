@@ -1,5 +1,5 @@
 ---
-title: 'Informations sur le cours'
+title: Algèbre
 order: 0
 layout: '../../../layouts/Layout.astro'
 ---
