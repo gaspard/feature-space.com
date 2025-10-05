@@ -1,0 +1,424 @@
+---
+id: '2ad1633b'
+title: 'Fiches (Concepts)'
+layout: '../../../../layouts/Layout.astro'
+order: 12
+level: regular
+chapter: Concepts
+course: Structures algébriques et algèbre bilinéaire
+tags:
+  [
+    'structures algébriques',
+    'groupes',
+    'anneaux',
+    'corps',
+    'applications',
+    'morphismes'
+  ]
+---
+
+# Fiches: Concepts
+
+---
+
+Qu'est-ce qu'une **application** (ou fonction) d'un ensemble $X$ vers un ensemble $Y$ ?
+
+<details>
+<summary>Réponse</summary>
+
+Une **application** $f$ de $X$ vers $Y$, notée $f: X \to Y$, est une règle qui associe à **chaque** élément de l'ensemble de départ $X$ un **unique** élément de l'ensemble d'arrivée $Y$.
+
+Formellement, c'est un sous-ensemble de $X \times Y$ (appelé le graphe de $f$) tel que pour tout $x \in X$, il existe un et un seul $y \in Y$ pour lequel la paire $(x,y)$ appartient au graphe. On note cet unique $y$ par $f(x)$.
+
+**Conditions clés :**
+
+1.  **Existence :** Tout élément de $X$ doit avoir une image dans $Y$.
+2.  **Unicité :** Chaque élément de $X$ ne peut avoir qu'une seule image.
+
+**Exemple :** $f: \mathbb{R} \to \mathbb{R}$ définie par $f(x) = x^2$. Chaque réel $x$ a une image unique, $x^2$.
+
+**Contre-exemple :** La relation de $\mathbb{R}$ vers $\mathbb{R}$ associant $x$ à $y$ si $x = y^2$ n'est pas une application, car $x=4$ est en relation avec $y=2$ et $y=-2$ (l'unicité n'est pas respectée).
+
+</details>
+
+---
+
+Définir l'**injectivité**, la **surjectivité** et la **bijectivité** d'une application $f: X \to Y$.
+
+<details>
+<summary>Réponse</summary>
+
+Soit une application $f: X \to Y$.
+
+1.  **Injective :** $f$ est injective si deux éléments distincts de $X$ ont toujours des images distinctes dans $Y$.
+
+    - **Formellement :** Pour tous $x_1, x_2 \in X$, si $f(x_1) = f(x_2)$, alors $x_1 = x_2$.
+    - **Intuitivement :** Pas de "collision" à l'arrivée. Chaque élément de l'ensemble d'arrivée a au plus un antécédent.
+
+2.  **Surjective :** $f$ est surjective si tout élément de l'ensemble d'arrivée $Y$ est l'image d'au moins un élément de $X$.
+
+    - **Formellement :** Pour tout $y \in Y$, il existe au moins un $x \in X$ tel que $f(x) = y$.
+    - **Intuitivement :** Tout l'ensemble d'arrivée est "atteint". L'image de $f$ est égale à $Y$.
+
+3.  **Bijective :** $f$ est bijective si elle est à la fois injective et surjective.
+    - **Formellement :** Pour tout $y \in Y$, il existe un unique $x \in X$ tel que $f(x) = y$.
+    - **Intuitivement :** C'est une correspondance parfaite "un-pour-un" entre $X$ et $Y$.
+
+</details>
+
+---
+
+L'application $g: \mathbb{R} \to \mathbb{R}$ définie par $g(x) = x^2$ est-elle injective ? surjective ? bijective ?
+
+<details>
+<summary>Réponse</summary>
+
+Analysons les propriétés de $g(x) = x^2$ sur $\mathbb{R}$.
+
+- **Injectivité : NON.**
+  Une application est injective si $g(x_1) = g(x_2) \Rightarrow x_1 = x_2$.
+  Prenons un contre-exemple : $g(-2) = (-2)^2 = 4$ et $g(2) = 2^2 = 4$.
+  On a $g(-2) = g(2)$ mais $-2 \neq 2$. Donc, $g$ n'est pas injective.
+
+- **Surjectivité : NON.**
+  Une application est surjective si pour tout $y \in \mathbb{R}$ (ensemble d'arrivée), il existe un $x \in \mathbb{R}$ tel que $g(x) = y$.
+  Prenons $y = -1$. L'équation $x^2 = -1$ n'a pas de solution dans $\mathbb{R}$. Donc, $-1$ n'a aucun antécédent. L'application n'est pas surjective.
+
+- **Bijectivité : NON.**
+  Puisqu'elle n'est ni injective ni surjective, elle ne peut pas être bijective.
+
+**Note :** Si on change les ensembles de départ et d'arrivée, par exemple $h: \mathbb{R}_{\ge 0} \to \mathbb{R}_{\ge 0}$ avec $h(x)=x^2$, alors elle devient bijective.
+
+</details>
+
+---
+
+Qu'est-ce qu'une **loi de composition interne** sur un ensemble $X$ ?
+
+<details>
+<summary>Réponse</summary>
+
+Une **loi de composition interne** (ou opération binaire) sur un ensemble $X$ est une application $*: X \times X \to X$.
+
+Cela signifie que c'est une règle qui prend **deux** éléments de $X$ et les combine pour produire un **troisième** élément qui appartient **toujours** à $X$.
+
+**Caractéristique clé :** La stabilité. Le résultat de l'opération ne fait jamais "sortir" de l'ensemble $X$.
+
+**Exemples :**
+
+- L'addition $(+)$ sur les entiers $\mathbb{Z}$ est une loi de composition interne car la somme de deux entiers est toujours un entier.
+- La multiplication $(\times)$ sur les réels $\mathbb{R}$ est une loi de composition interne.
+
+**Contre-exemple :**
+
+- La division $(\div)$ n'est pas une loi de composition interne sur $\mathbb{Z}$ car $3 \div 2 = 1.5$, qui n'est pas un entier.
+- Le produit scalaire sur les vecteurs de $\mathbb{R}^3$ n'est pas une loi de composition interne car il combine deux vecteurs pour donner un scalaire (un nombre), et non un vecteur.
+
+</details>
+
+---
+
+Quels sont les trois axiomes qui définissent un **groupe** ?
+
+<details>
+<summary>Réponse</summary>
+
+Un **groupe** est un ensemble $G$ muni d'une loi de composition interne $*$ qui satisfait les trois axiomes suivants :
+
+1.  **Associativité :** La loi est associative.
+    Pour tous les éléments $x, y, z \in G$, on a :
+    $$ (x _ y) _ z = x _ (y _ z) $$
+    Cela signifie que l'on peut calculer des produits en chaîne sans se soucier des parenthèses.
+
+2.  **Élément neutre :** Il existe un élément neutre $e \in G$.
+    Pour tout élément $x \in G$, on a :
+    $$ e _ x = x _ e = x $$
+    Cet élément ne change pas les autres éléments lorsqu'il est composé avec eux.
+
+3.  **Inverse :** Chaque élément possède un inverse.
+    Pour tout élément $x \in G$, il existe un élément $x^{-1} \in G$ (appelé l'inverse de $x$) tel que :
+    $$ x _ x^{-1} = x^{-1} _ x = e $$
+    Cela garantit que toute "action" peut être "annulée".
+
+</details>
+
+---
+
+Quelle est la différence fondamentale entre un **monoïde** et un **groupe** ?
+
+<details>
+<summary>Réponse</summary>
+
+La différence fondamentale réside dans l'**existence d'un inverse pour chaque élément**.
+
+- Un **monoïde** est un ensemble avec une loi de composition interne associative et un élément neutre.
+- Un **groupe** est un monoïde où, en plus, **chaque élément** est inversible (possède un symétrique).
+
+Autrement dit, un groupe est une structure plus "riche" ou plus "complète" qu'un monoïde. Dans un groupe, toute opération peut être "défaite", ce qui n'est pas garanti dans un monoïde.
+
+**Exemple :**
+
+- $(\mathbb{N}, +, 0)$ est un **monoïde**. L'addition est associative et 0 est neutre. Mais ce n'est pas un groupe car l'élément 3, par exemple, n'a pas d'inverse (son opposé, -3, n'est pas dans $\mathbb{N}$).
+- $(\mathbb{Z}, +, 0)$ est un **groupe**. Chaque entier $n$ a un inverse (son opposé $-n$) qui est aussi un entier.
+
+</details>
+
+---
+
+Qu'est-ce qu'un **anneau** ?
+
+<details>
+<summary>Réponse</summary>
+
+Un **anneau** $(A, +, \times)$ est un ensemble $A$ muni de deux lois de composition internes (une "addition" et une "multiplication") qui respectent les règles suivantes :
+
+1.  **(Structure additive)** L'ensemble $A$ avec l'addition, $(A, +)$, est un **groupe abélien** (commutatif).
+
+    - L'addition est associative et commutative.
+    - Il existe un élément neutre pour l'addition, noté $0$.
+    - Chaque élément $a$ a un opposé $-a$.
+
+2.  **(Structure multiplicative)** L'ensemble $A$ avec la multiplication, $(A, \times)$, est un **monoïde**.
+
+    - La multiplication est associative.
+    - Il existe un élément neutre pour la multiplication, noté $1$.
+
+3.  **(Lien entre les lois)** La multiplication est **distributive** par rapport à l'addition.
+    - Pour tous $a, b, c \in A$ : $a \times (b + c) = (a \times b) + (a \times c)$ et $(b + c) \times a = (b \times a) + (c \times a)$.
+
+**Exemple classique :** L'ensemble des entiers relatifs $(\mathbb{Z}, +, \times)$ est un anneau.
+
+</details>
+
+---
+
+Pourquoi l'anneau $(\mathbb{Z}, +, \times)$ des entiers relatifs n'est-il pas un **corps** ?
+
+<details>
+<summary>Réponse</summary>
+
+Un **corps** est un anneau commutatif dans lequel tout élément **non nul** est inversible pour la multiplication.
+
+L'anneau $(\mathbb{Z}, +, \times)$ est bien un anneau commutatif. Cependant, la plupart de ses éléments non nuls n'ont pas d'inverse multiplicatif _qui soit aussi dans $\mathbb{Z}$_.
+
+- L'élément neutre de la multiplication est $1$.
+- L'inverse d'un élément $a \in \mathbb{Z}$ serait un élément $b \in \mathbb{Z}$ tel que $a \times b = 1$.
+
+Prenons l'entier $2 \in \mathbb{Z}$. Son inverse multiplicatif est $1/2$. Mais $1/2$ n'est pas un entier, donc $1/2 \notin \mathbb{Z}$.
+Les seuls éléments de $\mathbb{Z}$ qui ont un inverse multiplicatif dans $\mathbb{Z}$ sont $1$ (son propre inverse) et $-1$ (son propre inverse).
+
+Puisque tous les éléments non nuls (comme 2, 3, 4, etc.) ne sont pas inversibles, $\mathbb{Z}$ n'est pas un corps.
+
+</details>
+
+---
+
+Quelle est l'idée principale d'un **morphisme** entre deux structures algébriques ?
+
+<details>
+<summary>Réponse</summary>
+
+L'idée principale d'un **morphisme** est d'être une **application qui préserve la structure**.
+
+Soient deux ensembles, chacun muni d'une structure algébrique du même type (par exemple, deux groupes). Un morphisme est une application entre ces deux ensembles qui "respecte" les opérations de la structure.
+
+Si $f$ est un morphisme d'une structure $(A, *)$ vers une structure $(B, \diamond)$, cela signifie que :
+$$ f(x \* y) = f(x) \diamond f(y) $$
+
+**Intuitivement :**
+Cela veut dire que l'on peut effectuer l'opération dans l'ensemble de départ puis appliquer le morphisme, ou bien appliquer le morphisme aux éléments d'abord puis effectuer l'opération dans l'ensemble d'arrivée : le résultat sera le même. Le morphisme "traduit" l'opération de la première structure en l'opération de la seconde.
+
+**Exemple :** L'application exponentielle $\exp: (\mathbb{R}, +) \to (\mathbb{R}^*_+, \times)$ est un morphisme car $\exp(x+y) = \exp(x) \times \exp(y)$. Elle transforme une addition en une multiplication.
+
+</details>
+
+---
+
+Quelles sont les deux étapes d'une démonstration par **récurrence simple** ?
+
+<details>
+<summary>Réponse</summary>
+
+Pour démontrer qu'une propriété $P(n)$ est vraie pour tous les entiers $n$ à partir d'un rang initial $n_0$, une démonstration par récurrence simple se déroule en deux étapes :
+
+1.  **Initialisation :**
+    On vérifie que la propriété est vraie pour le premier rang, $n_0$. C'est-à-dire, on prouve que $P(n_0)$ est vraie. C'est le "premier domino qui tombe".
+
+2.  **Hérédité :**
+    On suppose que la propriété est vraie pour un certain entier **arbitraire** $n \ge n_0$ (c'est l'**hypothèse de récurrence**). Ensuite, en utilisant cette hypothèse, on démontre que la propriété est également vraie pour l'entier suivant, $n+1$.
+    On prouve donc l'implication : "Si $P(n)$ est vraie, alors $P(n+1)$ est vraie". C'est s'assurer que "si un domino tombe, il fait tomber le suivant".
+
+**Conclusion :** Si l'initialisation et l'hérédité sont vérifiées, alors par le principe de récurrence, la propriété $P(n)$ est vraie pour tous les entiers $n \ge n_0$.
+
+</details>
+
+---
+
+Qu'est-ce qu'une **relation d'équivalence** et quelles sont ses trois propriétés ?
+
+<details>
+<summary>Réponse</summary>
+
+Une **relation d'équivalence** sur un ensemble $E$, notée $\sim$, est une relation binaire qui formalise l'idée de "ressemblance" ou "d'équivalence" entre des éléments par rapport à un certain critère.
+
+Pour être une relation d'équivalence, une relation doit satisfaire les trois propriétés suivantes :
+
+1.  **Réflexivité :** Tout élément est en relation avec lui-même.
+    $$ \forall x \in E, \quad x \sim x $$
+
+2.  **Symétrie :** Si $x$ est en relation avec $y$, alors $y$ est en relation avec $x$.
+    $$ \forall x, y \in E, \quad x \sim y \implies y \sim x $$
+
+3.  **Transitivité :** Si $x$ est en relation avec $y$, et $y$ est en relation avec $z$, alors $x$ est en relation avec $z$.
+    $$ \forall x, y, z \in E, \quad (x \sim y \text{ et } y \sim z) \implies x \sim z $$
+
+**Exemple :** La relation de congruence modulo $n$ sur les entiers, $x \equiv y \pmod n$, est une relation d'équivalence.
+
+</details>
+
+---
+
+Expliquez le lien entre une **relation d'équivalence** sur un ensemble $E$ et une **partition** de $E$.
+
+<details>
+<summary>Réponse</summary>
+
+Une relation d'équivalence et une partition sont deux manières de décrire la même chose : un regroupement des éléments d'un ensemble en sous-ensembles disjoints dont l'union redonne l'ensemble tout entier.
+
+1.  **D'une relation d'équivalence à une partition :**
+    Si on a une relation d'équivalence $\sim$ sur $E$, les **classes d'équivalence** (les ensembles d'éléments équivalents entre eux) forment une partition de $E$.
+
+    - Chaque élément appartient à une classe (la sienne).
+    - Deux classes sont soit identiques, soit complètement disjointes.
+    - L'union de toutes les classes redonne $E$.
+
+2.  **D'une partition à une relation d'équivalence :**
+    Inversement, si on a une partition de $E$ (un ensemble de sous-ensembles non vides, disjoints, dont l'union est $E$), on peut définir une relation d'équivalence en disant que "$x \sim y$ si et seulement si $x$ et $y$ appartiennent au même sous-ensemble de la partition".
+
+Il y a donc une correspondance parfaite (une bijection) entre les relations d'équivalence sur $E$ et les partitions de $E$.
+
+</details>
+
+---
+
+Comment vérifier si un sous-ensemble non vide $H$ d'un groupe $(G, *)$ est un **sous-groupe** ?
+
+<details>
+<summary>Réponse</summary>
+
+Il existe deux méthodes principales :
+
+**Méthode 1 : La définition en trois points**
+Un sous-ensemble $H \subset G$ est un sous-groupe s'il est lui-même un groupe pour la loi de $G$. Pour cela, on vérifie :
+
+1.  **Neutre :** L'élément neutre $e$ de $G$ est dans $H$.
+2.  **Stabilité par la loi :** Pour tous $x, y \in H$, leur produit $x * y$ est aussi dans $H$.
+3.  **Stabilité par l'inverse :** Pour tout $x \in H$, son inverse $x^{-1}$ est aussi dans $H$.
+
+**Méthode 2 : La caractérisation compacte (plus rapide)**
+Un sous-ensemble **non vide** $H \subset G$ est un sous-groupe si et seulement si :
+$$ \forall x, y \in H, \quad x \* y^{-1} \in H $$
+
+Cette unique condition combine la stabilité par la loi et par l'inverse. C'est souvent le critère le plus efficace à utiliser dans les démonstrations.
+
+**Étapes pratiques avec la méthode 2 :**
+
+1. Vérifier que $H$ n'est pas vide (souvent en montrant que $e \in H$).
+2. Prendre deux éléments quelconques $x, y \in H$.
+3. Montrer que la combinaison $x * y^{-1}$ appartient bien à $H$.
+
+</details>
+
+---
+
+À quoi sert le **noyau** d'un morphisme de groupes pour déterminer si le morphisme est **injectif** ?
+
+<details>
+<summary>Réponse</summary>
+
+Le **noyau** d'un morphisme de groupes $f: G \to H$ est l'ensemble des éléments de $G$ qui sont envoyés sur l'élément neutre de $H$. On le note $\text{Ker}(f)$.
+$$ \text{Ker}(f) = \{ g \in G \mid f(g) = e_H \} $$
+
+Le noyau fournit un critère simple et puissant pour tester l'injectivité :
+
+**Un morphisme de groupes $f$ est injectif si et seulement si son noyau est réduit à l'élément neutre**, c'est-à-dire $\text{Ker}(f) = \{e_G\}$.
+
+**Explication :**
+
+- Si $f$ est injectif, seul $e_G$ peut avoir pour image $e_H$ (car $f(e_G)=e_H$), donc le noyau est trivial.
+- Inversement, supposons que $\text{Ker}(f) = \{e_G\}$. Si $f(x) = f(y)$, alors $f(x) * (f(y))^{-1} = e_H$. Comme $f$ est un morphisme, cela donne $f(x * y^{-1}) = e_H$. Cela signifie que $x * y^{-1}$ est dans le noyau. Puisque le noyau ne contient que $e_G$, on a $x * y^{-1} = e_G$, ce qui implique $x=y$. Donc $f$ est injectif.
+
+En résumé, pour prouver qu'un morphisme de groupes est injectif, il suffit de calculer son noyau et de vérifier qu'il ne contient que l'élément neutre.
+
+</details>
+
+---
+
+Quelle est l'idée intuitive derrière la construction d'un **groupe quotient** $A/B$ ?
+
+<details>
+<summary>Réponse</summary>
+
+L'idée est de **simplifier** un groupe $A$ en "ignorant" les distinctions entre les éléments qui ne diffèrent que par un élément d'un sous-groupe $B$. On considère que tous les éléments du sous-groupe $B$ sont "équivalents à zéro".
+
+1.  **Regroupement :** On regroupe les éléments de $A$ en "paquets" appelés classes d'équivalence. Deux éléments $a_1$ et $a_2$ sont dans le même paquet si leur différence $a_1 - a_2$ est dans $B$. La classe de $a$ est l'ensemble $a+B = \{a+b \mid b \in B\}$.
+
+2.  **Nouvel ensemble :** Le groupe quotient $A/B$ est l'ensemble de ces paquets. Chaque paquet devient un unique élément du nouveau groupe.
+
+3.  **Nouvelle opération :** On définit une addition sur ces paquets. Pour additionner deux paquets, on prend un représentant dans chaque, on les additionne dans $A$, et on regarde dans quel paquet se trouve le résultat. Le fait que $B$ soit un sous-groupe garantit que le résultat est toujours le même, peu importe les représentants choisis.
+
+**Analogie :** L'ensemble $\mathbb{Z}/12\mathbb{Z}$ est le groupe quotient des heures sur une horloge. On ne se soucie pas du nombre total d'heures écoulées, seulement de la position de l'aiguille. On "quotiente" le temps infini $(\mathbb{Z})$ par les cycles de 12 heures $(12\mathbb{Z})$.
+
+</details>
+
+---
+
+Qu'est-ce qu'un **idéal** d'un anneau commutatif et quelle est sa propriété la plus importante ?
+
+<details>
+<summary>Réponse</summary>
+
+Soit $A$ un anneau commutatif. Un sous-ensemble $I \subset A$ est un **idéal** s'il est un sous-groupe additif de $A$ et s'il satisfait une propriété supplémentaire cruciale.
+
+**Définition :** Un idéal $I$ est un sous-ensemble de $A$ tel que :
+
+1.  $(I, +)$ est un sous-groupe de $(A, +)$.
+2.  Pour tout $a \in A$ et tout $x \in I$, le produit $ax$ est encore dans $I$.
+
+**Propriété la plus importante : l'absorption**
+La deuxième condition, $\forall a \in A, \forall x \in I, ax \in I$, est la propriété d'**absorption**. Elle signifie que l'idéal "absorbe" la multiplication par n'importe quel élément de l'anneau.
+
+**Pourquoi est-ce si important ?**
+Cette propriété est exactement ce qui est nécessaire pour pouvoir définir une multiplication cohérente sur l'**anneau quotient** $A/I$. Les idéaux sont aux anneaux ce que les sous-groupes normaux sont aux groupes : ils sont les bonnes sous-structures par lesquelles on peut quotienter.
+
+**Exemple :** Dans l'anneau $\mathbb{Z}$, l'ensemble $6\mathbb{Z}$ des multiples de 6 est un idéal. Si vous prenez un multiple de 6 (par ex. 12) et que vous le multipliez par n'importe quel entier (par ex. 5), le résultat (60) est toujours un multiple de 6.
+
+</details>
+
+---
+
+Pourquoi la propriété d'absorption d'un idéal est-elle cruciale pour définir la multiplication dans l'**anneau quotient** $A/I$ ?
+
+<details>
+<summary>Réponse</summary>
+
+Dans l'anneau quotient $A/I$, les éléments sont des classes d'équivalence de la forme $a+I$. On souhaite définir la multiplication de deux classes par :
+$$ (a+I) \times (b+I) = (ab) + I $$
+
+Pour que cette définition soit valide (on dit "bien définie"), le résultat ne doit pas dépendre du choix des représentants $a$ et $b$ dans leurs classes respectives.
+
+Supposons que l'on choisisse d'autres représentants : $a' = a + i_1$ et $b' = b + i_2$, où $i_1, i_2 \in I$. Leur produit est :
+$$ a'b' = (a + i_1)(b + i_2) = ab + ai_2 + bi_1 + i_1i_2 $$
+Pour que $a'b'$ soit dans la même classe que $ab$, il faut que la différence $a'b' - ab$ appartienne à l'idéal $I$.
+$$ a'b' - ab = ai_2 + bi_1 + i_1i_2 $$
+C'est ici que la propriété d'**absorption** intervient :
+
+- Comme $i_2 \in I$ et $a \in A$, alors $ai_2 \in I$.
+- Comme $i_1 \in I$ et $b \in A$, alors $bi_1 \in I$.
+- Comme $i_1, i_2 \in I$, alors $i_1i_2 \in I$ (car $I$ est stable par multiplication interne).
+
+La somme de ces trois termes, $ai_2 + bi_1 + i_1i_2$, est donc bien un élément de $I$ (car $I$ est un sous-groupe additif).
+
+Sans la propriété d'absorption, cette démonstration échouerait, et la multiplication des classes donnerait des résultats différents selon les représentants choisis, ce qui rendrait l'opération invalide.
+
+</details>

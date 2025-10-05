@@ -1,0 +1,389 @@
+---
+id: '9c04d757'
+title: 'Quiz : Concepts'
+layout: '../../../../layouts/Layout.astro'
+order: 13
+level: regular
+chapter: Concepts
+course: 'Structures algébriques et algèbre bilinéaire'
+---
+
+# Quiz : Concepts
+
+---
+
+#### Question 1 : Définition d'une application
+
+Laquelle des propositions suivantes définit correctement une application (ou fonction) $f: X \to Y$ ?
+
+- [ ] **A)** Pour tout élément $y \in Y$, il existe un unique élément $x \in X$ tel que $f(x)=y$.
+- [ ] **B)** Une règle qui associe certains éléments de $X$ à des éléments de $Y$.
+- [x] **C)** Une relation entre $X$ et $Y$ telle que chaque élément de $X$ est associé à un unique élément de $Y$.
+- [ ] **D)** Une relation où chaque élément de $Y$ est l'image d'au moins un élément de $X$.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+- **A.** Cette proposition définit une application bijective, ce qui est un cas particulier. Une application générale ne requiert ni l'existence ni l'unicité de l'antécédent.
+- **B.** Cette définition est trop vague. Une application doit associer **chaque** élément de l'ensemble de départ, pas seulement "certains" éléments.
+- **C.** C'est la définition correcte d'une application. Les deux conditions clés sont : **existence** (chaque élément de $X$ a une image) et **unicité** (cette image est unique).
+- **D.** Cette proposition définit une application surjective. Ce n'est pas une condition pour toutes les applications.
+
+</details>
+
+---
+
+#### Question 2 : Injectivité et Surjectivité
+
+Considérons l'application $f: \mathbb{R} \to \mathbb{R}$ définie par $f(x) = x^2$. Quelle est la nature de cette application ?
+
+- [ ] **A)** Elle est injective mais pas surjective.
+- [ ] **B)** Elle est surjective mais pas injective.
+- [ ] **C)** Elle est bijective.
+- [x] **D)** Elle n'est ni injective, ni surjective.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+- **Injectivité :** Une application est injective si $f(x_1) = f(x_2)$ implique $x_1=x_2$. Ici, nous avons $f(-2) = (-2)^2 = 4$ et $f(2) = 2^2 = 4$. Puisque $f(-2) = f(2)$ mais $-2 \neq 2$, l'application n'est pas injective.
+- **Surjectivité :** Une application est surjective si tout élément de l'ensemble d'arrivée a au moins un antécédent. Prenons $y = -1$ dans l'ensemble d'arrivée $\mathbb{R}$. Il n'existe aucun réel $x$ tel que $x^2 = -1$. Donc, -1 n'a pas d'antécédent. L'application n'est pas surjective.
+- **Conclusion :** Puisqu'elle n'est ni injective ni surjective, elle ne peut pas être bijective. La bonne réponse est donc D.
+
+</details>
+
+---
+
+#### Question 3 : Loi de composition interne
+
+Parmi les opérations suivantes, laquelle est une loi de composition interne sur l'ensemble spécifié ?
+
+- [ ] **A)** La soustraction sur l'ensemble des entiers naturels $\mathbb{N}$.
+- [ ] **B)** La division sur l'ensemble des entiers relatifs $\mathbb{Z}$.
+- [x] **C)** L'addition sur l'ensemble des entiers pairs $2\mathbb{Z}$.
+- [ ] **D)** Le produit scalaire de deux vecteurs sur $\mathbb{R}^3$.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Une loi de composition interne sur un ensemble $X$ est une opération qui prend deux éléments de $X$ et renvoie un résultat qui est aussi dans $X$.
+
+- **A.** La soustraction n'est pas interne sur $\mathbb{N}$. Par exemple, $3 \in \mathbb{N}$ et $5 \in \mathbb{N}$, mais $3-5 = -2 \notin \mathbb{N}$.
+- **B.** La division n'est pas interne sur $\mathbb{Z}$. Par exemple, $1 \in \mathbb{Z}$ et $2 \in \mathbb{Z}$, mais $1 \div 2 = 0.5 \notin \mathbb{Z}$.
+- **C.** L'addition est interne sur $2\mathbb{Z}$. Si l'on prend deux entiers pairs, $x=2k$ et $y=2j$, leur somme est $x+y = 2k+2j = 2(k+j)$, qui est toujours un entier pair.
+- **D.** Le produit scalaire sur $\mathbb{R}^3$ n'est pas une loi de composition interne car il prend deux vecteurs de $\mathbb{R}^3$ et renvoie un scalaire (un nombre réel), et non un vecteur de $\mathbb{R}^3$.
+
+</details>
+
+---
+
+#### Question 4 : Du Monoïde au Groupe
+
+Quelle propriété fondamentale un monoïde doit-il posséder en plus pour être qualifié de groupe ?
+
+- [ ] **A)** La loi de composition doit être commutative.
+- [ ] **B)** L'ensemble doit être infini.
+- [x] **C)** Chaque élément doit posséder un inverse pour la loi de composition.
+- [ ] **D)** Il doit posséder un élément neutre unique.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Un monoïde est un ensemble muni d'une loi de composition interne associative et d'un élément neutre. Pour qu'un monoïde devienne un groupe, il faut ajouter une condition supplémentaire.
+
+- **A.** La commutativité n'est pas requise pour un groupe général. Un groupe commutatif est appelé groupe abélien.
+- **B.** Il existe de nombreux groupes finis (par exemple $\mathbb{Z}/n\mathbb{Z}$).
+- **C.** C'est la condition clé qui distingue un groupe d'un monoïde. Dans un groupe, pour chaque élément $x$, il doit exister un élément $x^{-1}$ tel que $x * x^{-1} = x^{-1} * x = e$.
+- **D.** Un monoïde possède déjà un élément neutre (qui est d'ailleurs toujours unique). Ce n'est donc pas une propriété additionnelle.
+
+</details>
+
+---
+
+#### Question 5 : Propriétés d'un groupe
+
+Soit $(G, *)$ un groupe. Quelles affirmations sont **toujours** vraies pour tous les éléments $x, y, z \in G$ ?
+
+- [x] **A)** Si $z * x = z * y$, alors $x=y$.
+- [ ] **B)** $x * y = y * x$.
+- [x] **C)** $(x * y)^{-1} = y^{-1} * x^{-1}$.
+- [ ] **D)** $(x * y) * z = z * (y * x)$.
+
+<details>
+<summary>Solution</summary>
+
+**Réponses : [A, C]**
+
+- **A.** C'est la règle de simplification à gauche. Elle est vraie dans tout groupe. On peut la prouver en multipliant à gauche par l'inverse $z^{-1}$ : $z^{-1} * (z * x) = z^{-1} * (z * y) \Rightarrow (z^{-1} * z) * x = (z^{-1} * z) * y \Rightarrow e * x = e * y \Rightarrow x=y$.
+- **B.** C'est la propriété de commutativité. Elle n'est vraie que pour les groupes abéliens, pas pour tous les groupes.
+- **C.** C'est la formule correcte pour l'inverse d'un produit. L'ordre est inversé. Pour le vérifier : $(x*y)*(y^{-1}*x^{-1}) = x*(y*y^{-1})*x^{-1} = x*e*x^{-1} = x*x^{-1}=e$.
+- **D.** Cette affirmation mélange l'associativité et la commutativité d'une manière qui n'est généralement pas vraie. L'associativité est $(x*y)*z = x*(y*z)$.
+
+</details>
+
+---
+
+#### Question 6 : Anneaux et diviseurs de zéro
+
+Dans l'anneau $(\mathbb{Z}/6\mathbb{Z}, +, \times)$, lequel de ces éléments est un diviseur de zéro ?
+
+- [ ] **A)** $\bar{1}$
+- [ ] **B)** $\bar{5}$
+- [x] **C)** $\bar{4}$
+- [ ] **D)** Cet anneau n'a pas de diviseur de zéro.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Un diviseur de zéro dans un anneau $A$ est un élément non nul $a$ pour lequel il existe un autre élément non nul $b$ tel que $a \times b = 0$. Dans $\mathbb{Z}/6\mathbb{Z}$, l'élément nul est $\bar{0}$.
+
+- **A.** $\bar{1}$ est l'élément neutre multiplicatif. Il ne peut pas être un diviseur de zéro car $\bar{1} \times b = b$, qui n'est $\bar{0}$ que si $b=\bar{0}$.
+- **B.** $\bar{5}$ n'est pas un diviseur de zéro. En fait, il est inversible car $\bar{5} \times \bar{5} = \bar{25} = \bar{1}$. Les éléments inversibles ne sont jamais des diviseurs de zéro.
+- **C.** $\bar{4}$ est un diviseur de zéro. On cherche un $\bar{b} \neq \bar{0}$ tel que $\bar{4} \times \bar{b} = \bar{0}$. On peut tester : $\bar{4} \times \bar{3} = \bar{12} = \bar{0}$. Puisque $\bar{4} \neq \bar{0}$ et $\bar{3} \neq \bar{0}$, $\bar{4}$ est un diviseur de zéro.
+- **D.** L'affirmation est fausse, comme le montre le cas de $\bar{4}$. Les diviseurs de zéro dans $\mathbb{Z}/6\mathbb{Z}$ sont $\bar{2}, \bar{3}, \bar{4}$.
+
+</details>
+
+---
+
+#### Question 7 : Identification d'un corps
+
+Parmi les structures suivantes, laquelle est un corps ?
+
+- [x] **A)** $(\mathbb{Q}, +, \times)$, l'ensemble des nombres rationnels.
+- [ ] **B)** $(\mathbb{Z}, +, \times)$, l'ensemble des entiers relatifs.
+- [ ] **C)** $(M_2(\mathbb{R}), +, \times)$, l'ensemble des matrices carrées de taille 2.
+- [ ] **D)** $(\mathbb{Z}/4\mathbb{Z}, +, \times)$, l'ensemble des entiers modulo 4.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+Un corps est un anneau commutatif où tout élément non nul a un inverse pour la multiplication.
+
+- **A.** $(\mathbb{Q}, +, \times)$ est un anneau commutatif. Tout rationnel non nul $p/q$ a pour inverse $q/p$, qui est aussi un rationnel. C'est donc un corps.
+- **B.** $(\mathbb{Z}, +, \times)$ est un anneau commutatif, mais la plupart de ses éléments non nuls n'ont pas d'inverse dans $\mathbb{Z}$. Par exemple, l'inverse de 2 est $1/2 \notin \mathbb{Z}$. Ce n'est pas un corps.
+- **C.** $(M_2(\mathbb{R}), +, \times)$ n'est pas un corps car la multiplication n'est pas commutative, et de plus, il existe des matrices non nulles qui ne sont pas inversibles (les matrices de déterminant nul).
+- **D.** $(\mathbb{Z}/4\mathbb{Z}, +, \times)$ est un anneau commutatif, mais il n'est pas un corps. L'élément $\bar{2}$ est non nul, mais il n'a pas d'inverse (c'est un diviseur de zéro car $\bar{2} \times \bar{2} = \bar{4} = \bar{0}$). En général, $\mathbb{Z}/n\mathbb{Z}$ est un corps si et seulement si $n$ est un nombre premier.
+
+</details>
+
+---
+
+#### Question 8 : Morphisme de groupes
+
+Soit l'application $f: (\mathbb{Z}, +) \to (\mathbb{Z}, +)$ définie par $f(x) = 2x$. Est-ce un morphisme de groupes ?
+
+- [x] **A)** Oui, car $f(x+y) = f(x)+f(y)$.
+- [ ] **B)** Non, car $f(0) \neq 0$.
+- [ ] **C)** Non, car $f$ n'est pas surjective.
+- [ ] **D)** Oui, car elle est injective.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+Pour être un morphisme de groupes de $(G, *)$ vers $(H, \cdot)$, une application $f$ doit vérifier $f(x*y) = f(x) \cdot f(y)$. Ici, les deux lois sont l'addition $+$.
+
+- **A.** Vérifions la condition :
+  $f(x+y) = 2(x+y) = 2x + 2y$.
+  $f(x) + f(y) = (2x) + (2y) = 2x+2y$.
+  Puisque $f(x+y) = f(x)+f(y)$, l'application est bien un morphisme de groupes.
+- **B.** Cette affirmation est fausse. On a $f(0) = 2 \times 0 = 0$. L'image de l'élément neutre est bien l'élément neutre.
+- **C.** L'application $f$ n'est en effet pas surjective (son image est l'ensemble des entiers pairs). Cependant, la surjectivité n'est pas une condition requise pour être un morphisme.
+- **D.** L'application $f$ est bien injective. Cependant, l'injectivité n'est pas la condition qui définit un morphisme.
+
+</details>
+
+---
+
+#### Question 9 : Noyau et injectivité
+
+Soit $f: G \to H$ un morphisme de groupes. Le morphisme $f$ est injectif si et seulement si...
+
+- [ ] **A)** Son image $\text{Im}(f)$ est le sous-groupe trivial $\{e_H\}$.
+- [ ] **B)** Son noyau $\text{Ker}(f)$ est égal à l'ensemble de départ $G$.
+- [ ] **C)** Son image $\text{Im}(f)$ est égale à l'ensemble d'arrivée $H$.
+- [x] **D)** Son noyau $\text{Ker}(f)$ est le sous-groupe trivial $\{e_G\}$.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+C'est un théorème fondamental sur les morphismes de groupes.
+
+- **A.** Si $\text{Im}(f) = \{e_H\}$, cela signifie que $f$ envoie tous les éléments de $G$ sur l'élément neutre de $H$. Sauf si $G$ est lui-même trivial, ce morphisme est très loin d'être injectif.
+- **B.** Si $\text{Ker}(f) = G$, cela signifie que $f$ envoie tous les éléments de $G$ sur $e_H$. C'est le morphisme nul.
+- **C.** $\text{Im}(f) = H$ est la condition pour que le morphisme soit surjectif, pas injectif.
+- **D.** La condition $\text{Ker}(f) = \{e_G\}$ signifie que le seul élément de $G$ envoyé sur l'élément neutre de $H$ est l'élément neutre de $G$. Ceci est équivalent à dire que le morphisme est injectif.
+
+</details>
+
+---
+
+#### Question 10 : Principe de récurrence
+
+Pour démontrer qu'une propriété $P(n)$ est vraie pour tout entier $n \ge 0$ par récurrence simple, quelles étapes sont nécessaires ?
+
+- [x] **A)** Démontrer que $P(0)$ est vraie (Initialisation).
+- [ ] **B)** Démontrer que $P(n)$ est vraie pour un grand nombre de valeurs de $n$.
+- [x] **C)** Démontrer que pour tout $n \ge 0$, si $P(n)$ est vraie, alors $P(n+1)$ est aussi vraie (Hérédité).
+- [ ] **D)** Démontrer que la propriété est vraie pour $n+1$ en supposant qu'elle est vraie pour tous les entiers de $0$ à $n$.
+
+<details>
+<summary>Solution</summary>
+
+**Réponses : [A, C]**
+
+Le principe de récurrence simple se base sur deux piliers.
+
+- **A.** L'initialisation est l'étape de base. Il faut prouver que la propriété est vraie pour le premier terme (ici, $n=0$). C'est le "premier domino" qui tombe.
+- **B.** Vérifier la propriété pour quelques valeurs peut donner une intuition, mais ne constitue pas une preuve.
+- **C.** L'hérédité est l'étape cruciale. On suppose la propriété vraie pour un rang $n$ arbitraire (l'hypothèse de récurrence) et on en déduit qu'elle doit être vraie pour le rang suivant $n+1$. C'est ce qui assure que "si un domino tombe, il fait tomber le suivant".
+- **D.** Cette description correspond à l'étape d'hérédité du **principe de récurrence forte**, pas de la récurrence simple.
+
+</details>
+
+---
+
+#### Question 11 : Relation d'équivalence
+
+Laquelle de ces relations est une relation d'équivalence ?
+
+- [ ] **A)** La relation $\le$ (inférieur ou égal) sur $\mathbb{R}$.
+- [x] **B)** La relation "a la même parité que" sur $\mathbb{Z}$.
+- [ ] **C)** La relation de divisibilité "|" sur $\mathbb{N}^*$.
+- [ ] **D)** La relation $\neq$ (différent de) sur $\mathbb{Z}$.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Une relation d'équivalence doit être réflexive, symétrique et transitive.
+
+- **A.** La relation $\le$ est réflexive et transitive, mais pas symétrique ($3 \le 5$ mais $5 \not\le 3$). Ce n'est donc pas une relation d'équivalence.
+- **B.** La relation "a la même parité que" est :
+  - Réflexive : tout entier a la même parité que lui-même.
+  - Symétrique : si $x$ a la même parité que $y$, alors $y$ a la même parité que $x$.
+  - Transitive : si $x$ a la même parité que $y$ et $y$ a la même parité que $z$, alors $x$ a la même parité que $z$.
+    C'est bien une relation d'équivalence.
+- **C.** La divisibilité est réflexive et transitive, mais pas symétrique ($2|4$ mais $4 \nmid 2$). Ce n'est pas une relation d'équivalence.
+- **D.** La relation $\neq$ est symétrique, mais elle n'est ni réflexive ($x \neq x$ est faux) ni transitive ($3 \neq 5$ et $5 \neq 3$, mais on n'a pas $3 \neq 3$).
+
+</details>
+
+---
+
+#### Question 12 : Éléments d'un ensemble quotient
+
+Quels sont les éléments de l'ensemble quotient $\mathbb{Z}/3\mathbb{Z}$ ?
+
+- [ ] **A)** Les nombres $0, 1, 2$.
+- [ ] **B)** Les nombres $-1, 0, 1$.
+- [ ] **C)** L'ensemble des entiers qui ne sont pas des multiples de 3.
+- [x] **D)** Trois ensembles infinis d'entiers : la classe de 0, la classe de 1 et la classe de 2.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+L'ensemble quotient $\mathbb{Z}/3\mathbb{Z}$ est l'ensemble des classes d'équivalence pour la relation de congruence modulo 3. Ses éléments ne sont pas des nombres, mais des ensembles de nombres.
+
+- **A.** Les nombres $0, 1, 2$ sont des **représentants** de chaque classe, mais pas les classes elles-mêmes.
+- **B.** De même, $-1, 0, 1$ sont un autre ensemble de représentants possibles (puisque $[-1]=[2]$).
+- **C.** C'est une description incorrecte des classes d'équivalence.
+- **D.** C'est la description correcte. Les éléments de $\mathbb{Z}/3\mathbb{Z}$ sont :
+  - $\text{cl}(0) = \{\dots, -6, -3, 0, 3, 6, \dots\}$ (les multiples de 3)
+  - $\text{cl}(1) = \{\dots, -5, -2, 1, 4, 7, \dots\}$ (les nombres de la forme $3k+1$)
+  - $\text{cl}(2) = \{\dots, -4, -1, 2, 5, 8, \dots\}$ (les nombres de la forme $3k+2$)
+
+</details>
+
+---
+
+#### Question 13 : Caractérisation d'un sous-groupe
+
+Soit $(G, *)$ un groupe et $H$ un sous-ensemble **non vide** de $G$. Quelle est la condition suffisante la plus compacte pour que $H$ soit un sous-groupe de $G$ ?
+
+- [ ] **A)** Pour tout $x \in H$, son inverse $x^{-1}$ est aussi dans $H$.
+- [x] **B)** Pour tous $x, y \in H$, l'élément $x * y^{-1}$ est aussi dans $H$.
+- [ ] **C)** L'élément neutre $e$ est dans $H$ et pour tous $x, y \in H$, $x*y \in H$.
+- [ ] **D)** $H$ est un sous-ensemble fini de $G$.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+- **A.** Cette condition seule (stabilité par l'inverse) n'est pas suffisante. Il manque la stabilité par la loi de composition.
+- **B.** C'est la caractérisation la plus efficace d'un sous-groupe. Cette unique condition implique à la fois la présence de l'élément neutre (prendre $y=x$), la stabilité par l'inverse (prendre $x=e$) et la stabilité par la loi interne (si $x, y \in H$, alors $y^{-1} \in H$, et donc $x*(y^{-1})^{-1} = x*y \in H$).
+- **C.** Cette condition (stabilité par la loi et présence du neutre) est insuffisante. Il manque la stabilité par l'inverse. Par exemple, $(\mathbb{N}, +)$ est un sous-ensemble de $(\mathbb{Z}, +)$ qui vérifie cela, mais n'est pas un sous-groupe.
+- **D.** Être fini n'est ni nécessaire ni suffisant. Il existe des sous-groupes infinis et des sous-ensembles finis qui ne sont pas des sous-groupes.
+
+</details>
+
+---
+
+#### Question 14 : Idéal d'un anneau
+
+Soit $A$ un anneau commutatif. Qu'est-ce qui distingue un idéal $I$ d'un simple sous-anneau de $A$ ?
+
+- [ ] **A)** Un idéal doit contenir l'élément neutre multiplicatif $1_A$.
+- [x] **B)** Pour tout $a \in A$ et tout $x \in I$, le produit $ax$ doit appartenir à $I$.
+- [ ] **C)** Un idéal doit être un ensemble fini.
+- [ ] **D)** La multiplication doit être commutative dans l'idéal.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+La différence fondamentale entre un sous-anneau et un idéal réside dans la stabilité par multiplication.
+
+- **A.** Si un idéal $I$ contient $1_A$, alors pour tout $a \in A$, le produit $a \times 1_A = a$ doit être dans $I$. Cela implique que $I=A$. Donc, sauf pour l'anneau lui-même, un idéal ne contient pas $1_A$.
+- **B.** C'est la propriété d'**absorption**. Un sous-anneau n'exige que la stabilité pour la multiplication _interne_ (si $x,y \in I$, alors $xy \in I$). Un idéal exige la stabilité par multiplication par _n'importe quel élément de l'anneau parent A_. C'est la propriété clé.
+- **C.** Les idéaux peuvent être infinis (par exemple, $2\mathbb{Z}$ dans $\mathbb{Z}$).
+- **D.** La multiplication dans un anneau commutatif est déjà commutative. Cette propriété n'ajoute rien de spécifique à l'idéal.
+
+</details>
+
+---
+
+#### Question 15 : Propriétés d'une relation binaire
+
+La relation "$\le$" (inférieur ou égal) sur l'ensemble des nombres réels $\mathbb{R}$ est :
+
+- [ ] **A)** Symétrique
+- [x] **B)** Transitive
+- [x] **C)** Antisymétrique
+- [ ] **D)** Réflexive, mais ni transitive ni antisymétrique.
+
+<details>
+<summary>Solution</summary>
+
+**Réponses : [B, C]**
+
+Analysons les propriétés de la relation $\le$ sur $\mathbb{R}$.
+
+- **Réflexivité :** Pour tout $x \in \mathbb{R}$, on a $x \le x$. La relation est donc réflexive. L'option D est fausse car elle affirme que la relation n'est pas transitive.
+- **Symétrie :** La relation n'est pas symétrique. Par exemple, $3 \le 5$ est vrai, mais $5 \le 3$ est faux. L'option A est donc incorrecte.
+- **Antisymétrie :** La relation est antisymétrique. Si $x \le y$ et $y \le x$, alors cela implique nécessairement que $x=y$. L'option C est donc correcte.
+- **Transitivité :** La relation est transitive. Si $x \le y$ et $y \le z$, alors il est vrai que $x \le z$. L'option B est donc correcte.
+
+La relation $\le$ est une relation d'ordre (réflexive, antisymétrique, transitive).
+
+</details>

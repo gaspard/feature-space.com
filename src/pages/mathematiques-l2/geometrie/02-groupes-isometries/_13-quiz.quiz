@@ -1,0 +1,311 @@
+---
+id: '2b9e7ff4'
+title: 'Quiz'
+layout: '../../../../layouts/Layout.astro'
+order: 13
+level: regular
+chapter: Concepts
+course: 'Géométrie'
+---
+
+# Quiz : Concepts
+
+---
+
+#### Question 1 : Définition d'une isométrie
+
+Quelle est la définition fondamentale d'une isométrie vectorielle $f$ dans un espace euclidien ?
+
+- [ ] **A)** Elle conserve le produit scalaire pour toute paire de vecteurs.
+- [x] **B)** Elle conserve la norme de tous les vecteurs.
+- [ ] **C)** Son inverse est égal à son adjoint ($f^{-1} = f^*$).
+- [ ] **D)** Elle envoie le vecteur nul sur le vecteur nul.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Une isométrie est définie comme une application linéaire qui conserve la norme. Les autres propositions sont soit des propriétés équivalentes mais pas la définition de base, soit des propriétés de toutes les applications linéaires.
+
+- **A.** C'est une propriété équivalente à la définition, qui découle de la conservation de la norme via les identités de polarisation, mais ce n'est pas la définition première.
+- **B.** C'est la définition fondamentale : $\forall x \in E, \|f(x)\| = \|x\|$. C'est la condition de préservation des longueurs.
+- **C.** C'est une autre caractérisation très utile, notamment pour la représentation matricielle, mais elle est aussi une conséquence de la définition.
+- **D.** Toute application linéaire, qu'elle soit une isométrie ou non, envoie le vecteur nul sur le vecteur nul. Ce n'est donc pas une caractéristique spécifique des isométries.
+
+</details>
+
+---
+
+#### Question 2 : Propriétés des isométries
+
+Soit $f$ un endomorphisme d'un espace euclidien $E$. Quelles affirmations sont des caractérisations équivalentes au fait que $f$ est une isométrie ?
+
+- [x] **A)** $f$ conserve le produit scalaire : $\forall x, y \in E, \varphi(f(x), f(y)) = \varphi(x, y)$.
+- [x] **B)** $f$ est inversible et son inverse est son adjoint : $f^{-1} = f^*$.
+- [x] **C)** L'image d'une base orthonormée par $f$ est une base orthonormée.
+- [ ] **D)** Le déterminant de la matrice de $f$ dans une base orthonormée est égal à 1.
+
+<details>
+<summary>Solution</summary>
+
+**Réponses : [A, B, C]**
+
+Les trois premières propositions sont des caractérisations classiques d'une isométrie. La dernière est une condition nécessaire mais pas suffisante.
+
+- **A.** Correct. La conservation du produit scalaire est équivalente à la conservation de la norme. Elle implique la conservation des angles et de l'orthogonalité.
+- **B.** Correct. La condition $f^* \circ f = \text{Id}$ est une autre façon d'exprimer la conservation du produit scalaire.
+- **C.** Correct. C'est une propriété très pratique : si l'image d'une seule base orthonormée est orthonormée, alors l'application est une isométrie.
+- **D.** Incorrect. Le déterminant d'une isométrie peut être de 1 (isométrie directe, comme une rotation) ou de -1 (isométrie indirecte, comme une réflexion). Cette condition ne décrit que les isométries directes.
+
+</details>
+
+---
+
+#### Question 3 : Identification d'isométries
+
+Parmi les transformations linéaires suivantes de $\mathbb{R}^2$, lesquelles sont des isométries ?
+
+- [x] **A)** Une rotation d'angle $\pi/4$ autour de l'origine.
+- [ ] **B)** Une homothétie de rapport 3.
+- [ ] **C)** Une projection orthogonale sur l'axe des abscisses.
+- [x] **D)** Une réflexion par rapport à la droite d'équation $y=x$.
+
+<details>
+<summary>Solution</summary>
+
+**Réponses : [A, D]**
+
+Il faut identifier les transformations qui préservent les longueurs.
+
+- **A.** Correct. Les rotations préservent les distances à l'origine et les angles, donc elles préservent la norme des vecteurs. C'est un exemple type d'isométrie.
+- **B.** Incorrect. Une homothétie de rapport 3 multiplie la norme de chaque vecteur par 3. Elle ne conserve la norme que pour le vecteur nul.
+- **C.** Incorrect. Une projection "écrase" les vecteurs sur un sous-espace. Par exemple, le vecteur $(0, 1)$ a une norme de 1, mais son image $(0, 0)$ a une norme de 0.
+- **D.** Correct. Une réflexion est une symétrie qui "retourne" l'espace par rapport à une droite ou un plan. Elle préserve les formes et les longueurs, c'est donc une isométrie.
+
+</details>
+
+---
+
+#### Question 4 : Groupe Orthogonal
+
+Quelle est la condition qui définit une matrice réelle $M$ de taille $n \times n$ comme appartenant au groupe orthogonal $O_n(\mathbb{R})$ ?
+
+- [ ] **A)** $M$ est égale à sa transposée ($M = {}^tM$).
+- [ ] **B)** Les colonnes de $M$ sont orthogonales entre elles.
+- [x] **C)** Le produit de la transposée de $M$ par $M$ est la matrice identité (${}^tM M = I_n$).
+- [ ] **D)** Le déterminant de $M$ est strictement positif.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+La définition du groupe orthogonal est basée sur la relation entre une matrice et son inverse.
+
+- **A.** C'est la définition d'une matrice symétrique, pas orthogonale.
+- **B.** C'est une condition nécessaire mais non suffisante. Pour que la matrice soit orthogonale, les colonnes doivent non seulement être orthogonales, mais aussi avoir une norme égale à 1 (former une base orthonormée).
+- **C.** C'est la définition formelle. Elle signifie que l'inverse de $M$ est sa transposée, $M^{-1} = {}^tM$. C'est l'équivalent matriciel de la propriété $f^{-1}=f^*$ pour les isométries.
+- **D.** C'est une condition trop faible. Par exemple, la matrice $\begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix}$ a un déterminant positif (4) mais n'est pas orthogonale.
+
+</details>
+
+---
+
+#### Question 5 : Déterminant d'une isométrie
+
+Soit $M$ une matrice du groupe orthogonal $O_3(\mathbb{R})$. Que peut-on affirmer avec certitude ?
+
+- [ ] **A)** Le déterminant de $M$ est toujours égal à 1.
+- [ ] **B)** Les valeurs propres de $M$ sont toutes réelles.
+- [x] **C)** Le déterminant de $M$ vaut soit 1, soit -1.
+- [x] **D)** Si $\det(M) = 1$, alors $M$ représente une isométrie qui préserve l'orientation.
+
+<details>
+<summary>Solution</summary>
+
+**Réponses : [C, D]**
+
+Le déterminant d'une matrice orthogonale a des propriétés très spécifiques liées à la géométrie de la transformation.
+
+- **A.** Incorrect. C'est vrai pour le groupe _spécial_ orthogonal $SO_3(\mathbb{R})$, mais une réflexion, qui est dans $O_3(\mathbb{R})$, a un déterminant de -1.
+- **B.** Incorrect. Une rotation dans le plan (qui est une sous-partie d'une rotation 3D) a des valeurs propres complexes $e^{i\theta}$ et $e^{-i\theta}$ si $\theta \neq 0, \pi$.
+- **C.** Correct. De la relation ${}^tM M = I_n$, on déduit $\det({}^tM M) = \det({}^tM)\det(M) = (\det M)^2 = \det(I_n) = 1$. Donc, $\det(M) = \pm 1$.
+- **D.** Correct. C'est la définition d'une isométrie directe (qui préserve l'orientation). Celles de déterminant -1 sont dites indirectes.
+
+</details>
+
+---
+
+#### Question 6 : Angle non-orienté
+
+Comment est défini l'angle non-orienté $\theta \in [0, \pi]$ entre deux vecteurs non nuls $x$ et $y$ dans un espace euclidien ?
+
+- [x] **A)** Via la relation $\varphi(x, y) = \|x\|\|y\|\cos(\theta)$.
+- [ ] **B)** Via la relation $\det(x, y) = \|x\|\|y\|\sin(\theta)$.
+- [ ] **C)** C'est la norme du produit vectoriel de $x$ et $y$.
+- [ ] **D)** C'est la distance entre les points terminaux des vecteurs.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+La définition de l'angle est une conséquence directe de la formule du produit scalaire.
+
+- **A.** Correct. C'est la formule qui relie le produit scalaire, les normes et le cosinus de l'angle. L'inégalité de Cauchy-Schwarz garantit que $\frac{\varphi(x, y)}{\|x\|\|y\|}$ est dans $[-1, 1]$, ce qui permet de définir un unique $\theta \in [0, \pi]$.
+- **B.** Incorrect. Cette formule est utilisée pour l'angle _orienté_ dans un plan euclidien orienté.
+- **C.** Incorrect. La norme du produit vectoriel est $\|x\|\|y\||\sin(\theta)|$, ce qui représente l'aire du parallélogramme, pas l'angle lui-même.
+- **D.** Incorrect. La distance entre les points terminaux est $\|x-y\|$, pas l'angle $\theta$.
+
+</details>
+
+---
+
+#### Question 7 : Orientation d'un espace
+
+Quand dit-on que deux bases $\mathcal{B}$ et $\mathcal{B}'$ d'un espace vectoriel réel ont la même orientation ?
+
+- [ ] **A)** Lorsqu'elles partagent le même premier vecteur.
+- [x] **B)** Lorsque le déterminant de la matrice de passage de $\mathcal{B}$ à $\mathcal{B}'$ est strictement positif.
+- [ ] **C)** Lorsque la matrice de passage est symétrique.
+- [ ] **D)** Lorsque les deux bases sont orthonormées.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+L'orientation est une notion algébrique définie par le signe du déterminant de la matrice de passage.
+
+- **A.** Incorrect. Avoir un vecteur en commun ne garantit rien sur l'orientation globale de la base.
+- **B.** Correct. C'est la définition formelle. L'ensemble de toutes les bases est partitionné en deux classes d'équivalence selon le signe de ce déterminant. Choisir une orientation, c'est choisir l'une de ces deux classes.
+- **C.** Incorrect. La symétrie de la matrice de passage n'est pas liée à l'orientation.
+- **D.** Incorrect. On peut avoir deux bases orthonormées d'orientations différentes. Par exemple, $(e_1, e_2)$ et $(e_2, e_1)$ dans $\mathbb{R}^2$ sont toutes deux orthonormées, mais la matrice de passage a un déterminant de -1.
+
+</details>
+
+---
+
+#### Question 8 : Isométries du plan
+
+Une isométrie du plan euclidien (représentée par une matrice de $O_2(\mathbb{R})$) dont le déterminant est -1 est...
+
+- [ ] **A)** une rotation d'un angle non nul.
+- [x] **B)** une réflexion (ou symétrie axiale).
+- [ ] **C)** une homothétie.
+- [ ] **D)** l'application identité.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Dans le plan, les isométries sont classifiées selon le signe de leur déterminant.
+
+- **A.** Incorrect. Une rotation a un déterminant égal à +1.
+- **B.** Correct. Les isométries de déterminant -1 dans le plan sont des réflexions par rapport à une droite passant par l'origine.
+- **C.** Incorrect. Une homothétie n'est une isométrie que si son rapport est 1 ou -1. L'homothétie de rapport -1 est une rotation d'angle $\pi$ et a un déterminant de +1.
+- **D.** Incorrect. L'application identité est une rotation d'angle 0, son déterminant est +1.
+
+</details>
+
+---
+
+#### Question 9 : Isométries de l'espace
+
+Selon le théorème de la rotation d'Euler, toute isométrie directe de l'espace $\mathbb{R}^3$ (un élément de $SO_3(\mathbb{R})$)...
+
+- [ ] **A)** est une composée de deux réflexions.
+- [x] **B)** laisse une droite de vecteurs invariants (son axe de rotation).
+- [ ] **C)** ne peut pas être l'identité.
+- [ ] **D)** n'est jamais commutative, contrairement aux rotations du plan.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Le théorème d'Euler est un résultat fondamental sur la structure des rotations en 3D.
+
+- **A.** Incorrect. Une isométrie directe est une rotation. La composée de deux réflexions est bien une rotation (dans le plan), mais ce n'est pas l'énoncé du théorème d'Euler. De plus, il faudrait préciser par rapport à quels plans.
+- **B.** Correct. Le théorème stipule que toute isométrie directe en dimension 3 fixe un axe. Algébriquement, cela signifie que sa matrice admet toujours la valeur propre 1.
+- **C.** Incorrect. L'identité est un cas particulier de rotation (d'angle 0), c'est une isométrie directe.
+- **D.** Incorrect. Le groupe $SO_3(\mathbb{R})$ est non-commutatif, mais cela n'est pas l'énoncé du théorème d'Euler. Le théorème porte sur la structure d'une seule rotation.
+
+</details>
+
+---
+
+#### Question 10 : Propriétés du produit vectoriel
+
+Soient $U$ et $V$ deux vecteurs non colinéaires de $\mathbb{R}^3$. Quelles sont les propriétés correctes du produit vectoriel $W = U \land V$ ?
+
+- [x] **A)** $W$ est orthogonal à la fois à $U$ et à $V$.
+- [x] **B)** La norme de $W$ est égale à l'aire du parallélogramme formé par $U$ et $V$.
+- [ ] **C)** Le produit vectoriel est associatif : $(U \land V) \land Z = U \land (V \land Z)$.
+- [x] **D)** La base $(U, V, W)$ est une base directe.
+
+<details>
+<summary>Solution</summary>
+
+**Réponses : [A, B, D]**
+
+Le produit vectoriel a des propriétés géométriques et algébriques très riches.
+
+- **A.** Correct. C'est l'une des propriétés fondamentales. La direction de $U \land V$ est orthogonale au plan défini par $U$ et $V$.
+- **B.** Correct. C'est l'interprétation géométrique de la norme du produit vectoriel : $\|U \land V\| = \|U\|\|V\||\sin(\theta)|$.
+- **C.** Incorrect. Le produit vectoriel n'est pas associatif. La formule du double produit vectoriel montre que l'ordre des opérations compte.
+- **D.** Correct. C'est la "règle de la main droite". Le sens de $U \land V$ est tel que la base $(U, V, U \land V)$ a la même orientation que la base de référence (généralement la base canonique).
+
+</details>
+
+---
+
+#### Question 11 : Calcul de produit vectoriel
+
+Dans $\mathbb{R}^3$ muni de sa base canonique orthonormée directe $(e_1, e_2, e_3)$, que vaut le produit vectoriel $e_2 \land e_3$ ?
+
+- [ ] **A)** $e_3$
+- [ ] **B)** $-e_1$
+- [ ] **C)** $0$
+- [x] **D)** $e_1$
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+Le calcul des produits vectoriels des vecteurs de la base canonique suit des relations de permutation circulaire.
+
+- **A.** Incorrect.
+- **B.** Incorrect. C'est le résultat de $e_3 \land e_2$. Le produit vectoriel est antisymétrique.
+- **C.** Incorrect. Le produit vectoriel est nul seulement si les vecteurs sont colinéaires, ce qui n'est pas le cas de $e_2$ et $e_3$.
+- **D.** Correct. Les relations sont : $e_1 \land e_2 = e_3$, $e_2 \land e_3 = e_1$, et $e_3 \land e_1 = e_2$.
+
+</details>
+
+---
+
+#### Question 12 : Formule de Rodrigues
+
+Quel est l'objectif principal de la formule de Rodrigues ?
+
+- [ ] **A)** Déterminer si une transformation est une isométrie.
+- [ ] **B)** Calculer l'angle et l'axe d'une rotation à partir de sa matrice.
+- [x] **C)** Calculer l'image d'un vecteur par une rotation d'axe et d'angle donnés, sans utiliser de matrices.
+- [ ] **D)** Simplifier le produit de deux rotations.
+
+<details>
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+La formule de Rodrigues est une formule "intrinsèque" pour l'action d'une rotation.
+
+- **A.** Incorrect. La formule s'applique à une transformation dont on sait déjà que c'est une rotation.
+- **B.** Incorrect. C'est le problème inverse. On peut utiliser d'autres techniques (trace, partie antisymétrique de la matrice) pour trouver l'axe et l'angle.
+- **C.** Correct. La formule $\mathcal{R}(U) = \cos(\theta)U + (1 - \cos(\theta))\langle U, N \rangle N + \sin(\theta)N \land U$ donne directement le vecteur résultant à partir du vecteur initial $U$, de l'axe unitaire $N$ et de l'angle $\theta$.
+- **D.** Incorrect. Pour composer des rotations, on multiplie généralement leurs matrices ou on utilise des quaternions. La formule de Rodrigues n'est pas directement conçue pour cela.
+
+</details>

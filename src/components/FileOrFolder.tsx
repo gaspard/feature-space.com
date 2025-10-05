@@ -60,7 +60,13 @@ const FileOrFolder: React.FC<FileOrFolderProps> = ({
 			<div className="mb-1">
 				<button
 					type="button"
-					onClick={toggleExpanded}
+					onClick={() => {
+						toggleExpanded();
+						// If the folder has a path (index file), navigate to it
+						if (item.path && item.path !== currentPath) {
+							window.location.href = item.path;
+						}
+					}}
 					className={`
             flex items-center w-full px-3 py-2 text-sm font-medium text-left transition-colors duration-150
             ${isActive

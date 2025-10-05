@@ -71,9 +71,12 @@ async function processDirectoryRecursive(dirPath: string, relativePath: string):
           // Generate accent-less path from the actual directory structure
           const accentLessPath = generateAccentLessPath(currentRelativePath);
 
+          // Check if there's an index file for this directory
+          const indexPath = await getDirectoryIndexPath(fullPath, currentRelativePath);
+
           navigationItems.push({
             title: infoFile?.title || formatDirectoryTitle(entry.name),
-            path: `/${accentLessPath}/`,
+            path: indexPath || `/${accentLessPath}/`,
             children: sortNavigationItems(children),
             order: infoFile?.order // Use order from info file if available
           });
@@ -91,42 +94,37 @@ async function processDirectoryRecursive(dirPath: string, relativePath: string):
 /**
  * Checks if a file is a valid page file (Astro, Markdown, but not Cards or dynamic routes)
  * Cards files are processed by the Vite plugin, not as standalone pages
+ * Also excludes all files starting with "_" as they are used for internal purposes only
  */
 function isValidPageFile(filename: string): boolean {
   const ext = extname(filename).toLowerCase();
-  // Exclude dynamic routes and cards files
-  if (filename.startsWith('[') || filename.endsWith('.cards')) {
+  // Exclude dynamic routes, cards files, and all files starting with "_"
+  if (filename.startsWith('[') || filename.endsWith('.cards') || filename.startsWith('_')) {
     return false;
   }
   return ['.astro', '.md', '.mdx'].includes(ext);
 }
 
 /**
- * Gets directory information from index.md or info.md files
+ * Gets directory information from _index.md files
  */
 async function getDirectoryInfo(dirPath: string): Promise<PageInfo | null> {
   try {
-    const infoFiles = ['index.md', 'info.md'];
+    const indexPath = join(dirPath, '_index.md');
+    try {
+      const content = await readFile(indexPath, 'utf-8');
+      const { data: frontmatter } = matter(content);
 
-    for (const infoFile of infoFiles) {
-      const infoPath = join(dirPath, infoFile);
-      try {
-        const content = await readFile(infoPath, 'utf-8');
-        const { data: frontmatter } = matter(content);
-
-        return {
-          title: frontmatter.title,
-          path: infoPath,
-          order: frontmatter.order,
-          hidden: frontmatter.hidden || false
-        };
-      } catch (error) {
-        // File doesn't exist, continue to next
-        continue;
-      }
+      return {
+        title: frontmatter.title,
+        path: indexPath,
+        order: frontmatter.order,
+        hidden: frontmatter.hidden || false
+      };
+    } catch (error) {
+      // _index.md doesn't exist
+      return null;
     }
-
-    return null;
   } catch (error) {
     console.warn(`Error reading directory info for ${dirPath}:`, error);
     return null;
@@ -143,6 +141,27 @@ function removeAccents(str: string): string {
     .replace(/[^a-zA-Z0-9\s-]/g, '') // Remove special characters except spaces and hyphens
     .replace(/\s+/g, '-') // Replace spaces with hyphens
     .toLowerCase();
+}
+
+/**
+ * Gets the URL path for the _index.md file in a directory
+ */
+async function getDirectoryIndexPath(dirPath: string, relativePath: string): Promise<string | null> {
+  try {
+    const indexPath = join(dirPath, '_index.md');
+    try {
+      // Check if file exists
+      await readFile(indexPath, 'utf-8');
+      // Return the URL path for this directory
+      return `/${generateAccentLessPath(relativePath)}/`;
+    } catch (error) {
+      // _index.md doesn't exist
+      return null;
+    }
+  } catch (error) {
+    console.warn(`Error checking directory index for ${dirPath}:`, error);
+    return null;
+  }
 }
 
 /**
