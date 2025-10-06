@@ -157,6 +157,8 @@ En effet, $\varphi(x, x) = \overline{\varphi(x, x)}$, ce qui est la définition 
 
 Soit $E = \mathbb{R}^n$ et $\varphi(x, y) = \sum_{i=1}^n x_i y_i$.
 
+Pour vérifier la symétrie, calculons $\varphi(y, x)$ :
+
 $\varphi(y, x) = \sum_{i=1}^n y_i x_i = \sum_{i=1}^n x_i y_i = \varphi(x, y)$.
 
 La forme est bien symétrique.
@@ -165,13 +167,15 @@ La forme est bien symétrique.
 
 Soit $E = \mathbb{R}^n$ et $S$ une matrice carrée symétrique ($S = {}^tS$). L'application $\varphi(X, Y) = {}^tXSY$ est une forme bilinéaire symétrique.
 
-En effet, comme ${}^tXSY$ est un scalaire, il est égal à sa transposée :
+Pour démontrer la symétrie, utilisons le fait que ${}^tXSY$ est un scalaire, donc égal à sa transposée :
 
 $\varphi(X, Y) = {}^t({}^tXSY) = {}^tY {}^tS {}^t({}^tX) = {}^tY S X = \varphi(Y, X)$.
 
 **Exemple 3 : Produit scalaire canonique sur $\mathbb{C}^n$ (Hermitienne)**
 
 Soit $E = \mathbb{C}^n$ et $\varphi(x, y) = \sum_{i=1}^n x_i \bar{y}_i$.
+
+Pour vérifier la propriété hermitienne, calculons $\overline{\varphi(y, x)}$ :
 
 $\overline{\varphi(y, x)} = \overline{\sum_{i=1}^n y_i \bar{x}_i} = \sum_{i=1}^n \overline{y_i \bar{x}_i} = \sum_{i=1}^n \bar{y}_i \overline{(\bar{x}_i)} = \sum_{i=1}^n x_i \bar{y}_i = \varphi(x, y)$.
 
@@ -181,6 +185,8 @@ La forme est bien hermitienne.
 
 Soit $E$ l'espace des fonctions continues de $[0, 1]$ dans $\mathbb{C}$. L'application $\varphi(f, g) = \int_0^1 f(t)\overline{g(t)} dt$ est une forme sesquilinéaire hermitienne.
 
+Pour vérifier la propriété hermitienne, calculons $\overline{\varphi(g, f)}$ :
+
 $\overline{\varphi(g, f)} = \overline{\int_0^1 g(t)\overline{f(t)} dt} = \int_0^1 \overline{g(t)\overline{f(t)}} dt = \int_0^1 \overline{g(t)} f(t) dt = \varphi(f, g)$.
 
 ### Contre-exemples
@@ -189,13 +195,17 @@ $\overline{\varphi(g, f)} = \overline{\int_0^1 g(t)\overline{f(t)} dt} = \int_0^
 
 Sur $E = \mathbb{R}^2$, soit $\varphi(x, y) = x_1 y_2 - x_2 y_1$ (le déterminant des vecteurs $x, y$).
 
-C'est une forme bilinéaire. Mais $\varphi((1,0), (0,1)) = 1 \cdot 1 - 0 \cdot 0 = 1$, alors que $\varphi((0,1), (1,0)) = 0 \cdot 0 - 1 \cdot 1 = -1$.
+C'est une forme bilinéaire. Mais vérifions la symétrie :
+
+$\varphi((1,0), (0,1)) = 1 \cdot 1 - 0 \cdot 0 = 1$, alors que $\varphi((0,1), (1,0)) = 0 \cdot 0 - 1 \cdot 1 = -1$.
 
 Comme $\varphi(x, y) = -\varphi(y, x)$, elle est dite antisymétrique.
 
 **Contre-exemple 2 : Forme sesquilinéaire non hermitienne**
 
 Sur $E = \mathbb{C}^2$, soit $\varphi(z, w) = z_1 \bar{w_2}$. C'est une forme sesquilinéaire.
+
+Vérifions si elle est hermitienne avec des vecteurs spécifiques :
 
 Calculons $\varphi((1,0), (0,i)) = 1 \cdot \bar{i} = -i$.
 
@@ -259,9 +269,9 @@ $E = \mathbb{R}^n$ avec $\langle x, y \rangle = \sum_{i=1}^n x_i y_i$.
 
 C'est une forme bilinéaire symétrique. Vérifions qu'elle est définie positive.
 
-$\langle x, x \rangle = \sum_{i=1}^n x_i^2$. C'est une somme de carrés de réels, donc $\langle x, x \rangle \ge 0$.
+**Positivité :** $\langle x, x \rangle = \sum_{i=1}^n x_i^2$. C'est une somme de carrés de réels, donc $\langle x, x \rangle \ge 0$.
 
-Si $\langle x, x \rangle = 0$, alors $\sum_{i=1}^n x_i^2 = 0$. Comme chaque $x_i^2 \ge 0$, la somme ne peut être nulle que si chaque terme est nul, i.e., $x_i^2=0$ pour tout $i$, donc $x_i=0$ pour tout $i$. Ainsi $x = 0_E$.
+**Caractère défini :** Si $\langle x, x \rangle = 0$, alors $\sum_{i=1}^n x_i^2 = 0$. Comme chaque $x_i^2 \ge 0$, la somme ne peut être nulle que si chaque terme est nul, i.e., $x_i^2=0$ pour tout $i$, donc $x_i=0$ pour tout $i$. Ainsi $x = 0_E$.
 
 C'est donc un produit scalaire.
 
@@ -271,9 +281,9 @@ $E = \mathbb{C}^n$ avec $\langle x, y \rangle = \sum_{i=1}^n x_i \bar{y}_i$.
 
 C'est une forme sesquilinéaire hermitienne. Vérifions qu'elle est définie positive.
 
-$\langle x, x \rangle = \sum_{i=1}^n x_i \bar{x}_i = \sum_{i=1}^n |x_i|^2$. C'est une somme de modules au carré, qui sont des réels positifs, donc $\langle x, x \rangle \ge 0$.
+**Positivité :** $\langle x, x \rangle = \sum_{i=1}^n x_i \bar{x}_i = \sum_{i=1}^n |x_i|^2$. C'est une somme de modules au carré, qui sont des réels positifs, donc $\langle x, x \rangle \ge 0$.
 
-Si $\langle x, x \rangle = 0$, alors $\sum_{i=1}^n |x_i|^2 = 0$. Cela implique $|x_i|^2 = 0$ pour tout $i$, donc $x_i=0$ pour tout $i$. Ainsi $x=0_E$.
+**Caractère défini :** Si $\langle x, x \rangle = 0$, alors $\sum_{i=1}^n |x_i|^2 = 0$. Cela implique $|x_i|^2 = 0$ pour tout $i$, donc $x_i=0$ pour tout $i$. Ainsi $x=0_E$.
 
 C'est donc un produit scalaire hermitien.
 
@@ -281,11 +291,11 @@ C'est donc un produit scalaire hermitien.
 
 Soit $E = \mathbb{R}_n[X]$. L'application $\langle P, Q \rangle = \int_{-1}^1 P(t)Q(t) dt$ est un produit scalaire.
 
-C'est une forme bilinéaire symétrique. Pour la positivité :
+C'est une forme bilinéaire symétrique. Vérifions qu'elle est définie positive.
 
-$\langle P, P \rangle = \int_{-1}^1 (P(t))^2 dt \ge 0$, car $(P(t))^2 \ge 0$ et on intègre sur un intervalle où la borne inférieure est plus petite que la borne supérieure.
+**Positivité :** $\langle P, P \rangle = \int_{-1}^1 (P(t))^2 dt \ge 0$, car $(P(t))^2 \ge 0$ et on intègre sur un intervalle où la borne inférieure est plus petite que la borne supérieure.
 
-Si $\langle P, P \rangle = 0$, alors $\int_{-1}^1 (P(t))^2 dt = 0$. Comme la fonction $t \mapsto (P(t))^2$ est continue et positive, son intégrale ne peut être nulle que si la fonction est identiquement nulle sur $[-1,1]$. Un polynôme non nul n'ayant qu'un nombre fini de racines, $P$ doit être le polynôme nul. La forme est donc définie positive.
+**Caractère défini :** Si $\langle P, P \rangle = 0$, alors $\int_{-1}^1 (P(t))^2 dt = 0$. Comme la fonction $t \mapsto (P(t))^2$ est continue et positive, son intégrale ne peut être nulle que si la fonction est identiquement nulle sur $[-1,1]$. Un polynôme non nul n'ayant qu'un nombre fini de racines, $P$ doit être le polynôme nul. La forme est donc définie positive.
 
 ### Contre-exemples
 
@@ -293,15 +303,15 @@ Si $\langle P, P \rangle = 0$, alors $\int_{-1}^1 (P(t))^2 dt = 0$. Comme la fon
 
 Soit $E = \mathbb{R}^2$ et $\varphi(x, y) = x_1 y_1$. C'est une forme bilinéaire symétrique.
 
-$\varphi(x, x) = x_1^2 \ge 0$, donc elle est positive.
+**Positivité :** $\varphi(x, x) = x_1^2 \ge 0$, donc elle est positive.
 
-Mais elle n'est pas définie. Prenons $x = (0, 1)$. Ce vecteur est non nul, pourtant $\varphi(x, x) = 0^2 = 0$.
+**Non-définie :** Mais elle n'est pas définie. Prenons $x = (0, 1)$. Ce vecteur est non nul, pourtant $\varphi(x, x) = 0^2 = 0$.
 
 **Contre-exemple 2 : Forme symétrique non positive (signature de Minkowski)**
 
 Soit $E = \mathbb{R}^2$ et $\varphi(x, y) = x_1 y_1 - x_2 y_2$. C'est une forme bilinéaire symétrique.
 
-Mais elle n'est pas positive. Prenons $x = (0, 1)$. On a $\varphi(x, x) = 0^2 - 1^2 = -1 < 0$.
+**Non-positivité :** Mais elle n'est pas positive. Prenons $x = (0, 1)$. On a $\varphi(x, x) = 0^2 - 1^2 = -1 < 0$.
 
 ### Concepts Liés
 
@@ -343,23 +353,43 @@ La preuve standard, présentée dans le cours, est très élégante. Elle consis
 ### Exemples
 
 **Exemple 1 : Dans $\mathbb{R}^n$**
+
 Soit $x = (x_1, \dots, x_n)$ et $y = (y_1, \dots, y_n)$. L'inégalité s'écrit :
-$$ \left| \sum*{i=1}^n x_i y_i \right| \le \sqrt{\sum*{i=1}^n x*i^2} \sqrt{\sum*{i=1}^n y*i^2} $$
+
+$$ \left| \sum*{i=1}^n x_i y_i \right| \le \sqrt{\sum*{i=1}^n x*i^2} \sqrt{\sum*{i=1}^n y_i^2} $$
+
 Ou encore :
-$$ \left( \sum*{i=1}^n x*i y_i \right)^2 \le \left( \sum*{i=1}^n x*i^2 \right) \left( \sum*{i=1}^n y_i^2 \right) $$
+
+$$ \left( \sum*{i=1}^n x_i y_i \right)^2 \le \left( \sum*{i=1}^n x*i^2 \right) \left( \sum*{i=1}^n y_i^2 \right) $$
 
 **Exemple 2 : Dans l'espace des fonctions continues**
-Soit $E$ l'espace des fonctions réelles continues sur $[a,b]$, avec le produit scalaire $\langle f, g \rangle = \int_a^b f(t)g(t) dt$. L'inégalité de Cauchy-Schwarz devient :
+
+Soit $E$ l'espace des fonctions réelles continues sur $[a,b]$, avec le produit scalaire $\langle f, g \rangle = \int_a^b f(t)g(t) dt$.
+
+L'inégalité de Cauchy-Schwarz devient :
+
 $$ \left| \int_a^b f(t)g(t) dt \right| \le \sqrt{\int_a^b f(t)^2 dt} \sqrt{\int_a^b g(t)^2 dt} $$
+
 C'est un résultat très utile en analyse.
 
 **Exemple 3 : Application numérique dans $\mathbb{R}^3$**
+
 Soit $x = (1, 2, 3)$ et $y = (-1, 0, 2)$.
+
+**Calculs des produits scalaires :**
+
 $\langle x, y \rangle = 1(-1) + 2(0) + 3(2) = -1 + 6 = 5$.
+
 $\langle x, x \rangle = 1^2 + 2^2 + 3^2 = 1 + 4 + 9 = 14$.
+
 $\langle y, y \rangle = (-1)^2 + 0^2 + 2^2 = 1 + 0 + 4 = 5$.
+
+**Vérification de l'inégalité :**
+
 L'inégalité nous dit que $|\langle x, y \rangle| \le \sqrt{14} \sqrt{5}$.
+
 $|5| \le \sqrt{70}$.
+
 Comme $5^2 = 25$ et $(\sqrt{70})^2 = 70$, l'inégalité $25 \le 70$ est bien vérifiée. Les vecteurs ne sont pas colinéaires, donc l'inégalité est stricte.
 
 ### Contre-exemples
@@ -367,19 +397,39 @@ Comme $5^2 = 25$ et $(\sqrt{70})^2 = 70$, l'inégalité $25 \le 70$ est bien vé
 L'inégalité de Cauchy-Schwarz est un théorème, il n'y a donc pas de contre-exemple où elle serait fausse dans un espace préhilbertien. Les "contre-exemples" illustrent ce qui se passe si les hypothèses ne sont pas respectées.
 
 **Contre-exemple 1 : Avec une forme non positive**
+
 Soit $E = \mathbb{R}^2$ avec la forme de Minkowski $\varphi(x, y) = x_1 y_1 - x_2 y_2$.
+
 Soit $x = (2, 1)$ et $y = (2, -1)$.
+
+**Calculs :**
+
 $\varphi(x, y) = 2(2) - 1(-1) = 5$.
+
 $\varphi(x, x) = 2^2 - 1^2 = 3$.
+
 $\varphi(y, y) = 2^2 - (-1)^2 = 3$.
+
+**Problème :**
+
 L'inégalité de Cauchy-Schwarz s'écrirait $|\varphi(x, y)|^2 \le \varphi(x,x)\varphi(y,y)$, soit $5^2 \le 3 \cdot 3$, c'est-à-dire $25 \le 9$, ce qui est faux. Cela vient du fait que la forme n'est pas positive.
 
 **Contre-exemple 2 : Mauvaise formule dans $\mathbb{C}^n$**
+
 Si l'on utilisait la forme bilinéaire $\varphi(z, w) = \sum z_i w_i$ sur $\mathbb{C}^n$ au lieu de la forme sesquilinéaire correcte.
+
 Soit $z = (i, 0)$ et $w = (i, 0)$.
+
+**Calculs :**
+
 $\varphi(z, w) = i \cdot i = -1$.
+
 $\varphi(z, z) = i \cdot i = -1$.
+
 $\varphi(w, w) = i \cdot i = -1$.
+
+**Problème :**
+
 L'inégalité $|\varphi(z, w)|^2 \le \varphi(z,z)\varphi(w,w)$ donnerait $|-1|^2 \le (-1)(-1)$, soit $1 \le 1$. L'inégalité est vérifiée ici, mais le problème est que $\varphi(z,z)$ est négatif, ce qui rend la définition de la norme impossible.
 
 ### Concepts Liés
@@ -435,44 +485,79 @@ Toute norme ne provient pas d'un produit scalaire. Celles qui en proviennent ont
 ### Exemples
 
 **Exemple 1 : Norme euclidienne usuelle sur $\mathbb{R}^n$**
+
 La norme associée au produit scalaire usuel $\langle x, y \rangle = \sum x_i y_i$ est :
+
 $$ \|x\| = \sqrt{\sum\_{i=1}^n x_i^2} $$
-C'est la distance euclidienne classique de l'origine au point $x$. Pour $x = (3, 4) \in \mathbb{R}^2$, $\|x\| = \sqrt{3^2+4^2} = \sqrt{9+16} = \sqrt{25}=5$.
+
+C'est la distance euclidienne classique de l'origine au point $x$.
+
+**Application numérique :** Pour $x = (3, 4) \in \mathbb{R}^2$, $\|x\| = \sqrt{3^2+4^2} = \sqrt{9+16} = \sqrt{25}=5$.
 
 **Exemple 2 : Norme hermitienne usuelle sur $\mathbb{C}^n$**
+
 La norme associée au produit scalaire usuel $\langle z, w \rangle = \sum z_i \bar{w}_i$ est :
+
 $$ \|z\| = \sqrt{\sum*{i=1}^n z_i \bar{z}\_i} = \sqrt{\sum*{i=1}^n |z_i|^2} $$
-Pour $z = (1+i, 2) \in \mathbb{C}^2$, $\|z\| = \sqrt{|1+i|^2 + |2|^2} = \sqrt{(\sqrt{1^2+1^2})^2 + 2^2} = \sqrt{2+4} = \sqrt{6}$.
+
+**Application numérique :** Pour $z = (1+i, 2) \in \mathbb{C}^2$, $\|z\| = \sqrt{|1+i|^2 + |2|^2} = \sqrt{(\sqrt{1^2+1^2})^2 + 2^2} = \sqrt{2+4} = \sqrt{6}$.
 
 **Exemple 3 : Norme $L^2$ sur les polynômes**
+
 Pour $E = \mathbb{R}_n[X]$ avec $\langle P, Q \rangle = \int_{-1}^1 P(t)Q(t) dt$, la norme est :
-$$ \|P\| = \sqrt{\int*{-1}^1 (P(t))^2 dt} $$
-Pour $P(t)=t$, $\|P\| = \sqrt{\int*{-1}^1 t^2 dt} = \sqrt{\left[\frac{t^3}{3}\right]\_{-1}^1} = \sqrt{\frac{1}{3} - (-\frac{1}{3})} = \sqrt{\frac{2}{3}}$.
+
+$$ \|P\| = \sqrt{\int\_{-1}^1 (P(t))^2 dt} $$
+
+**Application numérique :** Pour $P(t)=t$,
+
+$\|P\| = \sqrt{\int_{-1}^1 t^2 dt} = \sqrt{\left[\frac{t^3}{3}\right]_{-1}^1} = \sqrt{\frac{1}{3} - (-\frac{1}{3})} = \sqrt{\frac{2}{3}}$.
 
 ### Contre-exemples
 
 Il s'agit de normes qui ne proviennent pas d'un produit scalaire, car elles ne vérifient pas l'identité du parallélogramme.
 
 **Contre-exemple 1 : La norme 1 sur $\mathbb{R}^2$**
+
 Définie par $\|x\|_1 = |x_1| + |x_2|$. C'est bien une norme.
+
+**Test avec des vecteurs spécifiques :**
+
 Prenons $x=(1,0)$ et $y=(0,1)$.
+
 $\|x\|_1 = 1$, $\|y\|_1 = 1$.
+
 $x+y = (1,1)$, $\|x+y\|_1 = |1|+|1|=2$.
+
 $x-y = (1,-1)$, $\|x-y\|_1 = |1|+|-1|=2$.
-Vérifions l'identité du parallélogramme :
+
+**Vérification de l'identité du parallélogramme :**
+
 $\|x+y\|_1^2 + \|x-y\|_1^2 = 2^2+2^2 = 8$.
+
 $2(\|x\|_1^2 + \|y\|_1^2) = 2(1^2+1^2) = 4$.
+
 Comme $8 \neq 4$, cette norme ne dérive pas d'un produit scalaire.
 
 **Contre-exemple 2 : La norme infinie sur $\mathbb{R}^2$**
+
 Définie par $\|x\|_\infty = \max(|x_1|, |x_2|)$.
+
+**Test avec les mêmes vecteurs :**
+
 Utilisons les mêmes vecteurs $x=(1,0)$ et $y=(0,1)$.
+
 $\|x\|_\infty = 1$, $\|y\|_\infty = 1$.
+
 $x+y = (1,1)$, $\|x+y\|_\infty = \max(1,1)=1$.
+
 $x-y = (1,-1)$, $\|x-y\|_\infty = \max(1,1)=1$.
-Identité du parallélogramme :
+
+**Vérification de l'identité du parallélogramme :**
+
 $\|x+y\|_\infty^2 + \|x-y\|_\infty^2 = 1^2+1^2 = 2$.
+
 $2(\|x\|_\infty^2 + \|y\|_\infty^2) = 2(1^2+1^2) = 4$.
+
 Comme $2 \neq 4$, cette norme ne dérive pas non plus d'un produit scalaire.
 
 ### Concepts Liés
@@ -500,7 +585,7 @@ On note souvent $x \perp y$.
 2.  **Famille orthogonale** : Une famille de vecteurs $(v_i)_{i \in I}$ est dite **orthogonale** si ses vecteurs sont deux à deux orthogonaux. Pour tous $i \neq j$, $\langle v_i, v_j \rangle = 0$.
 
 3.  **Famille orthonormée** : Une famille est dite **orthonormée** (ou **orthonormale**) si elle est orthogonale et si tous ses vecteurs sont de norme 1. Pour tous $i, j$ :
-    $$ \langle v_i, v_j \rangle = \delta_{ij} = \begin{cases} 1 & \text{si } i=j \\ 0 & \text{si } i \neq j \end{cases} $$
+    $$ \langle v*i, v_j \rangle = \delta*{ij} = \begin{cases} 1 & \text{si } i=j \\ 0 & \text{si } i \neq j \end{cases} $$
     où $\delta_{ij}$ est le symbole de Kronecker.
 
 **Explication détaillée**
@@ -515,9 +600,9 @@ Une propriété fondamentale des familles orthogonales est qu'elles sont "presqu
 
 - **Théorème de Pythagore** : Si une famille de vecteurs $(v_1, \dots, v_n)$ est orthogonale, alors le carré de la norme de leur somme est égal à la somme des carrés de leurs normes :
   $$ \left\| \sum*{i=1}^n v_i \right\|^2 = \sum*{i=1}^n \|v*i\|^2 $$
-  *Démonstration :_
+  \_Démonstration :*
   $\|\sum_i v_i\|^2 = \langle \sum_i v_i, \sum_j v_j \rangle = \sum_{i,j} \langle v_i, v_j \rangle$.
-    Comme la famille est orthogonale, $\langle v_i, v_j \rangle = 0$ si $i \neq j$. Il ne reste que les termes où $i=j$ :
+  Comme la famille est orthogonale, $\langle v_i, v_j \rangle = 0$ si $i \neq j$. Il ne reste que les termes où $i=j$ :
   $\sum_i \langle v_i, v_i \rangle = \sum_i \|v_i\|^2$.
 
 - **Liberté des familles orthogonales** : Toute famille orthogonale de vecteurs non nuls est libre.
@@ -1026,8 +1111,8 @@ Or ${}^tB = \begin{pmatrix} -1 & 1 \\ 0 & 1 \end{pmatrix} \neq B$. La relation $
 Soit $f$ un endomorphisme d'un espace euclidien ou hermitien $E$.
 
 1.  **Endomorphisme auto-adjoint** : $f$ est dit **auto-adjoint** (ou **symétrique** dans le cas euclidien, **hermitien** dans le cas hermitien) si $f$ est égal à son propre adjoint :
-    $$ f = f^_ $$
-    Matriciellement, dans une base orthonormée, sa matrice $A$ vérifie $A = A^_$ (i.e., $A={}^tA$ en réel, $A=\overline{{}^tA}$ en complexe).
+    $$ f = f^\_ $$
+    Matriciellement, dans une base orthonormée, sa matrice $A$ vérifie $A = A^*$ (i.e., $A={}^tA$ en réel, $A=\overline{{}^tA}$ en complexe).
 
 2.  **Endomorphisme unitaire (ou orthogonal)** : $f$ est dit **unitaire** (cas hermitien) ou **orthogonal** (cas euclidien) s'il est un isomorphisme et que son inverse est son adjoint :
     $$ f^{-1} = f^_ \iff f^_ \circ f = f \circ f^* = \text{Id}\_E $$
