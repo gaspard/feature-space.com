@@ -27,13 +27,6 @@ export function layoutPlugin() {
     const layout = LAYOUTS[type || 'article'] || LAYOUTS.article;
     const layoutPath = (file.path.replace(basePath, '')).split('/').slice(3).map(() => '..').join('/') + '/layouts/' + layout;
 
-    console.log('layoutPlugin:', JSON.stringify({
-      path: file.path,
-      dnam: basePath,
-      rela: file.path.replace(basePath, ''),
-      npat: file.path.replace(basePath, '').split('/').slice(2).map(() => '..').join('/')
-    }, null, 2));
-
     frontmatter.layout = layoutPath;
   };
 }

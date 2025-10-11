@@ -15,9 +15,6 @@ const FileOrFolder: React.FC<FileOrFolderProps> = ({
 	level = 0,
 }) => {
 	const expanded = isActiveNavItem(item, currentPath);
-	if (!expanded) {
-		console.log(item.path, expanded, currentPath);
-	}
 
 	const isActive = item.path === currentPath;
 
