@@ -1,9 +1,11 @@
 ---
-import Layout from "./Layout.astro";
+import Layout from "./Layout.astro"
+import LLMWarning from "../components/LLMWarning.astro"
 ---
 
 <Layout>
   <div class="article">
+    <LLMWarning />
     <slot />
   </div>
 </Layout>

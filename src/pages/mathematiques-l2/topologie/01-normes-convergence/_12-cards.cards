@@ -1,0 +1,297 @@
+---
+title: Fiches de révision (A)
+order: 11
+level: regular
+chapter: A - Concepts
+course: Topologie et Calcul Différentiel I
+tags: ["cards", "flashcards", "regular"]
+---
+
+# Cartes: A - Concepts
+
+---
+
+Qu'est-ce qu'une norme sur l'espace vectoriel $\mathbb{R}^n$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Une **norme** sur $\mathbb{R}^n$ est une application $N : \mathbb{R}^n \to \mathbb{R}_+$ qui mesure la "longueur" ou la "taille" d'un vecteur. Pour être une norme, l'application $N$ doit satisfaire trois propriétés (axiomes) pour tous vecteurs $x, y \in \mathbb{R}^n$ et tout scalaire $\lambda \in \mathbb{R}$ :
+
+1.  **Séparation** : La longueur d'un vecteur est nulle si et seulement si ce vecteur est le vecteur nul.
+
+    $N(x) = 0 \iff x = 0_{\mathbb{R}^n}$
+
+2.  **Homogénéité** : Si on étire un vecteur par un facteur $\lambda$, sa longueur est multipliée par la valeur absolue de ce facteur.
+
+    $N(\lambda x) = |\lambda| N(x)$
+
+3.  **Inégalité triangulaire** : La longueur de la somme de deux vecteurs est toujours inférieure ou égale à la somme de leurs longueurs (le chemin direct est le plus court).
+
+    $N(x + y) \leq N(x) + N(y)$
+
+Un espace vectoriel muni d'une norme, comme $(\mathbb{R}^n, N)$, est appelé un **espace vectoriel normé**.
+
+</details>
+
+---
+
+Expliquez l'intuition géométrique des trois axiomes d'une norme.
+
+<details>
+
+<summary>Réponse</summary>
+
+Chaque axiome d'une norme formalise une propriété intuitive de la notion de "longueur" d'un vecteur :
+
+1.  **Séparation ($N(x) = 0 \iff x = 0_{\mathbb{R}^n}$)**
+    - **Intuition**: Seul le vecteur nul, qui représente un déplacement nul (un point), a une longueur de zéro. Tout autre vecteur, représentant un déplacement non nul, doit avoir une longueur strictement positive.
+
+2.  **Homogénéité ($N(\lambda x) = |\lambda| N(x)$)**
+    - **Intuition**: Cet axiome décrit comment la longueur change quand on redimensionne un vecteur. Si vous doublez la longueur d'un vecteur ($ \lambda = 2 $), sa norme double. Si vous inversez sa direction mais gardez sa taille ($ \lambda = -1 $), sa norme reste inchangée car $|\lambda| = |-1| = 1$.
+
+3.  **Inégalité triangulaire ($N(x + y) \leq N(x) + N(y)$)**
+    - **Intuition**: C'est la propriété la plus célèbre. Imaginez un triangle dont les sommets sont l'origine O, le point A (défini par le vecteur $x$) et le point B (défini par le vecteur $x+y$). Le vecteur $y$ relie A à B. L'inégalité dit que la longueur du côté OB ($N(x+y)$) est toujours plus courte ou égale à la somme des longueurs des côtés OA ($N(x)$) et AB ($N(y)$). Autrement dit, "le plus court chemin entre deux points est la ligne droite".
+
+</details>
+
+---
+
+Quelles sont les formules des trois normes fondamentales sur $\mathbb{R}^n$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour un vecteur $x = {^t(x_1, \dots, x_n)} \in \mathbb{R}^n$, les trois normes les plus courantes sont :
+
+1.  **Norme 1 (ou Norme de Manhattan)**
+
+    $\|x\|_1 = \sum_{j=1}^n |x_j| = |x_1| + |x_2| + \cdots + |x_n|$
+
+    **Utilisée pour :** Mesure la distance en se déplaçant le long des axes (comme dans une grille).
+
+2.  **Norme 2 (ou Norme Euclidienne)**
+
+    $\|x\|_2 = \sqrt{\sum_{j=1}^n x_j^2} = \sqrt{x_1^2 + x_2^2 + \cdots + x_n^2}$
+
+    **Utilisée pour :** C'est la notion usuelle de distance "à vol d'oiseau", généralisant le théorème de Pythagore.
+
+3.  **Norme Infinie**
+
+    $\|x\|_\infty = \max_{1 \le j \le n} |x_j|$
+
+    **Utilisée pour :** Mesure la taille d'un vecteur par sa plus grande composante. Utile pour analyser l'erreur maximale.
+
+</details>
+
+---
+
+Calculez les normes $\|\cdot\|_1$, $\|\cdot\|_2$, et $\|\cdot\|_\infty$ pour le vecteur $u = {^t(2, -4, \sqrt{5})}$ dans $\mathbb{R}^3$.
+
+<details>
+
+<summary>Réponse</summary>
+
+Soit le vecteur $u = {^t(2, -4, \sqrt{5})}$.
+
+**1. Calcul de la norme 1 :**
+
+La norme 1 est la somme des valeurs absolues des composantes.
+
+$\|u\|_1 = |2| + |-4| + |\sqrt{5}| = 2 + 4 + \sqrt{5} = 6 + \sqrt{5}$
+
+**2. Calcul de la norme infinie :**
+
+La norme infinie est le maximum des valeurs absolues des composantes.
+
+$\|u\|_\infty = \max(|2|, |-4|, |\sqrt{5}|) = \max(2, 4, \sqrt{5})$
+
+Comme $\sqrt{5} \approx 2.23$, le maximum est 4.
+
+$\|u\|_\infty = 4$
+
+**3. Calcul de la norme euclidienne (norme 2) :**
+
+La norme 2 est la racine carrée de la somme des carrés des composantes.
+
+$\|u\|_2 = \sqrt{2^2 + (-4)^2 + (\sqrt{5})^2} = \sqrt{4 + 16 + 5} = \sqrt{25} = 5$
+
+</details>
+
+---
+
+Que signifie que deux normes $N_1$ et $N_2$ sur $\mathbb{R}^n$ sont équivalentes ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Deux normes $N_1$ et $N_2$ sur $\mathbb{R}^n$ sont dites **équivalentes** si elles se "contrôlent" mutuellement. Formellement, cela signifie qu'il existe deux constantes réelles strictement positives, $\alpha > 0$ et $\beta > 0$, telles que pour **tout** vecteur $x \in \mathbb{R}^n$, l'inégalité suivante est vraie :
+
+$$ \alpha N_1(x) \leq N_2(x) \leq \beta N_1(x) $$
+
+**Intuition :**
+
+L'équivalence des normes signifie que si un vecteur est considéré comme "petit" par une norme, il doit aussi être "petit" par l'autre. De même pour les vecteurs "grands". Les deux normes donnent une mesure de la taille qui, bien que différente en valeur, est qualitativement la même.
+
+**Conséquence principale :**
+
+En dimension finie (comme dans $\mathbb{R}^n$), toutes les normes sont équivalentes. Cela implique que les notions de convergence de suites, de continuité des fonctions, ou d'ensembles ouverts/fermés ne dépendent pas de la norme choisie.
+
+</details>
+
+---
+
+Comment définit-on la convergence d'une suite de vecteurs $(x^k)$ vers un vecteur $a$ dans $\mathbb{R}^n$?
+
+<details>
+
+<summary>Réponse</summary>
+
+Soit $N$ une norme sur $\mathbb{R}^n$. On dit qu'une suite de vecteurs $(x^k)_{k \in \mathbb{N}}$ **converge** vers un vecteur $a \in \mathbb{R}^n$ si la distance (mesurée par la norme $N$) entre les termes de la suite $x^k$ et la limite $a$ tend vers zéro lorsque $k$ tend vers l'infini.
+
+**Définition formelle (avec limite) :**
+
+$$ \lim_{k \to \infty} x^k = a \quad \iff \quad \lim_{k \to \infty} N(x^k - a) = 0 $$
+
+**Définition formelle (avec quantificateurs) :**
+
+Pour tout "rayon" $\varepsilon > 0$ aussi petit soit-il, on peut trouver un rang $k_\varepsilon$ à partir duquel tous les termes de la suite $x^k$ sont dans la "boule" de centre $a$ et de rayon $\varepsilon$.
+
+$$ \forall \varepsilon > 0, \exists k_\varepsilon \in \mathbb{N} \text{ tel que } \forall k \ge k_\varepsilon, \ N(x^k - a) < \varepsilon. $$
+
+**Point clé :** Grâce à l'équivalence de toutes les normes sur $\mathbb{R}^n$, le choix de la norme $N$ pour vérifier la convergence n'a aucune importance. Si une suite converge pour une norme, elle converge pour toutes les autres vers la même limite.
+
+</details>
+
+---
+
+Comment la convergence d'une suite de vecteurs dans $\mathbb{R}^n$ est-elle liée à la convergence de ses composantes ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Il existe un lien très direct et pratique : une suite de vecteurs dans $\mathbb{R}^n$ converge si et seulement si chacune de ses suites de composantes (qui sont des suites de nombres réels) converge.
+
+Soit une suite de vecteurs $x^k = {^t(x_1^k, x_2^k, \dots, x_n^k)}$ et un vecteur limite $a = {^t(a_1, a_2, \dots, a_n)}$.
+
+Alors, la suite $(x^k)$ converge vers $a$ dans $\mathbb{R}^n$ :
+
+$$ \lim_{k \to \infty} x^k = a $$
+
+si et seulement si pour chaque composante $j \in \{1, \dots, n\}$, la suite réelle $(x_j^k)_{k \in \mathbb{N}}$ converge vers $a_j$ :
+
+$$ \lim_{k \to \infty} x_1^k = a_1, \quad \lim_{k \to \infty} x_2^k = a_2, \quad \dots, \quad \lim_{k \to \infty} x_n^k = a_n $$
+
+**En pratique :** Pour étudier la convergence d'une suite de vecteurs, il suffit d'étudier la convergence de $n$ suites réelles distinctes, ce qui est beaucoup plus simple.
+
+**Exemple :** La suite $x^k = \left( \frac{1}{k}, 3 - e^{-k} \right)$ dans $\mathbb{R}^2$ converge vers $(0, 3)$ car $\frac{1}{k} \to 0$ et $3 - e^{-k} \to 3$.
+
+</details>
+
+---
+
+Qu'est-ce qu'une suite de Cauchy dans $\mathbb{R}^n$?
+
+<details>
+
+<summary>Réponse</summary>
+
+Une suite de vecteurs $(x^k)_{k \in \mathbb{N}}$ dans $\mathbb{R}^n$ est une **suite de Cauchy** si ses termes se rapprochent arbitrairement les uns des autres à mesure qu'on avance dans la suite.
+
+L'idée clé est que cette définition ne fait pas référence à une potentielle limite, elle ne regarde que les termes de la suite eux-mêmes.
+
+**Définition formelle :**
+
+Une suite $(x^k)$ est de Cauchy si pour toute distance $\varepsilon > 0$ que l'on se fixe, il existe un rang $k_\varepsilon$ à partir duquel deux termes quelconques de la suite, $x^p$ et $x^q$ (avec $p, q \ge k_\varepsilon$), sont à une distance inférieure à $\varepsilon$.
+
+Soit $N$ une norme sur $\mathbb{R}^n$ :
+
+$$ \forall \varepsilon > 0, \exists k_\varepsilon \in \mathbb{N} \text{ tel que } \forall p, q \ge k_\varepsilon, \ N(x^p - x^q) < \varepsilon $$
+
+**Relation avec la convergence :**
+
+Dans $\mathbb{R}^n$, une suite est de Cauchy **si et seulement si** elle est convergente. Cette propriété est appelée la **complétude** de $\mathbb{R}^n$.
+
+</details>
+
+---
+
+Quelle est la relation entre les suites de Cauchy et les suites convergentes dans $\mathbb{R}^n$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Dans l'espace $\mathbb{R}^n$, les notions de "suite de Cauchy" et de "suite convergente" sont équivalentes. C'est une propriété fondamentale appelée la **complétude** de $\mathbb{R}^n$.
+
+Cela se décompose en deux parties :
+
+1.  **Toute suite convergente est une suite de Cauchy.**
+    - **Intuition :** Si tous les termes d'une suite se rapprochent d'une limite commune $a$, alors ils doivent nécessairement se rapprocher les uns des autres.
+
+2.  **Toute suite de Cauchy est une suite convergente.**
+    - **Intuition :** Si les termes d'une suite se regroupent de plus en plus, il doit exister un "point d'accumulation" vers lequel ils tendent. Dans $\mathbb{R}^n$, ce point est toujours un élément de $\mathbb{R}^n$ (il n'y a pas de "trou" dans l'espace).
+
+Cette équivalence est extrêmement puissante, car elle permet de prouver qu'une suite converge sans avoir à connaître ou à deviner sa limite au préalable. Il suffit de montrer qu'elle vérifie le critère de Cauchy.
+
+**Contre-exemple :** Dans l'espace des nombres rationnels $\mathbb{Q}$, cette équivalence n'est pas vraie. La suite de rationnels $(1, 1.4, 1.41, 1.414, \dots)$ qui approxime $\sqrt{2}$ est de Cauchy, mais ne converge pas *dans* $\mathbb{Q}$ car sa limite $\sqrt{2}$ n'est pas rationnelle. On dit que $\mathbb{Q}$ n'est pas complet.
+
+</details>
+
+---
+
+Quel est le théorème fondamental concernant les normes sur un espace de dimension finie comme $\mathbb{R}^n$?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le théorème fondamental est le suivant :
+
+**Théorème :** Sur un espace vectoriel de dimension finie (comme $\mathbb{R}^n$), **toutes les normes sont équivalentes**.
+
+**Signification :**
+
+Cela signifie que peu importe la norme que vous choisissez pour travailler sur $\mathbb{R}^n$ (que ce soit la norme euclidienne $\|\cdot\|_2$, la norme de Manhattan $\|\cdot\|_1$, la norme infinie $\|\cdot\|_\infty$, ou toute autre norme valide), les propriétés topologiques fondamentales de l'espace restent les mêmes.
+
+**Conséquences pratiques :**
+
+- **Convergence :** Une suite de vecteurs qui converge pour une norme convergera pour toutes les autres normes, et vers la même limite.
+- **Continuité :** Une fonction qui est continue en un point pour une norme sera continue pour toutes les autres.
+- **Topologie :** La notion d'ensemble ouvert ou d'ensemble fermé ne dépend pas de la norme choisie.
+
+Ce théorème simplifie grandement l'analyse sur $\mathbb{R}^n$, car il nous permet de choisir la norme la plus pratique pour un problème donné (souvent $\|\cdot\|_\infty$ ou $\|\cdot\|_1$ pour la simplicité des calculs) en sachant que les conclusions seront valables pour toutes les autres normes.
+
+</details>
+
+---
+
+La suite $x^k = \left( \frac{1}{k}, (-1)^k \right)$ dans $\mathbb{R}^2$ est-elle convergente ? Pourquoi ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Non, la suite $x^k = \left( \frac{1}{k}, (-1)^k \right)$ n'est pas convergente.
+
+**Justification :**
+
+Pour qu'une suite de vecteurs dans $\mathbb{R}^n$ converge, il faut que **chacune** de ses suites de composantes converge. Analysons les composantes de $x^k$:
+
+1.  **Première composante :** $x_1^k = \frac{1}{k}$.
+
+    Il s'agit d'une suite réelle classique. Quand $k \to \infty$, $x_1^k \to 0$. Cette composante converge.
+
+2.  **Deuxième composante :** $x_2^k = (-1)^k$.
+
+    Cette suite réelle prend alternativement les valeurs $1, -1, 1, -1, \dots$. Elle n'a pas de limite unique; elle oscille et ne se stabilise pas. Cette composante est donc divergente.
+
+**Conclusion :**
+
+Puisque la deuxième composante de la suite de vecteurs ne converge pas, la suite de vecteurs $(x^k)$ elle-même est **divergente**.
+
+</details>

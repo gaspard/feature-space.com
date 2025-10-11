@@ -1,10 +1,9 @@
 ---
-title: B - Concepts (avancé)
+title: B - Concepts
 level: pro
 course: Géométrie
 chapter: Groupes d'isométries
 order: 20
-layout: '../../../../layouts/Article.astro'
 tags: ['géométrie', 'algèbre linéaire', 'groupes', 'isométrie', 'rotation']
 ---
 

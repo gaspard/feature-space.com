@@ -1,7 +1,6 @@
 ---
 title: "À propos"
 order: 3
-layout: "../layouts/Layout.astro"
 ---
 
 # Feature Space

@@ -1,44 +1,37 @@
 ---
-id: 'ea442a63'
-title: 'Fiches (regular)'
-layout: '../../../../layouts/Layout.astro'
+title: Fiches de révision A - Concepts (A)
 order: 12
 level: regular
-chapter: Concepts
+chapter: A - Concepts
 course: Géométrie
-tags:
-  [
-    'isométrie',
-    'géométrie',
-    'algèbre linéaire',
-    'groupe orthogonal',
-    'rotation',
-    'réflexion',
-    'produit vectoriel'
-  ]
+tags: ["cards", "flashcards", "regular"]
 ---
 
-# Fiches: Concepts
+# Cartes : A - Concepts (A)
 
 ---
 
-Qu'est-ce qu'une isométrie dans un espace vectoriel euclidien ?
+Qu'est-ce qu'une isométrie vectorielle ?
 
 <details>
+
 <summary>Réponse</summary>
 
-Une **isométrie** est une application linéaire $f: E \to E$ qui conserve la norme (la "longueur") de tous les vecteurs.
+Une **isométrie** est une application linéaire $f: E \to E$ sur un espace vectoriel euclidien (comme $\mathbb{R}^n$) qui conserve la norme (la "longueur") de tous les vecteurs.
 
-Formellement, pour tout vecteur $x$ dans l'espace $E$, on doit avoir :
+Mathématiquement, cela signifie que pour n'importe quel vecteur $x$ de l'espace $E$ :
+
 $$ \|f(x)\| = \|x\| $$
 
-**Explication intuitive :**
-Imaginez une transformation d'un objet rigide dans l'espace (comme une rotation ou un déplacement). Les distances entre tous les points de l'objet restent les mêmes, et l'objet n'est pas déformé. Une isométrie est l'équivalent de ce type de transformation pour les espaces vectoriels. Elle préserve les longueurs et, par conséquent, les distances et les angles.
+En termes plus simples, une isométrie est une transformation qui ne déforme pas les objets : elle ne les étire pas, ne les comprime pas et ne les tord pas. Les rotations et les réflexions (symétries) en sont les exemples les plus courants. Elles préservent les distances et les angles.
 
-**Exemples courants :**
+**Exemple :**
 
-- Les **rotations** autour de l'origine.
-- Les **réflexions** (symétries) par rapport à une droite ou un plan passant par l'origine.
+Une rotation d'angle $\theta$ dans le plan est une isométrie. Un vecteur de longueur $L$ aura toujours une longueur $L$ après avoir été tourné.
+
+**Contre-exemple :**
+
+Une homothétie de rapport 2, qui double la taille de tous les vecteurs ($h(x) = 2x$), n'est pas une isométrie car $\|h(x)\| = 2\|x\| \neq \|x\|$ (sauf pour $x=0$).
 
 </details>
 
@@ -47,110 +40,92 @@ Imaginez une transformation d'un objet rigide dans l'espace (comme une rotation 
 Quelles sont les quatre manières équivalentes de caractériser une isométrie $f$ ?
 
 <details>
+
 <summary>Réponse</summary>
 
-Soit $f$ un endomorphisme sur un espace euclidien ou hermitien $E$. Les affirmations suivantes sont équivalentes :
+Soit $f$ un endomorphisme sur un espace euclidien $E$. Les quatre affirmations suivantes sont équivalentes, ce qui signifie que si l'une est vraie, toutes les autres le sont aussi.
 
-1.  **$f$ est une isométrie :** elle conserve la norme.
-    $$ \forall x \in E, \|f(x)\| = \|x\| $$
-2.  **$f$ conserve le produit scalaire :** elle préserve les angles et l'orthogonalité.
-    $$ \forall x, y \in E, \varphi(f(x), f(y)) = \varphi(x, y) $$
-3.  **Son inverse est son adjoint :** $f$ est inversible et $f^{-1} = f^*$.
-    Cela est équivalent à dire que $f^* \circ f = \text{Id}$ (ou $f \circ f^* = \text{Id}$).
-4.  **Elle transforme une base orthonormée en une base orthonormée :** Si $\mathcal{B} = (e_1, \dots, e_n)$ est une base orthonormée, alors son image $\mathcal{B}' = (f(e_1), \dots, f(e_n))$ est aussi une base orthonormée.
+1.  **$f$ est une isométrie (elle conserve la norme) :**
 
-**Point clé :**
-En pratique, vérifier l'une de ces conditions suffit à prouver que $f$ est une isométrie. La condition 4 est souvent la plus facile à vérifier si l'on connaît l'action de $f$ sur une base.
+    $$ \forall x \in E, \quad \|f(x)\| = \|x\| $$
+
+    C'est la définition de base.
+
+2.  **$f$ conserve le produit scalaire :**
+
+    $$ \forall x, y \in E, \quad \varphi(f(x), f(y)) = \varphi(x, y) $$
+
+    Cela signifie que les angles entre les vecteurs et l'orthogonalité sont préservés. C'est une conséquence directe de la conservation de la norme.
+
+3.  **L'inverse de $f$ est son adjoint ($f^{-1} = f^*$) :**
+
+    Cela signifie que $f$ est inversible et que l'application $f^*$ qui vérifie $\varphi(f(x), y) = \varphi(x, f^*(y))$ est son inverse. Matriciellement, pour une base orthonormée, cela se traduit par $M^{-1} = {}^tM$.
+
+4.  **$f$ transforme une base orthonormée en une base orthonormée :**
+
+    Si $\mathcal{B} = (e_1, \dots, e_n)$ est une base orthonormée, alors l'image $\mathcal{B}' = (f(e_1), \dots, f(e_n))$ est aussi une base orthonormée. C'est une propriété très pratique pour vérifier si une transformation est une isométrie.
 
 </details>
 
 ---
 
-La rotation d'angle $\theta$ dans le plan est-elle une isométrie ? Et une homothétie de rapport 2 ?
+Qu'est-ce que le groupe orthogonal $O_n(\mathbb{R})$ ?
 
 <details>
+
 <summary>Réponse</summary>
 
-**1. Rotation d'angle $\theta$ : Oui, c'est une isométrie.**
-Une rotation préserve la distance de chaque point à l'origine, ce qui est la norme du vecteur position. Pour un vecteur $x=(x_1, x_2)$, son image par la rotation $f$ a une norme au carré :
-$$ \|f(x)\|^2 = (x_1\cos\theta - x_2\sin\theta)^2 + (x_1\sin\theta + x_2\cos\theta)^2 $$
-En développant, on trouve :
-$$ \|f(x)\|^2 = x_1^2(\cos^2\theta + \sin^2\theta) + x_2^2(\sin^2\theta + \cos^2\theta) = x_1^2 + x_2^2 = \|x\|^2 $$
-Comme $\|f(x)\| = \|x\|$, la rotation est bien une isométrie.
+Le **groupe orthogonal** d'ordre $n$, noté $O_n(\mathbb{R})$, est l'ensemble de toutes les matrices carrées réelles $M$ de taille $n \times n$ qui représentent des isométries de l'espace $\mathbb{R}^n$.
 
-**2. Homothétie de rapport 2 : Non, ce n'est pas une isométrie.**
-Soit $h(x) = 2x$. Calculons la norme de l'image :
-$$ \|h(x)\| = \|2x\| = |2| \cdot \|x\| = 2\|x\| $$
-Si $x$ n'est pas le vecteur nul, alors $\|h(x)\| \neq \|x\|$. La norme n'est pas conservée, donc ce n'est pas une isométrie. Une homothétie change la taille des objets, ce qui est le contraire d'une isométrie.
+La condition mathématique pour qu'une matrice $M$ appartienne à $O_n(\mathbb{R})$ est que son inverse soit égale à sa transposée :
+
+$$ M^{-1} = {}^tM \quad \text{ou de façon équivalente} \quad {}^tM M = I_n $$
+
+où $I_n$ est la matrice identité.
+
+**Propriétés :**
+
+-   Les matrices de $O_n(\mathbb{R})$ représentent les rotations et les réflexions.
+-   La condition ${}^tM M = I_n$ signifie que les vecteurs colonnes (ou lignes) de la matrice $M$ forment une base orthonormée de $\mathbb{R}^n$.
+-   Le déterminant d'une matrice de $O_n(\mathbb{R})$ est toujours égal à $1$ ou $-1$.
+
+**Exemple :**
+
+La matrice de rotation $R(\theta) = \begin{pmatrix} \cos(\theta) & -\sin(\theta) \\ \sin(\theta) & \cos(\theta) \end{pmatrix}$ est dans $O_2(\mathbb{R})$ car ${}^t R R = I_2$.
 
 </details>
 
 ---
 
-Qu'est-ce que le groupe orthogonal $O_n(\mathbb{R})$ et le groupe spécial orthogonal $SO_n(\mathbb{R})$ ?
+Quelle est la formule pour l'angle non-orienté entre deux vecteurs ?
 
 <details>
+
 <summary>Réponse</summary>
 
-Ce sont des ensembles de matrices qui représentent les isométries dans une base orthonormée.
+La formule pour l'**angle non-orienté** $\theta$ entre deux vecteurs non nuls $x$ et $y$ dans un espace euclidien est :
 
-**Groupe Orthogonal $O_n(\mathbb{R})$**
-C'est l'ensemble des matrices réelles $M$ de taille $n \times n$ qui préservent le produit scalaire. La condition équivalente est que leur inverse est égal à leur transposée :
-$$ {}^tM M = I_n \quad (\text{ou de façon équivalente, } M^{-1} = {}^tM) $$
-Les matrices de $O_n(\mathbb{R})$ représentent **toutes les isométries** d'un espace euclidien de dimension $n$.
+$$ \theta(x, y) = \arccos\left(\frac{\varphi(x, y)}{\|x\|\|y\|}\right) $$
 
-**Groupe Spécial Orthogonal $SO_n(\mathbb{R})$**
-C'est un sous-ensemble de $O_n(\mathbb{R})$ qui contient uniquement les matrices de **déterminant +1**.
-$$ SO_n(\mathbb{R}) = \{ M \in O_n(\mathbb{R}) \mid \det(M) = 1 \} $$
-Les matrices de $SO_n(\mathbb{R})$ représentent les isométries qui **préservent l'orientation** de l'espace, comme les **rotations**. On les appelle aussi les isométries directes.
-
-</details>
-
----
-
-Quelle est la signification géométrique du déterminant d'une matrice orthogonale ?
-
-<details>
-<summary>Réponse</summary>
-
-Si $M$ est une matrice orthogonale ($M \in O_n(\mathbb{R})$), son déterminant ne peut prendre que deux valeurs : **+1** ou **-1**.
-
-La valeur du déterminant nous renseigne sur la manière dont l'isométrie transforme l'**orientation** de l'espace.
-
-- **$\det(M) = +1$ :** L'isométrie **préserve l'orientation**. On parle d'isométrie **directe**.
-
-  - **Exemple :** Les rotations. Une rotation fait "tourner" l'espace mais ne le "retourne" pas comme dans un miroir. Une base directe reste une base directe après transformation.
-
-- **$\det(M) = -1$ :** L'isométrie **inverse l'orientation**. On parle d'isométrie **indirecte**.
-  - **Exemple :** Les réflexions (symétries). Une réflexion par rapport à un plan transforme une main droite en main gauche. Une base directe est transformée en base indirecte.
-
-Le groupe spécial orthogonal $SO_n(\mathbb{R})$ est précisément le groupe des isométries directes.
-
-</details>
-
----
-
-Quelle est la formule pour calculer l'angle non-orienté entre deux vecteurs non nuls ?
-
-<details>
-<summary>Réponse</summary>
-
-Pour deux vecteurs non nuls $x$ et $y$ dans un espace euclidien, l'angle non-orienté $\theta$ entre eux est donné par la formule :
-$$ \theta = \arccos\left(\frac{\varphi(x, y)}{\|x\|\|y\|}\right) $$
 **Où :**
 
-- $\varphi(x, y)$ est le produit scalaire de $x$ et $y$.
-- $\|x\|$ et $\|y\|$ sont les normes (longueurs) respectives de $x$ et $y$.
+-   $\varphi(x, y)$ est le produit scalaire entre $x$ et $y$.
+-   $\|x\|$ et $\|y\|$ sont les normes (longueurs) respectives de $x$ et $y$.
+-   $\arccos$ est la fonction arc cosinus, qui donne un résultat dans l'intervalle $[0, \pi]$ (soit de 0° à 180°).
 
 **Explication :**
-Cette formule vient de la définition géométrique du produit scalaire : $\varphi(x, y) = \|x\|\|y\|\cos(\theta)$. L'angle $\theta$ est toujours dans l'intervalle $[0, \pi]$ (soit de 0° à 180°). Il est "non-orienté" car l'angle de $x$ à $y$ est le même que l'angle de $y$ à $x$.
 
-**Exemple :** Dans $\mathbb{R}^3$, pour $x=(1,1,0)$ et $y=(1,0,1)$ :
+Cette formule est une réécriture de la définition géométrique du produit scalaire : $\varphi(x, y) = \|x\|\|y\|\cos(\theta)$. L'angle est non-orienté car l'ordre des vecteurs ne change pas le résultat : $\theta(x, y) = \theta(y, x)$.
 
-- $\varphi(x, y) = 1 \cdot 1 + 1 \cdot 0 + 0 \cdot 1 = 1$
-- $\|x\| = \sqrt{1^2+1^2+0^2} = \sqrt{2}$
-- $\|y\| = \sqrt{1^2+0^2+1^2} = \sqrt{2}$
-  $$ \theta = \arccos\left(\frac{1}{\sqrt{2} \cdot \sqrt{2}}\right) = \arccos(1/2) = \frac{\pi}{3} \text{ radians (ou 60°)} $$
+**Exemple :**
+
+Dans $\mathbb{R}^3$, pour $x = (1, 1, 0)$ et $y = (1, 0, 1)$ :
+
+-   $\varphi(x,y) = 1 \cdot 1 + 1 \cdot 0 + 0 \cdot 1 = 1$
+-   $\|x\| = \sqrt{1^2 + 1^2 + 0^2} = \sqrt{2}$
+-   $\|y\| = \sqrt{1^2 + 0^2 + 1^2} = \sqrt{2}$
+
+$$ \theta = \arccos\left(\frac{1}{\sqrt{2} \cdot \sqrt{2}}\right) = \arccos(1/2) = \frac{\pi}{3} \text{ radians (ou 60°)} $$
 
 </details>
 
@@ -159,130 +134,195 @@ Cette formule vient de la définition géométrique du produit scalaire : $\varp
 Comment sont classifiées les isométries du plan euclidien $\mathbb{R}^2$ ?
 
 <details>
+
 <summary>Réponse</summary>
 
-Toute isométrie du plan $\mathbb{R}^2$ (représentée par une matrice $M \in O_2(\mathbb{R})$) appartient à l'une des deux catégories suivantes, selon son déterminant :
+Toute isométrie du plan euclidien (représentée par une matrice $M \in O_2(\mathbb{R})$) est de l'un des deux types suivants, selon la valeur de son déterminant :
 
-1.  **Si $\det(M) = +1$ (isométrie directe) :**
-    La transformation est une **rotation** autour de l'origine. Sa matrice est de la forme :
-    $$ R(\theta) = \begin{pmatrix} \cos(\theta) & -\sin(\theta) \\ \sin(\theta) & \cos(\theta) \end{pmatrix} $$
-    L'identité est une rotation d'angle $\theta=0$. La symétrie centrale est une rotation d'angle $\theta=\pi$.
+1.  **Une rotation** (isométrie directe) :
+    -   Si $\det(M) = 1$.
+    -   Ces transformations conservent l'orientation du plan (le sens "anti-horaire" reste "anti-horaire").
+    -   La matrice est de la forme $R(\theta) = \begin{pmatrix} \cos(\theta) & -\sin(\theta) \\ \sin(\theta) & \cos(\theta) \end{pmatrix}$. L'unique point fixe est l'origine, sauf si $\theta=0$ (l'identité).
 
-2.  **Si $\det(M) = -1$ (isométrie indirecte) :**
-    La transformation est une **réflexion** (ou symétrie orthogonale) par rapport à une droite passant par l'origine.
-    Dans une base bien choisie, sa matrice est de la forme :
-    $$ S = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} $$
+2.  **Une réflexion** (isométrie indirecte) :
+    -   Si $\det(M) = -1$.
+    -   Ces transformations inversent l'orientation du plan (comme une image dans un miroir).
+    -   Géométriquement, c'est une symétrie orthogonale par rapport à une droite passant par l'origine.
+    -   Toute matrice de ce type est semblable à $S = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$ (une réflexion par rapport à l'axe des abscisses).
 
-En résumé, une isométrie du plan est soit une rotation, soit une réflexion.
+En résumé, si une isométrie du plan préserve l'orientation, c'est une rotation ; sinon, c'est une réflexion.
 
 </details>
 
 ---
 
-Qu'énonce le théorème de la rotation d'Euler pour les isométries de l'espace $\mathbb{R}^3$ ?
+Qu'affirme le théorème de la rotation d'Euler pour les isométries de l'espace ?
 
 <details>
+
 <summary>Réponse</summary>
 
-Le **théorème de la rotation d'Euler** est un résultat fondamental sur les isométries directes de l'espace tridimensionnel. Il énonce que :
+Le **théorème de la rotation d'Euler** est un résultat fondamental sur les isométries de l'espace euclidien $\mathbb{R}^3$. Il affirme que :
 
-Toute isométrie directe de $\mathbb{R}^3$ (c'est-à-dire une isométrie qui préserve l'orientation, de déterminant +1) est une **rotation autour d'un axe**.
+> Toute isométrie **directe** (qui conserve l'orientation, i.e. de déterminant +1) de l'espace $\mathbb{R}^3$ ayant un point fixe est une **rotation** autour d'un axe.
 
-**En d'autres termes :**
-Si vous prenez un objet solide et que vous le déplacez en gardant un point fixe (l'origine), le mouvement final peut toujours être décrit comme une unique rotation d'un certain angle autour d'une certaine droite (l'axe).
+**Explication détaillée :**
 
-**Implication mathématique :**
-Pour toute matrice $M \in SO_3(\mathbb{R})$, il existe un vecteur non nul $v$ tel que $Mv = v$. Ce vecteur $v$ dirige l'axe de rotation. La droite engendrée par $v$ est l'ensemble des points invariants par la rotation.
+-   **Isométrie directe :** Une transformation rigide qui ne "retourne" pas l'espace (pas d'effet miroir). Pensez à déplacer un objet solide sans le déformer.
+-   **Point fixe :** On considère les isométries qui laissent l'origine $(0,0,0)$ inchangée.
+-   **Rotation autour d'un axe :** Pour toute isométrie de ce type (sauf l'identité), il existe une droite (l'axe) dont tous les points restent fixes. Tous les autres points de l'espace tournent autour de cet axe d'un angle constant $\theta$.
+
+Mathématiquement, cela signifie que toute matrice $M \in SO_3(\mathbb{R})$ admet la valeur propre 1, et le sous-espace propre associé est l'axe de rotation.
 
 </details>
 
 ---
 
-Quelles sont les trois propriétés géométriques fondamentales du produit vectoriel $U \land V$ dans $\mathbb{R}^3$ ?
+Quelle est la formule de calcul en coordonnées du produit vectoriel ?
 
 <details>
+
 <summary>Réponse</summary>
 
-Le produit vectoriel $W = U \land V$ est un vecteur qui possède trois propriétés géométriques clés :
+Soit $(e_1, e_2, e_3)$ une base orthonormée directe de $\mathbb{R}^3$. Pour deux vecteurs $U=(u_1, u_2, u_3)$ et $V=(v_1, v_2, v_3)$, leur produit vectoriel $U \land V$ est donné par la formule :
 
-1.  **Direction :** Le vecteur $W$ est **orthogonal** à la fois à $U$ et à $V$. Il est donc perpendiculaire au plan formé par $U$ et $V$.
-    $$ \langle U \land V, U \rangle = 0 \quad \text{et} \quad \langle U \land V, V \rangle = 0 $$
-
-2.  **Orientation :** La base $(U, V, U \land V)$ est **directe** (si $U$ et $V$ ne sont pas colinéaires). Cela correspond à la "règle de la main droite" : si vous courbez les doigts de votre main droite de $U$ vers $V$, votre pouce pointe dans la direction de $U \land V$.
-
-3.  **Norme :** La norme (longueur) du vecteur $U \land V$ est égale à l'**aire du parallélogramme** formé par les vecteurs $U$ et $V$.
-    $$ \|U \land V\| = \|U\|\|V\||\sin(\theta)| $$
-    où $\theta$ est l'angle entre $U$ et $V$.
-
-</details>
-
----
-
-Quelle est la formule pour calculer le produit vectoriel $U \land V$ en coordonnées ?
-
-<details>
-<summary>Réponse</summary>
-
-Si $U=(u_1, u_2, u_3)$ et $V=(v_1, v_2, v_3)$ sont deux vecteurs dans une base orthonormée directe $(e_1, e_2, e_3)$, leur produit vectoriel est donné par :
 $$ U \land V = (u_2 v_3 - u_3 v_2)e_1 + (u_3 v_1 - u_1 v_3)e_2 + (u_1 v_2 - u_2 v_1)e_3 $$
 
 **Moyen mnémotechnique :**
-On peut retenir cette formule en calculant le déterminant formel suivant :
+
+On peut retenir cette formule en utilisant un "déterminant formel" :
+
 $$ U \land V = \begin{vmatrix} e_1 & e_2 & e_3 \\ u_1 & u_2 & u_3 \\ v_1 & v_2 & v_3 \end{vmatrix} $$
 
+En développant ce déterminant par rapport à la première ligne, on retrouve les composantes du vecteur résultant.
+
 **Exemple :**
-Soit $U=(2, 3, 4)$ et $V=(5, 6, 7)$.
-$$ U \land V = \begin{vmatrix} e_1 & e_2 & e_3 \\ 2 & 3 & 4 \\ 5 & 6 & 7 \end{vmatrix} = e_1(3 \cdot 7 - 4 \cdot 6) - e_2(2 \cdot 7 - 4 \cdot 5) + e_3(2 \cdot 6 - 3 \cdot 5) $$
-$$ U \land V = (21-24)e_1 - (14-20)e_2 + (12-15)e_3 $$
-$$ U \land V = -3e_1 + 6e_2 - 3e_3 = (-3, 6, -3) $$
+
+Si $U = (2, 3, 4)$ et $V = (5, 6, 7)$ :
+
+-   Composante en $e_1$: $(3 \cdot 7) - (4 \cdot 6) = 21 - 24 = -3$
+-   Composante en $e_2$: $(4 \cdot 5) - (2 \cdot 7) = 20 - 14 = 6$
+-   Composante en $e_3$: $(2 \cdot 6) - (3 \cdot 5) = 12 - 15 = -3$
+
+Donc, $U \land V = (-3, 6, -3)$.
 
 </details>
 
 ---
 
-Quelle est la formule de Rodrigues pour une rotation dans l'espace $\mathbb{R}^3$ ?
+Quelles sont les propriétés géométriques fondamentales du produit vectoriel $U \land V$ ?
 
 <details>
+
 <summary>Réponse</summary>
 
-La **formule de Rodrigues** calcule l'image $\mathcal{R}(U)$ d'un vecteur $U$ par une rotation d'angle $\theta$ autour d'un axe dirigé par un **vecteur unitaire** $N$.
+Le produit vectoriel $U \land V$ de deux vecteurs non colinéaires dans $\mathbb{R}^3$ possède trois propriétés géométriques essentielles :
 
-La formule est :
-$$ \mathcal{R}(U) = \cos(\theta)U + (1 - \cos(\theta))\langle U, N \rangle N + \sin(\theta)N \land U $$
+1.  **Direction :**
 
-**Où :**
+    Le vecteur $U \land V$ est **orthogonal** à la fois à $U$ et à $V$. Il est donc perpendiculaire au plan formé par les vecteurs $U$ et $V$.
 
-- $\theta$ est l'angle de rotation.
-- $N$ est le vecteur unitaire de l'axe de rotation ($\|N\|=1$).
-- $\langle U, N \rangle$ est le produit scalaire entre $U$ et $N$.
-- $N \land U$ est le produit vectoriel de $N$ et $U$.
+    $$ \langle U \land V, U \rangle = 0 \quad \text{et} \quad \langle U \land V, V \rangle = 0 $$
 
-**Utilité :**
-Cette formule est très pratique car elle permet de calculer l'effet d'une rotation sur n'importe quel vecteur sans avoir besoin de construire et multiplier des matrices, à condition de connaître l'axe et l'angle.
+2.  **Orientation :**
+
+    La base $(U, V, U \land V)$ est une base **directe**. Cela correspond à la "règle de la main droite" : si vous placez votre index dans la direction de $U$ et votre majeur dans la direction de $V$, votre pouce pointera dans la direction de $U \land V$.
+
+3.  **Norme :**
+
+    La norme (longueur) du vecteur $U \land V$ est égale à l'**aire du parallélogramme** formé par les vecteurs $U$ et $V$.
+
+    $$ \|U \land V\| = \|U\|\|V\|\sin(\theta) $$
+
+    où $\theta$ est l'angle non-orienté entre $U$ et $V$.
+
+**Cas particulier :** Si $U$ et $V$ sont colinéaires, alors $U \land V = 0$, car l'aire du parallélogramme est nulle.
 
 </details>
 
 ---
 
-Expliquez l'intuition géométrique derrière les trois termes de la formule de Rodrigues.
+Expliquez ce qu'est l'orientation d'un espace vectoriel.
 
 <details>
+
 <summary>Réponse</summary>
 
-La formule de Rodrigues décompose le vecteur tourné $\mathcal{R}(U)$ en une somme de trois vecteurs simples à comprendre.
-$$ \mathcal{R}(U) = \underbrace{\cos(\theta)U}_{\text{partie 1}} + \underbrace{(1 - \cos(\theta))\langle U, N \rangle N}_{\text{partie 2}} + \underbrace{\sin(\theta)N \land U}_{\text{partie 3}} $$
-Pour comprendre, on décompose d'abord le vecteur $U$ en une partie parallèle à l'axe, $U_\|$, et une partie perpendiculaire, $U_\perp$.
+**Orienter** un espace vectoriel réel, c'est faire un choix arbitraire pour distinguer deux "sens" possibles. En pratique, cela se fait en choisissant une base de référence et en la déclarant "directe".
 
-- $U_\| = \langle U, N \rangle N$ (la projection de $U$ sur l'axe $N$)
-- $U_\perp = U - U_\|$
+Toutes les autres bases sont alors classées en deux catégories :
 
-La rotation n'affecte que la partie perpendiculaire $U_\perp$ :
+1.  **Bases directes (ou positivement orientées) :**
 
-1.  **La composante parallèle $U_\|$ reste inchangée.** La formule la reconstruit avec les termes : $\cos(\theta)\langle U,N \rangle N + (1-\cos\theta)\langle U,N \rangle N = \langle U,N \rangle N$.
-2.  **La composante perpendiculaire $U_\perp$ tourne de l'angle $\theta$** dans le plan orthogonal à $N$. Cette rotation plane est décrite par les termes restants :
-    - $\cos(\theta)U_\perp$
-    - $\sin(\theta)N \land U = \sin(\theta)N \land U_\perp$ (qui est un vecteur de même norme que $U_\perp$ et orthogonal à celui-ci dans le plan de rotation).
+    Une base $\mathcal{B}'$ est directe si la matrice de passage $P$ de la base de référence $\mathcal{B}$ à $\mathcal{B}'$ a un **déterminant strictement positif** ($\det(P) > 0$). Elles ont "la même orientation" que la base de référence.
 
-La formule recombine intelligemment ces éléments pour donner le résultat final.
+2.  **Bases indirectes (ou négativement orientées) :**
+
+    Une base $\mathcal{B}''$ est indirecte si la matrice de passage a un **déterminant strictement négatif** ($\det(P) < 0$). Elles ont "l'orientation opposée".
+
+**Intuition géométrique :**
+
+-   **En dimension 2 (plan) :** Orienter le plan revient à choisir un sens de rotation comme étant le sens "positif" (généralement le sens anti-horaire).
+-   **En dimension 3 (espace) :** Orienter l'espace revient à choisir une convention comme la "règle de la main droite". La base canonique $((1,0,0), (0,1,0), (0,0,1))$ est la référence pour l'orientation directe standard.
+
+</details>
+
+---
+
+Quelle est la formule de Rodrigues pour les rotations ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La **formule de Rodrigues** calcule l'image $\mathcal{R}(U)$ d'un vecteur $U \in \mathbb{R}^3$ par une rotation d'angle $\theta$ autour d'un axe dirigé par un vecteur **unitaire** $N$.
+
+$$ \mathcal{R}(U) = \cos(\theta)U + (1 - \cos(\theta))\langle U, N \rangle N + \sin(\theta)(N \land U) $$
+
+**Explication des termes :**
+
+-   **$\langle U, N \rangle N$ :** C'est la projection de $U$ sur l'axe $N$. Cette composante du vecteur est parallèle à l'axe et reste donc **inchangée** par la rotation.
+-   **$U_{\perp} = U - \langle U, N \rangle N$ :** C'est la partie de $U$ qui est perpendiculaire à l'axe. C'est cette partie qui va effectivement tourner dans le plan orthogonal à $N$.
+-   **$\cos(\theta)U_{\perp}$ et $\sin(\theta)(N \land U)$ :** La formule peut être comprise comme la rotation de $U_\perp$. Le premier terme la "réduit" et le second terme (le produit vectoriel) la fait tourner de 90° pour créer la composante orthogonale nécessaire à la rotation.
+
+Cette formule est très puissante car elle ne dépend pas d'une base spécifique.
+
+</details>
+
+---
+
+Comment vérifier si la matrice $M = \begin{pmatrix} 0 & -1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix}$ représente une isométrie ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour vérifier si une matrice $M$ représente une isométrie, on peut utiliser l'une des propriétés équivalentes des isométries. La plus simple à calculer est la condition ${}^tM M = I$.
+
+**Étapes :**
+
+1.  **Calculer la transposée de M :**
+
+    $$ {}^tM = \begin{pmatrix} 0 & 1 & 0 \\ -1 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix} $$
+
+2.  **Multiplier ${}^tM$ par $M$ :**
+
+    $$ {}^tM M = \begin{pmatrix} 0 & 1 & 0 \\ -1 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} 0 & -1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix} $$
+
+    Calculons le produit :
+
+    -   Première ligne : $(0\cdot0+1\cdot1+0\cdot0, 0\cdot(-1)+1\cdot0+0\cdot0, 0\cdot0+1\cdot0+0\cdot1) = (1, 0, 0)$
+    -   Deuxième ligne : $(-1\cdot0+0\cdot1+0\cdot0, -1\cdot(-1)+0\cdot0+0\cdot0, -1\cdot0+0\cdot0+0\cdot1) = (0, 1, 0)$
+    -   Troisième ligne : $(0\cdot0+0\cdot1+1\cdot0, 0\cdot(-1)+0\cdot0+1\cdot0, 0\cdot0+0\cdot0+1\cdot1) = (0, 0, 1)$
+
+    On obtient donc :
+
+    $$ {}^tM M = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} = I_3 $$
+
+**Conclusion :**
+
+Puisque la condition ${}^tM M = I_3$ est vérifiée, la matrice $M$ est bien une matrice orthogonale et représente une isométrie.
+
+De plus, $\det(M) = 1$, il s'agit donc d'une rotation (une rotation de 90° autour de l'axe z).
 
 </details>

@@ -1,0 +1,324 @@
+---
+title: Quiz
+order: 23
+level: pro
+chapter: B - Concepts
+course: Topologie et Calcul Différentiel I
+tags: ["quiz", "assessment", "pro"]
+---
+
+# Quiz: B - Concepts
+
+---
+
+#### Question 1 : Caractérisation de la boule unité
+
+Soit $E$ un espace vectoriel réel. Un sous-ensemble $B \subset E$ est la boule unité fermée pour une certaine norme sur $E$ si et seulement si $B$ satisfait un ensemble de propriétés. Lesquelles des affirmations suivantes sont des conditions **nécessaires** pour que $B$ soit la boule unité fermée d'une norme ?
+
+- [x] **A)** $B$ est un ensemble convexe.
+- [x] **B)** $B$ est symétrique par rapport à l'origine (i.e., $x \in B \implies -x \in B$).
+- [x] **C)** L'origine $0_E$ est un point intérieur de $B$ (i.e., il existe $r>0$ tel que la boule de rayon $r$ pour une autre norme de référence soit contenue dans $B$).
+- [ ] **D)** $B$ doit être compact.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, B, C]**
+
+Un sous-ensemble $B$ d'un espace vectoriel $E$ est la boule unité fermée d'une norme si et seulement si $B$ est un ensemble convexe, borné, fermé, symétrique par rapport à l'origine, et que l'origine est un point intérieur de $B$.
+
+- **A.** La convexité de la boule unité découle directement de l'inégalité triangulaire. Si $\|x\| \le 1$ et $\|y\| \le 1$, alors pour tout $t \in [0,1]$, $\|tx + (1-t)y\| \le \|tx\| + \|(1-t)y\| = t\|x\| + (1-t)\|y\| \le t \cdot 1 + (1-t) \cdot 1 = 1$. Donc $tx+(1-t)y \in B$. C'est une condition nécessaire.
+
+- **B.** La symétrie découle de l'homogénéité. Si $\|x\| \le 1$, alors $\|-x\| = |-1|\|x\| = \|x\| \le 1$. Donc si $x \in B$, alors $-x \in B$. C'est une condition nécessaire.
+
+- **C.** Le fait que l'origine soit un point intérieur signifie que $B$ n'est pas "plat" dans une direction. C'est lié à la propriété de séparation de la norme. Si l'origine n'était qu'à la frontière, on pourrait trouver un vecteur non nul $x$ tel que $\lambda x \notin B$ pour tout $\lambda > 0$ arbitrairement petit, ce qui contredirait la structure de norme. C'est une condition nécessaire.
+
+- **D.** La compacité de la boule unité est une caractéristique des espaces vectoriels normés de dimension finie (Théorème de Riesz). En dimension infinie, la boule unité fermée n'est généralement pas compacte. Par exemple, dans l'espace des fonctions continues sur $[0,1]$ avec la norme du sup, la suite de fonctions $f_n(t) = t^n$ est dans la boule unité, mais n'admet aucune sous-suite convergente. La compacité n'est donc pas une condition nécessaire.
+
+</details>
+
+---
+
+#### Question 2 : Métriques induites par une norme
+
+Soit $E$ un espace vectoriel réel non trivial ($E \neq \{0_E\}$). Laquelle des distances $d: E \times E \to \mathbb{R}_+$ suivantes n'est **PAS** induite par une norme sur $E$ ?
+
+- [ ] **A)** $d(x,y) = \|x-y\|_1 + 3\|x-y\|_\infty$ sur $E=\mathbb{R}^n$.
+- [x] **B)** $d(x,y) = \min(1, \|x-y\|)$ où $\|\cdot\|$ est une norme sur $E$.
+- [ ] **C)** $d(x,y) = \|A(x-y)\|$ où $\|\cdot\|$ est une norme sur un EVN $F$ et $A: E \to F$ est une application linéaire injective.
+- [ ] **D)** $d(x,y) = \sqrt{\|x-y\|_2^2 + ( \langle a, x-y \rangle )^2}$ où $a \in E$ est un vecteur non nul fixé et $\|\cdot\|_2, \langle \cdot, \cdot \rangle$ sont la norme et le produit scalaire euclidiens sur $E=\mathbb{R}^n$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Une distance $d$ est induite par une norme $N$ si $d(x,y) = N(x-y)$. Pour qu'une telle norme $N$ existe, la distance doit satisfaire deux propriétés clés héritées de la structure de norme : l'invariance par translation ($d(x+a, y+a) = d(x,y)$) et l'homogénéité ($d(\lambda x, \lambda y) = |\lambda| d(x,y)$). Toutes les options sont de la forme $d(x,y)=f(x-y)$, donc elles sont invariantes par translation. Il faut vérifier l'homogénéité sur $N(z) = d(z,0)$.
+
+- **A.** L'application $N(z) = \|z\|_1 + 3\|z\|_\infty$ est bien une norme. C'est une somme pondérée de deux normes, ce qui préserve les axiomes de norme. L'homogénéité est claire : $N(\lambda z) = \|\lambda z\|_1 + 3\|\lambda z\|_\infty = |\lambda|(\|z\|_1 + 3\|z\|_\infty) = |\lambda| N(z)$.
+
+- **B.** L'application $N(z) = \min(1, \|z\|)$ ne satisfait pas l'homogénéité. Prenons $z \in E$ tel que $\|z\|=0.5$ et $\lambda=3$. On a $N(\lambda z) = N(3z) = \min(1, \|3z\|) = \min(1, 3 \times 0.5) = 1$. D'autre part, $|\lambda| N(z) = 3 \times \min(1, \|z\|) = 3 \times 0.5 = 1.5$. Comme $1 \neq 1.5$, l'homogénéité n'est pas vérifiée. Cette distance n'est donc pas induite par une norme.
+
+- **C.** L'application $N(z) = \|A(z)\|$ est une norme. C'est l'exemple de la norme image réciproque. L'injectivité de $A$ est cruciale pour garantir la propriété de séparation : $N(z)=0 \iff \|A(z)\|=0 \iff A(z)=0 \iff z=0$.
+
+- **D.** L'application $N(z) = \sqrt{\|z\|_2^2 + (\langle a, z \rangle)^2}$ est une norme. On peut le voir en considérant l'application linéaire $L: \mathbb{R}^n \to \mathbb{R}^{n+1}$ définie par $L(z) = (z_1, \dots, z_n, \langle a, z \rangle)$. $L$ est injective car $L(z)=0 \implies z=0$. $N(z)$ est alors la norme euclidienne de $L(z)$ dans $\mathbb{R}^{n+1}$, c'est donc une norme image réciproque.
+
+</details>
+
+---
+
+#### Question 3 : Cas d'égalité dans l'inégalité de Cauchy-Schwarz
+
+Soit $(E, \langle \cdot, \cdot \rangle)$ un espace préhilbertien réel et $\|x\| = \sqrt{\langle x,x \rangle}$ la norme associée. L'inégalité de Cauchy-Schwarz stipule $|\langle x, y \rangle| \leq \|x\| \|y\|$ pour tous $x, y \in E$. Quelles sont les conditions précises sous lesquelles l'égalité $|\langle x, y \rangle| = \|x\| \|y\|$ est atteinte ?
+
+- [x] **A)** Lorsque les vecteurs $x$ et $y$ sont colinéaires.
+- [ ] **B)** Lorsque les vecteurs $x$ et $y$ sont orthogonaux.
+- [x] **C)** Lorsque le polynôme $P(t) = \|x+ty\|^2$ a un discriminant nul (si $y \neq 0_E$).
+- [x] **D)** Lorsque la famille de vecteurs $\{x, y\}$ est linéairement dépendante.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, C, D]**
+
+Le cas d'égalité dans l'inégalité de Cauchy-Schwarz est un point théorique fondamental.
+
+- **A.** C'est la condition standard. Si $x$ et $y$ sont colinéaires, il existe $\lambda \in \mathbb{R}$ tel que $x=\lambda y$ (ou $y=\lambda x$). Supposons $x=\lambda y$. Alors $|\langle x,y \rangle| = |\langle \lambda y, y \rangle| = |\lambda| |\langle y,y \rangle| = |\lambda| \|y\|^2$. Et $\|x\|\|y\| = \|\lambda y\| \|y\| = |\lambda| \|y\| \|y\| = |\lambda| \|y\|^2$. L'égalité est donc vérifiée. Réciproquement, la preuve montre que si l'égalité a lieu, les vecteurs sont colinéaires. C'est donc correct.
+
+- **B.** Si $x$ et $y$ sont orthogonaux, alors $\langle x,y \rangle = 0$. L'égalité $|\langle x,y \rangle| = \|x\|\|y\|$ devient $0 = \|x\|\|y\|$. Cela n'est vrai que si $x=0_E$ ou $y=0_E$. Dans ce cas, les vecteurs sont bien colinéaires, mais l'orthogonalité n'est pas la condition générale d'égalité. C'est incorrect.
+
+- **C.** La démonstration de l'inégalité repose sur le fait que le polynôme $P(t) = \|x+ty\|^2 = \|y\|^2 t^2 + 2\langle x, y \rangle t + \|x\|^2$ est toujours positif. Son discriminant $\Delta = 4(\langle x, y \rangle^2 - \|x\|^2 \|y\|^2)$ doit donc être négatif ou nul. L'égalité dans l'inégalité de Cauchy-Schwarz correspond précisément au cas $\Delta=0$. C'est donc correct.
+
+- **D.** Dire que la famille $\{x, y\}$ est linéairement dépendante est une autre manière de dire que les vecteurs $x$ et $y$ sont colinéaires (puisque la famille ne contient que deux vecteurs). C'est donc une reformulation de A et c'est correct.
+
+</details>
+
+---
+
+#### Question 4 : Comparaison des normes p
+
+Sur l'espace $\mathbb{R}^n$ ($n \ge 2$), on considère les normes $\|\cdot\|_1$, $\|\cdot\|_2$ et $\|\cdot\|_\infty$. Quelles sont les affirmations correctes concernant leurs relations ?
+
+- [x] **A)** Pour tout $x \in \mathbb{R}^n$, on a $\|x\|_\infty \le \|x\|_2 \le \|x\|_1$.
+- [x] **B)** La meilleure constante $C$ (la plus petite possible) telle que $\|x\|_1 \le C \|x\|_\infty$ pour tout $x \in \mathbb{R}^n$ est $C=n$.
+- [ ] **C)** Pour $1 \le p < q \le \infty$ et tout $x \in \mathbb{R}^n$ non nul, on a $\|x\|_p < \|x\|_q$.
+- [x] **D)** La boule unité $B_1 = \{x \in \mathbb{R}^n \mid \|x\|_1 \le 1\}$ est contenue dans la boule unité $B_2 = \{x \in \mathbb{R}^n \mid \|x\|_2 \le 1\}$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, B, D]**
+
+- **A.** C'est correct. Soit $x \in \mathbb{R}^n$. On a $\|x\|_\infty^2 = (\max_i |x_i|)^2 \le \sum_i |x_i|^2 = \|x\|_2^2$, donc $\|x\|_\infty \le \|x\|_2$. De plus, $\|x\|_2^2 = \sum_i |x_i|^2 \le (\sum_i |x_i|)^2 = \|x\|_1^2$, donc $\|x\|_2 \le \|x\|_1$.
+
+- **B.** C'est correct. On a $\|x\|_1 = \sum_{i=1}^n |x_i| \le \sum_{i=1}^n \max_j |x_j| = \sum_{i=1}^n \|x\|_\infty = n \|x\|_\infty$. Donc la constante $C=n$ fonctionne. Pour montrer que c'est la meilleure, il faut trouver un vecteur qui atteint l'égalité. Soit $x=(1, 1, \dots, 1)$. Alors $\|x\|_1 = n$ et $\|x\|_\infty = 1$. L'inégalité $\|x\|_1 \le C \|x\|_\infty$ devient $n \le C \cdot 1$, donc $C \ge n$. La meilleure constante est bien $n$.
+
+- **C.** C'est incorrect. L'inégalité est dans l'autre sens : pour $1 \le p < q \le \infty$, on a $\|x\|_q \le \|x\|_p$. L'inégalité stricte n'est pas garantie non plus. Par exemple, pour $x=(1,0,\dots,0)$, on a $\|x\|_p = 1$ pour tout $p$.
+
+- **D.** C'est correct. Une inclusion de boules unités $B_p \subseteq B_q$ est équivalente à l'inégalité $\|x\|_q \le \|x\|_p$ pour tout $x$. Comme $1 < 2$, on a bien $\|x\|_2 \le \|x\|_1$ (démontré en A), ce qui implique que si $\|x\|_1 \le 1$, alors $\|x\|_2 \le 1$. Donc tout élément de $B_1$ est aussi dans $B_2$.
+
+</details>
+
+---
+
+#### Question 5 : Équivalence des normes en dimension infinie
+
+Considérez l'espace $E = C([0,1])$, l'espace des fonctions continues sur $[0,1]$, muni des normes $\|f\|_\infty = \sup_{t \in [0,1]} |f(t)|$ et $\|f\|_1 = \int_0^1 |f(t)| dt$. Laquelle des affirmations suivantes est une démonstration **correcte** que ces deux normes ne sont PAS équivalentes ?
+
+- [x] **A)** Il n'existe pas de constante $\alpha > 0$ telle que $\|f\|_\infty \le \alpha \|f\|_1$ pour tout $f \in E$. Pour le prouver, on peut considérer la suite de fonctions $f_n(t) = t^n$.
+- [ ] **B)** L'inégalité $\|f\|_1 \le \|f\|_\infty$ est fausse, ce qui prouve la non-équivalence.
+- [x] **C)** La suite de fonctions $f_n(t) = t^n$ converge vers la fonction nulle pour la norme $\|\cdot\|_1$ mais pas pour la norme $\|\cdot\|_\infty$, ce qui prouve que les topologies induites sont différentes.
+- [x] **D)** Le fait que $(E, \|\cdot\|_\infty)$ soit un espace de Banach alors que $(E, \|\cdot\|_1)$ ne l'est pas, implique que les normes ne sont pas équivalentes.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, C, D]**
+
+Deux normes sont équivalentes si elles induisent les mêmes notions topologiques (convergence, ouverts, complétude, etc.).
+
+- **A.** C'est une preuve valide. Soit $f_n(t) = t^n$. On a $\|f_n\|_\infty = 1$ et $\|f_n\|_1 = \int_0^1 t^n dt = \frac{1}{n+1}$. Si une constante $\alpha > 0$ existait telle que $\|f\|_\infty \le \alpha \|f\|_1$ pour tout $f$, on aurait pour $f_n$ : $1 \le \alpha \frac{1}{n+1}$. Pour $n$ suffisamment grand, cette inégalité devient fausse. Donc une telle constante n'existe pas, et les normes ne sont pas équivalentes.
+
+- **B.** C'est incorrect. L'inégalité $\|f\|_1 \le \|f\|_\infty$ est vraie. En effet, $\|f\|_1 = \int_0^1 |f(t)| dt \le \int_0^1 \sup_{s \in [0,1]} |f(s)| dt = \int_0^1 \|f\|_\infty dt = \|f\|_\infty \cdot (1-0) = \|f\|_\infty$. Donc cette affirmation est fausse et ne peut constituer une preuve.
+
+- **C.** C'est une preuve valide. Si les normes étaient équivalentes, une suite convergerait pour l'une si et seulement si elle convergeait pour l'autre (vers la même limite). Pour $f_n(t)=t^n$, on a $\|f_n-0\|_1 = \frac{1}{n+1} \to 0$, donc $f_n \to 0$ pour $\|\cdot\|_1$. Cependant, $\|f_n-0\|_\infty = 1$ pour tout $n$, donc la suite ne converge pas vers 0 pour $\|\cdot\|_\infty$. Cette différence de comportement en convergence prouve la non-équivalence.
+
+- **D.** C'est une preuve valide. La complétude est une propriété topologique. Si deux normes sont équivalentes, l'espace est complet pour l'une si et seulement s'il est complet pour l'autre. Il est connu que $C([0,1])$ muni de la norme uniforme $\|\cdot\|_\infty$ est un espace de Banach (complet), mais qu'il n'est pas complet pour la norme de la convergence en moyenne $\|\cdot\|_1$. Cette différence de propriété topologique fondamentale prouve que les normes ne peuvent pas être équivalentes.
+
+</details>
+
+---
+
+#### Question 6 : Convergence de suites de matrices
+
+Soit $A \in \mathcal{M}_n(\mathbb{R})$ une matrice carrée. On considère la suite de vecteurs $(x_k)_{k \in \mathbb{N}}$ dans $\mathbb{R}^n$ définie par $x_k = A^k x_0$ pour un $x_0 \in \mathbb{R}^n$ initial. On munit $\mathbb{R}^n$ d'une norme quelconque. Quelles affirmations sont correctes concernant la convergence de la suite $(x_k)$ vers le vecteur nul $0_n$ ?
+
+- [x] **A)** La suite $(x_k)$ converge vers $0_n$ pour tout choix de $x_0 \in \mathbb{R}^n$ si et seulement si le rayon spectral de $A$, $\rho(A) = \max\{|\lambda| : \lambda \text{ valeur propre de } A\}$, est strictement inférieur à 1.
+- [x] **B)** Si $\|A\| < 1$ pour au moins une norme matricielle subordonnée, alors la suite $(x_k)$ converge vers $0_n$ pour tout $x_0$.
+- [ ] **C)** Si la suite $(x_k)$ converge vers $0_n$ pour un certain $x_0 \neq 0_n$, alors elle converge vers $0_n$ pour tout $x_0 \in \mathbb{R}^n$.
+- [ ] **D)** La convergence de $(x_k)$ vers $0_n$ dépend du choix de la norme sur $\mathbb{R}^n$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, B]**
+
+- **A.** C'est le critère fondamental de convergence des puissances d'une matrice. La suite des matrices $A^k$ converge vers la matrice nulle si et seulement si le rayon spectral de $A$ est strictement inférieur à 1. Si $A^k \to 0$, alors $x_k = A^k x_0 \to 0$ pour tout $x_0$. Réciproquement, si $x_k \to 0$ pour tout $x_0$, cela implique que $A^k \to 0$. L'affirmation est donc correcte.
+
+- **B.** C'est une condition suffisante très utile. Une norme matricielle subordonnée est définie par $\|A\| = \sup_{x \neq 0} \frac{\|Ax\|}{\|x\|}$. On a $\|x_k\| = \|A^k x_0\| \le \|A^k\| \|x_0\| \le \|A\|^k \|x_0\|$. Si $\|A\| < 1$, alors $\|A\|^k \to 0$ lorsque $k \to \infty$, et par conséquent $\|x_k\| \to 0$. C'est correct.
+
+- **C.** C'est incorrect. La convergence peut dépendre du vecteur initial $x_0$. Par exemple, si $A$ a une valeur propre $\lambda_1$ de module $<1$ et une autre $\lambda_2$ de module $>1$, la suite convergera si $x_0$ est dans le sous-espace propre associé à $\lambda_1$, mais divergera si $x_0$ a une composante dans le sous-espace propre de $\lambda_2$. Par exemple, $A = \begin{pmatrix} 0.5 & 0 \\ 0 & 2 \end{pmatrix}$. Si $x_0 = (1, 0)^t$, $x_k = (0.5^k, 0)^t \to 0$. Si $x_0 = (0, 1)^t$, $x_k = (0, 2^k)^t$ diverge.
+
+- **D.** C'est incorrect. En dimension finie, toutes les normes sont équivalentes. Par conséquent, la notion de convergence d'une suite est indépendante de la norme choisie. Si une suite converge pour une norme, elle converge pour toutes les autres.
+
+</details>
+
+---
+
+#### Question 7 : Complétude et espaces de Banach
+
+Un espace vectoriel normé est dit complet (ou de Banach) si toute suite de Cauchy y converge. Lequel des espaces suivants n'est **PAS** un espace de Banach ?
+
+- [ ] **A)** L'espace $\mathbb{R}^n$ muni de la norme $\|x\|_p = (\sum |x_i|^p)^{1/p}$ pour $p \in [1, \infty)$.
+- [ ] **B)** L'espace $C([a,b])$ des fonctions continues sur un intervalle fermé borné $[a,b]$, muni de la norme $\|f\|_\infty = \sup_{t \in [a,b]} |f(t)|$.
+- [ ] **C)** L'espace $\ell^2$ des suites réelles $(x_n)$ de carré sommable ($\sum x_n^2 < \infty$), muni de la norme $\|x\|_{\ell^2} = \sqrt{\sum x_n^2}$.
+- [x] **D)** L'espace $\mathcal{P}$ des polynômes à coefficients réels, considéré comme un sous-espace de $C([0,1])$, muni de la norme $\|\cdot\|_\infty$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+- **A.** L'espace $\mathbb{R}^n$ est de dimension finie. Un théorème fondamental stipule que tout espace vectoriel normé de dimension finie est complet. $\mathbb{R}^n$ est donc un espace de Banach pour n'importe laquelle de ses normes.
+
+- **B.** L'espace $C([a,b])$ muni de la norme de la convergence uniforme (norme sup) est un exemple classique d'espace de Banach de dimension infinie. Le fait que la limite uniforme d'une suite de fonctions continues soit continue est la clé de la complétude.
+
+- **C.** L'espace de suites $\ell^2$ est un espace de Hilbert, et tout espace de Hilbert est un espace de Banach. C'est un autre exemple fondamental d'espace complet de dimension infinie.
+
+- **D.** L'espace $\mathcal{P}$ des polynômes n'est pas complet pour la norme $\|\cdot\|_\infty$. Le théorème d'approximation de Weierstrass affirme que toute fonction continue sur $[0,1]$ peut être approchée uniformément par une suite de polynômes. Par exemple, la fonction $f(x) = e^x$ sur $[0,1]$ est la limite uniforme de la suite de ses polynômes de Taylor, $P_n(x) = \sum_{k=0}^n x^k/k!$. La suite $(P_n)$ est une suite de Cauchy dans $\mathcal{P}$, mais sa limite $e^x$ n'est pas un polynôme. La suite de Cauchy ne converge donc pas *dans* $\mathcal{P}$, qui n'est par conséquent pas complet.
+
+</details>
+
+---
+
+#### Question 8 : Vérification de preuve
+
+Un étudiant tente de prouver que l'inégalité triangulaire est satisfaite pour l'application $f(x) = \|x\|_2^2 = \sum_i x_i^2$ sur $\mathbb{R}^n$. Il écrit :
+
+« (1) Je veux prouver $f(x+y) \le f(x) + f(y)$.
+
+(2) On a $f(x+y) = \|x+y\|_2^2 = \|x\|_2^2 + \|y\|_2^2 + 2\langle x,y \rangle = f(x) + f(y) + 2\langle x,y \rangle$.
+
+(3) L'inégalité à prouver est donc équivalente à $f(x) + f(y) + 2\langle x,y \rangle \le f(x) + f(y)$, ce qui se simplifie en $2\langle x,y \rangle \le 0$.
+
+(4) Cette dernière inégalité n'est pas toujours vraie. Par exemple pour $x=y=(1,0,\dots,0)$, $\langle x,y \rangle = 1 > 0$.
+
+(5) J'en conclus que ma méthode de preuve est incorrecte et que je dois chercher une autre approche. »
+
+Quelle est l'évaluation la plus juste de son raisonnement ?
+
+- [ ] **A)** L'erreur est à l'étape (2); le développement de $\|x+y\|_2^2$ est faux.
+- [x] **B)** Le raisonnement des étapes (2) à (4) est entièrement correct et constitue une preuve par l'absurde que $f(x)$ ne vérifie pas l'inégalité triangulaire (et n'est donc pas une norme).
+- [ ] **C)** L'erreur est à l'étape (4); le contre-exemple n'est pas valide.
+- [ ] **D)** L'erreur est la conclusion à l'étape (5); sa méthode est correcte, mais il aurait dû utiliser l'inégalité de Cauchy-Schwarz pour majorer $\langle x,y \rangle$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Le raisonnement de l'étudiant est analysé étape par étape :
+
+- **Étape (2) :** Le développement de $f(x+y)$ est parfaitement correct. Il utilise la bilinéarité du produit scalaire : $\|x+y\|_2^2 = \langle x+y, x+y \rangle = \langle x,x \rangle + 2\langle x,y \rangle + \langle y,y \rangle = \|x\|_2^2 + \|y\|_2^2 + 2\langle x,y \rangle$.
+
+- **Étape (3) :** La substitution de l'expression de $f(x+y)$ dans l'inégalité triangulaire et la simplification qui s'ensuit sont également correctes.
+
+- **Étape (4) :** L'étudiant observe correctement que la condition $\langle x,y \rangle \le 0$ n'est pas universellement vraie. Il fournit un contre-exemple simple et valide : pour $x=y=(1,0,\dots,0)$, le produit scalaire est positif.
+
+- **Étape (5) :** C'est ici que l'interprétation de l'étudiant est erronée. Son raisonnement n'est pas une "méthode incorrecte", mais au contraire une démonstration parfaitement rigoureuse que l'inégalité triangulaire est fausse pour l'application $f$. Il a montré que la validité de l'inégalité triangulaire pour $f$ impliquerait une condition ($ \langle x,y \rangle \le 0$) qui n'est pas toujours vraie.
+
+Par conséquent, l'évaluation la plus juste est B. Le raisonnement est correct et prouve que $f$ n'est pas une norme. La seule erreur de l'étudiant est de ne pas avoir réalisé qu'il avait réussi à prouver le contraire de ce qu'il cherchait à établir.
+
+- **A** est faux car le développement est correct.
+- **C** est faux car le contre-exemple est valide.
+- **D** est faux. Utiliser Cauchy-Schwarz ici ne mènerait à rien d'utile pour prouver l'inégalité (puisqu'elle est fausse). Cela donnerait $\|x+y\|_2^2 \le \|x\|_2^2 + \|y\|_2^2 + 2\|x\|_2\|y\|_2 = (\|x\|_2+\|y\|_2)^2$, ce qui est la base de la preuve de l'inégalité triangulaire pour la norme $\|\cdot\|_2$, pas pour $f(x)=\|x\|_2^2$.
+
+</details>
+
+---
+
+#### Question 9 : Norme définie par une forme quadratique
+
+Soit $A \in \mathcal{M}_n(\mathbb{R})$ une matrice symétrique. On définit l'application $N_A: \mathbb{R}^n \to \mathbb{R}$ par $N_A(x) = \sqrt{x^T A x}$. Quelles sont les conditions nécessaires et suffisantes sur la matrice $A$ pour que $N_A$ soit une norme sur $\mathbb{R}^n$ ?
+
+- [ ] **A)** $A$ doit être une matrice inversible.
+- [x] **B)** $A$ doit être une matrice définie positive.
+- [ ] **C)** $A$ doit être la matrice identité.
+- [x] **D)** Les valeurs propres de $A$ doivent toutes être strictement positives.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B, D]**
+
+Analysons les axiomes d'une norme pour $N_A(x) = \sqrt{x^T A x}$.
+
+1.  **Définition et Non-négativité :** Pour que $N_A(x)$ soit un réel bien défini pour tout $x$, il faut que la quantité sous la racine, $x^T A x$, soit toujours non négative. Une matrice symétrique pour laquelle $x^T A x \ge 0$ pour tout $x$ est dite semi-définie positive.
+
+2.  **Séparation :** $N_A(x) = 0 \iff x=0$. Cela équivaut à $x^T A x = 0 \iff x=0$. Une matrice symétrique pour laquelle $x^T A x > 0$ pour tout $x \neq 0$ est dite **définie positive**. C'est une condition plus forte que semi-définie positive.
+
+3.  **Homogénéité :** $N_A(\lambda x) = \sqrt{(\lambda x)^T A (\lambda x)} = \sqrt{\lambda^2 x^T A x} = |\lambda| \sqrt{x^T A x} = |\lambda| N_A(x)$. Cet axiome est toujours satisfait tant que $x^T A x \ge 0$.
+
+4.  **Inégalité triangulaire :** L'inégalité $N_A(x+y) \le N_A(x) + N_A(y)$ est l'inégalité de Minkowski associée au produit scalaire $\langle x, y \rangle_A = x^T A y$. Cette inégalité est valide si et seulement si l'application $\langle \cdot, \cdot \rangle_A$ est un produit scalaire. Pour cela, la forme bilinéaire doit être symétrique (ce qui est donné) et définie positive.
+
+La condition nécessaire et suffisante est donc que $A$ soit symétrique et définie positive.
+
+- **A)** Une matrice définie positive est toujours inversible, mais la réciproque est fausse. Par exemple $A=diag(-1,1)$ est inversible mais pas définie positive. Ce n'est pas suffisant.
+
+- **B)** C'est exactement la condition requise, comme expliqué ci-dessus. C'est correct.
+
+- **C)** Si $A=I$, on obtient la norme euclidienne usuelle, qui est bien une norme. C'est un cas particulier, donc c'est une condition suffisante mais pas nécessaire.
+
+- **D)** Un théorème fondamental de l'algèbre linéaire stipule qu'une matrice symétrique est définie positive si et seulement si toutes ses valeurs propres sont strictement positives. Cette condition est donc équivalente à B. C'est correct.
+
+</details>
+
+---
+
+#### Question 10 : Suites de Cauchy et fonctions uniformément continues
+
+Soient $(E, d_E)$ et $(F, d_F)$ deux espaces métriques et $f: E \to F$ une application. Que peut-on dire de l'image d'une suite de Cauchy par $f$ ?
+
+- [ ] **A)** Si $f$ est continue, l'image $(f(x_k))$ d'une suite de Cauchy $(x_k)$ est toujours une suite de Cauchy.
+- [x] **B)** Si $f$ est uniformément continue, l'image $(f(x_k))$ d'une suite de Cauchy $(x_k)$ est toujours une suite de Cauchy.
+- [x] **C)** Si $E=\mathbb{R}^n$, $F=\mathbb{R}^m$ (munis de leurs distances usuelles) et $f$ est continue, alors l'image $(f(x_k))$ d'une suite de Cauchy $(x_k)$ est une suite de Cauchy.
+- [x] **D)** L'application $f(x) = 1/x$ de $E=(0,1]$ dans $F=\mathbb{R}$ (avec la distance usuelle) est un contre-exemple à l'affirmation A).
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B, C, D]**
+
+Cette question explore la relation entre continuité, suites de Cauchy et complétude.
+
+- **A)** C'est faux. La continuité simple ne suffit pas à préserver les suites de Cauchy. Un contre-exemple est nécessaire pour le prouver (voir D).
+
+- **B)** C'est vrai. C'est une propriété fondamentale de la continuité uniforme. Soit $(x_k)$ une suite de Cauchy dans $E$. Soit $\varepsilon > 0$. Par continuité uniforme de $f$, il existe $\delta > 0$ tel que pour tous $x, y \in E$, $d_E(x,y) < \delta \implies d_F(f(x),f(y)) < \varepsilon$. Comme $(x_k)$ est de Cauchy, il existe un rang $K$ tel que pour tous $p,q \ge K$, on a $d_E(x_p, x_q) < \delta$. En combinant ces deux faits, pour tous $p,q \ge K$, on a $d_F(f(x_p), f(x_q)) < \varepsilon$. Ceci montre que la suite $(f(x_k))$ est de Cauchy dans $F$.
+
+- **C)** C'est vrai. Le point crucial ici est que l'espace de départ $E=\mathbb{R}^n$ est **complet**. Par conséquent, toute suite de Cauchy $(x_k)$ dans $\mathbb{R}^n$ est convergente vers une limite $a \in \mathbb{R}^n$. Comme $f$ est continue en $a$, la suite des images $(f(x_k))$ converge vers $f(a)$ dans $\mathbb{R}^m$. Or, toute suite convergente est une suite de Cauchy. Donc $(f(x_k))$ est bien de Cauchy.
+
+- **D)** C'est vrai, et cela sert de contre-exemple à A). L'application $f(x)=1/x$ est continue sur l'espace métrique $E=(0,1]$. La suite $x_k=1/k$ est une suite d'éléments de $E$. Elle est de Cauchy car elle converge dans $\mathbb{R}$ (vers 0). Cependant, son image par $f$ est la suite $f(x_k) = k$. La suite $(k)_{k \ge 1}$ n'est pas bornée dans $\mathbb{R}$ et donc n'est pas de Cauchy. Cela montre qu'une fonction continue sur un espace non complet ne préserve pas nécessairement les suites de Cauchy.
+
+</details>
+
+---

@@ -23,10 +23,6 @@ export interface PageFrontmatter {
   hidden?: boolean;
 }
 
-/**
- * Generates navigation structure from the pages directory
- * Supports unlimited directory hierarchy depth
- */
 export async function generateNavigation(): Promise<NavigationItem[]> {
   const pagesDir = join(process.cwd(), 'src/pages');
 
@@ -40,7 +36,7 @@ export async function generateNavigation(): Promise<NavigationItem[]> {
 
 function isPage(filename: string): boolean {
   const ext = extname(filename).toLowerCase();
-  return ['.astro', '.md', '.mdx'].includes(ext) && filename !== 'index.md';
+  return ['.astro', '.md', '.mdx'].includes(ext) && filename !== 'index.md' && filename !== '404.astro';
 }
 
 async function processDirectoryRecursive(dirPath: string, relativePath: string): Promise<NavigationItem[]> {
@@ -53,7 +49,7 @@ async function processDirectoryRecursive(dirPath: string, relativePath: string):
       const currentRelativePath = relativePath ? `${relativePath}/${entry.name}` : entry.name;
 
       if (entry.isFile() && isPage(entry.name)) {
-        // Handle files
+        // Page
         const info = await pageInfo(fullPath);
         if (!info.hidden) {
           navigationItems.push({
@@ -63,24 +59,21 @@ async function processDirectoryRecursive(dirPath: string, relativePath: string):
           });
         }
       } else if (entry.isDirectory()) {
-        // Handle subdirectories recursively
+        // Directory
         const children = await processDirectoryRecursive(fullPath, currentRelativePath);
 
         if (children.length > 0) {
-          // Try to get title from info.md or index.md in the directory
           const infoFile = await directoryInfo(fullPath);
 
-          // Generate accent-less path from the actual directory structure
           const accentLessPath = generateAccentLessPath(currentRelativePath);
 
-          // Check if there's an index file for this directory
           const indexPath = await getDirectoryIndexPath(fullPath, currentRelativePath);
 
           navigationItems.push({
             title: infoFile?.title || formatDirectoryTitle(entry.name),
             path: indexPath || `/${accentLessPath}/`,
             children: sortNavigationItems(children),
-            order: infoFile?.order // Use order from info file if available
+            order: infoFile?.order
           });
         }
       }
@@ -95,7 +88,7 @@ async function processDirectoryRecursive(dirPath: string, relativePath: string):
 
 async function directoryInfo(dirPath: string): Promise<PageInfo | null> {
   try {
-    const indexPath = join(dirPath, '_index.md');
+    const indexPath = join(dirPath, 'index.md');
     try {
       const content = await readFile(indexPath, 'utf-8');
       const { data: frontmatter } = matter(content);
@@ -115,31 +108,22 @@ async function directoryInfo(dirPath: string): Promise<PageInfo | null> {
   }
 }
 
-/**
- * Removes accents from a string for URL-safe paths
- */
 function removeAccents(str: string): string {
   return str
     .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '') // Remove combining diacritical marks
-    .replace(/[^a-zA-Z0-9\s-]/g, '') // Remove special characters except spaces and hyphens
-    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-zA-Z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
     .toLowerCase();
 }
 
-/**
- * Gets the URL path for the _index.md file in a directory
- */
 async function getDirectoryIndexPath(dirPath: string, relativePath: string): Promise<string | null> {
   try {
     const indexPath = join(dirPath, '_index.md');
     try {
-      // Check if file exists
       await readFile(indexPath, 'utf-8');
-      // Return the URL path for this directory
       return `/${generateAccentLessPath(relativePath)}/`;
     } catch (error) {
-      // _index.md doesn't exist
       return null;
     }
   } catch (error) {
@@ -148,22 +132,15 @@ async function getDirectoryIndexPath(dirPath: string, relativePath: string): Pro
   }
 }
 
-/**
- * Generates accent-less path from actual file path
- */
 function generateAccentLessPath(relativePath: string): string {
   const pathParts = relativePath.split('/');
   return pathParts.map(part => removeAccents(part)).join('/');
 }
 
-/**
- * Converts filename to URL path with support for nested directories
- * Uses accent-less paths for better URL compatibility
- */
 function getUrlPath(filename: string, relativePath?: string): string {
   const name = basename(filename, extname(filename));
 
-  // Handle index files
+  // Index file
   if (name === 'index') {
     if (relativePath) {
       return `/${generateAccentLessPath(relativePath)}/`;
@@ -178,9 +155,6 @@ function getUrlPath(filename: string, relativePath?: string): string {
   return `/${accentLessName}`;
 }
 
-/**
- * Formats directory name into a readable title
- */
 function formatDirectoryTitle(dirName: string): string {
   return dirName
     .split('-')
@@ -188,17 +162,12 @@ function formatDirectoryTitle(dirName: string): string {
     .join(' ');
 }
 
-/**
- * Sorts navigation items by order (if specified) then alphabetically
- */
 export function sortNavigationItems(items: NavigationItem[]): NavigationItem[] {
   return items.sort((a, b) => {
-    // Sort by order first (if both have order)
     if (a.order !== undefined && b.order !== undefined) {
       return a.order - b.order;
     }
 
-    // Items with order come first
     if (a.order !== undefined && b.order === undefined) {
       return -1;
     }
@@ -206,7 +175,6 @@ export function sortNavigationItems(items: NavigationItem[]): NavigationItem[] {
       return 1;
     }
 
-    // Alphabetical sort for items without order
     return a.title.localeCompare(b.title);
   });
 }
@@ -232,13 +200,9 @@ async function pageInfo(filePath: string): Promise<PageInfo> {
   }
 }
 
-/**
- * Gets the current page path for highlighting active navigation items
- */
 export function getCurrentPagePath(url: URL): string {
   let pathname = url.pathname;
 
-  // Remove trailing slash except for root
   if (pathname !== '/' && pathname.endsWith('/')) {
     pathname = pathname.slice(0, -1);
   }
@@ -246,16 +210,11 @@ export function getCurrentPagePath(url: URL): string {
   return pathname;
 }
 
-/**
- * Checks if a navigation item or its children match the current path
- */
 export function isActiveNavItem(item: NavigationItem, currentPath: string): boolean {
-  // Direct match
   if (item.path === currentPath) {
     return true;
   }
 
-  // Check children for match
   if (item.children) {
     return item.children.some(child => isActiveNavItem(child, currentPath));
   }

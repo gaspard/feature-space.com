@@ -4,7 +4,6 @@ level: regular
 course: Géométrie
 chapter: Groupes d'isométries
 order: 10
-layout: '../../../../layouts/Article.astro'
 tags:
   [
     'géométrie',

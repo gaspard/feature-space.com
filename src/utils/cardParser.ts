@@ -35,7 +35,7 @@ export function parseCards(content: string, filename: string): ParsedCards {
   }
 
   // Split by --- to get individual cards
-  const sections = body.split('---').filter(section => section.trim());
+  const sections = body.split('\n---\n').filter(section => section.trim());
 
   const cards: Card[] = [];
 

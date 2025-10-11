@@ -1,0 +1,364 @@
+---
+title: Quiz
+order: 13
+level: regular
+chapter: A - Concepts
+course: Topologie et Calcul Différentiel I
+tags: ["quiz", "assessment", "regular"]
+---
+
+# Quiz: A - Concepts
+
+---
+
+#### Question 1 : Axiomes d'une norme
+
+Laquelle des propositions suivantes est l'axiome de l'**inégalité triangulaire** pour une norme $N$ sur $\mathbb{R}^n$?
+
+- [ ] **A)** $N(x - y) \leq N(x) - N(y)$
+- [x] **B)** $N(x + y) \leq N(x) + N(y)$
+- [ ] **C)** $N(x + y) \geq N(x) + N(y)$
+- [ ] **D)** $|N(x) - N(y)| \leq N(x - y)$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+L'inégalité triangulaire est l'un des trois axiomes fondamentaux qui définissent une norme. Elle formalise l'idée que le chemin direct est toujours le plus court.
+
+- **A)** Incorrect. Cette inégalité est fausse en général. Par exemple, pour $y=x$, on aurait $N(0) \leq N(x) - N(x)$, soit $0 \leq 0$, ce qui est vrai, mais pour d'autres vecteurs, elle ne tient pas.
+
+- **B)** Correct. C'est la définition exacte de l'axiome de l'inégalité triangulaire. Pour tous vecteurs $x, y \in \mathbb{R}^n$, la norme de la somme est inférieure ou égale à la somme des normes.
+
+- **C)** Incorrect. Cette inégalité est le contraire de l'inégalité triangulaire et n'est généralement pas vraie.
+
+- **D)** Incorrect. Ceci est l'**inégalité triangulaire renversée**. C'est une propriété qui découle de l'axiome de l'inégalité triangulaire, mais ce n'est pas l'un des axiomes de définition d'une norme.
+
+</details>
+
+---
+
+#### Question 2 : Identification d'une non-norme
+
+Laquelle des applications suivantes, de $\mathbb{R}^2$ dans $\mathbb{R}$, n'est PAS une norme ?
+
+- [x] **A)** $N(x_1, x_2) = |x_1 - x_2|$
+- [ ] **B)** $N(x_1, x_2) = 2|x_1| + 2|x_2|$
+- [ ] **C)** $N(x_1, x_2) = \sqrt{x_1^2 + x_2^2}$
+- [ ] **D)** $N(x_1, x_2) = \max(|x_1|, |x_2|)$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+Pour être une norme, une application doit satisfaire les trois axiomes : séparation, homogénéité et inégalité triangulaire. L'application en A ne respecte pas l'axiome de séparation.
+
+- **A)** Correct (n'est pas une norme). Cette application viole l'axiome de séparation ($N(x)=0 \iff x=0$). En effet, si on prend un vecteur non nul comme $x = (3, 3)$, on a $N(3, 3) = |3 - 3| = 0$. Un vecteur non nul a une "longueur" nulle, ce qui contredit la définition d'une norme.
+
+- **B)** Incorrect (est une norme). Cette application est bien une norme. Elle est égale à $2 \|x\|_1$, où $\|x\|_1$ est la norme de Manhattan. Multiplier une norme par une constante positive (ici 2) donne toujours une nouvelle norme.
+
+- **C)** Incorrect (est une norme). C'est la norme euclidienne usuelle $\|x\|_2$ sur $\mathbb{R}^2$.
+
+- **D)** Incorrect (est une norme). C'est la norme infinie $\|x\|_\infty$ sur $\mathbb{R}^2$.
+
+</details>
+
+---
+
+#### Question 3 : Calcul de normes
+
+Soit le vecteur $v = (3, -4, 0)$ dans $\mathbb{R}^3$. Quelle proposition donne les valeurs correctes pour ses normes $\|v\|_1$, $\|v\|_2$, et $\|v\|_\infty$ ?
+
+- [ ] **A)** $\|v\|_1 = 7$, $\|v\|_2 = 25$, $\|v\|_\infty = -4$
+- [ ] **B)** $\|v\|_1 = 1$, $\|v\|_2 = 5$, $\|v\|_\infty = 4$
+- [ ] **C)** $\|v\|_1 = 7$, $\|v\|_2 = \sqrt{7}$, $\|v\|_\infty = 3$
+- [x] **D)** $\|v\|_1 = 7$, $\|v\|_2 = 5$, $\|v\|_\infty = 4$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+Calculons chaque norme en utilisant sa définition.
+
+- **Norme 1 (Manhattan)** : $\|v\|_1 = \sum_{j=1}^3 |v_j| = |3| + |-4| + |0| = 3 + 4 + 0 = 7$.
+
+- **Norme 2 (Euclidienne)** : $\|v\|_2 = \sqrt{\sum_{j=1}^3 v_j^2} = \sqrt{3^2 + (-4)^2 + 0^2} = \sqrt{9 + 16 + 0} = \sqrt{25} = 5$.
+
+- **Norme infinie** : $\|v\|_\infty = \max_{1 \le j \le 3} |v_j| = \max(|3|, |-4|, |0|) = \max(3, 4, 0) = 4$.
+
+Les valeurs correctes sont donc $\|v\|_1 = 7$, $\|v\|_2 = 5$, et $\|v\|_\infty = 4$.
+
+- **A)** Incorrect. La norme 2 est 5 (la racine carrée de 25) et la norme infinie est 4 (la valeur absolue de -4).
+- **B)** Incorrect. La norme 1 est la somme des valeurs absolues, soit 7, pas 1.
+- **C)** Incorrect. La norme 2 est $\sqrt{25}=5$, pas $\sqrt{7}$.
+- **D)** Correct. Toutes les valeurs calculées correspondent.
+
+</details>
+
+---
+
+#### Question 4 : Sphère unité
+
+Dans $\mathbb{R}^2$, quelle est la forme géométrique de la "sphère unité", c'est-à-dire l'ensemble des points $x=(x_1, x_2)$ tels que $\|x\|_\infty = 1$ ?
+
+- [ ] **A)** Un cercle de rayon 1 centré à l'origine.
+- [x] **B)** Un carré dont les sommets sont $(1,1), (-1,1), (-1,-1), (1,-1)$.
+- [ ] **C)** Un carré dont les sommets sont $(1,0), (0,1), (-1,0), (0,-1)$.
+- [ ] **D)** Une ellipse.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+La sphère unité pour la norme infinie est l'ensemble des points $x = (x_1, x_2)$ tels que $\|x\|_\infty = \max(|x_1|, |x_2|) = 1$.
+
+Cette condition signifie que :
+
+- Soit $|x_1|=1$ et $|x_2| \leq 1$. Cela correspond aux segments verticaux allant de $(1,-1)$ à $(1,1)$ et de $(-1,-1)$ à $(-1,1)$.
+- Soit $|x_2|=1$ et $|x_1| \leq 1$. Cela correspond aux segments horizontaux allant de $(-1,1)$ à $(1,1)$ et de $(-1,-1)$ à $(1,-1)$.
+
+L'union de ces quatre segments forme un carré dont les côtés sont parallèles aux axes et les sommets sont aux points $(1,1), (-1,1), (-1,-1), (1,-1)$.
+
+- **A)** Incorrect. C'est la sphère unité pour la norme euclidienne ($\|\cdot\|_2$).
+- **B)** Correct. C'est la description de la sphère unité pour la norme infinie ($\|\cdot\|_\infty$).
+- **C)** Incorrect. C'est la sphère unité pour la norme de Manhattan ($\|\cdot\|_1$).
+- **D)** Incorrect. Une ellipse serait la sphère unité pour une norme dérivée d'un produit scalaire non standard.
+
+</details>
+
+---
+
+#### Question 5 : Définition des normes équivalentes
+
+Que signifie que deux normes $N_1$ et $N_2$ sur $\mathbb{R}^n$ sont équivalentes ?
+
+- [ ] **A)** Pour tout $x \in \mathbb{R}^n$, $N_1(x) = N_2(x)$.
+- [ ] **B)** Il existe une constante $C > 0$ telle que $N_1(x) \leq C \cdot N_2(x)$ pour tout $x \in \mathbb{R}^n$.
+- [x] **C)** Il existe deux constantes $\alpha > 0, \beta > 0$ telles que $\alpha N_1(x) \leq N_2(x) \leq \beta N_1(x)$ pour tout $x \in \mathbb{R}^n$.
+- [ ] **D)** Pour tout $x \neq 0_{\mathbb{R}^n}$, le rapport $N_1(x)/N_2(x)$ est constant.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+La définition de l'équivalence des normes formalise l'idée que deux normes se "comportent" de la même manière à une constante multiplicative près.
+
+- **A)** Incorrect. C'est une condition beaucoup trop forte qui signifie que les normes sont identiques.
+- **B)** Incorrect. Cette inégalité ne fournit qu'une borne supérieure. Pour l'équivalence, il faut aussi une borne inférieure (ou la même inégalité dans l'autre sens).
+- **C)** Correct. C'est la définition formelle de l'équivalence des normes. Les deux normes sont "coincées" l'une par rapport à l'autre, ce qui signifie qu'elles sont comparables.
+- **D)** Incorrect. C'est une condition trop restrictive qui implique que $N_2(x) = C \cdot N_1(x)$ pour une constante $C$. C'est un cas particulier d'équivalence, mais pas la définition générale.
+
+</details>
+
+---
+
+#### Question 6 : Conséquence de l'équivalence des normes
+
+Sur $\mathbb{R}^n$, toutes les normes sont équivalentes. Par exemple, $\|x\|_\infty \leq \|x\|_1 \leq n \|x\|_\infty$. Quelle est la conséquence la plus importante de ce fait pour l'étude des suites de vecteurs ?
+
+- [x] **A)** Une suite $(x^k)$ converge vers $a$ pour la norme $\|\cdot\|_1$ si et seulement si elle converge vers $a$ pour la norme $\|\cdot\|_\infty$.
+- [ ] **B)** Les deux normes donnent toujours la même valeur pour la "longueur" d'un vecteur.
+- [ ] **C)** Une suite qui converge pour la norme $\|\cdot\|_1$ converge plus vite que pour la norme $\|\cdot\|_\infty$.
+- [ ] **D)** Seules les suites de vecteurs dont toutes les composantes sont positives peuvent converger.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+Le théorème fondamental de l'équivalence des normes en dimension finie simplifie grandement l'analyse topologique sur $\mathbb{R}^n$.
+
+- **A)** Correct. Puisque les normes sont équivalentes, si la distance $N_1(x^k - a)$ tend vers 0, alors la distance $N_2(x^k - a)$ doit aussi tendre vers 0 (car elle est encadrée par $\alpha N_1(x^k-a)$ et $\beta N_1(x^k-a)$). La notion de convergence est donc indépendante du choix de la norme.
+
+- **B)** Incorrect. L'inégalité $\|x\|_\infty \leq \|x\|_1$ montre que les valeurs peuvent être différentes. Par exemple, pour $x=(1,1)$, $\|x\|_\infty=1$ et $\|x\|_1=2$.
+
+- **C)** Incorrect. La notion de "vitesse de convergence" n'est pas une conséquence directe de l'équivalence. L'équivalence garantit que si une suite converge, elle converge pour toutes les normes, mais ne compare pas les "vitesses".
+
+- **D)** Incorrect. C'est une affirmation fausse et sans rapport avec l'équivalence des normes. Par exemple, la suite $x^k = (-1/k)$ converge vers 0.
+
+</details>
+
+---
+
+#### Question 7 : Limite d'une suite de vecteurs
+
+Quelle est la limite de la suite $(x^k)_{k \geq 1}$ de $\mathbb{R}^3$ définie par $x^k = \left( \frac{k+1}{2k}, e^{-k}, \frac{\sin(k)}{k} \right)$ ?
+
+- [ ] **A)** Le vecteur $(1, 0, 0)$.
+- [ ] **B)** La suite diverge car le terme $\sin(k)$ oscille.
+- [ ] **C)** Le vecteur $(1/2, 0, 1)$.
+- [x] **D)** Le vecteur $(1/2, 0, 0)$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+La convergence d'une suite de vecteurs dans $\mathbb{R}^n$ est équivalente à la convergence de chacune de ses composantes. Nous étudions donc la limite de chaque suite de coordonnées.
+
+- **Première composante** : $\lim_{k \to \infty} \frac{k+1}{2k} = \lim_{k \to \infty} \frac{k(1+1/k)}{k(2)} = \lim_{k \to \infty} \frac{1+1/k}{2} = \frac{1+0}{2} = \frac{1}{2}$.
+
+- **Deuxième composante** : $\lim_{k \to \infty} e^{-k} = \lim_{k \to \infty} \frac{1}{e^k} = 0$.
+
+- **Troisième composante** : $\lim_{k \to \infty} \frac{\sin(k)}{k}$. Comme $-1 \leq \sin(k) \leq 1$ pour tout $k$, on a $-\frac{1}{k} \leq \frac{\sin(k)}{k} \leq \frac{1}{k}$. Puisque $\lim_{k \to \infty} -\frac{1}{k} = 0$ et $\lim_{k \to \infty} \frac{1}{k} = 0$, par le théorème des gendarmes, la limite est 0.
+
+La suite de vecteurs converge donc vers le vecteur dont les composantes sont ces limites : $(1/2, 0, 0)$.
+
+</details>
+
+---
+
+#### Question 8 : Convergence par composantes
+
+Soit une suite de vecteurs $(x^k)$ dans $\mathbb{R}^n$ où $x^k = (x_1^k, x_2^k, \dots, x_n^k)$. Si on sait que la suite $(x^k)$ converge vers un vecteur $a = (a_1, \dots, a_n)$, laquelle des affirmations suivantes est nécessairement vraie ?
+
+- [x] **A)** Pour tout $j \in \{1, \dots, n\}$, la suite réelle $(x_j^k)_{k \in \mathbb{N}}$ converge vers $a_j$.
+- [ ] **B)** Au moins une des suites de composantes $(x_j^k)$ doit converger, mais pas nécessairement toutes.
+- [ ] **C)** Toutes les suites de composantes $(x_j^k)$ doivent être monotones.
+- [ ] **D)** La suite des normes $\|x^k\|$ doit converger vers 0.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+Cette question porte sur la propriété fondamentale qui lie la convergence dans $\mathbb{R}^n$ à la convergence dans $\mathbb{R}$.
+
+- **A)** Correct. C'est le théorème de la convergence par composantes. Une suite de vecteurs converge si et seulement si chacune de ses suites de composantes converge vers la composante correspondante du vecteur limite.
+
+- **B)** Incorrect. Si la suite de vecteurs converge, alors *toutes* les suites de composantes doivent converger. Il ne suffit pas qu'une seule le fasse.
+
+- **C)** Incorrect. La convergence n'implique pas la monotonie. Par exemple, la suite réelle $x_k = (-1)^k / k$ converge vers 0 mais n'est pas monotone.
+
+- **D)** Incorrect. Par continuité de la norme (une conséquence de l'inégalité triangulaire renversée), si $x^k \to a$, alors $\|x^k\| \to \|a\|$. La limite est $\|a\|$, qui n'est nulle que si le vecteur limite $a$ est le vecteur nul.
+
+</details>
+
+---
+
+#### Question 9 : Définition d'une suite de Cauchy
+
+Comment définit-on une suite de Cauchy $(x^k)$ dans un espace vectoriel normé $(\mathbb{R}^n, N)$ ?
+
+- [ ] **A)** Pour tout $\varepsilon > 0$, il existe $k_\varepsilon \in \mathbb{N}$ tel que pour tout $k \ge k_\varepsilon$, $N(x^{k+1} - x^k) < \varepsilon$.
+- [x] **B)** Pour tout $\varepsilon > 0$, il existe $k_\varepsilon \in \mathbb{N}$ tel que pour tous $p, q \ge k_\varepsilon$, $N(x^p - x^q) < \varepsilon$.
+- [ ] **C)** La suite des normes $\|x^k\|$ est une suite de Cauchy dans $\mathbb{R}$.
+- [ ] **D)** La suite est bornée, c'est-à-dire qu'il existe $M > 0$ tel que $N(x^k) \leq M$ pour tout $k$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+La définition d'une suite de Cauchy capture l'idée que les termes d'une suite se rapprochent infiniment les uns des autres, sans faire référence à une potentielle limite.
+
+- **A)** Incorrect. C'est une condition plus faible qui stipule seulement que les termes *consécutifs* se rapprochent. La suite des sommes partielles de la série harmonique ($x^k = \sum_{i=1}^k 1/i$) satisfait cette condition mais n'est pas de Cauchy.
+
+- **B)** Correct. C'est la définition formelle du critère de Cauchy. Au-delà d'un certain rang $k_\varepsilon$, *tous* les termes de la suite sont à une distance inférieure à $\varepsilon$ les uns des autres.
+
+- **C)** Incorrect. Si $(x^k)$ est de Cauchy, alors $(\|x^k\|)$ est de Cauchy dans $\mathbb{R}$. Cependant, la réciproque est fausse. Par exemple, $x^k = ((-1)^k)$ dans $\mathbb{R}$. La suite des normes est $\|x^k\| = |(-1)^k| = 1$, qui est constante et donc de Cauchy. Mais la suite $(x^k)$ elle-même n'est pas de Cauchy car $|x^{k+1} - x^k| = 2$.
+
+- **D)** Incorrect. C'est une propriété d'une suite de Cauchy (toute suite de Cauchy est bornée), mais ce n'est pas sa définition.
+
+</details>
+
+---
+
+#### Question 10 : Complétude de R^n
+
+Quelle est la relation fondamentale entre les suites de Cauchy et les suites convergentes dans l'espace $\mathbb{R}^n$ ?
+
+- [ ] **A)** Toute suite convergente est une suite de Cauchy, mais la réciproque est fausse dans $\mathbb{R}^n$.
+- [ ] **B)** Toute suite de Cauchy est une suite convergente, mais la réciproque est fausse dans $\mathbb{R}^n$.
+- [x] **C)** Dans $\mathbb{R}^n$, une suite est de Cauchy si et seulement si elle est convergente.
+- [ ] **D)** Les concepts de suite de Cauchy et de suite convergente sont indépendants dans $\mathbb{R}^n$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Cette question teste la connaissance d'une propriété cruciale de $\mathbb{R}^n$ : la complétude.
+
+- **A)** Incorrect. La réciproque est vraie dans $\mathbb{R}^n$. Un espace où la réciproque est fausse est dit "incomplet" (par exemple, l'espace des nombres rationnels $\mathbb{Q}$).
+- **B)** Incorrect. L'implication "convergente $\implies$ Cauchy" est toujours vraie dans un espace normé.
+- **C)** Correct. Dans $\mathbb{R}^n$, les deux notions sont équivalentes. C'est la définition d'un espace complet (ou espace de Banach). Le fait que toute suite de Cauchy converge est une propriété non triviale et fondamentale de $\mathbb{R}^n$.
+- **D)** Incorrect. Les deux concepts sont intimement liés. L'un implique l'autre, et vice-versa, dans le cas de $\mathbb{R}^n$.
+
+</details>
+
+---
+
+#### Question 11 : Analyse d'un contre-exemple de norme
+
+On considère l'application $f: \mathbb{R}^2 \to \mathbb{R}$ définie par $f(x_1, x_2) = (\sqrt{|x_1|} + \sqrt{|x_2|})^2$. Il est établi que cette application n'est pas une norme. Quel axiome de la norme n'est pas satisfait ?
+
+- [ ] **A)** La séparation ($f(x) = 0 \iff x=0$)
+- [ ] **B)** L'homogénéité ($f(\lambda x) = |\lambda|f(x)$)
+- [ ] **C)** La positivité ($f(x) \geq 0$)
+- [x] **D)** L'inégalité triangulaire ($f(x+y) \leq f(x)+f(y)$)
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+Vérifions les axiomes pour cette application.
+
+- **A)** La séparation est vérifiée. $f(x_1, x_2)=0 \iff (\sqrt{|x_1|} + \sqrt{|x_2|})^2=0 \iff \sqrt{|x_1|} + \sqrt{|x_2|}=0$. Comme les termes sont positifs, cela implique $\sqrt{|x_1|}=0$ et $\sqrt{|x_2|}=0$, donc $x_1=0$ et $x_2=0$.
+- **B)** L'homogénéité est vérifiée : $f(\lambda x) = (\sqrt{|\lambda x_1|} + \sqrt{|\lambda x_2|})^2 = (\sqrt{|\lambda|}\sqrt{|x_1|} + \sqrt{|\lambda|}\sqrt{|x_2|})^2 = (\sqrt{|\lambda|}(\sqrt{|x_1|}+\sqrt{|x_2|}))^2 = |\lambda|(\sqrt{|x_1|}+\sqrt{|x_2|})^2 = |\lambda|f(x)$.
+- **C)** La positivité est évidente car l'expression est un carré, donc toujours $\geq 0$.
+- **D)** L'inégalité triangulaire n'est pas vérifiée. Prenons $x=(1,0)$ et $y=(0,1)$.
+    - $f(x) = (\sqrt{|1|} + \sqrt{|0|})^2 = 1^2 = 1$.
+    - $f(y) = (\sqrt{|0|} + \sqrt{|1|})^2 = 1^2 = 1$.
+    - $f(x)+f(y) = 1+1=2$.
+    - $x+y = (1,1)$, donc $f(x+y) = (\sqrt{|1|} + \sqrt{|1|})^2 = (1+1)^2 = 4$.
+
+    On a $f(x+y) = 4$ et $f(x)+f(y)=2$. Puisque $4 \not\leq 2$, l'inégalité triangulaire est violée.
+
+</details>
+
+---
+
+#### Question 12 : Inégalité de Cauchy-Schwarz
+
+L'inégalité de Cauchy-Schwarz est un outil essentiel, notamment pour prouver l'inégalité triangulaire pour la norme euclidienne. Quelle est la formulation correcte de cette inégalité pour deux vecteurs $x, y \in \mathbb{R}^n$ ? (Où $\langle x, y \rangle$ désigne le produit scalaire usuel $\sum x_j y_j$)
+
+- [x] **A)** $|\langle x, y \rangle| \leq \|x\|_2 \|y\|_2$
+- [ ] **B)** $|\langle x, y \rangle| \leq \|x\|_2 + \|y\|_2$
+- [ ] **C)** $|\langle x, y \rangle|^2 \leq \|x\|_2 \|y\|_2$
+- [ ] **D)** $|\langle x, y \rangle| \geq \|x\|_2 \|y\|_2$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+Cette question teste la reconnaissance de l'une des inégalités les plus importantes de l'algèbre linéaire et de l'analyse.
+
+- **A)** Correct. C'est la forme standard de l'inégalité de Cauchy-Schwarz. Elle stipule que la valeur absolue du produit scalaire de deux vecteurs est toujours inférieure ou égale au produit de leurs normes euclidiennes. On peut aussi l'écrire sous la forme équivalente $|\langle x, y \rangle|^2 \leq \|x\|_2^2 \|y\|_2^2$.
+
+- **B)** Incorrect. Cette expression ressemble à l'inégalité triangulaire, mais appliquée au produit scalaire, ce qui n'a pas de sens direct et est faux.
+
+- **C)** Incorrect. Il y a un déséquilibre entre les puissances. Le carré du membre de gauche est comparé à un produit de normes non carrées.
+
+- **D)** Incorrect. L'inégalité est dans le mauvais sens.
+
+</details>

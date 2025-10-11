@@ -1,299 +1,323 @@
 ---
-id: '17787cd6'
-title: 'Fiches de révision'
-layout: '../../../../layouts/Layout.astro'
-order: 12
+title: Fiches de révision (A)
+order: 11
 level: regular
-chapter: Concepts
+chapter: A - Concepts
 course: Géométrie
-tags: ["géométrie", "espace euclidien", "produit scalaire", "orthogonalité", "algèbre linéaire"]
+tags: ["cards", "flashcards", "regular"]
 ---
 
-# Fiches : Concepts
+# Cartes: A - Concepts
 
 ---
 
-Qu'est-ce qu'une forme bilinéaire et une forme sesquilinéaire ?
+Qu'est-ce qu'un produit scalaire sur un espace vectoriel réel ?
 
 <details>
+
 <summary>Réponse</summary>
 
-Ce sont des applications qui prennent deux vecteurs et retournent un scalaire, généralisant l'idée d'un produit.
+Un **produit scalaire** sur un espace vectoriel réel $E$ est une opération qui prend deux vecteurs $u$ et $v$ et leur associe un nombre réel, noté $\langle u, v \rangle$. Cette opération doit satisfaire trois propriétés fondamentales :
 
-1.  Une **forme bilinéaire** $\varphi: E \times E \to \mathbb{R}$ (sur un $\mathbb{R}$-espace vectoriel $E$) est une application linéaire par rapport à chacune de ses deux variables.
-    - Linéarité à gauche : $\varphi(u_1 + \lambda u_2, v) = \varphi(u_1, v) + \lambda\varphi(u_2, v)$
-    - Linéarité à droite : $\varphi(u, v_1 + \lambda v_2) = \varphi(u, v_1) + \lambda\varphi(u, v_2)$
+1.  **Forme bilinéaire** : Le produit scalaire est linéaire par rapport à chaque vecteur. Cela signifie qu'il se "distribue" sur l'addition et les scalaires.
+    -   $\langle u_1 + \lambda u_2, v \rangle = \langle u_1, v \rangle + \lambda\langle u_2, v \rangle$
+    -   $\langle u, v_1 + \lambda v_2 \rangle = \langle u, v_1 \rangle + \lambda\langle u, v_2 \rangle$
 
-2.  Une **forme sesquilinéaire** $\varphi: E \times E \to \mathbb{C}$ (sur un $\mathbb{C}$-espace vectoriel $E$) est linéaire par rapport à sa première variable et semi-linéaire (ou anti-linéaire) par rapport à sa seconde.
-    - Linéarité à gauche : $\varphi(u_1 + \lambda u_2, v) = \varphi(u_1, v) + \lambda\varphi(u_2, v)$
-    - Semi-linéarité à droite : $\varphi(u, v_1 + \lambda v_2) = \varphi(u, v_1) + \bar{\lambda}\varphi(u, v_2)$, où $\bar{\lambda}$ est le conjugué complexe de $\lambda$.
+2.  **Symétrique** : L'ordre des vecteurs n'a pas d'importance.
+    -   $\langle u, v \rangle = \langle v, u \rangle$
 
-**Intuition :** Le mot "sesqui" signifie "un et demi". La forme est "une fois" linéaire à gauche, et "une demi-fois" (anti-linéaire) à droite à cause du conjugué. Cette propriété est essentielle pour définir des longueurs (normes) à valeurs réelles positives dans les espaces complexes.
+3.  **Définie positive** : Le produit scalaire d'un vecteur avec lui-même est toujours positif, et il n'est nul que si le vecteur est le vecteur nul.
+    -   $\langle u, u \rangle \ge 0$
+    -   $\langle u, u \rangle = 0 \iff u = 0_E$
+
+Un espace vectoriel réel muni d'un produit scalaire est appelé un **espace euclidien**. Le produit scalaire généralise les notions géométriques de longueur, d'angle et d'orthogonalité.
+
+**Exemple :** Le produit scalaire canonique sur $\mathbb{R}^3$ pour $u=(x_1, x_2, x_3)$ et $v=(y_1, y_2, y_3)$ est $\langle u, v \rangle = x_1 y_1 + x_2 y_2 + x_3 y_3$.
 
 </details>
 
 ---
 
-Quelle est la différence entre une forme symétrique et une forme hermitienne ?
+Quelle est la principale différence entre un produit scalaire sur un espace réel (euclidien) et un espace complexe (hermitien) ?
 
 <details>
+
 <summary>Réponse</summary>
 
-La différence réside dans la manière dont la symétrie est définie, adaptée au corps des scalaires ($\mathbb{R}$ ou $\mathbb{C}$).
+La principale différence réside dans les propriétés de **symétrie** et de **linéarité**.
 
-- Une forme bilinéaire $\varphi$ sur un $\mathbb{R}$-espace vectoriel est **symétrique** si l'ordre des vecteurs n'importe pas :
-  $$ \varphi(x, y) = \varphi(y, x) $$
+1.  **Espace Euclidien (Réel)** : Le produit scalaire est **bilinéaire** (linéaire dans les deux arguments) et **symétrique**.
+    -   $\langle u, v \rangle = \langle v, u \rangle$
+    -   $\langle u, \lambda v \rangle = \lambda \langle u, v \rangle$
 
-- Une forme sesquilinéaire $\varphi$ sur un $\mathbb{C}$-espace vectoriel est **hermitienne** si échanger les vecteurs conjugue le résultat :
-  $$ \varphi(x, y) = \overline{\varphi(y, x)} $$
+2.  **Espace Hermitien (Complexe)** : Le produit scalaire est **sesquilinéaire** (linéaire dans le premier argument, semi-linéaire dans le second) et à **symétrie hermitienne**.
+    -   $\langle u, v \rangle = \overline{\langle v, u \rangle}$ (symétrie hermitienne)
+    -   $\langle u, \lambda v \rangle = \bar{\lambda} \langle u, v \rangle$ (semi-linéarité à droite)
 
-**Point clé :** Une conséquence majeure de la définition hermitienne est que $\varphi(x, x)$ est toujours un nombre **réel**. En effet, $\varphi(x, x) = \overline{\varphi(x, x)}$, ce qui est la condition pour qu'un nombre complexe soit réel. C'est indispensable pour pouvoir définir une norme, qui doit être un nombre réel.
+La conjugaison complexe ($\bar{\lambda}$ et $\overline{\langle v, u \rangle}$) dans le cas hermitien est cruciale. Elle garantit que le produit d'un vecteur avec lui-même, $\langle u, u \rangle$, est toujours un **nombre réel positif**, ce qui permet de définir une norme (longueur) de manière cohérente :
+
+$\langle u, u \rangle = \overline{\langle u, u \rangle} \implies \langle u, u \rangle \in \mathbb{R}$.
 
 </details>
 
 ---
 
-Quelles sont les trois propriétés fondamentales qui définissent un produit scalaire ?
+Quelle est la formule de l'inégalité de Cauchy-Schwarz et quelle est son importance ?
 
 <details>
+
 <summary>Réponse</summary>
 
-Un produit scalaire, noté $\langle x, y \rangle$, est une forme qui introduit des notions géométriques (longueur, angle) dans un espace vectoriel. Il doit vérifier trois propriétés :
-
-1.  **Symétrie (ou Hermiticité) :**
-    - Cas réel (Euclidien) : C'est une **forme bilinéaire symétrique**.
-      $\langle x, y \rangle = \langle y, x \rangle$
-    - Cas complexe (Hermitien) : C'est une **forme sesquilinéaire hermitienne**.
-      $\langle x, y \rangle = \overline{\langle y, x \rangle}$
-
-2.  **Positivité :**
-    La "longueur au carré" d'un vecteur doit être positive ou nulle.
-    Pour tout vecteur $x$, $\langle x, x \rangle \ge 0$. (Note : la propriété hermitienne garantit que $\langle x, x \rangle$ est réel).
-
-3.  **Caractère défini :**
-    Seul le vecteur nul a une longueur nulle.
-    $\langle x, x \rangle = 0 \iff x = 0_E$.
-
-Un espace vectoriel muni d'un produit scalaire est appelé un **espace préhilbertien** (euclidien si réel, hermitien si complexe, en dimension finie).
-
-</details>
-
----
-
-Quelle est l'inégalité de Cauchy-Schwarz et que signifie le cas d'égalité ?
-
-<details>
-<summary>Réponse</summary>
-
-L'inégalité de Cauchy-Schwarz est une des plus importantes dans un espace préhilbertien. Elle relie le produit scalaire de deux vecteurs à leurs normes.
-
-**Formule :** Pour tous vecteurs $x, y \in E$ :
-$$ |\langle x, y \rangle| \le \sqrt{\langle x, x \rangle} \sqrt{\langle y, y \rangle} $$
-En utilisant la notation de la norme $\|x\| = \sqrt{\langle x, x \rangle}$, cela s'écrit :
-$$ |\langle x, y \rangle| \le \|x\| \|y\| $$
-
-**Cas d'égalité :**
-Il y a égalité, c'est-à-dire $|\langle x, y \rangle| = \|x\| \|y\|$, si et seulement si les vecteurs $x$ et $y$ sont **colinéaires** (ou liés). Cela signifie qu'il existe un scalaire $\lambda$ tel que $x = \lambda y$ ou $y = \lambda x$.
-
-**Exemple dans $\mathbb{R}^n$ :**
-$$ \left( \sum_{i=1}^n x_i y_i \right)^2 \le \left( \sum_{i=1}^n x_i^2 \right) \left( \sum_{i=1}^n y_i^2 \right) $$
-
-</details>
-
----
-
-Comment une norme est-elle définie à partir d'un produit scalaire et quelles sont ses propriétés ?
-
-<details>
-<summary>Réponse</summary>
-
-Dans un espace préhilbertien $(E, \langle \cdot, \cdot \rangle)$, la **norme** (longueur) d'un vecteur $x$ est définie par :
-$$ \|x\| = \sqrt{\langle x, x \rangle} $$
-Cette définition est possible car le produit scalaire est défini positif, donc $\langle x, x \rangle \ge 0$.
-
-Cette norme vérifie les trois axiomes qui caractérisent toutes les normes :
-1.  **Séparation** : $\|x\| \ge 0$, et $\|x\| = 0 \iff x = 0_E$.
-    (Un vecteur a une longueur positive, sauf le vecteur nul).
-2.  **Homogénéité** : $\|\lambda x\| = |\lambda| \|x\|$ pour tout scalaire $\lambda$.
-    (Multiplier un vecteur par $\lambda$ multiplie sa longueur par $|\lambda|$).
-3.  **Inégalité triangulaire** : $\|x + y\| \le \|x\| + \|y\|$.
-    (La longueur d'un côté d'un triangle est inférieure à la somme des longueurs des deux autres côtés). La démonstration de cette propriété repose sur l'inégalité de Cauchy-Schwarz.
-
-</details>
-
----
-
-Qu'est-ce qu'une famille orthonormée et quel est son principal avantage ?
-
-<details>
-<summary>Réponse</summary>
-
-Une famille de vecteurs $(v_i)_{i \in I}$ est dite **orthonormée** (ou orthonormale) si elle est :
-1.  **Orthogonale** : ses vecteurs sont deux à deux orthogonaux. Pour tous $i \neq j$, $\langle v_i, v_j \rangle = 0$.
-2.  **Normée** : tous ses vecteurs sont de norme 1. Pour tout $i$, $\|v_i\| = 1$ (ce qui équivaut à $\langle v_i, v_i \rangle = 1$).
-
-On peut résumer ces deux conditions avec le symbole de Kronecker $\delta_{ij}$ :
-$$ \langle v_i, v_j \rangle = \delta_{ij} = \begin{cases} 1 & \text{si } i=j \\ 0 & \text{si } i \neq j \end{cases} $$
-
-**Principal avantage :** Les calculs deviennent extrêmement simples. Si $(e_1, \dots, e_n)$ est une **base orthonormée**, alors pour tout vecteur $x = \sum x_i e_i$ et $y = \sum y_j e_j$:
-- **Coordonnées :** $x_i = \langle x, e_i \rangle$
-- **Produit scalaire :** $\langle x, y \rangle = \sum x_i \bar{y}_i$ (ou $\sum x_i y_i$ dans le cas réel)
-- **Norme (Identité de Parseval) :** $\|x\|^2 = \sum |x_i|^2$
-
-</details>
-
----
-
-Expliquez le théorème de Pythagore dans un espace préhilbertien.
-
-<details>
-<summary>Réponse</summary>
-
-Le théorème de Pythagore se généralise à tout espace euclidien ou hermitien.
-
-**Énoncé :** Si une famille de vecteurs $(v_1, \dots, v_n)$ est **orthogonale**, alors le carré de la norme de leur somme est égal à la somme des carrés de leurs normes.
-$$ \left\| \sum_{i=1}^n v_i \right\|^2 = \sum_{i=1}^n \|v_i\|^2 $$
-
-**Démonstration (pour deux vecteurs $x \perp y$) :**
-$$ \|x+y\|^2 = \langle x+y, x+y \rangle $$
-Par bilinéarité (ou sesquilinéarité) :
-$$ = \langle x, x \rangle + \langle x, y \rangle + \langle y, x \rangle + \langle y, y \rangle $$
-Comme $x$ et $y$ sont orthogonaux, $\langle x, y \rangle = 0$ et $\langle y, x \rangle = 0$. Il reste :
-$$ \|x+y\|^2 = \langle x, x \rangle + \langle y, y \rangle = \|x\|^2 + \|y\|^2 $$
-
-**Conséquence importante :** Toute famille orthogonale de vecteurs **non nuls** est une famille libre.
-
-</details>
-
----
-
-Comment fonctionne le procédé d'orthonormalisation de Gram-Schmidt ?
-
-<details>
-<summary>Réponse</summary>
-
-Le procédé de Gram-Schmidt est un algorithme qui transforme n'importe quelle base $(v_1, \dots, v_n)$ en une base **orthonormée** $(e_1, \dots, e_n)$. Il fonctionne par étapes successives.
-
-À l'étape $k$, pour construire le vecteur $e_k$, on effectue deux opérations :
-
-1.  **Orthogonalisation :** On prend le vecteur $v_k$ et on lui soustrait sa projection sur le sous-espace engendré par les vecteurs orthonormés déjà construits $(e_1, \dots, e_{k-1})$. On obtient un vecteur $e'_k$ qui est orthogonal à tous les précédents.
-    $$ e'_k = v_k - \sum_{j=1}^{k-1} \langle v_k, e_j \rangle e_j $$
-
-2.  **Normalisation :** On divise le vecteur $e'_k$ par sa norme pour le rendre unitaire.
-    $$ e_k = \frac{e'_k}{\|e'_k\|} $$
-
-On commence avec $e'_1 = v_1$ et on continue jusqu'à $n$. Ce procédé garantit l'existence d'une base orthonormée dans tout espace euclidien ou hermitien de dimension finie.
-
-</details>
-
----
-
-Comment calculer la projection orthogonale d'un vecteur $x$ sur un sous-espace $F$ ?
-
-<details>
-<summary>Réponse</summary>
-
-La projection orthogonale $P_F(x)$ est le "meilleur" représentant de $x$ dans $F$. Le calcul est particulièrement simple si l'on dispose d'une **base orthonormée** $(e_1, \dots, e_p)$ de $F$.
+L'inégalité de Cauchy-Schwarz stipule que pour tous vecteurs $u$ et $v$ d'un espace euclidien ou hermitien, la valeur absolue (ou le module) de leur produit scalaire est toujours inférieure ou égale au produit de leurs normes.
 
 **Formule :**
-$$ P_F(x) = \sum_{i=1}^p \langle x, e_i \rangle e_i $$
-Cette formule signifie que la projection est la somme des projections de $x$ sur chaque vecteur de la base orthonormée de $F$.
 
-**Méthode alternative :**
-Parfois, il est plus simple de calculer la projection sur le supplémentaire orthogonal $F^\perp$. Si $E = F \oplus F^\perp$, alors tout vecteur $x$ se décompose de manière unique en $x = P_F(x) + P_{F^\perp}(x)$. On a donc :
-$$ P_F(x) = x - P_{F^\perp}(x) $$
-Cette méthode est très efficace si la dimension de $F^\perp$ est plus petite que celle de $F$.
+$|\langle u, v \rangle| \le \|u\| \|v\|$
 
-</details>
+**Où :**
 
----
+-   $|\langle u, v \rangle|$ est la valeur absolue (cas réel) ou le module (cas complexe) du produit scalaire.
+-   $\|u\| = \sqrt{\langle u, u \rangle}$ est la norme du vecteur $u$.
+-   $\|v\| = \sqrt{\langle v, v \rangle}$ est la norme du vecteur $v$.
 
-Comment est définie la distance d'un vecteur $x$ à un sous-espace $F$ et comment la calcule-t-on ?
+**Importance :**
 
-<details>
-<summary>Réponse</summary>
+C'est l'une des inégalités les plus fondamentales en mathématiques.
 
-La **distance** de $x$ à $F$, notée $d(x, F)$, est la plus petite distance possible entre $x$ et n'importe quel point de $F$.
-$$ d(x, F) = \inf_{y \in F} \|x - y\| $$
-
-**Théorème de la projection orthogonale :**
-Le point de $F$ qui réalise cette distance minimale est unique : c'est le projeté orthogonal $P_F(x)$ de $x$ sur $F$.
-
-**Formule de calcul :**
-La distance est la norme du vecteur qui relie $x$ à son projeté. Ce vecteur, $x - P_F(x)$, est la composante de $x$ dans le supplémentaire orthogonal $F^\perp$.
-$$ d(x, F) = \|x - P_F(x)\| = \|P_{F^\perp}(x)\| $$
-
-**Intuition géométrique :** Le chemin le plus court d'un point à un plan est le long de la perpendiculaire. La longueur de ce chemin est la norme de la composante orthogonale du vecteur.
+1.  **Preuve de l'inégalité triangulaire** : Elle est l'étape clé pour démontrer que la norme issue d'un produit scalaire ($\|u\|=\sqrt{\langle u,u \rangle}$) vérifie bien l'inégalité triangulaire $\|u+v\| \le \|u\|+\|v\|$, ce qui en fait une "vraie" norme.
+2.  **Définition de l'angle** : Dans un espace euclidien, elle garantit que la quantité $\frac{\langle u,v \rangle}{\|u\|\|v\|}$ est toujours comprise entre -1 et 1, ce qui permet de définir l'angle $\theta$ entre deux vecteurs par $\cos(\theta) = \frac{\langle u,v \rangle}{\|u\|\|v\|}$.
+3.  **Condition de colinéarité** : Le cas d'égalité, $|\langle u, v \rangle| = \|u\| \|v\|$, se produit si et seulement si les vecteurs $u$ et $v$ sont colinéaires (c'est-à-dire liés, ou sur la même ligne).
 
 </details>
 
 ---
 
-Quelle est la définition de l'adjoint $f^*$ d'un endomorphisme $f$ ?
+Qu'est-ce qu'une base orthonormée et quel est son principal avantage ?
 
 <details>
+
 <summary>Réponse</summary>
 
-L'**adjoint** de $f$, noté $f^*$, est l'unique endomorphisme qui permet de "déplacer" $f$ de l'autre côté d'un produit scalaire.
+Une **base orthonormée** (parfois abrégée BON) d'un espace euclidien ou hermitien est une base $(e_1, e_2, \dots, e_n)$ dont tous les vecteurs sont :
 
-**Définition :**
-Pour tous les vecteurs $x, y$ de l'espace $E$, $f^*$ doit vérifier la relation :
-$$ \langle f(x), y \rangle = \langle x, f^*(y) \rangle $$
+1.  **Orthogonaux deux à deux** : Le produit scalaire de deux vecteurs distincts de la base est nul.
 
-**Représentation matricielle :**
-La manière la plus simple de trouver l'adjoint est de regarder sa matrice dans une base **orthonormée**. Si $A$ est la matrice de $f$ dans une telle base :
-- **Cas euclidien (réel) :** La matrice de $f^*$ est la **transposée** de $A$.
-  $$ \text{Mat}(f^*) = {}^tA $$
-- **Cas hermitien (complexe) :** La matrice de $f^*$ est la **transposée conjuguée** de $A$.
-  $$ \text{Mat}(f^*) = \overline{{}^tA} $$
-**Attention :** Cette relation matricielle simple n'est valable que dans une base orthonormée.
+    $\langle e_i, e_j \rangle = 0$ pour $i \neq j$.
+
+2.  **De norme 1 (unitaires)** : Chaque vecteur de la base a une longueur de 1.
+
+    $\|e_i\| = \sqrt{\langle e_i, e_i \rangle} = 1$ pour tout $i$.
+
+On peut résumer ces deux conditions avec le symbole de Kronecker : $\langle e_i, e_j \rangle = \delta_{ij}$.
+
+**Principal avantage :**
+
+Les bases orthonormées simplifient radicalement les calculs de coordonnées, de produits scalaires et de normes. Les formules deviennent analogues à celles utilisées avec la base canonique de $\mathbb{R}^n$.
+
+Si $x = \sum x_i e_i$ et $y = \sum y_j e_j$ dans une BON :
+
+-   **Coordonnées** : $x_i = \langle x, e_i \rangle$
+-   **Produit scalaire** : $\langle x, y \rangle = \sum_i x_i \bar{y}_i$ (ou $\sum_i x_i y_i$ dans le cas réel)
+-   **Norme (Identité de Parseval)** : $\|x\|^2 = \sum_i |x_i|^2$
 
 </details>
 
 ---
 
-Définissez les endomorphismes auto-adjoint, orthogonal/unitaire et normal.
+Comment appliquer le procédé de Gram-Schmidt pour transformer une base $(v_1, v_2)$ en une base orthonormée $(e_1, e_2)$ ?
 
 <details>
+
 <summary>Réponse</summary>
 
-Ces endomorphismes sont définis par la relation qu'ils entretiennent avec leur adjoint $f^*$.
+Le procédé de Gram-Schmidt transforme une base quelconque en une base orthonormée en "redressant" et en "normalisant" les vecteurs un par un. Voici les étapes pour une base à deux vecteurs $(v_1, v_2)$.
 
-1.  **Endomorphisme auto-adjoint** ($f = f^*$)
-    Il est égal à son propre adjoint.
-    - **Cas réel :** on dit qu'il est **symétrique**. Sa matrice dans une base orthonormée est symétrique ($A = {}^tA$).
-    - **Cas complexe :** on dit qu'il est **hermitien**. Sa matrice dans une base orthonormée est hermitienne ($A = \overline{{}^tA}$).
-    *Analogie : les nombres réels.*
+**Étapes :**
 
-2.  **Endomorphisme orthogonal (réel) ou unitaire (complexe)** ($f^{-1} = f^*$)
-    Son inverse est son adjoint. Ces endomorphismes sont des **isométries** : ils conservent le produit scalaire, et donc les longueurs et les angles.
-    $$ \langle f(x), f(y) \rangle = \langle x, y \rangle $$
-    *Analogie : les nombres complexes de module 1.*
+1.  **Construire le premier vecteur $e_1$ :**
+    -   On prend le premier vecteur de l'ancienne base, $v_1$. On l'appelle $u_1$.
 
-3.  **Endomorphisme normal** ($f \circ f^* = f^* \circ f$)
-    Il commute avec son adjoint. C'est la classe la plus générale.
-    *Les endomorphismes auto-adjoints et unitaires/orthogonaux sont tous des cas particuliers d'endomorphismes normaux.*
+        $u_1 = v_1$
 
-Leur propriété la plus importante est qu'ils sont tous **diagonalisables dans une base orthonormée** (sur $\mathbb{C}$ pour les normaux, sur $\mathbb{R}$ pour les auto-adjoints).
+    -   On le normalise (on le divise par sa propre longueur) pour qu'il ait une norme de 1.
+
+        $e_1 = \frac{u_1}{\|u_1\|}$
+
+2.  **Construire le deuxième vecteur $e_2$ :**
+    -   On prend le deuxième vecteur de l'ancienne base, $v_2$. On lui soustrait sa projection orthogonale sur la direction déjà construite (celle de $e_1$). Le résultat, $u_2$, sera orthogonal à $e_1$.
+
+        $u_2 = v_2 - \langle v_2, e_1 \rangle e_1$
+
+    -   On normalise ce nouveau vecteur $u_2$ pour obtenir $e_2$, qui sera unitaire et orthogonal à $e_1$.
+
+        $e_2 = \frac{u_2}{\|u_2\|}$
+
+La famille $(e_1, e_2)$ est alors une base orthonormée qui engendre le même sous-espace que $(v_1, v_2)$.
 
 </details>
 
 ---
 
-Quel est l'énoncé du théorème de représentation de Riesz ?
+Qu'est-ce que la projection orthogonale d'un vecteur $x$ sur un sous-espace $F$ ?
 
 <details>
+
 <summary>Réponse</summary>
 
-Le théorème de Riesz établit un lien fondamental entre un espace préhilbertien $E$ et son dual $E^*$ (l'espace des formes linéaires sur $E$).
+La **projection orthogonale** d'un vecteur $x$ sur un sous-espace vectoriel $F$ est le vecteur de $F$ qui est "le plus proche" de $x$.
 
-**Théorème :**
-Soit $E$ un espace euclidien ou hermitien de dimension finie. Pour toute forme linéaire $l: E \to \mathbb{K}$, il existe un **unique** vecteur $y \in E$ tel que, pour tout $x \in E$ :
-$$ l(x) = \langle x, y \rangle $$
+Plus formellement, tout espace euclidien $E$ peut être décomposé en une somme directe de $F$ et de son orthogonal $F^\perp$ (l'ensemble des vecteurs orthogonaux à tous les vecteurs de $F$). Cela signifie que tout vecteur $x \in E$ peut s'écrire de manière **unique** comme la somme d'un vecteur de $F$ et d'un vecteur de $F^\perp$ :
 
-**Signification :**
-Ce théorème affirme que toute forme linéaire peut être "représentée" par un produit scalaire avec un vecteur unique. Il permet d'identifier l'espace $E$ avec son dual $E^*$, transformant un objet abstrait (une forme linéaire) en un objet concret (un vecteur de l'espace).
+$x = y + z$, avec $y \in F$ et $z \in F^\perp$.
 
-**Exemple simple :** Dans $\mathbb{R}^3$, la forme linéaire $l(x_1, x_2, x_3) = 2x_1 + 3x_2 - x_3$ est représentée par le vecteur $y=(2, 3, -1)$, car $l(x) = \langle x, y \rangle$.
+Le vecteur $y$ est appelé la **projection orthogonale de $x$ sur $F$**, notée $P_F(x)$.
+
+**Interprétation géométrique :**
+
+Imaginez un plan $F$ dans l'espace $\mathbb{R}^3$. La projection orthogonale d'un point $x$ sur ce plan est le "pied de la perpendiculaire" abaissée depuis $x$ sur le plan. Le vecteur $z = x - P_F(x)$ est alors un vecteur normal au plan.
+
+</details>
+
+---
+
+Quelle est la formule pour calculer la distance d'un vecteur $x$ à un sous-espace $F$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La distance d'un vecteur $x$ à un sous-espace vectoriel $F$, notée $d(x, F)$, est la plus petite distance possible entre $x$ et n'importe quel point $y$ de $F$. Le **théorème de la meilleure approximation** nous dit que cette distance minimale est atteinte pour la projection orthogonale de $x$ sur $F$.
+
+**Formule :**
+
+$d(x, F) = \|x - P_F(x)\|$
+
+**Où :**
+
+-   $P_F(x)$ est la projection orthogonale de $x$ sur le sous-espace $F$.
+-   $\| \cdot \|$ est la norme issue du produit scalaire.
+
+**Méthode de calcul :**
+
+Le vecteur $x - P_F(x)$ est la composante de $x$ dans l'orthogonal de $F$, c'est-à-dire $P_{F^\perp}(x)$. La formule peut donc aussi s'écrire :
+
+$d(x, F) = \|P_{F^\perp}(x)\|$
+
+Souvent, si $F^\perp$ est de plus petite dimension que $F$ (par exemple, un plan dans $\mathbb{R}^3$ a un orthogonal de dimension 1), il est plus simple de calculer la projection sur $F^\perp$ pour trouver la distance.
+
+</details>
+
+---
+
+Utilisez le produit scalaire canonique de $\mathbb{R}^3$ pour vérifier si les vecteurs $u=(2, -1, 3)$ et $v=(1, 5, 1)$ sont orthogonaux.
+
+<details>
+
+<summary>Réponse</summary>
+
+Deux vecteurs sont **orthogonaux** si leur produit scalaire est égal à zéro. Nous devons donc calculer $\langle u, v \rangle$.
+
+**Définition du produit scalaire canonique sur $\mathbb{R}^3$ :**
+
+Pour $u = (u_1, u_2, u_3)$ et $v = (v_1, v_2, v_3)$, on a :
+
+$\langle u, v \rangle = u_1 v_1 + u_2 v_2 + u_3 v_3$
+
+**Calcul :**
+
+-   $u = (2, -1, 3)$
+-   $v = (1, 5, 1)$
+
+$\langle u, v \rangle = (2 \cdot 1) + ((-1) \cdot 5) + (3 \cdot 1)$
+
+$\langle u, v \rangle = 2 - 5 + 3$
+
+$\langle u, v \rangle = 0$
+
+**Conclusion :**
+
+Puisque le produit scalaire est nul, les vecteurs $u$ et $v$ sont bien orthogonaux.
+
+</details>
+
+---
+
+Qu'est-ce que l'adjoint d'un endomorphisme $f$ et comment trouver sa matrice dans une base orthonormée ?
+
+<details>
+
+<summary>Réponse</summary>
+
+L'**adjoint** d'un endomorphisme $f$ sur un espace euclidien ou hermitien $E$, noté $f^*$, est l'unique endomorphisme qui permet de "déplacer" $f$ de l'autre côté du produit scalaire.
+
+Il est défini par la relation suivante, valable pour tous les vecteurs $x, y \in E$ :
+
+$\langle f(x), y \rangle = \langle x, f^*(y) \rangle$
+
+**Calcul de la matrice dans une base orthonormée :**
+
+La relation entre la matrice d'un endomorphisme et celle de son adjoint est très simple **à condition que la base choisie soit orthonormée**.
+
+Soit $\mathcal{B}$ une base orthonormée et $A$ la matrice de $f$ dans cette base. La matrice de $f^*$ dans cette même base $\mathcal{B}$ est :
+
+-   **Cas euclidien (réel)** : La **transposée** de $A$.
+
+    $\text{Mat}_{\mathcal{B}}(f^*) = {}^tA$
+
+-   **Cas hermitien (complexe)** : La **transconjuguée** de $A$ (transposée et conjuguée).
+
+    $\text{Mat}_{\mathcal{B}}(f^*) = \overline{{}^tA} = A^\dagger$
+
+**Attention :** Cette règle simple ne s'applique pas si la base n'est pas orthonormée.
+
+</details>
+
+---
+
+Expliquez avec des mots simples l'idée principale du Théorème de Représentation de Riesz.
+
+<details>
+
+<summary>Réponse</summary>
+
+Le Théorème de Représentation de Riesz établit un pont entre deux mondes : celui des vecteurs concrets et celui des "fonctions de mesure" abstraites appelées formes linéaires.
+
+Une **forme linéaire** est une application qui "mesure" un vecteur et retourne un nombre, de manière linéaire. Par exemple, l'application $l(x,y,z) = 2x+3y-z$ est une forme linéaire sur $\mathbb{R}^3$.
+
+Le théorème dit que dans un espace muni d'un produit scalaire (comme un espace euclidien), **toute forme linéaire peut être représentée par un produit scalaire avec un vecteur unique et spécifique**.
+
+En d'autres termes, pour chaque "règle de mesure" $l$, il existe un "vecteur-étalon" unique $y_l$ tel que mesurer n'importe quel vecteur $x$ avec la règle $l$ donne exactement le même résultat que de faire le produit scalaire de $x$ avec $y_l$.
+
+**En résumé :**
+
+$l(x) = \langle x, y_l \rangle$
+
+Ce théorème est puissant car il ramène un concept abstrait (une forme linéaire) à une opération concrète et géométrique (le produit scalaire avec un vecteur).
+
+</details>
+
+---
+
+Qu'est-ce que l'identité du parallélogramme et que nous dit-elle sur une norme ?
+
+<details>
+
+<summary>Réponse</summary>
+
+L'**identité du parallélogramme** est une relation qui lie les longueurs des côtés d'un parallélogramme à celles de ses diagonales. Dans un espace vectoriel normé, pour deux vecteurs $u$ et $v$, le parallélogramme est formé par $0, u, v, u+v$. Ses côtés ont pour longueurs $\|u\|$ et $\|v\|$, et ses diagonales sont les vecteurs $u+v$ et $u-v$.
+
+**Formule :**
+
+$\|u+v\|^2 + \|u-v\|^2 = 2(\|u\|^2 + \|v\|^2)$
+
+**Interprétation :**
+
+La somme des carrés des longueurs des diagonales est égale à la somme des carrés des longueurs des quatre côtés.
+
+**Importance :**
+
+Cette identité est une condition nécessaire et suffisante pour qu'une norme **dérive d'un produit scalaire**. Si une norme vérifie l'identité du parallélogramme pour tous les vecteurs, alors on peut garantir qu'il existe un produit scalaire qui engendre cette norme via la formule $\|x\| = \sqrt{\langle x,x \rangle}$. Si elle ne la vérifie pas, alors la norme n'est pas euclidienne.
+
+**Exemple :** La norme Manhattan $\|(x,y)\|_1 = |x|+|y|$ sur $\mathbb{R}^2$ ne vérifie pas cette identité et ne provient donc pas d'un produit scalaire.
 
 </details>

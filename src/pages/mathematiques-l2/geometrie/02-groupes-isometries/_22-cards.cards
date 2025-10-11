@@ -1,0 +1,513 @@
+---
+title: Fiches de révision B - Concepts (B)
+order: 22
+level: pro
+chapter: B - Concepts
+course: Géométrie
+tags: ["cards", "flashcards", "pro"]
+---
+
+# Cartes : B - Concepts (B)
+
+---
+
+Prouver l'équivalence entre les trois caractérisations suivantes d'un endomorphisme $f$ sur un espace euclidien ou hermitien $E$ :
+
+1. $f$ est une isométrie (préserve la norme).
+2. $f$ préserve le produit scalaire/hermitien.
+3. $f$ est un isomorphisme tel que $f^{-1} = f^*$.
+
+<details>
+
+<summary>Réponse</summary>
+
+Soit $(E, \varphi)$ un espace euclidien ou hermitien. Montrons les implications circulaires (1 $\Rightarrow$ 2 $\Rightarrow$ 3 $\Rightarrow$ 1).
+
+**1 $\Rightarrow$ 2 : Préservation de la norme $\implies$ Préservation du produit scalaire**
+
+Cette implication découle des identités de polarisation.
+
+Dans le cas euclidien (réel) :
+
+$$ \varphi(x, y) = \frac{1}{2}(\|x+y\|^2 - \|x\|^2 - \|y\|^2) $$
+
+Comme $f$ est linéaire et préserve la norme, on a :
+
+$$ \varphi(f(x), f(y)) = \frac{1}{2}(\|f(x)+f(y)\|^2 - \|f(x)\|^2 - \|f(y)\|^2) $$
+
+$$ = \frac{1}{2}(\|f(x+y)\|^2 - \|f(x)\|^2 - \|f(y)\|^2) $$
+
+$$ = \frac{1}{2}(\|x+y\|^2 - \|x\|^2 - \|y\|^2) = \varphi(x, y) $$
+
+Dans le cas hermitien (complexe), on utilise une identité de polarisation plus générale :
+
+$$ \varphi(x, y) = \frac{1}{4}(\|x+y\|^2 - \|x-y\|^2 + i\|x+iy\|^2 - i\|x-iy\|^2) $$
+
+Le même argument s'applique terme à terme, montrant que $f$ préserve $\varphi$.
+
+**2 $\Rightarrow$ 3 : Préservation du produit scalaire $\implies f^{-1} = f^*$**
+
+Si $f$ préserve le produit scalaire, alors $\forall x \in E, \|f(x)\|^2 = \varphi(f(x), f(x)) = \varphi(x,x) = \|x\|^2$. Donc $f$ préserve la norme. Si $f(x) = 0$, alors $\|x\| = \|f(x)\| = 0$, ce qui implique $x=0$. Le noyau de $f$ est réduit à $\{0\}$, donc $f$ est injective. En dimension finie, par le théorème du rang, $f$ est un isomorphisme et $f^{-1}$ existe.
+
+Par définition de l'endomorphisme adjoint $f^*$, on a $\forall x, y \in E, \varphi(f(x), y) = \varphi(x, f^*(y))$.
+
+En remplaçant $y$ par $f(y)$, on a $\varphi(f(x), f(y)) = \varphi(x, f^*(f(y)))$.
+
+Or, par hypothèse, $\varphi(f(x), f(y)) = \varphi(x, y)$.
+
+Donc, $\forall x, y \in E, \varphi(x, y) = \varphi(x, f^*(f(y)))$.
+
+Ceci peut s'écrire $\varphi(x, y - f^*(f(y))) = 0$ pour tout $x$.
+
+En choisissant $x = y - f^*(f(y))$, on obtient $\|y - f^*(f(y))\|^2 = 0$, donc $y = f^*(f(y))$ pour tout $y \in E$.
+
+Ceci montre que $f^* \circ f = \text{Id}_E$. Comme $f$ est un isomorphisme, on en déduit que $f^* = f^{-1}$.
+
+**3 $\Rightarrow$ 1 : $f^{-1} = f^* \implies$ Préservation de la norme**
+
+Supposons que $f$ est un isomorphisme et $f^{-1} = f^*$. Alors $f^* \circ f = \text{Id}_E$.
+
+Pour tout $x \in E$ :
+
+$$ \|f(x)\|^2 = \varphi(f(x), f(x)) $$
+
+Par définition de l'adjoint :
+
+$$ \varphi(f(x), f(x)) = \varphi(x, f^*(f(x))) $$
+
+En utilisant l'hypothèse $f^* \circ f = \text{Id}_E$ :
+
+$$ \varphi(x, f^*(f(x))) = \varphi(x, \text{Id}_E(x)) = \varphi(x, x) = \|x\|^2 $$
+
+Ainsi, $\|f(x)\|^2 = \|x\|^2$, ce qui implique $\|f(x)\| = \|x\|$ car la norme est positive.
+
+Les trois caractérisations sont donc équivalentes.
+
+</details>
+
+---
+
+Expliquez pourquoi les groupes $O_n(\mathbb{R})$ et $U_n(\mathbb{C})$ sont des groupes de Lie compacts.
+
+<details>
+
+<summary>Réponse</summary>
+
+Un **groupe de Lie** est une variété différentielle qui est aussi un groupe, tel que les opérations de groupe (produit et inverse) sont des applications différentiables.
+
+Pour montrer que $O_n(\mathbb{R})$ et $U_n(\mathbb{C})$ sont des groupes de Lie compacts, nous devons vérifier deux aspects : la structure de groupe de Lie et la compacité.
+
+**1. Structure de groupe de Lie**
+
+On peut voir $O_n(\mathbb{R})$ comme un sous-ensemble de $\mathcal{M}_n(\mathbb{R}) \cong \mathbb{R}^{n^2}$.
+
+Considérons l'application $F: \mathcal{M}_n(\mathbb{R}) \to \mathcal{S}_n(\mathbb{R})$ (l'espace des matrices symétriques) définie par $F(M) = {}^tMM - I_n$.
+
+Cette application est différentiable (polynomiale en les coefficients de $M$).
+
+$O_n(\mathbb{R})$ est l'ensemble des préimages de la matrice nulle : $O_n(\mathbb{R}) = F^{-1}(\{0\})$.
+
+Pour montrer que c'est une sous-variété (et donc un groupe de Lie), il suffit de montrer que $0$ est une valeur régulière de $F$. La différentielle de $F$ en $M \in O_n(\mathbb{R})$ est $dF_M(H) = {}^tHM + {}^tMH$. Cette application est surjective sur l'espace tangent $\mathcal{S}_n(\mathbb{R})$, ce qui confirme que $O_n(\mathbb{R})$ est une sous-variété différentielle de $\mathcal{M}_n(\mathbb{R})$.
+
+Le même raisonnement s'applique à $U_n(\mathbb{C})$ en considérant $F(M) = M^*M - I_n$ à valeurs dans l'espace des matrices hermitiennes.
+
+**2. Compacité**
+
+Un sous-ensemble d'un espace euclidien ($\mathbb{R}^k$ ou $\mathbb{C}^k$) est compact si et seulement s'il est fermé et borné.
+
+- **Fermé** : $O_n(\mathbb{R})$ est l'image réciproque du fermé $\{I_n\}$ par l'application continue $M \mapsto {}^tMM$. C'est donc un fermé de $\mathcal{M}_n(\mathbb{R})$. De même pour $U_n(\mathbb{C})$.
+
+- **Borné** : Soit $M \in O_n(\mathbb{R})$. Les vecteurs colonnes $C_1, \dots, C_n$ de $M$ forment une base orthonormée de $\mathbb{R}^n$. Donc, la norme de chaque colonne est 1 : $\|C_j\| = 1$.
+
+Considérons la norme de Frobenius sur $\mathcal{M}_n(\mathbb{R})$ : $\|M\|_F = \sqrt{\sum_{i,j} m_{ij}^2} = \sqrt{\sum_{j=1}^n \|C_j\|^2}$.
+
+Pour $M \in O_n(\mathbb{R})$, on a $\|M\|_F = \sqrt{\sum_{j=1}^n 1^2} = \sqrt{n}$.
+
+L'ensemble $O_n(\mathbb{R})$ est donc borné. Un raisonnement identique s'applique à $U_n(\mathbb{C})$.
+
+Puisque $O_n(\mathbb{R})$ et $U_n(\mathbb{C})$ sont des sous-ensembles fermés et bornés de l'espace des matrices, ils sont compacts.
+
+**Implications :** La compacité d'un groupe de Lie a des conséquences profondes, notamment en théorie des représentations. Par exemple, toute représentation continue de dimension finie d'un groupe de Lie compact est complètement réductible (somme directe de représentations irréductibles).
+
+</details>
+
+---
+
+Étant donnée une matrice $M \in SO_3(\mathbb{R})$ distincte de l'identité, comment déterminer son axe de rotation et son angle $\theta$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Soit $M \in SO_3(\mathbb{R})$ la matrice d'une rotation $f$ dans une base orthonormée.
+
+**1. Détermination de l'axe de rotation**
+
+L'axe de rotation est la droite vectorielle globalement invariante par $f$. C'est donc l'espace propre associé à la valeur propre $\lambda=1$. Un vecteur directeur $N$ de l'axe est un vecteur propre pour la valeur propre 1. Il satisfait donc l'équation :
+
+$$ f(N) = N \iff (M - I_3)N = 0 $$
+
+Pour trouver $N$, il suffit de résoudre ce système linéaire homogène. Comme $M \in SO_3(\mathbb{R})$ et $M \neq I_3$, on sait que $1$ est valeur propre et que son espace propre est de dimension 1. N'importe quelle solution non nulle de ce système est un vecteur directeur de l'axe. On normalise généralement ce vecteur pour obtenir un vecteur unitaire $N$.
+
+**2. Détermination de l'angle de rotation**
+
+L'angle $\theta$ peut être trouvé de plusieurs manières.
+
+- **Méthode de la trace :**
+
+La trace d'une matrice est invariante par changement de base. Dans une base orthonormée adaptée où la matrice de $f$ est $R = \begin{pmatrix} \cos\theta & -\sin\theta & 0 \\ \sin\theta & \cos\theta & 0 \\ 0 & 0 & 1 \end{pmatrix}$, la trace est $1+2\cos\theta$.
+
+Donc, pour la matrice $M$ initiale, on a :
+
+$$ \text{Tr}(M) = 1 + 2\cos\theta \implies \cos\theta = \frac{\text{Tr}(M)-1}{2} $$
+
+Cette formule donne $\cos\theta$, mais ne détermine pas le signe de $\theta$. L'angle est défini à un signe près, qui dépend de l'orientation de l'axe.
+
+- **Détermination du signe de l'angle :**
+
+Pour trouver le signe de $\theta$, il faut choisir une orientation pour l'axe (en choisissant un vecteur directeur $N$). L'angle $\theta$ est alors l'angle orienté de la rotation dans le plan orthogonal à $N$.
+
+On choisit un vecteur $U$ qui n'est pas sur l'axe (i.e., non colinéaire à $N$). On calcule son image $U' = M U$.
+
+Le signe de $\theta$ est le signe de l'angle orienté entre $U$ et $U'$. Ce signe peut être déterminé par le signe du produit mixte (déterminant) :
+
+$$ \det(U, U', N) = \langle U \land U', N \rangle $$
+
+Le signe de ce déterminant est le même que le signe de $\sin\theta$. On a plus précisément :
+
+$$ \sin\theta = \frac{\det(U, MU, N)}{\|U\|^2 - \langle U, N \rangle^2} $$
+
+Une formule plus directe est: si $m_{ij}$ sont les coefficients de $M$ et $n_k$ ceux de $N$, on a la relation $2 (\sin\theta) N = \begin{pmatrix} m_{32}-m_{23} \\ m_{21}-m_{12} \\ m_{13}-m_{31} \end{pmatrix}$. En faisant le produit scalaire avec $N$, on obtient:
+
+$$ \sin\theta = \frac{1}{2} \left( (m_{32}-m_{23})n_1 + (m_{13}-m_{31})n_2 + (m_{21}-m_{12})n_3 \right) $$
+
+Ceci, combiné avec la valeur de $\cos\theta$, détermine $\theta$ de manière unique dans $[-\pi, \pi]$.
+
+</details>
+
+---
+
+Quelle est la définition formelle du produit vectoriel dans $\mathbb{R}^3$ via le déterminant, et comment le théorème de représentation de Riesz garantit-il son existence et son unicité ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Soit $E = \mathbb{R}^3$ muni de son produit scalaire canonique $\langle \cdot, \cdot \rangle$ et de son orientation canonique (définie par la base canonique).
+
+**Définition formelle :**
+
+Pour tout couple de vecteurs $(U, V) \in E^2$, le **produit vectoriel** de $U$ et $V$, noté $U \land V$, est l'unique vecteur de $E$ qui satisfait la relation suivante pour tout vecteur $W \in E$ :
+
+$$ \det(U, V, W) = \langle U \land V, W \rangle $$
+
+Ici, $\det(U, V, W)$ désigne le déterminant de la matrice dont les colonnes sont les coordonnées de $U, V, W$ dans une base orthonormée directe.
+
+**Garantie par le théorème de représentation de Riesz :**
+
+1.  **Forme linéaire :** Pour $U$ et $V$ fixés, considérons l'application $\phi_{U,V}: E \to \mathbb{R}$ définie par :
+
+    $$ \phi_{U,V}(W) = \det(U, V, W) $$
+
+    Le déterminant est une forme multilinéaire. Lorsqu'on fixe les deux premières variables, l'application résultante est linéaire par rapport à la troisième variable. Donc, $\phi_{U,V}$ est une forme linéaire sur $E$.
+
+2.  **Théorème de représentation de Riesz :** Ce théorème stipule que pour tout espace euclidien $E$ et toute forme linéaire $L: E \to \mathbb{R}$, il existe un unique vecteur $u_L \in E$ tel que pour tout $W \in E$ :
+
+    $$ L(W) = \langle u_L, W \rangle $$
+
+3.  **Application au produit vectoriel :** On applique ce théorème à la forme linéaire $\phi_{U,V}$. Le théorème garantit qu'il existe un **unique vecteur**, que nous notons $U \land V$, tel que pour tout $W \in E$ :
+
+    $$ \phi_{U,V}(W) = \langle U \land V, W \rangle $$
+
+    C'est-à-dire :
+
+    $$ \det(U, V, W) = \langle U \land V, W \rangle $$
+
+    L'existence et l'unicité du produit vectoriel pour tout couple $(U,V)$ sont donc une conséquence directe du théorème de représentation de Riesz appliqué à l'espace euclidien $\mathbb{R}^3$.
+
+</details>
+
+---
+
+Dérivez la formule de Rodrigues pour l'image d'un vecteur $U$ par une rotation d'angle $\theta$ autour d'un axe dirigé par le vecteur unitaire $N$.
+
+<details>
+
+<summary>Réponse</summary>
+
+Soit $\mathcal{R}$ la rotation d'axe dirigé par le vecteur unitaire $N$ et d'angle $\theta$. On cherche à exprimer $\mathcal{R}(U)$ pour un vecteur quelconque $U \in \mathbb{R}^3$.
+
+L'idée clé est de décomposer $U$ en sa projection sur l'axe de rotation et sa projection sur le plan orthogonal à l'axe.
+
+**1. Décomposition du vecteur $U$**
+
+On décompose $U$ en une composante parallèle à $N$, notée $U_\parallel$, et une composante orthogonale à $N$, notée $U_\perp$.
+
+$$ U = U_\parallel + U_\perp $$
+
+- La composante parallèle est la projection orthogonale de $U$ sur la droite dirigée par $N$ :
+
+  $$ U_\parallel = \langle U, N \rangle N $$
+
+- La composante orthogonale est le reste :
+
+  $$ U_\perp = U - U_\parallel = U - \langle U, N \rangle N $$
+
+**2. Action de la rotation sur chaque composante**
+
+La rotation $\mathcal{R}$ est une transformation linéaire, donc $\mathcal{R}(U) = \mathcal{R}(U_\parallel) + \mathcal{R}(U_\perp)$.
+
+- **Action sur $U_\parallel$ :** Le vecteur $U_\parallel$ est sur l'axe de rotation, il est donc invariant par $\mathcal{R}$.
+
+  $$ \mathcal{R}(U_\parallel) = U_\parallel $$
+
+- **Action sur $U_\perp$ :** Le vecteur $U_\perp$ appartient au plan $P = N^\perp$, qui est le plan de rotation. $\mathcal{R}$ agit sur ce plan comme une rotation plane d'angle $\theta$. Pour décrire cette rotation, nous avons besoin d'une base orthonormée de $P$. Un premier vecteur est $\frac{U_\perp}{\|U_\perp\|}$. Un second vecteur, orthogonal au premier et de même norme, est obtenu par produit vectoriel avec $N$ : $N \land U_\perp$. Notons que $\|N \land U_\perp\| = \|N\| \|U_\perp\| \sin(\pi/2) = \|U_\perp\|$. De plus, $N \land U_\perp = N \land (U - \langle U, N \rangle N) = N \land U$.
+
+  La base $(U_\perp, N \land U)$ est une base orthogonale de $P$. L'image de $U_\perp$ par la rotation d'angle $\theta$ dans ce plan est :
+
+  $$ \mathcal{R}(U_\perp) = (\cos\theta) U_\perp + (\sin\theta) \frac{N \land U_\perp}{\|N \land U_\perp\|} \|U_\perp\| = (\cos\theta) U_\perp + (\sin\theta) (N \land U) $$
+
+**3. Recomposition du vecteur image**
+
+On somme les images des deux composantes :
+
+$$ \mathcal{R}(U) = \mathcal{R}(U_\parallel) + \mathcal{R}(U_\perp) = U_\parallel + (\cos\theta) U_\perp + (\sin\theta) (N \land U) $$
+
+On substitue les expressions de $U_\parallel$ et $U_\perp$ en fonction de $U$ et $N$ :
+
+$$ \mathcal{R}(U) = \langle U, N \rangle N + (\cos\theta) (U - \langle U, N \rangle N) + (\sin\theta) (N \land U) $$
+
+En regroupant les termes, on obtient la **formule de Rodrigues** :
+
+$$ \mathcal{R}(U) = (\cos\theta) U + (1-\cos\theta) \langle U, N \rangle N + (\sin\theta) (N \land U) $$
+
+</details>
+
+---
+
+Expliquez le concept de $SU_2(\mathbb{C})$ comme revêtement double de $SO_3(\mathbb{R})$ et sa signification physique.
+
+<details>
+
+<summary>Réponse</summary>
+
+Le concept de **revêtement double** signifie qu'il existe un morphisme de groupes $\mathcal{J}: SU_2(\mathbb{C}) \to SO_3(\mathbb{R})$ qui est surjectif et tel que chaque élément de $SO_3(\mathbb{R})$ est l'image de précisément deux éléments de $SU_2(\mathbb{C})$.
+
+**Construction du morphisme :**
+
+1.  On identifie $\mathbb{R}^3$ à l'espace vectoriel réel $\mathcal{V}$ des matrices hermitiennes de trace nulle $2 \times 2$. Une base de $\mathcal{V}$ est donnée par les matrices de Pauli $(\sigma_1, \sigma_2, \sigma_3)$.
+2.  On définit une action du groupe $SU_2(\mathbb{C})$ sur $\mathcal{V}$ par conjugaison (la représentation adjointe) : pour $U \in SU_2(\mathbb{C})$ et $M \in \mathcal{V}$, l'action est $\text{Ad}_U(M) = UMU^*$.
+3.  On montre que cette action préserve la structure euclidienne de $\mathcal{V}$ (définie par $\langle A,B \rangle = \frac{1}{2}\text{Tr}(AB)$) et son orientation. Donc, $\text{Ad}_U$ est une isométrie directe, c'est-à-dire une rotation.
+4.  L'application $\mathcal{J}: U \mapsto \text{Ad}_U$ est le morphisme de groupes cherché de $SU_2(\mathbb{C})$ vers $SO_3(\mathbb{R})$.
+
+**Propriétés du revêtement :**
+
+-   **Surjectivité :** Toute rotation dans $SO_3(\mathbb{R})$ peut être représentée par une transformation $\text{Ad}_U$ pour un certain $U \in SU_2(\mathbb{C})$.
+-   **Noyau :** Le noyau du morphisme $\mathcal{J}$ est l'ensemble des $U \in SU_2(\mathbb{C})$ tels que $UMU^* = M$ pour tout $M \in \mathcal{V}$. On trouve que $\text{Ker}(\mathcal{J}) = \{I_2, -I_2\}$.
+-   **Relation 2-pour-1 :** Puisque $\mathcal{J}(U) = \mathcal{J}(-U)$, chaque rotation dans $SO_3(\mathbb{R})$ correspond à exactement deux matrices unitaires dans $SU_2(\mathbb{C})$, $U$ et $-U$.
+
+**Signification physique (Spinors) :**
+
+En physique quantique, l'état d'une particule élémentaire comme un électron n'est pas décrit par un vecteur dans $\mathbb{R}^3$, mais par un objet mathématique appelé **spineur**, qui est un vecteur dans $\mathbb{C}^2$ (l'espace sur lequel $SU_2(\mathbb{C})$ agit).
+
+-   Quand l'espace physique subit une rotation de $360^\circ$ (soit $2\pi$ radians), on revient à la configuration initiale. Cette rotation est l'identité dans $SO_3(\mathbb{R})$.
+-   Dans $SU_2(\mathbb{C})$, une rotation d'angle $\theta$ autour d'un axe $N$ est représentée par la matrice $U = \cos(\theta/2)I - i\sin(\theta/2)(\vec{n}\cdot\vec{\sigma})$. Pour une rotation de $\theta = 2\pi$, on a $U = \cos(\pi)I = -I_2$.
+-   L'état du spineur $\psi \in \mathbb{C}^2$ devient donc $U\psi = -\psi$. L'état de la particule change de signe après une rotation complète de l'espace.
+-   Pour que le spineur revienne à son état initial, il faut une rotation de $4\pi$ (soit $720^\circ$), car alors $U = \cos(2\pi)I = I_2$.
+
+Cette propriété "contre-intuitive" des spineurs est une conséquence directe de la topologie des groupes de rotation. $SU_2(\mathbb{C})$ est simplement connexe (topologiquement équivalent à la sphère $S^3$), tandis que $SO_3(\mathbb{R})$ ne l'est pas (topologiquement $\mathbb{R}P^3$). Le fait que les particules fondamentales soient décrites par des représentations de $SU_2(\mathbb{C})$ plutôt que de $SO_3(\mathbb{R})$ est une caractéristique fondamentale de la nature.
+
+</details>
+
+---
+
+Énoncez le théorème de classification des isométries vectorielles d'un espace euclidien de dimension 3.
+
+<details>
+
+<summary>Réponse</summary>
+
+Soit $f$ une isométrie d'un espace euclidien orienté $E$ de dimension 3, et soit $M$ sa matrice dans une base orthonormée directe.
+
+**1. Cas des isométries directes ($f \in SO(E)$, $\det(M)=1$)**
+
+Si $f$ est une isométrie directe, alors $f$ est une **rotation** autour d'un axe vectoriel.
+
+- Si $f$ est l'identité, c'est une rotation d'angle nul.
+- Sinon, il existe une unique droite vectorielle $D$ (l'axe de rotation) dont tous les vecteurs sont invariants par $f$.
+- Il existe une base orthonormée directe $\mathcal{B}=(e_1, e_2, e_3)$ où $e_3$ est un vecteur directeur unitaire de $D$, dans laquelle la matrice de $f$ a la forme canonique :
+
+$$ R_\theta = \begin{pmatrix} \cos(\theta) & -\sin(\theta) & 0 \\ \sin(\theta) & \cos(\theta) & 0 \\ 0 & 0 & 1 \end{pmatrix} $$
+
+où $\theta \in \mathbb{R}/2\pi\mathbb{Z}$ est l'angle de la rotation.
+
+**2. Cas des isométries indirectes ($f \in O(E) \setminus SO(E)$, $\det(M)=-1$)**
+
+Si $f$ est une isométrie indirecte, alors $f$ est la composée (commutative) d'une rotation et d'une réflexion orthogonale par rapport au plan orthogonal à l'axe de la rotation. On parle de **roto-réflexion**.
+
+- Il existe une base orthonormée directe $\mathcal{B}=(e_1, e_2, e_3)$ dans laquelle la matrice de $f$ a la forme canonique :
+
+$$ S_\theta = \begin{pmatrix} \cos(\theta) & -\sin(\theta) & 0 \\ \sin(\theta) & \cos(\theta) & 0 \\ 0 & 0 & -1 \end{pmatrix} $$
+
+Cette transformation consiste en une rotation d'angle $\theta$ dans le plan $\text{Vect}(e_1, e_2)$, suivie d'une réflexion par rapport à ce même plan.
+
+**Cas particuliers des isométries indirectes :**
+
+- Si $\theta=0$, la matrice est $\text{diag}(1,1,-1)$. $f$ est une **réflexion orthogonale** par rapport à un plan.
+- Si $\theta=\pi$, la matrice est $\text{diag}(-1,-1,-1) = -I_3$. $f$ est la **symétrie centrale** (ou inversion). C'est la composée d'une rotation d'angle $\pi$ (un demi-tour) et d'une réflexion par rapport au plan orthogonal à l'axe du demi-tour.
+
+</details>
+
+---
+
+En utilisant l'identité du double produit vectoriel, prouvez l'identité de Jacobi pour le produit vectoriel dans $\mathbb{R}^3$.
+
+<details>
+
+<summary>Réponse</summary>
+
+L'**identité du double produit vectoriel** est :
+
+$$ U \land (V \land W) = \langle U, W \rangle V - \langle U, V \rangle W $$
+
+L'**identité de Jacobi** est :
+
+$$ U \land (V \land W) + V \land (W \land U) + W \land (U \land V) = 0 $$
+
+**Démonstration :**
+
+Nous allons écrire les trois termes de l'identité de Jacobi en utilisant la formule du double produit vectoriel.
+
+1.  **Premier terme :**
+
+    $$ U \land (V \land W) = \langle U, W \rangle V - \langle U, V \rangle W $$
+
+2.  **Deuxième terme :** On applique la formule en permutant circulairement les vecteurs $U \to V$, $V \to W$, $W \to U$.
+
+    $$ V \land (W \land U) = \langle V, U \rangle W - \langle V, W \rangle U $$
+
+3.  **Troisième terme :** On permute à nouveau circulairement.
+
+    $$ W \land (U \land V) = \langle W, V \rangle U - \langle W, U \rangle V $$
+
+Maintenant, sommons ces trois expressions. On regroupe les termes par vecteur :
+
+$$ \text{Somme} = (\langle U, W \rangle V - \langle W, U \rangle V) + (\langle V, U \rangle W - \langle U, V \rangle W) + (\langle W, V \rangle U - \langle V, W \rangle U) $$
+
+Le produit scalaire étant symétrique ($\langle A, B \rangle = \langle B, A \rangle$), chaque parenthèse s'annule :
+
+-   $(\langle U, W \rangle V - \langle W, U \rangle V) = (\langle U, W \rangle - \langle U, W \rangle) V = 0$
+-   $(\langle V, U \rangle W - \langle U, V \rangle W) = (\langle U, V \rangle - \langle U, V \rangle) W = 0$
+-   $(\langle W, V \rangle U - \langle V, W \rangle U) = (\langle V, W \rangle - \langle V, W \rangle) U = 0$
+
+La somme des trois termes est donc le vecteur nul :
+
+$$ U \land (V \land W) + V \land (W \land U) + W \land (U \land V) = 0 $$
+
+Ce qui prouve l'identité de Jacobi.
+
+Cette identité signifie que le produit vectoriel ne satisfait pas la loi d'associativité, mais satisfait une autre propriété qui en fait un crochet de Lie.
+
+</details>
+
+---
+
+Quelle est la structure algébrique de l'espace $\mathbb{R}^3$ muni de l'addition vectorielle et du produit vectoriel, et à quelle structure plus générale est-elle isomorphe ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La structure algébrique $(\mathbb{R}^3, +, \land)$ est une **algèbre de Lie**.
+
+Pour être une algèbre de Lie, un espace vectoriel $V$ sur un corps $\mathbb{K}$ (ici $\mathbb{R}$) doit être muni d'une opération binaire $[\cdot, \cdot]: V \times V \to V$, appelée crochet de Lie, qui satisfait les axiomes suivants pour tous $x, y, z \in V$ et $a, b \in \mathbb{K}$:
+
+1.  **Bilinéarité :**
+
+    $[ax+by, z] = a[x,z] + b[y,z]$
+
+    $[z, ax+by] = a[z,x] + b[z,y]$
+
+2.  **Antisymétrie (ou alternance) :**
+
+    $[x, y] = -[y, x]$
+
+3.  **Identité de Jacobi :**
+
+    $[x, [y, z]] + [y, [z, x]] + [z, [x, y]] = 0$
+
+Vérifions ces axiomes pour le produit vectoriel $(\land)$ sur $\mathbb{R}^3$:
+
+1.  Le produit vectoriel est bien **bilinéaire**.
+2.  Il est **antisymétrique** : $U \land V = -V \land U$.
+3.  Il satisfait l'**identité de Jacobi** : $U \land (V \land W) + V \land (W \land U) + W \land (U \land V) = 0$.
+
+Par conséquent, $(\mathbb{R}^3, +, \land)$ est une algèbre de Lie réelle de dimension 3.
+
+**Isomorphisme avec $\mathfrak{so}(3)$**
+
+Cette algèbre de Lie est isomorphe à l'algèbre de Lie $\mathfrak{so}(3)$, qui est l'espace des matrices antisymétriques réelles de taille $3 \times 3$. $\mathfrak{so}(3)$ est l'algèbre de Lie associée au groupe de Lie $SO_3(\mathbb{R})$.
+
+L'isomorphisme $\Phi: (\mathbb{R}^3, \land) \to (\mathfrak{so}(3), [\cdot,\cdot])$ est donné par :
+
+Pour un vecteur $U=(u_1, u_2, u_3) \in \mathbb{R}^3$, on lui associe la matrice antisymétrique $[U]_\times$ telle que $[U]_\times V = U \land V$ pour tout $V \in \mathbb{R}^3$.
+
+$$ \Phi(U) = [U]_\times = \begin{pmatrix} 0 & -u_3 & u_2 \\ u_3 & 0 & -u_1 \\ -u_2 & u_1 & 0 \end{pmatrix} $$
+
+On peut vérifier que cette application est un isomorphisme d'espaces vectoriels et qu'elle préserve le crochet de Lie. Le crochet de Lie sur $\mathfrak{so}(3)$ est le commutateur de matrices, $[A, B] = AB - BA$. L'isomorphisme vérifie :
+
+$$ \Phi(U \land V) = [\Phi(U), \Phi(V)] $$
+
+Cet isomorphisme est fondamental car il relie la géométrie du produit vectoriel à la théorie des rotations infinitésimales (représentées par les matrices antisymétriques). L'algèbre de Lie $\mathfrak{so}(3)$ est l'espace tangent à l'identité du groupe des rotations $SO_3(\mathbb{R})$.
+
+</details>
+
+---
+
+Comment définir rigoureusement l'angle orienté entre deux vecteurs dans un plan euclidien orienté, et quel est le rôle du déterminant dans cette définition ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Soit $(E, \varphi)$ un espace euclidien de dimension 2, orienté par le choix d'une classe d'équivalence de bases dites "directes".
+
+Pour deux vecteurs non nuls $x, y \in E$, l'angle orienté de $x$ à $y$, noté $\tilde{\theta}(x, y)$, est l'unique élément de l'anneau quotient $\mathbb{R}/2\pi\mathbb{Z}$ qui satisfait simultanément deux conditions :
+
+$$ \begin{cases} \varphi(x, y) = \|x\|\|y\|\cos(\tilde{\theta}) \\ \det\_{\mathcal{B}}(x, y) = \|x\|\|y\|\sin(\tilde{\theta}) \end{cases} $$
+
+où $\mathcal{B}$ est une base orthonormée **directe** quelconque de $E$.
+
+**Rôle des composantes :**
+
+1.  **Le produit scalaire $\varphi(x,y)$ :** Cette partie de la définition est la même que pour l'angle non-orienté. Elle fixe la valeur de $\cos(\tilde{\theta})$, ce qui détermine l'angle à un signe près (par exemple, $\cos(\pi/4) = \cos(-\pi/4)$). Elle ne distingue pas une rotation dans un sens ou dans l'autre.
+
+2.  **Le déterminant $\det_{\mathcal{B}}(x,y)$ :** C'est ici que l'orientation intervient.
+    - Le déterminant de deux vecteurs dans une base mesure l'aire (signée) du parallélogramme qu'ils engendrent.
+    - Le signe du déterminant dépend de l'orientation de la famille $(x,y)$ par rapport à l'orientation de la base de référence $\mathcal{B}$. Si $(x,y)$ est une base directe, $\det_{\mathcal{B}}(x,y) > 0$. Si elle est indirecte, $\det_{\mathcal{B}}(x,y) < 0$.
+    - La deuxième équation, $\det_{\mathcal{B}}(x, y) = \|x\|\|y\|\sin(\tilde{\theta})$, utilise ce signe pour fixer le signe de $\sin(\tilde{\theta})$.
+    - Connaître à la fois $\cos(\tilde{\theta})$ et $\sin(\tilde{\theta})$ détermine $\tilde{\theta}$ de manière unique modulo $2\pi$.
+
+**Indépendance de la base directe choisie :**
+
+Il est crucial que la définition ne dépende pas de la base orthonormée directe $\mathcal{B}$ choisie. Si $\mathcal{B}'$ est une autre base orthonormée directe, la matrice de passage $P$ de $\mathcal{B}$ à $\mathcal{B}'$ est une matrice de rotation, $P \in SO_2(\mathbb{R})$, donc $\det(P)=1$.
+
+Soient $X, Y$ et $X', Y'$ les matrices colonnes des coordonnées de $x,y$ dans $\mathcal{B}$ et $\mathcal{B}'$ respectivement. On a $X=PX'$ et $Y=PY'$.
+
+$$ \det_{\mathcal{B}}(x,y) = \det(X,Y) = \det(P(X',Y')) = \det(P)\det(X',Y') = 1 \cdot \det_{\mathcal{B}'}(x,y) $$
+
+La valeur du déterminant est donc la même pour toutes les bases orthonormées directes, ce qui rend la définition cohérente.
+
+**Justification de l'existence :**
+
+L'identité de Lagrange (ou le calcul du déterminant de Gram) montre que pour toute base orthonormée $\mathcal{B}$ :
+
+$$ (\det_{\mathcal{B}}(x,y))^2 + (\varphi(x,y))^2 = \|x\|^2\|y\|^2 $$
+
+En divisant par $(\|x\|\|y\|)^2$, on obtient :
+
+$$ \left(\frac{\det_{\mathcal{B}}(x, y)}{\|x\|\|y\|}\right)^2 + \left(\frac{\varphi(x, y)}{\|x\|\|y\|}\right)^2 = 1 $$
+
+Ceci garantit qu'il existe un unique angle $\tilde{\theta} \in \mathbb{R}/2\pi\mathbb{Z}$ tel que $\cos(\tilde{\theta})$ et $\sin(\tilde{\theta})$ correspondent à ces deux quotients.
+
+</details>
