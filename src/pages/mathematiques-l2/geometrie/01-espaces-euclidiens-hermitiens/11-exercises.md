@@ -1,6 +1,6 @@
 ---
 id: '85ae1893'
-title: 'Exercices'
+title: A - Exercices
 layout: '../../../layouts/Layout.astro'
 order: 11
 level: basic

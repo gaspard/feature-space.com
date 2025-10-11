@@ -1,5 +1,5 @@
 ---
-title: Concepts
+title: B - Concepts
 level: pro
 course: Géométrie
 chapter: Espaces Euclidiens et Hermitiens

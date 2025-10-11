@@ -1,6 +1,6 @@
 ---
 id: '9c7d1e0f'
-title: Exercices (avancé)
+title: B - Exercices (avancé)
 layout: '../../../../layouts/Layout.astro'
 order: 21
 level: regular

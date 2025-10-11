@@ -1,5 +1,5 @@
 ---
-title: Concepts (avancé)
+title: B - Concepts (avancé)
 level: pro
 course: Géométrie
 chapter: Groupes d'isométries

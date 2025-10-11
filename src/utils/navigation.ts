@@ -38,9 +38,11 @@ export async function generateNavigation(): Promise<NavigationItem[]> {
   }
 }
 
-/**
- * Recursively processes directories to create navigation items with unlimited depth
- */
+function isPage(filename: string): boolean {
+  const ext = extname(filename).toLowerCase();
+  return ['.astro', '.md', '.mdx'].includes(ext) && filename !== 'index.md';
+}
+
 async function processDirectoryRecursive(dirPath: string, relativePath: string): Promise<NavigationItem[]> {
   try {
     const entries = await readdir(dirPath, { withFileTypes: true });
@@ -50,14 +52,14 @@ async function processDirectoryRecursive(dirPath: string, relativePath: string):
       const fullPath = join(dirPath, entry.name);
       const currentRelativePath = relativePath ? `${relativePath}/${entry.name}` : entry.name;
 
-      if (entry.isFile() && isValidPageFile(entry.name)) {
+      if (entry.isFile() && isPage(entry.name)) {
         // Handle files
-        const pageInfo = await getPageInfo(fullPath);
-        if (!pageInfo.hidden) {
+        const info = await pageInfo(fullPath);
+        if (!info.hidden) {
           navigationItems.push({
-            title: pageInfo.title,
+            title: info.title,
             path: getUrlPath(entry.name, relativePath),
-            order: pageInfo.order
+            order: info.order
           });
         }
       } else if (entry.isDirectory()) {
@@ -66,7 +68,7 @@ async function processDirectoryRecursive(dirPath: string, relativePath: string):
 
         if (children.length > 0) {
           // Try to get title from info.md or index.md in the directory
-          const infoFile = await getDirectoryInfo(fullPath);
+          const infoFile = await directoryInfo(fullPath);
 
           // Generate accent-less path from the actual directory structure
           const accentLessPath = generateAccentLessPath(currentRelativePath);
@@ -91,24 +93,7 @@ async function processDirectoryRecursive(dirPath: string, relativePath: string):
   }
 }
 
-/**
- * Checks if a file is a valid page file (Astro, Markdown, but not Cards or dynamic routes)
- * Cards files are processed by the Vite plugin, not as standalone pages
- * Also excludes all files starting with "_" as they are used for internal purposes only
- */
-function isValidPageFile(filename: string): boolean {
-  const ext = extname(filename).toLowerCase();
-  // Exclude dynamic routes, cards files, and all files starting with "_"
-  if (filename.startsWith('[') || filename.endsWith('.cards') || filename.startsWith('_')) {
-    return false;
-  }
-  return ['.astro', '.md', '.mdx'].includes(ext);
-}
-
-/**
- * Gets directory information from _index.md files
- */
-async function getDirectoryInfo(dirPath: string): Promise<PageInfo | null> {
+async function directoryInfo(dirPath: string): Promise<PageInfo | null> {
   try {
     const indexPath = join(dirPath, '_index.md');
     try {
@@ -122,7 +107,6 @@ async function getDirectoryInfo(dirPath: string): Promise<PageInfo | null> {
         hidden: frontmatter.hidden || false
       };
     } catch (error) {
-      // _index.md doesn't exist
       return null;
     }
   } catch (error) {
@@ -226,50 +210,26 @@ export function sortNavigationItems(items: NavigationItem[]): NavigationItem[] {
     return a.title.localeCompare(b.title);
   });
 }
-/**
- * Extracts page information from a file including frontmatter
- */
-async function getPageInfo(filePath: string): Promise<PageInfo> {
+
+async function pageInfo(filePath: string): Promise<PageInfo> {
   try {
     const content = await readFile(filePath, 'utf-8');
     const { data: frontmatter } = matter(content);
 
-    const filename = basename(filePath, extname(filePath));
-    const fallbackTitle = generateTitleFromFilename(filename);
-
     return {
-      title: frontmatter.title || fallbackTitle,
+      title: frontmatter.title || "MISING TITLE",
       path: filePath,
       order: frontmatter.order,
       hidden: frontmatter.hidden || false
     };
   } catch (error) {
     console.warn(`Error reading file ${filePath}:`, error);
-    const filename = basename(filePath, extname(filePath));
     return {
-      title: generateTitleFromFilename(filename),
+      title: "MISING TITLE",
       path: filePath,
       hidden: false
     };
   }
-}
-
-/**
- * Generates a readable title from filename
- */
-export function generateTitleFromFilename(filename: string): string {
-  // Handle index files
-  if (filename === 'index') {
-    return 'Home';
-  }
-
-  // Convert kebab-case, snake_case, and camelCase to Title Case
-  return filename
-    .replace(/[-_]/g, ' ')
-    .replace(/([a-z])([A-Z])/g, '$1 $2')
-    .split(' ')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-    .join(' ');
 }
 
 /**

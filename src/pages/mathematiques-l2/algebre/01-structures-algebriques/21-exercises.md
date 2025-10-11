@@ -1,7 +1,7 @@
 ---
 id: 'e7fae8ef'
 title: 'Exercices'
-layout: '../../../layouts/Layout.astro'
+type: exercises
 order: 21
 level: regular
 chapter: Concepts

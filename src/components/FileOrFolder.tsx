@@ -14,27 +14,17 @@ const FileOrFolder: React.FC<FileOrFolderProps> = ({
 	path,
 	level = 0,
 }) => {
-	// Check if any child is active (current page is within this folder)
-	const hasActiveChild = item.children?.some(child =>
-		isActiveNavItem(child, currentPath)
-	) || false;
-
-	const [storedExpanded, setStoredExpanded] = useStorage(path, false);
-
-	// Force expansion if current page is within this folder, otherwise use stored state
-	const expanded = hasActiveChild || storedExpanded;
-
-	const toggleExpanded = () => {
-		setStoredExpanded(!storedExpanded);
-	};
+	const expanded = isActiveNavItem(item, currentPath);
+	if (!expanded) {
+		console.log(item.path, expanded, currentPath);
+	}
 
 	const isActive = item.path === currentPath;
 
-	// Calculate indentation based on level using inline styles for dynamic values
 	const indentStyle = { paddingLeft: `${level * 16}px` };
 
 	if (!item.children || item.children.length === 0) {
-		// File item (no children)
+		// File
 		return (
 			<li>
 				<a
@@ -54,15 +44,13 @@ const FileOrFolder: React.FC<FileOrFolderProps> = ({
 		);
 	}
 
-	// Folder item (has children)
+	// Folder
 	return (
 		<li>
 			<div className="mb-1">
 				<button
 					type="button"
 					onClick={() => {
-						toggleExpanded();
-						// If the folder has a path (index file), navigate to it
 						if (item.path && item.path !== currentPath) {
 							window.location.href = item.path;
 						}
@@ -116,7 +104,7 @@ const FileOrFolder: React.FC<FileOrFolderProps> = ({
 
 // Helper function to check if navigation item is active (including nested children)
 function isActiveNavItem(item: NavigationItem, currentPath: string): boolean {
-	if (item.path === currentPath) return true;
+	if (item.path === currentPath || item.path === currentPath + '/') return true;
 	if (item.children) {
 		return item.children.some((child) => isActiveNavItem(child, currentPath));
 	}

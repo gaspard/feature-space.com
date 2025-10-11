@@ -1,7 +1,7 @@
 ---
 title: Algèbre
 order: 0
-layout: '../../../layouts/Layout.astro'
+type: article
 ---
 
 ## Information
