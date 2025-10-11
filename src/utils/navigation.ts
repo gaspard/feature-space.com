@@ -211,14 +211,6 @@ export function getCurrentPagePath(url: URL): string {
 }
 
 export function isActiveNavItem(item: NavigationItem, currentPath: string): boolean {
-  if (item.path === currentPath) {
-    return true;
-  }
-
-  if (item.children) {
-    return item.children.some(child => isActiveNavItem(child, currentPath));
-  }
-
-  return false;
+  return (currentPath + '/').startsWith(item.path);
 }
 

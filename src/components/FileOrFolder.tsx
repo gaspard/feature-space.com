@@ -14,7 +14,7 @@ const FileOrFolder: React.FC<FileOrFolderProps> = ({
 	path,
 	level = 0,
 }) => {
-	const expanded = isActiveNavItem(item, currentPath);
+	const expanded = (currentPath + '/').startsWith(item.path);
 
 	const isActive = item.path === currentPath;
 
@@ -99,13 +99,5 @@ const FileOrFolder: React.FC<FileOrFolderProps> = ({
 	);
 };
 
-// Helper function to check if navigation item is active (including nested children)
-function isActiveNavItem(item: NavigationItem, currentPath: string): boolean {
-	if (item.path === currentPath || item.path === currentPath + '/') return true;
-	if (item.children) {
-		return item.children.some((child) => isActiveNavItem(child, currentPath));
-	}
-	return false;
-}
 
 export default FileOrFolder;
