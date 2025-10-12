@@ -1,0 +1,383 @@
+---
+id: e1be2b45
+type: quiz
+order: 13
+title: Rappels de logique et suites numériques - quiz (A)
+tags:
+  - logique
+  - suites numériques
+  - analyse
+  - mathématiques
+createdAt: '2025-10-12T14:18:16.499Z'
+level: regular
+course: Analyse
+courseId: 99c39a0d
+chapter: Rappels de logique et suites numériques
+chapterId: 684d8511
+---
+# Quiz: Rappels de logique et suites numériques
+
+---
+
+#### Question 1 : Vérité d'une implication
+
+Soient A et B deux propositions. Dans quel cas l'implication $A \Rightarrow B$ est-elle fausse ?
+
+- [ ] **A)** A est vraie et B est vraie.
+- [ ] **B)** A est fausse et B est vraie.
+- [x] **C)** A est vraie et B est fausse.
+- [ ] **D)** A est fausse et B est fausse.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+L'implication logique $A \Rightarrow B$ (lue "Si A, alors B") n'est fausse que dans un seul cas : lorsque l'hypothèse (ou prémisse) A est vraie, mais que la conclusion B est fausse. Dans tous les autres cas, l'implication est considérée comme vraie.
+
+- **A)** Si A et B sont vraies, l'implication est vraie. ("Si $x=2$, alors $x^2=4$" est vrai).
+- **B)** Si A est fausse et B est vraie, l'implication est vraie. C'est le principe "le faux implique n'importe quoi". ("Si $2=3$, alors Paris est en France" est une implication vraie).
+- **C)** C'est le seul cas où l'implication est fausse. On ne peut pas avoir une hypothèse vraie qui mène à une conclusion fausse. ("Si $x=2$, alors $x^2=5$" est faux).
+- **D)** Si A et B sont fausses, l'implication est vraie. ("Si Paris est en Allemagne, alors la Tour Eiffel est en bois" est une implication vraie).
+
+</details>
+
+---
+
+#### Question 2 : La contraposée
+
+Soit l'implication suivante pour un entier $n$ : "Si $n$ est divisible par 4, alors $n$ est pair". Quelle est sa contraposée ?
+
+- [ ] **A)** "Si $n$ n'est pas divisible par 4, alors $n$ n'est pas pair."
+- [ ] **B)** "Si $n$ est pair, alors $n$ est divisible par 4."
+- [x] **C)** "Si $n$ n'est pas pair, alors $n$ n'est pas divisible par 4."
+- [ ] **D)** "Si $n$ n'est pas pair, alors $n$ est divisible par 4."
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+La contraposée d'une implication de la forme $A \Rightarrow B$ est l'implication $non(B) \Rightarrow non(A)$. La contraposée est logiquement équivalente à l'implication originale.
+
+Ici, nous avons :
+
+- $A$ : "$n$ est divisible par 4"
+- $B$ : "$n$ est pair"
+
+Les négations sont :
+
+- $non(A)$ : "$n$ n'est pas divisible par 4"
+- $non(B)$ : "$n$ n'est pas pair" (ce qui signifie que $n$ est impair)
+
+La contraposée $non(B) \Rightarrow non(A)$ est donc : "Si $n$ n'est pas pair, alors $n$ n'est pas divisible par 4".
+
+- **A)** Ceci est de la forme $non(A) \Rightarrow non(B)$, appelée l'implication inverse. Elle n'est pas équivalente à l'originale.
+- **B)** Ceci est de la forme $B \Rightarrow A$, appelée l'implication réciproque. Elle n'est pas équivalente à l'originale (contre-exemple : $n=2$ est pair mais non divisible par 4).
+- **C)** C'est la contraposée correcte.
+- **D)** C'est une affirmation incorrecte.
+
+</details>
+
+---
+
+#### Question 3 : Implication et Équivalence
+
+Considérons les propositions A: "$x=2$" et B: "$x^2=4$" pour un nombre réel $x$. Laquelle des affirmations suivantes est correcte ?
+
+- [ ] **A)** On a l'équivalence $A \Leftrightarrow B$.
+- [ ] **B)** L'implication $B \Rightarrow A$ est vraie.
+- [x] **C)** L'implication $A \Rightarrow B$ est vraie, mais la réciproque $B \Rightarrow A$ est fausse.
+- [ ] **D)** L'implication $A \Rightarrow B$ est fausse.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Analysons les deux implications :
+
+1.  **$A \Rightarrow B$** : "Si $x=2$, alors $x^2=4$". Cette implication est **vraie**. Si on suppose que $x=2$, alors en élevant au carré, on obtient bien $x^2 = 2^2 = 4$.
+
+2.  **$B \Rightarrow A$** (la réciproque) : "Si $x^2=4$, alors $x=2$". Cette implication est **fausse**. Pour le montrer, il suffit de trouver un contre-exemple. Si on prend $x=-2$, l'hypothèse $x^2=4$ est vraie ($(-2)^2=4$), mais la conclusion $x=2$ est fausse.
+
+- **A)** Pour avoir une équivalence ($A \Leftrightarrow B$), il faut que $A \Rightarrow B$ ET $B \Rightarrow A$ soient toutes les deux vraies. Comme $B \Rightarrow A$ est fausse, il n'y a pas d'équivalence.
+- **B)** Comme montré ci-dessus, $B \Rightarrow A$ est fausse.
+- **C)** C'est l'analyse correcte de la situation.
+- **D)** Comme montré ci-dessus, $A \Rightarrow B$ est vraie.
+
+</details>
+
+---
+
+#### Question 4 : Ordre des quantificateurs
+
+Soit $P(x, y)$ une propriété dépendant de deux réels $x$ et $y$. Quelles affirmations sont correctes concernant les propositions (1) $\forall x \in \mathbb{R}, \exists y \in \mathbb{R}, P(x, y)$ et (2) $\exists y \in \mathbb{R}, \forall x \in \mathbb{R}, P(x, y)$ ?
+
+- [ ] **A)** Les deux propositions sont logiquement équivalentes.
+- [x] **B)** La proposition (1) implique que le choix de $y$ peut dépendre de $x$, alors que dans (2), $y$ doit être le même pour tous les $x$.
+- [ ] **C)** La proposition (1) est toujours plus forte que la proposition (2).
+- [x] **D)** La proposition (2) implique la proposition (1).
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B, D]**
+
+L'ordre des quantificateurs de natures différentes ($\forall$ et $\exists$) est crucial.
+
+- **A)** Les propositions ne sont pas équivalentes. L'une est plus forte que l'autre.
+- **B)** C'est la distinction fondamentale. Dans (1), pour chaque $x$ que l'on choisit, on doit pouvoir trouver un $y$ qui fonctionne. Ce $y$ peut donc être différent pour chaque $x$ (on peut le noter $y_x$). Dans (2), on doit trouver un seul $y$ "universel" qui fonctionne pour tous les $x$ en même temps.
+- **C)** C'est le contraire. La proposition (2) est plus forte (plus contraignante) que la proposition (1). Il est plus difficile de trouver un $y$ qui marche pour tout le monde qu'un $y$ adapté à chaque cas.
+- **D)** Si la proposition (2) est vraie, cela signifie qu'il existe un $y_0$ tel que pour tout $x$, $P(x, y_0)$ est vraie. Alors, pour n'importe quel $x$, on peut bien trouver un $y$ (en l'occurrence, ce même $y_0$) tel que $P(x,y)$ est vraie. Donc, si (2) est vraie, (1) l'est aussi. L'implication (2) $\Rightarrow$ (1) est toujours vraie.
+
+</details>
+
+---
+
+#### Question 5 : Négation d'une proposition quantifiée
+
+Quelle est la négation de la proposition "Pour tout entier $n \in \mathbb{N}$, il existe un réel $x > 0$ tel que $x > n$" ? (Symboliquement : $\forall n \in \mathbb{N}, \exists x \in \mathbb{R}_+^*, x > n$)
+
+- [ ] **A)** Pour tout entier $n \in \mathbb{N}$, il existe un réel $x > 0$ tel que $x \le n$.
+- [x] **B)** Il existe un entier $n \in \mathbb{N}$ tel que pour tout réel $x > 0$, on a $x \le n$.
+- [ ] **C)** Il existe un entier $n \in \mathbb{N}$ tel que pour tout réel $x > 0$, on a $x > n$.
+- [ ] **D)** Il existe un entier $n \in \mathbb{N}$ tel qu'il existe un réel $x > 0$ tel que $x \le n$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Pour nier une proposition avec des quantificateurs, on applique les règles suivantes :
+
+1.  Le quantificateur $\forall$ devient $\exists$.
+2.  Le quantificateur $\exists$ devient $\forall$.
+3.  On nie la propriété à la fin.
+
+La proposition initiale est : $\forall n \in \mathbb{N}, \exists x \in \mathbb{R}_+^*, (x > n)$.
+
+Appliquons les règles de négation :
+
+1.  $non(\forall n \in \mathbb{N}, \dots)$ devient $\exists n \in \mathbb{N}, non(\dots)$.
+2.  $non(\exists x \in \mathbb{R}_+^*, \dots)$ devient $\forall x \in \mathbb{R}_+^*, non(\dots)$.
+3.  La négation de la propriété $(x > n)$ est $(x \le n)$.
+
+En combinant le tout, la négation est : $\exists n \in \mathbb{N}, \forall x \in \mathbb{R}_+^*, (x \le n)$.
+
+Ceci se traduit par : "Il existe un entier $n \in \mathbb{N}$ tel que pour tout réel $x > 0$, on a $x \le n$".
+
+(Note : la proposition initiale est vraie car $\mathbb{R}$ est archimédien, donc sa négation est fausse).
+
+</details>
+
+---
+
+#### Question 6 : Principe du raisonnement par récurrence
+
+Pour démontrer par récurrence qu'une propriété $P(n)$ est vraie pour tout entier $n \ge n_0$, quelles sont les étapes essentielles et suffisantes de la preuve formelle ?
+
+- [x] **A)** L'initialisation : prouver que $P(n_0)$ est vraie.
+- [ ] **B)** L'hypothèse de récurrence : supposer que $P(k)$ est vraie pour tous les entiers $k$ de $n_0$ à $n-1$.
+- [x] **C)** L'hérédité : prouver l'implication $P(k) \Rightarrow P(k+1)$ pour tout $k \ge n_0$.
+- [ ] **D)** La vérification : tester la propriété pour quelques valeurs de $n$ comme $n_0+1, n_0+2$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, C]**
+
+Un raisonnement par récurrence standard repose sur deux piliers fondamentaux :
+
+- **A) L'initialisation :** Il faut prouver que la propriété est vraie pour le premier rang, $n_0$. C'est le point de départ de la "chaîne de dominos". Sans cela, la preuve est invalide.
+
+- **C) L'hérédité :** Il faut prouver que si la propriété est vraie à un rang quelconque $k$ (c'est l'hypothèse de récurrence), alors elle est nécessairement vraie au rang suivant $k+1$. C'est le mécanisme qui permet de "faire tomber le domino suivant".
+
+Ensemble, ces deux étapes garantissent que la propriété est vraie pour tous les entiers $n \ge n_0$.
+
+- **B)** C'est l'hypothèse d'une **récurrence forte**, qui est une variante valide mais différente de la récurrence standard. La récurrence standard (plus courante) suppose uniquement $P(k)$ pour prouver $P(k+1)$. L'hypothèse de récurrence fait partie de l'étape d'hérédité, ce n'est pas une étape à part entière.
+- **D)** Vérifier quelques cas peut donner confiance en la conjecture, mais ne constitue en aucun cas une preuve.
+
+</details>
+
+---
+
+#### Question 7 : Erreur dans un raisonnement par récurrence
+
+Un étudiant essaie de prouver une propriété $P(n)$ pour tout $n \ge 1$. Il suppose que $P(k)$ est vraie pour un entier $k \ge 1$ et, à partir de cette supposition, il démontre brillamment que $P(k+1)$ est aussi vraie. Pourquoi sa preuve pourrait-elle être incomplète ?
+
+- [ ] **A)** Il n'a pas vérifié le cas $k=0$.
+- [x] **B)** Il a oublié de prouver l'étape d'initialisation pour $n=1$.
+- [ ] **C)** Le raisonnement par récurrence ne s'applique pas pour $n \ge 1$.
+- [ ] **D)** Il aurait dû utiliser une récurrence forte.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+L'étudiant a correctement prouvé l'hérédité ($P(k) \Rightarrow P(k+1)$). Cependant, cette étape seule ne suffit pas. Elle établit une chaîne de dépendances : si $P(1)$ est vraie, alors $P(2)$ l'est ; si $P(2)$ est vraie, alors $P(3)$ l'est, etc. Mais pour que cette chaîne produise un résultat, elle doit avoir un point de départ.
+
+- **B)** L'étape d'initialisation, qui consiste à prouver que $P(1)$ est vraie, est ce point de départ. Sans elle, la preuve n'est pas ancrée et ne prouve rien. C'est comme une file de dominos qui est bien alignée, mais personne ne pousse le premier.
+- **A)** Le domaine de validité est $n \ge 1$, donc le cas $n=0$ n'est pas pertinent pour cette preuve.
+- **C)** C'est faux, la récurrence s'applique parfaitement pour des domaines comme $n \ge 1$.
+- **D)** Une récurrence forte n'est pas nécessairement requise, et son absence n'est pas la source de l'erreur. L'erreur est l'absence de cas de base.
+
+</details>
+
+---
+
+#### Question 8 : Définition de la convergence
+
+Que signifie formellement que la suite réelle $(u_n)_{n\in\mathbb{N}}$ converge vers une limite $l \in \mathbb{R}$ ?
+
+- [ ] **A)** $\exists \epsilon > 0, \forall N \in \mathbb{N}, (n \ge N \Rightarrow |u_n - l| \le \epsilon)$.
+- [x] **B)** $\forall \epsilon > 0, \exists N \in \mathbb{N}, (n \ge N \Rightarrow |u_n - l| \le \epsilon)$.
+- [ ] **C)** Pour $n$ assez grand, la suite est constante et égale à $l$.
+- [ ] **D)** $\forall N \in \mathbb{N}, \exists \epsilon > 0, (n \ge N \Rightarrow |u_n - l| \le \epsilon)$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+La définition formelle de la convergence, dite "en epsilon-N", est une pierre angulaire de l'analyse.
+
+- **B)** Cette proposition se lit : "Pour toute marge d'erreur $\epsilon > 0$ choisie (aussi petite soit-elle), on peut trouver un rang $N$ à partir duquel tous les termes suivants de la suite ($u_n$ pour $n \ge N$) sont à une distance de $l$ inférieure ou égale à $\epsilon$". C'est la définition correcte. Elle exprime l'idée que les termes de la suite se rapprochent "arbitrairement près" de $l$.
+- **A)** Cette proposition dit qu'il existe *une certaine* marge d'erreur $\epsilon$ pour laquelle la suite finit par se stabiliser. C'est une condition beaucoup plus faible. Par exemple, la suite $u_n=(-1)^n$ la vérifierait pour $\epsilon=2$, mais elle ne converge pas.
+- **C)** Ceci décrit une suite "stationnaire" ou "finalement constante". C'est un cas particulier de suite convergente, mais ce n'est pas la définition générale. La suite $u_n=1/n$ converge vers 0 mais n'est jamais égale à 0.
+- **D)** L'ordre des quantificateurs est incorrect et change complètement le sens. Cette proposition est trivialement vraie pour toute suite, car pour n'importe quel $N$, on peut toujours trouver un $\epsilon$ assez grand.
+
+</details>
+
+---
+
+#### Question 9 : Suite bornée et suite convergente
+
+Laquelle des affirmations suivantes est VRAIE concernant les suites réelles ?
+
+- [ ] **A)** Toute suite bornée est convergente.
+- [x] **B)** Toute suite convergente est bornée.
+- [ ] **C)** Une suite est convergente si et seulement si elle est bornée.
+- [ ] **D)** Une suite non bornée peut être convergente.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Cette question teste la relation entre les notions de convergence et de suite bornée.
+
+- **A)** C'est faux. Une suite bornée n'est pas nécessairement convergente. Le contre-exemple classique est la suite $u_n = (-1)^n$. Ses termes sont toujours dans l'intervalle $[-1, 1]$, elle est donc bornée. Cependant, elle oscille entre -1 et 1 et ne se rapproche d'aucune limite unique.
+- **B)** C'est vrai. C'est un théorème fondamental. Si une suite converge vers une limite $l$, ses termes finissent par s'accumuler dans un petit intervalle autour de $l$. Ces termes (en nombre infini) sont donc bornés. Les quelques premiers termes (en nombre fini) ne peuvent pas rendre la suite non bornée.
+- **C)** C'est faux. Une équivalence ("si et seulement si") requiert que les deux implications ($A \Rightarrow B$ et $B \Rightarrow A$) soient vraies. Comme l'implication "bornée $\Rightarrow$ convergente" est fausse, l'équivalence l'est aussi.
+- **D)** C'est faux. C'est la contraposée de l'affirmation B. Si "convergente $\Rightarrow$ bornée" est vraie, alors sa contraposée "non bornée $\Rightarrow$ non convergente (divergente)" est aussi vraie. Une suite qui n'est pas bornée ne peut donc pas converger.
+
+</details>
+
+---
+
+#### Question 10 : Algèbre des limites
+
+Soient $(u_n)$ et $(v_n)$ deux suites réelles telles que $\lim_{n \to +\infty} u_n = 2$ et $\lim_{n \to +\infty} v_n = -3$. Quelle est la limite de la suite $w_n = \frac{u_n + v_n}{u_n - v_n}$ ?
+
+- [ ] **A)** La limite est $5$.
+- [ ] **B)** La limite est $1/5$.
+- [x] **C)** La limite est $-1/5$.
+- [ ] **D)** On ne peut pas conclure car c'est une forme indéterminée.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+On utilise les règles de l'algèbre des limites pour les suites convergentes.
+
+1.  **Limite du numérateur (somme)** :
+
+    $$ \lim_{n \to +\infty} (u_n + v_n) = (\lim_{n \to +\infty} u_n) + (\lim_{n \to +\infty} v_n) = 2 + (-3) = -1 $$
+
+2.  **Limite du dénominateur (différence)** :
+
+    $$ \lim_{n \to +\infty} (u_n - v_n) = (\lim_{n \to +\infty} u_n) - (\lim_{n \to +\infty} v_n) = 2 - (-3) = 2 + 3 = 5 $$
+
+3.  **Limite du quotient** :
+
+    Puisque la limite du dénominateur est non nulle (elle vaut 5), on peut appliquer la règle du quotient :
+
+    $$ \lim_{n \to +\infty} w_n = \frac{\lim (u_n + v_n)}{\lim (u_n - v_n)} = \frac{-1}{5} $$
+
+La limite de la suite $(w_n)$ est donc $-1/5$.
+
+</details>
+
+---
+
+#### Question 11 : Propriétés des suites convergentes
+
+Quelles affirmations parmi les suivantes sont vraies ?
+
+- [ ] **A)** Si la suite des moyennes de Cesàro d'une suite $(u_n)$ converge, alors $(u_n)$ converge.
+- [x] **B)** Si une suite $(u_n)$ converge, alors sa limite est unique.
+- [ ] **C)** Une suite complexe $z_n = a_n + i b_n$ converge si et seulement si la suite de ses modules $(|z_n|)$ converge.
+- [x] **D)** Si une suite $(u_n)$ converge vers $l$ et que $f$ est une fonction continue en $l$, alors la suite $(f(u_n))$ converge vers $f(l)$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B, D]**
+
+- **A)** Faux. C'est la réciproque du théorème de Cesàro, qui est fausse. Par exemple, la suite $u_n = (-1)^n$ diverge, mais la suite de ses moyennes arithmétiques converge vers 0.
+- **B)** Vrai. C'est le théorème de l'unicité de la limite. Une suite ne peut pas se rapprocher simultanément de deux valeurs distinctes.
+- **C)** Faux. L'implication "si $(z_n)$ converge vers $z$, alors $(|z_n|)$ converge vers $|z|$" est vraie (car le module est une fonction continue). Cependant, la réciproque est fausse. Par exemple, si $z_n = i^n$, la suite des modules $|z_n| = 1$ converge vers 1, mais la suite $(z_n)$ elle-même diverge car elle tourne sur les quatre valeurs $i, -1, -i, 1$.
+- **D)** Vrai. C'est le théorème de composition des limites. Il permet de "passer la limite à l'intérieur" d'une fonction continue. Par exemple, comme $\lim 1/n = 0$ et que $\cos$ est continue en 0, on a $\lim \cos(1/n) = \cos(0) = 1$.
+
+</details>
+
+---
+
+#### Question 12 : Application de la récurrence
+
+On veut démontrer par récurrence la propriété $P(n) : \sum_{i=1}^{n} i = \frac{n(n+1)}{2}$ pour $n \ge 1$.
+
+Lors de l'étape d'hérédité, on suppose que $P(k)$ est vraie pour un certain $k \ge 1$. Quelle est l'expression que l'on doit alors démontrer ?
+
+- [ ] **A)** $\sum_{i=1}^{k} i = \frac{k(k+1)}{2}$
+- [x] **B)** $\sum_{i=1}^{k+1} i = \frac{(k+1)(k+2)}{2}$
+- [ ] **C)** $\sum_{i=1}^{k} (i+1) = \frac{k(k+1)}{2} + (k+1)$
+- [ ] **D)** $k+1 = \frac{(k+1)(k+2)}{2} - \frac{k(k+1)}{2}$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+L'étape d'hérédité consiste à prouver l'implication $P(k) \Rightarrow P(k+1)$.
+
+- L'**hypothèse de récurrence** est de supposer que $P(k)$ est vraie. C'est l'option **A**.
+- Le **but** est de démontrer que $P(k+1)$ est vraie, en utilisant l'hypothèse.
+
+Pour trouver l'expression de $P(k+1)$, on remplace $n$ par $k+1$ dans l'énoncé de la propriété $P(n)$.
+
+La somme va jusqu'à $k+1$ : $\sum_{i=1}^{k+1} i$.
+
+Le membre de droite devient : $\frac{(k+1)((k+1)+1)}{2} = \frac{(k+1)(k+2)}{2}$.
+
+Le but de la démonstration d'hérédité est donc de prouver l'égalité de l'option **B**.
+
+- **D)** Cette égalité est vraie, car $\frac{(k+1)(k+2)}{2} - \frac{k(k+1)}{2} = \frac{k+1}{2}(k+2-k) = \frac{k+1}{2}(2) = k+1$. C'est une étape du calcul que l'on fait pour prouver B, mais ce n'est pas l'objectif final de la démonstration.
+- **C)** Cette expression n'a pas de sens clair dans ce contexte.
+
+</details>

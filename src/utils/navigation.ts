@@ -58,25 +58,24 @@ async function processDirectoryRecursive(dirPath: string, relativePath: string):
             order: info.order
           });
         }
-      } else if (entry.isDirectory()) {
-        // Directory
-        const children = await processDirectoryRecursive(fullPath, currentRelativePath);
+      } else
+        if (entry.isDirectory()) {
+          // Directory
+          const children = await processDirectoryRecursive(fullPath, currentRelativePath);
 
-        if (children.length > 0) {
-          const infoFile = await directoryInfo(fullPath);
+          if (children.length > 0) {
+            const infoFile = await directoryInfo(fullPath);
 
-          const accentLessPath = generateAccentLessPath(currentRelativePath);
+            const indexPath = await getDirectoryIndexPath(fullPath, currentRelativePath);
 
-          const indexPath = await getDirectoryIndexPath(fullPath, currentRelativePath);
-
-          navigationItems.push({
-            title: infoFile?.title || formatDirectoryTitle(entry.name),
-            path: indexPath || `/${accentLessPath}/`,
-            children: sortNavigationItems(children),
-            order: infoFile?.order
-          });
+            navigationItems.push({
+              title: infoFile?.title || formatDirectoryTitle(entry.name),
+              path: indexPath || `/${currentRelativePath}/`,
+              children: sortNavigationItems(children),
+              order: infoFile?.order
+            });
+          }
         }
-      }
     }
 
     return sortNavigationItems(navigationItems);
@@ -108,21 +107,12 @@ async function directoryInfo(dirPath: string): Promise<PageInfo | null> {
   }
 }
 
-function removeAccents(str: string): string {
-  return str
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-zA-Z0-9\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .toLowerCase();
-}
-
 async function getDirectoryIndexPath(dirPath: string, relativePath: string): Promise<string | null> {
   try {
     const indexPath = join(dirPath, '_index.md');
     try {
       await readFile(indexPath, 'utf-8');
-      return `/${generateAccentLessPath(relativePath)}/`;
+      return `/${relativePath}/`;
     } catch (error) {
       return null;
     }
@@ -132,27 +122,21 @@ async function getDirectoryIndexPath(dirPath: string, relativePath: string): Pro
   }
 }
 
-function generateAccentLessPath(relativePath: string): string {
-  const pathParts = relativePath.split('/');
-  return pathParts.map(part => removeAccents(part)).join('/');
-}
-
 function getUrlPath(filename: string, relativePath?: string): string {
   const name = basename(filename, extname(filename));
 
   // Index file
   if (name === 'index') {
     if (relativePath) {
-      return `/${generateAccentLessPath(relativePath)}/`;
+      return `/${relativePath}/`;
     }
     return '/';
   }
 
-  const accentLessName = removeAccents(name);
   if (relativePath) {
-    return `/${generateAccentLessPath(relativePath)}/${accentLessName}`;
+    return `/${relativePath}/${name}`;
   }
-  return `/${accentLessName}`;
+  return `/${name}`;
 }
 
 function formatDirectoryTitle(dirName: string): string {

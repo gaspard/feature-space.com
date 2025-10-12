@@ -5,13 +5,27 @@ import remarkMath from 'remark-math';
 import remarkGfm from 'remark-gfm';
 import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
-import { toggleCheck } from './QuizEnhancer';
 import { useStorage } from '../hooks/useStorage';
 
 interface CardRendererProps {
   cards: ParsedCards;
   static: boolean;
 }
+
+export function toggleCheck() {
+  if (!document.documentElement.classList.contains("check")) {
+    document.documentElement.classList.add("check");
+    document.querySelectorAll("details").forEach((details) => {
+      details.open = true;
+    });
+  } else {
+    document.documentElement.classList.remove("check");
+    document.querySelectorAll("details").forEach((details) => {
+      details.open = false;
+    });
+  }
+}
+
 
 export default function CardRenderer({ cards, static: isStatic = false }: CardRendererProps) {
   const [currentIndex, setCurrentIndex] = useState(0);

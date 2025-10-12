@@ -1,0 +1,508 @@
+---
+id: 9abf0b03
+type: cards
+order: 22
+title: Rappels de logique et suites numériques - fiches de révision (B)
+tags:
+  - logique
+  - suites numériques
+  - analyse
+  - mathématiques
+createdAt: '2025-10-12T14:33:12.503Z'
+level: pro
+course: Analyse
+courseId: 99c39a0d
+chapter: Rappels de logique et suites numériques
+chapterId: 684d8511
+---
+# Fiches de rérevision "Rappels de logique et suites numériques" (B)
+
+---
+
+Démontrer par l'absurde que $\sqrt{2}$ est irrationnel.
+
+<details>
+
+<summary>Réponse</summary>
+
+**Principe de la démonstration par l'absurde :** Pour prouver une proposition $P$, on suppose sa négation $\neg P$ et on en déduit une contradiction logique (un énoncé de la forme $Q \land \neg Q$).
+
+**Démonstration :**
+
+1.  **Hypothèse (Absurde) :** Supposons que $\sqrt{2}$ est rationnel. Par définition, il existe deux entiers $p \in \mathbb{Z}$ et $q \in \mathbb{N}^*$ tels que $\sqrt{2} = \frac{p}{q}$. On peut supposer que la fraction est irréductible, c'est-à-dire que le plus grand commun diviseur de $p$ et $q$ est 1 ($\text{pgcd}(p,q)=1$).
+
+2.  **Développement :** En élevant l'équation au carré, on obtient $2 = \frac{p^2}{q^2}$, ce qui implique $p^2 = 2q^2$.
+
+3.  **Analyse de parité :**
+    - L'équation $p^2 = 2q^2$ montre que $p^2$ est un entier pair.
+    - Or, si le carré d'un entier est pair, l'entier lui-même doit être pair. (Preuve par contraposée : si $p$ est impair, $p=2k+1$, alors $p^2 = (2k+1)^2 = 4k^2+4k+1 = 2(2k^2+2k)+1$, qui est impair).
+    - Donc, $p$ est pair. Il existe un entier $k \in \mathbb{Z}$ tel que $p=2k$.
+
+4.  **Substitution et déduction :** En substituant $p=2k$ dans l'équation $p^2 = 2q^2$, on a $(2k)^2 = 2q^2$, soit $4k^2 = 2q^2$, ce qui se simplifie en $q^2 = 2k^2$.
+
+5.  **Contradiction :**
+    - L'équation $q^2 = 2k^2$ montre que $q^2$ est pair.
+    - Par le même argument que précédemment, si $q^2$ est pair, alors $q$ doit être pair.
+    - Nous avons donc montré que $p$ et $q$ sont tous les deux pairs. Cela signifie qu'ils ont un diviseur commun, 2.
+    - Ceci contredit notre hypothèse initiale selon laquelle la fraction $\frac{p}{q}$ est irréductible ($\text{pgcd}(p,q)=1$).
+
+6.  **Conclusion :** L'hypothèse "$\sqrt{2}$ est rationnel" mène à une contradiction. Elle est donc fausse. Par conséquent, $\sqrt{2}$ est irrationnel.
+
+</details>
+
+---
+
+Énoncer le théorème de Bolzano-Weierstrass et discuter de son lien avec la notion de compacité dans $\mathbb{R}$.
+
+<details>
+
+<summary>Réponse</summary>
+
+**Théorème de Bolzano-Weierstrass :**
+
+De toute suite bornée de nombres réels (ou complexes), on peut extraire une sous-suite convergente.
+
+**Lien avec la compacité :**
+
+Le théorème de Bolzano-Weierstrass est une propriété fondamentale qui caractérise la **compacité** des espaces métriques.
+
+1.  **Définition séquentielle de la compacité :** Un ensemble $K \subset \mathbb{R}$ est dit (séquentiellement) compact si toute suite d'éléments de $K$ admet une sous-suite qui converge vers un élément de $K$.
+
+2.  **Équivalence dans $\mathbb{R}^n$ :** Dans $\mathbb{R}^n$ (et en particulier dans $\mathbb{R}$), un ensemble est compact si et seulement si il est **fermé et borné** (Théorème de Borel-Lebesgue).
+
+Le théorème de Bolzano-Weierstrass est l'implication "borné $\Rightarrow$ existence d'une sous-suite convergente". Pour obtenir la compacité d'un ensemble $K$ fermé et borné, le raisonnement est le suivant :
+
+- Soit $(s_n)$ une suite dans $K$.
+- Puisque $K$ est borné, la suite $(s_n)$ est bornée.
+- D'après Bolzano-Weierstrass, on peut en extraire une sous-suite $(s_{\phi(k)})$ qui converge vers une limite $l \in \mathbb{R}$.
+- Puisque $K$ est fermé, la limite de toute suite convergente d'éléments de $K$ doit appartenir à $K$. Donc, $l \in K$.
+- Ainsi, toute suite dans $K$ a une sous-suite qui converge vers un point de $K$, ce qui signifie que $K$ est compact.
+
+En résumé, le théorème de Bolzano-Weierstrass est la pierre angulaire qui prouve que les ensembles fermés et bornés de $\mathbb{R}$ sont compacts.
+
+</details>
+
+---
+
+Démontrer qu'une suite de Cauchy dans $\mathbb{R}$ est convergente, en explicitant le rôle du théorème de Bolzano-Weierstrass.
+
+<details>
+
+<summary>Réponse</summary>
+
+Cette propriété est la **complétude** de $\mathbb{R}$. La démonstration se fait en trois étapes clés.
+
+Soit $(s_n)_{n \in \mathbb{N}}$ une suite de Cauchy dans $\mathbb{R}$.
+
+**Étape 1 : Une suite de Cauchy est bornée.**
+
+Par définition, pour $\epsilon = 1$, il existe un rang $N \in \mathbb{N}$ tel que pour tous $p, q \ge N$, $|s_p - s_q| \le 1$.
+
+En particulier, pour tout $p \ge N$, on a $|s_p - s_N| \le 1$, ce qui implique $|s_p| \le |s_N| + 1$ par l'inégalité triangulaire.
+
+L'ensemble des termes de la suite est donc majoré en valeur absolue par $M = \max(|s_0|, |s_1|, \dots, |s_{N-1}|, |s_N| + 1)$. La suite $(s_n)$ est donc bornée.
+
+**Étape 2 : Existence d'une sous-suite convergente.**
+
+Puisque la suite $(s_n)$ est bornée (d'après l'étape 1), le **théorème de Bolzano-Weierstrass** s'applique. Il garantit l'existence d'une sous-suite $(s_{\phi(k)})_{k \in \mathbb{N}}$ qui converge vers une limite $l \in \mathbb{R}$.
+
+$$ \lim_{k \to \infty} s_{\phi(k)} = l $$
+
+**Étape 3 : La suite entière converge vers $l$.**
+
+Nous voulons montrer que $\lim_{n \to \infty} s_n = l$. Soit $\epsilon > 0$.
+
+- Comme $(s_n)$ est une suite de Cauchy, il existe $N_1 \in \mathbb{N}$ tel que $\forall p,q \ge N_1, |s_p - s_q| \le \epsilon/2$.
+- Comme $(s_{\phi(k)})$ converge vers $l$, il existe $K \in \mathbb{N}$ tel que $\forall k \ge K, |s_{\phi(k)} - l| \le \epsilon/2$.
+
+Choisissons un entier $k_0 \ge K$ tel que l'indice $\phi(k_0) \ge N_1$. C'est possible car $\phi$ est strictement croissante, donc $\phi(k) \to \infty$.
+
+Posons $N = N_1$. Pour tout $n \ge N$:
+
+$$ |s_n - l| = |s_n - s_{\phi(k_0)} + s_{\phi(k_0)} - l| \le |s_n - s_{\phi(k_0)}| + |s_{\phi(k_0)} - l| $$
+
+- Le premier terme : puisque $n \ge N_1$ et $\phi(k_0) \ge N_1$, on a $|s_n - s_{\phi(k_0)}| \le \epsilon/2$.
+- Le second terme : puisque $k_0 \ge K$, on a $|s_{\phi(k_0)} - l| \le \epsilon/2$.
+
+Ainsi, pour tout $n \ge N$, $|s_n - l| \le \epsilon/2 + \epsilon/2 = \epsilon$.
+
+Ceci prouve que la suite $(s_n)$ converge vers $l$.
+
+</details>
+
+---
+
+Démontrer le théorème du point fixe de Picard pour une application contractante sur un intervalle fermé de $\mathbb{R}$.
+
+<details>
+
+<summary>Réponse</summary>
+
+**Théorème :** Soit $I \subset \mathbb{R}$ un intervalle fermé et $f: I \to I$ une application contractante, i.e., $\exists L \in [0, 1)$ tel que $\forall x, y \in I, |f(x) - f(y)| \le L|x-y|$. Alors $f$ admet un unique point fixe $l \in I$. De plus, pour tout $s_0 \in I$, la suite récurrente $s_{n+1} = f(s_n)$ converge vers $l$.
+
+**Démonstration :**
+
+1.  **Construction de la suite :** On choisit un point arbitraire $s_0 \in I$ et on définit la suite $(s_n)_{n \in \mathbb{N}}$ par la relation de récurrence $s_{n+1} = f(s_n)$. Comme $f(I) \subset I$, tous les termes de la suite appartiennent à $I$.
+
+2.  **Estimation de $|s_{n+1} - s_n|$ :**
+
+    $|s_{n+1} - s_n| = |f(s_n) - f(s_{n-1})| \le L|s_n - s_{n-1}|$.
+
+    Par une récurrence immédiate, on obtient :
+
+    $$ |s_{n+1} - s_n| \le L^n |s_1 - s_0| $$
+
+3.  **La suite $(s_n)$ est de Cauchy :**
+
+    Soient $q > p$ deux entiers. On utilise l'inégalité triangulaire :
+
+    $$ |s_q - s_p| = | \sum_{k=p}^{q-1} (s_{k+1} - s_k) | \le \sum_{k=p}^{q-1} |s_{k+1} - s_k| $$
+
+    En utilisant l'estimation précédente :
+
+    $$ |s_q - s_p| \le \sum_{k=p}^{q-1} L^k |s_1 - s_0| = |s_1 - s_0| \sum_{k=p}^{q-1} L^k $$
+
+    La somme est une série géométrique : $\sum_{k=p}^{q-1} L^k = L^p \frac{1-L^{q-p}}{1-L} \le \frac{L^p}{1-L}$.
+
+    Donc, $|s_q - s_p| \le |s_1 - s_0| \frac{L^p}{1-L}$.
+
+    Comme $L \in [0, 1)$, $\lim_{p \to \infty} L^p = 0$. Ainsi, pour tout $\epsilon > 0$, on peut trouver un rang $N$ tel que pour $p,q \ge N$, le terme de droite soit inférieur à $\epsilon$. La suite $(s_n)$ est de Cauchy.
+
+4.  **Convergence et existence du point fixe :**
+
+    Puisque $\mathbb{R}$ est complet, la suite de Cauchy $(s_n)$ converge vers une limite $l \in \mathbb{R}$. Comme $I$ est un intervalle fermé et que tous les $s_n \in I$, la limite $l$ appartient aussi à $I$.
+
+    L'application $f$ est $L$-lipschitzienne, donc elle est continue. Par continuité de $f$ en $l$, on a :
+
+    $$ l = \lim_{n \to \infty} s_{n+1} = \lim_{n \to \infty} f(s_n) = f(\lim_{n \to \infty} s_n) = f(l) $$
+
+    Donc $l$ est un point fixe de $f$.
+
+5.  **Unicité du point fixe :**
+
+    Supposons qu'il existe deux points fixes distincts, $l_1$ et $l_2$, dans $I$. Alors $f(l_1) = l_1$ et $f(l_2) = l_2$.
+
+    En utilisant la propriété de contraction :
+
+    $$ |l_1 - l_2| = |f(l_1) - f(l_2)| \le L|l_1 - l_2| $$
+
+    Cela s'écrit $(1-L)|l_1 - l_2| \le 0$. Comme $L \in [0,1)$, on a $1-L > 0$. De plus, $|l_1 - l_2| \ge 0$. La seule possibilité est donc $|l_1 - l_2| = 0$, ce qui implique $l_1 = l_2$. Le point fixe est unique.
+
+</details>
+
+---
+
+Quelle est la formule de Hadamard liant le rayon de convergence d'une série entière à la limite supérieure d'une suite ?
+
+<details>
+
+<summary>Réponse</summary>
+
+**Formule de Cauchy-Hadamard :**
+
+Soit $\sum a_n z^n$ une série entière avec $a_n, z \in \mathbb{C}$. Son rayon de convergence $R$ est donné par la formule :
+
+$$ \frac{1}{R} = \limsup_{n \to \infty} \sqrt[n]{|a_n|} $$
+
+**Conventions :**
+
+- Si la limite supérieure est $0$, on pose $R = +\infty$. La série converge pour tout $z \in \mathbb{C}$.
+- Si la limite supérieure est $+\infty$, on pose $R = 0$. La série ne converge que pour $z=0$.
+
+**Signification :**
+
+Cette formule est un résultat puissant d'analyse complexe qui connecte le comportement asymptotique des coefficients $(a_n)$ de la série à la géométrie de son domaine de convergence dans le plan complexe.
+
+- La série converge absolument pour tout $z$ tel que $|z| < R$.
+- La série diverge pour tout $z$ tel que $|z| > R$.
+
+L'utilisation de la $\limsup$ est cruciale car la limite de $\sqrt[n]{|a_n|}$ peut ne pas exister. La $\limsup$, qui existe toujours dans $\bar{\mathbb{R}}_+$, capture le comportement des "pics" les plus grands de la suite $\sqrt[n]{|a_n|}$, qui sont déterminants pour la convergence.
+
+</details>
+
+---
+
+Démontrer le théorème de la convergence monotone pour une suite réelle croissante et majorée.
+
+<details>
+
+<summary>Réponse</summary>
+
+**Théorème :** Toute suite réelle $(s_n)_{n \in \mathbb{N}}$ qui est croissante et majorée est convergente. Sa limite est la borne supérieure de l'ensemble de ses termes.
+
+**Démonstration :**
+
+1.  **Existence de la borne supérieure :**
+
+    Soit $(s_n)$ une suite croissante et majorée. Considérons l'ensemble $A = \{s_n | n \in \mathbb{N}\}$.
+
+    - $A$ est non vide car il contient au moins $s_0$.
+    - $A$ est majoré par hypothèse.
+    - D'après l'**axiome de la borne supérieure** (propriété fondamentale de $\mathbb{R}$), $A$ admet une borne supérieure, que nous noterons $l = \sup A$. $l$ est un nombre réel.
+
+2.  **Convergence vers la borne supérieure :**
+
+    Nous allons montrer que $\lim_{n \to \infty} s_n = l$ en utilisant la définition formelle de la limite.
+
+    Soit $\epsilon > 0$ un réel arbitraire.
+
+    Par la **caractérisation de la borne supérieure**, pour ce $\epsilon$, il existe un élément de $A$, disons $s_N$, tel que :
+
+    $$ l - \epsilon < s_N \le l $$
+
+    (Si ce n'était pas le cas, $l-\epsilon$ serait un majorant de $A$ plus petit que $l$, ce qui contredirait la définition de $l$ comme étant le *plus petit* des majorants).
+
+3.  **Utilisation de la monotonie :**
+
+    La suite $(s_n)$ est croissante. Donc, pour tout entier $n \ge N$, on a $s_n \ge s_N$.
+
+    En combinant avec l'inégalité précédente, on obtient pour tout $n \ge N$ :
+
+    $$ l - \epsilon < s_N \le s_n $$
+
+    De plus, comme $l$ est un majorant de $A$, on a $s_n \le l$ pour tout $n$.
+
+    On a donc pour tout $n \ge N$ :
+
+    $$ l - \epsilon < s_n \le l $$
+
+4.  **Conclusion :**
+
+    L'encadrement $l - \epsilon < s_n \le l$ implique que $|s_n - l| < \epsilon$ pour tout $n \ge N$.
+
+    Ceci correspond exactement à la définition de la convergence :
+
+    $$ \forall \epsilon > 0, \exists N \in \mathbb{N}, \forall n \ge N, |s_n - l| < \epsilon $$
+
+    La suite $(s_n)$ converge donc vers $l = \sup\{s_n | n \in \mathbb{N}\}$.
+
+</details>
+
+---
+
+Analyser la différence sémantique entre les propositions $\forall x, \exists y, P(x,y)$ et $\exists y, \forall x, P(x,y)$, et illustrer avec des propriétés de fonctions $f: \mathbb{R} \to \mathbb{R}$.
+
+<details>
+
+<summary>Réponse</summary>
+
+L'ordre des quantificateurs universel ($\forall$) et existentiel ($\exists$) est fondamental et change radicalement le sens d'une proposition logique.
+
+**Analyse sémantique :**
+
+1.  **Proposition A : $\forall x, \exists y, P(x,y)$**
+    - "Pour tout $x$, il existe un $y$ tel que $P(x,y)$ est vraie."
+    - L'ordre $\forall x, \exists y$ implique que le choix de $y$ peut **dépendre** de $x$. Pour chaque $x$ donné, on peut trouver un $y$ qui fonctionne. On peut voir $y$ comme une fonction de $x$, soit $y(x)$.
+
+2.  **Proposition B : $\exists y, \forall x, P(x,y)$**
+    - "Il existe un $y$ tel que pour tout $x$, $P(x,y)$ est vraie."
+    - L'ordre $\exists y, \forall x$ implique qu'il existe un **unique** $y$ (ou au moins un) qui doit fonctionner pour **tous** les $x$ simultanément. Ce $y$ est universel et indépendant de $x$.
+
+**Implication :**
+
+La proposition B est beaucoup plus forte que la proposition A. Si l'on trouve un $y$ universel qui fonctionne pour tous les $x$ (B est vraie), alors pour n'importe quel $x$ que l'on choisit, ce même $y$ existera. Donc, **$B \Rightarrow A$**.
+
+La réciproque **$A \Rightarrow B$ est généralement fausse**.
+
+**Illustrations avec une fonction $f: \mathbb{R} \to \mathbb{R}$ et le prédicat $P(x,y) \equiv (y = f(x))$ :**
+
+- **Cas A : $\forall x \in \mathbb{R}, \exists y \in \mathbb{R}, y = f(x)$**
+  - **Signification :** "Pour tout réel $x$, il existe un réel $y$ qui est son image par $f$."
+  - **Interprétation :** C'est la **définition même d'une fonction** de $\mathbb{R}$ dans $\mathbb{R}$. Chaque élément de l'ensemble de départ a une image. Cette proposition est toujours vraie pour n'importe quelle fonction.
+
+- **Cas B : $\exists y \in \mathbb{R}, \forall x \in \mathbb{R}, y = f(x)$**
+  - **Signification :** "Il existe un réel $y$ tel que pour tout réel $x$, l'image de $x$ par $f$ est ce même $y$."
+  - **Interprétation :** Ceci affirme que la fonction $f$ est une **fonction constante**. Il existe une valeur $y$ qui est l'image de tous les réels.
+
+Il est évident qu'une fonction constante est bien une fonction ($B \Rightarrow A$), mais une fonction quelconque n'est pas nécessairement constante (par exemple $f(x)=x$), donc $A \nRightarrow B$.
+
+</details>
+
+---
+
+La réciproque du théorème de Cesàro est-elle vraie ? Justifier avec un contre-exemple.
+
+<details>
+
+<summary>Réponse</summary>
+
+Non, la réciproque du théorème de Cesàro est **fausse**.
+
+**Rappel du théorème de Cesàro :**
+
+Si une suite $(s_n)$ converge vers une limite $l$, alors la suite de ses moyennes arithmétiques $c_n = \frac{1}{n} \sum_{k=1}^n s_k$ converge aussi vers $l$.
+
+$$ (\lim_{n \to \infty} s_n = l) \implies (\lim_{n \to \infty} c_n = l) $$
+
+**Énoncé de la réciproque (fausse) :**
+
+Si la suite des moyennes arithmétiques $(c_n)$ converge vers $l$, alors la suite $(s_n)$ converge vers $l$.
+
+$$ (\lim_{n \to \infty} c_n = l) \implies (\lim_{n \to \infty} s_n = l) $$
+
+**Contre-exemple :**
+
+Considérons la suite $s_n = (-1)^n$.
+
+1.  **Analyse de $(s_n)$ :**
+
+    La suite $(s_n)$ prend les valeurs $(1, -1, 1, -1, \dots)$. Elle est bornée mais possède deux valeurs d'adhérence, 1 et -1. Elle est donc **divergente**.
+
+2.  **Analyse de la moyenne de Cesàro $(c_n)$ :**
+
+    Calculons la somme partielle $S_n = \sum_{k=1}^n s_k = \sum_{k=1}^n (-1)^k$.
+
+    - Si $n$ est impair, $n=2p-1$, $S_n = -1+1-1+\dots-1 = -1$.
+    - Si $n$ est pair, $n=2p$, $S_n = -1+1-1+\dots+1 = 0$.
+
+    On peut écrire $S_n = \frac{(-1)^n - 1}{2}$.
+
+    La moyenne de Cesàro est $c_n = \frac{S_n}{n}$.
+
+    - Si $n$ est impair, $c_n = -1/n$.
+    - Si $n$ est pair, $c_n = 0/n = 0$.
+
+    Dans les deux cas, on voit que la suite $(c_n)$ tend vers 0. On peut le montrer formellement :
+
+    $|c_n| = |\frac{S_n}{n}| \le \frac{1}{n}$. Par le théorème des gendarmes, $\lim_{n \to \infty} c_n = 0$.
+
+3.  **Conclusion :**
+
+    Nous avons trouvé une suite $(s_n)$ telle que sa moyenne de Cesàro $(c_n)$ converge vers 0, mais la suite $(s_n)$ elle-même diverge. Cela prouve que la réciproque du théorème de Cesàro est fausse.
+
+</details>
+
+---
+
+Expliquer comment les concepts de limite supérieure et limite inférieure fournissent un critère de convergence pour une suite réelle.
+
+<details>
+
+<summary>Réponse</summary>
+
+Les limites supérieure ($\limsup$) et inférieure ($\liminf$) d'une suite réelle $(s_n)$ existent toujours dans l'ensemble $\bar{\mathbb{R}} = \mathbb{R} \cup \{-\infty, +\infty\}$ et fournissent une caractérisation complète de la convergence.
+
+**Critère de convergence :**
+
+Une suite $(s_n)$ converge vers une limite $l \in \bar{\mathbb{R}}$ si et seulement si sa limite inférieure et sa limite supérieure sont égales à $l$.
+
+$$ (s_n \to l) \iff (\liminf_{n \to \infty} s_n = \limsup_{n \to \infty} s_n = l) $$
+
+**Explication conceptuelle :**
+
+1.  **Caractérisation par les valeurs d'adhérence :**
+    - $\limsup s_n$ est la **plus grande** valeur d'adhérence de la suite $(s_n)$.
+    - $\liminf s_n$ est la **plus petite** valeur d'adhérence de la suite $(s_n)$.
+
+    Une valeur d'adhérence est la limite d'une sous-suite convergente.
+
+2.  **Interprétation du critère :**
+    - L'égalité $\liminf s_n = \limsup s_n$ signifie que l'ensemble des valeurs d'adhérence de la suite est réduit à un seul point.
+    - Quand la plus petite et la plus grande valeur d'adhérence coïncident, il ne peut y avoir qu'une seule valeur d'adhérence. Intuitivement, tous les "chemins" (sous-suites) convergents mènent au même endroit.
+    - Si toutes les sous-suites convergentes tendent vers la même limite $l$, on peut montrer que la suite entière converge vers $l$.
+
+**Exemples :**
+
+- **Suite convergente :** $s_n = 1/n$.
+
+  Les sous-suites convergent toutes vers 0. L'ensemble des valeurs d'adhérence est $\{0\}$.
+
+  $\liminf s_n = \limsup s_n = 0$. La suite converge vers 0.
+
+- **Suite divergente oscillante :** $s_n = (-1)^n$.
+
+  La sous-suite des termes pairs converge vers 1, la sous-suite des termes impairs converge vers -1. L'ensemble des valeurs d'adhérence est $\{-1, 1\}$.
+
+  $\liminf s_n = -1$ et $\limsup s_n = 1$.
+
+  Comme $\liminf s_n \neq \limsup s_n$, la suite diverge.
+
+- **Suite divergente vers $+\infty$ :** $s_n = n$.
+
+  Toute sous-suite tend vers $+\infty$. L'unique valeur d'adhérence dans $\bar{\mathbb{R}}$ est $+\infty$.
+
+  $\liminf s_n = \limsup s_n = +\infty$. La suite converge vers $+\infty$ dans $\bar{\mathbb{R}}$.
+
+</details>
+
+---
+
+Démontrer qu'une suite convergente est nécessairement bornée.
+
+<details>
+
+<summary>Réponse</summary>
+
+**Théorème :** Toute suite convergente $(s_n)_{n \in \mathbb{N}}$ à valeurs dans $\mathbb{K}$ (où $\mathbb{K}=\mathbb{R}$ ou $\mathbb{C}$) est bornée.
+
+**Démonstration :**
+
+Soit $(s_n)$ une suite qui converge vers une limite $l \in \mathbb{K}$.
+
+1.  **Application de la définition de la convergence :**
+
+    Par définition de la convergence, pour tout $\epsilon > 0$, il existe un rang $N \in \mathbb{N}$ à partir duquel tous les termes de la suite sont "proches" de $l$.
+
+    Choisissons une valeur spécifique pour $\epsilon$, par exemple $\epsilon = 1$.
+
+    Il existe donc un rang $N$ tel que pour tout entier $n \ge N$, on a :
+
+    $$ |s_n - l| \le 1 $$
+
+2.  **Majoration de la "queue" de la suite :**
+
+    En utilisant l'inégalité triangulaire inversée ($|a|-|b| \le |a-b|$), on peut écrire $|s_n| - |l| \le |s_n - l|$.
+
+    Pour $n \ge N$, on a donc :
+
+    $$ |s_n| \le |l| + |s_n - l| \le |l| + 1 $$
+
+    Ceci montre que tous les termes de la suite à partir du rang $N$ (la "queue" de la suite) sont bornés par la constante $|l|+1$.
+
+3.  **Majoration de la suite entière :**
+
+    Il reste à considérer le nombre fini de termes qui précèdent le rang $N$ : $s_0, s_1, \dots, s_{N-1}$. Cet ensemble est fini, donc il est nécessairement borné.
+
+    Pour borner la suite entière, il suffit de prendre le maximum entre les bornes des deux parties (la tête et la queue) :
+
+    Soit $M = \max(|s_0|, |s_1|, \dots, |s_{N-1}|, |l| + 1)$.
+
+    Alors, pour tout $n \in \mathbb{N}$, on a $|s_n| \le M$.
+
+4.  **Conclusion :**
+
+    Nous avons trouvé une constante réelle positive $M$ qui majore la valeur absolue (ou le module) de tous les termes de la suite. La suite $(s_n)$ est donc bornée.
+
+</details>
+
+---
+
+Quel est le lien entre la logique formelle utilisée en analyse et les théorèmes d'incomplétude de Gödel ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le lien est profond et concerne les **fondements des mathématiques**. L'analyse, comme la plupart des mathématiques modernes, est construite sur un système axiomatique formel, généralement la théorie des ensembles de Zermelo-Fraenkel avec l'axiome du choix (ZFC). La logique des prédicats du premier ordre, présentée dans ce chapitre, est le langage utilisé pour énoncer ces axiomes et pour construire les démonstrations.
+
+Les **théorèmes d'incomplétude de Gödel** (1931) sont des résultats méta-mathématiques qui explorent les limites de *tous* les systèmes formels de ce type.
+
+1.  **Premier théorème d'incomplétude :**
+
+    Il stipule que tout système axiomatique cohérent (sans contradiction), suffisamment puissant pour décrire l'arithmétique des entiers (ce qui est le cas de ZFC), est nécessairement **incomplet**.
+
+    Cela signifie qu'il existe des propositions (énoncés mathématiques) $P$ formulables dans le langage de ce système, telles que ni $P$ ni sa négation $\neg P$ ne peuvent être démontrées à partir des axiomes. Ces propositions sont dites **indécidables**.
+
+2.  **Deuxième théorème d'incomplétude :**
+
+    Il affirme qu'un tel système ne peut pas prouver sa propre cohérence. La cohérence de ZFC est un article de foi pour la plupart des mathématiciens.
+
+**Implications pour l'analyse :**
+
+- **Limites de la preuve :** Les théorèmes de Gödel impliquent qu'il pourrait exister des énoncés vrais en analyse (par exemple, concernant les suites ou les fonctions) qui sont impossibles à prouver dans le cadre de ZFC. L'hypothèse du continu est un exemple célèbre de proposition indécidable dans ZFC.
+- **Fondements :** Cela montre que le projet de Hilbert de fonder toutes les mathématiques sur un ensemble fini d'axiomes à partir desquels toute vérité mathématique pourrait être mécaniquement démontrée est irréalisable.
+- **Pratique vs Théorie :** En pratique, la grande majorité des problèmes rencontrés par les mathématiciens en analyse sont décidables au sein de ZFC. Les résultats de Gödel n'invalident pas les démonstrations existantes mais posent des limites fondamentales à ce qui est *démontrable en principe*.
+
+En résumé, la logique formelle est l'outil de l'analyse, tandis que les théorèmes de Gödel décrivent les limites intrinsèques et inhérentes de cet outil.
+
+</details>

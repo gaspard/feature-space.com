@@ -1,265 +1,273 @@
 ---
-import "../global.css";
-import Navigation from "../components/Navigation.astro";
-import QuizEnhancer from "../components/QuizEnhancer.tsx";
+import "../global.css"
+import Navigation from "../components/Navigation.astro"
+import QuizEnhancer from "../components/QuizEnhancer.tsx"
 
 export interface Props {
-	title?: string;
-	description?: string;
-	image?: string;
-	canonical?: string;
-	frontmatter?: {
-		quizId?: string;
-	};
+  title?: string
+  description?: string
+  image?: string
+  canonical?: string
+  frontmatter?: {
+    quizId?: string
+  }
 }
 
 const {
-	title = "Feature Space - Code, Mathématiques et autres explorations",
-	description = "Outils expérimentaux d'aide à l'apprentissage des mathématiques de niveau L1 et L2",
-	image = "/og-image.png",
-	canonical,
-} = Astro.props;
+  title = "Feature Space - Code, Mathématiques et autres explorations",
+  description = "Outils expérimentaux d'aide à l'apprentissage des mathématiques de niveau L1 et L2",
+  image = "/og-image.png",
+  canonical
+} = Astro.props
 
-const quizId = Astro.props.frontmatter?.quizId;
-const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site);
-const socialImage = new URL(image, Astro.site);
+const quizId = Astro.props.frontmatter?.quizId
+const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site)
+const socialImage = new URL(image, Astro.site)
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css"
-			integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP"
-			crossorigin="anonymous"
-		/>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css"
+      integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP"
+      crossorigin="anonymous"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
 
-		<!-- Primary Meta Tags -->
-		<title>{title}</title>
-		<meta name="title" content={title} />
-		<meta name="description" content={description} />
-		<meta
-			name="keywords"
-			content="mathematics, algebra, calculus, interactive learning, quizzes, KaTeX, mathematical education, feature space"
-		/>
-		<meta name="author" content="Feature Space" />
-		<meta name="robots" content="index, follow" />
-		<link rel="canonical" href={canonicalURL} />
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="mathematics, algebra, calculus, interactive learning, quizzes, KaTeX, mathematical education, feature space"
+    />
+    <meta name="author" content="Gaspard Anna Bucher" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
 
-		<!-- Open Graph / Facebook -->
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content={canonicalURL} />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description} />
-		<meta property="og:image" content={socialImage} />
-		<meta property="og:site_name" content="Feature Space" />
-		<meta property="og:locale" content="en_US" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:site_name" content="Feature Space" />
+    <meta property="og:locale" content="en_US" />
 
-		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content={canonicalURL} />
-		<meta property="twitter:title" content={title} />
-		<meta property="twitter:description" content={description} />
-		<meta property="twitter:image" content={socialImage} />
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={socialImage} />
 
-		<!-- Additional SEO -->
-		<meta name="theme-color" content="#3b82f6" />
-		<meta name="msapplication-TileColor" content="#3b82f6" />
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#3b82f6" />
+    <meta name="msapplication-TileColor" content="#3b82f6" />
 
-		<!-- Quiz ID for interactive checkboxes -->
-		{quizId && <meta name="quiz-id" content={quizId} />}
+    <!-- Quiz ID for interactive checkboxes -->
+    {quizId && <meta name="quiz-id" content={quizId} />}
 
-		<!-- Structured Data -->
-		<script type="application/ld+json">
-			{
-				"@context": "https://schema.org",
-				"@type": "EducationalOrganization",
-				"name": "Feature Space",
-				"url": "https://feature-space.com",
-				"description": "Interactive mathematical learning platform with comprehensive content and quizzes",
-				"educationalLevel": "University",
-				"subject": ["Mathematics", "Algebra", "Calculus"],
-				"teaches": "Advanced mathematical concepts through interactive content"
-			}
-		</script>
-		<script
-			defer
-			src="https://cloud.umami.is/script.js"
-			data-website-id="37385ff7-0e55-40be-a144-9fa78f43b704"></script>
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "Feature Space",
+        "url": "https://feature-space.com",
+        "description": "Interactive mathematical learning platform with comprehensive content and quizzes",
+        "educationalLevel": "University",
+        "subject": ["Mathematics", "Algebra", "Calculus"],
+        "teaches": "Advanced mathematical concepts through interactive content"
+      }
+    </script>
+    <script
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="37385ff7-0e55-40be-a144-9fa78f43b704"></script>
 
-		<!-- KaTeX CSS for mathematical rendering -->
-		<link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
-			integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn"
-			crossorigin="anonymous"
-		/>
-	</head>
-	<body class="bg-gray-50">
-		<!-- Mobile navigation toggle button -->
-		<div
-			class="lg:hidden sticky top-0 z-10 bg-white md:shadow-sm md:border-b md:border-gray-200 md:p-4 p-1"
-		>
-			<button
-				id="mobile-menu-toggle"
-				class="flex items-center justify-center w-8 h-8 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md"
-				aria-label="Toggle navigation menu"
-			>
-				<svg
-					class="w-6 h-6"
-					fill="none"
-					stroke="currentColor"
-					viewBox="0 0 24 24"
-				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M4 6h16M4 12h16M4 18h16"></path>
-				</svg>
-			</button>
-		</div>
+    <!-- KaTeX CSS for mathematical rendering -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+      integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="bg-gray-50">
+    <!-- Mobile navigation toggle button -->
+    <div
+      class="lg:hidden sticky top-0 z-10 bg-white md:shadow-sm md:border-b md:border-gray-200 md:p-4 p-1"
+    >
+      <button
+        id="mobile-menu-toggle"
+        class="flex items-center justify-center w-8 h-8 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md"
+        aria-label="Toggle navigation menu"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
 
-		<!-- Mobile navigation overlay -->
-		<div
-			id="mobile-menu-overlay"
-			class="fixed inset-0 z-40 bg-black/50 hidden lg:hidden"
-		>
-			<div class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg">
-				<div
-					class="flex items-center justify-between p-4 border-b border-gray-200"
-				>
-					<h2 class="text-lg font-semibold text-gray-900">Menu</h2>
-					<button
-						id="mobile-menu-close"
-						class="w-8 h-8 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md"
-						aria-label="Close navigation menu"
-					>
-						<svg
-							class="w-6 h-6"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M6 18L18 6M6 6l12 12"></path>
-						</svg>
-					</button>
-				</div>
-				<Navigation currentPath={Astro.url.pathname} isMobile={true} />
-			</div>
-		</div>
+    <!-- Mobile navigation overlay -->
+    <div
+      id="mobile-menu-overlay"
+      class="fixed inset-0 z-40 bg-black/50 hidden lg:hidden"
+    >
+      <div class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg">
+        <div
+          class="flex items-center justify-between p-4 border-b border-gray-200"
+        >
+          <h2 class="text-lg font-semibold text-gray-900">Menu</h2>
+          <button
+            id="mobile-menu-close"
+            class="w-8 h-8 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md"
+            aria-label="Close navigation menu"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <Navigation currentPath={Astro.url.pathname} isMobile={true} />
+      </div>
+    </div>
 
-		<!-- Main layout container -->
-		<div class="flex min-h-screen">
-			<!-- Desktop navigation sidebar -->
-			<Navigation currentPath={Astro.url.pathname} />
+    <!-- Main layout container -->
+    <div class="flex min-h-screen">
+      <!-- Desktop navigation sidebar -->
+      <Navigation currentPath={Astro.url.pathname} />
 
-			<!-- Main content area -->
-			<main class="md:ml-0 min-h-screen">
-				<div class="main-content">
-					<slot />
-				</div>
-				<QuizEnhancer quizId={quizId || ""} client:visible />
-			</main>
-		</div>
+      <!-- Main content area -->
+      <main class="md:ml-0 min-h-screen">
+        <div class="main-content">
+          <slot />
+        </div>
+        <QuizEnhancer quizId={quizId || ""} client:visible />
+      </main>
+    </div>
 
-		<!-- Mobile menu JavaScript -->
-		<script>
-			document.addEventListener("DOMContentLoaded", function () {
-				const mobileToggle = document.getElementById("mobile-menu-toggle");
-				const mobileOverlay = document.getElementById("mobile-menu-overlay");
-				const mobileClose = document.getElementById("mobile-menu-close");
+    <!-- Mobile menu JavaScript -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const mobileToggle = document.getElementById("mobile-menu-toggle")
+        const mobileOverlay = document.getElementById("mobile-menu-overlay")
+        const mobileClose = document.getElementById("mobile-menu-close")
 
-				function openMobileMenu() {
-					mobileOverlay?.classList.remove("hidden");
-					document.body.style.overflow = "hidden";
-				}
+        function openMobileMenu() {
+          mobileOverlay?.classList.remove("hidden")
+          document.body.style.overflow = "hidden"
+        }
 
-				function closeMobileMenu() {
-					mobileOverlay?.classList.add("hidden");
-					document.body.style.overflow = "";
-				}
+        function closeMobileMenu() {
+          mobileOverlay?.classList.add("hidden")
+          document.body.style.overflow = ""
+        }
 
-				mobileToggle?.addEventListener("click", openMobileMenu);
-				mobileClose?.addEventListener("click", closeMobileMenu);
+        mobileToggle?.addEventListener("click", openMobileMenu)
+        mobileClose?.addEventListener("click", closeMobileMenu)
 
-				// Close menu when clicking overlay
-				mobileOverlay?.addEventListener("click", function (e) {
-					if (e.target === mobileOverlay) {
-						closeMobileMenu();
-					}
-				});
+        // Close menu when clicking overlay
+        mobileOverlay?.addEventListener("click", function (e) {
+          if (e.target === mobileOverlay) {
+            closeMobileMenu()
+          }
+        })
 
-				// Close menu on escape key
-				document.addEventListener("keydown", function (e) {
-					if (
-						e.key === "Escape" &&
-						!mobileOverlay?.classList.contains("hidden")
-					) {
-						closeMobileMenu();
-					}
-				});
-			});
-		</script>
-	</body>
+        // Close menu on escape key
+        document.addEventListener("keydown", function (e) {
+          if (
+            e.key === "Escape" &&
+            !mobileOverlay?.classList.contains("hidden")
+          ) {
+            closeMobileMenu()
+          }
+        })
+        const a = "g.a.bucher"
+        const b = "midasum.com"
+
+        document.querySelectorAll("div.main-content a#email").forEach((a) => {
+          const emailLink = a as HTMLAnchorElement
+          emailLink.href = `mailto:${a}@${b}?subject=feature-space.com`
+          emailLink.innerHTML = `${a}@${b}`
+        })
+      })
+    </script>
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		min-height: 100%;
-		font-family:
-			system-ui,
-			-apple-system,
-			BlinkMacSystemFont,
-			"Segoe UI",
-			Roboto,
-			sans-serif;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+    font-family:
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
+  }
 
-	/* Ensure KaTeX math expressions are properly styled */
-	.katex {
-		font-size: 1.1em;
-	}
+  /* Ensure KaTeX math expressions are properly styled */
+  .katex {
+    font-size: 1.1em;
+  }
 
-	.katex-display {
-		margin: 1em 0;
-		text-align: center;
-	}
+  .katex-display {
+    margin: 1em 0;
+    text-align: center;
+  }
 
-	/* Responsive typography for math content */
-	@media (max-width: 640px) {
-		.katex {
-			font-size: 1em;
-		}
+  /* Responsive typography for math content */
+  @media (max-width: 640px) {
+    .katex {
+      font-size: 1em;
+    }
 
-		.katex-display {
-			margin: 0.8em 0;
-			overflow-x: auto;
-			overflow-y: hidden;
-		}
-	}
+    .katex-display {
+      margin: 0.8em 0;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+  }
 
-	/* Smooth transitions for mobile menu */
-	#mobile-menu-overlay {
-		transition: opacity 0.3s ease-in-out;
-	}
+  /* Smooth transitions for mobile menu */
+  #mobile-menu-overlay {
+    transition: opacity 0.3s ease-in-out;
+  }
 
-	/* Ensure proper scrolling on mobile */
-	@media (max-width: 768px) {
-		body.menu-open {
-			overflow: hidden;
-		}
-	}
+  /* Ensure proper scrolling on mobile */
+  @media (max-width: 768px) {
+    body.menu-open {
+      overflow: hidden;
+    }
+  }
 </style>

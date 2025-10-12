@@ -1,21 +1,21 @@
 ---
-import { generateNavigation, getCurrentPagePath } from '../utils/navigation.ts';
-import NavigationReact from './NavigationReact';
+import { generateNavigation, getCurrentPagePath } from "../utils/navigation.ts"
+import NavigationReact from "./NavigationReact"
 
 interface Props {
-  currentPath?: string;
-  isMobile?: boolean;
+  currentPath?: string
+  isMobile?: boolean
 }
 
-const { currentPath, isMobile = false } = Astro.props;
-const url = Astro.url;
-const activePath = currentPath || getCurrentPagePath(url);
+const { currentPath, isMobile = false } = Astro.props
+const url = Astro.url
+const activePath = currentPath || getCurrentPagePath(url)
 
 // Generate navigation structure
-const navigationItems = await generateNavigation();
+const navigationItems = await generateNavigation()
 ---
 
-<NavigationReact 
+<NavigationReact
   navigationItems={navigationItems}
   currentPath={activePath}
   isMobile={isMobile}
@@ -24,15 +24,16 @@ const navigationItems = await generateNavigation();
 
 <style>
   /* Additional custom styles if needed */
-  nav {
+  nav.sidebar {
     min-height: 100vh;
   }
-  
+
   /* Smooth transitions for hover effects */
-  nav a, nav div {
+  nav.sidebar a,
+  nav.sidebar div {
     transition: all 0.15s ease-in-out;
   }
-  
+
   /* Active state border styling */
   .border-l-4 {
     border-left-width: 4px;

@@ -1,90 +1,35 @@
 ---
-title: Quiz
+id: '15352066'
+type: quiz
 order: 13
+title: Espaces Euclidiens et Hermitiens - quiz (A)
+tags:
+  - Espaces Euclidiens
+  - Espaces Hermitiens
+  - Produit scalaire
+  - Gram-Schmidt
+  - Projection orthogonale
+  - Endomorphismes adjoints
+  - Théorème de Riesz
+createdAt: '2025-10-12T18:13:04.161Z'
 level: regular
-chapter: A - Concepts
 course: Géométrie
-tags: ["quiz", "assessment", "regular"]
+courseId: d9494343
+chapter: Espaces Euclidiens et Hermitiens
+chapterId: 67b3d760
 ---
-
-# Quiz : A - Concepts
-
----
-
-#### Question 1 : Définition d'un produit scalaire
-
-Quelles sont les propriétés requises pour qu'une forme bilinéaire $\varphi$ sur un espace vectoriel réel $E$ soit un produit scalaire ?
-
-- [x] **A)** $\varphi$ est symétrique ($\varphi(u,v) = \varphi(v,u)$ pour tous $u,v \in E$).
-- [ ] **B)** $\varphi$ est anti-symétrique ($\varphi(u,v) = -\varphi(v,u)$ pour tous $u,v \in E$).
-- [x] **C)** $\varphi$ est définie positive ($\varphi(u,u) > 0$ pour tout $u \neq 0_E$).
-- [ ] **D)** $\varphi(u,u)$ peut être négatif pour certains vecteurs non nuls.
-
-<details>
-
-<summary>Solution</summary>
-
-**Réponses : [A, C]**
-
-Un produit scalaire sur un espace vectoriel réel $E$ est une application $\varphi: E \times E \to \mathbb{R}$ qui doit satisfaire trois conditions : être une forme bilinéaire, être symétrique et être définie positive. La question stipule déjà que $\varphi$ est bilinéaire.
-
-- **A)** La symétrie est une condition essentielle. Elle assure que la "mesure" de la relation entre $u$ et $v$ est la même que celle entre $v$ et $u$, ce qui est fondamental pour la géométrie euclidienne. Cette option est correcte.
-
-- **B)** L'anti-symétrie est la propriété des formes alternées, pas des produits scalaires. Une forme anti-symétrique vérifierait $\varphi(u,u) = -\varphi(u,u)$, ce qui implique $\varphi(u,u)=0$ pour tout $u$. Cela contredit directement la condition "définie positive". Cette option est incorrecte.
-
-- **C)** La condition "définie positive" est cruciale. Elle garantit que tout vecteur non nul a une "longueur au carré" strictement positive, ce qui permet de définir une norme cohérente. Si $\varphi(u,u)$ pouvait être nul pour $u \neq 0_E$, on ne pourrait pas distinguer les vecteurs non nuls du vecteur nul en termes de longueur. Cette option est correcte.
-
-- **D)** Si $\varphi(u,u)$ pouvait être négatif, on ne pourrait pas définir la norme comme $\sqrt{\varphi(u,u)}$ (dans $\mathbb{R}$). Cette condition est en contradiction directe avec la propriété de positivité requise pour un produit scalaire. Cette option est incorrecte.
-
-</details>
+# Quiz: Espaces Euclidiens et Hermitiens
 
 ---
 
-#### Question 2 : Calcul de produit scalaire hermitien
+#### Question 1 : Définition d'une forme sesquilinéaire
 
-Soit $E=\mathbb{C}^2$ muni du produit scalaire hermitien canonique $\langle u, v \rangle = z_1 \bar{w}_1 + z_2 \bar{w}_2$. Calculez le produit scalaire entre $u=(i, 2)$ et $v=(1, 1-i)$.
+Soit $E$ un espace vectoriel sur $\mathbb{C}$. Une application $\varphi: E \times E \to \mathbb{C}$ est une forme sesquilinéaire si, pour tous vecteurs $u, v, w \in E$ et tout scalaire $\lambda \in \mathbb{C}$ :
 
-- [ ] **A)** $2-i$
-- [ ] **B)** $3i$
-- [x] **C)** $2+3i$
-- [ ] **D)** $-i$
-
-<details>
-
-<summary>Solution</summary>
-
-**Réponse : [C]**
-
-La définition du produit scalaire hermitien canonique sur $\mathbb{C}^2$ pour $u=(z_1, z_2)$ et $v=(w_1, w_2)$ est $\langle u, v \rangle = z_1 \bar{w}_1 + z_2 \bar{w}_2$. L'étape clé est de ne pas oublier de prendre le conjugué des composantes du *deuxième* vecteur.
-
-Ici, $u=(z_1, z_2)=(i, 2)$ et $v=(w_1, w_2)=(1, 1-i)$.
-
-1.  La première composante de $v$ est $w_1 = 1$. Son conjugué est $\bar{w}_1 = 1$.
-2.  La deuxième composante de $v$ est $w_2 = 1-i$. Son conjugué est $\bar{w}_2 = 1+i$.
-
-Maintenant, appliquons la formule :
-
-$$ \langle u, v \rangle = z_1 \bar{w}_1 + z_2 \bar{w}_2 = (i)(1) + (2)(1+i) $$
-
-$$ \langle u, v \rangle = i + 2 + 2i = 2 + 3i $$
-
-- **A)** Cette réponse, $2-i$, est obtenue si on oublie de conjuguer la deuxième composante de $v$ : $i \cdot 1 + 2 \cdot (1-i) = i+2-2i = 2-i$. C'est une erreur fréquente.
-- **B)** C'est une erreur de calcul.
-- **C)** C'est le résultat correct du calcul.
-- **D)** C'est une erreur de calcul.
-
-</details>
-
----
-
-#### Question 3 : Conséquence de l'orthogonalité
-
-Dans un espace euclidien, si deux vecteurs non nuls $u$ et $v$ sont orthogonaux ($u \perp v$), laquelle de ces affirmations est nécessairement vraie ?
-
-- [ ] **A)** $u$ et $v$ doivent être colinéaires.
-- [x] **B)** $\|u+v\|^2 = \|u\|^2 + \|v\|^2$.
-- [ ] **C)** Le produit scalaire $\langle u, v \rangle = \|u\| \|v\|$.
-- [ ] **D)** $\|u-v\| = \|u\| - \|v\|$.
+- [ ] **A)** Elle est linéaire par rapport à ses deux variables, i.e., $\varphi(\lambda u + v, w) = \lambda\varphi(u,w) + \varphi(v,w)$ et $\varphi(u, \lambda v + w) = \lambda\varphi(u,v) + \varphi(u,w)$.
+- [x] **B)** Elle est linéaire par rapport à sa première variable et semi-linéaire par rapport à sa seconde, i.e., $\varphi(\lambda u + v, w) = \lambda\varphi(u,w) + \varphi(v,w)$ et $\varphi(u, \lambda v + w) = \bar{\lambda}\varphi(u,v) + \varphi(u,w)$.
+- [ ] **C)** Elle est hermitienne, i.e., $\varphi(x, y) = \overline{\varphi(y, x)}$ pour tous $x, y \in E$.
+- [ ] **D)** Elle est semi-linéaire par rapport à ses deux variables, i.e., $\varphi(\lambda u + v, w) = \bar{\lambda}\varphi(u,w) + \varphi(v,w)$ et $\varphi(u, \lambda v + w) = \bar{\lambda}\varphi(u,v) + \varphi(u,w)$.
 
 <details>
 
@@ -92,146 +37,28 @@ Dans un espace euclidien, si deux vecteurs non nuls $u$ et $v$ sont orthogonaux 
 
 **Réponse : [B]**
 
-L'orthogonalité est définie par $\langle u, v \rangle = 0$. Analysons les conséquences.
+Cette question teste la définition d'une forme sesquilinéaire, qui est fondamentale pour les espaces hermitiens.
 
-- **A)** Deux vecteurs non nuls sont colinéaires s'il existe un scalaire $\lambda$ tel que $u=\lambda v$. Dans ce cas, $\langle u,v \rangle = \langle \lambda v, v \rangle = \lambda \|v\|^2$. Pour que ce produit soit nul, il faudrait que $\lambda=0$ (donc $u=0$) ou $\|v\|=0$ (donc $v=0$), ce qui contredit l'hypothèse de vecteurs non nuls. L'orthogonalité et la colinéarité sont (pour des vecteurs non nuls) des concepts mutuellement exclusifs. Cette option est incorrecte.
+- **A)** Incorrect. C'est la définition d'une forme **bilinéaire**. La linéarité s'applique aux deux variables sans conjugaison.
 
-- **B)** C'est le théorème de Pythagore généralisé. Développons $\|u+v\|^2$:
+- **B)** Correct. C'est la définition précise d'une forme sesquilinéaire sur un $\mathbb{C}$-espace vectoriel. Le préfixe "sesqui-" signifie "un et demi", car elle est linéaire pour la première variable (1) et "à moitié" linéaire (semi-linéaire) pour la seconde.
 
-    $$ \|u+v\|^2 = \langle u+v, u+v \rangle = \langle u,u \rangle + \langle u,v \rangle + \langle v,u \rangle + \langle v,v \rangle $$
+- **C)** Incorrect. C'est la condition pour qu'une forme sesquilinéaire soit dite **hermitienne**. C'est une propriété supplémentaire, pas la définition de base d'une forme sesquilinéaire.
 
-    $$ = \|u\|^2 + 2\langle u,v \rangle + \|v\|^2 $$
-
-    Puisque $u$ et $v$ sont orthogonaux, $\langle u,v \rangle = 0$, et l'expression se simplifie en $\|u+v\|^2 = \|u\|^2 + \|v\|^2$. Cette option est correcte.
-
-- **C)** Cette égalité correspond au cas d'égalité dans l'inégalité de Cauchy-Schwarz pour des vecteurs colinéaires et de même sens. Pour des vecteurs orthogonaux, le produit scalaire est nul. Cette option est incorrecte.
-
-- **D)** Ceci est incorrect. L'inégalité triangulaire nous dit que $\|u-v\| \ge |\|u\|-\|v\||$. L'égalité n'est généralement pas vérifiée.
+- **D)** Incorrect. Une forme qui est semi-linéaire par rapport à ses deux variables n'est pas la définition standard d'une forme sesquilinéaire.
 
 </details>
 
 ---
 
-#### Question 4 : Inégalité de Cauchy-Schwarz
+#### Question 2 : Identification d'une forme bilinéaire symétrique
 
-Selon l'inégalité de Cauchy-Schwarz dans un espace euclidien, quand l'égalité $|\langle u, v \rangle| = \|u\| \|v\|$ est-elle vérifiée ?
+Parmi les applications suivantes de $\mathbb{R}^2 \times \mathbb{R}^2$ dans $\mathbb{R}$, laquelle est une forme bilinéaire symétrique ? On note $x=(x_1, x_2)$ et $y=(y_1, y_2)$.
 
-- [ ] **A)** Uniquement si $u$ et $v$ sont orthogonaux.
-- [x] **B)** Si et seulement si les vecteurs $u$ et $v$ sont colinéaires.
-- [ ] **C)** Toujours, par définition du produit scalaire.
-- [ ] **D)** Uniquement si l'un des vecteurs est le vecteur nul.
-
-<details>
-
-<summary>Solution</summary>
-
-**Réponse : [B]**
-
-L'inégalité de Cauchy-Schwarz est un résultat fondamental qui s'énonce $|\langle u, v \rangle| \le \|u\| \|v\|$. Le cas d'égalité est un point clé de ce théorème.
-
-- **A)** Si $u$ et $v$ sont orthogonaux (et non nuls), le côté gauche $|\langle u, v \rangle|$ est 0, tandis que le côté droit $\|u\| \|v\|$ est strictement positif. L'égalité n'a donc pas lieu. C'est le cas de l'inégalité la plus "stricte" possible. Cette option est incorrecte.
-
-- **B)** C'est la condition exacte du cas d'égalité. Si $u$ et $v$ sont colinéaires, alors $u = \lambda v$ pour un scalaire $\lambda$.
-
-    $|\langle u,v \rangle| = |\langle \lambda v, v \rangle| = |\lambda| \langle v,v \rangle = |\lambda| \|v\|^2$.
-
-    $\|u\|\|v\| = \|\lambda v\|\|v\| = |\lambda|\|v\|\|v\| = |\lambda|\|v\|^2$.
-
-    Les deux termes sont égaux. Réciproquement, si l'égalité a lieu, on peut montrer que la famille $(u,v)$ est liée. Cette option est correcte.
-
-- **C)** L'inégalité n'est pas une égalité en général. Par exemple, pour $u=(1,1)$ et $v=(1,-1)$ dans $\mathbb{R}^2$, $\langle u,v \rangle = 0$ mais $\|u\|\|v\| = \sqrt{2}\sqrt{2}=2$. Donc $0 < 2$. Cette option est incorrecte.
-
-- **D)** Si l'un des vecteurs est nul, par exemple $u=0_E$, alors $|\langle 0_E, v \rangle| = 0$ et $\|0_E\| \|v\| = 0$. L'égalité a bien lieu. Cependant, ce n'est pas le seul cas. C'est un cas particulier de "vecteurs colinéaires" ($0_E = 0 \cdot v$). La condition générale est la colinéarité. Cette option est trop restrictive.
-
-</details>
-
----
-
-#### Question 5 : Avantages des bases orthonormées
-
-Quels sont les avantages de travailler avec une base orthonormée $(e_1, \dots, e_n)$ dans un espace euclidien ?
-
-- [ ] **A)** Le procédé de Gram-Schmidt permet de la transformer en une base quelconque.
-- [x] **B)** Le produit scalaire de deux vecteurs $x=\sum x_i e_i$ et $y=\sum y_i e_i$ se calcule simplement par $\sum x_i y_i$.
-- [x] **C)** La norme d'un vecteur $x$ se calcule via l'identité de Parseval : $\|x\|^2 = \sum_{i=1}^n |\langle x, e_i \rangle|^2$.
-- [x] **D)** Les coordonnées d'un vecteur $x$ sont données directement par la formule $x_i = \langle x, e_i \rangle$.
-
-<details>
-
-<summary>Solution</summary>
-
-**Réponses : [B, C, D]**
-
-Les bases orthonormées (BON) simplifient radicalement les calculs dans les espaces euclidiens ou hermitiens.
-
-- **A)** C'est l'inverse. Le procédé de Gram-Schmidt transforme une base quelconque en une base orthonormée. Cette affirmation est incorrecte.
-
-- **B)** C'est l'une des propriétés les plus utiles. Le produit scalaire, qui peut avoir une forme compliquée, se ramène à la somme des produits des coordonnées, comme le produit scalaire canonique dans $\mathbb{R}^n$.
-
-    $\langle x, y \rangle = \langle \sum_i x_i e_i, \sum_j y_j e_j \rangle = \sum_i \sum_j x_i y_j \langle e_i, e_j \rangle$. Comme $\langle e_i, e_j \rangle = \delta_{ij}$, il ne reste que les termes où $i=j$, d'où $\sum_i x_i y_i$. Cette option est correcte.
-
-- **C)** C'est l'identité de Parseval, une conséquence directe du calcul de la norme dans une BON. $\|x\|^2 = \langle x, x \rangle = \sum_i x_i^2$. Or, on sait que les coordonnées $x_i$ sont $\langle x, e_i \rangle$. En substituant, on obtient $\|x\|^2 = \sum_i |\langle x, e_i \rangle|^2$. Cette option est correcte.
-
-- **D)** C'est la formule de calcul des coordonnées dans une BON. Si $x = \sum_j x_j e_j$, alors $\langle x, e_i \rangle = \langle \sum_j x_j e_j, e_i \rangle = \sum_j x_j \langle e_j, e_i \rangle = \sum_j x_j \delta_{ji} = x_i$. Cette simplicité est un avantage majeur. Cette option est correcte.
-
-</details>
-
----
-
-#### Question 6 : Procédé de Gram-Schmidt
-
-On applique le procédé de Gram-Schmidt à la base $(v_1, v_2)$ de $\mathbb{R}^2$ avec $v_1=(1,1)$ et $v_2=(0,2)$. Quel est le deuxième vecteur $u_2$ (avant l'étape de normalisation) obtenu par le procédé ?
-
-- [ ] **A)** $(1,-1)$
-- [x] **B)** $(-1,1)$
-- [ ] **C)** $(0,2)$
-- [ ] **D)** $(1,1)$
-
-<details>
-
-<summary>Solution</summary>
-
-**Réponse : [B]**
-
-Le procédé de Gram-Schmidt construit une base orthogonale $(u_1, \dots, u_n)$ puis une base orthonormée $(e_1, \dots, e_n)$ à partir d'une base quelconque $(v_1, \dots, v_n)$.
-
-1.  **Première étape :** On pose $u_1 = v_1 = (1,1)$. On calcule le premier vecteur normé $e_1$:
-
-    $\|u_1\| = \sqrt{1^2+1^2} = \sqrt{2}$.
-
-    $e_1 = \frac{u_1}{\|u_1\|} = \frac{1}{\sqrt{2}}(1,1)$.
-
-2.  **Deuxième étape :** On calcule $u_2$ en soustrayant à $v_2$ sa projection sur la droite dirigée par $e_1$. La formule est $u_2 = v_2 - P_{\text{Vect}(e_1)}(v_2) = v_2 - \langle v_2, e_1 \rangle e_1$.
-
-    -   Calculons le produit scalaire :
-
-        $$ \langle v_2, e_1 \rangle = \left\langle (0,2), \frac{1}{\sqrt{2}}(1,1) \right\rangle = \frac{1}{\sqrt{2}} (0 \cdot 1 + 2 \cdot 1) = \frac{2}{\sqrt{2}} = \sqrt{2} $$
-
-    -   Calculons $u_2$ :
-
-        $$ u_2 = v_2 - \langle v_2, e_1 \rangle e_1 = (0,2) - \sqrt{2} \cdot \left(\frac{1}{\sqrt{2}}(1,1)\right) $$
-
-        $$ u_2 = (0,2) - (1,1) = (-1,1) $$
-
-Le vecteur $u_2$ (avant normalisation) est donc $(-1,1)$.
-
-- **A)** C'est le signe opposé du bon résultat.
-- **B)** C'est le résultat correct.
-- **C)** C'est simplement le vecteur de départ $v_2$.
-- **D)** C'est le premier vecteur $u_1$.
-
-</details>
-
----
-
-#### Question 7 : Formule de la projection orthogonale
-
-Soit $F$ un sous-espace vectoriel d'un espace euclidien $E$ et $(e_1, \dots, e_p)$ une base orthonormée de $F$. Quelle est la formule correcte pour la projection orthogonale $P_F(x)$ d'un vecteur $x \in E$ sur $F$ ?
-
-- [x] **A)** $P_F(x) = \sum_{i=1}^p \langle x, e_i \rangle e_i$
-- [ ] **B)** $P_F(x) = x - \sum_{i=1}^p \langle x, e_i \rangle e_i$
-- [ ] **C)** $P_F(x) = \sum_{i=1}^p \langle x, e_i \rangle$
-- [ ] **D)** $P_F(x) = \sum_{i=1}^p \frac{\langle x, e_i \rangle}{\|e_i\|^2} e_i$
+- [x] **A)** $\varphi(x, y) = 3x_1 y_1 + x_2 y_2$
+- [ ] **B)** $\varphi(x, y) = x_1^2 + y_1^2$
+- [ ] **C)** $\varphi(x, y) = x_1 y_2$
+- [ ] **D)** $\varphi(x, y) = x_1 y_2 - x_2 y_1$
 
 <details>
 
@@ -239,95 +66,30 @@ Soit $F$ un sous-espace vectoriel d'un espace euclidien $E$ et $(e_1, \dots, e_p
 
 **Réponse : [A]**
 
-La projection orthogonale d'un vecteur $x$ sur un sous-espace $F$ est la somme des projections de $x$ sur chaque vecteur d'une base orthonormée de $F$.
+Cette question teste la capacité à vérifier les propriétés de bilinéarité et de symétrie sur des exemples concrets.
 
-- **A)** Cette formule est correcte. Le scalaire $\langle x, e_i \rangle$ est la coordonnée de la projection de $x$ le long du vecteur de base $e_i$. On multiplie cette coordonnée par le vecteur $e_i$ pour obtenir le vecteur de projection sur cet axe, et on somme sur tous les vecteurs de la base de $F$.
+- **A)** Correct.
+    - **Bilinéarité** : $\varphi(\lambda u+v, y) = 3(\lambda u_1+v_1)y_1 + (\lambda u_2+v_2)y_2 = \lambda(3u_1y_1+u_2y_2) + (3v_1y_1+v_2y_2) = \lambda\varphi(u,y)+\varphi(v,y)$. La linéarité à droite est similaire.
+    - **Symétrie** : $\varphi(x, y) = 3x_1 y_1 + x_2 y_2 = 3y_1 x_1 + y_2 x_2 = \varphi(y, x)$.
 
-- **B)** Cette formule représente $x - P_F(x)$. Puisque tout vecteur $x$ se décompose de manière unique en $x = P_F(x) + P_{F^\perp}(x)$, cette formule calcule en fait la projection de $x$ sur l'orthogonal de $F$, soit $P_{F^\perp}(x)$. C'est incorrect.
+- **B)** Incorrect. Cette forme n'est pas linéaire. Par exemple, $\varphi(2x, y) = (2x_1)^2 + y_1^2 = 4x_1^2 + y_1^2$, ce qui est différent de $2\varphi(x, y) = 2(x_1^2 + y_1^2)$.
 
-- **C)** La somme des produits scalaires $\sum \langle x, e_i \rangle$ est un scalaire (un nombre), alors que la projection $P_F(x)$ doit être un vecteur. Cette formule est dimensionnellement incorrecte.
+- **C)** Incorrect. Cette forme est bilinéaire, mais elle n'est pas symétrique : $\varphi(y, x) = y_1 x_2$, ce qui est différent de $\varphi(x, y) = x_1 y_2$ en général.
 
-- **D)** Cette formule est correcte mais redondante. Comme $(e_1, \dots, e_p)$ est une base orthonormée, chaque vecteur $e_i$ a une norme de 1, donc $\|e_i\|^2=1$. La division par 1 ne change rien. Cette formule est plus générale et s'applique à une base simplement orthogonale, mais dans le contexte d'une base orthonormée comme stipulé, la formule A est la forme standard et la plus simple.
-
-</details>
-
----
-
-#### Question 8 : Théorème de la meilleure approximation
-
-Le théorème de la meilleure approximation stipule que pour un vecteur $x$ et un sous-espace vectoriel $F$, la projection orthogonale $P_F(x)$ est...
-
-- [ ] **A)** un vecteur de $F^\perp$.
-- [ ] **B)** toujours égal à $x$.
-- [ ] **C)** ...l'unique vecteur $y \in F$ qui maximise la distance $\|x - y\|$.
-- [x] **D)** ...l'unique vecteur $y \in F$ qui minimise la distance $\|x - y\|$.
-
-<details>
-
-<summary>Solution</summary>
-
-**Réponse : [D]**
-
-Ce théorème est une des applications les plus importantes de la projection orthogonale.
-
-- **A)** Par définition, le projeté $P_F(x)$ appartient au sous-espace $F$. Le vecteur $x - P_F(x)$, qui représente l'erreur d'approximation, appartient à $F^\perp$, mais $P_F(x)$ lui-même est dans $F$. Cette option est incorrecte.
-
-- **B)** Le projeté $P_F(x)$ n'est égal à $x$ que si $x$ appartient déjà au sous-espace $F$. En général, ce n'est pas le cas. Cette option est incorrecte.
-
-- **C)** La projection orthogonale minimise la distance. Maximiser la distance n'a souvent pas de sens (la distance peut être infinie si $F$ n'est pas l'espace entier). Cette option est l'opposé du théorème.
-
-- **D)** C'est l'énoncé exact du théorème de la meilleure approximation. Parmi tous les vecteurs $y$ que l'on peut choisir dans le sous-espace $F$, celui qui est "le plus proche" de $x$ (au sens de la norme euclidienne) est précisément la projection orthogonale de $x$ sur $F$. Cette option est correcte.
+- **D)** Incorrect. Cette forme est bilinéaire. C'est le déterminant. Elle n'est pas symétrique, mais antisymétrique : $\varphi(y, x) = y_1 x_2 - y_2 x_1 = -(x_1 y_2 - x_2 y_1) = -\varphi(x, y)$.
 
 </details>
 
 ---
 
-#### Question 9 : Matrice de l'adjoint
+#### Question 3 : Définition d'un produit scalaire
 
-Soit $f$ un endomorphisme d'un espace hermitien $E$ de dimension finie. Si la matrice de $f$ dans une base orthonormée est $A = \begin{pmatrix} i & 1 \\ 2 & 1-i \end{pmatrix}$, quelle est la matrice de son adjoint $f^*$ dans la même base ?
+Quelle est la définition complète d'un produit scalaire sur un espace vectoriel réel $E$ ?
 
-- [x] **A)** $\begin{pmatrix} -i & 2 \\ 1 & 1+i \end{pmatrix}$
-- [ ] **B)** $\begin{pmatrix} i & 2 \\ 1 & 1-i \end{pmatrix}$
-- [ ] **C)** $\begin{pmatrix} -i & 1 \\ 2 & 1+i \end{pmatrix}$
-- [ ] **D)** $\begin{pmatrix} 1+i & 2 \\ 1 & -i \end{pmatrix}$
-
-<details>
-
-<summary>Solution</summary>
-
-**Réponse : [A]**
-
-Dans un espace hermitien (complexe), la matrice de l'endomorphisme adjoint $f^*$ dans une base **orthonormée** est la **transconjuguée** (ou adjointe) de la matrice de $f$. On la note $A^\dagger$ ou $A^*$. L'opération consiste à transposer la matrice puis à prendre le conjugué de chaque coefficient (ou l'inverse).
-
-Soit $A = \begin{pmatrix} i & 1 \\ 2 & 1-i \end{pmatrix}$.
-
-1.  **Transposition :** On échange les lignes et les colonnes.
-
-    $$ {}^tA = \begin{pmatrix} i & 2 \\ 1 & 1-i \end{pmatrix} $$
-
-2.  **Conjugaison :** On prend le conjugué de chaque coefficient. Rappel : $\overline{a+ib} = a-ib$.
-
-    $$ \overline{{}^tA} = \begin{pmatrix} \bar{i} & \bar{2} \\ \bar{1} & \overline{1-i} \end{pmatrix} = \begin{pmatrix} -i & 2 \\ 1 & 1+i \end{pmatrix} $$
-
-La matrice de $f^*$ est donc $\begin{pmatrix} -i & 2 \\ 1 & 1+i \end{pmatrix}$.
-
-- **A)** C'est le résultat correct.
-- **B)** C'est la transposée ${}^tA$, mais sans la conjugaison. C'est la formule pour un espace euclidien (réel).
-- **C)** C'est la matrice conjuguée $\bar{A}$, mais sans la transposition.
-- **D)** C'est une erreur de calcul.
-
-</details>
-
----
-
-#### Question 10 : Propriétés de l'adjoint
-
-Parmi les propriétés suivantes de l'opérateur adjoint, laquelle est **incorrecte** pour des endomorphismes $f, g$ d'un espace hermitien et un scalaire $\lambda \in \mathbb{C}$ ?
-
-- [ ] **A)** $(f \circ g)^* = g^* \circ f^*$
-- [ ] **B)** $(f+g)^* = f^* + g^*$
-- [x] **C)** $(\lambda f)^* = \lambda f^*$
-- [ ] **D)** $(f^*)^* = f$
+- [ ] **A)** C'est une forme bilinéaire.
+- [ ] **B)** C'est une forme bilinéaire symétrique et positive.
+- [x] **C)** C'est une forme bilinéaire symétrique, définie et positive.
+- [ ] **D)** C'est une forme sesquilinéaire hermitienne.
 
 <details>
 
@@ -335,132 +97,31 @@ Parmi les propriétés suivantes de l'opérateur adjoint, laquelle est **incorre
 
 **Réponse : [C]**
 
-La question demande d'identifier la propriété incorrecte parmi celles proposées.
+La question demande la définition complète et rigoureuse d'un produit scalaire dans le cas réel.
 
-- **A)** L'adjoint d'une composée d'endomorphismes est la composée des adjoints, mais en inversant l'ordre. Cette propriété est correcte.
+- **A)** Incorrect. C'est trop vague. Une forme bilinéaire n'est pas nécessairement symétrique ou définie positive.
 
-- **B)** L'adjoint d'une somme est la somme des adjoints. L'opération d'adjonction est linéaire. Cette propriété est correcte.
+- **B)** Incorrect. Il manque une condition cruciale : le caractère "défini". Une forme bilinéaire symétrique et positive peut être nulle pour des vecteurs non nuls (par exemple, $\varphi(x,y)=x_1y_1$ sur $\mathbb{R}^2$ est nulle pour le vecteur non nul $(0,1)$).
 
-- **C)** C'est ici que se trouve l'erreur. Pour un scalaire complexe $\lambda$, la propriété est $(\lambda f)^* = \bar{\lambda} f^*$. L'adjoint est une application semi-linéaire (ou anti-linéaire). Le scalaire doit être conjugué. L'affirmation $(\lambda f)^* = \lambda f^*$ est donc incorrecte.
+- **C)** Correct. C'est la définition exacte. Les trois propriétés sont nécessaires :
+    1.  **Bilinéaire symétrique** : pour la structure algébrique.
+    2.  **Positive** ($\langle x,x \rangle \ge 0$) : pour que la notion de "longueur au carré" soit positive.
+    3.  **Définie** ($\langle x,x \rangle = 0 \iff x=0$) : pour que seul le vecteur nul ait une longueur nulle.
 
-- **D)** Appliquer l'adjonction deux fois de suite redonne l'endomorphisme de départ. L'adjonction est une involution. Cette propriété est correcte.
-
-La propriété incorrecte est donc la C.
-
-</details>
-
----
-
-#### Question 11 : Théorème de Représentation de Riesz
-
-Que dit le théorème de représentation de Riesz pour un espace euclidien $E$ de dimension finie ?
-
-- [ ] **A)** Tout espace vectoriel de dimension finie admet une base orthonormée.
-- [x] **B)** Toute forme linéaire $l$ sur $E$ peut être représentée de manière unique par un produit scalaire avec un vecteur $y_l \in E$ (c'est-à-dire $l(x) = \langle x, y_l \rangle$ pour tout $x$).
-- [ ] **C)** Tout vecteur peut être projeté orthogonalement sur un sous-espace.
-- [ ] **D)** Tout endomorphisme peut être représenté par une matrice carrée.
-
-<details>
-
-<summary>Solution</summary>
-
-**Réponse : [B]**
-
-Ce théorème établit un lien fondamental entre un espace euclidien et son dual (l'espace des formes linéaires).
-
-- **A)** Cette affirmation est vraie (c'est une conséquence du procédé de Gram-Schmidt), mais ce n'est pas le théorème de Riesz.
-
-- **B)** C'est l'énoncé précis du théorème de Riesz. Il garantit que pour chaque application linéaire $l: E \to \mathbb{R}$ (une forme linéaire), il existe un et un seul vecteur $y_l$ dans $E$ qui "fait le travail" de $l$ via le produit scalaire. Cela crée une correspondance (un isomorphisme) entre l'espace $E$ et son dual $E^*$.
-
-- **C)** C'est le théorème de la projection orthogonale, qui est un autre résultat important de la géométrie euclidienne, mais ce n'est pas le théorème de Riesz.
-
-- **D)** Cette affirmation est vraie pour tout endomorphisme sur un espace de dimension finie, qu'il soit euclidien ou non. Ce n'est pas le théorème de Riesz.
+- **D)** Incorrect. C'est la base de la définition d'un produit scalaire sur un espace vectoriel **complexe** (hermitien), pas réel (euclidien).
 
 </details>
 
 ---
 
-#### Question 12 : Identification d'un produit scalaire
+#### Question 4 : Forme non valide comme produit scalaire
 
-Laquelle des formes suivantes, définies pour $u=(x_1, x_2)$ et $v=(y_1, y_2)$ dans $\mathbb{R}^2$, est un produit scalaire valide ?
+Lesquelles de ces formes définies sur $\mathbb{R}^2 \times \mathbb{R}^2$ ne sont PAS des produits scalaires ? On note $x=(x_1, x_2)$ et $y=(y_1, y_2)$.
 
-- [ ] **A)** $\varphi(u,v) = x_1 y_1$
-- [ ] **B)** $\varphi(u,v) = x_1 y_2 - x_2 y_1$
-- [ ] **C)** $\varphi(u,v) = x_1 y_1 - x_2 y_2$
-- [x] **D)** $\varphi(u,v) = 2x_1 y_1 + x_2 y_2$
-
-<details>
-
-<summary>Solution</summary>
-
-**Réponse : [D]**
-
-Pour être un produit scalaire, une forme bilinéaire doit être symétrique et définie positive.
-
-- **A)** $\varphi(u,v) = x_1 y_1$. C'est symétrique. Cependant, ce n'est pas défini positif. Pour le vecteur non nul $u=(0,1)$, on a $\varphi(u,u) = 0 \cdot 0 = 0$. La condition $\varphi(u,u) > 0$ pour $u \neq 0_E$ n'est pas respectée.
-
-- **B)** $\varphi(u,v) = x_1 y_2 - x_2 y_1$. Ce n'est pas symétrique, car $\varphi(v,u) = y_1 x_2 - y_2 x_1 = -\varphi(u,v)$. C'est une forme bilinéaire alternée (le déterminant).
-
-- **C)** $\varphi(u,v) = x_1 y_1 - x_2 y_2$. C'est symétrique. Cependant, ce n'est pas positif. Pour le vecteur $u=(0,1)$, on a $\varphi(u,u) = 0 - 1^2 = -1 < 0$.
-
-- **D)** $\varphi(u,v) = 2x_1 y_1 + x_2 y_2$.
-    1.  **Symétrie :** $\varphi(v,u) = 2y_1 x_1 + y_2 x_2 = \varphi(u,v)$. C'est symétrique.
-    2.  **Définie positive :** $\varphi(u,u) = 2x_1^2 + x_2^2$. Cette somme de carrés est toujours $\ge 0$. Elle ne peut être nulle que si $2x_1^2=0$ et $x_2^2=0$, ce qui implique $x_1=0$ et $x_2=0$, donc $u=(0,0)$. La forme est bien définie positive.
-
-    Cette forme définit un produit scalaire valide.
-
-</details>
-
----
-
-#### Question 13 : Famille orthogonale ou orthonormée ?
-
-On considère les vecteurs $v_1 = (1, 0, 1)$ et $v_2 = (1, 1, -1)$ dans $\mathbb{R}^3$ muni du produit scalaire usuel. La famille $(v_1, v_2)$ est :
-
-- [ ] **A)** Orthonormée
-- [ ] **B)** Ni orthogonale, ni orthonormée
-- [x] **C)** Orthogonale, mais pas orthonormée
-- [ ] **D)** Une base de $\mathbb{R}^3$
-
-<details>
-
-<summary>Solution</summary>
-
-**Réponse : [C]**
-
-Il faut vérifier deux propriétés : l'orthogonalité (le produit scalaire des vecteurs distincts est nul) et la normalisation (chaque vecteur est de norme 1).
-
-1.  **Orthogonalité :** Calculons le produit scalaire entre $v_1$ et $v_2$.
-
-    $$ \langle v_1, v_2 \rangle = \langle (1,0,1), (1,1,-1) \rangle = 1 \cdot 1 + 0 \cdot 1 + 1 \cdot (-1) = 1 + 0 - 1 = 0 $$
-
-    Le produit scalaire est nul, donc la famille est **orthogonale**.
-
-2.  **Normalisation :** Calculons la norme de chaque vecteur.
-
-    $$ \|v_1\| = \sqrt{1^2 + 0^2 + 1^2} = \sqrt{2} $$
-
-    $$ \|v_2\| = \sqrt{1^2 + 1^2 + (-1)^2} = \sqrt{3} $$
-
-    Aucun des deux vecteurs n'est de norme 1. La famille n'est donc **pas orthonormée**.
-
-- **A)** Faux, car les vecteurs ne sont pas de norme 1.
-- **B)** Faux, car la famille est orthogonale.
-- **C)** Vrai, la famille est orthogonale mais pas orthonormée.
-- **D)** Faux, une famille de deux vecteurs ne peut pas former une base d'un espace de dimension 3.
-
-</details>
-
----
-
-#### Question 14 : Propriétés de l'orthogonal d'un sous-espace
-
-Soit $F$ un sous-espace vectoriel d'un espace euclidien $E$ de dimension finie. Lesquelles de ces affirmations concernant son orthogonal $F^\perp$ sont toujours vraies ?
-
-- [ ] **A)** Tout vecteur de $E$ appartient soit à $F$, soit à $F^\perp$.
-- [x] **B)** $F \cap F^\perp$ contient uniquement le vecteur nul.
-- [ ] **C)** $\dim(F) - \dim(F^\perp) = 0$.
-- [x] **D)** $(F^\perp)^\perp = F$.
+- [ ] **A)** $\langle x, y \rangle = 2x_1 y_1 + 3x_2 y_2$
+- [x] **B)** $\langle x, y \rangle = x_1 y_1 - x_2 y_2$
+- [ ] **C)** $\langle x, y \rangle = (x_1+x_2)(y_1+y_2) + x_2 y_2$
+- [x] **D)** $\langle x, y \rangle = x_1 y_1 + x_1 y_2 + x_2 y_1$
 
 <details>
 
@@ -468,16 +129,321 @@ Soit $F$ un sous-espace vectoriel d'un espace euclidien $E$ de dimension finie. 
 
 **Réponses : [B, D]**
 
-Analysons chaque proposition sur les propriétés de l'orthogonal $F^\perp = \{ x \in E \mid \forall y \in F, \langle x, y \rangle = 0 \}$.
+Pour être un produit scalaire, une forme bilinéaire symétrique doit être définie positive.
 
-- **A)** Ceci est faux. Un vecteur $x$ se décompose en $x = y+z$ avec $y \in F$ et $z \in F^\perp$. Si $y$ et $z$ sont tous les deux non nuls, alors $x$ n'appartient ni à $F$, ni à $F^\perp$. Par exemple dans $\mathbb{R}^2$, si $F$ est l'axe des abscisses, $F^\perp$ est l'axe des ordonnées. Le vecteur $(1,1)$ n'est sur aucun des deux axes.
+- **A)** Incorrect. C'est un produit scalaire valide.
+    - Symétrie : évidente.
+    - Définie positive : $\langle x, x \rangle = 2x_1^2 + 3x_2^2 \ge 0$. Cette somme est nulle si et seulement si $x_1^2=0$ et $x_2^2=0$, c'est-à-dire $x=(0,0)$.
 
-- **B)** Soit $x \in F \cap F^\perp$. Comme $x \in F$ et $x \in F^\perp$, il doit être orthogonal à lui-même, c'est-à-dire $\langle x, x \rangle = 0$. Par la propriété "définie" du produit scalaire, cela implique que $x=0_E$. L'intersection est donc bien le sous-espace $\{0_E\}$. Cette affirmation est correcte.
+- **B)** Correct. Cette forme n'est pas un produit scalaire car elle n'est pas positive. Pour le vecteur $x=(0, 1)$, on a $\langle x, x \rangle = 0^2 - 1^2 = -1 < 0$.
 
-- **C)** La relation correcte entre les dimensions est $\dim(F) + \dim(F^\perp) = \dim(E)$. L'affirmation $\dim(F) = \dim(F^\perp)$ n'est vraie que dans le cas particulier où $\dim(F) = \frac{1}{2}\dim(E)$. C'est donc faux en général.
+- **C)** Incorrect. C'est un produit scalaire valide.
+    - Symétrie : évidente.
+    - Définie positive : $\langle x, x \rangle = (x_1+x_2)^2 + x_2^2 \ge 0$. Si $\langle x, x \rangle=0$, alors $(x_1+x_2)^2=0$ et $x_2^2=0$. Cela implique $x_2=0$, et donc $x_1+0=0 \implies x_1=0$. Le seul vecteur pour lequel c'est nul est $x=(0,0)$.
 
-- **D)** C'est une propriété fondamentale en dimension finie, connue sous le nom de "théorème du double orthogonal". Prendre l'orthogonal deux fois redonne le sous-espace de départ. Cette affirmation est correcte.
+- **D)** Correct. Cette forme n'est pas symétrique ($\langle y,x \rangle = y_1x_1 + y_1x_2 + y_2x_1 \neq \langle x,y \rangle$). De plus, elle n'est pas positive. Par exemple, pour $x=(1,-1)$, $\langle x,x \rangle = 1^2 + 1(-1)+(-1)1 = 1-1-1 = -1 < 0$. Elle ne peut donc pas être un produit scalaire.
 
 </details>
 
 ---
+
+#### Question 5 : Inégalité de Cauchy-Schwarz
+
+Soit $(E, \langle \cdot, \cdot \rangle)$ un espace préhilbertien. L'inégalité de Cauchy-Schwarz s'écrit $|\langle x, y \rangle| \le \|x\| \|y\|$. Quand a-t-on égalité ?
+
+- [x] **A)** Si et seulement si $x$ et $y$ sont colinéaires.
+- [ ] **B)** Si et seulement si $x$ et $y$ sont orthogonaux.
+- [ ] **C)** Uniquement si $x$ ou $y$ est le vecteur nul.
+- [ ] **D)** Si et seulement si $x$ et $y$ sont des vecteurs unitaires.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+Cette question porte sur le cas d'égalité de l'inégalité de Cauchy-Schwarz, qui est une partie essentielle du théorème.
+
+- **A)** Correct. Le cas d'égalité $|\langle x, y \rangle| = \|x\| \|y\|$ se produit si et seulement si les vecteurs $x$ et $y$ sont linéairement dépendants (colinéaires). Cela signifie qu'il existe un scalaire $\lambda$ tel que $x = \lambda y$ ou $y = \lambda x$.
+
+- **B)** Incorrect. Si $x$ et $y$ sont orthogonaux, alors $\langle x, y \rangle = 0$. L'inégalité devient $0 \le \|x\| \|y\|$, ce qui est toujours vrai. C'est le cas où le membre de gauche est minimal, pas nécessairement un cas d'égalité (sauf si l'un des vecteurs est nul).
+
+- **C)** Incorrect. Si $x$ ou $y$ est le vecteur nul, les deux côtés de l'inégalité sont nuls, donc il y a bien égalité. Cependant, ce n'est pas la condition *nécessaire et suffisante*. L'égalité peut aussi se produire pour des vecteurs non nuls, à condition qu'ils soient colinéaires (par exemple, $x=(1,1)$ et $y=(2,2)$).
+
+- **D)** Incorrect. Le fait que les vecteurs soient unitaires $(\|x\|=\|y\|=1)$ n'a pas de lien direct avec le cas d'égalité. Pour deux vecteurs unitaires, l'inégalité devient $|\langle x, y \rangle| \le 1$, avec égalité si et seulement s'ils sont colinéaires ($x = \pm y$ dans le cas réel).
+
+</details>
+
+---
+
+#### Question 6 : Norme et produit scalaire
+
+Quelle propriété, parmi les suivantes, caractérise une norme $\|\cdot\|$ qui est associée à un produit scalaire (c'est-à-dire, pour laquelle il existe un produit scalaire $\langle \cdot, \cdot \rangle$ tel que $\|x\| = \sqrt{\langle x,x \rangle}$) ?
+
+- [ ] **A)** L'inégalité triangulaire : $\|x+y\| \le \|x\| + \|y\|$
+- [x] **B)** L'identité du parallélogramme : $\|x+y\|^2 + \|x-y\|^2 = 2(\|x\|^2 + \|y\|^2)$
+- [ ] **C)** L'homogénéité : $\|\lambda x\| = |\lambda| \|x\|$
+- [ ] **D)** Le théorème de Pythagore : si $\langle x,y \rangle=0$, alors $\|x+y\|^2 = \|x\|^2 + \|y\|^2$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Cette question demande d'identifier la propriété qui est une condition nécessaire ET suffisante pour qu'une norme dérive d'un produit scalaire.
+
+- **A)** Incorrect. L'inégalité triangulaire est une propriété que **toutes** les normes doivent vérifier par définition. Elle ne distingue pas les normes euclidiennes des autres.
+
+- **B)** Correct. L'identité du parallélogramme est la condition nécessaire et suffisante. Si une norme vérifie cette identité, alors on peut construire un produit scalaire (via les identités de polarisation) qui induit cette norme. Inversement, toute norme issue d'un produit scalaire vérifie cette identité.
+
+- **C)** Incorrect. L'homogénéité est également une propriété que **toutes** les normes doivent vérifier par définition.
+
+- **D)** Incorrect. Le théorème de Pythagore est une **conséquence** du fait qu'une norme dérive d'un produit scalaire, mais ce n'est pas une condition suffisante. Il existe des normes non-euclidiennes pour lesquelles on peut définir une notion d'orthogonalité qui satisfait Pythagore sans que l'identité du parallélogramme soit vérifiée pour tous les vecteurs.
+
+</details>
+
+---
+
+#### Question 7 : Calcul de norme
+
+Dans l'espace hermitien $\mathbb{C}^3$ muni de son produit scalaire canonique $\langle x, y \rangle = \sum_{i=1}^3 x_i \bar{y_i}$, calculez la norme du vecteur $v = (1, i, 1+i)$.
+
+- [ ] **A)** $\sqrt{3}$
+- [ ] **B)** $4$
+- [ ] **C)** $\sqrt{2}$
+- [x] **D)** $2$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+La norme d'un vecteur $v$ est donnée par $\|v\| = \sqrt{\langle v, v \rangle}$. Dans un espace hermitien, $\langle v, v \rangle = \sum v_i \bar{v_i} = \sum |v_i|^2$.
+
+1.  Calculons le carré de la norme :
+
+    $\|v\|^2 = |1|^2 + |i|^2 + |1+i|^2$.
+
+2.  Rappelons que pour un nombre complexe $z = a+ib$, son module au carré est $|z|^2 = a^2+b^2$.
+    - $|1|^2 = 1^2 = 1$.
+    - $|i|^2 = 0^2+1^2 = 1$.
+    - $|1+i|^2 = 1^2+1^2 = 2$.
+
+3.  Additionnons les termes :
+
+    $\|v\|^2 = 1 + 1 + 2 = 4$.
+
+4.  La norme est la racine carrée :
+
+    $\|v\| = \sqrt{4} = 2$.
+
+- **A)** Incorrect. $\sqrt{3}$ serait la norme si toutes les composantes avaient un module de 1.
+- **B)** Incorrect. 4 est le carré de la norme, pas la norme elle-même.
+- **C)** Incorrect. $\sqrt{2}$ est le module de la troisième composante.
+
+</details>
+
+---
+
+#### Question 8 : Base orthonormée
+
+Soit $\mathcal{B}=(e_1, \dots, e_n)$ une base orthonormée d'un espace euclidien $E$. Si un vecteur $x \in E$ s'écrit $x = \sum_{i=1}^n x_i e_i$, quelles affirmations sont vraies ?
+
+- [x] **A)** Les coordonnées $x_i$ sont données par $x_i = \langle x, e_i \rangle$.
+- [x] **B)** La norme au carré de $x$ est calculée par $\|x\|^2 = \sum_{i=1}^n x_i^2$.
+- [x] **C)** Pour un autre vecteur $y = \sum_{i=1}^n y_i e_i$, on a $\langle x, y \rangle = \sum_{i=1}^n x_i y_i$.
+- [ ] **D)** L'existence d'une telle base implique que $E$ est $\mathbb{R}^n$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, B, C]**
+
+Cette question porte sur les avantages calculatoires majeurs des bases orthonormées (B.O.N).
+
+- **A)** Correct. C'est la formule pour trouver les coordonnées dans une B.O.N. On a $\langle x, e_j \rangle = \langle \sum_i x_i e_i, e_j \rangle = \sum_i x_i \langle e_i, e_j \rangle = \sum_i x_i \delta_{ij} = x_j$.
+
+- **B)** Correct. C'est l'identité de Parseval. En utilisant la bilinéarité et le fait que $\langle e_i, e_j \rangle = \delta_{ij}$, on a $\|x\|^2 = \langle \sum_i x_i e_i, \sum_j x_j e_j \rangle = \sum_i \sum_j x_i x_j \langle e_i, e_j \rangle = \sum_i x_i^2$.
+
+- **C)** Correct. C'est l'expression du produit scalaire dans une B.O.N, qui devient identique au produit scalaire canonique sur les vecteurs de coordonnées. Le calcul est similaire à celui pour la norme.
+
+- **D)** Incorrect. Tout espace euclidien de dimension finie $n$ possède une base orthonormée. Un tel espace est isomorphe à $\mathbb{R}^n$, mais il peut s'agir d'un autre type d'espace, comme un espace de polynômes ou de fonctions.
+
+</details>
+
+---
+
+#### Question 9 : Procédé de Gram-Schmidt
+
+On applique le procédé de Gram-Schmidt à une base $(v_1, \dots, v_n)$ pour obtenir une base orthonormée $(e_1, \dots, e_n)$. À l'étape $k+1$, on calcule le vecteur $e'_{k+1} = v_{k+1} - \sum_{j=1}^{k} \langle v_{k+1}, e_j \rangle e_j$. Quelle est la propriété principale de ce vecteur $e'_{k+1}$ ?
+
+- [ ] **A)** Il est colinéaire à $v_{k+1}$.
+- [ ] **B)** Il est unitaire.
+- [ ] **C)** Il est orthogonal à tous les vecteurs $v_j$ pour $j \le k$.
+- [x] **D)** Il est orthogonal à tous les vecteurs $e_j$ pour $j \le k$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+Cette question teste la compréhension de l'étape clé du procédé de Gram-Schmidt.
+
+- **A)** Incorrect. Le vecteur $e'_{k+1}$ est obtenu en soustrayant de $v_{k+1}$ sa projection sur le sous-espace engendré par $(e_1, \dots, e_k)$. Il n'y a donc aucune raison pour qu'il soit colinéaire à $v_{k+1}$, sauf cas très particulier.
+
+- **B)** Incorrect. $e'_{k+1}$ est le résultat de l'étape d'orthogonalisation. Il n'est généralement pas unitaire. L'étape suivante de l'algorithme consiste justement à le normaliser en posant $e_{k+1} = e'_{k+1} / \|e'_{k+1}\|$.
+
+- **C)** Incorrect. $e'_{k+1}$ est construit pour être orthogonal à la base **orthonormée** $(e_1, \dots, e_k)$ déjà construite, pas à la base de départ $(v_1, \dots, v_k)$.
+
+- **D)** Correct. Par construction, le terme $\sum_{j=1}^{k} \langle v_{k+1}, e_j \rangle e_j$ est le projeté orthogonal de $v_{k+1}$ sur l'espace $\text{Vect}(e_1, \dots, e_k)$. En soustrayant ce projeté à $v_{k+1}$, on obtient un vecteur qui est orthogonal à cet espace, et donc orthogonal à chacun des vecteurs $e_1, \dots, e_k$.
+
+</details>
+
+---
+
+#### Question 10 : Projection orthogonale
+
+Soit $F$ un sous-espace d'un espace euclidien $E$ et $x \in E$. Le vecteur $P_F(x)$, le projeté orthogonal de $x$ sur $F$, est caractérisé de manière unique par le fait que :
+
+- [x] **A)** $P_F(x)$ est le vecteur de $F$ qui minimise la distance $\|x - y\|$ pour $y \in F$.
+- [ ] **B)** $P_F(x)$ est le seul vecteur de $F$ tel que $x - P_F(x)$ soit orthogonal à $x$.
+- [ ] **C)** La distance de $x$ à $F$ est égale à $\|P_F(x)\|$.
+- [ ] **D)** $P_F(x) = \sum_{i=1}^p \langle x, v_i \rangle v_i$ pour n'importe quelle base $(v_1, \dots, v_p)$ de $F$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+Cette question concerne la propriété fondamentale qui définit géométriquement la projection orthogonale.
+
+- **A)** Correct. C'est le théorème de la meilleure approximation. Le projeté orthogonal $P_F(x)$ est l'unique point de $F$ qui est le plus proche de $x$. La distance de $x$ à $F$ est atteinte en ce point.
+
+- **B)** Incorrect. La condition correcte est que le vecteur $x - P_F(x)$ doit être orthogonal à **tout vecteur de $F$**, pas seulement au vecteur $x$.
+
+- **C)** Incorrect. La distance de $x$ à $F$ est la longueur du vecteur qui "relie" $x$ à son projeté, c'est-à-dire $d(x,F) = \|x - P_F(x)\|$.
+
+- **D)** Incorrect. Cette formule n'est valide que si la base $(v_1, \dots, v_p)$ de $F$ est **orthonormée**. Pour une base quelconque, la formule est beaucoup plus compliquée.
+
+</details>
+
+---
+
+#### Question 11 : Matrice de l'adjoint
+
+Soit $f$ un endomorphisme d'un espace hermitien $E$ (complexe). Sa matrice dans une base **orthonormée** $\mathcal{B}$ est $A$. Quelle est la matrice de son adjoint $f^*$ dans la même base $\mathcal{B}$ ?
+
+- [ ] **A)** $A^{-1}$ (l'inverse de A)
+- [ ] **B)** ${}^tA$ (la transposée de A)
+- [x] **C)** $\overline{{}^tA}$ (la transconjuguée de A)
+- [ ] **D)** $\overline{A}$ (la conjuguée de A)
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+La question porte sur le calcul de la matrice de l'endomorphisme adjoint, qui dépend du corps ($\mathbb{R}$ ou $\mathbb{C}$).
+
+- **A)** Incorrect. La matrice de l'adjoint n'est l'inverse que dans le cas particulier où l'endomorphisme est unitaire.
+
+- **B)** Incorrect. La transposée ${}^tA$ est la matrice de l'adjoint dans le cas d'un espace **euclidien** (réel). L'énoncé précise qu'on est dans un espace hermitien (complexe).
+
+- **C)** Correct. Dans un espace hermitien, la matrice de l'adjoint $f^*$ dans une base orthonormée est la transconjuguée (transposée puis conjuguée, ou l'inverse) de la matrice de $f$. Cette matrice est souvent notée $A^*$.
+
+- **D)** Incorrect. La conjugaison seule ne suffit pas, il faut aussi transposer la matrice.
+
+</details>
+
+---
+
+#### Question 12 : Endomorphismes orthogonaux
+
+Soit $f$ un endomorphisme d'un espace euclidien $E$ de dimension finie. Quelles sont les affirmations équivalentes au fait que $f$ est un endomorphisme orthogonal ?
+
+- [x] **A)** $f$ conserve le produit scalaire, i.e., $\langle f(x), f(y) \rangle = \langle x, y \rangle$ pour tous $x, y \in E$.
+- [x] **B)** $f$ conserve la norme, i.e., $\|f(x)\| = \|x\|$ pour tout $x \in E$.
+- [ ] **C)** La matrice de $f$ dans une base orthonormée est symétrique.
+- [x] **D)** L'adjoint de $f$ est son inverse, i.e., $f^* = f^{-1}$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, B, D]**
+
+Un endomorphisme orthogonal (ou isométrie vectorielle) peut être défini de plusieurs manières équivalentes.
+
+- **A)** Correct. C'est la définition la plus fondamentale. Un endomorphisme orthogonal est une transformation qui préserve la structure géométrique de l'espace, y compris les angles et les longueurs, ce qui est encapsulé dans la conservation du produit scalaire.
+
+- **B)** Correct. En dimension finie, la conservation de la norme est équivalente à la conservation du produit scalaire (cela se démontre avec les identités de polarisation). Une transformation qui conserve les longueurs conserve aussi les angles.
+
+- **C)** Incorrect. Une matrice symétrique dans une base orthonormée correspond à un endomorphisme **auto-adjoint**, pas à un endomorphisme orthogonal.
+
+- **D)** Correct. La condition $\langle f(x), f(y) \rangle = \langle x, y \rangle$ peut se réécrire $\langle x, f^*(f(y)) \rangle = \langle x, y \rangle$. Comme c'est vrai pour tout $x$, cela implique $f^*(f(y))=y$ pour tout $y$, donc $f^* \circ f = \text{Id}$. En dimension finie, cela équivaut à $f^{-1} = f^*$.
+
+</details>
+
+---
+
+#### Question 13 : Classification d'endomorphismes
+
+Un endomorphisme $f$ d'un espace euclidien tel que $f=f^*$ est dit :
+
+- [ ] **A)** Normal
+- [x] **B)** Auto-adjoint
+- [ ] **C)** Orthogonal
+- [ ] **D)** Unitaire
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Cette question est une question de reconnaissance de vocabulaire.
+
+- **A)** Incorrect. Un endomorphisme normal vérifie $f \circ f^* = f^* \circ f$. Tout endomorphisme auto-adjoint est normal (car si $f=f^*$, alors $f \circ f^* = f^2 = f^* \circ f$), mais la définition $f=f^*$ est plus spécifique.
+
+- **B)** Correct. C'est la définition d'un endomorphisme auto-adjoint. Dans le cas réel, on dit aussi endomorphisme symétrique.
+
+- **C)** Incorrect. Un endomorphisme orthogonal vérifie $f^* \circ f = \text{Id}$.
+
+- **D)** Incorrect. Le terme "unitaire" est utilisé pour les espaces hermitiens (complexes). C'est l'équivalent de "orthogonal".
+
+</details>
+
+---
+
+#### Question 14 : Théorème de Riesz
+
+Qu'affirme le théorème de représentation de Riesz dans un espace euclidien $E$ de dimension finie ?
+
+- [ ] **A)** Tout espace euclidien admet une base orthonormée.
+- [ ] **B)** Tout endomorphisme est diagonalisable dans une base orthonormée.
+- [ ] **C)** Il existe une correspondance unique entre les vecteurs de $E$ et les endomorphismes auto-adjoints sur $E$.
+- [x] **D)** Toute forme linéaire $l$ sur $E$ peut s'écrire de façon unique comme $l(x) = \langle x, y_l \rangle$ pour un certain vecteur $y_l \in E$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+Cette question teste la connaissance de l'énoncé d'un théorème important qui relie un espace à son dual.
+
+- **A)** Incorrect. C'est un résultat important, mais il découle du procédé de Gram-Schmidt, ce n'est pas le théorème de Riesz.
+
+- **B)** Incorrect. C'est une version simplifiée du **théorème spectral**, qui ne s'applique qu'à une classe particulière d'endomorphismes (les endomorphismes normaux).
+
+- **C)** Incorrect. Le théorème de Riesz établit une correspondance entre les vecteurs et les **formes linéaires**, pas les endomorphismes.
+
+- **D)** Correct. C'est précisément l'énoncé du théorème. Il établit un isomorphisme canonique entre un espace euclidien $E$ et son dual $E^*$, où chaque forme linéaire est "représentée" par un produit scalaire avec un vecteur unique.
+
+</details>

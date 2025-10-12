@@ -1,0 +1,409 @@
+---
+id: 0eaef5e4
+type: quiz
+order: 13
+title: Séries Numériques - quiz (A)
+tags:
+  - séries numériques
+  - convergence
+  - critère de Cauchy
+  - séries à termes positifs
+  - intégrales généralisées
+  - théorème d'Abel
+createdAt: '2025-10-12T17:47:40.884Z'
+level: regular
+course: Analyse
+courseId: 9c2d50b3
+chapter: Séries Numériques
+chapterId: c9bf30da
+---
+# Quiz: Séries Numériques
+
+---
+
+#### Question 1 : Définition de la convergence d'une série
+
+Qu'est-ce qui définit la convergence d'une série numérique $\sum u_n$ ?
+
+- [ ] **A)** Le terme général $(u_n)$ tend vers 0.
+- [ ] **B)** La suite du terme général $(u_n)$ est décroissante.
+- [x] **C)** La suite des sommes partielles $(s_n)$ admet une limite finie.
+- [ ] **D)** La suite des sommes partielles $(s_n)$ est majorée.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+- **A)** C'est une condition nécessaire pour la convergence, mais pas suffisante. Par exemple, la série harmonique $\sum \frac{1}{n}$ a un terme général qui tend vers 0, mais elle diverge.
+
+- **B)** Le fait que la suite du terme général soit décroissante n'est ni nécessaire ni suffisant pour garantir la convergence. Par exemple, $\sum \frac{1}{n}$ a un terme général décroissant mais diverge.
+
+- **C)** C'est la définition même de la convergence d'une série. Une série converge si et seulement si la suite de ses sommes partielles, $s_n = \sum_{k=0}^{n} u_k$, converge vers une limite finie.
+
+- **D)** Le fait que la suite des sommes partielles soit majorée n'est suffisant que si la série est à termes positifs (car la suite $(s_n)$ est alors croissante). Pour une série à termes de signe quelconque, ce n'est pas suffisant (par exemple, $\sum (-1)^n$ a des sommes partielles bornées par 0 et 1, mais elle diverge).
+
+</details>
+
+---
+
+#### Question 2 : Condition nécessaire de convergence
+
+Soit une série $\sum u_n$ qui est convergente. Quelle conclusion peut-on en tirer avec certitude ?
+
+- [ ] **A)** La série $\sum |u_n|$ est aussi convergente.
+- [ ] **B)** La somme de la série est égale à 0.
+- [x] **C)** La limite du terme général $\lim_{n \to \infty} u_n$ est égale à 0.
+- [ ] **D)** La suite des sommes partielles $(s_n)$ est décroissante à partir d'un certain rang.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+- **A)** C'est la définition de la convergence absolue. Une série convergente n'est pas forcément absolument convergente. L'exemple classique est la série harmonique alternée $\sum \frac{(-1)^{n+1}}{n}$ qui converge, mais $\sum |\frac{(-1)^{n+1}}{n}| = \sum \frac{1}{n}$ diverge.
+
+- **B)** La somme d'une série convergente peut être n'importe quel nombre réel (ou complexe). Par exemple, la série géométrique $\sum (\frac{1}{2})^n$ converge vers 2.
+
+- **C)** C'est la condition nécessaire de convergence. Si une série converge, son terme général doit impérativement tendre vers 0. C'est une conséquence directe de la définition de la convergence.
+
+- **D)** La suite des sommes partielles n'a aucune raison d'être décroissante. Pour une série convergente à termes positifs, elle est croissante. Pour une série alternée, elle oscille en s'amortissant.
+
+</details>
+
+---
+
+#### Question 3 : Test de divergence grossière
+
+Quelle est la nature de la série $\sum_{n=1}^{\infty} \frac{2n}{3n+1}$ ?
+
+- [ ] **A)** Elle converge car son terme général est borné.
+- [x] **B)** Elle diverge car son terme général ne tend pas vers 0.
+- [ ] **C)** Elle converge car c'est une série de type Riemann.
+- [ ] **D)** On ne peut pas conclure avec les outils de base.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+- **A)** Le fait que le terme général soit borné ne suffit pas pour garantir la convergence. Ici, le terme général $u_n = \frac{2n}{3n+1}$ est borné, mais la série diverge.
+
+- **B)** C'est l'application directe du test de divergence grossière. Calculons la limite du terme général :
+
+  $$ \lim_{n \to \infty} u_n = \lim_{n \to \infty} \frac{2n}{3n+1} = \lim_{n \to \infty} \frac{2n}{n(3+1/n)} = \frac{2}{3} $$
+
+  Comme la limite est $\frac{2}{3} \neq 0$, la condition nécessaire de convergence n'est pas satisfaite, donc la série diverge.
+
+- **C)** Une série de Riemann est de la forme $\sum \frac{1}{n^p}$. Cette série n'est pas de ce type.
+
+- **D)** Le test de divergence grossière est un des outils les plus simples et il permet de conclure immédiatement ici.
+
+</details>
+
+---
+
+#### Question 4 : Série Harmonique
+
+Considérons la série harmonique $\sum_{n=1}^{\infty} \frac{1}{n}$. Laquelle de ces affirmations est correcte ?
+
+- [ ] **A)** Elle converge car son terme général $\frac{1}{n}$ tend vers 0.
+- [x] **B)** Elle diverge, bien que son terme général tende vers 0.
+- [ ] **C)** Elle converge vers une somme S que l'on ne peut pas calculer simplement.
+- [ ] **D)** C'est une série télescopique qui converge vers 1.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+- **A)** C'est le piège classique. Le fait que le terme général tende vers 0 est une condition nécessaire mais **non suffisante**. La série harmonique est le contre-exemple le plus important à connaître.
+
+- **B)** C'est la propriété fondamentale de la série harmonique. Elle diverge (vers $+\infty$), ce qui illustre parfaitement que la condition $\lim u_n = 0$ n'est pas suffisante pour assurer la convergence.
+
+- **C)** L'affirmation est incorrecte car la série diverge, elle n'a donc pas de somme finie.
+
+- **D)** La série harmonique n'est pas télescopique. Une série télescopique a un terme général de la forme $v_n - v_{n+1}$.
+
+</details>
+
+---
+
+#### Question 5 : Calcul de la somme d'une série géométrique
+
+Quelle est la somme de la série $\sum_{n=0}^{\infty} \left(\frac{1}{3}\right)^n$ ?
+
+- [ ] **A)** 3
+- [x] **B)** 3/2
+- [ ] **C)** 1/3
+- [ ] **D)** La série diverge.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Il s'agit d'une série géométrique de premier terme $a=1$ et de raison $r = 1/3$.
+
+- **D)** La condition de convergence pour une série géométrique est $|r|<1$. Ici, $|1/3| < 1$, donc la série converge. Cette option est incorrecte.
+
+- **A, B, C)** La somme d'une série géométrique convergente est donnée par la formule $S = \frac{a}{1-r}$. Ici, $a = (1/3)^0 = 1$ et $r=1/3$.
+
+  $$ S = \frac{1}{1 - 1/3} = \frac{1}{2/3} = \frac{3}{2} $$
+
+  La somme est donc 3/2.
+
+</details>
+
+---
+
+#### Question 6 : Convergence absolue et simple
+
+Quelle est la relation entre la convergence absolue et la convergence simple pour une série $\sum u_n$ ?
+
+- [ ] **A)** Si une série converge, alors elle converge absolument.
+- [ ] **B)** Une série converge si et seulement si elle converge absolument.
+- [ ] **C)** Les deux notions sont totalement indépendantes.
+- [x] **D)** Si une série converge absolument, alors elle converge.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+- **A)** C'est faux. La réciproque du théorème principal est fausse. Une série peut converger sans converger absolument. On l'appelle alors semi-convergente. Exemple : $\sum \frac{(-1)^n}{n}$.
+
+- **B)** C'est faux. Comme expliqué en A, la convergence n'implique pas la convergence absolue. Les deux notions ne sont pas équivalentes.
+
+- **C)** C'est faux. Il y a un lien de dépendance fort : la convergence absolue est une condition plus forte qui implique la convergence simple.
+
+- **D)** C'est le théorème fondamental sur la convergence absolue. Si la série des valeurs absolues $\sum |u_n|$ converge, alors la série $\sum u_n$ converge aussi.
+
+</details>
+
+---
+
+#### Question 7 : Séries à termes positifs
+
+Soit $\sum u_n$ une série à termes positifs ($u_n \ge 0$). Sa suite de sommes partielles $(s_n)$ est...
+
+- [ ] **A)** ... toujours convergente.
+- [ ] **B)** ... soit convergente, soit divergente vers $-\infty$.
+- [x] **C)** ... croissante.
+- [ ] **D)** ... ni croissante, ni décroissante en général.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+- **A)** C'est faux. Par exemple, la série harmonique $\sum 1/n$ est à termes positifs mais diverge.
+
+- **B)** C'est faux. Comme tous les termes ajoutés sont positifs ou nuls, la somme partielle ne peut que croître ou stagner. Elle ne peut pas tendre vers $-\infty$. Si elle diverge, c'est vers $+\infty$.
+
+- **C)** C'est la propriété clé des séries à termes positifs. Comme $s_n = s_{n-1} + u_n$ et que $u_n \ge 0$, on a toujours $s_n \ge s_{n-1}$. La suite $(s_n)$ est donc croissante. Par le théorème de la limite monotone, elle converge si et seulement si elle est majorée.
+
+- **D)** C'est faux. Comme expliqué en C, la suite est nécessairement croissante.
+
+</details>
+
+---
+
+#### Question 8 : Théorème de comparaison par inégalité
+
+On s'intéresse à la nature de la série $\sum_{n=1}^{\infty} \frac{\sin^2(n)}{n^2}$. Quelle est la conclusion correcte ?
+
+- [ ] **A)** Elle diverge car $\sin^2(n)$ n'a pas de limite.
+- [x] **B)** Elle converge car elle est majorée par une série de Riemann convergente.
+- [ ] **C)** Elle diverge car elle est supérieure à la série harmonique.
+- [ ] **D)** On ne peut pas conclure car le terme $\sin^2(n)$ oscille.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Il s'agit d'une série à termes positifs, car $\sin^2(n) \ge 0$ et $n^2 > 0$. On peut donc utiliser les théorèmes de comparaison.
+
+- **A)** Le terme général $u_n = \frac{\sin^2(n)}{n^2}$ tend bien vers 0 (car $\sin^2(n)$ est borné par 1 et $n^2 \to \infty$). Donc l'argument de divergence est invalide.
+
+- **B)** Pour tout $n \ge 1$, on a $0 \le \sin^2(n) \le 1$. En divisant par $n^2$, on obtient :
+
+  $$ 0 \le \frac{\sin^2(n)}{n^2} \le \frac{1}{n^2} $$
+
+  La série $\sum \frac{1}{n^2}$ est une série de Riemann avec $p=2 > 1$, elle est donc convergente. Par le théorème de comparaison par inégalité, comme la série $\sum \frac{\sin^2(n)}{n^2}$ est majorée par une série convergente, elle converge aussi.
+
+- **C)** C'est faux. On ne peut pas minorer cette série par la série harmonique.
+
+- **D)** L'oscillation du numérateur ne pose pas de problème ici, car on peut le majorer par une constante (1), ce qui est suffisant pour appliquer le critère de comparaison.
+
+</details>
+
+---
+
+#### Question 9 : Théorème de comparaison par équivalent
+
+Quelle est la nature de la série $\sum_{n=1}^{\infty} \ln\left(1 + \frac{1}{n^2}\right)$ ?
+
+- [ ] **A)** Elle diverge, par comparaison avec la série harmonique $\sum \frac{1}{n}$.
+- [ ] **B)** On ne peut pas conclure car le logarithme complique l'étude.
+- [x] **C)** Elle converge, car son terme général est équivalent à $\frac{1}{n^2}$.
+- [ ] **D)** Elle diverge, car son terme général ne tend pas vers 0.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+La série est à termes positifs car pour $n \ge 1$, $1 + \frac{1}{n^2} > 1$, donc $\ln(1 + \frac{1}{n^2}) > 0$.
+
+- **D)** Le terme général tend bien vers 0. Quand $n \to \infty$, $\frac{1}{n^2} \to 0$, donc $\ln(1 + \frac{1}{n^2}) \to \ln(1) = 0$.
+
+- **A, B, C)** On utilise un équivalent du terme général. On sait que lorsque $x \to 0$, $\ln(1+x) \sim x$.
+
+  Ici, on pose $x = \frac{1}{n^2}$. Comme $x \to 0$ quand $n \to \infty$, on a :
+
+  $$ u_n = \ln\left(1 + \frac{1}{n^2}\right) \sim \frac{1}{n^2} $$
+
+  La série $\sum \frac{1}{n^2}$ est une série de Riemann avec $p=2 > 1$, donc elle converge.
+
+  Par le critère de comparaison par équivalence pour les séries à termes positifs, la série $\sum \ln(1 + \frac{1}{n^2})$ a la même nature, et donc elle converge.
+
+</details>
+
+---
+
+#### Question 10 : Critère de d'Alembert
+
+Quelle est la nature de la série $\sum_{n=0}^{\infty} \frac{n!}{100^n}$ ?
+
+- [ ] **A)** Elle converge car $n!$ croît moins vite que $100^n$.
+- [ ] **B)** On ne peut pas conclure car la limite du rapport est 1.
+- [x] **C)** Elle diverge car la limite du rapport $\frac{u_{n+1}}{u_n}$ est supérieure à 1.
+- [ ] **D)** Elle converge car son terme général tend vers 0.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+La série est à termes positifs. Le critère de d'Alembert (règle du rapport) est bien adapté aux expressions avec des factorielles et des puissances.
+
+Posons $u_n = \frac{n!}{100^n}$. Calculons le rapport $\frac{u_{n+1}}{u_n}$ :
+
+$$ \frac{u_{n+1}}{u_n} = \frac{(n+1)! / 100^{n+1}}{n! / 100^n} = \frac{(n+1)!}{n!} \cdot \frac{100^n}{100^{n+1}} $$
+
+$$ \frac{u_{n+1}}{u_n} = (n+1) \cdot \frac{1}{100} = \frac{n+1}{100} $$
+
+Calculons la limite de ce rapport :
+
+$$ L = \lim_{n \to \infty} \frac{n+1}{100} = +\infty $$
+
+- **C)** Puisque $L = +\infty > 1$, le critère de d'Alembert affirme que la série diverge.
+
+- **A)** C'est l'inverse, la factorielle $n!$ croît beaucoup plus vite que toute exponentielle $a^n$.
+
+- **B)** La limite du rapport est $+\infty$, et non 1.
+
+- **D)** Le terme général ne tend pas vers 0. Au contraire, puisque le rapport $\frac{u_{n+1}}{u_n}$ devient plus grand que 1, la suite $(u_n)$ est croissante à partir d'un certain rang et tend vers $+\infty$.
+
+</details>
+
+---
+
+#### Question 11 : Critère de Cauchy (règle de la racine)
+
+Quelle est la nature de la série $\sum_{n=1}^{\infty} \left(\frac{2n}{5n+3}\right)^n$ ?
+
+- [ ] **A)** Elle diverge car la limite de $\sqrt[n]{u_n}$ est supérieure à 1.
+- [ ] **B)** Elle diverge car son terme général ne tend pas vers 0.
+- [ ] **C)** On ne peut pas conclure car la limite de $\sqrt[n]{u_n}$ est égale à 1.
+- [x] **D)** Elle converge car la limite de $\sqrt[n]{u_n}$ est inférieure à 1.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+La série est à termes positifs. La présence d'une puissance $n$ sur tout le terme général suggère d'utiliser le critère de Cauchy (règle de la racine).
+
+Posons $u_n = \left(\frac{2n}{5n+3}\right)^n$. Calculons $\sqrt[n]{u_n}$ :
+
+$$ \sqrt[n]{u_n} = \sqrt[n]{\left(\frac{2n}{5n+3}\right)^n} = \frac{2n}{5n+3} $$
+
+Calculons la limite de cette expression :
+
+$$ l = \lim_{n \to \infty} \frac{2n}{5n+3} = \lim_{n \to \infty} \frac{2n}{n(5+3/n)} = \frac{2}{5} $$
+
+- **D)** Puisque $l = 2/5 < 1$, le critère de Cauchy affirme que la série converge.
+
+- **A)** La limite est $2/5$, ce qui est inférieur à 1.
+- **B)** Le terme général tend bien vers 0. En effet, comme $\sqrt[n]{u_n} \to 2/5 < 1$, on a $u_n$ qui se comporte comme $(2/5)^n$ qui tend vers 0.
+- **C)** La limite est $2/5$, et non 1.
+
+</details>
+
+---
+
+#### Question 12 : Cas limite des critères de rapport et de racine
+
+Si pour une série à termes positifs $\sum u_n$, on trouve que $\lim_{n \to \infty} \frac{u_{n+1}}{u_n} = 1$, que peut-on conclure sur la nature de la série ?
+
+- [ ] **A)** La série converge.
+- [ ] **B)** La série diverge.
+- [ ] **C)** La série converge absolument.
+- [x] **D)** On ne peut rien conclure avec cette seule information.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+- **A, B, C)** Lorsque la limite dans le critère de d'Alembert (ou de Cauchy) est égale à 1, on parle de "cas douteux". Le critère ne permet pas de conclure. Il faut utiliser une autre méthode (comparaison, équivalents, etc.).
+
+- **D)** C'est la bonne réponse. Pour s'en convaincre, voici deux exemples :
+  1. Pour la série divergente $\sum \frac{1}{n}$, la limite du rapport est $\lim \frac{n}{n+1} = 1$.
+  2. Pour la série convergente $\sum \frac{1}{n^2}$, la limite du rapport est $\lim (\frac{n}{n+1})^2 = 1$.
+
+  Comme on peut avoir à la fois convergence et divergence quand la limite est 1, le test est non concluant.
+
+</details>
+
+---
+
+#### Question 13 : Semi-convergence
+
+Comment définit-on une série semi-convergente ?
+
+- [x] **A)** Une série qui est convergente, mais pas absolument convergente.
+- [ ] **B)** Une série dont la suite des sommes partielles est bornée mais ne converge pas.
+- [ ] **C)** Une série qui n'est ni convergente ni divergente.
+- [ ] **D)** Une série qui converge, mais dont on ne peut pas calculer la somme.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+- **A)** C'est la définition précise de la semi-convergence. La série elle-même converge (par exemple, grâce à des annulations entre termes positifs et négatifs), mais la série des valeurs absolues, elle, diverge. L'exemple type est $\sum \frac{(-1)^{n+1}}{n}$.
+
+- **B)** Une série dont la suite des sommes partielles est bornée mais ne converge pas est simplement une série divergente (par exemple $\sum (-1)^n$ dont les sommes partielles oscillent entre 1 et 0).
+
+- **C)** Une série est soit convergente, soit divergente. Il n'y a pas d'état intermédiaire.
+
+- **D)** La difficulté à calculer la somme n'est pas un critère de classification de la convergence. On peut connaître la somme de certaines séries semi-convergentes (par ex. $\sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n} = \ln(2)$).
+
+</details>

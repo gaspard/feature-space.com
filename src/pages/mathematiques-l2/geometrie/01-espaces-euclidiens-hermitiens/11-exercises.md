@@ -1,746 +1,745 @@
 ---
-title: A - Exercices
+id: c1b05b19
+type: exercises
 order: 11
+title: Espaces Euclidiens et Hermitiens - exercices (A)
+tags:
+  - Espaces Euclidiens
+  - Espaces Hermitiens
+  - Produit scalaire
+  - Gram-Schmidt
+  - Projection orthogonale
+  - Endomorphismes adjoints
+  - Théorème de Riesz
+createdAt: '2025-10-12T18:13:04.161Z'
 level: regular
-chapter: A - Concepts
 course: Géométrie
-tags: ["exercises", "practice", "regular"]
+courseId: d9494343
+chapter: Espaces Euclidiens et Hermitiens
+chapterId: 67b3d760
 ---
+# Exercices "Espaces Euclidiens et Hermitiens" (A)
 
-# Exercices: Espaces Euclidiens et Hermitiens (A)
+## Exercice 1: [Problème de calcul]
 
-## Exercice 1: Problème de calcul
+**Problème:** Soit l'application $\varphi: \mathbb{R}^2 \times \mathbb{R}^2 \to \mathbb{R}$ définie pour $x=(x_1, x_2)$ et $y=(y_1, y_2)$ par :
 
-**Problème:**
+$\varphi(x, y) = 2x_1y_1 + x_1y_2 + x_2y_1 + 3x_2y_2$.
 
-Soit l'application $\varphi: \mathbb{R}^3 \times \mathbb{R}^3 \to \mathbb{R}$ définie pour $u=(x_1, x_2, x_3)$ et $v=(y_1, y_2, y_3)$ par :
-
-$$ \varphi(u, v) = 2x_1y_1 + x_2y_2 + 3x_3y_3 + x_1y_2 + x_2y_1 $$
-
-Cette application est-elle un produit scalaire sur $\mathbb{R}^3$ ? Justifiez votre réponse en vérifiant les propriétés requises.
+Montrer que $\varphi$ est une forme bilinéaire symétrique.
 
 <details>
 
 <summary>Solution</summary>
 
-**Méthode:**
-
-Pour déterminer si $\varphi$ est un produit scalaire, nous devons vérifier si c'est une forme bilinéaire, symétrique et définie positive.
+**Méthode:** Pour montrer que $\varphi$ est une forme bilinéaire, nous devons vérifier la linéarité par rapport à la première variable et par rapport à la seconde variable. Pour montrer qu'elle est symétrique, nous devons vérifier que $\varphi(x, y) = \varphi(y, x)$ pour tous $x, y \in \mathbb{R}^2$.
 
 **Étapes:**
 
-1.  **Vérifier la bilinéarité :** L'expression de $\varphi(u,v)$ est polynomiale et homogène de degré 1 par rapport aux coordonnées de $u$ et de $v$. Par conséquent, $\varphi$ est bien une forme bilinéaire.
+1.  **Vérifier la linéarité à gauche.** Soient $x, z \in \mathbb{R}^2$ et $\lambda \in \mathbb{R}$. On a $x = (x_1, x_2)$ et $z = (z_1, z_2)$.
 
-2.  **Vérifier la symétrie :** Nous devons vérifier si $\varphi(u, v) = \varphi(v, u)$ pour tous $u, v \in \mathbb{R}^3$.
+    $\lambda x + z = (\lambda x_1 + z_1, \lambda x_2 + z_2)$.
 
-    $$ \varphi(v, u) = 2y_1x_1 + y_2x_2 + 3y_3x_3 + y_1x_2 + y_2x_1 $$
+    Calculons $\varphi(\lambda x + z, y)$:
 
-    En réorganisant les termes, on obtient :
+    $\varphi(\lambda x + z, y) = 2(\lambda x_1 + z_1)y_1 + (\lambda x_1 + z_1)y_2 + (\lambda x_2 + z_2)y_1 + 3(\lambda x_2 + z_2)y_2$
 
-    $$ \varphi(v, u) = 2x_1y_1 + x_2y_2 + 3x_3y_3 + x_2y_1 + x_1y_2 $$
+    Distribuons les termes :
 
-    On constate que $\varphi(v, u) = \varphi(u, v)$. La forme est donc symétrique.
+    $= (2\lambda x_1y_1 + 2z_1y_1) + (\lambda x_1y_2 + z_1y_2) + (\lambda x_2y_1 + z_2y_1) + (3\lambda x_2y_2 + 3z_2y_2)$
 
-3.  **Vérifier si la forme est définie positive :** Nous devons vérifier si $\varphi(u, u) > 0$ pour tout $u \neq 0$.
+    Regroupons les termes en $\lambda$ :
 
-    $$ \varphi(u, u) = 2x_1^2 + x_2^2 + 3x_3^2 + x_1x_2 + x_2x_1 = 2x_1^2 + 2x_1x_2 + x_2^2 + 3x_3^2 $$
+    $= \lambda(2x_1y_1 + x_1y_2 + x_2y_1 + 3x_2y_2) + (2z_1y_1 + z_1y_2 + z_2y_1 + 3z_2y_2)$
 
-    Nous pouvons essayer de réécrire cette expression comme une somme de carrés. On utilise la complétion du carré pour les termes en $x_1$ et $x_2$.
+    $= \lambda \varphi(x, y) + \varphi(z, y)$
 
-    $$ \varphi(u, u) = (x_1^2 + 2x_1x_2 + x_2^2) + x_1^2 + 3x_3^2 $$
+    La linéarité à gauche est vérifiée.
 
-    $$ \varphi(u, u) = (x_1 + x_2)^2 + x_1^2 + 3x_3^2 $$
+2.  **Vérifier la symétrie.**
 
-    Cette expression est une somme de trois carrés. Elle est donc toujours positive ou nulle.
+    Calculons $\varphi(x, y)$ et $\varphi(y, x)$.
 
-    Pour qu'elle soit nulle, il faut que chaque terme soit nul :
+    $\varphi(x, y) = 2x_1y_1 + x_1y_2 + x_2y_1 + 3x_2y_2$.
 
-    $$ (x_1 + x_2)^2 = 0 \implies x_1 + x_2 = 0 $$
+    $\varphi(y, x) = 2y_1x_1 + y_1x_2 + y_2x_1 + 3y_2x_2$.
 
-    $$ x_1^2 = 0 \implies x_1 = 0 $$
+    En réorganisant les termes, on voit que les deux expressions sont identiques.
 
-    $$ 3x_3^2 = 0 \implies x_3 = 0 $$
+    $\varphi(y, x) = 2x_1y_1 + x_2y_1 + x_1y_2 + 3x_2y_2 = \varphi(x, y)$.
 
-    Si $x_1 = 0$, la première équation donne $0 + x_2 = 0$, soit $x_2 = 0$.
+    La forme est donc symétrique.
 
-    Donc, $\varphi(u, u) = 0$ si et seulement si $x_1=0$, $x_2=0$ et $x_3=0$, c'est-à-dire $u = (0,0,0)$.
+3.  **Conclusion sur la bilinéarité.**
 
-    Pour tout $u \neq 0$, on a $\varphi(u, u) > 0$. La forme est définie positive.
+    Puisque $\varphi$ est linéaire à gauche et symétrique, elle est aussi linéaire à droite.
 
-4.  **Conclusion :** Puisque $\varphi$ est une forme bilinéaire, symétrique et définie positive, c'est un produit scalaire sur $\mathbb{R}^3$.
+    En effet, $\varphi(x, \lambda y + z) = \varphi(\lambda y + z, x) = \lambda\varphi(y, x) + \varphi(z, x) = \lambda\varphi(x, y) + \varphi(x, z)$.
 
-**Réponse:**
+    Ainsi, $\varphi$ est bien une forme bilinéaire.
 
-Oui, l'application $\varphi$ est un produit scalaire sur $\mathbb{R}^3$.
+**Réponse:** L'application $\varphi$ est une forme bilinéaire symétrique.
 
 </details>
 
-## Exercice 2: Problème de calcul
+## Exercice 2: [Problème de calcul]
 
-**Problème:**
+**Problème:** Soit $E = \mathbb{C}^2$ et l'application $\varphi: E \times E \to \mathbb{C}$ définie pour $x=(x_1, x_2)$ et $y=(y_1, y_2)$ par :
 
-Soit $E = \mathbb{C}^2$ muni du produit scalaire hermitien canonique $\langle u, v \rangle = z_1\bar{w}_1 + z_2\bar{w}_2$ pour $u = (z_1, z_2)$ et $v = (w_1, w_2)$.
+$\varphi(x, y) = 2x_1\bar{y_1} + ix_1\bar{y_2} - ix_2\bar{y_1} + 3x_2\bar{y_2}$.
 
-Soient les vecteurs $u = (1+i, 2-3i)$ et $v = (i, 4)$.
-
-1.  Calculez $\langle u, v \rangle$.
-2.  Calculez $\langle v, u \rangle$ et vérifiez la propriété de symétrie hermitienne.
-3.  Calculez $\langle u, u \rangle$. Le résultat est-il un nombre réel positif ?
+Montrer que $\varphi$ est une forme sesquilinéaire hermitienne.
 
 <details>
 
 <summary>Solution</summary>
 
-**Méthode:**
-
-On applique directement la définition du produit scalaire hermitien canonique, en faisant attention à la conjugaison des composantes du second vecteur.
+**Méthode:** Nous devons vérifier que $\varphi$ est linéaire par rapport à sa première variable et semi-linéaire par rapport à sa seconde. Ensuite, nous devons montrer qu'elle est hermitienne, c'est-à-dire $\varphi(x, y) = \overline{\varphi(y, x)}$.
 
 **Étapes:**
 
-1.  **Calcul de $\langle u, v \rangle$ :**
+1.  **Vérifier la linéarité à gauche.** Soient $x, z \in \mathbb{C}^2$ et $\lambda \in \mathbb{C}$.
 
-    $$ \langle u, v \rangle = (1+i)\bar{i} + (2-3i)\bar{4} $$
+    $\varphi(\lambda x + z, y) = 2(\lambda x_1+z_1)\bar{y_1} + i(\lambda x_1+z_1)\bar{y_2} - i(\lambda x_2+z_2)\bar{y_1} + 3(\lambda x_2+z_2)\bar{y_2}$
 
-    Le conjugué de $i$ est $\bar{i} = -i$. Le conjugué de $4$ est $\bar{4} = 4$.
+    $= \lambda(2x_1\bar{y_1} + ix_1\bar{y_2} - ix_2\bar{y_1} + 3x_2\bar{y_2}) + (2z_1\bar{y_1} + iz_1\bar{y_2} - iz_2\bar{y_1} + 3z_2\bar{y_2})$
 
-    $$ \langle u, v \rangle = (1+i)(-i) + (2-3i)(4) = -i - i^2 + 8 - 12i $$
+    $= \lambda\varphi(x, y) + \varphi(z, y)$.
 
-    $$ \langle u, v \rangle = -i - (-1) + 8 - 12i = 1 - i + 8 - 12i = 9 - 13i $$
+    La linéarité à gauche est vérifiée.
 
-2.  **Calcul de $\langle v, u \rangle$ et vérification :**
+2.  **Vérifier la semi-linéarité à droite.** Soient $y, z \in \mathbb{C}^2$ et $\lambda \in \mathbb{C}$.
 
-    $$ \langle v, u \rangle = i(\overline{1+i}) + 4(\overline{2-3i}) $$
+    $\varphi(x, \lambda y + z) = 2x_1\overline{(\lambda y_1+z_1)} + ix_1\overline{(\lambda y_2+z_2)} - ix_2\overline{(\lambda y_1+z_1)} + 3x_2\overline{(\lambda y_2+z_2)}$
 
-    Le conjugué de $1+i$ est $1-i$. Le conjugué de $2-3i$ est $2+3i$.
+    $= 2x_1(\bar{\lambda}\bar{y_1}+\bar{z_1}) + ix_1(\bar{\lambda}\bar{y_2}+\bar{z_2}) - ix_2(\bar{\lambda}\bar{y_1}+\bar{z_1}) + 3x_2(\bar{\lambda}\bar{y_2}+\bar{z_2})$
 
-    $$ \langle v, u \rangle = i(1-i) + 4(2+3i) = i - i^2 + 8 + 12i $$
+    $= \bar{\lambda}(2x_1\bar{y_1} + ix_1\bar{y_2} - ix_2\bar{y_1} + 3x_2\bar{y_2}) + (2x_1\bar{z_1} + ix_1\bar{z_2} - ix_2\bar{z_1} + 3x_2\bar{z_2})$
 
-    $$ \langle v, u \rangle = i - (-1) + 8 + 12i = 1 + i + 8 + 12i = 9 + 13i $$
+    $= \bar{\lambda}\varphi(x, y) + \varphi(x, z)$.
 
-    Nous vérifions si $\langle v, u \rangle = \overline{\langle u, v \rangle}$.
+    La semi-linéarité à droite est vérifiée. $\varphi$ est donc sesquilinéaire.
 
-    $$ \overline{\langle u, v \rangle} = \overline{9 - 13i} = 9 + 13i $$
+3.  **Vérifier la symétrie hermitienne.**
 
-    On a bien $\langle v, u \rangle = \overline{\langle u, v \rangle}$. La propriété est vérifiée.
+    Calculons $\overline{\varphi(y, x)}$ :
 
-3.  **Calcul de $\langle u, u \rangle$ :**
+    $\varphi(y, x) = 2y_1\bar{x_1} + iy_1\bar{x_2} - iy_2\bar{x_1} + 3y_2\bar{x_2}$.
 
-    $$ \langle u, u \rangle = (1+i)(\overline{1+i}) + (2-3i)(\overline{2-3i}) $$
+    $\overline{\varphi(y, x)} = \overline{2y_1\bar{x_1} + iy_1\bar{x_2} - iy_2\bar{x_1} + 3y_2\bar{x_2}}$
 
-    Rappel : $z\bar{z} = |z|^2$.
+    $= \overline{2y_1\bar{x_1}} + \overline{iy_1\bar{x_2}} - \overline{iy_2\bar{x_1}} + \overline{3y_2\bar{x_2}}$
 
-    $$ |1+i|^2 = 1^2 + 1^2 = 2 $$
+    $= 2\bar{y_1}x_1 - i\bar{y_1}x_2 + i\bar{y_2}x_1 + 3\bar{y_2}x_2$
 
-    $$ |2-3i|^2 = 2^2 + (-3)^2 = 4 + 9 = 13 $$
+    Réorganisons les termes pour correspondre à $\varphi(x,y)$:
 
-    $$ \langle u, u \rangle = 2 + 13 = 15 $$
+    $= 2x_1\bar{y_1} + ix_1\bar{y_2} - ix_2\bar{y_1} + 3x_2\bar{y_2} = \varphi(x, y)$.
 
-    Le résultat est $15$, qui est bien un nombre réel et positif, comme attendu pour un vecteur non nul.
+    La forme est hermitienne.
 
-**Réponse:**
-
-1. $\langle u, v \rangle = 9 - 13i$
-2. $\langle v, u \rangle = 9 + 13i$, et on a bien $\langle v, u \rangle = \overline{\langle u, v \rangle}$.
-3. $\langle u, u \rangle = 15$, qui est un réel positif.
+**Réponse:** L'application $\varphi$ est une forme sesquilinéaire hermitienne.
 
 </details>
 
-## Exercice 3: Problème d'application
+## Exercice 3: [Question conceptuelle]
 
-**Problème:**
-
-Dans l'espace euclidien $\mathbb{R}^3$ muni du produit scalaire usuel, soient les vecteurs $u = (1, -2, 3)$ et $v = (2, 1, 0)$.
-
-1.  Vérifiez l'inégalité de Cauchy-Schwarz pour ces deux vecteurs.
-2.  Vérifiez l'identité du parallélogramme pour ces deux vecteurs.
+**Problème:** Sur l'espace vectoriel $E = \mathbb{R}_1[X]$ des polynômes de degré au plus 1, on définit l'application $\langle P, Q \rangle = P(0)Q(0) + P'(0)Q'(0)$, où $P'$ est la dérivée de $P$. Est-ce que cette application définit un produit scalaire sur $E$ ?
 
 <details>
 
 <summary>Solution</summary>
 
-**Méthode:**
-
-Nous allons calculer chaque membre des deux inégalités/identités séparément et les comparer.
+**Méthode:** Pour déterminer si $\langle \cdot, \cdot \rangle$ est un produit scalaire, nous devons vérifier les quatre propriétés : forme bilinéaire, symétrique, positive, et définie.
 
 **Étapes:**
 
-1.  **Vérification de l'inégalité de Cauchy-Schwarz : $|\langle u, v \rangle| \le \|u\| \|v\|$**
-    -   Calcul du produit scalaire :
+1.  **Vérifier la bilinéarité et la symétrie.**
 
-        $$ \langle u, v \rangle = (1)(2) + (-2)(1) + (3)(0) = 2 - 2 + 0 = 0 $$
+    Soient $P, Q, R \in E$ et $\lambda \in \mathbb{R}$.
 
-        Donc $|\langle u, v \rangle| = 0$.
+    $\langle \lambda P + R, Q \rangle = (\lambda P+R)(0)Q(0) + (\lambda P+R)'(0)Q'(0)$
 
-    -   Calcul des normes :
+    $= (\lambda P(0)+R(0))Q(0) + (\lambda P'(0)+R'(0))Q'(0)$
 
-        $$ \|u\| = \sqrt{1^2 + (-2)^2 + 3^2} = \sqrt{1 + 4 + 9} = \sqrt{14} $$
+    $= \lambda P(0)Q(0) + R(0)Q(0) + \lambda P'(0)Q'(0) + R'(0)Q'(0)$
 
-        $$ \|v\| = \sqrt{2^2 + 1^2 + 0^2} = \sqrt{4 + 1 + 0} = \sqrt{5} $$
+    $= \lambda (P(0)Q(0) + P'(0)Q'(0)) + (R(0)Q(0) + R'(0)Q'(0)) = \lambda \langle P, Q \rangle + \langle R, Q \rangle$.
 
-    -   Calcul du produit des normes :
+    La linéarité à gauche est vérifiée.
 
-        $$ \|u\| \|v\| = \sqrt{14} \sqrt{5} = \sqrt{70} $$
+    La symétrie est évidente : $\langle P, Q \rangle = P(0)Q(0) + P'(0)Q'(0) = Q(0)P(0) + Q'(0)P'(0) = \langle Q, P \rangle$.
 
-    -   Comparaison :
+    Puisque la forme est linéaire à gauche et symétrique, elle est bilinéaire et symétrique.
 
-        Nous devons vérifier si $0 \le \sqrt{70}$. C'est vrai. L'inégalité est vérifiée.
+2.  **Vérifier la positivité.**
 
-        *Note : Le cas d'égalité n'a pas lieu car les vecteurs ne sont pas colinéaires. Le fait que le produit scalaire soit nul signifie que les vecteurs sont orthogonaux.*
+    Soit $P \in E$.
 
-2.  **Vérification de l'identité du parallélogramme : $\|u+v\|^2 + \|u-v\|^2 = 2(\|u\|^2 + \|v\|^2)$**
-    -   Calculons $u+v$ et $u-v$ :
+    $\langle P, P \rangle = P(0)^2 + P'(0)^2$.
 
-        $$ u+v = (1+2, -2+1, 3+0) = (3, -1, 3) $$
+    C'est une somme de carrés de nombres réels, donc $\langle P, P \rangle \ge 0$. La forme est positive.
 
-        $$ u-v = (1-2, -2-1, 3-0) = (-1, -3, 3) $$
+3.  **Vérifier le caractère défini.**
 
-    -   Calculons le membre de gauche de l'identité :
+    Supposons que $\langle P, P \rangle = 0$. Cela signifie $P(0)^2 + P'(0)^2 = 0$.
 
-        $$ \|u+v\|^2 = 3^2 + (-1)^2 + 3^2 = 9 + 1 + 9 = 19 $$
+    Puisque $P(0)^2 \ge 0$ et $P'(0)^2 \ge 0$, leur somme est nulle si et seulement si les deux termes sont nuls.
 
-        $$ \|u-v\|^2 = (-1)^2 + (-3)^2 + 3^2 = 1 + 9 + 9 = 19 $$
+    Donc, $P(0) = 0$ et $P'(0) = 0$.
 
-        $$ \|u+v\|^2 + \|u-v\|^2 = 19 + 19 = 38 $$
+    Un polynôme $P$ dans $\mathbb{R}_1[X]$ s'écrit $P(X) = aX+b$.
 
-    -   Calculons le membre de droite de l'identité :
+    Sa dérivée est $P'(X) = a$.
 
-        $$ \|u\|^2 = (\sqrt{14})^2 = 14 $$
+    La condition $P(0)=0$ implique $a(0)+b=0$, donc $b=0$.
 
-        $$ \|v\|^2 = (\sqrt{5})^2 = 5 $$
+    La condition $P'(0)=0$ implique $a=0$.
 
-        $$ 2(\|u\|^2 + \|v\|^2) = 2(14 + 5) = 2(19) = 38 $$
+    Ainsi, $a=0$ et $b=0$, ce qui signifie que $P(X)$ est le polynôme nul.
 
-    -   Comparaison :
+    La forme est donc définie.
 
-        Les deux membres sont égaux à 38. L'identité du parallélogramme est vérifiée.
+4.  **Conclusion.**
 
-**Réponse:**
+    L'application vérifie toutes les propriétés d'un produit scalaire (bilinéaire, symétrique, positive, définie).
 
-1. Inégalité de Cauchy-Schwarz: $|\langle u, v \rangle| = 0$ et $\|u\| \|v\| = \sqrt{70}$. L'inégalité $0 \le \sqrt{70}$ est vérifiée.
-2. Identité du parallélogramme: $\|u+v\|^2 + \|u-v\|^2 = 38$ et $2(\|u\|^2 + \|v\|^2) = 38$. L'identité est vérifiée.
+**Réponse:** Oui, l'application $\langle P, Q \rangle = P(0)Q(0) + P'(0)Q'(0)$ définit un produit scalaire sur $\mathbb{R}_1[X]$.
 
 </details>
 
-## Exercice 4: Question conceptuelle
+## Exercice 4: [Application]
 
-**Problème:**
+**Problème:** Soit l'espace euclidien $\mathbb{R}^3$ muni de son produit scalaire usuel. Soient les vecteurs $x = (1, 2, -3)$ et $y = (2, 0, 1)$.
 
-Dans l'espace des polynômes $\mathbb{R}_2[X]$ muni du produit scalaire $\langle P, Q \rangle = \int_{-1}^{1} P(t)Q(t) dt$, les polynômes $P(t) = 1$ et $Q(t) = t$ sont orthogonaux.
-
-Le théorème de Pythagore s'applique-t-il à ces deux polynômes ? Vérifiez-le en calculant $\|P+Q\|^2$ et $\|P\|^2 + \|Q\|^2$.
+1. Vérifier l'inégalité de Cauchy-Schwarz pour ces deux vecteurs.
+2. Sont-ils colinéaires ? Justifier en utilisant le cas d'égalité de l'inégalité de Cauchy-Schwarz.
 
 <details>
 
 <summary>Solution</summary>
 
-**Méthode:**
-
-Le théorème de Pythagore stipule que si $P \perp Q$, alors $\|P+Q\|^2 = \|P\|^2 + \|Q\|^2$. Nous allons d'abord confirmer que les polynômes sont orthogonaux, puis calculer chaque membre de l'équation de Pythagore pour vérifier si l'égalité est respectée.
+**Méthode:** L'inégalité de Cauchy-Schwarz s'écrit $|\langle x, y \rangle| \le \|x\| \|y\|$. Nous allons calculer chaque terme de cette inégalité et les comparer. Le cas d'égalité se produit si et seulement si les vecteurs sont colinéaires.
 
 **Étapes:**
 
-1.  **Vérifier l'orthogonalité de P et Q :**
+1.  **Calculer le produit scalaire $\langle x, y \rangle$.**
 
-    $$ \langle P, Q \rangle = \int_{-1}^{1} (1)(t) dt = \int_{-1}^{1} t dt = \left[ \frac{t^2}{2} \right]_{-1}^{1} = \frac{1^2}{2} - \frac{(-1)^2}{2} = \frac{1}{2} - \frac{1}{2} = 0 $$
+    $\langle x, y \rangle = x_1y_1 + x_2y_2 + x_3y_3 = (1)(2) + (2)(0) + (-3)(1) = 2 + 0 - 3 = -1$.
 
-    Puisque $\langle P, Q \rangle = 0$, les polynômes $P$ et $Q$ sont bien orthogonaux. Le théorème de Pythagore doit donc s'appliquer.
+    Donc, $|\langle x, y \rangle| = |-1| = 1$.
 
-2.  **Calculer $\|P\|^2$ et $\|Q\|^2$ :**
+2.  **Calculer la norme de $x$.**
 
-    $$ \|P\|^2 = \langle P, P \rangle = \int_{-1}^{1} (1)(1) dt = \int_{-1}^{1} 1 dt = [t]_{-1}^{1} = 1 - (-1) = 2 $$
+    $\|x\|^2 = \langle x, x \rangle = 1^2 + 2^2 + (-3)^2 = 1 + 4 + 9 = 14$.
 
-    $$ \|Q\|^2 = \langle Q, Q \rangle = \int_{-1}^{1} (t)(t) dt = \int_{-1}^{1} t^2 dt = \left[ \frac{t^3}{3} \right]_{-1}^{1} = \frac{1^3}{3} - \frac{(-1)^3}{3} = \frac{1}{3} - (-\frac{1}{3}) = \frac{2}{3} $$
+    Donc, $\|x\| = \sqrt{14}$.
 
-    Donc, $\|P\|^2 + \|Q\|^2 = 2 + \frac{2}{3} = \frac{8}{3}$.
+3.  **Calculer la norme de $y$.**
 
-3.  **Calculer $\|P+Q\|^2$ :**
+    $\|y\|^2 = \langle y, y \rangle = 2^2 + 0^2 + 1^2 = 4 + 0 + 1 = 5$.
 
-    Le polynôme $P+Q$ est $(P+Q)(t) = 1+t$.
+    Donc, $\|y\| = \sqrt{5}$.
 
-    $$ \|P+Q\|^2 = \langle P+Q, P+Q \rangle = \int_{-1}^{1} (1+t)^2 dt = \int_{-1}^{1} (1 + 2t + t^2) dt $$
+4.  **Vérifier l'inégalité.**
 
-    $$ = \left[ t + t^2 + \frac{t^3}{3} \right]_{-1}^{1} $$
+    Nous devons vérifier si $1 \le \sqrt{14} \sqrt{5}$.
 
-    $$ = \left( 1 + 1^2 + \frac{1^3}{3} \right) - \left( -1 + (-1)^2 + \frac{(-1)^3}{3} \right) $$
+    $\sqrt{14} \sqrt{5} = \sqrt{70}$.
 
-    $$ = \left( 1 + 1 + \frac{1}{3} \right) - \left( -1 + 1 - \frac{1}{3} \right) = \left( 2 + \frac{1}{3} \right) - \left( -\frac{1}{3} \right) = \frac{7}{3} + \frac{1}{3} = \frac{8}{3} $$
+    Puisque $1^2 = 1$ et $(\sqrt{70})^2 = 70$, on a bien $1 < 70$, donc $1 < \sqrt{70}$.
 
-4.  **Conclusion :**
+    L'inégalité est vérifiée.
 
-    Nous avons trouvé que $\|P\|^2 + \|Q\|^2 = \frac{8}{3}$ et $\|P+Q\|^2 = \frac{8}{3}$. Les deux valeurs sont égales, ce qui confirme le théorème de Pythagore pour ces deux polynômes orthogonaux.
+5.  **Analyser le cas d'égalité.**
+
+    L'inégalité de Cauchy-Schwarz devient une égalité si et seulement si les vecteurs $x$ et $y$ sont colinéaires.
+
+    Dans notre cas, nous avons $|\langle x, y \rangle| = 1$ et $\|x\| \|y\| = \sqrt{70}$.
+
+    Puisque $1 \neq \sqrt{70}$, il n'y a pas égalité.
+
+    Par conséquent, les vecteurs $x$ et $y$ ne sont pas colinéaires.
 
 **Réponse:**
 
-Oui, le théorème de Pythagore s'applique. On a bien $\|P+Q\|^2 = \|P\|^2 + \|Q\|^2 = \frac{8}{3}$.
+1. On a $|\langle x, y \rangle| = 1$ et $\|x\| \|y\| = \sqrt{70}$. Puisque $1 \le \sqrt{70}$, l'inégalité de Cauchy-Schwarz est vérifiée.
+2. Comme $|\langle x, y \rangle| \neq \|x\| \|y\|$, les vecteurs ne sont pas colinéaires.
 
 </details>
 
-## Exercice 5: Problème de calcul
+## Exercice 5: [Problème de calcul]
 
-**Problème:**
+**Problème:** Dans l'espace euclidien $\mathbb{R}^2$ muni de son produit scalaire usuel, soient les vecteurs $x = (3, 1)$ et $y = (1, 2)$.
 
-Soit $E = \mathbb{R}^3$ muni du produit scalaire usuel. Appliquez le procédé de Gram-Schmidt à la base $\mathcal{B} = (v_1, v_2, v_3)$ pour trouver une base orthonormée, où :
-
-$v_1 = (1, 0, 1)$, $v_2 = (1, 1, 1)$, $v_3 = (0, 1, 2)$.
+1. Calculer $\|x\|$, $\|y\|$, $\|x+y\|$ et $\|x-y\|$.
+2. Vérifier l'identité du parallélogramme : $\|x+y\|^2 + \|x-y\|^2 = 2(\|x\|^2 + \|y\|^2)$.
 
 <details>
 
 <summary>Solution</summary>
 
-**Méthode:**
-
-Nous suivons l'algorithme de Gram-Schmidt étape par étape. Pour chaque $k$, nous construisons un vecteur $u_k$ orthogonal aux précédents, puis nous le normalisons pour obtenir $e_k$.
+**Méthode:** Nous calculons directement les normes en utilisant la définition $\|v\| = \sqrt{v_1^2 + v_2^2}$, puis nous substituons les résultats dans l'identité du parallélogramme pour la vérifier.
 
 **Étapes:**
 
-1.  **Étape 1 : Construire $e_1$ à partir de $v_1$**
-    -   On pose $u_1 = v_1 = (1, 0, 1)$.
-    -   On calcule sa norme : $\|u_1\| = \sqrt{1^2 + 0^2 + 1^2} = \sqrt{2}$.
-    -   On normalise : $e_1 = \frac{u_1}{\|u_1\|} = \frac{1}{\sqrt{2}}(1, 0, 1)$.
+1.  **Calculer les vecteurs $x+y$ et $x-y$.**
 
-2.  **Étape 2 : Construire $e_2$ à partir de $v_2$**
-    -   On calcule la projection de $v_2$ sur $e_1$ :
+    $x+y = (3+1, 1+2) = (4, 3)$.
 
-        $$ \langle v_2, e_1 \rangle = \left\langle (1, 1, 1), \frac{1}{\sqrt{2}}(1, 0, 1) \right\rangle = \frac{1}{\sqrt{2}}(1\cdot1 + 1\cdot0 + 1\cdot1) = \frac{2}{\sqrt{2}} = \sqrt{2} $$
+    $x-y = (3-1, 1-2) = (2, -1)$.
 
-    -   On calcule le vecteur $u_2$ orthogonal à $e_1$ :
+2.  **Calculer les normes au carré.**
 
-        $$ u_2 = v_2 - \langle v_2, e_1 \rangle e_1 = (1, 1, 1) - \sqrt{2} \left( \frac{1}{\sqrt{2}}(1, 0, 1) \right) $$
+    $\|x\|^2 = 3^2 + 1^2 = 9 + 1 = 10$.
 
-        $$ u_2 = (1, 1, 1) - (1, 0, 1) = (0, 1, 0) $$
+    $\|y\|^2 = 1^2 + 2^2 = 1 + 4 = 5$.
 
-    -   On calcule sa norme : $\|u_2\| = \sqrt{0^2 + 1^2 + 0^2} = 1$.
-    -   On normalise : $e_2 = \frac{u_2}{\|u_2\|} = (0, 1, 0)$.
+    $\|x+y\|^2 = 4^2 + 3^2 = 16 + 9 = 25$.
 
-3.  **Étape 3 : Construire $e_3$ à partir de $v_3$**
-    -   On calcule les projections de $v_3$ sur $e_1$ et $e_2$ :
+    $\|x-y\|^2 = 2^2 + (-1)^2 = 4 + 1 = 5$.
 
-        $$ \langle v_3, e_1 \rangle = \left\langle (0, 1, 2), \frac{1}{\sqrt{2}}(1, 0, 1) \right\rangle = \frac{1}{\sqrt{2}}(0\cdot1 + 1\cdot0 + 2\cdot1) = \frac{2}{\sqrt{2}} = \sqrt{2} $$
+3.  **Extraire les normes.**
 
-        $$ \langle v_3, e_2 \rangle = \langle (0, 1, 2), (0, 1, 0) \rangle = 0\cdot0 + 1\cdot1 + 2\cdot0 = 1 $$
+    $\|x\| = \sqrt{10}$.
 
-    -   On calcule le vecteur $u_3$ orthogonal à $e_1$ et $e_2$ :
+    $\|y\| = \sqrt{5}$.
 
-        $$ u_3 = v_3 - \langle v_3, e_1 \rangle e_1 - \langle v_3, e_2 \rangle e_2 $$
+    $\|x+y\| = \sqrt{25} = 5$.
 
-        $$ u_3 = (0, 1, 2) - \sqrt{2} \left( \frac{1}{\sqrt{2}}(1, 0, 1) \right) - 1 \left( (0, 1, 0) \right) $$
+    $\|x-y\| = \sqrt{5}$.
 
-        $$ u_3 = (0, 1, 2) - (1, 0, 1) - (0, 1, 0) = (-1, 0, 1) $$
+4.  **Vérifier l'identité du parallélogramme.**
 
-    -   On calcule sa norme : $\|u_3\| = \sqrt{(-1)^2 + 0^2 + 1^2} = \sqrt{2}$.
-    -   On normalise : $e_3 = \frac{u_3}{\|u_3\|} = \frac{1}{\sqrt{2}}(-1, 0, 1)$.
+    Calculons le membre de gauche :
 
-4.  **Conclusion :** La base orthonormée est $(e_1, e_2, e_3)$.
+    $\|x+y\|^2 + \|x-y\|^2 = 25 + 5 = 30$.
+
+    Calculons le membre de droite :
+
+    $2(\|x\|^2 + \|y\|^2) = 2(10 + 5) = 2(15) = 30$.
+
+    Les deux membres sont égaux.
 
 **Réponse:**
 
-La base orthonormée obtenue est :
-
-$$ e_1 = \left(\frac{1}{\sqrt{2}}, 0, \frac{1}{\sqrt{2}}\right), \quad e_2 = (0, 1, 0), \quad e_3 = \left(-\frac{1}{\sqrt{2}}, 0, \frac{1}{\sqrt{2}}\right) $$
+1. Les normes sont : $\|x\| = \sqrt{10}$, $\|y\| = \sqrt{5}$, $\|x+y\| = 5$, $\|x-y\| = \sqrt{5}$.
+2. L'identité du parallélogramme est vérifiée car $25 + 5 = 2(10+5)$, soit $30=30$.
 
 </details>
 
-## Exercice 6: Problème d'application
+## Exercice 6: [Question conceptuelle]
 
-**Problème:**
-
-Soit la base orthonormée $\mathcal{B}' = (e_1, e_2, e_3)$ de $\mathbb{R}^3$ de l'exercice précédent :
-
-$e_1 = (\frac{1}{\sqrt{2}}, 0, \frac{1}{\sqrt{2}})$, $e_2 = (0, 1, 0)$, $e_3 = (-\frac{1}{\sqrt{2}}, 0, \frac{1}{\sqrt{2}})$.
-
-Soit le vecteur $x = (2, 3, 4)$.
-
-1.  Calculez les coordonnées de $x$ dans la base $\mathcal{B}'$.
-2.  Vérifiez l'identité de Parseval pour le vecteur $x$.
+**Problème:** Sur $\mathbb{R}^2$, on définit la norme infinie par $\|x\|_{\infty} = \max(|x_1|, |x_2|)$. Montrer que cette norme ne dérive pas d'un produit scalaire.
 
 <details>
 
 <summary>Solution</summary>
 
-**Méthode:**
-
-1.  Pour une base orthonormée, la $i$-ème coordonnée d'un vecteur $x$ est donnée par le produit scalaire $\langle x, e_i \rangle$.
-2.  L'identité de Parseval stipule que le carré de la norme d'un vecteur est égal à la somme des carrés de ses coordonnées dans une base orthonormée. Nous vérifierons que $\|x\|^2 = c_1^2 + c_2^2 + c_3^2$.
+**Méthode:** Une norme dérive d'un produit scalaire si et seulement si elle vérifie l'identité du parallélogramme pour tous les vecteurs. Pour montrer qu'elle n'en dérive pas, il suffit de trouver un contre-exemple, c'est-à-dire une paire de vecteurs pour laquelle l'identité n'est pas satisfaite.
 
 **Étapes:**
 
-1.  **Calcul des coordonnées $(c_1, c_2, c_3)$ de $x$ :**
-    -   $c_1 = \langle x, e_1 \rangle = \left\langle (2, 3, 4), \left(\frac{1}{\sqrt{2}}, 0, \frac{1}{\sqrt{2}}\right) \right\rangle = 2\cdot\frac{1}{\sqrt{2}} + 3\cdot0 + 4\cdot\frac{1}{\sqrt{2}} = \frac{6}{\sqrt{2}} = 3\sqrt{2}$.
-    -   $c_2 = \langle x, e_2 \rangle = \langle (2, 3, 4), (0, 1, 0) \rangle = 2\cdot0 + 3\cdot1 + 4\cdot0 = 3$.
-    -   $c_3 = \langle x, e_3 \rangle = \left\langle (2, 3, 4), \left(-\frac{1}{\sqrt{2}}, 0, \frac{1}{\sqrt{2}}\right) \right\rangle = 2\cdot(-\frac{1}{\sqrt{2}}) + 3\cdot0 + 4\cdot\frac{1}{\sqrt{2}} = \frac{2}{\sqrt{2}} = \sqrt{2}$.
+1.  **Choisir des vecteurs simples.**
 
-    Les coordonnées de $x$ dans la base $\mathcal{B}'$ sont $(3\sqrt{2}, 3, \sqrt{2})$.
+    Prenons les vecteurs de la base canonique, $x = (1, 0)$ et $y = (0, 1)$. Ce choix est souvent efficace pour tester ce genre de propriétés.
 
-2.  **Vérification de l'identité de Parseval :**
-    -   Calcul de $\|x\|^2$ directement :
+2.  **Calculer les normes nécessaires.**
 
-        $$ \|x\|^2 = 2^2 + 3^2 + 4^2 = 4 + 9 + 16 = 29 $$
+    $\|x\|_{\infty} = \max(|1|, |0|) = 1$.
 
-    -   Calcul de la somme des carrés des coordonnées :
+    $\|y\|_{\infty} = \max(|0|, |1|) = 1$.
 
-        $$ c_1^2 + c_2^2 + c_3^2 = (3\sqrt{2})^2 + 3^2 + (\sqrt{2})^2 $$
+    $x+y = (1, 1)$, donc $\|x+y\|_{\infty} = \max(|1|, |1|) = 1$.
 
-        $$ = (9 \cdot 2) + 9 + 2 = 18 + 9 + 2 = 29 $$
+    $x-y = (1, -1)$, donc $\|x-y\|_{\infty} = \max(|1|, |-1|) = 1$.
 
-    -   Les deux résultats sont égaux. L'identité de Parseval est vérifiée.
+3.  **Tester l'identité du parallélogramme.**
 
-**Réponse:**
+    L'identité est : $\|x+y\|_{\infty}^2 + \|x-y\|_{\infty}^2 = 2(\|x\|_{\infty}^2 + \|y\|_{\infty}^2)$.
 
-1. Les coordonnées de $x$ dans la base $\mathcal{B}'$ sont $(3\sqrt{2}, 3, \sqrt{2})$.
-2. $\|x\|^2 = 29$ et la somme des carrés des coordonnées est $18+9+2=29$. L'identité est vérifiée.
+    Calculons le membre de gauche :
+
+    $\|x+y\|_{\infty}^2 + \|x-y\|_{\infty}^2 = 1^2 + 1^2 = 2$.
+
+    Calculons le membre de droite :
+
+    $2(\|x\|_{\infty}^2 + \|y\|_{\infty}^2) = 2(1^2 + 1^2) = 2(1+1) = 4$.
+
+4.  **Comparer les deux membres.**
+
+    Nous avons $2 \neq 4$. L'identité du parallélogramme n'est pas vérifiée pour ces vecteurs.
+
+**Réponse:** La norme $\|x\|_{\infty}$ ne dérive pas d'un produit scalaire car elle ne satisfait pas l'identité du parallélogramme. Par exemple, pour $x=(1,0)$ et $y=(0,1)$, on obtient $2 \neq 4$.
 
 </details>
 
-## Exercice 7: Problème de calcul
+## Exercice 7: [Problème de calcul]
 
-**Problème:**
+**Problème:** Dans l'espace euclidien $\mathbb{R}^3$, on considère la base orthonormée $\mathcal{B}' = (e'_1, e'_2, e'_3)$ avec :
 
-Dans $\mathbb{R}^3$ muni du produit scalaire usuel, soit $F$ le plan vectoriel engendré par les vecteurs $v_1 = (1, 1, 0)$ et $v_2 = (0, 1, 1)$. Ces vecteurs ne sont pas orthogonaux.
+$e'_1 = \frac{1}{\sqrt{3}}(1, 1, 1)$, $e'_2 = \frac{1}{\sqrt{2}}(1, -1, 0)$, $e'_3 = \frac{1}{\sqrt{6}}(1, 1, -2)$.
 
-Calculez la projection orthogonale du vecteur $x = (2, 1, 3)$ sur le plan $F$.
+Soit le vecteur $v = (2, 3, 4)$. Trouver les coordonnées de $v$ dans la base $\mathcal{B}'$.
 
 <details>
 
 <summary>Solution</summary>
 
-**Méthode:**
-
-Pour utiliser la formule de projection $P_F(x) = \sum \langle x, e_i \rangle e_i$, nous devons d'abord trouver une base orthonormée $(e_1, e_2)$ du plan $F$. Nous utilisons le procédé de Gram-Schmidt sur la base $(v_1, v_2)$.
+**Méthode:** Puisque $\mathcal{B}'$ est une base orthonormée, les coordonnées $(v'_1, v'_2, v'_3)$ d'un vecteur $v$ dans cette base sont données par les produits scalaires $v'_i = \langle v, e'_i \rangle$.
 
 **Étapes:**
 
-1.  **Construire une base orthonormée de F :**
-    -   **Étape 1 (pour $e_1$) :**
+1.  **Calculer la première coordonnée $v'_1$.**
 
-        $u_1 = v_1 = (1, 1, 0)$.
+    $v'_1 = \langle v, e'_1 \rangle = \langle (2, 3, 4), \frac{1}{\sqrt{3}}(1, 1, 1) \rangle$
 
-        $\|u_1\| = \sqrt{1^2+1^2+0^2} = \sqrt{2}$.
+    $= \frac{1}{\sqrt{3}} (2 \cdot 1 + 3 \cdot 1 + 4 \cdot 1) = \frac{1}{\sqrt{3}} (2+3+4) = \frac{9}{\sqrt{3}}$.
 
-        $e_1 = \frac{1}{\sqrt{2}}(1, 1, 0)$.
+    En rationalisant, $v'_1 = \frac{9\sqrt{3}}{3} = 3\sqrt{3}$.
 
-    -   **Étape 2 (pour $e_2$) :**
+2.  **Calculer la deuxième coordonnée $v'_2$.**
 
-        $\langle v_2, e_1 \rangle = \left\langle (0, 1, 1), \frac{1}{\sqrt{2}}(1, 1, 0) \right\rangle = \frac{1}{\sqrt{2}}(0+1+0) = \frac{1}{\sqrt{2}}$.
+    $v'_2 = \langle v, e'_2 \rangle = \langle (2, 3, 4), \frac{1}{\sqrt{2}}(1, -1, 0) \rangle$
 
-        $u_2 = v_2 - \langle v_2, e_1 \rangle e_1 = (0, 1, 1) - \frac{1}{\sqrt{2}}\left(\frac{1}{\sqrt{2}}(1, 1, 0)\right) = (0, 1, 1) - \frac{1}{2}(1, 1, 0) = (-\frac{1}{2}, \frac{1}{2}, 1)$.
+    $= \frac{1}{\sqrt{2}} (2 \cdot 1 + 3 \cdot (-1) + 4 \cdot 0) = \frac{1}{\sqrt{2}} (2-3+0) = -\frac{1}{\sqrt{2}}$.
 
-        $\|u_2\| = \sqrt{(-\frac{1}{2})^2 + (\frac{1}{2})^2 + 1^2} = \sqrt{\frac{1}{4} + \frac{1}{4} + 1} = \sqrt{\frac{3}{2}}$.
+    En rationalisant, $v'_2 = -\frac{\sqrt{2}}{2}$.
 
-        $e_2 = \frac{1}{\sqrt{3/2}}(-\frac{1}{2}, \frac{1}{2}, 1) = \sqrt{\frac{2}{3}}(-\frac{1}{2}, \frac{1}{2}, 1) = \frac{1}{\sqrt{6}}(-1, 1, 2)$.
+3.  **Calculer la troisième coordonnée $v'_3$.**
 
-2.  **Calculer la projection de $x$ sur $F$ :**
+    $v'_3 = \langle v, e'_3 \rangle = \langle (2, 3, 4), \frac{1}{\sqrt{6}}(1, 1, -2) \rangle$
 
-    La projection est $P_F(x) = \langle x, e_1 \rangle e_1 + \langle x, e_2 \rangle e_2$.
+    $= \frac{1}{\sqrt{6}} (2 \cdot 1 + 3 \cdot 1 + 4 \cdot (-2)) = \frac{1}{\sqrt{6}} (2+3-8) = -\frac{3}{\sqrt{6}}$.
 
-    -   Calcul des produits scalaires :
+    En rationalisant, $v'_3 = -\frac{3\sqrt{6}}{6} = -\frac{\sqrt{6}}{2}$.
 
-        $$ \langle x, e_1 \rangle = \left\langle (2, 1, 3), \frac{1}{\sqrt{2}}(1, 1, 0) \right\rangle = \frac{1}{\sqrt{2}}(2+1+0) = \frac{3}{\sqrt{2}} $$
+4.  **Vérification (optionnelle).**
 
-        $$ \langle x, e_2 \rangle = \left\langle (2, 1, 3), \frac{1}{\sqrt{6}}(-1, 1, 2) \right\rangle = \frac{1}{\sqrt{6}}(-2+1+6) = \frac{5}{\sqrt{6}} $$
+    On peut vérifier que $v = v'_1 e'_1 + v'_2 e'_2 + v'_3 e'_3$.
 
-    -   Calcul de $P_F(x)$ :
+    $v = 3\sqrt{3} \left(\frac{1}{\sqrt{3}}(1,1,1)\right) - \frac{\sqrt{2}}{2}\left(\frac{1}{\sqrt{2}}(1,-1,0)\right) - \frac{\sqrt{6}}{2}\left(\frac{1}{\sqrt{6}}(1,1,-2)\right)$
 
-        $$ P_F(x) = \frac{3}{\sqrt{2}} \left( \frac{1}{\sqrt{2}}(1, 1, 0) \right) + \frac{5}{\sqrt{6}} \left( \frac{1}{\sqrt{6}}(-1, 1, 2) \right) $$
+    $= 3(1,1,1) - \frac{1}{2}(1,-1,0) - \frac{1}{2}(1,1,-2)$
 
-        $$ P_F(x) = \frac{3}{2}(1, 1, 0) + \frac{5}{6}(-1, 1, 2) $$
+    $= (3,3,3) - (\frac{1}{2}, -\frac{1}{2}, 0) - (\frac{1}{2}, \frac{1}{2}, -1)$
 
-        $$ P_F(x) = \left(\frac{3}{2}, \frac{3}{2}, 0\right) + \left(-\frac{5}{6}, \frac{5}{6}, \frac{10}{6}\right) $$
+    $= (3-\frac{1}{2}-\frac{1}{2}, 3+\frac{1}{2}-\frac{1}{2}, 3-0-(-1)) = (2, 3, 4)$.
 
-        $$ P_F(x) = \left(\frac{9-5}{6}, \frac{9+5}{6}, \frac{5}{3}\right) = \left(\frac{4}{6}, \frac{14}{6}, \frac{5}{3}\right) = \left(\frac{2}{3}, \frac{7}{3}, \frac{5}{3}\right) $$
+    Le calcul est correct.
 
-**Réponse:**
-
-La projection orthogonale du vecteur $x$ sur le plan $F$ est :
-
-$$ P_F(x) = \left(\frac{2}{3}, \frac{7}{3}, \frac{5}{3}\right) $$
+**Réponse:** Les coordonnées de $v$ dans la base $\mathcal{B}'$ sont $\left(3\sqrt{3}, -\frac{\sqrt{2}}{2}, -\frac{\sqrt{6}}{2}\right)$.
 
 </details>
 
-## Exercice 8: Problème d'application
+## Exercice 8: [Problème de calcul]
 
-**Problème:**
-
-Calculez la distance du point $M(3, 2, 1)$ à la droite $D$ passant par l'origine et dirigée par le vecteur $v = (1, 1, 1)$ dans $\mathbb{R}^3$.
+**Problème:** Dans $\mathbb{R}^3$ muni du produit scalaire usuel, appliquer le procédé d'orthonormalisation de Gram-Schmidt à la base $\mathcal{B} = (v_1, v_2, v_3)$ où $v_1 = (1, 1, 0)$, $v_2 = (1, 0, 1)$ et $v_3 = (0, 1, 1)$.
 
 <details>
 
 <summary>Solution</summary>
 
-**Méthode:**
-
-La distance d'un point $M$ (associé au vecteur $x$) à une droite $D$ (un sous-espace $F$) est donnée par $d(x, F) = \|x - P_F(x)\|$, où $P_F(x)$ est la projection orthogonale de $x$ sur $F$.
+**Méthode:** Nous suivons les étapes de l'algorithme de Gram-Schmidt. Pour chaque vecteur $v_k$, on le rend orthogonal aux vecteurs orthonormés déjà construits en soustrayant ses projections, puis on le normalise.
 
 **Étapes:**
 
-1.  **Identifier les objets :**
-    -   Le vecteur associé au point M est $x = (3, 2, 1)$.
-    -   Le sous-espace est la droite $F = D = \text{Vect}(v)$ avec $v = (1, 1, 1)$.
+1.  **Étape 1 : Construire $e_1$.**
 
-2.  **Construire une base orthonormée de F :**
+    On normalise $v_1$.
 
-    $F$ est une droite, donc une base est constituée d'un seul vecteur. Il suffit de normaliser $v$.
+    $\|v_1\|^2 = 1^2 + 1^2 + 0^2 = 2 \implies \|v_1\| = \sqrt{2}$.
 
-    $\|v\| = \sqrt{1^2+1^2+1^2} = \sqrt{3}$.
+    $e_1 = \frac{v_1}{\|v_1\|} = \frac{1}{\sqrt{2}}(1, 1, 0)$.
 
-    La base orthonormée est $(e_1)$ avec $e_1 = \frac{v}{\|v\|} = \frac{1}{\sqrt{3}}(1, 1, 1)$.
+2.  **Étape 2 : Construire $e_2$.**
 
-3.  **Calculer la projection orthogonale $P_F(x)$ :**
+    a. On calcule d'abord un vecteur $e'_2$ orthogonal à $e_1$.
 
-    $$ P_F(x) = \langle x, e_1 \rangle e_1 $$
+    $e'_2 = v_2 - \langle v_2, e_1 \rangle e_1$.
 
-    $$ \langle x, e_1 \rangle = \left\langle (3, 2, 1), \frac{1}{\sqrt{3}}(1, 1, 1) \right\rangle = \frac{1}{\sqrt{3}}(3+2+1) = \frac{6}{\sqrt{3}} $$
+    $\langle v_2, e_1 \rangle = \left\langle (1, 0, 1), \frac{1}{\sqrt{2}}(1, 1, 0) \right\rangle = \frac{1}{\sqrt{2}}(1\cdot1 + 0\cdot1 + 1\cdot0) = \frac{1}{\sqrt{2}}$.
 
-    $$ P_F(x) = \frac{6}{\sqrt{3}} \left( \frac{1}{\sqrt{3}}(1, 1, 1) \right) = \frac{6}{3}(1, 1, 1) = (2, 2, 2) $$
+    $e'_2 = (1, 0, 1) - \frac{1}{\sqrt{2}} \left( \frac{1}{\sqrt{2}}(1, 1, 0) \right) = (1, 0, 1) - \frac{1}{2}(1, 1, 0) = \left(1-\frac{1}{2}, 0-\frac{1}{2}, 1-0\right) = \left(\frac{1}{2}, -\frac{1}{2}, 1\right)$.
 
-4.  **Calculer le vecteur $x - P_F(x)$ :**
+    b. On normalise $e'_2$.
 
-    $$ x - P_F(x) = (3, 2, 1) - (2, 2, 2) = (1, 0, -1) $$
+    $\|e'_2\|^2 = \left(\frac{1}{2}\right)^2 + \left(-\frac{1}{2}\right)^2 + 1^2 = \frac{1}{4} + \frac{1}{4} + 1 = \frac{3}{2}$.
 
-5.  **Calculer la distance :**
+    $\|e'_2\| = \sqrt{\frac{3}{2}} = \frac{\sqrt{3}}{\sqrt{2}}$.
 
-    La distance est la norme de ce vecteur.
+    $e_2 = \frac{e'_2}{\|e'_2\|} = \frac{\sqrt{2}}{\sqrt{3}}\left(\frac{1}{2}, -\frac{1}{2}, 1\right) = \frac{1}{\sqrt{6}}(1, -1, 2)$.
 
-    $$ d(x, F) = \|x - P_F(x)\| = \|(1, 0, -1)\| = \sqrt{1^2 + 0^2 + (-1)^2} = \sqrt{2} $$
+3.  **Étape 3 : Construire $e_3$.**
 
-**Réponse:**
+    a. On calcule $e'_3 = v_3 - \langle v_3, e_1 \rangle e_1 - \langle v_3, e_2 \rangle e_2$.
 
-La distance du point $M$ à la droite $D$ est $\sqrt{2}$.
+    $\langle v_3, e_1 \rangle = \left\langle (0, 1, 1), \frac{1}{\sqrt{2}}(1, 1, 0) \right\rangle = \frac{1}{\sqrt{2}}(0+1+0) = \frac{1}{\sqrt{2}}$.
+
+    $\langle v_3, e_2 \rangle = \left\langle (0, 1, 1), \frac{1}{\sqrt{6}}(1, -1, 2) \right\rangle = \frac{1}{\sqrt{6}}(0-1+2) = \frac{1}{\sqrt{6}}$.
+
+    $e'_3 = (0, 1, 1) - \frac{1}{\sqrt{2}}\left(\frac{1}{\sqrt{2}}(1,1,0)\right) - \frac{1}{\sqrt{6}}\left(\frac{1}{\sqrt{6}}(1,-1,2)\right)$
+
+    $= (0, 1, 1) - \frac{1}{2}(1,1,0) - \frac{1}{6}(1,-1,2)$
+
+    $= (0 - \frac{1}{2} - \frac{1}{6}, 1 - \frac{1}{2} + \frac{1}{6}, 1 - 0 - \frac{2}{6})$
+
+    $= (-\frac{4}{6}, \frac{4}{6}, \frac{4}{6}) = \left(-\frac{2}{3}, \frac{2}{3}, \frac{2}{3}\right)$.
+
+    b. On normalise $e'_3$.
+
+    $\|e'_3\|^2 = (-\frac{2}{3})^2 + (\frac{2}{3})^2 + (\frac{2}{3})^2 = 3 \cdot \frac{4}{9} = \frac{4}{3}$.
+
+    $\|e'_3\| = \sqrt{\frac{4}{3}} = \frac{2}{\sqrt{3}}$.
+
+    $e_3 = \frac{e'_3}{\|e'_3\|} = \frac{\sqrt{3}}{2}\left(-\frac{2}{3}, \frac{2}{3}, \frac{2}{3}\right) = \frac{1}{\sqrt{3}}(-1, 1, 1)$.
+
+**Réponse:** La base orthonormée obtenue est $\mathcal{B}'=(e_1, e_2, e_3)$ avec :
+
+$e_1 = \frac{1}{\sqrt{2}}(1, 1, 0)$,
+
+$e_2 = \frac{1}{\sqrt{6}}(1, -1, 2)$,
+
+$e_3 = \frac{1}{\sqrt{3}}(-1, 1, 1)$.
 
 </details>
 
-## Exercice 9: Problème de calcul
+## Exercice 9: [Application]
 
-**Problème:**
+**Problème:** Dans $\mathbb{R}^3$ muni du produit scalaire usuel, on considère le vecteur $v=(6, 2, 5)$ et le plan $F$ d'équation $x - y + 2z = 0$.
 
-Soit $f$ l'endomorphisme de $\mathbb{R}^3$ (muni du produit scalaire usuel) dont la matrice dans la base canonique (orthonormée) est :
-
-$$ A = \begin{pmatrix} 1 & 0 & 2 \\ -1 & 3 & 0 \\ 0 & 1 & 1 \end{pmatrix} $$
-
-1.  Déterminez la matrice de l'adjoint $f^*$ dans la base canonique.
-2.  Vérifiez la relation $\langle f(x), y \rangle = \langle x, f^*(y) \rangle$ pour les vecteurs $x=(1,0,0)$ et $y=(0,1,0)$.
+Calculer la projection orthogonale $P_F(v)$ du vecteur $v$ sur le plan $F$.
 
 <details>
 
 <summary>Solution</summary>
 
-**Méthode:**
-
-1.  Dans un espace euclidien, la matrice de l'adjoint $f^*$ dans une base orthonormée est la transposée de la matrice de $f$.
-2.  On calcule $f(x)$ et $f^*(y)$, puis les deux produits scalaires pour vérifier s'ils sont égaux.
+**Méthode:** Il est souvent plus simple de calculer la projection sur l'orthogonal du sous-espace, $F^\perp$, puis d'utiliser la relation $v = P_F(v) + P_{F^\perp}(v)$. L'orthogonal d'un plan défini par l'équation $ax+by+cz=0$ est la droite dirigée par le vecteur normal $n=(a,b,c)$.
 
 **Étapes:**
 
-1.  **Matrice de l'adjoint $f^*$ :**
+1.  **Déterminer l'orthogonal $F^\perp$.**
 
-    La base canonique de $\mathbb{R}^3$ est orthonormée. Donc, la matrice de $f^*$ est la transposée de $A$.
+    Le plan $F$ a pour équation $1x - 1y + 2z = 0$. Un vecteur normal au plan est $n=(1, -1, 2)$.
 
-    $$ A^* = {}^tA = \begin{pmatrix} 1 & -1 & 0 \\ 0 & 3 & 1 \\ 2 & 0 & 1 \end{pmatrix} $$
+    L'orthogonal $F^\perp$ est la droite vectorielle engendrée par $n$.
 
-2.  **Vérification de la relation :**
-    -   Calcul de $f(x)$ :
+    $F^\perp = \text{Vect}(n)$.
 
-        $$ f(x) = A \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} = \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} $$
+2.  **Calculer la projection de $v$ sur $F^\perp$.**
 
-        Donc $f(x) = (1, -1, 0)$.
+    Pour utiliser la formule de projection, il nous faut une base orthonormée de $F^\perp$. On normalise $n$.
 
-    -   Calcul de $\langle f(x), y \rangle$ :
+    $\|n\|^2 = 1^2 + (-1)^2 + 2^2 = 1+1+4=6 \implies \|n\|=\sqrt{6}$.
 
-        $$ \langle f(x), y \rangle = \langle (1, -1, 0), (0, 1, 0) \rangle = 1\cdot0 + (-1)\cdot1 + 0\cdot0 = -1 $$
+    Une base orthonormée de $F^\perp$ est $(e_n)$ avec $e_n = \frac{n}{\|n\|} = \frac{1}{\sqrt{6}}(1, -1, 2)$.
 
-    -   Calcul de $f^*(y)$ :
+    La projection de $v$ sur $F^\perp$ est :
 
-        $$ f^*(y) = A^* \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} = \begin{pmatrix} -1 \\ 3 \\ 0 \end{pmatrix} $$
+    $P_{F^\perp}(v) = \langle v, e_n \rangle e_n$.
 
-        Donc $f^*(y) = (-1, 3, 0)$.
+    $\langle v, e_n \rangle = \left\langle (6, 2, 5), \frac{1}{\sqrt{6}}(1, -1, 2) \right\rangle = \frac{1}{\sqrt{6}}(6\cdot1 + 2\cdot(-1) + 5\cdot2) = \frac{1}{\sqrt{6}}(6-2+10) = \frac{14}{\sqrt{6}}$.
 
-    -   Calcul de $\langle x, f^*(y) \rangle$ :
+    $P_{F^\perp}(v) = \frac{14}{\sqrt{6}} \cdot \frac{1}{\sqrt{6}}(1, -1, 2) = \frac{14}{6}(1, -1, 2) = \frac{7}{3}(1, -1, 2) = \left(\frac{7}{3}, -\frac{7}{3}, \frac{14}{3}\right)$.
 
-        $$ \langle x, f^*(y) \rangle = \langle (1, 0, 0), (-1, 3, 0) \rangle = 1\cdot(-1) + 0\cdot3 + 0\cdot0 = -1 $$
+3.  **Calculer la projection sur $F$.**
 
-    -   Les deux résultats sont égaux à -1. La relation est bien vérifiée.
+    On utilise la décomposition $v = P_F(v) + P_{F^\perp}(v)$, d'où $P_F(v) = v - P_{F^\perp}(v)$.
 
-**Réponse:**
+    $P_F(v) = (6, 2, 5) - \left(\frac{7}{3}, -\frac{7}{3}, \frac{14}{3}\right)$
 
-1. La matrice de $f^*$ dans la base canonique est $A^* = \begin{pmatrix} 1 & -1 & 0 \\ 0 & 3 & 1 \\ 2 & 0 & 1 \end{pmatrix}$.
-2. On trouve $\langle f(x), y \rangle = -1$ et $\langle x, f^*(y) \rangle = -1$, ce qui vérifie la relation.
+    $= \left(6-\frac{7}{3}, 2-(-\frac{7}{3}), 5-\frac{14}{3}\right)$
+
+    $= \left(\frac{18-7}{3}, \frac{6+7}{3}, \frac{15-14}{3}\right) = \left(\frac{11}{3}, \frac{13}{3}, \frac{1}{3}\right)$.
+
+4.  **Vérification (optionnelle).**
+
+    Le vecteur projeté $P_F(v)$ doit appartenir à $F$. Vérifions s'il satisfait l'équation du plan :
+
+    $\frac{11}{3} - \frac{13}{3} + 2\left(\frac{1}{3}\right) = \frac{11-13+2}{3} = \frac{0}{3} = 0$.
+
+    Le point est bien dans le plan.
+
+**Réponse:** La projection orthogonale de $v$ sur le plan $F$ est $P_F(v) = \left(\frac{11}{3}, \frac{13}{3}, \frac{1}{3}\right)$.
 
 </details>
 
-## Exercice 10: Question conceptuelle
+## Exercice 10: [Application]
 
-**Problème:**
-
-Soit $F$ un sous-espace vectoriel d'un espace euclidien $E$ et $P_F$ le projecteur orthogonal sur $F$. Montrez que $P_F$ est un endomorphisme auto-adjoint, c'est-à-dire que $P_F^* = P_F$.
+**Problème:** Dans $\mathbb{R}^3$ muni de sa structure euclidienne usuelle, calculer la distance du point $A=(1, 2, 3)$ à la droite $D$ passant par l'origine et dirigée par le vecteur $u=(1, 1, 1)$.
 
 <details>
 
 <summary>Solution</summary>
 
-**Méthode:**
-
-Pour montrer que $P_F^* = P_F$, nous devons prouver que $\langle P_F(x), y \rangle = \langle x, P_F(y) \rangle$ pour tous les vecteurs $x, y \in E$. Nous utilisons la décomposition unique $v = P_F(v) + P_{F^\perp}(v)$ pour les vecteurs $x$ et $y$.
+**Méthode:** La distance d'un point (représenté par un vecteur $a$) à un sous-espace vectoriel $D$ est donnée par $d(a, D) = \|a - P_D(a)\|$, où $P_D(a)$ est la projection orthogonale de $a$ sur $D$.
 
 **Étapes:**
 
-1.  **Décomposition des vecteurs :**
+1.  **Trouver une base orthonormée de $D$.**
 
-    Tout vecteur $v \in E$ se décompose de manière unique en $v = v_F + v_{F^\perp}$ où $v_F = P_F(v) \in F$ et $v_{F^\perp} \in F^\perp$.
+    La droite $D$ est engendrée par le vecteur $u=(1, 1, 1)$.
 
-    Appliquons ceci à $x$ et $y$ :
+    $\|u\|^2 = 1^2+1^2+1^2 = 3 \implies \|u\|=\sqrt{3}$.
 
-    $$ x = x_F + x_{F^\perp} \quad \text{avec } x_F = P_F(x) $$
+    Une base orthonormée de $D$ est $(e_u)$ avec $e_u = \frac{u}{\|u\|} = \frac{1}{\sqrt{3}}(1, 1, 1)$.
 
-    $$ y = y_F + y_{F^\perp} \quad \text{avec } y_F = P_F(y) $$
+2.  **Calculer la projection orthogonale de $a=(1,2,3)$ sur $D$.**
 
-2.  **Calcul du premier membre : $\langle P_F(x), y \rangle$**
+    $P_D(a) = \langle a, e_u \rangle e_u$.
 
-    $$ \langle P_F(x), y \rangle = \langle x_F, y_F + y_{F^\perp} \rangle $$
+    $\langle a, e_u \rangle = \left\langle (1,2,3), \frac{1}{\sqrt{3}}(1,1,1) \right\rangle = \frac{1}{\sqrt{3}}(1\cdot1+2\cdot1+3\cdot1) = \frac{6}{\sqrt{3}}$.
 
-    Par linéarité du produit scalaire :
+    $P_D(a) = \frac{6}{\sqrt{3}} \cdot \frac{1}{\sqrt{3}}(1,1,1) = \frac{6}{3}(1,1,1) = 2(1,1,1) = (2,2,2)$.
 
-    $$ \langle P_F(x), y \rangle = \langle x_F, y_F \rangle + \langle x_F, y_{F^\perp} \rangle $$
+3.  **Calculer le vecteur $a - P_D(a)$.**
 
-    Par définition de $F^\perp$, tout vecteur de $F$ (comme $x_F$) est orthogonal à tout vecteur de $F^\perp$ (comme $y_{F^\perp}$). Donc, $\langle x_F, y_{F^\perp} \rangle = 0$.
+    $a - P_D(a) = (1,2,3) - (2,2,2) = (-1, 0, 1)$.
 
-    Il reste :
+    Ce vecteur est orthogonal à la droite $D$.
 
-    $$ \langle P_F(x), y \rangle = \langle x_F, y_F \rangle $$
+4.  **Calculer la distance.**
 
-3.  **Calcul du second membre : $\langle x, P_F(y) \rangle$**
+    $d(a,D) = \|a - P_D(a)\| = \|(-1, 0, 1)\| = \sqrt{(-1)^2 + 0^2 + 1^2} = \sqrt{1+0+1} = \sqrt{2}$.
 
-    $$ \langle x, P_F(y) \rangle = \langle x_F + x_{F^\perp}, y_F \rangle $$
-
-    Par linéarité du produit scalaire :
-
-    $$ \langle x, P_F(y) \rangle = \langle x_F, y_F \rangle + \langle x_{F^\perp}, y_F \rangle $$
-
-    De même, par définition de $F^\perp$, $\langle x_{F^\perp}, y_F \rangle = 0$.
-
-    Il reste :
-
-    $$ \langle x, P_F(y) \rangle = \langle x_F, y_F \rangle $$
-
-4.  **Conclusion :**
-
-    Nous avons montré que $\langle P_F(x), y \rangle = \langle x_F, y_F \rangle$ et $\langle x, P_F(y) \rangle = \langle x_F, y_F \rangle$.
-
-    Par conséquent, $\langle P_F(x), y \rangle = \langle x, P_F(y) \rangle$ pour tous $x, y \in E$.
-
-    Ceci est la définition de l'endomorphisme auto-adjoint, donc $P_F^* = P_F$.
-
-**Réponse:**
-
-En décomposant $x$ et $y$ sur $F \oplus F^\perp$, on montre que les deux termes $\langle P_F(x), y \rangle$ et $\langle x, P_F(y) \rangle$ sont égaux à $\langle P_F(x), P_F(y) \rangle$, ce qui prouve que $P_F$ est auto-adjoint.
+**Réponse:** La distance du point $A$ à la droite $D$ est $\sqrt{2}$.
 
 </details>
 
-## Exercice 11: Problème de calcul
+## Exercice 11: [Problème de calcul]
 
-**Problème:**
+**Problème:** Soit $f$ un endomorphisme de l'espace euclidien $\mathbb{R}^3$ dont la matrice dans la base canonique (orthonormée) est :
 
-Dans l'espace euclidien $\mathbb{R}^3$ muni du produit scalaire usuel, on considère la forme linéaire $l: \mathbb{R}^3 \to \mathbb{R}$ définie par $l(x_1, x_2, x_3) = 3x_1 - 5x_2 + 2x_3$.
+$A = \begin{pmatrix} 1 & 0 & 2 \\ -1 & 3 & 0 \\ 4 & 1 & -2 \end{pmatrix}$.
 
-Trouvez l'unique vecteur $y_l \in \mathbb{R}^3$ qui représente cette forme linéaire selon le théorème de Riesz, c'est-à-dire tel que $l(x) = \langle x, y_l \rangle$ pour tout $x \in \mathbb{R}^3$.
+Déterminer la matrice de l'endomorphisme adjoint $f^*$ dans la même base.
 
 <details>
 
 <summary>Solution</summary>
 
-**Méthode:**
-
-Le théorème de représentation de Riesz stipule qu'il existe un unique vecteur $y_l = (a, b, c)$ tel que $l(x) = \langle x, y_l \rangle$. Pour le produit scalaire usuel, cette relation s'écrit $l(x_1, x_2, x_3) = x_1a + x_2b + x_3c$. On peut trouver les composantes de $y_l$ par identification directe.
+**Méthode:** Dans un espace euclidien, si la matrice d'un endomorphisme $f$ dans une base **orthonormée** est $A$, alors la matrice de son adjoint $f^*$ dans la même base est la transposée de $A$, notée ${}^tA$.
 
 **Étapes:**
 
-1.  **Écrire la relation de Riesz :**
+1.  **Identifier le contexte.**
 
-    Soit $x = (x_1, x_2, x_3)$ et $y_l = (a, b, c)$. La relation est :
+    L'espace est $\mathbb{R}^3$ (euclidien) et la base est la base canonique, qui est orthonormée pour le produit scalaire usuel. La formule simple s'applique donc.
 
-    $$ l(x) = \langle x, y_l \rangle $$
+2.  **Calculer la transposée de la matrice $A$.**
 
-    $$ 3x_1 - 5x_2 + 2x_3 = \langle (x_1, x_2, x_3), (a, b, c) \rangle $$
+    La transposée d'une matrice s'obtient en échangeant les lignes et les colonnes.
 
-2.  **Développer le produit scalaire usuel :**
+    Si $A = (a_{ij})$, alors ${}^tA = (a_{ji})$.
 
-    $$ \langle (x_1, x_2, x_3), (a, b, c) \rangle = x_1a + x_2b + x_3c $$
+    $A = \begin{pmatrix} 1 & 0 & 2 \\ -1 & 3 & 0 \\ 4 & 1 & -2 \end{pmatrix}$.
 
-3.  **Identifier les coefficients :**
+    La première ligne de $A$ devient la première colonne de ${}^tA$.
 
-    On a l'égalité suivante, qui doit être vraie pour tout $x \in \mathbb{R}^3$ :
+    La deuxième ligne de $A$ devient la deuxième colonne de ${}^tA$.
 
-    $$ 3x_1 - 5x_2 + 2x_3 = ax_1 + bx_2 + cx_3 $$
+    La troisième ligne de $A$ devient la troisième colonne de ${}^tA$.
 
-    Par identification des coefficients de $x_1, x_2, x_3$, on obtient :
+    Donc, ${}^tA = \begin{pmatrix} 1 & -1 & 4 \\ 0 & 3 & 1 \\ 2 & 0 & -2 \end{pmatrix}$.
 
-    -   $a = 3$
-    -   $b = -5$
-    -   $c = 2$
-
-4.  **Conclusion :**
-
-    Le vecteur représentant la forme linéaire $l$ est $y_l = (3, -5, 2)$.
-
-**Réponse:**
-
-Le vecteur représentant la forme linéaire $l$ est $y_l = (3, -5, 2)$.
+**Réponse:** La matrice de l'adjoint $f^*$ dans la base canonique est $A^* = {}^tA = \begin{pmatrix} 1 & -1 & 4 \\ 0 & 3 & 1 \\ 2 & 0 & -2 \end{pmatrix}$.
 
 </details>
 
-## Exercice 12: Problème d'application
+## Exercice 12: [Question conceptuelle]
 
-**Problème:**
+**Problème:** Soit un endomorphisme $f$ de $\mathbb{C}^2$ dont la matrice dans la base canonique est $A = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & i \\ i & 1 \end{pmatrix}$.
 
-Soit $E=\mathbb{R}_1[X]$ l'espace des polynômes de degré au plus 1, muni du produit scalaire $\langle P, Q \rangle = \int_0^1 P(t)Q(t)dt$.
-
-Soit la forme linéaire $l: E \to \mathbb{R}$ définie par $l(P) = P(0) + P'(0)$.
-
-Trouvez le polynôme $Q_l \in E$ qui représente $l$ selon le théorème de Riesz.
+Cet endomorphisme est-il auto-adjoint ? Unitaire ? Normal ?
 
 <details>
 
 <summary>Solution</summary>
 
-**Méthode:**
-
-Nous cherchons un polynôme $Q_l(t) = at+b$ tel que $l(P) = \langle P, Q_l \rangle$ pour tout $P \in E$. Une méthode consiste à utiliser une base orthonormée de $E$ et la formule de construction du vecteur de Riesz.
+**Méthode:** Nous devons calculer la matrice adjointe $A^* = \overline{{}^tA}$ et la comparer à $A$ et à son inverse. On vérifie ensuite si $A$ et $A^*$ commutent. L'espace est hermitien ($\mathbb{C}^2$) et la base est canonique (orthonormée).
 
 **Étapes:**
 
-1.  **Construire une base orthonormée de $\mathbb{R}_1[X]$ :**
+1.  **Calculer la matrice adjointe $A^*$.**
 
-    Partons de la base canonique $(1, t)$. Appliquons Gram-Schmidt.
+    $A = \begin{pmatrix} 1/\sqrt{2} & i/\sqrt{2} \\ i/\sqrt{2} & 1/\sqrt{2} \end{pmatrix}$.
 
-    -   $v_1 = 1$. $\|v_1\|^2 = \int_0^1 1^2 dt = 1$. Donc $e_1(t) = 1$.
-    -   $v_2 = t$. $\langle v_2, e_1 \rangle = \int_0^1 t \cdot 1 dt = [\frac{t^2}{2}]_0^1 = \frac{1}{2}$.
-    -   $u_2 = v_2 - \langle v_2, e_1 \rangle e_1 = t - \frac{1}{2}$.
-    -   $\|u_2\|^2 = \int_0^1 (t - \frac{1}{2})^2 dt = [\frac{(t-1/2)^3}{3}]_0^1 = \frac{(1/2)^3}{3} - \frac{(-1/2)^3}{3} = \frac{1/24 - (-1/24)}{1} = \frac{2}{24} = \frac{1}{12}$.
-    -   $\|u_2\| = \frac{1}{\sqrt{12}} = \frac{1}{2\sqrt{3}}$.
-    -   $e_2(t) = \frac{u_2}{\|u_2\|} = 2\sqrt{3}(t - \frac{1}{2})$.
+    ${}^tA = \begin{pmatrix} 1/\sqrt{2} & i/\sqrt{2} \\ i/\sqrt{2} & 1/\sqrt{2} \end{pmatrix}$. (La matrice est symétrique)
 
-    La base orthonormée est $\mathcal{B} = (e_1, e_2) = (1, 2\sqrt{3}(t-1/2))$.
+    $A^* = \overline{{}^tA} = \begin{pmatrix} \overline{1/\sqrt{2}} & \overline{i/\sqrt{2}} \\ \overline{i/\sqrt{2}} & \overline{1/\sqrt{2}} \end{pmatrix} = \begin{pmatrix} 1/\sqrt{2} & -i/\sqrt{2} \\ -i/\sqrt{2} & 1/\sqrt{2} \end{pmatrix} = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & -i \\ -i & 1 \end{pmatrix}$.
 
-2.  **Appliquer la formule de Riesz :**
+2.  **Tester si $f$ est auto-adjoint.**
 
-    Le polynôme représentant $Q_l$ est donné par $Q_l = l(e_1)e_1 + l(e_2)e_2$.
+    $f$ est auto-adjoint si $A = A^*$.
 
-    -   Calcul de $l(e_1)$ : $e_1(t) = 1$, donc $e_1'(t)=0$.
+    On compare $A = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & i \\ i & 1 \end{pmatrix}$ et $A^* = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & -i \\ -i & 1 \end{pmatrix}$.
 
-        $l(e_1) = e_1(0) + e_1'(0) = 1 + 0 = 1$.
+    Puisque $i \neq -i$, on a $A \neq A^*$. L'endomorphisme n'est pas auto-adjoint.
 
-    -   Calcul de $l(e_2)$ : $e_2(t) = 2\sqrt{3}t - \sqrt{3}$, donc $e_2'(t) = 2\sqrt{3}$.
+3.  **Tester si $f$ est unitaire.**
 
-        $l(e_2) = e_2(0) + e_2'(0) = (-\sqrt{3}) + (2\sqrt{3}) = \sqrt{3}$.
+    $f$ est unitaire si $A^*A = I$.
 
-3.  **Construire le polynôme $Q_l$ :**
+    $A^*A = \left(\frac{1}{\sqrt{2}}\begin{pmatrix} 1 & -i \\ -i & 1 \end{pmatrix}\right) \left(\frac{1}{\sqrt{2}}\begin{pmatrix} 1 & i \\ i & 1 \end{pmatrix}\right) = \frac{1}{2}\begin{pmatrix} 1 & -i \\ -i & 1 \end{pmatrix}\begin{pmatrix} 1 & i \\ i & 1 \end{pmatrix}$
 
-    $$ Q_l(t) = 1 \cdot e_1(t) + \sqrt{3} \cdot e_2(t) $$
+    $= \frac{1}{2}\begin{pmatrix} 1\cdot1 + (-i)\cdot i & 1\cdot i + (-i)\cdot 1 \\ (-i)\cdot 1 + 1\cdot i & (-i)\cdot i + 1\cdot 1 \end{pmatrix}$
 
-    $$ Q_l(t) = 1 \cdot (1) + \sqrt{3} \cdot (2\sqrt{3}(t - \frac{1}{2})) $$
+    $= \frac{1}{2}\begin{pmatrix} 1 - i^2 & i-i \\ -i+i & -i^2+1 \end{pmatrix} = \frac{1}{2}\begin{pmatrix} 1 - (-1) & 0 \\ 0 & -(-1)+1 \end{pmatrix} = \frac{1}{2}\begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = I$.
 
-    $$ Q_l(t) = 1 + 6(t - \frac{1}{2}) = 1 + 6t - 3 = 6t - 2 $$
+    L'endomorphisme est unitaire.
 
-**Réponse:**
+4.  **Tester si $f$ est normal.**
 
-Le polynôme représentant la forme linéaire $l$ est $Q_l(t) = 6t - 2$.
+    Tout endomorphisme unitaire est normal. En effet, si $f^*f = \text{Id}$, alors $f$ est inversible avec $f^{-1}=f^*$. Donc $ff^* = f f^{-1} = \text{Id}$. On a bien $f^*f = ff^* = \text{Id}$.
+
+    L'endomorphisme est donc normal.
+
+**Réponse:** L'endomorphisme $f$ n'est **pas auto-adjoint**, mais il est **unitaire** et **normal**.
+
+</details>
+
+## Exercice 13: [Application]
+
+**Problème:** Dans l'espace euclidien $\mathbb{R}^3$ muni du produit scalaire usuel, on considère la forme linéaire $l: \mathbb{R}^3 \to \mathbb{R}$ définie par $l(x, y, z) = 5x - 2y + z$.
+
+Selon le théorème de représentation de Riesz, il existe un unique vecteur $u \in \mathbb{R}^3$ tel que $l(v) = \langle v, u \rangle$ pour tout $v \in \mathbb{R}^3$. Trouver ce vecteur $u$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Méthode:** On écrit l'expression du produit scalaire $\langle v, u \rangle$ en fonction des coordonnées de $v=(x,y,z)$ et de $u=(u_1, u_2, u_3)$. On identifie ensuite cette expression avec la définition de $l(v)$ pour trouver les coordonnées de $u$.
+
+**Étapes:**
+
+1.  **Exprimer la forme linéaire $l$.**
+
+    La forme linéaire est donnée par $l(v) = l(x, y, z) = 5x - 2y + z$.
+
+2.  **Exprimer le produit scalaire.**
+
+    Soit $u=(u_1, u_2, u_3)$ le vecteur recherché. Pour un vecteur $v=(x, y, z)$, le produit scalaire usuel est :
+
+    $\langle v, u \rangle = x u_1 + y u_2 + z u_3$.
+
+3.  **Identifier les deux expressions.**
+
+    Le théorème de Riesz nous dit que $l(v) = \langle v, u \rangle$. On a donc l'égalité pour tous $x, y, z \in \mathbb{R}$ :
+
+    $5x - 2y + z = u_1 x + u_2 y + u_3 z$.
+
+    Cette égalité entre deux polynômes en $x, y, z$ doit être vraie pour toutes les valeurs de ces variables. Cela implique que les coefficients des variables correspondantes doivent être égaux.
+
+4.  **Déduire les coordonnées de $u$.**
+
+    En identifiant les coefficients, on obtient :
+
+    - Coefficient de $x$: $u_1 = 5$
+    - Coefficient de $y$: $u_2 = -2$
+    - Coefficient de $z$: $u_3 = 1$
+
+    Le vecteur recherché est donc $u=(5, -2, 1)$.
+
+**Réponse:** Le vecteur $u$ représentant la forme linéaire $l$ est $u = (5, -2, 1)$.
 
 </details>

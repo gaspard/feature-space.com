@@ -1,0 +1,176 @@
+---
+import { readdir } from "fs/promises"
+import { join, extname } from "path"
+import { type TOCItem, itemFromFile } from "./utils"
+
+const pagesDir = join(process.cwd(), "src/pages")
+const currentPath = Astro.url.pathname
+const currentDir = join(
+  pagesDir,
+  currentPath.replace(/^\//, "").replace(/\/$/, "")
+)
+
+async function collectChildren(
+  basePath: string,
+  dirPath: string = ""
+): Promise<TOCItem[]> {
+  const items: TOCItem[] = []
+
+  try {
+    const currentPath = join(basePath, dirPath)
+    const entries = await readdir(currentPath, { withFileTypes: true })
+
+    for (const entry of entries) {
+      const entryPath = dirPath ? `${dirPath}/${entry.name}` : entry.name
+
+      const ext = extname(entry.name).toLowerCase()
+      if (
+        entry.isFile() &&
+        [".md", ".mdx"].includes(ext) &&
+        !["index.md", "index.mdx", "404.astro"].includes(entry.name)
+      ) {
+        try {
+          const item = await itemFromFile(basePath, entryPath)
+          items.push(item)
+        } catch (error) {
+          console.error(entry.name)
+          console.warn(`Error reading file ${entryPath}:`, error)
+        }
+      } else if (entry.isDirectory()) {
+        items.push(...(await collectChildren(basePath, entryPath)))
+      }
+    }
+  } catch (error) {
+    console.warn(`Error processing directory ${basePath}:`, error)
+  }
+
+  return items
+}
+
+function itemEmoji(type: string) {
+  switch (type) {
+    case "exercises":
+      return "🖋️"
+    case "concepts":
+      return "💡"
+    case "podcast":
+      return "🎧"
+    case "audio":
+      return "🎧"
+    case "cards":
+      return "📚"
+    case "quiz":
+      return "✅"
+  }
+}
+
+function groupItems(items: TOCItem[]) {
+  const grouped: {
+    [key: string]: { [key: string]: { [key: string]: TOCItem[] } }
+  } = {}
+
+  for (const item of items) {
+    const levelKey = `level-${item.level}`
+    const typeKey = `type-${item.type}`
+    const courseKey = `course-${item.course}`
+
+    if (!grouped[levelKey]) grouped[levelKey] = {}
+    if (!grouped[levelKey][typeKey]) grouped[levelKey][typeKey] = {}
+    if (!grouped[levelKey][typeKey][courseKey])
+      grouped[levelKey][typeKey][courseKey] = []
+
+    grouped[levelKey][typeKey][courseKey].push(item)
+  }
+
+  for (const level of Object.values(grouped)) {
+    for (const type of Object.values(level)) {
+      for (const course of Object.values(type)) {
+        course.sort((a, b) => (a.order || 0) - (b.order || 0))
+      }
+    }
+  }
+
+  return grouped
+}
+
+function translateType(type: string) {
+  switch (type) {
+    case "exercises":
+      return " Exercices"
+    case "concepts":
+      return "Concepts"
+    case "podcast":
+      return "Podcast"
+    case "audio":
+      return "Audio"
+    case "cards":
+      return "Fiches de révision"
+    case "quiz":
+      return "Quiz"
+  }
+}
+
+function translateLevel(level: string) {
+  switch (level) {
+    case "regular":
+      return "Parcours doux"
+    case "pro":
+      return "Parcours intensif"
+  }
+}
+
+const items = await collectChildren(currentDir, "")
+const grouped = groupItems(items)
+---
+
+<nav aria-label="Table des matières" class="toc">
+  {
+    Object.entries(grouped)
+      .sort(([a], [b]) => {
+        const levelA = parseInt(a.split("-")[1])
+        const levelB = parseInt(b.split("-")[1])
+        return levelA - levelB
+      })
+      .map(([levelKey, types]) => {
+        const level = levelKey.split("-")[1]
+        return (
+          <section class="level">
+            <h2 class={level}>{translateLevel(level)}</h2>
+
+            {Object.entries(types).map(([typeKey, courses]) => {
+              const type = typeKey.split("-")[1]
+              return (
+                <section class="type">
+                  <h3>
+                    <span class="emoji">{itemEmoji(type)}</span>{" "}
+                    {translateType(type)}
+                  </h3>
+
+                  {Object.entries(courses).map(([courseKey, chapters]) => {
+                    const course = courseKey.split("-")[1]
+                    return (
+                      <section class="course">
+                        <h4>{course}</h4>
+                        <ul>
+                          {chapters.map((chapter) => (
+                            <li>
+                              <a href={chapter.path}>
+                                <span class="emoji">
+                                  {itemEmoji(chapter.type)}
+                                </span>{" "}
+                                {chapter.chapter}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </section>
+                    )
+                  })}
+                </section>
+              )
+            })}
+          </section>
+        )
+      })
+  }
+</nav>

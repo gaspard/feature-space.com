@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function getValue<T>(key: string, defaultValue: T): T {
 	if (typeof window === "undefined") return defaultValue;
@@ -18,7 +18,13 @@ export function useStorage<T>(
 	key: string,
 	initialValue: T,
 ): [T, (v: T) => void] {
-	const [value, setValue] = useState(() => getValue(key, initialValue));
+	const [value, setValue] = useState(initialValue);
+	const [isHydrated, setIsHydrated] = useState(false);
+
+	useEffect(() => {
+		setIsHydrated(true);
+		setValue(getValue(key, initialValue));
+	}, [key, initialValue]);
 
 	function set(v: T) {
 		if (typeof window !== "undefined") {
@@ -27,5 +33,5 @@ export function useStorage<T>(
 		setValue(v);
 	}
 
-	return [value, set];
+	return [isHydrated ? value : initialValue, set];
 }

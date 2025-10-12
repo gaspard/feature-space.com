@@ -16,10 +16,10 @@ body {
   @apply absolute top-0 left-0 w-full h-full border-0;
 }
 
-nav * {
+nav.sidebar * {
   cursor: pointer;
 }
-nav {
+nav.sidebar {
   li {
     list-style: none !important;
   }
@@ -98,6 +98,39 @@ main {
 	*/
   a:hover {
     color: #606;
+  }
+
+  .toc {
+    h2.regular {
+      @apply font-semibold text-2xl text-blue-600 saturate-30 opacity-40;
+    }
+    h2.pro {
+      @apply font-semibold text-2xl text-red-800 saturate-30 opacity-40;
+    }
+    h3 {
+      @apply text-left m-0 border-b border-slate-700 p-2 bg-amber-50 text-xl;
+    }
+    h4 {
+      @apply font-semibold text-xl text-slate-400 m-3;
+    }
+    span.emoji {
+      @apply hue-rotate-100 saturate-70;
+    }
+    section.type {
+      @apply border border-slate-700 rounded-md p-0 mb-4 bg-slate-100 overflow-hidden;
+    }
+    section.course {
+      @apply mx-4 my-2;
+      ul {
+        @apply list-none mx-4;
+      }
+      li {
+        @apply font-bold text-xl list-none my-1 text-slate-300;
+        a {
+          @apply text-slate-500 border-0;
+        }
+      }
+    }
   }
 
   a {
@@ -540,5 +573,67 @@ input[type='checkbox']:checked:hover {
     max-width: 100% !important;
     height: auto !important;
     float: none !important;
+  }
+}
+
+.llm-warning {
+  display: inline-block;
+  gap: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin: 1.5rem 0;
+  background-color: #fef3c7;
+  border: 1px solid #f59e0b;
+  border-radius: 0.4rem;
+  box-shadow: 8px 8px 0 0 #e1a52d;
+
+  .warning-icon {
+    flex-shrink: 0;
+    color: #f59e0b;
+    margin-top: 0.125rem;
+  }
+
+  .warning-content {
+    display: none;
+    h3 {
+      margin: 0 0 0.5rem 0;
+      color: #92400e;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 0 0 0.5rem 0;
+      color: #92400e;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    strong {
+      font-weight: 600;
+    }
+  }
+}
+
+.llm-warning.open {
+  display: flex;
+  padding: 1rem;
+  .warning-content {  
+    display: block;
+  }
+}
+
+@media (max-width: 640px) {
+  .llm-warning {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .warning-icon {
+    align-self: flex-start;
   }
 }

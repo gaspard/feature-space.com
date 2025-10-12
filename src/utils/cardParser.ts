@@ -8,6 +8,7 @@ export interface QuizOption {
 
 export interface Card {
   id: string;
+  type: 'card' | 'question';
   content: string;
   options?: QuizOption[];
   solution: string;
@@ -27,14 +28,16 @@ export interface ParsedCards {
 }
 
 export function parseCards(content: string, filename: string): ParsedCards {
-  // Use gray-matter to parse front matter
   const { data: metadata, content: body } = matter(content);
 
   if (!metadata || Object.keys(metadata).length === 0) {
     throw new Error('Invalid file format: missing frontmatter');
   }
+  const id = metadata.id
+  if (!id) {
+    throw new Error(`Invalid file format: missing id in frontmatter for ${filename}`);
+  }
 
-  // Split by --- to get individual cards
   const sections = body.split('\n---\n').filter(section => section.trim());
 
   const cards: Card[] = [];
@@ -44,20 +47,18 @@ export function parseCards(content: string, filename: string): ParsedCards {
     const section = sections[i].trim();
     if (!section) continue;
 
-    // Skip the main title section (starts with # but not ####)
     if (section.startsWith('#') && !section.startsWith('####')) continue;
 
-    // Extract content before <details>
     const detailsMatch = section.match(/^(.*?)\s*<details>/s);
     const cardContent = detailsMatch ? detailsMatch[1].trim() : section;
 
-    // Extract solution from <details>
     const solutionMatch = section.match(/<details>[\s\S]*?<summary>.*?<\/summary>([\s\S]*?)<\/details>/);
     const solution = solutionMatch ? solutionMatch[1].trim() : '';
 
     if (cardContent) {
       cards.push({
-        id: `card-${cardIndex}`,
+        id: `c-${id}-${cardIndex}`,
+        type: 'card',
         content: cardContent,
         solution
       });
@@ -70,7 +71,7 @@ export function parseCards(content: string, filename: string): ParsedCards {
     cards,
     type: 'cards',
     metadata: {
-      id: metadata.id,
+      id,
       level: metadata.level,
       chapter: metadata.chapter,
       course: metadata.course,

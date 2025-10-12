@@ -1,486 +1,515 @@
 ---
-title: Fiches de révision (B)
-order: 21
+id: '51661757'
+type: cards
+order: 22
+title: Espaces Euclidiens et Hermitiens - fiches de révision (B)
+tags:
+  - Espaces Euclidiens
+  - Espaces Hermitiens
+  - Produit scalaire
+  - Gram-Schmidt
+  - Projection orthogonale
+  - Endomorphismes adjoints
+  - Théorème de Riesz
+createdAt: '2025-10-12T18:14:20.536Z'
 level: pro
-chapter: B - Concepts
 course: Géométrie
-tags: ["cards", "flashcards", "pro"]
+courseId: d9494343
+chapter: Espaces Euclidiens et Hermitiens
+chapterId: 67b3d760
+---
+# Fiches de révision "Espaces Euclidiens et Hermitiens" (B)
+
 ---
 
-# Cartes: B - Concepts
-
----
-
-Énoncez et commentez la signification du théorème de Fréchet-von Neumann-Jordan concernant la relation entre normes et produits scalaires.
+Prouver l'inégalité de Cauchy-Schwarz dans un espace préhilbertien complexe $(E, \langle \cdot, \cdot \rangle)$.
 
 <details>
 
-<summary>Réponse</summary>
+<summary>Answer</summary>
 
-**Théorème de Fréchet-von Neumann-Jordan :**
-
-Une norme $\|\cdot\|$ sur un $\mathbb{K}$-espace vectoriel $E$ (où $\mathbb{K} = \mathbb{R}$ ou $\mathbb{C}$) dérive d'un produit scalaire si et seulement si elle satisfait l'**identité du parallélogramme** pour tous $x, y \in E$ :
-
-$$ \|x+y\|^2 + \|x-y\|^2 = 2(\|x\|^2 + \|y\|^2) $$
-
-**Signification et Implications :**
-
-Ce théorème fournit une caractérisation géométrique simple et puissante des espaces préhilbertiens parmi tous les espaces vectoriels normés.
-
-1.  **Critère de "Hilbertianité"** : Il permet de déterminer si un espace de Banach (espace normé complet) est en fait un espace de Hilbert. Si la norme vérifie l'identité du parallélogramme, alors l'espace est un espace de Hilbert.
-
-2.  **Unicité et Reconstruction** : Si la norme vérifie cette identité, non seulement un produit scalaire existe, mais il est unique. Il peut être reconstruit explicitement à l'aide des **identités de polarisation**. Par exemple, dans le cas euclidien :
-
-    $$ \langle x, y \rangle = \frac{1}{4} \left( \|x+y\|^2 - \|x-y\|^2 \right) $$
-
-3.  **Interprétation Géométrique** : L'identité elle-même a une signification géométrique claire : la somme des carrés des longueurs des diagonales d'un parallélogramme est égale à la somme des carrés des longueurs de ses quatre côtés. Le théorème établit que cette propriété purement géométrique est la condition nécessaire et suffisante pour qu'une structure de norme soit compatible avec une structure de produit scalaire (qui définit les angles et l'orthogonalité).
-
-**Exemple d'application du critère :** L'espace $L_p(\Omega)$ pour $p \ne 2$ n'est pas un espace de Hilbert car sa norme ne vérifie pas l'identité du parallélogramme.
-
-</details>
-
----
-
-Fournissez une preuve détaillée de l'inégalité de Cauchy-Schwarz dans un espace hermitien $(E, \langle \cdot, \cdot \rangle)$, en précisant la condition d'égalité.
-
-<details>
-
-<summary>Réponse</summary>
-
-**Énoncé :** Pour tous vecteurs $x, y \in E$, on a $|\langle x, y \rangle| \le \|x\| \|y\|$. L'égalité a lieu si et seulement si $x$ et $y$ sont colinéaires.
+**Théorème (Inégalité de Cauchy-Schwarz) :** Pour tous vecteurs $x, y \in E$, on a $|\langle x, y \rangle| \le \|x\| \|y\|$. L'égalité a lieu si et seulement si $x$ et $y$ sont colinéaires.
 
 **Preuve :**
 
-Soient $x, y \in E$.
+1.  **Cas trivial :** Si $y = 0_E$, alors $\langle x, y \rangle = 0$ et $\|y\| = 0$. L'inégalité devient $0 \le 0$, ce qui est vrai.
 
-Si $y = 0_E$, l'inégalité est triviale car $\langle x, 0_E \rangle = 0$ et $\|x\|\|0_E\| = 0$. On a $0 \le 0$.
+2.  **Cas général ($y \neq 0_E$) :** Pour tout scalaire $\lambda \in \mathbb{C}$, la positivité de la norme implique $\|x - \lambda y\|^2 \ge 0$. Développons cette expression :
+    
+    $0 \le \langle x - \lambda y, x - \lambda y \rangle = \langle x, x \rangle - \lambda \langle y, x \rangle - \bar{\lambda} \langle x, y \rangle + \lambda \bar{\lambda} \langle y, y \rangle$
+    
+    $0 \le \|x\|^2 - \lambda \overline{\langle x, y \rangle} - \bar{\lambda} \langle x, y \rangle + |\lambda|^2 \|y\|^2$
 
-Supposons $y \ne 0_E$. Pour tout scalaire $\lambda \in \mathbb{C}$, la positivité de la norme issue du produit scalaire implique :
+3.  **Choix optimal de $\lambda$ :** Le minimum de la distance $\|x - \lambda y\|$ est atteint pour $\lambda y$ égal à la projection de $x$ sur $y$. On choisit donc $\lambda = \frac{\langle x, y \rangle}{\|y\|^2}$. Ce choix est bien défini car $y \neq 0_E$.
 
-$$ 0 \le \|x - \lambda y\|^2 $$
+4.  **Substitution :** En remplaçant $\lambda$ dans l'inégalité :
+    
+    $0 \le \|x\|^2 - \frac{\langle x, y \rangle}{\|y\|^2} \overline{\langle x, y \rangle} - \frac{\overline{\langle x, y \rangle}}{\|y\|^2} \langle x, y \rangle + \frac{|\langle x, y \rangle|^2}{\|y\|^4} \|y\|^2$
+    
+    $0 \le \|x\|^2 - \frac{|\langle x, y \rangle|^2}{\|y\|^2} - \frac{|\langle x, y \rangle|^2}{\|y\|^2} + \frac{|\langle x, y \rangle|^2}{\|y\|^2}$
+    
+    $0 \le \|x\|^2 - \frac{|\langle x, y \rangle|^2}{\|y\|^2}$
 
-Développons le produit scalaire :
+5.  **Conclusion :** En multipliant par $\|y\|^2 > 0$, on obtient $|\langle x, y \rangle|^2 \le \|x\|^2 \|y\|^2$. En prenant la racine carrée, on a l'inégalité voulue : $|\langle x, y \rangle| \le \|x\| \|y\|$.
 
-$$ \|x - \lambda y\|^2 = \langle x - \lambda y, x - \lambda y \rangle = \langle x, x \rangle - \langle x, \lambda y \rangle - \langle \lambda y, x \rangle + \langle \lambda y, \lambda y \rangle $$
-
-$$ = \|x\|^2 - \bar{\lambda} \langle x, y \rangle - \lambda \langle y, x \rangle + \lambda \bar{\lambda} \|y\|^2 $$
-
-$$ = \|x\|^2 - \bar{\lambda} \langle x, y \rangle - \lambda \overline{\langle x, y \rangle} + |\lambda|^2 \|y\|^2 $$
-
-Cette expression est un réel positif pour tout $\lambda \in \mathbb{C}$. L'idée est de choisir un $\lambda$ qui minimise cette expression. La minimisation d'un polynôme du second degré est une approche, mais un choix plus direct et élégant est de poser :
-
-$$ \lambda = \frac{\langle x, y \rangle}{\|y\|^2} $$
-
-Ce choix est possible car $y \ne 0_E$, donc $\|y\|^2 \ne 0$.
-
-En substituant cette valeur de $\lambda$ :
-
-$$ 0 \le \|x\|^2 - \frac{\overline{\langle x, y \rangle}}{\|y\|^2} \langle x, y \rangle - \frac{\langle x, y \rangle}{\|y\|^2} \overline{\langle x, y \rangle} + \frac{|\langle x, y \rangle|^2}{\|y\|^4} \|y\|^2 $$
-
-$$ 0 \le \|x\|^2 - \frac{|\langle x, y \rangle|^2}{\|y\|^2} - \frac{|\langle x, y \rangle|^2}{\|y\|^2} + \frac{|\langle x, y \rangle|^2}{\|y\|^2} $$
-
-$$ 0 \le \|x\|^2 - \frac{|\langle x, y \rangle|^2}{\|y\|^2} $$
-
-En multipliant par $\|y\|^2 > 0$ et en réarrangeant, on obtient :
-
-$$ |\langle x, y \rangle|^2 \le \|x\|^2 \|y\|^2 $$
-
-En prenant la racine carrée, on conclut : $|\langle x, y \rangle| \le \|x\| \|y\|$.
-
-**Cas d'égalité :**
-
-L'égalité a lieu si et seulement si l'inégalité initiale est une égalité, c'est-à-dire $\|x - \lambda y\|^2 = 0$.
-
-Ceci est équivalent à $x - \lambda y = 0_E$, soit $x = \lambda y$.
-
-Cela signifie que $x$ et $y$ sont colinéaires (liés).
+**Cas d'égalité :** L'égalité a lieu si et seulement si $\|x - \lambda y\|^2 = 0$, ce qui, par la propriété de définition de la norme, équivaut à $x - \lambda y = 0_E$, c'est-à-dire $x = \lambda y$. La famille $(x, y)$ est donc liée. Réciproquement, si $x = \alpha y$, on a $|\langle \alpha y, y \rangle| = |\alpha| |\langle y, y \rangle| = |\alpha| \|y\|^2$ et $\|\alpha y\|\|y\| = |\alpha|\|y\|\|y\| = |\alpha|\|y\|^2$, d'où l'égalité.
 
 </details>
 
 ---
 
-Expliquez comment le procédé de Gram-Schmidt est à la base de la décomposition QR d'une matrice inversible et décrivez la nature des matrices Q et R.
+Énoncer le théorème de Fréchet-von Neumann-Jordan et expliquer sa signification.
 
 <details>
 
-<summary>Réponse</summary>
+<summary>Answer</summary>
 
-Le procédé d'orthonormalisation de Gram-Schmidt et la décomposition QR sont deux facettes du même concept.
+**Théorème (Fréchet-von Neumann-Jordan) :** Une norme $\|\cdot\|$ sur un $\mathbb{K}$-espace vectoriel $E$ (avec $\mathbb{K}=\mathbb{R}$ ou $\mathbb{C}$) dérive d'un produit scalaire si et seulement si elle satisfait **l'identité du parallélogramme** :
 
-Soit $A \in GL_n(\mathbb{K})$ une matrice inversible. On peut voir ses colonnes $v_1, \dots, v_n$ comme une base de $\mathbb{K}^n$.
+$$ \forall x,y \in E, \quad \|x+y\|^2 + \|x-y\|^2 = 2(\|x\|^2 + \|y\|^2) $$
 
-Le procédé de Gram-Schmidt transforme cette base $(v_1, \dots, v_n)$ en une base orthonormée $(e_1, \dots, e_n)$. À chaque étape $k$, le vecteur $v_k$ s'exprime comme une combinaison linéaire des vecteurs orthonormés déjà construits $(e_1, \dots, e_k)$ :
+**Signification et implications :**
 
-$$ v_k = \langle v_k, e_1 \rangle e_1 + \langle v_k, e_2 \rangle e_2 + \dots + \langle v_k, e_{k-1} \rangle e_{k-1} + \|u_k\| e_k $$
+Ce théorème fournit un critère fondamental pour déterminer si un espace normé est également un espace préhilbertien. Il établit un pont entre la structure géométrique (liée aux longueurs et aux parallélogrammes) et la structure algébrique d'un produit scalaire.
 
-où $u_k = v_k - \sum_{j=1}^{k-1} \langle v_k, e_j \rangle e_j$.
+- **Suffisance :** Si une norme vérifie cette identité, on peut construire explicitement le produit scalaire qui l'induit en utilisant les **identités de polarisation**.
+  - **Cas réel :** $\langle x, y \rangle = \frac{1}{4}(\|x+y\|^2 - \|x-y\|^2)$.
+  - **Cas complexe :** $\langle x, y \rangle = \frac{1}{4}(\|x+y\|^2 - \|x-y\|^2 + i\|x+iy\|^2 - i\|x-iy\|^2)$.
+  
+  La partie non triviale de la preuve consiste à montrer que les formes ainsi définies sont bien bilinéaires (ou sesquilinéaires) symétriques (ou hermitiennes) définies positives.
 
-Cette relation montre que chaque $v_k$ est une combinaison linéaire de $e_1, \dots, e_k$. On peut écrire ces relations sous forme matricielle. Soit $A$ la matrice dont les colonnes sont les $v_k$, et $Q$ la matrice dont les colonnes sont les $e_k$. La relation ci-dessus se traduit par :
+- **Nécessité :** Si la norme dérive d'un produit scalaire, i.e., $\|v\|^2 = \langle v, v \rangle$, la vérification de l'identité est un calcul direct :
 
-$$ A = QR $$
+  $\|x+y\|^2 = \|x\|^2 + 2\text{Re}(\langle x,y \rangle) + \|y\|^2$
 
-**Nature des matrices :**
+  $\|x-y\|^2 = \|x\|^2 - 2\text{Re}(\langle x,y \rangle) + \|y\|^2$
 
-1.  **Matrice Q :**
+  En les sommant, on obtient le résultat.
 
-    Ses colonnes $(e_1, \dots, e_n)$ forment une base orthonormée de $\mathbb{K}^n$ pour le produit scalaire canonique.
-
-    -   Si $\mathbb{K} = \mathbb{R}$, $Q$ est une **matrice orthogonale**, c'est-à-dire ${}^tQ Q = I_n$ (ou $Q^{-1} = {}^tQ$).
-    -   Si $\mathbb{K} = \mathbb{C}$, $Q$ est une **matrice unitaire**, c'est-à-dire $Q^* Q = I_n$ (ou $Q^{-1} = Q^* = {}^t\bar{Q}$).
-
-2.  **Matrice R :**
-
-    La relation de Gram-Schmidt $v_k = \sum_{j=1}^k r_{jk} e_j$ montre que les coefficients de la $k$-ième colonne de $A$ dans la base $(e_j)$ sont nuls pour $j>k$. La matrice de passage de la base $(e_j)$ à la base $(v_k)$ est donc triangulaire supérieure. Cette matrice de passage est $R$.
-
-    Les coefficients de $R$ sont donnés par $r_{jk} = \langle v_k, e_j \rangle$ pour $j < k$ et $r_{kk} = \|u_k\|$.
-
-    Puisque la famille $(v_k)$ est libre, tous les $u_k$ sont non nuls, donc les coefficients diagonaux $r_{kk}$ sont strictement positifs.
-
-    $R$ est donc une **matrice triangulaire supérieure à coefficients diagonaux strictement positifs**.
-
-**Conclusion :** L'algorithme de Gram-Schmidt fournit une preuve constructive et une méthode de calcul pour la décomposition QR, qui est fondamentale en analyse numérique pour la résolution de systèmes linéaires et le calcul de valeurs propres.
+**Exemple de norme non-euclidienne :** La norme $\|x\|_1 = \sum |x_i|$ sur $\mathbb{R}^n$ ($n \ge 2$) ne dérive pas d'un produit scalaire car elle ne vérifie pas l'identité du parallélogramme.
 
 </details>
 
 ---
 
-Comment une forme bilinéaire $\varphi$ sur un espace vectoriel $E$ peut-elle être interprétée dans le langage des tenseurs ?
+Pourquoi utilise-t-on des formes sesquilinéaires plutôt que bilinéaires pour définir le produit scalaire sur des espaces vectoriels complexes ?
 
 <details>
 
-<summary>Réponse</summary>
+<summary>Answer</summary>
 
-En géométrie différentielle et en physique théorique, les formes bilinéaires sont interprétées comme des **tenseurs de type (0,2)**.
+L'utilisation de formes sesquilinéaires (linéaires à gauche, semi-linéaires à droite) au lieu de formes bilinéaires sur un $\mathbb{C}$-espace vectoriel $E$ est cruciale pour obtenir une norme ayant les propriétés désirées, notamment d'être à valeurs réelles et positive.
 
-Soit $E$ un espace vectoriel de dimension finie sur un corps $\mathbb{K}$, et $E^*$ son espace dual (l'espace des formes linéaires sur $E$).
+Soit $\varphi: E \times E \to \mathbb{C}$ une forme servant à définir une norme via $\|x\|^2 = \varphi(x,x)$.
 
-1.  **Définition d'un tenseur de type (0,2) :**
+**Hypothèse 1 : $\varphi$ est bilinéaire.**
 
-    Un tenseur $T$ de type (0,2) sur $E$ est une application multilinéaire qui prend deux vecteurs de $E$ et renvoie un scalaire :
+Si $\varphi$ était bilinéaire, on aurait $\varphi(\lambda x, \lambda x) = \lambda^2 \varphi(x,x)$.
 
-    $$ T: E \times E \to \mathbb{K} $$
+Pour $x \in E$ et $\lambda=i \in \mathbb{C}$, cela donnerait :
 
-    Cette définition coïncide exactement avec celle d'une forme bilinéaire. Ainsi, l'ensemble des formes bilinéaires sur $E$ est précisément l'espace des tenseurs de type (0,2).
+$\|ix\|^2 = \varphi(ix, ix) = i^2 \varphi(x,x) = - \varphi(x,x) = -\|x\|^2$.
 
-2.  **Identification avec $E^* \otimes E^*$ :**
+Cela pose deux problèmes majeurs :
 
-    L'espace des tenseurs de type (0,2) est canoniquement isomorphe au produit tensoriel de l'espace dual avec lui-même : $E^* \otimes E^*$.
+1.  **Positivité non garantie :** Si $\|x\|^2 > 0$, alors $\|ix\|^2 < 0$. Une "norme au carré" ne peut pas être négative.
+2.  **Homogénéité de la norme :** La propriété de la norme $\|\lambda x\| = |\lambda| \|x\|$ ne serait pas respectée. On aurait $\|ix\| = \sqrt{-\|x\|^2}$ qui n'est même pas un nombre réel si $\|x\| \neq 0$.
 
-    Si $(e_1, \dots, e_n)$ est une base de $E$ et $(e^1, \dots, e^n)$ est la base duale correspondante de $E^*$ (définie par $e^i(e_j) = \delta^i_j$), alors toute forme bilinéaire $\varphi$ peut s'écrire de manière unique sous la forme :
+**Hypothèse 2 : $\varphi$ est sesquilinéaire hermitienne.**
 
-    $$ \varphi = \sum_{i,j=1}^n \varphi_{ij} (e^i \otimes e^j) $$
+Si $\varphi$ est sesquilinéaire, on a $\varphi(\lambda x, \lambda x) = \lambda \bar{\lambda} \varphi(x,x) = |\lambda|^2 \varphi(x,x)$.
 
-    Les coefficients $\varphi_{ij}$ sont donnés par $\varphi_{ij} = \varphi(e_i, e_j)$. Ce sont exactement les coefficients de la matrice de la forme bilinéaire dans la base $(e_i)$.
+Ainsi, $\| \lambda x \|^2 = |\lambda|^2 \|x\|^2$, ce qui donne en prenant la racine : $\|\lambda x\| = |\lambda| \|x\|$. C'est la propriété d'homogénéité requise pour une norme.
 
-    L'action du tenseur $\varphi$ sur un couple de vecteurs $(u, v)$ est alors :
+De plus, la condition de symétrie hermitienne, $\varphi(x,y) = \overline{\varphi(y,x)}$, implique que $\varphi(x,x) = \overline{\varphi(x,x)}$, ce qui garantit que **$\varphi(x,x)$ est toujours un nombre réel**.
 
-    $$ \varphi(u,v) = \left( \sum_{i,j} \varphi_{ij} (e^i \otimes e^j) \right)(u,v) = \sum_{i,j} \varphi_{ij} e^i(u) e^j(v) $$
-
-    Si $u=\sum_k u^k e_k$ et $v=\sum_l v^l e_l$, alors $e^i(u) = u^i$ et $e^j(v) = v^j$, et on retrouve l'expression habituelle $\varphi(u,v) = \sum_{i,j} \varphi_{ij} u^i v^j$.
-
-**Concepts liés :**
-
--   Un produit scalaire est un tenseur métrique, un tenseur de type (0,2) qui est de plus symétrique et défini positif.
--   Cette interprétation est cruciale en géométrie riemannienne, où un produit scalaire (une "métrique") est défini sur chaque espace tangent d'une variété.
+En conclusion, la structure sesquilinéaire est la construction "naturelle" qui assure que la quantité $\varphi(x,x)$ soit un réel positif, permettant de définir une norme cohérente sur un espace vectoriel complexe.
 
 </details>
 
 ---
 
-Expliquez pourquoi en dimension finie, le bi-orthogonal d'un sous-espace $F$ est $F$ lui-même, i.e. $(F^\perp)^\perp = F$, et donnez un contre-exemple en dimension infinie.
+Démontrer que toute famille orthogonale de vecteurs non nuls est libre.
 
 <details>
 
-<summary>Réponse</summary>
+<summary>Answer</summary>
 
-**Cas de la dimension finie :**
+**Théorème :** Soit $(v_1, v_2, ..., v_n)$ une famille orthogonale de vecteurs d'un espace préhilbertien $E$. Si tous les $v_i$ sont non nuls, alors la famille est libre.
 
-Soit $E$ un espace euclidien ou hermitien de dimension finie, et $F$ un sous-espace vectoriel de $E$.
+**Preuve :**
 
-1.  **Inclusion $F \subseteq (F^\perp)^\perp$ :**
+Soit une combinaison linéaire nulle de ces vecteurs :
 
-    Soit $x \in F$. Par définition de $F^\perp$, tout vecteur $y \in F^\perp$ vérifie $\langle x, y \rangle = 0$. Mais la définition de $(F^\perp)^\perp$ est l'ensemble des vecteurs orthogonaux à *tous* les vecteurs de $F^\perp$. Puisque $x$ est orthogonal à tous les $y \in F^\perp$, $x$ appartient à $(F^\perp)^\perp$. L'inclusion est donc toujours vraie, quelle que soit la dimension.
+$$ \sum_{i=1}^n \lambda_i v_i = 0_E $$
 
-2.  **Égalité par les dimensions :**
+où les $\lambda_i$ sont des scalaires du corps $\mathbb{K}$.
 
-    Le théorème fondamental de la projection orthogonale en dimension finie nous donne :
+Pour montrer que la famille est libre, nous devons prouver que tous les coefficients $\lambda_i$ sont nuls.
 
-    $$ \dim(F) + \dim(F^\perp) = \dim(E) $$
+Fixons un indice $j \in \{1, ..., n\}$. Effectuons le produit scalaire de l'équation ci-dessus par le vecteur $v_j$ :
 
-    On peut appliquer ce même théorème au sous-espace $F^\perp$ :
+$$ \left\langle \sum_{i=1}^n \lambda_i v_i, v_j \right\rangle = \langle 0_E, v_j \rangle = 0 $$
 
-    $$ \dim(F^\perp) + \dim((F^\perp)^\perp) = \dim(E) $$
+Par linéarité (à gauche) du produit scalaire, nous pouvons développer le membre de gauche :
 
-    En comparant les deux égalités, on déduit immédiatement que $\dim(F) = \dim((F^\perp)^\perp)$.
+$$ \sum_{i=1}^n \lambda_i \langle v_i, v_j \rangle = 0 $$
 
-    Puisque nous avons l'inclusion $F \subseteq (F^\perp)^\perp$ et l'égalité des dimensions, on conclut que $F = (F^\perp)^\perp$.
+La famille $(v_i)$ étant orthogonale, on a $\langle v_i, v_j \rangle = 0$ pour tout $i \neq j$. La somme se simplifie donc radicalement, car seul le terme pour $i=j$ est potentiellement non nul :
 
-**Contre-exemple en dimension infinie :**
+$$ \lambda_1 \langle v_1, v_j \rangle + \dots + \lambda_j \langle v_j, v_j \rangle + \dots + \lambda_n \langle v_n, v_j \rangle = 0 $$
 
-L'égalité $(F^\perp)^\perp = \overline{F}$ (l'adhérence de $F$) est vraie dans un espace de Hilbert. Si $F$ n'est pas fermé, l'égalité avec $F$ est fausse.
+$$ \lambda_j \langle v_j, v_j \rangle = 0 $$
 
-Soit $E = l^2(\mathbb{N})$, l'espace de Hilbert des suites de carré sommable.
+Cette équation peut s'écrire :
 
-Soit $F = c_{00}$, le sous-espace vectoriel des suites à support fini (nulles à partir d'un certain rang).
+$$ \lambda_j \|v_j\|^2 = 0 $$
 
-$F$ est un sous-espace vectoriel de $E$, mais il n'est pas fermé. En fait, il est dense dans $E$.
+Par hypothèse, les vecteurs $v_i$ sont non nuls. Par conséquent, $\|v_j\| \neq 0$, et donc $\|v_j\|^2 \neq 0$.
 
--   **Calcul de $F^\perp$ :**
+Pour que le produit $\lambda_j \|v_j\|^2$ soit nul, il faut nécessairement que $\lambda_j = 0$.
 
-    Soit $u = (u_n) \in F^\perp$. Pour tout $k \in \mathbb{N}$, la suite $e_k$ (qui vaut 1 en position $k$ et 0 ailleurs) est dans $F$.
+Comme ce raisonnement est valable pour n'importe quel indice $j \in \{1, ..., n\}$, nous avons démontré que $\lambda_1 = \lambda_2 = \dots = \lambda_n = 0$.
 
-    Donc, $\langle u, e_k \rangle = u_k = 0$ pour tout $k$.
-
-    La seule suite dont tous les termes sont nuls est la suite nulle. Donc $F^\perp = \{0_E\}$.
-
--   **Calcul de $(F^\perp)^\perp$ :**
-
-    L'orthogonal du sous-espace nul est l'espace entier :
-
-    $$ (F^\perp)^\perp = (\{0_E\})^\perp = E $$
-
-    On a donc $(F^\perp)^\perp = E$, alors que $F = c_{00}$. Clairement, $E \ne F$, ce qui fournit le contre-exemple.
+Ceci prouve que la famille $(v_1, ..., v_n)$ est libre.
 
 </details>
 
 ---
 
-Démontrez qu'un projecteur $p$ sur un espace euclidien ou hermitien $E$ est un projecteur orthogonal si et seulement s'il est autoadjoint ($p=p^*$).
+Montrer que $\langle A, B \rangle = \text{Tr}(A B^*)$ définit un produit scalaire hermitien sur l'espace $M_p(\mathbb{C})$.
 
 <details>
 
-<summary>Réponse</summary>
+<summary>Answer</summary>
 
-Soit $p \in \mathcal{L}(E)$ un projecteur, i.e., $p^2 = p$. On note $F = \text{Im}(p)$ et $G = \text{Ker}(p)$. On sait que $E = F \oplus G$.
+Soit $E = M_p(\mathbb{C})$. On définit $\varphi(A,B) = \text{Tr}(A B^*)$ où $B^* = \overline{{}^tB}$ est la transconjuguée de $B$. Nous devons vérifier les trois axiomes d'un produit scalaire hermitien.
 
-**($\Rightarrow$) Supposons que $p$ est un projecteur orthogonal.**
+**1. Sesquilinéarité :**
 
-Par définition, cela signifie que son noyau est l'orthogonal de son image : $G = F^\perp$. Donc $E = F \oplus F^\perp$.
+- **Linéarité à gauche :** Soient $A_1, A_2, B \in E$ et $\lambda \in \mathbb{C}$.
+  
+  $\varphi(A_1 + \lambda A_2, B) = \text{Tr}((A_1 + \lambda A_2)B^*) = \text{Tr}(A_1 B^* + \lambda A_2 B^*)$
+  
+  Par linéarité de la trace :
+  
+  $= \text{Tr}(A_1 B^*) + \lambda \text{Tr}(A_2 B^*) = \varphi(A_1, B) + \lambda \varphi(A_2, B)$.
+  
+  La linéarité à gauche est vérifiée.
 
-Montrons que $p$ est autoadjoint, c'est-à-dire $\forall x, y \in E, \langle p(x), y \rangle = \langle x, p(y) \rangle$.
+- **Semi-linéarité à droite :** Soient $A, B_1, B_2 \in E$ et $\lambda \in \mathbb{C}$.
+  
+  $\varphi(A, B_1 + \lambda B_2) = \text{Tr}(A (B_1 + \lambda B_2)^*) = \text{Tr}(A (B_1^* + \overline{\lambda} B_2^*))$
+  
+  $= \text{Tr}(A B_1^* + \overline{\lambda} A B_2^*) = \text{Tr}(A B_1^*) + \overline{\lambda} \text{Tr}(A B_2^*) = \varphi(A, B_1) + \overline{\lambda} \varphi(A, B_2)$.
+  
+  La semi-linéarité à droite est vérifiée.
 
-Soient $x, y \in E$. On les décompose selon $F \oplus F^\perp$ :
+**2. Symétrie hermitienne :**
 
-$x = x_F + x_{F^\perp}$ avec $x_F = p(x) \in F$ et $x_{F^\perp} \in F^\perp$.
+Nous devons montrer que $\varphi(A,B) = \overline{\varphi(B,A)}$.
 
-$y = y_F + y_{F^\perp}$ avec $y_F = p(y) \in F$ et $y_{F^\perp} \in F^\perp$.
+$\overline{\varphi(B,A)} = \overline{\text{Tr}(B A^*)} = \text{Tr}(\overline{B A^*})$.
 
-Calculons le premier terme :
+En utilisant les propriétés de la conjugaison et de la trace : $\overline{\text{Tr}(M)} = \text{Tr}(\overline{M})$ et $\overline{MN} = \overline{M}\overline{N}$.
 
-$$ \langle p(x), y \rangle = \langle x_F, y_F + y_{F^\perp} \rangle = \langle x_F, y_F \rangle + \langle x_F, y_{F^\perp} \rangle $$
+$\overline{\varphi(B,A)} = \text{Tr}(\overline{B} \overline{A^*})$.
 
-Comme $x_F \in F$ et $y_{F^\perp} \in F^\perp$, leur produit scalaire est nul. Donc :
+Puisque $\overline{A^*} = \overline{\overline{{}^tA}} = {}^tA$, on a :
 
-$$ \langle p(x), y \rangle = \langle x_F, y_F \rangle $$
+$\overline{\varphi(B,A)} = \text{Tr}(\overline{B} {}^tA)$.
 
-Calculons le second terme :
+On utilise la propriété $\text{Tr}(XY) = \text{Tr}(YX)$. Soit $X=\overline{B}$ et $Y={}^tA$.
 
-$$ \langle x, p(y) \rangle = \langle x_F + x_{F^\perp}, y_F \rangle = \langle x_F, y_F \rangle + \langle x_{F^\perp}, y_F \rangle $$
+$\text{Tr}(\overline{B} {}^tA) = \text{Tr}({}^tA \overline{B})$.
 
-Comme $x_{F^\perp} \in F^\perp$ et $y_F \in F$, leur produit scalaire est nul. Donc :
+Enfin, on utilise $\text{Tr}(M) = \text{Tr}({}^tM)$.
 
-$$ \langle x, p(y) \rangle = \langle x_F, y_F \rangle $$
+$\text{Tr}({}^tA \overline{B}) = \text{Tr}({}^t({}^tA \overline{B})) = \text{Tr}({}^t(\overline{B}) A) = \text{Tr}(B^* A) = \text{Tr}(A B^*) = \varphi(A,B)$.
 
-Les deux termes sont égaux, donc $p=p^*$.
+La symétrie hermitienne est vérifiée.
 
-**($\Leftarrow$) Supposons que $p$ est un projecteur autoadjoint ($p^2=p$ et $p=p^*$).**
+**3. Définie-positivité :**
 
-Nous devons montrer que $p$ est un projecteur orthogonal, c'est-à-dire que son noyau est l'orthogonal de son image : $\text{Ker}(p) = (\text{Im}(p))^\perp$.
+- **Positivité :**
 
-On sait que pour tout endomorphisme $f$, on a la relation $(\text{Im}(f))^\perp = \text{Ker}(f^*)$.
+  $\varphi(A,A) = \text{Tr}(A A^*) = \sum_{i=1}^p (AA^*)_{ii}$.
 
-Appliquons cela à $p$. Puisque $p=p^*$, on a :
+  L'élément $(i,i)$ de $AA^*$ est donné par le produit de la $i$-ème ligne de $A$ et de la $i$-ème colonne de $A^*$.
 
-$$ (\text{Im}(p))^\perp = \text{Ker}(p^*) = \text{Ker}(p) $$
+  $(AA^*)_{ii} = \sum_{j=1}^p a_{ij} (A^*)_{ji} = \sum_{j=1}^p a_{ij} \overline{a_{ij}} = \sum_{j=1}^p |a_{ij}|^2$.
 
-Ceci est exactement la définition d'un projecteur orthogonal.
+  Donc, $\varphi(A,A) = \sum_{i=1}^p \sum_{j=1}^p |a_{ij}|^2$.
+
+  C'est une somme de termes réels positifs, donc $\varphi(A,A) \ge 0$.
+
+- **Définie :**
+
+  $\varphi(A,A) = 0 \iff \sum_{i,j} |a_{ij}|^2 = 0$.
+
+  Une somme de termes positifs est nulle si et seulement si chaque terme est nul.
+
+  $\iff |a_{ij}|^2 = 0$ pour tous $i,j$.
+
+  $\iff a_{ij} = 0$ pour tous $i,j$.
+
+  $\iff A = 0_{M_p(\mathbb{C})}$.
+
+La forme est bien définie positive.
+
+Les trois axiomes étant vérifiés, $\langle A, B \rangle = \text{Tr}(A B^*)$ est un produit scalaire hermitien sur $M_p(\mathbb{C})$.
 
 </details>
 
 ---
 
-Quelle est la signification géométrique du déterminant de Gram ? Prouvez-le pour une famille de deux vecteurs dans un espace euclidien $\mathbb{R}^n$.
+Énoncer les identités de polarisation dans les cas euclidien et hermitien, et expliquer leur rôle fondamental.
 
 <details>
 
-<summary>Réponse</summary>
+<summary>Answer</summary>
 
-**Signification géométrique :**
+Les identités de polarisation expriment le produit scalaire en termes de la norme qu'il induit. Elles sont différentes dans le cas réel (euclidien) et complexe (hermitien).
 
-Le déterminant de la matrice de Gram d'une famille de $k$ vecteurs $(v_1, \dots, v_k)$ dans un espace euclidien est égal au **carré du volume** du parallélotope $k$-dimensionnel engendré par ces vecteurs.
+**Cas Euclidien ($\mathbb{K}=\mathbb{R}$)**
 
-En particulier :
+Pour une forme bilinéaire symétrique $\varphi(x,y) = \langle x,y \rangle$ et sa norme associée $\|x\|^2 = \langle x,x \rangle$:
 
--   Pour $k=1$, $\det(G) = \langle v_1, v_1 \rangle = \|v_1\|^2$, le carré de la longueur.
--   Pour $k=2$, $\det(G)$ est le carré de l'aire du parallélogramme engendré par $v_1, v_2$.
--   Pour $k=3$, $\det(G)$ est le carré du volume du parallélépipède engendré par $v_1, v_2, v_3$.
+$$ \langle x, y \rangle = \frac{1}{2} (\|x+y\|^2 - \|x\|^2 - \|y\|^2) $$
 
-Une conséquence directe est que le déterminant de Gram est nul si et seulement si la famille de vecteurs est liée (le parallélotope est "aplati" et son volume est nul).
+ou, de manière plus symétrique :
 
-**Preuve pour deux vecteurs $u, v \in \mathbb{R}^n$ :**
+$$ \langle x, y \rangle = \frac{1}{4}(\|x+y\|^2 - \|x-y\|^2) $$
 
-La matrice de Gram de la famille $(u,v)$ est :
+*Preuve (pour la 2ème forme) :* $\|x+y\|^2 - \|x-y\|^2 = (\langle x,x \rangle + 2\langle x,y \rangle + \langle y,y \rangle) - (\langle x,x \rangle - 2\langle x,y \rangle + \langle y,y \rangle) = 4\langle x,y \rangle$.
 
-$$ G = \begin{pmatrix} \langle u, u \rangle & \langle u, v \rangle \\ \langle v, u \rangle & \langle v, v \rangle \end{pmatrix} = \begin{pmatrix} \|u\|^2 & \langle u, v \rangle \\ \langle u, v \rangle & \|v\|^2 \end{pmatrix} $$
+**Cas Hermitien ($\mathbb{K}=\mathbb{C}$)**
 
-Son déterminant est :
+Pour une forme sesquilinéaire hermitienne $\varphi(x,y) = \langle x,y \rangle$ :
 
-$$ \det(G) = \|u\|^2 \|v\|^2 - \langle u, v \rangle^2 $$
+$$ \langle x, y \rangle = \frac{1}{4} \sum_{k=0}^3 i^k \|x+i^k y\|^2 = \frac{1}{4} (\|x+y\|^2 - \|x-y\|^2 + i\|x+iy\|^2 - i\|x-iy\|^2) $$
 
-Soit $\theta$ l'angle entre les vecteurs $u$ et $v$. On sait que $\langle u, v \rangle = \|u\| \|v\| \cos(\theta)$. En substituant :
+*Note :* La partie réelle de $\langle x,y \rangle$ est $\text{Re}(\langle x,y \rangle) = \frac{1}{4}(\|x+y\|^2 - \|x-y\|^2)$ et sa partie imaginaire est $\text{Im}(\langle x,y \rangle) = \text{Re}(\langle x, -iy \rangle) = \frac{1}{4}(\|x-iy\|^2 - \|x+iy\|^2)$, ce qui mène à la formule complète.
 
-$$ \det(G) = \|u\|^2 \|v\|^2 - (\|u\| \|v\| \cos(\theta))^2 $$
+**Rôle Fondamental :**
 
-$$ \det(G) = \|u\|^2 \|v\|^2 (1 - \cos^2(\theta)) $$
+1.  **Unicité :** Les identités de polarisation montrent qu'un produit scalaire est **entièrement déterminé** par la norme qu'il induit. Si deux produits scalaires sur un même espace engendrent la même norme, alors ces produits scalaires sont identiques.
 
-$$ \det(G) = \|u\|^2 \|v\|^2 \sin^2(\theta) $$
+2.  **Caractérisation :** Elles sont au cœur de la preuve du théorème de Fréchet-von Neumann-Jordan. Si une norme vérifie l'identité du parallélogramme, on peut *définir* une forme bilinéaire ou sesquilinéaire via ces identités et ensuite prouver qu'elle a bien toutes les propriétés d'un produit scalaire.
 
-L'aire $\mathcal{A}$ du parallélogramme engendré par $u$ et $v$ est donnée par "base $\times$ hauteur". En prenant $u$ comme base, la hauteur est $\|v\| |\sin(\theta)|$.
-
-$$ \mathcal{A} = \|u\| \cdot (\|v\| |\sin(\theta)|) $$
-
-Ainsi, le carré de l'aire est :
-
-$$ \mathcal{A}^2 = (\|u\| \|v\| \sin(\theta))^2 = \|u\|^2 \|v\|^2 \sin^2(\theta) $$
-
-On a donc bien $\det(G) = \mathcal{A}^2$, ce qui prouve le résultat.
+3.  **Lien entre géométrie et algèbre :** Elles formalisent le lien intime entre la notion "géométrique" de longueur (la norme) et la notion "algébrique/géométrique" d'angle et de projection (le produit scalaire).
 
 </details>
 
 ---
 
-Interprétez la somme partielle de la série de Fourier d'une fonction comme une projection orthogonale dans un espace préhilbertien approprié.
+Expliquer la nature de l'espace-temps de Minkowski $\mathbb{R}^4$ muni de la forme $\varphi(x,y) = x_1y_1 + x_2y_2 + x_3y_3 - x_4y_4$. En quoi diffère-t-il d'un espace euclidien ?
 
 <details>
 
-<summary>Réponse</summary>
+<summary>Answer</summary>
 
-Considérons l'espace $E = \mathcal{C}_{2\pi}$ des fonctions continues $2\pi$-périodiques de $\mathbb{R}$ dans $\mathbb{C}$. On munit cet espace du produit scalaire hermitien :
+L'espace-temps de Minkowski est l'espace vectoriel $\mathbb{R}^4$ muni de la forme bilinéaire symétrique $\varphi$ définie par :
 
-$$ \langle f, g \rangle = \frac{1}{2\pi} \int_0^{2\pi} f(t)\overline{g(t)} dt $$
+$$ \varphi(x,y) = x_1y_1 + x_2y_2 + x_3y_3 - x_4y_4 $$
 
-Dans cet espace, la famille de fonctions $(e_k)_{k \in \mathbb{Z}}$ définie par $e_k(t) = e^{ikt}$ forme une **famille orthonormée**.
+où les trois premières coordonnées sont spatiales et la quatrième est temporelle (parfois notée $x_0$ et affectée du signe $+$, avec un signe $-$ pour l'espace, selon les conventions). On l'appelle souvent une **métrique de Lorentz**.
 
-Soit $F_n$ le sous-espace vectoriel de $E$ engendré par les $2n+1$ premières fonctions de cette famille :
+**Différences fondamentales avec un espace euclidien :**
 
-$$ F_n = \text{Vect}(e_k(t) = e^{ikt})_{k=-n, \dots, n} $$
+1.  **Non-positivité :** La forme $\varphi$ n'est pas positive, et donc encore moins définie positive. La quantité $\varphi(x,x)$ peut être positive, négative ou nulle pour des vecteurs $x$ non nuls.
+    -   $\varphi(x,x) > 0$ : $x$ est un vecteur de **genre espace**.
+    -   $\varphi(x,x) < 0$ : $x$ est un vecteur de **genre temps**.
+    -   $\varphi(x,x) = 0$ (avec $x \neq 0$) : $x$ est un vecteur de **genre lumière** (ou isotrope). Ces vecteurs forment le **cône de lumière**.
+    
+    *Exemple :* Soit $x = (0,0,0,1)$. Alors $\varphi(x,x) = -1 < 0$. $x$ est de genre temps.
 
-$F_n$ est l'espace des polynômes trigonométriques de degré au plus $n$. La famille $(e_{-n}, \dots, e_n)$ est une base orthonormée de $F_n$.
+    *Exemple :* Soit $v = (1,0,0,1)$. Alors $\varphi(v,v) = 1^2 - 1^2 = 0$. $v$ est un vecteur de genre lumière.
 
-La **projection orthogonale** $p_{F_n}(f)$ d'une fonction $f \in E$ sur le sous-espace $F_n$ est donnée par la formule générale de projection sur une base orthonormée :
+2.  **Pas un produit scalaire :** Puisque la forme n'est pas définie positive, ce n'est pas un produit scalaire euclidien. L'espace de Minkowski **n'est pas** un espace euclidien.
 
-$$ p_{F_n}(f) = \sum_{k=-n}^{n} \langle f, e_k \rangle e_k $$
+3.  **Géométrie non-euclidienne :** La géométrie induite est radicalement différente.
+    -   La "norme au carré" $\varphi(x,x)$ n'est pas toujours positive, donc on ne peut pas définir une norme au sens usuel. On parle de **pseudo-norme**.
+    -   L'inégalité de Cauchy-Schwarz n'est pas valide dans sa forme habituelle. Pour deux vecteurs de genre temps orientés vers le futur, elle est même inversée.
+    -   La notion d'orthogonalité est différente. Un vecteur non nul peut être orthogonal à lui-même ($\varphi(x,x)=0$).
 
-Calculons les coefficients $\langle f, e_k \rangle$ :
+**Signification en physique :**
 
-$$ \langle f, e_k \rangle = \frac{1}{2\pi} \int_0^{2\pi} f(t)\overline{e_k(t)} dt = \frac{1}{2\pi} \int_0^{2\pi} f(t)e^{-ikt} dt $$
+L'espace de Minkowski est le cadre mathématique de la relativité restreinte.
 
-Ce coefficient est précisément le **$k$-ième coefficient de Fourier de $f$**, noté $c_k(f)$.
-
-Ainsi, la projection orthogonale de $f$ sur $F_n$ est :
-
-$$ p_{F_n}(f)(t) = \sum_{k=-n}^{n} c_k(f) e^{ikt} $$
-
-Cette expression est exactement la **$n$-ième somme partielle de la série de Fourier de $f$**, notée $S_n(f)$.
-
-**Conclusion et Interprétation :**
-
-La somme partielle de Fourier $S_n(f)$ est la meilleure approximation de $f$ par un polynôme trigonométrique de degré au plus $n$, au sens de la norme $L^2$ (minimisation de l'erreur quadratique moyenne). C'est une conséquence directe du **théorème de la meilleure approximation**, qui stipule que la projection orthogonale sur un sous-espace est l'unique point de ce sous-espace qui minimise la distance à la fonction d'origine.
-
-$$ \int_0^{2\pi} |f(t) - S_n(f)(t)|^2 dt = \min_{P \in F_n} \int_0^{2\pi} |f(t) - P(t)|^2 dt $$
+- Les trajectoires des particules massives sont des courbes de genre temps.
+- Les trajectoires des photons (particules de lumière) sont des courbes de genre lumière.
+- La quantité $\varphi(x-y, x-y)$ représente le carré de l'**intervalle d'espace-temps** entre deux événements $x$ et $y$. Sa valeur est invariante par les transformations de Lorentz, qui sont les "isométries" de cet espace, remplaçant les rotations et translations de l'espace euclidien.
 
 </details>
 
 ---
 
-Dérivez l'identité de polarisation pour un produit scalaire sur un espace vectoriel complexe (cas hermitien).
+Démontrer l'inégalité triangulaire pour une norme induite par un produit scalaire.
 
 <details>
 
-<summary>Réponse</summary>
+<summary>Answer</summary>
 
-L'objectif est d'exprimer $\langle x, y \rangle$ uniquement en fonction de la norme $\|\cdot\|$ définie par $\|v\|^2 = \langle v, v \rangle$.
+**Théorème (Inégalité triangulaire) :** Soit $(E, \langle \cdot, \cdot \rangle)$ un espace préhilbertien. Pour tous $x, y \in E$, on a :
 
-Partons du développement de $\|x+y\|^2$ et $\|x-y\|^2$ :
+$$ \|x+y\| \le \|x\| + \|y\| $$
 
-$$ \|x+y\|^2 = \langle x+y, x+y \rangle = \|x\|^2 + \langle x,y \rangle + \langle y,x \rangle + \|y\|^2 $$
+**Preuve :**
 
-$$ \|x-y\|^2 = \langle x-y, x-y \rangle = \|x\|^2 - \langle x,y \rangle - \langle y,x \rangle + \|y\|^2 $$
+La preuve repose sur l'utilisation de l'inégalité de Cauchy-Schwarz.
 
-En soustrayant la deuxième ligne de la première, on obtient :
+1.  On commence par calculer le carré de la norme de la somme :
+    
+    $\|x+y\|^2 = \langle x+y, x+y \rangle$
 
-$$ \|x+y\|^2 - \|x-y\|^2 = 2\langle x,y \rangle + 2\langle y,x \rangle $$
+2.  Par bilinéarité (ou sesquilinéarité) du produit scalaire :
+    
+    $\|x+y\|^2 = \langle x,x \rangle + \langle x,y \rangle + \langle y,x \rangle + \langle y,y \rangle$
+    
+    En utilisant la définition de la norme et le fait que $\langle y,x \rangle = \overline{\langle x,y \rangle}$ (symétrie hermitienne), on obtient :
+    
+    $\|x+y\|^2 = \|x\|^2 + \langle x,y \rangle + \overline{\langle x,y \rangle} + \|y\|^2$
 
-Puisque la forme est hermitienne, $\langle y,x \rangle = \overline{\langle x,y \rangle}$.
+3.  Rappelons que pour tout nombre complexe $z$, $z + \bar{z} = 2 \text{Re}(z)$. Donc :
+    
+    $\|x+y\|^2 = \|x\|^2 + 2 \text{Re}(\langle x,y \rangle) + \|y\|^2$
 
-$$ \|x+y\|^2 - \|x-y\|^2 = 2(\langle x,y \rangle + \overline{\langle x,y \rangle}) = 4 \text{Re}(\langle x,y \rangle) \quad (*)$$
+4.  On utilise maintenant l'inégalité de Cauchy-Schwarz, $|\langle x,y \rangle| \le \|x\|\|y\|$.
+    
+    Pour tout nombre complexe $z$, on a $\text{Re}(z) \le |z|$. Donc, $\text{Re}(\langle x,y \rangle) \le |\langle x,y \rangle|$.
+    
+    En combinant ces deux inégalités, on a :
+    
+    $\text{Re}(\langle x,y \rangle) \le \|x\|\|y\|$
 
-Nous avons isolé la partie réelle de $\langle x,y \rangle$. Pour trouver la partie imaginaire, nous utilisons une astuce en remplaçant $y$ par $iy$ :
+5.  En substituant cette majoration dans l'expression de $\|x+y\|^2$ :
+    
+    $\|x+y\|^2 \le \|x\|^2 + 2 \|x\|\|y\| + \|y\|^2$
 
-$$ \langle x, iy \rangle = \bar{i} \langle x,y \rangle = -i \langle x,y \rangle $$
+6.  Le membre de droite est une identité remarquable :
+    
+    $\|x+y\|^2 \le (\|x\| + \|y\|)^2$
 
-On sait que $\text{Im}(z) = \text{Re}(-iz)$. Donc, $\text{Im}(\langle x,y \rangle) = \text{Re}(-i\langle x,y \rangle) = \text{Re}(\langle x, iy \rangle)$.
-
-Utilisons notre résultat $(*)$ en remplaçant $y$ par $iy$ :
-
-$$ 4 \text{Re}(\langle x,iy \rangle) = \|x+iy\|^2 - \|x-iy\|^2 $$
-
-Donc,
-
-$$ 4 \text{Im}(\langle x,y \rangle) = \|x+iy\|^2 - \|x-iy\|^2 \quad (**) $$
-
-Puisque $\langle x,y \rangle = \text{Re}(\langle x,y \rangle) + i \text{Im}(\langle x,y \rangle)$, on peut combiner $(*)$ et $(**)$ :
-
-$$ 4 \langle x,y \rangle = 4 \text{Re}(\langle x,y \rangle) + i (4 \text{Im}(\langle x,y \rangle)) $$
-
-$$ 4 \langle x,y \rangle = (\|x+y\|^2 - \|x-y\|^2) + i (\|x+iy\|^2 - \|x-iy\|^2) $$
-
-Finalement, on obtient l'**identité de polarisation hermitienne** :
-
-$$ \langle x, y \rangle = \frac{1}{4} \left( \|x+y\|^2 - \|x-y\|^2 + i(\|x+iy\|^2 - \|x-iy\|^2) \right) $$
+7.  La norme étant une quantité positive, on peut prendre la racine carrée des deux côtés de l'inégalité pour obtenir le résultat final :
+    
+    $\|x+y\| \le \|x\| + \|y\|$
 
 </details>
 
 ---
 
-Comparez les formes bilinéaires symétriques et les formes sesquilinéaires hermitiennes, en insistant sur le rôle du corps ($\mathbb{R}$ vs $\mathbb{C}$) et l'implication pour la valeur de $\varphi(x,x)$.
+Soit $E = \mathbb{R}_n[X]$ l'espace des polynômes de degré au plus $n$. Montrer que l'application $\langle P, Q \rangle = \int_{-1}^{1} P(t)Q(t) dt$ définit bien un produit scalaire euclidien.
 
 <details>
 
-<summary>Réponse</summary>
+<summary>Answer</summary>
 
-La distinction entre ces deux types de formes est fondamentale et est dictée par la nature du corps sous-jacent.
+Pour montrer que $\langle \cdot, \cdot \rangle$ est un produit scalaire euclidien sur $E = \mathbb{R}_n[X]$, nous devons vérifier qu'il s'agit d'une forme bilinéaire symétrique définie positive.
 
-| Caractéristique | Forme Bilinéaire Symétrique (sur $\mathbb{K}$) | Forme Sesquilinéaire Hermitienne (sur $\mathbb{C}$) |
+**1. Forme bilinéaire :**
 
-| :--- | :--- | :--- |
+Soient $P_1, P_2, Q \in E$ et $\lambda \in \mathbb{R}$.
 
-| **Définition** | $\varphi(x,y) = \varphi(y,x)$ | $\varphi(x,y) = \overline{\varphi(y,x)}$ |
+- **Linéarité à gauche :**
 
-| **Linéarité** | Linéaire dans les deux arguments. $\varphi(x, \lambda y) = \lambda \varphi(x,y)$ | Linéaire dans le premier argument, **anti-linéaire** dans le second. $\varphi(x, \lambda y) = \bar{\lambda} \varphi(x,y)$ |
+  $\langle P_1 + \lambda P_2, Q \rangle = \int_{-1}^{1} (P_1(t) + \lambda P_2(t))Q(t) dt$
 
-| **Matrice (dans une base $\mathcal{B}$)** | $M$ est symétrique : ${}^tM = M$ | $M$ est hermitienne : $M^* = {}^t\bar{M} = M$ |
+  $= \int_{-1}^{1} (P_1(t)Q(t) + \lambda P_2(t)Q(t)) dt$
 
-| **Valeur de $\varphi(x,x)$** | Peut être n'importe quel scalaire de $\mathbb{K}$. Si $\mathbb{K}=\mathbb{C}$, $\varphi(x,x)$ peut être complexe. | $\varphi(x,x) = \overline{\varphi(x,x)}$, donc **$\varphi(x,x)$ est toujours un nombre réel**. |
+  Par linéarité de l'intégrale :
 
-**Analyse et Implications :**
+  $= \int_{-1}^{1} P_1(t)Q(t) dt + \lambda \int_{-1}^{1} P_2(t)Q(t) dt$
 
-1.  **Le problème avec les formes bilinéaires symétriques sur $\mathbb{C}$ :**
+  $= \langle P_1, Q \rangle + \lambda \langle P_2, Q \rangle$.
 
-    Si l'on essayait de définir un produit scalaire sur $\mathbb{C}^n$ en utilisant une forme bilinéaire symétrique comme $\varphi(x,y) = \sum x_i y_i$, la "norme au carré" associée serait $\varphi(x,x) = \sum x_i^2$.
+- La **linéarité à droite** se démontre de manière identique.
 
-    Cette valeur n'est pas nécessairement réelle. Par exemple, pour $x=(i, 0, \dots, 0)$, $\varphi(x,x) = i^2 = -1$. Cela pose un problème majeur pour définir une norme (qui doit être un réel positif) et une distance. La notion de "positivité" devient ambiguë.
+**2. Symétrie :**
 
-2.  **La solution de la sesquilinéarité :**
+Soient $P, Q \in E$.
 
-    La forme sesquilinéaire hermitienne $\varphi(x,y) = \sum x_i \bar{y}_i$ résout ce problème. La norme au carré associée est :
+$\langle P, Q \rangle = \int_{-1}^{1} P(t)Q(t) dt$.
 
-    $$ \varphi(x,x) = \sum x_i \bar{x}_i = \sum |x_i|^2 $$
+La multiplication dans $\mathbb{R}$ étant commutative, $P(t)Q(t) = Q(t)P(t)$.
 
-    Cette quantité est non seulement **réelle**, mais aussi **positive**. C'est la propriété clé qui permet de définir une norme cohérente $\|x\| = \sqrt{\varphi(x,x)}$ sur un espace vectoriel complexe.
+Donc, $\langle P, Q \rangle = \int_{-1}^{1} Q(t)P(t) dt = \langle Q, P \rangle$.
 
-**Conclusion :**
+La forme est symétrique.
 
-La conjugaison complexe dans la définition de la forme hermitienne et de l'anti-linéarité n'est pas une complication arbitraire. C'est la modification nécessaire pour garantir que la grandeur $\varphi(x,x)$, qui représente le carré de la "longueur" d'un vecteur, soit un nombre réel positif, ce qui est une condition indispensable pour construire une géométrie métrique sur les espaces complexes. Sur $\mathbb{R}$, la conjugaison est l'identité, donc les deux notions coïncident.
+**3. Définie-positivité :**
+
+Soit $P \in E$.
+
+- **Positivité :**
+
+  $\langle P, P \rangle = \int_{-1}^{1} P(t)^2 dt$.
+
+  Pour tout $t \in [-1, 1]$, $P(t)^2 \ge 0$. L'intégrale d'une fonction positive est positive.
+
+  Donc, $\langle P, P \rangle \ge 0$.
+
+- **Définie :**
+
+  Supposons que $\langle P, P \rangle = 0$, c'est-à-dire $\int_{-1}^{1} P(t)^2 dt = 0$.
+
+  La fonction $t \mapsto P(t)^2$ est :
+
+  - Continue sur l'intervalle $[-1, 1]$ (car $P$ est un polynôme).
+  - Positive sur cet intervalle.
+  
+  Le théorème de positivité de l'intégrale affirme que si l'intégrale d'une fonction continue et positive sur un intervalle $[a,b]$ (avec $a<b$) est nulle, alors la fonction est identiquement nulle sur cet intervalle.
+  
+  Donc, $P(t)^2 = 0$ pour tout $t \in [-1, 1]$.
+
+  Ceci implique que $P(t) = 0$ pour tout $t \in [-1, 1]$.
+  
+  Un polynôme qui a une infinité de racines est nécessairement le polynôme nul. Puisque $P$ s'annule sur tout l'intervalle $[-1, 1]$, $P$ est le polynôme nul, $P=0_E$.
+
+La forme est donc bien définie positive.
+
+Ayant vérifié les trois propriétés, nous concluons que $\langle P, Q \rangle = \int_{-1}^{1} P(t)Q(t) dt$ est un produit scalaire sur $\mathbb{R}_n[X]$, qui devient ainsi un espace euclidien de dimension $n+1$.
+
+</details>
+
+---
+
+Prouver le théorème de Pythagore généralisé pour une famille orthogonale de vecteurs.
+
+<details>
+
+<summary>Answer</summary>
+
+**Théorème de Pythagore généralisé :** Soit $(v_1, v_2, ..., v_n)$ une famille orthogonale de vecteurs dans un espace préhilbertien $(E, \langle \cdot, \cdot \rangle)$. Alors :
+
+$$ \left\| \sum_{i=1}^n v_i \right\|^2 = \sum_{i=1}^n \|v_i\|^2 $$
+
+**Preuve :**
+
+1.  Par définition de la norme, le carré de la norme de la somme est le produit scalaire de la somme avec elle-même :
+    
+    $$ \left\| \sum_{i=1}^n v_i \right\|^2 = \left\langle \sum_{i=1}^n v_i, \sum_{j=1}^n v_j \right\rangle $$
+
+2.  On utilise la bilinéarité (ou sesquilinéarité) du produit scalaire pour développer cette expression. Cela donne une double somme :
+    
+    $$ \left\langle \sum_{i=1}^n v_i, \sum_{j=1}^n v_j \right\rangle = \sum_{i=1}^n \sum_{j=1}^n \langle v_i, v_j \rangle $$
+
+3.  On utilise maintenant l'hypothèse cruciale : la famille $(v_k)$ est **orthogonale**. Par définition, cela signifie que pour tous indices $i$ et $j$ distincts ($i \neq j$), on a $\langle v_i, v_j \rangle = 0$.
+
+4.  La double somme se simplifie donc considérablement. Les seuls termes qui ne s'annulent pas sont ceux pour lesquels $i=j$ :
+    
+    $$ \sum_{i=1}^n \sum_{j=1}^n \langle v_i, v_j \rangle = \sum_{i=1}^n \langle v_i, v_i \rangle $$
+    
+    (Tous les termes croisés $\langle v_i, v_j \rangle$ avec $i \neq j$ sont nuls).
+
+5.  Enfin, on reconnaît que $\langle v_i, v_i \rangle$ est, par définition, le carré de la norme de $v_i$ :
+    
+    $$ \sum_{i=1}^n \langle v_i, v_i \rangle = \sum_{i=1}^n \|v_i\|^2 $$
+
+En combinant les étapes, nous avons montré que :
+
+$$ \left\| \sum_{i=1}^n v_i \right\|^2 = \sum_{i=1}^n \|v_i\|^2 $$
+
+ce qui achève la démonstration.
 
 </details>

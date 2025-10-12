@@ -1,447 +1,486 @@
 ---
-title: B - Concepts
-level: pro
-course: Géométrie
-chapter: Groupes d'isométries
+id: beac1313
+type: concepts
 order: 20
-tags: ['géométrie', 'algèbre linéaire', 'groupes', 'isométrie', 'rotation']
+title: 'Groupes d''isométries - concepts (B)'
+tags:
+  - isométrie
+  - espace euclidien
+  - espace hermitien
+  - groupe orthogonal
+  - groupe unitaire
+  - produit vectoriel
+  - rotation
+course: Géométrie
+courseId: d9494343
+chapter: 'Groupes d''isométries'
+chapterId: b85ab516
+level: pro
+createdAt: '2025-10-12T18:12:33.659Z'
+---
+# Chapitre 2: Groupes d'isométries (B)
+
 ---
 
-# Groupes d'isométries (avancé)
-
----
-
-## Concept 1: Isométrie (Endomorphisme orthogonal/unitaire)
+## Concept 1: Isométrie (Endomorphismes Orthogonaux et Unitaires)
 
 ### Prérequis
 
-- Espace vectoriel euclidien ou hermitien, produit scalaire $\varphi(x, y)$ (noté $\langle x, y \rangle$), norme associée $\|x\| = \sqrt{\varphi(x,x)}$.
-- Algèbre linéaire : endomorphisme, isomorphisme, endomorphisme adjoint $f^*$.
-- Formes de polarisation.
+- Espaces vectoriels euclidiens et hermitiens, produit scalaire (hermitien), norme associée.
+- Endomorphismes, endomorphisme adjoint ($f^*$).
+- Identités de polarisation.
+- Théorème du rang.
 
 ### Définition
 
-Soit $(E, \varphi)$ un espace euclidien (sur $\mathbb{R}$) ou hermitien (sur $\mathbb{C}$). Un endomorphisme $f: E \to E$ est une **isométrie** si et seulement si $f$ préserve la norme, c'est-à-dire :
+Soit $(E, \varphi)$ un espace vectoriel euclidien (sur $\mathbb{R}$) ou hermitien (sur $\mathbb{C}$). Un endomorphisme $f \in \mathcal{L}(E)$ est une **isométrie vectorielle** si et seulement si $f$ préserve la norme, i.e. :
+
 $$ \forall x \in E, \quad \|f(x)\| = \|x\| $$
-Dans le contexte euclidien, une isométrie est aussi appelée **transformation orthogonale**. Dans le contexte hermitien, elle est appelée **transformation unitaire**.
+
+où $\| \cdot \| = \sqrt{\varphi(\cdot, \cdot)}$ est la norme induite par le produit scalaire (ou hermitien).
+
+Dans le cas réel (euclidien), une isométrie est aussi appelée **transformation orthogonale**.
+
+Dans le cas complexe (hermitien), une isométrie est aussi appelée **transformation unitaire**.
 
 ### Propriétés Clés
 
-- **Caractérisations équivalentes** : Soit $f \in \mathcal{L}(E)$. Les affirmations suivantes sont équivalentes :
-  1.  $f$ est une isométrie (i.e., $\forall x \in E, \|f(x)\| = \|x\|$).
-  2.  $f$ préserve le produit scalaire (ou hermitien) : $\forall x, y \in E, \varphi(f(x), f(y)) = \varphi(x, y)$.
-  3.  $f$ est un isomorphisme et son inverse est son adjoint : $f \circ f^* = f^* \circ f = \text{Id}_E$, soit $f^{-1} = f^*$.
-  4.  L'image par $f$ d'une base orthonormée de $E$ est une base orthonormée de $E$.
-- **Démonstration (1 $\iff$ 2 $\iff$ 3)**
-  - (1 $\Rightarrow$ 2) : Résulte directement des identités de polarisation. Par exemple, dans le cas euclidien :
-    $$ \varphi(x,y) = \frac{1}{2}(\|x+y\|^2 - \|x\|^2 - \|y\|^2) $$
-      Comme $f$ est linéaire et préserve la norme, $\varphi(f(x),f(y)) = \frac{1}{2}(\|f(x+y)\|^2 - \|f(x)\|^2 - \|f(y)\|^2) = \frac{1}{2}(\|x+y\|^2 - \|x\|^2 - \|y\|^2) = \varphi(x,y)$.
-  - (2 $\Rightarrow$ 3) : Si $\varphi(f(x), f(y)) = \varphi(x, y)$, alors $f$ préserve la norme. Si $f(x)=0$, alors $\|x\| = \|f(x)\| = 0$, donc $x=0$. $f$ est injective, donc bijective par le théorème du rang. L'inverse $f^{-1}$ existe. Par définition de l'adjoint, $\varphi(f(x), f(y)) = \varphi(x, f^*(f(y)))$. En comparant avec $\varphi(x,y)$, on a $\varphi(x, f^*(f(y))) = \varphi(x,y)$ pour tout $x,y$. Ceci implique $f^* \circ f = \text{Id}_E$.
-  - (3 $\Rightarrow$ 1) : $\|f(x)\|^2 = \varphi(f(x), f(x)) = \varphi(x, f^*(f(x)))$. Si $f^* = f^{-1}$, alors $\varphi(x, f^{-1}(f(x))) = \varphi(x,x) = \|x\|^2$.
-- **Groupe des isométries** : L'ensemble des isométries de $E$, noté $O(E)$ (cas euclidien) ou $U(E)$ (cas hermitien), forme un groupe pour la composition d'applications.
-- **Déterminant** : Si $f$ est une isométrie, alors $|\det(f)| = 1$. Dans le cas euclidien, $\det(f) = \pm 1$.
-- **Matrice en base orthonormée (BON)** : Si $\mathcal{B}$ est une BON, la matrice $M$ de $f$ dans $\mathcal{B}$ est orthogonale ($^tMM = I_n$) ou unitaire ($^t\overline{M}M = I_n$).
+- **Caractérisations équivalentes** : Soit $f \in \mathcal{L}(E)$. Les assertions suivantes sont équivalentes :
+    1. $f$ est une isométrie (i.e. $\forall x \in E, \|f(x)\| = \|x\|$).
+    2. $f$ préserve le produit scalaire (i.e. $\forall x, y \in E, \varphi(f(x), f(y)) = \varphi(x, y)$).
+    3. $f$ est un automorphisme et son inverse est son adjoint (i.e. $f \in GL(E)$ et $f^{-1} = f^*$).
+    
+    *Démonstration.*
+
+    $(1) \implies (2)$ : Par les identités de polarisation.
+
+    Cas euclidien : $\varphi(x,y) = \frac{1}{4}(\|x+y\|^2 - \|x-y\|^2)$.
+
+    Comme $\|f(u)\| = \|u\|$ pour tout $u \in E$, on a :
+
+    $\varphi(f(x), f(y)) = \frac{1}{4}(\|f(x)+f(y)\|^2 - \|f(x)-f(y)\|^2) = \frac{1}{4}(\|f(x+y)\|^2 - \|f(x-y)\|^2) = \frac{1}{4}(\|x+y\|^2 - \|x-y\|^2) = \varphi(x,y)$.
+
+    Le cas hermitien est analogue en utilisant la formule de polarisation complexe.
+    
+    $(2) \implies (3)$ :
+
+    Injectivité : Soit $x \in \ker(f)$, alors $f(x)=0$. On a $\|f(x)\|^2 = \varphi(f(x), f(x)) = \varphi(x,x) = \|x\|^2$. Donc $\|x\|=0$, ce qui implique $x=0$. Ainsi $\ker(f)=\{0\}$.
+
+    En dimension finie, le théorème du rang implique que $f$ est surjective, donc c'est un isomorphisme.
+
+    Pour tout $x,y \in E$, on a $\varphi(f(x),f(y)) = \varphi(x,y)$. Par définition de l'adjoint, $\varphi(f(x),f(y)) = \varphi(x, f^* (f(y)))$.
+
+    Donc $\varphi(x, f^*f(y)) = \varphi(x,y)$, soit $\varphi(x, (f^*f - \text{Id})(y)) = 0$ pour tout $x \in E$.
+
+    Le produit scalaire étant non-dégénéré, il s'ensuit que $(f^*f - \text{Id})(y)=0$ pour tout $y \in E$, donc $f^*f = \text{Id}$. Comme $f$ est un isomorphisme, on a $f^{-1}=f^*$.
+
+    $(3) \implies (1)$ :
+
+    Pour tout $x \in E$, $\|f(x)\|^2 = \varphi(f(x), f(x)) = \varphi(x, f^*f(x))$.
+
+    Puisque $f^*=f^{-1}$, on a $f^*f = \text{Id}$, d'où $\|f(x)\|^2 = \varphi(x,x) = \|x\|^2$.
+
+- **Conservation de l'orthonormalité** : Un endomorphisme $f$ est une isométrie si et seulement si l'image par $f$ d'une base orthonormée de $E$ est une base orthonormée de $E$.
+
+- **Groupe des isométries** : L'ensemble des isométries de $E$, noté $O(E)$ (cas euclidien) ou $U(E)$ (cas hermitien), forme un groupe pour la loi de composition $\circ$. C'est un sous-groupe de $GL(E)$.
+
+- **Déterminant** : Si $f$ est une isométrie, alors $|\det(f)| = 1$.
+
+    *Démonstration.* Soit $M$ la matrice de $f$ dans une base orthonormée. Alors la matrice de $f^*$ est $M^* := {}^t\overline{M}$. La condition $f^*f = \text{Id}$ se traduit par $M^*M = I$. En passant au déterminant : $\det(M^*M) = \det(M^*)\det(M) = \overline{\det(M)}\det(M) = |\det(M)|^2 = \det(I) = 1$.
 
 ### Exemples
 
-**Exemple 1 (Rotation plane)**
-Soit $E = \mathbb{R}^2$ euclidien canonique. L'application $f_\theta(x, y) = (x\cos\theta - y\sin\theta, x\sin\theta + y\cos\theta)$ est une isométrie. Sa matrice dans la base canonique (qui est une BON) est $R_\theta = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$. On vérifie que $^t R_\theta R_\theta = I_2$.
+**Exemple 1 : Rotation plane**
 
-**Exemple 2 (Réflexion par rapport à une droite)**
-Soit $E = \mathbb{R}^2$ et $D = \text{Vect}(u)$ une droite. La réflexion $s_D$ par rapport à $D$ est une isométrie. Par exemple, la réflexion par rapport à l'axe des abscisses est $s(x,y) = (x,-y)$. $\|s(x,y)\|^2 = x^2 + (-y)^2 = x^2+y^2 = \|(x,y)\|^2$. Sa matrice est $\begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$, qui est orthogonale.
+Soit $E=\mathbb{R}^2$ euclidien canonique. L'endomorphisme $f$ de matrice $R(\theta) = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$ dans la base canonique est une isométrie. Pour tout $x=(x_1, x_2)$, $f(x) = (x_1\cos\theta - x_2\sin\theta, x_1\sin\theta + x_2\cos\theta)$. Un calcul direct montre que $\|f(x)\|^2 = (x_1\cos\theta - x_2\sin\theta)^2 + (x_1\sin\theta + x_2\cos\theta)^2 = x_1^2+x_2^2 = \|x\|^2$.
 
-**Exemple 3 (Opérateur unitaire sur $\mathbb{C}^2$)**
-Soit $f: \mathbb{C}^2 \to \mathbb{C}^2$ de matrice $U = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & i \\ i & 1 \end{pmatrix}$ dans la base canonique. $U$ est unitaire car $U^*U = {}^t\overline{U}U = \frac{1}{2}\begin{pmatrix} 1 & -i \\ -i & 1 \end{pmatrix}\begin{pmatrix} 1 & i \\ i & 1 \end{pmatrix} = \frac{1}{2}\begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix} = I_2$. C'est donc une isométrie de l'espace hermitien $\mathbb{C}^2$.
+**Exemple 2 : Réflexion (symétrie orthogonale)**
+
+Soit $F$ un sous-espace vectoriel de $E$. La réflexion par rapport à $F$ est l'endomorphisme $s_F$ défini par $s_F(x) = x_F - x_{F^\perp}$, où $x = x_F + x_{F^\perp}$ est la décomposition orthogonale de $x$. On a $\|s_F(x)\|^2 = \|x_F - x_{F^\perp}\|^2 = \|x_F\|^2 + \|-x_{F^\perp}\|^2 = \|x_F\|^2 + \|x_{F^\perp}\|^2 = \|x\|^2$. C'est une isométrie.
+
+**Exemple 3 : Isométrie unitaire**
+
+Dans $E=\mathbb{C}^2$ hermitien canonique, l'endomorphisme $f$ de matrice $U = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & i \\ i & 1 \end{pmatrix}$ est une isométrie. On a $U^* = {}^t\overline{U} = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & -i \\ -i & 1 \end{pmatrix}$. Un calcul montre $UU^* = \frac{1}{2}\begin{pmatrix} 1-i^2 & -i+i \\ i-i & -i^2+1 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = I_2$. Donc $U$ est unitaire et $f$ est une isométrie.
 
 ### Contre-exemples
 
-**Contre-exemple 1 (Homothétie)**
-L'homothétie $f(x) = 2x$ sur $\mathbb{R}^n$ ($n \ge 1$) n'est pas une isométrie car $\|f(x)\| = \|2x\| = 2\|x\| \neq \|x\|$ pour $x \neq 0$. Elle préserve les angles mais pas les longueurs.
+**Contre-exemple 1 : Homothétie**
 
-**Contre-exemple 2 (Transvection ou cisaillement)**
-L'application $f(x,y) = (x+y, y)$ sur $\mathbb{R}^2$ n'est pas une isométrie. Soit $v=(0,1)$, $\|v\|=1$. Alors $f(v)=(1,1)$ et $\|f(v)\|=\sqrt{2} \neq 1$.
+L'homothétie $h_\lambda : x \mapsto \lambda x$ pour $\lambda \in \mathbb{R} \setminus \{\pm 1\}$ n'est pas une isométrie. En effet, $\|h_\lambda(x)\| = \|\lambda x\| = |\lambda|\|x\| \neq \|x\|$ pour $x\neq 0$.
+
+**Contre-exemple 2 : Projection orthogonale**
+
+Soit $p_F$ la projection orthogonale sur un sous-espace strict non nul $F \subset E$. Pour $x \in F^\perp \setminus \{0\}$, on a $p_F(x)=0$, donc $\|p_F(x)\|=0$ alors que $\|x\| \neq 0$. La norme n'est pas préservée.
 
 ### Concepts liés
 
-- **Groupes orthogonal $O(n)$ et unitaire $U(n)$** : Groupes des matrices des isométries en base orthonormée.
-- **Isométries affines** : Applications d'un espace affine euclidien sur lui-même qui conservent les distances. Elles sont de la forme $X \mapsto AX+b$ où $A$ est une isométrie vectorielle.
-
-### Applications
-
-- **Mécanique du solide** : Le mouvement d'un corps rigide est décrit par une isométrie (affine).
-- **Cristallographie** : Les groupes de symétrie des cristaux sont des groupes d'isométries discrets.
-- **Infographie** : Les transformations d'objets 3D (rotations, translations, réflexions) sont basées sur des isométries.
+- **Groupes orthogonaux $O_n(\mathbb{R})$ et unitaires $U_n(\mathbb{C})$** : Ce sont les réalisations matricielles des groupes d'isométries $O(\mathbb{R}^n)$ et $U(\mathbb{C}^n)$ dans une base orthonormée.
+- **Automorphismes d'espaces préhilbertiens** : La notion d'isométrie se généralise aux espaces de dimension infinie, où elle est un concept central en analyse fonctionnelle (e.g., opérateurs unitaires sur les espaces de Hilbert).
+- **Théorème de Cartan-Dieudonné** : Toute isométrie d'un espace euclidien de dimension $n$ se décompose en un produit d'au plus $n$ réflexions hyperplanes.
 
 ---
 
-## Concept 2: Groupes Orthogonal et Unitaire
+## Concept 2: Groupes Orthogonaux et Unitaires
 
 ### Prérequis
 
-- Concept d'isométrie.
-- Algèbre matricielle : produit, inverse, déterminant, transposée, transconjuguée.
-- Théorie des groupes : définition d'un groupe, sous-groupe.
+- Concept d'isométrie, algèbre matricielle.
+- Théorie des groupes (définition d'un groupe, sous-groupe, sous-groupe distingué).
 
 ### Définition
 
-On définit les groupes de matrices suivants :
+Soit $n \in \mathbb{N}^*$. On définit les groupes matriciels suivants :
 
-- Le **groupe orthogonal** d'ordre $n$ : $O_n(\mathbb{R}) = \{M \in \mathcal{M}_n(\mathbb{R}) \mid {}^tM M = I_n\}$.
-- Le **groupe spécial orthogonal** d'ordre $n$ : $SO_n(\mathbb{R}) = \{M \in O_n(\mathbb{R}) \mid \det(M) = 1\}$.
-- Le **groupe unitaire** d'ordre $n$ : $U_n(\mathbb{C}) = \{M \in \mathcal{M}_n(\mathbb{C}) \mid M^* M = I_n\}$, où $M^* = {}^t\overline{M}$.
-- Le **groupe spécial unitaire** d'ordre $n$ : $SU_n(\mathbb{C}) = \{M \in U_n(\mathbb{C}) \mid \det(M) = 1\}$.
+- Le **groupe orthogonal** d'ordre $n$ :
 
-Ces ensembles sont des sous-groupes de $GL_n(\mathbb{K})$ pour la multiplication matricielle.
+$$ O_n(\mathbb{R}) = \{ M \in M_n(\mathbb{R}) \mid {}^tMM = I_n \} $$
 
-### Propriétés Clés
+- Le **groupe spécial orthogonal** d'ordre $n$ :
 
-- **Structure de groupe** : La stabilité par produit matriciel, l'existence de l'élément neutre ($I_n$) et de l'inverse ($M^{-1} = {}^tM$ ou $M^{-1}=M^*$) se vérifient aisément.
-- **Lien avec les isométries** : Une matrice $M$ est dans $O_n(\mathbb{R})$ (resp. $U_n(\mathbb{C})$) si et seulement si l'endomorphisme de $\mathbb{R}^n$ (resp. $\mathbb{C}^n$) qu'elle représente dans la base canonique est une isométrie pour le produit scalaire (resp. hermitien) canonique.
-- **Caractérisation par les vecteurs colonnes/lignes** : Une matrice $M$ est orthogonale (resp. unitaire) si et seulement si ses vecteurs colonnes (ou ses vecteurs lignes) forment une base orthonormée de $\mathbb{R}^n$ (resp. $\mathbb{C}^n$).
-- **Propriétés topologiques** : Ces groupes sont des sous-groupes fermés et bornés (compacts) de $GL_n(\mathbb{K})$. Ce sont des exemples fondamentaux de **groupes de Lie**.
-- $SO_n(\mathbb{R})$ est l'ensemble des isométries qui préservent l'orientation. $O_n(\mathbb{R})$ a deux composantes connexes : $SO_n(\mathbb{R})$ et l'ensemble des matrices de déterminant $-1$.
+$$ SO_n(\mathbb{R}) = \{ M \in O_n(\mathbb{R}) \mid \det(M) = 1 \} $$
 
-### Exemples
+- Le **groupe unitaire** d'ordre $n$ :
 
-**Exemple 1 (Groupe $SO_2(\mathbb{R})$)**
-Les matrices de $SO_2(\mathbb{R})$ sont de la forme $R(\theta) = \begin{pmatrix} \cos(\theta) & -\sin(\theta) \\ \sin(\theta) & \cos(\theta) \end{pmatrix}$ pour $\theta \in \mathbb{R}$. Ce groupe est abélien.
+$$ U_n(\mathbb{C}) = \{ M \in M_n(\mathbb{C}) \mid M^*M = I_n \}, \text{ où } M^*={}^t\overline{M} $$
 
-**Exemple 2 (Matrices de permutation)**
-La matrice $P = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & 0 & 0 \end{pmatrix}$ est dans $O_3(\mathbb{R})$. Ses colonnes sont les vecteurs de la base canonique permutés, formant une BON. $\det(P)=1$, donc $P \in SO_3(\mathbb{R})$. Elle représente une rotation d'axe $(1,1,1)$.
+- Le **groupe spécial unitaire** d'ordre $n$ :
 
-**Exemple 3 (Matrices de Pauli et $SU_2(\mathbb{C})$)**
-Les matrices de Pauli $\sigma_1 = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \sigma_2 = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}, \sigma_3 = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$ sont unitaires et hermitiennes. La matrice $U = \begin{pmatrix} i & 0 \\ 0 & -i \end{pmatrix} = i\sigma_3$ est dans $SU_2(\mathbb{C})$.
+$$ SU_n(\mathbb{C}) = \{ M \in U_n(\mathbb{C}) \mid \det(M) = 1 \} $$
 
-### Contre-exemples
-
-**Contre-exemple 1 (Matrice de $GL_n(\mathbb{R}) \setminus O_n(\mathbb{R})$)**
-Soit $M = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$. $\det(M)=1$ mais ${}^tMM = \begin{pmatrix} 1 & 0 \\ 1 & 1 \end{pmatrix}\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 1 \\ 1 & 2 \end{pmatrix} \neq I_2$. $M$ n'est pas orthogonale.
-
-**Contre-exemple 2 (Vecteurs colonnes non orthogonaux)**
-Soit $M = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} \in O_2(\mathbb{R})$. Si on modifie une entrée, par exemple $M' = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 \\ 0 & -1 \end{pmatrix}$, les colonnes n'ont plus la norme 1 et ne sont pas orthogonales. $M'$ n'est pas orthogonale.
-
-### Concepts liés
-
-- **Groupes de Lie** : Les groupes orthogonaux et unitaires sont des exemples paradigmatiques de groupes de Lie compacts.
-- **Algèbres de Lie** : À chaque groupe de Lie est associée une algèbre de Lie. Par exemple, l'algèbre de Lie de $SO_n(\mathbb{R})$ est l'espace des matrices antisymétriques.
-- **Représentations de groupes** : Ces groupes jouent un rôle central dans la théorie des représentations.
-
-### Applications
-
-- **Physique quantique** : Le groupe $U(n)$ décrit l'évolution des états quantiques, et $SU(n)$ est fondamental dans le Modèle Standard de la physique des particules ($SU(3) \times SU(2) \times U(1)$).
-- **Relativité** : Le groupe de Lorentz $O(1,3)$ est un "groupe orthogonal" pour une forme bilinéaire non définie positive (la métrique de Minkowski).
-
----
-
-## Concept 3: Angle et Orientation
-
-### Prérequis
-
-- Espace euclidien, produit scalaire, inégalité de Cauchy-Schwarz.
-- Déterminant, bases d'un espace vectoriel, matrices de passage.
-
-### Définition
-
-Soit $(E, \varphi)$ un espace euclidien réel.
-
-1.  **Angle non-orienté** : Pour deux vecteurs non nuls $x, y \in E$, l'angle non-orienté entre $x$ et $y$ est l'unique réel $\theta \in [0, \pi]$ tel que :
-    $$ \varphi(x, y) = \|x\|\|y\|\cos(\theta) $$
-    Il est donné par $\theta(x, y) = \arccos\left(\frac{\varphi(x, y)}{\|x\|\|y\|}\right)$.
-
-2.  **Orientation** : Soit $E$ un $\mathbb{R}$-espace vectoriel de dimension $n$. La relation "avoir même orientation" est une relation d'équivalence sur l'ensemble des bases de $E$. Deux bases $\mathcal{B}$ et $\mathcal{B}'$ ont même orientation si la matrice de passage $P_{\mathcal{B}, \mathcal{B}'}$ a un déterminant positif. Orienter $E$ consiste à choisir l'une des deux classes d'équivalence comme "directe" ou "positive".
-
-3.  **Angle orienté (en dimension 2)** : Soit $(E, \varphi)$ un espace euclidien orienté de dimension 2. Pour deux vecteurs non nuls $x, y \in E$, l'angle orienté de $x$ à $y$, noté $\tilde{\theta}(x, y)$, est l'unique élément de $\mathbb{R}/2\pi\mathbb{Z}$ tel que :
-    $$ \begin{cases} \varphi(x, y) = \|x\|\|y\|\cos(\tilde{\theta}) \\ \det\_{\mathcal{B}}(x, y) = \|x\|\|y\|\sin(\tilde{\theta}) \end{cases} $$
-    où $\mathcal{B}$ est une base orthonormée directe quelconque.
+Ces ensembles sont des groupes pour la multiplication matricielle.
 
 ### Propriétés Clés
 
-- L'angle non-orienté est symétrique : $\theta(x, y) = \theta(y, x)$. L'angle orienté est antisymétrique : $\tilde{\theta}(x, y) = -\tilde{\theta}(y, x) \pmod{2\pi}$.
-- Le choix d'une orientation est arbitraire. Par convention, la base canonique de $\mathbb{R}^n$ est directe.
-- Le groupe $SO_n(\mathbb{R})$ est le groupe des isométries directes (qui préservent l'orientation).
-- **Formule fondamentale en dimension 2** : Soit $\mathcal{B}$ une base orthonormée directe. Le déterminant de la matrice de Gram de deux vecteurs $(x,y)$ est :
-  $$ \det(G(x,y)) = \det \begin{pmatrix} \langle x,x \rangle & \langle x,y \rangle \\ \langle y,x \rangle & \langle y,y \rangle \end{pmatrix} = \|x\|^2\|y\|^2 - \langle x,y \rangle^2 $$
-    Puisque $G(x,y) = {}^tP P$ où $P$ est la matrice de $(x,y)$ dans la base $\mathcal{B}$, on a $\det(G(x,y)) = (\det P)^2 = (\det_{\mathcal{B}}(x,y))^2$. Ceci mène à :
-  $$ \left(\frac{\varphi(x, y)}{\|x\|\|y\|}\right)^2 + \left(\frac{\det\_{\mathcal{B}}(x, y)}{\|x\|\|y\|}\right)^2 = 1 $$
-    justifiant l'existence et l'unicité de $\tilde{\theta} \pmod{2\pi}$.
+- **Structure de groupe** : Ces quatre ensembles sont des sous-groupes de $GL_n(\mathbb{K})$ (avec $\mathbb{K}=\mathbb{R}$ ou $\mathbb{C}$). La stabilité par produit et par inversion est une vérification directe. Par exemple, si $M, N \in O_n(\mathbb{R})$, alors ${}^t(MN)(MN) = {}^tN{}^tMMN = {}^tN I_n N = {}^tNN = I_n$. De plus, ${}^t(M^{-1})M^{-1} = (M^t)^{-1}M^{-1} = (M^tM)^{-1} = I_n^{-1} = I_n$.
+
+- **Interprétation géométrique** : La matrice d'une isométrie d'un espace euclidien (resp. hermitien) de dimension $n$ dans une base orthonormée est un élément de $O_n(\mathbb{R})$ (resp. $U_n(\mathbb{C})$). Réciproquement, toute matrice de $O_n(\mathbb{R})$ (resp. $U_n(\mathbb{C})$) définit une isométrie sur $\mathbb{R}^n$ (resp. $\mathbb{C}^n$) muni de son produit scalaire canonique.
+
+- **Structure de sous-groupe distingué** :
+  - $SO_n(\mathbb{R})$ est un sous-groupe distingué de $O_n(\mathbb{R})$. L'application $\det: O_n(\mathbb{R}) \to \{-1, 1\}$ est un morphisme de groupe surjectif dont le noyau est $SO_n(\mathbb{R})$. Le groupe quotient $O_n(\mathbb{R})/SO_n(\mathbb{R})$ est isomorphe à $\mathbb{Z}/2\mathbb{Z}$. Les éléments de $SO_n(\mathbb{R})$ sont appelés isométries directes (ou rotations), ceux de $O_n(\mathbb{R}) \setminus SO_n(\mathbb{R})$ sont les isométries indirectes.
+  - De même, $SU_n(\mathbb{C})$ est un sous-groupe distingué de $U_n(\mathbb{C})$.
+
+- **Propriétés topologiques** : Vus comme sous-ensembles de $M_n(\mathbb{K}) \cong \mathbb{K}^{n^2}$, ces groupes sont des compacts de $M_n(\mathbb{K})$. Ce sont des exemples fondamentaux de **groupes de Lie**.
 
 ### Exemples
 
-**Exemple 1 (Angle non-orienté)**
-Dans $\mathbb{R}^3$ euclidien, soit $x=(1,1,0)$ et $y=(1,0,1)$. $\|x\|=\sqrt{2}$, $\|y\|=\sqrt{2}$, $\langle x,y \rangle=1$.
-$\cos(\theta) = \frac{1}{\sqrt{2}\cdot\sqrt{2}} = \frac{1}{2}$. Donc $\theta(x,y) = \arccos(1/2) = \pi/3$.
+**Exemple 1 : Le groupe $SO_2(\mathbb{R})$**
 
-**Exemple 2 (Angle orienté)**
-Dans $\mathbb{R}^2$ orienté par la base canonique $\mathcal{B}=(e_1, e_2)$, soit $x=e_1=(1,0)$ et $y=(1,1)$. $\|x\|=1$, $\|y\|=\sqrt{2}$, $\langle x,y \rangle = 1$.
-$\det_{\mathcal{B}}(x,y) = \begin{vmatrix} 1 & 1 \\ 0 & 1 \end{vmatrix} = 1$.
-$\cos(\tilde{\theta}) = \frac{1}{\sqrt{2}}$ et $\sin(\tilde{\theta}) = \frac{1}{\sqrt{2}}$. Donc $\tilde{\theta}(x,y) = \pi/4 \pmod{2\pi}$.
+Ce groupe est l'ensemble des matrices $R(\theta) = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$ pour $\theta \in \mathbb{R}$. Il est abélien : $R(\theta_1)R(\theta_2)=R(\theta_1+\theta_2)$. Topologiquement, il est homéomorphe au cercle unité $S^1$.
 
-**Exemple 3 (Changement d'orientation)**
-Dans $\mathbb{R}^2$, si on choisit l'orientation définie par la base $\mathcal{B}'=(e_2, e_1)$ (indirecte), alors pour $x=e_1, y=e_2$: $\det_{\mathcal{B}'}(x,y) = \begin{vmatrix} 0 & 1 \\ 1 & 0 \end{vmatrix} = -1$.
-L'angle orienté de $e_1$ à $e_2$ devient $-\pi/2$.
+**Exemple 2 : Le groupe $O_2(\mathbb{R})$**
+
+Il est constitué de $SO_2(\mathbb{R})$ (les rotations) et des matrices de la forme $S(\theta) = \begin{pmatrix} \cos\theta & \sin\theta \\ \sin\theta & -\cos\theta \end{pmatrix}$ (les réflexions). Ce groupe n'est pas abélien.
+
+**Exemple 3 : Le groupe $SU_2(\mathbb{C})$**
+
+Toute matrice de $SU_2(\mathbb{C})$ s'écrit sous la forme $U = \begin{pmatrix} \alpha & \beta \\ -\bar{\beta} & \bar{\alpha} \end{pmatrix}$ avec $\alpha, \beta \in \mathbb{C}$ tels que $|\alpha|^2+|\beta|^2=1$. Cet ensemble est en bijection avec la sphère $S^3 \subset \mathbb{R}^4$.
 
 ### Contre-exemples
 
-**Contre-exemple 1 (Dimension > 2)**
-La notion d'angle orienté entre deux vecteurs n'est pas définie de manière intrinsèque en dimension 3. Le "signe" de l'angle dépend du point de vue (du "côté" du plan contenant les vecteurs). Pour définir une orientation du plan $\text{Vect}(x,y)$, il faut choisir un vecteur normal.
+**Contre-exemple 1 : Matrice de $SL_n(\mathbb{R})$ non orthogonale**
 
-**Contre-exemple 2 (Espace non-euclidien)**
-Dans un espace muni d'une norme non-dérivée d'un produit scalaire (ex: norme $L_1$), la notion d'angle n'est pas directement définie de cette manière.
+La matrice $M = \begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}$ a un déterminant $\det(M)=1$, donc $M \in SL_2(\mathbb{R})$. Cependant, ${}^tMM = \begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}\begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix} = \begin{pmatrix} 5 & 3 \\ 3 & 2 \end{pmatrix} \neq I_2$. Donc $M \notin O_2(\mathbb{R})$.
+
+**Contre-exemple 2 : Groupe non compact**
+
+Le groupe $GL_n(\mathbb{R})$ n'est pas compact car il n'est pas borné (considérer les matrices $\lambda I_n$ avec $\lambda \to \infty$).
 
 ### Concepts liés
 
-- **Produit vectoriel** : En dimension 3, le produit vectoriel permet de définir l'orientation d'un plan.
-- **Formes différentielles** : La notion de volume et d'orientation est généralisée par les formes différentielles et l'algèbre extérieure. Le déterminant est une $n$-forme.
+- **Groupes de Lie** : Les groupes orthogonaux et unitaires sont des exemples paradigmatiques de groupes de Lie compacts, qui sont des variétés différentielles munies d'une structure de groupe compatible.
+- **Algèbres de Lie** : À chaque groupe de Lie est associée une algèbre de Lie, qui est l'espace tangent à l'identité. Les algèbres de Lie $\mathfrak{so}(n)$, $\mathfrak{su}(n)$ (matrices antisymétriques et antihermitiennes de trace nulle) sont cruciales pour l'étude locale de ces groupes.
+- **Théorie des représentations** : Ces groupes jouent un rôle central dans la théorie des représentations des groupes compacts et en physique (e.g., symétries du modèle standard).
 
 ---
 
-## Concept 4: Classification des isométries euclidiennes planes et spatiales
+## Concept 3: Classification des isométries en dimension 2 et 3
 
 ### Prérequis
 
-- Isométrie, groupes $O_n(\mathbb{R})$ et $SO_n(\mathbb{R})$.
+- Groupes $O_2(\mathbb{R})$ et $O_3(\mathbb{R})$.
 - Valeurs propres, vecteurs propres, polynôme caractéristique.
-- Diagonalisation et réduction des endomorphismes.
+- Sous-espaces stables.
 
 ### Définition
 
-Ce concept vise à classifier toutes les isométries d'un espace euclidien de dimension 2 et 3 en décrivant leur nature géométrique via une forme matricielle canonique dans une base orthonormée adaptée.
-
-### Propriétés Clés
+La classification des isométries vectorielles d'un espace euclidien de petite dimension repose sur l'analyse de leurs sous-espaces invariants et de leur déterminant.
 
 **Théorème 2.4.1 (Classification dans $O_2(\mathbb{R})$)**
-Soit $f$ une isométrie de $\mathbb{R}^2$. Soit $M$ sa matrice dans une base orthonormée.
 
-1.  Si $\det(M) = 1$ ($f \in SO_2(\mathbb{R})$), alors $f$ est une **rotation**. Il existe $\theta \in \mathbb{R}$ tel que dans toute base orthonormée directe, la matrice de $f$ est
-    $$ R\_\theta = \begin{pmatrix} \cos(\theta) & -\sin(\theta) \\ \sin(\theta) & \cos(\theta) \end{pmatrix} $$
-2.  Si $\det(M) = -1$, alors $f$ est une **réflexion orthogonale** par rapport à une droite. Il existe une base orthonormée (directe ou non) dans laquelle la matrice de $f$ est
-    $$ S = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} $$
+Soit $f$ une isométrie de $\mathbb{R}^2$.
 
-**Théorème 2.4.2 (Classification dans $O_3(\mathbb{R})$)**
-Soit $f$ une isométrie de $\mathbb{R}^3$. Soit $M$ sa matrice dans une base orthonormée.
+1. Si $\det(f)=1$ ($f \in SO_2(\mathbb{R})$), alors $f$ est une **rotation**. Sa matrice dans toute base orthonormée directe est de la forme $R(\theta) = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$ pour un certain $\theta \in \mathbb{R}$.
+2. Si $\det(f)=-1$ ($f \in O_2(\mathbb{R}) \setminus SO_2(\mathbb{R})$), alors $f$ est une **réflexion orthogonale** (ou symétrie axiale). Il existe une base orthonormée dans laquelle sa matrice est $S = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$.
 
-1.  Si $\det(M) = 1$ ($f \in SO_3(\mathbb{R})$), alors $f$ est une **rotation** d'axe une droite vectorielle. Il existe une base orthonormée directe dans laquelle la matrice de $f$ est
-    $$ R = \begin{pmatrix} \cos(\theta) & -\sin(\theta) & 0 \\ \sin(\theta) & \cos(\theta) & 0 \\ 0 & 0 & 1 \end{pmatrix} $$
-    L'axe de rotation est dirigé par le troisième vecteur de base, qui est un vecteur propre pour la valeur propre 1.
-2.  Si $\det(M) = -1$, alors $f$ est la composée d'une rotation et d'une réflexion par rapport au plan orthogonal à l'axe de rotation (**roto-réflexion**). Il existe une base orthonormée directe dans laquelle la matrice de $f$ est
-    $$ S = \begin{pmatrix} \cos(\theta) & -\sin(\theta) & 0 \\ \sin(\theta) & \cos(\theta) & 0 \\ 0 & 0 & -1 \end{pmatrix} $$
+**Théorème 2.4.2 (Classification dans $O_3(\mathbb{R})$ - Théorème d'Euler)**
 
-**Idée de la preuve (pour $O_3(\mathbb{R})$)**: Le polynôme caractéristique $\chi_M(\lambda)$ est de degré 3, il a donc au moins une racine réelle $\lambda_0$. Comme $M$ est une isométrie, ses valeurs propres réelles ne peuvent être que $\pm 1$. Soit $X_0$ un vecteur propre associé. L'hyperplan $X_0^\perp$ est stable par $M$. L'étude de l'isométrie $M|_{X_0^\perp}$ (qui est une isométrie plane) permet de conclure.
+Soit $f$ une isométrie de $\mathbb{R}^3$.
 
-### Exemples
-
-**Exemple 1 (Rotation dans $\mathbb{R}^3$)**
-La matrice $M = \begin{pmatrix} 0 & -1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix}$ est dans $SO_3(\mathbb{R})$. C'est une rotation d'angle $\pi/2$ autour de l'axe $Oz$.
-
-**Exemple 2 (Réflexion dans $\mathbb{R}^3$)**
-La matrice $M = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & -1 \end{pmatrix}$ est dans $O_3(\mathbb{R})$ avec $\det(M)=-1$. C'est une réflexion par rapport au plan $Oxy$. C'est un cas de roto-réflexion avec $\theta=0$.
-
-**Exemple 3 (Inversion centrale)**
-La matrice $M = -I_3 = \begin{pmatrix} -1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & -1 \end{pmatrix}$ a $\det(M)=-1$. Elle peut être mise sous forme canonique d'une roto-réflexion avec $\theta=\pi$ et axe quelconque. C'est la composition d'une rotation d'angle $\pi$ et d'une réflexion par rapport au plan orthogonal à l'axe.
-
-### Contre-exemples
-
-**Contre-exemple 1 (Isométrie en dimension 4)**
-Une isométrie de $\mathbb{R}^4$ n'a pas nécessairement d'axe de rotation (droite invariante). Par exemple, la matrice $M = \begin{pmatrix} \cos \theta & -\sin \theta & 0 & 0 \\ \sin \theta & \cos \theta & 0 & 0 \\ 0 & 0 & \cos \phi & -\sin \phi \\ 0 & 0 & \sin \phi & \cos \phi \end{pmatrix}$ dans $SO_4(\mathbb{R})$ n'a de vecteur propre réel que si $\theta$ ou $\phi$ est un multiple de $\pi$. C'est une double rotation.
-
-**Contre-exemple 2 (Transformation non-isométrique)**
-Une affinité orthogonale comme $f(x,y,z) = (x,y,2z)$ n'est pas une isométrie et n'entre pas dans cette classification. Elle a bien un axe et un plan invariants, mais elle déforme les longueurs.
-
-### Concepts liés
-
-- **Théorème d'Euler (1776)** : Toute composition de rotations dans $\mathbb{R}^3$ est une rotation. C'est une conséquence du fait que $SO_3(\mathbb{R})$ est un groupe.
-- **Formule de Rodrigues** : Donne une expression explicite d'une rotation à partir de son axe et son angle.
-- **Quaternions** : Offrent un cadre algébrique élégant pour calculer avec les rotations de $\mathbb{R}^3$.
-
----
-
-## Concept 5: Produit Vectoriel dans $\mathbb{R}^3$
-
-### Prérequis
-
-- Espace euclidien orienté de dimension 3.
-- Déterminant, formes multilinéaires.
-- Théorème de représentation de Riesz pour les formes linéaires.
-
-### Définition
-
-Soit $E=\mathbb{R}^3$ muni de son produit scalaire canonique $\langle \cdot, \cdot \rangle$ et de son orientation canonique.
-Pour tout couple de vecteurs $(U, V) \in E^2$, le **produit vectoriel** de $U$ et $V$ est l'unique vecteur $U \land V \in E$ qui vérifie :
-$$ \forall W \in E, \quad \det(U, V, W) = \langle U \land V, W \rangle $$
-L'existence et l'unicité de ce vecteur sont garanties par le théorème de représentation de Riesz, l'application $W \mapsto \det(U,V,W)$ étant une forme linéaire sur $E$.
+1. Si $\det(f)=1$ ($f \in SO_3(\mathbb{R})$), alors $f$ est une **rotation** (non triviale si $f\neq \text{Id}$). Il existe un axe (droite vectorielle de vecteurs invariants) et un angle de rotation $\theta$. Dans une base orthonormée directe adaptée, sa matrice est $R = \begin{pmatrix} \cos\theta & -\sin\theta & 0 \\ \sin\theta & \cos\theta & 0 \\ 0 & 0 & 1 \end{pmatrix}$.
+2. Si $\det(f)=-1$, alors $f$ est une **isométrie indirecte**. C'est la composée d'une rotation et d'une réflexion par rapport au plan orthogonal à l'axe de la rotation. Dans une base orthonormée directe adaptée, sa matrice est $S = \begin{pmatrix} \cos\theta & -\sin\theta & 0 \\ \sin\theta & \cos\theta & 0 \\ 0 & 0 & -1 \end{pmatrix}$.
 
 ### Propriétés Clés
 
-- **Bilinéarité** : L'application $(U,V) \mapsto U \land V$ est bilinéaire.
-- **Antisymétrie** : $V \land U = - U \land V$. En particulier, $U \land U = 0$.
-- **Condition de colinéarité** : $U \land V = 0 \iff (U, V)$ est une famille liée.
-- **Orthogonalité** : Le vecteur $U \land V$ est orthogonal à $U$ et à $V$. Il est donc orthogonal au plan $\text{Vect}(U,V)$. On a $(U \land V)^\perp = \text{Vect}(U,V)$ si $U,V$ non colinéaires.
-- **Orientation** : Si $(U,V)$ est une famille libre, la base $(U, V, U \land V)$ est directe.
-- **Norme** : $\|U \land V\| = \|U\|\|V\| |\sin(\theta(U, V))|$, où $\theta$ est l'angle (non-orienté) entre $U$ et $V$. La norme de $U \land V$ est l'aire du parallélogramme engendré par $U$ et $V$.
+- **Existence d'un axe de rotation (Théorème d'Euler)** : Toute isométrie de $SO_3(\mathbb{R})$ admet la valeur propre 1.
+
+    *Démonstration.* Soit $M \in SO_3(\mathbb{R})$. Son polynôme caractéristique $\chi_M(\lambda) = \det(M-\lambda I_3)$ est de degré 3 à coefficients réels. On a $\lim_{\lambda \to \pm\infty} \chi_M(\lambda) = \mp\infty$. Par le théorème des valeurs intermédiaires, $\chi_M$ a au moins une racine réelle $\lambda_0$. Comme $M$ est une isométrie, ses valeurs propres réelles ne peuvent être que $\pm 1$. Les valeurs propres complexes sont de module 1 et viennent par paires conjuguées $e^{i\theta}, e^{-i\theta}$. Le déterminant est le produit des valeurs propres.
+
+    Si toutes les valeurs propres sont réelles, elles sont $\pm 1$. Pour avoir $\det(M)=1$, les possibilités sont $(1,1,1)$ ou $(1,-1,-1)$. Dans les deux cas, 1 est valeur propre.
+
+    Si il y a des valeurs propres complexes, elles sont $e^{i\theta}, e^{-i\theta}$ et la troisième $\lambda_0$ doit être réelle. On a $\det(M) = e^{i\theta} e^{-i\theta} \lambda_0 = \lambda_0 = 1$. Donc 1 est valeur propre.
+
+    L'espace propre associé à la valeur propre 1 est l'axe de rotation.
+
+- **Commutativité** : $SO_2(\mathbb{R})$ est un groupe abélien, mais $SO_3(\mathbb{R})$ ne l'est pas.
+
+### Exemples
+
+**Exemple 1 : Rotation dans $\mathbb{R}^3$**
+
+La rotation d'angle $\pi/2$ autour de l'axe $e_3=(0,0,1)$ dans $\mathbb{R}^3$ a pour matrice dans la base canonique (qui est orthonormée directe) $M = \begin{pmatrix} 0 & -1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix}$. C'est un élément de $SO_3(\mathbb{R})$.
+
+**Exemple 2 : Réflexion dans $\mathbb{R}^2$**
+
+La réflexion par rapport à la droite $y=x$ (dirigée par $e_1' = (1/\sqrt{2}, 1/\sqrt{2})$) a pour matrice $S = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$ dans la base canonique. $\det(S)=-1$. Dans la base orthonormée $(e_1', e_2')$, avec $e_2' = (1/\sqrt{2}, -1/\sqrt{2})$, la matrice est $\begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$.
+
+**Exemple 3 : Rotation-réflexion (roto-réflexion)**
+
+L'inversion centrale $f(x)=-x$ dans $\mathbb{R}^3$ a pour matrice $-I_3$. $\det(-I_3)=-1$. C'est la rotation d'angle $\pi$ autour de n'importe quel axe, composée avec la réflexion par rapport au plan orthogonal à cet axe. Par exemple, avec l'axe $e_3$, la matrice est $\begin{pmatrix} -1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & -1 \end{pmatrix} = \begin{pmatrix} \cos\pi & -\sin\pi & 0 \\ \sin\pi & \cos\pi & 0 \\ 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & -1 \end{pmatrix}$.
+
+### Contre-exemples
+
+**Contre-exemple 1 : Isométrie de $\mathbb{R}^4$**
+
+Une isométrie de $\mathbb{R}^4$ n'a pas nécessairement d'axe invariant (de dimension 1). Par exemple, la double rotation de matrice $M = \begin{pmatrix} \cos\theta & -\sin\theta & 0 & 0 \\ \sin\theta & \cos\theta & 0 & 0 \\ 0 & 0 & \cos\phi & -\sin\phi \\ 0 & 0 & \sin\phi & \cos\phi \end{pmatrix}$ avec $\theta, \phi \notin \pi\mathbb{Z}$ n'a que le sous-espace $\{0\}$ comme espace de vecteurs invariants.
+
+**Contre-exemple 2 : Isométrie affine**
+
+Une translation $t_v : x \mapsto x+v$ (pour $v \neq 0$) est une isométrie de l'espace affine euclidien, mais n'est pas une isométrie vectorielle car elle n'est pas linéaire et ne fixe pas l'origine.
+
+### Concepts liés
+
+- **Angles d'Euler** : Une méthode pour paramétrer toute rotation de $SO_3(\mathbb{R})$ par trois angles, en la décomposant en une succession de trois rotations autour d'axes canoniques.
+- **Quaternions** : Les quaternions de norme 1 fournissent une représentation efficace et numériquement stable des rotations de $SO_3(\mathbb{R})$, évitant le problème du blocage de cardan des angles d'Euler.
+
+---
+
+## Concept 4: Produit Vectoriel dans $\mathbb{R}^3$
+
+### Prérequis
+
+- Espace euclidien orienté $\mathbb{R}^3$.
+- Déterminant, applications multilinéaires alternées.
+- Formes linéaires, théorème de représentation de Riesz.
+
+### Définition
+
+Soit $\mathbb{R}^3$ l'espace euclidien canonique, orienté par sa base canonique. Pour tout couple de vecteurs $(U,V) \in \mathbb{R}^3 \times \mathbb{R}^3$, le **produit vectoriel** de $U$ et $V$, noté $U \wedge V$, est l'unique vecteur de $\mathbb{R}^3$ tel que :
+
+$$ \forall W \in \mathbb{R}^3, \quad \det(U,V,W) = \langle U \wedge V, W \rangle $$
+
+L'existence et l'unicité de ce vecteur sont garanties par le théorème de représentation de Riesz, car l'application $\phi_{U,V}: W \mapsto \det(U,V,W)$ est une forme linéaire sur $\mathbb{R}^3$.
+
+### Propriétés Clés
+
+- **Bilinéarité** : L'application $(U,V) \mapsto U \wedge V$ est bilinéaire.
+- **Antisymétrie** : $V \wedge U = -U \wedge V$. (Conséquence de $\det(V,U,W) = -\det(U,V,W)$).
+- **Condition de colinéarité** : $U \wedge V = 0 \iff (U,V)$ est une famille liée.
+- **Orthogonalité** : Le vecteur $U \wedge V$ est orthogonal à $U$ et à $V$.
+
+  *Démonstration.* $\langle U \wedge V, U \rangle = \det(U,V,U) = 0$ car la famille $(U,V,U)$ est liée. De même pour $V$.
+
+- **Orientation** : Si $(U,V)$ est libre, la base $(U,V,U \wedge V)$ est directe.
+
+  *Démonstration.* $\det(U,V,U \wedge V) = \langle U \wedge V, U \wedge V \rangle = \|U \wedge V\|^2 > 0$.
+
+- **Norme** : $\|U \wedge V\| = \|U\| \|V\| |\sin\theta|$, où $\theta$ est l'angle (non orienté) entre $U$ et $V$. Cette norme est l'aire du parallélogramme engendré par $U$ et $V$.
 - **Expression en coordonnées** : Dans une base orthonormée directe $(e_1, e_2, e_3)$, si $U=(u_1, u_2, u_3)$ et $V=(v_1, v_2, v_3)$, alors :
-  $$ U \land V = (u_2 v_3 - u_3 v_2)e_1 + (u_3 v_1 - u_1 v_3)e_2 + (u_1 v_2 - u_2 v_1)e_3 $$
-- **Identités avancées**:
-  - **Double produit vectoriel** : $U \land (V \land W) = \langle U, W \rangle V - \langle U, V \rangle W$.
-  - **Identité de Jacobi** : $U \land (V \land W) + V \land (W \land U) + W \land (U \land V) = 0$.
+
+$$ U \wedge V = (u_2v_3 - u_3v_2)e_1 + (u_3v_1 - u_1v_3)e_2 + (u_1v_2 - u_2v_1)e_3 $$
+
+- **Double produit vectoriel** : $U \wedge (V \wedge W) = \langle U,W \rangle V - \langle U,V \rangle W$. (Formule de "BAC-CAB").
+- **Identité de Jacobi** : $U \wedge (V \wedge W) + V \wedge (W \wedge U) + W \wedge (U \wedge V) = 0$.
 
 ### Exemples
 
-**Exemple 1 (Base canonique)**
-Soit $(e_1, e_2, e_3)$ la base canonique de $\mathbb{R}^3$. On a $e_1 \land e_2 = e_3$, $e_2 \land e_3 = e_1$, $e_3 \land e_1 = e_2$.
+**Exemple 1 : Base canonique**
 
-**Exemple 2 (Calcul explicite)**
-Soit $U=(1,2,3)$ et $V=(-1,0,4)$.
-$U \land V = ((2)(4)-(3)(0), (3)(-1)-(1)(4), (1)(0)-(2)(-1)) = (8, -7, 2)$.
-On peut vérifier que $\langle U \land V, U \rangle = 8-14+6=0$ et $\langle U \land V, V \rangle = -8+0+8=0$.
+Soit $(e_1, e_2, e_3)$ la base canonique de $\mathbb{R}^3$. On a:
 
-**Exemple 3 (Aire d'un triangle)**
-L'aire du triangle de sommets $A, B, C$ est $\frac{1}{2} \|\vec{AB} \land \vec{AC}\|$. Soit $A=(0,0,0), B=(1,2,3), C=(-1,0,4)$. L'aire est $\frac{1}{2}\|(8,-7,2)\| = \frac{1}{2}\sqrt{64+49+4} = \frac{\sqrt{117}}{2}$.
+$e_1 \wedge e_2 = e_3$, $e_2 \wedge e_3 = e_1$, $e_3 \wedge e_1 = e_2$.
+
+**Exemple 2 : Calcul direct**
+
+Soient $U=(1,2,3)$ et $V=(4,5,6)$.
+
+$U \wedge V = ((2)(6)-(3)(5), (3)(4)-(1)(6), (1)(5)-(2)(4)) = (12-15, 12-6, 5-8) = (-3, 6, -3)$.
+
+**Exemple 3 : Vecteur normal à un plan**
+
+Le plan vectoriel engendré par $U=(1,1,0)$ et $V=(0,1,1)$ a pour vecteur normal $N = U \wedge V = (1,-1,1)$. Tout vecteur normal est colinéaire à $N$.
 
 ### Contre-exemples
 
-**Contre-exemple 1 (Non-associativité)**
-Le produit vectoriel n'est pas associatif.
-$(e_1 \land e_1) \land e_2 = 0 \land e_2 = 0$.
-$e_1 \land (e_1 \land e_2) = e_1 \land e_3 = -e_2$.
-Donc $(e_1 \land e_1) \land e_2 \neq e_1 \land (e_1 \land e_2)$.
+**Contre-exemple 1 : Non-associativité**
 
-**Contre-exemple 2 (Dépendance de la dimension)**
-Un produit binaire ayant ces propriétés (bilinéaire, antisymétrique, produisant un vecteur orthogonal) n'existe qu'en dimension 3 et 7 (via les octonions). La définition via le déterminant généralise le produit vectoriel à un produit $(n-1)$-aire en dimension $n$.
+Le produit vectoriel n'est pas associatif. Soit $(e_1, e_2, e_3)$ une base orthonormée directe.
+
+$(e_1 \wedge e_1) \wedge e_2 = 0 \wedge e_2 = 0$.
+
+Mais $e_1 \wedge (e_1 \wedge e_2) = e_1 \wedge e_3 = -e_2$.
+
+**Contre-exemple 2 : Dépendance de la dimension**
+
+Un produit binaire ayant des propriétés similaires n'existe que dans $\mathbb{R}^3$ et $\mathbb{R}^7$. La généralisation du produit vectoriel en dimension $n$ est le **produit extérieur**, qui à $n-1$ vecteurs associe un vecteur (via le même type de dualité).
 
 ### Concepts liés
 
-- **Algèbre extérieure** : Le produit vectoriel est un cas particulier du produit extérieur (wedge product) dans l'algèbre extérieure $\Lambda(\mathbb{R}^3)$. Plus précisément, $u \wedge v = \star (u \land v)$ où $\star$ est l'opérateur de Hodge.
-- **Moment cinétique** : En physique, le moment cinétique $\vec{L}$ est défini par le produit vectoriel $\vec{L} = \vec{r} \land \vec{p}$.
-- **Algèbre de Lie** : L'espace $\mathbb{R}^3$ muni du produit vectoriel est une algèbre de Lie, isomorphe à l'algèbre de Lie $\mathfrak{so}(3)$ des matrices antisymétriques $3 \times 3$.
+- **Algèbre extérieure** : Le produit vectoriel est un cas particulier du produit extérieur $\wedge$ dans l'algèbre extérieure $\Lambda(\mathbb{R}^3)$. On a une identification entre $\Lambda^2(\mathbb{R}^3)$ (les bivecteurs) et $\mathbb{R}^3$ via la dualité de Hodge.
+- **Algèbre de Lie** : L'espace $(\mathbb{R}^3, +, \wedge)$ est une algèbre de Lie. Elle est isomorphe à l'algèbre de Lie $\mathfrak{so}(3)$ du groupe des rotations $SO_3(\mathbb{R})$.
+- **Formes différentielles** : Le produit vectoriel est lié à l'opérateur de différentiation extérieure en calcul vectoriel. Par exemple, $\nabla \wedge \mathbf{F}$ est le rotationnel du champ de vecteurs $\mathbf{F}$.
 
 ---
 
-## Concept 6: Formule de Rodrigues pour les rotations
+## Concept 5: Formule de Rodrigues
 
 ### Prérequis
 
-- Classification des isométries de $\mathbb{R}^3$, en particulier les rotations.
-- Produit scalaire et produit vectoriel dans $\mathbb{R}^3$.
-- Décomposition d'un vecteur selon des sous-espaces orthogonaux.
+- Classification des rotations dans $\mathbb{R}^3$.
+- Propriétés du produit vectoriel.
 
 ### Définition
 
-La **formule de Rodrigues** donne une expression explicite de l'image d'un vecteur $U \in \mathbb{R}^3$ par une rotation $\mathcal{R}$ définie par son axe (donné par un vecteur unitaire $N$) et son angle $\theta$.
-$$ \mathcal{R}(U) = (\cos\theta) U + (1-\cos\theta) \langle U, N \rangle N + (\sin\theta) N \land U $$
+La **formule de Rodrigues** donne une expression explicite de l'image d'un vecteur $U \in \mathbb{R}^3$ par une rotation $\mathcal{R}_{N,\theta}$ d'axe dirigé par un vecteur unitaire $N$ et d'angle $\theta$.
 
-### Démonstration
+$$ \mathcal{R}_{N,\theta}(U) = \cos(\theta)U + (1-\cos(\theta))\langle U,N \rangle N + \sin(\theta) (N \wedge U) $$
 
-Soit $U \in \mathbb{R}^3$. On le décompose en une partie colinéaire à $N$ et une partie orthogonale :
-$$ U = U*\parallel + U*\perp \quad \text{avec} \quad U*\parallel = \langle U, N \rangle N \quad \text{et} \quad U*\perp = U - \langle U, N \rangle N $$
-La rotation laisse $U_\parallel$ invariant : $\mathcal{R}(U_\parallel) = U_\parallel$.
-La rotation agit sur $U_\perp$ (qui est dans le plan $N^\perp$) comme une rotation plane d'angle $\theta$. Le vecteur $N \land U_\perp = N \land U$ est dans $N^\perp$, est orthogonal à $U_\perp$ et a la même norme que $U_\perp$ (car $\|N\|=1$). La famille $( \frac{U_\perp}{\|U_\perp\|}, \frac{N \land U_\perp}{\|U_\perp\|} )$ est une base orthonormée directe du plan $N^\perp$ (orienté par $N$).
-L'image de $U_\perp$ par la rotation est donc :
-$$ \mathcal{R}(U*\perp) = (\cos\theta) U*\perp + (\sin\theta) (N \land U*\perp) $$
-En combinant les deux parties par linéarité :
-$$ \mathcal{R}(U) = \mathcal{R}(U*\parallel) + \mathcal{R}(U*\perp) = U*\parallel + (\cos\theta) U\_\perp + (\sin\theta) (N \land U) $$
-$$ \mathcal{R}(U) = \langle U, N \rangle N + (\cos\theta) (U - \langle U, N \rangle N) + (\sin\theta) (N \land U) $$
-$$ \mathcal{R}(U) = (\cos\theta)U + (1-\cos\theta) \langle U, N \rangle N + (\sin\theta)N \land U $$
+L'orientation de l'angle $\theta$ est donnée par la règle de la main droite selon l'axe $N$.
 
 ### Propriétés Clés
 
-- **Caractère intrinsèque** : La formule ne dépend pas d'un choix de base, seulement des données géométriques de la rotation ($N, \theta$).
-- **Application matricielle** : Elle permet de calculer la matrice d'une rotation dans n'importe quelle base, en appliquant la formule aux vecteurs de base. La matrice $R$ de la rotation est donnée par $R = (\cos\theta)I + (1-\cos\theta)N {}^tN + (\sin\theta)[N]_\times$, où $[N]_\times$ est la matrice de l'application $U \mapsto N \land U$.
-- **Lien avec l'exponentielle de matrice** : La rotation peut être vue comme l'exponentielle de son "générateur infinitésimal", un élément de l'algèbre de Lie $\mathfrak{so}(3)$. On a $\mathcal{R} = \exp(\theta [N]_\times)$. La formule de Rodrigues est une forme explicite de cette exponentielle.
+- **Décomposition orthogonale** : La preuve de la formule repose sur la décomposition de $U$ en une composante parallèle à l'axe et une composante orthogonale : $U = U_\parallel + U_\perp$, avec $U_\parallel = \langle U,N \rangle N$ et $U_\perp = U - \langle U,N \rangle N$.
+- **Action de la rotation** : La rotation laisse la composante parallèle inchangée ($\mathcal{R}(U_\parallel)=U_\parallel$) et fait tourner la composante orthogonale d'un angle $\theta$ dans le plan $N^\perp$.
+
+    *Démonstration.*
+
+    $\mathcal{R}(U) = \mathcal{R}(U_\parallel) + \mathcal{R}(U_\perp) = U_\parallel + \mathcal{R}(U_\perp)$.
+
+    Dans le plan $N^\perp$, orienté par $N$, le vecteur $N \wedge U_\perp = N \wedge U$ est orthogonal à $U_\perp$ et de même norme. La famille $(U_\perp, N \wedge U)$ forme une base orthogonale (non normée) de ce plan. L'action de $\mathcal{R}$ sur $U_\perp$ est une rotation plane :
+
+    $\mathcal{R}(U_\perp) = \cos(\theta)U_\perp + \sin(\theta) (N \wedge U)$.
+
+    En substituant $U_\perp = U - \langle U,N \rangle N$ et $U_\parallel = \langle U,N \rangle N$, on obtient :
+
+    $\mathcal{R}(U) = \langle U,N \rangle N + \cos(\theta)(U - \langle U,N \rangle N) + \sin(\theta)(N \wedge U)$
+
+    $= \cos(\theta)U + (1-\cos(\theta))\langle U,N \rangle N + \sin(\theta)(N \wedge U)$.
+
+- **Forme matricielle** : La formule permet de déduire la matrice de la rotation dans n'importe quelle base. Soit $K$ la matrice de l'application $U \mapsto N \wedge U$. Si $N=(a,b,c)$, alors $K = \begin{pmatrix} 0 & -c & b \\ c & 0 & -a \\ -b & a & 0 \end{pmatrix}$. La matrice de la rotation est $R = I + (\sin\theta)K + (1-\cos\theta)K^2$. C'est l'exponentielle de la matrice $\theta K$.
 
 ### Exemples
 
-**Exemple 1 (Rotation de $\pi/2$ autour de $e_3$)**
-Soit $N=e_3=(0,0,1)$ et $\theta=\pi/2$. $\cos\theta=0, \sin\theta=1$.
-$\mathcal{R}(U) = (1-0)\langle U, e_3 \rangle e_3 + 1 \cdot e_3 \land U = u_3 e_3 + (u_2, -u_1, 0) = (-u_2, u_1, u_3)$.
-On retrouve la rotation bien connue.
+**Exemple 1 : Rotation d'axe $e_3$**
 
-**Exemple 2 (Rotation d'axe (1,1,1))**
-Soit $N = \frac{1}{\sqrt{3}}(1,1,1)$ et $\theta=\pi/4$.
-Soit $U=e_1=(1,0,0)$.
+Soit $N=e_3=(0,0,1)$. On veut calculer $\mathcal{R}_{e_3,\theta}(e_1)$.
+
+$\langle e_1, e_3 \rangle = 0$ et $e_3 \wedge e_1 = e_2$.
+
+$\mathcal{R}(e_1) = \cos(\theta)e_1 + (1-\cos\theta)(0)e_3 + \sin(\theta)e_2 = \cos(\theta)e_1 + \sin(\theta)e_2$.
+
+Ce qui correspond bien à $(\cos\theta, \sin\theta, 0)$.
+
+**Exemple 2 : Demi-tour (rotation d'angle $\pi$)**
+
+Pour $\theta=\pi$, $\cos\pi=-1, \sin\pi=0$. La formule devient :
+
+$\mathcal{R}_{N,\pi}(U) = -U + 2\langle U,N \rangle N$. C'est l'expression de la symétrie axiale par rapport à l'axe dirigé par $N$.
+
+**Exemple 3 : Rotation d'axe $(1,1,1)$**
+
+Soit $N=\frac{1}{\sqrt{3}}(1,1,1)$ et $\theta=\frac{2\pi}{3}$. Soit $U=e_1=(1,0,0)$.
+
 $\langle U,N \rangle = 1/\sqrt{3}$.
-$N \land U = \frac{1}{\sqrt{3}}(1,1,1) \land (1,0,0) = \frac{1}{\sqrt{3}}(0,1,-1)$.
-$\mathcal{R}(e_1) = \frac{\sqrt{2}}{2} (1,0,0) + (1-\frac{\sqrt{2}}{2}) (\frac{1}{\sqrt{3}})^2 (1,1,1) + \frac{\sqrt{2}}{2} \frac{1}{\sqrt{3}}(0,1,-1)$.
-Le calcul, bien que fastidieux, donne la première colonne de la matrice de l'exemple du cours.
 
-**Exemple 3 (Vecteur sur l'axe)**
-Si $U$ est colinéaire à $N$, $U = \lambda N$. Alors $\langle U,N \rangle = \lambda$, $N \land U = 0$.
-$\mathcal{R}(U) = (\cos\theta)\lambda N + (1-\cos\theta)\lambda N + 0 = \lambda N = U$. Le vecteur est invariant, comme attendu.
+$N \wedge U = \frac{1}{\sqrt{3}}(1,1,1) \wedge (1,0,0) = \frac{1}{\sqrt{3}}(0,1,-1)$.
 
-### Contre-exemples
+$\cos(2\pi/3)=-1/2$, $\sin(2\pi/3)=\sqrt{3}/2$.
 
-La formule de Rodrigues ne s'applique pas :
+$\mathcal{R}(e_1) = -\frac{1}{2}(1,0,0) + (1-(-\frac{1}{2}))(\frac{1}{\sqrt{3}})\frac{1}{\sqrt{3}}(1,1,1) + \frac{\sqrt{3}}{2}\frac{1}{\sqrt{3}}(0,1,-1)$
 
-1.  **Aux isométries qui ne sont pas des rotations pures**, comme les réflexions ou les roto-réflexions.
-2.  **En dimension autre que 3**, car elle repose sur le produit vectoriel qui est spécifique à $\mathbb{R}^3$.
+$= (-\frac{1}{2},0,0) + \frac{3}{2} \cdot \frac{1}{3}(1,1,1) + \frac{1}{2}(0,1,-1)$
+
+$= (-\frac{1}{2},0,0) + (\frac{1}{2},\frac{1}{2},\frac{1}{2}) + (0,\frac{1}{2},-\frac{1}{2}) = (0,1,0) = e_2$.
+
+De même, on trouve $\mathcal{R}(e_2)=e_3$ et $\mathcal{R}(e_3)=e_1$. C'est une permutation circulaire des axes.
 
 ### Concepts liés
 
-- **Quaternions** : Les quaternions fournissent une alternative à la formule de Rodrigues pour représenter et composer les rotations, souvent plus efficace numériquement. Un quaternion unitaire $q = \cos(\theta/2) + \sin(\theta/2) N$ représente la rotation d'axe $N$ et d'angle $\theta$.
-- **Exponentielle de matrices** : Formalisme puissant pour décrire les groupes de Lie à un paramètre, comme les rotations autour d'un axe fixe.
+- **Exponentielle de matrice** : La rotation d'angle $\theta$ autour de l'axe $N$ est donnée par l'exponentielle de l'opérateur "produit vectoriel par $\theta N$". Soit $A_N(U) = N \wedge U$. La rotation est $\mathcal{R}_{N,\theta} = \exp(\theta A_N)$. La formule de Rodrigues est un cas particulier de la formule de l'exponentielle pour les matrices de $\mathfrak{so}(3)$.
+- **Quaternions** : L'action d'une rotation représentée par un quaternion $q = \cos(\theta/2) + \sin(\theta/2)N$ sur un vecteur $U$ (identifié au quaternion pur $U$) est donnée par la conjugaison $qUq^{-1}$. Le développement de cette expression redonne la formule de Rodrigues.
 
 ---
 
-## Concept 7: Le groupe $SU_2(\mathbb{C})$ comme revêtement double de $SO_3(\mathbb{R})$
+## Concept 6: Le groupe $SU_2(\mathbb{C})$ et son lien avec $SO_3(\mathbb{R})$
 
 ### Prérequis
 
-- Groupes $SU_2(\mathbb{C})$ et $SO_3(\mathbb{R})$.
-- Espaces hermitiens, matrices hermitiennes ($M^*=M$), matrices antihermitiennes ($M^*=-M$).
-- Trace d'une matrice, algèbre linéaire sur $\mathbb{R}$ et $\mathbb{C}$.
-- Notions de base de topologie (homéomorphisme) et de théorie des groupes (morphisme, noyau).
+- Espaces hermitiens, groupes unitaires $U_n(\mathbb{C}), SU_n(\mathbb{C})$.
+- Trace d'une matrice, matrices hermitiennes.
+- Morphismes de groupes, noyau.
 
 ### Définition
 
-Ce concept établit un lien profond et non trivial entre le groupe des matrices spéciales unitaires de taille 2 et le groupe des rotations de l'espace tridimensionnel. Il existe un morphisme de groupes surjectif $\mathcal{J}: SU_2(\mathbb{C}) \to SO_3(\mathbb{R})$ dont le noyau est $\{\pm I_2\}$. On dit que $SU_2(\mathbb{C})$ est un **revêtement double** de $SO_3(\mathbb{R})$.
+Le lien entre $SU_2(\mathbb{C})$ et $SO_3(\mathbb{R})$ s'établit via la **représentation adjointe**.
 
-### Construction du morphisme
+1.  On considère le $\mathbb{R}$-espace vectoriel $\mathcal{V} = \{ M \in M_2(\mathbb{C}) \mid M^*=M, \text{Tr}(M)=0 \}$.
 
-1.  **L'espace des matrices hermitiennes à trace nulle** :
-    On considère l'ensemble $\mathcal{V} = \{M \in \mathcal{M}_2(\mathbb{C}) \mid \text{Tr}(M) = 0 \text{ et } M^* = M\}$.
-    $\mathcal{V}$ est un $\mathbb{R}$-espace vectoriel de dimension 3. Une base de $\mathcal{V}$ est donnée par les **matrices de Pauli** :
-    $$ \sigma_1 = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \quad \sigma_2 = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}, \quad \sigma_3 = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} $$
-    (La base du cours est $(T_1, T_2, T_3) = (\sigma_2, \sigma_1, \sigma_3)$).
+    Cet espace est de dimension 3. Une base en est $(T_1, T_2, T_3)$ avec :
 
-2.  **Structure euclidienne sur $\mathcal{V}$** :
-    On munit $\mathcal{V}$ du produit scalaire réel $\varphi(A, B) = \frac{1}{2} \text{Tr}(AB)$. Cette forme est bilinéaire, symétrique et définie positive. Pour ce produit scalaire, la base $(\sigma_1, \sigma_2, \sigma_3)$ est orthonormée. On identifie ainsi $(\mathcal{V}, \varphi)$ à $\mathbb{R}^3$ euclidien.
+    $$ T_1 = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}, \quad T_2 = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \quad T_3 = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} $$
 
-3.  **L'action de $SU_2(\mathbb{C})$ sur $\mathcal{V}$ (Représentation adjointe)** :
-    Pour $U \in SU_2(\mathbb{C})$ et $M \in \mathcal{V}$, on définit l'action par conjugaison :
-    $$ \text{Ad}\_U(M) := UMU^\* $$
+    (Ces matrices sont proportionnelles aux matrices de Pauli $\sigma_2, \sigma_1, \sigma_3$).
 
-    - $\text{Ad}_U(M)$ est bien dans $\mathcal{V}$ : $\text{Tr}(UMU^*) = \text{Tr}(M)=0$ et $(UMU^*)^* = U M^* U^* = UMU^*$.
-    - $\text{Ad}_U$ est une application $\mathbb{R}$-linéaire de $\mathcal{V}$ dans $\mathcal{V}$.
-    - $\text{Ad}_U$ est une isométrie de $(\mathcal{V}, \varphi)$ : $\varphi(\text{Ad}_U(M), \text{Ad}_U(M)) = \frac{1}{2}\text{Tr}((UMU^*)^2) = \frac{1}{2}\text{Tr}(UMU^*UMU^*) = \frac{1}{2}\text{Tr}(UM^2U^*) = \frac{1}{2}\text{Tr}(M^2) = \varphi(M,M)$.
+2.  On munit $\mathcal{V}$ d'un produit scalaire euclidien $\varphi(A,B) := \frac{1}{2}\text{Tr}(AB)$, pour lequel la base $(T_1, T_2, T_3)$ est orthonormée. $(\mathcal{V}, \varphi)$ est donc un espace euclidien de dimension 3, que l'on identifie à $\mathbb{R}^3$.
+3.  Pour tout $U \in SU_2(\mathbb{C})$, on définit l'application **adjointe** $\text{Ad}_U : \mathcal{V} \to \mathcal{V}$ par :
 
-4.  **Le morphisme $\mathcal{J}$** :
-    L'application $U \mapsto \text{Ad}_U$ est un morphisme de groupes de $SU_2(\mathbb{C})$ dans $O(\mathcal{V}) \cong O_3(\mathbb{R})$. Comme $SU_2(\mathbb{C})$ est connexe, son image est dans la composante connexe de l'identité, soit $SO(\mathcal{V}) \cong SO_3(\mathbb{R})$. On définit :
-    $$ \mathcal{J}: SU*2(\mathbb{C}) \to SO_3(\mathbb{R}), \quad U \mapsto \text{Mat}*{(\sigma_k)}(\text{Ad}\_U) $$
+    $$ \text{Ad}_U(M) := UMU^* $$
+
+4.  L'application $\mathcal{J} : SU_2(\mathbb{C}) \to O(\mathcal{V}) \cong O_3(\mathbb{R})$ qui à $U$ associe $\text{Ad}_U$ est un morphisme de groupes.
 
 ### Propriétés Clés
 
-- **Paramétrisation de $SU_2(\mathbb{C})$** : $U \in SU_2(\mathbb{C}) \iff U = \begin{pmatrix} \alpha & -\overline{\beta} \\ \beta & \overline{\alpha} \end{pmatrix}$ avec $|\alpha|^2 + |\beta|^2 = 1$.
-- **Homéomorphisme avec $S^3$** : L'application qui à $U$ associe $(\text{Re}(\alpha), \text{Im}(\alpha), \text{Re}(\beta), \text{Im}(\beta))$ est un homéomorphisme entre $SU_2(\mathbb{C})$ et la sphère unité $S^3$ de $\mathbb{R}^4$.
-- **Surjectivité de $\mathcal{J}$** : On peut montrer que tout élément de $SO_3(\mathbb{R})$ est l'image d'un élément de $SU_2(\mathbb{C})$.
-- **Noyau de $\mathcal{J}$** : $\text{Ker}(\mathcal{J}) = \{U \in SU_2(\mathbb{C}) \mid UMU^*=M, \forall M \in \mathcal{V}\}$. Ceci implique que $U$ commute avec toutes les matrices de $\mathcal{M}_2(\mathbb{C})$, donc $U$ est une matrice scalaire. Les seules matrices scalaires dans $SU_2(\mathbb{C})$ sont $I_2$ et $-I_2$. Donc $\text{Ker}(\mathcal{J}) = \{I_2, -I_2\} \cong \mathbb{Z}/2\mathbb{Z}$.
-- **Topologie** : $SO_3(\mathbb{R})$ est topologiquement l'espace projectif réel $\mathbb{R}P^3$, tandis que $SU_2(\mathbb{C})$ est la sphère $S^3$. $S^3$ est simplement connexe, mais $SO_3(\mathbb{R})$ ne l'est pas (son groupe fondamental est $\mathbb{Z}/2\mathbb{Z}$).
+- **$SU_2(\mathbb{C})$ et la sphère $S^3$** : Toute matrice $U \in SU_2(\mathbb{C})$ est de la forme $\begin{pmatrix} \alpha & \beta \\ -\bar{\beta} & \bar{\alpha} \end{pmatrix}$ avec $|\alpha|^2+|\beta|^2=1$. L'application qui à $U$ associe $(\Re(\alpha), \Im(\alpha), \Re(\beta), \Im(\beta))$ est un homéomorphisme de $SU_2(\mathbb{C})$ sur la sphère unité $S^3 \subset \mathbb{R}^4$.
+
+- **$\text{Ad}_U$ est une isométrie** : Pour tout $M \in \mathcal{V}$, $\varphi(\text{Ad}_U(M), \text{Ad}_U(M)) = \frac{1}{2}\text{Tr}((UMU^*)(UMU^*)) = \frac{1}{2}\text{Tr}(UMU^*UMU^*) = \frac{1}{2}\text{Tr}(UM^2U^*) = \frac{1}{2}\text{Tr}(M^2) = \varphi(M,M)$. Donc $\text{Ad}_U \in O(\mathcal{V})$.
+
+- **L'image est dans $SO_3(\mathbb{R})$** : Le groupe $SU_2(\mathbb{C})$ est connexe (car $S^3$ l'est). L'application $\mathcal{J}$ est continue. L'image $\mathcal{J}(SU_2(\mathbb{C}))$ est donc une partie connexe de $O_3(\mathbb{R})$. Comme $\mathcal{J}(I_2)=\text{Id} \in SO_3(\mathbb{R})$, l'image entière est contenue dans la composante connexe de l'identité, qui est $SO_3(\mathbb{R})$.
+
+- **Surjectivité** : On peut montrer que le morphisme $\mathcal{J}: SU_2(\mathbb{C}) \to SO_3(\mathbb{R})$ est surjectif.
+
+- **Noyau** : $\ker(\mathcal{J}) = \{U \in SU_2(\mathbb{C}) \mid \forall M \in \mathcal{V}, UMU^*=M\}$. Ceci est équivalent à $U$ qui commute avec toutes les matrices de $\mathcal{V}$, et donc avec tout $M_2(\mathbb{C})$. Par le lemme de Schur, $U$ doit être une matrice scalaire. Les seules matrices scalaires dans $SU_2(\mathbb{C})$ sont $I_2$ et $-I_2$. Donc $\ker(\mathcal{J}) = \{\pm I_2\}$.
+
+- **Revêtement double** : Par le premier théorème d'isomorphisme, $SO_3(\mathbb{R}) \cong SU_2(\mathbb{C}) / \{\pm I_2\}$. On dit que $SU_2(\mathbb{C})$ est un **revêtement double** de $SO_3(\mathbb{R})$. Topologiquement, cela signifie que $SU_2(\mathbb{C})$ "s'enroule" deux fois sur $SO_3(\mathbb{R})$.
 
 ### Exemples
 
-**Exemple 1 (Rotation explicite)**
-Soit $U = D_\theta = \begin{pmatrix} e^{i\theta} & 0 \\ 0 & e^{-i\theta} \end{pmatrix} \in SU_2(\mathbb{C})$.
-$\text{Ad}_{D_\theta}(\sigma_3) = D_\theta \sigma_3 D_\theta^* = \sigma_3$. L'axe de la rotation est donc $\sigma_3$.
-$\text{Ad}_{D_\theta}(\sigma_1) = \cos(2\theta)\sigma_1 - \sin(2\theta)\sigma_2$.
-$\text{Ad}_{D_\theta}(\sigma_2) = \sin(2\theta)\sigma_1 + \cos(2\theta)\sigma_2$.
-La matrice de $\mathcal{J}(D_\theta)$ dans la base $(\sigma_1, \sigma_2, \sigma_3)$ est $\begin{pmatrix} \cos(2\theta) & \sin(2\theta) & 0 \\ -\sin(2\theta) & \cos(2\theta) & 0 \\ 0 & 0 & 1 \end{pmatrix}$, une rotation d'angle $-2\theta$ autour du 3ème axe.
+**Exemple 1 : Rotation d'axe $T_3$**
 
-**Exemple 2 (Image de $-I_2$)**
-$\mathcal{J}(-I_2) = \text{Ad}_{-I_2}$ où $\text{Ad}_{-I_2}(M) = (-I_2)M(-I_2)^* = M$. Donc $\mathcal{J}(-I_2)$ est l'identité de $SO_3(\mathbb{R})$, confirmant que $-I_2 \in \text{Ker}(\mathcal{J})$.
+Soit $U=D_\theta = \begin{pmatrix} e^{i\theta} & 0 \\ 0 & e^{-i\theta} \end{pmatrix} \in SU_2(\mathbb{C})$. Un calcul direct montre que $\text{Ad}_{D_\theta}$ a pour matrice dans la base $(T_1, T_2, T_3)$ :
 
-**Exemple 3 (Demi-tour)**
-Soit $U = \begin{pmatrix} 0 & i \\ i & 0 \end{pmatrix} = i\sigma_1 \in SU_2(\mathbb{C})$. Ceci correspond à $\alpha=0, \beta=i$. On a $U=D_{\pi/4} \sigma_1 D_{-\pi/4}$. Un calcul montre que $\mathcal{J}(U)$ est une rotation d'angle $\pi$ (un demi-tour).
+$$ \begin{pmatrix} \cos(2\theta) & -\sin(2\theta) & 0 \\ \sin(2\theta) & \cos(2\theta) & 0 \\ 0 & 0 & 1 \end{pmatrix} $$
+
+C'est la rotation d'angle $2\theta$ autour de l'axe $T_3$.
+
+**Exemple 2 : Le noyau**
+
+Pour $U=-I_2$, on a $\text{Ad}_{-I_2}(M) = (-I_2)M(-I_2)^* = (-M)(-I_2) = M = \text{Id}(M)$. Donc $-I_2 \in \ker(\mathcal{J})$.
+
+**Exemple 3 : lien avec les quaternions**
+
+Le $\mathbb{R}$-espace vectoriel des quaternions $\mathbb{H}$ a pour base $(1, i, j, k)$. Le groupe des quaternions de norme 1, noté $Sp(1)$, est isomorphe à $SU(2)$. L'isomorphisme associe $x_1+x_2i+x_3j+x_4k$ à la matrice $\begin{pmatrix} x_1+ix_2 & x_3+ix_4 \\ -x_3+ix_4 & x_1-ix_2 \end{pmatrix}$. L'action adjointe correspond à la conjugaison $p \mapsto qpq^{-1}$ des quaternions purs.
 
 ### Concepts liés
 
-- **Groupes et algèbres de Lie** : C'est l'exemple fondamental de la relation entre une algèbre de Lie (ici $\mathfrak{su}(2) \cong \mathbb{R}^3$) et son groupe de Lie. $\mathcal{V}$ est essentiellement l'algèbre de Lie $\mathfrak{su}(2)$. L'application Ad est la représentation adjointe.
-- **Spinors** : En physique quantique, les électrons (et autres fermions) ne sont pas décrits par des vecteurs mais par des spineurs, qui sont des éléments de l'espace de représentation de $SU_2(\mathbb{C})$. Une rotation de $360^\circ$ dans $\mathbb{R}^3$ (identité dans $SO_3$) correspond à $U=-I_2$ dans $SU_2$, ce qui change le signe du spineur. Il faut une rotation de $720^\circ$ pour revenir à l'état initial.
-- **Topologie algébrique** : Les notions de revêtement, de groupe fondamental et de simple connexité sont centrales pour comprendre la différence topologique entre $SU_2(\mathbb{C})$ et $SO_3(\mathbb{R})$.
+- **Algèbres de Lie** : $\mathcal{V}$ est l'algèbre de Lie $\mathfrak{su}(2)$ de $SU_2(\mathbb{C})$, munie du commutateur $[A,B]=AB-BA$. L'application $\text{Ad}_U$ est la représentation adjointe du groupe de Lie sur son algèbre. On a un isomorphisme d'algèbres de Lie entre $(\mathfrak{su}(2), [.,.])$ et $(\mathbb{R}^3, \wedge)$.
+- **Topologie algébrique** : $SU(2) \cong S^3$ est simplement connexe, tandis que $SO(3) \cong \mathbb{P}^3(\mathbb{R})$ (l'espace projectif réel de dimension 3) ne l'est pas (son groupe fondamental est $\mathbb{Z}/2\mathbb{Z}$). $SU(2)$ est le **revêtement universel** de $SO(3)$.
+- **Physique quantique** : Cette relation est fondamentale en mécanique quantique pour la description du spin des particules. Les états de spin sont décrits par des vecteurs dans $\mathbb{C}^2$ et les rotations de l'espace physique (opérateurs de $SO_3(\mathbb{R})$) sont représentées par des opérateurs de $SU_2(\mathbb{C})$. La non-injectivité du morphisme explique des phénomènes comme le fait qu'une rotation de $2\pi$ change le signe de la fonction d'onde d'un fermion.

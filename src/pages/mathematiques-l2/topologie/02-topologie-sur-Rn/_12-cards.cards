@@ -1,0 +1,367 @@
+---
+id: 48415d21
+type: cards
+order: 12
+title: Topologie sur Rn - fiches de révision (A)
+tags:
+  - Topologie
+  - Espaces vectoriels normés
+  - Ensembles ouverts
+  - Ensembles fermés
+  - Compacité
+  - Suites de Cauchy
+createdAt: '2025-10-12T14:36:44.756Z'
+level: regular
+course: Topologie I
+courseId: 34e61f8e
+chapter: Topologie sur Rn
+chapterId: 3c3b95a8
+---
+# Fiches de révision "Topologie sur Rn" (A)
+
+---
+
+Qu'est-ce qu'une **boule ouverte** et une **boule fermée** dans $\mathbb{R}^n$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Soit $N$ une norme sur $\mathbb{R}^n$, $x$ un point de $\mathbb{R}^n$ et $r > 0$ un rayon.
+
+1.  La **boule ouverte** de centre $x$ et de rayon $r$, notée $B_N(x, r)$, est l'ensemble des points dont la distance à $x$ est **strictement inférieure** à $r$.
+
+    $$
+
+    B_N(x, r) = \{z \in \mathbb{R}^n \mid N(z - x) < r\}
+
+    $$
+
+2.  La **boule fermée** de centre $x$ et de rayon $r$, notée $B_N^f(x, r)$, est l'ensemble des points dont la distance à $x$ est **inférieure ou égale** à $r$.
+
+    $$
+
+    B_N^f(x, r) = \{z \in \mathbb{R}^n \mid N(z - x) \le r\}
+
+    $$
+
+**Explication intuitive :**
+
+Les boules sont les "briques" de base de la topologie. Une boule ouverte est comme l'intérieur d'un disque (sans son bord), tandis qu'une boule fermée inclut le disque et son bord (le cercle). La "forme" de ces boules dépend de la norme utilisée.
+
+</details>
+
+---
+
+Quelle est la forme géométrique de la boule unité fermée dans $\mathbb{R}^2$ pour les normes $\|\cdot\|_1, \|\cdot\|_2$ et $\|\cdot\|_\infty$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La boule unité fermée est l'ensemble $B^f(0, 1) = \{ (x, y) \in \mathbb{R}^2 \mid \|(x,y)\| \le 1 \}$. Sa forme dépend de la norme :
+
+1.  **Norme euclidienne $\|\cdot\|_2$**:
+
+    La condition est $\|(x,y)\|_2 = \sqrt{x^2 + y^2} \le 1 \iff x^2 + y^2 \le 1$.
+
+    C'est un **disque** de centre l'origine et de rayon 1.
+
+2.  **Norme 1 $\|\cdot\|_1$**:
+
+    La condition est $\|(x,y)\|_1 = |x| + |y| \le 1$.
+
+    C'est un **carré** dont les sommets sont $(1,0), (0,1), (-1,0), (0,-1)$. Il est orienté comme un losange.
+
+3.  **Norme infinie $\|\cdot\|_\infty$**:
+
+    La condition est $\|(x,y)\|_\infty = \max(|x|, |y|) \le 1 \iff |x| \le 1 \text{ et } |y| \le 1$.
+
+    C'est un **carré** dont les côtés sont parallèles aux axes, défini par $[-1, 1] \times [-1, 1]$.
+
+</details>
+
+---
+
+Comment définit-on un **ensemble ouvert** dans $\mathbb{R}^n$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Un sous-ensemble $U \subset \mathbb{R}^n$ est dit **ouvert** si, pour chaque point $x$ qui lui appartient, on peut trouver une boule ouverte centrée en $x$ qui est entièrement incluse dans $U$.
+
+**Définition formelle :**
+
+$U$ est ouvert $\iff \forall x \in U, \exists r > 0, B(x, r) \subset U$.
+
+**Explication intuitive :**
+
+Un ensemble est ouvert s'il ne contient aucun point de sa frontière. Si vous êtes un point dans un ensemble ouvert, vous avez toujours un peu "d'espace de sécurité" autour de vous dans toutes les directions, sans quitter l'ensemble.
+
+**Exemple fondamental :**
+
+Toute boule ouverte $B(a, R)$ est elle-même un ensemble ouvert. Si l'on prend un point $x$ dans cette boule, on peut toujours tracer une petite boule autour de $x$ qui reste à l'intérieur de la grande boule $B(a, R)$.
+
+</details>
+
+---
+
+Quelles sont les propriétés de stabilité des ensembles ouverts par union et intersection ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Les ensembles ouverts de $\mathbb{R}^n$ ont les propriétés de stabilité suivantes :
+
+1.  **Stabilité par union quelconque :** Toute union (finie ou infinie) d'ensembles ouverts est un ensemble ouvert.
+
+    Si $(U_i)_{i \in I}$ est une famille d'ouverts, alors $\bigcup_{i \in I} U_i$ est un ouvert.
+
+2.  **Stabilité par intersection finie :** Toute intersection **finie** d'ensembles ouverts est un ensemble ouvert.
+
+    Si $U_1, U_2, \dots, U_n$ sont des ouverts, alors $\bigcap_{i=1}^n U_i$ est un ouvert.
+
+**Attention :** L'intersection d'une infinité d'ouverts n'est pas nécessairement un ouvert.
+
+**Contre-exemple (intersection infinie) :**
+
+Considérons dans $\mathbb{R}$ la famille d'intervalles ouverts $U_n = \left]- \frac{1}{n}, \frac{1}{n}\right[$ pour $n \in \mathbb{N}^*$.
+
+Chaque $U_n$ est un ouvert. Cependant, leur intersection est :
+
+$$ \bigcap_{n=1}^\infty U_n = \{0\} $$
+
+L'ensemble $\{0\}$ (un singleton) n'est pas un ouvert dans $\mathbb{R}$, car toute boule centrée en 0 contient des points autres que 0.
+
+</details>
+
+---
+
+Qu'est-ce qu'un **ensemble fermé** et quelle est sa caractérisation séquentielle ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Il y a deux manières principales de définir un ensemble fermé :
+
+**1. Définition par le complémentaire :**
+
+Un ensemble $F \subset \mathbb{R}^n$ est dit **fermé** si son complémentaire, $\mathbb{R}^n \setminus F$, est un ensemble ouvert.
+
+**2. Caractérisation séquentielle (très utile en pratique) :**
+
+Un ensemble $F \subset \mathbb{R}^n$ est **fermé** si et seulement si toute suite convergente d'éléments de $F$ a sa limite dans $F$.
+
+Formellement :
+
+$F$ est fermé $\iff \left( \forall (x^k)_{k \in \mathbb{N}} \in F^\mathbb{N}, \text{ si } x^k \to x \text{ alors } x \in F \right)$.
+
+**Explication intuitive :**
+
+Un ensemble fermé est un ensemble qu'on ne peut pas "quitter" par un processus de limite. Si une suite de points reste dans l'ensemble, sa limite (si elle existe) doit aussi y être. Il contient sa propre frontière.
+
+**Exemple :** L'intervalle $[0, 1]$ est fermé. Toute suite de points dans $[0, 1]$ qui converge aura une limite comprise entre 0 et 1, donc dans l'ensemble. L'intervalle $[0, 1[$ n'est pas fermé, car la suite $x_k = 1 - 1/k$ est dans l'ensemble, mais sa limite, 1, n'y est pas.
+
+</details>
+
+---
+
+Définissez **l'intérieur**, **l'adhérence** et la **frontière** d'une partie $A \subset \mathbb{R}^n$.
+
+<details>
+
+<summary>Réponse</summary>
+
+Soit $A$ une partie de $\mathbb{R}^n$.
+
+1.  **Intérieur ($\mathring{A}$)** : C'est l'ensemble des points de $A$ qui ont une boule ouverte autour d'eux entièrement contenue dans $A$.
+
+    C'est le plus grand ensemble ouvert contenu dans $A$.
+
+    $$ \mathring{A} = \{ x \in A \mid \exists r > 0, B(x,r) \subset A \} $$
+
+2.  **Adhérence ($\bar{A}$)** : C'est l'ensemble des points de $\mathbb{R}^n$ qui sont "infiniment proches" de $A$. Un point $x$ est dans $\bar{A}$ si toute boule centrée en $x$ contient au moins un point de $A$.
+
+    C'est le plus petit ensemble fermé contenant $A$.
+
+    $$ \bar{A} = \{ x \in \mathbb{R}^n \mid \forall r > 0, B(x,r) \cap A \neq \emptyset \} $$
+
+    De manière équivalente, $\bar{A}$ est l'ensemble des limites de suites d'éléments de $A$.
+
+3.  **Frontière ($\partial A$)** : C'est l'ensemble des points qui sont adhérents à la fois à $A$ et à son complémentaire. Ce sont les points "sur le bord".
+
+    $$ \partial A = \bar{A} \setminus \mathring{A} $$
+
+**Exemple :** Pour $A = [0, 1[$ dans $\mathbb{R}$:
+
+- $\mathring{A} = ]0, 1[$
+- $\bar{A} = [0, 1]$
+- $\partial A = \{0, 1\}$
+
+</details>
+
+---
+
+Qu'est-ce qu'une **partie dense** et quel est l'exemple le plus classique ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Une partie $A \subset \mathbb{R}^n$ est dite **dense** dans $\mathbb{R}^n$ si son adhérence est l'espace entier.
+
+$$
+
+A \text{ est dense dans } \mathbb{R}^n \iff \bar{A} = \mathbb{R}^n.
+
+$$
+
+**Explication intuitive :**
+
+Cela signifie que les points de $A$ sont "partout". On peut approcher n'importe quel point de $\mathbb{R}^n$ d'aussi près que l'on veut par un point de $A$.
+
+**Caractérisation équivalente :**
+
+$A$ est dense dans $\mathbb{R}^n$ si et seulement si toute boule ouverte (non vide) de $\mathbb{R}^n$ contient au moins un élément de $A$.
+
+**Exemple classique :**
+
+L'ensemble des nombres rationnels $\mathbb{Q}$ est dense dans l'ensemble des nombres réels $\mathbb{R}$.
+
+Cela signifie que pour tout nombre réel $x$ (même irrationnel comme $\pi$ ou $\sqrt{2}$), on peut trouver une suite de nombres rationnels qui converge vers $x$. Par exemple, les approximations décimales de $\pi$ (3.14, 3.141, 3.1415, ...) forment une telle suite.
+
+</details>
+
+---
+
+Quel est le **théorème de Heine-Borel** qui caractérise les parties compactes de $\mathbb{R}^n$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le **théorème de Heine-Borel** est un résultat fondamental qui donne une caractérisation simple et puissante des parties compactes dans un espace vectoriel normé de dimension finie comme $\mathbb{R}^n$.
+
+**Énoncé du théorème :**
+
+Une partie de $\mathbb{R}^n$ est **compacte** si et seulement si elle est **fermée** et **bornée**.
+
+**Rappel des définitions :**
+
+- **Fermé :** L'ensemble contient toutes ses limites de suites.
+- **Borné :** L'ensemble peut être contenu dans une boule de rayon suffisamment grand centrée à l'origine.
+
+**Utilité :** Pour vérifier si un ensemble de $\mathbb{R}^n$ est compact, il suffit de vérifier ces deux propriétés géométriques (fermé et borné), ce qui est souvent plus simple que d'utiliser la définition séquentielle de la compacité (de toute suite on peut extraire une sous-suite convergente *dans l'ensemble*).
+
+**Exemple :** Une sphère, un cube, ou une boule fermée dans $\mathbb{R}^3$ sont des ensembles compacts car ils sont à la fois fermés et bornés.
+
+</details>
+
+---
+
+L'ensemble $A = \{(x, y) \in \mathbb{R}^2 \mid x > 0, y \ge 0\}$ est-il fermé ? ouvert ? compact ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Analysons l'ensemble $A$, qui est le quart de plan supérieur droit, axe des ordonnées positives inclus mais axe des abscisses exclu.
+
+1.  **Est-il ouvert ?**
+
+    **Non.** Prenons le point $(1, 0) \in A$. Toute boule ouverte $B((1,0), r)$ contient des points avec une ordonnée négative (par exemple $(1, -r/2)$), qui ne sont pas dans $A$. Donc $A$ n'est pas ouvert.
+
+2.  **Est-il fermé ?**
+
+    **Non.** Considérons la suite de points $x^k = (1/k, 1)$ pour $k \in \mathbb{N}^*$. Tous ces points sont dans $A$ car $1/k > 0$ et $1 \ge 0$.
+
+    Cette suite converge vers $x = (0, 1)$.
+
+    Le point limite $(0, 1)$ n'est pas dans $A$, car sa première coordonnée n'est pas *strictement* positive.
+
+    Comme nous avons trouvé une suite de points de $A$ dont la limite n'est pas dans $A$, l'ensemble n'est pas fermé.
+
+3.  **Est-il compact ?**
+
+    **Non.** Pour être compact dans $\mathbb{R}^n$, un ensemble doit être **fermé et borné**.
+
+    - On vient de montrer que $A$ n'est pas fermé.
+    - De plus, $A$ n'est pas borné. Par exemple, la suite de points $(k, 1)$ pour $k \in \mathbb{N}^*$ est dans $A$ et sa norme tend vers l'infini.
+
+    Comme $A$ n'est ni fermé ni borné, il n'est pas compact.
+
+</details>
+
+---
+
+Que signifie que toutes les normes sur $\mathbb{R}^n$ sont **équivalentes** et quelle est la conséquence principale de ce théorème ?
+
+<details>
+
+<summary>Réponse</summary>
+
+**Définition de l'équivalence :**
+
+Deux normes $N_1$ et $N_2$ sur $\mathbb{R}^n$ sont dites équivalentes s'il existe deux constantes réelles $\alpha > 0$ et $\beta > 0$ telles que pour tout vecteur $x \in \mathbb{R}^n$ :
+
+$$
+
+\alpha N_1(x) \le N_2(x) \le \beta N_1(x)
+
+$$
+
+Le théorème fondamental affirme qu'en dimension finie (sur $\mathbb{R}^n$), **toutes les normes sont équivalentes deux à deux**.
+
+**Conséquence principale :**
+
+La conséquence majeure est que les notions topologiques dans $\mathbb{R}^n$ **ne dépendent pas du choix de la norme**.
+
+Cela signifie que si un ensemble est :
+
+- Ouvert
+- Fermé
+- Compact
+- Borné
+- Dense
+
+pour une certaine norme (par exemple, la norme euclidienne $\|\cdot\|_2$), alors il le sera aussi pour n'importe quelle autre norme (comme $\|\cdot\|_1$ ou $\|\cdot\|_\infty$).
+
+De même, si une suite converge vers une limite pour une norme, elle convergera vers la même limite pour toutes les autres normes.
+
+**En pratique :** Cela nous donne la liberté de choisir la norme la plus simple pour effectuer nos calculs dans un problème donné.
+
+</details>
+
+---
+
+Qu'est-ce que la **complétude** de $\mathbb{R}^n$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La complétude est une propriété fondamentale de l'espace $\mathbb{R}^n$.
+
+**Définition :**
+
+Un espace normé est dit **complet** si toute suite de Cauchy y est convergente. $\mathbb{R}^n$ est un espace complet.
+
+**Rappel sur les suites de Cauchy :**
+
+Une suite $(x^k)$ est dite de Cauchy si ses termes se rapprochent arbitrairement les uns des autres à mesure que l'on avance dans la suite. Formellement, $\forall \varepsilon > 0, \exists K \in \mathbb{N}$ tel que $\forall p, q \ge K, \|x^p - x^q\| < \varepsilon$.
+
+**Signification intuitive :**
+
+La complétude signifie que l'espace $\mathbb{R}^n$ n'a "pas de trou". Si une suite "devrait converger" (parce que ses termes se resserrent indéfiniment), alors il existe bien un point dans $\mathbb{R}^n$ qui est sa limite.
+
+**Exemple illustratif ($\mathbb{Q}$ vs $\mathbb{R}$) :**
+
+- L'espace des nombres rationnels $\mathbb{Q}$ n'est **pas** complet. La suite des approximations décimales de $\sqrt{2}$ ($1, 1.4, 1.41, 1.414, \dots$) est une suite de Cauchy d'éléments de $\mathbb{Q}$. Cependant, sa limite est $\sqrt{2}$, qui n'est pas un nombre rationnel. La suite ne converge donc pas *dans* $\mathbb{Q}$.
+- Dans $\mathbb{R}$, qui est complet, cette même suite converge bien vers la limite $\sqrt{2}$, qui appartient à $\mathbb{R}$.
+
+La complétude de $\mathbb{R}^n$ est essentielle pour de nombreux théorèmes d'analyse, notamment en calcul différentiel et pour la résolution d'équations.
+
+</details>

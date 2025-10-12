@@ -1,0 +1,374 @@
+---
+id: 1dbd671a
+type: cards
+order: 12
+title: Séries Numériques - fiches de révision (A)
+tags:
+  - séries numériques
+  - convergence
+  - critère de Cauchy
+  - séries à termes positifs
+  - intégrales généralisées
+  - théorème d'Abel
+createdAt: '2025-10-12T17:47:40.884Z'
+level: regular
+course: Analyse
+courseId: 9c2d50b3
+chapter: Séries Numériques
+chapterId: c9bf30da
+---
+# Fiches de rérevision "Séries Numériques" (A)
+
+---
+
+Qu'est-ce qu'une série numérique et quand dit-on qu'elle converge ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Une **série numérique** est un objet mathématique qui vise à donner un sens à la somme d'une infinité de termes d'une suite $(u_n)_{n \in \mathbb{N}}$. Elle est définie par le couple de la suite du **terme général** $(u_n)$ et de la suite des **sommes partielles** $(s_n)$.
+
+La suite des sommes partielles $(s_n)$ est définie par :
+
+$$ s_n = \sum_{k=0}^{n} u_k = u_0 + u_1 + \dots + u_n $$
+
+On dit que la série, notée $\sum u_n$, **converge** si la suite de ses sommes partielles $(s_n)$ converge vers une limite finie $s$. Cette limite est alors appelée la **somme de la série**. On écrit :
+
+$$ s = \sum_{k=0}^{\infty} u_k = \lim_{n \to \infty} s_n $$
+
+Si la suite $(s_n)$ ne converge pas vers une limite finie, on dit que la série **diverge**.
+
+**En résumé :** Pour étudier une série, on ne somme pas une infinité de termes d'un coup. On construit la suite des sommes partielles $(s_0, s_1, s_2, \dots)$ et on regarde si cette suite se stabilise vers une valeur finie.
+
+**Exemple :** Pour la série de terme général $u_n = (\frac{1}{2})^n$, la somme partielle est $s_n = \sum_{k=0}^n (\frac{1}{2})^k = 2(1 - (\frac{1}{2})^{n+1})$. Comme $\lim_{n \to \infty} s_n = 2$, la série converge et sa somme est 2.
+
+</details>
+
+---
+
+Quelle est la condition nécessaire de convergence d'une série et quelle est son utilité principale ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La **condition nécessaire de convergence** stipule que si une série $\sum u_n$ converge, alors son terme général $u_n$ doit obligatoirement tendre vers 0.
+
+$$ \text{Si } \sum u_n \text{ converge, alors } \lim_{n \to \infty} u_n = 0. $$
+
+**Attention :** Cette condition est nécessaire, mais **pas suffisante**. Le fait que $\lim_{n \to \infty} u_n = 0$ ne garantit pas que la série converge (par exemple, la série harmonique $\sum \frac{1}{n}$ diverge bien que son terme général tende vers 0).
+
+L'utilité principale de cette condition est sa **contraposée**, qui fournit un test de divergence simple et efficace, souvent appelé le **test de divergence grossière** :
+
+**Si le terme général $u_n$ ne tend pas vers 0 (soit parce que sa limite est non nulle, soit parce qu'il n'a pas de limite), alors la série $\sum u_n$ diverge.**
+
+C'est souvent la première chose à vérifier lorsqu'on étudie la nature d'une série.
+
+**Exemple d'application :**
+
+Soit la série $\sum_{n=1}^{\infty} \frac{2n^2}{n^2+1}$.
+
+Le terme général est $u_n = \frac{2n^2}{n^2+1}$.
+
+On a $\lim_{n \to \infty} u_n = \lim_{n \to \infty} \frac{2n^2}{n^2} = 2$.
+
+Comme la limite n'est pas 0, on peut immédiatement conclure que la série diverge.
+
+</details>
+
+---
+
+Comment calculer la somme de la série télescopique $\sum_{n=1}^{\infty} \frac{1}{n(n+1)}$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour calculer la somme d'une série, on doit revenir à la définition : calculer la limite de la suite des sommes partielles $(s_n)$. Les séries télescopiques sont un cas particulier où le calcul des sommes partielles se simplifie grandement.
+
+**Étapes :**
+
+1.  **Décomposer le terme général :** On utilise la décomposition en éléments simples pour "casser" la fraction.
+
+    $$ u_n = \frac{1}{n(n+1)} = \frac{1}{n} - \frac{1}{n+1} $$
+
+2.  **Écrire la somme partielle $s_n$ :** On écrit la somme des termes de $u_1$ à $u_n$.
+
+    $$ s_n = \sum_{k=1}^{n} u_k = \sum_{k=1}^{n} \left(\frac{1}{k} - \frac{1}{k+1}\right) $$
+
+3.  **Développer la somme pour voir l'annulation :**
+
+    $$ s_n = \left(1 - \frac{1}{2}\right) + \left(\frac{1}{2} - \frac{1}{3}\right) + \left(\frac{1}{3} - \frac{1}{4}\right) + \dots + \left(\frac{1}{n} - \frac{1}{n+1}\right) $$
+
+    On voit que les termes intermédiaires s'annulent deux à deux (le $-1/2$ avec le $+1/2$, le $-1/3$ avec le $+1/3$, etc.). C'est l'effet "télescopique".
+
+4.  **Simplifier l'expression de $s_n$ :** Après annulation, il ne reste que le premier terme du premier groupe et le dernier terme du dernier groupe.
+
+    $$ s_n = 1 - \frac{1}{n+1} $$
+
+5.  **Calculer la limite de $s_n$ :** La somme de la série est la limite de la suite des sommes partielles.
+
+    $$ S = \lim_{n \to \infty} s_n = \lim_{n \to \infty} \left(1 - \frac{1}{n+1}\right) = 1 - 0 = 1 $$
+
+**Conclusion :** La série converge et sa somme est 1.
+
+</details>
+
+---
+
+Expliquez la différence entre convergence absolue et semi-convergence avec un exemple.
+
+<details>
+
+<summary>Réponse</summary>
+
+La distinction entre convergence absolue et semi-convergence s'applique aux séries dont les termes ne sont pas tous positifs.
+
+-   **Convergence Absolue :** Une série $\sum u_n$ est **absolument convergente** si la série des valeurs absolues, $\sum |u_n|$, converge. C'est une forme de convergence "robuste", car la série convergerait même si tous ses termes étaient positifs. Le théorème principal est que **toute série absolument convergente est convergente**.
+
+-   **Semi-Convergence :** Une série $\sum u_n$ est **semi-convergente** si elle est convergente, mais pas absolument convergente. Cela signifie que $\sum u_n$ converge, mais que $\sum |u_n|$ diverge. La convergence est plus "fragile", elle dépend des annulations entre les termes positifs et négatifs.
+
+**Exemple clé : la série harmonique alternée**
+
+Considérons la série $\sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n} = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \dots$
+
+1.  **Étude de la convergence :** On peut montrer (par exemple avec le critère des séries alternées) que cette série **converge** (sa somme est $\ln(2)$).
+
+2.  **Étude de la convergence absolue :** On regarde la série des valeurs absolues :
+
+    $$ \sum_{n=1}^{\infty} \left| \frac{(-1)^{n+1}}{n} \right| = \sum_{n=1}^{\infty} \frac{1}{n} $$
+
+    C'est la série harmonique, qui **diverge**.
+
+**Conclusion :** Puisque la série converge, mais pas absolument, elle est **semi-convergente**.
+
+En comparaison, la série $\sum_{n=1}^{\infty} \frac{(-1)^n}{n^2}$ est **absolument convergente** car la série des valeurs absolues $\sum \frac{1}{n^2}$ converge (série de Riemann avec $p=2>1$).
+
+</details>
+
+---
+
+Quelle est la propriété fondamentale des séries à termes positifs et pourquoi simplifie-t-elle leur étude ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Une série $\sum u_n$ est dite **à termes positifs** si $u_n \ge 0$ pour tout $n$.
+
+La propriété fondamentale de ces séries concerne leur suite de sommes partielles $(s_n)$. Comme $s_n = s_{n-1} + u_n$ et que $u_n \ge 0$, on a $s_n \ge s_{n-1}$. La suite des sommes partielles $(s_n)$ est donc **croissante**.
+
+D'après le théorème de la limite monotone pour les suites, une suite croissante a seulement deux comportements possibles :
+
+1.  Si elle est **majorée** (il existe un $M$ tel que $s_n \le M$ pour tout $n$), alors elle **converge** vers une limite finie.
+2.  Si elle n'est **pas majorée**, alors elle **diverge vers $+\infty$**.
+
+**Conclusion :**
+
+Une série à termes positifs **converge si et seulement si la suite de ses sommes partielles est majorée**.
+
+**Pourquoi cela simplifie-t-il l'étude ?**
+
+1.  **Pas d'oscillation :** La divergence ne peut pas se produire par oscillation (comme pour $\sum (-1)^n$). Soit la somme tend vers une valeur finie, soit elle "explose" vers l'infini. La question de la convergence se ramène donc à : "la somme totale reste-t-elle bornée ?".
+2.  **Accès à des outils puissants :** Cette propriété est la base de nombreux critères de convergence spécifiques aux séries à termes positifs, comme les théorèmes de comparaison, les critères de d'Alembert et de Cauchy. Ces tests visent justement à déterminer si les sommes partielles sont majorées, souvent sans avoir à les calculer.
+
+</details>
+
+---
+
+Comment utiliser le critère de comparaison par équivalence pour déterminer la nature d'une série ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le **critère de comparaison par équivalence** (ou par limite) est un outil très puissant pour déterminer la nature des séries à termes positifs.
+
+**Théorème :**
+
+Soient $\sum u_n$ et $\sum v_n$ deux séries à termes **strictement positifs**.
+
+Si le terme général $u_n$ est équivalent au terme général $v_n$ quand $n \to \infty$ (ce qui signifie $\lim_{n \to \infty} \frac{u_n}{v_n} = 1$), alors les deux séries $\sum u_n$ et $\sum v_n$ ont la **même nature** (soit les deux convergent, soit les deux divergent).
+
+**Étapes pour l'appliquer :**
+
+1.  **Vérifier le signe :** S'assurer que le terme général $u_n$ de la série à étudier est positif, au moins à partir d'un certain rang.
+2.  **Trouver un équivalent simple :** Trouver un équivalent simple $v_n$ de $u_n$ lorsque $n \to \infty$. On utilise pour cela les équivalents usuels (polynômes, fonctions trigonométriques, exponentielles, etc.).
+3.  **Déterminer la nature de la série de référence :** La nature de la série $\sum v_n$ doit être connue. On se ramène très souvent à une série de Riemann ($\sum \frac{1}{n^p}$) ou à une série géométrique ($\sum r^n$).
+4.  **Conclure :** Puisque $u_n \sim v_n$, les séries $\sum u_n$ et $\sum v_n$ sont de même nature.
+
+**Exemple :**
+
+Quelle est la nature de la série $\sum_{n=1}^{\infty} \sin\left(\frac{1}{n^2}\right)$ ?
+
+1.  **Signe :** Pour $n \ge 1$, $0 < \frac{1}{n^2} \le 1$, donc $u_n = \sin(\frac{1}{n^2}) > 0$. La série est à termes positifs.
+2.  **Équivalent :** Quand $n \to \infty$, $\frac{1}{n^2} \to 0$. On utilise l'équivalent usuel $\sin(x) \sim x$ quand $x \to 0$.
+
+    Donc, $u_n = \sin\left(\frac{1}{n^2}\right) \sim \frac{1}{n^2}$. On choisit $v_n = \frac{1}{n^2}$.
+
+3.  **Série de référence :** La série $\sum v_n = \sum \frac{1}{n^2}$ est une série de Riemann avec $p=2 > 1$, donc elle **converge**.
+4.  **Conclusion :** Par le critère de comparaison par équivalence, la série $\sum \sin\left(\frac{1}{n^2}\right)$ a la même nature que $\sum \frac{1}{n^2}$, elle est donc **convergente**.
+
+</details>
+
+---
+
+Quelle est la différence fondamentale entre la convergence de la suite $(u_n)$ et la convergence de la série $\sum u_n$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Il est crucial de ne pas confondre ces deux notions.
+
+-   **Convergence de la suite $(u_n)$ :** Elle s'intéresse au comportement du terme général $u_n$ lorsque $n$ devient infiniment grand. La question est : "Est-ce que les termes $u_n$ se rapprochent d'une valeur limite finie ?".
+
+    $$ \lim_{n \to \infty} u_n = L $$
+
+-   **Convergence de la série $\sum u_n$ :** Elle s'intéresse au comportement de la somme des termes $u_0 + u_1 + u_2 + \dots$. La question est : "Est-ce que la somme cumulée de tous les termes tend vers une valeur finie ?". Pour y répondre, on regarde la limite de la suite des sommes partielles $s_n = \sum_{k=0}^n u_k$.
+
+    $$ \lim_{n \to \infty} s_n = S $$
+
+**Le lien entre les deux est la condition nécessaire de convergence :** Pour que la série ait une chance de converger (que la somme soit finie), il faut absolument que les termes qu'on ajoute tendent vers zéro.
+
+$$ \sum u_n \text{ converge } \implies \lim_{n \to \infty} u_n = 0 $$
+
+**Le contre-exemple fondamental : La série harmonique**
+
+-   **La suite $(u_n)$ :** Soit $u_n = \frac{1}{n}$. La suite $(1, 1/2, 1/3, \dots)$ **converge vers 0**.
+-   **La série $\sum u_n$ :** La série $\sum_{n=1}^\infty \frac{1}{n} = 1 + \frac{1}{2} + \frac{1}{3} + \dots$ **diverge** (elle tend vers $+\infty$).
+
+Cet exemple montre de manière éclatante que la convergence du terme général vers 0 ne suffit pas à garantir la convergence de la série. Les termes deviennent infiniment petits, mais "pas assez vite" pour que leur somme reste finie.
+
+</details>
+
+---
+
+Comment utiliser le théorème de comparaison par inégalité pour déterminer la nature de $\sum_{n=1}^\infty \frac{1}{n^2 + \ln(n)}$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le **théorème de comparaison par inégalité** s'applique aux séries à termes positifs. Il stipule que si $0 \le u_n \le v_n$ à partir d'un certain rang :
+
+- Si la série "majorante" $\sum v_n$ converge, alors la série "minorée" $\sum u_n$ converge.
+- Si la série "minorée" $\sum u_n$ diverge, alors la série "majorante" $\sum v_n$ diverge.
+
+**Étapes pour l'appliquer à $\sum_{n=1}^\infty \frac{1}{n^2 + \ln(n)}$ :**
+
+1.  **Vérifier le signe :** Pour $n \ge 1$, $n^2 > 0$ et $\ln(n) \ge 0$. Donc $u_n = \frac{1}{n^2 + \ln(n)}$ est positif. La série est à termes positifs.
+
+2.  **Trouver une série de comparaison simple :** L'idée est de simplifier le terme général en le majorant ou en le minorant. Ici, le terme $\ln(n)$ est "petit" par rapport à $n^2$. On peut essayer de le supprimer.
+
+3.  **Établir une inégalité :** Pour $n \ge 1$, on a $\ln(n) \ge 0$, donc $n^2 + \ln(n) \ge n^2$.
+
+    En passant à l'inverse (ce qui change le sens de l'inégalité car les termes sont positifs), on obtient :
+
+    $$ 0 \le \frac{1}{n^2 + \ln(n)} \le \frac{1}{n^2} $$
+
+    On a donc trouvé une inégalité $u_n \le v_n$ avec $v_n = \frac{1}{n^2}$.
+
+4.  **Déterminer la nature de la série de référence :** La série de référence est $\sum v_n = \sum_{n=1}^\infty \frac{1}{n^2}$. C'est une série de Riemann avec $p=2$. Puisque $p > 1$, la série **converge**.
+
+5.  **Conclure :** Notre série $\sum u_n$ est majorée par une série convergente $\sum v_n$. D'après le théorème de comparaison par inégalité, la série $\sum_{n=1}^\infty \frac{1}{n^2 + \ln(n)}$ **converge**.
+
+</details>
+
+---
+
+La série $\sum_{n=1}^{\infty} \frac{n!}{100^n}$ converge-t-elle ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Cette série est à termes positifs et fait intervenir des factorielles et des puissances. C'est un cas idéal pour appliquer le **critère de d'Alembert (règle du rapport)**.
+
+**Rappel du critère de d'Alembert :**
+
+Soit $\sum u_n$ une série à termes strictement positifs. On calcule la limite $L = \lim_{n \to \infty} \frac{u_{n+1}}{u_n}$.
+
+- Si $L < 1$, la série converge.
+- Si $L > 1$, la série diverge.
+- Si $L = 1$, on ne peut pas conclure.
+
+**Application :**
+
+1.  **Identifier le terme général :**
+
+    $u_n = \frac{n!}{100^n}$. Les termes sont bien positifs.
+
+2.  **Calculer le rapport $\frac{u_{n+1}}{u_n}$ :**
+
+    $$ u_{n+1} = \frac{(n+1)!}{100^{n+1}} $$
+
+    $$ \frac{u_{n+1}}{u_n} = \frac{(n+1)!}{100^{n+1}} \times \frac{100^n}{n!} $$
+
+3.  **Simplifier l'expression :** On regroupe les termes de même nature.
+    - Pour les factorielles : $\frac{(n+1)!}{n!} = \frac{(n+1) \times n!}{n!} = n+1$
+    - Pour les puissances : $\frac{100^n}{100^{n+1}} = \frac{1}{100}$
+
+    Le rapport devient :
+
+    $$ \frac{u_{n+1}}{u_n} = (n+1) \times \frac{1}{100} = \frac{n+1}{100} $$
+
+4.  **Calculer la limite du rapport :**
+
+    $$ L = \lim_{n \to \infty} \frac{n+1}{100} = +\infty $$
+
+5.  **Conclure :**
+
+    Puisque $L = +\infty > 1$, le critère de d'Alembert nous permet d'affirmer que la série **diverge**.
+
+On peut même noter que puisque le rapport tend vers l'infini, le terme général $u_n$ tend très vite vers $+\infty$, ce qui confirme la divergence grossière de la série.
+
+</details>
+
+---
+
+Quelle est la nature de la série $\sum_{n=0}^{\infty} \frac{\sin(n)}{2^n}$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le terme général $u_n = \frac{\sin(n)}{2^n}$ change de signe de manière non régulière. Dans ce cas, une bonne stratégie est de tester la **convergence absolue**. Si la série converge absolument, alors elle converge.
+
+**Étapes :**
+
+1.  **Considérer la série des valeurs absolues :** On étudie la nature de la série $\sum_{n=0}^{\infty} |u_n|$.
+
+    $$ |u_n| = \left| \frac{\sin(n)}{2^n} \right| = \frac{|\sin(n)|}{2^n} $$
+
+    Cette nouvelle série, $\sum \frac{|\sin(n)|}{2^n}$, est une série à termes positifs. On peut donc utiliser les outils de comparaison.
+
+2.  **Majorer le terme général :** On sait que la fonction sinus est bornée : pour tout $n \in \mathbb{N}$, on a $0 \le |\sin(n)| \le 1$.
+
+    On peut donc majorer notre terme général :
+
+    $$ 0 \le \frac{|\sin(n)|}{2^n} \le \frac{1}{2^n} $$
+
+3.  **Identifier une série de référence convergente :** La série majorante est $\sum_{n=0}^{\infty} \frac{1}{2^n} = \sum_{n=0}^{\infty} \left(\frac{1}{2}\right)^n$.
+
+    C'est une **série géométrique** de raison $r=1/2$. Puisque $|r| < 1$, cette série **converge**.
+
+4.  **Appliquer le théorème de comparaison :**
+
+    Nous avons la situation suivante :
+
+    - La série $\sum |u_n|$ est à termes positifs.
+    - Elle est majorée par une série convergente $\sum (\frac{1}{2})^n$.
+
+    Par le théorème de comparaison par inégalité, on conclut que la série $\sum |u_n| = \sum \frac{|\sin(n)|}{2^n}$ est **convergente**.
+
+5.  **Conclure sur la série initiale :**
+
+    Puisque la série des valeurs absolues converge, la série initiale $\sum_{n=0}^{\infty} \frac{\sin(n)}{2^n}$ est **absolument convergente**.
+
+    Or, toute série absolument convergente est convergente.
+
+    **Conclusion finale :** La série converge.
+
+</details>

@@ -1,17 +1,62 @@
 ---
-title: Fiches de révision B - Concepts (B)
+id: e9d6c32b
+type: cards
 order: 22
+title: Normes sur Rⁿ et suites convergentes - fiches de révision (B)
+tags:
+  - normes
+  - suites
+  - convergence
+  - topologie
+  - analyse
+createdAt: '2025-10-12T16:01:06.272Z'
 level: pro
-chapter: B - Concepts
-course: Topologie et Calcul Différentiel I
-tags: ["cards", "flashcards", "pro"]
+course: Topologie I
+courseId: 34e61f8e
+chapter: Normes sur Rⁿ et suites convergentes
+chapterId: 629d2832
+---
+# Fiches de révision "Normes sur Rⁿ et suites convergentes" (B)
+
 ---
 
-# Cartes: B - Concepts (B)
+Démontrer que pour toute norme $N$ sur un espace vectoriel $E$, on a l'inégalité triangulaire renversée : $|N(x) - N(y)| \le N(x - y)$ pour tous $x, y \in E$.
+
+<details>
+
+<summary>Réponse</summary>
+
+La démonstration repose sur une application judicieuse de l'inégalité triangulaire standard.
+
+1.  On écrit $x$ comme $x = (x - y) + y$. En appliquant l'inégalité triangulaire, on obtient :
+
+    $N(x) = N((x - y) + y) \le N(x - y) + N(y)$.
+
+    En réarrangeant les termes, cela nous donne une première inégalité :
+
+    $N(x) - N(y) \le N(x - y)$.
+
+2.  De manière symétrique, on écrit $y$ comme $y = (y - x) + x$. L'inégalité triangulaire donne :
+
+    $N(y) = N((y - x) + x) \le N(y - x) + N(x)$.
+
+    En utilisant la propriété d'homogénéité absolue, $N(y-x) = N((-1)(x-y)) = |-1|N(x-y) = N(x-y)$.
+
+    L'inégalité devient donc $N(y) \le N(x - y) + N(x)$, ce qui se réarrange en :
+
+    $N(y) - N(x) \le N(x - y)$.
+
+    Ceci est équivalent à $-(N(x) - N(y)) \le N(x - y)$.
+
+3.  En combinant les deux inégalités obtenues, $N(x) - N(y) \le N(x - y)$ et $-(N(x) - N(y)) \le N(x - y)$, on conclut que :
+
+    $|N(x) - N(y)| \le N(x - y)$.
+
+</details>
 
 ---
 
-Énoncer et esquisser la preuve du théorème fondamental de l'équivalence des normes en dimension finie.
+Énoncer le théorème de l'équivalence des normes en dimension finie et esquisser les grandes lignes de sa preuve.
 
 <details>
 
@@ -21,558 +66,422 @@ tags: ["cards", "flashcards", "pro"]
 
 **Esquisse de la preuve :**
 
-Soit $E$ un espace vectoriel de dimension finie $n$. On peut identifier $E$ à $\mathbb{R}^n$ via le choix d'une base. Le cœur de la preuve est de montrer que n'importe quelle norme $N$ sur $\mathbb{R}^n$ est équivalente à une norme de référence, typiquement la norme infinie $\|\cdot\|_\infty$.
+Soit $E$ un $\mathbb{R}$-espace vectoriel de dimension finie $n$. Il suffit de montrer que toute norme $N$ sur $E$ est équivalente à une norme de référence, par exemple la norme infinie $\|\cdot\|_\infty$ relative à une base fixée $(e_1, \dots, e_n)$.
 
-La preuve se fait en deux étapes, en montrant l'existence de deux constantes $C > 0$ et $\alpha > 0$ telles que $\alpha \|x\|_\infty \le N(x) \le C \|x\|_\infty$ pour tout $x \in \mathbb{R}^n$.
+Soit $x = \sum_{i=1}^n x_i e_i \in E$, on pose $\|x\|_\infty = \max_{1 \le i \le n} |x_i|$. On doit trouver $\alpha, \beta > 0$ tels que $\alpha \|x\|_\infty \le N(x) \le \beta \|x\|_\infty$.
 
-1.  **Majoration :** Soit $(e_1, \dots, e_n)$ la base canonique de $\mathbb{R}^n$. Pour tout $x = \sum_{i=1}^n x_i e_i$, on a :
+1.  **Majoration de $N(x)$ :**
 
-    $N(x) = N(\sum x_i e_i) \le \sum N(x_i e_i) = \sum |x_i| N(e_i)$ (par inégalité triangulaire et homogénéité).
-    
-    Puisque $|x_i| \le \max_j |x_j| = \|x\|_\infty$, on obtient :
+    En utilisant l'inégalité triangulaire et l'homogénéité de $N$ :
 
-    $N(x) \le \sum \|x\|_\infty N(e_i) = \|x\|_\infty \left(\sum_{i=1}^n N(e_i)\right)$.
-    
-    En posant $C = \sum_{i=1}^n N(e_i)$, qui est une constante positive finie, on a la majoration : $N(x) \le C \|x\|_\infty$.
+    $N(x) = N(\sum x_i e_i) \le \sum N(x_i e_i) = \sum |x_i| N(e_i)$.
 
-2.  **Minoration :** Cette partie est plus subtile et repose sur des arguments de compacité.
-    -   On montre d'abord que l'application $N: (\mathbb{R}^n, \|\cdot\|_\infty) \to \mathbb{R}$ est continue. En utilisant la majoration précédente : $|N(x) - N(y)| \le N(x-y) \le C\|x-y\|_\infty$. Ceci montre que $N$ est $C$-lipschitzienne, donc continue.
-    -   Considérons la sphère unité pour la norme infinie, $S = \{x \in \mathbb{R}^n \mid \|x\|_\infty = 1\}$. D'après le théorème de Heine-Borel, $S$ est une partie compacte de $\mathbb{R}^n$ car elle est fermée et bornée.
-    -   La fonction continue $N$ atteint son minimum sur le compact $S$. Soit $\alpha = \min_{x \in S} N(x)$.
-    -   Puisque $0 \notin S$, pour tout $x \in S$, $x \neq 0$, donc $N(x) > 0$ par la propriété de séparation de la norme. Ainsi, $\alpha > 0$.
-    -   Pour tout vecteur $y \in \mathbb{R}^n$ non nul, le vecteur $y/\|y\|_\infty$ appartient à $S$. Par conséquent, $N(y/\|y\|_\infty) \ge \alpha$.
-    -   Par homogénéité de $N$, cela donne $\frac{1}{\|y\|_\infty} N(y) \ge \alpha$, soit $N(y) \ge \alpha \|y\|_\infty$. Cette inégalité est trivialement vraie pour $y=0$.
+    Comme $|x_i| \le \|x\|_\infty$ pour tout $i$, on a :
 
-On a donc prouvé l'encadrement $\alpha \|x\|_\infty \le N(x) \le C \|x\|_\infty$ pour tout $x \in \mathbb{R}^n$, ce qui établit l'équivalence de $N$ et $\|\cdot\|_\infty$. Par transitivité, toutes les normes sur $\mathbb{R}^n$ sont équivalentes.
+    $N(x) \le \sum \|x\|_\infty N(e_i) = \|x\|_\infty \left( \sum N(e_i) \right)$.
+
+    En posant $\beta = \sum_{i=1}^n N(e_i)$, qui est une constante positive finie, on a $N(x) \le \beta \|x\|_\infty$.
+
+2.  **Minoration de $N(x)$ :**
+
+    C'est la partie la plus délicate. Elle repose sur un argument de compacité.
+
+    -   On montre d'abord que l'application $N: (E, \|\cdot\|_\infty) \to \mathbb{R}$ est continue. En utilisant l'inégalité triangulaire renversée et la majoration déjà établie :
+
+        $|N(x) - N(y)| \le N(x-y) \le \beta \|x-y\|_\infty$.
+
+        Ceci prouve que $N$ est $\beta$-lipschitzienne, donc continue.
+
+    -   Considérons la sphère unité pour la norme infinie : $S_\infty = \{x \in E \mid \|x\|_\infty = 1\}$.
+    -   En dimension finie, la sphère unité $S_\infty$ est une partie fermée et bornée. Par le théorème de Borel-Lebesgue, $S_\infty$ est compacte.
+    -   La fonction $N$, étant continue sur le compact $S_\infty$, y atteint son minimum. Soit $\alpha = \min_{x \in S_\infty} N(x)$.
+    -   Par la propriété de séparation de la norme, $N(x) > 0$ pour tout $x \in S_\infty$ (car $x \neq 0_E$). Comme $S_\infty$ est compact, ce minimum est strictement positif : $\alpha > 0$.
+    -   Pour tout $x \in E, x \neq 0_E$, le vecteur $u = \frac{x}{\|x\|_\infty}$ est sur la sphère $S_\infty$.
+    -   On a donc $N(u) \ge \alpha$. Par homogénéité de $N$:
+
+        $N\left(\frac{x}{\|x\|_\infty}\right) = \frac{N(x)}{\|x\|_\infty} \ge \alpha \implies N(x) \ge \alpha \|x\|_\infty$.
+
+    L'inégalité est aussi vraie pour $x=0_E$.
+
+On a bien montré l'existence de $\alpha, \beta > 0$ vérifiant l'encadrement.
 
 </details>
 
 ---
 
-Démontrer l'inégalité de Cauchy-Schwarz dans $\mathbb{R}^n$ en utilisant un argument basé sur le discriminant d'un polynôme du second degré.
+Comment prouver l'inégalité de Cauchy-Schwarz dans $\mathbb{R}^n$ et quel est le cas d'égalité ?
 
 <details>
 
 <summary>Réponse</summary>
 
-**Inégalité de Cauchy-Schwarz :** Pour tous vecteurs $x, y \in \mathbb{R}^n$, on a $|\langle x, y \rangle| \leq \|x\|_2 \|y\|_2$.
+**Proposition (Inégalité de Cauchy-Schwarz) :**
+
+Pour tous vecteurs $x, y \in \mathbb{R}^n$, $|\langle x, y \rangle| \le \|x\|_2 \|y\|_2$. L'égalité a lieu si et seulement si $x$ et $y$ sont colinéaires.
 
 **Démonstration :**
 
-Soient $x, y \in \mathbb{R}^n$. Pour tout scalaire $t \in \mathbb{R}$, considérons le polynôme $P(t)$ défini par le carré de la norme euclidienne du vecteur $x+ty$:
+La preuve repose sur l'étude du signe d'un polynôme du second degré.
 
-$P(t) = \|x+ty\|_2^2 = \langle x+ty, x+ty \rangle$
+1.  Pour tout scalaire $t \in \mathbb{R}$, considérons la norme au carré du vecteur $x+ty$ :
 
-En utilisant la bilinéarité et la symétrie du produit scalaire canonique $\langle \cdot, \cdot \rangle$, on développe :
+    $P(t) = \|x + ty\|_2^2 = \langle x+ty, x+ty \rangle$.
 
-$P(t) = \langle x, x \rangle + \langle x, ty \rangle + \langle ty, x \rangle + \langle ty, ty \rangle$
+2.  Par la bilinéarité du produit scalaire, on développe l'expression :
 
-$P(t) = \|x\|_2^2 + t\langle x, y \rangle + t\langle y, x \rangle + t^2\langle y, y \rangle$
+    $P(t) = \langle x,x \rangle + 2t\langle x,y \rangle + t^2\langle y,y \rangle = \|x\|_2^2 + 2\langle x, y \rangle t + \|y\|_2^2 t^2$.
 
-$P(t) = \|x\|_2^2 + 2t\langle x, y \rangle + t^2\|y\|_2^2$
+3.  Par définition d'une norme, $\|x+ty\|_2^2 \ge 0$ pour tout $t \in \mathbb{R}$. Donc, le polynôme $P(t)$ est toujours positif ou nul.
 
-Par définition de la norme, $P(t) = \|x+ty\|_2^2 \ge 0$ pour tout $t \in \mathbb{R}$. $P(t)$ est donc un polynôme du second degré en $t$ qui est toujours positif ou nul.
+4.  Un polynôme du second degré $At^2 + Bt + C$ est de signe constant si et seulement si son discriminant $\Delta = B^2 - 4AC$ est négatif ou nul.
 
--   **Cas 1 :** Si $y=0$, alors $\|y\|_2=0$ et $\langle x, y \rangle=0$. L'inégalité devient $0 \le 0$, ce qui est vrai.
+    Ici, $A = \|y\|_2^2$, $B = 2\langle x, y \rangle$, et $C = \|x\|_2^2$.
 
--   **Cas 2 :** Si $y \neq 0$, alors $\|y\|_2^2 > 0$. Le polynôme $P(t)$ est un trinôme du second degré de la forme $At^2+Bt+C$ avec $A=\|y\|_2^2$, $B=2\langle x, y \rangle$, et $C=\|x\|_2^2$.
+    Le discriminant est $\Delta = (2\langle x, y \rangle)^2 - 4(\|y\|_2^2)(\|x\|_2^2) \le 0$.
 
-    Comme ce trinôme est toujours positif ou nul, il peut avoir au plus une racine réelle. Son discriminant, $\Delta = B^2 - 4AC$, doit donc être négatif ou nul.
-    
-    $\Delta = (2\langle x, y \rangle)^2 - 4(\|y\|_2^2)(\|x\|_2^2) \le 0$
+5.  Cette inégalité se simplifie en $4\langle x, y \rangle^2 \le 4\|x\|_2^2 \|y\|_2^2$, ce qui donne $\langle x, y \rangle^2 \le \|x\|_2^2 \|y\|_2^2$. En prenant la racine carrée, on obtient $|\langle x, y \rangle| \le \|x\|_2 \|y\|_2$.
 
-    $4\langle x, y \rangle^2 - 4\|x\|_2^2 \|y\|_2^2 \le 0$
+**Cas d'égalité :**
 
-    $\langle x, y \rangle^2 \le \|x\|_2^2 \|y\|_2^2$
+L'égalité a lieu si et seulement si $\Delta = 0$.
 
-En prenant la racine carrée des deux membres (qui sont positifs), on obtient :
+-   Si $y = 0_E$, l'égalité est triviale ($0=0$) et les vecteurs sont colinéaires.
+-   Si $y \neq 0_E$, $\Delta = 0$ signifie que le polynôme $P(t)$ a une racine réelle unique $t_0 = -\frac{\langle x, y \rangle}{\|y\|_2^2}$.
+-   Pour cette valeur $t_0$, on a $P(t_0) = \|x + t_0 y\|_2^2 = 0$.
+-   Par la propriété de séparation de la norme, $\|x + t_0 y\|_2 = 0$ est équivalent à $x + t_0 y = 0_E$.
+-   Ceci signifie que $x = -t_0 y$, donc les vecteurs $x$ et $y$ sont colinéaires.
 
-$|\langle x, y \rangle| \le \|x\|_2 \|y\|_2$.
-
-**Cas d'égalité :** L'égalité a lieu si et seulement si $\Delta = 0$. Cela signifie que le polynôme $P(t)$ a une racine réelle double $t_0$. Pour cette valeur, $P(t_0) = \|x+t_0 y\|_2^2 = 0$. Par la propriété de séparation de la norme, ceci est équivalent à $x+t_0 y = 0$, c'est-à-dire $x = -t_0 y$. Les vecteurs $x$ et $y$ sont donc colinéaires.
-
-</details>
-
----
-
-Expliquer pourquoi la notion de convergence dans un EVN de dimension finie est "absolue", tandis qu'en dimension infinie, elle peut dépendre crucialement de la norme choisie. Utiliser l'espace $C([0,1])$ pour illustrer.
-
-<details>
-
-<summary>Réponse</summary>
-
-La notion de convergence dans un espace vectoriel normé (EVN) est fondamentalement une notion topologique. Une suite $(x_k)$ converge vers $a$ si la distance $\|x_k - a\|$ tend vers zéro.
-
-**En dimension finie :**
-
-Le théorème fondamental de l'équivalence des normes stipule que sur un espace vectoriel de dimension finie, toutes les normes sont équivalentes. Si $\|\cdot\|$ et $\|\cdot\|'$ sont deux normes, il existe $\alpha, \beta > 0$ tels que pour tout $x$, $\alpha\|x\| \le \|x\|' \le \beta\|x\|$.
-
-Par conséquent, $\|x_k - a\| \to 0$ si et seulement si $\|x_k - a\|' \to 0$. La convergence (et la non-convergence) d'une suite est une propriété intrinsèque de la suite, indépendante du choix (raisonnable) de la "règle" pour mesurer les distances. La topologie sous-jacente est unique. C'est en ce sens que la convergence est **absolue**.
-
-**En dimension infinie :**
-
-Ce théorème ne s'applique plus. Différentes normes peuvent induire des topologies radicalement différentes, et donc des notions de convergence différentes.
-
-**Illustration avec $E = C([0,1])$ :**
-
-Considérons l'espace des fonctions continues sur $[0,1]$ avec deux normes :
-
-1.  La norme de la convergence uniforme : $\|f\|_\infty = \sup_{t \in [0,1]} |f(t)|$.
-2.  La norme de la convergence en moyenne (ou norme $L^1$) : $\|f\|_1 = \int_0^1 |f(t)| dt$.
-
-Ces deux normes ne sont pas équivalentes. Pour le montrer, considérons la suite de fonctions $f_n(t) = t^n$ pour $n \in \mathbb{N}^*$.
-
--   **Convergence pour la norme $\|\cdot\|_1$ :**
-
-    $\|f_n - 0\|_1 = \int_0^1 |t^n| dt = \left[\frac{t^{n+1}}{n+1}\right]_0^1 = \frac{1}{n+1}$.
-
-    Comme $\lim_{n \to \infty} \frac{1}{n+1} = 0$, la suite $(f_n)$ converge vers la fonction nulle pour la norme $\|\cdot\|_1$.
-
--   **Non-convergence pour la norme $\|\cdot\|_\infty$ :**
-
-    $\|f_n - 0\|_\infty = \sup_{t \in [0,1]} |t^n| = 1^n = 1$.
-
-    Comme $\lim_{n \to \infty} \|f_n\|_\infty = 1 \neq 0$, la suite $(f_n)$ ne converge pas vers la fonction nulle pour la norme de la convergence uniforme.
-
-**Conclusion :** La même suite de vecteurs $(f_n)$ converge dans $(E, \|\cdot\|_1)$ mais diverge dans $(E, \|\cdot\|_\infty)$. La notion de convergence est donc **relative** à la norme choisie en dimension infinie. Le choix d'une norme revient à spécifier le "mode" de convergence qui nous intéresse (uniforme, en moyenne, etc.), ce qui est un aspect central de l'analyse fonctionnelle.
+Réciproquement, si $x = \lambda y$ pour un scalaire $\lambda$, on peut vérifier que $|\langle \lambda y, y \rangle| = |\lambda| \|y\|_2^2$ et $\|\lambda y\|_2 \|y\|_2 = |\lambda| \|y\|_2^2$, donc il y a égalité.
 
 </details>
 
 ---
 
-Énoncer et démontrer le théorème de complétude de $\mathbb{R}^n$.
+En utilisant l'identité du parallélogramme, montrez que la norme 1, $\|x\|_1 = \sum_{i=1}^n |x_i|$, sur $\mathbb{R}^n$ (pour $n \ge 2$) n'est pas induite par un produit scalaire.
 
 <details>
 
 <summary>Réponse</summary>
 
-**Théorème :** L'espace vectoriel normé $\mathbb{R}^n$, muni de n'importe quelle norme, est un espace de Banach. Autrement dit, toute suite de Cauchy dans $\mathbb{R}^n$ est convergente.
+Une norme $\|\cdot\|$ est induite par un produit scalaire si et seulement si elle vérifie l'**identité du parallélogramme** pour tous les vecteurs $x, y$ de l'espace :
+
+$$ \|x+y\|^2 + \|x-y\|^2 = 2(\|x\|^2 + \|y\|^2) $$
+
+Pour montrer que $\|\cdot\|_1$ n'est pas induite par un produit scalaire, il suffit de trouver un contre-exemple à cette identité.
+
+Prenons l'espace $\mathbb{R}^n$ avec $n \ge 2$. Choisissons deux vecteurs simples de la base canonique, par exemple $e_1 = (1, 0, \dots, 0)$ et $e_2 = (0, 1, \dots, 0)$.
+
+Calculons les termes de l'identité pour $x = e_1$ et $y = e_2$ avec la norme $\|\cdot\|_1$ :
+
+-   $\|e_1\|_1 = |1| + |0| + \dots = 1$.
+-   $\|e_2\|_1 = |0| + |1| + \dots = 1$.
+-   $e_1 + e_2 = (1, 1, 0, \dots, 0)$, donc $\|e_1 + e_2\|_1 = |1| + |1| + \dots = 2$.
+-   $e_1 - e_2 = (1, -1, 0, \dots, 0)$, donc $\|e_1 - e_2\|_1 = |1| + |-1| + \dots = 2$.
+
+Maintenant, évaluons les deux côtés de l'identité du parallélogramme :
+
+-   **Membre de gauche :** $\|e_1+e_2\|_1^2 + \|e_1-e_2\|_1^2 = 2^2 + 2^2 = 4 + 4 = 8$.
+-   **Membre de droite :** $2(\|e_1\|_1^2 + \|e_2\|_1^2) = 2(1^2 + 1^2) = 2(1 + 1) = 4$.
+
+Puisque $8 \neq 4$, l'identité du parallélogramme n'est pas vérifiée. Par conséquent, la norme $\|\cdot\|_1$ sur $\mathbb{R}^n$ (pour $n \ge 2$) n'est induite par aucun produit scalaire.
+
+</details>
+
+---
+
+Expliquez la relation entre une norme et la géométrie de sa boule unité, en mentionnant les concepts de convexité, symétrie et absorption. Comment la jauge de Minkowski formalise-t-elle cette relation ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La géométrie de la boule unité fermée $B = \{x \in E \mid \|x\| \le 1\}$ d'un espace vectoriel normé $(E, \|\cdot\|)$ capture entièrement les propriétés de la norme.
+
+**Propriétés géométriques de la boule unité :**
+
+1.  **Convexité :** $B$ est un ensemble convexe.
+
+    *Démonstration :* Soient $x, y \in B$ (i.e., $\|x\| \le 1$ et $\|y\| \le 1$) et $t \in [0, 1]$. On doit montrer que $tx + (1-t)y \in B$.
+
+    Par l'inégalité triangulaire et l'homogénéité :
+
+    $\|tx + (1-t)y\| \le \|tx\| + \|(1-t)y\| = t\|x\| + (1-t)\|y\| \le t(1) + (1-t)(1) = 1$.
+
+    Donc $tx + (1-t)y \in B$.
+
+2.  **Symétrie par rapport à l'origine (ensemble équilibré) :** Si $x \in B$, alors $-x \in B$.
+
+    *Démonstration :* Si $\|x\| \le 1$, alors $\|-x\| = |-1|\|x\| = \|x\| \le 1$, donc $-x \in B$. Plus généralement, si $|\lambda| \le 1$, alors $\lambda x \in B$.
+
+3.  **Partie absorbante contenant l'origine en son intérieur :** L'origine $0_E$ est dans l'intérieur de $B$. Cela signifie qu'il existe un "voisinage" de $0_E$ entièrement contenu dans $B$. De manière équivalente, pour tout $x \in E$, il existe $\lambda > 0$ tel que $\lambda x \in B$.
+
+**La jauge de Minkowski (ou fonctionnelle de jauge) :**
+
+La relation est en fait une dualité. Réciproquement, toute partie $C \subset E$ qui est convexe, équilibrée, et absorbante peut être utilisée pour définir une norme. Cette norme est appelée la **jauge de Minkowski** de $C$, notée $p_C$, et est définie par :
+
+$$ p_C(x) = \inf \{ \lambda > 0 \mid x \in \lambda C \} $$
+
+où $\lambda C = \{\lambda y \mid y \in C\}$.
+
+-   Si $C$ possède ces propriétés, alors $p_C$ est une semi-norme.
+-   Si, de plus, $C$ est bornée (au sens topologique usuel, par exemple dans $\mathbb{R}^n$), alors $p_C$ est une norme.
+
+La boule unité de la norme $p_C$ est précisément l'ensemble $C$ (ou son adhérence si $C$ n'est pas fermée). Ainsi, la notion de norme et celle d'ensemble convexe, équilibré et absorbant sont intimement liées.
+
+</details>
+
+---
+
+Démontrer que si deux normes $N_1$ et $N_2$ sur un espace $E$ sont équivalentes, alors une suite $(x^k)$ converge vers $a$ pour $N_1$ si et seulement si elle converge vers $a$ pour $N_2$.
+
+<details>
+
+<summary>Réponse</summary>
+
+**Hypothèse :** Les normes $N_1$ et $N_2$ sont équivalentes. Il existe donc deux constantes réelles $\alpha, \beta > 0$ telles que pour tout $x \in E$ :
+
+$$ \alpha N_1(x) \le N_2(x) \le \beta N_1(x) $$
+
+**$(\implies)$ Supposons que $(x^k)$ converge vers $a$ pour la norme $N_1$.**
+
+Par définition, cela signifie que $\lim_{k \to \infty} N_1(x^k - a) = 0$.
+
+Formellement, $\forall \varepsilon > 0, \exists K \in \mathbb{N}$ tel que pour tout $k \ge K$, $N_1(x^k - a) < \varepsilon$.
+
+Nous voulons montrer que $\lim_{k \to \infty} N_2(x^k - a) = 0$.
+
+En utilisant la partie droite de l'inégalité d'équivalence sur le vecteur $x^k - a$, on a :
+
+$$ 0 \le N_2(x^k - a) \le \beta N_1(x^k - a) $$
+
+Puisque $N_1(x^k - a) \to 0$ et $\beta$ est une constante positive, le produit $\beta N_1(x^k - a)$ tend également vers 0.
+
+Par le théorème des gendarmes (ou théorème d'encadrement), on conclut que $\lim_{k \to \infty} N_2(x^k - a) = 0$.
+
+La suite $(x^k)$ converge donc bien vers $a$ pour la norme $N_2$.
+
+**$(\impliedby)$ Supposons que $(x^k)$ converge vers $a$ pour la norme $N_2$.**
+
+La démarche est symétrique. Par définition, $\lim_{k \to \infty} N_2(x^k - a) = 0$.
+
+Nous voulons montrer que $\lim_{k \to \infty} N_1(x^k - a) = 0$.
+
+En utilisant la partie gauche de l'inégalité d'équivalence, $\alpha N_1(x^k - a) \le N_2(x^k - a)$, on peut la réécrire comme :
+
+$$ 0 \le N_1(x^k - a) \le \frac{1}{\alpha} N_2(x^k - a) $$
+
+Puisque $N_2(x^k - a) \to 0$ et $1/\alpha$ est une constante positive, le produit $\frac{1}{\alpha} N_2(x^k - a)$ tend vers 0.
+
+De nouveau, par le théorème des gendarmes, on conclut que $\lim_{k \to \infty} N_1(x^k - a) = 0$.
+
+La suite $(x^k)$ converge donc bien vers $a$ pour la norme $N_1$.
+
+**Conclusion :** L'équivalence des normes préserve la notion de convergence et la limite elle-même. C'est pourquoi en dimension finie, où toutes les normes sont équivalentes, la topologie (et donc les notions de convergence, continuité, ouverts, etc.) est unique.
+
+</details>
+
+---
+
+Prouver que la convergence d'une suite de vecteurs dans $\mathbb{R}^n$ est équivalente à la convergence de chacune de ses suites de coordonnées.
+
+<details>
+
+<summary>Réponse</summary>
+
+Soit $(x^k)_{k \in \mathbb{N}}$ une suite de vecteurs de $\mathbb{R}^n$, où $x^k = (x_1^k, x_2^k, \dots, x_n^k)$, et soit $a = (a_1, a_2, \dots, a_n) \in \mathbb{R}^n$. Nous devons prouver l'équivalence suivante :
+
+$$ \lim_{k \to \infty} x^k = a \iff \forall j \in \{1, \dots, n\}, \lim_{k \to \infty} x_j^k = a_j $$
+
+La preuve repose sur l'utilisation de la norme infinie $\|\cdot\|_\infty$ et de ses propriétés. La convergence dans $\mathbb{R}^n$ étant indépendante de la norme choisie (car toutes sont équivalentes), nous pouvons travailler avec $\|\cdot\|_\infty$ sans perte de généralité.
+
+Par définition, $\lim_{k \to \infty} x^k = a$ est équivalent à $\lim_{k \to \infty} \|x^k - a\|_\infty = 0$.
+
+Rappelons que $\|x^k - a\|_\infty = \max_{1 \le j \le n} |x_j^k - a_j|$.
+
+**$(\implies)$ Convergence vectorielle implique convergence des coordonnées :**
+
+Supposons que $\lim_{k \to \infty} x^k = a$, c'est-à-dire $\lim_{k \to \infty} \|x^k - a\|_\infty = 0$.
+
+Pour n'importe quel indice $j \in \{1, \dots, n\}$, nous avons l'inégalité suivante par définition du maximum :
+
+$$ 0 \le |x_j^k - a_j| \le \max_{1 \le i \le n} |x_i^k - a_i| = \|x^k - a\|_\infty $$
+
+Puisque $\|x^k - a\|_\infty \to 0$ lorsque $k \to \infty$, le théorème d'encadrement (ou des gendarmes) implique que $|x_j^k - a_j| \to 0$ pour chaque $j$.
+
+Cela signifie que $\lim_{k \to \infty} x_j^k = a_j$ pour tout $j \in \{1, \dots, n\}$.
+
+**$(\impliedby)$ Convergence des coordonnées implique convergence vectorielle :**
+
+Supposons que pour tout $j \in \{1, \dots, n\}$, on a $\lim_{k \to \infty} x_j^k = a_j$.
+
+Cela signifie que $\lim_{k \to \infty} |x_j^k - a_j| = 0$ pour chaque $j$.
+
+Nous voulons montrer que $\lim_{k \to \infty} \|x^k - a\|_\infty = 0$.
+
+Soit $\varepsilon > 0$. Pour chaque $j \in \{1, \dots, n\}$, il existe un rang $K_j \in \mathbb{N}$ tel que pour tout $k \ge K_j$, on a $|x_j^k - a_j| < \varepsilon$.
+
+Posons $K = \max(K_1, K_2, \dots, K_n)$. Pour tout $k \ge K$, l'inégalité $|x_j^k - a_j| < \varepsilon$ est vraie simultanément pour *tous* les $j \in \{1, \dots, n\}$.
+
+Par conséquent, pour $k \ge K$, on a :
+
+$$ \|x^k - a\|_\infty = \max_{1 \le j \le n} |x_j^k - a_j| < \varepsilon $$
+
+Ceci est la définition formelle de $\lim_{k \to \infty} \|x^k - a\|_\infty = 0$. La suite $(x^k)$ converge donc vers $a$.
+
+</details>
+
+---
+
+Construire une suite de fonctions dans l'espace $C([0, 1], \mathbb{R})$ qui démontre que les normes $\| \cdot \|_\infty$ et $\| \cdot \|_1$ ne sont pas équivalentes.
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour montrer que les normes $\|f\|_\infty = \sup_{t \in [0, 1]} |f(t)|$ et $\|f\|_1 = \int_0^1 |f(t)|dt$ ne sont pas équivalentes sur $C([0, 1], \mathbb{R})$, il faut montrer qu'il n'existe pas de constante $\alpha > 0$ telle que $\alpha \|f\|_\infty \le \|f\|_1$ pour toute fonction $f$. Pour ce faire, nous construisons une suite de fonctions $(f_n)_{n \in \mathbb{N}}$ pour laquelle le rapport $\frac{\|f_n\|_1}{\|f_n\|_\infty}$ tend vers 0.
+
+Considérons la suite de fonctions $(f_n)_{n \ge 1}$ définies par $f_n(t) = t^n$.
+
+Chaque $f_n$ est un polynôme, donc elle est continue sur $[0, 1]$.
+
+Calculons les normes $\|\cdot\|_\infty$ et $\|\cdot\|_1$ pour $f_n$:
+
+1.  **Norme infinie ($\| \cdot \|_\infty$) :**
+
+    La fonction $f_n(t) = t^n$ est croissante et positive sur $[0, 1]$. Son maximum est donc atteint en $t=1$.
+
+    $\|f_n\|_\infty = \sup_{t \in [0, 1]} |t^n| = 1^n = 1$.
+
+    La norme infinie de chaque fonction de la suite est constante et égale à 1.
+
+2.  **Norme 1 ($\| \cdot \|_1$) :**
+
+    On calcule l'intégrale de $|f_n(t)|$. Puisque $t \ge 0$ sur $[0,1]$, $|t^n|=t^n$.
+
+    $\|f_n\|_1 = \int_0^1 t^n dt = \left[ \frac{t^{n+1}}{n+1} \right]_0^1 = \frac{1}{n+1} - 0 = \frac{1}{n+1}$.
+
+    La norme 1 de la fonction $f_n$ tend vers 0 lorsque $n \to \infty$.
+
+**Argument de non-équivalence :**
+
+Supposons par l'absurde que les normes sont équivalentes. Il existerait alors une constante $\alpha > 0$ telle que pour toute fonction $f \in C([0, 1], \mathbb{R})$:
+
+$$ \alpha \|f\|_\infty \le \|f\|_1 $$
+
+Appliquons cette inégalité à notre suite de fonctions $(f_n)$:
+
+$$ \alpha \|f_n\|_\infty \le \|f_n\|_1 \implies \alpha \cdot 1 \le \frac{1}{n+1} $$
+
+Cette inégalité, $\alpha \le \frac{1}{n+1}$, devrait être vraie pour tout $n \ge 1$.
+
+Cependant, lorsque $n \to \infty$, le terme $\frac{1}{n+1}$ tend vers 0.
+
+En passant à la limite, on obtiendrait $\alpha \le 0$.
+
+Ceci contredit notre hypothèse que $\alpha$ est une constante *strictement positive*.
+
+La supposition de l'équivalence des normes mène à une contradiction. Donc, les normes $\| \cdot \|_\infty$ et $\| \cdot \|_1$ ne sont pas équivalentes sur $C([0, 1], \mathbb{R})$.
+
+</details>
+
+---
+
+Démontrer que dans tout espace vectoriel normé $(E, \|\cdot\|)$, une suite convergente est nécessairement une suite de Cauchy.
+
+<details>
+
+<summary>Réponse</summary>
+
+Soit $(x^k)_{k \in \mathbb{N}}$ une suite d'éléments de $E$ qui converge vers une limite $a \in E$.
+
+Par définition de la convergence, on a :
+
+$$ \forall \varepsilon' > 0, \exists K \in \mathbb{N}, \forall k \ge K \implies \|x^k - a\| < \varepsilon' $$
+
+Nous voulons démontrer que $(x^k)$ est une suite de Cauchy, c'est-à-dire :
+
+$$ \forall \varepsilon > 0, \exists K' \in \mathbb{N}, \forall p, q \ge K' \implies \|x^p - x^q\| < \varepsilon $$
 
 **Démonstration :**
 
-La preuve repose sur l'équivalence de toutes les normes en dimension finie et sur la complétude de l'espace des nombres réels $\mathbb{R}$.
+Soit $\varepsilon > 0$ un réel quelconque.
 
-1.  **Réduction à la norme $\|\cdot\|_\infty$ :**
+Posons $\varepsilon' = \varepsilon/2$. Puisque $\varepsilon' > 0$, la définition de la convergence de $(x^k)$ vers $a$ nous assure qu'il existe un rang $K \in \mathbb{N}$ tel que pour tout indice $k \ge K$, on a :
 
-    Soit $\|\cdot\|$ une norme quelconque sur $\mathbb{R}^n$. Soit $(x^k)_{k \in \mathbb{N}}$ une suite de Cauchy dans $(\mathbb{R}^n, \|\cdot\|)$.
+$$ \|x^k - a\| < \frac{\varepsilon}{2} $$
 
-    Par le théorème d'équivalence des normes, il existe une constante $\alpha > 0$ telle que $\|v\|_\infty \le \alpha \|v\|$ pour tout $v \in \mathbb{R}^n$.
+Maintenant, considérons deux indices quelconques $p$ et $q$ tels que $p \ge K$ et $q \ge K$.
 
-    Puisque $(x^k)$ est de Cauchy pour $\|\cdot\|$, pour tout $\varepsilon > 0$, il existe $K \in \mathbb{N}$ tel que pour $p, q \ge K$, $\|x^p - x^q\| < \varepsilon / \alpha$.
+Nous voulons majorer la distance $\|x^p - x^q\|$. Pour ce faire, nous utilisons l'astuce d'introduire la limite $a$ et d'appliquer l'inégalité triangulaire :
 
-    Alors, $\|x^p - x^q\|_\infty \le \alpha \|x^p - x^q\| < \alpha (\varepsilon / \alpha) = \varepsilon$.
+$$ \|x^p - x^q\| = \|(x^p - a) + (a - x^q)\| \le \|x^p - a\| + \|a - x^q\| $$
 
-    La suite $(x^k)$ est donc aussi une suite de Cauchy pour la norme $\|\cdot\|_\infty$.
+Par homogénéité, $\|a - x^q\| = \|(-1)(x^q - a)\| = |-1|\|x^q - a\| = \|x^q - a\|$.
 
-2.  **Convergence des composantes :**
+L'inégalité devient :
 
-    Soit $x^k = (x_1^k, x_2^k, \dots, x_n^k)$. La définition de la norme infinie est $\|v\|_\infty = \max_{1 \le j \le n} |v_j|$.
+$$ \|x^p - x^q\| \le \|x^p - a\| + \|x^q - a\| $$
 
-    La condition de Cauchy pour $\|\cdot\|_\infty$ implique que pour chaque composante $j \in \{1, \dots, n\}$, on a :
+Puisque $p \ge K$ et $q \ge K$, nous pouvons utiliser la propriété issue de la convergence :
 
-    $|x_j^p - x_j^q| \le \|x^p - x^q\|_\infty < \varepsilon$.
+-   $\|x^p - a\| < \varepsilon/2$
+-   $\|x^q - a\| < \varepsilon/2$
 
-    Cela signifie que pour chaque $j$, la suite de réels $(x_j^k)_{k \in \mathbb{N}}$ est une suite de Cauchy dans $\mathbb{R}$.
+En substituant ces majorations, on obtient :
 
-3.  **Utilisation de la complétude de $\mathbb{R}$ :**
+$$ \|x^p - x^q\| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon $$
 
-    L'ensemble des nombres réels $\mathbb{R}$ est complet. Par conséquent, chaque suite de Cauchy de composantes $(x_j^k)_k$ converge vers une limite $a_j \in \mathbb{R}$.
+Nous avons donc montré que pour tout $\varepsilon > 0$, en choisissant $K' = K$ (le rang donné par la convergence pour $\varepsilon/2$), on a bien :
 
-4.  **Convergence de la suite vectorielle :**
+$$ \forall p, q \ge K', \quad \|x^p - x^q\| < \varepsilon $$
 
-    Construisons le vecteur limite $a = (a_1, a_2, \dots, a_n) \in \mathbb{R}^n$. Nous devons montrer que la suite $(x^k)$ converge vers $a$ dans $(\mathbb{R}^n, \|\cdot\|)$.
-
-    Comme les normes sont équivalentes, il suffit de montrer la convergence pour $\|\cdot\|_\infty$.
-
-    Pour tout $\varepsilon > 0$, puisque $x_j^k \to a_j$ pour chaque $j$, il existe un entier $K_j$ tel que pour $k \ge K_j$, $|x_j^k - a_j| < \varepsilon$.
-
-    Soit $K = \max(K_1, \dots, K_n)$. Alors pour tout $k \ge K$, l'inégalité $|x_j^k - a_j| < \varepsilon$ est vraie pour toutes les composantes $j=1, \dots, n$.
-
-    Par conséquent, pour $k \ge K$, on a :
-
-    $\|x^k - a\|_\infty = \max_{1 \le j \le n} |x_j^k - a_j| < \varepsilon$.
-
-    Ceci prouve que $x^k \to a$ dans $(\mathbb{R}^n, \|\cdot\|_\infty)$. Comme la convergence pour une norme implique la convergence pour toute norme équivalente, la suite $(x^k)$ converge également dans $(\mathbb{R}^n, \|\cdot\|)$.
-
-La suite de Cauchy arbitraire $(x^k)$ converge, donc $\mathbb{R}^n$ est complet.
+Ceci est précisément la définition d'une suite de Cauchy.
 
 </details>
 
 ---
 
-Une norme est entièrement déterminée par sa boule unité. Expliquer ce que cela signifie et comment la convexité de la boule unité est liée à l'inégalité triangulaire.
+Pourquoi l'application $f(x) = (\sum_{i=1}^n |x_i|^p)^{1/p}$ pour $0 < p < 1$ ne définit-elle pas une norme sur $\mathbb{R}^n$ (pour $n \ge 2$) ?
 
 <details>
 
 <summary>Réponse</summary>
 
-L'affirmation qu'une norme est entièrement déterminée par sa boule unité signifie qu'il existe une correspondance bijective entre les normes sur un espace vectoriel $E$ et un certain ensemble de sous-ensembles de $E$ (les boules unités admissibles). Si l'on connaît la boule unité $B = \{x \in E \mid \|x\| \le 1\}$, on peut reconstruire la norme, et inversement.
+L'application $f(x) = \|x\|_p$ pour $0 < p < 1$ ne définit pas une norme car elle viole l'**inégalité triangulaire**. Les axiomes de séparation et d'homogénéité absolue sont, eux, bien vérifiés.
 
-**De la norme à la boule unité :**
+Pour le démontrer, il suffit de fournir un contre-exemple explicite dans $\mathbb{R}^n$ (avec $n \ge 2$).
 
-C'est la direction triviale. Étant donné une norme $\|\cdot\|$, la boule unité fermée est simplement l'ensemble $B = \{x \in E \mid \|x\| \le 1\}$.
+Prenons l'espace $\mathbb{R}^2$ et choisissons $p = 1/2$.
 
-**De la boule unité à la norme :**
+Considérons les vecteurs de la base canonique $x = (1, 0)$ et $y = (0, 1)$.
 
-C'est la partie la plus intéressante. Soit $B$ un sous-ensemble de $E$. Pour que $B$ soit la boule unité d'une norme, il doit posséder certaines propriétés géométriques qui correspondent aux axiomes de la norme. Un tel ensemble est appelé un **corps convexe, symétrique et absorbant**. La norme associée à une telle boule unité $B$ est donnée par la **jauge de Minkowski** (ou fonctionnelle de Minkowski) :
+Calculons les "p-normes" de ces vecteurs et de leur somme :
 
-$\|x\| = \inf \{ \lambda > 0 \mid x \in \lambda B \}$
+-   **Pour $x = (1, 0)$ :**
 
-où $\lambda B = \{\lambda y \mid y \in B \}$.
+    $\|x\|_{1/2} = (|1|^{1/2} + |0|^{1/2})^{1/(1/2)} = (1 + 0)^2 = 1^2 = 1$.
 
-Intuitivement, $\|x\|$ est le facteur par lequel il faut "gonfler" ou "dégonfler" la boule unité $B$ pour que $x$ soit sur sa frontière.
+-   **Pour $y = (0, 1)$ :**
 
-**Lien entre les propriétés de la boule unité et les axiomes de la norme :**
+    $\|y\|_{1/2} = (|0|^{1/2} + |1|^{1/2})^{1/(1/2)} = (0 + 1)^2 = 1^2 = 1$.
 
-1.  **Homogénéité ($N(\lambda x)=|\lambda|N(x)$) :** Cela est lié au fait que la boule $B$ est **symétrique** par rapport à l'origine (si $x \in B$, alors $-x \in B$) et à la structure même de la jauge de Minkowski.
+-   **Pour la somme $x+y = (1, 1)$ :**
 
-2.  **Séparation ($N(x)=0 \iff x=0$) :** Cela est lié au fait que $B$ est **absorbant** (il contient un voisinage de 0). Topologiquement, 0 doit être un point intérieur de $B$.
+    $\|x+y\|_{1/2} = (|1|^{1/2} + |1|^{1/2})^{1/(1/2)} = (1 + 1)^2 = 2^2 = 4$.
 
-3.  **Inégalité triangulaire ($N(x+y) \le N(x)+N(y)$) :** C'est la propriété la plus importante, et elle est directement équivalente à la **convexité** de la boule unité $B$.
+Maintenant, testons l'inégalité triangulaire $\|x+y\|_p \le \|x\|_p + \|y\|_p$ :
 
-    **Démonstration (convexité $\implies$ inégalité triangulaire) :**
+-   $\|x+y\|_{1/2} = 4$.
+-   $\|x\|_{1/2} + \|y\|_{1/2} = 1 + 1 = 2$.
 
-    Soient $x, y \in E$. Soient $\|x\| = \alpha$ et $\|y\| = \beta$. Par définition de la jauge, pour tout $\varepsilon > 0$, les vecteurs $\frac{x}{\alpha+\varepsilon}$ et $\frac{y}{\beta+\varepsilon}$ sont dans $B$.
+On observe que $4 > 2$, c'est-à-dire :
 
-    Puisque $B$ est convexe, toute combinaison convexe de ces deux points est aussi dans $B$. Prenons la combinaison avec les poids $\frac{\alpha}{\alpha+\beta}$ et $\frac{\beta}{\alpha+\beta}$ (qui somment à 1):
+$$ \|x+y\|_{1/2} > \|x\|_{1/2} + \|y\|_{1/2} $$
 
-    $v = \frac{\alpha}{\alpha+\beta} \left( \frac{x}{\alpha+\varepsilon} \right) + \frac{\beta}{\alpha+\beta} \left( \frac{y}{\beta+\varepsilon} \right) \in B$.
+L'inégalité triangulaire est violée. Par conséquent, $\|x\|_p$ pour $0 < p < 1$ n'est pas une norme.
 
-    En faisant tendre $\varepsilon \to 0$, on obtient que $\frac{\alpha}{\alpha+\beta} \frac{x}{\alpha} + \frac{\beta}{\alpha+\beta} \frac{y}{\beta} = \frac{x+y}{\alpha+\beta}$ est dans l'adhérence de $B$, qui est $B$ elle-même si $B$ est fermée.
+**Note conceptuelle :**
 
-    Donc $\frac{x+y}{\alpha+\beta} \in B$.
-
-    Par définition de la jauge, cela signifie que $\|x+y\| \le \alpha+\beta = \|x\|+\|y\|$.
-
-Ainsi, la forme géométrique de la boule unité (convexe, symétrique, contenant 0 en son intérieur) encode entièrement les propriétés algébriques de la norme.
-
-</details>
-
----
-
-Démontrer que pour tout vecteur $x \in \mathbb{R}^n$, la limite des normes $p$ lorsque $p \to \infty$ est la norme infinie : $\lim_{p \to \infty} \|x\|_p = \|x\|_\infty$.
-
-<details>
-
-<summary>Réponse</summary>
-
-Soit $x = (x_1, \dots, x_n) \in \mathbb{R}^n$. Nous voulons montrer que $\lim_{p \to \infty} \left(\sum_{j=1}^n |x_j|^p\right)^{1/p} = \max_{1 \le j \le n} |x_j|$.
-
-La preuve utilise le **théorème des gendarmes** (ou théorème d'encadrement). Nous allons encadrer $\|x\|_p$ par deux expressions qui tendent toutes deux vers $\|x\|_\infty$.
-
-Soit $M = \|x\|_\infty = \max_{1 \le j \le n} |x_j|$.
-
-1.  **Minoration de $\|x\|_p$ :**
-
-    Soit $j_0$ un indice tel que $|x_{j_0}| = M$.
-
-    La somme $\sum_{j=1}^n |x_j|^p$ contient le terme $|x_{j_0}|^p = M^p$. Comme tous les termes de la somme sont positifs, on a :
-
-    $\sum_{j=1}^n |x_j|^p \ge M^p$.
-
-    En prenant la racine $p$-ième (qui est une fonction croissante), on obtient :
-
-    $\|x\|_p = \left(\sum_{j=1}^n |x_j|^p\right)^{1/p} \ge (M^p)^{1/p} = M$.
-
-    Donc, pour tout $p \ge 1$, nous avons $\|x\|_p \ge \|x\|_\infty$.
-
-2.  **Majoration de $\|x\|_p$ :**
-
-    Pour chaque composante $j$, on a par définition de $M$ que $|x_j| \le M$.
-
-    Donc, $|x_j|^p \le M^p$ pour tout $j$.
-
-    En sommant sur les $n$ composantes :
-
-    $\sum_{j=1}^n |x_j|^p \le \sum_{j=1}^n M^p = n \cdot M^p$.
-
-    En prenant la racine $p$-ième :
-
-    $\|x\|_p = \left(\sum_{j=1}^n |x_j|^p\right)^{1/p} \le (n M^p)^{1/p} = n^{1/p} M$.
-
-    Donc, pour tout $p \ge 1$, nous avons $\|x\|_p \le n^{1/p} \|x\|_\infty$.
-
-**Conclusion :**
-
-Nous avons établi l'encadrement suivant pour tout $p \ge 1$ :
-
-$\|x\|_\infty \le \|x\|_p \le n^{1/p} \|x\|_\infty$.
-
-Maintenant, examinons la limite lorsque $p \to \infty$. La dimension $n$ est fixe.
-
-$\lim_{p \to \infty} \|x\|_\infty = \|x\|_\infty$ (c'est une constante par rapport à $p$).
-
-$\lim_{p \to \infty} n^{1/p} = \lim_{p \to \infty} e^{\frac{\ln n}{p}} = e^0 = 1$.
-
-Donc, $\lim_{p \to \infty} n^{1/p} \|x\|_\infty = \|x\|_\infty$.
-
-D'après le théorème des gendarmes, puisque $\|x\|_p$ est encadré par deux quantités qui tendent vers $\|x\|_\infty$, on conclut que :
-
-$\lim_{p \to \infty} \|x\|_p = \|x\|_\infty$.
-
-</details>
-
----
-
-Quelles propriétés une distance $d$ sur un espace vectoriel $E$ doit-elle satisfaire pour être induite par une norme ? Fournir un contre-exemple de distance qui ne satisfait pas ces conditions.
-
-<details>
-
-<summary>Réponse</summary>
-
-Une distance $d$ sur un espace vectoriel $E$ est induite par une norme $N$ si $d(x, y) = N(x - y)$ pour tous $x, y \in E$.
-
-Toutes les distances ne proviennent pas d'une norme. Une distance $d$ induite par une norme hérite de propriétés supplémentaires de la structure linéaire sous-jacente de $E$ et des axiomes de la norme. Les deux propriétés caractéristiques sont :
-
-1.  **Invariance par translation :** Pour tout $a \in E$, $d(x+a, y+a) = d(x, y)$.
-
-    *Preuve :* $d(x+a, y+a) = N((x+a) - (y+a)) = N(x-y) = d(x,y)$.
-
-2.  **Homogénéité (par rapport à l'origine) :** Pour tout scalaire $\lambda \in \mathbb{R}$, $d(\lambda x, \lambda y) = |\lambda| d(x, y)$.
-
-    *Preuve :* $d(\lambda x, \lambda y) = N(\lambda x - \lambda y) = N(\lambda(x-y)) = |\lambda| N(x-y) = |\lambda| d(x,y)$.
-
-Une distance sur un espace vectoriel est induite par une norme si et seulement si elle est invariante par translation et homogène. La norme candidate est alors $N(x) = d(x, 0)$.
-
-**Contre-exemple : La distance discrète**
-
-Soit $E$ un espace vectoriel non trivial (contenant plus que le vecteur nul). La distance discrète est définie par :
-
-$d(x,y) = \begin{cases} 0 & \text{si } x=y \\ 1 & \text{si } x \neq y \end{cases}$
-
-Cette application est bien une distance (séparation, symétrie, inégalité triangulaire sont vérifiées). Cependant, elle n'est pas induite par une norme car elle ne satisfait pas l'homogénéité.
-
-Prenons $x \in E$ avec $x \neq 0$, et $\lambda = 2$.
-
--   $d(\lambda x, \lambda \cdot 0) = d(2x, 0)$. Puisque $x \neq 0$, $2x \neq 0$, donc $d(2x, 0) = 1$.
--   $|\lambda| d(x, 0) = |2| d(x, 0) = 2 \cdot 1 = 2$.
-
-On a $d(2x, 0) = 1 \neq 2 = |2|d(x, 0)$. L'homogénéité est violée. Par conséquent, la distance discrète sur un EVN n'est pas issue d'une norme.
-
-</details>
-
----
-
-Démontrer l'inégalité triangulaire renversée pour une norme $N$ sur un EVN $E$.
-
-<details>
-
-<summary>Réponse</summary>
-
-**Théorème (Inégalité triangulaire renversée) :**
-
-Pour tous vecteurs $x, y$ dans un espace vectoriel normé $(E, N)$, on a :
-
-$|N(x) - N(y)| \leq N(x - y)$.
-
-**Démonstration :**
-
-La démonstration est une application directe de l'inégalité triangulaire standard. L'idée est d'écrire $x$ en fonction de $y$ et de $(x-y)$, puis $y$ en fonction de $x$ et de $(y-x)$.
-
-1.  **Première inégalité : $N(x) - N(y) \leq N(x - y)$**
-
-    On écrit $x = (x-y) + y$. En appliquant l'inégalité triangulaire, on obtient :
-
-    $N(x) = N((x-y) + y) \leq N(x-y) + N(y)$.
-
-    En soustrayant $N(y)$ des deux côtés, on a :
-
-    $N(x) - N(y) \leq N(x-y)$.
-
-2.  **Seconde inégalité : $N(y) - N(x) \leq N(x - y)$**
-
-    De manière symétrique, on écrit $y = (y-x) + x$. En appliquant l'inégalité triangulaire :
-
-    $N(y) = N((y-x) + x) \leq N(y-x) + N(x)$.
-
-    En utilisant la propriété d'homogénéité de la norme, $N(y-x) = N(-1(x-y)) = |-1|N(x-y) = N(x-y)$.
-
-    L'inégalité devient :
-
-    $N(y) \leq N(x-y) + N(x)$.
-
-    En soustrayant $N(x)$ des deux côtés, on a :
-
-    $N(y) - N(x) \leq N(x-y)$.
-
-3.  **Conclusion**
-
-    La deuxième inégalité peut se réécrire : $-(N(x) - N(y)) \leq N(x - y)$.
-
-    Nous avons donc les deux encadrements pour la quantité $N(x) - N(y)$ :
-
-    $-(N(x-y)) \le N(x)-N(y) \le N(x-y)$.
-
-    Cette double inégalité est la définition de la valeur absolue, donc :
-
-    $|N(x) - N(y)| \leq N(x - y)$.
-
-Cette inégalité est très utile, notamment pour démontrer la continuité de l'application norme $N: E \to \mathbb{R}$.
-
-</details>
-
----
-
-Expliquer la relation entre les suites convergentes, les suites de Cauchy et la complétude d'un espace vectoriel normé.
-
-<details>
-
-<summary>Réponse</summary>
-
-Ces trois concepts sont intimement liés et décrivent la structure topologique et analytique d'un espace vectoriel normé (EVN).
-
-**Définitions :**
-
--   **Suite convergente :** Une suite $(x_k)$ converge vers $a \in E$ si les termes de la suite se rapprochent arbitrairement de la **limite** $a$. Formellement, $\lim_{k \to \infty} \|x_k - a\| = 0$. La notion de convergence dépend de l'existence d'un point limite *dans* l'espace.
-
--   **Suite de Cauchy :** Une suite $(x_k)$ est de Cauchy si ses termes se rapprochent arbitrairement **les uns des autres**. Formellement, $\forall \varepsilon > 0, \exists K, \forall p,q \ge K, \|x_p - x_q\| < \varepsilon$. C'est une propriété intrinsèque à la suite ; elle ne fait référence à aucune limite potentielle.
-
-**Relation fondamentale :**
-
-1.  **Toute suite convergente est une suite de Cauchy.**
-
-    *Preuve intuitive :* Si les termes se rapprochent tous d'une limite $a$, ils doivent nécessairement se rapprocher les uns des autres, car la distance entre eux peut être majorée par la somme de leurs distances à $a$.
-
-    *Formellement :* $\|x_p - x_q\| \le \|x_p - a\| + \|a - x_q\| \to 0+0=0$.
-
-2.  **La réciproque est fausse en général.** Une suite de Cauchy n'est pas toujours convergente.
-
-    *Exemple :* Dans l'espace $\mathbb{Q}$ (muni de la distance usuelle), la suite des approximations décimales de $\sqrt{2}$ (e.g., $1, 1.4, 1.41, 1.414, \dots$) est une suite de Cauchy de rationnels, mais elle ne converge pas dans $\mathbb{Q}$ car sa "limite" $\sqrt{2}$ n'est pas un nombre rationnel. La suite a un "trou" là où elle devrait converger.
-
-**Complétude :**
-
-C'est précisément la propriété qui comble cet écart.
-
--   **Espace complet (ou Espace de Banach) :** Un EVN est dit complet si **toute suite de Cauchy y est convergente**.
-
-Un espace complet est un espace "sans trous". Il contient les limites de toutes ses suites de Cauchy.
-
-**Synthèse :**
-
--   Dans **tout** EVN : Convergence $\implies$ Critère de Cauchy.
--   Dans un EVN **complet** : Convergence $\iff$ Critère de Cauchy.
-
-Le critère de Cauchy est donc extrêmement puissant dans les espaces complets (comme $\mathbb{R}^n$ ou les espaces $L^p$ pour $p \ge 1$). Il permet de prouver la convergence d'une suite (ou d'une série) sans avoir à connaître ou à deviner la valeur de sa limite au préalable. Il suffit de vérifier une propriété intrinsèque de la suite elle-même. C'est le fondement de nombreuses preuves d'existence en analyse (par exemple, via le théorème du point fixe de Banach).
-
-</details>
-
----
-
-Dans l'espace $C([0,1])$, comparer la convergence simple, la convergence en norme $L^1$ ($\|\cdot\|_1$), et la convergence uniforme (en norme $\|\cdot\|_\infty$). Démontrer les implications qui existent entre elles et fournir des contre-exemples pour celles qui n'existent pas.
-
-<details>
-
-<summary>Réponse</summary>
-
-Soit $(f_n)_{n\in\mathbb{N}}$ une suite de fonctions dans $C([0,1])$.
-
-- **Convergence simple vers $f$ :** $\forall t \in [0,1], \lim_{n\to\infty} f_n(t) = f(t)$.
-- **Convergence en norme $L^1$ vers $f$ :** $\lim_{n\to\infty} \|f_n - f\|_1 = \lim_{n\to\infty} \int_0^1 |f_n(t)-f(t)| dt = 0$.
-- **Convergence uniforme vers $f$ :** $\lim_{n\to\infty} \|f_n - f\|_\infty = \lim_{n\to\infty} \sup_{t \in [0,1]} |f_n(t)-f(t)| = 0$.
-
-**Implications :**
-
-1.  **Convergence uniforme $\implies$ Convergence en norme $L^1$.**
-
-    *Démonstration :*
-
-    $\|f_n - f\|_1 = \int_0^1 |f_n(t)-f(t)| dt$.
-
-    Par définition de la norme sup, $|f_n(t)-f(t)| \le \sup_{u \in [0,1]} |f_n(u)-f(u)| = \|f_n - f\|_\infty$.
-
-    Donc, $\|f_n - f\|_1 \le \int_0^1 \|f_n - f\|_\infty dt = \|f_n - f\|_\infty \cdot (1-0) = \|f_n - f\|_\infty$.
-
-    Si $\|f_n - f\|_\infty \to 0$, alors par encadrement, $\|f_n - f\|_1 \to 0$.
-
-2.  **Convergence uniforme $\implies$ Convergence simple.**
-
-    *Démonstration :*
-
-    Pour un $t$ fixé, on a $0 \le |f_n(t) - f(t)| \le \|f_n - f\|_\infty$.
-
-    Si $\|f_n - f\|_\infty \to 0$, alors par encadrement, $|f_n(t) - f(t)| \to 0$ pour chaque $t$.
-
-**Absence d'autres implications (Contre-exemples) :**
-
-1.  **Convergence $L^1$ $\nRightarrow$ Convergence uniforme.**
-
-    *Contre-exemple :* La suite $f_n(t)=t^n$.
-
-    On a vu que $\|f_n\|_1 = \frac{1}{n+1} \to 0$, donc $f_n \to 0$ en norme $L^1$.
-
-    Cependant, $\|f_n\|_\infty = 1 \not\to 0$. La convergence n'est pas uniforme.
-
-2.  **Convergence simple $\nRightarrow$ Convergence uniforme.**
-
-    *Contre-exemple :* La suite $f_n(t)=t^n$.
-
-    Pour $t \in [0,1)$, $f_n(t) \to 0$. Pour $t=1$, $f_n(1)=1 \to 1$. La suite converge simplement vers la fonction discontinue $f(t) = \begin{cases} 0 & t \in [0,1) \\ 1 & t=1 \end{cases}$.
-
-    La convergence ne peut être uniforme, car la limite uniforme d'une suite de fonctions continues est continue.
-
-3.  **Convergence simple $\nRightarrow$ Convergence $L^1$.**
-
-    *Contre-exemple :* Considérons une suite de fonctions "pic" qui s'affinent. Soit $f_n(t)$ une fonction triangle avec pour sommets $(0,0)$, $(1/n, n)$ et $(2/n, 0)$, et valant 0 ailleurs sur $[0,1]$.
-
-    - *Convergence simple :* Pour tout $t>0$, il existe $N$ tel que $2/N < t$, donc pour $n \ge N$, $f_n(t)=0$. Pour $t=0$, $f_n(0)=0$. Donc $f_n \to 0$ simplement.
-    - *Convergence $L^1$ :* L'aire sous la courbe est l'aire du triangle :
-
-      $\|f_n - 0\|_1 = \int_0^1 f_n(t) dt = \frac{1}{2} \times \text{base} \times \text{hauteur} = \frac{1}{2} \times \frac{2}{n} \times n = 1$.
-
-      Comme $\|f_n\|_1 = 1 \not\to 0$, la suite ne converge pas en norme $L^1$.
-
-4.  **Convergence $L^1$ $\nRightarrow$ Convergence simple.**
-
-    *Contre-exemple (plus subtil) :* La "bosse glissante". On construit une suite de fonctions "bosse" de hauteur 1 et d'aire $\frac{1}{n}$ qui parcourt l'intervalle $[0,1]$. C'est un peu complexe. Un exemple plus simple est une suite de fonctions qui sont non-nulles sur des intervalles de plus en plus petits mais qui visitent chaque point une infinité de fois. Pour presque tout point, la suite des valeurs n'a pas de limite. Cependant $\|f_n\|_1 \to 0$.
-
-**Résumé :**
-
-`Conv. Uniforme` $\implies$ `Conv. $L^1$` $\implies$ (rien sur conv. simple)
-
-`Conv. Uniforme` $\implies$ `Conv. Simple` $\implies$ (rien sur conv. $L^1$)
-
-Il n'y a pas de lien direct entre la convergence simple et la convergence $L^1$.
-
-</details>
-
----
-
-Montrer que pour $p \in (0,1)$, l'application $f(x) = (\sum_{j=1}^n |x_j|^p)^{1/p}$ n'est pas une norme sur $\mathbb{R}^n$ (pour $n \ge 2$).
-
-<details>
-
-<summary>Réponse</summary>
-
-L'application $f(x) = \|x\|_p = (\sum_{j=1}^n |x_j|^p)^{1/p}$ pour $p \in (0,1)$ satisfait bien les axiomes de séparation et d'homogénéité (modifiée, $f(\lambda x) = |\lambda|f(x)$). Cependant, elle viole l'inégalité triangulaire.
-
-Pour le prouver, nous allons fournir un contre-exemple explicite dans $\mathbb{R}^2$.
-
-Soient $x = (1, 0)$ et $y = (0, 1)$.
-
-On a $x+y = (1, 1)$.
-
-Calculons les "p-normes" de ces vecteurs pour un $p \in (0,1)$.
-
--   $f(x) = (|1|^p + |0|^p)^{1/p} = (1)^{1/p} = 1$.
--   $f(y) = (|0|^p + |1|^p)^{1/p} = (1)^{1/p} = 1$.
--   $f(x+y) = (|1|^p + |1|^p)^{1/p} = (2)^{1/p} = 2^{1/p}$.
-
-L'inégalité triangulaire exigerait que $f(x+y) \le f(x) + f(y)$, c'est-à-dire :
-
-$2^{1/p} \le 1 + 1 = 2$.
-
-Analysons cette inégalité. Puisque $p \in (0,1)$, son inverse $1/p$ est strictement plus grand que 1.
-
-Par exemple, si $p=1/2$, alors $1/p=2$. L'inégalité serait $2^2 \le 2$, soit $4 \le 2$, ce qui est faux.
-
-De manière générale, comme $1/p > 1$ et la base $2 > 1$, on a $2^{1/p} > 2^1 = 2$.
-
-L'inégalité $2^{1/p} \le 2$ est donc fausse pour tout $p \in (0,1)$.
-
-L'inégalité triangulaire n'est pas satisfaite. Par conséquent, pour $p \in (0,1)$, l'application $f$ n'est pas une norme.
-
-**Remarque conceptuelle :**
-
-La violation de l'inégalité triangulaire est liée au fait que la fonction $t \mapsto t^p$ est concave pour $p \in (0,1)$, alors qu'elle est convexe pour $p \ge 1$. La convexité est la propriété clé qui sous-tend l'inégalité de Minkowski, qui est la généralisation de l'inégalité triangulaire pour les normes $p$. Pour $p \in (0,1)$, on peut en fait prouver une "inégalité triangulaire inversée" : $\|x+y\|_p \ge \|x\|_p + \|y\|_p$ pour des vecteurs à composantes positives. Les "boules unités" associées ne sont pas convexes mais concaves.
+La fonction $t \mapsto t^p$ est concave pour $0 < p < 1$, alors qu'elle est convexe pour $p \ge 1$. La convexité est la propriété sous-jacente qui garantit l'inégalité triangulaire pour les normes p (via l'inégalité de Minkowski). L'échec de la convexité pour $p<1$ conduit à l'échec de l'inégalité triangulaire. Ces objets sont parfois appelés des **quasi-normes**.
 
 </details>

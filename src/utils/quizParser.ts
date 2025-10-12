@@ -8,8 +8,12 @@ export function parseQuiz(content: string, filename: string): ParsedCards {
   if (!metadata || Object.keys(metadata).length === 0) {
     throw new Error('Invalid file format: missing frontmatter');
   }
+  const id = metadata.id
+  if (!id) {
+    throw new Error(`Invalid file format: missing id in frontmatter for ${filename}`);
+  }
 
-  const sections = body.split('---').filter(section => section.trim());
+  const sections = body.split('\n---\n').filter(section => section.trim());
 
   const cards: Card[] = [];
 
@@ -30,9 +34,9 @@ export function parseQuiz(content: string, filename: string): ParsedCards {
     const content: string[] = [];
     for (const line of detailsMatch[1].split('\n')) {
       if (line.startsWith('- [x]')) {
-        options.push({ id: `option-${questionIndex}-${options.length}`, text: line.replace('- [x]', '').trim(), isCorrect: true });
+        options.push({ id: `quiz-${id}-${questionIndex}-${options.length}`, text: line.replace('- [x]', '').trim(), isCorrect: true });
       } else if (line.startsWith('- [ ]')) {
-        options.push({ id: `option-${questionIndex}-${options.length}`, text: line.replace('- [ ]', '').trim(), isCorrect: false });
+        options.push({ id: `quiz-${id}-${questionIndex}-${options.length}`, text: line.replace('- [ ]', '').trim(), isCorrect: false });
       } else {
         content.push(line);
       }
@@ -47,7 +51,8 @@ export function parseQuiz(content: string, filename: string): ParsedCards {
     const solution = solutionMatch[1];
 
     cards.push({
-      id: `card-${questionIndex}`,
+      id: `q-${id}-${questionIndex}`,
+      type: 'question',
       content: cardContent,
       solution,
       options
@@ -60,7 +65,7 @@ export function parseQuiz(content: string, filename: string): ParsedCards {
     cards: cards,
     type: 'quiz',
     metadata: {
-      id: metadata.id || metadata.quizId || filename.replace(/\.quiz$/, ''),
+      id,
       level: metadata.level,
       chapter: metadata.chapter,
       course: metadata.course,
