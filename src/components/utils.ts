@@ -57,14 +57,18 @@ const tocItemSchema = S.merge(
 
 export type TOCItem = S.Infer<typeof tocItemSchema>
 
+const pagesDir = join(process.cwd(), "src/pages")
+
 export async function itemFromFile(
   basePath: string,
   path: string
 ): Promise<TOCItem> {
-  const { data } = matter(await readFile(join(basePath, path), "utf-8"))
+  console.log("itemFromFile", basePath, path);
+  const fullpath = join(basePath, path)
+  const { data } = matter(await readFile(fullpath, "utf-8"))
   const item = S.parseOrThrow(data, generatedItemSchema)
   return {
     ...item,
-    path: path.slice(0, - extname(path).length)
+    path: fullpath.slice(pagesDir.length).slice(0, - extname(path).length),
   }
 }

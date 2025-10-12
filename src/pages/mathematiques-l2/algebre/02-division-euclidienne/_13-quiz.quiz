@@ -1,0 +1,396 @@
+---
+id: b162c5ec
+type: quiz
+order: 13
+title: Division euclidienne - quiz (A)
+tags:
+  - algèbre
+  - anneau
+  - division euclidienne
+  - polynôme
+  - idéal
+  - bézout
+createdAt: '2025-10-12T20:59:11.112Z'
+level: regular
+course: Algèbre
+courseId: 3b74b601
+chapter: Division euclidienne
+chapterId: e5009a65
+---
+# Quiz: Division euclidienne
+
+---
+
+#### Question 1 : Définition d'un polynôme
+
+Qu'est-ce qui caractérise un polynôme de $A[X]$, où $A$ est un anneau commutatif ?
+
+- [ ] **A)** Une fonction de $A$ vers $A$ de la forme $x \mapsto \sum a_n x^n$.
+- [x] **B)** Une suite de coefficients $(a_n)_{n \in \mathbb{N}}$ dans $A$ qui est nulle à partir d'un certain rang.
+- [ ] **C)** Une expression formelle de la forme $\sum_{n=0}^{\infty} a_n X^n$ sans restriction sur les coefficients.
+- [ ] **D)** L'ensemble des racines d'une équation.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Un polynôme est un objet algébrique formel, et non une fonction. La distinction est importante, surtout sur des anneaux finis.
+
+- **A.** Ceci est la définition d'une *fonction polynomiale*. Deux polynômes formels distincts peuvent définir la même fonction, par exemple $X^2+X$ et $0$ dans $(\mathbb{Z}/2\mathbb{Z})[X]$.
+
+- **B.** C'est une définition formelle et rigoureuse d'un polynôme. Une somme formelle $\sum a_n X^n$ avec un nombre fini de termes non nuls est équivalente à une suite de coefficients $(a_0, a_1, a_2, \dots)$ où, à partir d'un certain indice $N$, tous les $a_n$ pour $n > N$ sont nuls.
+
+- **C.** Ceci est la définition d'une *série formelle*. Les séries formelles peuvent avoir une infinité de coefficients non nuls, contrairement aux polynômes.
+
+- **D.** L'ensemble des racines est un concept lié aux polynômes, mais il ne définit pas ce qu'est un polynôme en soi.
+
+</details>
+
+---
+
+#### Question 2 : Degré du produit de polynômes
+
+Soient les polynômes $P(X) = 2X+1$ et $Q(X) = 3X+2$ dans l'anneau $(\mathbb{Z}/6\mathbb{Z})[X]$. Quel est le degré du polynôme produit $P(X)Q(X)$ ?
+
+- [ ] **A)** 2
+- [x] **B)** 1
+- [ ] **C)** 0
+- [ ] **D)** $-\infty$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Pour calculer le produit, on utilise la distributivité :
+
+$P(X)Q(X) = (2X+1)(3X+2) = (2 \cdot 3)X^2 + (2 \cdot 2 + 1 \cdot 3)X + (1 \cdot 2)$
+
+$P(X)Q(X) = 6X^2 + (4+3)X + 2 = 6X^2 + 7X + 2$
+
+Maintenant, on réduit les coefficients modulo 6 :
+
+- $6 \equiv 0 \pmod 6$
+- $7 \equiv 1 \pmod 6$
+- $2 \equiv 2 \pmod 6$
+
+Le polynôme produit est donc $0X^2 + 1X + 2 = X+2$.
+
+Le degré d'un polynôme est la plus grande puissance de $X$ avec un coefficient non nul. Ici, c'est la puissance 1. Donc, $\text{deg}(PQ) = 1$.
+
+Cet exemple illustre que la formule $\text{deg}(PQ) = \text{deg}(P) + \text{deg}(Q)$ n'est valable que si l'anneau des coefficients est intègre. $\mathbb{Z}/6\mathbb{Z}$ n'est pas intègre car $2 \cdot 3 = 6 \equiv 0$, bien que $2 \ne 0$ et $3 \ne 0$.
+
+</details>
+
+---
+
+#### Question 3 : Définition d'un anneau euclidien
+
+Soit $A$ un anneau intègre. Quelle est la condition fondamentale que doit satisfaire une fonction (stathme) $\delta: A \to \mathbb{N} \cup \{-\infty\}$ pour permettre la division euclidienne d'un élément $a$ par un élément non nul $b$ ?
+
+- [ ] **A)** Il existe $q, r \in A$ tels que $a = bq+r$ et $\delta(r) \le \delta(b)$.
+- [ ] **B)** Il existe $q, r \in A$ tels que $a = bq+r$ et $\delta(ab) \ge \delta(b)$.
+- [x] **C)** Il existe $q, r \in A$ tels que $a = bq+r$ et $\delta(r) < \delta(b)$.
+- [ ] **D)** Il existe $q \in A$ tel que $a=bq$, ou $b=aq$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+La définition d'un anneau euclidien repose sur la possibilité d'effectuer une division avec un reste "plus petit" que le diviseur.
+
+- **A.** L'inégalité doit être stricte ($\delta(r) < \delta(b)$). Si l'on avait seulement $\delta(r) \le \delta(b)$, l'algorithme d'Euclide pourrait ne pas se terminer. Par exemple, on pourrait avoir une suite de restes de même "taille".
+
+- **B.** La condition $\delta(ab) \ge \delta(b)$ pour $a, b \ne 0$ est une autre propriété requise pour un stathme euclidien, mais elle ne définit pas la division elle-même. Elle assure la compatibilité du stathme avec la multiplication.
+
+- **C.** C'est la condition centrale de la division euclidienne. Pour tout dividende $a$ et tout diviseur non nul $b$, on peut trouver un quotient $q$ et un reste $r$ tel que le reste soit strictement plus petit que le diviseur, selon la mesure du stathme $\delta$.
+
+- **D.** Ceci décrit une relation de divisibilité, pas une division euclidienne générale avec reste.
+
+</details>
+
+---
+
+#### Question 4 : Anneaux euclidiens et principaux
+
+Laquelle des affirmations suivantes est correcte ?
+
+- [ ] **A)** L'anneau $\mathbb{Z}[X]$ des polynômes à coefficients entiers est un anneau principal.
+- [ ] **B)** Tout anneau principal est un anneau euclidien.
+- [x] **C)** L'anneau des entiers de Gauss $\mathbb{Z}[i] = \{a+bi \mid a,b \in \mathbb{Z}\}$ est euclidien.
+- [ ] **D)** Un anneau est euclidien si et seulement si il est intègre.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Il est important de connaître les exemples et contre-exemples classiques des structures algébriques.
+
+- **A.** $\mathbb{Z}[X]$ est un contre-exemple célèbre d'anneau non principal. L'idéal $(2, X)$ ne peut pas être engendré par un seul polynôme.
+
+- **B.** C'est l'inverse qui est vrai : tout anneau euclidien est principal. Il existe des anneaux principaux qui ne sont pas euclidiens (bien que les exemples soient non-triviaux).
+
+- **C.** L'anneau des entiers de Gauss $\mathbb{Z}[i]$ est un exemple classique d'anneau euclidien, avec pour stathme la norme d'un nombre complexe, $\delta(a+bi) = a^2+b^2$.
+
+- **D.** Être intègre est une condition nécessaire pour être euclidien, mais elle est loin d'être suffisante. Par exemple, $\mathbb{Z}[X]$ est intègre mais pas euclidien.
+
+</details>
+
+---
+
+#### Question 5 : Hiérarchie des anneaux
+
+Quel est le lien fondamental entre les anneaux euclidiens et les anneaux principaux ?
+
+- [ ] **A)** Ce sont deux notions totalement indépendantes.
+- [ ] **B)** Tout anneau est soit euclidien, soit principal, mais jamais les deux.
+- [x] **C)** Tout anneau euclidien est un anneau principal.
+- [ ] **D)** Tout anneau principal est un anneau euclidien.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Cette hiérarchie est un résultat central de la théorie des anneaux.
+
+- **A.** Les notions sont très liées. La structure euclidienne est une condition plus forte qui implique la structure principale.
+
+- **B.** C'est faux. Par exemple, $\mathbb{Z}$ et $K[X]$ (avec $K$ un corps) sont à la fois euclidiens et principaux.
+
+- **C.** C'est un théorème fondamental. La preuve repose sur le fait que dans un idéal non nul d'un anneau euclidien, un élément de stathme minimal engendre tout l'idéal.
+
+- **D.** C'est la réciproque, qui est fausse. Il existe des anneaux principaux qui ne sont pas euclidiens. L'existence d'une division euclidienne est une propriété plus forte que le fait que tous les idéaux soient principaux.
+
+</details>
+
+---
+
+#### Question 6 : Identité de Bézout
+
+Dans un anneau principal $A$, deux éléments $a$ et $b$ sont dits premiers entre eux (ou coprimes). Quelle est la signification de cette propriété en termes d'idéaux et de l'identité de Bézout ?
+
+- [ ] **A)** L'idéal $(a) + (b)$ est l'idéal nul $(0)$.
+- [ ] **B)** L'idéal intersection $(a) \cap (b)$ est égal à l'anneau entier $A$.
+- [x] **C)** Il existe des éléments $u, v \in A$ tels que $au+bv=1$.
+- [ ] **D)** Le produit $ab$ est un élément inversible de $A$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Être premiers entre eux signifie que le plus grand diviseur commun est un élément inversible (comme 1 dans $\mathbb{Z}$).
+
+- **A.** L'idéal $(a)+(b)$ est l'idéal engendré par $\text{pgcd}(a,b)$. S'il était égal à $(0)$, cela signifierait que $a=0$ et $b=0$.
+
+- **B.** L'idéal $(a) \cap (b)$ est l'idéal engendré par $\text{ppcm}(a,b)$. S'il était égal à $A=(1)$, cela impliquerait que le ppcm est 1, ce qui voudrait dire que $a$ et $b$ sont des éléments inversibles.
+
+- **C.** Par définition, $a$ et $b$ sont premiers entre eux si $\text{pgcd}(a,b)=1$ (à un inversible près). L'idéal engendré par le PGCD est $(a,b) = (a)+(b)$. Donc, $(a,b)=(1)=A$. Cela signifie que $1 \in (a,b)$, ce qui se traduit par l'existence de $u,v \in A$ tels que $au+bv=1$. C'est l'identité de Bézout pour des éléments premiers entre eux.
+
+- **D.** C'est une condition beaucoup trop forte. Par exemple, dans $\mathbb{Z}$, 3 et 5 sont premiers entre eux, mais leur produit $15$ n'est pas inversible.
+
+</details>
+
+---
+
+#### Question 7 : Éléments premiers et irréductibles
+
+Dans quelle(s) structure(s) algébrique(s) les notions d'élément "premier" et d'élément "irréductible" sont-elles garanties d'être équivalentes ?
+
+- [ ] **A)** Dans n'importe quel anneau intègre.
+- [x] **B)** Dans les anneaux euclidiens.
+- [ ] **C)** Uniquement dans l'anneau $\mathbb{Z}$ des entiers relatifs.
+- [x] **D)** Dans les anneaux principaux.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B, D]**
+
+La relation entre ces deux concepts dépend fortement de la structure de l'anneau.
+
+- **A.** Dans un anneau intègre quelconque, tout élément premier est irréductible, mais la réciproque est fausse. L'anneau $\mathbb{Z}[\sqrt{-5}]$ en est un contre-exemple.
+
+- **B.** Dans un anneau euclidien, les notions sont équivalentes. La preuve que "irréductible implique premier" repose sur l'identité de Bézout, qui est une conséquence de la structure euclidienne.
+
+- **C.** C'est faux. L'équivalence est vraie dans $\mathbb{Z}$, mais aussi dans beaucoup d'autres anneaux comme $K[X]$ (où $K$ est un corps) ou $\mathbb{Z}[i]$.
+
+- **D.** Dans un anneau principal, les notions sont également équivalentes. La preuve est la même que pour les anneaux euclidiens, car l'identité de Bézout est valable dans tous les anneaux principaux. Comme tout anneau euclidien est principal, cette condition est plus générale.
+
+</details>
+
+---
+
+#### Question 8 : Décomposition en facteurs irréductibles
+
+On considère le polynôme $P(X) = X^4 - 1$. Quelle est sa décomposition en facteurs irréductibles dans l'anneau $\mathbb{R}[X]$ ?
+
+- [ ] **A)** $(X-1)(X+1)(X-i)(X+i)$
+- [x] **B)** $(X-1)(X+1)(X^2+1)$
+- [ ] **C)** $(X^2-1)(X^2+1)$
+- [ ] **D)** $(X-1)^2(X+1)^2$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+La décomposition d'un polynôme dépend de l'anneau de coefficients dans lequel on travaille.
+
+On factorise $P(X)$ en utilisant l'identité remarquable $a^2-b^2 = (a-b)(a+b)$ :
+
+$X^4 - 1 = (X^2)^2 - 1^2 = (X^2-1)(X^2+1)$.
+
+Maintenant, on examine chaque facteur dans $\mathbb{R}[X]$ :
+
+- Le facteur $X^2-1$ peut encore être factorisé en $(X-1)(X+1)$. Ce sont des polynômes de degré 1, donc ils sont irréductibles dans $\mathbb{R}[X]$.
+- Le facteur $X^2+1$ n'a pas de racines réelles (ses racines sont $i$ et $-i$). Un polynôme de degré 2 sans racine réelle est irréductible dans $\mathbb{R}[X]$.
+
+La décomposition finale en facteurs irréductibles dans $\mathbb{R}[X]$ est donc $P(X) = (X-1)(X+1)(X^2+1)$.
+
+- **A.** est la décomposition dans $\mathbb{C}[X]$, où $X^2+1$ peut être factorisé.
+- **B.** est la bonne réponse.
+- **C.** n'est pas une décomposition en facteurs *irréductibles*, car le facteur $X^2-1$ est réductible.
+- **D.** est une factorisation incorrecte.
+
+</details>
+
+---
+
+#### Question 9 : Définition du polynôme minimal
+
+Soit $u$ un endomorphisme d'un $K$-espace vectoriel de dimension finie. Parmi les propositions suivantes, laquelle définit correctement le polynôme minimal $M_u(X)$ de $u$ ?
+
+- [ ] **A)** Le polynôme caractéristique de $u$.
+- [ ] **B)** Le seul polynôme $P$ tel que $P(u)=0$.
+- [ ] **C)** Le polynôme annulateur de $u$ ayant le plus grand degré.
+- [x] **D)** L'unique polynôme unitaire de plus bas degré qui annule $u$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+Le polynôme minimal est un objet unique et bien défini qui capture des informations essentielles sur l'endomorphisme.
+
+- **A.** Le polynôme caractéristique $\chi_u(X)$ annule toujours $u$ (théorème de Cayley-Hamilton), mais il n'est pas nécessairement celui de plus bas degré. Par exemple, pour l'identité $I_n$, $\chi_I(X) = (X-1)^n$ alors que le polynôme minimal est $M_I(X) = X-1$.
+
+- **B.** Il existe une infinité de polynômes qui annulent $u$. Ce sont tous les multiples du polynôme minimal. Le polynôme minimal est un représentant particulier de cet ensemble (l'idéal annulateur).
+
+- **C.** Il n'existe pas de polynôme annulateur de plus grand degré. Si $P$ est un annulateur, alors $XP$, $X^2P$, etc., le sont aussi. On s'intéresse au polynôme de plus *petit* degré non nul.
+
+- **D.** C'est la définition précise. L'ensemble des polynômes annulateurs forme un idéal de $K[X]$. Comme $K[X]$ est principal, cet idéal est engendré par un seul polynôme. On choisit par convention le générateur unitaire (coefficient dominant égal à 1), ce qui garantit son unicité. C'est ce générateur qu'on appelle le polynôme minimal.
+
+</details>
+
+---
+
+#### Question 10 : Propriétés du polynôme minimal
+
+Soit $u$ un endomorphisme, $M_u(X)$ son polynôme minimal et $\chi_u(X)$ son polynôme caractéristique. Quelles affirmations sont vraies ?
+
+- [x] **A)** $M_u(X)$ divise $\chi_u(X)$.
+- [ ] **B)** Le degré de $M_u(X)$ est toujours égal à la dimension de l'espace.
+- [x] **C)** Les racines de $M_u(X)$ sont précisément les valeurs propres de $u$.
+- [ ] **D)** $M_u(X)$ est toujours égal à $\chi_u(X)$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, C]**
+
+Le polynôme minimal et le polynôme caractéristique sont intimement liés.
+
+- **A.** C'est une conséquence directe du théorème de Cayley-Hamilton, qui affirme que $\chi_u(u)=0$. Puisque $\chi_u(X)$ est un polynôme annulateur, il doit être un multiple du polynôme minimal $M_u(X)$, par définition de ce dernier.
+
+- **B.** C'est le degré du polynôme caractéristique qui est égal à la dimension de l'espace. Le degré du polynôme minimal peut être strictement plus petit.
+
+- **C.** C'est une propriété fondamentale. Une valeur $\lambda$ est une valeur propre de $u$ si et seulement si elle est une racine du polynôme minimal $M_u(X)$. Cela implique aussi que $\chi_u(X)$ et $M_u(X)$ ont les mêmes racines, mais potentiellement avec des multiplicités différentes.
+
+- **D.** C'est faux en général. Par exemple, pour une matrice d'homothétie $A=\lambda I_n$ (avec $n>1$), on a $M_A(X) = X-\lambda$ tandis que $\chi_A(X)=(X-\lambda)^n$.
+
+</details>
+
+---
+
+#### Question 11 : Algorithme d'Euclide
+
+En utilisant l'algorithme d'Euclide dans $\mathbb{Z}$, quel est le PGCD de 84 et 30 ?
+
+- [ ] **A)** 3
+- [ ] **B)** 12
+- [x] **C)** 6
+- [ ] **D)** 2
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+L'algorithme d'Euclide consiste à effectuer des divisions euclidiennes successives jusqu'à obtenir un reste nul. Le PGCD est le dernier reste non nul.
+
+1.  On divise 84 par 30 :
+
+    $84 = 2 \cdot 30 + 24$
+
+    Le reste est 24.
+
+2.  On divise le diviseur précédent (30) par le reste (24) :
+
+    $30 = 1 \cdot 24 + 6$
+
+    Le reste est 6.
+
+3.  On divise le diviseur précédent (24) par le reste (6) :
+
+    $24 = 4 \cdot 6 + 0$
+
+    Le reste est 0.
+
+L'algorithme s'arrête. Le dernier reste non nul était 6. Donc, $\text{pgcd}(84, 30) = 6$.
+
+</details>
+
+---
+
+#### Question 12 : L'anneau $\mathbb{Z}[X]$
+
+Quelle est la raison principale pour laquelle l'anneau $\mathbb{Z}[X]$ des polynômes à coefficients entiers n'est pas un anneau principal ?
+
+- [ ] **A)** Parce que l'anneau $\mathbb{Z}$ n'est pas un corps.
+- [ ] **B)** Parce qu'il existe des polynômes dans $\mathbb{Z}[X]$ qui n'ont pas de racines entières.
+- [x] **C)** Parce que l'idéal $(2, X)$ ne peut pas être engendré par un seul élément.
+- [ ] **D)** Parce que la multiplication des polynômes n'est pas commutative.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Pour montrer qu'un anneau n'est pas principal, il suffit de trouver un seul idéal qui ne soit pas principal.
+
+- **A.** C'est la raison sous-jacente (un théorème dit que si $A$ est un anneau, $A[X]$ est principal si et seulement si $A$ est un corps), mais ce n'est pas une preuve directe. L'affirmation C est l'argument concret qui démontre que $\mathbb{Z}[X]$ n'est pas principal.
+
+- **B.** L'existence de racines n'est pas directement liée à la structure des idéaux de l'anneau. Par exemple, $\mathbb{R}[X]$ est principal mais $X^2+1$ n'a pas de racines réelles.
+
+- **C.** C'est l'argument standard. L'idéal $(2,X)$ est l'ensemble des polynômes $2P(X) + XQ(X)$. Si cet idéal était principal, il serait engendré par un polynôme $D(X)$. $D(X)$ devrait diviser 2 et $X$. Le seul diviseur commun (à un inversible $\pm 1$ près) est 1. Donc $D(X)$ devrait être 1. Mais si $(2,X)=(1)=\mathbb{Z}[X]$, alors on pourrait écrire $1$ sous la forme $2P(X) + XQ(X)$. En évaluant en $X=0$, on obtiendrait $1 = 2P(0)$, ce qui est impossible dans $\mathbb{Z}$. Donc $(2,X)$ n'est pas principal.
+
+- **D.** C'est faux. La multiplication dans $\mathbb{Z}[X]$ est commutative car elle l'est dans $\mathbb{Z}$.
+
+</details>

@@ -1,0 +1,503 @@
+---
+id: 410c1f00
+type: quiz
+order: 23
+title: Séries Numériques (suite) - quiz (B)
+tags:
+  - séries numériques
+  - convergence
+  - critère de Cauchy
+  - séries à termes positifs
+  - intégrales généralisées
+  - théorème d'Abel
+createdAt: '2025-10-12T17:46:44.893Z'
+level: pro
+course: Analyse
+courseId: 9c2d50b3
+chapter: Séries Numériques (suite)
+chapterId: c9bf30da
+---
+# Quiz: Séries Numériques (suite)
+
+---
+
+#### Question 1 : Convergence de l'intégrale du sinus cardinal
+
+Soit l'intégrale généralisée $I = \int_1^{+\infty} \frac{\sin(t)}{t^\alpha} dt$. Quelles sont les affirmations correctes concernant la nature de $I$ en fonction de $\alpha \in \mathbb{R}$ ?
+
+- [ ] **A)** L'intégrale $I$ converge si et seulement si $\alpha > 1$.
+- [x] **B)** L'intégrale $I$ est absolument convergente si et seulement si $\alpha > 1$.
+- [ ] **C)** L'intégrale $I$ converge pour tout $\alpha > -1$.
+- [x] **D)** L'intégrale $I$ est convergente pour tout $\alpha > 0$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B, D]**
+
+Analysons la convergence et la convergence absolue de l'intégrale $I = \int_1^{+\infty} \frac{\sin(t)}{t^\alpha} dt$.
+
+**Convergence absolue :**
+
+L'intégrale est absolument convergente si $\int_1^{+\infty} \left|\frac{\sin(t)}{t^\alpha}\right| dt$ converge.
+
+On a l'encadrement $\frac{\sin^2(t)}{t^\alpha} \le \frac{|\sin(t)|}{t^\alpha} \le \frac{1}{t^\alpha}$.
+
+La convergence de $\int_1^{+\infty} \frac{1}{t^\alpha} dt$ (intégrale de Riemann) pour $\alpha > 1$ implique la convergence absolue de $I$.
+
+Pour $\alpha \le 1$, on utilise $\sin^2(t) = \frac{1-\cos(2t)}{2}$.
+
+$\int_1^{+\infty} \frac{|\sin(t)|}{t^\alpha} dt \ge \int_1^{+\infty} \frac{\sin^2(t)}{t^\alpha} dt = \frac{1}{2}\int_1^{+\infty} \frac{1}{t^\alpha} dt - \frac{1}{2}\int_1^{+\infty} \frac{\cos(2t)}{t^\alpha} dt$.
+
+Pour $0 < \alpha \le 1$, $\int \frac{1}{t^\alpha} dt$ diverge, et $\int \frac{\cos(2t)}{t^\alpha} dt$ converge (par intégration par parties, voir ci-dessous). Donc l'intégrale de $|\sin(t)|/t^\alpha$ diverge.
+
+Pour $\alpha \le 0$, le terme général ne tend pas vers 0, donc l'intégrale diverge grossièrement.
+
+Ainsi, la convergence absolue a lieu si et seulement si $\alpha > 1$.
+
+**Convergence simple :**
+
+Pour $\alpha > 0$, on effectue une intégration par parties :
+
+$$ \int_1^X \frac{\sin(t)}{t^\alpha} dt = \left[-\frac{\cos(t)}{t^\alpha}\right]_1^X - \int_1^X \frac{\alpha \cos(t)}{t^{\alpha+1}} dt = \cos(1) - \frac{\cos(X)}{X^\alpha} - \alpha \int_1^X \frac{\cos(t)}{t^{\alpha+1}} dt $$
+
+Quand $X \to +\infty$, comme $\alpha>0$, $\frac{\cos(X)}{X^\alpha} \to 0$.
+
+L'intégrale $\int_1^{+\infty} \frac{\cos(t)}{t^{\alpha+1}} dt$ est absolument convergente car $|\frac{\cos(t)}{t^{\alpha+1}}| \le \frac{1}{t^{\alpha+1}}$ et $\alpha+1 > 1$.
+
+Donc, $\int_1^X \frac{\sin(t)}{t^\alpha} dt$ admet une limite finie quand $X \to +\infty$. L'intégrale $I$ converge pour tout $\alpha > 0$.
+
+- **A)** Faux. L'intégrale converge pour $0 < \alpha \le 1$ (par exemple pour $\alpha=1$, le sinus cardinal), mais elle n'est pas absolument convergente.
+- **B)** Correct. Comme démontré ci-dessus, la convergence absolue est équivalente à la convergence de l'intégrale de Riemann $\int 1/t^\alpha dt$, soit $\alpha>1$.
+- **C)** Faux. Pour $-1 < \alpha \le 0$, par exemple $\alpha=0$, on a $\int_1^\infty \sin(t)dt$ qui diverge.
+- **D)** Correct. L'intégration par parties montre la convergence pour tout $\alpha > 0$.
+
+</details>
+
+---
+
+#### Question 2 : Hypothèses du critère de comparaison série-intégrale
+
+Soit $f: [1, +\infty[ \to \mathbb{R}$ une fonction. Le critère de comparaison série-intégrale stipule que si $f$ est continue, positive et décroissante, alors la série $\sum_{n=1}^\infty f(n)$ et l'intégrale $\int_1^{+\infty} f(t)dt$ sont de même nature.
+
+Quelle(s) hypothèse(s) peut-on relâcher tout en préservant la validité de la conclusion ?
+
+- [ ] **A)** On peut relâcher l'hypothèse de continuité si $f$ est continue par morceaux.
+- [x] **B)** On peut relâcher l'hypothèse de positivité si la série $\sum f(n)$ et l'intégrale $\int_1^{+\infty} f(t)dt$ sont absolument convergentes.
+- [ ] **C)** On peut relâcher l'hypothèse de décroissance si $f$ est seulement supposée décroissante à partir d'un certain rang.
+- [x] **D)** On peut relâcher l'hypothèse de décroissance si l'on remplace $f$ par une fonction $\tilde{f}$ qui est décroissante et telle que $\int_1^\infty |f(t)-\tilde{f}(t)| dt < \infty$ et $\sum |f(n)-\tilde{f}(n)| < \infty$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [C, D]** (Note: A est vrai mais C est une formulation plus standard et plus directe du relâchement d'hypothèse. D est une généralisation plus théorique et correcte.)
+
+Analysons chaque option.
+
+- **A)** Cette affirmation est correcte. La démonstration repose sur l'intégration de $f$ sur des intervalles $[k, k+1]$, ce qui est tout à fait possible pour une fonction continue par morceaux. Cependant, C est une modification plus fondamentale et standard du théorème.
+
+- **B)** Cette affirmation est fausse et mélange les concepts. Le critère de comparaison série-intégrale est fondamentalement un outil pour les séries à termes positifs. Si on considère $f(t) = \frac{\sin(t)}{t^2}$, $\int_1^\infty f(t)dt$ et $\sum f(n)$ sont absolument convergentes, mais la fonction n'est ni positive ni décroissante, et le critère ne s'applique pas. La conclusion est vraie, mais pas en vertu du critère. Le critère lui-même ne s'applique pas.
+
+- **C)** Cette affirmation est correcte. Si $f$ est décroissante seulement à partir d'un rang $N$, on peut appliquer le critère à la série $\sum_{n=N}^\infty f(n)$ et à l'intégrale $\int_N^{+\infty} f(t)dt$. La nature de la série et de l'intégrale complètes ne dépend que de leur "queue", les premiers termes (un nombre fini) et la valeur de $\int_1^N f(t)dt$ (finie) n'influençant pas la convergence. C'est la façon la plus commune de relâcher les hypothèses.
+
+- **D)** Cette affirmation est correcte et représente une perspective plus avancée. Si l'on peut trouver une "enveloppe" décroissante $\tilde{f}$ à $f$ telle que les "erreurs" $\sum |f(n)-\tilde{f}(n)|$ et $\int |f-\tilde{f}|$ soient finies, alors la nature de $\sum f(n)$ est la même que celle de $\sum \tilde{f}(n)$, et la nature de $\int f$ est la même que celle de $\int \tilde{f}$. Comme $\sum \tilde{f}(n)$ et $\int \tilde{f}$ ont la même nature (par le critère standard), il en découle que $\sum f(n)$ et $\int f$ ont la même nature. C'est une généralisation puissante de l'idée en C.
+
+Étant donné le niveau "pro", les options C et D sont les plus pertinentes. C est la version pratique et standard, D est une version théorique plus profonde.
+
+</details>
+
+---
+
+#### Question 3 : Analyse asymptotique avancée
+
+Soit la série de terme général $u_n = \sin\left(\pi \sqrt{n^2+1}\right)$. Quelle est la nature de la série $\sum_{n=1}^\infty u_n$ ?
+
+- [ ] **A)** Elle diverge car son terme général ne tend pas vers 0.
+- [x] **B)** Elle converge, mais pas absolument.
+- [ ] **C)** Elle diverge car elle est la somme d'une série convergente et d'une série divergente.
+- [ ] **D)** Elle converge absolument.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Pour déterminer la nature de cette série, nous devons effectuer un développement asymptotique de son terme général $u_n$.
+
+1.  **Développement de la racine carrée :**
+
+    $$ \sqrt{n^2+1} = n \sqrt{1 + \frac{1}{n^2}} $$
+
+    En utilisant le développement limité $(1+x)^\alpha = 1 + \alpha x + O(x^2)$ avec $x=1/n^2$ et $\alpha=1/2$, on obtient :
+
+    $$ \sqrt{n^2+1} = n \left(1 + \frac{1}{2n^2} + O\left(\frac{1}{n^4}\right)\right) = n + \frac{1}{2n} + O\left(\frac{1}{n^3}\right) $$
+
+2.  **Développement du sinus :**
+
+    $$ u_n = \sin\left(\pi \left(n + \frac{1}{2n} + O\left(\frac{1}{n^3}\right)\right)\right) = \sin\left(n\pi + \frac{\pi}{2n} + O\left(\frac{1}{n^3}\right)\right) $$
+
+    En utilisant la formule $\sin(A+B)$, et sachant que $\sin(n\pi)=0$ et $\cos(n\pi)=(-1)^n$ :
+
+    $$ u_n = \sin(n\pi)\cos\left(\frac{\pi}{2n} + O\left(\frac{1}{n^3}\right)\right) + \cos(n\pi)\sin\left(\frac{\pi}{2n} + O\left(\frac{1}{n^3}\right)\right) $$
+
+    $$ u_n = (-1)^n \sin\left(\frac{\pi}{2n} + O\left(\frac{1}{n^3}\right)\right) $$
+
+3.  **Développement final de $u_n$ :**
+
+    Soit $X_n = \frac{\pi}{2n} + O\left(\frac{1}{n^3}\right)$. On sait que $\sin(x) = x - \frac{x^3}{6} + O(x^5)$.
+
+    $$ u_n = (-1)^n \left( \left(\frac{\pi}{2n} + O\left(\frac{1}{n^3}\right)\right) - \frac{1}{6}\left(\frac{\pi}{2n}\right)^3 + O\left(\frac{1}{n^5}\right) \right) $$
+
+    $$ u_n = (-1)^n \left( \frac{\pi}{2n} + O\left(\frac{1}{n^3}\right) \right) = \frac{(-1)^n \pi}{2n} + O\left(\frac{1}{n^3}\right) $$
+
+4.  **Nature de la série :**
+
+    La série $\sum u_n$ peut être vue comme la somme de deux séries :
+
+    - $\sum v_n = \sum \frac{(-1)^n \pi}{2n}$ : C'est un multiple de la série harmonique alternée, qui est semi-convergente.
+    - $\sum w_n = \sum O\left(\frac{1}{n^3}\right)$ : Cette série est absolument convergente par comparaison avec la série de Riemann $\sum \frac{1}{n^3}$ ($\alpha=3>1$).
+
+    La somme d'une série semi-convergente et d'une série absolument convergente est une série semi-convergente (convergente, mais pas absolument).
+
+- **A)** Faux. Le terme général $u_n \sim \frac{(-1)^n \pi}{2n}$ tend bien vers 0.
+- **B)** Correct. La série est semi-convergente.
+- **C)** Faux. La décomposition donne une série convergente et une autre convergente. Si on s'arrête à un ordre inférieur, on pourrait aboutir à une conclusion erronée.
+- **D)** Faux. La série n'est pas absolument convergente car $|u_n| \sim \frac{\pi}{2n}$, et la série $\sum \frac{1}{n}$ diverge.
+
+</details>
+
+---
+
+#### Question 4 : Théorème de réarrangement de Riemann
+
+Soit $\sum u_n$ une série réelle semi-convergente. Selon le théorème de réarrangement de Riemann, quelles affirmations sont nécessairement vraies ?
+
+- [x] **A)** Pour tout réel $L$, il existe une permutation $\sigma$ de $\mathbb{N}$ telle que $\sum_{n=0}^\infty u_{\sigma(n)} = L$.
+- [ ] **B)** Il existe une permutation $\sigma$ de $\mathbb{N}$ telle que la série $\sum_{n=0}^\infty u_{\sigma(n)}$ converge absolument.
+- [x] **C)** Il existe une permutation $\sigma$ de $\mathbb{N}$ telle que la suite des sommes partielles de $\sum_{n=0}^\infty u_{\sigma(n)}$ oscille sans admettre de limite.
+- [ ] **D)** Toute sommation par paquets de la série $\sum u_n$ converge vers la même somme.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, C]**
+
+Le théorème de réarrangement de Riemann est un résultat puissant et contre-intuitif sur les séries semi-convergentes.
+
+Une série $\sum u_n$ est semi-convergente si elle converge, mais $\sum |u_n|$ diverge. Dans ce cas, la série des termes positifs et la série des termes négatifs divergent toutes deux (vers $+\infty$ et $-\infty$ respectivement).
+
+- **A)** Correct. C'est le cœur du théorème. On peut réarranger les termes pour atteindre n'importe quelle limite finie $L \in \mathbb{R}$. L'esquisse de la preuve consiste à sommer les termes positifs jusqu'à dépasser $L$, puis les termes négatifs jusqu'à passer en dessous de $L$, et ainsi de suite. Comme $u_n \to 0$, les oscillations se resserrent autour de $L$.
+
+- **B)** Faux. La convergence absolue de $\sum v_n$ signifie $\sum |v_n| < \infty$. Si $v_n = u_{\sigma(n)}$, alors $|v_n| = |u_{\sigma(n)}|$. La somme $\sum |u_{\sigma(n)}|$ contient exactement les mêmes termes que $\sum |u_n|$, juste dans un ordre différent. Puisque $\sum |u_n|$ est une série à termes positifs divergente, tout réarrangement de ses termes divergera aussi. La nature de la convergence absolue est insensible au réarrangement.
+
+- **C)** Correct. Le théorème stipule qu'on peut réarranger la série pour obtenir n'importe quelle valeur dans $\overline{\mathbb{R}} = \mathbb{R} \cup \{-\infty, +\infty\}$. On peut aussi construire un réarrangement qui n'a pas de limite du tout. Par exemple, on peut sommer les termes positifs jusqu'à dépasser 10, puis les négatifs jusqu'à passer sous -5, puis les positifs jusqu'à dépasser 10, etc. La suite des sommes partielles oscillera entre (approximativement) -5 et 10.
+
+- **D)** Faux. Le théorème sur la sommation par paquets stipule que si une série $\sum u_n$ converge, alors toute sommation par paquets converge vers la même somme. Cependant, l'affirmation inverse n'est pas vraie sans hypothèses supplémentaires (comme la positivité des termes). Cette option concerne l'associativité et non la commutativité (réarrangement). L'exemple de la série de Grandi montre qu'une série divergente peut avoir des sommations par paquets convergentes.
+
+</details>
+
+---
+
+#### Question 5 : Théorème de Fubini pour les séries
+
+On considère la suite double $(u_{m,n})_{(m,n) \in \mathbb{N}^2}$ définie par $u_{n,n} = 1$, $u_{n, n+1} = -1$ pour tout $n \ge 0$, et $u_{m,n} = 0$ pour les autres couples $(m,n)$. Que peut-on dire des sommes itérées ?
+
+- [ ] **A)** Le théorème de Fubini s'applique et garantit que $\sum_{m=0}^\infty \left( \sum_{n=0}^\infty u_{m,n} \right) = \sum_{n=0}^\infty \left( \sum_{m=0}^\infty u_{m,n} \right)$.
+- [x] **B)** $\sum_{m=0}^\infty \left( \sum_{n=0}^\infty u_{m,n} \right) = 0$.
+- [ ] **C)** $\sum_{n=0}^\infty \left( \sum_{m=0}^\infty u_{m,n} \right) = 0$.
+- [x] **D)** Le théorème de Fubini ne s'applique pas car la famille $(u_{m,n})$ n'est pas sommable.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B, D]**
+
+Cet exemple est un contre-exemple classique à l'interversion des sommes lorsque les hypothèses du théorème de Fubini ne sont pas vérifiées.
+
+1.  **Calcul de la première somme itérée (sommation par lignes) :**
+
+    $$ S_1 = \sum_{m=0}^\infty \left( \sum_{n=0}^\infty u_{m,n} \right) $$
+
+    Pour un $m$ fixé, la somme interne est $\sum_{n=0}^\infty u_{m,n}$. Les seuls termes non nuls sont $u_{m,m}=1$ et $u_{m,m+1}=-1$.
+
+    Donc, pour chaque $m$, $\sum_{n=0}^\infty u_{m,n} = u_{m,m} + u_{m,m+1} = 1 - 1 = 0$.
+
+    La somme externe devient alors $\sum_{m=0}^\infty 0 = 0$. Donc $S_1 = 0$.
+
+2.  **Calcul de la deuxième somme itérée (sommation par colonnes) :**
+
+    $$ S_2 = \sum_{n=0}^\infty \left( \sum_{m=0}^\infty u_{m,n} \right) $$
+
+    Pour un $n$ fixé, la somme interne est $\sum_{m=0}^\infty u_{m,n}$.
+
+    - Si $n=0$, les seuls termes non nuls sont pour $m=0$, où $u_{0,0}=1$. Donc $\sum_{m=0}^\infty u_{m,0} = 1$.
+    - Si $n>0$, les seuls termes non nuls sont pour $m=n$ (donne $u_{n,n}=1$) et $m=n-1$ (donne $u_{n-1,n}=-1$).
+
+    Donc, pour $n>0$, $\sum_{m=0}^\infty u_{m,n} = u_{n-1,n} + u_{n,n} = -1 + 1 = 0$.
+
+    La somme externe devient alors $S_2 = (\sum_{m=0}^\infty u_{m,0}) + \sum_{n=1}^\infty (\sum_{m=0}^\infty u_{m,n}) = 1 + \sum_{n=1}^\infty 0 = 1$.
+
+3.  **Application du théorème de Fubini :**
+
+    Les deux sommes itérées existent mais sont différentes ($0 \ne 1$). Cela implique que les hypothèses du théorème de Fubini ne sont pas satisfaites. L'hypothèse clé est la sommabilité de la famille, c'est-à-dire la convergence de la somme des modules.
+
+    $$ \sum_{(m,n)\in\mathbb{N}^2} |u_{m,n}| = \sum_{n=0}^\infty (|u_{n,n}| + |u_{n,n+1}|) = \sum_{n=0}^\infty (1+1) = \sum_{n=0}^\infty 2 = +\infty $$
+
+    La famille n'est pas sommable.
+
+- **A)** Faux. Les sommes sont différentes, donc le théorème ne peut pas s'appliquer.
+- **B)** Correct. Le calcul de $S_1$ donne bien 0.
+- **C)** Faux. Le calcul de $S_2$ donne 1.
+- **D)** Correct. La divergence de la somme des modules montre que la famille n'est pas sommable, ce qui explique pourquoi l'interversion des sommes n'est pas licite.
+
+</details>
+
+---
+
+#### Question 6 : Preuve du critère d'Abel
+
+La démonstration du critère d'Abel pour la convergence de $\sum a_n b_n$ repose sur la "transformation d'Abel". Soient $A_n = \sum_{k=0}^n a_k$ et $S_{p,q} = \sum_{n=p}^q a_n b_n$. La transformation d'Abel permet d'écrire $S_{p,q}$ sous la forme :
+
+$$ S_{p,q} = A_q b_q - A_{p-1}b_p + \sum_{n=p}^{q-1} A_n (b_n - b_{n+1}) $$
+
+En supposant $(A_n)$ bornée par $M$, $(b_n)$ décroissante et $\lim b_n = 0$, on majore $|S_{p,q}|$ pour prouver que la série satisfait le critère de Cauchy. Quelle est la majoration correcte de $|S_{p,q}|$ obtenue à la fin de la preuve ?
+
+- [ ] **A)** $|S_{p,q}| \le M (b_p - b_q)$
+- [x] **B)** $|S_{p,q}| \le 2 M b_p$
+- [ ] **C)** $|S_{p,q}| \le M (b_q + b_p)$
+- [ ] **D)** $|S_{p,q}| \le M \sum_{n=p}^{q-1} |b_n - b_{n+1}|$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Reprenons la fin de la démonstration du critère d'Abel.
+
+On part de l'identité de la transformation d'Abel :
+
+$$ S_{p,q} = A_q b_q - A_{p-1}b_p + \sum_{n=p}^{q-1} A_n (b_n - b_{n+1}) $$
+
+On utilise l'inégalité triangulaire :
+
+$$ |S_{p,q}| \le |A_q b_q| + |A_{p-1}b_p| + \left| \sum_{n=p}^{q-1} A_n (b_n - b_{n+1}) \right| $$
+
+$$ |S_{p,q}| \le |A_q| |b_q| + |A_{p-1}| |b_p| + \sum_{n=p}^{q-1} |A_n| |b_n - b_{n+1}| $$
+
+Maintenant, utilisons les hypothèses :
+
+1.  $|A_k| \le M$ pour tout $k$.
+2.  $(b_n)$ est décroissante, donc $b_n \ge b_{n+1}$, ce qui implique $b_n - b_{n+1} \ge 0$. Donc $|b_n - b_{n+1}| = b_n - b_{n+1}$.
+3.  $(b_n)$ tend vers 0 et est décroissante, donc $b_n \ge 0$ pour tout $n$. Donc $|b_n| = b_n$.
+
+En substituant ces informations dans la majoration :
+
+$$ |S_{p,q}| \le M b_q + M b_p + \sum_{n=p}^{q-1} M (b_n - b_{n+1}) $$
+
+$$ |S_{p,q}| \le M (b_q + b_p) + M \sum_{n=p}^{q-1} (b_n - b_{n+1}) $$
+
+La somme est une somme télescopique :
+
+$$ \sum_{n=p}^{q-1} (b_n - b_{n+1}) = (b_p - b_{p+1}) + (b_{p+1} - b_{p+2}) + \dots + (b_{q-1} - b_q) = b_p - b_q $$
+
+On substitue ce résultat dans la majoration :
+
+$$ |S_{p,q}| \le M (b_q + b_p) + M (b_p - b_q) = M b_q + M b_p + M b_p - M b_q = 2 M b_p $$
+
+Cette majoration $|S_{p,q}| \le 2 M b_p$ est la clé finale. Comme $\lim_{p\to\infty} b_p = 0$, pour tout $\varepsilon > 0$, on peut trouver un rang $N$ tel que pour $p>N$, $2 M b_p < \varepsilon$. Ceci démontre que la série vérifie le critère de Cauchy et donc converge.
+
+- **A)** Faux. Cette majoration oublie les termes de bord $A_q b_q$ et $A_{p-1} b_p$.
+- **B)** Correct. C'est le résultat final de la majoration standard.
+- **C)** Faux. Cette majoration oublie la contribution de la somme télescopique.
+- **D)** Faux. Similaire à A, cela ne prend en compte qu'une partie de l'expression.
+
+</details>
+
+---
+
+#### Question 7 : Test de Condensation de Cauchy
+
+Le test de condensation de Cauchy stipule que pour une suite positive et décroissante $(u_n)$, la série $\sum u_n$ converge si et seulement si la série "condensée" $\sum 2^k u_{2^k}$ converge.
+
+En utilisant ce test, déterminez la condition sur $\alpha$ pour que la série $\sum_{n=3}^\infty \frac{1}{n \ln(n) (\ln(\ln n))^\alpha}$ converge.
+
+- [ ] **A)** $\alpha > 0$
+- [ ] **B)** La série diverge pour tout $\alpha \in \mathbb{R}$.
+- [x] **C)** $\alpha > 1$
+- [ ] **D)** $\alpha \ge 1$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Soit $u_n = \frac{1}{n \ln(n) (\ln(\ln n))^\alpha}$. La suite $(u_n)$ est positive et décroissante pour $n \ge 3$. Nous pouvons appliquer le test de condensation de Cauchy.
+
+La série $\sum u_n$ a la même nature que la série $\sum_{k=2}^\infty 2^k u_{2^k}$ (on commence à $k=2$ pour que $\ln(\ln(2^2))$ soit bien défini et positif).
+
+Calculons le terme général de la série condensée :
+
+$$ 2^k u_{2^k} = 2^k \cdot \frac{1}{2^k \ln(2^k) (\ln(\ln(2^k)))^\alpha} $$
+
+On simplifie :
+
+$$ 2^k u_{2^k} = \frac{1}{\ln(2^k) (\ln(\ln(2^k)))^\alpha} = \frac{1}{k \ln(2) (\ln(k \ln 2))^\alpha} $$
+
+La série condensée est donc :
+
+$$ \sum_{k=2}^\infty \frac{1}{k \ln(2) (\ln(k \ln 2))^\alpha} = \frac{1}{\ln 2} \sum_{k=2}^\infty \frac{1}{k (\ln(k) + \ln(\ln 2))^\alpha} $$
+
+Pour déterminer la nature de cette nouvelle série, on peut utiliser un équivalent. Pour $k \to \infty$, $\ln(k) + \ln(\ln 2) \sim \ln(k)$.
+
+Le terme général est donc équivalent à :
+
+$$ \frac{1}{k (\ln(k))^\alpha} $$
+
+La série $\sum_{k=2}^\infty \frac{1}{k (\ln k)^\alpha}$ est une série de Bertrand. On sait (ou on peut le redémontrer avec le critère de comparaison série-intégrale) qu'elle converge si et seulement si $\alpha > 1$.
+
+Par le test de condensation de Cauchy, la série originale a la même nature. Elle converge donc si et seulement si $\alpha > 1$.
+
+- **A)** Faux. Par exemple, pour $\alpha=1/2$, la série diverge.
+- **B)** Faux. La série converge pour $\alpha=2$, par exemple.
+- **C)** Correct. C'est le résultat de l'analyse via le test de condensation et la comparaison avec une série de Bertrand.
+- **D)** Faux. Pour $\alpha=1$, la série de Bertrand $\sum 1/(k \ln k)$ diverge.
+
+</details>
+
+---
+
+#### Question 8 : Théorèmes Taubériens
+
+Soit $\sum u_n$ une série. On note $(s_n)$ la suite de ses sommes partielles et $(c_n)$ la suite de ses moyennes de Césaro, $c_n = \frac{s_0 + \dots + s_n}{n+1}$.
+
+Le fait que la série soit Césaro-sommable (i.e., $(c_n)$ converge) n'implique pas sa convergence usuelle. Un théorème Taubérien fournit une condition additionnelle sur $(u_n)$ qui rend cette implication vraie.
+
+Laquelle des conditions suivantes est la condition Taubérienne de Hardy-Littlewood ?
+
+- [ ] **A)** $u_n = o(1/n)$
+- [x] **B)** $u_n = O(1/n)$
+- [ ] **C)** $u_n \ge 0$ pour tout $n$.
+- [ ] **D)** $\sum n |u_n|^2 < \infty$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Cette question porte sur la connaissance précise des théorèmes classiques d'analyse.
+
+Un théorème Taubérien est une "réciproque" d'un théorème Abélien. Un théorème Abélien dit que si une série converge, alors une certaine méthode de sommation (comme celle de Césaro) lui assigne la même valeur. Un théorème Taubérien dit que si une méthode de sommation donne une valeur, et qu'une condition supplémentaire (dite "Taubérienne") est vérifiée, alors la série converge au sens usuel.
+
+- **A)** $u_n = o(1/n)$ (signifiant $n u_n \to 0$) est la condition Taubérienne originale de Tauber, qui est plus forte que celle de Hardy-Littlewood. Si elle est vérifiée, le théorème est vrai, mais ce n'est pas le théorème de Hardy-Littlewood.
+- **B)** $u_n = O(1/n)$ (signifiant que la suite $(n u_n)$ est bornée) est précisément la condition du théorème de Hardy-Littlewood. C'est un affaiblissement de la condition de Tauber, et donc un théorème plus puissant. Si $\sum u_n$ est Césaro-sommable et $u_n = O(1/n)$, alors $\sum u_n$ converge.
+- **C)** Si $u_n \ge 0$, la convergence de $(c_n)$ implique celle de $(s_n)$ (et donc la convergence de la série). C'est un cas simple de théorème Taubérien, mais ce n'est pas le théorème de Hardy-Littlewood, qui est plus général.
+- **D)** Cette condition est liée à d'autres domaines de l'analyse (séries de Fourier, etc.) mais n'est pas la condition classique du théorème de Hardy-Littlewood pour la sommation de Césaro.
+
+Le contre-exemple classique à l'implication "Césaro-sommable $\implies$ convergente" est la série de Grandi $\sum (-1)^n$. Son terme général $u_n=(-1)^n$ ne vérifie pas $u_n=O(1/n)$ car $|n u_n|=n$, qui n'est pas borné.
+
+</details>
+
+---
+
+#### Question 9 : Ordre d'un développement asymptotique
+
+On souhaite déterminer la nature de la série de terme général $u_n = \ln\left(1+\frac{(-1)^n}{\sqrt{n}}\right) - \frac{(-1)^n}{\sqrt{n}}$. À quel ordre minimal doit-on pousser le développement limité de $\ln(1+x)$ pour conclure ?
+
+- [x] **A)** Il faut un développement à l'ordre 2 : $\ln(1+x) = x - \frac{x^2}{2} + o(x^2)$.
+- [ ] **B)** Il faut un développement à l'ordre 3 : $\ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} + o(x^3)$.
+- [ ] **C)** Un développement à l'ordre 1 ($\ln(1+x) = x + o(x)$) est suffisant.
+- [ ] **D)** La nature de la série ne peut pas être déterminée par un développement asymptotique.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+Analysons le terme général $u_n$ en utilisant le développement limité de $\ln(1+x)$ en $x=0$ avec $x_n = \frac{(-1)^n}{\sqrt{n}}$. On a $x_n \to 0$.
+
+1.  **Développement à l'ordre 1 :**
+
+    $\ln(1+x) = x + O(x^2)$.
+
+    $$ u_n = \left(\frac{(-1)^n}{\sqrt{n}} + O\left(\left(\frac{(-1)^n}{\sqrt{n}}\right)^2\right)\right) - \frac{(-1)^n}{\sqrt{n}} = O\left(\frac{1}{n}\right) $$
+
+    Le terme général est un $O(1/n)$. Cela ne permet pas de conclure sur la nature de la série $\sum u_n$. Une série dont le terme général est en $O(1/n)$ peut converger (ex: $\sum (-1)^n/n$) ou diverger (ex: $\sum 1/n$). L'ordre 1 est donc insuffisant.
+
+2.  **Développement à l'ordre 2 :**
+
+    $\ln(1+x) = x - \frac{x^2}{2} + o(x^2)$.
+
+    $$ u_n = \left(\frac{(-1)^n}{\sqrt{n}} - \frac{1}{2}\left(\frac{(-1)^n}{\sqrt{n}}\right)^2 + o\left(\frac{1}{n}\right)\right) - \frac{(-1)^n}{\sqrt{n}} $$
+
+    $$ u_n = - \frac{1}{2} \frac{(-1)^{2n}}{n} + o\left(\frac{1}{n}\right) = - \frac{1}{2n} + o\left(\frac{1}{n}\right) $$
+
+    On a donc $u_n \sim -\frac{1}{2n}$.
+
+    La série $\sum u_n$ est à termes négatifs à partir d'un certain rang et est de même nature que la série de Riemann $\sum -\frac{1}{2n}$, qui est divergente. L'ordre 2 est donc suffisant pour conclure que la série diverge.
+
+3.  **Analyse des options :**
+    - **A)** Correct. Comme montré ci-dessus, l'ordre 2 donne un équivalent qui permet de conclure.
+    - **B)** L'ordre 3 fonctionnerait aussi (il serait simplement plus précis), mais il n'est pas *minimal*. La question demande l'ordre minimal.
+    - **C)** Faux. L'ordre 1 est insuffisant.
+    - **D)** Faux. La méthode du développement asymptotique est parfaitement adaptée ici.
+
+</details>
+
+---
+
+#### Question 10 : Convergence absolue et critère de Cauchy
+
+La démonstration qu'une intégrale généralisée absolument convergente est convergente, i.e., $(\int_I |f| \text{ converge}) \implies (\int_I f \text{ converge})$, repose sur un argument fondamental. Lequel ?
+
+- [ ] **A)** La positivité de l'intégrale, qui dit que si $f \ge 0$, alors $\int_I f \ge 0$.
+- [ ] **B)** La relation de Chasles pour les intégrales.
+- [x] **C)** Le critère de Cauchy pour la convergence des intégrales et l'inégalité triangulaire.
+- [ ] **D)** Une intégration par parties sur l'intégrale de $f$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Analysons la structure de la preuve. Soit $f: [a, b[ \to \mathbb{R}$ (avec $b$ potentiellement infini). On suppose que $\int_a^b |f(t)|dt$ converge. On veut montrer que $\int_a^b f(t)dt$ converge.
+
+L'outil le plus puissant pour prouver la convergence sans connaître la limite est le critère de Cauchy.
+
+1.  **Critère de Cauchy pour $\int |f|$ :**
+
+    La convergence de $\int_a^b |f(t)|dt$ signifie que pour tout $\varepsilon > 0$, il existe $B \in [a,b[$ tel que pour tous $x, y$ avec $B < x < y < b$, on a :
+
+    $$ \left| \int_x^y |f(t)|dt \right| = \int_x^y |f(t)|dt < \varepsilon $$
+
+2.  **Lien avec $\int f$ :**
+
+    On utilise l'inégalité triangulaire pour les intégrales, qui stipule que $\left|\int_x^y f(t)dt\right| \le \int_x^y |f(t)|dt$.
+
+    En combinant les deux points, on obtient :
+
+    Pour tout $\varepsilon > 0$, il existe $B \in [a,b[$ tel que pour tous $x, y$ avec $B < x < y < b$ :
+
+    $$ \left| \int_x^y f(t)dt \right| \le \int_x^y |f(t)|dt < \varepsilon $$
+
+3.  **Conclusion :**
+
+    L'inégalité $\left| \int_x^y f(t)dt \right| < \varepsilon$ montre que l'intégrale de $f$ satisfait elle-même le critère de Cauchy. Par conséquent, $\int_a^b f(t)dt$ converge.
+
+Le cœur de l'argument est donc bien l'application du critère de Cauchy, rendue possible par l'inégalité triangulaire.
+
+- **A)** La positivité est une propriété importante mais ne permet pas de passer de $|f|$ à $f$.
+- **B)** La relation de Chasles est utilisée pour définir les intégrales sur des intervalles non bornés, mais elle n'est pas le moteur de la preuve de cette implication.
+- **C)** Correct. C'est l'enchaînement exact de la démonstration : la convergence de $\int|f|$ implique le critère de Cauchy pour $\int|f|$, qui, via l'inégalité triangulaire, implique le critère de Cauchy pour $\int f$, qui prouve la convergence de $\int f$.
+- **D)** L'intégration par parties n'est pas pertinente pour cette preuve théorique générale.
+
+</details>

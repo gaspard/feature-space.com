@@ -10,7 +10,7 @@ tags:
   - Ensembles fermés
   - Compacité
   - Suites de Cauchy
-course: Topologie I
+course: Topologie
 courseId: 34e61f8e
 chapter: Topologie sur Rn
 chapterId: 3c3b95a8
@@ -34,7 +34,7 @@ createdAt: '2025-10-12T14:41:41.272Z'
 Soit $(\mathbb{R}^n, N)$ un espace vectoriel normé.
 
 1.  **Boule Ouverte**: Pour $x \in \mathbb{R}^n$ et $r > 0$, la **boule ouverte** de centre $x$ et de rayon $r$ est l'ensemble $B_N(x, r) = \{z \in \mathbb{R}^n : N(z-x) < r\}$.
-2.  **Ensemble Ouvert**: Un sous-ensemble $U \subseteq \mathbb{R}^n$ est dit **ouvert** si pour tout $x \in U$, il existe un réel $r > 0$ tel que $B_N(x, r) \subseteq U$. La collection de tous les ensembles ouverts de $(\mathbb{R}^n, N)$ est appelée la **topologie induite par la norme $N$**.
+2.  **Ensemble Ouvert**: Un sous-ensemble $U \subseteq \mathbb{R}^n$ est dit **ouvert** si pour tout $x \in U$, il existe un réel $r > 0$ tel que $B_N(x, r) \subseteq U$. La collection de tous les ensembles ouverts de $(\mathbb{R}^n, N)$ est appelée la **Topologienduite par la norme $N$**.
 3.  **Ensemble Fermé**: Un sous-ensemble $F \subseteq \mathbb{R}^n$ est dit **fermé** si son complémentaire $\mathbb{R}^n \setminus F$ est un ensemble ouvert.
 
 La topologie sur $\mathbb{R}^n$ est l'ensemble des parties ouvertes. Elle vérifie les axiomes suivants :

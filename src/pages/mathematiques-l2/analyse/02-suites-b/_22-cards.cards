@@ -1,0 +1,579 @@
+---
+id: c701f2ea
+type: cards
+order: 22
+title: Séries Numériques (suite) - fiches de révision (B)
+tags:
+  - séries numériques
+  - convergence
+  - critère de Cauchy
+  - séries à termes positifs
+  - intégrales généralisées
+  - théorème d'Abel
+createdAt: '2025-10-12T17:46:44.893Z'
+level: pro
+course: Analyse
+courseId: 9c2d50b3
+chapter: Séries Numériques (suite)
+chapterId: c9bf30da
+---
+# Fiches de révision "Séries Numériques (suite)" (B)
+
+---
+
+Prouver que toute intégrale absolument convergente est convergente en utilisant le critère de Cauchy.
+
+<details>
+
+<summary>Answer</summary>
+
+Soit $f: I \to \mathbb{C}$ une fonction telle que l'intégrale $\int_I |f(t)|dt$ converge. On veut montrer que $\int_I f(t)dt$ converge.
+
+Le critère de Cauchy pour la convergence d'une intégrale généralisée $\int_a^b f(t)dt$ (où $b$ peut être $+\infty$) s'énonce :
+
+$$ \forall \varepsilon > 0, \exists B \in [a,b[, \forall x, y \in ]B,b[, \left| \int_x^y f(t)dt \right| < \varepsilon. $$
+
+1.  **Appliquer le critère de Cauchy à $|f|$ :**
+
+    Puisque $\int_I |f(t)|dt$ converge, elle vérifie le critère de Cauchy. Soit $\varepsilon > 0$. Il existe un intervalle compact $J_0 \subset I$ tel que pour tout intervalle compact $J$ avec $J_0 \subset J \subset I$, on a $\int_{J \setminus J_0} |f(t)|dt < \varepsilon$.
+
+    Pour simplifier, prenons $I = [a, +\infty[$. Il existe donc $B \ge a$ tel que pour tous $x, y$ avec $y > x > B$, on a :
+
+    $$ \int_x^y |f(t)|dt < \varepsilon. $$
+
+2.  **Utiliser l'inégalité triangulaire :**
+
+    L'inégalité triangulaire pour les intégrales stipule que $\left| \int_x^y f(t)dt \right| \le \int_x^y |f(t)|dt$.
+
+3.  **Conclusion :**
+
+    En combinant les deux points, pour tout $\varepsilon > 0$, il existe $B \ge a$ tel que pour tous $y > x > B$ :
+
+    $$ \left| \int_x^y f(t)dt \right| \le \int_x^y |f(t)|dt < \varepsilon. $$
+
+    Ceci est précisément le critère de Cauchy pour la fonction $f$. Par conséquent, l'intégrale $\int_I f(t)dt$ converge.
+
+</details>
+
+---
+
+Énoncer et démontrer le critère de comparaison série-intégrale.
+
+<details>
+
+<summary>Answer</summary>
+
+**Théorème (Critère de Comparaison Série-Intégrale) :**
+
+Soit $f: [a, +\infty[ \to \mathbb{R}$ une fonction continue, positive et décroissante pour $a \in \mathbb{R}$. Soit la série $\sum_{n=n_0}^\infty u_n$ avec $n_0 \ge a$ et $u_n = f(n)$. Alors la série $\sum u_n$ et l'intégrale $\int_a^{+\infty} f(t)dt$ sont de même nature.
+
+**Démonstration :**
+
+1.  **Encadrement de l'intégrale :**
+
+    Puisque $f$ est décroissante, pour tout entier $k \ge a$ et pour tout $t \in [k, k+1]$, on a l'encadrement :
+
+    $$ f(k+1) \le f(t) \le f(k) $$
+
+2.  **Intégration de l'encadrement :**
+
+    En intégrant cette inégalité sur l'intervalle $[k, k+1]$ de longueur 1 :
+
+    $$ \int_k^{k+1} f(k+1) dt \le \int_k^{k+1} f(t) dt \le \int_k^{k+1} f(k) dt $$
+
+    $$ f(k+1) \cdot (k+1-k) \le \int_k^{k+1} f(t) dt \le f(k) \cdot (k+1-k) $$
+
+    $$ f(k+1) \le \int_k^{k+1} f(t) dt \le f(k) $$
+
+3.  **Sommation des inégalités :**
+
+    Soient $S_N = \sum_{k=n_0}^N f(k)$ et $I_N = \int_{n_0}^N f(t)dt$.
+
+    - En sommant l'inégalité de gauche de $k=n_0$ à $N-1$ :
+
+      $$ \sum_{k=n_0}^{N-1} f(k+1) \le \sum_{k=n_0}^{N-1} \int_k^{k+1} f(t) dt \implies \sum_{j=n_0+1}^{N} f(j) \le \int_{n_0}^N f(t)dt $$
+
+      $$ S_N - f(n_0) \le I_N $$
+
+    - En sommant l'inégalité de droite de $k=n_0$ à $N$ :
+
+      $$ \sum_{k=n_0}^{N} \int_k^{k+1} f(t) dt \le \sum_{k=n_0}^{N} f(k) \implies \int_{n_0}^{N+1} f(t)dt \le S_N $$
+
+4.  **Conclusion :**
+
+    Les suites $(S_N)$ et $(I_N)$ sont croissantes car $f$ est positive. Les inégalités
+
+    $$ \int_{n_0}^{N+1} f(t)dt \le S_N \le f(n_0) + \int_{n_0}^N f(t)dt $$
+
+    montrent que la suite $(S_N)$ est majorée si et seulement si la suite $(I_N)$ est majorée. Puisqu'elles sont croissantes, elles sont de même nature (soit elles convergent, soit elles tendent vers $+\infty$).
+
+</details>
+
+---
+
+Déterminer la nature de la série $\sum_{n=2}^\infty \frac{1 - \cos(\frac{1}{\sqrt{n \ln n}})}{\sin \frac{1}{n}}$ en utilisant un équivalent.
+
+<details>
+
+<summary>Answer</summary>
+
+Soit $v_n = \frac{1 - \cos(\frac{1}{\sqrt{n \ln n}})}{\sin \frac{1}{n}}$. Il s'agit d'une série à termes positifs. Nous pouvons utiliser le critère de comparaison par équivalents.
+
+**1. Trouver un équivalent du numérateur :**
+
+On utilise le développement limité $1 - \cos(x) \sim_0 \frac{x^2}{2}$.
+
+Quand $n \to \infty$, $x_n = \frac{1}{\sqrt{n \ln n}} \to 0$.
+
+Donc,
+
+$$ 1 - \cos\left(\frac{1}{\sqrt{n \ln n}}\right) \sim_{n\to\infty} \frac{1}{2} \left(\frac{1}{\sqrt{n \ln n}}\right)^2 = \frac{1}{2n \ln n}. $$
+
+**2. Trouver un équivalent du dénominateur :**
+
+On utilise le développement limité $\sin(x) \sim_0 x$.
+
+Quand $n \to \infty$, $y_n = \frac{1}{n} \to 0$.
+
+Donc,
+
+$$ \sin\left(\frac{1}{n}\right) \sim_{n\to\infty} \frac{1}{n}. $$
+
+**3. Former l'équivalent du terme général :**
+
+Par quotient d'équivalents :
+
+$$ v_n \sim_{n\to\infty} \frac{\frac{1}{2n \ln n}}{\frac{1}{n}} = \frac{1}{2n \ln n} \cdot \frac{n}{1} = \frac{1}{2 \ln n}. $$
+
+**4. Conclure sur la nature de la série :**
+
+La série $\sum v_n$ a la même nature que la série $\sum \frac{1}{2 \ln n}$.
+
+Pour $n \ge 3$, on a $\ln n < n$, ce qui implique $\frac{1}{\ln n} > \frac{1}{n}$, et donc $\frac{1}{2 \ln n} > \frac{1}{2n}$.
+
+La série $\sum \frac{1}{2n} = \frac{1}{2} \sum \frac{1}{n}$ est une série harmonique divergente.
+
+Par le critère de comparaison pour les séries à termes positifs, la série $\sum \frac{1}{2 \ln n}$ diverge.
+
+Par conséquent, la série $\sum v_n$ diverge.
+
+</details>
+
+---
+
+Énoncer et démontrer le test de condensation de Cauchy.
+
+<details>
+
+<summary>Answer</summary>
+
+**Théorème (Test de Condensation de Cauchy) :**
+
+Soit $(u_n)_{n\in\mathbb{N}}$ une suite à termes réels positifs et décroissante. Alors la série $\sum_{n=1}^\infty u_n$ converge si et seulement si la série "condensée" $\sum_{j=0}^\infty 2^j u_{2^j}$ converge.
+
+**Démonstration :**
+
+Soient $S_N = \sum_{n=1}^N u_n$ et $T_J = \sum_{j=0}^J 2^j u_{2^j}$. Les deux suites $(S_N)$ et $(T_J)$ sont croissantes car les termes sont positifs.
+
+**Partie 1 : Convergence de $\sum 2^j u_{2^j}$ $\implies$ Convergence de $\sum u_n$.**
+
+Supposons que $\sum 2^j u_{2^j}$ converge vers $T$. Pour $N \in \mathbb{N}$, choisissons $J$ tel que $N < 2^{J+1}-1$.
+
+$$ S_N \le S_{2^{J+1}-1} = u_1 + (u_2+u_3) + (u_4+\dots+u_7) + \dots + (u_{2^J}+\dots+u_{2^{J+1}-1}) $$
+
+Puisque $(u_n)$ est décroissante, on peut majorer chaque paquet :
+
+- $u_2+u_3 \le u_2+u_2 = 2u_2$
+- $u_4+\dots+u_7 \le 4u_4$
+- En général, $\sum_{n=2^j}^{2^{j+1}-1} u_n \le (2^{j+1}-2^j) u_{2^j} = 2^j u_{2^j}$.
+
+D'où,
+
+$$ S_N \le S_{2^{J+1}-1} = u_1 + \sum_{j=1}^J \sum_{n=2^j}^{2^{j+1}-1} u_n \le u_1 + \sum_{j=1}^J 2^j u_{2^j} \le u_1 + T. $$
+
+La suite $(S_N)$ est croissante et majorée, donc elle converge.
+
+**Partie 2 : Convergence de $\sum u_n$ $\implies$ Convergence de $\sum 2^j u_{2^j}$.**
+
+Supposons que $\sum u_n$ converge vers $S$. Pour $J \in \mathbb{N}$ :
+
+$$ T_J = \sum_{j=0}^J 2^j u_{2^j} = u_1 + 2u_2 + 4u_4 + \dots + 2^J u_{2^J} $$
+
+On regroupe les termes de $\sum u_n$ différemment :
+
+$S_{2^J} = u_1 + u_2 + (u_3+u_4) + \dots + (u_{2^{J-1}+1}+\dots+u_{2^J})$.
+
+Puisque $(u_n)$ est décroissante :
+
+- $u_3+u_4 \ge 2u_4 \implies u_4 \le \frac{1}{2}(u_3+u_4)$
+- En général, $\sum_{n=2^{j-1}+1}^{2^j} u_n \ge (2^j - 2^{j-1}) u_{2^j} = 2^{j-1} u_{2^j} \implies 2^j u_{2^j} \le 2 \sum_{n=2^{j-1}+1}^{2^j} u_n$.
+
+D'où,
+
+$$ T_J = u_1 + \sum_{j=1}^J 2^j u_{2^j} \le u_1 + 2 \sum_{j=1}^J \sum_{n=2^{j-1}+1}^{2^j} u_n = u_1 + 2 \sum_{n=3}^{2^J} u_n \le u_1 + 2S. $$
+
+La suite $(T_J)$ est croissante et majorée, donc elle converge.
+
+</details>
+
+---
+
+Quelle est la nature de la série de terme général $u_n = \frac{(-1)^n}{n+(-1)^n}$ ? Justifier par une analyse asymptotique.
+
+<details>
+
+<summary>Answer</summary>
+
+Pour étudier la nature de $\sum u_n$, nous effectuons un développement asymptotique de $u_n$ pour $n \to \infty$.
+
+**1. Mise en forme du terme général :**
+
+$$ u_n = \frac{(-1)^n}{n(1 + \frac{(-1)^n}{n})} = \frac{(-1)^n}{n} \left(1 + \frac{(-1)^n}{n}\right)^{-1} $$
+
+**2. Développement limité :**
+
+On utilise le développement limité $(1+x)^\alpha = 1 + \alpha x + O(x^2)$ pour $x \to 0$.
+
+Ici, $x = \frac{(-1)^n}{n}$, qui tend bien vers 0, et $\alpha = -1$.
+
+$$ \left(1 + \frac{(-1)^n}{n}\right)^{-1} = 1 - \frac{(-1)^n}{n} + O\left(\left(\frac{(-1)^n}{n}\right)^2\right) = 1 - \frac{(-1)^n}{n} + O\left(\frac{1}{n^2}\right) $$
+
+Il faut pousser le développement jusqu'à obtenir un reste dont la série converge absolument, donc $O(1/n^2)$ n'est pas suffisant. Poussons à l'ordre suivant : $(1+x)^{-1} = 1 - x + x^2 + O(x^3)$.
+
+Non, $O(1/n^2)$ suffit ici.
+
+**3. Développement asymptotique de $u_n$ :**
+
+$$ u_n = \frac{(-1)^n}{n} \left(1 - \frac{(-1)^n}{n} + O\left(\frac{1}{n^2}\right)\right) $$
+
+$$ u_n = \frac{(-1)^n}{n} - \frac{(-1)^n}{n} \cdot \frac{(-1)^n}{n} + \frac{(-1)^n}{n} O\left(\frac{1}{n^2}\right) $$
+
+$$ u_n = \frac{(-1)^n}{n} - \frac{(-1)^{2n}}{n^2} + O\left(\frac{1}{n^3}\right) $$
+
+$$ u_n = \frac{(-1)^n}{n} - \frac{1}{n^2} + O\left(\frac{1}{n^3}\right) $$
+
+**4. Analyse de la convergence :**
+
+La série $\sum u_n$ peut être vue comme la somme de trois séries :
+
+- $\sum_{n=1}^\infty \frac{(-1)^n}{n}$ : C'est la série harmonique alternée, qui est convergente (d'après le critère des séries alternées).
+- $\sum_{n=1}^\infty \left(-\frac{1}{n^2}\right)$ : C'est une série de Riemann avec $\alpha=2 > 1$. Elle est donc absolument convergente.
+- $\sum_{n=1}^\infty O\left(\frac{1}{n^3}\right)$ : Soit $w_n = O(1/n^3)$. Cela signifie qu'il existe $M>0$ et $N_0$ tels que pour $n>N_0$, $|w_n| \le M/n^3$. Par comparaison avec la série de Riemann convergente $\sum 1/n^3$, la série $\sum w_n$ est absolument convergente.
+
+**Conclusion :**
+
+La série $\sum u_n$ est la somme de trois séries convergentes. Par linéarité, la série $\sum u_n$ est **convergente**.
+
+</details>
+
+---
+
+Énoncer et démontrer le théorème d'Abel pour la convergence des séries.
+
+<details>
+
+<summary>Answer</summary>
+
+**Théorème (Théorème d'Abel) :**
+
+Soit la série $\sum u_n$ avec $u_n = a_n b_n$, où $(a_n)_{n\in\mathbb{N}}$ est une suite à termes complexes et $(b_n)_{n\in\mathbb{N}}$ est une suite à termes réels. La série $\sum u_n$ converge si les trois conditions suivantes sont remplies :
+
+i) La suite des sommes partielles $(A_n)_{n\in\mathbb{N}}$, où $A_n = \sum_{k=0}^n a_k$, est bornée.
+
+ii) La suite $(b_n)_{n\in\mathbb{N}}$ est décroissante.
+
+iii) $\lim_{n \to \infty} b_n = 0$.
+
+**Démonstration (Transformation d'Abel) :**
+
+Nous utilisons le critère de Cauchy pour les séries. Montrons que $\forall \varepsilon > 0$, $\exists N \in \mathbb{N}$ tel que $\forall q > p \ge N$, $|\sum_{n=p}^q a_n b_n| < \varepsilon$.
+
+1.  **Expression de la somme partielle :**
+
+    Soit $S_{p,q} = \sum_{n=p}^q a_n b_n$. On exprime $a_n$ en fonction des sommes partielles $A_n$: $a_n = A_n - A_{n-1}$ (avec $A_{-1}=0$).
+
+    $$ S_{p,q} = \sum_{n=p}^q (A_n - A_{n-1}) b_n $$
+
+2.  **Sommation par parties (Transformation d'Abel) :**
+
+    On réorganise la somme :
+
+    $$ S_{p,q} = (A_p - A_{p-1})b_p + (A_{p+1} - A_p)b_{p+1} + \dots + (A_q - A_{q-1})b_q $$
+
+    $$ S_{p,q} = -A_{p-1}b_p + A_p(b_p - b_{p+1}) + A_{p+1}(b_{p+1} - b_{p+2}) + \dots + A_{q-1}(b_{q-1} - b_q) + A_q b_q $$
+
+    $$ S_{p,q} = A_q b_q - A_{p-1}b_p + \sum_{n=p}^{q-1} A_n (b_n - b_{n+1}) $$
+
+3.  **Majoration :**
+    - Par l'hypothèse (i), il existe $M > 0$ tel que $|A_k| \le M$ pour tout $k$.
+    - Par l'hypothèse (ii), $b_n - b_{n+1} \ge 0$.
+    - Par l'hypothèse (iii), $(b_n)$ est une suite de réels positifs (car décroissante et tendant vers 0).
+
+    On majore le module de $S_{p,q}$ :
+
+    $$ |S_{p,q}| \le |A_q b_q| + |-A_{p-1}b_p| + \left|\sum_{n=p}^{q-1} A_n (b_n - b_{n+1})\right| $$
+
+    $$ |S_{p,q}| \le |A_q|b_q + |A_{p-1}|b_p + \sum_{n=p}^{q-1} |A_n| |b_n - b_{n+1}| $$
+
+    $$ |S_{p,q}| \le M b_q + M b_p + M \sum_{n=p}^{q-1} (b_n - b_{n+1}) $$
+
+4.  **Somme télescopique :**
+
+    La somme $\sum_{n=p}^{q-1} (b_n - b_{n+1})$ est télescopique et vaut $b_p - b_q$.
+
+    $$ |S_{p,q}| \le M b_q + M b_p + M (b_p - b_q) = 2Mb_p $$
+
+5.  **Conclusion :**
+
+    D'après l'hypothèse (iii), $\lim_{p\to\infty} b_p = 0$. Donc, pour tout $\varepsilon > 0$, il existe un rang $N$ tel que pour $p \ge N$, on a $b_p < \frac{\varepsilon}{2M}$.
+
+    Pour $q > p \ge N$, on a $|S_{p,q}| \le 2Mb_p < \varepsilon$.
+
+    Le critère de Cauchy est vérifié, donc la série $\sum a_n b_n$ converge.
+
+</details>
+
+---
+
+Expliquer le théorème de réarrangement de Riemann et esquisser la preuve pour le cas d'une série semi-convergente.
+
+<details>
+
+<summary>Answer</summary>
+
+**Théorème de réarrangement de Riemann :**
+
+Ce théorème décrit le comportement d'une série lorsqu'on permute l'ordre de ses termes.
+
+i) **Cas absolument convergent :** Une série $\sum u_n$ est absolument convergente si et seulement si elle est commutativement convergente. C'est-à-dire, pour toute permutation $\sigma: \mathbb{N} \to \mathbb{N}$, la série réarrangée $\sum u_{\sigma(n)}$ converge vers la même somme.
+
+ii) **Cas semi-convergente :** Si une série réelle $\sum u_n$ est semi-convergente (elle converge, mais pas absolument), alors pour tout réel étendu $l \in \overline{\mathbb{R}} = \mathbb{R} \cup \{-\infty, +\infty\}$, il existe une permutation $\sigma$ de $\mathbb{N}$ telle que la série réarrangée $\sum u_{\sigma(n)}$ converge vers $l$.
+
+**Esquisse de la preuve du cas (ii) :**
+
+Soit $\sum u_n$ une série semi-convergente.
+
+1.  **Divergence des termes positifs et négatifs :**
+
+    Notons $P = \{ u_n \mid u_n > 0 \}$ l'ensemble des termes positifs et $N = \{ u_n \mid u_n < 0 \}$ l'ensemble des termes négatifs (on ignore les termes nuls). Puisque $\sum u_n$ converge mais $\sum |u_n|$ diverge, on peut montrer que les deux séries formées par les termes de $P$ et de $N$ doivent diverger. C'est-à-dire, $\sum_{p \in P} p = +\infty$ et $\sum_{n \in N} n = -\infty$.
+
+2.  **Algorithme de construction de la permutation :**
+
+    Soit $l \in \mathbb{R}$ la cible (le cas $l=\pm\infty$ est similaire). L'idée est de construire la somme pas à pas pour qu'elle "oscille" autour de $l$.
+
+    - **Étape 1 :** On somme les premiers termes positifs de $P$ jusqu'à ce que la somme partielle dépasse $l$ pour la première fois. C'est possible car $\sum p = +\infty$. Soit $S_1$ cette somme.
+    - **Étape 2 :** À $S_1$, on ajoute les premiers termes négatifs de $N$ jusqu'à ce que la somme repasse en dessous de $l$. C'est possible car $\sum n = -\infty$. Soit $S_2$ cette somme.
+    - **Étape 3 :** On recommence en ajoutant les prochains termes positifs non utilisés de $P$ jusqu'à dépasser de nouveau $l$.
+    - **On continue indéfiniment...**
+
+3.  **Convergence vers la cible :**
+
+    À chaque étape, la somme partielle $S_k$ "franchit" la cible $l$. L'écart entre la somme partielle et la cible est contrôlé par le dernier terme ajouté. Par exemple, à l'étape 1, si on a ajouté $p_k$, on a $S_1 - l \le p_k$.
+
+    Comme la série $\sum u_n$ converge, son terme général $u_n \to 0$. Cela signifie que les termes $p \in P$ et $n \in N$ que l'on ajoute deviennent arbitrairement petits.
+
+    Par conséquent, l'amplitude des oscillations de la somme partielle autour de $l$ tend vers 0. La suite des sommes partielles de la série réarrangée converge donc vers $l$.
+
+    La permutation $\sigma$ est définie par l'ordre dans lequel on a choisi les termes.
+
+</details>
+
+---
+
+Démontrer que si une série $\sum u_n$ converge, alors toute série formée par sommation par paquets $\sum v_k$ converge vers la même somme. Fournir un contre-exemple pour la réciproque.
+
+<details>
+
+<summary>Answer</summary>
+
+**Définition (Sommation par Paquets) :**
+
+Soit $\sum u_n$ une série. Soit $(p_k)_{k\in\mathbb{N}}$ une suite d'entiers strictement croissante avec $p_{-1}=-1$. La série $\sum v_k$ est une série de paquets de $\sum u_n$ si $v_k = \sum_{j=p_{k-1}+1}^{p_k} u_j$.
+
+**Partie 1 : Preuve de la convergence**
+
+1.  **Définition des sommes partielles :**
+    - Soit $(S_n)_{n\in\mathbb{N}}$ la suite des sommes partielles de $\sum u_n$, avec $S_n = \sum_{j=0}^n u_j$.
+    - Soit $(V_k)_{k\in\mathbb{N}}$ la suite des sommes partielles de $\sum v_k$, avec $V_k = \sum_{j=0}^k v_j$.
+
+2.  **Lien entre les sommes partielles :**
+
+    Par définition de $v_j$, on a :
+
+    $$ V_k = \sum_{j=0}^k v_j = \sum_{j=0}^k \left( \sum_{i=p_{j-1}+1}^{p_j} u_i \right) = \sum_{i=0}^{p_k} u_i = S_{p_k} $$
+
+    La suite des sommes partielles $(V_k)$ de la série de paquets est donc la sous-suite $(S_{p_k})$ de la suite des sommes partielles $(S_n)$ de la série originale.
+
+3.  **Conclusion :**
+
+    Si la série $\sum u_n$ converge vers une somme $S$, cela signifie que la suite de ses sommes partielles $(S_n)$ converge vers $S$.
+
+    Or, si une suite converge vers une limite, alors toute sous-suite de cette suite converge vers la même limite.
+
+    Par conséquent, la sous-suite $(S_{p_k}) = (V_k)$ converge aussi vers $S$. La série de paquets $\sum v_k$ converge donc vers $S$.
+
+**Partie 2 : Contre-exemple pour la réciproque**
+
+La réciproque est : "Si la série de paquets converge, alors la série originale converge". Ceci est faux en général.
+
+Considérons la **série de Grandi** : $\sum_{n=0}^\infty u_n = \sum_{n=0}^\infty (-1)^n = 1 - 1 + 1 - 1 + \dots$
+
+La suite de ses sommes partielles est $(S_n) = (1, 0, 1, 0, \dots)$, qui ne converge pas. La série $\sum u_n$ est donc divergente.
+
+Maintenant, effectuons une sommation par paquets de deux termes. Soit $p_k = 2k+1$ pour $k \ge 0$.
+
+$$ v_k = \sum_{j=p_{k-1}+1}^{p_k} u_j = u_{2k} + u_{2k+1} $$
+
+$$ v_k = (-1)^{2k} + (-1)^{2k+1} = 1 - 1 = 0 $$
+
+La série de paquets est $\sum_{k=0}^\infty v_k = \sum_{k=0}^\infty 0 = 0$.
+
+Cette série de paquets converge (vers 0), mais la série originale diverge. La réciproque est donc fausse.
+
+</details>
+
+---
+
+Expliquer le théorème de Fubini pour les séries et illustrer par un contre-exemple pourquoi l'hypothèse de sommabilité est cruciale.
+
+<details>
+
+<summary>Answer</summary>
+
+**Théorème de Fubini pour les séries :**
+
+Soit $(u_{m,n})_{(m,n)\in\mathbb{N}^2}$ une suite double de nombres réels ou complexes. Si la famille est **sommable**, c'est-à-dire si la somme des modules converge :
+
+$$ \sum_{(m,n)\in\mathbb{N}^2} |u_{m,n}| < \infty $$
+
+(ce qui est équivalent à dire que l'une des deux sommes itérées des modules $\sum_{m=0}^\infty \sum_{n=0}^\infty |u_{m,n}|$ ou $\sum_{n=0}^\infty \sum_{m=0}^\infty |u_{m,n}|$ est finie),
+
+alors :
+
+1.  Les deux sommes itérées convergent.
+2.  Elles sont égales : $\sum_{m=0}^\infty \left( \sum_{n=0}^\infty u_{m,n} \right) = \sum_{n=0}^\infty \left( \sum_{m=0}^\infty u_{m,n} \right)$.
+3.  La somme totale de la famille est égale à cette valeur commune, et on peut sommer les termes dans n'importe quel ordre.
+
+En bref, pour les familles sommables (absolument convergentes), l'ordre de sommation n'a pas d'importance.
+
+**Contre-exemple : Échec de Fubini sans sommabilité**
+
+Considérons la suite double $(u_{m,n})$ définie par :
+
+$$ u_{m,n} = \begin{cases} 1 & \text{si } m=n \\ -1 & \text{si } m=n+1 \\ 0 & \text{sinon} \end{cases} $$
+
+Visuellement, la matrice infinie des $u_{m,n}$ est :
+
+$$ \begin{pmatrix}
+
+1 & 0 & 0 & \dots \\
+
+-1 & 1 & 0 & \dots \\
+
+0 & -1 & 1 & \dots \\
+
+\vdots & \vdots & \ddots &
+
+\end{pmatrix} $$
+
+1.  **Calcul de la première somme itérée (par lignes) :**
+
+    $$ \sum_{m=0}^\infty \left( \sum_{n=0}^\infty u_{m,n} \right) $$
+
+    Pour une ligne $m$ fixée, la somme en $n$ est : $\sum_{n=0}^\infty u_{m,n} = u_{m,m-1} + u_{m,m} = -1 + 1 = 0$ (pour $m\ge 1$) et $u_{0,0}=1$ pour $m=0$.
+
+    Non, pour $m$ fixé, les seuls termes non nuls sont $u_{m,m}=1$ et $u_{m, m+1}$ n'existe pas. Le terme est $u_{m,n}$ donc c'est $u_{m,m} = 1$ et $u_{m+1,m}=-1$.
+
+    Rectification : Pour $m$ fixé, les termes non nuls sont $u_{m,m}=1$ et $u_{m,m-1}=-1$.
+
+    - Ligne $m=0$ : $\sum_n u_{0,n} = u_{0,0} = 1$.
+    - Ligne $m \ge 1$: $\sum_n u_{m,n} = u_{m,m} + u_{m,m-1} = 1 - 1 = 0$.
+
+    Donc, $\sum_{m=0}^\infty (\dots) = 1 + 0 + 0 + \dots = 1$.
+
+2.  **Calcul de la deuxième somme itérée (par colonnes) :**
+
+    $$ \sum_{n=0}^\infty \left( \sum_{m=0}^\infty u_{m,n} \right) $$
+
+    Pour une colonne $n$ fixée, la somme en $m$ est : $\sum_{m=0}^\infty u_{m,n} = u_{n,n} + u_{n+1,n} = 1 + (-1) = 0$.
+
+    Ceci est vrai pour tout $n \ge 0$.
+
+    Donc, $\sum_{n=0}^\infty (\dots) = \sum_{n=0}^\infty 0 = 0$.
+
+**Conclusion :**
+
+On a $\sum_{m} \sum_{n} u_{m,n} = 1$ et $\sum_{n} \sum_{m} u_{m,n} = 0$. Les deux sommes itérées existent mais ne sont pas égales. On ne peut donc pas intervertir l'ordre de sommation.
+
+**Vérification de l'hypothèse de sommabilité :**
+
+Calculons la somme des modules :
+
+$$ \sum_{m=0}^\infty \sum_{n=0}^\infty |u_{m,n}| = \sum_{m=0}^\infty ( |u_{m,m}| + |u_{m,m-1}| ) = |u_{0,0}| + \sum_{m=1}^\infty (1+1) = 1 + \sum_{m=1}^\infty 2 = +\infty. $$
+
+La famille n'est pas sommable, ce qui explique pourquoi le théorème de Fubini ne s'applique pas.
+
+</details>
+
+---
+
+Comparer la convergence usuelle et la Césaro-sommabilité. Démontrer qu'une série convergente est Césaro-sommable.
+
+<details>
+
+<summary>Answer</summary>
+
+**Définitions :**
+
+Soit $\sum u_n$ une série, $s_n = \sum_{k=0}^n u_k$ ses sommes partielles.
+
+- **Convergence usuelle :** La série converge vers $S$ si $\lim_{n \to \infty} s_n = S$.
+- **Césaro-sommabilité :** La série est Césaro-sommable vers $S$ si la suite des moyennes arithmétiques (moyennes de Césaro) de ses sommes partielles converge vers $S$. Soit $c_n = \frac{1}{n+1} \sum_{k=0}^n s_k$. La série est Césaro-sommable si $\lim_{n \to \infty} c_n = S$.
+
+**Comparaison :**
+
+- La convergence usuelle est une condition plus forte. Toute série convergente est Césaro-sommable (voir preuve ci-dessous).
+- La réciproque est fausse. Une série peut être Césaro-sommable sans converger. L'exemple classique est la série de Grandi $\sum (-1)^n$, qui diverge mais est Césaro-sommable vers $1/2$.
+- La Césaro-sommabilité est une méthode de "régularisation" qui peut assigner une valeur à certaines séries divergentes de manière cohérente.
+
+**Démonstration (Théorème de Césaro) :**
+
+Soit $(s_n)$ une suite qui converge vers une limite $S$. Nous voulons montrer que la suite de ses moyennes $(c_n)$ converge également vers $S$.
+
+1.  **Définition de la convergence de $(s_n)$ :**
+
+    $\forall \varepsilon > 0$, $\exists N_0 \in \mathbb{N}$ tel que $\forall k > N_0$, $|s_k - S| < \varepsilon/2$.
+
+2.  **Décomposition de la moyenne de Césaro :**
+
+    Pour $n > N_0$, on sépare la somme définissant $c_n$ en deux parties :
+
+    $$ c_n - S = \frac{1}{n+1} \sum_{k=0}^n s_k - S = \frac{1}{n+1} \sum_{k=0}^n (s_k - S) $$
+
+    $$ c_n - S = \frac{1}{n+1} \left( \sum_{k=0}^{N_0} (s_k - S) + \sum_{k=N_0+1}^{n} (s_k - S) \right) $$
+
+3.  **Majoration des deux parties :**
+    - La première somme est une constante par rapport à $n$. Soit $K = \left| \sum_{k=0}^{N_0} (s_k - S) \right|$.
+    - Pour la seconde somme, on utilise la définition de la convergence : pour $k > N_0$, $|s_k - S| < \varepsilon/2$. Il y a $n - N_0$ termes dans cette somme.
+    
+    On majore le module :
+
+    $$ |c_n - S| \le \frac{1}{n+1} \left( \left| \sum_{k=0}^{N_0} (s_k - S) \right| + \sum_{k=N_0+1}^{n} |s_k - S| \right) $$
+
+    $$ |c_n - S| \le \frac{K}{n+1} + \frac{1}{n+1} \sum_{k=N_0+1}^{n} \frac{\varepsilon}{2} $$
+
+    $$ |c_n - S| \le \frac{K}{n+1} + \frac{n - N_0}{n+1} \frac{\varepsilon}{2} $$
+
+4.  **Conclusion :**
+    - Puisque $\frac{n-N_0}{n+1} < 1$, on a $\frac{n - N_0}{n+1} \frac{\varepsilon}{2} < \frac{\varepsilon}{2}$.
+    - Le terme $\frac{K}{n+1}$ tend vers 0 lorsque $n \to \infty$. Il existe donc un $N_1 \in \mathbb{N}$ tel que pour $n > N_1$, $\frac{K}{n+1} < \varepsilon/2$.
+
+    Soit $N = \max(N_0, N_1)$. Pour tout $n > N$, on a :
+
+    $$ |c_n - S| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon $$
+
+    Ceci prouve que $\lim_{n \to \infty} c_n = S$.
+
+    Donc, si $\sum u_n$ converge vers $S$, elle est Césaro-sommable vers $S$.
+
+</details>

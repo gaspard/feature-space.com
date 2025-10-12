@@ -55,17 +55,30 @@ export default function CardRenderer({ cards, static: isStatic = false }: CardRe
     return null;
   }
 
+  function resetAll() {
+    document.querySelectorAll("input[type='checkbox']").forEach((input) => {
+      (input as HTMLInputElement).checked = false;
+    });
+  }
+
   // Render static cards for SEO
   if (!cardFocus) {
     return (
       <div id={isStatic ? "static-cards-container" : "dynamic-cards-container"}>
-        {cards.type === 'quiz' && <button className="toggle-check" onClick={toggleCheck}>Voir les solutions</button>}
+        {cards.type === 'quiz' &&
+          (<>
+            <button className="reset" onClick={resetAll}>Réinitialiser</button>
+            <button className="toggle-check" onClick={toggleCheck}>Voir les solutions</button>
+          </>)}
         <button onClick={toggleCardFocus} className="card-focus">Focus sur une carte</button>
         <div className="cards-container" >
           {cards.cards.map((card, index) => (
             <Card key={card.id} card={card} />
           ))}
         </div>
+        {cards.type === 'quiz' &&
+          (<button className="toggle-check" onClick={toggleCheck}>Voir les solutions</button>
+          )}
       </div>
     );
   }

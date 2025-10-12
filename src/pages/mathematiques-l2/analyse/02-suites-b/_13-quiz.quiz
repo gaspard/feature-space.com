@@ -1,0 +1,392 @@
+---
+id: f00f9e58
+type: quiz
+order: 13
+title: Séries Numériques (suite) - quiz (A)
+tags:
+  - séries numériques
+  - convergence
+  - critère de Cauchy
+  - séries à termes positifs
+  - intégrales généralisées
+  - théorème d'Abel
+createdAt: '2025-10-12T17:44:18.176Z'
+level: regular
+course: Analyse
+courseId: 9c2d50b3
+chapter: Séries Numériques (suite)
+chapterId: c9bf30da
+---
+# Quiz: Séries Numériques (suite)
+
+---
+
+#### Question 1 : Définition d'une intégrale généralisée convergente
+
+Comment la convergence de l'intégrale généralisée $\int_a^{+\infty} f(t)dt$ est-elle définie, pour une fonction $f$ continue sur $[a, +\infty[$ ?
+
+- [ ] **A)** La limite $\lim_{t \to +\infty} f(t)$ doit être égale à 0.
+- [x] **B)** La limite $\lim_{b \to +\infty} \int_a^b f(t)dt$ doit exister et être un nombre réel fini.
+- [ ] **C)** La fonction $f$ doit être bornée sur l'intervalle $[a, +\infty[$.
+- [ ] **D)** L'intégrale $\int_a^b f(t)dt$ doit être positive pour tout $b > a$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+- **A)** C'est une condition nécessaire pour la convergence si $f$ est positive, mais elle n'est pas suffisante. Par exemple, pour $f(t) = 1/t$, la limite est 0 mais l'intégrale $\int_1^{+\infty} (1/t)dt$ diverge.
+
+- **B)** C'est la définition même de la convergence d'une intégrale généralisée en $+\infty$. On calcule l'intégrale sur un segment $[a, b]$ puis on regarde si cette valeur a une limite finie lorsque la borne $b$ tend vers l'infini.
+
+- **C)** Une fonction non bornée peut avoir une intégrale convergente. Par exemple, l'intégrale $\int_0^1 \frac{1}{\sqrt{t}}dt$ converge, bien que la fonction $t \mapsto 1/\sqrt{t}$ ne soit pas bornée au voisinage de 0.
+
+- **D)** La positivité de l'intégrale n'est pas une condition de convergence. Une fonction peut changer de signe et son intégrale peut converger. De plus, la fonction elle-même n'a pas besoin d'être positive.
+
+</details>
+
+---
+
+#### Question 2 : Nature des intégrales de Riemann
+
+Pour quelles valeurs du paramètre réel $\alpha$ l'intégrale de Riemann $\int_1^{+\infty} \frac{1}{t^\alpha} dt$ est-elle convergente ?
+
+- [ ] **A)** $\alpha < 1$
+- [x] **C)** $\alpha > 1$
+- [ ] **B)** $\alpha \le 1$
+- [ ] **D)** Uniquement pour $\alpha = 2$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+C'est un résultat fondamental concernant les intégrales de Riemann.
+
+Le calcul de l'intégrale donne :
+
+- Si $\alpha \neq 1$, $\int_1^b \frac{1}{t^\alpha} dt = \left[ \frac{t^{1-\alpha}}{1-\alpha} \right]_1^b = \frac{b^{1-\alpha}-1}{1-\alpha}$. Pour que cette expression ait une limite finie quand $b \to +\infty$, il faut que l'exposant de $b$ soit négatif, c'est-à-dire $1-\alpha < 0$, ce qui équivaut à $\alpha > 1$.
+- Si $\alpha = 1$, $\int_1^b \frac{1}{t} dt = [\ln(t)]_1^b = \ln(b)$. Quand $b \to +\infty$, $\ln(b) \to +\infty$, donc l'intégrale diverge.
+
+En conclusion, l'intégrale converge si et seulement si $\alpha > 1$.
+
+- **A)** Si $\alpha < 1$, alors $1-\alpha > 0$, et la limite est infinie. L'intégrale diverge.
+- **B)** Si $\alpha \le 1$, cela inclut le cas $\alpha=1$ et les cas où $\alpha < 1$. L'intégrale diverge.
+- **D)** L'intégrale converge pour une infinité de valeurs, pas seulement pour $\alpha=2$.
+
+</details>
+
+---
+
+#### Question 3 : Conditions du critère de comparaison série-intégrale
+
+Pour appliquer le critère de comparaison série-intégrale à la série $\sum f(n)$, quelles sont les hypothèses requises pour la fonction $f$ sur un intervalle $[N, +\infty[$ ?
+
+- [x] **A)** La fonction $f$ doit être continue (ou continue par morceaux).
+- [ ] **B)** La fonction $f$ doit être strictement positive.
+- [x] **C)** La fonction $f$ doit être décroissante.
+- [x] **D)** La fonction $f$ doit être positive (ou nulle).
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, C, D]**
+
+Le critère de comparaison série-intégrale stipule que si une fonction $f$ est continue par morceaux, positive et décroissante sur $[N, +\infty[$, alors la série $\sum_{n=N}^\infty f(n)$ et l'intégrale $\int_N^{+\infty} f(t)dt$ sont de même nature.
+
+- **A)** La continuité (ou continuité par morceaux) est nécessaire pour que l'intégrale de Riemann $\int_N^b f(t)dt$ soit bien définie. C'est une condition correcte.
+
+- **B)** La fonction doit être positive ($f(t) \ge 0$), mais pas nécessairement *strictement* positive. Si $f(n)=0$ à partir d'un certain rang, la série est trivialement convergente. C'est donc une condition trop forte.
+
+- **C)** La décroissance de la fonction est une hypothèse essentielle. C'est elle qui permet d'encadrer l'intégrale par la somme des aires des rectangles, et vice-versa. C'est une condition correcte.
+
+- **D)** La positivité est également une hypothèse fondamentale. Le critère ne s'applique pas aux fonctions qui changent de signe. La condition est $f(t) \ge 0$. C'est une condition correcte.
+
+</details>
+
+---
+
+#### Question 4 : Application du critère série-intégrale
+
+Selon le critère de comparaison série-intégrale, la nature de la série $\sum_{n \ge 2} \frac{1}{n \ln(n)}$ est la même que la nature de quelle intégrale ?
+
+- [ ] **A)** $\int_2^{+\infty} \frac{1}{t^2} dt$
+- [ ] **B)** $\int_2^{+\infty} \frac{1}{\ln(t)} dt$
+- [x] **C)** $\int_2^{+\infty} \frac{1}{t \ln(t)} dt$
+- [ ] **D)** $\int_1^{+\infty} \frac{1}{t \ln(t)} dt$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Le critère de comparaison série-intégrale relie la nature de la série $\sum f(n)$ à celle de l'intégrale $\int f(t)dt$, à condition que la fonction $f$ respecte les hypothèses (continuité, positivité, décroissance).
+
+Pour la série $\sum_{n \ge 2} \frac{1}{n \ln(n)}$, le terme général est $u_n = f(n)$ avec $f(t) = \frac{1}{t \ln(t)}$.
+
+La fonction $f(t) = \frac{1}{t \ln(t)}$ est bien continue, positive et décroissante sur $[2, +\infty[$. Le critère s'applique.
+
+La série a donc la même nature que l'intégrale $\int_2^{+\infty} \frac{1}{t \ln(t)} dt$.
+
+- **A)** C'est l'intégrale associée à la série $\sum 1/n^2$. Incorrect.
+- **B)** C'est l'intégrale associée à la série $\sum 1/\ln(n)$. Incorrect.
+- **C)** C'est l'intégrale correspondant exactement à la fonction $f(t)$ associée au terme général de la série. Correct.
+- **D)** La borne inférieure de l'intégrale doit correspondre au début de l'intervalle où la fonction est définie et respecte les hypothèses. Ici, $\ln(1)=0$, donc la fonction n'est pas définie en $t=1$. La borne doit être supérieure à 1, par exemple 2, comme dans la série.
+
+</details>
+
+---
+
+#### Question 5 : Hypothèse du critère des équivalents
+
+Le critère des équivalents pour les séries stipule que si $u_n \sim v_n$, alors les séries $\sum u_n$ et $\sum v_n$ sont de même nature. Quelle est une hypothèse cruciale pour que ce théorème soit valide ?
+
+- [ ] **A)** Les suites $(u_n)$ et $(v_n)$ doivent être monotones.
+- [x] **B)** Les termes $u_n$ (et donc $v_n$) doivent être de signe constant à partir d'un certain rang.
+- [ ] **C)** Les séries $\sum u_n$ et $\sum v_n$ doivent converger.
+- [ ] **D)** Ce théorème est toujours vrai, sans hypothèse supplémentaire.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+- **A)** La monotonie n'est pas une condition requise pour le critère des équivalents.
+
+- **B)** C'est l'hypothèse fondamentale. Le critère n'est vrai que pour les séries à termes de signe constant (positif ou négatif) à partir d'un certain rang. Si les termes changent de signe, le critère peut être mis en défaut, comme le montre le contre-exemple $u_n = \frac{(-1)^n}{\sqrt{n}}$ et $v_n = \frac{(-1)^n}{\sqrt{n}} + \frac{1}{n}$.
+
+- **C)** Le théorème sert justement à déterminer la nature (convergence OU divergence) d'une série. On ne peut pas supposer la convergence au départ.
+
+- **D)** Le critère n'est pas toujours vrai. L'hypothèse de signe constant est indispensable.
+
+</details>
+
+---
+
+#### Question 6 : Application du critère des équivalents
+
+Quelle est la nature de la série de terme général $u_n = \ln\left(1 + \frac{1}{n^3}\right)$ ?
+
+- [ ] **A)** Elle diverge car son terme général est équivalent à celui de la série harmonique.
+- [ ] **B)** On ne peut pas conclure avec le critère des équivalents.
+- [ ] **C)** Elle diverge car son terme général ne tend pas vers 0.
+- [x] **D)** Elle converge car son terme général est équivalent à $\frac{1}{n^3}$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+Pour déterminer la nature de la série, nous allons chercher un équivalent simple de son terme général $u_n$.
+
+Les termes $u_n = \ln(1 + 1/n^3)$ sont positifs pour $n \ge 1$. On peut donc utiliser le critère des équivalents.
+
+Quand $n \to +\infty$, on a $\frac{1}{n^3} \to 0$. On utilise l'équivalent usuel $\ln(1+x) \sim x$ lorsque $x \to 0$.
+
+En posant $x = \frac{1}{n^3}$, on obtient :
+
+$$ u_n = \ln\left(1 + \frac{1}{n^3}\right) \sim \frac{1}{n^3} $$
+
+La série $\sum \frac{1}{n^3}$ est une série de Riemann avec $\alpha=3$. Puisque $3 > 1$, elle converge.
+
+Par le critère de comparaison par équivalents pour les séries à termes positifs, la série $\sum u_n$ converge également.
+
+- **A)** L'équivalent n'est pas $1/n$ mais $1/n^3$.
+- **B)** Le critère des équivalents s'applique parfaitement ici.
+- **C)** Le terme général tend bien vers 0, car $\ln(1+0) = 0$.
+- **D)** Le raisonnement est correct.
+
+</details>
+
+---
+
+#### Question 7 : Critère des séries alternées
+
+Soit une série de la forme $\sum_{n=1}^\infty (-1)^n b_n$. Quelles sont les conditions suffisantes sur la suite $(b_n)$ pour garantir la convergence de la série d'après le critère des séries alternées ?
+
+- [ ] **A)** La suite $(b_n)$ est positive et bornée.
+- [ ] **B)** La suite $(b_n)$ tend vers 0.
+- [x] **C)** La suite $(b_n)$ est positive, décroissante et tend vers 0.
+- [ ] **D)** La suite $(b_n)$ est positive et la série $\sum b_n$ converge.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Le critère des séries alternées (ou critère de Leibniz) énonce précisément les conditions suffisantes pour qu'une série alternée converge.
+
+- **A)** Être bornée ne suffit pas. Par exemple, si $b_n = 1$ pour tout $n$, la suite est positive et bornée, mais la série $\sum (-1)^n$ diverge.
+- **B)** Tendre vers 0 ne suffit pas si la décroissance n'est pas assurée. Il existe des contre-exemples où la compensation des termes ne se fait pas correctement.
+- **C)** Ces trois conditions (positivité, décroissance, limite nulle) sont exactement les hypothèses du critère des séries alternées.
+- **D)** Si $\sum b_n$ converge, alors la série $\sum (-1)^n b_n$ est absolument convergente, et donc convergente. C'est une condition suffisante, mais plus forte que ce que demande le critère des séries alternées. Ce critère est particulièrement utile quand $\sum b_n$ diverge (cas des séries semi-convergentes comme $\sum \frac{(-1)^n}{n}$).
+
+</details>
+
+---
+
+#### Question 8 : Majoration du reste d'une série alternée
+
+On considère la somme $S = \sum_{n=1}^\infty \frac{(-1)^{n+1}}{n^2}$. On l'approxime par la somme partielle $S_{10} = \sum_{n=1}^{10} \frac{(-1)^{n+1}}{n^2}$. Quelle est l'estimation de l'erreur $|S - S_{10}|$ donnée par le critère des séries alternées ?
+
+- [ ] **A)** $|S - S_{10}| \le \frac{1}{100}$
+- [ ] **B)** $|S - S_{10}| \le \frac{1}{10}$
+- [x] **C)** $|S - S_{10}| \le \frac{1}{121}$
+- [ ] **D)** L'erreur est exactement égale à $\frac{1}{121}$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Pour une série alternée $\sum (-1)^n b_n$ qui satisfait les conditions du critère, le reste d'ordre $N$, $R_N = S - S_N$, est majoré en valeur absolue par le premier terme négligé, $|u_{N+1}| = b_{N+1}$.
+
+La série est $\sum_{n=1}^\infty (-1)^{n+1} \frac{1}{n^2}$. Ici, le terme général est $u_n = (-1)^{n+1} b_n$ avec $b_n = \frac{1}{n^2}$. La suite $(b_n)$ est bien positive, décroissante et tend vers 0.
+
+L'erreur commise en approximant $S$ par $S_{10}$ est $R_{10} = S - S_{10}$.
+
+La majoration est :
+
+$$ |S - S_{10}| \le b_{10+1} = b_{11} $$
+
+$$ b_{11} = \frac{1}{11^2} = \frac{1}{121} $$
+
+- **A)** $1/100$ correspond à $b_{10}$, pas $b_{11}$.
+- **B)** $1/10$ correspond à $\sqrt{b_{10}}$, ce qui n'est pas la bonne formule.
+- **C)** L'erreur est bien majorée par le premier terme négligé, qui est $b_{11} = 1/11^2 = 1/121$.
+- **D)** Il s'agit d'une majoration (une inégalité), pas d'une égalité. L'erreur est inférieure ou égale à cette valeur.
+
+</details>
+
+---
+
+#### Question 9 : Théorème de réarrangement de Riemann
+
+Soit $\sum u_n$ une série semi-convergente (c'est-à-dire convergente, mais pas absolument convergente). Que peut-on dire de la série $\sum u_{\sigma(n)}$ obtenue en réarrangeant ses termes selon une permutation $\sigma$ ?
+
+- [x] **A)** Il existe un réarrangement qui fait converger la série vers n'importe quel réel $L$ choisi à l'avance.
+- [ ] **B)** Tout réarrangement de ses termes donne une série qui converge vers la même somme que la série initiale.
+- [ ] **C)** La série réarrangée est toujours convergente, mais sa somme peut changer.
+- [x] **D)** Il existe un réarrangement qui fait diverger la série vers $+\infty$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, D]**
+
+Ceci est le contenu du théorème de réarrangement de Riemann, qui met en évidence la nature "fragile" de la convergence des séries semi-convergentes.
+
+- **A)** C'est une partie du théorème de Riemann. On peut réorganiser les termes pour que la somme converge vers n'importe quel nombre réel. Ceci est correct.
+
+- **B)** C'est faux. Cette propriété n'est vraie que pour les séries absolument convergentes.
+
+- **C)** C'est faux car un réarrangement peut aussi faire diverger la série.
+
+- **D)** C'est également une partie du théorème de Riemann. On peut choisir un réarrangement qui fait diverger la série vers $+\infty$, $-\infty$, ou même qui la fait osciller sans limite. Ceci est correct.
+
+</details>
+
+---
+
+#### Question 10 : Sommation par paquets
+
+Laquelle des affirmations suivantes concernant la sommation par paquets (regroupement de termes) est correcte ?
+
+- [ ] **A)** Si la série obtenue par paquets converge, alors la série initiale converge toujours.
+- [x] **B)** Si la série initiale $\sum u_n$ converge, alors toute série obtenue par paquets converge vers la même somme.
+- [ ] **C)** La sommation par paquets ne change jamais la nature d'une série.
+- [x] **D)** Pour une série $\sum u_n$ à termes positifs, si la série obtenue par paquets converge, alors la série initiale converge.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B, D]**
+
+- **A)** C'est faux. Le contre-exemple classique est la série de Grandi $\sum (-1)^n = 1-1+1-1+\dots$ qui diverge. En la regroupant par paquets de deux $(1-1)+(1-1)+\dots$, on obtient la série $\sum 0$ qui converge vers 0.
+
+- **B)** C'est vrai. Si la suite des sommes partielles $S_n$ de la série initiale converge vers $S$, alors la suite des sommes partielles de la série par paquets est une sous-suite de $(S_n)$. Toute sous-suite d'une suite convergente converge vers la même limite.
+
+- **C)** C'est faux, comme le montre le contre-exemple de la série de Grandi où une série divergente devient convergente après regroupement.
+
+- **D)** C'est vrai. C'est le cas particulier important où la réciproque fonctionne. Si les termes sont positifs, il n'y a pas d'annulation possible à l'intérieur des paquets. La convergence de la somme des paquets implique que la suite des sommes partielles de la série initiale est majorée, et comme elle est croissante (termes positifs), elle converge.
+
+</details>
+
+---
+
+#### Question 11 : Convergence et absolue convergence
+
+Quelle est la différence fondamentale entre une série absolument convergente et une série semi-convergente ?
+
+- [ ] **A)** Une série absolument convergente a une somme positive, tandis qu'une série semi-convergente a une somme négative.
+- [x] **B)** La somme d'une série absolument convergente ne dépend pas de l'ordre des termes, contrairement à une série semi-convergente.
+- [ ] **C)** Les séries absolument convergentes concernent des termes positifs, les séries semi-convergentes des termes de signe alterné.
+- [ ] **D)** Une série semi-convergente converge plus lentement qu'une série absolument convergente.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+- **A)** Le signe de la somme ne dépend pas du type de convergence. Par exemple, $\sum (-1/2)^n$ est absolument convergente et sa somme est positive, tandis que $\sum (-1)^n/n^2$ est aussi absolument convergente mais a une somme négative.
+
+- **B)** C'est la propriété clé démontrée par le théorème de réarrangement de Riemann. La convergence absolue garantit la "commutativité" de la somme infinie : on peut réarranger les termes sans changer la somme. Pour une série semi-convergente, l'ordre des termes est crucial et peut changer la valeur de la somme, voire sa nature.
+
+- **C)** C'est une simplification excessive. Une série absolument convergente peut très bien avoir des termes de signes quelconques (par exemple $\sum \sin(n)/n^2$). Une série semi-convergente est souvent alternée, mais pas toujours.
+
+- **D)** Bien que souvent vrai en pratique, ce n'est pas une définition ou une propriété fondamentale. La vitesse de convergence dépend du comportement du terme général, pas seulement du type de convergence.
+
+</details>
+
+---
+
+#### Question 12 : Analyse d'une série via un équivalent
+
+Quelle est la nature de la série de terme général $u_n = \sqrt{n+1} - \sqrt{n}$ ?
+
+- [ ] **A)** Elle converge car son terme général tend vers 0.
+- [x] **B)** Elle diverge car son terme général est équivalent à $\frac{1}{2\sqrt{n}}$.
+- [ ] **C)** Elle converge car elle est télescopique.
+- [ ] **D)** Elle diverge grossièrement car son terme général ne tend pas vers 0.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Analysons le terme général $u_n = \sqrt{n+1} - \sqrt{n}$. Les termes sont positifs, on peut donc utiliser le critère des équivalents.
+
+Pour trouver un équivalent, on utilise l'expression conjuguée :
+
+$$ u_n = (\sqrt{n+1} - \sqrt{n}) \times \frac{\sqrt{n+1} + \sqrt{n}}{\sqrt{n+1} + \sqrt{n}} = \frac{(n+1) - n}{\sqrt{n+1} + \sqrt{n}} = \frac{1}{\sqrt{n+1} + \sqrt{n}} $$
+
+Au dénominateur, lorsque $n \to +\infty$, $\sqrt{n+1} = \sqrt{n(1+1/n)} = \sqrt{n}\sqrt{1+1/n} \sim \sqrt{n}$.
+
+Donc, $\sqrt{n+1} + \sqrt{n} \sim \sqrt{n} + \sqrt{n} = 2\sqrt{n}$.
+
+Finalement, on obtient l'équivalent :
+
+$$ u_n \sim \frac{1}{2\sqrt{n}} $$
+
+La série $\sum \frac{1}{2\sqrt{n}} = \frac{1}{2} \sum \frac{1}{n^{1/2}}$ est une série de Riemann avec $\alpha = 1/2$. Puisque $1/2 \le 1$, elle diverge.
+
+Par le critère des équivalents pour les séries à termes positifs, la série $\sum u_n$ diverge également.
+
+- **A)** Le terme général tend bien vers 0, mais cela ne suffit pas pour garantir la convergence.
+- **B)** Le raisonnement est correct.
+- **C)** Cette série est bien télescopique : $S_N = \sum_{k=1}^N (\sqrt{k+1} - \sqrt{k}) = \sqrt{N+1} - \sqrt{1}$. La limite de $S_N$ quand $N \to +\infty$ est $+\infty$, donc la série diverge. L'affirmation "elle converge" est fausse, même si la méthode télescopique est applicable pour prouver la divergence.
+- **D)** Le terme général tend bien vers 0, donc la série ne diverge pas grossièrement.
+
+</details>

@@ -12,7 +12,7 @@ tags:
   - Suites de Cauchy
 createdAt: '2025-10-12T14:41:41.272Z'
 level: pro
-course: Topologie I
+course: Topologie
 courseId: 34e61f8e
 chapter: Topologie sur Rn
 chapterId: 3c3b95a8

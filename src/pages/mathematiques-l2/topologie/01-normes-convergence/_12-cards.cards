@@ -11,7 +11,7 @@ tags:
   - analyse
 createdAt: '2025-10-12T15:02:23.733Z'
 level: regular
-course: Topologie I
+course: Topologie
 courseId: 34e61f8e
 chapter: Normes sur Rⁿ et suites convergentes
 chapterId: 629d2832

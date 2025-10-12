@@ -269,7 +269,7 @@ Dans l'espace de Minkowski $\mathbb{R}^4$ avec $\varphi(x,y) = x_1y_1+x_2y_2+x_3
 ### Concepts Connexes
 
 - **Espaces $L^p$**: L'inégalité de Cauchy-Schwarz est un cas particulier ($p=2$) de l'inégalité de Hölder pour les espaces $L^p$.
-- **Analyse fonctionnelle**: L'inégalité de Cauchy-Schwarz garantit la continuité du produit scalaire par rapport à la topologie induite par la norme.
+- **Analyse fonctionnelle**: L'inégalité de Cauchy-Schwarz garantit la continuité du produit scalaire par rapport à la Topologienduite par la norme.
 
 ---
 

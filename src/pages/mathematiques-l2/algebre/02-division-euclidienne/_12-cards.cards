@@ -1,0 +1,381 @@
+---
+id: 70b4e155
+type: cards
+order: 12
+title: Division euclidienne - fiches de révision (A)
+tags:
+  - algèbre
+  - anneau
+  - division euclidienne
+  - polynôme
+  - idéal
+  - bézout
+createdAt: '2025-10-12T20:59:11.112Z'
+level: regular
+course: Algèbre
+courseId: 3b74b601
+chapter: Division euclidienne
+chapterId: e5009a65
+---
+# Fiches de révision "Division euclidienne" (A)
+
+---
+
+Qu'est-ce qu'un polynôme à coefficients dans un anneau commutatif $A$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Un **polynôme à coefficients dans A** est une somme formelle de la forme :
+
+$P(X) = \sum_{n \in \mathbb{N}} a_n X^n = a_0 + a_1 X + a_2 X^2 + \dots$
+
+où les coefficients $a_n$ sont des éléments de l'anneau $A$ et sont tous nuls sauf un nombre fini d'entre eux. L'ensemble de ces polynômes est noté $A[X]$.
+
+Un polynôme est un objet algébrique formel, pas une fonction. L'indéterminée $X$ est un symbole pour organiser les coefficients.
+
+**Opérations :**
+
+Soient $P(X) = \sum a_n X^n$ et $Q(X) = \sum b_n X^n$.
+
+- **Addition :** $P(X) + Q(X) = \sum_{n \in \mathbb{N}} (a_n + b_n) X^n$ (on additionne les coefficients de même degré).
+- **Multiplication :** $P(X) \cdot Q(X) = \sum_{n \in \mathbb{N}} \left(\sum_{p+q=n} a_p b_q\right) X^n$.
+
+**Degré :**
+
+Le **degré** d'un polynôme non nul $P$, noté $\text{deg}(P)$, est le plus grand entier $n$ tel que $a_n \ne 0$. Par convention, $\text{deg}(0) = -\infty$.
+
+**Exemple :**
+
+Dans $\mathbb{Z}[X]$, le polynôme $P(X) = 5X^3 - 2X + 1$ a pour coefficients $(1, -2, 0, 5, 0, \dots)$. Son degré est 3.
+
+</details>
+
+---
+
+Expliquez les propriétés du degré pour la somme et le produit de deux polynômes $P$ et $Q$.
+
+<details>
+
+<summary>Réponse</summary>
+
+Soient $P, Q$ deux polynômes dans $A[X]$.
+
+**1. Degré de la somme :**
+
+$\text{deg}(P+Q) \le \max(\text{deg}(P), \text{deg}(Q))$
+
+L'inégalité est stricte si $\text{deg}(P) = \text{deg}(Q)$ et si la somme des coefficients dominants est nulle. Sinon, il y a égalité.
+
+**Exemple d'inégalité stricte :**
+
+Dans $\mathbb{Z}[X]$, si $P(X) = 2X^2 + 3X$ et $Q(X) = -2X^2 + X + 1$.
+
+$\text{deg}(P) = 2$ et $\text{deg}(Q) = 2$.
+
+$P(X) + Q(X) = (2-2)X^2 + (3+1)X + 1 = 4X+1$.
+
+Le degré de la somme est $\text{deg}(P+Q) = 1$, ce qui est bien inférieur à $\max(2, 2) = 2$.
+
+**2. Degré du produit :**
+
+$\text{deg}(PQ) \le \text{deg}(P) + \text{deg}(Q)$
+
+Cette inégalité devient une **égalité si l'anneau $A$ est intègre**. Un anneau est intègre s'il est commutatif et si $ab=0 \implies a=0$ ou $b=0$. Dans ce cas, le produit des coefficients dominants de $P$ et $Q$ ne peut pas être nul.
+
+**Exemple où l'anneau n'est pas intègre :**
+
+Dans $(\mathbb{Z}/6\mathbb{Z})[X]$, soient $P(X) = 2X$ et $Q(X) = 3X$.
+
+$\text{deg}(P)=1, \text{deg}(Q)=1$.
+
+$P(X)Q(X) = (2 \cdot 3)X^2 = 6X^2 = 0 \pmod 6$.
+
+$\text{deg}(PQ) = -\infty$, ce qui est bien inférieur à $1+1=2$. Cela est dû au fait que $2 \cdot 3 = 0$ dans $\mathbb{Z}/6\mathbb{Z}$.
+
+</details>
+
+---
+
+Qu'est-ce qu'un anneau euclidien ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Un **anneau euclidien** est un anneau intègre $A$ pour lequel il existe une fonction $\delta : A \to \mathbb{N} \cup \{-\infty\}$, appelée **stathme euclidien**, qui satisfait aux conditions suivantes :
+
+1.  **Condition sur le zéro :**
+
+    Pour tout $a \in A$, $\delta(a) = -\infty$ si et seulement si $a=0$.
+
+2.  **Division euclidienne :**
+
+    Pour tout $a \in A$ et tout $b \in A \setminus \{0\}$, il existe un quotient $q \in A$ et un reste $r \in A$ tels que :
+
+    $a = bq + r \quad \text{et} \quad \delta(r) < \delta(b)$
+
+    Le reste doit être "strictement plus petit" que le diviseur, au sens du stathme.
+
+3.  **Compatibilité avec la multiplication :**
+
+    Pour tous $a, b \in A \setminus \{0\}$, on a $\delta(ab) \ge \delta(b)$.
+
+Cette structure généralise la division avec reste des entiers et permet d'utiliser des algorithmes comme l'algorithme d'Euclide.
+
+**Exemples fondamentaux :**
+
+- L'anneau $\mathbb{Z}$ des entiers, avec le stathme $\delta(n) = |n|$ (et $\delta(0)=-\infty$).
+- L'anneau $K[X]$ des polynômes sur un corps $K$, avec le stathme $\delta(P) = \text{deg}(P)$.
+
+</details>
+
+---
+
+Qu'est-ce qu'un anneau principal ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Un **anneau principal** est un anneau intègre $A$ dans lequel **tous les idéaux sont principaux**.
+
+- Un **idéal** $I$ de $A$ est un sous-ensemble de $A$ stable par addition et par multiplication par n'importe quel élément de $A$.
+
+- Un idéal est dit **principal** s'il peut être engendré par un seul élément. C'est-à-dire, il existe un élément $a \in A$ tel que l'idéal est l'ensemble de tous les multiples de $a$ :
+
+$I = (a) = \{ax \mid x \in A\}$
+
+Un anneau est principal si n'importe quel idéal, même s'il est défini comme engendré par plusieurs éléments, par exemple $(a, b) = \{ax+by \mid x,y \in A\}$, peut être simplifié et représenté comme engendré par un seul élément, disons $(d)$.
+
+**Théorème clé :** Tout anneau euclidien est un anneau principal.
+
+La preuve repose sur le fait que dans un idéal non nul, on peut choisir un élément de stathme minimal, et montrer que cet élément engendre tout l'idéal.
+
+**Exemples :** $\mathbb{Z}$ et $K[X]$ (où $K$ est un corps) sont des anneaux principaux car ils sont euclidiens.
+
+**Contre-exemple :** $\mathbb{Z}[X]$ n'est pas principal. L'idéal $(2, X)$ ne peut pas être engendré par un seul polynôme.
+
+</details>
+
+---
+
+Quelle est la définition du PGCD dans un anneau principal et quel est le lien avec l'identité de Bézout ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Soit $A$ un anneau principal et $a, b \in A$.
+
+**Définition du PGCD :**
+
+Le **Plus Grand Commun Diviseur (PGCD)** de $a$ et $b$ est un générateur de l'idéal somme $(a) + (b)$. On le note $d = \text{pgcd}(a, b)$, et par définition on a :
+
+$(a,b) = (d)$
+
+L'idéal $(a,b)$ est l'ensemble de toutes les combinaisons linéaires $\{ax + by \mid x, y \in A\}$.
+
+**Identité de Bézout :**
+
+Comme $d$ est dans l'idéal $(d) = (a,b)$, il doit pouvoir s'écrire comme une combinaison linéaire de $a$ et $b$. Il existe donc $u, v \in A$ tels que :
+
+$au + bv = d$
+
+Cette équation est appelée l'**identité de Bézout**.
+
+**Théorème de Bézout :**
+
+Deux éléments $a$ et $b$ sont **premiers entre eux** si leur PGCD est un élément inversible (comme 1 dans $\mathbb{Z}$). Cela est équivalent à dire qu'il existe $u, v \in A$ tels que :
+
+$au + bv = 1$
+
+Le PGCD est unique à une multiplication par un élément inversible près.
+
+</details>
+
+---
+
+Comment trouver le PGCD et les coefficients de Bézout de 84 et 30 avec l'algorithme d'Euclide étendu ?
+
+<details>
+
+<summary>Réponse</summary>
+
+**Objectif :** Trouver $d = \text{pgcd}(84, 30)$ et des entiers $u, v$ tels que $84u + 30v = d$.
+
+**Étape 1 : Divisions euclidiennes successives**
+
+1.  $84 = 2 \cdot 30 + 24$
+2.  $30 = 1 \cdot 24 + 6$
+3.  $24 = 4 \cdot 6 + 0$
+
+Le dernier reste non nul est 6. Donc, $\text{pgcd}(84, 30) = 6$.
+
+**Étape 2 : Remonter les calculs pour trouver $u$ et $v$**
+
+On part de l'avant-dernière ligne et on exprime le PGCD :
+
+De la ligne (2) : $6 = 30 - 1 \cdot 24$
+
+Ensuite, on utilise la ligne précédente pour remplacer le reste qui apparaît (ici, 24).
+
+De la ligne (1) : $24 = 84 - 2 \cdot 30$
+
+On substitue cette expression de 24 dans l'équation pour 6 :
+
+$6 = 30 - 1 \cdot (84 - 2 \cdot 30)$
+
+$6 = 30 - 1 \cdot 84 + 2 \cdot 30$
+
+$6 = (1+2) \cdot 30 - 1 \cdot 84$
+
+$6 = 3 \cdot 30 + (-1) \cdot 84$
+
+On a donc trouvé l'identité de Bézout : $84(-1) + 30(3) = 6$.
+
+Les coefficients sont $u = -1$ et $v = 3$.
+
+</details>
+
+---
+
+Quelle est la différence entre un élément premier et un élément irréductible dans un anneau intègre ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Soit $A$ un anneau intègre et $p \in A$ un élément non nul et non inversible.
+
+**Élément irréductible :** (notion de "non-factorisable")
+
+$p$ est **irréductible** si, dès que l'on écrit $p=ab$, alors soit $a$, soit $b$ doit être un élément inversible.
+
+En d'autres termes, on ne peut pas "casser" $p$ en un produit de deux éléments "plus petits".
+
+**Exemple dans $\mathbb{Z}$ :** 7 est irréductible car ses seuls diviseurs sont $\pm 1$ (inversibles) et $\pm 7$.
+
+**Élément premier :** (notion de divisibilité, généralisation du lemme d'Euclide)
+
+$p$ est **premier** si, pour tous $a, b \in A$, la condition $p | ab$ implique $p | a$ ou $p | b$.
+
+Si $p$ divise un produit, il doit diviser l'un des facteurs.
+
+**Exemple dans $\mathbb{Z}$ :** Si 7 divise $ab$, alors 7 doit diviser $a$ ou $b$. Donc 7 est premier.
+
+**Relation entre les deux :**
+
+1.  Dans tout anneau intègre, **tout élément premier est irréductible**.
+2.  La réciproque n'est pas toujours vraie. Cependant, dans un **anneau principal** (et donc dans un anneau euclidien), **tout élément irréductible est aussi premier**.
+
+**Conclusion :** Dans les anneaux $\mathbb{Z}$ et $K[X]$ (sur un corps $K$), les notions d'élément premier et d'élément irréductible sont **équivalentes**.
+
+</details>
+
+---
+
+Énoncez le théorème de la décomposition unique en facteurs irréductibles.
+
+<details>
+
+<summary>Réponse</summary>
+
+**Théorème fondamental de l'arithmétique (généralisé)**
+
+Soit $A$ un anneau euclidien.
+
+1.  **Existence :** Tout élément $a \in A$ non nul et non inversible peut s'écrire comme un produit fini d'éléments irréductibles :
+
+    $a = p_1 p_2 \cdots p_n$
+
+2.  **Unicité :** Cette décomposition est **unique** à l'ordre des facteurs et à la multiplication par des éléments inversibles près (on dit "à l'ordre et aux associés près").
+
+**Explication de "aux associés près" :**
+
+Deux éléments $x, y$ sont associés s'il existe un élément inversible $u$ tel que $x = uy$.
+
+Par exemple, dans $\mathbb{Z}$, les inversibles sont $\{1, -1\}$. Les décompositions $12 = 2 \cdot 2 \cdot 3$ et $12 = (-2) \cdot 2 \cdot (-3)$ sont considérées comme identiques car $2$ et $-2$ sont associés, et $3$ et $-3$ sont associés.
+
+Pour obtenir une unicité stricte, on impose une convention :
+
+-   Dans $\mathbb{Z}$, on choisit les facteurs premiers positifs.
+-   Dans $K[X]$, on choisit les polynômes irréductibles unitaires (dont le coefficient dominant est 1).
+
+**Exemple dans $\mathbb{R}[X]$ :**
+
+$P(X) = X^4 - 1 = (X-1)(X+1)(X^2+1)$.
+
+Les facteurs $(X-1)$, $(X+1)$ et $(X^2+1)$ sont irréductibles et unitaires dans $\mathbb{R}[X]$. La décomposition est unique.
+
+</details>
+
+---
+
+Qu'est-ce que le polynôme minimal d'un endomorphisme $u$ en dimension finie ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Soit $u$ un endomorphisme d'un $K$-espace vectoriel $E$ de dimension finie (ou $A$ une matrice carrée $n \times n$).
+
+1.  **Polynôme annulateur :** Un polynôme $P(X) \in K[X]$ est dit **annulateur** de $u$ si $P(u) = 0$.
+
+    (Où $P(u)$ est l'endomorphisme obtenu en remplaçant $X$ par $u$ dans le polynôme, par ex. $P(X)=X^2+1 \implies P(u)=u^2+\text{Id}$).
+
+2.  **Idéal annulateur :** L'ensemble de tous les polynômes annulateurs de $u$ forme un idéal de $K[X]$, noté $\text{Ann}(u)$. Cet idéal n'est jamais réduit à $\{0\}$ en dimension finie.
+
+3.  **Définition du polynôme minimal :**
+
+    Comme $K[X]$ est un anneau principal, l'idéal $\text{Ann}(u)$ est engendré par un seul polynôme. Le **polynôme minimal** de $u$, noté $M_u(X)$, est l'**unique générateur unitaire** (coefficient dominant égal à 1) de cet idéal.
+
+**Propriétés fondamentales :**
+
+- C'est le polynôme unitaire de plus bas degré qui annule $u$.
+- Un polynôme $P$ annule $u$ si et seulement si le polynôme minimal $M_u(X)$ divise $P(X)$.
+- **Théorème de Cayley-Hamilton :** Le polynôme minimal divise toujours le polynôme caractéristique : $M_u(X) | \chi_u(X)$.
+- Les racines du polynôme minimal sont exactement les valeurs propres de $u$.
+
+</details>
+
+---
+
+Comment déterminer le polynôme minimal de la matrice $A = \begin{pmatrix} 3 & 0 \\ 0 & 3 \end{pmatrix}$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+**Étape 1 : Trouver un polynôme annulateur.**
+
+La matrice $A$ est une matrice d'homothétie, $A = 3I_2$.
+
+On peut réécrire ceci comme $A - 3I_2 = 0$.
+
+Si on considère le polynôme $P(X) = X-3$, alors $P(A) = A - 3I_2 = 0$.
+
+Donc, $P(X) = X-3$ est un polynôme annulateur de $A$.
+
+**Étape 2 : Vérifier si c'est le polynôme de plus bas degré.**
+
+Le polynôme $P(X)=X-3$ est de degré 1. Le seul degré inférieur possible pour un polynôme non nul est 0 (un polynôme constant).
+
+Un polynôme constant non nul, disons $Q(X)=c$ avec $c \ne 0$, donne $Q(A) = c \cdot I_2 \ne 0$.
+
+Donc, il n'existe pas de polynôme annulateur de degré 0.
+
+Le polynôme annulateur de plus bas degré est donc de degré 1.
+
+**Étape 3 : S'assurer qu'il est unitaire.**
+
+Le polynôme $X-3$ a un coefficient dominant égal à 1, il est donc unitaire.
+
+**Conclusion :**
+
+Le polynôme minimal de $A$ est $M_A(X) = X-3$.
+
+**Remarque :** Le polynôme caractéristique de $A$ est $\chi_A(X) = \det(XI_2-A) = \det\begin{pmatrix} X-3 & 0 \\ 0 & X-3 \end{pmatrix} = (X-3)^2$. On vérifie bien que le polynôme minimal $M_A(X)$ divise le polynôme caractéristique $\chi_A(X)$.
+
+</details>

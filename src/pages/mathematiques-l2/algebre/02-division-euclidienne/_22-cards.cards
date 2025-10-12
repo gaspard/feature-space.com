@@ -1,0 +1,577 @@
+---
+id: 5f4e7dbc
+type: cards
+order: 22
+title: Division euclidienne - fiches de révision (B)
+tags:
+  - algèbre
+  - anneau
+  - division euclidienne
+  - polynôme
+  - idéal
+  - bézout
+createdAt: '2025-10-12T20:59:09.006Z'
+level: pro
+course: Algèbre
+courseId: 3b74b601
+chapter: Division euclidienne
+chapterId: e5009a65
+---
+# Fiches de révision "Division euclidienne" (B)
+
+---
+
+Démontrer la propriété universelle de l'anneau des polynômes $A[X]$.
+
+<details>
+
+<summary>Answer</summary>
+
+**Théorème (Propriété Universelle de $A[X]$)**
+
+Soit $A$ un anneau commutatif, $(B, f)$ une $A$-algèbre et $x \in B$ un élément qui commute avec tous les éléments de $f(A)$. Alors il existe un unique morphisme de $A$-algèbres $\text{ev}_x : A[X] \to B$ tel que $\text{ev}_x(X) = x$.
+
+**Démonstration :**
+
+1.  **Unicité :**
+
+    Supposons qu'un tel morphisme $\phi: A[X] \to B$ existe. Par définition d'un morphisme de $A$-algèbres, le diagramme doit commuter, ce qui signifie $\phi(a \cdot 1_{A[X]}) = f(a)$ pour tout $a \in A$. On identifie $a$ avec $a \cdot 1_{A[X]}$, donc $\phi(a) = f(a)$. De plus, on impose la condition $\phi(X) = x$.
+
+    Un polynôme $P(X) \in A[X]$ s'écrit de manière unique comme $P(X) = \sum_{k=0}^n a_k X^k$. Comme $\phi$ est un morphisme d'anneaux, il doit préserver les additions et les multiplications :
+
+    $$ \phi(P(X)) = \phi(\sum_{k=0}^n a_k X^k) = \sum_{k=0}^n \phi(a_k) \phi(X)^k $$
+
+    En utilisant les conditions ci-dessus, on obtient :
+
+    $$ \phi(P(X)) = \sum_{k=0}^n f(a_k) x^k $$
+
+    Cette expression définit de manière unique l'image de tout polynôme. L'unicité du morphisme est donc établie.
+
+2.  **Existence :**
+
+    Définissons l'application $\text{ev}_x : A[X] \to B$ par la formule trouvée ci-dessus :
+
+    $$ \text{ev}_x\left(\sum a_k X^k\right) = \sum f(a_k) x^k $$
+
+    Nous devons vérifier que $\text{ev}_x$ est un morphisme de $A$-algèbres.
+
+    -   $\text{ev}_x(1_{A[X]}) = \text{ev}_x(1 \cdot X^0) = f(1)x^0 = 1_B \cdot 1_B = 1_B$.
+    -   **Additivité :** Trivial par la définition de l'addition dans $A[X]$ et $B$.
+    -   **Multiplicativité :** Soient $P(X) = \sum a_i X^i$ et $Q(X) = \sum b_j X^j$.
+
+        $$ (PQ)(X) = \sum_k \left(\sum_{i+j=k} a_i b_j\right) X^k $$
+
+        $$ \text{ev}_x(PQ) = \sum_k f\left(\sum_{i+j=k} a_i b_j\right) x^k = \sum_k \left(\sum_{i+j=k} f(a_i) f(b_j)\right) x^k $$
+
+        D'autre part :
+
+        $$ \text{ev}_x(P) \text{ev}_x(Q) = \left(\sum_i f(a_i) x^i\right) \left(\sum_j f(b_j) x^j\right) = \sum_{i,j} f(a_i) f(b_j) x^i x^j $$
+
+        Comme $x$ commute avec tous les $f(b_j)$, on a $x^i f(b_j) = f(b_j) x^i$. L'expression devient :
+
+        $$ \sum_{i,j} f(a_i) f(b_j) x^{i+j} = \sum_k \left(\sum_{i+j=k} f(a_i) f(b_j)\right) x^k = \text{ev}_x(PQ) $$
+
+    -   **Morphisme de $A$-algèbres :** Il faut vérifier que $\text{ev}_x \circ i_A = f$, où $i_A: A \to A[X]$ est l'injection canonique $a \mapsto aX^0$. Pour $a \in A$, $\text{ev}_x(i_A(a)) = \text{ev}_x(aX^0) = f(a)x^0 = f(a)$. Le diagramme commute.
+
+Le morphisme est donc bien défini et unique.
+
+</details>
+
+---
+
+Démontrer que tout anneau euclidien est principal.
+
+<details>
+
+<summary>Answer</summary>
+
+**Théorème :** Un anneau $A$ euclidien est un anneau principal.
+
+**Démonstration :**
+
+Soit $A$ un anneau euclidien muni d'un stathme $\delta: A \to \mathbb{N} \cup \{-\infty\}$. Soit $I$ un idéal de $A$.
+
+1.  **Cas trivial :** Si $I = \{0\}$, alors $I = (0)$, qui est un idéal principal.
+
+2.  **Cas non trivial :** Supposons $I \neq \{0\}$. L'ensemble $S = \{\delta(x) \mid x \in I \setminus \{0\}\}$ est une partie non vide de $\mathbb{N}$. Comme $\mathbb{N}$ est bien ordonné, $S$ admet un plus petit élément. Soit $m = \min(S)$.
+    
+    Soit $a \in I \setminus \{0\}$ un élément tel que $\delta(a) = m$. Nous allons montrer que $I = (a)$.
+
+    -   **Inclusion $(a) \subseteq I$ :**
+
+        Puisque $a \in I$ et que $I$ est un idéal, tout multiple de $a$, de la forme $ax$ avec $x \in A$, appartient à $I$. Donc, $(a) \subseteq I$.
+
+    -   **Inclusion $I \subseteq (a)$ :**
+
+        Soit $b$ un élément quelconque de $I$. Puisque $A$ est euclidien et $a \neq 0$, nous pouvons effectuer la division euclidienne de $b$ par $a$. Il existe un couple $(q, r) \in A \times A$ tel que :
+
+        $$ b = aq + r \quad \text{avec} \quad \delta(r) < \delta(a) $$
+        
+        Comme $b \in I$ et $a \in I$, on a $aq \in I$. Puisque $I$ est un sous-groupe additif de $A$, le reste $r = b - aq$ est aussi un élément de $I$.
+        
+        Deux cas sont possibles pour $r$ :
+
+        a) Soit $r=0$. Dans ce cas, $b = aq$, ce qui signifie que $b \in (a)$.
+
+        b) Soit $r \neq 0$. Dans ce cas, $r \in I \setminus \{0\}$, donc $\delta(r) \in S$. Cependant, la propriété de la division euclidienne nous donne $\delta(r) < \delta(a)$. Or, $\delta(a)$ est l'élément minimal de $S$. C'est une contradiction.
+        
+        Le seul cas possible est donc $r=0$. Par conséquent, pour tout $b \in I$, on a $b \in (a)$, ce qui prouve que $I \subseteq (a)$.
+
+Les deux inclusions montrent que $I=(a)$. Comme $I$ était un idéal arbitraire de $A$, tous les idéaux de $A$ sont principaux. $A$ est donc un anneau principal.
+
+</details>
+
+---
+
+Soit $A$ un anneau intègre. Démontrer que l'ensemble des unités de $A[X]$, noté $(A[X])^\times$, est égal à l'ensemble des unités de $A$, noté $A^\times$.
+
+<details>
+
+<summary>Answer</summary>
+
+**Théorème :** Si $A$ est un anneau intègre, alors $(A[X])^\times = A^\times$.
+
+**Démonstration :**
+
+1.  **Inclusion $A^\times \subseteq (A[X])^\times$ :**
+
+    Soit $u \in A^\times$. Alors il existe $v \in A$ tel que $uv=1_A$. En tant que polynômes constants dans $A[X]$, $u$ et $v$ vérifient la même relation $uv=1_{A[X]}$. Donc $u$ est une unité dans $A[X]$. Cette inclusion est vraie pour n'importe quel anneau commutatif $A$.
+
+2.  **Inclusion $(A[X])^\times \subseteq A^\times$ :**
+
+    C'est ici que l'hypothèse d'intégrité de $A$ est cruciale. Soit $P(X) \in (A[X])^\times$. Par définition, il existe $Q(X) \in A[X]$ tel que $P(X)Q(X) = 1$.
+
+    Puisque $A$ est un anneau intègre, la formule du degré pour le produit de deux polynômes est :
+
+    $$ \text{deg}(PQ) = \text{deg}(P) + \text{deg}(Q) $$
+
+    En appliquant cette formule à notre équation :
+
+    $$ \text{deg}(P(X)Q(X)) = \text{deg}(1) $$
+
+    $$ \text{deg}(P) + \text{deg}(Q) = 0 $$
+
+    Le degré d'un polynôme non nul est un entier naturel (un élément de $\mathbb{N}$). La somme de deux entiers naturels est nulle si et seulement si chacun des deux entiers est nul. Donc :
+
+    $$ \text{deg}(P) = 0 \quad \text{et} \quad \text{deg}(Q) = 0 $$
+
+    Cela signifie que $P(X)$ et $Q(X)$ sont des polynômes constants non nuls. On peut les écrire $P(X) = a$ et $Q(X) = b$ pour $a, b \in A \setminus \{0\}$.
+
+    L'équation $P(X)Q(X)=1$ devient $ab=1$ dans $A$. Ceci est la définition d'une unité dans l'anneau $A$. Par conséquent, $P(X) = a$ est un élément de $A^\times$.
+
+Ceci complète la démonstration.
+
+**Contre-exemple :** Si $A$ n'est pas intègre, le résultat est faux. Dans $A = \mathbb{Z}/4\mathbb{Z}$, le polynôme $P(X)=2X+1$ est une unité car $(2X+1)^2 = 4X^2+4X+1 = 1$. Pourtant, $P(X)$ n'est pas un élément de $(\mathbb{Z}/4\mathbb{Z})^\times = \{1, 3\}$.
+
+</details>
+
+---
+
+Dans un anneau intègre $A$, tout élément premier est-il irréductible ? Réciproquement, tout élément irréductible est-il premier ? Démontrer vos affirmations.
+
+<details>
+
+<summary>Answer</summary>
+
+Soit $A$ un anneau intègre, et $p \in A$ un élément non nul et non inversible.
+
+**1. Un élément premier est toujours irréductible.**
+
+**Démonstration :**
+
+Soit $p$ un élément premier. Supposons que $p$ admette une factorisation $p=ab$ avec $a,b \in A$.
+
+Par définition de la divisibilité, on a $p|ab$.
+
+Puisque $p$ est premier, cela implique que $p|a$ ou $p|b$.
+
+-   Supposons $p|a$. Il existe alors $c \in A$ tel que $a=pc$.
+
+    En substituant dans la factorisation, on obtient $p = (pc)b = p(cb)$.
+
+    Comme $A$ est intègre et $p \neq 0$, on peut simplifier par $p$, ce qui donne $1 = cb$.
+
+    Ceci signifie que $b$ est une unité dans $A$.
+
+-   Si on suppose $p|b$, un raisonnement symétrique montre que $a$ est une unité.
+
+Ainsi, pour toute factorisation $p=ab$, l'un des facteurs est une unité. C'est la définition d'un élément irréductible.
+
+**2. Un élément irréductible n'est pas toujours premier.**
+
+Cette implication est fausse en général. Elle est vraie dans les anneaux principaux (c'est le Lemme d'Euclide), et plus généralement dans les anneaux factoriels (UFD).
+
+**Contre-exemple :**
+
+Considérons l'anneau $A = \mathbb{Z}[i\sqrt{5}] = \{a+bi\sqrt{5} \mid a,b \in \mathbb{Z}\}$. Cet anneau est intègre.
+
+Soit l'élément $p=2$.
+
+-   **$2$ est irréductible dans $A$ :**
+
+    Supposons $2 = (a+bi\sqrt{5})(c+di\sqrt{5})$. En appliquant la norme $N(z) = |z|^2$, on a $N(x+yi\sqrt{5}) = x^2+5y^2$.
+
+    $N(2) = N(a+bi\sqrt{5})N(c+di\sqrt{5})$, ce qui donne $4 = (a^2+5b^2)(c^2+5d^2)$.
+
+    Les termes $a^2+5b^2$ et $c^2+5d^2$ doivent être des diviseurs entiers de 4.
+
+    Si $b \neq 0$, alors $a^2+5b^2 \ge 5$, ce qui est impossible. Donc $b=0$. De même, $d=0$.
+
+    L'équation devient $4 = a^2 c^2$, ce qui correspond à une factorisation dans $\mathbb{Z}$. Les seules factorisations de 2 dans $\mathbb{Z}$ sont $1 \cdot 2$ et $(-1)(-2)$. Cela signifie qu'un des facteurs dans $A$ doit être $\pm 1$, qui sont les unités de $A$. Donc, 2 est irréductible.
+
+-   **$2$ n'est pas premier dans $A$ :**
+
+    Considérons le produit $(1+i\sqrt{5})(1-i\sqrt{5}) = 1 - (i\sqrt{5})^2 = 1 - (-5) = 6$.
+
+    On a clairement $2|6$.
+
+    Cependant, $2$ ne divise ni $(1+i\sqrt{5})$ ni $(1-i\sqrt{5})$ dans $A$. En effet, s'il existait $x+yi\sqrt{5} \in A$ tel que $2(x+yi\sqrt{5}) = 1+i\sqrt{5}$, alors $2x=1$ et $2y=1$, ce qui est impossible pour $x,y \in \mathbb{Z}$.
+
+    Donc, $2|6$ mais $2 \nmid (1+i\sqrt{5})$ et $2 \nmid (1-i\sqrt{5})$. $2$ n'est pas un élément premier.
+
+</details>
+
+---
+
+Énoncer et démontrer le théorème de Bézout dans un anneau principal.
+
+<details>
+
+<summary>Answer</summary>
+
+**Théorème de Bézout :**
+
+Soit $A$ un anneau principal et soient $a, b \in A$. Un élément $d \in A$ est un plus grand commun diviseur (PGCD) de $a$ et $b$ si et seulement si $d$ est un diviseur commun de $a$ et $b$ et il existe $u, v \in A$ (coefficients de Bézout) tels que $au+bv=d$.
+
+**Démonstration :**
+
+Dans un anneau principal $A$, le PGCD de $a$ et $b$ est défini comme un générateur de l'idéal somme $I = (a) + (b) = \{ax+by \mid x,y \in A\}$. Notons $d = \text{pgcd}(a,b)$, de sorte que $(d) = (a,b)$.
+
+($\Rightarrow$) **Partie directe :** Supposons que $d = \text{pgcd}(a,b)$.
+
+1.  Par définition, $(d)=(a,b)$. Puisque $d \in (d)$, on a $d \in (a,b)$. Cela signifie qu'il existe $u,v \in A$ tels que $d = au+bv$.
+2.  On a $a \in (a) \subseteq (a,b) = (d)$. Donc $a$ est un multiple de $d$, c'est-à-dire $d|a$.
+3.  De même, $b \in (b) \subseteq (a,b) = (d)$. Donc $d|b$.
+
+Ainsi, $d$ est un diviseur commun de $a$ et $b$ et il existe une relation de Bézout.
+
+($\Leftarrow$) **Partie réciproque :** Supposons que $d$ est un diviseur commun de $a$ et $b$, et qu'il existe $u,v \in A$ tels que $au+bv=d$.
+
+Il nous faut montrer que $d$ est le *plus grand* commun diviseur.
+
+Soit $c$ un diviseur commun quelconque de $a$ et $b$. Il existe donc $a', b' \in A$ tels que $a=ca'$ et $b=cb'$.
+
+Substituons ces expressions dans l'identité de Bézout :
+
+$$ d = (ca')u + (cb')v $$
+
+$$ d = c(a'u + b'v) $$
+
+Cette équation montre que $c$ divise $d$.
+
+Puisque tout diviseur commun $c$ de $a$ et $b$ divise $d$, $d$ est bien un plus grand commun diviseur de $a$ et $b$.
+
+</details>
+
+---
+
+Soit $K$ un corps de caractéristique $p > 0$. Démontrer que l'application de Frobenius $F: x \mapsto x^p$ est un endomorphisme du corps $K$.
+
+<details>
+
+<summary>Answer</summary>
+
+Soit $K$ un corps de caractéristique $p$, où $p$ est un nombre premier. Soit $F: K \to K$ l'application définie par $F(x) = x^p$. Pour montrer que $F$ est un endomorphisme de corps, nous devons vérifier les trois propriétés suivantes :
+
+1.  $F(x+y) = F(x) + F(y)$
+2.  $F(xy) = F(x)F(y)$
+3.  $F(1_K) = 1_K$
+
+**Démonstration :**
+
+-   **Multiplicativité :** $F(xy) = (xy)^p = x^p y^p = F(x)F(y)$, car la multiplication dans un corps est commutative.
+
+-   **Image de l'unité :** $F(1_K) = (1_K)^p = 1_K$.
+
+-   **Additivité :** C'est la propriété la plus importante. Nous utilisons la formule du binôme de Newton :
+
+    $$ F(x+y) = (x+y)^p = \sum_{k=0}^p \binom{p}{k} x^{p-k} y^k $$
+
+    $$ (x+y)^p = \binom{p}{0}x^p + \binom{p}{1}x^{p-1}y + \dots + \binom{p}{p-1}xy^{p-1} + \binom{p}{p}y^p $$
+
+    Les coefficients extrêmes sont $\binom{p}{0} = 1$ et $\binom{p}{p} = 1$.
+
+    Considérons les coefficients binomiaux intermédiaires $\binom{p}{k}$ pour $1 \le k \le p-1$. La formule est :
+
+    $$ \binom{p}{k} = \frac{p!}{k!(p-k)!} $$
+
+    Puisque $p$ est un nombre premier, et que $1 \le k \le p-1$, le dénominateur $k!(p-k)!$ n'est pas divisible par $p$ (car tous ses facteurs sont strictement inférieurs à $p$). Cependant, le numérateur $p!$ est divisible par $p$.
+
+    Par conséquent, $\binom{p}{k}$ est un entier divisible par $p$.
+    
+    Dans le corps $K$ de caractéristique $p$, tout multiple de $p$ est nul. Donc, pour $1 \le k \le p-1$, le terme $\binom{p}{k} \cdot 1_K$ est égal à $0_K$.
+
+    La somme se réduit donc à ses termes extrêmes :
+
+    $$ (x+y)^p = 1 \cdot x^p + 0 + \dots + 0 + 1 \cdot y^p = x^p + y^p $$
+
+    $$ F(x+y) = F(x) + F(y) $$
+
+Les trois propriétés sont vérifiées, donc $F$ est un endomorphisme de corps de $K$. On l'appelle l'endomorphisme de Frobenius.
+
+*Note :* De plus, un morphisme de corps est toujours injectif. Si $K$ est un corps fini, $F$ est aussi surjectif, c'est donc un automorphisme.
+
+</details>
+
+---
+
+Expliquer la construction et la structure de l'anneau quotient $\mathbb{R}[X]/(X^2+1)$, et montrer qu'il est isomorphe au corps des nombres complexes $\mathbb{C}$.
+
+<details>
+
+<summary>Answer</summary>
+
+**Construction et Structure**
+
+Soit l'anneau $A = \mathbb{R}[X]$ et l'idéal $I = (X^2+1)$ engendré par le polynôme $P(X) = X^2+1$.
+
+L'anneau quotient est $B = A/I = \mathbb{R}[X]/(X^2+1)$.
+
+1.  **Représentants des classes :**
+
+    Puisque $\mathbb{R}[X]$ est un anneau euclidien pour le degré, toute classe d'équivalence $\bar{F} \in B$ admet un représentant unique qui est le reste de la division euclidienne de $F(X)$ par $X^2+1$. Le degré du reste est strictement inférieur à $\text{deg}(X^2+1)=2$.
+
+    Ainsi, chaque classe d'équivalence a un représentant unique de la forme $aX+b$ avec $a, b \in \mathbb{R}$.
+
+    $$ \mathbb{R}[X]/(X^2+1) = \{ \overline{aX+b} \mid a,b \in \mathbb{R} \} $$
+
+2.  **Structure de $\mathbb{R}$-algèbre :**
+
+    Cet ensemble est un $\mathbb{R}$-espace vectoriel de dimension 2, avec pour base $(\bar{1}, \bar{X})$.
+
+3.  **Opérations :**
+
+    L'addition se fait composante par composante. La multiplication est la multiplication des polynômes modulo $X^2+1$. La relation clé est $\overline{X^2+1} = \bar{0}$, ce qui implique $\bar{X}^2 = \overline{-1}$.
+
+    Calculons le produit de deux éléments généraux :
+
+    $$ (\overline{aX+b}) \cdot (\overline{cX+d}) = \overline{(aX+b)(cX+d)} = \overline{acX^2 + (ad+bc)X + bd} $$
+
+    $$ = \overline{ac(-1) + (ad+bc)X + bd} = \overline{(ad+bc)X + (bd-ac)} $$
+
+**Isomorphisme avec $\mathbb{C}$**
+
+Le polynôme $X^2+1$ est irréductible sur $\mathbb{R}$ car son discriminant $\Delta = -4 < 0$. Puisque $\mathbb{R}[X]$ est principal, l'idéal $(X^2+1)$ est maximal, et donc le quotient $\mathbb{R}[X]/(X^2+1)$ est un corps.
+
+Définissons l'application $\phi : \mathbb{R}[X]/(X^2+1) \to \mathbb{C}$ par :
+
+$$ \phi(\overline{aX+b}) = ai+b $$
+
+Montrons que $\phi$ est un isomorphisme de corps.
+
+-   **Bien définie et bijective :** L'application est clairement une bijection entre l'ensemble des représentants et $\mathbb{C}$.
+-   **Morphisme d'anneaux :**
+    -   $\phi(\bar{1}) = \phi(\overline{0X+1}) = 1$.
+    -   **Additivité :**
+
+        $$ \phi(\overline{aX+b} + \overline{cX+d}) = \phi(\overline{(a+c)X+(b+d)}) = (a+c)i+(b+d) $$
+
+        $$ (ai+b) + (ci+d) = (a+c)i+(b+d) = \phi(\overline{aX+b}) + \phi(\overline{cX+d}) $$
+
+    -   **Multiplicativité :**
+
+        $$ \phi((\overline{aX+b}) \cdot (\overline{cX+d})) = \phi(\overline{(ad+bc)X+(bd-ac)}) = (ad+bc)i+(bd-ac) $$
+
+        $$ \phi(\overline{aX+b}) \cdot \phi(\overline{cX+d}) = (ai+b)(ci+d) = aci^2 + adi+bci+bd = -ac + (ad+bc)i + bd $$
+
+        Les deux résultats sont identiques.
+
+Puisque $\phi$ est un morphisme d'anneaux bijectif, c'est un isomorphisme. Le corps $\mathbb{C}$ peut donc être *construit* comme le quotient de l'anneau des polynômes réels par l'idéal engendré par $X^2+1$. Dans cette construction, la classe $\bar{X}$ joue le rôle de l'unité imaginaire $i$.
+
+</details>
+
+---
+
+Démontrer que les racines du polynôme minimal d'un endomorphisme $u$ sont exactement ses valeurs propres.
+
+<details>
+
+<summary>Answer</summary>
+
+Soit $V$ un $K$-espace vectoriel de dimension finie, $u \in \mathcal{L}(V)$ un endomorphisme, et $M_u(X)$ son polynôme minimal. Soit $\lambda \in K$ un scalaire.
+
+**Théorème :** $M_u(\lambda)=0 \iff \lambda$ est une valeur propre de $u$.
+
+**Démonstration :**
+
+($\Rightarrow$) **Si $M_u(\lambda)=0$, alors $\lambda$ est une valeur propre.**
+
+Si $M_u(\lambda)=0$, alors $(X-\lambda)$ est un facteur de $M_u(X)$ dans $K[X]$. On peut donc écrire :
+
+$$ M_u(X) = (X-\lambda)Q(X) $$
+
+où $Q(X)$ est un polynôme de $K[X]$.
+
+Comme $M_u(X)$ est le polynôme annulateur unitaire de plus bas degré, $\text{deg}(Q) < \text{deg}(M_u)$.
+
+Par minimalité de $M_u$, le polynôme $Q(X)$ ne peut pas être un polynôme annulateur de $u$. Donc, $Q(u) \neq 0$.
+
+Puisque l'endomorphisme $Q(u)$ n'est pas l'endomorphisme nul, il existe au moins un vecteur $v \in V$ tel que $w = Q(u)(v) \neq 0$.
+
+Appliquons l'endomorphisme $M_u(u)$ au vecteur $v$ :
+
+$$ M_u(u)(v) = 0(v) = 0_V $$
+
+En utilisant la factorisation, on a :
+
+$$ (u - \lambda \cdot \text{Id}) \circ Q(u) (v) = 0_V $$
+
+$$ (u - \lambda \cdot \text{Id})(w) = 0_V $$
+
+$$ u(w) = \lambda w $$
+
+Comme $w \neq 0_V$, l'équation $u(w) = \lambda w$ signifie que $\lambda$ est une valeur propre de $u$ associée au vecteur propre $w$.
+
+($\Leftarrow$) **Si $\lambda$ est une valeur propre, alors $M_u(\lambda)=0$.**
+
+Si $\lambda$ est une valeur propre de $u$, il existe par définition un vecteur non nul $v \in V$ (un vecteur propre) tel que $u(v) = \lambda v$.
+
+Montrons par récurrence que pour tout $k \in \mathbb{N}$, $u^k(v) = \lambda^k v$.
+
+-   Base : Pour $k=0$, $u^0(v) = \text{Id}(v) = v = \lambda^0 v$. Pour $k=1$, c'est la définition.
+-   Hérédité : Supposons $u^k(v) = \lambda^k v$. Alors $u^{k+1}(v) = u(u^k(v)) = u(\lambda^k v) = \lambda^k u(v) = \lambda^k(\lambda v) = \lambda^{k+1}v$.
+
+La propriété est donc vraie pour tout $k \ge 0$.
+
+Soit $P(X) = \sum_{k=0}^n a_k X^k$ un polynôme quelconque de $K[X]$. Alors l'action de l'endomorphisme $P(u)$ sur $v$ est :
+
+$$ P(u)(v) = \left(\sum a_k u^k\right)(v) = \sum a_k (u^k(v)) = \sum a_k (\lambda^k v) = \left(\sum a_k \lambda^k\right)v = P(\lambda)v $$
+
+Appliquons cette relation au polynôme minimal $M_u(X)$. Par définition, $M_u(u)$ est l'endomorphisme nul, donc $M_u(u)(v) = 0_V$.
+
+On a donc :
+
+$$ M_u(u)(v) = M_u(\lambda)v $$
+
+$$ 0_V = M_u(\lambda)v $$
+
+Puisque $v$ est un vecteur propre, $v \neq 0_V$. Par conséquent, le scalaire $M_u(\lambda)$ doit être nul.
+
+$$ M_u(\lambda) = 0 $$
+
+Ceci achève la démonstration.
+
+</details>
+
+---
+
+Analyser la factorisation de l'entier $6$ dans l'anneau $\mathbb{Z}[\sqrt{-5}]$ et expliquer pourquoi cela contredit la factorialité de cet anneau.
+
+<details>
+
+<summary>Answer</summary>
+
+Dans l'anneau intègre $\mathbb{Z}[\sqrt{-5}] = \{ a+b\sqrt{-5} \mid a,b \in \mathbb{Z} \}$, l'entier $6$ admet deux factorisations distinctes :
+
+$$ 6 = 2 \cdot 3 $$
+
+$$ 6 = (1+\sqrt{-5})(1-\sqrt{-5}) $$
+
+Pour que cet anneau ne soit pas factoriel (UFD), nous devons vérifier deux conditions :
+
+1.  Les facteurs ($2, 3, 1+\sqrt{-5}, 1-\sqrt{-5}$) sont tous irréductibles.
+2.  Les facteurs de la première décomposition ne sont pas associés aux facteurs de la seconde.
+
+**1. Irréductibilité des facteurs**
+
+Utilisons la norme $N(a+b\sqrt{-5}) = a^2+5b^2$. Si $z = z_1 z_2$, alors $N(z) = N(z_1)N(z_2)$. Un élément $z$ est une unité si et seulement si $N(z)=1$. Dans $\mathbb{Z}[\sqrt{-5}]$, les seules unités sont $1$ et $-1$.
+
+-   **Pour $2$ :** $N(2)=4$. Si $2=z_1 z_2$ avec $z_1, z_2$ non-unités, alors $N(z_1)N(z_2)=4$. Comme $z_1, z_2$ ne sont pas des unités, $N(z_1) \neq 1$ et $N(z_2) \neq 1$. Donc $N(z_1)=N(z_2)=2$. Or, l'équation $a^2+5b^2=2$ n'a pas de solution entière pour $(a,b)$. Donc $2$ est irréductible.
+
+-   **Pour $3$ :** $N(3)=9$. Si $3=z_1 z_2$ avec $z_1, z_2$ non-unités, alors $N(z_1)N(z_2)=9$, donc $N(z_1)=N(z_2)=3$. L'équation $a^2+5b^2=3$ n'a pas de solution entière. Donc $3$ est irréductible.
+
+-   **Pour $1+\sqrt{-5}$ :** $N(1+\sqrt{-5}) = 1^2+5(1)^2=6$. Si $1+\sqrt{-5} = z_1 z_2$ avec $z_1, z_2$ non-unités, alors $N(z_1)N(z_2)=6$. Les diviseurs de 6 sont 1, 2, 3, 6. Comme $z_1, z_2$ ne sont pas des unités, $N(z_1)$ et $N(z_2)$ doivent être 2 ou 3. Comme nous l'avons vu, il n'existe aucun élément de norme 2 ou 3. Donc $1+\sqrt{-5}$ est irréductible.
+
+-   **Pour $1-\sqrt{-5}$ :** $N(1-\sqrt{-5}) = 6$. Le même raisonnement s'applique, donc $1-\sqrt{-5}$ est irréductible.
+
+**2. Non-association des facteurs**
+
+Deux éléments $z_1, z_2$ sont associés s'il existe une unité $u$ (ici $\pm 1$) telle que $z_1 = u z_2$.
+
+-   $2$ n'est pas associé à $1 \pm \sqrt{-5}$ car ils n'ont pas la même norme ($N(2)=4$, $N(1 \pm \sqrt{-5})=6$).
+-   $3$ n'est pas associé à $1 \pm \sqrt{-5}$ car ils n'ont pas la même norme ($N(3)=9$, $N(1 \pm \sqrt{-5})=6$).
+
+**Conclusion**
+
+Nous avons trouvé deux décompositions de $6$ en produit d'éléments irréductibles. Ces décompositions sont fondamentalement différentes car les facteurs ne sont pas les mêmes à l'ordre et à l'association près.
+
+Ceci viole la condition d'unicité de la décomposition en facteurs irréductibles. Par conséquent, $\mathbb{Z}[\sqrt{-5}]$ n'est pas un anneau factoriel.
+
+Comme tout anneau principal ou euclidien est factoriel, $\mathbb{Z}[\sqrt{-5}]$ n'est ni principal, ni euclidien.
+
+</details>
+
+---
+
+Esquisser la preuve de l'existence et de l'unicité de la décomposition en facteurs irréductibles dans un anneau euclidien.
+
+<details>
+
+<summary>Answer</summary>
+
+**Théorème de la factorisation unique :** Soit $A$ un anneau euclidien. Tout élément $a \in A$, non nul et non inversible, se décompose en un produit fini d'éléments irréductibles $a = p_1 p_2 \cdots p_n$. Cette décomposition est unique à l'ordre des facteurs et à l'association près.
+
+**Démonstration :**
+
+La preuve se déroule en deux étapes : l'existence et l'unicité.
+
+**1. Existence de la décomposition**
+
+On utilise un argument de descente infinie sur le stathme euclidien $\delta$.
+
+Soit $a \in A$, non nul et non inversible.
+
+-   Si $a$ est irréductible, la décomposition est triviale ($a=a$).
+-   Si $a$ est réductible, il existe une factorisation $a = bc$ où $b$ et $c$ ne sont pas des unités.
+
+    Pour la plupart des stathmes usuels (valeur absolue pour $\mathbb{Z}$, degré pour $K[X]$), on a la propriété que si $c$ n'est pas une unité, alors $\delta(b) < \delta(bc) = \delta(a)$.
+
+    On peut donc appliquer le même raisonnement à $b$ et $c$.
+
+Formellement, supposons par l'absurde qu'il existe un ensemble $S$ d'éléments non nuls, non inversibles, qui n'admettent pas de décomposition en irréductibles. Soit $a \in S$ un élément tel que $\delta(a)$ est minimal dans l'ensemble $\{\delta(x) \mid x \in S \}$.
+
+-   $a$ ne peut être irréductible, sinon il appartiendrait pas à $S$.
+-   $a$ est donc réductible : $a=bc$ avec $b,c$ non-inversibles.
+-   On a $\delta(b) < \delta(a)$ et $\delta(c) < \delta(a)$. Par minimalité de $\delta(a)$, $b$ et $c$ n'appartiennent pas à $S$. Ils admettent donc des décompositions en irréductibles.
+-   Le produit de ces décompositions donne une décomposition pour $a$. C'est une contradiction, car on a supposé que $a$ n'en avait pas.
+
+Donc l'ensemble $S$ est vide, et l'existence est prouvée.
+
+**2. Unicité de la décomposition**
+
+L'unicité repose de manière cruciale sur le **Lemme d'Euclide**, qui stipule que dans un anneau principal (et donc euclidien), tout élément irréductible est premier.
+
+Soit deux décompositions d'un même élément $a$ :
+
+$$ a = p_1 p_2 \cdots p_n = q_1 q_2 \cdots q_m $$
+
+où tous les $p_i$ et $q_j$ sont irréductibles.
+
+On procède par récurrence sur $n$.
+
+-   $p_1$ divise le produit $q_1 q_2 \cdots q_m$.
+-   Puisque $p_1$ est irréductible dans un anneau euclidien, il est premier.
+-   Donc, $p_1$ doit diviser l'un des facteurs, disons $q_1$ (après réindexation si nécessaire).
+-   Comme $q_1$ est lui-même irréductible, ses seuls diviseurs sont les unités et ses associés. Puisque $p_1$ n'est pas une unité, $p_1$ et $q_1$ doivent être associés, c'est-à-dire $q_1 = u_1 p_1$ pour une unité $u_1$.
+
+On substitue dans l'équation :
+
+$$ p_1 p_2 \cdots p_n = (u_1 p_1) q_2 \cdots q_m $$
+
+Puisque $A$ est intègre, on peut simplifier par $p_1 \neq 0$ :
+
+$$ p_2 \cdots p_n = (u_1 q_2) \cdots q_m $$
+
+On peut alors conclure par une hypothèse de récurrence sur le nombre de facteurs. Le processus se poursuit jusqu'à épuisement des facteurs des deux côtés, montrant que $n=m$ et que les facteurs sont les mêmes à l'ordre et à l'association près.
+
+</details>

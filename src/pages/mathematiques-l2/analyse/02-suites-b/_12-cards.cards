@@ -1,0 +1,308 @@
+---
+id: '91495772'
+type: cards
+order: 12
+title: Séries Numériques (suite) - fiches de révision (A)
+tags:
+  - séries numériques
+  - convergence
+  - critère de Cauchy
+  - séries à termes positifs
+  - intégrales généralisées
+  - théorème d'Abel
+createdAt: '2025-10-12T17:44:18.176Z'
+level: regular
+course: Analyse
+courseId: 9c2d50b3
+chapter: Séries Numériques (suite)
+chapterId: c9bf30da
+---
+# Fiches de révision "Séries Numériques (suite)" (A)
+
+---
+
+Qu'est-ce qu'une intégrale généralisée (ou impropre) ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Une intégrale généralisée étend la notion d'intégrale de Riemann à des situations où soit l'intervalle d'intégration n'est pas borné, soit la fonction n'est pas bornée sur l'intervalle.
+
+Il y a deux cas principaux :
+
+1.  **Intervalle non borné :** Pour une fonction $f$ continue sur $[a, +\infty[$, l'intégrale est la limite :
+
+    $$ \int_a^{+\infty} f(t)dt = \lim_{b \to +\infty} \int_a^b f(t)dt $$
+
+2.  **Fonction non bornée en une borne :** Pour une fonction $f$ continue sur $]a, b]$ avec un problème en $a$, l'intégrale est la limite :
+
+    $$ \int_a^b f(t)dt = \lim_{\varepsilon \to 0^+} \int_{a+\varepsilon}^b f(t)dt $$
+
+Dans les deux cas, si la limite est un nombre réel fini, on dit que l'intégrale **converge**. Sinon, elle **diverge**.
+
+</details>
+
+---
+
+Comment montrer que l'intégrale $\int_1^{+\infty} \frac{1}{t^2} dt$ converge et calculer sa valeur ?
+
+<details>
+
+<summary>Réponse</summary>
+
+On suit la définition d'une intégrale généralisée sur un intervalle non borné.
+
+**Étapes :**
+
+1.  **Écrire la définition avec une limite :** On remplace la borne infinie par une variable $b$ qui tendra vers l'infini.
+
+    $$ \int_1^{+\infty} \frac{1}{t^2} dt = \lim_{b \to +\infty} \int_1^b \frac{1}{t^2} dt $$
+
+2.  **Calculer l'intégrale définie :** On trouve une primitive de $\frac{1}{t^2}$, qui est $-\frac{1}{t}$.
+
+    $$ \int_1^b \frac{1}{t^2} dt = \left[ -\frac{1}{t} \right]_1^b = \left(-\frac{1}{b}\right) - \left(-\frac{1}{1}\right) = 1 - \frac{1}{b} $$
+
+3.  **Calculer la limite :** On fait tendre $b$ vers $+\infty$.
+
+    $$ \lim_{b \to +\infty} \left(1 - \frac{1}{b}\right) = 1 - 0 = 1 $$
+
+**Conclusion :** La limite est finie et vaut 1. Par conséquent, l'intégrale **converge** et sa valeur est 1.
+
+</details>
+
+---
+
+Quel est le principal piège à éviter lors du calcul d'une intégrale sur $\mathbb{R}$, comme $\int_{-\infty}^{+\infty} f(t)dt$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le principal piège est de calculer la limite de manière symétrique, c'est-à-dire $\lim_{A \to +\infty} \int_{-A}^A f(t)dt$. Cette limite, appelée **valeur principale de Cauchy**, peut exister même si l'intégrale diverge.
+
+**La méthode correcte :**
+
+Pour qu'une intégrale doublement généralisée converge, il faut la couper en deux en un point réel quelconque $c$ (souvent $c=0$) et vérifier que les **deux** intégrales convergent indépendamment.
+
+$$ \int_{-\infty}^{+\infty} f(t)dt \text{ converge } \Longleftrightarrow \int_{-\infty}^c f(t)dt \text{ et } \int_c^{+\infty} f(t)dt \text{ convergent.} $$
+
+**Contre-exemple :** Pour $\int_{-\infty}^{+\infty} t dt$:
+
+La valeur principale de Cauchy est $\lim_{A \to +\infty} \int_{-A}^A t dt = \lim_{A \to +\infty} \left[\frac{t^2}{2}\right]_{-A}^A = \lim_{A \to +\infty} 0 = 0$.
+
+Cependant, l'intégrale diverge car $\int_0^{+\infty} t dt = \lim_{b \to +\infty} \frac{b^2}{2} = +\infty$. L'une des deux moitiés diverge, donc l'intégrale complète diverge.
+
+</details>
+
+---
+
+Quelles sont les conditions d'application du critère de comparaison série-intégrale ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour comparer la nature de la série $\sum_{n \ge a} f(n)$ et de l'intégrale $\int_a^{+\infty} f(t)dt$, la fonction $f$ doit satisfaire trois hypothèses essentielles sur l'intervalle $[a, +\infty[$ :
+
+1.  **Continuité :** $f$ doit être continue (ou au moins continue par morceaux).
+2.  **Positivité :** $f(t) \ge 0$ pour tout $t \ge a$.
+3.  **Décroissance :** $f$ doit être décroissante.
+
+Si ces trois conditions sont remplies, alors la série $\sum f(n)$ et l'intégrale $\int_a^{+\infty} f(t)dt$ sont de **même nature** : soit les deux convergent, soit les deux divergent.
+
+</details>
+
+---
+
+Comment utiliser la comparaison série-intégrale pour déterminer la nature de la série de Riemann $\sum_{n=1}^\infty \frac{1}{n^\alpha}$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+**Étapes :**
+
+1.  **Définir la fonction associée :** On pose $f(t) = \frac{1}{t^\alpha}$ pour $t \in [1, +\infty[$.
+
+2.  **Vérifier les hypothèses :** Pour $\alpha > 0$:
+    *   **Continuité :** $f$ est continue sur $[1, +\infty[$.
+    *   **Positivité :** Si $t \ge 1$, $t^\alpha > 0$, donc $f(t) > 0$.
+    *   **Décroissance :** La dérivée $f'(t) = -\alpha t^{-\alpha-1} = -\frac{\alpha}{t^{\alpha+1}}$ est négative, donc $f$ est décroissante.
+
+3.  **Appliquer le critère :** La série $\sum \frac{1}{n^\alpha}$ a la même nature que l'intégrale $\int_1^{+\infty} \frac{1}{t^\alpha} dt$.
+
+4.  **Étudier la convergence de l'intégrale :**
+    *   Si $\alpha = 1$, $\int_1^{+\infty} \frac{1}{t} dt = [\ln(t)]_1^{+\infty} = +\infty$. L'intégrale diverge.
+    *   Si $\alpha \neq 1$, $\int_1^{+\infty} t^{-\alpha} dt = \left[\frac{t^{1-\alpha}}{1-\alpha}\right]_1^{+\infty}$. Cette limite est finie si et seulement si l'exposant $1-\alpha$ est négatif, c'est-à-dire $1-\alpha < 0 \iff \alpha > 1$.
+
+**Conclusion :** La série de Riemann $\sum \frac{1}{n^\alpha}$ converge si et seulement si $\alpha > 1$.
+
+</details>
+
+---
+
+Quelle est la formule d'encadrement du reste d'une série obtenue par le critère de comparaison série-intégrale ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Si une série $\sum f(n)$ vérifie les conditions du critère (positive, continue, décroissante) et qu'elle converge, alors son reste d'ordre $n$, noté $R_n = \sum_{k=n+1}^\infty f(k)$, peut être encadré par deux intégrales.
+
+**Formule :**
+
+$$ \int_{n+1}^{+\infty} f(t)dt \le R_n \le \int_n^{+\infty} f(t)dt $$
+
+**Utilité :** Cette formule est très puissante pour estimer la valeur du reste. Elle nous dit que la somme des termes restants est très proche de l'aire sous la courbe de $f$ à partir du rang $n$. Cela permet de savoir combien de termes calculer pour atteindre une précision souhaitée.
+
+**Exemple :** Pour $\sum 1/n^2$, on a $R_n \approx \int_n^{+\infty} \frac{1}{t^2} dt = \frac{1}{n}$.
+
+</details>
+
+---
+
+Qu'énonce le critère des équivalents pour les séries à termes positifs ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Soient $\sum u_n$ et $\sum v_n$ deux séries dont les termes sont **positifs** à partir d'un certain rang.
+
+On suppose que les termes généraux sont équivalents, c'est-à-dire $u_n \sim v_n$ quand $n \to +\infty$. (Cela signifie que $\lim_{n \to \infty} \frac{u_n}{v_n} = 1$).
+
+**Théorème :**
+
+Sous ces conditions, les séries $\sum u_n$ et $\sum v_n$ sont de **même nature**.
+
+$$ \left( \sum u_n \text{ converge} \right) \Longleftrightarrow \left( \sum v_n \text{ converge} \right) $$
+
+C'est un outil très efficace qui permet de simplifier le terme général d'une série pour le comparer à une série de référence (comme une série de Riemann).
+
+</details>
+
+---
+
+Comment déterminer la nature de la série de terme général $u_n = \ln\left(1 + \frac{1}{n^2}\right)$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+On utilise le critère des équivalents pour les séries à termes positifs.
+
+**Étapes :**
+
+1.  **Vérifier le signe des termes :** Pour $n \ge 1$, on a $\frac{1}{n^2} > 0$, donc $\ln(1 + \frac{1}{n^2}) > \ln(1) = 0$. Les termes de la série sont bien positifs.
+
+2.  **Trouver un équivalent simple :** On sait que $\frac{1}{n^2} \to 0$ lorsque $n \to +\infty$. On peut donc utiliser l'équivalent usuel $\ln(1+x) \sim x$ quand $x \to 0$.
+
+    En posant $x = \frac{1}{n^2}$, on obtient :
+
+    $$ u_n = \ln\left(1 + \frac{1}{n^2}\right) \sim \frac{1}{n^2} $$
+
+3.  **Analyser la série de l'équivalent :** La série $\sum \frac{1}{n^2}$ est une série de Riemann avec $\alpha = 2$. Puisque $2 > 1$, elle converge.
+
+4.  **Conclure avec le critère des équivalents :** Comme les séries sont à termes positifs et que $u_n \sim \frac{1}{n^2}$, la série $\sum u_n$ est de même nature que $\sum \frac{1}{n^2}$.
+
+**Conclusion :** La série $\sum \ln\left(1 + \frac{1}{n^2}\right)$ converge.
+
+</details>
+
+---
+
+Qu'est-ce que le critère des séries alternées ?
+
+<details>
+
+<summary>Réponse</summary>
+
+C'est un critère de convergence spécifique aux séries dont les termes alternent en signe. Une série alternée s'écrit sous la forme $\sum (-1)^n b_n$ ou $\sum (-1)^{n+1} b_n$, avec $b_n \ge 0$.
+
+**Théorème (Critère Spécial des Séries Alternées) :**
+
+La série alternée $\sum (-1)^n b_n$ converge si les deux conditions suivantes sont satisfaites :
+
+1.  **Décroissance :** La suite $(b_n)$ est décroissante à partir d'un certain rang.
+2.  **Limite nulle :** La suite $(b_n)$ tend vers 0, c'est-à-dire $\lim_{n \to \infty} b_n = 0$.
+
+**Exemple classique :** La série harmonique alternée $\sum_{n=1}^\infty \frac{(-1)^{n+1}}{n}$ converge car $b_n=1/n$ est positive, décroissante et tend vers 0.
+
+</details>
+
+---
+
+Comment peut-on majorer l'erreur lorsqu'on approxime la somme d'une série alternée ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour une série alternée $\sum u_n = \sum (-1)^n b_n$ qui vérifie les conditions du critère (la suite $(b_n)$ est positive, décroissante et tend vers 0), on dispose d'une majoration très simple et utile de l'erreur.
+
+**Formule de majoration du reste :**
+
+Le reste d'ordre $n$, $R_n = S - s_n$ (où $S$ est la somme totale et $s_n$ la somme partielle), est toujours plus petit en valeur absolue que le premier terme que l'on a négligé.
+
+$$ |R_n| = |S - s_n| \le |u_{n+1}| = b_{n+1} $$
+
+**En pratique :** Si vous calculez la somme des termes jusqu'à $u_n$, l'erreur que vous commettez est inférieure à la valeur absolue du terme suivant, $u_{n+1}$. De plus, le reste $R_n$ a le même signe que ce premier terme négligé $u_{n+1}$.
+
+</details>
+
+---
+
+Expliquez la différence de comportement entre une série absolument convergente et une série semi-convergente lorsqu'on réarrange leurs termes.
+
+<details>
+
+<summary>Réponse</summary>
+
+Le comportement est radicalement différent et est décrit par le **théorème de réarrangement de Riemann**.
+
+1.  **Série Absolument Convergente :** (Ex: $\sum \frac{(-1)^n}{n^2}$)
+
+    Une série est absolument convergente si la série de ses valeurs absolues $\sum |u_n|$ converge. Pour ces séries, l'ordre des termes n'a aucune importance.
+
+    **On peut réarranger (permuter) les termes dans n'importe quel ordre, la série convergera toujours et donnera la même somme.** Elles se comportent comme des sommes finies.
+
+2.  **Série Semi-Convergente :** (Ex: $\sum \frac{(-1)^n}{n}$)
+
+    Une série est semi-convergente si elle converge, mais pas absolument (c'est-à-dire $\sum u_n$ converge, mais $\sum |u_n|$ diverge). Pour ces séries, l'ordre des termes est crucial.
+
+    **On peut réarranger les termes pour que la nouvelle série converge vers n'importe quelle valeur réelle souhaitée !** On peut même la faire diverger vers $+\infty$ ou $-\infty$.
+
+**Conclusion :** La convergence absolue est la condition qui garantit la "stabilité" de la somme d'une série.
+
+</details>
+
+---
+
+Peut-on toujours regrouper les termes d'une série par paquets sans changer sa nature ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Non, pas toujours. Cela dépend de la nature de la série de départ.
+
+Le **théorème de sommation par paquets** (ou associativité) dit :
+
+1.  **Si la série de départ $\sum u_n$ converge**, alors on peut regrouper ses termes en "paquets" comme on le souhaite. La nouvelle série formée par la somme de ces paquets convergera aussi, et vers la **même somme**.
+
+    Par exemple, si $\sum u_n$ converge vers $S$, alors $\sum (u_{2k}+u_{2k+1})$ converge aussi vers $S$.
+
+2.  **La réciproque est fausse en général.** Si la série des paquets converge, cela ne garantit pas que la série de départ convergeait.
+
+**Contre-exemple pour la réciproque :**
+
+La série $\sum (-1)^n = 1 - 1 + 1 - 1 + \dots$ diverge.
+
+Si on la regroupe par paquets de deux : $(1-1) + (1-1) + \dots = 0 + 0 + \dots$
+
+La série des paquets $\sum 0$ converge vers 0, mais la série initiale divergeait.
+
+**Cas particulier important :** La réciproque devient vraie si la série $\sum u_n$ est à **termes positifs**.
+
+</details>

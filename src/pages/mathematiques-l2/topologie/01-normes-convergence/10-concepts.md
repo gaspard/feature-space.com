@@ -9,7 +9,7 @@ tags:
   - convergence
   - topologie
   - analyse
-course: Topologie I
+course: Topologie
 courseId: 34e61f8e
 chapter: Normes sur Rⁿ et suites convergentes
 chapterId: 629d2832

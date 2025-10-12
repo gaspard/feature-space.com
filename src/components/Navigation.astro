@@ -12,7 +12,7 @@ const url = Astro.url
 const activePath = currentPath || getCurrentPagePath(url)
 
 // Generate navigation structure
-const navigationItems = await generateNavigation()
+const navigationItems = await generateNavigation(Astro.url.pathname)
 ---
 
 <NavigationReact

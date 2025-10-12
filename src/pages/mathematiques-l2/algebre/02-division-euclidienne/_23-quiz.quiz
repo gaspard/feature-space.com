@@ -1,0 +1,312 @@
+---
+id: f702acfc
+type: quiz
+order: 23
+title: Division euclidienne - quiz (B)
+tags:
+  - algèbre
+  - anneau
+  - division euclidienne
+  - polynôme
+  - idéal
+  - bézout
+createdAt: '2025-10-12T20:59:09.006Z'
+level: pro
+course: Algèbre
+courseId: 3b74b601
+chapter: Division euclidienne
+chapterId: e5009a65
+---
+# Quiz: Division euclidienne
+
+---
+
+#### Question 1 : Structure d'une A-algèbre
+
+Soient A un anneau commutatif, B un anneau, et $f: A \to B$ un morphisme d'anneaux.
+
+- [ ] **A)** Si B est un corps non-commutatif (un corps gauche) et A est un sous-corps de B, alors l'inclusion $f: A \hookrightarrow B$ fait toujours de B une A-algèbre.
+- [x] **B)** La A-linéarité à gauche de la multiplication de B (i.e., $(f(a)b_1)b_2 = f(a)(b_1b_2)$) est une conséquence de l'associativité, tandis que la A-linéarité à droite (i.e., $b_1(f(a)b_2) = f(a)(b_1b_2)$) est équivalente à la condition $f(A) \subseteq Z(B)$.
+- [ ] **C)** Si B est un anneau quelconque, il est canoniquement une $Z(B)$-algèbre via l'inclusion, et est aussi toujours une B-algèbre via l'identité.
+- [x] **D)** Un morphisme d'anneaux $g: (B, f) \to (B', f')$ entre deux A-algèbres est un morphisme de A-algèbres si et seulement si $g$ est un morphisme de A-modules.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B, D]**
+
+- **A.** Incorrect. La définition d'une A-algèbre requiert que l'image de A soit contenue dans le centre de B, i.e., $f(A) \subseteq Z(B)$. Dans le cas des quaternions $\mathbb{H}$ (un corps gauche), le centre est $\mathbb{R}$. L'inclusion de $\mathbb{C}$ dans $\mathbb{H}$ ne fait pas de $\mathbb{H}$ une $\mathbb{C}$-algèbre car $\mathbb{C} \not\subseteq Z(\mathbb{H})$.
+
+- **B.** Correct. La multiplication $m(b_1, b_2) = b_1b_2$ est A-bilinéaire si $m(a \cdot b_1, b_2) = a \cdot m(b_1, b_2)$ et $m(b_1, a \cdot b_2) = a \cdot m(b_1, b_2)$.
+
+La première condition (linéarité à gauche) s'écrit $(f(a)b_1)b_2 = f(a)(b_1b_2)$, ce qui est vrai par associativité dans B.
+
+La seconde condition (linéarité à droite) s'écrit $b_1(f(a)b_2) = f(a)(b_1b_2)$. Par associativité, cela devient $b_1(f(a)b_2) = (f(a)b_1)b_2$. Ceci doit être vrai pour tout $b_1, b_2 \in B$. En posant $b_2=1_B$, on obtient $b_1f(a) = f(a)b_1$, ce qui signifie que $f(a)$ doit être dans le centre $Z(B)$.
+
+- **C.** Incorrect. La première partie est vraie : l'inclusion de $Z(B)$ dans $B$ fait de B une $Z(B)$-algèbre car $Z(B)$ est commutatif et son image est (trivialement) dans le centre de B. La seconde partie est fausse : pour que B soit une B-algèbre via l'identité $id: B \to B$, il faudrait que $id(B) \subseteq Z(B)$, c'est-à-dire $B \subseteq Z(B)$, ce qui n'est vrai que si B est commutatif.
+
+- **D.** Correct. Un morphisme d'anneaux $g$ est un morphisme de A-modules si $g(a \cdot b) = a \cdot g(b)$. Pour des A-algèbres $(B,f)$ et $(B',f')$, cela s'écrit $g(f(a)b) = f'(a)g(b)$. Comme $g$ est un morphisme d'anneaux, le membre de gauche est $g(f(a))g(b)$. L'égalité devient $g(f(a))g(b) = f'(a)g(b)$. En choisissant $b=1_B$, on obtient $g(f(a)) = f'(a)$, ce qui est la condition $g \circ f = f'$, la définition d'un morphisme de A-algèbres. Réciproquement, si $g \circ f = f'$, la condition de A-linéarité est satisfaite.
+
+</details>
+
+---
+
+#### Question 2 : Propriété universelle de A[X]
+
+Soit A un anneau commutatif. La propriété universelle de $A[X]$ stipule que pour toute A-algèbre $(B,f)$ et tout élément $x \in B$ qui commute avec $f(A)$, il existe un unique morphisme de A-algèbres $\text{ev}_x : A[X] \to B$ tel que $\text{ev}_x(X) = x$. Quelles sont les conséquences ou interprétations correctes de cette propriété ?
+
+- [x] **A)** Le noyau du morphisme d'évaluation $\text{ev}_x$ est un idéal principal de $A[X]$ si A est un corps.
+- [ ] **B)** L'hypothèse que $x$ commute avec $f(A)$ est superflue car A est commutatif.
+- [x] **C)** Cette propriété signifie que l'algèbre de polynômes $A[X]$ est l'objet libre sur un générateur dans la catégorie des A-algèbres commutatives.
+- [ ] **D)** Si $A$ n'est pas intègre, l'unicité du morphisme d'évaluation $\text{ev}_x$ peut être mise en défaut.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, C]**
+
+- **A.** Correct. Si A est un corps K, alors $K[X]$ est un anneau euclidien, et donc un anneau principal. Le noyau d'un morphisme d'anneaux est toujours un idéal. Dans un anneau principal, tout idéal est principal.
+
+- **B.** Incorrect. A est commutatif, mais B ne l'est pas nécessairement. Pour que l'application $\text{ev}_x(\sum a_n X^n) = \sum f(a_n) x^n$ soit un morphisme d'anneaux, elle doit préserver la multiplication. En particulier, elle doit valoir la même chose pour $P(X)Q(X)$ et $Q(X)P(X)$. Pour cela, il est nécessaire que $x$ commute avec les coefficients $f(a_n)$ dans B. Par exemple, $\text{ev}_x(a \cdot X) = f(a)x$ et $\text{ev}_x(X \cdot a) = xf(a)$. Pour que le morphisme soit bien défini, il faut $f(a)x=xf(a)$.
+
+- **C.** Correct. C'est l'interprétation de la propriété universelle en théorie des catégories. "Libre sur un générateur" signifie que pour choisir un morphisme partant de $A[X]$ vers une autre A-algèbre B, il suffit de choisir l'image du générateur $X$ dans B (sous la contrainte de commutation si B n'est pas commutative).
+
+- **D.** Incorrect. L'existence et l'unicité du morphisme d'évaluation sont prouvées en posant $\text{ev}_x(\sum a_n X^n) = \sum f(a_n) x^n$. L'unicité découle du fait qu'un morphisme de A-algèbres est entièrement déterminé par l'image de $X$. L'existence est vérifiée en montrant que cette formule définit bien un morphisme. Aucune de ces étapes ne dépend de l'intégrité de A.
+
+</details>
+
+---
+
+#### Question 3 : Anneaux euclidiens et principaux
+
+Concernant la hiérarchie des anneaux et la preuve que tout anneau euclidien est principal.
+
+- [x] **A)** La démonstration qu'un anneau euclidien A est principal repose sur le principe du bon ordre de $\mathbb{N}$, appliqué à l'ensemble des valeurs non-nulles du stathme sur un idéal non-nul.
+- [ ] **B)** Tout anneau principal est euclidien, bien que trouver un stathme puisse être difficile.
+- [ ] **C)** Dans la preuve qu'un anneau euclidien est principal, l'existence du quotient et du reste suffit ; la condition sur le stathme du reste ($\delta(r) < \delta(b)$) n'est pas essentielle.
+- [x] **D)** L'anneau $\mathbb{Z}[X]$ est un contre-exemple clé car il est factoriel (UFD) mais non principal, illustrant que l'inclusion Principal $\subset$ Factoriel est stricte.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, D]**
+
+- **A.** Correct. La preuve standard sélectionne un élément $a$ non nul dans un idéal $I$ tel que $\delta(a)$ soit minimal. L'existence d'un tel élément est garantie car l'ensemble $\{\delta(x) \mid x \in I \setminus \{0\}\}$ est une partie non vide de $\mathbb{N}$, qui est bien ordonné.
+
+- **B.** Incorrect. C'est l'inverse : tout anneau euclidien est principal. L'implication réciproque est fausse. Un contre-exemple célèbre est l'anneau $\mathbb{Z}[\frac{1+\sqrt{-19}}{2}]$, qui est principal mais non euclidien.
+
+- **C.** Incorrect. La condition $\delta(r) < \delta(b)$ est absolument cruciale. L'argument de la preuve est un argument par l'absurde : si un élément $b \in I$ n'est pas dans $(a)$, alors $b = aq+r$ avec $r \neq 0$. Alors $r = b-aq \in I$. Mais $\delta(r) < \delta(a)$, ce qui contredit la minimalité de $\delta(a)$. Sans cette inégalité stricte, la contradiction n'est pas atteinte.
+
+- **D.** Correct. L'anneau $\mathbb{Z}[X]$ est un exemple fondamental dans la hiérarchie des anneaux. On peut montrer qu'il est factoriel (par le lemme de Gauss, car $\mathbb{Z}$ est factoriel), mais il n'est pas principal (l'idéal $(2,X)$ n'est pas principal). Ceci prouve que la classe des anneaux principaux est strictement contenue dans celle des anneaux factoriels.
+
+</details>
+
+---
+
+#### Question 4 : Structure de l'anneau quotient K[X]/(P)
+
+Soit K un corps et $P \in K[X]$ un polynôme de degré $n \ge 1$. On considère l'anneau quotient $A = K[X]/(P)$. Quelles affirmations sont vraies ?
+
+- [ ] **A)** L'anneau A est un corps si et seulement si P est un polynôme sans racine dans K.
+- [x] **B)** L'ensemble des éléments inversibles de A, $A^\times$, est en bijection avec l'ensemble des classes de polynômes $Q \pmod P$ tels que $\text{pgcd}(P,Q)$ est un polynôme constant non nul.
+- [ ] **C)** Si $P$ est le polynôme minimal d'un endomorphisme $u$, alors $A$ est isomorphe à l'algèbre $\text{End}_K(V)$.
+- [x] **D)** Si $K=\mathbb{F}_p$ est un corps fini et $P$ est irréductible, alors A est un corps de caractéristique $p$ et son groupe multiplicatif $A^\times$ est cyclique.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B, D]**
+
+- **A.** Incorrect. La condition pour que $A$ soit un corps est que l'idéal $(P)$ soit maximal. Dans l'anneau principal $K[X]$, cela est équivalent à ce que le générateur $P$ soit **irréductible**. Un polynôme peut n'avoir aucune racine dans K et être réductible. Par exemple, dans $\mathbb{R}[X]$, $P(X) = (X^2+1)^2$ n'a pas de racine réelle mais n'est pas irréductible.
+
+- **B.** Correct. Un élément $\bar{Q}$ est inversible dans $K[X]/(P)$ s'il existe $\bar{U}$ tel que $\overline{QU}=\bar{1}$. Cela se traduit par l'existence de polynômes $U, V$ tels que $QU + PV = 1$. D'après l'identité de Bézout dans l'anneau euclidien $K[X]$, ceci est équivalent au fait que $\text{pgcd}(Q,P)=1$ (ou toute autre unité, c'est-à-dire une constante non nulle).
+
+- **C.** Incorrect. Si $P=M_u$ est le polynôme minimal de $u$, le premier théorème d'isomorphisme appliqué au morphisme d'évaluation $\text{ev}_u: K[X] \to \text{End}_K(V)$ montre que $K[X]/(M_u) \cong \text{Im}(\text{ev}_u) = K[u]$. L'algèbre $K[u]$ est la sous-algèbre de $\text{End}_K(V)$ engendrée par $u$. Elle est en général beaucoup plus petite que $\text{End}_K(V)$ (dont la dimension est $n^2$).
+
+- **D.** Correct. Si $P$ est irréductible sur le corps fini $\mathbb{F}_p$, alors $A = \mathbb{F}_p[X]/(P)$ est une extension de corps de $\mathbb{F}_p$, donc c'est un corps de caractéristique $p$. Un théorème fondamental de la théorie des corps stipule que le groupe multiplicatif de tout corps fini est cyclique.
+
+</details>
+
+---
+
+#### Question 5 : Identité de Bézout et ses limites
+
+L'identité de Bézout dans un anneau principal A stipule que pour $a,b \in A$, l'idéal $(a,b)$ est engendré par $d=\text{pgcd}(a,b)$, et donc qu'il existe $u,v \in A$ tels que $au+bv=d$.
+
+- [x] **A)** Dans l'anneau non principal $\mathbb{Z}[X]$, $\text{pgcd}(2,X)=1$ mais l'identité de Bézout $2U(X)+XV(X)=1$ n'a pas de solution, car l'évaluation en $X=0$ conduirait à une contradiction dans $\mathbb{Z}$.
+- [ ] **B)** L'algorithme d'Euclide étendu ne peut pas être appliqué dans $K[X]$ car on ne peut pas garantir que la suite des degrés des restes soit strictement décroissante.
+- [x] **C)** Dans un anneau euclidien, la preuve de l'identité de Bézout est constructive via l'algorithme d'Euclide étendu, qui maintient l'invariant $r_i = u_i a + v_i b$ à chaque étape.
+- [ ] **D)** Si $A$ est un anneau intègre où l'identité de Bézout est valable pour toute paire d'éléments, alors $A$ est nécessairement euclidien.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, C]**
+
+- **A.** Correct. C'est l'exemple standard montrant que $\mathbb{Z}[X]$ n'est pas principal. Les seuls diviseurs communs à 2 et $X$ dans $\mathbb{Z}[X]$ sont les unités $\pm 1$, donc $\text{pgcd}(2,X)=1$. Si l'identité de Bézout s'appliquait, il existerait $U(X), V(X) \in \mathbb{Z}[X]$ tels que $2U(X)+XV(X)=1$. En évaluant cette égalité en $X=0$, on obtient $2U(0)=1$. Comme $U(0)$ est un entier, c'est impossible.
+
+- **B.** Incorrect. L'anneau $K[X]$ pour K un corps est un anneau euclidien avec pour stathme le degré. La division euclidienne $A=BQ+R$ garantit $\text{deg}(R) < \text{deg}(B)$ (ou $R=0$). La suite des degrés des restes successifs dans l'algorithme d'Euclide est donc strictement décroissante, ce qui assure la terminaison de l'algorithme.
+
+- **C.** Correct. L'algorithme d'Euclide étendu calcule non seulement le PGCD $d=r_n$, mais aussi les coefficients de Bézout $u_n, v_n$. Il le fait en construisant des suites $(u_i)$ et $(v_i)$ telles que la relation $r_i = u_i a + v_i b$ est préservée à chaque itération.
+
+- **D.** Incorrect. Un anneau intègre où l'identité de Bézout est valable est appelé un anneau de Bézout. Tout anneau principal est un anneau de Bézout. Cependant, un anneau de Bézout (et même un anneau principal) n'est pas forcément euclidien. L'anneau $\mathbb{Z}[\frac{1+\sqrt{-19}}{2}]$ est principal, donc de Bézout, mais pas euclidien.
+
+</details>
+
+---
+
+#### Question 6 : Éléments premiers et irréductibles
+
+Soit A un anneau intègre. On rappelle qu'un élément $p \in A$ (non nul, non inversible) est **irréductible** si $p=ab \implies a$ ou $b$ est une unité. Il est **premier** si $p|ab \implies p|a$ ou $p|b$.
+
+- [ ] **A)** Dans tout anneau intègre, un élément irréductible est toujours premier.
+- [x] **B)** L'unicité de la décomposition en facteurs irréductibles dans un anneau factoriel (UFD) dépend de manière cruciale du fait que les éléments irréductibles y sont aussi premiers.
+- [x] **C)** Dans l'anneau $\mathbb{Z}[\sqrt{-5}]$, le nombre 3 est irréductible mais pas premier.
+- [ ] **D)** Dans l'anneau des entiers de Gauss $\mathbb{Z}[i]$, le nombre premier 3 est irréductible, mais le nombre premier 5 ne l'est pas. Ceci est dû au fait que $\mathbb{Z}[i]$ n'est pas principal.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B, C]**
+
+- **A.** Incorrect. L'implication "premier $\implies$ irréductible" est vraie dans tout anneau intègre. L'implication inverse "irréductible $\implies$ premier" (connue sous le nom de lemme d'Euclide) est vraie dans les anneaux principaux et factoriels, mais pas dans tous les anneaux intègres. Le contre-exemple de l'option C illustre cela.
+
+- **B.** Correct. La preuve de l'unicité de la factorisation repose sur le lemme d'Euclide. Si on a deux factorisations $p_1 \cdots p_r = q_1 \cdots q_s$, on utilise le fait que $p_1$ est premier : puisqu'il divise le produit des $q_j$, il doit diviser l'un d'eux, disons $q_1$. Comme $q_1$ est irréductible, $p_1$ et $q_1$ doivent être associés. On peut alors simplifier et continuer par récurrence. Sans cette propriété, l'unicité n'est pas garantie.
+
+- **C.** Correct. Pour montrer que 3 est irréductible dans $\mathbb{Z}[\sqrt{-5}]$, on utilise la norme $N(a+b\sqrt{-5}) = a^2+5b^2$. Si $3=xy$, alors $N(3)=9=N(x)N(y)$. Si $x,y$ ne sont pas des unités, leurs normes doivent être $>1$. La seule possibilité est $N(x)=N(y)=3$. Mais l'équation $a^2+5b^2=3$ n'a pas de solution entière. Donc 3 est irréductible. Pour montrer qu'il n'est pas premier, on observe que $3$ divise $6 = (1+\sqrt{-5})(1-\sqrt{-5})$. Cependant, $3$ ne divise ni $1+\sqrt{-5}$ ni $1-\sqrt{-5}$ dans $\mathbb{Z}[\sqrt{-5}]$.
+
+- **D.** Incorrect. La première partie de l'affirmation est correcte. Un premier entier $p$ est irréductible dans $\mathbb{Z}[i]$ si et seulement si $p \equiv 3 \pmod 4$. Ainsi, 3 est irréductible. Un premier $p \equiv 1 \pmod 4$ comme 5 se décompose : $5=(1+2i)(1-2i)$. La justification est fausse : $\mathbb{Z}[i]$ est un anneau euclidien, donc principal.
+
+</details>
+
+---
+
+#### Question 7 : Caractéristique et corps finis
+
+Soit K un corps.
+
+- [x] **A)** Si la caractéristique de K est un nombre premier $p$, l'endomorphisme de Frobenius $F: x \mapsto x^p$ est injectif. Si de plus K est fini, F est un automorphisme de corps.
+- [ ] **B)** Il existe un corps de caractéristique 6.
+- [ ] **C)** Si la caractéristique de K est nulle, alors son sous-corps premier est isomorphe à $\mathbb{Z}$.
+- [x] **D)** Tout corps fini K peut être vu comme une extension $K \cong \mathbb{F}_p[X]/(P)$ pour un certain polynôme irréductible $P$, et est une extension simple de son sous-corps premier, i.e., $K = \mathbb{F}_p(\alpha)$ pour un $\alpha \in K$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, D]**
+
+- **A.** Correct. Tout morphisme de corps est injectif. L'endomorphisme de Frobenius est un morphisme de corps, il est donc injectif. Dans le cas d'un corps fini K, toute application injective de K dans lui-même est également surjective, donc F est un automorphisme.
+
+- **B.** Incorrect. La caractéristique d'un corps est définie comme le générateur non-négatif du noyau du morphisme canonique $\mathbb{Z} \to K$. Ce noyau est un idéal premier de $\mathbb{Z}$. Les idéaux premiers de $\mathbb{Z}$ sont $(0)$ et $(p)$ pour $p$ premier. L'idéal $(6)$ n'est pas premier, donc la caractéristique ne peut pas être 6.
+
+- **C.** Incorrect. Si $\text{car}(K)=0$, le morphisme $\mathbb{Z} \to K$ est injectif. Le sous-corps premier est le plus petit sous-corps de K. Il est engendré par $1_K$ et doit contenir les inverses de ses éléments non nuls. Il est donc isomorphe au corps des fractions de $\mathbb{Z}$, c'est-à-dire $\mathbb{Q}$.
+
+- **D.** Correct. Un corps fini K a une caractéristique $p>0$ et contient $\mathbb{F}_p$ comme sous-corps premier. Il est un $\mathbb{F}_p$-espace vectoriel de dimension finie, disons $n$. Le théorème de l'élément primitif, qui s'applique aux extensions de corps finis, stipule qu'il existe un $\alpha \in K$ tel que $K=\mathbb{F}_p(\alpha)$. Cet $\alpha$ est racine d'un polynôme minimal $P$ irréductible sur $\mathbb{F}_p$, et on a alors l'isomorphisme $K \cong \mathbb{F}_p[X]/(P)$.
+
+</details>
+
+---
+
+#### Question 8 : Polynôme minimal et structure
+
+Soit $u$ un endomorphisme d'un K-espace vectoriel V de dimension finie $n$, et $M_u(X)$ son polynôme minimal.
+
+- [x] **A)** L'endomorphisme $u$ est inversible si et seulement si $X$ ne divise pas $M_u(X)$.
+- [ ] **B)** Le degré du polynôme minimal est toujours égal à la dimension $n$ de l'espace V.
+- [x] **C)** L'endomorphisme $u$ est diagonalisable si et seulement si son polynôme minimal $M_u(X)$ est scindé sur K et n'a que des racines simples.
+- [ ] **D)** Les racines du polynôme minimal et du polynôme caractéristique sont toujours les mêmes, y compris en multiplicité.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, C]**
+
+- **A.** Correct. Un endomorphisme $u$ est inversible si et seulement si 0 n'est pas une de ses valeurs propres. Les valeurs propres de $u$ sont précisément les racines du polynôme minimal $M_u(X)$. Donc, $u$ est inversible si et seulement si $M_u(0) \neq 0$. Ceci est équivalent à dire que le polynôme $X$ n'est pas un facteur de $M_u(X)$.
+
+- **B.** Incorrect. Le degré du polynôme minimal est inférieur ou égal à $n$. Par exemple, le polynôme minimal de l'endomorphisme identité $I_n$ est $X-1$, de degré 1, quelle que soit la dimension $n \ge 1$.
+
+- **C.** Correct. C'est un théorème fondamental de la réduction des endomorphismes. Cette condition nécessaire et suffisante est l'un des critères les plus puissants pour déterminer si un endomorphisme est diagonalisable.
+
+- **D.** Incorrect. Les racines du polynôme minimal et du polynôme caractéristique constituent le même *ensemble* de valeurs propres. Cependant, leurs multiplicités peuvent différer. La multiplicité d'une racine dans le polynôme caractéristique est sa multiplicité *algébrique*, tandis que sa multiplicité dans le polynôme minimal est liée à la taille du plus grand bloc de Jordan associé. Par exemple, pour l'identité $I_n$ ($n>1$), $\chi_I(X)=(X-1)^n$ et $M_I(X)=X-1$. La racine 1 a une multiplicité $n$ dans l'un et 1 dans l'autre.
+
+</details>
+
+---
+
+#### Question 9 : Produit tensoriel de A-algèbres
+
+Soient A un anneau commutatif, et B, C deux A-algèbres commutatives. Leur produit tensoriel $B \otimes_A C$ est muni d'une structure de A-algèbre. Quelles sont les propriétés correctes de cette construction ?
+
+- [ ] **A)** La multiplication est définie sur les tenseurs purs par $(b_1 \otimes c_1)(b_2 \otimes c_2) = (b_1+b_2) \otimes (c_1+c_2)$.
+- [x] **B)** L'algèbre $A[X] \otimes_A A[Y]$ est isomorphe à l'algèbre des polynômes à deux indéterminées $A[X,Y]$.
+- [ ] **C)** Si $K$ est un corps et $L/K$ est une extension de corps de degré $n$, alors $L \otimes_K L$ est toujours un corps.
+- [x] **D)** Si $B = K[X]/(P(X))$ et $C=L$ où $L/K$ est une extension de corps, alors $B \otimes_K L \cong L[X]/(P(X))$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B, D]**
+
+- **A.** Incorrect. La multiplication est définie par $(b_1 \otimes c_1)(b_2 \otimes c_2) = (b_1b_2) \otimes (c_1c_2)$ et est étendue à tout l'espace par bilinéarité.
+
+- **B.** Correct. C'est une propriété fondamentale qui peut être démontrée en utilisant la propriété universelle des deux algèbres. $A[X,Y]$ est la A-algèbre commutative libre sur deux générateurs. On peut montrer que $A[X] \otimes_A A[Y]$ satisfait la même propriété universelle pour les générateurs $X \otimes 1$ et $1 \otimes Y$.
+
+- **C.** Incorrect. $L \otimes_K L$ n'est pas un corps en général, sauf si $L=K$. Par exemple, $\mathbb{C} \otimes_\mathbb{R} \mathbb{C} \cong \mathbb{C} \times \mathbb{C}$. Cette dernière est une algèbre avec des diviseurs de zéro (comme $(1,0) \cdot (0,1) = (0,0)$), donc ce n'est pas un corps (ni même un anneau intègre).
+
+- **D.** Correct. Ce résultat est connu sous le nom de "changement de base" ou "extension des scalaires". Il exprime que tensoriser une algèbre quotient par une extension de corps revient à considérer les polynômes sur ce nouveau corps et à quotienter par le même polynôme. Formellement, $(K[X]/(P)) \otimes_K L \cong (K[X] \otimes_K L)/(P \otimes 1) \cong L[X]/(P)$.
+
+</details>
+
+---
+
+#### Question 10 : Analyse d'une preuve sur la factorisation
+
+Analyser l'argument suivant qui vise à prouver l'existence de la factorisation en irréductibles dans un anneau euclidien A de stathme $\delta$:
+
+"Soit $S = \{ \delta(x) \mid x \in A \text{ est non-nul, non-inversible, et ne peut être écrit comme produit d'irréductibles} \}$.
+
+(1) Supposons $S$ non vide. Par le principe de bon ordre de $\mathbb{N}$, $S$ admet un plus petit élément $m = \delta(a)$ pour un certain $a \in A$.
+
+(2) Cet élément $a$ ne peut être irréductible, sinon il serait son propre produit d'irréductibles.
+
+(3) Donc $a$ est réductible, $a=bc$ où $b$ et $c$ ne sont pas des unités.
+
+(4) Pour les stathmes usuels (degré, valeur absolue), on a $\delta(b) < \delta(a)$ et $\delta(c) < \delta(a)$.
+
+(5) Par minimalité de $\delta(a)$, $b$ et $c$ ne peuvent avoir leurs stathmes dans $S$. Ils admettent donc une factorisation en irréductibles.
+
+(6) Le produit de ces factorisations donne une factorisation pour $a=bc$, ce qui contredit l'appartenance de $\delta(a)$ à $S$. Donc $S$ doit être vide."
+
+Quelles sont les analyses pertinentes de ce raisonnement ?
+
+- [x] **A)** L'étape (4) est le point le plus délicat. Pour que l'argumentation soit rigoureuse, on a besoin de $\delta(b) < \delta(a)$ pour tout diviseur propre $b$ de $a$. Cette propriété n'est pas garantie par toutes les définitions de stathme euclidien, même si elle est souvent ajoutée ou peut être supposée sans perte de généralité.
+- [ ] **B)** Le raisonnement est erroné dès le départ car il existe des anneaux euclidiens qui ne sont pas factoriels.
+- [ ] **C)** L'étape (5) est invalide car même si $\delta(b) < \delta(a)$, $b$ lui-même pourrait être un élément dont le stathme est minimal dans $S$.
+- [x] **D)** L'argument prouve l'existence de la factorisation, mais pas son unicité. L'unicité requiert un argument séparé basé sur le lemme d'Euclide (qui est vrai dans un anneau euclidien).
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, D]**
+
+- **A.** Correct. La validité de la preuve par descente sur le stathme dépend de la garantie que pour une factorisation non triviale $a=bc$, les stathmes des facteurs sont strictement inférieurs à celui de $a$. La définition minimale d'un anneau euclidien n'impose pas toujours cette condition (certaines définitions demandent seulement $\delta(b) \le \delta(ab)$). Pour que la preuve soit complète, il faut soit utiliser une définition plus forte du stathme, soit montrer que tout stathme peut être "normalisé" pour avoir cette propriété. C'est un point technique subtil.
+
+- **B.** Incorrect. Tout anneau euclidien est principal, et tout anneau principal est factoriel (UFD). L'existence et l'unicité de la factorisation sont des propriétés fondamentales des anneaux euclidiens.
+
+- **C.** Incorrect. L'étape (5) est valide. Si $\delta(a)$ est le minimum de $S$, et qu'on trouve un $b$ tel que $\delta(b) < \delta(a)$, alors par définition du minimum, $\delta(b)$ ne peut pas être dans $S$. Donc l'élément $b$ (qui est non-nul et non-inversible) doit admettre une factorisation. La logique est correcte.
+
+- **D.** Correct. Le raisonnement présenté est une preuve par l'absurde (ou par récurrence sur le stathme) de l'**existence** d'une décomposition en produit d'irréductibles. Il n'aborde à aucun moment la question de l'**unicité** de cette décomposition (à l'ordre et aux unités près). La preuve de l'unicité est une étape distincte et tout aussi importante, qui repose sur le fait que dans un anneau euclidien, les éléments irréductibles sont premiers.
+
+</details>
+
+---
