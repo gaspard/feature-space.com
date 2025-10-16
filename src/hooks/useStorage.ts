@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 function getValue<T>(key: string, defaultValue: T): T {
 	if (typeof window === "undefined") return defaultValue;
@@ -34,4 +34,29 @@ export function useStorage<T>(
 	}
 
 	return [isHydrated ? value : initialValue, set];
+}
+
+export function useQuizStorage(quizId: string) {
+	if (typeof window === "undefined") {
+		return [{} as Record<string, boolean>, () => { }, () => { }] as const;
+	}
+	const getQuiz = useCallback(() => {
+		const v = localStorage.getItem(quizId);
+		if (typeof v !== "string") {
+			return {};
+		}
+		return JSON.parse(v);
+	}, [quizId]);
+	const [quiz, setQuiz] = useState<Record<string, boolean>>(getQuiz());
+	const setValue = (key: string, value: boolean) => {
+		const quiz = getQuiz();
+		quiz[key] = value;
+		localStorage.setItem(quizId, JSON.stringify(quiz));
+		setQuiz(quiz);
+	}
+	const resetQuiz = () => {
+		setQuiz({});
+		localStorage.removeItem(quizId);
+	}
+	return [quiz, setValue, resetQuiz] as const;
 }

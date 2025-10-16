@@ -1,0 +1,384 @@
+---
+id: c61901a2
+type: cards
+order: 12
+title: Rappels et notation - fiches de révision (A)
+tags:
+  - set theory
+  - relations
+  - functions
+  - induction
+  - combinatorics
+createdAt: '2025-10-15T19:11:23.494Z'
+level: regular
+course: UL2MA226 - Graphes et Combinatoire
+courseId: 7027276b
+chapter: Rappels et notation
+chapterId: 58e4ac98
+---
+# Fiches de révision "Rappels et notation" (A)
+
+---
+
+Qu'est-ce qu'un ensemble et quelles sont les deux manières principales de le définir ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Un **ensemble** est une collection d'objets distincts, appelés **éléments**. L'appartenance d'un élément $x$ à un ensemble $E$ se note $x \in E$.
+
+Il existe deux manières principales de définir un ensemble :
+
+1.  **En extension** : En listant tous ses éléments entre accolades. L'ordre et les répétitions n'ont pas d'importance.
+    
+    **Exemple :** $A = \{1, 2, 3\}$. Cet ensemble est identique à $\{3, 1, 2\}$ et à $\{1, 2, 2, 3\}$.
+
+2.  **En compréhension** : En décrivant une propriété $\mathcal{P}(x)$ que ses éléments doivent vérifier. On note $\{x \in E : \mathcal{P}(x)\}$.
+    
+    **Exemple :** L'ensemble des entiers naturels pairs peut s'écrire $P = \{n \in \mathbb{N} : n \text{ est un multiple de 2}\}$.
+
+</details>
+
+---
+
+Expliquez la différence fondamentale entre le symbole d'appartenance ($\in$) et le symbole d'inclusion ($\subseteq$).
+
+<details>
+
+<summary>Réponse</summary>
+
+La principale différence réside dans la nature des objets qu'ils relient :
+
+-   Le symbole d'**appartenance** ($\in$) relie un **élément** à un **ensemble**. L'expression $x \in E$ signifie que "$x$ est un élément de l'ensemble $E$".
+
+-   Le symbole d'**inclusion** ($\subseteq$) relie **deux ensembles**. L'expression $A \subseteq E$ signifie que "$A$ est un sous-ensemble de $E$", c'est-à-dire que tous les éléments de l'ensemble $A$ sont aussi des éléments de l'ensemble $E$.
+
+**Exemple :** Soit l'ensemble $E = \{1, 2, \{3, 4\}\}$.
+
+-   $1 \in E$ (1 est un élément de E).
+-   $\{3, 4\} \in E$ (l'ensemble $\{3, 4\}$ est lui-même un élément de E).
+-   $\{1, 2\} \subseteq E$ (l'ensemble contenant 1 et 2 est un sous-ensemble de E).
+-   $\{\{3, 4\}\} \subseteq E$ (l'ensemble contenant l'élément $\{3, 4\}$ est un sous-ensemble de E).
+
+Attention, $\{3, 4\} \not\subseteq E$ car ses éléments, $3$ et $4$, ne sont pas des éléments de $E$.
+
+</details>
+
+---
+
+Comment démontre-t-on que deux ensembles $A$ et $B$ sont égaux ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour démontrer que deux ensembles $A$ et $B$ sont égaux ($A=B$), on doit montrer qu'ils ont exactement les mêmes éléments. La méthode standard est de prouver la **double inclusion** :
+
+1.  **Montrer que $A \subseteq B$** : On prend un élément quelconque $x \in A$ et on démontre qu'il doit aussi appartenir à $B$.
+2.  **Montrer que $B \subseteq A$** : On prend un élément quelconque $y \in B$ et on démontre qu'il doit aussi appartenir à $A$.
+
+Si ces deux inclusions sont vraies, on peut conclure que $A = B$.
+
+**Exemple :** Soit $A = \{n \in \mathbb{N} : n^2 - 3n + 2 = 0\}$ et $B = \{1, 2\}$. Montrons que $A=B$.
+
+-   **$A \subseteq B$** : Soit $x \in A$. Alors $x$ est un entier naturel solution de $n^2 - 3n + 2 = 0$. Les solutions de cette équation sont $n=1$ et $n=2$. Donc, $x$ doit être égal à 1 ou 2. Dans les deux cas, $x \in B$.
+-   **$B \subseteq A$** : Soit $y \in B$.
+    -   Si $y=1$, on vérifie que $1^2 - 3(1) + 2 = 0$. Donc $1 \in A$.
+    -   Si $y=2$, on vérifie que $2^2 - 3(2) + 2 = 0$. Donc $2 \in A$.
+
+    Dans les deux cas, $y \in A$.
+
+Puisque $A \subseteq B$ et $B \subseteq A$, on a $A=B$.
+
+</details>
+
+---
+
+Définissez l'union ($A \cup B$) et l'intersection ($A \cap B$) de deux ensembles $A$ et $B$.
+
+<details>
+
+<summary>Réponse</summary>
+
+Soient $A$ et $B$ deux ensembles.
+
+-   **Réunion ($A \cup B$)** : C'est l'ensemble de tous les éléments qui appartiennent à $A$, ou à $B$, ou aux deux.
+    
+    $$ A \cup B = \{x : x \in A \text{ ou } x \in B\} $$
+
+-   **Intersection ($A \cap B$)** : C'est l'ensemble de tous les éléments qui appartiennent à la fois à $A$ et à $B$.
+    
+    $$ A \cap B = \{x : x \in A \text{ et } x \in B\} $$
+
+**Exemple :** Soient $A = \{1, 2, 3, 4\}$ et $B = \{3, 4, 5, 6\}$.
+
+-   $A \cup B = \{1, 2, 3, 4, 5, 6\}$ (les éléments communs n'apparaissent qu'une fois).
+-   $A \cap B = \{3, 4\}$ (seuls les éléments 3 et 4 sont dans les deux ensembles).
+
+</details>
+
+---
+
+Quelles sont les lois de De Morgan pour le complémentaire des ensembles ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Les lois de De Morgan décrivent comment le complémentaire interagit avec l'union et l'intersection. Soient $A$ et $B$ deux sous-ensembles d'un ensemble de référence $E$. Leurs complémentaires sont notés $\bar{A}$ et $\bar{B}$.
+
+**Formules :**
+
+1.  Le complémentaire de l'union est l'intersection des complémentaires :
+    
+    $$ \overline{A \cup B} = \bar{A} \cap \bar{B} $$
+    
+
+2.  Le complémentaire de l'intersection est l'union des complémentaires :
+    
+    $$ \overline{A \cap B} = \bar{A} \cup \bar{B} $$
+
+**Intuitivement :**
+
+1.  Ne pas être dans "(A ou B)" signifie être "ni dans A, ni dans B", ce qui est équivalent à "être dans (non A) et dans (non B)".
+2.  Ne pas être dans "(A et B)" signifie "ne pas être dans A ou ne pas être dans B".
+
+</details>
+
+---
+
+Qu'est-ce que le produit cartésien ($A \times B$) et l'ensemble des parties ($\mathcal{P}(A)$) ?
+
+<details>
+
+<summary>Réponse</summary>
+
+-   **Produit cartésien ($A \times B$)** : C'est l'ensemble de tous les **couples ordonnés** $(a, b)$ où le premier élément $a$ vient de l'ensemble $A$ et le second élément $b$ vient de l'ensemble $B$. L'ordre est important.
+    
+    $$ A \times B = \{(a, b) : a \in A, b \in B\} $$
+
+-   **Ensemble des parties ($\mathcal{P}(A)$)** : C'est l'ensemble de **tous les sous-ensembles** de $A$, y compris l'ensemble vide $\emptyset$ et l'ensemble $A$ lui-même.
+    
+    $$ \mathcal{P}(A) = \{S : S \subseteq A\} $$
+
+**Exemple :** Soit l'ensemble $C = \{x, y\}$.
+
+-   $C \times C = \{(x, x), (x, y), (y, x), (y, y)\}$.
+-   $\mathcal{P}(C) = \{ \emptyset, \{x\}, \{y\}, \{x, y\} \}$.
+
+Si $|C|=2$, alors $|C \times C| = |C| \cdot |C| = 4$ et $|\mathcal{P}(C)| = 2^{|C|} = 2^2 = 4$.
+
+</details>
+
+---
+
+Expliquez ce qu'est une application injective, surjective et bijective.
+
+<details>
+
+<summary>Réponse</summary>
+
+Soit une application $f: E \to F$.
+
+-   **Injective** : Une application est injective si deux éléments distincts de l'ensemble de départ $E$ ont toujours des images distinctes dans l'ensemble d'arrivée $F$. Autrement dit, chaque élément de $F$ a **au plus un** antécédent.
+    
+    $$ \forall x_1, x_2 \in E, (f(x_1) = f(x_2) \implies x_1 = x_2) $$
+    
+    **Exemple :** $f(n) = 2n$ de $\mathbb{N}$ dans $\mathbb{N}$.
+
+-   **Surjective** : Une application est surjective si tout élément de l'ensemble d'arrivée $F$ a **au moins un** antécédent dans $E$. Autrement dit, l'image de $f$ est égale à l'ensemble d'arrivée tout entier.
+    
+    $$ \forall y \in F, \exists x \in E, y = f(x) $$
+    
+    **Exemple :** $g(n) = |n|$ de $\mathbb{Z}$ dans $\mathbb{N}$.
+
+-   **Bijective** : Une application est bijective si elle est à la fois injective et surjective. Cela signifie que tout élément de $F$ a **exactement un** antécédent dans $E$.
+    
+    $$ \forall y \in F, \exists! x \in E, y = f(x) $$
+    
+    **Exemple :** $h(x) = x-1$ de $\mathbb{R}$ dans $\mathbb{R}$.
+
+</details>
+
+---
+
+Quelles sont les trois propriétés qui caractérisent une relation d'équivalence ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Une relation binaire $\mathcal{R}$ sur un ensemble $E$ est une **relation d'équivalence** si elle est :
+
+1.  **Réflexive** : Tout élément est en relation avec lui-même.
+    
+    $$ \forall x \in E, x \mathcal{R} x $$
+
+2.  **Symétrique** : Si $x$ est en relation avec $y$, alors $y$ est en relation avec $x$.
+    
+    $$ \forall x, y \in E, (x \mathcal{R} y \implies y \mathcal{R} x) $$
+
+3.  **Transitive** : Si $x$ est en relation avec $y$ et $y$ est en relation avec $z$, alors $x$ est en relation avec $z$.
+    
+    $$ \forall x, y, z \in E, (x \mathcal{R} y \text{ et } y \mathcal{R} z \implies x \mathcal{R} z) $$
+
+**Exemple :** L'égalité (=) sur les nombres réels est une relation d'équivalence. La relation "a le même âge que" sur un groupe de personnes est aussi une relation d'équivalence.
+
+</details>
+
+---
+
+Quel est le lien fondamental entre une relation d'équivalence sur un ensemble $E$ et une partition de $E$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le lien est une correspondance directe et fondamentale :
+
+1.  **D'une relation d'équivalence à une partition :** Les **classes d'équivalence** d'une relation d'équivalence $\mathcal{R}$ sur un ensemble $E$ forment une **partition** de $E$.
+    
+    Une classe d'équivalence $[x]$ est l'ensemble de tous les éléments en relation avec $x$. Ces classes sont non vides, deux à deux disjointes, et leur réunion est $E$ tout entier.
+
+2.  **D'une partition à une relation d'équivalence :** Réciproquement, si on a une partition de $E$, on peut définir une relation d'équivalence en disant que "$x \mathcal{R} y$ si et seulement si $x$ et $y$ appartiennent au même sous-ensemble de la partition".
+
+En résumé, les concepts de "relation d'équivalence" et de "partition" sont deux manières différentes de décrire la même idée de "regroupement" d'éléments similaires au sein d'un ensemble.
+
+</details>
+
+---
+
+Quelles sont les trois propriétés qui définissent une relation d'ordre (partiel) ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Une relation binaire $\preceq$ sur un ensemble $E$ est une **relation d'ordre** si elle est :
+
+1.  **Réflexive** : Tout élément est en relation avec lui-même.
+    
+    $$ \forall x \in E, x \preceq x $$
+
+2.  **Antisymétrique** : Si $x$ est en relation avec $y$ et $y$ est en relation avec $x$, alors ils doivent être égaux. C'est la propriété clé qui distingue l'ordre de l'équivalence.
+    
+    $$ \forall x, y \in E, (x \preceq y \text{ et } y \preceq x \implies x = y) $$
+
+3.  **Transitive** : Si $x$ est "plus petit" que $y$ et $y$ est "plus petit" que $z$, alors $x$ est "plus petit" que $z$.
+    
+    $$ \forall x, y, z \in E, (x \preceq y \text{ et } y \preceq z \implies x \preceq z) $$
+
+**Exemple :** La relation "inférieur ou égal à" ($\le$) sur les entiers, ou la relation d'inclusion ($\subseteq$) sur l'ensemble des parties d'un ensemble.
+
+</details>
+
+---
+
+Quelle est la différence entre un ordre partiel et un ordre total ? Donnez un exemple pour chacun.
+
+<details>
+
+<summary>Réponse</summary>
+
+La différence réside dans la comparabilité des éléments.
+
+-   Un **ordre partiel** sur un ensemble $E$ est une relation d'ordre où il peut exister des paires d'éléments qui ne sont pas comparables. C'est-à-dire qu'il peut exister $x, y \in E$ tels que l'on n'a ni $x \preceq y$ ni $y \preceq x$.
+
+-   Un **ordre total** est un cas particulier d'ordre partiel où **tous** les éléments sont comparables. Pour n'importe quelle paire d'éléments $x, y \in E$, on a toujours soit $x \preceq y$, soit $y \preceq x$.
+
+**Exemples :**
+
+-   **Ordre total :** L'ensemble des nombres réels $\mathbb{R}$ muni de la relation "inférieur ou égal à" ($\le$). Pour deux réels quelconques $x$ et $y$, on a toujours $x \le y$ ou $y \le x$.
+
+-   **Ordre partiel (non total) :** L'ensemble $E = \{1, 2, 3, 6\}$ muni de la relation de divisibilité. C'est un ordre partiel car on ne peut pas comparer $2$ et $3$ : $2$ ne divise pas $3$, et $3$ ne divise pas $2$.
+
+</details>
+
+---
+
+Quelles sont les deux étapes clés d'une démonstration par récurrence simple ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour prouver par récurrence qu'une proposition $P(n)$ est vraie pour tous les entiers $n \ge n_0$, il faut valider deux étapes :
+
+1.  **Initialisation (ou Cas de base)** : On vérifie manuellement que la proposition est vraie pour le premier rang, $n_0$. C'est le point de départ de notre "chaîne de dominos".
+    
+    On montre que $P(n_0)$ est vraie.
+
+2.  **Hérédité (ou Étape de récurrence)** : On montre que si la proposition est vraie pour un rang quelconque $k$ (où $k \ge n_0$), alors elle est nécessairement vraie pour le rang suivant, $k+1$. Pour cela, on suppose que $P(k)$ est vraie (c'est l'**hypothèse de récurrence**) et on utilise cette supposition pour démontrer $P(k+1)$.
+    
+    On montre l'implication : $\forall k \ge n_0, (P(k) \implies P(k+1))$.
+
+Si ces deux étapes sont réussies, par le principe de récurrence, on conclut que $P(n)$ est vraie pour tout entier $n \ge n_0$.
+
+</details>
+
+---
+
+En utilisant le principe de récurrence, montrez que pour tout $n \ge 1$, $\sum_{i=1}^{n} i = \frac{n(n+1)}{2}$.
+
+<details>
+
+<summary>Réponse</summary>
+
+Soit $P(n)$ la proposition : $\sum_{i=1}^{n} i = \frac{n(n+1)}{2}$.
+
+**1. Initialisation (pour $n=1$)**
+
+-   Le membre de gauche est $\sum_{i=1}^{1} i = 1$.
+-   Le membre de droite est $\frac{1(1+1)}{2} = \frac{2}{2} = 1$.
+-   Puisque $1=1$, la proposition $P(1)$ est vraie.
+
+**2. Hérédité**
+
+Soit un entier $k \ge 1$. Supposons que $P(k)$ est vraie (hypothèse de récurrence), c'est-à-dire :
+
+$$ \sum_{i=1}^{k} i = \frac{k(k+1)}{2} $$
+
+Montrons que $P(k+1)$ est vraie, c'est-à-dire $\sum_{i=1}^{k+1} i = \frac{(k+1)(k+2)}{2}$.
+
+On part du membre de gauche de $P(k+1)$ :
+
+$$ \sum_{i=1}^{k+1} i = \left(\sum_{i=1}^{k} i\right) + (k+1) $$
+
+On utilise l'hypothèse de récurrence pour remplacer la somme jusqu'à $k$ :
+
+$$ = \frac{k(k+1)}{2} + (k+1) $$
+
+On met $(k+1)$ en facteur commun :
+
+$$ = (k+1) \left(\frac{k}{2} + 1\right) = (k+1) \left(\frac{k+2}{2}\right) $$
+
+$$ = \frac{(k+1)(k+2)}{2} $$
+
+Ceci est bien le membre de droite de la proposition $P(k+1)$. L'hérédité est donc prouvée.
+
+**Conclusion**
+
+Par le principe de récurrence, la formule est vraie pour tout entier $n \ge 1$.
+
+</details>
+
+---
+
+Quelle est la différence entre l'hypothèse de récurrence dans une récurrence simple et dans une récurrence forte ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La différence réside dans la portée de ce que l'on suppose pour prouver la propriété au rang $k+1$.
+
+-   **Récurrence simple** : L'hypothèse de récurrence est que la propriété $P(k)$ est vraie pour **un seul** rang, le rang $k$. On suppose $P(k)$ pour prouver $P(k+1)$.
+
+-   **Récurrence forte** : L'hypothèse de récurrence est que la propriété $P(j)$ est vraie pour **tous les rangs** $j$ depuis le début ($n_0$) jusqu'à $k$. On suppose $(P(n_0) \text{ et } P(n_0+1) \text{ et } \dots \text{ et } P(k))$ pour prouver $P(k+1)$.
+
+La récurrence forte est particulièrement utile lorsque la propriété au rang $k+1$ ne dépend pas seulement du rang $k$, mais potentiellement de plusieurs rangs précédents. C'est le cas par exemple dans la preuve de l'existence de la décomposition en facteurs premiers, où un nombre $k+1$ peut être le produit de deux nombres $a$ et $b$ qui sont tous deux plus petits que $k$.
+
+</details>
+
+---

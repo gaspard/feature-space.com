@@ -63,7 +63,6 @@ export async function itemFromFile(
   basePath: string,
   path: string
 ): Promise<TOCItem> {
-  console.log("itemFromFile", basePath, path);
   const fullpath = join(basePath, path)
   const { data } = matter(await readFile(fullpath, "utf-8"))
   const item = S.parseOrThrow(data, generatedItemSchema)

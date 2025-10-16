@@ -14,9 +14,7 @@ const FileOrFolder: React.FC<FileOrFolderProps> = ({
 	path,
 	level = 0,
 }) => {
-	const expanded = (currentPath + '/').startsWith(item.path);
-
-	const isActive = item.path === currentPath;
+	const expanded = item.active;
 
 	const indentStyle = { paddingLeft: `${level * 16}px` };
 
@@ -28,7 +26,7 @@ const FileOrFolder: React.FC<FileOrFolderProps> = ({
 					href={item.path}
 					className={`
             block px-3 py-2 text-sm font-medium transition-colors duration-150
-            ${isActive
+            ${item.active
 							? "bg-blue-50 text-blue-700 border-l-4 border-blue-500"
 							: "text-gray-700 border-l-4 border-transparent saturate-20 hover:border-amber-100"
 						}
@@ -54,7 +52,7 @@ const FileOrFolder: React.FC<FileOrFolderProps> = ({
 					}}
 					className={`
             flex items-center w-full px-3 py-2 text-sm font-medium text-left transition-colors duration-150
-            ${isActive
+            ${item.active
 							? "text-blue-700 bg-blue-50"
 							: "text-gray-700"
 						}

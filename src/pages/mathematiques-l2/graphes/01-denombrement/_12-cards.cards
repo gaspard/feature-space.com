@@ -1,0 +1,373 @@
+---
+id: 4a6dc6f0
+type: cards
+order: 12
+title: Principes de dénombrement - fiches de révision (A)
+tags:
+  - Combinatoire
+  - Dénombrement
+  - Cardinalité
+  - Ensembles finis
+  - Principes de comptage
+createdAt: '2025-10-15T18:52:28.770Z'
+level: regular
+course: UL2MA226 - Graphes et Combinatoire
+courseId: 7027276b
+chapter: Principes de dénombrement
+chapterId: 1a14d8a4
+---
+# Fiches de révision "Principes de dénombrement" (A)
+
+---
+
+Qu'est-ce que le **cardinal** d'un ensemble fini ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Un ensemble $E$ est dit **fini** s'il existe un entier naturel $n \in \mathbb{N}$ et une bijection (une correspondance un-pour-un) de $E$ vers l'ensemble des $n$ premiers entiers non nuls, noté $[n] = \{1, 2, \dots, n\}$.
+
+Le **cardinal** de $E$, noté $|E|$ ou $\text{Card}(E)$, est cet entier unique $n$. Il représente le **nombre d'éléments** de l'ensemble.
+
+$$ |E| = n \iff \exists f: E \to [n] \text{ qui est une bijection.} $$
+
+En termes simples, compter les éléments d'un ensemble revient à les étiqueter avec les nombres $1, 2, 3, \dots, n$ sans en oublier et sans utiliser deux fois le même nombre.
+
+**Exemple :**
+
+Soit $E = \{\text{rouge, vert, bleu}\}$. L'application $f$ définie par :
+
+- $f(\text{rouge}) = 1$
+- $f(\text{vert}) = 2$
+- $f(\text{bleu}) = 3$
+
+est une bijection de $E$ vers $[3]$. Donc, le cardinal de $E$ est $|E| = 3$.
+
+</details>
+
+---
+
+Expliquez le rôle d'une bijection dans la définition du cardinal.
+
+<details>
+
+<summary>Réponse</summary>
+
+Une bijection est une application qui est à la fois injective et surjective. Ces deux propriétés sont essentielles pour garantir un comptage correct et rigoureux des éléments d'un ensemble.
+
+1.  **Injectivité** : Une application $f: E \to [n]$ est injective si deux éléments distincts de $E$ ont des images distinctes dans $[n]$. Cela garantit qu'on ne compte pas le même élément de $E$ plusieurs fois. Chaque élément reçoit une "étiquette" numérique unique.
+
+2.  **Surjectivité** : Une application $f: E \to [n]$ est surjective si chaque élément de $[n]$ est l'image d'au moins un élément de $E$. Cela garantit qu'on utilise toutes les étiquettes de $1$ à $n$ sans en sauter. On s'arrête de compter au bon moment, sans "trous" dans la numérotation.
+
+Ensemble, l'injectivité et la surjectivité (la bijection) établissent une correspondance parfaite et exhaustive entre les éléments de l'ensemble et les premiers entiers, formalisant ainsi l'acte de compter.
+
+</details>
+
+---
+
+Qu'énonce le principe de bijection ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le **principe de bijection** énonce que si deux ensembles finis $E$ et $F$ sont en bijection, alors ils ont nécessairement le même cardinal.
+
+$$ (\exists f: E \to F \text{ qui est une bijection}) \implies |E| = |F| $$
+
+Ce principe est un outil de dénombrement très puissant. Pour compter les éléments d'un ensemble complexe $E$, il suffit de trouver un autre ensemble $F$ dont le cardinal est plus facile à calculer, et de construire une bijection entre $E$ et $F$.
+
+Cette technique est à la base des **preuves bijectives** en combinatoire.
+
+**Exemple :**
+
+Soit $E$ l'ensemble des nombres impairs entre 1 et 99. Pour trouver $|E|$, on peut construire une bijection avec l'ensemble $F = \{0, 1, \dots, 49\}$.
+
+L'application $f: F \to E$ définie par $f(k) = 2k+1$ est une bijection.
+
+Puisque $|F|=50$, on en déduit par le principe de bijection que $|E|=50$.
+
+</details>
+
+---
+
+Qu'est-ce que le principe des tiroirs de Dirichlet ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le **principe des tiroirs de Dirichlet** (ou principe des pigeonniers) est un principe d'existence qui s'énonce simplement :
+
+Si l'on range $n$ objets dans $m$ tiroirs et que $n > m$, alors au moins un tiroir doit contenir au moins deux objets.
+
+Mathématiquement, si $E$ et $F$ sont deux ensembles finis tels que $|E| > |F|$, alors il n'existe **aucune application injective** de $E$ dans $F$.
+
+Cela signifie que pour n'importe quelle application $f: E \to F$, il existe forcément un élément dans $F$ qui est l'image d'au moins deux éléments de $E$.
+
+$$ \exists y \in F, \quad |f^{-1}(\{y\})| \ge 2 $$
+
+Ce principe garantit l'existence d'une telle situation, mais ne dit pas quel tiroir contiendra plusieurs objets.
+
+**Exemple :**
+
+Dans un groupe de 367 personnes ($E$, les "objets"), il y en a forcément au moins deux qui ont la même date d'anniversaire.
+
+Les "tiroirs" sont les 366 jours possibles d'une année ($F$).
+
+Comme $367 > 366$, au moins un jour de l'année est la date d'anniversaire d'au moins deux personnes.
+
+</details>
+
+---
+
+Quelle est la formule du principe d'addition pour deux ensembles (formule du crible de Poincaré) ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour deux ensembles finis quelconques $E$ et $F$, le cardinal de leur union est donné par la formule :
+
+$$ |E \cup F| = |E| + |F| - |E \cap F| $$
+
+**Où :**
+
+-   $|E \cup F|$ est le nombre d'éléments qui sont dans $E$ **ou** dans $F$ (ou dans les deux).
+-   $|E|$ est le cardinal de l'ensemble $E$.
+-   $|F|$ est le cardinal de l'ensemble $F$.
+-   $|E \cap F|$ est le cardinal de l'intersection, c'est-à-dire le nombre d'éléments qui sont à la fois dans $E$ **et** dans $F$.
+
+**Explication :**
+
+Quand on additionne $|E| + |F|$, les éléments qui sont communs aux deux ensembles (dans l'intersection $E \cap F$) sont comptés deux fois. On doit donc soustraire leur nombre une fois pour corriger ce double comptage.
+
+**Cas particulier :** Si les ensembles sont **disjoints** ($E \cap F = \emptyset$), la formule se simplifie en $|E \cup F| = |E| + |F|$.
+
+</details>
+
+---
+
+Appliquez le principe d'addition au problème suivant : combien de nombres entre 1 et 200 sont divisibles par 3 ou par 5 ?
+
+<details>
+
+<summary>Réponse</summary>
+
+On utilise la formule du principe d'addition (ou crible de Poincaré) : $|A \cup B| = |A| + |B| - |A \cap B|$.
+
+1.  **Définir les ensembles :**
+    -   Soit $A$ l'ensemble des nombres entre 1 et 200 divisibles par 3.
+    -   Soit $B$ l'ensemble des nombres entre 1 et 200 divisibles par 5.
+    -   On cherche $|A \cup B|$.
+
+2.  **Calculer le cardinal de chaque ensemble :**
+    -   Pour trouver le nombre de multiples de $k$ jusqu'à $n$, on calcule $\lfloor n/k \rfloor$.
+    -   $|A| = \lfloor 200/3 \rfloor = 66$.
+    -   $|B| = \lfloor 200/5 \rfloor = 40$.
+
+3.  **Calculer le cardinal de l'intersection :**
+    -   L'intersection $A \cap B$ contient les nombres divisibles à la fois par 3 et par 5, c'est-à-dire les nombres divisibles par leur PPCM, qui est $3 \times 5 = 15$.
+    -   $|A \cap B| = \lfloor 200/15 \rfloor = 13$.
+
+4.  **Appliquer la formule :**
+    -   $|A \cup B| = |A| + |B| - |A \cap B|$
+    -   $|A \cup B| = 66 + 40 - 13 = 93$.
+
+Il y a donc **93** nombres entre 1 et 200 qui sont divisibles par 3 ou par 5.
+
+</details>
+
+---
+
+Expliquez le principe des bergers à l'aide de l'analogie du berger et des moutons.
+
+<details>
+
+<summary>Réponse</summary>
+
+Le **principe des bergers** est une méthode de comptage indirect.
+
+**L'analogie :**
+
+Un berger souhaite compter son troupeau de moutons. Les moutons bougent tout le temps, ce qui rend le comptage direct difficile. Cependant, il peut facilement compter les pattes, car elles sont plus nombreuses et moins mobiles.
+
+1.  Il compte le nombre total de pattes. Appelons ce nombre $|E|$.
+2.  Il sait que chaque mouton a exactement 4 pattes. Appelons ce nombre $p=4$.
+3.  Pour trouver le nombre de moutons, $|F|$, il divise le nombre total de pattes par le nombre de pattes par mouton : $|F| = |E| / p$.
+
+**La formalisation mathématique :**
+
+-   $E$ est l'ensemble des "pattes" (l'ensemble qu'on sait compter).
+-   $F$ est l'ensemble des "moutons" (l'ensemble qu'on cherche à compter).
+-   $f: E \to F$ est l'application qui associe à chaque patte le mouton auquel elle appartient.
+-   La condition cruciale est que chaque mouton a le même nombre de pattes ($p=4$). Cela signifie que pour chaque mouton $y \in F$, le nombre d'antécédents (de pattes) est constant : $|f^{-1}(\{y\})| = p$.
+
+Le principe des bergers énonce alors que si cette condition est remplie :
+
+$$ |E| = p \cdot |F| $$
+
+Ce principe est très utile pour compter des objets en quotientant par des symétries ou des équivalences.
+
+</details>
+
+---
+
+Quelle est la formule du principe de multiplication ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le **principe de multiplication** est utilisé pour compter le nombre d'éléments dans un **produit cartésien**.
+
+**Formule :**
+
+Si $E_1, E_2, \dots, E_n$ sont des ensembles finis, alors le cardinal de leur produit cartésien $E_1 \times E_2 \times \cdots \times E_n$ est le produit de leurs cardinaux :
+
+$$ |E_1 \times E_2 \times \cdots \times E_n| = |E_1| \cdot |E_2| \cdot \cdots \cdot |E_n| $$
+
+**Où :**
+
+- Le produit cartésien $E_1 \times \cdots \times E_n$ est l'ensemble de tous les $n$-uplets $(e_1, \dots, e_n)$ où $e_1 \in E_1$, $e_2 \in E_2$, etc.
+
+**Utilisé pour :**
+
+Ce principe s'applique lorsqu'une expérience ou une construction se déroule en une **séquence d'étapes indépendantes**. Si la première étape a $|E_1|$ issues possibles, la deuxième en a $|E_2|$, et ainsi de suite, alors le nombre total d'issues pour la séquence complète est le produit des nombres d'issues à chaque étape.
+
+**Exemple :**
+
+Un menu est composé d'une entrée (3 choix), un plat (4 choix) et un dessert (2 choix). Le nombre total de menus possibles est $3 \times 4 \times 2 = 24$.
+
+</details>
+
+---
+
+Un mot de passe est composé de 4 lettres majuscules (de A à Z) suivies de 2 chiffres (de 0 à 9). Les répétitions sont autorisées. Combien de mots de passe différents peut-on former ?
+
+<details>
+
+<summary>Réponse</summary>
+
+On utilise le principe de multiplication, car la création du mot de passe est une séquence de choix indépendants.
+
+Le mot de passe est un 6-uplet de la forme $(L_1, L_2, L_3, L_4, C_1, C_2)$.
+
+**Étapes :**
+
+1.  **Choix de la 1ère lettre ($L_1$) :** Il y a 26 possibilités (A-Z).
+2.  **Choix de la 2ème lettre ($L_2$) :** Il y a 26 possibilités.
+3.  **Choix de la 3ème lettre ($L_3$) :** Il y a 26 possibilités.
+4.  **Choix de la 4ème lettre ($L_4$) :** Il y a 26 possibilités.
+5.  **Choix du 1er chiffre ($C_1$) :** Il y a 10 possibilités (0-9).
+6.  **Choix du 2ème chiffre ($C_2$) :** Il y a 10 possibilités.
+
+**Calcul :**
+
+Le nombre total de mots de passe est le produit du nombre de possibilités à chaque étape :
+
+$$ \text{Total} = 26 \times 26 \times 26 \times 26 \times 10 \times 10 $$
+
+$$ \text{Total} = 26^4 \times 10^2 $$
+
+$$ \text{Total} = 456\,976 \times 100 = 45\,697\,600 $$
+
+Il y a donc **45 697 600** mots de passe différents possibles.
+
+</details>
+
+---
+
+Qu'est-ce qu'un ensemble infini **dénombrable** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Un ensemble $E$ est dit **dénombrable** s'il est **équipotent** à l'ensemble des entiers naturels $\mathbb{N} = \{0, 1, 2, \dots\}$.
+
+Être équipotent signifie qu'il existe une **bijection** $f: \mathbb{N} \to E$.
+
+Intuitivement, un ensemble est dénombrable si on peut "lister" ou "énumérer" tous ses éléments un par un, dans une séquence infinie, sans en oublier et sans en répéter. La bijection fournit cette liste : le premier élément est $f(0)$, le deuxième est $f(1)$, le troisième $f(2)$, et ainsi de suite.
+
+L'infini dénombrable est considéré comme le "plus petit" des infinis.
+
+**Exemples d'ensembles dénombrables :**
+
+-   L'ensemble des entiers naturels $\mathbb{N}$ lui-même.
+-   L'ensemble des entiers relatifs $\mathbb{Z} = \{\dots, -2, -1, 0, 1, 2, \dots\}$.
+-   L'ensemble des nombres rationnels $\mathbb{Q}$ (l'ensemble des fractions).
+
+</details>
+
+---
+
+Expliquez pourquoi l'ensemble $\mathbb{Z}$ des entiers relatifs est dénombrable.
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour prouver que $\mathbb{Z}$ est dénombrable, il faut construire une bijection entre $\mathbb{N} = \{0, 1, 2, \dots\}$ et $\mathbb{Z} = \{\dots, -1, 0, 1, \dots\}$. Cela revient à trouver un moyen d'énumérer tous les entiers relatifs sans en oublier.
+
+**La méthode d'énumération :**
+
+On peut lister les éléments de $\mathbb{Z}$ en partant de 0 et en alternant entre les nombres positifs et négatifs :
+
+$0, 1, -1, 2, -2, 3, -3, \dots$
+
+Cette liste contient bien tous les entiers relatifs, une et une seule fois.
+
+**La bijection formelle :**
+
+Cette liste peut être décrite par la fonction $f: \mathbb{N} \to \mathbb{Z}$ suivante :
+
+$$ f(n) = \begin{cases} n/2 & \text{si } n \text{ est pair} \\ -(n+1)/2 & \text{si } n \text{ est impair} \end{cases} $$
+
+**Vérifions les premières valeurs :**
+
+-   $f(0) = 0/2 = 0$
+-   $f(1) = -(1+1)/2 = -1$
+-   $f(2) = 2/2 = 1$
+-   $f(3) = -(3+1)/2 = -2$
+-   $f(4) = 4/2 = 2$
+
+Cette fonction est une bijection car chaque entier $k \in \mathbb{Z}$ a un unique antécédent $n \in \mathbb{N}$.
+
+-   Si $k > 0$, son antécédent est $n = 2k$.
+-   Si $k \le 0$, son antécédent est $n = -2k - 1$.
+
+Puisqu'il existe une bijection entre $\mathbb{N}$ et $\mathbb{Z}$, l'ensemble $\mathbb{Z}$ est dénombrable.
+
+</details>
+
+---
+
+Qu'est-ce qu'un ensemble **non dénombrable** et que nous apprend le Théorème de Cantor ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Un ensemble infini est dit **non dénombrable** (ou indénombrable) s'il n'est pas dénombrable, c'est-à-dire s'il n'existe **aucune bijection** entre cet ensemble et $\mathbb{N}$.
+
+Cela signifie qu'il est impossible de lister tous ses éléments dans une séquence, même infinie. L'infini des ensembles non dénombrables est "plus grand" que celui des ensembles dénombrables.
+
+**Théorème de Cantor :**
+
+Le Théorème de Cantor est un résultat fondamental qui affirme que pour n'importe quel ensemble $E$, son **ensemble des parties** $P(E)$ (l'ensemble de tous ses sous-ensembles) a un cardinal strictement plus grand que celui de $E$.
+
+$$ |E| < |P(E)| $$
+
+Plus formellement, il n'existe pas de surjection (et donc pas de bijection) de $E$ vers $P(E)$.
+
+**Ce que cela nous apprend :**
+
+Le Théorème de Cantor implique qu'il n'existe pas un seul "infini", mais une **hiérarchie infinie de tailles d'infinis**. En partant de $\mathbb{N}$, on peut construire des ensembles de plus en plus grands :
+
+$$ |\mathbb{N}| < |P(\mathbb{N})| < |P(P(\mathbb{N}))| < \dots $$
+
+L'ensemble des nombres réels $\mathbb{R}$ est un exemple célèbre d'ensemble non dénombrable. On peut montrer qu'il est équipotent à $P(\mathbb{N})$.
+
+</details>

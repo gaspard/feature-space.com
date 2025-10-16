@@ -20,7 +20,7 @@ export interface PageInfo {
 
 const pagesDir = join(process.cwd(), 'src/pages');
 
-export async function generateNavigation(currentPath: string, maxDepth: number = 2): Promise<NavigationItem[]> {
+export async function generateNavigation(currentPath: string, maxDepth: number): Promise<NavigationItem[]> {
   return await processDirectoryRecursive(pagesDir, '', currentPath, maxDepth, 1);
 }
 
@@ -94,10 +94,10 @@ export function sortNavigationItems(items: NavigationItem[]): NavigationItem[] {
 async function pageInfo(filePath: string, currentPath: string): Promise<PageInfo> {
   const content = await readFile(filePath, 'utf-8');
   const { data: frontmatter } = matter(content);
-  const path = filePath.slice(pagesDir.length);
+  const path = filePath.slice(pagesDir.length).slice(0, - extname(filePath).length);
 
   return {
-    title: frontmatter.title || "MISING TITLE",
+    title: (frontmatter.title || "MISING TITLE").split(" - ")[1],
     path,
     active: (currentPath + '/').startsWith(path),
     order: frontmatter.order,

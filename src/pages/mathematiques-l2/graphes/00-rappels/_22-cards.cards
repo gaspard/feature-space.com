@@ -1,0 +1,448 @@
+---
+id: d2adedfc
+type: cards
+order: 22
+title: Rappels et notation - fiches de révision (B)
+tags:
+  - set theory
+  - relations
+  - functions
+  - induction
+  - combinatorics
+createdAt: '2025-10-15T19:12:12.026Z'
+level: pro
+course: Graphes et Combinatoire
+courseId: 7027276b
+chapter: Rappels et notation
+chapterId: 58e4ac98
+---
+# Fiches de révision "Rappels et notation" (B)
+
+---
+
+Expliquez la distinction fondamentale entre un "ensemble" et une "classe propre" dans le contexte de la théorie axiomatique des ensembles (ZFC), en utilisant le paradoxe de Russell.
+
+<details>
+
+<summary>Answer</summary>
+
+En théorie axiomatique des ensembles, comme ZFC (Zermelo-Fraenkel avec l'axiome du choix), une **classe** est une collection d'objets partageant une propriété. Cependant, toutes les classes ne sont pas des **ensembles**. Celles qui sont "trop grandes" pour être des ensembles sont appelées **classes propres**.
+
+La distinction est cruciale pour éviter les paradoxes de la théorie naïve des ensembles.
+
+**Paradoxe de Russell:**
+
+Considérons la "collection" de tous les ensembles qui ne se contiennent pas eux-mêmes. Notons cette collection $R$.
+
+$$ R = \{x \mid x \text{ est un ensemble et } x \notin x\} $$
+
+La question paradoxale est : $R \in R$ ?
+
+1.  Si $R \in R$, alors par la définition de $R$, $R$ doit être un ensemble qui ne se contient pas lui-même, donc $R \notin R$. C'est une contradiction.
+2.  Si $R \notin R$, alors $R$ est un ensemble qui ne se contient pas lui-même, ce qui correspond exactement à la condition d'appartenance à $R$. Donc, $R \in R$. C'est aussi une contradiction.
+
+**Solution en ZFC:**
+
+Le paradoxe est résolu en postulant que $R$ n'est pas un ensemble. $R$ est une **classe propre**. Les axiomes de ZFC (notamment l'axiome de compréhension) sont formulés de telle manière qu'on ne peut pas construire de tels objets pathologiques comme des ensembles. Un ensemble ne peut être défini qu'en sélectionnant des éléments d'un *autre ensemble déjà existant*. Il n'est donc pas permis de parler de "l'ensemble de tous les ensembles".
+
+En résumé :
+
+- **Ensemble**: Une collection qui est un "objet" légitime de la théorie ZFC. Un ensemble peut être un élément d'un autre ensemble.
+- **Classe propre**: Une collection trop "grande" pour être un ensemble (e.g., la classe de tous les ensembles, la classe de tous les ordinaux). Une classe propre ne peut pas être un élément d'une autre classe (ou d'un ensemble).
+
+</details>
+
+---
+
+Fournissez une preuve combinatoire du théorème sur la cardinalité de l'ensemble des parties : si $E$ est un ensemble fini de cardinal $|E|=n$, alors $|\mathcal{P}(E)|=2^n$.
+
+<details>
+
+<summary>Answer</summary>
+
+**Théorème :** Soit $E$ un ensemble fini tel que $|E| = n$. Alors le cardinal de son ensemble des parties, $\mathcal{P}(E)$, est $|\mathcal{P}(E)| = 2^n$.
+
+**Preuve (par argument combinatoire) :**
+
+1.  Soit $E = \{e_1, e_2, \dots, e_n\}$ un ensemble de $n$ éléments distincts.
+2.  Un sous-ensemble $A$ de $E$ (c'est-à-dire un élément $A \in \mathcal{P}(E)$) est entièrement déterminé par le choix des éléments de $E$ qui lui appartiennent.
+3.  Pour chaque élément $e_i \in E$, il y a exactement deux possibilités concernant son appartenance à un sous-ensemble $A$ :
+    - Soit $e_i \in A$ (l'élément est inclus dans le sous-ensemble).
+    - Soit $e_i \notin A$ (l'élément n'est pas inclus).
+4.  Le choix d'inclure ou non un élément $e_i$ est indépendant du choix pour tout autre élément $e_j$ (avec $j \neq i$).
+5.  Puisqu'il y a $n$ éléments dans $E$, et pour chacun de ces éléments il y a 2 choix indépendants, le nombre total de façons de former un sous-ensemble est le produit du nombre de choix pour chaque élément.
+6.  D'après le principe multiplicatif, le nombre total de sous-ensembles possibles est donc :
+
+    $$ \underbrace{2 \times 2 \times \dots \times 2}_{n \text{ fois}} = 2^n $$
+
+7.  Chaque sous-ensemble possible correspond à un unique élément de $\mathcal{P}(E)$, et vice-versa. Par conséquent, $|\mathcal{P}(E)| = 2^n$.
+
+**Exemple :** Si $E = \{a, b\}$, les $2^2=4$ sous-ensembles sont :
+
+- Choix : $a \notin A, b \notin A \implies A = \emptyset$
+- Choix : $a \in A, b \notin A \implies A = \{a\}$
+- Choix : $a \notin A, b \in A \implies A = \{b\}$
+- Choix : $a \in A, b \in A \implies A = \{a, b\}$
+
+</details>
+
+---
+
+Soient $f: E \to F$ et $g: F \to G$ deux applications. Démontrez le Lemme 0.6 : si $f$ et $g$ sont toutes deux surjectives, alors l'application composée $g \circ f: E \to G$ est également surjective.
+
+<details>
+
+<summary>Answer</summary>
+
+**Énoncé :** Si $f: E \to F$ est surjective et $g: F \to G$ est surjective, alors $g \circ f: E \to G$ est surjective.
+
+**Définition de la surjectivité :** Une application $h: A \to B$ est surjective si $\forall b \in B, \exists a \in A$ tel que $h(a)=b$.
+
+**Démonstration :**
+
+1.  Soit $z$ un élément quelconque de l'ensemble d'arrivée $G$. Pour démontrer que $g \circ f$ est surjective, nous devons trouver un élément $x \in E$ tel que $(g \circ f)(x) = z$.
+
+2.  Puisque $g: F \to G$ est surjective, pour cet élément $z \in G$, il existe (au moins) un antécédent $y \in F$ tel que $g(y) = z$.
+
+3.  Puisque $f: E \to F$ est surjective, pour l'élément $y \in F$ que nous venons de trouver, il existe (au moins) un antécédent $x \in E$ tel que $f(x) = y$.
+
+4.  Considérons maintenant l'image de cet élément $x \in E$ par l'application composée $g \circ f$:
+
+    $$ (g \circ f)(x) = g(f(x)) $$
+
+5.  En utilisant la relation $f(x)=y$ de l'étape 3, nous pouvons substituer :
+
+    $$ g(f(x)) = g(y) $$
+
+6.  En utilisant la relation $g(y)=z$ de l'étape 2, nous obtenons :
+
+    $$ g(y) = z $$
+
+7.  Nous avons donc montré que $(g \circ f)(x) = z$.
+
+Puisque pour un $z \in G$ arbitraire, nous avons réussi à construire un $x \in E$ qui est son antécédent par $g \circ f$, nous concluons que l'application $g \circ f$ est surjective.
+
+</details>
+
+---
+
+Énoncez la proposition fondamentale liant les relations d'équivalence et les partitions, et expliquez son importance conceptuelle.
+
+<details>
+
+<summary>Answer</summary>
+
+**Proposition 0.12 (Correspondance entre relations d'équivalence et partitions)**
+
+1.  Si $\mathcal{R}$ est une relation d'équivalence sur un ensemble non vide $E$, alors l'ensemble quotient $E/\mathcal{R}$ (l'ensemble de toutes les classes d'équivalence) forme une partition de $E$.
+2.  Réciproquement, si $P$ est une partition d'un ensemble non vide $E$, il existe une unique relation d'équivalence $\mathcal{R}$ sur $E$ telle que l'ensemble quotient $E/\mathcal{R}$ est précisément $P$.
+
+**Importance Conceptuelle :**
+
+Ce théorème établit une **équivalence fondamentale** entre deux concepts a priori distincts :
+
+- Une **relation d'équivalence** est une structure *relationnelle* qui définit une notion d'« identité » ou de « ressemblance » entre les éléments (via réflexivité, symétrie, transitivité).
+- Une **partition** est une structure *ensembliste* qui décompose un ensemble en sous-ensembles disjoints et exhaustifs.
+
+Ce théorème montre que ces deux points de vue sont les deux faces de la même pièce. Toute manière de regrouper les éléments d'un ensemble en paquets disjoints (partition) définit implicitement une relation d'équivalence (être dans le même paquet), et toute relation d'équivalence induit naturellement un regroupement en paquets disjoints (les classes d'équivalence).
+
+Cette correspondance est au cœur de la notion de **quotient** en mathématiques. Elle permet de construire de nouveaux objets mathématiques en "identifiant" des éléments qui sont considérés comme équivalents. Par exemple, la construction de $\mathbb{Z}/n\mathbb{Z}$ ou des nombres rationnels $\mathbb{Q}$ repose entièrement sur ce principe.
+
+</details>
+
+---
+
+Démontrez la première partie de la Proposition 0.12 : si $\mathcal{R}$ est une relation d'équivalence sur $E$, alors l'ensemble quotient $E/\mathcal{R}$ est une partition de $E$.
+
+<details>
+
+<summary>Answer</summary>
+
+Pour démontrer que $E/\mathcal{R} = \{\mathcal{R}[x] : x \in E\}$ est une partition de $E$, nous devons vérifier les trois propriétés d'une partition :
+
+1.  **Les classes d'équivalence sont non vides** ($\forall A \in E/\mathcal{R}, A \neq \emptyset$).
+
+    Soit $\mathcal{R}[x]$ une classe d'équivalence quelconque dans $E/\mathcal{R}$. Par la propriété de **réflexivité** de $\mathcal{R}$, nous avons $x\mathcal{R}x$ pour tout $x \in E$. Par définition de la classe d'équivalence $\mathcal{R}[x] = \{y \in E : x\mathcal{R}y\}$, cela implique que $x \in \mathcal{R}[x]$. Ainsi, aucune classe d'équivalence n'est vide.
+
+2.  **L'union des classes d'équivalence recouvre $E$** ($\bigcup_{A \in E/\mathcal{R}} A = E$).
+
+    Nous avons déjà montré que pour tout $x \in E$, $x \in \mathcal{R}[x]$. Comme chaque $\mathcal{R}[x]$ est un sous-ensemble de $E$, leur union est aussi un sous-ensemble de $E$. Donc, $\bigcup_{x \in E} \mathcal{R}[x] \subseteq E$.
+
+    Inversement, soit $x$ un élément quelconque de $E$. Comme $x \in \mathcal{R}[x]$, $x$ appartient à l'union de toutes les classes d'équivalence. Donc, $E \subseteq \bigcup_{x \in E} \mathcal{R}[x]$.
+
+    Par double inclusion, nous concluons que $\bigcup_{x \in E} \mathcal{R}[x] = E$.
+
+3.  **Deux classes d'équivalence distinctes sont disjointes** ($\forall A, B \in E/\mathcal{R}, (A \neq B \implies A \cap B = \emptyset)$).
+
+    Ceci est équivalent à montrer que pour deux classes quelconques $\mathcal{R}[x]$ et $\mathcal{R}[y]$, soit elles sont identiques, soit elles sont disjointes.
+
+    Supposons que l'intersection de $\mathcal{R}[x]$ et $\mathcal{R}[y]$ n'est pas vide. Soit $z \in \mathcal{R}[x] \cap \mathcal{R}[y]$.
+
+    Par définition, cela signifie que $x\mathcal{R}z$ et $y\mathcal{R}z$.
+
+    Par **symétrie**, $y\mathcal{R}z \implies z\mathcal{R}y$.
+
+    Maintenant, nous avons $x\mathcal{R}z$ et $z\mathcal{R}y$. Par **transitivité**, nous concluons que $x\mathcal{R}y$.
+
+    Montrons maintenant que cette condition $x\mathcal{R}y$ implique $\mathcal{R}[x] = \mathcal{R}[y]$.
+
+    - Soit $w \in \mathcal{R}[y]$, ce qui signifie $y\mathcal{R}w$. Puisque nous avons $x\mathcal{R}y$, par transitivité, $x\mathcal{R}w$. Donc, $w \in \mathcal{R}[x]$. Cela prouve que $\mathcal{R}[y] \subseteq \mathcal{R}[x]$.
+    - De même, comme $x\mathcal{R}y$, par symétrie $y\mathcal{R}x$. Soit $v \in \mathcal{R}[x]$, ce qui signifie $x\mathcal{R}v$. Puisque $y\mathcal{R}x$, par transitivité, $y\mathcal{R}v$. Donc, $v \in \mathcal{R}[y]$. Cela prouve que $\mathcal{R}[x] \subseteq \mathcal{R}[y]$.
+
+    Par double inclusion, $\mathcal{R}[x] = \mathcal{R}[y]$.
+
+    Nous avons donc montré que si deux classes ont une intersection non vide, elles sont identiques. Par contraposée, si deux classes sont distinctes, leur intersection est vide.
+
+Les trois propriétés étant vérifiées, $E/\mathcal{R}$ est bien une partition de $E$.
+
+</details>
+
+---
+
+Dans un ensemble partiellement ordonné $(E, \preceq)$, quelle est la différence entre un élément maximal de $A \subseteq E$ et un plus grand élément de $A$ ? Fournissez un exemple où ils diffèrent.
+
+<details>
+
+<summary>Answer</summary>
+
+Soit $(E, \preceq)$ un ensemble partiellement ordonné et $A \subseteq E$.
+
+- Un **plus grand élément** de $A$ est un élément $a \in A$ qui est comparable et supérieur ou égal à tous les autres éléments de $A$. Formellement :
+
+  $$ a \in A \text{ est le plus grand élément de } A \iff \forall x \in A, x \preceq a $$
+
+  S'il existe, il est unique.
+
+- Un **élément maximal** de $A$ est un élément $a \in A$ tel qu'aucun autre élément de $A$ n'est strictement plus grand que lui. Formellement :
+
+  $$ a \in A \text{ est un élément maximal de } A \iff \neg (\exists x \in A, a \preceq x \text{ et } a \neq x) $$
+
+  Il peut y en avoir plusieurs.
+
+**Différence clé :** Un plus grand élément doit être comparable à *tous* les autres éléments de l'ensemble. Un élément maximal n'a simplement aucun élément *au-dessus de lui* dans l'ensemble. Si l'ordre est total, les deux notions coïncident. Dans un ordre partiel, elles peuvent différer.
+
+**Exemple :**
+
+Considérons l'ensemble $E = \mathbb{N}^* = \{1, 2, 3, \dots\}$ muni de la relation de divisibilité $|$. C'est un ordre partiel. Soit le sous-ensemble $A = \{2, 3, 4, 5, 6, 7, 10\}$.
+
+- **Éléments maximaux de A :**
+  - $4$ est maximal car aucun autre élément de $A$ n'est un multiple de 4.
+  - $6$ est maximal car aucun autre élément de $A$ n'est un multiple de 6.
+  - $7$ est maximal car aucun autre élément de $A$ n'est un multiple de 7.
+  - $10$ est maximal car aucun autre élément de $A$ n'est un multiple de 10.
+
+  Les éléments maximaux sont donc $\{4, 6, 7, 10\}$.
+
+- **Plus grand élément de A :**
+
+  Il n'y a pas de plus grand élément. Pour qu'un élément soit le plus grand, il faudrait qu'il soit un multiple de tous les autres éléments de $A$. Par exemple, pour être plus grand que 7 et 10, il faudrait être un multiple de 70, mais 70 n'est pas dans $A$.
+
+Cet exemple montre qu'un ensemble peut avoir plusieurs éléments maximaux sans avoir de plus grand élément.
+
+</details>
+
+---
+
+Énoncez le Lemme de Zorn et décrivez brièvement son rôle en mathématiques, notamment en relation avec les relations d'ordre.
+
+<details>
+
+<summary>Answer</summary>
+
+**Énoncé du Lemme de Zorn :**
+
+Soit $(E, \preceq)$ un ensemble non vide partiellement ordonné. Si toute **chaîne** (c'est-à-dire tout sous-ensemble totalement ordonné) de $E$ admet un majorant dans $E$, alors $E$ possède au moins un élément maximal.
+
+**Terminologie :**
+
+- **Chaîne :** Un sous-ensemble $C \subseteq E$ tel que pour tous $x, y \in C$, on a $x \preceq y$ ou $y \preceq x$.
+- **Majorant d'une chaîne $C$ :** Un élément $m \in E$ tel que $\forall c \in C, c \preceq m$.
+
+**Rôle et Importance :**
+
+Le Lemme de Zorn est un axiome puissant, équivalent à l'**Axiome du Choix** et au **Théorème de Zermelo (principe du bon ordre)** dans le cadre de la théorie des ensembles ZF. Il n'est pas démontrable à partir des autres axiomes de ZF.
+
+Son principal intérêt est de servir d'outil de preuve **non constructif**. Il garantit l'**existence** d'objets mathématiques sans pour autant fournir une méthode pour les construire explicitement.
+
+Son application typique concerne les ensembles infinis. Il est utilisé pour prouver des théorèmes fondamentaux dans de nombreux domaines :
+
+1.  **Algèbre Linéaire :** Existence d'une base pour tout espace vectoriel (y compris de dimension infinie). On considère l'ensemble des familles libres, ordonné par l'inclusion. Toute chaîne de familles libres a un majorant (leur union), donc il existe une famille libre maximale, qui est une base.
+2.  **Algèbre Commutative :** Existence d'un idéal maximal dans tout anneau unitaire non trivial (Théorème de Krull).
+3.  **Analyse Fonctionnelle :** Le Théorème de Hahn-Banach, qui traite de l'extension de formes linéaires.
+4.  **Topologie :** Le Théorème de Tychonoff, qui stipule que tout produit d'espaces compacts est compact.
+
+En bref, le Lemme de Zorn est un principe d'existence maximaliste essentiel pour de nombreuses branches des mathématiques modernes traitant de structures infinies.
+
+</details>
+
+---
+
+Démontrez le principe de récurrence faible en utilisant l'axiome du bon ordre sur $\mathbb{N}$.
+
+<details>
+
+<summary>Answer</summary>
+
+**Théorème (Principe de récurrence faible) :** Soit $P(n)$ une proposition sur les entiers $n \in \mathbb{N}$. Si :
+
+1.  **Base :** $P(0)$ est vraie.
+2.  **Hérédité :** $\forall n \in \mathbb{N}, (P(n) \implies P(n+1))$.
+
+Alors $P(n)$ est vraie pour tout $n \in \mathbb{N}$.
+
+**Axiome du bon ordre :** Toute partie non vide de $\mathbb{N}$ possède un plus petit élément.
+
+**Démonstration (par l'absurde) :**
+
+1.  Supposons que la conclusion est fausse. C'est-à-dire, supposons qu'il existe au moins un entier naturel pour lequel la proposition $P(n)$ est fausse.
+
+2.  Considérons l'ensemble $E$ de tous les entiers naturels pour lesquels $P(n)$ est fausse :
+
+    $$ E = \{n \in \mathbb{N} \mid \neg P(n)\} $$
+
+    D'après notre supposition, l'ensemble $E$ n'est pas vide ($E \neq \emptyset$).
+
+3.  Puisque $E$ est une partie non vide de $\mathbb{N}$, en vertu de l'**axiome du bon ordre**, $E$ doit posséder un plus petit élément. Appelons cet élément $n_0$.
+
+    $$ n_0 = \min(E) $$
+
+4.  Analysons la valeur de $n_0$.
+    - Par l'hypothèse de **base** (1), $P(0)$ est vraie. Cela signifie que $0 \notin E$.
+    - Puisque $n_0 \in E$, on a nécessairement $n_0 \neq 0$, et donc $n_0 > 0$.
+
+5.  Puisque $n_0 > 0$, l'entier $n_0 - 1$ est un entier naturel ($n_0 - 1 \in \mathbb{N}$).
+
+6.  Comme $n_0$ est le *plus petit* élément de $E$, et que $n_0 - 1 < n_0$, il s'ensuit que $n_0 - 1$ ne peut pas appartenir à $E$.
+
+    $$ n_0 - 1 \notin E $$
+
+    Par définition de $E$, cela signifie que la proposition $P(n_0 - 1)$ est vraie.
+
+7.  Maintenant, utilisons l'hypothèse d'**hérédité** (2). Elle stipule que pour tout $n \in \mathbb{N}$, si $P(n)$ est vraie, alors $P(n+1)$ est vraie. Appliquons-la pour $n = n_0 - 1$.
+
+    Puisque nous savons que $P(n_0 - 1)$ est vraie, l'implication $P(n_0-1) \implies P((n_0-1)+1)$ nous force à conclure que $P(n_0)$ est vraie.
+
+8.  Nous avons atteint une **contradiction**.
+    - D'une part, $n_0 \in E$, ce qui signifie par définition que $P(n_0)$ est fausse.
+    - D'autre part, nous venons de déduire que $P(n_0)$ est vraie.
+
+9.  Cette contradiction provient de notre supposition initiale que l'ensemble $E$ était non vide. Par conséquent, cette supposition doit être fausse.
+
+    L'ensemble $E$ est vide, ce qui signifie qu'il n'existe aucun entier $n$ pour lequel $P(n)$ est fausse. Autrement dit, $P(n)$ est vraie pour tout $n \in \mathbb{N}$.
+
+</details>
+
+---
+
+Démontrez la partie "existence" du Théorème Fondamental de l'Arithmétique en utilisant le principe de récurrence forte : tout entier $n \ge 2$ est un produit de nombres premiers.
+
+<details>
+
+<summary>Answer</summary>
+
+**Théorème (Existence de la décomposition en facteurs premiers) :** Tout entier $n \ge 2$ peut s'écrire comme un produit d'un ou plusieurs nombres premiers.
+
+**Preuve par récurrence forte :**
+
+Soit $P(n)$ la proposition : "$n$ est un produit de nombres premiers". Nous voulons montrer que $P(n)$ est vraie pour tout $n \ge 2$.
+
+1.  **Base(s) de la récurrence :**
+
+    Le cas de base est $n=2$. L'entier $2$ est un nombre premier. Il peut donc être considéré comme un "produit" d'un seul nombre premier. Ainsi, $P(2)$ est vraie.
+
+2.  **Hérédité forte :**
+
+    Soit un entier $k \ge 2$. L'hypothèse de récurrence forte (HR) est de supposer que la proposition $P(j)$ est vraie pour tout entier $j$ tel que $2 \le j \le k$.
+
+    $$ \text{(HR): } \forall j \in \{2, 3, \dots, k\}, P(j) \text{ est vraie.} $$
+
+    Nous devons montrer, sous cette hypothèse, que $P(k+1)$ est vraie.
+
+    Considérons l'entier $k+1$. Il y a deux cas possibles :
+
+    - **Cas 1 : $k+1$ est un nombre premier.**
+
+      Dans ce cas, $k+1$ est lui-même un produit d'un seul nombre premier. La proposition $P(k+1)$ est donc vraie.
+
+    - **Cas 2 : $k+1$ est un nombre composé.**
+
+      Par définition d'un nombre composé, il existe deux entiers $a$ et $b$ tels que :
+
+      $$ k+1 = a \times b $$
+
+      avec $2 \le a \le k$ et $2 \le b \le k$.
+
+      Puisque $a$ et $b$ sont tous deux dans l'intervalle $[2, k]$, l'hypothèse de récurrence forte (HR) s'applique à eux.
+
+      - $P(a)$ est vraie : $a$ est un produit de nombres premiers ($a = p_1 \cdot p_2 \cdots p_r$).
+      - $P(b)$ est vraie : $b$ est un produit de nombres premiers ($b = q_1 \cdot q_2 \cdots q_s$).
+
+      Par conséquent, leur produit $k+1$ peut s'écrire :
+
+      $$ k+1 = a \cdot b = (p_1 \cdot p_2 \cdots p_r) \cdot (q_1 \cdot q_2 \cdots q_s) $$
+
+      Cette expression est un produit de nombres premiers. La proposition $P(k+1)$ est donc également vraie dans ce cas.
+
+Dans les deux cas, nous avons montré que $(\forall j \in \{2, \dots, k\}, P(j)) \implies P(k+1)$.
+
+**Conclusion :**
+
+Par le principe de récurrence forte, la proposition $P(n)$ est vraie pour tout entier $n \ge 2$.
+
+</details>
+
+---
+
+Comment l'ensemble des nombres rationnels $\mathbb{Q}$ est-il formellement construit comme un ensemble quotient ? Précisez l'ensemble de départ, la relation d'équivalence, et la signification des classes d'équivalence.
+
+<details>
+
+<summary>Answer</summary>
+
+La construction formelle de $\mathbb{Q}$ à partir de $\mathbb{Z}$ est un exemple paradigmatique de l'utilisation des relations d'équivalence pour définir de nouvelles structures mathématiques.
+
+**1. Ensemble de départ :**
+
+On part de l'ensemble des couples d'entiers où le second élément est non nul. Cet ensemble représente toutes les fractions possibles, y compris les formes non simplifiées.
+
+$$ E = \mathbb{Z} \times (\mathbb{Z} \setminus \{0\}) = \{(a, b) \mid a \in \mathbb{Z}, b \in \mathbb{Z}^*\} $$
+
+Un couple $(a,b)$ est interprété comme la fraction $\frac{a}{b}$.
+
+**2. Relation d'équivalence :**
+
+On définit une relation $\mathcal{R}$ sur $E$ pour identifier les fractions qui représentent le même nombre. Deux fractions $\frac{a}{b}$ et $\frac{c}{d}$ sont égales si et seulement si $ad=bc$. La relation est donc :
+
+$$ (a, b) \mathcal{R} (c, d) \iff ad = bc $$
+
+Il faut vérifier que $\mathcal{R}$ est bien une relation d'équivalence :
+
+- **Réflexivité :** $(a, b) \mathcal{R} (a, b)$ car $ab = ba$. C'est vrai.
+- **Symétrie :** Si $(a, b) \mathcal{R} (c, d)$, alors $ad = bc$. Ceci implique $cb = da$, donc $(c, d) \mathcal{R} (a, b)$. C'est vrai.
+- **Transitivité :** Supposons $(a, b) \mathcal{R} (c, d)$ et $(c, d) \mathcal{R} (e, f)$.
+  - $ad = bc \quad (1)$
+  - $cf = de \quad (2)$
+
+  On veut montrer $(a, b) \mathcal{R} (e, f)$, i.e., $af = be$.
+
+  Multiplions (1) par $f$ : $adf = bcf$.
+
+  Multiplions (2) par $b$ : $bcf = bde$.
+
+  Donc, $adf = bde$. Comme $d \in \mathbb{Z}^*$, $d \neq 0$, on peut simplifier par $d$ pour obtenir $af = be$. C'est vrai.
+
+**3. Ensemble quotient et signification :**
+
+L'ensemble des nombres rationnels $\mathbb{Q}$ est défini comme l'ensemble quotient de $E$ par la relation $\mathcal{R}$.
+
+$$ \mathbb{Q} := E/\mathcal{R} = \{\mathcal{R}[(a, b)] \mid (a, b) \in E\} $$
+
+- **Classe d'équivalence :** Chaque classe d'équivalence est un nombre rationnel. La classe du couple $(a,b)$, notée $\mathcal{R}[(a,b)]$ ou plus communément $\frac{a}{b}$, est l'ensemble de toutes les fractions équivalentes :
+
+$$ \mathcal{R}[(1, 2)] = \{(1, 2), (2, 4), (-1, -2), (5, 10), \dots \} $$
+
+Cette classe représente le nombre rationnel "un demi".
+
+Les opérations d'addition et de multiplication sur $\mathbb{Q}$ sont ensuite définies sur ces classes d'équivalence, en vérifiant qu'elles sont bien définies (c'est-à-dire que le résultat ne dépend pas du choix du représentant de la classe).
+
+</details>

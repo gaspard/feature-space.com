@@ -18,13 +18,11 @@ export interface ParsedCards {
   title: string;
   cards: Card[];
   type: 'cards' | 'quiz';
-  metadata: {
-    id: string;
-    level: string;
-    chapter: string;
-    course: string;
-    tags: string[];
-  };
+  id: string;
+  level: string;
+  chapter: string;
+  course: string;
+  tags: string[];
 }
 
 export function parseCards(content: string, filename: string): ParsedCards {
@@ -70,12 +68,10 @@ export function parseCards(content: string, filename: string): ParsedCards {
     title: metadata.title || filename.replace(/\.cards$/, ''),
     cards,
     type: 'cards',
-    metadata: {
-      id,
-      level: metadata.level,
-      chapter: metadata.chapter,
-      course: metadata.course,
-      tags: metadata.tags || []
-    }
+    id,
+    level: metadata.level,
+    chapter: metadata.chapter,
+    course: metadata.course,
+    tags: metadata.tags || []
   };
 }

@@ -34,9 +34,9 @@ export function parseQuiz(content: string, filename: string): ParsedCards {
     const content: string[] = [];
     for (const line of detailsMatch[1].split('\n')) {
       if (line.startsWith('- [x]')) {
-        options.push({ id: `quiz-${id}-${questionIndex}-${options.length}`, text: line.replace('- [x]', '').trim(), isCorrect: true });
+        options.push({ id: `q-${id}-${questionIndex}-${options.length}`, text: line.replace('- [x]', '').trim(), isCorrect: true });
       } else if (line.startsWith('- [ ]')) {
-        options.push({ id: `quiz-${id}-${questionIndex}-${options.length}`, text: line.replace('- [ ]', '').trim(), isCorrect: false });
+        options.push({ id: `q-${id}-${questionIndex}-${options.length}`, text: line.replace('- [ ]', '').trim(), isCorrect: false });
       } else {
         content.push(line);
       }
@@ -64,12 +64,10 @@ export function parseQuiz(content: string, filename: string): ParsedCards {
     title: metadata.title || filename.replace(/\.quiz$/, ''),
     cards: cards,
     type: 'quiz',
-    metadata: {
-      id,
-      level: metadata.level,
-      chapter: metadata.chapter,
-      course: metadata.course,
-      tags: metadata.tags || []
-    }
+    id,
+    level: metadata.level,
+    chapter: metadata.chapter,
+    course: metadata.course,
+    tags: metadata.tags || []
   };
 }

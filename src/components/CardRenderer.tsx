@@ -5,7 +5,7 @@ import remarkMath from 'remark-math';
 import remarkGfm from 'remark-gfm';
 import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
-import { useStorage } from '../hooks/useStorage';
+import { useQuizStorage } from '../hooks/useStorage';
 
 interface CardRendererProps {
   cards: ParsedCards;
@@ -28,6 +28,7 @@ export function toggleCheck() {
 
 
 export default function CardRenderer({ cards, static: isStatic = false }: CardRendererProps) {
+  const [quiz, setOption, resetQuiz] = useQuizStorage(cards.id);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [shuffledCards, setShuffledCards] = useState<Card[]>([...cards.cards]);
   const [cardFocus, setCardFocus] = useState(false);
@@ -55,25 +56,19 @@ export default function CardRenderer({ cards, static: isStatic = false }: CardRe
     return null;
   }
 
-  function resetAll() {
-    document.querySelectorAll("input[type='checkbox']").forEach((input) => {
-      (input as HTMLInputElement).checked = false;
-    });
-  }
-
   // Render static cards for SEO
   if (!cardFocus) {
     return (
       <div id={isStatic ? "static-cards-container" : "dynamic-cards-container"}>
         {cards.type === 'quiz' &&
           (<>
-            <button className="reset" onClick={resetAll}>Réinitialiser</button>
+            <button className="reset" onClick={resetQuiz}>Réinitialiser</button>
             <button className="toggle-check" onClick={toggleCheck}>Voir les solutions</button>
           </>)}
         <button onClick={toggleCardFocus} className="card-focus">Focus sur une carte</button>
         <div className="cards-container" >
           {cards.cards.map((card, index) => (
-            <Card key={card.id} card={card} />
+            <Card key={card.id} card={card} quiz={quiz} setOption={setOption} />
           ))}
         </div>
         {cards.type === 'quiz' &&
@@ -95,12 +90,12 @@ export default function CardRenderer({ cards, static: isStatic = false }: CardRe
       <button onClick={toggleCardFocus} className="card-focus">Retour aux cartes</button>
       <button onClick={previousCard} className="card-next">Carte précédente</button>
       <button onClick={nextCard} className="card-next">Carte suivante</button>
-      <Card key={currentCard.id} card={currentCard} onClick={cards.type === 'cards' ? nextCard : undefined} />
+      <Card key={currentCard.id} card={currentCard} onClick={cards.type === 'cards' ? nextCard : undefined} quiz={quiz} setOption={setOption} />
     </>
   );
 }
 
-function Card({ card, onClick }: { card: Card, onClick?: () => void }) {
+function Card({ card, onClick, quiz, setOption }: { card: Card, onClick?: () => void, quiz: Record<string, boolean>, setOption: (key: string, value: boolean) => void }) {
   const ref = useRef<HTMLDetailsElement>(null);
   const handleClick = onClick ? (e: React.MouseEvent<HTMLDivElement>) => {
     if (ref.current) {
@@ -122,7 +117,7 @@ function Card({ card, onClick }: { card: Card, onClick?: () => void }) {
           children={card.content}
         />
         {card.options && <ul>{card.options.map((option) => (
-          <Option key={option.id} option={option} />
+          <Option key={option.id} option={option} quiz={quiz} setOption={setOption} />
         ))}</ul>}
       </div>
       <details ref={ref}>
@@ -138,11 +133,10 @@ function Card({ card, onClick }: { card: Card, onClick?: () => void }) {
   );
 }
 
-function Option({ option }: { option: QuizOption }) {
-  const [checked, setChecked] = useStorage(option.id, false);
+function Option({ option, quiz, setOption }: { option: QuizOption, quiz: Record<string, boolean>, setOption: (key: string, value: boolean) => void }) {
   return (
-    <li key={option.text} onClick={() => setChecked(!checked)}>
-      <input type="checkbox" checked={checked} onChange={() => setChecked(!checked)} className={option.isCorrect ? "correct" : ""} />
+    <li key={option.text} onClick={() => setOption(option.id, !quiz[option.id])}>
+      <input type="checkbox" checked={quiz[option.id] || false} onChange={() => setOption(option.id, !quiz[option.id])} className={option.isCorrect ? "correct" : ""} />
       <ReactMarkdown
         remarkPlugins={[remarkMath, remarkGfm]}
         rehypePlugins={[rehypeRaw, rehypeKatex]}
