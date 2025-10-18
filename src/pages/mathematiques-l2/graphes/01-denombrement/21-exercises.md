@@ -18,7 +18,7 @@ chapterId: 1a14d8a4
 ---
 # Exercices "Principes de dénombrement" (B)
 
-## Exercice 1: Preuve Complexe
+## Exercice 1
 
 **Problème:** Soit $E$ un ensemble fini. Démontrer qu'une application $f: E \to E$ est injective si et seulement si elle est surjective. Montrer par un contre-exemple que ce résultat est faux si $E$ est infini.
 
@@ -63,7 +63,7 @@ chapterId: 1a14d8a4
 
 </details>
 
-## Exercice 2: Application Avancée
+## Exercice 2
 
 **Problème:** Soient $E$ et $F$ des ensembles finis avec $|E|=n$ et $|F|=k$. Déterminer le nombre de surjections de $E$ sur $F$. Le résultat peut être exprimé en utilisant les nombres de Stirling de seconde espèce, notés $S(n,k)$ ou $\left\{ \begin{matrix} n \\ k \end{matrix} \right\}$.
 
@@ -137,7 +137,7 @@ $$ \sum_{j=0}^k (-1)^j \binom{k}{j} (k-j)^n = k! S(n,k) $$
 
 </details>
 
-## Exercice 3: Application Avancée
+## Exercice 3
 
 **Problème:** Démontrer le théorème de Ramsey pour le cas $R(3,3)=6$ : dans tout groupe de 6 personnes, il existe soit un sous-groupe de 3 personnes qui se connaissent mutuellement, soit un sous-groupe de 3 personnes qui sont toutes étrangères les unes aux autres.
 
@@ -199,7 +199,7 @@ $$ \sum_{j=0}^k (-1)^j \binom{k}{j} (k-j)^n = k! S(n,k) $$
 
 </details>
 
-## Exercice 4: Preuve Complexe
+## Exercice 4
 
 **Problème:** Démontrer la formule générale du principe d'inclusion-exclusion par un argument combinatoire de double dénombrement. Pour une famille d'ensembles finis $A_1, \dots, A_n$, prouver que :
 
@@ -267,7 +267,7 @@ $$ \left| \bigcup_{i=1}^n A_i \right| = \sum_{\emptyset \neq I \subseteq [n]} (-
 
 </details>
 
-## Exercice 5: Application Avancée
+## Exercice 5
 
 **Problème:** On veut fabriquer des colliers de 8 perles. Chaque perle peut être de couleur rouge (R) ou bleue (B). Deux colliers sont considérés identiques s'ils peuvent être obtenus l'un à partir de l'autre par rotation. Combien de colliers distincts peut-on fabriquer ?
 
@@ -332,7 +332,7 @@ $$ N = \frac{1}{8} \sum_{k=0}^{7} 2^{\text{pgcd}(8,k)} = \frac{1}{8}(2^8 + 2^1 +
 
 </details>
 
-## Exercice 6: Preuve Complexe
+## Exercice 6
 
 **Problème:** Démontrer que l'ensemble $\mathbb{A}$ des nombres algébriques réels est dénombrable. Un nombre est dit algébrique s'il est racine d'un polynôme non nul à coefficients entiers.
 
@@ -390,7 +390,7 @@ $$ N = \frac{1}{8} \sum_{k=0}^{7} 2^{\text{pgcd}(8,k)} = \frac{1}{8}(2^8 + 2^1 +
 
 </details>
 
-## Exercice 7: Problème de type Recherche
+## Exercice 7
 
 **Problème:** Le "problème des ménages" consiste à déterminer le nombre de façons, noté $M_n$, de placer $n$ couples mariés autour d'une table circulaire de $2n$ places, de sorte que les hommes et les femmes alternent et qu'aucune femme ne soit assise à côté de son mari.
 
@@ -470,7 +470,7 @@ Les premières valeurs sont $M_1=0, M_2=0, M_3=1, M_4=2, M_5=13, M_6=80$.
 
 </details>
 
-## Exercice 8: Investigation Théorique
+## Exercice 8
 
 **Problème:** Un sous-ensemble $A \subseteq \mathbb{N}$ est appelé un ensemble de Sidon si toutes les sommes d'éléments par paires $a+b$ avec $a, b \in A$ et $a \le b$ sont distinctes. Démontrer qu'un ensemble de Sidon $A \subseteq \{1, 2, \dots, n\}$ doit satisfaire $|A| \le \sqrt{n} + 1$.
 
@@ -696,7 +696,7 @@ $$ |A| < \sqrt{2n} + \frac{1}{2} $$
 
 </details>
 
-## Exercice 9: Investigation Théorique
+## Exercice 9
 
 **Problème:** Démontrer que l'ensemble des réels $\mathbb{R}$ et l'ensemble des parties de $\mathbb{N}$, noté $P(\mathbb{N})$, sont équipotents.
 
@@ -748,7 +748,7 @@ $$ |\mathbb{R}| = |P(\mathbb{N})| = 2^{|\mathbb{N}|} = \mathfrak{c} $$
 
 </details>
 
-## Exercice 10: Preuve Complexe
+## Exercice 10
 
 **Problème:** Énoncer et démontrer le théorème de Dilworth pour les ensembles finis partiellement ordonnés.
 

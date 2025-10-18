@@ -1,7 +1,6 @@
 ---
 import "../global.css"
 import Navigation from "../components/Navigation.astro"
-import QuizEnhancer from "../components/QuizEnhancer.tsx"
 
 export interface Props {
   title?: string
@@ -168,7 +167,6 @@ const socialImage = new URL(image, Astro.site)
         <div class="main-content">
           <slot />
         </div>
-        <QuizEnhancer quizId={quizId || ""} client:visible />
       </main>
     </div>
 
@@ -208,14 +206,48 @@ const socialImage = new URL(image, Astro.site)
             closeMobileMenu()
           }
         })
-        const a = "g.a.bucher"
-        const b = "midasum.com"
-
-        document.querySelectorAll("div.main-content a#email").forEach((a) => {
-          const emailLink = a as HTMLAnchorElement
-          emailLink.href = `mailto:${a}@${b}?subject=feature-space.com`
-          emailLink.innerHTML = `${a}@${b}`
-        })
+        const e = "g.a.bucher"
+        const d = "midasum"
+        const phrases = [
+          "en attente de convergence…",
+          "calcul du dernier chiffre de π…",
+          "vérification des hypothèses de Cauchy…",
+          "optimisation du problème de Kepler…",
+          "preuve par induction en cours…",
+          "intégration par parties en préparation…",
+          "tri des nombres premiers terminé à 99 %…",
+          "résolution du problème des trois corps…",
+          "stabilité orbitale en réévaluation…",
+          "simulation de Monte-Carlo en cours…",
+          "calcul tensoriel sous vérification…",
+          "chargement du lemme de Gauss…",
+          "séquence de Fibonacci détectée…",
+          "test de Turing du serveur en cours…",
+          "préparation des limites quand x tend vers ∞…"
+        ]
+        const shuffledPhrases = phrases.sort(() => Math.random() - 0.5)
+        const displayedPhrases = shuffledPhrases.slice(0, 4)
+        let phraseIndex = 0
+        const emailText = document.getElementById("email-text")
+        if (emailText) {
+          const updatePhrase = () => {
+            const phrase = displayedPhrases[phraseIndex]
+            phraseIndex++
+            emailText.innerHTML = phrase
+            if (phraseIndex < displayedPhrases.length) {
+              setTimeout(updatePhrase, 1200)
+            } else {
+              document
+                .querySelectorAll("div.main-content a#email")
+                .forEach((a) => {
+                  const emailLink = a as HTMLAnchorElement
+                  emailLink.href = `mailto:${e}@${d}.com?subject=feature-space.com`
+                  emailLink.innerHTML = `${e}@${d}.com`
+                })
+            }
+          }
+          updatePhrase()
+        }
       })
     </script>
   </body>

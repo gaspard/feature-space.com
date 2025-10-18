@@ -19,7 +19,7 @@ chapterId: c9bf30da
 ---
 # Exercices "Séries Numériques" (A)
 
-## Exercice 1: [Problème de Calcul - Série Télescopique]
+## Exercice 1
 
 **Problème :** Calculez la somme de la série suivante :
 
@@ -72,7 +72,7 @@ $$ \sum_{n=1}^{\infty} \frac{1}{(n+1)(n+2)} = \frac{1}{2} $$
 
 </details>
 
-## Exercice 2: [Problème de Calcul - Série Géométrique]
+## Exercice 2
 
 **Problème :** Déterminez si la série suivante converge. Si oui, calculez sa somme.
 
@@ -130,7 +130,7 @@ $$ \sum_{n=2}^{\infty} 3 \left(\frac{2}{5}\right)^n = \frac{4}{5} $$
 
 </details>
 
-## Exercice 3: [Question Conceptuelle - Condition Nécessaire de Convergence]
+## Exercice 3
 
 **Problème :** Utilisez le test de divergence grossière pour déterminer si les séries suivantes divergent. Justifiez votre réponse.
 
@@ -190,7 +190,7 @@ c) Le test ne permet pas de conclure.
 
 </details>
 
-## Exercice 4: [Problème d'Application - Théorème de Comparaison]
+## Exercice 4
 
 **Problème :** Déterminez la nature de la série suivante en utilisant le théorème de comparaison par inégalité.
 
@@ -236,7 +236,7 @@ La série $\sum_{n=1}^{\infty} \frac{1+\sin(n)}{n^3}$ est **convergente**.
 
 </details>
 
-## Exercice 5: [Problème de Calcul - Comparaison par Équivalence]
+## Exercice 5
 
 **Problème :** En utilisant un équivalent simple du terme général, déterminez la nature de la série :
 
@@ -280,7 +280,7 @@ La série $\sum_{n=2}^{\infty} \frac{3n^2+5n}{n^4-n^2+1}$ est **convergente**.
 
 </details>
 
-## Exercice 6: [Problème de Calcul - Convergence Absolue]
+## Exercice 6
 
 **Problème :** Étudiez la convergence absolue de la série suivante. Est-elle absolument convergente, semi-convergente ou divergente ?
 
@@ -314,7 +314,7 @@ La série est **absolument convergente**.
 
 </details>
 
-## Exercice 7: [Problème d'Application - Règle de d'Alembert]
+## Exercice 7
 
 **Problème :** Déterminez la nature de la série suivante à l'aide de la règle de d'Alembert.
 
@@ -356,7 +356,7 @@ La série $\sum_{n=0}^{\infty} \frac{n^3}{3^n}$ est **convergente**.
 
 </details>
 
-## Exercice 8: [Problème d'Application - Règle de Cauchy]
+## Exercice 8
 
 **Problème :** Déterminez la nature de la série suivante à l'aide de la règle de Cauchy.
 
@@ -398,7 +398,7 @@ La série $\sum_{n=1}^{\infty} \left(\frac{2n}{3n+1}\right)^{2n}$ est **converge
 
 </details>
 
-## Exercice 9: [Problème d'Application - Semi-Convergence]
+## Exercice 9
 
 **Problème :** La série harmonique alternée est définie par $\sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n}$.
 
@@ -442,7 +442,7 @@ On admet que cette série converge.
 
 </details>
 
-## Exercice 10: [Application - Modélisation]
+## Exercice 10
 
 **Problème :** Une balle est lâchée d'une hauteur de 10 mètres. Après chaque rebond, elle remonte à $70\%$ de la hauteur de son précédent sommet. Calculez la distance verticale totale parcourue par la balle jusqu'à son immobilisation.
 

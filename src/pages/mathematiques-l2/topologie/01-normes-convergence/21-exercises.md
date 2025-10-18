@@ -18,7 +18,7 @@ chapterId: 629d2832
 ---
 # Exercices "Normes sur Rⁿ et suites convergentes" (B)
 
-## Exercice 1: [Investigation Théorique]
+## Exercice 1
 
 **Problème:** Soit $E$ un espace vectoriel réel. Une partie $C \subset E$ est dite **convexe** si pour tous $x, y \in C$ et tout $t \in [0, 1]$, on a $tx + (1-t)y \in C$. Elle est dite **symétrique** par rapport à l'origine si pour tout $x \in C$, on a $-x \in C$. Elle est dite **absorbante** si pour tout $x \in E$, il existe $\alpha > 0$ tel que $\alpha x \in C$.
 
@@ -82,7 +82,7 @@ Démontrer que $p_B$ est une norme sur $E$.
 
 </details>
 
-## Exercice 2: [Preuve Complexe]
+## Exercice 2
 
 **Problème:** L'objectif est de démontrer l'**inégalité de Hölder**, une généralisation de l'inégalité de Cauchy-Schwarz.
 
@@ -158,7 +158,7 @@ $$ \sum_{i=1}^n |x_i y_i| \le \|x\|_p \|y\|_q $$
 
 </details>
 
-## Exercice 3: [Application Avancée]
+## Exercice 3
 
 **Problème:** Soit $E = \mathcal{M}_n(\mathbb{R})$ l'espace vectoriel des matrices carrées de taille $n$ à coefficients réels. Soit $\|\cdot\|$ une norme sur $\mathbb{R}^n$ (appelée norme vectorielle). On définit une application $N : \mathcal{M}_n(\mathbb{R}) \to \mathbb{R}_+$ par :
 
@@ -256,7 +256,7 @@ $$ N_\infty(A) = \max_{1 \le i \le n} \sum_{j=1}^n |a_{ij}| $$
 
 </details>
 
-## Exercice 4: [Investigation Théorique]
+## Exercice 4
 
 **Problème:** Soit $E$ l'espace vectoriel des polynômes à coefficients réels, noté $\mathbb{R}[X]$. On considère deux normes sur $E$:
 
@@ -318,7 +318,7 @@ Une bonne suite de candidats sont des polynômes qui ont un pic étroit près d'
 
 </details>
 
-## Exercice 5: [Preuve Complexe]
+## Exercice 5
 
 **Problème:** Soit $(E, \|\cdot\|)$ un espace de Banach (un espace vectoriel normé complet) et soit $F$ un sous-espace vectoriel de $E$.
 
@@ -361,7 +361,7 @@ Pour le sens réciproque $(\impliedby)$, nous supposerons que $F$ est fermé et 
 
 </details>
 
-## Exercice 6: [Investigation Théorique]
+## Exercice 6
 
 **Problème:** Soit $A \in \mathcal{M}_n(\mathbb{R})$ une matrice inversible. On définit une application $N_A : \mathbb{R}^n \to \mathbb{R}_+$ par :
 
@@ -432,7 +432,7 @@ $$ \forall x \in \mathbb{R}^n, \quad \sigma_{\min}(A) \|x\|_2 \le \|Ax\|_2 \le \
 
 </details>
 
-## Exercice 7: [Application Avancée]
+## Exercice 7
 
 **Problème:** Soit $(\mathbb{R}^n, \langle \cdot, \cdot \rangle)$ l'espace euclidien canonique. Démontrer que l'application produit scalaire $f: \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$ définie par $f(x, y) = \langle x, y \rangle$ est continue.
 
@@ -501,7 +501,7 @@ La convergence de $(x_k, y_k)$ vers $(a,b)$ dans l'espace produit signifie que $
 
 </details>
 
-## Exercice 8: [Preuve Complexe]
+## Exercice 8
 
 **Problème:** Démontrer l'**inégalité de Minkowski** pour $p \in (1, \infty)$.
 
@@ -577,7 +577,7 @@ $$ \|x+y\|_p \le \|x\|_p + \|y\|_p $$
 
 </details>
 
-## Exercice 9: [Problème de Recherche]
+## Exercice 9
 
 **Problème:** Pour $p \in (0, 1)$, l'application $N_p(x) = \left( \sum_{i=1}^n |x_i|^p \right)^{1/p}$ n'est pas une norme. C'est un exemple de **quasi-norme**. Une application $\|\cdot\|_Q : E \to \mathbb{R}_+$ est une quasi-norme s'il existe une constante $K \ge 1$ telle que :
 
@@ -675,7 +675,7 @@ $$ \|x+y\|_p \le \|x\|_p + \|y\|_p $$
 
 </details>
 
-## Exercice 10: [Théorème du Point Fixe]
+## Exercice 10
 
 **Problème:** Soit $(E, \|\cdot\|)$ un espace de Banach. Soit $C \subset E$ une partie non vide et fermée de $E$. Soit $f: C \to C$ une application **contractante**, c'est-à-dire qu'il existe une constante $k \in [0, 1)$ telle que pour tous $x, y \in C$:
 

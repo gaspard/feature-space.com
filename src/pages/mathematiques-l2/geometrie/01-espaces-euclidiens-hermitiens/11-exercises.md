@@ -20,7 +20,7 @@ chapterId: 67b3d760
 ---
 # Exercices "Espaces Euclidiens et Hermitiens" (A)
 
-## Exercice 1: [Problème de calcul]
+## Exercice 1
 
 **Problème:** Soit l'application $\varphi: \mathbb{R}^2 \times \mathbb{R}^2 \to \mathbb{R}$ définie pour $x=(x_1, x_2)$ et $y=(y_1, y_2)$ par :
 
@@ -82,7 +82,7 @@ Montrer que $\varphi$ est une forme bilinéaire symétrique.
 
 </details>
 
-## Exercice 2: [Problème de calcul]
+## Exercice 2
 
 **Problème:** Soit $E = \mathbb{C}^2$ et l'application $\varphi: E \times E \to \mathbb{C}$ définie pour $x=(x_1, x_2)$ et $y=(y_1, y_2)$ par :
 
@@ -142,7 +142,7 @@ Montrer que $\varphi$ est une forme sesquilinéaire hermitienne.
 
 </details>
 
-## Exercice 3: [Question conceptuelle]
+## Exercice 3
 
 **Problème:** Sur l'espace vectoriel $E = \mathbb{R}_1[X]$ des polynômes de degré au plus 1, on définit l'application $\langle P, Q \rangle = P(0)Q(0) + P'(0)Q'(0)$, où $P'$ est la dérivée de $P$. Est-ce que cette application définit un produit scalaire sur $E$ ?
 
@@ -208,7 +208,7 @@ Montrer que $\varphi$ est une forme sesquilinéaire hermitienne.
 
 </details>
 
-## Exercice 4: [Application]
+## Exercice 4
 
 **Problème:** Soit l'espace euclidien $\mathbb{R}^3$ muni de son produit scalaire usuel. Soient les vecteurs $x = (1, 2, -3)$ et $y = (2, 0, 1)$.
 
@@ -268,7 +268,7 @@ Montrer que $\varphi$ est une forme sesquilinéaire hermitienne.
 
 </details>
 
-## Exercice 5: [Problème de calcul]
+## Exercice 5
 
 **Problème:** Dans l'espace euclidien $\mathbb{R}^2$ muni de son produit scalaire usuel, soient les vecteurs $x = (3, 1)$ et $y = (1, 2)$.
 
@@ -328,7 +328,7 @@ Montrer que $\varphi$ est une forme sesquilinéaire hermitienne.
 
 </details>
 
-## Exercice 6: [Question conceptuelle]
+## Exercice 6
 
 **Problème:** Sur $\mathbb{R}^2$, on définit la norme infinie par $\|x\|_{\infty} = \max(|x_1|, |x_2|)$. Montrer que cette norme ne dérive pas d'un produit scalaire.
 
@@ -374,7 +374,7 @@ Montrer que $\varphi$ est une forme sesquilinéaire hermitienne.
 
 </details>
 
-## Exercice 7: [Problème de calcul]
+## Exercice 7
 
 **Problème:** Dans l'espace euclidien $\mathbb{R}^3$, on considère la base orthonormée $\mathcal{B}' = (e'_1, e'_2, e'_3)$ avec :
 
@@ -432,7 +432,7 @@ Soit le vecteur $v = (2, 3, 4)$. Trouver les coordonnées de $v$ dans la base $\
 
 </details>
 
-## Exercice 8: [Problème de calcul]
+## Exercice 8
 
 **Problème:** Dans $\mathbb{R}^3$ muni du produit scalaire usuel, appliquer le procédé d'orthonormalisation de Gram-Schmidt à la base $\mathcal{B} = (v_1, v_2, v_3)$ où $v_1 = (1, 1, 0)$, $v_2 = (1, 0, 1)$ et $v_3 = (0, 1, 1)$.
 
@@ -504,7 +504,7 @@ $e_3 = \frac{1}{\sqrt{3}}(-1, 1, 1)$.
 
 </details>
 
-## Exercice 9: [Application]
+## Exercice 9
 
 **Problème:** Dans $\mathbb{R}^3$ muni du produit scalaire usuel, on considère le vecteur $v=(6, 2, 5)$ et le plan $F$ d'équation $x - y + 2z = 0$.
 
@@ -564,7 +564,7 @@ Calculer la projection orthogonale $P_F(v)$ du vecteur $v$ sur le plan $F$.
 
 </details>
 
-## Exercice 10: [Application]
+## Exercice 10
 
 **Problème:** Dans $\mathbb{R}^3$ muni de sa structure euclidienne usuelle, calculer la distance du point $A=(1, 2, 3)$ à la droite $D$ passant par l'origine et dirigée par le vecteur $u=(1, 1, 1)$.
 
@@ -606,7 +606,7 @@ Calculer la projection orthogonale $P_F(v)$ du vecteur $v$ sur le plan $F$.
 
 </details>
 
-## Exercice 11: [Problème de calcul]
+## Exercice 11
 
 **Problème:** Soit $f$ un endomorphisme de l'espace euclidien $\mathbb{R}^3$ dont la matrice dans la base canonique (orthonormée) est :
 
@@ -646,7 +646,7 @@ Déterminer la matrice de l'endomorphisme adjoint $f^*$ dans la même base.
 
 </details>
 
-## Exercice 12: [Question conceptuelle]
+## Exercice 12
 
 **Problème:** Soit un endomorphisme $f$ de $\mathbb{C}^2$ dont la matrice dans la base canonique est $A = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & i \\ i & 1 \end{pmatrix}$.
 
@@ -698,7 +698,7 @@ Cet endomorphisme est-il auto-adjoint ? Unitaire ? Normal ?
 
 </details>
 
-## Exercice 13: [Application]
+## Exercice 13
 
 **Problème:** Dans l'espace euclidien $\mathbb{R}^3$ muni du produit scalaire usuel, on considère la forme linéaire $l: \mathbb{R}^3 \to \mathbb{R}$ définie par $l(x, y, z) = 5x - 2y + z$.
 

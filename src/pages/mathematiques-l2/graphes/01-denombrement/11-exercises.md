@@ -18,7 +18,7 @@ chapterId: 1a14d8a4
 ---
 # Exercices "Principes de dénombrement" (A)
 
-## Exercice 1: [Problème de calcul]
+## Exercice 1
 
 **Problème:** Soit $V = \{a, e, i, o, u, y\}$ l'ensemble des voyelles de l'alphabet français. Déterminez le cardinal de $V$ en construisant une bijection explicite entre $V$ et un ensemble $[n]$ pour un certain entier $n$.
 
@@ -49,7 +49,7 @@ chapterId: 1a14d8a4
 
 </details>
 
-## Exercice 2: [Problème d'application]
+## Exercice 2
 
 **Problème:** Soit $E$ l'ensemble des nombres entiers pairs entre 1 et 100 (inclus) et $F$ l'ensemble des nombres entiers impairs entre 101 et 200 (inclus). Montrez que $|E| = |F|$ en construisant une bijection explicite de $E$ vers $F$.
 
@@ -84,7 +84,7 @@ chapterId: 1a14d8a4
 
 </details>
 
-## Exercice 3: [Question conceptuelle]
+## Exercice 3
 
 **Problème:** On choisit 6 nombres entiers distincts dans l'ensemble $S = \{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\}$. Montrez qu'il existe au moins une paire de nombres parmi ceux choisis dont la somme est égale à 11.
 
@@ -122,7 +122,7 @@ chapterId: 1a14d8a4
 
 </details>
 
-## Exercice 4: [Problème d'application]
+## Exercice 4
 
 **Problème:** Un amphithéâtre contient 200 étudiants. Montrez qu'au moins 17 d'entre eux sont nés le même mois. Expliquez le raisonnement en utilisant la version généralisée du principe des tiroirs.
 
@@ -156,7 +156,7 @@ chapterId: 1a14d8a4
 
 </details>
 
-## Exercice 5: [Problème d'application]
+## Exercice 5
 
 **Problème:** Une librairie propose 12 romans de science-fiction, 8 romans policiers et 5 biographies. Un client souhaite acheter un seul livre. Combien de choix différents a-t-il ?
 
@@ -186,7 +186,7 @@ chapterId: 1a14d8a4
 
 </details>
 
-## Exercice 6: [Problème de calcul]
+## Exercice 6
 
 **Problème:** Dans un groupe de 50 musiciens, 25 jouent du piano, 28 jouent de la guitare et 10 jouent des deux instruments.
 
@@ -235,7 +235,7 @@ chapterId: 1a14d8a4
 
 </details>
 
-## Exercice 7: [Problème d'application]
+## Exercice 7
 
 **Problème:** On souhaite créer un mot de passe de 4 caractères. Le premier caractère doit être une lettre majuscule (26 choix), les deux suivants doivent être des chiffres (0-9), et le dernier caractère doit être un des symboles suivants : `{@, #, $, %}`. Combien de mots de passe différents peut-on créer ?
 
@@ -265,7 +265,7 @@ chapterId: 1a14d8a4
 
 </details>
 
-## Exercice 8: [Problème d'application]
+## Exercice 8
 
 **Problème:** 6 personnes souhaitent s'asseoir autour d'une table ronde. Deux arrangements sont considérés identiques si chaque personne a les mêmes voisins (la même personne à sa gauche et la même à sa droite). Combien y a-t-il de manières distinctes de les placer ?
 
@@ -310,7 +310,7 @@ chapterId: 1a14d8a4
 
 </details>
 
-## Exercice 9: [Problème de calcul]
+## Exercice 9
 
 **Problème:** Combien de nombres entiers entre 1 et 1000 (inclus) sont soit des multiples de 5, soit des multiples de 7 ?
 
@@ -349,7 +349,7 @@ chapterId: 1a14d8a4
 
 </details>
 
-## Exercice 10: [Question conceptuelle]
+## Exercice 10
 
 **Problème:** Montrez que l'ensemble $E = \{\dots, -6, -3, 0, 3, 6, \dots\}$ des entiers multiples de 3 est un ensemble dénombrable en construisant une bijection explicite entre $\mathbb{Z}$ et $E$.
 
@@ -385,7 +385,7 @@ chapterId: 1a14d8a4
 
 </details>
 
-## Exercice 11: [Question conceptuelle]
+## Exercice 11
 
 **Problème:** Expliquez pourquoi l'ensemble de toutes les suites infinies de 0 et de 1 (par exemple, $s = 01101000...$) est un ensemble non dénombrable. Utilisez l'argument diagonal de Cantor.
 

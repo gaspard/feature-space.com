@@ -20,7 +20,7 @@ chapterId: b85ab516
 ---
 # Exercices "Groupes d'isométries" (A)
 
-## Exercice 1: Computationnel
+## Exercice 1
 
 **Problème:** Soit $f$ l'endomorphisme de $\mathbb{R}^2$ dont la matrice dans la base canonique est $A = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$. En utilisant la définition, montrez que $f$ est une isométrie.
 
@@ -54,7 +54,7 @@ chapterId: b85ab516
 
 </details>
 
-## Exercice 2: Computationnel
+## Exercice 2
 
 **Problème:** Soit l'endomorphisme $f$ de l'espace euclidien $\mathbb{R}^3$ représenté dans la base canonique par la matrice :
 
@@ -110,7 +110,7 @@ Montrez que $f$ est une isométrie en utilisant la caractérisation matricielle.
 
 </details>
 
-## Exercice 3: Application
+## Exercice 3
 
 **Problème:** Dans $\mathbb{R}^2$ muni du produit scalaire usuel, déterminez si la matrice suivante appartient au groupe orthogonal $O_2(\mathbb{R})$, et si oui, au groupe spécial orthogonal $SO_2(\mathbb{R})$.
 
@@ -150,7 +150,7 @@ $A = \frac{1}{\sqrt{5}} \begin{pmatrix} 1 & -2 \\ 2 & 1 \end{pmatrix}$
 
 </details>
 
-## Exercice 4: Computationnel
+## Exercice 4
 
 **Problème:** Calculez l'angle non-orienté $\theta$ entre les vecteurs $u=(1, 1, 0)$ et $v=(1, 0, 1)$ dans l'espace $\mathbb{R}^3$ muni du produit scalaire usuel.
 
@@ -190,7 +190,7 @@ Il faut donc calculer le produit scalaire $\langle u, v \rangle$, les normes $\|
 
 </details>
 
-## Exercice 5: Conceptuel
+## Exercice 5
 
 **Problème:** Soit $E$ un $\mathbb{R}$-espace vectoriel de dimension 3. Soit $\mathcal{B}=(e_1, e_2, e_3)$ une base de $E$. On considère la nouvelle famille de vecteurs $\mathcal{B'}=(e_1+e_2, e_2+e_3, e_3+e_1)$.
 
@@ -237,7 +237,7 @@ Il faut donc calculer le produit scalaire $\langle u, v \rangle$, les normes $\|
 
 </details>
 
-## Exercice 6: Application
+## Exercice 6
 
 **Problème:** Déterminer les valeurs du réel $a$ pour que la matrice suivante soit une matrice orthogonale :
 
@@ -281,7 +281,7 @@ $M = \begin{pmatrix} a & 1/\sqrt{2} \\ -1/\sqrt{2} & a \end{pmatrix}$
 
 </details>
 
-## Exercice 7: Computationnel
+## Exercice 7
 
 **Problème:** La matrice suivante appartient-elle au groupe unitaire $U_2(\mathbb{C})$ ? Si oui, appartient-elle au groupe spécial unitaire $SU_2(\mathbb{C})$ ?
 
@@ -329,7 +329,7 @@ $U = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & i \\ i & 1 \end{pmatrix}$
 
 </details>
 
-## Exercice 8: Conceptuel
+## Exercice 8
 
 **Problème:** Un endomorphisme $f$ de $\mathbb{R}^3$ est dit une isométrie négative (ou indirecte) si c'est une isométrie et qu'il inverse l'orientation de l'espace.
 
@@ -379,7 +379,7 @@ Soit $s$ la réflexion par rapport au plan d'équation $z=0$ (le plan $(x,y)$).
 
 </details>
 
-## Exercice 9: Application
+## Exercice 9
 
 **Problème:** Dans le plan euclidien $\mathbb{R}^2$, on considère le vecteur $u = (1, \sqrt{3})$. Trouvez un vecteur unitaire $v$ tel que l'angle non-orienté entre $u$ et $v$ soit de $\pi/3$.
 
@@ -435,7 +435,7 @@ Soit $s$ la réflexion par rapport au plan d'équation $z=0$ (le plan $(x,y)$).
 
 </details>
 
-## Exercice 10: Conceptuel
+## Exercice 10
 
 **Problème:** Prouvez que le produit de deux matrices de $O_n(\mathbb{R})$ est encore une matrice de $O_n(\mathbb{R})$. Que pouvez-vous en conclure sur la structure de $O_n(\mathbb{R})$?
 

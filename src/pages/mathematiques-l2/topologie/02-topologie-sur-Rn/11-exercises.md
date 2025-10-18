@@ -19,7 +19,7 @@ chapterId: 3c3b95a8
 ---
 # Exercices "Topologie sur Rn" (A)
 
-## Exercice 1: [Problème de Calcul]
+## Exercice 1
 
 **Problème :** Dans l'espace $\mathbb{R}^2$, on considère le point $x = \begin{pmatrix} 1 \\ -1 \end{pmatrix}$ et le rayon $r=2$.
 
@@ -79,7 +79,7 @@ Soit $z = \begin{pmatrix} z_1 \\ z_2 \end{pmatrix}$ un point de $\mathbb{R}^2$. 
 
 </details>
 
-## Exercice 2: [Problème d'Application]
+## Exercice 2
 
 **Problème :** Dans $\mathbb{R}^3$ muni de la norme euclidienne $\|\cdot\|_2$, on considère le point $x = (1, 2, -1)$ et la boule ouverte $B(x, 4)$. Le point $z = (3, 3, 1)$ appartient-il à cette boule ? Et le point $w = (4, 3, -2)$ ?
 
@@ -132,7 +132,7 @@ Soit $z = \begin{pmatrix} z_1 \\ z_2 \end{pmatrix}$ un point de $\mathbb{R}^2$. 
 
 </details>
 
-## Exercice 3: [Question Conceptuelle]
+## Exercice 3
 
 **Problème :** En utilisant la définition formelle d'un ensemble ouvert, montrez que le demi-plan strict $P = \{(x, y) \in \mathbb{R}^2 : x > 3\}$ est un ensemble ouvert.
 
@@ -182,7 +182,7 @@ Soit $z = \begin{pmatrix} z_1 \\ z_2 \end{pmatrix}$ un point de $\mathbb{R}^2$. 
 
 </details>
 
-## Exercice 4: [Question Conceptuelle]
+## Exercice 4
 
 **Problème :** L'ensemble $A = \{(x,y) \in \mathbb{R}^2 \mid x \ge 0 \text{ et } y > 0 \}$ est-il ouvert ? Fermé ? Ni l'un ni l'autre ? Justifiez votre réponse.
 
@@ -227,7 +227,7 @@ Soit $z = \begin{pmatrix} z_1 \\ z_2 \end{pmatrix}$ un point de $\mathbb{R}^2$. 
 
 </details>
 
-## Exercice 5: [Problème d'Application]
+## Exercice 5
 
 **Problème :** Soit la parabole $P$ dans $\mathbb{R}^2$ définie par l'ensemble $P = \{(x, y) \in \mathbb{R}^2 : y = x^2\}$. En utilisant la caractérisation séquentielle des ensembles fermés, montrez que $P$ est un ensemble fermé.
 
@@ -281,7 +281,7 @@ Soit $z = \begin{pmatrix} z_1 \\ z_2 \end{pmatrix}$ un point de $\mathbb{R}^2$. 
 
 </details>
 
-## Exercice 6: [Problème de Calcul]
+## Exercice 6
 
 **Problème :** Soit l'ensemble $A = \{(x,y) \in \mathbb{R}^2 \mid x^2+y^2 < 4\} \setminus \{(0,0)\}$. Cet ensemble est le disque unité ouvert de rayon 2, privé de son centre.
 
@@ -339,7 +339,7 @@ Déterminez son intérieur $\mathring{A}$, son adhérence $\bar{A}$, et sa front
 
 </details>
 
-## Exercice 7: [Question Conceptuelle]
+## Exercice 7
 
 **Problème :** On considère l'ensemble des points à coordonnées rationnelles dans le plan, $A = \mathbb{Q}^2 = \{(x, y) \in \mathbb{R}^2 \mid x \in \mathbb{Q}, y \in \mathbb{Q}\}$.
 
@@ -407,7 +407,7 @@ Déterminez son intérieur $\mathring{A}$, son adhérence $\bar{A}$, et sa front
 
 </details>
 
-## Exercice 8: [Problème d'Application]
+## Exercice 8
 
 **Problème :** Déterminez si les ensembles suivants de $\mathbb{R}^2$ sont compacts en justifiant votre réponse par le théorème de Heine-Borel (c'est-à-dire en vérifiant s'ils sont fermés et bornés).
 
@@ -450,7 +450,7 @@ c) $C$ n'est **pas compact**.
 
 </details>
 
-## Exercice 9: [Question Conceptuelle]
+## Exercice 9
 
 **Problème :** Soit l'ensemble $A = \left\{ \left(x, \cos\left(\frac{\pi}{x}\right)\right) \in \mathbb{R}^2 \mid x \in (0, 1] \right\}$. Cet ensemble est-il compact ? Justifiez soigneusement votre réponse.
 
@@ -512,7 +512,7 @@ c) $C$ n'est **pas compact**.
 
 </details>
 
-## Exercice 10: [Problème de Calcul]
+## Exercice 10
 
 **Problème :** Soit le vecteur $v = (4, -12, 3)$ dans $\mathbb{R}^3$.
 
@@ -571,7 +571,7 @@ c) $C$ n'est **pas compact**.
 
 </details>
 
-## Exercice 11: [Question Conceptuelle]
+## Exercice 11
 
 **Problème :** On dit que $\mathbb{R}^n$ est un espace complet.
 

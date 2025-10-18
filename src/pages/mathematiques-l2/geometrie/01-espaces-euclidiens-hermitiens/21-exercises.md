@@ -20,7 +20,7 @@ chapterId: 67b3d760
 ---
 # Exercices "Espaces Euclidiens et Hermitiens" (B)
 
-## Exercice 1: [Investigation Théorique]
+## Exercice 1
 
 **Problème:** Soit $E = \mathcal{M}_n(\mathbb{R})$ l'espace vectoriel des matrices carrées de taille $n$ à coefficients réels. Soit $S \in \mathcal{M}_n(\mathbb{R})$ une matrice symétrique définie positive. On définit l'application $\varphi_S : E \times E \to \mathbb{R}$ par $\varphi_S(A, B) = \text{Tr}(A^T S B)$. Démontrer que $\varphi_S$ définit un produit scalaire sur $E$, faisant de $(E, \varphi_S)$ un espace euclidien.
 
@@ -92,7 +92,7 @@ chapterId: 67b3d760
 
 </details>
 
-## Exercice 2: [Preuve Complexe]
+## Exercice 2
 
 **Problème:** Soit $(E, \|\cdot\|)$ un espace vectoriel normé réel. Démontrer que la norme dérive d'un produit scalaire si et seulement si elle satisfait l'identité du parallélogramme :
 
@@ -194,7 +194,7 @@ On se concentrera sur la partie difficile de la preuve : si l'identité du paral
 
 </details>
 
-## Exercice 3: [Application Avancée]
+## Exercice 3
 
 **Problème:** Soit $(E, \langle \cdot, \cdot \rangle)$ un espace euclidien et $a \in E$ un vecteur unitaire ($\|a\|=1$). On considère l'hyperplan affine $H = \{x \in E \mid \langle a, x \rangle = c\}$ pour une constante $c \in \mathbb{R}$.
 
@@ -246,7 +246,7 @@ On se concentrera sur la partie difficile de la preuve : si l'identité du paral
 
 </details>
 
-## Exercice 4: [Investigation Théorique]
+## Exercice 4
 
 **Problème:** Soit $E$ un espace vectoriel complexe de dimension finie, et $\varphi$ une forme sesquilinéaire sur $E$. Soit $q(x) = \varphi(x,x)$ la forme quadratique associée. Démontrer que $\varphi$ est entièrement déterminée par $q$ si et seulement si $\varphi$ est hermitienne.
 
@@ -528,7 +528,7 @@ On se concentrera sur la partie difficile de la preuve : si l'identité du paral
 
 C'est une excellente question de niveau PRO.
 
-## Exercice 5: [Preuve et Application]
+## Exercice 5
 
 **Problème:** Soit $E = C^1([0, 1], \mathbb{R})$ l'espace des fonctions réelles de classe $C^1$ sur $[0,1]$.
 
@@ -735,7 +735,7 @@ $\left( \int_0^1 f(t) dt \right)^2 \le \frac{1}{3} \int_0^1 (f'(t))^2 dt \implie
 
 </details>
 
-## Exercice 6: [Preuve Complexe]
+## Exercice 6
 
 **Problème:** Soit $(E, \langle \cdot, \cdot \rangle)$ un espace préhilbertien. Le déterminant de Gram d'une famille de vecteurs $(x_1, \dots, x_n)$ est défini par $G(x_1, \dots, x_n) = \det(M)$ où $M$ est la matrice de Gram, $M_{ij} = \langle x_i, x_j \rangle$.
 
@@ -819,7 +819,7 @@ Démontrer que:
 
 </details>
 
-## Exercice 7: [Application/Optimisation]
+## Exercice 7
 
 **Problème:** On se place dans l'espace euclidien $E = \mathbb{R}_2[X]$ des polynômes de degré au plus 2, muni du produit scalaire $\langle P, Q \rangle = \int_0^1 P(t)Q(t) dt$. On considère le sous-espace $F = \text{Vect}(1, X)$.
 
@@ -917,7 +917,7 @@ Démontrer que:
 
 </details>
 
-## Exercice 8: [Investigation Théorique]
+## Exercice 8
 
 **Problème:** Soit $E$ un espace préhilbertien réel. Démontrer l'identité de Lagrange : pour tous $x, y, z, w$ dans $E$,
 
@@ -1086,7 +1086,7 @@ $\text{L'identité proposée est incorrecte.}$
 
 </details>
 
-## Exercice 9: [Recherche-niveau Problème]
+## Exercice 9
 
 **Problème:** Soit $(E, \langle \cdot, \cdot \rangle_0)$ un espace euclidien de dimension $n$. L'ensemble des produits scalaires sur $E$, noté $\mathcal{P}(E)$, est un sous-ensemble de l'espace des formes bilinéaires symétriques $S_2(E)$.
 
@@ -1149,7 +1149,7 @@ $\text{L'identité proposée est incorrecte.}$
 
 </details>
 
-## Exercice 10: [Application Avancée]
+## Exercice 10
 
 **Problème:** Soit $E$ un espace euclidien et $u \in \mathcal{L}(E)$ un endomorphisme. On suppose que pour tout vecteur unitaire $x \in E$ (i.e. $\|x\|=1$), on a $\|u(x)\|=1$. Montrer que $u$ est une isométrie (c'est-à-dire un endomorphisme orthogonal).
 

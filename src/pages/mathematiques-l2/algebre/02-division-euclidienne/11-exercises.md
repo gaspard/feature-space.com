@@ -19,7 +19,7 @@ chapterId: e5009a65
 ---
 # Exercices "Division euclidienne" (A)
 
-## Exercice 1: Problème de Calcul
+## Exercice 1
 
 **Problème:** Soit l'anneau $A = (\mathbb{Z}/12\mathbb{Z})[X]$. On considère les polynômes $P(X) = \overline{4}X^2 + \overline{3}X + \overline{1}$ et $Q(X) = \overline{3}X + \overline{2}$.
 
@@ -87,7 +87,7 @@ chapterId: e5009a65
 
 </details>
 
-## Exercice 2: Question Conceptuelle
+## Exercice 2
 
 **Problème:** Expliquez pourquoi l'anneau $\mathbb{Z}[X]$ des polynômes à coefficients entiers n'est pas un anneau euclidien. Pour cela, essayez d'effectuer la division euclidienne du polynôme $A(X)=X$ par le polynôme $B(X)=2$.
 
@@ -135,7 +135,7 @@ chapterId: e5009a65
 
 </details>
 
-## Exercice 3: Problème de Calcul
+## Exercice 3
 
 **Problème:** Dans l'anneau $\mathbb{Q}[X]$, effectuez la division euclidienne du polynôme $A(X) = 2X^4 - 3X^3 + X^2 + 5X - 3$ par le polynôme $B(X) = X^2 - 2X + 3$.
 
@@ -207,7 +207,7 @@ $$ 2X^4 - 3X^3 + X^2 + 5X - 3 = (X^2 - 2X + 3)(2X^2 + X - 3) + (-4X + 6) $$
 
 </details>
 
-## Exercice 4: Problème d'Application
+## Exercice 4
 
 **Problème:** Soient les entiers $a=126$ et $b=46$.
 
@@ -268,7 +268,7 @@ $$ 2X^4 - 3X^3 + X^2 + 5X - 3 = (X^2 - 2X + 3)(2X^2 + X - 3) + (-4X + 6) $$
 
 </details>
 
-## Exercice 5: Problème d'Application
+## Exercice 5
 
 **Problème:** Dans l'anneau $\mathbb{R}[X]$, on considère les polynômes $A(X) = X^3 + 2X^2 - X - 2$ et $B(X) = X^2 - 1$.
 
@@ -329,7 +329,7 @@ $$ 2X^4 - 3X^3 + X^2 + 5X - 3 = (X^2 - 2X + 3)(2X^2 + X - 3) + (-4X + 6) $$
 
 </details>
 
-## Exercice 6: Problème d'Application
+## Exercice 6
 
 **Problème:** Soit $I$ l'idéal de $\mathbb{R}[X]$ engendré par les polynômes $P(X) = X^3 - 8$ et $Q(X) = X^2 + X - 6$.
 
@@ -397,7 +397,7 @@ Comme $\mathbb{R}[X]$ est un anneau principal, $I$ est un idéal principal. Trou
 
 </details>
 
-## Exercice 7: Problème de Calcul
+## Exercice 7
 
 **Problème:** Soit le polynôme $P(X) = X^4 + X^2 - 2 \in \mathbb{R}[X]$.
 
@@ -447,7 +447,7 @@ Comme $\mathbb{R}[X]$ est un anneau principal, $I$ est un idéal principal. Trou
 
 </details>
 
-## Exercice 8: Question Conceptuelle
+## Exercice 8
 
 **Problème:** Dans un anneau intègre, un élément premier est toujours irréductible. La réciproque est vraie dans un anneau principal, mais pas toujours en général.
 
@@ -506,7 +506,7 @@ Nous allons montrer que $2$ ne vérifie pas cette condition de divisibilité.
 
 </details>
 
-## Exercice 9: Problème de Calcul
+## Exercice 9
 
 **Problème:** Soit la matrice $A = \begin{pmatrix} 2 & 1 \\ 2 & 3 \end{pmatrix} \in M_2(\mathbb{R})$.
 
@@ -574,7 +574,7 @@ Nous allons montrer que $2$ ne vérifie pas cette condition de divisibilité.
 
 </details>
 
-## Exercice 10: Problème d'Application
+## Exercice 10
 
 **Problème:** Soit la matrice $A = \begin{pmatrix} 0 & -1 \\ 1 & 2 \end{pmatrix}$. En utilisant son polynôme minimal, calculez $A^n$ pour tout $n \in \mathbb{N}$.
 

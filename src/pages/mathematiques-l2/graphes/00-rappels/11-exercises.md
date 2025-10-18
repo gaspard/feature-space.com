@@ -18,7 +18,7 @@ chapterId: 58e4ac98
 ---
 # Exercices "Rappels et notation" (A)
 
-## Exercice 1: [Problème de Calcul]
+## Exercice 1
 
 **Problème:** Soient les ensembles suivants :
 
@@ -77,7 +77,7 @@ $C = \{n \in \mathbb{N} \mid 1 \le n < 7 \text{ et } n \text{ est pair}\}$
 
 </details>
 
-## Exercice 2: [Question Conceptuelle]
+## Exercice 2
 
 **Problème:** Soit l'ensemble $E = \{ \emptyset, \{a\}, b, \{a, b\} \}$. Pour chacune des affirmations suivantes, déterminez si elle est vraie ou fausse et justifiez votre réponse.
 
@@ -131,7 +131,7 @@ $C = \{n \in \mathbb{N} \mid 1 \le n < 7 \text{ et } n \text{ est pair}\}$
 
 </details>
 
-## Exercice 3: [Problème de Calcul]
+## Exercice 3
 
 **Problème:** Soit l'ensemble de référence $U = \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$. On considère les sous-ensembles suivants :
 
@@ -230,7 +230,7 @@ Calculez les ensembles suivants :
 
 </details>
 
-## Exercice 4: [Problème d'Application]
+## Exercice 4
 
 **Problème:** Soit l'ensemble $S = \{1, \alpha\}$.
 
@@ -295,7 +295,7 @@ Calculez les ensembles suivants :
 
 </details>
 
-## Exercice 5: [Problème de Calcul]
+## Exercice 5
 
 **Problème:** Pour chacune des applications suivantes, déterminez si elle est injective, surjective et/ou bijective. Justifiez rigoureusement vos réponses.
 
@@ -378,7 +378,7 @@ Calculez les ensembles suivants :
 
 </details>
 
-## Exercice 6: [Question Conceptuelle et Calcul]
+## Exercice 6
 
 **Problème:** Soient les applications $f: \mathbb{R}\setminus\{1\} \to \mathbb{R}\setminus\{0\}$ définie par $f(x) = \frac{2}{x-1}$ et $g: \mathbb{R}\setminus\{0\} \to \mathbb{R}$ définie par $g(y) = y^2 + 1$.
 
@@ -444,7 +444,7 @@ Calculez les ensembles suivants :
 
 </details>
 
-## Exercice 7: [Problème d'Application]
+## Exercice 7
 
 **Problème:** Sur l'ensemble $E = \mathbb{R}^2 = \mathbb{R} \times \mathbb{R}$, on définit la relation $\mathcal{R}$ par :
 
@@ -523,7 +523,7 @@ $(x_1, y_1) \mathcal{R} (x_2, y_2) \iff x_1^2 + y_1^2 = x_2^2 + y_2^2$.
 
 </details>
 
-## Exercice 8: [Problème d'Application]
+## Exercice 8
 
 **Problème:** On considère l'ensemble $E = \{1, 2, 3, 4, 5, 6\}$. La collection de sous-ensembles $P = \{\{1, 3\}, \{2\}, \{4, 5, 6\}\}$ forme une partition de $E$.
 
@@ -592,7 +592,7 @@ $(x_1, y_1) \mathcal{R} (x_2, y_2) \iff x_1^2 + y_1^2 = x_2^2 + y_2^2$.
 
 </details>
 
-## Exercice 9: [Problème d'Application]
+## Exercice 9
 
 **Problème:** Soit l'ensemble $A = \{2, 3, 4, 6, 8, 12\}$. On considère la relation $\mathcal{R}$ sur $A$ définie par $x \mathcal{R} y \iff x \text{ divise } y$. On note cette relation " $|$ ".
 
@@ -671,7 +671,7 @@ $(x_1, y_1) \mathcal{R} (x_2, y_2) \iff x_1^2 + y_1^2 = x_2^2 + y_2^2$.
 
 </details>
 
-## Exercice 10: [Démonstration par Récurrence]
+## Exercice 10
 
 **Problème:** Montrer par récurrence que pour tout entier $n \ge 1$, la somme des $n$ premiers carrés est donnée par la formule :
 

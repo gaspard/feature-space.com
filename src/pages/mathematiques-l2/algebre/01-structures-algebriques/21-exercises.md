@@ -21,7 +21,7 @@ chapterId: 436c223a
 ---
 # Exercices "Structures algébriques" (B)
 
-## Exercice 1: Investigation théorique
+## Exercice 1
 
 **Problème :** Soit $f: X \to Y$ une application entre deux ensembles non vides. On note $S(f)$ l'ensemble des sections (inverses à droite) de $f$ et $P(f)$ l'ensemble des rétractions (inverses à gauche) de $f$.
 
@@ -59,7 +59,7 @@ chapterId: 436c223a
 
 </details>
 
-## Exercice 2: Démonstration complexe
+## Exercice 2
 
 **Problème :** En utilisant exclusivement la propriété universelle du système d'entiers naturels $(\mathbb{N}, S: \mathbb{N} \to \mathbb{N}, 0)$, démontrer que l'application successeur $S$ est injective.
 
@@ -180,7 +180,7 @@ Nous allons construire une application $P: \mathbb{N} \to \mathbb{N}$ par la pro
 
 </details>
 
-## Exercice 3: Investigation théorique
+## Exercice 3
 
 **Problème :** Soit $(M, \cdot, 1)$ un monoïde fini. Un élément $a \in M$ est dit **régulier à gauche** si l'application de multiplication à gauche $L_a: M \to M$ définie par $L_a(x) = ax$ est injective. Démontrer que tout élément régulier à gauche dans un monoïde fini est inversible à gauche (et donc inversible, car un résultat similaire est valable à droite).
 
@@ -207,7 +207,7 @@ Nous allons construire une application $P: \mathbb{N} \to \mathbb{N}$ par la pro
 
 </details>
 
-## Exercice 4: Démonstration complexe
+## Exercice 4
 
 **Problème :** Démontrer le théorème de la correspondance (ou du treillis) pour les groupes. Soit $\phi: G \to H$ un morphisme de groupes surjectif, et soit $K = \text{Ker}(\phi)$. Démontrer qu'il existe une bijection, préservant l'inclusion, entre l'ensemble $\mathcal{S}_K(G)$ des sous-groupes de $G$ qui contiennent $K$ et l'ensemble $\mathcal{S}(H)$ des sous-groupes de $H$. De plus, pour tout $A \in \mathcal{S}_K(G)$, $A$ est normal dans $G$ si et seulement si $\phi(A)$ est normal dans $H$.
 
@@ -263,7 +263,7 @@ Nous allons construire une application $P: \mathbb{N} \to \mathbb{N}$ par la pro
 
 </details>
 
-## Exercice 5: Investigation théorique
+## Exercice 5
 
 **Problème :** Soit $A$ un anneau commutatif. Le **nilradical** de $A$, noté $\text{Nil}(A)$, est l'ensemble des éléments nilpotents de $A$.
 
@@ -329,7 +329,7 @@ Nous allons construire une application $P: \mathbb{N} \to \mathbb{N}$ par la pro
 
 </details>
 
-## Exercice 6: Démonstration complexe
+## Exercice 6
 
 **Problème :** Démontrer le théorème de Cantor-Bernstein-Schröder : S'il existe une injection $f: X \to Y$ et une injection $g: Y \to X$ entre deux ensembles $X$ et $Y$, alors il existe une bijection $h: X \to Y$.
 
@@ -380,7 +380,7 @@ Nous allons construire une application $P: \mathbb{N} \to \mathbb{N}$ par la pro
 
 </details>
 
-## Exercice 7: Investigation théorique
+## Exercice 7
 
 **Problème :** Soit $(G, \cdot)$ un groupe. Démontrer qu'une relation d'ordre total $\le$ sur $G$ est compatible avec la loi de groupe (faisant de $(G, \cdot, \le)$ un groupe totalement ordonné) si et seulement si l'ensemble des éléments positifs $P = \{g \in G \mid e \le g\}$ satisfait les trois propriétés suivantes :
 
@@ -424,7 +424,7 @@ La compatibilité est définie par: $\forall a,b,c \in G, a \le b \implies (ac \
 
 </details>
 
-## Exercice 8: Application avancée
+## Exercice 8
 
 **Problème :** Soient $N$ et $H$ deux groupes, et $\varphi: H \to \text{Aut}(N)$ un morphisme de groupes, où $\text{Aut}(N)$ est le groupe des automorphismes de $N$. On note $\varphi(h)$ par $\varphi_h$. On définit sur l'ensemble produit $G = N \times H$ la loi de composition interne :
 
@@ -549,7 +549,7 @@ $$ (n_1, h_1) \cdot (n_2, h_2) = (n_1 \cdot_N \varphi_{h_1}(n_2), h_1 \cdot_H h_
 
 </details>
 
-## Exercice 9: Application avancée
+## Exercice 9
 
 **Problème :** Pour un nombre premier $p$, l'anneau des **entiers $p$-adiques** $\mathbb{Z}_p$ est défini comme l'ensemble des suites $(x_n)_{n \ge 1}$ où $x_n \in \mathbb{Z}/p^n\mathbb{Z}$ et pour tout $n \ge 1$, $x_{n+1} \equiv x_n \pmod{p^n}$. Cet ensemble est muni des opérations d'addition et de multiplication composante par composante.
 
@@ -600,7 +600,7 @@ $$ (n_1, h_1) \cdot (n_2, h_2) = (n_1 \cdot_N \varphi_{h_1}(n_2), h_1 \cdot_H h_
 
 </details>
 
-## Exercice 10: Démonstration complexe
+## Exercice 10
 
 **Problème :** En utilisant le lemme de Zorn, démontrer le théorème de Zermelo, qui stipule que tout ensemble peut être bien ordonné.
 

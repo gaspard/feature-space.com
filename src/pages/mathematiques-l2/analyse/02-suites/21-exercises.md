@@ -19,7 +19,7 @@ chapterId: c9bf30da
 ---
 # Exercices "Séries Numériques" (B)
 
-## Exercice 1: [Investigation Théorique]
+## Exercice 1
 
 **Problème:** Soit la suite $(u_n)_{n \in \mathbb{N}}$ définie par $u_0 \in ]0, \pi[$ et la relation de récurrence $u_{n+1} = \ln(1 + \sin(u_n))$. Étudier la nature de la série $\sum u_n$.
 
@@ -91,7 +91,7 @@ L'approche consiste à d'abord étudier la convergence de la suite $(u_n)$ vers 
 
 </details>
 
-## Exercice 2: [Preuve Complexe]
+## Exercice 2
 
 **Problème:** Soit $(u_n)_{n \in \mathbb{N}}$ une suite de réels positifs, décroissante et telle que la série $\sum u_n$ converge. Démontrer que $\lim_{n \to \infty} n u_n = 0$.
 
@@ -141,7 +141,7 @@ La convergence de la série $\sum u_n$ implique que son reste d'ordre $n$, $r_n 
 
 </details>
 
-## Exercice 3: [Investigation Théorique]
+## Exercice 3
 
 **Problème:** Soit $\sum u_n$ une série semi-convergente. Démontrer qu'il est possible de réarranger ses termes de sorte que la nouvelle série diverge vers $+\infty$.
 
@@ -191,7 +191,7 @@ Nous allons utiliser le fait que pour une série semi-convergente, les séries f
 
 </details>
 
-## Exercice 4: [Application Avancée]
+## Exercice 4
 
 **Problème:** Étudier la nature de la série de terme général $u_n = \frac{(-1)^{\lfloor \sqrt{n} \rfloor}}{n}$ pour $n \ge 1$.
 
@@ -295,7 +295,7 @@ Cette série est une série alternée, mais le signe ne change pas à chaque ter
 
 </details>
 
-## Exercice 5: [Preuve Complexe]
+## Exercice 5
 
 **Problème:** Démontrer le théorème de Mertens (version faible) :
 
@@ -377,7 +377,7 @@ Nous allons analyser la différence entre la somme partielle du produit de Cauch
 
 </details>
 
-## Exercice 6: [Application Avancée]
+## Exercice 6
 
 **Problème:** Soit la série semi-convergente $\sum_{n=0}^\infty u_n$ avec $u_n = \frac{(-1)^n}{\sqrt{n+1}}$.
 
@@ -445,7 +445,7 @@ Nous allons analyser la différence entre la somme partielle du produit de Cauch
 
 </details>
 
-## Exercice 7: [Investigation Théorique]
+## Exercice 7
 
 **Problème:** Démontrer le critère de condensation de Cauchy.
 
@@ -535,7 +535,7 @@ La preuve consiste à comparer les sommes partielles des deux séries. En regrou
 
 </details>
 
-## Exercice 8: [Application Avancée]
+## Exercice 8
 
 **Problème:** En utilisant le critère de condensation de Cauchy, déterminer la nature de la série de Bertrand $\sum_{n=2}^\infty \frac{1}{n (\ln n)^p}$ en fonction du paramètre réel $p$.
 
@@ -583,7 +583,7 @@ Le terme général $u_n = \frac{1}{n(\ln n)^p}$ est positif et la suite $(u_n)$ 
 
 </details>
 
-## Exercice 9: [Investigation Théorique]
+## Exercice 9
 
 **Problème:** Soit $(u_n)_{n \in \mathbb{N}}$ une suite à termes strictement positifs. Démontrer les inégalités suivantes liant les limites supérieures et inférieures des critères de Cauchy et de d'Alembert :
 
@@ -671,7 +671,7 @@ $$ \liminf_{n \to \infty} \frac{u_{n+1}}{u_n} \le \liminf_{n \to \infty} (u_n)^{
 
 </details>
 
-## Exercice 10: [Preuve Complexe]
+## Exercice 10
 
 **Problème:** Démontrer le critère de Raabe-Duhamel.
 

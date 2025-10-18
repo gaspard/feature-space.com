@@ -21,7 +21,7 @@ chapterId: 436c223a
 ---
 # Exercices "Structures algébriques" (A)
 
-## Exercice 1: [Problème de Calcul]
+## Exercice 1
 
 **Problème:** Soient les applications $f: \mathbb{R} \to \mathbb{R}$ et $g: \mathbb{R} \to \mathbb{R}$ définies par $f(x) = 3x - 2$ et $g(x) = x^2 + 1$.
 
@@ -95,7 +95,7 @@ chapterId: 436c223a
 
 </details>
 
-## Exercice 2: [Question Conceptuelle]
+## Exercice 2
 
 **Problème:** Soit l'application $f(x) = x^2 - 4x + 5$. Étudier si $f$ est injective, surjective ou bijective dans les cas suivants :
 
@@ -154,7 +154,7 @@ C'est une parabole tournée vers le haut, dont le sommet est au point $(2, 1)$. 
 
 </details>
 
-## Exercice 3: [Problème de Calcul et Conceptuel]
+## Exercice 3
 
 **Problème:** On définit sur l'ensemble $E = \mathbb{R} \setminus \{-1\}$ une opération binaire $*$ par :
 
@@ -257,7 +257,7 @@ Enfin, nous vérifierons la commutativité.
 
 </details>
 
-## Exercice 4: [Application]
+## Exercice 4
 
 **Problème:** Soit $G$ l'ensemble des matrices de la forme $M_a = \begin{pmatrix} 1 & a \\ 0 & 1 \end{pmatrix}$ où $a \in \mathbb{R}$. Montrer que $G$, muni de la multiplication matricielle, est un groupe. Est-il abélien ?
 
@@ -321,7 +321,7 @@ Enfin, nous vérifierons la commutativité.
 
 </details>
 
-## Exercice 5: [Problème de Calcul]
+## Exercice 5
 
 **Problème:** Soit $(\mathbb{C}^*, \times)$ le groupe des nombres complexes non nuls muni de la multiplication. Montrer que le cercle unité, $U = \{ z \in \mathbb{C} \mid |z| = 1 \}$, est un sous-groupe de $\mathbb{C}^*$.
 
@@ -367,7 +367,7 @@ Puisque $U$ est une partie non vide de $\mathbb{C}^*$ et que pour tous $x,y \in 
 
 </details>
 
-## Exercice 6: [Question Conceptuelle]
+## Exercice 6
 
 **Problème:** On considère l'ensemble $\mathbb{Z}[\sqrt{2}] = \{ a + b\sqrt{2} \mid a, b \in \mathbb{Z} \}$.
 
@@ -439,7 +439,7 @@ Puisque $U$ est une partie non vide de $\mathbb{C}^*$ et que pour tous $x,y \in 
 
 </details>
 
-## Exercice 7: [Problème de Calcul]
+## Exercice 7
 
 **Problème:** On travaille dans le corps fini $(\mathbb{Z}/7\mathbb{Z}, +, \times)$.
 
@@ -518,7 +518,7 @@ Puisque $U$ est une partie non vide de $\mathbb{C}^*$ et que pour tous $x,y \in 
 
 </details>
 
-## Exercice 8: [Application]
+## Exercice 8
 
 **Problème:** Soit l'application $f: (\mathbb{R}, +) \to (\mathbb{C}^*, \times)$ définie par $f(x) = \cos(x) + i\sin(x) = e^{ix}$.
 
@@ -591,7 +591,7 @@ Puisque $U$ est une partie non vide de $\mathbb{C}^*$ et que pour tous $x,y \in 
 
 </details>
 
-## Exercice 9: [Question Conceptuelle]
+## Exercice 9
 
 **Problème:** Sur l'ensemble $E = \mathbb{R}^2$, on définit la relation $\sim$ par :
 
@@ -658,7 +658,7 @@ $$ (x, y) \sim (x', y') \iff x^2 + y^2 = (x')^2 + (y')^2 $$
 
 </details>
 
-## Exercice 10: [Problème de Calcul]
+## Exercice 10
 
 **Problème:** On considère l'anneau quotient $A = \mathbb{Z}/10\mathbb{Z}$.
 
@@ -731,7 +731,7 @@ $$ (x, y) \sim (x', y') \iff x^2 + y^2 = (x')^2 + (y')^2 $$
 
 </details>
 
-## Exercice 11: [Application]
+## Exercice 11
 
 **Problème:** Démontrer par récurrence que pour tout entier $n \ge 1$, le nombre $4^n - 1$ est divisible par 3.
 
@@ -791,7 +791,7 @@ $$ (x, y) \sim (x', y') \iff x^2 + y^2 = (x')^2 + (y')^2 $$
 
 </details>
 
-## Exercice 12: [Question Conceptuelle]
+## Exercice 12
 
 **Problème:** Soit l'anneau des polynômes à coefficients réels, $A = \mathbb{R}[X]$. Soit $I$ l'ensemble des polynômes de $A$ qui s'annulent en 5, c'est-à-dire $I = \{ P(X) \in \mathbb{R}[X] \mid P(5) = 0 \}$. Montrer que $I$ est un idéal de $A$.
 

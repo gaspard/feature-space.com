@@ -18,7 +18,7 @@ chapterId: 629d2832
 ---
 # Exercices "Normes sur Rⁿ et suites convergentes" (A)
 
-## Exercice 1: Conceptuel / Calculatoire
+## Exercice 1
 
 **Problème:** Déterminer si l'application $N: \mathbb{R}^2 \to \mathbb{R}_+$ définie par $N(x_1, x_2) = |x_1 - 2x_2| + 3|x_1|$ est une norme sur $\mathbb{R}^2$.
 
@@ -66,7 +66,7 @@ chapterId: 629d2832
 
 </details>
 
-## Exercice 2: Conceptuel
+## Exercice 2
 
 **Problème:** L'application $A: \mathbb{R}^3 \to \mathbb{R}_+$ définie par $A(x_1, x_2, x_3) = |x_1| + |x_2|$ est-elle une norme sur $\mathbb{R}^3$? Justifiez votre réponse.
 
@@ -93,7 +93,7 @@ chapterId: 629d2832
 
 </details>
 
-## Exercice 3: Calculatoire
+## Exercice 3
 
 **Problème:** Soit le vecteur $v = (2, -4, -1, 3)$ dans $\mathbb{R}^4$. Calculez $\|v\|_1$, $\|v\|_2$ et $\|v\|_\infty$.
 
@@ -127,7 +127,7 @@ chapterId: 629d2832
 
 </details>
 
-## Exercice 4: Application
+## Exercice 4
 
 **Problème:** Trouver un vecteur $x = (x_1, x_2, x_3)$ dans $\mathbb{R}^3$ tel que $\|x\|_\infty = 5$, $\|x\|_1 = 8$ et $\|x\|_2 = \sqrt{38}$.
 
@@ -173,7 +173,7 @@ chapterId: 629d2832
 
 </details>
 
-## Exercice 5: Normes Équivalentes
+## Exercice 5
 
 **Problème:** Soit la norme $N$ sur $\mathbb{R}^2$ définie par $N(x, y) = 4|x| + |y|$. Montrer que $N$ est équivalente à la norme infinie $\| \cdot \|_\infty$.
 
@@ -219,7 +219,7 @@ Rappelons que $\|v\|_\infty = \max(|x|, |y|)$.
 
 </details>
 
-## Exercice 6: Application des Inégalités d'Équivalence
+## Exercice 6
 
 **Problème:** En utilisant les inégalités d'équivalence connues entre les normes fondamentales, trouver la plus petite constante $C$ telle que $\|x\|_1 \le C \|x\|_\infty$ pour tout $x \in \mathbb{R}^5$.
 
@@ -258,7 +258,7 @@ Rappelons que $\|v\|_\infty = \max(|x|, |y|)$.
 
 </details>
 
-## Exercice 7: Convergence de Suite
+## Exercice 7
 
 **Problème:** La suite de vecteurs $(x^k)_{k \ge 1}$ de $\mathbb{R}^3$ est définie par $x^k = \left( \frac{\sin(k)}{k}, \frac{2k^2 - 3k}{k^2+1}, \left(1 - \frac{1}{k}\right)^{2k} \right)$. Déterminer si cette suite converge et, si oui, trouver sa limite.
 
@@ -300,7 +300,7 @@ Rappelons que $\|v\|_\infty = \max(|x|, |y|)$.
 
 </details>
 
-## Exercice 8: Convergence de Suite (Cas de non-convergence)
+## Exercice 8
 
 **Problème:** Étudier la convergence de la suite $(y^k)_{k \ge 1}$ dans $\mathbb{R}^2$ définie par $y^k = \left( \frac{k^2+1}{k+1}, (-1)^k \left(1 - \frac{1}{k}\right) \right)$.
 
@@ -335,7 +335,7 @@ Rappelons que $\|v\|_\infty = \max(|x|, |y|)$.
 
 </details>
 
-## Exercice 9: Convergence avec Paramètre
+## Exercice 9
 
 **Problème:** Soit la suite $(x^k)_{k \ge 1}$ dans $\mathbb{R}^2$ définie par $x^k = \left( \frac{k}{k^2+1}, (a^2-3)^k \right)$, où $a$ est un paramètre réel. Pour quelles valeurs de $a$ la suite $(x^k)$ converge-t-elle ? Précisez la limite dans chaque cas.
 
@@ -383,7 +383,7 @@ Rappelons que $\|v\|_\infty = \max(|x|, |y|)$.
 
 </details>
 
-## Exercice 10: Suite de Cauchy
+## Exercice 10
 
 **Problème:** Soit la suite $(x^k)_{k \ge 1}$ de $\mathbb{R}^2$ définie par $x^k = \left( 3 - \frac{1}{k^2}, \sum_{j=1}^k \frac{1}{j!} \right)$.
 

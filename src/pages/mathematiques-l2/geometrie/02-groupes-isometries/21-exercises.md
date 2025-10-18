@@ -20,7 +20,7 @@ chapterId: b85ab516
 ---
 # Exercices "Groupes d'isométries" (B)
 
-## Exercice 1: [Investigation Théorique]
+## Exercice 1
 
 **Problème:** Soit $E = \ell^2(\mathbb{Z})$ l'espace des suites de nombres complexes $(x_n)_{n \in \mathbb{Z}}$ de carré sommable, muni du produit hermitien canonique $\langle x, y \rangle = \sum_{n \in \mathbb{Z}} \overline{x_n} y_n$. On considère l'opérateur de décalage à droite (right shift) $S: E \to E$ défini par $(Sx)_n = x_{n-1}$.
 
@@ -86,7 +86,7 @@ chapterId: b85ab516
 
 </details>
 
-## Exercice 2: [Preuve Complexe]
+## Exercice 2
 
 **Problème:** Soit $n \ge 2$. Montrer que le groupe spécial orthogonal $SO_n(\mathbb{R})$ est connexe par arcs.
 
@@ -156,7 +156,7 @@ chapterId: b85ab516
 
 </details>
 
-## Exercice 3: [Application Avancée]
+## Exercice 3
 
 **Problème:** Soient les rotations $R_1$ et $R_2$ dans $\mathbb{R}^3$ définies par leurs matrices dans la base canonique :
 
@@ -256,7 +256,7 @@ Déterminer l'axe et l'angle de la rotation composée $R = R_2 \circ R_1$.
 
 </details>
 
-## Exercice 4: [Investigation Théorique]
+## Exercice 4
 
 **Problème:** Soit $(\mathbb{R}^3, \wedge)$ l'espace euclidien orienté de dimension 3 muni du produit vectoriel.
 
@@ -343,7 +343,7 @@ Déterminer l'axe et l'angle de la rotation composée $R = R_2 \circ R_1$.
 
 </details>
 
-## Exercice 5: [Preuve Complexe]
+## Exercice 5
 
 **Problème:** Soit une rotation $\mathcal{R}$ dans $\mathbb{R}^3$ d'axe dirigé par le vecteur unitaire $N$ et d'angle $\theta \in ]0, 2\pi[$. Prouver que pour tout vecteur $U \in \mathbb{R}^3$, on a la relation suivante, qui exprime le produit vectoriel en termes de la rotation et de son adjointe:
 
@@ -405,7 +405,7 @@ Elle découle directement de la soustraction de la formule de Rodrigues pour l'a
 
 </details>
 
-## Exercice 6: [Investigation Théorique]
+## Exercice 6
 
 **Problème:** Soit l'isomorphisme d'algèbres de Lie $\phi: (\mathbb{R}^3, \wedge) \to (\mathfrak{so}(3), [,])$ où $[A,B]=AB-BA$ et $\phi(V)$ est la matrice $K_V$ telle que $K_V U = V \wedge U$ pour tout $U \in \mathbb{R}^3$.
 
@@ -477,7 +477,7 @@ $$ \forall V \in \mathbb{R}^3, \quad \phi(R(V)) = R \phi(V) R^{-1} $$
 
 </details>
 
-## Exercice 7: [Preuve Complexe]
+## Exercice 7
 
 **Problème:** Démontrer la surjectivité du morphisme de groupes $\mathcal{J}: SU(2) \to SO(3)$ défini par $\mathcal{J}(U) = \text{Ad}_U$, où $\text{Ad}_U(M) = UMU^*$ pour $M$ dans l'espace $\mathcal{V}$ des matrices hermitiennes de trace nulle.
 
@@ -528,7 +528,7 @@ $$ \forall V \in \mathbb{R}^3, \quad \phi(R(V)) = R \phi(V) R^{-1} $$
 
 </details>
 
-## Exercice 8: [Théorème Fondamental]
+## Exercice 8
 
 **Problème:** Prouver le théorème de la décomposition polaire : toute matrice inversible $M \in GL_n(\mathbb{R})$ peut s'écrire de manière unique sous la forme $M=OS$, où $O \in O_n(\mathbb{R})$ est une matrice orthogonale et $S \in S_n^{++}(\mathbb{R})$ est une matrice symétrique définie positive.
 
@@ -598,7 +598,7 @@ Pour l'unicité, nous supposons deux décompositions et montrons qu'elles doiven
 
 </details>
 
-## Exercice 9: [Investigation Théorique]
+## Exercice 9
 
 **Problème:** Soit $E$ un espace euclidien de dimension $n$. Démontrer le théorème de Cartan-Dieudonné en dimension $n$: tout automorphisme orthogonal $f \in O(E)$ se décompose en un produit d'au plus $n$ réflexions hyperplanes.
 
@@ -680,7 +680,7 @@ Pour l'unicité, nous supposons deux décompositions et montrons qu'elles doiven
 
 </details>
 
-## Exercice 10: [Investigation Théorique]
+## Exercice 10
 
 **Problème:** Soit $f \in SO(4)$ un automorphisme orthogonal direct de l'espace euclidien $\mathbb{R}^4$. Montrer que $f$ est une double rotation, c'est-à-dire qu'il existe une base orthonormée de $\mathbb{R}^4$ dans laquelle la matrice de $f$ est de la forme :
 
