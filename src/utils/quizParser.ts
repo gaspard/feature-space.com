@@ -1,5 +1,5 @@
 import matter from 'gray-matter';
-import type { Card, ParsedCards, QuizOption } from './cardParser';
+import type { ParsedCards, Card, QuizOption } from '../domain/api/entity/card.type';
 
 export function parseQuiz(content: string, filename: string): ParsedCards {
   // Use gray-matter to parse front matter
@@ -41,14 +41,14 @@ export function parseQuiz(content: string, filename: string): ParsedCards {
         content.push(line);
       }
     }
-    const cardContent = content.join('\n');
+    const cardContent = content.join('\n').trim();
 
     // Extract solution from <details>
     const solutionMatch = section.match(/<details>[\s\S]*?<summary>.*?<\/summary>([\s\S]*?)<\/details>/);
     if (!solutionMatch) {
       throw new Error('Invalid file format: missing solution');
     }
-    const solution = solutionMatch[1];
+    const solution = solutionMatch[1].trim();
 
     cards.push({
       id: `q-${id}-${questionIndex}`,

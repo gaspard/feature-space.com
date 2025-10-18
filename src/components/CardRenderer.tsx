@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import type { Card, ParsedCards, QuizOption } from '../utils/cardParser';
+import type { ParsedCards, Card, QuizOption } from '../domain/api/entity/card.type';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import remarkGfm from 'remark-gfm';

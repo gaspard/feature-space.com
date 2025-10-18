@@ -10,6 +10,12 @@ const currentDir = join(
   currentPath.replace(/^\//, "").replace(/\/$/, "")
 )
 
+function coursePath(chapters: TOCItem[], level: string) {
+  const chapter = chapters[0]
+  if (!chapter) return "/"
+  return chapter.path.split("/").slice(0, -2).join("/") + `#${level}`
+}
+
 async function collectChildren(
   basePath: string,
   dirPath: string = ""
@@ -134,7 +140,7 @@ const grouped = groupItems(items)
       .map(([levelKey, types]) => {
         const level = levelKey.split("-")[1]
         return (
-          <section class="level">
+          <section class="level" id={level}>
             <h2 class={level}>{translateLevel(level)}</h2>
 
             {Object.entries(types).map(([typeKey, courses]) => {
@@ -142,15 +148,19 @@ const grouped = groupItems(items)
               return (
                 <section class="type">
                   <h3>
-                    <span class="emoji">{itemEmoji(type)}</span>{" "}
-                    {translateType(type)}
+                    <a href={`/#${type}`} id={type}>
+                      <span class="emoji">{itemEmoji(type)}</span>{" "}
+                      {translateType(type)}
+                    </a>
                   </h3>
 
                   {Object.entries(courses).map(([courseKey, chapters]) => {
                     const course = courseKey.split("-")[1]
                     return (
                       <section class="course">
-                        <h4>{course}</h4>
+                        <h4>
+                          <a href={coursePath(chapters, level)}>{course}</a>
+                        </h4>
                         <ul>
                           {chapters.map((chapter) => (
                             <li>

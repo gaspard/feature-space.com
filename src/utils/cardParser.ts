@@ -1,29 +1,5 @@
 import matter from 'gray-matter';
-
-export interface QuizOption {
-  id: string;
-  text: string;
-  isCorrect: boolean;
-}
-
-export interface Card {
-  id: string;
-  type: 'card' | 'question';
-  content: string;
-  options?: QuizOption[];
-  solution: string;
-}
-
-export interface ParsedCards {
-  title: string;
-  cards: Card[];
-  type: 'cards' | 'quiz';
-  id: string;
-  level: string;
-  chapter: string;
-  course: string;
-  tags: string[];
-}
+import type { ParsedCards, Card } from '../domain/api/entity/card.type';
 
 export function parseCards(content: string, filename: string): ParsedCards {
   const { data: metadata, content: body } = matter(content);

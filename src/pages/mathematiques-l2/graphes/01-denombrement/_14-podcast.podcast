@@ -11,7 +11,7 @@ tags:
   - Principes de comptage
 createdAt: '2025-10-15T18:52:28.770Z'
 level: regular
-course: UL2MA226 - Graphes et Combinatoire
+course: Graphes et Combinatoire
 courseId: 7027276b
 chapter: Principes de dénombrement
 chapterId: 1a14d8a4
