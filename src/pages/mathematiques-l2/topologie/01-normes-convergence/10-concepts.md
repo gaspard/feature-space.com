@@ -2,7 +2,7 @@
 id: 99067ed4
 type: concepts
 order: 10
-title: Normes sur Rⁿ et suites convergentes - concepts (A)
+title: Normes sur Rⁿ et suites convergentes
 tags:
   - normes
   - suites

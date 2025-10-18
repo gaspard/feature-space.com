@@ -1,0 +1,397 @@
+---
+id: 359ed474
+type: quiz
+order: 13
+title: "Analyse: Intégration - quiz (A)"
+tags:
+  - analyse
+  - suites
+  - limites
+  - continuité
+  - dérivabilité
+  - intégration
+createdAt: '2025-10-18T19:12:12.801Z'
+level: regular
+course: Constructions et raisonnements mathématiques
+courseId: d2e11e03
+chapter: "Analyse: Intégration"
+chapterId: a5489a34
+---
+# Quiz: Analyse
+
+---
+
+#### Question 1 : Définition d'une fonction en escalier
+
+Qu'est-ce qui caractérise une fonction $f$ comme étant "en escalier" sur un intervalle $[a, b]$ ?
+
+- [ ] **A)** La fonction est continue sur tout l'intervalle $[a, b]$.
+- [ ] **B)** Le graphe de la fonction est composé uniquement de segments de droites horizontaux et verticaux.
+- [x] **C)** Il existe une subdivision $\{x_0, \dots, x_n\}$ de $[a, b]$ telle que $f$ est constante sur chaque sous-intervalle ouvert $]x_{i-1}, x_i[$.
+- [ ] **D)** La fonction prend un nombre fini de valeurs sur $[a, b]$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+- **A)** Incorrect. Les fonctions en escalier sont typiquement discontinues aux points de la subdivision. Une fonction continue et en escalier sur un intervalle est nécessairement une fonction constante.
+
+- **B)** Incorrect. Le graphe est composé de segments horizontaux, mais les "sauts" entre les marches ne sont pas nécessairement des segments verticaux. Une fonction ne peut pas avoir de segment vertical dans son graphe.
+
+- **C)** Correct. C'est la définition formelle d'une fonction en escalier. La subdivision est dite "adaptée" à la fonction. La définition ne contraint pas les valeurs de la fonction aux points $x_i$ de la subdivision.
+
+- **D)** Incorrect. Bien qu'une fonction en escalier prenne un nombre fini de valeurs, cette condition n'est pas suffisante. Par exemple, la fonction $f(x) = 1$ si $x \in \mathbb{Q}$ et $f(x) = 0$ si $x \notin \mathbb{Q}$ ne prend que deux valeurs, mais n'est en escalier sur aucun intervalle.
+
+</details>
+
+---
+
+#### Question 2 : Calcul de l'intégrale d'une fonction en escalier
+
+Soit la fonction $f$ définie sur $[0, 5]$ par :
+
+$$ f(x) = \begin{cases} 4 & \text{si } 0 \le x < 3 \\ -2 & \text{si } 3 \le x \le 5 \end{cases} $$
+
+Quelle est la valeur de l'intégrale $\int_0^5 f(x) dx$ ?
+
+- [ ] **A)** 16
+- [x] **B)** 8
+- [ ] **C)** 12
+- [ ] **D)** 2
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+L'intégrale d'une fonction en escalier est la somme des aires des rectangles formés par son graphe. Une subdivision adaptée est $\sigma = \{0, 3, 5\}$.
+
+- Sur l'intervalle $]0, 3[$, la fonction est constante et vaut $c_1 = 4$. La longueur de l'intervalle est $3 - 0 = 3$. L'aire du premier rectangle est $3 \times 4 = 12$.
+
+- Sur l'intervalle $]3, 5[$, la fonction est constante et vaut $c_2 = -2$. La longueur de l'intervalle est $5 - 3 = 2$. L'aire (algébrique) du second rectangle est $2 \times (-2) = -4$.
+
+L'intégrale est la somme de ces aires :
+
+$$ \int_0^5 f(x) dx = (3 - 0) \times 4 + (5 - 3) \times (-2) = 12 - 4 = 8. $$
+
+- **A)** Incorrect. 16 correspondrait à $(3-0)\times 4 + (5-3)\times 2 = 12+4$. Cela ignore le signe négatif de la fonction sur le deuxième intervalle.
+- **B)** Correct. Le calcul $12 - 4 = 8$ est exact.
+- **C)** Incorrect. 12 est seulement l'aire du premier rectangle.
+- **D)** Incorrect. Ce résultat ne correspond à aucun calcul simple basé sur les données du problème.
+
+</details>
+
+---
+
+#### Question 3 : Propriété de l'intégrale d'une fonction en escalier
+
+Soit $f$ une fonction en escalier sur $[a, b]$. Si on modifie la valeur de $f$ en un seul point $c \in [a, b]$ pour créer une nouvelle fonction $g$, comment l'intégrale est-elle affectée ?
+
+- [ ] **A)** La nouvelle fonction $g$ n'est plus intégrable.
+- [ ] **B)** Le changement de l'intégrale dépend de la nouvelle valeur $g(c)$.
+- [x] **C)** L'intégrale reste inchangée.
+- [ ] **D)** L'intégrale est toujours différente.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+La définition de l'intégrale d'une fonction en escalier est $\sum_{i=1}^n (x_i - x_{i-1}) c_i$, où $c_i$ est la valeur de la fonction sur l'intervalle *ouvert* $]x_{i-1}, x_i[$.
+
+- **A)** Incorrect. La nouvelle fonction $g$ est toujours une fonction en escalier. On peut utiliser la même subdivision (ou une subdivision plus fine incluant le point $c$) pour le montrer.
+
+- **B)** Incorrect. La valeur de la fonction en des points isolés n'intervient pas dans le calcul de l'intégrale.
+
+- **C)** Correct. L'intégrale ne dépend que des valeurs constantes que prend la fonction sur les intervalles ouverts entre les points de la subdivision. Modifier la valeur en un seul point n'affecte aucune de ces valeurs constantes $c_i$. L'intégrale est donc la même.
+
+- **D)** Incorrect. Puisque l'intégrale reste la même, cette affirmation est fausse.
+
+</details>
+
+---
+
+#### Question 4 : Condition d'intégrabilité de Riemann
+
+Selon la définition de Riemann, quand une fonction bornée $f$ sur $[a, b]$ est-elle dite intégrable ?
+
+- [x] **A)** Quand son intégrale inférieure et son intégrale supérieure sont égales ($I_{a,b}^-(f) = I_{a,b}^+(f)$).
+- [ ] **B)** Quand la fonction est positive sur tout l'intervalle $[a, b]$.
+- [ ] **C)** Quand on peut trouver au moins une fonction en escalier $\psi$ telle que $f \le \psi$.
+- [ ] **D)** Quand son intégrale inférieure $I_{a,b}^-(f)$ est strictement plus petite que son intégrale supérieure $I_{a,b}^+(f)$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+L'idée de l'intégrale de Riemann est d'encadrer la fonction $f$ par des fonctions en escalier.
+
+- L'intégrale inférieure $I_{a,b}^-(f)$ est la borne supérieure des intégrales des fonctions en escalier minorant $f$.
+- L'intégrale supérieure $I_{a,b}^+(f)$ est la borne inférieure des intégrales des fonctions en escalier majorant $f$.
+
+- **A)** Correct. C'est la définition même de l'intégrabilité au sens de Riemann. Si la meilleure approximation par en dessous coïncide avec la meilleure approximation par au-dessus, alors on dit que la fonction est intégrable et cette valeur commune est son intégrale.
+
+- **B)** Incorrect. Une fonction peut être négative et parfaitement intégrable (par exemple, $f(x) = -1$). La positivité n'est pas une condition nécessaire.
+
+- **C)** Incorrect. Pour toute fonction *bornée* $f$ sur $[a, b]$, il existe un $M$ tel que $f(x) \le M$. La fonction constante $\psi(x) = M$ est une fonction en escalier qui majore $f$. Cette condition est donc toujours remplie pour une fonction bornée, mais ne garantit pas l'intégrabilité.
+
+- **D)** Incorrect. C'est la condition pour qu'une fonction ne soit *pas* intégrable.
+
+</details>
+
+---
+
+#### Question 5 : Contre-exemple à l'intégrabilité de Riemann
+
+Laquelle des fonctions suivantes, définie sur $[0, 1]$, n'est PAS intégrable au sens de Riemann ?
+
+- [ ] **A)** La fonction partie entière $f(x) = E(x)$.
+- [ ] **B)** $f(x) = x^3 + \cos(x)$
+- [ ] **C)** $f(x) = \begin{cases} 5 & \text{si } x = 1/3 \\ 1 & \text{sinon} \end{cases}$
+- [x] **D)** La fonction de Dirichlet, $f(x) = \begin{cases} 1 & \text{si } x \in \mathbb{Q} \\ 0 & \text{si } x \notin \mathbb{Q} \end{cases}$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+- **A)** Incorrect. La fonction partie entière est une fonction en escalier. Toute fonction en escalier est intégrable.
+
+- **B)** Incorrect. C'est une fonction continue sur $[0, 1]$. Toute fonction continue sur un segment est intégrable.
+
+- **C)** Incorrect. C'est une fonction qui est constante partout sauf en un point. Elle est intégrable (et son intégrale est la même que celle de la fonction constante $g(x)=1$). On peut l'encadrer par des fonctions en escalier dont l'intégrale est aussi proche de 1 que l'on veut.
+
+- **D)** Correct. C'est le contre-exemple classique. Sur n'importe quel sous-intervalle, la fonction prend les valeurs 0 et 1. Toute fonction en escalier $\varphi \le f$ doit être $\le 0$ partout, donc $I^-(f)=0$. Toute fonction en escalier $\psi \ge f$ doit être $\ge 1$ partout, donc $I^+(f)=1$. Comme $I^-(f) \ne I^+(f)$, la fonction n'est pas intégrable.
+
+</details>
+
+---
+
+#### Question 6 : Théorèmes d'intégrabilité
+
+Parmi les affirmations suivantes, lesquelles sont vraies concernant l'intégrabilité au sens de Riemann sur un segment $[a, b]$ ? (Plusieurs réponses peuvent être correctes)
+
+- [x] **A)** Toute fonction dérivable sur $[a, b]$ est intégrable sur $[a, b]$.
+- [x] **B)** Toute fonction continue par morceaux sur $[a, b]$ est intégrable sur $[a, b]$.
+- [x] **C)** Toute fonction continue sur $[a, b]$ est intégrable sur $[a, b]$.
+- [ ] **D)** Toute fonction bornée sur $[a, b]$ est intégrable sur $[a, b]$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, B, C]**
+
+- **A)** Correct. Une fonction dérivable sur un segment $[a, b]$ est nécessairement continue sur ce segment. Et comme toute fonction continue est intégrable, cette affirmation est vraie.
+
+- **B)** Correct. C'est un théorème du cours. Les fonctions continues par morceaux sont une classe importante de fonctions intégrables, incluant les fonctions en escalier et les fonctions continues.
+
+- **C)** Correct. C'est l'un des théorèmes fondamentaux de l'intégrale de Riemann. La continuité sur un segment est une condition suffisante pour garantir l'intégrabilité.
+
+- **D)** Incorrect. C'est une erreur courante. L'hypothèse "bornée" est nécessaire pour construire les intégrales supérieure et inférieure, mais elle n'est pas suffisante pour garantir l'intégrabilité. La fonction de Dirichlet est bornée (par 0 et 1) mais n'est pas intégrable.
+
+</details>
+
+---
+
+#### Question 7 : Théorème fondamental de l'analyse
+
+Soit $F$ la fonction définie pour tout $x \in \mathbb{R}$ par $F(x) = \int_1^x \ln(1+t^2) dt$. Quelle est l'expression de la dérivée $F'(x)$ ?
+
+- [ ] **A)** $\frac{2x}{1+x^2}$
+- [ ] **B)** $\ln(1+x^2) - \ln(2)$
+- [ ] **C)** $F'(x)$ n'existe pas car on ne sait pas calculer la primitive de $\ln(1+t^2)$.
+- [x] **D)** $\ln(1+x^2)$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+Le théorème fondamental de l'analyse stipule que si $f$ est une fonction continue sur un intervalle $I$, alors la fonction $F(x) = \int_a^x f(t) dt$ est dérivable sur $I$ et sa dérivée est $F'(x) = f(x)$.
+
+Ici, la fonction $f(t) = \ln(1+t^2)$ est continue sur $\mathbb{R}$.
+
+- **A)** Incorrect. C'est la dérivée de $\ln(1+x^2)$, pas la valeur de la fonction elle-même.
+
+- **B)** Incorrect. C'est une confusion avec le calcul de l'intégrale définie $\int_1^x \ln(1+t^2) dt = G(x) - G(1)$ où $G$ est une primitive. La borne inférieure $a=1$ n'apparaît pas dans la dérivée $F'(x)$.
+
+- **C)** Incorrect. Le théorème fondamental garantit l'existence de la dérivée et donne sa valeur, même si on ne connaît pas d'expression simple pour la primitive de $f$. C'est justement un des points forts du théorème.
+
+- **D)** Correct. Par application directe du théorème fondamental de l'analyse, la dérivée de $F(x)$ est simplement la fonction sous le signe intégral, évaluée en $x$. Donc $F'(x) = \ln(1+x^2)$.
+
+</details>
+
+---
+
+#### Question 8 : Compréhension des sommes de Riemann
+
+Une somme de Riemann $S = \sum_{i=1}^n (x_i - x_{i-1}) f(y_i)$ représente géométriquement :
+
+- [ ] **A)** La longueur de la courbe de la fonction $f$ entre $a$ et $b$.
+- [x] **B)** Une approximation de l'aire sous la courbe de $f$ par une somme d'aires de rectangles.
+- [ ] **C)** L'aire exacte sous la courbe de la fonction $f$.
+- [ ] **D)** Une approximation de l'aire sous la courbe de $f$ par une somme d'aires de trapèzes.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+- **A)** Incorrect. La longueur de la courbe (ou longueur d'arc) est un concept différent, calculé par une autre intégrale : $\int_a^b \sqrt{1 + (f'(x))^2} dx$.
+
+- **B)** Correct. Chaque terme de la somme, $(x_i - x_{i-1}) f(y_i)$, est l'aire (algébrique) d'un rectangle de base $(x_i - x_{i-1})$ et de hauteur $f(y_i)$, où $y_i$ est un point choisi dans l'intervalle de base. La somme de Riemann est donc la somme totale des aires de ces rectangles.
+
+- **C)** Incorrect. La somme de Riemann est une *approximation* de l'intégrale (qui représente l'aire exacte). L'intégrale est la *limite* des sommes de Riemann lorsque le pas de la subdivision tend vers zéro.
+
+- **D)** Incorrect. L'approximation par des trapèzes (méthode des trapèzes) correspond à la somme $\sum_{i=1}^n (x_i - x_{i-1}) \frac{f(x_{i-1})+f(x_i)}{2}$.
+
+</details>
+
+---
+
+#### Question 9 : Limite d'une somme de Riemann
+
+La limite $\lim_{n \to \infty} \sum_{k=1}^n \frac{1}{n} \sqrt{1 + \frac{k}{n}}$ est égale à :
+
+- [x] **A)** $\int_0^1 \sqrt{1+x} \, dx$
+- [ ] **B)** $\int_0^1 \sqrt{x} \, dx$
+- [ ] **C)** $\int_1^2 \sqrt{1+x} \, dx$
+- [ ] **D)** 1
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+Il faut reconnaître cette somme comme une somme de Riemann pour une certaine fonction sur un certain intervalle. La forme générale d'une somme de Riemann avec une subdivision régulière de $[a, b]$ est $\sum_{k=1}^n (b-a)/n \cdot f(a+k(b-a)/n)$.
+
+Ici, le terme $\frac{1}{n}$ correspond à la largeur des rectangles $(b-a)/n$. Le terme $\sqrt{1 + \frac{k}{n}}$ correspond à $f(y_k)$.
+
+En choisissant l'intervalle $[0, 1]$, on a $a=0, b=1$, donc $(b-a)/n = 1/n$.
+
+Les points d'évaluation (à droite) sont $y_k = a + k/n = k/n$.
+
+La fonction serait donc $f(x) = \sqrt{1+x}$.
+
+La somme s'écrit donc $\sum_{k=1}^n \frac{1}{n} f(\frac{k}{n})$, ce qui correspond bien à la somme donnée. Comme $f(x) = \sqrt{1+x}$ est continue sur $[0, 1]$, la limite de ses sommes de Riemann est l'intégrale de $f$ sur $[0, 1]$.
+
+- **A)** Correct. La limite est $\int_0^1 \sqrt{1+x} \, dx$.
+
+- **B)** Incorrect. Cela correspondrait à la fonction $f(x) = \sqrt{x}$ et à la somme $\sum \frac{1}{n} \sqrt{\frac{k}{n}}$.
+
+- **C)** Incorrect. L'intégrale sur $[1, 2]$ correspondrait à une somme de la forme $\sum \frac{1}{n} \sqrt{1+(1+\frac{k}{n})}$.
+
+- **D)** Incorrect. Le calcul de l'intégrale donne $\int_0^1 (1+x)^{1/2} dx = \left[ \frac{2}{3}(1+x)^{3/2} \right]_0^1 = \frac{2}{3}(2\sqrt{2} - 1)$, ce qui n'est pas 1.
+
+</details>
+
+---
+
+#### Question 10 : Formule de Taylor avec reste intégral
+
+Que nous donne la formule de Taylor avec reste intégral pour une fonction $f$ de classe $\mathcal{C}^{n+1}$ ?
+
+- [ ] **A)** Une formule qui n'est valable que si $b$ est très proche de $a$.
+- [x] **B)** Une égalité exacte où l'erreur d'approximation polynomiale est exprimée sous forme d'une intégrale.
+- [ ] **C)** La valeur de la dérivée $(n+1)$-ième de $f$ en un point inconnu $c$ entre $a$ et $b$.
+- [ ] **D)** Une approximation de $f(b)$ par un polynôme, avec une erreur non quantifiable.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+La formule s'écrit $f(b) = P_n(b) + R_n(b)$, où $P_n$ est le polynôme de Taylor et $R_n$ est le reste intégral.
+
+- **A)** Incorrect. La formule est une égalité mathématique vraie pour tous $a, b$ dans l'intervalle où $f$ est suffisamment régulière. L'approximation $f(b) \approx P_n(b)$ n'est cependant *utile* que lorsque $b$ est proche de $a$ (car le reste $R_n(b)$ est alors petit).
+
+- **B)** Correct. C'est la caractéristique principale de cette formule. Contrairement à la formule de Taylor-Young qui donne une information qualitative sur le reste (un "petit o"), la formule avec reste intégral donne une expression *exacte* pour ce reste : $R_n(b) = \int_a^b \frac{f^{(n+1)}(t)}{n!} (b-t)^n dt$.
+
+- **C)** Incorrect. Ceci décrit le reste sous la forme de Taylor-Lagrange ($R_n(b) = \frac{f^{(n+1)}(c)}{(n+1)!}(b-a)^{n+1}$), qui est une autre forme du reste, non intégrale.
+
+- **D)** Incorrect. L'erreur est précisément quantifiée par l'intégrale du reste.
+
+</details>
+
+---
+
+#### Question 11 : Application de la formule de Taylor
+
+On applique la formule de Taylor avec reste intégral à la fonction $f(x) = e^x$ à l'ordre $n=1$ au point $a=0$. Quelle est l'expression correcte de $e^b$ ?
+
+- [x] **A)** $e^b = 1 + b + \int_0^b e^t(b-t) dt$
+- [ ] **B)** $e^b = 1 + b + \frac{b^2}{2}$
+- [ ] **C)** $e^b = 1 + b + \int_0^b \frac{e^t}{2}(b-t)^2 dt$
+- [ ] **D)** $e^b = 1 + \int_0^b e^t dt$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+La formule de Taylor avec reste intégral à l'ordre $n$ est :
+
+$$ f(b) = \sum_{k=0}^n \frac{f^{(k)}(a)}{k!} (b-a)^k + \int_a^b \frac{f^{(n+1)}(t)}{n!} (b-t)^n dt $$
+
+Ici, $f(x)=e^x$, $n=1$ et $a=0$.
+
+Toutes les dérivées de $e^x$ sont $e^x$, donc $f^{(k)}(0) = e^0 = 1$ pour tout $k$.
+
+Le polynôme de Taylor à l'ordre $n=1$ est :
+
+$$ P_1(b) = \frac{f^{(0)}(0)}{0!}b^0 + \frac{f^{(1)}(0)}{1!}b^1 = \frac{1}{1} \cdot 1 + \frac{1}{1} \cdot b = 1+b $$
+
+Le reste intégral $R_1(b)$ est :
+
+$$ R_1(b) = \int_0^b \frac{f^{(1+1)}(t)}{1!} (b-t)^1 dt = \int_0^b \frac{e^t}{1} (b-t) dt = \int_0^b e^t(b-t) dt $$
+
+En combinant les deux, on obtient $e^b = 1 + b + \int_0^b e^t(b-t) dt$.
+
+- **A)** Correct. C'est l'expression exacte.
+- **B)** Incorrect. C'est le polynôme de Taylor de $e^b$ à l'ordre 2, ce n'est pas une égalité exacte pour $e^b$.
+- **C)** Incorrect. C'est la formule pour $e^b$ à l'ordre $n=2$ (polynôme $1+b+b^2/2$ et reste $R_2(b)$).
+- **D)** Incorrect. C'est la formule à l'ordre $n=0$.
+
+</details>
+
+---
+
+#### Question 12 : Lien entre formules d'analyse
+
+La formule de Taylor avec reste intégral à l'ordre $n=0$ pour une fonction $f$ de classe $\mathcal{C}^1$ est $f(b) = f(a) + \int_a^b f'(t) dt$. À quel autre théorème fondamental de l'analyse cette formule est-elle équivalente ?
+
+- [ ] **A)** La relation de Chasles pour les intégrales.
+- [ ] **B)** La formule d'intégration par parties.
+- [x] **C)** Le théorème fondamental de l'analyse (lien primitive-intégrale).
+- [ ] **D)** Le théorème des valeurs intermédiaires.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+- **A)** Incorrect. La relation de Chasles stipule que $\int_a^c f + \int_c^b f = \int_a^b f$, ce qui est un concept de "découpage" d'intégrale, différent de celui-ci.
+
+- **B)** Incorrect. L'intégration par parties est utilisée pour *prouver* la formule de Taylor pour des ordres supérieurs ($n \ge 1$), mais la formule pour $n=0$ ne lui est pas équivalente.
+
+- **C)** Correct. Si on réarrange la formule, on obtient $\int_a^b f'(t) dt = f(b) - f(a)$. Ceci énonce que l'intégrale de la dérivée d'une fonction est égale à la différence des valeurs de la fonction aux bornes. C'est précisément l'énoncé du théorème fondamental de l'analyse, qui lie l'intégrale (calcul d'aire) à la notion de primitive (opération inverse de la dérivation).
+
+- **D)** Incorrect. Le théorème des valeurs intermédiaires concerne les propriétés des fonctions continues (le fait qu'elles prennent toutes les valeurs entre deux points), ce qui n'est pas directement lié à cette formule intégrale.
+
+</details>
+
+---

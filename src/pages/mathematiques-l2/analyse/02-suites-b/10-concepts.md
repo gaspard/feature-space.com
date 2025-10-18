@@ -2,7 +2,7 @@
 id: 4e4905b1
 type: concepts
 order: 10
-title: Séries Numériques (suite) - concepts (A)
+title: Séries Numériques (suite)
 tags:
   - séries numériques
   - convergence

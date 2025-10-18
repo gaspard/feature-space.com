@@ -2,7 +2,7 @@
 id: 0d2ba30e
 type: concepts
 order: 10
-title: Espaces Euclidiens et Hermitiens - concepts (A)
+title: Espaces Euclidiens et Hermitiens
 tags:
   - Espaces Euclidiens
   - Espaces Hermitiens

@@ -1,0 +1,468 @@
+---
+id: 83b5ff56
+type: cards
+order: 12
+title: "Analyse: Continuïté - fiches de révision (A)"
+tags:
+  - analyse
+  - suites
+  - limites
+  - continuité
+  - dérivabilité
+  - intégration
+createdAt: '2025-10-18T19:09:27.304Z'
+level: regular
+course: Constructions et raisonnements mathématiques
+courseId: d2e11e03
+chapter: "Analyse: Continuïté"
+chapterId: a5489a34
+---
+# Fiches de révision "Analyse" (A)
+
+---
+
+Qu'est-ce que la limite finie d'une fonction en un point, selon la définition formelle $(\varepsilon - \eta)$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+On dit qu'une fonction $f$ tend vers une limite finie $l$ lorsque $x$ tend vers $a$ si, pour tout nombre $\varepsilon > 0$ aussi petit soit-il, il existe un nombre $\eta > 0$ tel que si $x$ est "suffisamment proche" de $a$ (à une distance inférieure à $\eta$), alors $f(x)$ est "aussi proche que l'on veut" de $l$ (à une distance inférieure à $\varepsilon$).
+
+Mathématiquement, cela s'écrit :
+
+$$ \lim_{x\to a} f(x) = l \iff \forall \varepsilon > 0, \exists \eta > 0, \forall x \in I, |x - a| < \eta \implies |f(x) - l| < \varepsilon. $$
+
+**Intuition :** Cette définition formalise l'idée que l'on peut rendre $f(x)$ arbitrairement proche de $l$ à condition de prendre $x$ suffisamment proche de $a$. Le $\varepsilon$ représente la "marge d'erreur" que l'on se fixe pour $f(x)$, et le $\eta$ est la "proximité" requise pour $x$ pour garantir cette marge d'erreur.
+
+</details>
+
+---
+
+Quelle est la différence entre la limite en un point, la limite à gauche et la limite à droite ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La distinction réside dans la manière dont $x$ s'approche du point $a$.
+
+-   **Limite à gauche :** On s'intéresse au comportement de $f(x)$ lorsque $x$ s'approche de $a$ par des valeurs **strictement inférieures** à $a$. On note $\lim_{x\to a^-} f(x)$.
+
+-   **Limite à droite :** On s'intéresse au comportement de $f(x)$ lorsque $x$ s'approche de $a$ par des valeurs **strictement supérieures** à $a$. On note $\lim_{x\to a^+} f(x)$.
+
+-   **Limite (tout court) :** La limite de $f$ en $a$ existe si et seulement si la limite à gauche et la limite à droite existent, sont finies et **sont égales**. Dans ce cas, la limite est cette valeur commune.
+
+    $$ \lim_{x\to a} f(x) = l \iff \lim_{x\to a^-} f(x) = \lim_{x\to a^+} f(x) = l $$
+
+**Exemple :** Pour la fonction partie entière $f(x)=E(x)$ au point $a=1$ :
+
+- $\lim_{x\to 1^-} E(x) = 0$ (car pour $x \in [0, 1[$, $E(x)=0$)
+- $\lim_{x\to 1^+} E(x) = 1$ (car pour $x \in [1, 2[$, $E(x)=1$)
+
+Comme les limites à gauche et à droite sont différentes, la fonction $E(x)$ n'admet pas de limite en $1$.
+
+</details>
+
+---
+
+À quelles conditions une fonction $f$ est-elle dite continue en un point $a$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Une fonction $f$ est continue en un point $a$ de son domaine de définition si sa limite en ce point est égale à la valeur de la fonction en ce point.
+
+Mathématiquement, cela s'écrit :
+
+$$ \lim_{x\to a} f(x) = f(a) $$
+
+Pour que cette condition soit remplie, trois choses sont nécessaires :
+
+1.  La fonction doit être définie en $a$ (c'est-à-dire que $f(a)$ existe).
+2.  La fonction doit admettre une limite finie en $a$ (c'est-à-dire que $\lim_{x\to a^-} f(x) = \lim_{x\to a^+} f(x)$).
+3.  Cette limite doit être égale à $f(a)$.
+
+**Intuition :** Une fonction est continue en un point si son graphe ne présente ni "trou" ni "saut" en ce point. On peut tracer la courbe autour de ce point sans lever le crayon.
+
+</details>
+
+---
+
+Comment déterminer si une fonction définie par morceaux est continue en un point de jonction ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour vérifier la continuité d'une fonction $f$ définie par des expressions différentes avant et après un point de jonction $a$, il faut suivre ces étapes :
+
+**Étapes :**
+
+1.  **Calculer la valeur en $a$ :** Trouver l'expression qui s'applique pour $x=a$ et calculer $f(a)$.
+2.  **Calculer la limite à gauche :** Utiliser l'expression valable pour $x < a$ pour calculer $\lim_{x\to a^-} f(x)$.
+3.  **Calculer la limite à droite :** Utiliser l'expression valable pour $x > a$ pour calculer $\lim_{x\to a^+} f(x)$.
+4.  **Comparer les trois valeurs :** La fonction est continue en $a$ si et seulement si les trois valeurs obtenues sont égales : $f(a) = \lim_{x\to a^-} f(x) = \lim_{x\to a^+} f(x)$.
+
+**Exemple :** Soit $f(x) = \begin{cases} x^2 + 1 & \text{si } x \ge 1 \\ 2x & \text{si } x < 1 \end{cases}$ au point $a=1$.
+
+1.  $f(1) = 1^2 + 1 = 2$.
+2.  $\lim_{x\to 1^-} f(x) = \lim_{x\to 1^-} (2x) = 2$.
+3.  $\lim_{x\to 1^+} f(x) = \lim_{x\to 1^+} (x^2 + 1) = 2$.
+
+Les trois valeurs sont égales à 2, donc la fonction $f$ est continue en $1$.
+
+</details>
+
+---
+
+Expliquez le Théorème des Valeurs Intermédiaires (TVI).
+
+<details>
+
+<summary>Réponse</summary>
+
+Le Théorème des Valeurs Intermédiaires (TVI) est une propriété fondamentale des fonctions continues sur un intervalle fermé et borné (un segment).
+
+**Énoncé :**
+
+Si $f$ est une fonction **continue** sur un segment $[a, b]$, alors pour tout réel $y$ compris entre $f(a)$ et $f(b)$, il existe **au moins un** réel $c$ dans l'intervalle $[a, b]$ tel que $f(c) = y$.
+
+**Intuition :**
+
+Cela signifie qu'une fonction continue ne peut pas passer d'une valeur $f(a)$ à une valeur $f(b)$ sans passer par toutes les valeurs intermédiaires. Graphiquement, pour aller du point $(a, f(a))$ au point $(b, f(b))$ sans lever le crayon, la courbe doit couper toute droite horizontale d'équation $y=k$ où $k$ est entre $f(a)$ et $f(b)$.
+
+**Application principale :**
+
+Le TVI est très utilisé pour prouver qu'une équation de la forme $f(x)=k$ possède au moins une solution dans un intervalle donné.
+
+</details>
+
+---
+
+Qu'affirme le Théorème des Bornes Atteintes ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le Théorème des Bornes Atteintes (aussi appelé théorème des bornes ou théorème du maximum) décrit le comportement global d'une fonction continue sur un segment.
+
+**Énoncé :**
+
+Si $f$ est une fonction **continue** sur un segment $[a, b]$, alors :
+
+1.  La fonction $f$ est **bornée** sur $[a, b]$ (ses valeurs ne vont ni vers $+\infty$ ni vers $-\infty$).
+2.  La fonction $f$ **atteint ses bornes**, c'est-à-dire qu'il existe un $x_{min} \in [a, b]$ où $f$ atteint son minimum, et un $x_{max} \in [a, b]$ où $f$ atteint son maximum.
+
+**Conséquence :** L'image d'un segment $[a, b]$ par une fonction continue est un segment $[m, M]$, où $m$ est le minimum et $M$ le maximum de la fonction sur $[a, b]$.
+
+**Attention :** Les deux hypothèses (continuité et intervalle fermé/segment) sont essentielles.
+
+-   **Contre-exemple (intervalle ouvert) :** $f(x)=x$ sur $]0, 1[$ est bornée par 0 et 1, mais n'atteint jamais ces bornes.
+-   **Contre-exemple (non continue) :** Une fonction avec un saut peut ne pas atteindre son "maximum" attendu.
+
+</details>
+
+---
+
+Quelle est la définition du nombre dérivé et son interprétation géométrique ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le nombre dérivé d'une fonction $f$ en un point $a$ est la limite (si elle existe et est finie) du taux d'accroissement de la fonction entre $a$ et un point $x$ qui s'approche de $a$.
+
+**Définition formelle :**
+
+Le nombre dérivé de $f$ en $a$, noté $f'(a)$, est donné par :
+
+$$ f'(a) = \lim_{x\to a} \frac{f(x) - f(a)}{x - a} $$
+
+**Interprétation géométrique :**
+
+Le taux d'accroissement $\frac{f(x) - f(a)}{x - a}$ représente la pente de la droite **sécante** qui passe par les points $(a, f(a))$ et $(x, f(x))$ du graphe de $f$.
+
+Lorsque $x$ tend vers $a$, cette droite sécante "pivote" pour devenir la droite **tangente** au graphe au point $(a, f(a))$.
+
+Ainsi, le nombre dérivé $f'(a)$ est **la pente (ou le coefficient directeur) de la tangente** au graphe de $f$ au point d'abscisse $a$.
+
+L'équation de cette tangente est : $y = f(a) + f'(a)(x-a)$.
+
+</details>
+
+---
+
+Quelle est la relation entre la dérivabilité et la continuité d'une fonction en un point ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La dérivabilité est une condition plus forte que la continuité.
+
+**La dérivabilité implique la continuité :**
+
+Si une fonction $f$ est dérivable en un point $a$, alors elle est **nécessairement** continue en ce point $a$.
+
+Intuitivement, pour qu'une tangente bien définie existe, la courbe ne doit pas avoir de "saut" ou de "trou".
+
+**La continuité n'implique PAS la dérivabilité :**
+
+Une fonction peut être continue en un point sans y être dérivable. Cela se produit typiquement lorsque le graphe présente un "point anguleux" ou une tangente verticale.
+
+**Exemple classique :** La fonction valeur absolue $f(x) = |x|$ en $a=0$.
+
+-   Elle est continue en 0 car $\lim_{x\to 0} |x| = 0 = |0|$.
+-   Elle n'est pas dérivable en 0 car la limite du taux d'accroissement à gauche est $-1$ et à droite est $1$. Les limites ne coïncident pas, le graphe a un point anguleux en $(0,0)$.
+
+</details>
+
+---
+
+Quelles sont les formules de dérivation pour un produit et un quotient de fonctions ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Soient $f$ et $g$ deux fonctions dérivables.
+
+**Dérivée d'un produit (Règle de Leibniz) :**
+
+La dérivée du produit $f \times g$ n'est PAS le produit des dérivées. La formule correcte est :
+
+$$ (f \cdot g)' = f'g + fg' $$
+
+**Exemple :** Pour $h(x) = x^2 e^x$, on a $f(x)=x^2$ et $g(x)=e^x$.
+
+$h'(x) = (2x)(e^x) + (x^2)(e^x) = (2x+x^2)e^x$.
+
+**Dérivée d'un quotient :**
+
+Si $g(x) \neq 0$, la formule de dérivation du quotient $f/g$ est :
+
+$$ \left(\frac{f}{g}\right)' = \frac{f'g - fg'}{g^2} $$
+
+**Moyen mnémotechnique :** La structure ressemble à celle du produit, mais avec un signe moins et une division par le carré du dénominateur.
+
+</details>
+
+---
+
+Comment dériver une fonction composée $g(f(x))$ avec la règle de la chaîne ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La règle de dérivation en chaîne (ou règle de la chaîne) est utilisée pour dériver la composition de deux fonctions.
+
+**Formule :**
+
+Si $f$ est dérivable en $x$ et $g$ est dérivable en $f(x)$, alors la fonction composée $h(x) = g(f(x))$ est dérivable en $x$ et sa dérivée est :
+
+$$ h'(x) = (g \circ f)'(x) = g'(f(x)) \times f'(x) $$
+
+**Méthode :** Pour calculer la dérivée, on procède "de l'extérieur vers l'intérieur" :
+
+1.  On dérive la fonction "extérieure" $g$, en gardant la fonction "intérieure" $f(x)$ comme variable. Cela donne $g'(f(x))$.
+2.  On multiplie ce résultat par la dérivée de la fonction "intérieure" $f'(x)$.
+
+**Exemple :** Soit $h(x) = \cos(x^3)$.
+
+Ici, la fonction extérieure est $g(u) = \cos(u)$ et la fonction intérieure est $f(x) = x^3$.
+
+-   Dérivée de l'extérieur : $g'(u) = -\sin(u)$, donc $g'(f(x)) = -\sin(x^3)$.
+-   Dérivée de l'intérieur : $f'(x) = 3x^2$.
+-   On multiplie les deux : $h'(x) = -\sin(x^3) \times 3x^2 = -3x^2 \sin(x^3)$.
+
+</details>
+
+---
+
+Que dit le Théorème de Rolle et quelle est son interprétation géométrique ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le Théorème de Rolle est un résultat fondamental qui garantit l'existence d'un point où la dérivée s'annule sous certaines conditions.
+
+**Énoncé :**
+
+Soit $f$ une fonction qui est :
+
+1.  **Continue** sur un segment $[a, b]$,
+2.  **Dérivable** sur l'intervalle ouvert $]a, b[$,
+3.  Telle que **$f(a) = f(b)$**.
+
+Alors, il existe au moins un point $c \in ]a, b[$ tel que $f'(c) = 0$.
+
+**Interprétation géométrique :**
+
+Si une courbe "lisse" (dérivable) part d'un point et arrive à un autre point situé à la même hauteur, elle doit nécessairement avoir au moins un point entre les deux où sa tangente est **horizontale**. La courbe doit "monter puis redescendre" ou "descendre puis remonter" pour revenir à son altitude de départ, passant par un sommet ou un creux où la pente est nulle.
+
+</details>
+
+---
+
+Que dit le Théorème des Accroissements Finis (TAF) et quelle est son interprétation géométrique ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le Théorème des Accroissements Finis (TAF) est une généralisation du Théorème de Rolle. Il relie la variation globale d'une fonction sur un intervalle à la valeur locale de sa dérivée.
+
+**Énoncé :**
+
+Soit $f$ une fonction **continue** sur $[a, b]$ et **dérivable** sur $]a, b[$. Alors il existe au moins un point $c \in ]a, b[$ tel que :
+
+$$ f(b) - f(a) = f'(c)(b-a) $$
+
+On peut aussi l'écrire : $\frac{f(b) - f(a)}{b - a} = f'(c)$.
+
+**Interprétation géométrique :**
+
+Le terme $\frac{f(b) - f(a)}{b - a}$ est la pente de la **droite sécante** joignant les points $(a, f(a))$ et $(b, f(b))$. Le terme $f'(c)$ est la pente de la **tangente** au point d'abscisse $c$.
+
+Le théorème affirme donc qu'il existe au moins un point $c$ sur la courbe où la **tangente est parallèle à la sécante** qui relie les extrémités de l'arc de courbe.
+
+</details>
+
+---
+
+Comment le signe de la dérivée $f'$ permet-il de déterminer la monotonie d'une fonction $f$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le lien entre le signe de la dérivée et les variations de la fonction est une conséquence directe du Théorème des Accroissements Finis. Soit $f$ une fonction dérivable sur un intervalle $I$.
+
+**Règles fondamentales :**
+
+-   Si $f'(x) \ge 0$ pour tout $x \in I$, alors la fonction $f$ est **croissante** sur $I$.
+-   Si $f'(x) \le 0$ pour tout $x \in I$, alors la fonction $f$ est **décroissante** sur $I$.
+-   Si $f'(x) = 0$ pour tout $x \in I$, alors la fonction $f$ est **constante** sur $I$.
+
+**Pour la stricte monotonie :**
+
+-   Si $f'(x) > 0$ pour tout $x \in I$, alors la fonction $f$ est **strictement croissante** sur $I$.
+-   Si $f'(x) < 0$ pour tout $x \in I$, alors la fonction $f$ est **strictement décroissante** sur $I$.
+
+Ces règles sont la base de l'étude des variations d'une fonction : on calcule la dérivée, on étudie son signe, et on en déduit les intervalles où la fonction monte ou descend.
+
+</details>
+
+---
+
+Qu'énonce le théorème de la bijection ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le théorème de la bijection donne des conditions suffisantes pour qu'une fonction admette une fonction réciproque et décrit les propriétés de cette dernière.
+
+**Énoncé :**
+
+Soit $f$ une fonction définie sur un intervalle $I$. Si $f$ est :
+
+1.  **Continue** sur $I$,
+2.  **Strictement monotone** sur $I$ (soit strictement croissante, soit strictement décroissante).
+
+Alors :
+
+-   $f$ réalise une **bijection** (une correspondance parfaite un-pour-un) de l'intervalle $I$ vers l'intervalle image $J=f(I)$.
+-   $f$ admet une **fonction réciproque**, notée $f^{-1}$, qui est définie sur $J$ et à valeurs dans $I$.
+-   Cette fonction réciproque $f^{-1}$ est elle-même **continue** et **strictement monotone** sur $J$ (avec le même sens de variation que $f$).
+
+En résumé : $y = f(x) \iff x = f^{-1}(y)$.
+
+</details>
+
+---
+
+Quelle est la formule pour la dérivée de la fonction réciproque $f^{-1}$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Si une fonction $f$ vérifie les conditions du théorème de la bijection et est de plus dérivable en un point $a$, sa réciproque $f^{-1}$ est dérivable en $b=f(a)$, à condition que $f'(a) \neq 0$.
+
+**Formule :**
+
+La dérivée de la fonction réciproque au point $b$ est l'inverse de la dérivée de la fonction originale au point correspondant $a$.
+
+$$ (f^{-1})'(b) = \frac{1}{f'(a)} $$
+
+Comme $a = f^{-1}(b)$, on peut réécrire la formule uniquement en fonction de $b$ :
+
+$$ (f^{-1})'(b) = \frac{1}{f'(f^{-1}(b))} $$
+
+**Exemple :** Soit $f(x)=e^x$ et $f^{-1}(y)=\ln(y)$.
+
+Cherchons $(\ln)'(b)$. On a $b = f(a) = e^a$, donc $a = \ln(b)$.
+
+$f'(x) = e^x$, donc $f'(a) = e^a = b$.
+
+La formule donne : $(\ln)'(b) = \frac{1}{f'(a)} = \frac{1}{b}$. On retrouve bien la dérivée de la fonction logarithme.
+
+</details>
+
+---
+
+Comment les fonctions trigonométriques réciproques (arcsin, arccos, arctan) sont-elles définies ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Les fonctions trigonométriques ne sont pas monotones sur $\mathbb{R}$, on ne peut donc pas définir leur réciproque globalement. On les définit en **restreignant leur domaine de départ** à un intervalle où elles deviennent continues et strictement monotones.
+
+1.  **Arcsinus ($\arcsin$) :** On restreint $\sin(x)$ à l'intervalle $[-\pi/2, \pi/2]$. Sur cet intervalle, le sinus est strictement croissant de -1 à 1.
+    -   $\arcsin$ est la réciproque de cette restriction.
+    -   $\arcsin : [-1, 1] \to [-\pi/2, \pi/2]$.
+
+2.  **Arccosinus ($\arccos$) :** On restreint $\cos(x)$ à l'intervalle $[0, \pi]$. Sur cet intervalle, le cosinus est strictement décroissant de 1 à -1.
+    -   $\arccos$ est la réciproque de cette restriction.
+    -   $\arccos : [-1, 1] \to [0, \pi]$.
+
+3.  **Arctangente ($\arctan$) :** On restreint $\tan(x)$ à l'intervalle ouvert $]-\pi/2, \pi/2[$. Sur cet intervalle, la tangente est strictement croissante de $-\infty$ à $+\infty$.
+    -   $\arctan$ est la réciproque de cette restriction.
+    -   $\arctan : \mathbb{R} \to ]-\pi/2, \pi/2[$.
+
+</details>
+
+---
+
+Quelles sont les formules des dérivées des fonctions trigonométriques réciproques ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Les dérivées des fonctions trigonométriques réciproques sont des fonctions algébriques.
+
+**Formules :**
+
+-   **Arcsinus :**
+
+    $$ (\arcsin x)' = \frac{1}{\sqrt{1-x^2}} \quad \text{pour } x \in ]-1, 1[ $$
+
+-   **Arccosinus :**
+
+    $$ (\arccos x)' = -\frac{1}{\sqrt{1-x^2}} \quad \text{pour } x \in ]-1, 1[ $$
+
+-   **Arctangente :**
+
+    $$ (\arctan x)' = \frac{1}{1+x^2} \quad \text{pour } x \in \mathbb{R} $$
+
+**Remarque :** Les fonctions arcsin et arccos ne sont pas dérivables aux bornes de leur domaine (-1 et 1), car la tangente au graphe y est verticale, ce qui correspond à un dénominateur nul dans la formule de la dérivée.
+
+</details>

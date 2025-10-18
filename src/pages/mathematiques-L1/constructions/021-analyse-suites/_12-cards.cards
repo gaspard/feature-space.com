@@ -1,0 +1,369 @@
+---
+id: bfc793ed
+type: cards
+order: 12
+title: "Analyse: Suites - fiches de révision (A)"
+tags:
+  - analyse
+  - suites
+  - limites
+  - continuité
+  - dérivabilité
+  - intégration
+createdAt: '2025-10-18T19:08:32.827Z'
+level: regular
+course: Constructions et raisonnements mathématiques
+courseId: d2e11e03
+chapter: "Analyse: Suites"
+chapterId: a5489a34
+---
+# Fiches de révision "Analyse" (A)
+
+---
+
+Qu'est-ce qu'une suite de nombres complexes ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Une **suite de nombres complexes** est une fonction $u$ dont l'ensemble de départ est l'ensemble des entiers naturels $\mathbb{N}$ (ou une partie de $\mathbb{N}$ comme $\{n \in \mathbb{N} \mid n \ge n_0\}$) et dont l'ensemble d'arrivée est l'ensemble des nombres complexes $\mathbb{C}$.
+
+$$ u : \mathbb{N} \to \mathbb{C} $$
+
+On note le terme d'indice $n$, qui est l'image $u(n)$, plus simplement $u_n$. La suite entière est notée $(u_n)_{n\in\mathbb{N}}$ ou simplement $(u_n)$. C'est une liste ordonnée et infinie de nombres complexes.
+
+**Exemple :** La suite $(u_n)_{n\in\mathbb{N}}$ définie par $u_n = i^n$ a pour termes $u_0 = i^0 = 1$, $u_1 = i^1 = i$, $u_2 = i^2 = -1$, etc.
+
+</details>
+
+---
+
+Quelles sont les deux manières principales de définir une suite ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Il existe deux manières principales de définir une suite :
+
+1.  **Par une formule explicite :** Le terme $u_n$ est donné par une formule qui dépend directement de l'indice $n$. Cela permet de calculer n'importe quel terme directement.
+
+    **Exemple :** Soit la suite $(u_n)_{n\in\mathbb{N}}$ définie par $u_n = \frac{n}{n+1} + i \cdot (-1)^n$. Pour calculer $u_{10}$, il suffit de remplacer $n$ par 10 : $u_{10} = \frac{10}{11} + i \cdot (-1)^{10} = \frac{10}{11} + i$.
+
+2.  **Par une relation de récurrence :** Un terme est défini à partir d'un ou plusieurs termes qui le précèdent. Il faut impérativement spécifier le ou les premiers termes pour pouvoir commencer le calcul.
+
+    **Exemple :** La suite de Fibonacci est définie par $u_0 = 1, u_1 = 1$ et la relation $u_{n+2} = u_{n+1} + u_n$ pour tout $n \in \mathbb{N}$. Pour trouver $u_3$, on a besoin de $u_2$ et $u_1$. On calcule d'abord $u_2 = u_1 + u_0 = 1+1=2$, puis $u_3 = u_2+u_1=2+1=3$.
+
+</details>
+
+---
+
+Que signifie, formellement, qu'une suite complexe $(u_n)$ converge vers une limite $l$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Une suite complexe $(u_n)_{n\in\mathbb{N}}$ converge vers une limite $l \in \mathbb{C}$ si les termes de la suite se rapprochent indéfiniment de $l$ à mesure que $n$ grandit.
+
+La définition formelle, avec les quantificateurs, est la suivante :
+
+$$ \exists l \in \mathbb{C}, \forall \varepsilon > 0, \exists N \in \mathbb{N}, \forall n \ge N, |u_n - l| < \varepsilon $$
+
+**En français :**
+
+Il existe un nombre complexe $l$ (la limite) tel que, pour n'importe quelle marge d'erreur $\varepsilon$ (un réel strictement positif aussi petit soit-il), on peut trouver un rang $N$ à partir duquel tous les termes de la suite (pour tout $n \ge N$) sont à une distance de $l$ strictement inférieure à $\varepsilon$.
+
+On note alors : $\lim_{n\to+\infty} u_n = l$.
+
+</details>
+
+---
+
+Expliquez l'interprétation géométrique de la convergence d'une suite vers une limite $l$.
+
+<details>
+
+<summary>Réponse</summary>
+
+Géométriquement, la convergence de $(u_n)$ vers $l$ s'interprète dans le plan complexe :
+
+1.  **La condition $|u_n - l| < \varepsilon$** signifie que le point représentant le terme $u_n$ se trouve à l'intérieur du disque ouvert de centre $l$ et de rayon $\varepsilon$.
+
+2.  **La définition complète** dit que pour n'importe quel disque centré en $l$, aussi petit que soit son rayon $\varepsilon$, on est certain qu'à partir d'un certain moment (le rang $N$), tous les termes de la suite qui suivent ($u_N, u_{N+1}, u_{N+2}, \dots$) seront définitivement à l'intérieur de ce disque.
+
+En d'autres termes, on peut "piéger" la quasi-totalité de la suite (tous les termes sauf un nombre fini au début) dans un disque aussi petit qu'on le souhaite autour de la limite $l$.
+
+</details>
+
+---
+
+Comment montrer que la suite $u_n = \frac{1}{n}$ (pour $n \ge 1$) converge vers 0 en utilisant la définition formelle ?
+
+<details>
+
+<summary>Réponse</summary>
+
+On veut montrer que $\lim_{n\to+\infty} \frac{1}{n} = 0$. La limite candidate est $l=0$.
+
+**Étapes :**
+
+1.  **Fixer un $\varepsilon > 0$ quelconque.** C'est notre marge d'erreur.
+
+2.  **Calculer la distance $|u_n - l|$.**
+
+    $$ |u_n - l| = \left| \frac{1}{n} - 0 \right| = \left| \frac{1}{n} \right| = \frac{1}{n} \quad (\text{car } n \ge 1) $$
+
+3.  **Trouver une condition sur $n$ pour que la distance soit inférieure à $\varepsilon$.**
+
+    On cherche $n$ tel que $|u_n - l| < \varepsilon$, c'est-à-dire :
+
+    $$ \frac{1}{n} < \varepsilon $$
+
+4.  **Isoler $n$ pour trouver le rang $N$.**
+
+    Comme $n$ et $\varepsilon$ sont positifs, l'inégalité est équivalente à :
+
+    $$ n > \frac{1}{\varepsilon} $$
+
+5.  **Choisir un rang $N$ qui garantit la condition.**
+
+    Il suffit de choisir n'importe quel entier $N$ qui est plus grand que $1/\varepsilon$. Un choix courant est de prendre $N = \lfloor 1/\varepsilon \rfloor + 1$.
+
+6.  **Conclusion.**
+
+    Pour le $\varepsilon > 0$ que nous avons choisi au départ, nous avons trouvé un rang $N$. Pour tout entier $n \ge N$, on aura bien $n > 1/\varepsilon$, ce qui implique que $1/n < \varepsilon$, et donc $|1/n - 0| < \varepsilon$. La définition de la convergence est vérifiée.
+
+</details>
+
+---
+
+Qu'est-ce qu'une suite bornée et quel est son lien avec la convergence ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Une suite de nombres complexes $(u_n)_{n\in\mathbb{N}}$ est dite **bornée** s'il existe un nombre réel positif $M$ tel que tous les modules des termes de la suite sont inférieurs ou égaux à $M$.
+
+$$ \exists M \in \mathbb{R}_+, \forall n \in \mathbb{N}, |u_n| \le M $$
+
+Géométriquement, cela signifie que tous les points de la suite sont contenus dans le disque de centre l'origine et de rayon $M$.
+
+**Lien fondamental avec la convergence :**
+
+Le théorème principal est : **Toute suite convergente est bornée.**
+
+Cela signifie que si une suite se rapproche d'une limite finie, ses termes ne peuvent pas "s'échapper vers l'infini".
+
+**Attention :** La réciproque est fausse. Une suite peut être bornée sans être convergente.
+
+**Exemple :** La suite $u_n = (-1)^n$ est bornée car $|u_n| \le 1$ pour tout $n$, mais elle diverge car elle oscille entre -1 et 1.
+
+La conséquence la plus utile de ce théorème est sa contraposée : **Toute suite non bornée est divergente.** C'est un moyen très efficace pour prouver qu'une suite diverge.
+
+</details>
+
+---
+
+Pourquoi une suite convergente a-t-elle une limite unique ?
+
+<details>
+
+<summary>Réponse</summary>
+
+On peut le prouver par l'absurde.
+
+**Hypothèse :** Supposons qu'une suite $(u_n)$ converge vers deux limites distinctes, $l$ et $l'$, avec $l \ne l'$.
+
+1.  Puisque $l \neq l'$, la distance entre eux $|l-l'|$ est un nombre strictement positif. Choisissons une marge d'erreur $\varepsilon = \frac{|l-l'|}{2}$.
+
+2.  Comme $(u_n) \to l$, il existe un rang $N_1$ à partir duquel tous les termes sont dans le disque de centre $l$ et de rayon $\varepsilon$. Donc, $\forall n \ge N_1, |u_n - l| < \varepsilon$.
+
+3.  De même, comme $(u_n) \to l'$, il existe un rang $N_2$ à partir duquel tous les termes sont dans le disque de centre $l'$ et de rayon $\varepsilon$. Donc, $\forall n \ge N_2, |u_n - l'| < \varepsilon$.
+
+4.  Prenons un entier $n$ plus grand que $N_1$ et $N_2$. Pour cet entier, le terme $u_n$ doit être à la fois dans le disque centré en $l$ ET dans le disque centré en $l'$.
+
+5.  Utilisons l'inégalité triangulaire :
+
+    $$ |l - l'| = |(l - u_n) + (u_n - l')| \le |l - u_n| + |u_n - l'| $$
+
+    En utilisant les conditions des points 2 et 3, on obtient :
+
+    $$ |l - l'| < \varepsilon + \varepsilon = 2\varepsilon $$
+
+6.  Mais nous avons choisi $\varepsilon = \frac{|l-l'|}{2}$, ce qui signifie $2\varepsilon = |l-l'|$. L'inégalité devient donc $|l-l'| < |l-l'|$, ce qui est une contradiction.
+
+L'hypothèse de départ est donc fausse. La limite doit être unique.
+
+</details>
+
+---
+
+Comment prouver que la suite $u_n = (-1)^n$ est divergente ?
+
+<details>
+
+<summary>Réponse</summary>
+
+On utilise un raisonnement par l'absurde.
+
+**Hypothèse :** Supposons que la suite $(u_n)$ converge vers une limite $l \in \mathbb{R}$.
+
+1.  **Choisir une marge d'erreur $\varepsilon$ :** Prenons $\varepsilon = 1/2$. D'après la définition de la convergence, il doit exister un rang $N$ tel que pour tout $n \ge N$, on a $|(-1)^n - l| < 1/2$.
+
+2.  **Tester pour un $n$ pair :** Choisissons un entier pair $p \ge N$. Alors $u_p = (-1)^p = 1$. L'inégalité devient $|1 - l| < 1/2$. Cela signifie que $l$ doit être dans l'intervalle $]1-1/2, 1+1/2[$, c'est-à-dire $l \in ]1/2, 3/2[$.
+
+3.  **Tester pour un $n$ impair :** Choisissons un entier impair $i \ge N$. Alors $u_i = (-1)^i = -1$. L'inégalité devient $|-1 - l| < 1/2$. Cela signifie que $l$ doit être dans l'intervalle $]-1-1/2, -1+1/2[$, c'est-à-dire $l \in ]-3/2, -1/2[$.
+
+4.  **Constater la contradiction :** La limite $l$ devrait appartenir simultanément aux deux intervalles $]1/2, 3/2[$ et $]-3/2, -1/2[$. Or, ces deux intervalles sont disjoints. Il est impossible pour un nombre d'être dans les deux à la fois.
+
+Notre hypothèse de départ est donc fausse. La suite $(u_n)$ ne converge pas, elle est **divergente**.
+
+</details>
+
+---
+
+Si $(u_n) \to l$ et $(v_n) \to k$, quelles sont les limites de $(u_n+v_n)$, $(u_n v_n)$ et $(u_n/v_n)$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Si $(u_n)$ et $(v_n)$ sont deux suites complexes convergentes avec $\lim_{n\to+\infty} u_n = l$ et $\lim_{n\to+\infty} v_n = k$, alors :
+
+1.  **Limite de la somme :** La suite $(u_n + v_n)$ converge et sa limite est la somme des limites.
+
+    $$ \lim_{n\to+\infty} (u_n + v_n) = l + k $$
+
+2.  **Limite du produit :** La suite $(u_n v_n)$ converge et sa limite est le produit des limites.
+
+    $$ \lim_{n\to+\infty} (u_n v_n) = l k $$
+
+3.  **Limite du quotient :** Si la limite du dénominateur n'est pas nulle ($k \neq 0$), alors la suite $(u_n / v_n)$ converge et sa limite est le quotient des limites.
+
+    $$ \lim_{n\to+\infty} \frac{u_n}{v_n} = \frac{l}{k} $$
+
+Ces propriétés sont essentielles pour calculer les limites de suites complexes en les décomposant en parties plus simples.
+
+</details>
+
+---
+
+Comment calculer la limite de la suite $u_n = \frac{3n^2 - 4in + 1}{2n^2 + 5i}$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour calculer la limite d'une fraction rationnelle en $n$, la méthode consiste à factoriser le terme de plus haut degré au numérateur et au dénominateur.
+
+**Étapes :**
+
+1.  **Identifier le terme dominant :** Au numérateur et au dénominateur, le terme de plus haut degré est $n^2$.
+
+2.  **Factoriser par ce terme :**
+
+    $$ u_n = \frac{n^2(3 - \frac{4i}{n} + \frac{1}{n^2})}{n^2(2 + \frac{5i}{n^2})} $$
+
+3.  **Simplifier la fraction :**
+
+    $$ u_n = \frac{3 - \frac{4i}{n} + \frac{1}{n^2}}{2 + \frac{5i}{n^2}} $$
+
+4.  **Calculer la limite du numérateur et du dénominateur séparément :**
+    -   Au numérateur : $\lim_{n\to+\infty} (3 - \frac{4i}{n} + \frac{1}{n^2}) = 3 - 0 + 0 = 3$ (car $1/n \to 0$ et $1/n^2 \to 0$).
+    -   Au dénominateur : $\lim_{n\to+\infty} (2 + \frac{5i}{n^2}) = 2 + 0 = 2$.
+
+5.  **Appliquer la règle du quotient :**
+
+    Comme la limite du dénominateur est $2 \neq 0$, la limite du quotient est le quotient des limites.
+
+    $$ \lim_{n\to+\infty} u_n = \frac{3}{2} $$
+
+</details>
+
+---
+
+Quelle est la condition sur les parties réelle et imaginaire pour qu'une suite complexe converge ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Une suite complexe $(u_n)$ converge vers une limite $l = a+ib$ **si et seulement si** ses deux suites réelles associées convergent :
+
+-   La suite des parties réelles $(\text{Re}(u_n))$ converge vers $a = \text{Re}(l)$.
+-   La suite des parties imaginaires $(\text{Im}(u_n))$ converge vers $b = \text{Im}(l)$.
+
+$$ \lim_{n\to+\infty} u_n = a+ib \iff \begin{cases} \lim_{n\to+\infty} \text{Re}(u_n) = a \\ \lim_{n\to+\infty} \text{Im}(u_n) = b \end{cases} $$
+
+Ce théorème est très puissant car il permet de ramener l'étude de la convergence d'une suite complexe à l'étude de deux suites réelles, pour lesquelles on dispose de plus d'outils (comme les théorèmes de comparaison ou des gendarmes).
+
+**Exemple :** La suite $u_n = \frac{n}{n+1} + i \frac{1}{n}$ converge vers $1$, car $\text{Re}(u_n) = \frac{n}{n+1} \to 1$ et $\text{Im}(u_n) = \frac{1}{n} \to 0$.
+
+</details>
+
+---
+
+Que signifie que deux suites $(u_n)$ et $(v_n)$ sont équivalentes ($u_n \sim v_n$) ?
+
+<details>
+
+<summary>Réponse</summary>
+
+On dit qu'une suite $(u_n)$ est **équivalente** à une suite $(v_n)$ lorsque $n \to +\infty$ si leur rapport tend vers 1. On suppose que $v_n$ est non nulle à partir d'un certain rang.
+
+$$ u_n \sim v_n \iff \lim_{n\to+\infty} \frac{u_n}{v_n} = 1 $$
+
+**Intuition :** Cela signifie que pour de grandes valeurs de $n$, les suites $u_n$ et $v_n$ ont un comportement très similaire. $u_n$ est une très bonne approximation de $v_n$ (et vice-versa).
+
+**Propriété fondamentale :** Un polynôme en $n$ est toujours équivalent à son monôme de plus haut degré.
+
+**Exemple :** Soit $u_n = 3n^2 - 2n + 5$.
+
+On a $u_n \sim 3n^2$ car :
+
+$$ \lim_{n\to+\infty} \frac{3n^2 - 2n + 5}{3n^2} = \lim_{n\to+\infty} \left(1 - \frac{2}{3n} + \frac{5}{3n^2}\right) = 1 $$
+
+L'utilisation des équivalents est une technique très efficace pour simplifier le calcul de limites de produits ou de quotients.
+
+</details>
+
+---
+
+Quelle est la différence entre $u_n = o(v_n)$ ("petit o") et $u_n = O(v_n)$ ("grand O") ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Ces deux notations de Landau comparent le comportement asymptotique de la suite $(u_n)$ par rapport à une suite de référence $(v_n)$.
+
+1.  **$u_n = o(v_n)$ (u_n est négligeable devant v_n)**
+
+    Cela signifie que le rapport $\frac{u_n}{v_n}$ tend vers 0.
+
+    $$ \lim_{n\to+\infty} \frac{u_n}{v_n} = 0 $$
+
+    **Intuition :** $u_n$ devient infiniment plus petite que $v_n$ quand $n$ devient grand.
+
+    **Exemple :** $n = o(n^2)$ car $\frac{n}{n^2} = \frac{1}{n} \to 0$.
+
+2.  **$u_n = O(v_n)$ (u_n est dominée par v_n)**
+
+    Cela signifie que le rapport $\frac{u_n}{v_n}$ est une suite bornée.
+
+    $$ \exists M > 0, \exists N \in \mathbb{N}, \forall n \ge N, \left|\frac{u_n}{v_n}\right| \le M $$
+
+    **Intuition :** $u_n$ ne grandit pas plus vite que $v_n$ (à un facteur constant près).
+
+    **Exemple :** $3n+\sin(n) = O(n)$ car $\left|\frac{3n+\sin(n)}{n}\right| = \left|3+\frac{\sin(n)}{n}\right| \le 3 + \frac{1}{n} \le 4$ pour $n \ge 1$.
+
+**Lien :** Si $u_n$ est négligeable devant $v_n$, alors elle est aussi dominée par $v_n$.
+
+$$ u_n = o(v_n) \implies u_n = O(v_n) $$
+
+En effet, une suite qui tend vers 0 est nécessairement bornée.
+
+</details>

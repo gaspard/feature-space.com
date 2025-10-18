@@ -2,7 +2,7 @@
 id: d15fce24
 type: concepts
 order: 10
-title: Principes de dénombrement - concepts (A)
+title: Principes de dénombrement
 tags:
   - Combinatoire
   - Dénombrement

@@ -1,0 +1,534 @@
+---
+id: b952dc8a
+type: cards
+order: 22
+title: Outillage - fiches de révision (B)
+tags:
+  - logique
+  - ensembles
+  - fonctions
+  - nombres réels
+  - nombres complexes
+  - langage mathématique
+createdAt: '2025-10-18T18:17:06.452Z'
+level: pro
+course: Constructions et raisonnements mathématiques
+courseId: d2e11e03
+chapter: "Outillage"
+chapterId: 4caba84b
+---
+# Fiches de révision "Outillage" (B)
+
+---
+
+Démontrez que l'implication $P \Rightarrow Q$ est logiquement équivalente à sa contraposée $\neg Q \Rightarrow \neg P$.
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour démontrer l'équivalence $(P \Rightarrow Q) \Leftrightarrow (\neg Q \Rightarrow \neg P)$, nous pouvons utiliser la définition alternative de l'implication, $(A \Rightarrow B) \Leftrightarrow (\neg A \lor B)$, et les propriétés de la logique propositionnelle.
+
+**Preuve par équivalences logiques :**
+
+1.  On part de la contraposée $\neg Q \Rightarrow \neg P$.
+2.  En utilisant la définition de l'implication, cette expression est équivalente à :
+
+    $\neg(\neg Q) \lor (\neg P)$
+
+3.  Par la loi de la double négation, $\neg(\neg Q) \Leftrightarrow Q$. L'expression devient :
+
+    $Q \lor \neg P$
+
+4.  Par la commutativité de la disjonction ($\lor$), ceci est équivalent à :
+
+    $\neg P \lor Q$
+
+5.  En réutilisant la définition de l'implication, cette dernière expression est équivalente à :
+
+    $P \Rightarrow Q$
+
+Nous avons donc montré que $(\neg Q \Rightarrow \neg P) \Leftrightarrow (P \Rightarrow Q)$ en utilisant une chaîne d'équivalences logiques. Une autre méthode consisterait à comparer leurs tables de vérité, qui seraient identiques.
+
+**Tags:** #preuve #logique #contraposition #théorème
+
+</details>
+
+---
+
+Expliquez la différence fondamentale entre l'implication en tant que connecteur logique ($P \Rightarrow Q$) et son utilisation abusive dans une chaîne de déductions.
+
+<details>
+
+<summary>Réponse</summary>
+
+La distinction est cruciale et repose sur la différence entre un **énoncé conditionnel** (une proposition) et un **acte de déduction** (un raisonnement).
+
+1.  **Connecteur Logique ($P \Rightarrow Q$)**:
+    -   C'est une opération qui construit une nouvelle proposition, "$P \Rightarrow Q$", à partir de deux propositions $P$ et $Q$.
+    -   Sa valeur de vérité est définie par sa table de vérité : elle n'est fausse que si $P$ est vraie et $Q$ est fausse.
+    -   L'énoncé "$2=3 \Rightarrow \pi=0$" est une proposition **vraie**, car l'antécédent est faux. Il n'y a aucun lien de causalité ou de déduction nécessaire entre les deux parties.
+
+2.  **Déduction (Raisonnement)**:
+    -   La déduction est un processus intellectuel qui permet de conclure qu'une proposition est vraie à partir d'autres propositions supposées vraies.
+    -   Le principal outil de déduction lié à l'implication est le **modus ponens**. Il stipule : Si la proposition "$P \Rightarrow Q$" est vraie, ET si la proposition "$P$" est vraie, ALORS on peut en **déduire** que la proposition "$Q$" est vraie.
+    -   L'écriture "Soit $x=2$. Alors $x^2=4$. Donc $x^2-4=0$." est une déduction correcte.
+
+L'abus de langage courant, comme écrire "$x=2 \Rightarrow x^2=4 \Rightarrow x^2-4=0$", confond ces deux notions. Il enchaîne des propositions avec le symbole $\Rightarrow$ comme s'il s'agissait d'étapes de raisonnement, alors que ce sont des propositions distinctes. La structure logique sous-jacente est une séquence d'applications du modus ponens.
+
+**Tags:** #concept #logique #implication #déduction #modusponens
+
+</details>
+
+---
+
+Démontrez la loi de De Morgan pour la négation des quantificateurs : $\neg(\forall x \in E, P(x)) \Leftrightarrow (\exists x \in E, \neg P(x))$.
+
+<details>
+
+<summary>Réponse</summary>
+
+La démonstration se fait en revenant à la sémantique (le sens) des quantificateurs.
+
+**Proposition :** $\neg(\forall x \in E, P(x))$
+
+Cette proposition est vraie si et seulement si la proposition "$(\forall x \in E, P(x))$" est fausse.
+
+Par définition du quantificateur universel, "$(\forall x \in E, P(x))$" est vraie si $P(x)$ est vraie pour **tous** les éléments $x$ de $E$.
+
+Par conséquent, "$(\forall x \in E, P(x))$" est fausse s'il existe **au moins un** élément $x_0$ dans $E$ pour lequel la proposition $P(x_0)$ est fausse.
+
+Dire que "$P(x_0)$ est fausse" est équivalent à dire que "$\neg P(x_0)$ est vraie".
+
+Donc, $\neg(\forall x \in E, P(x))$ est vraie si et seulement s'il existe au moins un $x_0 \in E$ tel que $\neg P(x_0)$ est vraie.
+
+Ceci est précisément la définition de la proposition "$(\exists x \in E, \neg P(x))$".
+
+L'équivalence est donc démontrée. Le raisonnement est analogue pour $\neg(\exists x \in E, P(x)) \Leftrightarrow (\forall x \in E, \neg P(x))$.
+
+**Tags:** #preuve #logique #quantificateurs #demorgan
+
+</details>
+
+---
+
+Prouvez par double inclusion la distributivité de l'intersection sur l'union : $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$.
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour prouver l'égalité de deux ensembles $E$ et $F$, on démontre $E \subset F$ et $F \subset E$.
+
+**Partie 1 : Montrons que $A \cap (B \cup C) \subset (A \cap B) \cup (A \cap C)$.**
+
+Soit $x \in A \cap (B \cup C)$.
+
+Par définition de l'intersection, on a $(x \in A) \land (x \in B \cup C)$.
+
+Par définition de l'union, $x \in B \cup C$ signifie $(x \in B) \lor (x \in C)$.
+
+On a donc la proposition logique : $x \in A \land (x \in B \lor x \in C)$.
+
+Par distributivité de $\land$ sur $\lor$ en logique propositionnelle, ceci est équivalent à :
+
+$(x \in A \land x \in B) \lor (x \in A \land x \in C)$.
+
+Ceci se traduit en termes ensemblistes par :
+
+$(x \in A \cap B) \lor (x \in A \cap C)$.
+
+Par définition de l'union, cela signifie $x \in (A \cap B) \cup (A \cap C)$.
+
+L'inclusion est donc prouvée.
+
+**Partie 2 : Montrons que $(A \cap B) \cup (A \cap C) \subset A \cap (B \cup C)$.**
+
+Soit $x \in (A \cap B) \cup (A \cap C)$.
+
+Par définition de l'union, on a $(x \in A \cap B) \lor (x \in A \cap C)$.
+
+-   Cas 1: $x \in A \cap B$. Alors $x \in A$ et $x \in B$. Si $x \in B$, alors $x \in B \cup C$. Donc $x \in A$ et $x \in B \cup C$, ce qui signifie $x \in A \cap (B \cup C)$.
+-   Cas 2: $x \in A \cap C$. Alors $x \in A$ et $x \in C$. Si $x \in C$, alors $x \in B \cup C$. Donc $x \in A$ et $x \in B \cup C$, ce qui signifie $x \in A \cap (B \cup C)$.
+
+Dans les deux cas, on a $x \in A \cap (B \cup C)$.
+
+L'inclusion est donc prouvée.
+
+Puisque les deux inclusions sont vraies, l'égalité est démontrée.
+
+**Tags:** #preuve #ensembles #distributivité #doubleinclusion
+
+</details>
+
+---
+
+Comment la théorie axiomatique des ensembles, telle que ZFC, résout-elle le paradoxe de Russell ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le paradoxe de Russell émerge dans la théorie "naïve" des ensembles, où l'on suppose que toute propriété définissable peut former un ensemble (axiome de compréhension non restreint). Le paradoxe est le suivant :
+
+Soit $R$ l'ensemble de tous les ensembles qui ne se contiennent pas eux-mêmes : $R = \{x \mid x \notin x\}$.
+
+La question est : $R \in R$ ?
+
+-   Si $R \in R$, alors par définition de $R$, $R$ doit satisfaire la propriété $R \notin R$. C'est une contradiction.
+-   Si $R \notin R$, alors par définition de $R$, $R$ satisfait la propriété pour être un membre de $R$, donc $R \in R$. C'est aussi une contradiction.
+
+La théorie axiomatique ZFC (Zermelo-Fraenkel avec l'axiome du Choix) évite ce paradoxe en remplaçant l'axiome de compréhension non restreint par un **schéma d'axiomes de compréhension (ou de séparation)** plus faible.
+
+Cet axiome stipule qu'on ne peut pas créer un ensemble à partir de rien avec une propriété. On peut seulement **sélectionner un sous-ensemble** d'un ensemble **déjà existant**.
+
+Formellement, pour toute propriété $\phi(x)$ et tout ensemble $A$ existant, l'axiome garantit l'existence de l'ensemble :
+
+$$ B = \{x \in A \mid \phi(x)\} $$
+
+Dans le cas du paradoxe de Russell, pour construire l'ensemble $R$, il faudrait partir d'un "ensemble de tous les ensembles", notons-le $V$. On aurait $R = \{x \in V \mid x \notin x\}$. Or, il est prouvable dans ZFC qu'un tel ensemble $V$ de tous les ensembles n'existe pas. On ne peut donc jamais construire l'objet paradoxal $R$.
+
+En bref, ZFC impose une hiérarchie de construction des ensembles qui empêche la formation d'ensembles auto-référentiels problématiques.
+
+**Tags:** #recherche #logique #ensembles #ZFC #paradoxe #axiome
+
+</details>
+
+---
+
+Démontrez qu'une fonction $f: A \to B$ est bijective si et seulement s'il existe une fonction $g: B \to A$ telle que $g \circ f = \text{id}_A$ et $f \circ g = \text{id}_B$.
+
+<details>
+
+<summary>Réponse</summary>
+
+C'est un théorème fondamental qui caractérise la bijectivité par l'existence d'une fonction inverse.
+
+**($\Rightarrow$) Supposons que $f$ est bijective.**
+
+Cela signifie que $f$ est à la fois injective et surjective.
+
+Par surjectivité, pour tout $b \in B$, l'ensemble des antécédents $\{a \in A \mid f(a)=b\}$ est non vide.
+
+Par injectivité, cet ensemble contient au plus un élément.
+
+Combinés, pour tout $b \in B$, il existe un et un seul $a \in A$ tel que $f(a)=b$.
+
+Ceci nous permet de définir une fonction $g: B \to A$ en posant $g(b)$ comme cet unique antécédent de $b$.
+
+Vérifions les compositions :
+
+1.  Soit $a \in A$. Posons $b=f(a)$. Par définition de $g$, $g(b)=a$. Donc $g(f(a))=a$.
+
+    Ceci est vrai pour tout $a \in A$, donc $g \circ f = \text{id}_A$.
+
+2.  Soit $b \in B$. Par définition de $g$, $a=g(b)$ est l'unique élément tel que $f(a)=b$. Donc $f(g(b))=b$.
+
+    Ceci est vrai pour tout $b \in B$, donc $f \circ g = \text{id}_B$.
+
+**($\Leftarrow$) Supposons qu'il existe une fonction $g: B \to A$ avec les propriétés $g \circ f = \text{id}_A$ et $f \circ g = \text{id}_B$.**
+
+1.  **Injectivité de $f$**:
+
+    Soient $a_1, a_2 \in A$ tels que $f(a_1)=f(a_2)$.
+
+    Appliquons $g$ aux deux membres : $g(f(a_1))=g(f(a_2))$.
+
+    Par définition de la composition, $(g \circ f)(a_1)=(g \circ f)(a_2)$.
+
+    Puisque $g \circ f = \text{id}_A$, on a $\text{id}_A(a_1)=\text{id}_A(a_2)$, ce qui signifie $a_1=a_2$.
+
+    Donc $f$ est injective.
+
+2.  **Surjectivité de $f$**:
+
+    Soit $b \in B$. Nous cherchons un antécédent $a \in A$ tel que $f(a)=b$.
+
+    Considérons l'élément $a=g(b)$. Cet élément existe car $g$ est définie sur tout $B$.
+
+    Calculons $f(a) = f(g(b))$.
+
+    Par définition de la composition, $f(g(b)) = (f \circ g)(b)$.
+
+    Puisque $f \circ g = \text{id}_B$, on a $(f \circ g)(b)=b$.
+
+    Donc $f(a)=b$, ce qui prouve que tout $b \in B$ a un antécédent.
+
+    $f$ est donc surjective.
+
+Puisque $f$ est à la fois injective et surjective, elle est bijective.
+
+**Tags:** #preuve #théorème #fonctions #bijection #inverse
+
+</details>
+
+---
+
+Énoncez la propriété d'Archimède pour $\mathbb{R}$ et démontrez-la en utilisant l'axiome de la borne supérieure.
+
+<details>
+
+<summary>Réponse</summary>
+
+**Énoncé de la propriété d'Archimède :**
+
+Pour tout nombre réel $x \in \mathbb{R}$, il existe un entier naturel $n \in \mathbb{N}$ tel que $n > x$.
+
+De manière équivalente, pour tous réels $x>0$ et $y$, il existe $n \in \mathbb{N}$ tel que $nx > y$.
+
+**Démonstration par l'absurde en utilisant l'axiome de la borne supérieure :**
+
+L'axiome de la borne supérieure stipule que toute partie non vide et majorée de $\mathbb{R}$ admet une borne supérieure dans $\mathbb{R}$.
+
+Supposons, par l'absurde, que la propriété d'Archimède est fausse. Cela signifie qu'il existe un réel $x_0$ tel que pour tout entier naturel $n$, on ait $n \le x_0$.
+
+Cette assertion implique que l'ensemble des entiers naturels $\mathbb{N}$ est une partie non vide de $\mathbb{R}$ qui est majorée (par $x_0$).
+
+En vertu de l'axiome de la borne supérieure, $\mathbb{N}$ admet une borne supérieure dans $\mathbb{R}$. Notons-la $s = \sup(\mathbb{N})$.
+
+Par définition de la borne supérieure, $s$ est le plus petit des majorants de $\mathbb{N}$.
+
+Considérons le nombre réel $s-1$. Puisque $s-1 < s$, $s-1$ ne peut pas être un majorant de $\mathbb{N}$.
+
+Il existe donc un entier naturel $m \in \mathbb{N}$ tel que $m > s-1$.
+
+En ajoutant 1 des deux côtés, on obtient $m+1 > s$.
+
+Or, $m$ est un entier naturel, donc $m+1$ est aussi un entier naturel.
+
+Nous avons trouvé un élément de $\mathbb{N}$ (à savoir $m+1$) qui est strictement supérieur à $s$.
+
+Ceci contredit le fait que $s$ est un majorant de $\mathbb{N}$.
+
+La supposition initiale est donc fausse. La propriété d'Archimède est vraie.
+
+**Tags:** #preuve #théorème #analyse #réels #archimède #bornesupérieure
+
+</details>
+
+---
+
+Démontrez la densité de $\mathbb{Q}$ dans $\mathbb{R}$ : pour tous réels $x, y$ avec $x < y$, il existe un rationnel $q$ tel que $x < q < y$.
+
+<details>
+
+<summary>Réponse</summary>
+
+La preuve s'appuie sur la propriété d'Archimède.
+
+**Preuve :**
+
+Soient $x, y \in \mathbb{R}$ avec $x < y$. On a donc $y-x > 0$.
+
+1.  **Trouver un dénominateur adéquat :**
+
+    Puisque $y-x > 0$, son inverse $\frac{1}{y-x}$ est un nombre réel. D'après la propriété d'Archimède, il existe un entier naturel $n \in \mathbb{N}^*$ (non nul) tel que :
+
+    $$ n > \frac{1}{y-x} $$
+
+    En manipulant cette inégalité, on obtient :
+
+    $$ n(y-x) > 1 \quad \Leftrightarrow \quad ny - nx > 1 $$
+
+    L'écart entre les nombres $nx$ et $ny$ est donc strictement supérieur à 1. Il doit donc y avoir au moins un entier entre eux.
+
+2.  **Trouver un numérateur adéquat :**
+
+    Soit $m$ l'entier immédiatement supérieur à $nx$. On peut le définir en utilisant la partie entière : $m = E(nx) + 1$.
+
+    Par définition de la partie entière, on a $E(nx) \le nx < E(nx)+1$.
+
+    Donc, on a $nx < m$.
+
+    De plus, comme $E(nx) > nx - 1$, on a $m = E(nx)+1 > (nx-1)+1 = nx$.
+
+    Maintenant, montrons que $m < ny$. On sait que $m-1 = E(nx) \le nx$.
+
+    En utilisant l'inégalité de l'étape 1 ($ny > nx+1$), on a :
+
+    $$ m \le nx+1 < ny $$
+
+    Nous avons donc l'encadrement strict : $nx < m < ny$.
+
+3.  **Construire le rationnel :**
+
+    Puisque $n$ est un entier strictement positif, on peut diviser l'encadrement par $n$ sans changer le sens des inégalités :
+
+    $$ x < \frac{m}{n} < y $$
+
+    Posons $q = \frac{m}{n}$. Comme $m \in \mathbb{Z}$ et $n \in \mathbb{N}^*$, $q$ est un nombre rationnel.
+
+    Nous avons trouvé un rationnel $q$ strictement compris entre $x$ et $y$.
+
+La densité de $\mathbb{Q}$ dans $\mathbb{R}$ est donc prouvée.
+
+**Tags:** #preuve #analyse #réels #densité #rationnels #archimède
+
+</details>
+
+---
+
+Démontrez l'inégalité triangulaire pour les nombres complexes : $\forall z, w \in \mathbb{C}, |z+w| \le |z|+|w|$.
+
+<details>
+
+<summary>Réponse</summary>
+
+La démonstration utilise la propriété fondamentale $|u|^2 = u\bar{u}$ pour tout $u \in \mathbb{C}$. Comme les modules sont des réels positifs, prouver $|a| \le |b|$ est équivalent à prouver $|a|^2 \le |b|^2$.
+
+**Preuve :**
+
+1.  On développe le carré du module de la somme :
+
+    $|z+w|^2 = (z+w)\overline{(z+w)}$
+
+    En utilisant la propriété $\overline{a+b} = \bar{a}+\bar{b}$, on obtient :
+
+    $|z+w|^2 = (z+w)(\bar{z}+\bar{w}) = z\bar{z} + z\bar{w} + w\bar{z} + w\bar{w}$
+
+2.  On reconnaît les carrés des modules :
+
+    $z\bar{z} = |z|^2$ et $w\bar{w} = |w|^2$. L'expression devient :
+
+    $|z+w|^2 = |z|^2 + |w|^2 + z\bar{w} + w\bar{z}$
+
+3.  On analyse le terme croisé $z\bar{w} + w\bar{z}$.
+
+    On remarque que $w\bar{z} = \overline{\bar{w}z} = \overline{z\bar{w}}$.
+
+    L'expression est donc de la forme $u+\bar{u}$ avec $u=z\bar{w}$.
+
+    Or, pour tout complexe $u$, on a $u+\bar{u} = 2\text{Re}(u)$.
+
+    Donc, $z\bar{w} + w\bar{z} = 2\text{Re}(z\bar{w})$.
+
+4.  On majore la partie réelle.
+
+    Pour tout complexe $u$, on sait que $\text{Re}(u) \le |u|$.
+
+    Ainsi, $2\text{Re}(z\bar{w}) \le 2|z\bar{w}|$.
+
+    En utilisant la multiplicativité du module ($|ab|=|a||b|$) et le fait que $|\bar{w}|=|w|$, on a :
+
+    $2|z\bar{w}| = 2|z||\bar{w}| = 2|z||w|$.
+
+5.  On combine les résultats :
+
+    $|z+w|^2 = |z|^2 + |w|^2 + 2\text{Re}(z\bar{w}) \le |z|^2 + |w|^2 + 2|z||w|$.
+
+    Le membre de droite est une identité remarquable : $(|z|+|w|)^2$.
+
+    On a donc $|z+w|^2 \le (|z|+|w|)^2$.
+
+6.  Comme $|z+w|$ et $(|z|+|w|)$ sont des réels positifs, on peut prendre la racine carrée des deux côtés sans changer le sens de l'inégalité :
+
+    $$ |z+w| \le |z|+|w| $$
+
+L'inégalité est démontrée.
+
+**Tags:** #preuve #complexes #module #inégalité #triangulaire
+
+</details>
+
+---
+
+Analysez le cas d'égalité dans l'inégalité triangulaire complexe : quand a-t-on $|z+w|=|z|+|w|$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le cas d'égalité se produit si et seulement si les vecteurs correspondants à $z$ et $w$ dans le plan complexe sont colinéaires et de même sens. Formellement, cela se traduit par :
+
+$|z+w|=|z|+|w| \Leftrightarrow (z=0 \text{ ou } w=0 \text{ ou } \exists \lambda \in \mathbb{R}_+, w = \lambda z)$.
+
+**Analyse de la preuve :**
+
+Reprenons la preuve de l'inégalité triangulaire. L'égalité a lieu si et seulement si la seule majoration effectuée est une égalité. Cette majoration est :
+
+$$ \text{Re}(z\bar{w}) \le |z\bar{w}| $$
+
+L'égalité se produit donc si et seulement si $\text{Re}(z\bar{w}) = |z\bar{w}|$.
+
+Soit $u = z\bar{w}$. La condition est $\text{Re}(u) = |u|$.
+
+Géométriquement, pour un nombre complexe $u$, sa partie réelle $\text{Re}(u)$ est égale à son module $|u|$ si et seulement si $u$ est un nombre réel positif ou nul.
+
+Donc, la condition d'égalité est que $z\bar{w} \in \mathbb{R}_+$.
+
+**Interprétation :**
+
+Supposons $z \neq 0$ et $w \neq 0$.
+
+Posons $z = r_1 e^{i\theta_1}$ et $w = r_2 e^{i\theta_2}$ avec $r_1, r_2 > 0$.
+
+Alors $\bar{w} = r_2 e^{-i\theta_2}$.
+
+Le produit $z\bar{w}$ est donc $r_1 r_2 e^{i(\theta_1 - \theta_2)}$.
+
+Ce nombre est un réel positif si et seulement si sa partie imaginaire est nulle et sa partie réelle est positive. Cela impose à son argument d'être un multiple de $2\pi$.
+
+$$ \theta_1 - \theta_2 = 2k\pi \quad \text{pour un } k \in \mathbb{Z} $$
+
+Cela signifie que $z$ et $w$ ont le même argument (à $2\pi$ près). Géométriquement, ils sont sur la même demi-droite issue de l'origine.
+
+Cette condition peut s'écrire $w = \lambda z$ pour un certain $\lambda > 0$. En effet, si $w$ et $z$ ont le même argument, $w/z = (r_2/r_1)e^{i(\theta_2-\theta_1)} = (r_2/r_1)e^{i0} = r_2/r_1$. En posant $\lambda = r_2/r_1 > 0$, on a $w = \lambda z$.
+
+Les cas triviaux $z=0$ ou $w=0$ mènent aussi trivialement à l'égalité.
+
+**Tags:** #concept #complexes #inégalité #triangulaire #géométrie
+
+</details>
+
+---
+
+Pourquoi le corps des nombres complexes $(\mathbb{C}, +, \times)$ ne peut-il pas être muni d'une relation d'ordre total compatible avec sa structure de corps ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Un corps ordonné $(K, +, \times, \le)$ doit satisfaire deux axiomes de compatibilité :
+
+1.  $\forall x,y,z \in K, x \le y \Rightarrow x+z \le y+z$ (compatibilité avec +)
+2.  $\forall x,y \in K, (x \ge 0 \land y \ge 0) \Rightarrow xy \ge 0$ (compatibilité avec $\times$)
+
+Une conséquence directe de ces axiomes dans tout corps ordonné est que le carré de tout élément non nul est strictement positif. En effet, si $x > 0$, alors $x^2 > 0$. Si $x < 0$, alors $-x > 0$, et $x^2 = (-x)^2 > 0$.
+
+**Démonstration par l'absurde pour $\mathbb{C}$ :**
+
+Supposons qu'il existe une relation d'ordre total $\le$ sur $\mathbb{C}$ qui en fasse un corps ordonné.
+
+Considérons l'élément non nul $i \in \mathbb{C}$.
+
+Dans un ordre total, on doit avoir soit $i > 0$, soit $i < 0$ (puisque $i \neq 0$).
+
+-   **Cas 1 : Supposons $i > 0$.**
+
+    D'après l'axiome de compatibilité avec la multiplication, le produit de deux éléments positifs est positif. Donc, $i \times i$ doit être positif.
+
+    $i^2 = -1$.
+
+    On aurait donc $-1 > 0$.
+
+    Or, dans tout corps ordonné, on peut prouver que $1 > 0$ (car $1=1^2$), et donc en ajoutant $-1$ des deux côtés, on a $0 > -1$.
+
+    La conclusion $-1 > 0$ est donc une contradiction.
+
+-   **Cas 2 : Supposons $i < 0$.**
+
+    Si $i < 0$, alors en ajoutant $-i$ des deux côtés, on obtient $0 < -i$.
+
+    Donc $-i$ est un élément positif.
+
+    Son carré $(-i)^2$ doit être positif.
+
+    $(-i)^2 = (-1)^2 i^2 = 1 \times (-1) = -1$.
+
+    On aurait donc à nouveau $-1 > 0$, ce qui est une contradiction.
+
+Puisque toutes les possibilités mènent à une contradiction, notre supposition initiale est fausse. Il est impossible de définir une relation d'ordre total sur $\mathbb{C}$ qui soit compatible avec sa structure de corps.
+
+**Tags:** #preuve #complexes #corps #ordre #structurealgébrique
+
+</details>

@@ -2,7 +2,7 @@
 id: 43c0a295
 type: concepts
 order: 10
-title: Division euclidienne - concepts (A)
+title: Division euclidienne
 tags:
   - algèbre
   - anneau

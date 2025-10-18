@@ -1,0 +1,352 @@
+---
+id: 143daf03
+type: quiz
+order: 13
+title: "Analyse: Continuïté - quiz (A)"
+tags:
+  - analyse
+  - suites
+  - limites
+  - continuité
+  - dérivabilité
+  - intégration
+createdAt: '2025-10-18T19:09:27.304Z'
+level: regular
+course: Constructions et raisonnements mathématiques
+courseId: d2e11e03
+chapter: "Analyse: Continuïté"
+chapterId: a5489a34
+---
+# Quiz: Analyse
+
+---
+
+#### Question 1 : Définition de la limite
+
+Que signifie la notation $\lim_{x\to a} f(x) = l$ selon la définition formelle (avec $\varepsilon$ et $\eta$) ?
+
+- [ ] **A)** Pour tout $\eta > 0$, il existe un $\varepsilon > 0$ tel que si $|x - a| < \eta$, alors $|f(x) - l| < \varepsilon$.
+- [x] **B)** Pour tout $\varepsilon > 0$, il existe un $\eta > 0$ tel que si $|x - a| < \eta$, alors $|f(x) - l| < \varepsilon$.
+- [ ] **C)** Il existe un $\varepsilon > 0$ pour lequel on peut trouver un $\eta > 0$ tel que si $|x - a| < \eta$, alors $|f(x) - l| < \varepsilon$.
+- [ ] **D)** Pour tout $\varepsilon > 0$ et pour tout $\eta > 0$, si $|x - a| < \eta$, alors $|f(x) - l| < \varepsilon$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+L'énoncé correct de la définition de la limite est : "Pour tout $\varepsilon > 0$, il existe un $\eta > 0$, tel que pour tout $x$ dans le domaine de $f$, si $|x - a| < \eta$, alors $|f(x) - l| < \varepsilon$".
+
+- **A)** Cette option inverse les rôles de $\varepsilon$ et $\eta$. La définition stipule que pour n'importe quelle marge d'erreur $\varepsilon$ que l'on se fixe autour de la limite $l$, on doit pouvoir trouver une marge $\eta$ autour de $a$ correspondante.
+- **B)** C'est la définition correcte. On choisit d'abord une précision souhaitée $\varepsilon$ pour la valeur de la fonction, puis on trouve un intervalle de largeur $\eta$ autour de $a$ qui garantit cette précision.
+- **C)** Cette option utilise "Il existe un $\varepsilon$", ce qui est trop faible. La propriété doit être vraie pour *tous* les $\varepsilon > 0$, aussi petits soient-ils.
+- **D)** Cette option est trop forte. Elle exigerait que la condition soit vraie pour n'importe quel $\eta$, ce qui n'est pas le cas. Le choix de $\eta$ doit dépendre de $\varepsilon$.
+
+</details>
+
+---
+
+#### Question 2 : Caractérisation séquentielle de la limite
+
+Soit $f$ une fonction. On a montré que pour la suite $x_n = 1/n$, la suite $f(x_n)$ converge vers $L$. Que peut-on conclure sur la limite de $f$ en $0$ ?
+
+- [ ] **A)** On peut affirmer que $\lim_{x\to 0} f(x) = L$.
+- [ ] **B)** On peut affirmer que $\lim_{x\to 0^+} f(x) = L$, mais on ne sait rien sur la limite à gauche.
+- [x] **C)** On ne peut rien conclure sur la limite de $f$ en $0$.
+- [ ] **D)** On peut affirmer que $f$ n'a pas de limite en $0$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+La caractérisation séquentielle de la limite stipule que $\lim_{x\to a} f(x) = L$ si et seulement si *pour toute* suite $(x_n)$ tendant vers $a$ (avec $x_n \neq a$), la suite $(f(x_n))$ converge vers $L$.
+
+- **A)** C'est incorrect. Avoir vérifié la condition pour une seule suite ne suffit pas. Il faudrait la vérifier pour toutes les suites possibles qui tendent vers 0.
+- **B)** C'est incorrect pour la même raison que A. Bien que la suite $x_n = 1/n$ approche 0 par la droite, cela ne suffit pas pour conclure sur la limite à droite. Par exemple, la suite $y_n = 1/(n \sqrt{2})$ approche aussi 0 par la droite et pourrait donner une autre limite.
+- **C)** C'est la bonne réponse. Pour prouver l'existence d'une limite, il faut considérer toutes les suites. L'information sur une seule suite est insuffisante. C'est en trouvant *deux* suites qui donnent des limites différentes qu'on peut prouver que la limite n'existe pas (voir le contre-exemple de $\sin(1/x)$).
+- **D)** C'est incorrect. On ne peut pas prouver que la limite n'existe pas avec une seule suite. Il se pourrait que la limite soit bien $L$. On manque simplement d'information.
+
+</details>
+
+---
+
+#### Question 3 : Définition de la continuité
+
+Quelle est la définition d'une fonction $f$ continue en un point $a$ de son domaine de définition ?
+
+- [ ] **A)** La fonction $f$ est définie en $a$.
+- [x] **B)** $\lim_{x\to a} f(x) = f(a)$.
+- [ ] **C)** La limite de $f$ en $a$ existe, mais n'est pas nécessairement égale à $f(a)$.
+- [ ] **D)** Les limites à gauche et à droite en $a$ sont égales.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+La continuité en un point $a$ combine trois conditions :
+
+1. $f$ doit être définie en $a$ (c'est-à-dire que $f(a)$ existe).
+2. La limite $\lim_{x\to a} f(x)$ doit exister et être finie.
+3. Ces deux valeurs doivent être égales.
+
+- **A)** C'est une condition nécessaire, mais pas suffisante. Une fonction peut être définie en $a$ mais avoir un "saut" à cet endroit.
+- **B)** C'est la définition complète et correcte. Elle implique que la limite existe, que la fonction est définie, et que les deux coïncident.
+- **C)** Si la limite existe mais est différente de $f(a)$, la fonction présente une discontinuité (un "trou" qui a été "rebouché" ailleurs). Elle n'est donc pas continue.
+- **D)** Si les limites à gauche et à droite sont égales, cela signifie que $\lim_{x\to a} f(x)$ existe. C'est une partie de la définition, mais il manque la condition cruciale que cette limite soit égale à $f(a)$.
+
+</details>
+
+---
+
+#### Question 4 : Application du Théorème des Valeurs Intermédiaires
+
+On considère une fonction $f$ continue sur le segment $[0, 5]$. On sait que $f(0) = -2$ et $f(5) = 10$. Lequel des énoncés suivants est une conséquence directe du Théorème des Valeurs Intermédiaires (TVI) ?
+
+- [x] **A)** L'équation $f(x) = 0$ admet au moins une solution dans l'intervalle $[0, 5]$.
+- [ ] **B)** La fonction $f$ est strictement croissante sur $[0, 5]$.
+- [ ] **C)** La fonction $f$ atteint son maximum en $x=5$.
+- [ ] **D)** L'équation $f(x) = 12$ admet au moins une solution dans l'intervalle $[0, 5]$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+Le TVI stipule qu'une fonction continue sur un segment $[a, b]$ prend toutes les valeurs intermédiaires entre $f(a)$ et $f(b)$.
+
+- **A)** Ici, $f(0) = -2$ et $f(5) = 10$. Le nombre $y=0$ est bien une valeur intermédiaire entre -2 et 10. Le TVI garantit donc qu'il existe un $c \in [0, 5]$ tel que $f(c)=0$. C'est correct (il s'agit du corollaire de Bolzano).
+- **B)** Le TVI ne donne aucune information sur la monotonie de la fonction. La fonction pourrait monter, descendre, puis remonter pour aller de -2 à 10.
+- **C)** Le fait que $f(5)$ soit la plus grande des deux valeurs aux bornes ne signifie pas que c'est le maximum global sur l'intervalle. La fonction pourrait atteindre une valeur supérieure à 10 quelque part dans $]0, 5[$.
+- **D)** Le nombre 12 n'est pas compris entre $f(0)=-2$ et $f(5)=10$. Le TVI ne permet donc pas de conclure sur l'existence d'une solution à $f(x)=12$.
+
+</details>
+
+---
+
+#### Question 5 : Théorème des bornes atteintes
+
+Soit $f(x) = \frac{1}{x}$ sur l'intervalle $I = ]0, 1]$. Que peut-on dire de cette fonction ?
+
+- [ ] **A)** Le théorème des bornes atteintes s'applique et garantit que $f$ admet un maximum et un minimum sur $I$.
+- [ ] **B)** La fonction $f$ est bornée sur $I$.
+- [x] **C)** Le théorème des bornes atteintes ne s'applique pas car l'intervalle $I$ n'est pas fermé.
+- [ ] **D)** La fonction $f$ n'est pas continue sur $I$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Le théorème des bornes atteintes nécessite deux hypothèses cruciales : la fonction doit être continue et l'intervalle doit être un **segment** (fermé et borné).
+
+- **A)** C'est incorrect. Le théorème ne s'applique pas. En effet, la fonction n'admet pas de maximum sur $]0, 1]$ (elle tend vers $+\infty$ quand $x$ tend vers 0).
+- **B)** C'est incorrect. La fonction n'est pas bornée sur $I$. Plus précisément, elle n'est pas majorée car $\lim_{x\to 0^+} f(x) = +\infty$. Elle est minorée par $f(1)=1$.
+- **C)** C'est la bonne réponse. L'intervalle $I=]0, 1]$ n'est pas fermé en 0, ce n'est donc pas un segment. Une des hypothèses du théorème n'est pas satisfaite, il ne s'applique donc pas.
+- **D)** C'est incorrect. La fonction $f(x) = 1/x$ est une fonction rationnelle, elle est donc continue sur son domaine de définition $\mathbb{R}^*$. En particulier, elle est continue sur l'intervalle $]0, 1]$.
+
+</details>
+
+---
+
+#### Question 6 : Dérivabilité et Continuité
+
+Lequel des énoncés suivants est vrai ?
+
+- [ ] **A)** Si une fonction est continue en un point, alors elle est dérivable en ce point.
+- [x] **B)** Si une fonction est dérivable en un point, alors elle est continue en ce point.
+- [ ] **C)** Une fonction est continue en un point si et seulement si elle est dérivable en ce point.
+- [ ] **D)** La continuité et la dérivabilité sont deux notions indépendantes.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Cette question teste la relation hiérarchique entre la dérivabilité et la continuité.
+
+- **A)** C'est faux. Le contre-exemple classique est la fonction valeur absolue $f(x)=|x|$ qui est continue en 0 mais pas dérivable en 0.
+- **B)** C'est vrai. La dérivabilité est une condition plus forte que la continuité. Si une fonction peut être approchée localement par une droite (sa tangente), elle ne peut pas avoir de "saut", donc elle doit être continue.
+- **C)** C'est faux car l'implication "continue $\implies$ dérivable" est fausse.
+- **D)** C'est faux. Les notions sont liées par l'implication "dérivable $\implies$ continue".
+
+</details>
+
+---
+
+#### Question 7 : Interprétation géométrique de la dérivée
+
+Soit $f$ une fonction dérivable en un point $a$. Que représente le nombre dérivé $f'(a)$ ?
+
+- [x] **A)** La pente de la tangente au graphe de $f$ au point d'abscisse $a$.
+- [ ] **B)** L'ordonnée du point de la courbe d'abscisse $a$.
+- [ ] **C)** La pente de la droite qui passe par les points $(a, f(a))$ et $(a+1, f(a+1))$.
+- [ ] **D)** L'aire sous la courbe de $f$ entre $0$ et $a$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+La définition de la dérivée est la limite du taux d'accroissement, qui correspond à la limite des pentes des sécantes.
+
+- **A)** C'est la définition géométrique du nombre dérivé. La tangente est la position limite des droites sécantes, et sa pente est la limite des pentes des sécantes.
+- **B)** L'ordonnée du point d'abscisse $a$ est $f(a)$, pas $f'(a)$.
+- **C)** La pente de cette droite est le taux d'accroissement $\frac{f(a+1) - f(a)}{(a+1) - a} = f(a+1) - f(a)$. Ce n'est qu'une approximation de la dérivée, pas la dérivée elle-même.
+- **D)** L'aire sous la courbe est liée à l'intégrale de la fonction, pas à sa dérivée.
+
+</details>
+
+---
+
+#### Question 8 : Dérivée d'une fonction composée
+
+Quelle est la dérivée de la fonction $h(x) = (x^2 + 1)^3$ ?
+
+- [ ] **A)** $h'(x) = 3(x^2+1)^2$
+- [ ] **B)** $h'(x) = 3(2x)^2$
+- [x] **C)** $h'(x) = 6x(x^2+1)^2$
+- [ ] **D)** $h'(x) = (2x)^3$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+On utilise la règle de dérivation des fonctions composées (règle de la chaîne) : $(g \circ f)'(x) = g'(f(x)) \times f'(x)$.
+
+Ici, $f(x) = x^2+1$ et $g(y) = y^3$.
+
+1.  On calcule les dérivées de $f$ et $g$ :
+    -   $f'(x) = 2x$
+    -   $g'(y) = 3y^2$
+
+2.  On applique la formule :
+    -   $g'(f(x)) = g'(x^2+1) = 3(x^2+1)^2$
+    -   $h'(x) = g'(f(x)) \times f'(x) = 3(x^2+1)^2 \times (2x) = 6x(x^2+1)^2$
+
+- **A)** Cette réponse oublie de multiplier par la dérivée de la fonction intérieure, $f'(x)=2x$. C'est une erreur fréquente.
+- **B)** Cette réponse est une confusion incorrecte des formules.
+- **C)** C'est la réponse correcte obtenue en appliquant la règle de la chaîne.
+- **D)** Cette réponse est incorrecte et ne correspond à aucune règle de dérivation.
+
+</details>
+
+---
+
+#### Question 9 : Application du Théorème de Rolle
+
+Soit $f(x) = x(x-2)$ sur le segment $[0, 2]$. Quelles conclusions peut-on tirer du Théorème de Rolle ?
+
+- [ ] **A)** Le théorème ne s'applique pas car la fonction n'est pas continue.
+- [ ] **B)** Le théorème garantit qu'il existe un $c \in ]0, 2[$ tel que $f(c) = 0$.
+- [x] **C)** Le théorème garantit qu'il existe un $c \in ]0, 2[$ tel que $f'(c) = 0$.
+- [ ] **D)** Le théorème ne s'applique pas car $f(0) \neq f(2)$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Vérifions les hypothèses du Théorème de Rolle pour $f(x) = x^2-2x$ sur $[0, 2]$.
+
+1.  **Continuité :** $f$ est une fonction polynomiale, donc elle est continue sur $[0, 2]$.
+2.  **Dérivabilité :** $f$ est dérivable sur $]0, 2[$.
+3.  **Égalité aux bornes :** $f(0) = 0(0-2) = 0$ et $f(2) = 2(2-2) = 0$. Donc $f(0) = f(2)$.
+
+Les trois hypothèses sont vérifiées.
+
+- **A)** Incorrect, la fonction est continue.
+- **B)** C'est une conclusion du TVI, pas de Rolle. De plus, on a déjà trouvé deux solutions pour $f(x)=0$ (les bornes), Rolle s'intéresse à la dérivée.
+- **C)** C'est la conclusion exacte du Théorème de Rolle : il existe un point à l'intérieur de l'intervalle où la tangente est horizontale (dérivée nulle). En effet, $f'(x) = 2x-2$, et $f'(c)=0$ donne $c=1$, qui est bien dans $]0, 2[$.
+- **D)** Incorrect, on a bien $f(0)=f(2)=0$.
+
+</details>
+
+---
+
+#### Question 10 : Lien entre dérivée et monotonie
+
+Soit $f$ une fonction dérivable sur un intervalle $I$. Si on sait que $f'(x) < 0$ pour tout $x \in I$, que peut-on conclure ?
+
+- [ ] **A)** $f$ est négative sur $I$.
+- [ ] **B)** $f$ est convexe sur $I$.
+- [x] **C)** $f$ est strictement décroissante sur $I$.
+- [ ] **D)** $f$ est constante sur $I$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Le signe de la fonction dérivée est directement lié au sens de variation de la fonction.
+
+- **A)** Le signe de la dérivée n'informe pas sur le signe de la fonction elle-même. Par exemple, $f(x) = -x+10$ a une dérivée négative ($f'(x)=-1$), mais la fonction est positive pour $x<10$.
+- **B)** La convexité est liée au signe de la dérivée seconde ($f''$), pas de la dérivée première.
+- **C)** C'est le résultat fondamental reliant la dérivée et la monotonie. Une dérivée strictement négative sur un intervalle implique que la fonction est strictement décroissante sur cet intervalle.
+- **D)** Si $f$ était constante, sa dérivée serait nulle ($f'(x)=0$), ce qui contredit l'hypothèse $f'(x) < 0$.
+
+</details>
+
+---
+
+#### Question 11 : Théorème de la bijection
+
+Quelles sont les conditions suffisantes pour qu'une fonction $f$ définisse une bijection d'un intervalle $I$ sur un intervalle $J = f(I)$ et admette une fonction réciproque $f^{-1}$ continue sur $J$ ?
+
+- [ ] **A)** $f$ est dérivable sur $I$.
+- [ ] **B)** $f$ est bornée sur $I$.
+- [ ] **C)** $f$ est positive sur $I$.
+- [x] **D)** $f$ est continue et strictement monotone sur $I$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+Le théorème de la bijection énonce précisément les conditions pour qu'une fonction sur un intervalle puisse être inversée et que son inverse conserve de bonnes propriétés.
+
+- **A)** La dérivabilité seule ne suffit pas. Par exemple, $f(x)=x^2$ est dérivable sur $[-1, 1]$ mais n'est pas bijective sur cet intervalle.
+- **B)** Être bornée n'implique pas la bijectivité. $f(x)=\sin(x)$ est bornée mais pas bijective sur $\mathbb{R}$.
+- **C)** Le signe de la fonction n'a aucun lien direct avec sa bijectivité.
+- **D)** C'est exactement l'énoncé du théorème de la bijection. La continuité garantit que l'image d'un intervalle est un intervalle, et la stricte monotonie garantit l'injectivité (chaque valeur de $y$ n'est atteinte qu'une seule fois), ce qui assure la bijectivité.
+
+</details>
+
+---
+
+#### Question 12 : Fonctions trigonométriques réciproques
+
+Quelles affirmations sont vraies concernant la fonction $\arcsin(x)$ ? (Plusieurs réponses peuvent être correctes)
+
+- [x] **A)** Son domaine de définition est $[-1, 1]$.
+- [ ] **B)** Son ensemble image (codomaine) est $[0, \pi]$.
+- [x] **C)** Elle est strictement croissante.
+- [ ] **D)** Sa dérivée est $\frac{1}{1+x^2}$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, C]**
+
+Cette question vérifie la connaissance des propriétés de base de la fonction arcsinus.
+
+- **A)** C'est correct. La fonction sinus prend ses valeurs dans $[-1, 1]$, donc la fonction réciproque arcsinus est définie sur cet intervalle.
+- **B)** C'est incorrect. L'ensemble image de $\arcsin$ est $[-\pi/2, \pi/2]$, qui est l'intervalle sur lequel on a restreint la fonction sinus pour la rendre bijective. L'intervalle $[0, \pi]$ est l'image de la fonction $\arccos$.
+- **C)** C'est correct. La fonction sinus est strictement croissante sur $[-\pi/2, \pi/2]$, et le théorème de la bijection affirme que sa réciproque a le même sens de variation.
+- **D)** C'est incorrect. C'est la dérivée de la fonction $\arctan(x)$. La dérivée de $\arcsin(x)$ est $\frac{1}{\sqrt{1-x^2}}$.
+
+</details>

@@ -2,7 +2,7 @@
 id: 043e5bcd
 type: concepts
 order: 10
-title: Rappels et notation - concepts (A)
+title: Rappels et notation
 tags:
   - set theory
   - relations

@@ -1,0 +1,336 @@
+---
+id: e95c38de
+type: quiz
+order: 13
+title: "Analyse: Suites - quiz (A)"
+tags:
+  - analyse
+  - suites
+  - limites
+  - continuité
+  - dérivabilité
+  - intégration
+createdAt: '2025-10-18T19:08:32.827Z'
+level: regular
+course: Constructions et raisonnements mathématiques
+courseId: d2e11e03
+chapter: "Analyse: Suites"
+chapterId: a5489a34
+---
+# Quiz : Analyse
+
+---
+
+#### Question 1 : Définition d'une suite
+
+Qu'est-ce qui définit le mieux une suite de nombres complexes $(u_n)_{n\in\mathbb{N}}$ ?
+
+- [ ] **A)** Un ensemble infini de nombres complexes.
+- [x] **B)** Une fonction de $\mathbb{N}$ vers $\mathbb{C}$.
+- [ ] **C)** Une fonction de $\mathbb{R}$ vers $\mathbb{C}$.
+- [x] **D)** Une liste ordonnée et indexée par les entiers naturels de nombres complexes.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B, D]**
+
+- **A)** Un ensemble ne possède pas de notion d'ordre. Une suite est une liste *ordonnée* de termes. Par exemple, l'ensemble $\{i, -1, -i, 1\}$ est différent de la suite $(i^n)$ qui commence par $u_0=1, u_1=i, u_2=-1, \dots$.
+
+- **B)** C'est la définition formelle. Une suite est une fonction qui à chaque entier naturel $n$ (l'indice) associe un nombre complexe $u_n$ (le terme).
+
+- **C)** Une fonction de $\mathbb{R}$ vers $\mathbb{C}$ est une fonction d'une variable réelle à valeurs complexes, ce n'est pas une suite dont le domaine de définition est discret ($\mathbb{N}$).
+
+- **D)** C'est une description intuitive correcte. "Ordonnée" et "indexée par les entiers" sont les caractéristiques clés d'une suite.
+
+</details>
+
+---
+
+#### Question 2 : Formes de définition d'une suite
+
+La suite définie par $u_0 = 1+i$ et la relation $u_{n+1} = (2i) \cdot u_n$ pour tout $n \in \mathbb{N}$ est un exemple de suite :
+
+- [x] **A)** Définie par une relation de récurrence.
+- [ ] **B)** Définie par une formule explicite.
+- [x] **C)** Géométrique.
+- [ ] **D)** De Fibonacci.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, C]**
+
+- **A)** La suite est définie par récurrence car chaque terme $u_{n+1}$ est calculé à partir du terme précédent $u_n$.
+
+- **B)** Une formule explicite donnerait $u_n$ directement en fonction de $n$, par exemple $u_n = (1+i)(2i)^n$. Bien que cette formule explicite existe pour cette suite, la définition donnée dans l'énoncé est récurrente.
+
+- **C)** C'est une suite géométrique car chaque terme est obtenu en multipliant le précédent par un nombre constant $\lambda = 2i$, appelé la raison.
+
+- **D)** La suite de Fibonacci est définie par la relation $u_{n+2} = u_{n+1} + u_n$, ce qui n'est pas le cas ici.
+
+</details>
+
+---
+
+#### Question 3 : Compréhension de la convergence
+
+Soit une suite $(u_n)$ qui converge vers une limite $l \in \mathbb{C}$. Laquelle de ces affirmations traduit correctement la définition formelle ?
+
+- [ ] **A)** La distance $|u_n - l|$ devient de plus en plus petite à chaque étape.
+- [ ] **B)** Pour $n$ suffisamment grand, tous les termes $u_n$ sont égaux à $l$.
+- [x] **C)** Pour toute tolérance $\varepsilon > 0$, il existe un rang à partir duquel tous les termes de la suite sont à une distance de $l$ inférieure à $\varepsilon$.
+- [ ] **D)** Il existe un nombre $M$ tel que $|u_n - l| < M$ pour tout $n$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+- **A)** C'est faux. Une suite peut converger sans que la distance à la limite soit strictement décroissante. Par exemple, $u_n = l + \frac{(-1)^n}{n}$ converge vers $l$, mais la distance $|u_n-l| = 1/n$ n'est pas toujours décroissante (elle l'est pour les $n$ pairs et les $n$ impairs séparément, mais pas globalement).
+
+- **B)** C'est faux. Les termes se rapprochent de $l$ "aussi près que l'on veut", mais n'ont pas besoin d'atteindre $l$. Par exemple, $u_n = 1/n$ converge vers 0 mais aucun terme n'est égal à 0.
+
+- **C)** C'est la reformulation en langage courant de la définition formelle : $\forall \varepsilon > 0, \exists N \in \mathbb{N}, \forall n \ge N, |u_n - l| < \varepsilon$.
+
+- **D)** C'est la définition d'une suite bornée (ici, la suite $(u_n-l)$ est bornée). Toute suite convergente est bornée, mais être bornée n'est pas suffisant pour converger. Cette condition est trop faible.
+
+</details>
+
+---
+
+#### Question 4 : Unicité de la limite
+
+Laquelle de ces affirmations concernant la limite d'une suite est vraie ?
+
+- [x] **A)** Si une suite converge, sa limite est unique.
+- [ ] **B)** Une suite peut converger vers deux limites différentes si elle est à valeurs complexes.
+- [x] **C)** La démonstration de l'unicité de la limite utilise l'inégalité triangulaire.
+- [ ] **D)** Une suite comme $u_n = (-1)^n$ a deux limites : 1 et -1.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, C]**
+
+- **A)** C'est une propriété fondamentale des suites convergentes. Une suite ne peut pas se rapprocher indéfiniment de deux points distincts à la fois.
+
+- **B)** C'est faux. Le résultat de l'unicité de la limite est valable pour les suites réelles comme pour les suites complexes.
+
+- **C)** C'est vrai. La preuve standard se fait par l'absurde : on suppose deux limites distinctes $l$ et $l'$, et on utilise l'inégalité triangulaire $|l - l'| \le |l - u_n| + |u_n - l'|$ pour arriver à une contradiction.
+
+- **D)** C'est faux. La suite $u_n = (-1)^n$ est un exemple classique de suite divergente. Les valeurs 1 et -1 sont des valeurs d'adhérence, mais pas des limites.
+
+</details>
+
+---
+
+#### Question 5 : Divergence d'une suite
+
+Quand dit-on qu'une suite $(u_n)$ est divergente ?
+
+- [x] **A)** Lorsqu'elle n'est pas convergente.
+- [ ] **B)** Uniquement lorsque le module de ses termes tend vers l'infini.
+- [ ] **C)** Uniquement lorsque ses termes oscillent, comme pour la suite $(i^n)$.
+- [ ] **D)** Uniquement lorsqu'elle n'est pas bornée.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+- **A)** C'est la définition formelle. La divergence est la négation logique de la convergence.
+
+- **B)** C'est un cas particulier de divergence, mais pas le seul. Une suite peut diverger tout en étant bornée (par exemple $u_n=(-1)^n$).
+
+- **C)** L'oscillation est une autre forme de divergence, mais pas la seule. La suite $u_n=n$ diverge sans osciller.
+
+- **D)** Si une suite n'est pas bornée, elle est forcément divergente. Cependant, une suite peut être divergente tout en étant bornée (par exemple $u_n=(-1)^n$). Donc, "non bornée" est une condition suffisante pour la divergence, mais pas nécessaire. La définition est plus générale.
+
+</details>
+
+---
+
+#### Question 6 : Suites bornées
+
+Qu'est-ce qui caractérise une suite complexe $(u_n)$ comme étant bornée ?
+
+- [x] **A)** La suite des modules $(|u_n|)$ est majorée par un réel positif.
+- [ ] **B)** La suite converge.
+- [x] **C)** L'ensemble de tous les points $u_n$ du plan complexe est contenu dans un disque de rayon fini centré à l'origine.
+- [ ] **D)** Les suites des parties réelle $(\text{Re}(u_n))$ et imaginaire $(\text{Im}(u_n))$ convergent.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, C]**
+
+- **A)** C'est la définition formelle d'une suite bornée : $\exists M \in \mathbb{R}_+, \forall n \in \mathbb{N}, |u_n| \le M$.
+
+- **B)** C'est incorrect. Si une suite converge, elle est bornée. Mais la réciproque est fausse : une suite bornée n'est pas nécessairement convergente. Le contre-exemple classique est $u_n = i^n$, qui est bornée par $M=1$ mais divergente.
+
+- **C)** C'est l'interprétation géométrique correcte de la définition. Si $|u_n| \le M$ pour tout $n$, alors tous les points $u_n$ appartiennent au disque fermé de centre 0 et de rayon $M$.
+
+- **D)** Cette condition est équivalente à la convergence de la suite $(u_n)$ elle-même. C'est une condition plus forte que le simple fait d'être bornée. Pour qu'une suite complexe soit bornée, il suffit que ses parties réelle et imaginaire soient des suites réelles bornées (pas forcément convergentes).
+
+</details>
+
+---
+
+#### Question 7 : Lien entre convergence et suites bornées
+
+Cochez les affirmations correctes.
+
+- [x] **A)** Toute suite convergente est bornée.
+- [ ] **B)** Toute suite bornée est convergente.
+- [x] **C)** Toute suite non bornée est divergente.
+- [ ] **D)** Toute suite divergente est non bornée.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, C]**
+
+- **A)** C'est un théorème fondamental de l'analyse. Si les termes se rapprochent d'une limite finie, ils ne peuvent pas s'échapper à l'infini.
+
+- **B)** C'est faux. Le contre-exemple est $u_n = (-1)^n$. Cette suite est bornée (ses valeurs sont -1 et 1), mais elle ne converge pas.
+
+- **C)** C'est la contraposée de l'affirmation A. Si "A $\Rightarrow$ B" est vraie, alors "non B $\Rightarrow$ non A" est aussi vraie. C'est une méthode très efficace pour prouver qu'une suite diverge.
+
+- **D)** C'est faux. Le contre-exemple est encore $u_n = (-1)^n$. Cette suite est divergente, mais elle est bornée.
+
+</details>
+
+---
+
+#### Question 8 : Opérations sur les limites
+
+Soient deux suites $(u_n)$ et $(v_n)$ qui convergent respectivement vers $l=3+i$ et $k=1-2i$. Vers quoi converge la suite $(u_n \cdot v_n)$ ?
+
+- [ ] **A)** $3-2i$
+- [x] **B)** $5-5i$
+- [ ] **C)** $4-i$
+- [ ] **D)** La suite ne converge pas forcément.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Selon les propriétés des opérations sur les limites, la limite du produit de deux suites convergentes est le produit de leurs limites.
+
+On calcule donc le produit $l \cdot k$ :
+
+$l \cdot k = (3+i)(1-2i) = 3 \cdot 1 + 3 \cdot (-2i) + i \cdot 1 + i \cdot (-2i)$
+
+$l \cdot k = 3 - 6i + i - 2i^2$
+
+Comme $i^2 = -1$, on a :
+
+$l \cdot k = 3 - 5i - 2(-1) = 3 - 5i + 2 = 5-5i$.
+
+- **A)** Est le résultat de $l \cdot \overline{k}$.
+- **B)** Est le calcul correct de $l \cdot k$.
+- **C)** Est le résultat de la somme $l+k$.
+- **D)** Est faux, car le produit de deux suites convergentes est toujours une suite convergente.
+
+</details>
+
+---
+
+#### Question 9 : Limite d'un quotient
+
+Quelle est la limite de la suite $u_n = \frac{4n^2 - 3in}{2in^2 + 1}$ lorsque $n \to +\infty$ ?
+
+- [ ] **A)** $2i$
+- [ ] **B)** $2$
+- [ ] **C)** $0$
+- [x] **D)** $-2i$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+Pour calculer la limite d'une fraction rationnelle en $n$, on factorise par le terme de plus haut degré au numérateur et au dénominateur :
+
+$$ u_n = \frac{n^2(4 - 3i/n)}{n^2(2i + 1/n^2)} = \frac{4 - 3i/n}{2i + 1/n^2} $$
+
+Lorsque $n \to +\infty$, les termes $3i/n$ et $1/n^2$ tendent vers 0.
+
+Le numérateur tend donc vers 4.
+
+Le dénominateur tend vers $2i$.
+
+La limite du quotient est le quotient des limites (car la limite du dénominateur est non nulle) :
+
+$$ \lim_{n\to+\infty} u_n = \frac{4}{2i} = \frac{2}{i} $$
+
+Pour simplifier, on multiplie le numérateur et le dénominateur par $-i$ :
+
+$$ \frac{2}{i} = \frac{2 \cdot (-i)}{i \cdot (-i)} = \frac{-2i}{-i^2} = \frac{-2i}{1} = -2i $$
+
+</details>
+
+---
+
+#### Question 10 : Convergence et parties d'un nombre complexe
+
+Si la suite complexe $(u_n)$ converge vers une limite $l \in \mathbb{C}$, quelles affirmations sont nécessairement vraies ?
+
+- [x] **A)** La suite des parties réelles $(\text{Re}(u_n))$ converge vers $\text{Re}(l)$.
+- [ ] **B)** La suite $u_{n+1}-u_n$ converge vers 0.
+- [x] **C)** La suite des modules $(|u_n|)$ converge vers $|l|$.
+- [x] **D)** La suite des parties imaginaires $(\text{Im}(u_n))$ converge vers $\text{Im}(l)$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, C, D]**
+
+- **A)** C'est une propriété fondamentale. La convergence d'une suite complexe est équivalente à la convergence de ses parties réelle et imaginaire.
+
+- **B)** C'est une condition nécessaire mais non suffisante pour la convergence. Si $(u_n)$ converge vers $l$, alors $u_{n+1} \to l$ et $u_n \to l$, donc $u_{n+1}-u_n \to l-l=0$. Cependant, la réciproque est fausse. Par exemple, pour la suite $u_n = \sum_{k=1}^n \frac{1}{k}$, on a $u_{n+1}-u_n = \frac{1}{n+1} \to 0$, mais la suite $(u_n)$ diverge.
+
+- **C)** C'est vrai. Cela se démontre avec l'inégalité triangulaire inversée : $||u_n| - |l|| \le |u_n - l|$. Comme $|u_n - l| \to 0$, alors $||u_n| - |l|| \to 0$, ce qui signifie $|u_n| \to |l|$.
+
+- **D)** C'est vrai, pour la même raison que l'affirmation A.
+
+</details>
+
+---
+
+#### Question 11 : Notations de Landau
+
+Parmi les relations de comparaison asymptotique suivantes, lesquelles sont correctes ?
+
+- [x] **A)** $n^3 + 2n = O(n^3)$
+- [ ] **B)** $n^2 = o(n^2)$
+- [x] **C)** $\frac{1}{n^2} = o(\frac{1}{n})$
+- [x] **D)** $2n^3 + 100n^2 \sim 2n^3$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, C, D]**
+
+- **A)** $u_n = O(v_n)$ signifie que le quotient $|u_n/v_n|$ est borné. Ici, $\frac{n^3+2n}{n^3} = 1 + \frac{2}{n^2}$. Ce quotient tend vers 1, c'est donc une suite convergente et par conséquent bornée. L'affirmation est vraie.
+
+- **B)** $u_n = o(v_n)$ signifie que le quotient $u_n/v_n$ tend vers 0. Ici, $\frac{n^2}{n^2} = 1$, ce qui ne tend pas vers 0. L'affirmation est fausse.
+
+- **C)** On calcule le quotient : $\frac{1/n^2}{1/n} = \frac{n}{n^2} = \frac{1}{n}$. Comme $1/n \to 0$, la relation $\frac{1}{n^2} = o(\frac{1}{n})$ est correcte.
+
+- **D)** $u_n \sim v_n$ signifie que le quotient $u_n/v_n$ tend vers 1. Ici, $\frac{2n^3+100n^2}{2n^3} = 1 + \frac{100}{2n} = 1 + \frac{50}{n}$. Ce quotient tend bien vers 1. C'est un cas particulier de la règle "un polynôme est équivalent à son monôme de plus haut degré".
+
+</details>

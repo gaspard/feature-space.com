@@ -2,7 +2,7 @@
 id: de4e944a
 type: concepts
 order: 10
-title: 'Structures algébriques - concepts (A)'
+title: 'Structures algébriques'
 tags:
   - structures algébriques
   - ensembles

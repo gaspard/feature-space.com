@@ -2,7 +2,7 @@
 id: 19088a48
 type: concepts
 order: 10
-title: Séries Numériques - concepts (A)
+title: Séries Numériques
 tags:
   - séries numériques
   - convergence

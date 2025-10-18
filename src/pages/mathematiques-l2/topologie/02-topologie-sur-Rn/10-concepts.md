@@ -2,7 +2,7 @@
 id: 3ce7c5c4
 type: concepts
 order: 10
-title: Topologie sur Rn - concepts (A)
+title: Topologie sur Rn
 tags:
   - Topologie
   - Espaces vectoriels normés
