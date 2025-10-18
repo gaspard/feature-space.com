@@ -19,7 +19,7 @@ chapterId: a5489a34
 ---
 # Exercices "Analyse: Suites" (A)
 
-## Exercice 1 : Calcul de termes (Formule explicite)
+## Exercice 1
 
 **Problème :** Soit la suite de nombres complexes $(u_n)_{n \in \mathbb{N}}$ définie par la formule explicite :
 
@@ -57,7 +57,7 @@ Calculez les trois premiers termes de la suite : $u_0$, $u_1$, et $u_2$.
 
 </details>
 
-## Exercice 2 : Calcul de termes (Suite géométrique par récurrence)
+## Exercice 2
 
 **Problème :** Soit la suite géométrique $(z_n)_{n \in \mathbb{N}}$ définie par son premier terme $z_0 = 2+2i$ et la relation de récurrence $z_{n+1} = \frac{1}{2}i \cdot z_n$ pour tout $n \in \mathbb{N}$.
 
@@ -99,7 +99,7 @@ Calculez les termes $z_1$, $z_2$ et $z_3$. Donnez la formule explicite de $z_n$.
 
 </details>
 
-## Exercice 3 : Preuve de convergence avec la définition
+## Exercice 3
 
 **Problème :** En utilisant la définition formelle de la convergence (avec $\varepsilon$ et $N$), montrez que la suite $(u_n)_{n \in \mathbb{N}^*}$ définie par $u_n = \frac{3i}{n}$ converge vers $l=0$.
 
@@ -143,7 +143,7 @@ Calculez les termes $z_1$, $z_2$ et $z_3$. Donnez la formule explicite de $z_n$.
 
 </details>
 
-## Exercice 4 : Suite bornée ou non ?
+## Exercice 4
 
 **Problème :** La suite $(u_n)_{n \in \mathbb{N}}$ définie par $u_n = n \cdot e^{i \pi / 4}$ est-elle bornée ? Justifiez votre réponse et déduisez-en sa nature (convergente ou divergente).
 
@@ -181,7 +181,7 @@ Calculez les termes $z_1$, $z_2$ et $z_3$. Donnez la formule explicite de $z_n$.
 
 </details>
 
-## Exercice 5 : Opérations sur les limites
+## Exercice 5
 
 **Problème :** Calculez la limite de la suite $(w_n)_{n \in \mathbb{N}}$ définie par :
 
@@ -230,7 +230,7 @@ $$ w_n = \frac{(3n-1)(n+2i)}{n^2 + 4i} $$
 
 </details>
 
-## Exercice 6 : Divergence d'une suite oscillante
+## Exercice 6
 
 **Problème :** Montrez que la suite $(u_n)_{n \in \mathbb{N}}$ définie par $u_n = (-1)^n \frac{n}{n+1}$ est divergente.
 
@@ -274,7 +274,7 @@ $$ w_n = \frac{(3n-1)(n+2i)}{n^2 + 4i} $$
 
 </details>
 
-## Exercice 7 : Convergence via parties réelle et imaginaire
+## Exercice 7
 
 **Problème :** Soit la suite $(z_n)_{n \in \mathbb{N}^*}$ définie par $z_n = \left(\frac{n-1}{n}\right) + i \left(\frac{\sin(n)}{n}\right)$.
 
@@ -327,7 +327,7 @@ Déterminez si cette suite converge, et si oui, calculez sa limite.
 
 </details>
 
-## Exercice 8 : Utilisation des équivalents
+## Exercice 8
 
 **Problème :** En utilisant les équivalents usuels, déterminez la limite de la suite $(u_n)_{n \in \mathbb{N}^*}$ définie par :
 
@@ -369,7 +369,7 @@ $$ u_n = n \sin\left(\frac{2}{n}\right) $$
 
 </details>
 
-## Exercice 9 : Notation de Landau (Grand O)
+## Exercice 9
 
 **Problème :** Montrez que la suite $u_n = \frac{5n^2 + \cos(n)}{n-1}$ (définie pour $n \ge 2$) vérifie $u_n = O(n)$.
 
@@ -411,7 +411,7 @@ $$ u_n = n \sin\left(\frac{2}{n}\right) $$
 
 </details>
 
-## Exercice 10 : Équivalent d'une différence
+## Exercice 10
 
 **Problème :** Trouvez un équivalent simple pour la suite $u_n = \sqrt{n^2+4n} - n$ quand $n \to \infty$, puis déduisez-en sa limite.
 

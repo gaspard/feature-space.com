@@ -19,7 +19,7 @@ chapterId: a5489a34
 ---
 # Exercices "Analyse: Continuïté" (A)
 
-## Exercice 1: [Calcul de limite]
+## Exercice 1
 
 **Problème:** Calculez la limite suivante :
 
@@ -67,7 +67,7 @@ $$ \lim_{x \to 3} \frac{x^2 - x - 6}{x - 3} = 5 $$
 
 </details>
 
-## Exercice 2: [Limites à gauche et à droite]
+## Exercice 2
 
 **Problème:** Soit la fonction $f$ définie par :
 
@@ -117,7 +117,7 @@ $$ \lim_{x \to 1} f(x) = 3 $$
 
 </details>
 
-## Exercice 3: [Continuité en un point]
+## Exercice 3
 
 **Problème:** Soit la fonction $g$ définie par :
 
@@ -169,7 +169,7 @@ $$ k = \frac{1}{4} $$
 
 </details>
 
-## Exercice 4: [Application du TVI]
+## Exercice 4
 
 **Problème:** Montrez que l'équation $x^3 - 3x + 1 = 0$ admet au moins une solution dans l'intervalle $[0, 1]$.
 
@@ -211,7 +211,7 @@ La fonction $f(x) = x^3 - 3x + 1$ est continue sur $[0,1]$. Comme $f(0) = 1 > 0$
 
 </details>
 
-## Exercice 5: [Dérivabilité par la définition]
+## Exercice 5
 
 **Problème:** En utilisant la définition du nombre dérivé (la limite du taux d'accroissement), calculez la dérivée de la fonction $f(x) = \frac{1}{x+2}$ au point $a=1$.
 
@@ -259,7 +259,7 @@ $$ f'(1) = -\frac{1}{9} $$
 
 </details>
 
-## Exercice 6: [Opérations sur les dérivées]
+## Exercice 6
 
 **Problème:** Calculez la fonction dérivée de $h(x) = \frac{\sin(2x)}{x^2+1}$.
 
@@ -303,7 +303,7 @@ $$ h'(x) = \frac{2(x^2+1)\cos(2x) - 2x\sin(2x)}{(x^2+1)^2} $$
 
 </details>
 
-## Exercice 7: [Théorème de Rolle]
+## Exercice 7
 
 **Problème:** Soit la fonction $f(x) = x^3 - 4x$ sur le segment $[-2, 2]$.
 
@@ -363,7 +363,7 @@ $$ c = \frac{2\sqrt{3}}{3} \quad \text{et} \quad c = -\frac{2\sqrt{3}}{3} $$
 
 </details>
 
-## Exercice 8: [Inégalité des accroissements finis]
+## Exercice 8
 
 **Problème:** En utilisant l'inégalité des accroissements finis, montrez que pour tous réels $a$ et $b$ :
 
@@ -415,7 +415,7 @@ $$ |\cos(b) - \cos(a)| \le 1 \cdot |b-a| $$
 
 </details>
 
-## Exercice 9: [Théorème de la bijection]
+## Exercice 9
 
 **Problème:** Soit la fonction $f(x) = x^3 + x - 2$.
 
@@ -481,7 +481,7 @@ $$ (f^{-1})'(0) = \frac{1}{4} $$
 
 </details>
 
-## Exercice 10: [Fonctions trigonométriques réciproques]
+## Exercice 10
 
 **Problème:**
 

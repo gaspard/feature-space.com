@@ -19,7 +19,7 @@ chapterId: 4caba84b
 ---
 # Exercices "Outillage" (A)
 
-## Exercice 1: [Question Conceptuelle]
+## Exercice 1
 
 **Problème:** Soient les deux propositions suivantes :
 
@@ -74,7 +74,7 @@ Déterminez la valeur de vérité (Vrai ou Faux) des propositions suivantes, en 
 
 </details>
 
-## Exercice 2: [Application]
+## Exercice 2
 
 **Problème:** Soit $n$ un entier. Utilisez les lois de De Morgan pour écrire la négation de la proposition suivante :
 
@@ -114,7 +114,7 @@ Donnez un exemple d'entier $n$ pour lequel la proposition initiale est vraie, et
 
 </details>
 
-## Exercice 3: [Question Conceptuelle]
+## Exercice 3
 
 **Problème:** Soit l'implication $I$ suivante, où $x$ est un nombre réel :
 
@@ -167,7 +167,7 @@ L'implication $I$ est-elle vraie pour tout $x \in \mathbb{R}$ ?
 
 </details>
 
-## Exercice 4: [Application]
+## Exercice 4
 
 **Problème:** Soit $n$ un entier. Considérez l'implication suivante :
 
@@ -218,7 +218,7 @@ On analyse ensuite la véracité de chaque nouvelle proposition.
 
 </details>
 
-## Exercice 5: [Question Conceptuelle]
+## Exercice 5
 
 **Problème:** Déterminez si les propositions suivantes sont vraies ou fausses. Justifiez votre réponse en donnant un exemple ou un contre-exemple si nécessaire.
 
@@ -272,7 +272,7 @@ On analyse ensuite la véracité de chaque nouvelle proposition.
 
 </details>
 
-## Exercice 6: [Application]
+## Exercice 6
 
 **Problème:** Écrivez la négation de la proposition suivante :
 
@@ -314,7 +314,7 @@ La proposition initiale $P$ est-elle vraie ou fausse ?
 
 </details>
 
-## Exercice 7: [Computational]
+## Exercice 7
 
 **Problème:** Soit la fonction $f: \mathbb{Z} \to \mathbb{Z}$ définie par l'expression $f(n) = n^2 - 5$.
 
@@ -366,7 +366,7 @@ La proposition initiale $P$ est-elle vraie ou fausse ?
 
 </details>
 
-## Exercice 8: [Application]
+## Exercice 8
 
 **Problème:** Soit la fonction $f: \mathbb{R} \to \mathbb{R}$ définie par $f(x) = x^3 - x$.
 
@@ -411,7 +411,7 @@ Utilisons la deuxième méthode, qui est plus directe.
 
 </details>
 
-## Exercice 9: [Application]
+## Exercice 9
 
 **Problème:** La fonction $g: \mathbb{R} \to \mathbb{R}$ définie par $g(x) = x^2$ n'est ni injective ni surjective.
 
@@ -450,7 +450,7 @@ Comment pourrait-on modifier l'ensemble de départ et/ou l'ensemble d'arrivée p
 
 </details>
 
-## Exercice 10: [Computational]
+## Exercice 10
 
 **Problème:** Soient les fonctions $f: \mathbb{R} \to \mathbb{R}$ et $g: \mathbb{R} \to \mathbb{R}$ définies par :
 
@@ -494,7 +494,7 @@ $$ (g \circ f)(x) = 9x^2 - 24x + 17 $$
 
 </details>
 
-## Exercice 11: [Computational]
+## Exercice 11
 
 **Problème:** Soit la fonction $f: \mathbb{R} \setminus \{2\} \to \mathbb{R} \setminus \{0\}$ définie par $f(x) = \frac{1}{x-2}$. On admet que cette fonction est bijective.
 
@@ -537,7 +537,7 @@ $$ f^{-1}(y) = \frac{1}{y} + 2 $$
 
 </details>
 
-## Exercice 12: [Computational]
+## Exercice 12
 
 **Problème:** Résolvez dans $\mathbb{R}$ l'inéquation suivante :
 
@@ -576,7 +576,7 @@ $$ |2x - 6| \ge 4 $$
 
 </details>
 
-## Exercice 13: [Computational]
+## Exercice 13
 
 **Problème:** Soient les nombres complexes $z_1 = 1-3i$ et $z_2 = -2+i$.
 
@@ -630,7 +630,7 @@ Calculez sous forme algébrique ($a+ib$) les nombres suivants :
 
 </details>
 
-## Exercice 14: [Application]
+## Exercice 14
 
 **Problème:** Résolvez dans $\mathbb{C}$ l'équation suivante :
 
@@ -670,7 +670,7 @@ Donnez la solution sous forme algébrique $a+ib$.
 
 </details>
 
-## Exercice 15: [Computational]
+## Exercice 15
 
 **Problème:** Soit le nombre complexe $z = \frac{5-5i}{1+2i}$.
 

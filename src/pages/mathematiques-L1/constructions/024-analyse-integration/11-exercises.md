@@ -19,7 +19,7 @@ chapterId: a5489a34
 ---
 # Exercices "Analyse: Intégration" (A)
 
-## Exercice 1: Problème de Calcul
+## Exercice 1
 
 **Problème:** Soit la fonction $f$ définie sur l'intervalle $[0, 5]$ par :
 
@@ -72,7 +72,7 @@ Oui, la fonction $f$ est en escalier. Une subdivision adaptée est $\sigma = \{0
 
 </details>
 
-## Exercice 2: Application
+## Exercice 2
 
 **Problème:** Soit $h(x) = E(2x)$ la fonction partie entière de $2x$ sur l'intervalle $[0, 2]$.
 
@@ -134,7 +134,7 @@ La fonction $h$ est en escalier avec une subdivision adaptée $\sigma = \{0, 0.5
 
 </details>
 
-## Exercice 3: Question Conceptuelle
+## Exercice 3
 
 **Problème:** En utilisant la définition avec les intégrales supérieure et inférieure, montrez que la fonction $f(x) = 2x$ est intégrable au sens de Riemann sur l'intervalle $[0, 1]$.
 
@@ -208,7 +208,7 @@ La fonction $f(x)=2x$ est intégrable sur $[0,1]$ et son intégrale vaut 1. On p
 
 </details>
 
-## Exercice 4: Question Conceptuelle
+## Exercice 4
 
 **Problème:** Expliquez pourquoi la fonction de Dirichlet $g$, définie sur $[0, 1]$ par $g(x) = 1$ si $x \in \mathbb{Q}$ et $g(x) = 0$ si $x \notin \mathbb{Q}$, n'est pas intégrable au sens de Riemann.
 
@@ -262,7 +262,7 @@ La fonction de Dirichlet n'est pas intégrable au sens de Riemann sur $[0,1]$ ca
 
 </details>
 
-## Exercice 5: Problème de Calcul
+## Exercice 5
 
 **Problème:** Soit $f$ la fonction définie sur $[-1, 2]$ par :
 
@@ -321,7 +321,7 @@ La fonction $f$ est continue (et donc continue par morceaux) sur $[-1, 2]$, ce q
 
 </details>
 
-## Exercice 6: Application
+## Exercice 6
 
 **Problème:** Calculez l'intégrale $I = \int_0^3 |x - 2| dx$.
 
@@ -377,7 +377,7 @@ $$ \int_0^3 |x - 2| dx = \frac{5}{2} $$
 
 </details>
 
-## Exercice 7: Problème de Calcul
+## Exercice 7
 
 **Problème:** En utilisant les sommes de Riemann, calculez la valeur de l'intégrale $\int_0^2 x^2 dx$.
 
@@ -447,7 +447,7 @@ $$ \int_0^2 x^2 dx = \frac{8}{3} $$
 
 </details>
 
-## Exercice 8: Application
+## Exercice 8
 
 **Problème:** Déterminez la limite de la suite $(U_n)$ définie par :
 
@@ -507,7 +507,7 @@ $$ \lim_{n \to \infty} U_n = \frac{\ln(2)}{2} $$
 
 </details>
 
-## Exercice 9: Problème de Calcul
+## Exercice 9
 
 **Problème:** Écrire la formule de Taylor avec reste intégral pour la fonction $f(x) = \cos(x)$ à l'ordre $n=3$ au point $a=0$.
 
@@ -571,7 +571,7 @@ $$ \cos(x) = 1 - \frac{x^2}{2} + \int_0^x \frac{(x-t)^3}{6} \cos(t) dt $$
 
 </details>
 
-## Exercice 10: Application
+## Exercice 10
 
 **Problème:** On considère la fonction $f(x) = e^x$.
 

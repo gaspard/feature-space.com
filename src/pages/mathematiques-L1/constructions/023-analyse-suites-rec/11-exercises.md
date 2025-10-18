@@ -19,7 +19,7 @@ chapterId: a5489a34
 ---
 # Exercices "Analyse: Suites récurrentes" (A)
 
-## Exercice 1: [Problème de Calcul]
+## Exercice 1
 
 **Problème:** Soit la fonction $f(x) = \frac{1}{2}x + 1$. Pour chacun des intervalles suivants, déterminez s'il est stable par la fonction $f$.
 
@@ -84,7 +84,7 @@ chapterId: a5489a34
 
 </details>
 
-## Exercice 2: [Exercice d'Application]
+## Exercice 2
 
 **Problème:** Soit la suite $(u_n)$ définie par $u_0 = 3$ et la relation de récurrence $u_{n+1} = \sqrt{u_n + 6}$.
 
@@ -126,7 +126,7 @@ chapterId: a5489a34
 
 </details>
 
-## Exercice 3: [Question Conceptuelle et Graphique]
+## Exercice 3
 
 **Problème:** Soit la suite $(u_n)$ définie par $u_0 = 0.1$ et $u_{n+1} = 2u_n(1 - u_n)$. On considère la fonction $f(x) = 2x(1-x)$.
 
@@ -168,7 +168,7 @@ Le diagramme en toile d'araignée suggère que la suite $(u_n)$ est croissante e
 
 </details>
 
-## Exercice 4: [Exercice d'Application]
+## Exercice 4
 
 **Problème:** Soit la suite $(u_n)$ définie par $u_0 = 1$ et $u_{n+1} = u_n - u_n^2 + 1$.
 
@@ -209,7 +209,7 @@ Le diagramme en toile d'araignée suggère que la suite $(u_n)$ est croissante e
 
 </details>
 
-## Exercice 5: [Problème de Calcul]
+## Exercice 5
 
 **Problème:** Soit la suite $(u_n)$ définie par $u_0 = 4$ et $u_{n+1} = \frac{10}{u_n + 3}$.
 
@@ -254,7 +254,7 @@ On admet que pour tout $n$, $u_n \in [0, 4]$.
 
 </details>
 
-## Exercice 6: [Exercice d'Application]
+## Exercice 6
 
 **Problème:** On considère la suite $u_{n+1} = \frac{3u_n + 2}{u_n + 2}$ avec $u_0 = 1$. On admet que la suite est bien définie, que ses termes sont tous positifs, et qu'elle converge vers une limite $l$.
 
@@ -309,7 +309,7 @@ On admet que pour tout $n$, $u_n \in [0, 4]$.
 
 </details>
 
-## Exercice 7: [Problème de Calcul]
+## Exercice 7
 
 **Problème:** Soit la fonction $f(x) = \frac{1}{4}x + 3$.
 
@@ -359,7 +359,7 @@ On admet que pour tout $n$, $u_n \in [0, 4]$.
 
 </details>
 
-## Exercice 8: [Problème de Calcul]
+## Exercice 8
 
 **Problème:** Soit la fonction $f(x) = x^3 - 3x + 3$.
 
@@ -416,7 +416,7 @@ On admet que pour tout $n$, $u_n \in [0, 4]$.
 
 </details>
 
-## Exercice 9: [Conceptual Questions]
+## Exercice 9
 
 **Problème:** On considère une suite récurrente $u_{n+1} = f(u_n)$. Répondez aux questions suivantes en justifiant brièvement.
 
@@ -452,7 +452,7 @@ On admet que pour tout $n$, $u_n \in [0, 4]$.
 
 </details>
 
-## Exercice 10: [Exercice d'Application]
+## Exercice 10
 
 **Problème:** On souhaite trouver une valeur approchée de la racine cubique de 10, c'est-à-dire la solution de l'équation $x^3 = 10$.
 
