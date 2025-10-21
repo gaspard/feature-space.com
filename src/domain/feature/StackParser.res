@@ -1,5 +1,5 @@
-let contentRe = RegExp.fromStringWithFlags("^(.*?)\\s*<details>", ~flags="s")
-let solutionRe = RegExp.fromString("[\\s\\S]*?<summary>.*?</summary>([\\s\\S]*?)</details>")
+let contentRe = %re("/^(.*?)\s*<details>/s")
+let solutionRe = %re("/[\s\S]*?<summary>.*?<\/summary>([\s\S]*?)<\/details>/")
 
 let makeId = () => {
   let idx = ref(0)
@@ -17,9 +17,17 @@ let getOptions = content => {
   ->String.split("\n")
   ->Array.forEach(l => {
     if l->String.startsWith("- [x]") {
-      options->Array.push({id: id(), text: l->String.sliceToEnd(~start=5), correct: true})
+      options->Array.push({
+        id: id(),
+        content: l->String.sliceToEnd(~start=5)->String.trim,
+        correct: true,
+      })
     } else if l->String.startsWith("- [ ]") {
-      options->Array.push({id: id(), text: l->String.sliceToEnd(~start=5), correct: true})
+      options->Array.push({
+        id: id(),
+        content: l->String.sliceToEnd(~start=5)->String.trim,
+        correct: false,
+      })
     } else {
       rest->Array.push(l)
     }
@@ -39,7 +47,7 @@ let parseCards = (stackId, body): array<Card.t> => {
         Js.log("Cannot extract content\n==================")
         Js.log(text)
         Js.log("==================")
-        raise(Invalid_argument("Cannot extract content"))
+        Js.Exn.raiseError("Cannot extract content")
       }
     | Some(r) => (
         r[1]->Option.getUnsafe->Option.getUnsafe,
@@ -54,7 +62,7 @@ let parseCards = (stackId, body): array<Card.t> => {
         Js.log("Cannot extract solution\n==================")
         Js.log(text)
         Js.log("==================")
-        raise(Invalid_argument("Cannot extract solution"))
+        Js.Exn.raiseError("Cannot extract solution")
       }
     | Some(r) => (
         r[1]->Option.getUnsafe->Option.getUnsafe,
@@ -76,4 +84,26 @@ let parse = (content: string): Stack.t => {
   let {data, content} = GrayMatter.parse(content)
   let info = S.parseOrThrow(data, Stack.infoSchema)
   {info, cards: parseCards(info.id, content)}
+}
+
+let pathRe = %re("/(\.cards|\.quiz)$/")
+
+let makeStacksToJson = (fs: SystemType.fs, path: SystemType.path) => {
+  let rec aux = (dir: string) => {
+    fs.readdirSync(dir)->Array.forEach(dirent => {
+      if dirent.name->String.endsWith(".cards") || dirent.name->String.endsWith(".quiz") {
+        let p = path.join(dir, dirent.name)
+        let stack = parse(fs.readFileSync(p, "utf-8"))
+        let json =
+          stack
+          ->S.reverseConvertOrThrow(Stack.stackSchema)
+          ->JSON.stringifyAny(~space=2)
+          ->Option.getExn
+        fs.writeFileSync(p->String.replaceRegExp(pathRe, ".json"), json, "utf-8")
+      } else if dirent.isDirectory() {
+        aux(path.join(dir, dirent.name))
+      }
+    })
+  }
+  aux
 }

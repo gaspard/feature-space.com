@@ -2,11 +2,13 @@
 
 import * as S from "sury/src/S.mjs";
 import * as Stack from "../api/entity/Stack.mjs";
+import * as Js_exn from "rescript/lib/es6/js_exn.js";
 import GrayMatter from "gray-matter";
+import * as Core__Option from "@rescript/core/src/Core__Option.mjs";
 
-var contentRe = new RegExp("^(.*?)\\s*<details>", "s");
+var contentRe = /^(.*?)\s*<details>/s;
 
-var solutionRe = new RegExp("[\\s\\S]*?<summary>.*?</summary>([\\s\\S]*?)</details>");
+var solutionRe = /[\s\S]*?<summary>.*?<\/summary>([\s\S]*?)<\/details>/;
 
 function makeId() {
   var idx = {
@@ -23,11 +25,17 @@ function getOptions(content) {
   var options = [];
   var rest = [];
   content.split("\n").forEach(function (l) {
-        if (l.startsWith("- [x]") || l.startsWith("- [ ]")) {
+        if (l.startsWith("- [x]")) {
           options.push({
                 id: id(),
-                text: l.slice(5),
+                content: l.slice(5).trim(),
                 correct: true
+              });
+        } else if (l.startsWith("- [ ]")) {
+          options.push({
+                id: id(),
+                content: l.slice(5).trim(),
+                correct: false
               });
         } else {
           rest.push(l);
@@ -51,39 +59,17 @@ function parseCards(stackId, body) {
                 }
               }).map(function (text) {
               var r = contentRe.exec(text);
-              var match;
-              if (r == null) {
-                console.log("Cannot extract content\n==================");
-                console.log(text);
-                console.log("==================");
-                throw {
-                      RE_EXN_ID: "Invalid_argument",
-                      _1: "Cannot extract content",
-                      Error: new Error()
-                    };
-              }
-              match = [
-                r[1],
-                text.slice(r[0].length)
-              ];
+              var match = (r == null) ? (console.log("Cannot extract content\n=================="), console.log(text), console.log("=================="), Js_exn.raiseError("Cannot extract content")) : [
+                  r[1],
+                  text.slice(r[0].length)
+                ];
               var text$1 = match[1];
               var match$1 = getOptions(match[0]);
               var r$1 = solutionRe.exec(text$1);
-              var match$2;
-              if (r$1 == null) {
-                console.log("Cannot extract solution\n==================");
-                console.log(text$1);
-                console.log("==================");
-                throw {
-                      RE_EXN_ID: "Invalid_argument",
-                      _1: "Cannot extract solution",
-                      Error: new Error()
-                    };
-              }
-              match$2 = [
-                r$1[1],
-                text$1.slice(r$1[0].length)
-              ];
+              var match$2 = (r$1 == null) ? (console.log("Cannot extract solution\n=================="), console.log(text$1), console.log("=================="), Js_exn.raiseError("Cannot extract solution")) : [
+                  r$1[1],
+                  text$1.slice(r$1[0].length)
+                ];
               return {
                       id: id(),
                       stackId: stackId,
@@ -103,6 +89,27 @@ function parse(content) {
         };
 }
 
+var pathRe = /(\.cards|\.quiz)$/;
+
+function makeStacksToJson(fs, path) {
+  var aux = function (dir) {
+    fs.readdirSync(dir).forEach(function (dirent) {
+          if (!(dirent.name.endsWith(".cards") || dirent.name.endsWith(".quiz"))) {
+            if (dirent.isDirectory()) {
+              return aux(path.join(dir, dirent.name));
+            } else {
+              return ;
+            }
+          }
+          var p = path.join(dir, dirent.name);
+          var stack = parse(fs.readFileSync(p, "utf-8"));
+          var json = Core__Option.getExn(JSON.stringify(S.reverseConvertOrThrow(stack, Stack.stackSchema), undefined, 2), undefined);
+          fs.writeFileSync(p.replace(pathRe, ".json"), json, "utf-8");
+        });
+  };
+  return aux;
+}
+
 export {
   contentRe ,
   solutionRe ,
@@ -110,5 +117,7 @@ export {
   getOptions ,
   parseCards ,
   parse ,
+  pathRe ,
+  makeStacksToJson ,
 }
-/* contentRe Not a pure module */
+/* S Not a pure module */

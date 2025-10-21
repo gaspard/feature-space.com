@@ -1,14 +1,8 @@
 open VitestBdd
 open Stack
 
-// External bindings for reading fixture files
-@module("node:fs") external readFileSync: (string, string) => string = "readFileSync"
-@module("node:path") external join: (string, string) => string = "join"
-@val external processCwd: unit => string = "process.cwd"
-
-let fixtures = join(processCwd(), "src/domain/test/fixtures")
-
-let readFixture = filename => readFileSync(join(fixtures, filename), "utf8")
+let fixtures = System.Path.join(System.Process.cwd(), "src/domain/test/fixtures")
+let readFixture = filename => System.Fs.readFileSync(System.Path.join(fixtures, filename), "utf8")
 
 given("a {string} file content", ({step}, filename) => {
   let content = readFixture(filename)
@@ -53,6 +47,82 @@ given("a {string} file content", ({step}, filename) => {
             expect(stack.info.tags).toEqual(tags)
           }
         | _ => ()
+        }
+      },
+    )
+  })
+})
+
+let syst = System.make()
+let mockSystem = () => {
+  let output = Dict.make()
+  let writeFileSync = (path, content, _encoding) => {
+    output->Dict.set(path, content)
+  }
+  let readFileSync = (path, encoding) => {
+    switch output->Dict.get(path) {
+    | None => syst.fs.readFileSync(path, encoding)
+    | Some(v) => v
+    }
+  }
+  let existsSync = path => {
+    switch output->Dict.get(path) {
+    | None => syst.fs.existsSync(path)
+    | Some(_) => true
+    }
+  }
+  {
+    SystemType.path: syst.path,
+    fs: {
+      ...syst.fs,
+      writeFileSync,
+      readFileSync,
+      existsSync,
+    },
+    process: syst.process,
+  }
+}
+
+given("a clean {string} fixtures directory", ({step}, dirname) => {
+  let {fs, path} = mockSystem()
+  let {join} = path
+  let stacksToJson = StackParser.makeStacksToJson(fs, path)
+  let fdir = join(fixtures, dirname)
+
+  step("I generate JSON files for all stacks", () => {
+    stacksToJson(fdir)
+  })
+
+  step("the json file {string} should exist", filename => {
+    expect(fs.existsSync(join(fdir, filename))).toBe(true)
+  })
+
+  step("the json file {string} should contain", (filename, table) => {
+    let content =
+      fs.readFileSync(join(fdir, filename), "utf8")->S.parseJsonStringOrThrow(Stack.stackSchema)
+    let records = toRecords(table)
+    records->Array.forEach(
+      record => {
+        let field = record["json path"]->Option.getExn
+        let value = record["value"]->Option.getExn
+        switch field {
+        | "info.id" => expect(content.info.id).toBe(value)
+        | "info.title" => expect(content.info.title).toBe(value)
+        | "info.kind" =>
+          expect(content.info.kind).toBe(value->S.parseOrThrow(Stack.stackTypeSchema))
+        | "info.level" => expect(content.info.level).toBe(value->S.parseOrThrow(Stack.levelSchema))
+        | "info.course" => expect(content.info.course).toBe(value)
+        | "info.chapter" => expect(content.info.chapter).toBe(value)
+        | "info.tags" => {
+            let tags = value->String.split(",")->Array.map(String.trim)
+            expect(content.info.tags).toEqual(tags)
+          }
+        | "cards.0.stackId" => expect((content.cards->Array.getUnsafe(0)).stackId).toBe(value)
+        | "cards.0.options.0.content" =>
+          expect(((content.cards->Array.getUnsafe(0)).options->Array.getUnsafe(0)).content).toBe(
+            value,
+          )
+        | _ => Js.Exn.raiseError("Unknown field: " ++ field)
         }
       },
     )

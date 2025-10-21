@@ -25,3 +25,27 @@ Feature: Stack Parser
       | course  | CourseTitle         |
       | chapter | ChapterTitle        |
       | tags    | quiz-tag1,quiz-tag2 |
+
+  Scenario: Generate JSON files for all stack files
+    Given a clean "json-generation" fixtures directory
+    When I generate JSON files for all stacks
+    Then the json file "pages/sub-pages/some-cards.json" should exist
+    And the json file "pages/sub-pages/some-quiz.json" should exist
+    And the json file "pages2/some-quiz.json" should exist
+
+  Scenario: Verify JSON files contain valid stack data
+    Given a clean "json-generation" fixtures directory
+    When I generate JSON files for all stacks
+    Then the json file "pages/sub-pages/some-cards.json" should contain
+      | json path  | value             |
+      | info.id    | advanced-cards-id |
+      | info.kind  | cards             |
+      | info.level | pro               |
+    And the json file "pages/sub-pages/some-quiz.json" should contain
+      | json path                 | value           |
+      | info.id                   | physics-quiz-id |
+      | info.kind                 | quiz            |
+      | info.level                | regular         |
+      | cards.0.stackId           | physics-quiz-id |
+      | cards.0.options.0.content | Kinetic energy  |
+

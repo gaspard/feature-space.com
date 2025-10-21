@@ -27,11 +27,14 @@ type progress = {
   cards: dict<CardProgress.t>,
 }
 
+let stackTypeSchema = S.union([S.literal(Cards), S.literal(Quiz)])
+let levelSchema = S.union([S.literal(Regular), S.literal(Pro)])
+
 let infoSchema = S.object(s => {
   id: s.field("id", S.string),
   title: s.field("title", S.string),
-  kind: s.field("type", S.union([S.literal(Cards), S.literal(Quiz)])),
-  level: s.field("level", S.union([S.literal(Regular), S.literal(Pro)])),
+  kind: s.field("type", stackTypeSchema),
+  level: s.field("level", levelSchema),
   chapter: s.field("chapter", S.string),
   course: s.field("course", S.string),
   tags: s.field("tags", S.array(S.string)),
@@ -41,4 +44,9 @@ let progressSchema = S.object(s => {
   id: s.field("id", S.string),
   active: s.field("active", S.bool),
   cards: s.field("cards", S.dict(CardProgress.progressSchema)),
+})
+
+let stackSchema = S.object(s => {
+  info: s.field("info", infoSchema),
+  cards: s.field("cards", S.array(Card.cardSchema)),
 })
