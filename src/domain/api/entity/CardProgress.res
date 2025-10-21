@@ -1,4 +1,9 @@
-type state = Again | Hard | Good | Easy(int)
+@tag("kind")
+type state =
+  | @as("again") Again
+  | @as("hard") Hard
+  | @as("good") Good
+  | @as("easy") Easy(int)
 
 let again = 0.
 let hard = 1. *. 3600. *. 24.
@@ -38,3 +43,20 @@ let ofString = s =>
     }
   | _ => raise(Invalid_argument(`'${s}' is not a valid state`))
   }
+
+@tag("kind")
+type shape =
+  | @as("circle") Circle({radius: float})
+  | @as("square") Square({x: float})
+  | @as("triangle") Triangle({x: float, y: float})
+
+let easySchema = S.schema(s => Easy(s.matches(S.int)))
+
+let progressSchema = S.object(s => {
+  timestamp: s.field("timestamp", S.float),
+  recall: s.field("recall", S.float),
+  state: s.field(
+    "state",
+    S.union([S.literal(Again), S.literal(Hard), S.literal(Good), easySchema]),
+  ),
+})

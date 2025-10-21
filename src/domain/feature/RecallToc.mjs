@@ -57,7 +57,7 @@ function setActive(param, list) {
       var p$1 = {
         id: info.id,
         active: active,
-        cards: new Map()
+        cards: {}
       };
       list.value[i] = [
         info,

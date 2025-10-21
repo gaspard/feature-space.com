@@ -37,7 +37,7 @@ module Ui = {
 
 type t = {view: Ui.view}
 
-let make = ({stack, progress}: RepositoryType.t): t => {
+let make = (_: RepositoryType.t): t => {
   let view: Ui.view = Ui.Front({
     content: "",
     options: None,

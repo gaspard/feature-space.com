@@ -39,7 +39,7 @@ let setActive = (
         let p: Stack.progress = {
           id: info.id,
           active,
-          cards: Map.make(),
+          cards: Dict.make(),
         }
         list.value[i] = (info, Started(p))
         ignore(save(p))

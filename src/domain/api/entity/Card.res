@@ -1,20 +1,13 @@
-type card = {
-  id: string,
-  content: string,
-  solution: string,
-}
-
-type option = {
+type qoption = {
   id: string,
   text: string,
   correct: bool,
 }
 
-type question = {
+type t = {
   id: string,
+  stackId: string,
   content: string,
   solution: string,
-  options: array<option>,
+  options: array<qoption>,
 }
-
-type t = Card(card) | Question(question)
