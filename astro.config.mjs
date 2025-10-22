@@ -8,6 +8,7 @@ import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
 import { parseCards } from "./src/utils/cardParser.ts";
 import { parseQuiz } from "./src/utils/quizParser.ts";
+import stackJsonPlugin from './src/domain/feature/StackParserPlugin.gen';
 import { layoutPlugin } from "./src/utils/layoutPlugin.ts";
 
 // https://astro.build/config
@@ -34,7 +35,6 @@ export default defineConfig({
           }
           const parse = type === 'cards' ? parseCards : parseQuiz;
           try {
-            console.log('Parsing cards file:', id);
             const fileName = id.split('/').pop()
             if (!fileName) {
               throw new Error(`Could not get filename from '${id}'`)
@@ -53,6 +53,7 @@ export default defineConfig({
           }
         }
       },
+      stackJsonPlugin(),
     ],
   },
 });

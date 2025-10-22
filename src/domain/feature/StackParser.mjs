@@ -6,6 +6,7 @@ import * as Js_exn from "rescript/lib/es6/js_exn.js";
 import GrayMatter from "gray-matter";
 import * as Core__Option from "@rescript/core/src/Core__Option.mjs";
 import * as Caml_splice_call from "rescript/lib/es6/caml_splice_call.js";
+import * as Caml_js_exceptions from "rescript/lib/es6/caml_js_exceptions.js";
 
 var contentRe = /^(.*?)\s*<details>/s;
 
@@ -122,10 +123,23 @@ function makeStacksToJson(fs, path) {
               }
             }
             var p = path.join(dir, dirent.name);
-            var stack = parse(fs.readFileSync(p, "utf-8"));
-            toc.push(stack.info);
-            var json = Core__Option.getExn(JSON.stringify(S.reverseConvertOrThrow(stack, Stack.stackSchema), undefined, 2), undefined);
-            fs.writeFileSync(path.join(stacksDir, stack.info.id + ".json"), json, "utf-8");
+            try {
+              var stack = parse(fs.readFileSync(p, "utf-8"));
+              toc.push(stack.info);
+              var json = Core__Option.getExn(JSON.stringify(S.reverseConvertOrThrow(stack, Stack.stackSchema), undefined, 2), undefined);
+              return fs.writeFileSync(path.join(stacksDir, stack.info.id + ".json"), json, "utf-8");
+            }
+            catch (raw_error){
+              var error = Caml_js_exceptions.internalToOCamlException(raw_error);
+              if (error.RE_EXN_ID === Js_exn.$$Error) {
+                console.log("Error parsing stack file: " + p);
+                console.log(error._1);
+              } else {
+                console.log("Error parsing stack file: " + p);
+                console.log("Unknown error");
+              }
+              return ;
+            }
           });
       if (toc.length > 0) {
         var json = Core__Option.getExn(JSON.stringify(S.reverseConvertOrThrow(toc, Stack.tocSchema), undefined, 2), undefined);

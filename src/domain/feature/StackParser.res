@@ -102,14 +102,25 @@ let makeStacksToJson = (fs: SystemType.fs, path: SystemType.path) => {
       fs.readdirSync(dir)->Array.forEach(dirent => {
         if dirent.name->String.endsWith(".cards") || dirent.name->String.endsWith(".quiz") {
           let p = path.join(dir, dirent.name)
-          let stack = parse(fs.readFileSync(p, "utf-8"))
-          toc->Array.push(stack.info)
-          let json =
-            stack
-            ->S.reverseConvertOrThrow(Stack.stackSchema)
-            ->JSON.stringifyAny(~space=2)
-            ->Option.getExn
-          fs.writeFileSync(path.join(stacksDir, `${stack.info.id}.json`), json, "utf-8")
+          try {
+            let stack = parse(fs.readFileSync(p, "utf-8"))
+            toc->Array.push(stack.info)
+            let json =
+              stack
+              ->S.reverseConvertOrThrow(Stack.stackSchema)
+              ->JSON.stringifyAny(~space=2)
+              ->Option.getExn
+            fs.writeFileSync(path.join(stacksDir, `${stack.info.id}.json`), json, "utf-8")
+          } catch {
+          | Js.Exn.Error(error) => {
+              Js.log("Error parsing stack file: " ++ p)
+              Js.log(error)
+            }
+          | _ => {
+              Js.log("Error parsing stack file: " ++ p)
+              Js.log("Unknown error")
+            }
+          }
         } else if dirent.isDirectory() {
           // Add elements of toc to the current toc
           toc->Array.pushMany(aux(path.join(dir, dirent.name), path.join(outdir, dirent.name)))

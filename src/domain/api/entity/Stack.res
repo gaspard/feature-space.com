@@ -53,9 +53,4 @@ let stackSchema = S.object(s => {
   cards: s.field("cards", S.array(Card.cardSchema)),
 })
 
-type rec toc = {
-  current: array<info>,
-  sub: dict<toc>,
-}
-
 let tocSchema = S.array(infoSchema)

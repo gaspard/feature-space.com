@@ -10,7 +10,6 @@ Given('the fixture file {string}', ({ And, Then }, filename: string) => {
 
   And('I parse the quiz file', () => {
     const parsed = parseQuiz(fileContent, filename);
-    console.log(parsed);
     list = parsed.cards
   });
 
