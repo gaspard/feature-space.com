@@ -2,11 +2,28 @@
 
 import * as App from "./App.mjs";
 import * as TiliaReact from "@tilia/react/src/TiliaReact.mjs";
+import MarkdownTsx from "./Markdown.tsx";
 import * as JsxRuntime from "react/jsx-runtime";
 
+var make = MarkdownTsx;
+
+var Markdown = {
+  make: make
+};
+
 function RecallView$Front(props) {
+  var front = props.front;
   return JsxRuntime.jsx("div", {
-              children: props.front.content
+              children: JsxRuntime.jsx("div", {
+                    children: JsxRuntime.jsx(make, {
+                          text: front.content
+                        }),
+                    className: "card-question",
+                    onClick: (function (param) {
+                        front.turn();
+                      })
+                  }),
+              className: "card"
             });
 }
 
@@ -15,8 +32,69 @@ var Front = {
 };
 
 function RecallView$Back(props) {
-  return JsxRuntime.jsx("div", {
-              children: props.back.content
+  var back = props.back;
+  return JsxRuntime.jsxs("div", {
+              children: [
+                JsxRuntime.jsx("div", {
+                      children: JsxRuntime.jsx(make, {
+                            text: back.content
+                          }),
+                      className: "card-question"
+                    }),
+                JsxRuntime.jsx("div", {
+                      children: JsxRuntime.jsxs("details", {
+                            children: [
+                              JsxRuntime.jsx("summary", {
+                                    children: JsxRuntime.jsx("strong", {
+                                          children: "Solution"
+                                        })
+                                  }),
+                              JsxRuntime.jsxs("div", {
+                                    children: [
+                                      JsxRuntime.jsx("button", {
+                                            children: "Again",
+                                            className: "eval again",
+                                            onClick: (function (param) {
+                                                back.evaluate("again");
+                                              })
+                                          }),
+                                      JsxRuntime.jsx("button", {
+                                            children: "Hard",
+                                            className: "eval hard",
+                                            onClick: (function (param) {
+                                                back.evaluate("hard");
+                                              })
+                                          }),
+                                      JsxRuntime.jsx("button", {
+                                            children: "Good",
+                                            className: "eval good",
+                                            onClick: (function (param) {
+                                                back.evaluate("good");
+                                              })
+                                          }),
+                                      JsxRuntime.jsx("button", {
+                                            children: "Easy",
+                                            className: "eval easy",
+                                            onClick: (function (param) {
+                                                back.evaluate({
+                                                      kind: "easy",
+                                                      _0: 1
+                                                    });
+                                              })
+                                          })
+                                    ],
+                                    className: "card-evaluate"
+                                  }),
+                              JsxRuntime.jsx(make, {
+                                    text: back.solution
+                                  })
+                            ],
+                            open: true
+                          }),
+                      className: "card-answer"
+                    })
+              ],
+              className: "card"
             });
 }
 
@@ -56,12 +134,13 @@ function RecallView$1(props) {
   }
 }
 
-var make = RecallView$1;
+var make$1 = RecallView$1;
 
 export {
+  Markdown ,
   Front ,
   Back ,
   RecallView ,
-  make ,
+  make$1 as make,
 }
-/* App Not a pure module */
+/* make Not a pure module */

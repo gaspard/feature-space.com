@@ -1,16 +1,51 @@
 open TiliaReact
 
+module Markdown = {
+  @module("./Markdown.tsx") @react.component
+  external make: (~text: string) => React.element = "default"
+}
+
 module Front = {
   @react.component
   let make = (~front: Recall.Ui.front) => {
-    <div> {front.content->React.string} </div>
+    <div className="card">
+      <div className="card-question" onClick={_ => front.turn()}>
+        <Markdown text={front.content} />
+      </div>
+    </div>
   }
 }
 
 module Back = {
   @react.component
   let make = (~back: Recall.Ui.back) => {
-    <div> {back.content->React.string} </div>
+    <div className="card">
+      <div className="card-question">
+        <Markdown text={back.content} />
+      </div>
+      <div className="card-answer">
+        <details open_={true}>
+          <summary>
+            <strong> {"Solution"->React.string} </strong>
+          </summary>
+          <div className="card-evaluate">
+            <button className="eval again" onClick={_ => back.evaluate(CardProgress.Again)}>
+              {"Again"->React.string}
+            </button>
+            <button className="eval hard" onClick={_ => back.evaluate(CardProgress.Hard)}>
+              {"Hard"->React.string}
+            </button>
+            <button className="eval good" onClick={_ => back.evaluate(CardProgress.Good)}>
+              {"Good"->React.string}
+            </button>
+            <button className="eval easy" onClick={_ => back.evaluate(CardProgress.Easy(1))}>
+              {"Easy"->React.string}
+            </button>
+          </div>
+          <Markdown text={back.solution} />
+        </details>
+      </div>
+    </div>
   }
 }
 
