@@ -14,6 +14,7 @@ type info = {
   chapter: string,
   course: string,
   tags: array<string>,
+  count: option<int>,
 }
 
 type t = {
@@ -38,6 +39,7 @@ let infoSchema = S.object(s => {
   chapter: s.field("chapter", S.string),
   course: s.field("course", S.string),
   tags: s.field("tags", S.array(S.string)),
+  count: s.field("count", S.option(S.int)),
 })
 
 let progressSchema = S.object(s => {
@@ -50,3 +52,10 @@ let stackSchema = S.object(s => {
   info: s.field("info", infoSchema),
   cards: s.field("cards", S.array(Card.cardSchema)),
 })
+
+type rec toc = {
+  current: array<info>,
+  sub: dict<toc>,
+}
+
+let tocSchema = S.array(infoSchema)

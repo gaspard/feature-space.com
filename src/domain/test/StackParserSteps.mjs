@@ -6,6 +6,7 @@ import * as Js_exn from "rescript/lib/es6/js_exn.js";
 import * as System from "../../service/System.mjs";
 import * as Vitest from "vitest";
 import * as Nodefs from "node:fs";
+import * as Core__Int from "@rescript/core/src/Core__Int.mjs";
 import * as Nodepath from "node:path";
 import * as VitestBdd from "vitest-bdd";
 import * as StackParser from "../feature/StackParser.mjs";
@@ -89,6 +90,8 @@ function mockSystem() {
     }
   };
   var existsSync = function (path) {
+    console.log("============", path, "==============");
+    console.log(output);
     var match = output[path];
     if (match !== undefined) {
       return true;
@@ -96,13 +99,17 @@ function mockSystem() {
       return syst.fs.existsSync(path);
     }
   };
+  var mkdirSync = function (path) {
+    output[path] = "NEW DIRECTORY";
+  };
   var init = syst.fs;
   return {
           fs: {
             existsSync: existsSync,
             readFileSync: readFileSync,
             readdirSync: init.readdirSync,
-            writeFileSync: writeFileSync
+            writeFileSync: writeFileSync,
+            mkdirSync: mkdirSync
           },
           path: syst.path,
           process: syst.process
@@ -115,16 +122,16 @@ VitestBdd.Given("a clean {string} fixtures directory", (function (param, dirname
         var path = match.path;
         var join = path.join;
         var fs = match.fs;
-        var stacksToJson = StackParser.makeStacksToJson(fs, path);
+        var stacksToJson = StackParser.makeStacksToJson(fs, path, join(fixtures, "stacks"));
         var fdir = join(fixtures, dirname);
         step("I generate JSON files for all stacks", (function () {
-                stacksToJson(fdir);
+                return stacksToJson(fdir);
               }));
         step("the json file {string} should exist", (function (filename) {
-                Vitest.expect(fs.existsSync(join(fdir, filename))).toBe(true);
+                Vitest.expect(fs.existsSync(join(fixtures, filename))).toBe(true);
               }));
         step("the json file {string} should contain", (function (filename, table) {
-                var content = S.parseJsonStringOrThrow(fs.readFileSync(join(fdir, filename), "utf8"), Stack.stackSchema);
+                var content = S.parseJsonStringOrThrow(fs.readFileSync(join(fixtures, filename), "utf8"), Stack.stackSchema);
                 var records = VitestBdd.toRecords(table);
                 records.forEach(function (record) {
                       var field = Core__Option.getExn(record["json path"], undefined);
@@ -136,6 +143,8 @@ VitestBdd.Given("a clean {string} fixtures directory", (function (param, dirname
                             return Vitest.expect(content.cards[0].stackId).toBe(value);
                         case "info.chapter" :
                             return Vitest.expect(content.info.chapter).toBe(value);
+                        case "info.count" :
+                            return Vitest.expect(content.info.count).toBe(Core__Int.fromString(value, undefined));
                         case "info.course" :
                             return Vitest.expect(content.info.course).toBe(value);
                         case "info.id" :

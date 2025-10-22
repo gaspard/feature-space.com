@@ -8,6 +8,7 @@ type fs = {
   readFileSync: (string, string) => string,
   readdirSync: string => array<dirent>,
   writeFileSync: (string, string, string) => unit,
+  mkdirSync: string => unit,
 }
 
 type path = {join: (string, string) => string}

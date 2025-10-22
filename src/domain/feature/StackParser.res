@@ -83,27 +83,44 @@ let parseCards = (stackId, body): array<Card.t> => {
 let parse = (content: string): Stack.t => {
   let {data, content} = GrayMatter.parse(content)
   let info = S.parseOrThrow(data, Stack.infoSchema)
-  {info, cards: parseCards(info.id, content)}
+  let cards = parseCards(info.id, content)
+  {info: {...info, count: Some(cards->Array.length)}, cards}
 }
 
 let pathRe = %re("/(\.cards|\.quiz)$/")
 
-let makeStacksToJson = (fs: SystemType.fs, path: SystemType.path) => {
+let makeStacksToJson = (fs: SystemType.fs, path: SystemType.path, stacksDir: string) => {
+  Js.log3("============", stacksDir, "==============")
+  if !fs.existsSync(stacksDir) {
+    fs.mkdirSync(stacksDir)
+  }
   let rec aux = (dir: string) => {
+    let toc = []
     fs.readdirSync(dir)->Array.forEach(dirent => {
       if dirent.name->String.endsWith(".cards") || dirent.name->String.endsWith(".quiz") {
         let p = path.join(dir, dirent.name)
         let stack = parse(fs.readFileSync(p, "utf-8"))
+        toc->Array.push(stack.info)
         let json =
           stack
           ->S.reverseConvertOrThrow(Stack.stackSchema)
           ->JSON.stringifyAny(~space=2)
           ->Option.getExn
-        fs.writeFileSync(p->String.replaceRegExp(pathRe, ".json"), json, "utf-8")
+        fs.writeFileSync(path.join(stacksDir, `${stack.info.id}.json`), json, "utf-8")
       } else if dirent.isDirectory() {
-        aux(path.join(dir, dirent.name))
+        // Add elements of toc to the current toc
+        toc->Array.pushMany(aux(path.join(dir, dirent.name)))
       }
     })
+    if toc->Array.length > 0 {
+      let json =
+        toc
+        ->S.reverseConvertOrThrow(Stack.tocSchema)
+        ->JSON.stringifyAny(~space=2)
+        ->Option.getExn
+      fs.writeFileSync(path.join(dir, "stacks-toc.json"), json, "utf-8")
+    }
+    toc
   }
   aux
 }

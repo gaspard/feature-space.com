@@ -28,6 +28,9 @@ function make() {
             readdirSync: readdirSync,
             writeFileSync: (function (prim0, prim1, prim2) {
                 Nodefs.writeFileSync(prim0, prim1, prim2);
+              }),
+            mkdirSync: (function (prim) {
+                Nodefs.mkdirSync(prim);
               })
           },
           path: {

@@ -8,6 +8,7 @@ module Fs = {
   @module("node:fs")
   external readdirSync: (string, readdirOptions) => array<SystemType.dirent> = "readdirSync"
   @module("node:fs") external writeFileSync: (string, string, string) => unit = "writeFileSync"
+  @module("node:fs") external mkdirSync: string => unit = "mkdirSync"
 }
 
 module Path = {
@@ -28,6 +29,7 @@ let make: unit => SystemType.t = () => {
     readFileSync: Fs.readFileSync,
     readdirSync,
     writeFileSync: Fs.writeFileSync,
+    mkdirSync: Fs.mkdirSync,
   },
   path: {
     join: Path.join,

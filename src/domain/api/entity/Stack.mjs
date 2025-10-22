@@ -22,7 +22,8 @@ var infoSchema = S.object(function (s) {
               level: s.f("level", levelSchema),
               chapter: s.f("chapter", S.string),
               course: s.f("course", S.string),
-              tags: s.f("tags", S.array(S.string))
+              tags: s.f("tags", S.array(S.string)),
+              count: s.f("count", S.option(S.$$int))
             };
     });
 
@@ -41,11 +42,14 @@ var stackSchema = S.object(function (s) {
             };
     });
 
+var tocSchema = S.array(infoSchema);
+
 export {
   stackTypeSchema ,
   levelSchema ,
   infoSchema ,
   progressSchema ,
   stackSchema ,
+  tocSchema ,
 }
 /* stackTypeSchema Not a pure module */

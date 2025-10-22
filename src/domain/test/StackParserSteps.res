@@ -66,15 +66,21 @@ let mockSystem = () => {
     }
   }
   let existsSync = path => {
+    Js.log3("============", path, "==============")
+    Js.log(output)
     switch output->Dict.get(path) {
     | None => syst.fs.existsSync(path)
     | Some(_) => true
     }
   }
+  let mkdirSync = path => {
+    output->Dict.set(path, "NEW DIRECTORY")
+  }
   {
     SystemType.path: syst.path,
     fs: {
       ...syst.fs,
+      mkdirSync,
       writeFileSync,
       readFileSync,
       existsSync,
@@ -86,7 +92,7 @@ let mockSystem = () => {
 given("a clean {string} fixtures directory", ({step}, dirname) => {
   let {fs, path} = mockSystem()
   let {join} = path
-  let stacksToJson = StackParser.makeStacksToJson(fs, path)
+  let stacksToJson = StackParser.makeStacksToJson(fs, path, join(fixtures, "stacks"))
   let fdir = join(fixtures, dirname)
 
   step("I generate JSON files for all stacks", () => {
@@ -94,12 +100,12 @@ given("a clean {string} fixtures directory", ({step}, dirname) => {
   })
 
   step("the json file {string} should exist", filename => {
-    expect(fs.existsSync(join(fdir, filename))).toBe(true)
+    expect(fs.existsSync(join(fixtures, filename))).toBe(true)
   })
 
   step("the json file {string} should contain", (filename, table) => {
     let content =
-      fs.readFileSync(join(fdir, filename), "utf8")->S.parseJsonStringOrThrow(Stack.stackSchema)
+      fs.readFileSync(join(fixtures, filename), "utf8")->S.parseJsonStringOrThrow(Stack.stackSchema)
     let records = toRecords(table)
     records->Array.forEach(
       record => {
@@ -117,6 +123,7 @@ given("a clean {string} fixtures directory", ({step}, dirname) => {
             let tags = value->String.split(",")->Array.map(String.trim)
             expect(content.info.tags).toEqual(tags)
           }
+        | "info.count" => expect(content.info.count).toBe(value->Int.fromString)
         | "cards.0.stackId" => expect((content.cards->Array.getUnsafe(0)).stackId).toBe(value)
         | "cards.0.options.0.content" =>
           expect(((content.cards->Array.getUnsafe(0)).options->Array.getUnsafe(0)).content).toBe(

@@ -5,6 +5,7 @@ import * as Stack from "../api/entity/Stack.mjs";
 import * as Js_exn from "rescript/lib/es6/js_exn.js";
 import GrayMatter from "gray-matter";
 import * as Core__Option from "@rescript/core/src/Core__Option.mjs";
+import * as Caml_splice_call from "rescript/lib/es6/caml_splice_call.js";
 
 var contentRe = /^(.*?)\s*<details>/s;
 
@@ -83,29 +84,51 @@ function parseCards(stackId, body) {
 function parse(content) {
   var match = GrayMatter(content);
   var info = S.parseOrThrow(match.data, Stack.infoSchema);
+  var cards = parseCards(info.id, match.content);
   return {
-          info: info,
-          cards: parseCards(info.id, match.content)
+          info: {
+            id: info.id,
+            title: info.title,
+            kind: info.kind,
+            level: info.level,
+            chapter: info.chapter,
+            course: info.course,
+            tags: info.tags,
+            count: cards.length
+          },
+          cards: cards
         };
 }
 
 var pathRe = /(\.cards|\.quiz)$/;
 
-function makeStacksToJson(fs, path) {
+function makeStacksToJson(fs, path, stacksDir) {
+  console.log("============", stacksDir, "==============");
+  if (!fs.existsSync(stacksDir)) {
+    fs.mkdirSync(stacksDir);
+  }
   var aux = function (dir) {
+    var toc = [];
     fs.readdirSync(dir).forEach(function (dirent) {
           if (!(dirent.name.endsWith(".cards") || dirent.name.endsWith(".quiz"))) {
             if (dirent.isDirectory()) {
-              return aux(path.join(dir, dirent.name));
+              Caml_splice_call.spliceObjApply(toc, "push", [aux(path.join(dir, dirent.name))]);
+              return ;
             } else {
               return ;
             }
           }
           var p = path.join(dir, dirent.name);
           var stack = parse(fs.readFileSync(p, "utf-8"));
+          toc.push(stack.info);
           var json = Core__Option.getExn(JSON.stringify(S.reverseConvertOrThrow(stack, Stack.stackSchema), undefined, 2), undefined);
-          fs.writeFileSync(p.replace(pathRe, ".json"), json, "utf-8");
+          fs.writeFileSync(path.join(stacksDir, stack.info.id + ".json"), json, "utf-8");
         });
+    if (toc.length > 0) {
+      var json = Core__Option.getExn(JSON.stringify(S.reverseConvertOrThrow(toc, Stack.tocSchema), undefined, 2), undefined);
+      fs.writeFileSync(path.join(dir, "stacks-toc.json"), json, "utf-8");
+    }
+    return toc;
   };
   return aux;
 }
