@@ -24,12 +24,15 @@ let recallTime = (timestamp, s) =>
   | Easy(i) => timestamp +. easy *. i->Int.toFloat->Math.pow(~exp=2.)
   }
 
-// Mark evaluation as easy
-let easyState = prevState =>
-  switch prevState {
-  | Easy(i) => Easy(i + 1)
-  | _ => Easy(1)
+let next = (prev, state) => {
+  let state = switch (prev, state) {
+  | (Some({state: Easy(i)}), Easy(_)) => Easy(i + 1)
+  | (_, Easy(_)) => Easy(1)
+  | _ => state
   }
+  let timestamp = Date.now()
+  {timestamp, recall: recallTime(timestamp, state), state}
+}
 
 let ofString = s =>
   switch s {
@@ -43,12 +46,6 @@ let ofString = s =>
     }
   | _ => raise(Invalid_argument(`'${s}' is not a valid state`))
   }
-
-@tag("kind")
-type shape =
-  | @as("circle") Circle({radius: float})
-  | @as("square") Square({x: float})
-  | @as("triangle") Triangle({x: float, y: float})
 
 let easySchema = S.schema(s => Easy(s.matches(S.int)))
 

@@ -15,18 +15,19 @@ var $$Storage = {
 };
 
 async function fetchData(path) {
+  console.log("FETCHING " + path);
   try {
     var response = await fetch(path);
     return await response.text();
   }
-  catch (raw_error) {
+  catch (raw_error){
     var error = Caml_js_exceptions.internalToOCamlException(raw_error);
     if (error.RE_EXN_ID === Js_exn.$$Error) {
       console.log("Error fetching data: ", error._1);
     } else {
       console.log("Unknown error");
     }
-    return;
+    return ;
   }
 }
 
@@ -36,42 +37,42 @@ var Browser = {
 
 function make(stacksPath) {
   return {
-    stack: {
-      toc: (async function (path) {
-        var body = await fetchData(path + "/stacks-toc.json");
-        if (body !== undefined) {
-          return S.parseJsonStringOrThrow(body, Stack.tocSchema);
-        } else {
-          return [];
-        }
-      }),
-      get: (async function (id) {
-        var body = await fetchData(stacksPath + "/" + id + ".json");
-        if (body !== undefined) {
-          return S.parseJsonStringOrThrow(body, Stack.stackSchema);
-        }
-
-      })
-    },
-    progress: {
-      get: (async function (id) {
-        var body = localStorage.getItem(progressId(id));
-        if (body === null || body === undefined) {
-          return;
-        } else {
-          return S.parseJsonStringOrThrow(body, Stack.progressSchema);
-        }
-      }),
-      save: (async function (progress) {
-        localStorage.setItem(progressId(progress.id), Core__Option.getExn(JSON.stringify(S.reverseConvertOrThrow(progress, Stack.progressSchema), undefined, 2), undefined));
-      })
-    }
-  };
+          stack: {
+            toc: (async function (path) {
+                var body = await fetchData(path + "/stacks-toc.json");
+                if (body !== undefined) {
+                  return S.parseJsonStringOrThrow(body, Stack.tocSchema);
+                } else {
+                  return [];
+                }
+              }),
+            get: (async function (id) {
+                var body = await fetchData(stacksPath + "/" + id + ".json");
+                if (body !== undefined) {
+                  return S.parseJsonStringOrThrow(body, Stack.stackSchema);
+                }
+                
+              })
+          },
+          progress: {
+            get: (async function (id) {
+                var body = localStorage.getItem(progressId(id));
+                if (body === null || body === undefined) {
+                  return ;
+                } else {
+                  return S.parseJsonStringOrThrow(body, Stack.progressSchema);
+                }
+              }),
+            save: (async function (progress) {
+                localStorage.setItem(progressId(progress.id), Core__Option.getExn(JSON.stringify(S.reverseConvertOrThrow(progress, Stack.progressSchema), undefined, 2), undefined));
+              })
+          }
+        };
 }
 
 export {
-  $$Storage,
-  Browser,
-  make,
+  $$Storage ,
+  Browser ,
+  make ,
 }
 /* S Not a pure module */

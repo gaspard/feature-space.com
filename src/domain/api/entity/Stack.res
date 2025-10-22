@@ -44,7 +44,7 @@ type t = {
 }
 
 type progress = {
-  id: string,
+  id: string, // Stack id
   mutable active: bool,
   cards: dict<CardProgress.t>,
 }

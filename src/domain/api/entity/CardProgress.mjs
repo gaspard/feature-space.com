@@ -24,18 +24,34 @@ function recallTime(timestamp, s) {
   }
 }
 
-function easyState(prevState) {
-  if (typeof prevState !== "object") {
-    return {
+function next(prev, state) {
+  var state$1;
+  var exit = 0;
+  if (prev !== undefined) {
+    var i = prev.state;
+    if (typeof i !== "object") {
+      exit = 1;
+    } else {
+      state$1 = typeof state !== "object" ? state : ({
             kind: "easy",
-            _0: 1
-          };
+            _0: i._0 + 1 | 0
+          });
+    }
   } else {
-    return {
-            kind: "easy",
-            _0: prevState._0 + 1 | 0
-          };
+    exit = 1;
   }
+  if (exit === 1) {
+    state$1 = typeof state !== "object" ? state : ({
+          kind: "easy",
+          _0: 1
+        });
+  }
+  var timestamp = Date.now();
+  return {
+          timestamp: timestamp,
+          recall: recallTime(timestamp, state$1),
+          state: state$1
+        };
 }
 
 function ofString(s) {
@@ -97,7 +113,7 @@ export {
   good ,
   easy ,
   recallTime ,
-  easyState ,
+  next ,
   ofString ,
   easySchema ,
   progressSchema ,

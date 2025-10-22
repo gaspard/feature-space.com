@@ -1,22 +1,5 @@
 open TiliaReact
-
-type group<'a, 'b> = {
-  key: 'b,
-  list: array<'a>,
-}
-let partition = (list: array<'a>, predicate: 'a => 'b) => {
-  let map = Map.make()
-  list->Array.forEach(item => {
-    let key = predicate(item)
-    let list = switch map->Map.get(key) {
-    | None => []
-    | Some({list}) => list
-    }
-    list->Array.push(item)
-    map->Map.set(key, {key, list})
-  })
-  map->Map.values->Iterator.toArray
-}
+open Utils
 
 // Helper functions
 let translateLevel = (level: Stack.level) => {
@@ -35,7 +18,7 @@ let translateType = (stackType: Stack.stackType) => {
 
 module ChapterProgress = {
   @react.component
-  let make = (~chapter: RecallToc.pstack) => {
+  let make = (~chapter: RecallToc.tstack) => {
     useTilia()
     let {setActive} = App.app.toc
 
@@ -55,7 +38,7 @@ module ChapterProgress = {
 
 module ChapterItem = {
   @react.component
-  let make = (~chapter: RecallToc.pstack) => {
+  let make = (~chapter: RecallToc.tstack) => {
     useTilia()
 
     <li key={chapter.info.id}>
@@ -73,7 +56,7 @@ module ChapterItem = {
 
 module CourseGroup = {
   @react.component
-  let make = (~courseGroup: group<RecallToc.pstack, string>, ~level: Stack.level) => {
+  let make = (~courseGroup: group<RecallToc.tstack, string>, ~level: Stack.level) => {
     useTilia()
     <section className="course" key={courseGroup.key}>
       <h4>
@@ -92,7 +75,7 @@ module CourseGroup = {
 
 module TypeGroup = {
   @react.component
-  let make = (~typeGroup: group<RecallToc.pstack, Stack.stackType>, ~level: Stack.level) => {
+  let make = (~typeGroup: group<RecallToc.tstack, Stack.stackType>, ~level: Stack.level) => {
     <section className="type" key={typeGroup.key->Stack.stackTypeToString}>
       <h3>
         <a
@@ -113,7 +96,7 @@ module TypeGroup = {
 
 module LevelGroup = {
   @react.component
-  let make = (~levelGroup: group<RecallToc.pstack, Stack.level>) => {
+  let make = (~levelGroup: group<RecallToc.tstack, Stack.level>) => {
     <section
       className="level"
       id={levelGroup.key->Stack.levelToString}
@@ -139,18 +122,22 @@ let make = () => {
   // Group by level first
   let levelGroups = toc.stacks->partition(v => v.info.level)
 
-  <nav ariaLabel="Table des matières" className="toc">
-    {levelGroups
-    ->Array.toSorted((a, b) => {
-      // Sort levels: Regular (0) before Pro (1)
-      let levelOrder = level =>
-        switch level {
-        | Stack.Regular => 0.
-        | Stack.Pro => 1.
-        }
-      levelOrder(a.key) -. levelOrder(b.key)
-    })
-    ->Array.map(levelGroup => <LevelGroup levelGroup key={levelGroup.key->Stack.levelToString} />)
-    ->React.array}
-  </nav>
+  <>
+    <RecallView />
+    <button className="start" onClick={_ => App.app.start()}> {"Start"->React.string} </button>
+    <nav ariaLabel="Table des matières" className="toc">
+      {levelGroups
+      ->Array.toSorted((a, b) => {
+        // Sort levels: Regular (0) before Pro (1)
+        let levelOrder = level =>
+          switch level {
+          | Stack.Regular => 0.
+          | Stack.Pro => 1.
+          }
+        levelOrder(a.key) -. levelOrder(b.key)
+      })
+      ->Array.map(levelGroup => <LevelGroup levelGroup key={levelGroup.key->Stack.levelToString} />)
+      ->React.array}
+    </nav>
+  </>
 }

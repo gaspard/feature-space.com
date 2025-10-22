@@ -1,13 +1,38 @@
 type sprog = Loading | NotStarted | Started(Stack.progress)
 
-type pstack = {
+type tstack = {
   info: Stack.info,
   prog: sprog,
 }
 
 type t = {
-  stacks: array<pstack>,
+  stacks: array<tstack>,
   setActive: (string, bool) => unit,
+  start: (option<Recall.t> => unit) => promise<unit>,
+}
+
+let start = (repo: RepositoryType.t) => ({stacks}) => {
+  async setRecall => {
+    let stacks = (
+      await Promise.all(
+        stacks->Array.map(async ({info, prog}) => {
+          switch prog {
+          | Started(prog) if prog.active =>
+            switch await repo.stack.get(info.id) {
+            | None => {
+                Js.log2("Stack not found: ", info.id)
+                None
+              }
+            | Some(stack) => Some({Recall.stack, prog})
+            }
+          | _ => None
+          }
+        }),
+      )
+    )->Array.keepSome
+
+    setRecall(Some(Recall.make(repo, stacks)))
+  }
 }
 
 let loadProgress = async (prog: RepositoryType.progress, set, info: Stack.info) => {
@@ -60,5 +85,6 @@ let make = (repo: RepositoryType.t, path: string): t => {
   carve(({derived}) => {
     stacks: source(stacks(repo, path), []),
     setActive: derived(setActive(repo.progress)),
+    start: derived(start(repo)),
   })
 }

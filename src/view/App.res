@@ -1,4 +1,8 @@
-type t = {toc: RecallToc.t}
+type t = {
+  toc: RecallToc.t,
+  recall: option<Recall.t>,
+  start: unit => unit,
+}
 
 let repo = Repository.make("/stacks")
 
@@ -7,6 +11,17 @@ module Window = {
   @val external location: location = "window.location"
 }
 
-let app = {
-  toc: RecallToc.make(repo, Window.location.pathname),
+let make = () => {
+  open Tilia
+  let (recall, setRecall) = signal(None)
+
+  carve(({derived}) => {
+    toc: RecallToc.make(repo, Window.location.pathname),
+    recall: lift(recall),
+    start: derived(({toc}) => {
+      () => ignore(toc.start(setRecall))
+    }),
+  })
 }
+
+let app = make()

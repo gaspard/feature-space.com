@@ -2,23 +2,10 @@
 
 import * as App from "./App.mjs";
 import * as Stack from "../domain/api/entity/Stack.mjs";
+import * as Utils from "../service/Utils.mjs";
+import * as RecallView from "./RecallView.mjs";
 import * as TiliaReact from "@tilia/react/src/TiliaReact.mjs";
 import * as JsxRuntime from "react/jsx-runtime";
-
-function partition(list, predicate) {
-  var map = new Map();
-  list.forEach(function (item) {
-        var key = predicate(item);
-        var match = map.get(key);
-        var list = match !== undefined ? match.list : [];
-        list.push(item);
-        map.set(key, {
-              key: key,
-              list: list
-            });
-      });
-  return Array.from(map.values());
-}
 
 function translateLevel(level) {
   if (level === "regular") {
@@ -145,7 +132,7 @@ function RecallTocView$TypeGroup(props) {
                             href: "/#" + Stack.stackTypeToString(typeGroup.key)
                           })
                     }),
-                partition(typeGroup.list, (function (v) {
+                Utils.partition(typeGroup.list, (function (v) {
                           return v.info.course;
                         })).map(function (courseGroup) {
                       return JsxRuntime.jsx(RecallTocView$CourseGroup, {
@@ -170,7 +157,7 @@ function RecallTocView$LevelGroup(props) {
                       children: translateLevel(levelGroup.key),
                       className: Stack.levelToString(levelGroup.key)
                     }),
-                partition(levelGroup.list, (function (v) {
+                Utils.partition(levelGroup.list, (function (v) {
                           return v.info.kind;
                         })).map(function (typeGroup) {
                       return JsxRuntime.jsx(RecallTocView$TypeGroup, {
@@ -190,33 +177,44 @@ var LevelGroup = {
 
 function RecallTocView(props) {
   TiliaReact.useTilia();
-  var levelGroups = partition(App.app.toc.stacks, (function (v) {
+  var levelGroups = Utils.partition(App.app.toc.stacks, (function (v) {
           return v.info.level;
         }));
-  return JsxRuntime.jsx("nav", {
-              children: levelGroups.toSorted(function (a, b) {
-                      var levelOrder = function (level) {
-                        if (level === "regular") {
-                          return 0;
-                        } else {
-                          return 1;
-                        }
-                      };
-                      return levelOrder(a.key) - levelOrder(b.key);
-                    }).map(function (levelGroup) {
-                    return JsxRuntime.jsx(RecallTocView$LevelGroup, {
-                                levelGroup: levelGroup
-                              }, Stack.levelToString(levelGroup.key));
-                  }),
-              "aria-label": "Table des matières",
-              className: "toc"
+  return JsxRuntime.jsxs(JsxRuntime.Fragment, {
+              children: [
+                JsxRuntime.jsx(RecallView.make, {}),
+                JsxRuntime.jsx("button", {
+                      children: "Start",
+                      className: "start",
+                      onClick: (function (param) {
+                          App.app.start();
+                        })
+                    }),
+                JsxRuntime.jsx("nav", {
+                      children: levelGroups.toSorted(function (a, b) {
+                              var levelOrder = function (level) {
+                                if (level === "regular") {
+                                  return 0;
+                                } else {
+                                  return 1;
+                                }
+                              };
+                              return levelOrder(a.key) - levelOrder(b.key);
+                            }).map(function (levelGroup) {
+                            return JsxRuntime.jsx(RecallTocView$LevelGroup, {
+                                        levelGroup: levelGroup
+                                      }, Stack.levelToString(levelGroup.key));
+                          }),
+                      "aria-label": "Table des matières",
+                      className: "toc"
+                    })
+              ]
             });
 }
 
 var make = RecallTocView;
 
 export {
-  partition ,
   translateLevel ,
   translateType ,
   ChapterProgress ,
