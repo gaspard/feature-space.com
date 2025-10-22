@@ -19,9 +19,7 @@ let loadProgress = async (prog: RepositoryType.progress, set, info: Stack.info) 
 
 let stacks = (repo: RepositoryType.t, path: string) => {
   async setList => {
-    Js.log("LOADING STACKS")
     let list = (await repo.stack.toc(path))->Array.map(info => {info, prog: Loading})
-    Js.log(`STACKS: ${list->JSON.stringifyAny(~space=2)->Option.getExn}`)
     // Early toc display
     setList(list)
     let set = (idx, value) => list[idx] = value

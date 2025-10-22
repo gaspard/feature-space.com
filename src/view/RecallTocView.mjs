@@ -36,11 +36,53 @@ function translateType(stackType) {
   }
 }
 
+function RecallTocView$ChapterProgress(props) {
+  var chapter = props.chapter;
+  TiliaReact.useTilia();
+  var match = App.app.toc;
+  var setActive = match.setActive;
+  var prog = chapter.prog;
+  if (typeof prog !== "object") {
+    if (prog === "Loading") {
+      return JsxRuntime.jsx("span", {
+                  children: "Loading..."
+                });
+    } else {
+      return JsxRuntime.jsx("input", {
+                  checked: false,
+                  type: "checkbox",
+                  onChange: (function (param) {
+                      setActive(chapter.info.id, true);
+                    })
+                });
+    }
+  }
+  var prog$1 = prog._0;
+  return JsxRuntime.jsx("input", {
+              checked: prog$1.active,
+              type: "checkbox",
+              onChange: (function (param) {
+                  setActive(chapter.info.id, !prog$1.active);
+                })
+            });
+}
+
+var ChapterProgress = {
+  make: RecallTocView$ChapterProgress
+};
+
 function RecallTocView$ChapterItem(props) {
   var chapter = props.chapter;
+  TiliaReact.useTilia();
   return JsxRuntime.jsx("li", {
               children: JsxRuntime.jsxs("a", {
                     children: [
+                      JsxRuntime.jsx("span", {
+                            children: JsxRuntime.jsx(RecallTocView$ChapterProgress, {
+                                  chapter: chapter
+                                }),
+                            className: "toggle"
+                          }),
                       JsxRuntime.jsx("span", {
                             children: Stack.stackTypeToEmoji(chapter.info.kind),
                             className: "emoji"
@@ -59,6 +101,7 @@ var ChapterItem = {
 
 function RecallTocView$CourseGroup(props) {
   var courseGroup = props.courseGroup;
+  TiliaReact.useTilia();
   return JsxRuntime.jsxs("section", {
               children: [
                 JsxRuntime.jsx("h4", {
@@ -176,6 +219,7 @@ export {
   partition ,
   translateLevel ,
   translateType ,
+  ChapterProgress ,
   ChapterItem ,
   CourseGroup ,
   TypeGroup ,

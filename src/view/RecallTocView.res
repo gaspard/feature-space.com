@@ -33,11 +33,36 @@ let translateType = (stackType: Stack.stackType) => {
   }
 }
 
+module ChapterProgress = {
+  @react.component
+  let make = (~chapter: RecallToc.pstack) => {
+    useTilia()
+    let {setActive} = App.app.toc
+
+    switch chapter.prog {
+    | Loading => <span> {"Loading..."->React.string} </span>
+    | NotStarted =>
+      <input type_="checkbox" checked={false} onChange={_ => setActive(chapter.info.id, true)} />
+    | Started(prog) =>
+      <input
+        type_="checkbox"
+        checked={prog.active}
+        onChange={_ => setActive(chapter.info.id, !prog.active)}
+      />
+    }
+  }
+}
+
 module ChapterItem = {
   @react.component
   let make = (~chapter: RecallToc.pstack) => {
+    useTilia()
+
     <li key={chapter.info.id}>
       <a href={chapter.info.chapter}>
+        <span className="toggle">
+          <ChapterProgress chapter />
+        </span>
         <span className="emoji"> {chapter.info.kind->Stack.stackTypeToEmoji->React.string} </span>
         {" "->React.string}
         {chapter.info.chapter->React.string}
@@ -49,6 +74,7 @@ module ChapterItem = {
 module CourseGroup = {
   @react.component
   let make = (~courseGroup: group<RecallToc.pstack, string>, ~level: Stack.level) => {
+    useTilia()
     <section className="course" key={courseGroup.key}>
       <h4>
         <a href={`/${courseGroup.key}#${level->Stack.levelToString}`}>
