@@ -90,8 +90,6 @@ function mockSystem() {
     }
   };
   var existsSync = function (path) {
-    console.log("============", path, "==============");
-    console.log(output);
     var match = output[path];
     if (match !== undefined) {
       return true;
@@ -122,10 +120,10 @@ VitestBdd.Given("a clean {string} fixtures directory", (function (param, dirname
         var path = match.path;
         var join = path.join;
         var fs = match.fs;
-        var stacksToJson = StackParser.makeStacksToJson(fs, path, join(fixtures, "stacks"));
+        var stacksToJson = StackParser.makeStacksToJson(fs, path);
         var fdir = join(fixtures, dirname);
         step("I generate JSON files for all stacks", (function () {
-                return stacksToJson(fdir);
+                return stacksToJson(fdir, join(fixtures, "dist"), join(fixtures, "dist/stacks"));
               }));
         step("the json file {string} should exist", (function (filename) {
                 Vitest.expect(fs.existsSync(join(fixtures, filename))).toBe(true);
@@ -162,6 +160,38 @@ VitestBdd.Given("a clean {string} fixtures directory", (function (param, dirname
                             return Vitest.expect(content.info.title).toBe(value);
                         default:
                           return Js_exn.raiseError("Unknown field: " + field);
+                      }
+                    });
+              }));
+        step("the json toc file {string} should contain", (function (filename, table) {
+                var content = S.parseJsonStringOrThrow(fs.readFileSync(join(fixtures, filename), "utf8"), Stack.tocSchema);
+                var records = VitestBdd.toRecords(table);
+                records.forEach(function (record) {
+                      var field = Core__Option.getExn(record["json path"], undefined).split(".");
+                      var index = Core__Option.getExn(Core__Int.fromString(Core__Option.getExn(field[0], undefined), undefined), undefined);
+                      var field$1 = Core__Option.getExn(field[1], undefined);
+                      var value = Core__Option.getExn(record.value, undefined);
+                      var content$1 = content[index];
+                      switch (field$1) {
+                        case "chapter" :
+                            return Vitest.expect(content$1.chapter).toBe(value);
+                        case "course" :
+                            return Vitest.expect(content$1.course).toBe(value);
+                        case "id" :
+                            return Vitest.expect(content$1.id).toBe(value);
+                        case "kind" :
+                            return Vitest.expect(content$1.kind).toBe(S.parseOrThrow(value, Stack.stackTypeSchema));
+                        case "level" :
+                            return Vitest.expect(content$1.level).toBe(S.parseOrThrow(value, Stack.levelSchema));
+                        case "tags" :
+                            var tags = value.split(",").map(function (prim) {
+                                  return prim.trim();
+                                });
+                            return Vitest.expect(content$1.tags).toEqual(tags);
+                        case "title" :
+                            return Vitest.expect(content$1.title).toBe(value);
+                        default:
+                          return Js_exn.raiseError("Unknown field: " + field$1);
                       }
                     });
               }));

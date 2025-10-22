@@ -89,38 +89,42 @@ let parse = (content: string): Stack.t => {
 
 let pathRe = %re("/(\.cards|\.quiz)$/")
 
-let makeStacksToJson = (fs: SystemType.fs, path: SystemType.path, stacksDir: string) => {
-  Js.log3("============", stacksDir, "==============")
-  if !fs.existsSync(stacksDir) {
-    fs.mkdirSync(stacksDir)
-  }
-  let rec aux = (dir: string) => {
-    let toc = []
-    fs.readdirSync(dir)->Array.forEach(dirent => {
-      if dirent.name->String.endsWith(".cards") || dirent.name->String.endsWith(".quiz") {
-        let p = path.join(dir, dirent.name)
-        let stack = parse(fs.readFileSync(p, "utf-8"))
-        toc->Array.push(stack.info)
+let makeStacksToJson = (fs: SystemType.fs, path: SystemType.path) => {
+  (dir: string, outdir: string, stacksDir: string) => {
+    if !fs.existsSync(stacksDir) {
+      fs.mkdirSync(stacksDir)
+    }
+    let rec aux = (dir: string, outdir: string) => {
+      if !fs.existsSync(outdir) {
+        fs.mkdirSync(outdir)
+      }
+      let toc = []
+      fs.readdirSync(dir)->Array.forEach(dirent => {
+        if dirent.name->String.endsWith(".cards") || dirent.name->String.endsWith(".quiz") {
+          let p = path.join(dir, dirent.name)
+          let stack = parse(fs.readFileSync(p, "utf-8"))
+          toc->Array.push(stack.info)
+          let json =
+            stack
+            ->S.reverseConvertOrThrow(Stack.stackSchema)
+            ->JSON.stringifyAny(~space=2)
+            ->Option.getExn
+          fs.writeFileSync(path.join(stacksDir, `${stack.info.id}.json`), json, "utf-8")
+        } else if dirent.isDirectory() {
+          // Add elements of toc to the current toc
+          toc->Array.pushMany(aux(path.join(dir, dirent.name), path.join(outdir, dirent.name)))
+        }
+      })
+      if toc->Array.length > 0 {
         let json =
-          stack
-          ->S.reverseConvertOrThrow(Stack.stackSchema)
+          toc
+          ->S.reverseConvertOrThrow(Stack.tocSchema)
           ->JSON.stringifyAny(~space=2)
           ->Option.getExn
-        fs.writeFileSync(path.join(stacksDir, `${stack.info.id}.json`), json, "utf-8")
-      } else if dirent.isDirectory() {
-        // Add elements of toc to the current toc
-        toc->Array.pushMany(aux(path.join(dir, dirent.name)))
+        fs.writeFileSync(path.join(outdir, "stacks-toc.json"), json, "utf-8")
       }
-    })
-    if toc->Array.length > 0 {
-      let json =
-        toc
-        ->S.reverseConvertOrThrow(Stack.tocSchema)
-        ->JSON.stringifyAny(~space=2)
-        ->Option.getExn
-      fs.writeFileSync(path.join(dir, "stacks-toc.json"), json, "utf-8")
+      toc
     }
-    toc
+    aux(dir, outdir)
   }
-  aux
 }

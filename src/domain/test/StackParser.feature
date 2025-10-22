@@ -29,21 +29,21 @@ Feature: Stack Parser
   Scenario: Generate JSON files for all stack files
     Given a clean "json-pages" fixtures directory
     When I generate JSON files for all stacks
-    Then the json file "stacks/chemistry-quiz-id.json" should exist
-    And the json file "stacks/physics-quiz-id.json" should exist
-    And the json file "json-pages/L1/stacks-toc.json" should exist
-    And the json file "json-pages/L2/stacks-toc.json" should exist
-    And the json file "json-pages/stacks-toc.json" should exist
+    Then the json file "dist/stacks/chemistry-quiz-id.json" should exist
+    And the json file "dist/stacks/physics-quiz-id.json" should exist
+    And the json file "dist/L1/stacks-toc.json" should exist
+    And the json file "dist/L2/stacks-toc.json" should exist
+    And the json file "dist/stacks-toc.json" should exist
 
   Scenario: Verify JSON files contain valid stack data
     Given a clean "json-pages" fixtures directory
     When I generate JSON files for all stacks
-    Then the json file "stacks/advanced-cards-id.json" should contain
+    Then the json file "dist/stacks/advanced-cards-id.json" should contain
       | json path  | value             |
       | info.id    | advanced-cards-id |
       | info.kind  | cards             |
       | info.level | pro               |
-    And the json file "stacks/physics-quiz-id.json" should contain
+    And the json file "dist/stacks/physics-quiz-id.json" should contain
       | json path                 | value           |
       | info.id                   | physics-quiz-id |
       | info.kind                 | quiz            |
@@ -56,13 +56,22 @@ Feature: Stack Parser
   Scenario: Verify JSON files contain valid toc data
     Given a clean "json-pages" fixtures directory
     When I generate JSON files for all stacks
-    Then the json file "stacks/advanced-cards-id.json" should contain
-      | json path    | value                       |
-      | info.id      | advanced-cards-id           |
-      | info.title   | Advanced Mathematics Cards  |
-      | info.kind    | cards                       |
-      | info.level   | pro                         |
-      | info.course  | Advanced Calculus           |
-      | info.chapter | Derivatives and Limits      |
-      | info.tags    | calculus,derivatives,limits |
+    Then the json toc file "dist/stacks-toc.json" should contain
+      | json path | value                       |
+      | 1.id      | advanced-cards-id           |
+      | 1.title   | Advanced Mathematics Cards  |
+      | 1.kind    | cards                       |
+      | 1.level   | pro                         |
+      | 1.course  | Advanced Calculus           |
+      | 1.chapter | Derivatives and Limits      |
+      | 1.tags    | calculus,derivatives,limits |
+
+
+  Scenario: Verify JSON files contain valid toc data
+    Given a clean "json-pages" fixtures directory
+    When I generate JSON files for all stacks
+    Then the json toc file "dist/L1/stacks-toc.json" should contain
+      | json path | value                  |
+      | 0.id      | chemistry-quiz-id      |
+      | 0.title   | Organic Chemistry Quiz |
 

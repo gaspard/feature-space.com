@@ -102,35 +102,39 @@ function parse(content) {
 
 var pathRe = /(\.cards|\.quiz)$/;
 
-function makeStacksToJson(fs, path, stacksDir) {
-  console.log("============", stacksDir, "==============");
-  if (!fs.existsSync(stacksDir)) {
-    fs.mkdirSync(stacksDir);
-  }
-  var aux = function (dir) {
-    var toc = [];
-    fs.readdirSync(dir).forEach(function (dirent) {
-          if (!(dirent.name.endsWith(".cards") || dirent.name.endsWith(".quiz"))) {
-            if (dirent.isDirectory()) {
-              Caml_splice_call.spliceObjApply(toc, "push", [aux(path.join(dir, dirent.name))]);
-              return ;
-            } else {
-              return ;
-            }
-          }
-          var p = path.join(dir, dirent.name);
-          var stack = parse(fs.readFileSync(p, "utf-8"));
-          toc.push(stack.info);
-          var json = Core__Option.getExn(JSON.stringify(S.reverseConvertOrThrow(stack, Stack.stackSchema), undefined, 2), undefined);
-          fs.writeFileSync(path.join(stacksDir, stack.info.id + ".json"), json, "utf-8");
-        });
-    if (toc.length > 0) {
-      var json = Core__Option.getExn(JSON.stringify(S.reverseConvertOrThrow(toc, Stack.tocSchema), undefined, 2), undefined);
-      fs.writeFileSync(path.join(dir, "stacks-toc.json"), json, "utf-8");
+function makeStacksToJson(fs, path) {
+  return function (dir, outdir, stacksDir) {
+    if (!fs.existsSync(stacksDir)) {
+      fs.mkdirSync(stacksDir);
     }
-    return toc;
+    var aux = function (dir, outdir) {
+      if (!fs.existsSync(outdir)) {
+        fs.mkdirSync(outdir);
+      }
+      var toc = [];
+      fs.readdirSync(dir).forEach(function (dirent) {
+            if (!(dirent.name.endsWith(".cards") || dirent.name.endsWith(".quiz"))) {
+              if (dirent.isDirectory()) {
+                Caml_splice_call.spliceObjApply(toc, "push", [aux(path.join(dir, dirent.name), path.join(outdir, dirent.name))]);
+                return ;
+              } else {
+                return ;
+              }
+            }
+            var p = path.join(dir, dirent.name);
+            var stack = parse(fs.readFileSync(p, "utf-8"));
+            toc.push(stack.info);
+            var json = Core__Option.getExn(JSON.stringify(S.reverseConvertOrThrow(stack, Stack.stackSchema), undefined, 2), undefined);
+            fs.writeFileSync(path.join(stacksDir, stack.info.id + ".json"), json, "utf-8");
+          });
+      if (toc.length > 0) {
+        var json = Core__Option.getExn(JSON.stringify(S.reverseConvertOrThrow(toc, Stack.tocSchema), undefined, 2), undefined);
+        fs.writeFileSync(path.join(outdir, "stacks-toc.json"), json, "utf-8");
+      }
+      return toc;
+    };
+    return aux(dir, outdir);
   };
-  return aux;
 }
 
 export {

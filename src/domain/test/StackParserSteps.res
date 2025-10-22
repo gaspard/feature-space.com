@@ -66,8 +66,6 @@ let mockSystem = () => {
     }
   }
   let existsSync = path => {
-    Js.log3("============", path, "==============")
-    Js.log(output)
     switch output->Dict.get(path) {
     | None => syst.fs.existsSync(path)
     | Some(_) => true
@@ -92,11 +90,11 @@ let mockSystem = () => {
 given("a clean {string} fixtures directory", ({step}, dirname) => {
   let {fs, path} = mockSystem()
   let {join} = path
-  let stacksToJson = StackParser.makeStacksToJson(fs, path, join(fixtures, "stacks"))
+  let stacksToJson = StackParser.makeStacksToJson(fs, path)
   let fdir = join(fixtures, dirname)
 
   step("I generate JSON files for all stacks", () => {
-    stacksToJson(fdir)
+    stacksToJson(fdir, join(fixtures, "dist"), join(fixtures, "dist/stacks"))
   })
 
   step("the json file {string} should exist", filename => {
@@ -129,6 +127,34 @@ given("a clean {string} fixtures directory", ({step}, dirname) => {
           expect(((content.cards->Array.getUnsafe(0)).options->Array.getUnsafe(0)).content).toBe(
             value,
           )
+        | _ => Js.Exn.raiseError("Unknown field: " ++ field)
+        }
+      },
+    )
+  })
+
+  step("the json toc file {string} should contain", (filename, table) => {
+    let content =
+      fs.readFileSync(join(fixtures, filename), "utf8")->S.parseJsonStringOrThrow(Stack.tocSchema)
+    let records = toRecords(table)
+    records->Array.forEach(
+      record => {
+        let field = record["json path"]->Option.getExn->String.split(".")
+        let index = field[0]->Option.getExn->Int.fromString->Option.getExn
+        let field = field[1]->Option.getExn
+        let value = record["value"]->Option.getExn
+        let content = content->Array.getUnsafe(index)
+        switch field {
+        | "id" => expect(content.id).toBe(value)
+        | "title" => expect(content.title).toBe(value)
+        | "kind" => expect(content.kind).toBe(value->S.parseOrThrow(Stack.stackTypeSchema))
+        | "level" => expect(content.level).toBe(value->S.parseOrThrow(Stack.levelSchema))
+        | "course" => expect(content.course).toBe(value)
+        | "chapter" => expect(content.chapter).toBe(value)
+        | "tags" => {
+            let tags = value->String.split(",")->Array.map(String.trim)
+            expect(content.tags).toEqual(tags)
+          }
         | _ => Js.Exn.raiseError("Unknown field: " ++ field)
         }
       },
