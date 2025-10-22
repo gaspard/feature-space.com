@@ -1,0 +1,105 @@
+{
+  "info": {
+    "id": "6badcc8b",
+    "title": "Analyse: Intégration - fiches de révision (A)",
+    "type": "cards",
+    "level": "regular",
+    "chapter": "Analyse: Intégration",
+    "course": "Constructions et raisonnements mathématiques",
+    "tags": [
+      "analyse",
+      "suites",
+      "limites",
+      "continuité",
+      "dérivabilité",
+      "intégration"
+    ],
+    "count": 12
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "6badcc8b",
+      "content": "Qu'est-ce qu'une fonction en escalier sur un intervalle $[a, b]$ ?",
+      "solution": "\n\nUne fonction $f: [a, b] \\to \\mathbb{R}$ est dite **en escalier** s'il existe une \"subdivision\" de l'intervalle $[a, b]$, c'est-à-dire un ensemble de points $\\sigma = \\{x_0, x_1, \\dots, x_n\\}$ avec $a = x_0 < x_1 < \\dots < x_n = b$, telle que la fonction $f$ est constante sur chaque petit intervalle ouvert $]x_{i-1}, x_i[$.\n\nEn d'autres termes, le graphe de la fonction ressemble à un escalier, car il est composé de segments horizontaux.\n\n**Points importants :**\n\n- La subdivision $\\sigma$ est dite **adaptée** à la fonction $f$.\n- Les valeurs que prend la fonction aux points $x_0, x_1, \\dots, x_n$ n'ont pas d'importance dans la définition et n'affecteront pas le calcul de son intégrale.\n\n**Exemple :**\n\nLa fonction $g$ définie sur $[0, 4]$ par :\n\n$$ g(x) = \\begin{cases} 2 & \\text{si } 0 \\le x < 2 \\\\ -1 & \\text{si } 2 \\le x \\le 4 \\end{cases} $$\n\nest une fonction en escalier. Une subdivision adaptée est $\\sigma = \\{0, 2, 4\\}$. Sur $]0, 2[$, $g$ vaut 2. Sur $]2, 4[$, $g$ vaut -1.\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "6badcc8b",
+      "content": "Quelle est la formule pour calculer l'intégrale d'une fonction en escalier ?",
+      "solution": "\n\nSoit $f$ une fonction en escalier sur $[a, b]$, et soit $\\sigma = \\{x_0, x_1, \\dots, x_n\\}$ une subdivision adaptée à $f$. On note $c_i$ la valeur constante de $f$ sur l'intervalle ouvert $]x_{i-1}, x_i[$.\n\nL'**intégrale de $f$ sur $[a, b]$** est donnée par la formule :\n\n$$ \\int_a^b f(t) dt = \\sum_{i=1}^n (x_i - x_{i-1}) c_i $$\n\n**Explication de la formule :**\n\n- $(x_i - x_{i-1})$ est la **largeur** de la $i$-ème \"marche\" de l'escalier.\n- $c_i$ est la **hauteur** (algébrique) de cette marche.\n- Le produit $(x_i - x_{i-1}) c_i$ correspond à l'aire du rectangle formé par cette marche.\n- L'intégrale est simplement la **somme des aires** (algébriques) de tous ces rectangles. Si $c_i$ est négatif, l'aire est comptée négativement.\n\n**Important :** La valeur de l'intégrale ne dépend pas du choix de la subdivision adaptée.\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "6badcc8b",
+      "content": "Comment calculer l'intégrale de la fonction partie entière $h(x) = E(x)$ sur l'intervalle $[0, 3]$ ?",
+      "solution": "\n\n**Étapes :**\n\n1.  **Identifier que c'est une fonction en escalier :** La fonction partie entière est constante par morceaux. Elle change de valeur uniquement aux entiers.\n\n2.  **Choisir une subdivision adaptée :** Sur l'intervalle $[0, 3]$, les points où la fonction change de valeur sont $1$ et $2$. Une subdivision adaptée est donc $\\sigma = \\{0, 1, 2, 3\\}$.\n    - $x_0 = 0$\n    - $x_1 = 1$\n    - $x_2 = 2$\n    - $x_3 = 3$\n\n3.  **Déterminer les valeurs constantes sur chaque sous-intervalle :**\n    - Sur $]0, 1[$, $E(x) = 0$. Donc $c_1 = 0$.\n    - Sur $]1, 2[$, $E(x) = 1$. Donc $c_2 = 1$.\n    - Sur $]2, 3[$, $E(x) = 2$. Donc $c_3 = 2$.\n\n4.  **Appliquer la formule de l'intégrale :**\n\n    $$ \\int_0^3 E(x) dx = \\sum_{i=1}^3 (x_i - x_{i-1}) c_i $$\n\n    $$ = (x_1 - x_0)c_1 + (x_2 - x_1)c_2 + (x_3 - x_2)c_3 $$\n\n    $$ = (1 - 0) \\times 0 + (2 - 1) \\times 1 + (3 - 2) \\times 2 $$\n\n    $$ = 1 \\times 0 + 1 \\times 1 + 1 \\times 2 $$\n\n    $$ = 0 + 1 + 2 = 3 $$\n\nL'intégrale de la fonction partie entière sur $[0, 3]$ est donc 3.\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "6badcc8b",
+      "content": "Expliquez l'idée derrière la définition de l'intégrale de Riemann pour une fonction bornée $f$.",
+      "solution": "\n\nL'idée de l'intégrale de Riemann est d'**encadrer** l'aire sous la courbe de la fonction $f$ (qui peut être complexe) par des aires plus simples à calculer, celles de fonctions en escalier.\n\nOn procède en deux étapes :\n\n1.  **Approximation par en dessous :** On considère toutes les fonctions en escalier $\\varphi$ qui sont entièrement situées **sous** la courbe de $f$ (c'est-à-dire $\\varphi(x) \\le f(x)$ pour tout $x$). On calcule leurs intégrales. La \"meilleure\" de ces approximations par défaut est la borne supérieure de toutes ces aires. C'est l'**intégrale inférieure**, notée $I_{a,b}^-(f)$.\n\n    $$ I_{a,b}^-(f) = \\sup \\{ \\int_a^b \\varphi \\mid \\varphi \\text{ en escalier et } \\varphi \\le f \\} $$\n\n2.  **Approximation par au-dessus :** On fait de même avec toutes les fonctions en escalier $\\psi$ qui sont entièrement **au-dessus** de la courbe de $f$ (c'est-à-dire $\\psi(x) \\ge f(x)$ pour tout $x$). La \"meilleure\" de ces approximations par excès est la borne inférieure de toutes ces aires. C'est l'**intégrale supérieure**, notée $I_{a,b}^+(f)$.\n\n    $$ I_{a,b}^+(f) = \\inf \\{ \\int_a^b \\psi \\mid \\psi \\text{ en escalier et } \\psi \\ge f \\} $$\n\nUne fonction est dite **intégrable au sens de Riemann** si ces deux approximations peuvent être rendues aussi proches que l'on veut, jusqu'à coïncider. Autrement dit, si l'intégrale inférieure est égale à l'intégrale supérieure. Cette valeur commune est alors l'intégrale de $f$.\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "6badcc8b",
+      "content": "Quand dit-on qu'une fonction bornée $f$ est intégrable au sens de Riemann sur $[a,b]$ ?",
+      "solution": "\n\nUne fonction bornée $f:[a,b] \\to \\mathbb{R}$ est dite **intégrable au sens de Riemann** si son intégrale inférieure et son intégrale supérieure sont égales.\n\n$$ I_{a,b}^-(f) = I_{a,b}^+(f) $$\n\nLa valeur commune de ces deux nombres est alors appelée l'**intégrale de Riemann** de $f$ et est notée $\\int_a^b f(t) dt$.\n\n**Critère d'intégrabilité (une autre façon de le dire) :**\n\nUne fonction $f$ est intégrable si, pour n'importe quel petit seuil d'erreur $\\varepsilon > 0$, on peut trouver deux fonctions en escalier, $\\varphi$ et $\\psi$, qui \"prennent en sandwich\" la fonction $f$ (c'est-à-dire $\\varphi \\le f \\le \\psi$) de telle sorte que l'aire entre leurs deux graphes soit plus petite que $\\varepsilon$.\n\n$$ \\forall \\varepsilon > 0, \\exists \\varphi, \\psi \\text{ en escalier t.q. } \\varphi \\le f \\le \\psi \\text{ et } \\int_a^b (\\psi - \\varphi) < \\varepsilon $$\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "6badcc8b",
+      "content": "Quelles sont les principales classes de fonctions qui sont intégrables au sens de Riemann sur un segment $[a, b]$ ?",
+      "solution": "\n\nEn pratique, il est utile de savoir que les fonctions les plus courantes sont intégrables, sans avoir à revenir à la définition avec les intégrales supérieure et inférieure. Les deux grands théorèmes d'intégrabilité sont :\n\n1.  **Les fonctions continues :** Toute fonction $f$ qui est **continue** sur un segment $[a, b]$ est intégrable sur $[a, b]$. C'est le cas le plus fréquent : polynômes, sin, cos, exp, etc.\n\n2.  **Les fonctions continues par morceaux :** Toute fonction $f$ qui est **continue par morceaux** sur un segment $[a, b]$ est intégrable sur $[a, b]$.\n\n    Cela généralise le cas précédent et inclut les fonctions qui ont un nombre fini de \"sauts\" (discontinuités). Les fonctions en escalier sont un exemple de fonctions continues par morceaux.\n\nCes deux théorèmes couvrent la grande majorité des fonctions que l'on intègre en pratique.\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "6badcc8b",
+      "content": "Quel est le lien entre l'intégration et la dérivation selon le théorème fondamental de l'analyse ?",
+      "solution": "\n\nLe théorème fondamental de l'analyse établit que l'intégration et la dérivation sont des opérations **inverses** l'une de l'autre.\n\nPlus précisément, si $f$ est une fonction continue sur un intervalle $[a, b]$, alors la fonction $F$ définie par l'intégrale de $f$ avec une borne variable :\n\n$$ F(x) = \\int_a^x f(t) dt $$\n\nest une **primitive** de $f$. Cela signifie que si l'on dérive $F$, on retombe sur $f$ :\n\n$$ F'(x) = f(x) $$\n\n**Conséquence pratique pour le calcul :**\n\nCe théorème fournit la méthode la plus puissante pour calculer des intégrales. Pour calculer $\\int_a^b f(t) dt$, il suffit de trouver n'importe quelle primitive $G$ de $f$ (c'est-à-dire une fonction telle que $G' = f$) et de calculer la différence de ses valeurs aux bornes :\n\n$$ \\int_a^b f(t) dt = G(b) - G(a) $$\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "6badcc8b",
+      "content": "Comment calculer l'intégrale d'une fonction continue par morceaux, comme $f(x) = |x-1|$ sur $[0, 3]$ ?",
+      "solution": "\n\n**Étapes :**\n\n1.  **Exprimer la fonction sans valeurs absolues :** On regarde où l'expression à l'intérieur de la valeur absolue change de signe. Ici, $x-1$ change de signe en $x=1$.\n    - Si $x \\in [0, 1]$, alors $x-1 \\le 0$, donc $|x-1| = -(x-1) = 1-x$.\n    - Si $x \\in [1, 3]$, alors $x-1 \\ge 0$, donc $|x-1| = x-1$.\n\n2.  **Utiliser la relation de Chasles :** On découpe l'intégrale en morceaux sur lesquels la fonction a une expression plus simple (continue). Le point de coupure est $x=1$.\n\n    $$ \\int_0^3 |x-1| dx = \\int_0^1 |x-1| dx + \\int_1^3 |x-1| dx $$\n\n3.  **Remplacer par les expressions trouvées :**\n\n    $$ = \\int_0^1 (1-x) dx + \\int_1^3 (x-1) dx $$\n\n4.  **Calculer chaque intégrale en utilisant les primitives :**\n    - Une primitive de $1-x$ est $x - \\frac{x^2}{2}$.\n    - Une primitive de $x-1$ est $\\frac{x^2}{2} - x$.\n\n    $$ = \\left[x - \\frac{x^2}{2}\\right]_0^1 + \\left[\\frac{x^2}{2} - x\\right]_1^3 $$\n\n    $$ = \\left( (1 - \\frac{1^2}{2}) - (0 - \\frac{0^2}{2}) \\right) + \\left( (\\frac{3^2}{2} - 3) - (\\frac{1^2}{2} - 1) \\right) $$\n\n    $$ = \\left( \\frac{1}{2} - 0 \\right) + \\left( (\\frac{9}{2} - 3) - (\\frac{1}{2} - 1) \\right) $$\n\n    $$ = \\frac{1}{2} + \\left( \\frac{3}{2} - (-\\frac{1}{2}) \\right) = \\frac{1}{2} + \\frac{4}{2} = \\frac{1}{2} + 2 = \\frac{5}{2} $$\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "6badcc8b",
+      "content": "Qu'est-ce qu'une somme de Riemann et à quoi sert-elle ?",
+      "solution": "\n\nUne **somme de Riemann** est une méthode pour approximer l'intégrale d'une fonction $f$ sur un intervalle $[a, b]$.\n\nL'idée est de découper l'aire sous la courbe en une série de rectangles et de sommer leurs aires.\n\n**Définition formelle :**\n\nOn se donne une subdivision $\\sigma = \\{x_0, \\dots, x_n\\}$ de $[a, b]$ et un point \"marqueur\" $y_i$ dans chaque sous-intervalle $[x_{i-1}, x_i]$. La somme de Riemann est alors :\n\n$$ S = \\sum_{i=1}^n (x_i - x_{i-1}) f(y_i) $$\n\n- $(x_i - x_{i-1})$ est la base du $i$-ème rectangle.\n- $f(y_i)$ est sa hauteur.\n\n**Utilité :**\n\nLe théorème principal sur les sommes de Riemann stipule que si une fonction $f$ est **intégrable**, alors ses sommes de Riemann convergent vers son intégrale lorsque la largeur du plus grand rectangle (le \"pas\" de la subdivision) tend vers zéro.\n\n$$ \\lim_{|\\sigma| \\to 0} S = \\int_a^b f(t) dt $$\n\nElles sont donc utiles pour :\n\n1.  **Définir l'intégrale** d'une manière alternative et plus intuitive.\n2.  **Calculer numériquement** une approximation d'une intégrale.\n3.  **Calculer la limite de certaines suites** en les reconnaissant comme des sommes de Riemann.\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "6badcc8b",
+      "content": "Comment reconnaître et calculer la limite de $\\lim_{n \\to \\infty} \\sum_{k=1}^n \\frac{n}{n^2+k^2}$ ?",
+      "solution": "\n\n**Étapes :**\n\n1.  **Mettre l'expression sous la forme d'une somme de Riemann :** L'objectif est de faire apparaître un terme en $\\frac{1}{n}$ (qui jouera le rôle de la base des rectangles, $x_i - x_{i-1}$) et une fonction de $\\frac{k}{n}$ (qui sera $f(y_i)$).\n\n    On factorise le terme dominant au dénominateur, ici $n^2$ :\n\n    $$ \\sum_{k=1}^n \\frac{n}{n^2+k^2} = \\sum_{k=1}^n \\frac{n}{n^2(1 + k^2/n^2)} = \\sum_{k=1}^n \\frac{1}{n} \\frac{1}{1 + (k/n)^2} $$\n\n2.  **Identifier les éléments de la somme de Riemann :**\n    - Le terme $\\frac{1}{n}$ correspond à la base des rectangles pour une subdivision régulière de l'intervalle $[0, 1]$. En effet, $x_k = k/n$ et $x_k - x_{k-1} = 1/n$.\n    - Le terme $\\frac{1}{1 + (k/n)^2}$ est de la forme $f(k/n)$. On identifie donc la fonction $f(x) = \\frac{1}{1+x^2}$.\n    - Les points marqueurs sont $y_k = k/n$, les bornes droites de chaque intervalle.\n\n3.  **Appliquer le théorème de convergence :** La somme est une somme de Riemann pour la fonction $f(x) = \\frac{1}{1+x^2}$ sur l'intervalle $[0, 1]$. Comme $f$ est continue sur cet intervalle, la limite de la somme est l'intégrale de la fonction.\n\n    $$ \\lim_{n \\to \\infty} \\sum_{k=1}^n \\frac{1}{n} \\frac{1}{1 + (k/n)^2} = \\int_0^1 \\frac{1}{1+x^2} dx $$\n\n4.  **Calculer l'intégrale :**\n\n    Une primitive de $\\frac{1}{1+x^2}$ est $\\arctan(x)$.\n\n    $$ \\int_0^1 \\frac{1}{1+x^2} dx = [\\arctan(x)]_0^1 = \\arctan(1) - \\arctan(0) = \\frac{\\pi}{4} - 0 = \\frac{\\pi}{4} $$\n\nLa limite de la suite est donc $\\frac{\\pi}{4}$.\n\n",
+      "options": []
+    },
+    {
+      "id": "11",
+      "stackId": "6badcc8b",
+      "content": "Quelle est la formule de Taylor avec reste intégral à l'ordre $n$ ?",
+      "solution": "\n\nSoit $f$ une fonction de classe $\\mathcal{C}^{n+1}$ (au moins $n+1$ fois dérivable, avec une dérivée $(n+1)$-ième continue) sur un intervalle $I$. Pour tous $a, b \\in I$, on a l'égalité exacte :\n\n$$ f(b) = \\sum_{k=0}^n \\frac{f^{(k)}(a)}{k!} (b-a)^k + \\int_a^b \\frac{f^{(n+1)}(t)}{n!} (b-t)^n dt $$\n\n**Composants de la formule :**\n\n- **Polynôme de Taylor ($P_n$) :** La partie somme est le polynôme de Taylor de $f$ à l'ordre $n$ au point $a$. C'est une approximation de $f(b)$ par un polynôme.\n\n  $$ P_n(b) = f(a) + f'(a)(b-a) + \\frac{f''(a)}{2!}(b-a)^2 + \\dots + \\frac{f^{(n)}(a)}{n!}(b-a)^n $$\n\n- **Reste intégral ($R_n$) :** La partie intégrale est le terme d'erreur, appelé reste. Cette formule en donne une expression exacte.\n\n  $$ R_n(b) = \\int_a^b \\frac{f^{(n+1)}(t)}{n!} (b-t)^n dt $$\n\nCette formule est une généralisation du théorème fondamental de l'analyse (que l'on retrouve pour $n=0$).\n\n",
+      "options": []
+    },
+    {
+      "id": "12",
+      "stackId": "6badcc8b",
+      "content": "Quel est le principal intérêt de la formule de Taylor avec reste intégral ?",
+      "solution": "\n\nLe principal intérêt de cette formule est qu'elle fournit une **expression exacte** de l'erreur commise lorsqu'on approxime une fonction $f$ par son polynôme de Taylor.\n\nAlors que d'autres formules de Taylor (comme Taylor-Young) donnent une information qualitative sur l'erreur (ex: c'est un \"petit o\"), le reste intégral donne une formule précise pour cette erreur. Ce n'est pas une approximation, mais une **égalité** :\n\n$$ \\text{Erreur} = f(b) - P_n(b) = R_n(b) = \\int_a^b \\frac{f^{(n+1)}(t)}{n!} (b-t)^n dt $$\n\nCet avantage est crucial pour :\n\n- **Contrôler l'erreur :** En majorant la valeur de l'intégrale du reste, on peut obtenir une borne supérieure précise de l'erreur d'approximation. Cela est fondamental en analyse numérique.\n- **Démonstrations théoriques :** Elle permet de prouver rigoureusement de nombreuses propriétés, notamment de justifier la convergence des séries de Taylor.\n- **Validité globale :** L'égalité est vraie pour tous $a,b$ dans l'intervalle, pas seulement quand $b$ est très proche de $a$.\n\n",
+      "options": []
+    }
+  ]
+}

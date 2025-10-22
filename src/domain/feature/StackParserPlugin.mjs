@@ -19,8 +19,8 @@ function $$default() {
               var system = System.make();
               var generator = StackParser.makeStacksToJson(system.fs, system.path);
               try {
-                var toc = generator("src/pages", "dist", "dist/stacks");
-                console.log("*********************************************\nStacks to JSON: " + toc.length.toString() + " stacks generated\n*********************************************");
+                var toc = generator("src/pages", "public", "public/stacks");
+                console.log("*********************************************\nStacks to JSON: " + toc.length.toString() + " stacks generated\n*******************************************************");
                 return ;
               }
               catch (raw_error){

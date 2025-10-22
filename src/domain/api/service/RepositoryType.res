@@ -1,6 +1,6 @@
 type stack = {
-  toc: unit => promise<array<Stack.info>>,
-  get: string => promise<Stack.t>,
+  toc: string => promise<array<Stack.info>>,
+  get: string => promise<option<Stack.t>>,
 }
 
 type progress = {

@@ -2,9 +2,30 @@ type stackType =
   | @as("cards") Cards
   | @as("quiz") Quiz
 
+let stackTypeToString = (stackType: stackType) => {
+  switch stackType {
+  | Cards => "Cards"
+  | Quiz => "Quiz"
+  }
+}
+
+let stackTypeToEmoji = (stackType: stackType) => {
+  switch stackType {
+  | Cards => "📚"
+  | Quiz => "✅"
+  }
+}
+
 type level =
   | @as("regular") Regular
   | @as("pro") Pro
+
+let levelToString = (level: level) => {
+  switch level {
+  | Regular => "Regular"
+  | Pro => "Pro"
+  }
+}
 
 type info = {
   id: string,

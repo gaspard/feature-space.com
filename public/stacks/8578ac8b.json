@@ -1,0 +1,329 @@
+{
+  "info": {
+    "id": "8578ac8b",
+    "title": "Outillage - quiz (B)",
+    "type": "quiz",
+    "level": "pro",
+    "chapter": "Outillage",
+    "course": "Constructions et raisonnements mathématiques",
+    "tags": [
+      "logique",
+      "ensembles",
+      "fonctions",
+      "nombres réels",
+      "nombres complexes",
+      "langage mathématique"
+    ],
+    "count": 11
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "8578ac8b",
+      "content": "#### Question 1 : Ordre des Quantificateurs\n\nSoit $P(x, y)$ le prédicat \"$y$ est un multiple de $x$\" défini sur $\\mathbb{N}^* \\times \\mathbb{N}^*$ (où $\\mathbb{N}^* = \\{1, 2, 3, \\dots\\}$).\n\nConsidérez les deux propositions suivantes :\n\n1.  $A = \\forall x \\in \\mathbb{N}^*, \\exists y \\in \\mathbb{N}^*, P(x, y)$\n2.  $B = \\exists y \\in \\mathbb{N}^*, \\forall x \\in \\mathbb{N}^*, P(x, y)$\n\nLaquelle des affirmations suivantes est correcte ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nAnalysons chaque proposition en détail.\n\n- **Proposition A :** $\\forall x \\in \\mathbb{N}^*, \\exists y \\in \\mathbb{N}^*, P(x, y)$\n\nCette proposition se lit : \"Pour tout entier non nul $x$, il existe un entier non nul $y$ tel que $y$ est un multiple de $x$\".\n\nC'est une proposition **vraie**. Pour n'importe quel $x \\in \\mathbb{N}^*$ que l'on choisit, on peut prendre $y = x$. Alors $y$ est bien un multiple de $x$ (puisque $x = 1 \\cdot x$), et $y \\in \\mathbb{N}^*$. On peut aussi choisir $y=2x$, $y=3x$, etc. L'existence d'au moins un tel $y$ suffit.\n\n- **Proposition B :** $\\exists y \\in \\mathbb{N}^*, \\forall x \\in \\mathbb{N}^*, P(x, y)$\n\nCette proposition se lit : \"Il existe un entier non nul $y$ qui est un multiple de tous les entiers non nuls $x$\".\n\nC'est une proposition **fausse**. Si un tel $y$ existait, il devrait être un multiple de $x=1$, de $x=2$, de $x=3$, ..., et en particulier de $x = y+1$. Pour que $y$ soit un multiple de $y+1$, il faudrait qu'il existe un entier $k$ tel que $y = k \\cdot (y+1)$. Comme $y$ et $y+1$ sont positifs, $k$ doit être positif. Si $k \\ge 1$, alors $k(y+1) \\ge y+1 > y$, ce qui contredit $y=k(y+1)$. Il n'existe donc pas de tel $y$.\n\n**Conclusion :** A est vraie et B est fausse. Cela illustre bien que l'inversion des quantificateurs $\\forall$ et $\\exists$ change radicalement le sens d'une proposition.\n\n- **A.** Incorrect car B est fausse.\n- **B.** Correct.\n- **C.** Incorrect car A est vraie et B est fausse.\n- **D.** Incorrect car A est vraie.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Les propositions A et B sont toutes les deux vraies et équivalentes.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** La proposition A est vraie et la proposition B est fausse.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** La proposition B est vraie et la proposition A est fausse.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Les propositions A et B sont toutes les deux fausses.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "stackId": "8578ac8b",
+      "content": "#### Question 2 : Négation d'un Énoncé Théorique\n\nConsidérons la définition de la convergence d'une suite $(u_n)_{n \\in \\mathbb{N}}$ vers une limite $l \\in \\mathbb{R}$ :\n\n$$ P : \\forall \\varepsilon > 0, \\exists N \\in \\mathbb{N}, \\forall n \\in \\mathbb{N}, (n \\ge N \\Rightarrow |u_n - l| < \\varepsilon) $$\n\nQuelle est la négation correcte de cette proposition, $\\neg P$, qui exprime que la suite $(u_n)$ ne converge pas vers $l$ ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nLa négation d'un énoncé quantifié se fait en appliquant les lois de De Morgan généralisées : $\\neg(\\forall x, Q(x)) \\Leftrightarrow \\exists x, \\neg Q(x)$ et $\\neg(\\exists x, Q(x)) \\Leftrightarrow \\forall x, \\neg Q(x)$, et la négation de l'implication $\\neg(A \\Rightarrow B) \\Leftrightarrow (A \\land \\neg B)$.\n\nProcédons étape par étape :\n\n1.  La proposition initiale est $P : \\forall \\varepsilon > 0, (\\exists N \\in \\mathbb{N}, \\forall n \\in \\mathbb{N}, (n \\ge N \\Rightarrow |u_n - l| < \\varepsilon))$.\n2.  On nie le premier quantificateur : $\\neg P \\Leftrightarrow \\exists \\varepsilon > 0, \\neg(\\exists N \\in \\mathbb{N}, \\forall n \\in \\mathbb{N}, (n \\ge N \\Rightarrow |u_n - l| < \\varepsilon))$.\n3.  On nie le deuxième quantificateur : $\\neg P \\Leftrightarrow \\exists \\varepsilon > 0, \\forall N \\in \\mathbb{N}, \\neg(\\forall n \\in \\mathbb{N}, (n \\ge N \\Rightarrow |u_n - l| < \\varepsilon))$.\n4.  On nie le troisième quantificateur : $\\neg P \\Leftrightarrow \\exists \\varepsilon > 0, \\forall N \\in \\mathbb{N}, \\exists n \\in \\mathbb{N}, \\neg(n \\ge N \\Rightarrow |u_n - l| < \\varepsilon)$.\n5.  On nie l'implication en utilisant $\\neg(A \\Rightarrow B) \\Leftrightarrow (A \\land \\neg B)$. Ici, $A$ est \"$n \\ge N$\" et $B$ est \"$|u_n - l| < \\varepsilon$\". Donc $\\neg(A \\Rightarrow B)$ devient $(n \\ge N \\land |u_n - l| \\ge \\varepsilon)$.\n\nEn assemblant le tout, on obtient :\n\n$$ \\neg P : \\exists \\varepsilon > 0, \\forall N \\in \\mathbb{N}, \\exists n \\in \\mathbb{N}, (n \\ge N \\land |u_n - l| \\ge \\varepsilon) $$\n\nCette proposition signifie qu'il existe un seuil d'erreur $\\varepsilon$ tel que, peu importe le rang $N$ que l'on choisit, on peut toujours trouver un indice $n$ plus grand que $N$ pour lequel le terme $u_n$ est à une distance de $l$ supérieure ou égale à $\\varepsilon$.\n\n- **A.** Incorrect. La condition $n < N$ est l'opposé de ce qu'on attend. La non-convergence signifie qu'on peut trouver des termes *arbitrairement loin* dans la suite qui ne sont pas proches de la limite.\n- **B.** Incorrect. Le quantificateur initial est $\\forall \\varepsilon > 0$. Sa négation est $\\exists \\varepsilon > 0$. Le cas $\\varepsilon \\le 0$ n'est pas pertinent pour la définition de la limite.\n- **C.** Correct. C'est le résultat direct de l'application des règles de négation.\n- **D.** Incorrect. Le premier quantificateur $\\forall \\varepsilon > 0$ n'a pas été nié.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\exists \\varepsilon > 0, \\forall N \\in \\mathbb{N}, \\exists n \\in \\mathbb{N}, (n < N \\land |u_n - l| \\ge \\varepsilon)$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\exists \\varepsilon \\le 0, \\forall N \\in \\mathbb{N}, \\exists n \\in \\mathbb{N}, (n \\ge N \\land |u_n - l| \\ge \\varepsilon)$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $\\exists \\varepsilon > 0, \\forall N \\in \\mathbb{N}, \\exists n \\in \\mathbb{N}, (n \\ge N \\land |u_n - l| \\ge \\varepsilon)$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $\\forall \\varepsilon > 0, \\exists N \\in \\mathbb{N}, \\forall n \\in \\mathbb{N}, (n \\ge N \\land |u_n - l| \\ge \\varepsilon)$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "stackId": "8578ac8b",
+      "content": "#### Question 3 : Propriétés de l'Ensemble des Parties\n\nSoient $A$ et $B$ deux sous-ensembles d'un ensemble $E$, et $\\mathcal{P}(E)$ l'ensemble des parties de $E$. Lesquelles des affirmations suivantes sont toujours vraies ?\n",
+      "solution": "\n\n**Réponses : [A, C]**\n\nAnalysons chaque option en utilisant les définitions de la théorie des ensembles.\n\n- **A) $\\mathcal{P}(A \\cap B) = \\mathcal{P}(A) \\cap \\mathcal{P}(B)$ : VRAI**\n\n   Un ensemble $X$ est dans $\\mathcal{P}(A \\cap B)$ si et seulement si $X \\subset (A \\cap B)$.\n\n   $X \\subset (A \\cap B) \\Leftrightarrow (\\forall x \\in X, x \\in A \\land x \\in B)$\n\n   $\\Leftrightarrow (\\forall x \\in X, x \\in A) \\land (\\forall x \\in X, x \\in B)$\n\n   $\\Leftrightarrow (X \\subset A) \\land (X \\subset B)$\n\n   $\\Leftrightarrow (X \\in \\mathcal{P}(A)) \\land (X \\in \\mathcal{P}(B))$\n\n   $\\Leftrightarrow X \\in \\mathcal{P}(A) \\cap \\mathcal{P}(B)$.\n\n   L'équivalence logique montre l'égalité des ensembles.\n\n- **B) $\\mathcal{P}(A \\cup B) = \\mathcal{P}(A) \\cup \\mathcal{P}(B)$ : FAUX**\n\n   Considérons un contre-exemple. Soit $A=\\{1\\}$ et $B=\\{2\\}$.\n\n   Alors $A \\cup B = \\{1, 2\\}$.\n\n   $\\mathcal{P}(A) = \\{\\emptyset, \\{1\\}\\}$ et $\\mathcal{P}(B) = \\{\\emptyset, \\{2\\}\\}$.\n\n   $\\mathcal{P}(A) \\cup \\mathcal{P}(B) = \\{\\emptyset, \\{1\\}, \\{2\\}\\}$.\n\n   Cependant, $\\mathcal{P}(A \\cup B) = \\{\\emptyset, \\{1\\}, \\{2\\}, \\{1, 2\\}\\}$.\n\n   On voit que l'ensemble $\\{1, 2\\}$ est dans $\\mathcal{P}(A \\cup B)$ mais pas dans $\\mathcal{P}(A) \\cup \\mathcal{P}(B)$. En général, on a seulement l'inclusion $\\mathcal{P}(A) \\cup \\mathcal{P}(B) \\subset \\mathcal{P}(A \\cup B)$.\n\n- **C) $A \\subset B \\Leftrightarrow \\mathcal{P}(A) \\subset \\mathcal{P}(B)$ : VRAI**\n\n   $(\\Rightarrow)$ Supposons $A \\subset B$. Soit $X \\in \\mathcal{P}(A)$, ce qui signifie $X \\subset A$. Par transitivité de l'inclusion, comme $X \\subset A$ et $A \\subset B$, on a $X \\subset B$. Donc $X \\in \\mathcal{P}(B)$. Ceci prouve $\\mathcal{P}(A) \\subset \\mathcal{P}(B)$.\n\n   $(\\Leftarrow)$ Supposons $\\mathcal{P}(A) \\subset \\mathcal{P}(B)$. On sait que $A \\subset A$, donc $A \\in \\mathcal{P}(A)$. Puisque $\\mathcal{P}(A) \\subset \\mathcal{P}(B)$, on a $A \\in \\mathcal{P}(B)$, ce qui signifie par définition que $A \\subset B$.\n\n   L'équivalence est donc prouvée.\n\n- **D) $\\mathcal{P}(A \\setminus B) = \\mathcal{P}(A) \\setminus \\mathcal{P}(B)$ : FAUX**\n\n   Considérons un contre-exemple. Soit $A=\\{1, 2\\}$ et $B=\\{2\\}$.\n\n   Alors $A \\setminus B = \\{1\\}$. Donc $\\mathcal{P}(A \\setminus B) = \\{\\emptyset, \\{1\\}\\}$.\n\n   D'autre part, $\\mathcal{P}(A) = \\{\\emptyset, \\{1\\}, \\{2\\}, \\{1, 2\\}\\}$ et $\\mathcal{P}(B) = \\{\\emptyset, \\{2\\}\\}$.\n\n   $\\mathcal{P}(A) \\setminus \\mathcal{P}(B) = \\{\\{1\\}, \\{1, 2\\}\\}$.\n\n   Les deux ensembles ne sont pas égaux. Par exemple, $\\{1, 2\\} \\in \\mathcal{P}(A) \\setminus \\mathcal{P}(B)$ mais $\\{1, 2\\} \\notin \\mathcal{P}(A \\setminus B)$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\mathcal{P}(A \\cap B) = \\mathcal{P}(A) \\cap \\mathcal{P}(B)$",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\mathcal{P}(A \\cup B) = \\mathcal{P}(A) \\cup \\mathcal{P}(B)$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $A \\subset B \\Leftrightarrow \\mathcal{P}(A) \\subset \\mathcal{P}(B)$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $\\mathcal{P}(A \\setminus B) = \\mathcal{P}(A) \\setminus \\mathcal{P}(B)$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "stackId": "8578ac8b",
+      "content": "#### Question 4 : Vérification d'une Preuve Ensembliste\n\nOn souhaite démontrer l'identité $A \\setminus (B \\cap C) = (A \\setminus B) \\cup (A \\setminus C)$. Une preuve par équivalences logiques est proposée ci-dessous. Identifiez l'étape de raisonnement clé qui justifie la transition de la ligne 3 à la ligne 4.\n\n1.  $x \\in A \\setminus (B \\cap C)$\n2.  $\\Leftrightarrow x \\in A \\land \\neg(x \\in B \\cap C)$\n3.  $\\Leftrightarrow x \\in A \\land \\neg(x \\in B \\land x \\in C)$\n4.  $\\Leftrightarrow x \\in A \\land (\\neg(x \\in B) \\lor \\neg(x \\in C))$\n5.  $\\Leftrightarrow (x \\in A \\land \\neg(x \\in B)) \\lor (x \\in A \\land \\neg(x \\in C))$\n6.  $\\Leftrightarrow (x \\in A \\setminus B) \\lor (x \\in A \\setminus C)$\n7.  $\\Leftrightarrow x \\in (A \\setminus B) \\cup (A \\setminus C)$\n",
+      "solution": "\n\n**Réponse : [B]**\n\nAnalysons la transition entre les lignes 3 et 4 de la preuve :\n\n- **Ligne 3 :** $x \\in A \\land \\neg(x \\in B \\land x \\in C)$\n- **Ligne 4 :** $x \\in A \\land (\\neg(x \\in B) \\lor \\neg(x \\in C))$\n\nLe changement se situe dans la deuxième partie de la conjonction. La proposition $\\neg(P \\land Q)$ où $P$ est \"$x \\in B$\" et $Q$ est \"$x \\in C$\" est transformée en $(\\neg P \\lor \\neg Q)$.\n\nCette transformation, $\\neg(P \\land Q) \\Leftrightarrow (\\neg P \\lor \\neg Q)$, est précisément l'une des **lois de De Morgan** pour le calcul propositionnel.\n\nAnalysons les autres options :\n\n- **A) Associativité de la conjonction :** L'associativité s'appliquerait à une expression comme $(P \\land Q) \\land R \\Leftrightarrow P \\land (Q \\land R)$. Elle n'est pas utilisée ici.\n- **B) Lois de De Morgan :** C'est exactement la règle utilisée, comme expliqué ci-dessus.\n- **C) Définition alternative de l'implication :** Cette règle est $(P \\Rightarrow Q) \\Leftrightarrow (\\neg P \\lor Q)$. Elle n'est pas pertinente dans cette transition.\n- **D) Distributivité :** La distributivité est utilisée pour passer de la ligne 4 à la ligne 5. La ligne 4 est de la forme $R \\land (S \\lor T)$ et la ligne 5 est $(R \\land S) \\lor (R \\land T)$, ce qui correspond à la distributivité de $\\land$ sur $\\lor$. Cette option décrit donc l'étape 4 -> 5, pas l'étape 3 -> 4.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Associativité de la conjonction $(\\land)$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Lois de De Morgan pour les propositions.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Définition alternative de l'implication.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Distributivité de la disjonction $(\\lor)$ sur la conjonction $(\\land)$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "stackId": "8578ac8b",
+      "content": "#### Question 5 : Propriétés de la Composition des Fonctions\n\nSoient $f: A \\to B$ and $g: B \\to C$ deux fonctions.\n\nLaquelle des implications suivantes est correcte ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nAnalysons chaque implication.\n\n- **A) Si $g \\circ f$ est injective, alors $g$ est injective : FAUX.**\n\n   Contre-exemple : Soit $A=\\{1\\}, B=\\{1, 2\\}, C=\\{1\\}$.\n\n   Définissons $f: A \\to B$ par $f(1)=1$. $f$ est injective.\n\n   Définissons $g: B \\to C$ par $g(1)=1$ et $g(2)=1$. $g$ n'est pas injective car $g(1)=g(2)$ mais $1 \\neq 2$.\n\n   La composée $g \\circ f: A \\to C$ est définie par $(g \\circ f)(1) = g(f(1)) = g(1) = 1$.\n\n   Puisque $A$ n'a qu'un seul élément, $g \\circ f$ est trivialement injective.\n\n   Nous avons donc un cas où $g \\circ f$ est injective mais $g$ ne l'est pas.\n\n- **B) Si $g \\circ f$ est surjective, alors $f$ est surjective : FAUX.**\n\n   Contre-exemple : Soit $A=\\{1\\}, B=\\{1, 2\\}, C=\\{1\\}$.\n\n   Définissons $f: A \\to B$ par $f(1)=1$. $f$ n'est pas surjective car l'élément $2 \\in B$ n'a pas d'antécédent.\n\n   Définissons $g: B \\to C$ par $g(1)=1$ et $g(2)=1$. $g$ est surjective.\n\n   La composée $g \\circ f: A \\to C$ est définie par $(g \\circ f)(1) = g(f(1)) = g(1) = 1$.\n\n   Puisque l'image de $g \\circ f$ est $\\{1\\}$ et le codomaine est $C=\\{1\\}$, $g \\circ f$ est surjective.\n\n   Nous avons donc un cas où $g \\circ f$ est surjective mais $f$ ne l'est pas.\n\n- **C) Si $g \\circ f$ est injective, alors $f$ est injective : VRAI.**\n\n   **Preuve :** Supposons que $g \\circ f$ est injective. On veut montrer que $f$ est injective.\n\n   Soient $a_1, a_2 \\in A$ tels que $f(a_1) = f(a_2)$.\n\n   Appliquons la fonction $g$ aux deux membres : $g(f(a_1)) = g(f(a_2))$.\n\n   Ceci s'écrit $(g \\circ f)(a_1) = (g \\circ f)(a_2)$.\n\n   Puisque $g \\circ f$ est injective par hypothèse, on en déduit que $a_1 = a_2$.\n\n   Nous avons montré que $f(a_1) = f(a_2) \\Rightarrow a_1 = a_2$, donc $f$ est injective.\n\n- **D) Si $g \\circ f$ est surjective, alors $f$ et $g$ sont surjectives : FAUX.**\n\n   L'implication correcte est que si $g \\circ f$ est surjective, alors $g$ doit être surjective. (La preuve est que l'image de $g$ contient l'image de $g \\circ f$, qui est $C$ tout entier). Cependant, comme montré dans le contre-exemple pour B, $f$ n'est pas nécessairement surjective.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Si $g \\circ f$ est injective, alors $g$ est injective.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Si $g \\circ f$ est surjective, alors $f$ est surjective.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Si $g \\circ f$ est injective, alors $f$ est injective.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Si $g \\circ f$ est surjective, alors $f$ et $g$ sont surjectives.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "stackId": "8578ac8b",
+      "content": "#### Question 6 : Inverses à Gauche et à Droite\n\nSoit $f: A \\to B$ une fonction entre deux ensembles non vides. Un **inverse à gauche** de $f$ est une fonction $g: B \\to A$ telle que $g \\circ f = \\text{id}_A$. Un **inverse à droite** de $f$ est une fonction $h: B \\to A$ telle que $f \\circ h = \\text{id}_B$.\n\nQuelles sont les conditions nécessaires et suffisantes pour l'existence de ces inverses ?\n",
+      "solution": "\n\n**Réponses : [B, D]**\n\nCette question explore une propriété fondamentale des fonctions qui est directement liée à la preuve de l'existence de la fonction réciproque pour les bijections.\n\n- **Inverse à gauche : $g \\circ f = \\text{id}_A$.**\n\n   Supposons qu'un tel $g$ existe. Alors, comme vu dans la question précédente, si $g \\circ f$ est injective (ce qui est le cas de $\\text{id}_A$), alors $f$ doit être injective.\n\n   Réciproquement, si $f$ est injective, peut-on construire un inverse à gauche $g$?\n\n   Soit $b \\in B$.\n\n   - Si $b$ est dans l'image de $f$ ($b \\in \\text{Im}(f)$), alors il existe un antécédent $a \\in A$ tel que $f(a)=b$. Comme $f$ est injective, cet antécédent est unique. On définit alors $g(b) = a$.\n   - Si $b$ n'est pas dans l'image de $f$, on peut lui assigner n'importe quelle valeur de $A$. Choisissons un élément arbitraire $a_0 \\in A$ (possible car $A$ est non vide) et posons $g(b) = a_0$.\n\n   Cette fonction $g: B \\to A$ est bien définie. Vérifions $g \\circ f$. Pour tout $a \\in A$, $(g \\circ f)(a) = g(f(a))$. Puisque $f(a)$ est dans l'image de $f$, par notre construction, $g(f(a))$ est l'unique antécédent de $f(a)$, qui est $a$. Donc $g(f(a)) = a = \\text{id}_A(a)$. L'existence est prouvée.\n\n   **Conclusion :** $f$ admet un inverse à gauche si et seulement si $f$ est injective. **L'option D est donc correcte.**\n\n- **Inverse à droite : $f \\circ h = \\text{id}_B$.**\n\n   Supposons qu'un tel $h$ existe. Alors, si $f \\circ h$ est surjective (ce qui est le cas de $\\text{id}_B$), alors $f$ doit être surjective.\n\n   Réciproquement, si $f$ est surjective, peut-on construire un inverse à droite $h$?\n\n   Pour chaque $b \\in B$, l'ensemble des antécédents $f^{-1}(\\{b\\}) = \\{a \\in A \\mid f(a)=b\\}$ est non vide. En utilisant l'axiome du choix, on peut sélectionner un élément $a_b$ dans chaque ensemble $f^{-1}(\\{b\\})$.\n\n   On définit alors la fonction $h: B \\to A$ par $h(b) = a_b$.\n\n   Vérifions $f \\circ h$. Pour tout $b \\in B$, $(f \\circ h)(b) = f(h(b)) = f(a_b)$. Par construction de $a_b$, on a $f(a_b) = b = \\text{id}_B(b)$. L'existence est prouvée.\n\n   **Conclusion :** $f$ admet un inverse à droite si et seulement si $f$ est surjective. **L'option B est donc correcte.**\n\n- **A.** Incorrect, c'est la condition pour un inverse à droite.\n- **C.** Incorrect. Une fonction bijective admet un inverse (qui est à la fois à gauche et à droite), mais la bijectivité n'est pas nécessaire pour avoir seulement un inverse à gauche.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $f$ admet un inverse à gauche si et seulement si elle est surjective.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $f$ admet un inverse à droite si et seulement si elle est surjective.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $f$ admet un inverse à gauche si et seulement si elle est bijective.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $f$ admet un inverse à gauche si et seulement si elle est injective.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "stackId": "8578ac8b",
+      "content": "#### Question 7 : Axiome de la Borne Supérieure\n\nL'axiome de la borne supérieure (complétude) est ce qui distingue fondamentalement $\\mathbb{R}$ de $\\mathbb{Q}$. Considérez les ensembles suivants. Lequel illustre le mieux cette distinction ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nLa question demande quel ensemble illustre le fait que $\\mathbb{Q}$ n'est pas complet, contrairement à $\\mathbb{R}$. La complétude, via l'axiome de la borne supérieure, stipule que *toute* partie non vide et majorée d'un ensemble admet une borne supérieure *dans* cet ensemble. Pour montrer que $\\mathbb{Q}$ n'est pas complet, il faut trouver un contre-exemple : une partie de $\\mathbb{Q}$ qui est non vide et majorée, mais dont la borne supérieure n'est pas un nombre rationnel.\n\n- **A)** L'ensemble $A$ est un intervalle de rationnels. Il est non vide (contient 1) et majoré (par 2). Sa borne supérieure est $2$, qui est un élément de $\\mathbb{Q}$. Cet exemple ne montre donc pas un défaut de $\\mathbb{Q}$.\n\n- **B)** L'ensemble $B$ est l'ensemble des rationnels positifs dont le carré est inférieur à 2.\n    - Il est **non vide** (par exemple, $1 \\in B$ car $1^2=1 < 2$).\n    - Il est **majoré** dans $\\mathbb{Q}$ (par exemple, par le rationnel $2$, car si $x > 2$, alors $x^2 > 4$, donc aucun élément de $B$ ne peut être plus grand que 2).\n    - Quelle est sa borne supérieure ? Dans $\\mathbb{R}$, la borne supérieure de cet ensemble est $\\sqrt{2}$. Cependant, $\\sqrt{2}$ est un nombre irrationnel, il n'appartient pas à $\\mathbb{Q}$. On peut prouver qu'il n'existe aucun nombre *rationnel* $q$ qui soit la borne supérieure de $B$. Pour tout candidat rationnel $q$ tel que $q^2 < 2$, on peut trouver un autre rationnel $q'$ tel que $q < q' < \\sqrt{2}$. Pour tout candidat rationnel $p$ tel que $p^2 > 2$, on peut trouver un autre rationnel $p'$ tel que $\\sqrt{2} < p' < p$.\n\n    Cet ensemble est donc le parfait exemple de la non-complétude de $\\mathbb{Q}$.\n\n- **C)** L'ensemble $C$ est un ensemble fini d'entiers. Les ensembles finis ont toujours un plus grand élément, qui est leur borne supérieure. Cet exemple ne pose aucun problème ni dans $\\mathbb{Q}$ ni dans $\\mathbb{R}$.\n\n- **D)** L'ensemble $D = \\mathbb{Q}$ n'est pas majoré. L'axiome de la borne supérieure ne s'y applique pas (la condition \"majorée\" n'est pas remplie). Il ne peut donc pas servir à illustrer une différence liée à cet axiome.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** L'ensemble $A = \\{x \\in \\mathbb{Q} \\mid 1 \\le x \\le 2\\}$. Cet ensemble est non vide, majoré et sa borne supérieure est $2$, qui est dans $\\mathbb{Q}$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** L'ensemble $B = \\{x \\in \\mathbb{Q} \\mid x > 0 \\text{ et } x^2 < 2\\}$. Cet ensemble est une partie non vide et majorée de $\\mathbb{Q}$ qui n'a pas de borne supérieure *dans* $\\mathbb{Q}$.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** L'ensemble $C = \\{n \\in \\mathbb{N} \\mid n < 100\\}$. Cet ensemble est fini, donc il a un plus grand élément, qui est sa borne supérieure dans $\\mathbb{Q}$ et $\\mathbb{R}$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** L'ensemble $D = \\mathbb{Q}$. Cet ensemble n'est pas majoré, donc l'axiome de la borne supérieure ne s'applique pas directement à lui.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "stackId": "8578ac8b",
+      "content": "#### Question 8 : Inégalité Triangulaire Inversée\n\nLa preuve de l'inégalité triangulaire inversée, $||x|-|y|| \\le |x-y|$ pour $x, y \\in \\mathbb{R}$, repose sur l'inégalité triangulaire standard $|a+b| \\le |a|+|b|$.\n\nQuelle est l'astuce de départ correcte pour démontrer cette inégalité ?\n",
+      "solution": "\n\n**Réponse : [A]**\n\nAnalysons les différentes approches proposées.\n\n- **A)** C'est l'approche la plus directe et élégante.\n\n   On écrit $x = (x-y) + y$.\n\n   Par l'inégalité triangulaire standard : $|x| = |(x-y) + y| \\le |x-y| + |y|$.\n\n   En réarrangeant, on obtient : $|x| - |y| \\le |x-y|$.\n\n   De même, en écrivant $y = (y-x) + x$, on obtient $|y| \\le |y-x| + |x|$.\n\n   Ce qui donne $|y| - |x| \\le |y-x| = |x-y|$.\n\n   On a donc les deux inégalités :\n\n   1. $|x| - |y| \\le |x-y|$\n   2. $-(|x| - |y|) \\le |x-y|$\n\n   Ces deux inégalités peuvent se résumer en une seule : $||x|-|y|| \\le |x-y|$, car pour tout réel $u$ et tout réel positif $c$, on a $|u| \\le c \\Leftrightarrow -c \\le u \\le c$.\n\n   Cette méthode est correcte et constitue l'astuce de départ classique.\n\n- **B)** Élever au carré peut fonctionner pour l'inégalité triangulaire standard, mais ici c'est plus compliqué et moins direct. $(||x|-|y||)^2 = (|x|-|y|)^2 = |x|^2 - 2|x||y| + |y|^2 = x^2 - 2|xy| + y^2$. On doit comparer cela à $|x-y|^2 = (x-y)^2 = x^2 - 2xy + y^2$. Il faudrait alors montrer que $x^2 - 2|xy| + y^2 \\le x^2 - 2xy + y^2$, ce qui équivaut à $-2|xy| \\le -2xy$, ou $xy \\le |xy|$, ce qui est toujours vrai. Cette approche fonctionne mais l'option A décrit mieux \"l'astuce de départ\" en utilisant la propriété fondamentale elle-même.\n\n- **C)** L'analyse par cas est une méthode de dernier recours. Elle est lourde, peu élégante et ne met pas en lumière le lien structurel avec l'inégalité triangulaire standard. Elle est donc une approche valide mais non la plus \"pro\".\n\n- **D)** C'est une reformulation de ce qu'il faut prouver, pas une méthode de preuve. Dire que $f(x)=|x|$ est 1-lipschitzienne est exactement la même chose que de dire $||x|-|y|| \\le |x-y|$. Cette option nomme la propriété au lieu d'expliquer comment la démontrer.\n\nL'option A est donc la meilleure description de l'astuce de preuve fondamentale.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Écrire $x = (x-y) + y$ et appliquer l'inégalité triangulaire pour majorer $|x|$.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** Utiliser l'identité $|z|^2 = z^2$ et développer $||x|-|y||^2$.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Analyser les quatre cas possibles selon les signes de $x$ et $y$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Prouver que la fonction $f(x)=|x|$ est 1-lipschitzienne, c'est-à-dire $|f(x)-f(y)| \\le 1 \\cdot |x-y|$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "stackId": "8578ac8b",
+      "content": "#### Question 9 : Cas d'Égalité dans l'Inégalité Triangulaire Complexe\n\nPour deux nombres complexes $z$ et $w$, on sait que $|z+w| \\le |z|+|w|$. La condition d'égalité $|z+w| = |z|+|w|$ a une interprétation géométrique précise.\n\nQuand cette égalité est-elle vérifiée ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nReprenons la preuve de l'inégalité triangulaire pour les nombres complexes :\n\n$|z+w|^2 = |z|^2 + |w|^2 + 2\\text{Re}(z\\bar{w})$.\n\nL'inégalité vient du fait que $\\text{Re}(z\\bar{w}) \\le |z\\bar{w}| = |z||w|$.\n\nL'égalité $|z+w| = |z|+|w|$ a lieu si et seulement si $|z+w|^2 = (|z|+|w|)^2$.\n\n$|z|^2 + |w|^2 + 2\\text{Re}(z\\bar{w}) = |z|^2 + |w|^2 + 2|z||w|$.\n\nCeci se simplifie en $\\text{Re}(z\\bar{w}) = |z||w|$.\n\nSoit $u = z\\bar{w}$. La condition est $\\text{Re}(u) = |u|$.\n\nPour un nombre complexe $u = a+ib$, on a $\\text{Re}(u) = a$ et $|u| = \\sqrt{a^2+b^2}$.\n\nL'égalité $a = \\sqrt{a^2+b^2}$ implique que $a \\ge 0$ et $a^2 = a^2+b^2$, ce qui donne $b^2=0$, donc $b=0$.\n\nLa condition $\\text{Re}(u)=|u|$ est donc équivalente à \"$u$ est un nombre réel positif ou nul\".\n\nLa condition d'égalité est donc que $z\\bar{w}$ soit un réel positif ou nul.\n\nSupposons $w \\neq 0$. Alors $z\\bar{w} = \\lambda$ avec $\\lambda \\in \\mathbb{R}_+$.\n\nEn multipliant par $w$, on obtient $z\\bar{w}w = \\lambda w$, soit $z|w|^2 = \\lambda w$.\n\nPuisque $|w|^2$ est un réel strictement positif, on peut écrire $z = \\frac{\\lambda}{|w|^2} w$.\n\nEn posant $\\lambda' = \\frac{\\lambda}{|w|^2}$, on a $z = \\lambda' w$ avec $\\lambda' \\ge 0$.\n\nSi $w=0$, l'égalité est trivialement vérifiée. Si $z=0$ également.\n\nGéométriquement, cela signifie que les vecteurs représentant $z$ et $w$ dans le plan complexe sont colinéaires et de même sens (ou l'un est nul).\n\n- **A)** Incorrect. Cela signifie $|z|=|w|$, ce qui n'est pas lié à la condition d'égalité.\n- **B)** Incorrect. La condition $z\\bar{w} \\in \\mathbb{R}$ est équivalente à $u = \\bar{u}$, ce qui correspond à $z$ et $w$ colinéaires, mais pas nécessairement de même sens. Si $z\\bar{w}$ était un réel strictement négatif, on aurait le cas d'égalité dans l'autre sens : $|z-w| = |z|+|w|$.\n- **C)** Correct. C'est la condition complète et précise : colinéaires et de même sens.\n- **D)** Incorrect. C'est une condition nécessaire mais non suffisante. Si $\\lambda < 0$, les vecteurs sont de sens opposés. Par exemple, si $z=2$ et $w=-1$, $|z+w|=|1|=1$, mais $|z|+|w|=2+1=3$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Si et seulement si $z$ et $w$ sont sur le même cercle centré à l'origine.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Si et seulement si le produit $z\\bar{w}$ est un nombre réel.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Si et seulement si $z=0$, $w=0$, ou s'il existe un réel $\\lambda \\ge 0$ tel que $z = \\lambda w$ (ou $w = \\lambda z$).",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Si et seulement si $z$ et $w$ sont colinéaires, c'est-à-dire s'il existe $\\lambda \\in \\mathbb{R}$ tel que $z = \\lambda w$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "stackId": "8578ac8b",
+      "content": "#### Question 10 : Propriétés Algébriques des Corps de Nombres\n\nLes corps $\\mathbb{Q}$, $\\mathbb{R}$ et $\\mathbb{C}$ partagent certaines propriétés mais en diffèrent sur d'autres.\n\nSélectionnez les affirmations qui décrivent correctement ces différences fondamentales.\n",
+      "solution": "\n\n**Réponses : [A, C]**\n\nAnalysons chaque affirmation.\n\n- **A) $\\mathbb{C}$ est algébriquement clos, tandis que $\\mathbb{R}$ et $\\mathbb{Q}$ ne le sont pas. : VRAI**\n\n   Un corps est algébriquement clos si tout polynôme non constant à coefficients dans ce corps y admet au moins une racine. Le Théorème Fondamental de l'Algèbre stipule que c'est le cas pour $\\mathbb{C}$.\n\n   $\\mathbb{R}$ n'est pas algébriquement clos : le polynôme $P(x) = x^2+1$ a des coefficients réels mais pas de racine réelle.\n\n   $\\mathbb{Q}$ n'est pas algébriquement clos : le polynôme $P(x) = x^2-2$ a des coefficients rationnels mais pas de racine rationnelle.\n\n- **B) $\\mathbb{R}$ et $\\mathbb{C}$ sont des corps complets (au sens de la borne supérieure/des suites de Cauchy), mais $\\mathbb{Q}$ ne l'est pas. : FAUX (subtil)**\n\n   $\\mathbb{R}$ est complet par définition (Axiome de la borne supérieure). $\\mathbb{Q}$ n'est pas complet. $\\mathbb{C}$, vu comme l'espace métrique $\\mathbb{R}^2$ avec la distance euclidienne, est également complet (une suite de Cauchy dans $\\mathbb{R}^2$ converge).\n\n   Cependant, le concept de \"corps complet\" est ambigu. S'il se réfère à la complétude de l'ordre, alors il ne s'applique pas à $\\mathbb{C}$ qui n'est pas un corps ordonné. S'il se réfère à la complétude métrique, alors $\\mathbb{R}$ et $\\mathbb{C}$ sont complets. L'affirmation est donc mal formulée car la notion de borne supérieure n'a pas de sens dans $\\mathbb{C}$. La complétude métrique (convergence des suites de Cauchy) est la bonne notion pour $\\mathbb{C}$. Mais la phrase mélange les deux concepts. Le fait est que la complétude de l'ordre n'a pas de sens pour $\\mathbb{C}$.\n\n- **C) $\\mathbb{Q}$ et $\\mathbb{R}$ peuvent être munis d'une relation d'ordre total compatible avec leur structure de corps, mais $\\mathbb{C}$ ne le peut pas. : VRAI**\n\n   $\\mathbb{Q}$ et $\\mathbb{R}$ sont des corps ordonnés standards. Comme démontré dans le cours, il est impossible de définir une relation d'ordre total sur $\\mathbb{C}$ qui satisfasse les axiomes d'un corps ordonné (principalement à cause de $i^2 = -1 < 0$, ce qui est interdit dans un corps ordonné où tout carré est positif).\n\n- **D) La propriété d'Archimède est valide dans $\\mathbb{Q}$ et $\\mathbb{R}$, mais pas dans $\\mathbb{C}$. : FAUX**\n\n   La propriété d'Archimède est une propriété des corps *ordonnés*. Elle dit que pour $x, y > 0$, il existe $n \\in \\mathbb{N}$ tel que $nx > y$. Comme $\\mathbb{C}$ n'est pas un corps ordonné, la propriété d'Archimède n'y est tout simplement pas définie. On ne peut donc pas dire qu'elle n'est \"pas valide\" au sens où elle serait fausse ; elle n'a pas de sens.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\mathbb{C}$ est algébriquement clos, tandis que $\\mathbb{R}$ et $\\mathbb{Q}$ ne le sont pas.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\mathbb{R}$ et $\\mathbb{C}$ sont des corps complets (au sens de la borne supérieure/des suites de Cauchy), mais $\\mathbb{Q}$ ne l'est pas.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $\\mathbb{Q}$ et $\\mathbb{R}$ peuvent être munis d'une relation d'ordre total compatible avec leur structure de corps, mais $\\mathbb{C}$ ne le peut pas.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** La propriété d'Archimède est valide dans $\\mathbb{Q}$ et $\\mathbb{R}$, mais pas dans $\\mathbb{C}$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "stackId": "8578ac8b",
+      "content": "#### Question 11 : Logique et Raisonnement\n\nSoient $P$ et $Q$ deux propositions. Un étudiant a prouvé avec succès que la proposition $(\\neg Q) \\Rightarrow (\\neg P)$ est vraie.\n\nQu'est-ce que cela lui permet de conclure de manière rigoureuse sur les autres propositions liées ?\n",
+      "solution": "\n\n**Réponses : [B, D]**\n\nCette question teste la compréhension des relations logiques entre une implication, sa contraposée, sa réciproque et sa négation (ou inverse).\n\nL'étudiant a prouvé que $(\\neg Q) \\Rightarrow (\\neg P)$ est vraie. Cette proposition est la **contraposée** de l'implication $P \\Rightarrow Q$.\n\n- **A) La réciproque $Q \\Rightarrow P$ :** Il n'y a pas de lien logique direct entre une implication et sa réciproque. L'une peut être vraie et l'autre fausse. Savoir que la contraposée est vraie ne nous dit rien sur la réciproque. Donc A est incorrect.\n\n- **B) L'implication directe $P \\Rightarrow Q$ :** Une propriété fondamentale de la logique propositionnelle est qu'une implication est logiquement équivalente à sa contraposée. C'est-à-dire :\n\n  $$ (P \\Rightarrow Q) \\Leftrightarrow ((\\neg Q) \\Rightarrow (\\neg P)) $$\n\n  Ceci peut être vérifié avec une table de vérité ou en utilisant l'équivalence $(A \\Rightarrow B) \\Leftrightarrow (\\neg A \\lor B)$.\n\n  Donc, si $(\\neg Q) \\Rightarrow (\\neg P)$ est vraie, alors $P \\Rightarrow Q$ est nécessairement vraie aussi. B est donc correct.\n\n- **C) La négation (ou inverse) $\\neg P \\Rightarrow \\neg Q$ :** Cette proposition est la réciproque de la contraposée, ou la contraposée de la réciproque. Elle est logiquement équivalente à la réciproque $Q \\Rightarrow P$, mais pas à l'implication directe. Donc C est incorrect.\n\n- **D) La validité du raisonnement par contraposition pour $P \\Rightarrow Q$ :** Le raisonnement par contraposition consiste précisément à prouver $P \\Rightarrow Q$ en prouvant sa contraposée $(\\neg Q) \\Rightarrow (\\neg P)$. En ayant prouvé la contraposée, l'étudiant a appliqué avec succès cette méthode de preuve. D est donc une description correcte de ce qui a été accompli.\n\nEn résumé, B et D sont deux manières correctes de formuler la conclusion.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Il a prouvé que la réciproque $Q \\Rightarrow P$ est vraie.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Il a prouvé que l'implication directe $P \\Rightarrow Q$ est vraie.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Il a prouvé que la négation $\\neg P \\Rightarrow \\neg Q$ est vraie.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Il a prouvé la validité du raisonnement par contraposition pour l'implication $P \\Rightarrow Q$.",
+          "correct": true
+        }
+      ]
+    }
+  ]
+}

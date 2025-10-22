@@ -1,0 +1,331 @@
+{
+  "info": {
+    "id": "f760971b",
+    "title": "Structures algébriques - quiz (B)",
+    "type": "quiz",
+    "level": "pro",
+    "chapter": "Structures algébriques",
+    "course": "Algèbre",
+    "tags": [
+      "structures algébriques",
+      "ensembles",
+      "applications",
+      "groupes",
+      "anneaux",
+      "corps",
+      "relations d'équivalence",
+      "quotients"
+    ],
+    "count": 11
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "f760971b",
+      "content": "#### Question 1 : Inverses et Bijectivité\n\nSoit $f: X \\to Y$ une application entre deux ensembles non vides. Soit $p: Y \\to X$ une application telle que $p \\circ f = \\text{id}_X$ (une rétraction) et $s: Y \\to X$ une application telle que $f \\circ s = \\text{id}_Y$ (une section). Laquelle des affirmations suivantes est une conséquence directe de ces hypothèses ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nCette question teste la compréhension des inverses à gauche et à droite et leur lien avec la bijectivité. La preuve que $p=s$ est un résultat fondamental.\n\n- **A)** Ceci est incorrect. On peut prouver que $p$ et $s$ doivent être égales. En utilisant l'associativité de la composition, on a : $p = p \\circ \\text{id}_Y = p \\circ (f \\circ s) = (p \\circ f) \\circ s = \\text{id}_X \\circ s = s$. Donc, $p$ doit être égale à $s$.\n\n- **B)** Ceci est correct. L'existence d'une rétraction $p$ implique que $f$ est injective. L'existence d'une section $s$ implique que $f$ est surjective. Par conséquent, $f$ est bijective. Comme nous avons prouvé en A) que $p=s$, cette application unique est à la fois un inverse à gauche et à droite, ce qui en fait l'inverse bilatère unique de $f$, noté $f^{-1}$.\n\n- **C)** L'application $p$ est une rétraction pour $f$. De $p \\circ f = \\text{id}_X$, on peut déduire que $p$ est surjective (elle admet $f$ comme inverse à droite). Cependant, l'affirmation B) est une conséquence plus forte et plus complète des hypothèses, car elle établit non seulement la bijectivité de $f$ mais aussi l'unicité et l'identité de son inverse. La question demande une conséquence directe des *deux* hypothèses simultanément, qui mènent à $p=s=f^{-1}$.\n\n- **D)** Il n'y a aucune hypothèse sur la cardinalité de $X$ et $Y$. Ce résultat est valable pour des ensembles infinis également. Par exemple, $\\exp: \\mathbb{R} \\to \\mathbb{R}_{>0}$ et $\\ln: \\mathbb{R}_{>0} \\to \\mathbb{R}$ sont des inverses l'une de l'autre.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Il est possible que $p \\neq s$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** L'application $f$ est bijective et son inverse est unique, donné par $f^{-1} = p = s$.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** L'application $p$ est surjective.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Les ensembles $X$ et $Y$ doivent être finis.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "stackId": "f760971b",
+      "content": "#### Question 2 : Propriété Universelle des Entiers Naturels\n\nLa propriété universelle de $(\\mathbb{N}, S, 0)$ stipule que pour tout triplet $(X, T: X \\to X, x_0 \\in X)$, il existe une *unique* application $f : \\mathbb{N} \\to X$ telle que $f(0) = x_0$ et $f \\circ S = T \\circ f$. Laquelle des propriétés fondamentales des entiers naturels est une conséquence la plus directe de la partie **unicité** de cette propriété ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nCette question évalue une compréhension profonde de la manière dont les axiomes de Peano découlent de la propriété universelle, en particulier le rôle de l'unicité.\n\n- **A)** L'existence de l'addition (ou de toute fonction définie par récurrence) est une conséquence de la partie **existence** de la propriété universelle. Pour un $m$ fixé, on choisit $(X, T, x_0) = (\\mathbb{N}, S, m)$ et la propriété universelle garantit l'existence de l'application $add_m$. L'unicité garantit que l'addition est bien définie, mais le principe de récurrence est une conséquence plus structurelle de l'unicité.\n\n- **B)** La preuve de l'injectivité de $S$ à partir de la propriété universelle est plus complexe et ne découle pas aussi directement de l'unicité seule. Elle implique une construction astucieuse d'une application \"prédécesseur\" en utilisant la propriété d'existence.\n\n- **C)** Le principe de récurrence est une conséquence très directe de l'unicité. Soit $P \\subset \\mathbb{N}$ une partie contenant $0$ et stable par $S$. On considère l'application caractéristique $\\chi_P: \\mathbb{N} \\to \\{vrai, faux\\}$. Les hypothèses sur $P$ impliquent que $\\chi_P$ satisfait les conditions $f(0)=vrai$ et $f \\circ S = f$ pour le système $(\\{vrai, faux\\}, \\text{id}, vrai)$. Mais l'application constante $g(n)=vrai$ satisfait aussi ces conditions. Par **unicité**, on doit avoir $\\chi_P=g$, ce qui signifie que $P=\\mathbb{N}$.\n\n- **D)** La preuve que $S(n) \\neq 0$ se fait typiquement par l'absurde. On suppose qu'il existe $k$ tel que $S(k)=0$. On construit alors un système $(X,T,x_0)$ pour lequel deux applications distinctes existeraient, violant l'unicité. Bien que cela utilise l'unicité, le principe de récurrence en est une reformulation plus générale et directe.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** L'existence de l'addition.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Le fait que $S$ soit injective ($S(n) = S(m) \\Rightarrow n=m$).",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Le principe de récurrence.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Le fait que $0$ ne soit le successeur d'aucun entier ($\\forall n \\in \\mathbb{N}, S(n) \\neq 0$).",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "stackId": "f760971b",
+      "content": "#### Question 3 : Structure des Éléments Inversibles\n\nSoit $(M, \\cdot, 1)$ un monoïde. On note $M^\\times$ l'ensemble de ses éléments inversibles. Considérez l'application $\\phi: M^\\times \\to M^\\times$ définie par $\\phi(x) = x^{-1}$. Laquelle des affirmations suivantes est toujours vraie ?\n",
+      "solution": "\n\n**Réponses : [B, D]**\n\nCette question teste la compréhension de la structure du groupe des inversibles d'un monoïde et des propriétés des morphismes.\n\n- **A)** Ceci est généralement faux. La propriété de l'inverse d'un produit dans un groupe est $(xy)^{-1} = y^{-1}x^{-1}$. Donc, $\\phi(xy) = (xy)^{-1} = y^{-1}x^{-1} = \\phi(y)\\phi(x)$. La condition pour que $\\phi$ soit un morphisme est $\\phi(xy) = \\phi(x)\\phi(y)$, ce qui signifie $y^{-1}x^{-1} = x^{-1}y^{-1}$.\n\n- **B)** C'est correct. Comme vu en A), $\\phi$ est un morphisme si et seulement si pour tous $x, y \\in M^\\times$, on a $y^{-1}x^{-1} = x^{-1}y^{-1}$. En prenant l'inverse des deux côtés, on obtient $(y^{-1}x^{-1})^{-1} = (x^{-1}y^{-1})^{-1}$, ce qui donne $xy=yx$. C'est précisément la condition pour que le groupe $M^\\times$ soit abélien.\n\n- **C)** Cette affirmation est trop forte. Il suffit que le sous-groupe $M^\\times$ soit abélien pour que $\\phi$ soit un morphisme (et donc un automorphisme, voir D). Le monoïde $M$ tout entier n'a pas besoin d'être commutatif. Par exemple, dans le monoïde des matrices $M_n(\\mathbb{R})$, le sous-groupe des matrices diagonales inversibles est abélien, et $\\phi$ serait un automorphisme sur ce sous-groupe, bien que $M_n(\\mathbb{R})$ ne soit pas commutatif.\n\n- **D)** C'est correct. L'application $\\phi(x) = x^{-1}$ est sa propre inverse, car $\\phi(\\phi(x)) = \\phi(x^{-1}) = (x^{-1})^{-1} = x$. Toute application qui est sa propre inverse (une involution) est une bijection.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\phi$ est toujours un morphisme de groupes, c'est-à-dire $\\phi(xy) = \\phi(x)\\phi(y)$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\phi$ est un morphisme de groupes si et seulement si $M^\\times$ est un groupe abélien.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $\\phi$ est un automorphisme de $M^\\times$ seulement si $M$ est commutatif.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $\\phi$ est toujours une bijection.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "stackId": "f760971b",
+      "content": "#### Question 4 : Noyau et Injectivité\n\nSoit $f: G \\to H$ un morphisme de groupes. Le critère d'injectivité stipule que $f$ est injective si et seulement si $\\text{Ker}(f) = \\{e_G\\}$. Choisissez les arguments corrects qui constituent la preuve de l'implication \"$(\\text{Ker}(f) = \\{e_G\\}) \\Rightarrow (f \\text{ est injective})$\".\n",
+      "solution": "\n\n**Réponses : [B, D]**\n\nCette question demande de reconstituer une preuve standard en identifiant les étapes logiques correctes.\n\n- **A)** Ceci est la définition d'une application (unicité de l'image), pas la définition de l'injectivité. L'injectivité requiert de prouver que $f(g_1)=f(g_2) \\Rightarrow g_1=g_2$.\n\n- **B)** C'est la première étape correcte de la preuve. On part de l'hypothèse $f(g_1)=f(g_2)$ et on manipule l'équation dans le groupe d'arrivée $H$ pour isoler l'élément neutre $e_H$.\n\n- **C)** Cette option contient une erreur cruciale. De $f(g_1 g_2^{-1}) = e_H$, on peut seulement conclure que l'élément $g_1 g_2^{-1}$ est dans le *noyau* de $f$. On ne peut pas affirmer directement qu'il est égal à $e_G$ sans utiliser l'hypothèse sur le noyau.\n\n- **D)** C'est la suite et la conclusion correctes de l'étape B. On utilise le fait que $f$ est un morphisme pour transformer $f(g_1)f(g_2)^{-1}$ en $f(g_1 g_2^{-1})$. L'équation $f(g_1 g_2^{-1}) = e_H$ signifie que $g_1 g_2^{-1} \\in \\text{Ker}(f)$. C'est ici qu'on utilise l'hypothèse $\\text{Ker}(f)=\\{e_G\\}$ pour conclure que $g_1 g_2^{-1} = e_G$, et donc $g_1=g_2$. C'est bien la définition de l'injectivité.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Soient $g_1, g_2 \\in G$. On suppose $g_1=g_2$. Alors par définition d'une application, $f(g_1)=f(g_2)$. Cela prouve l'injectivité.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Soient $g_1, g_2 \\in G$ tels que $f(g_1) = f(g_2)$. En multipliant par $f(g_2)^{-1}$ à droite, on obtient $f(g_1)f(g_2)^{-1} = e_H$.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Puisque $f$ est un morphisme, $f(g_1)f(g_2)^{-1} = f(g_1 g_2^{-1})$. Donc $f(g_1 g_2^{-1}) = e_H$. Par définition de l'image, cela signifie $g_1 g_2^{-1} = e_G$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Puisque $f$ est un morphisme, $f(g_1)f(g_2)^{-1} = f(g_1 g_2^{-1})$. Donc $f(g_1 g_2^{-1}) = e_H$. Par définition du noyau, cela signifie que $g_1 g_2^{-1} \\in \\text{Ker}(f)$. Comme $\\text{Ker}(f)=\\{e_G\\}$, on a $g_1 g_2^{-1} = e_G$, ce qui implique $g_1=g_2$.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "stackId": "f760971b",
+      "content": "#### Question 5 : Morphismes et Structures d'Anneaux\n\nSoit $f: A \\to B$ un morphisme d'anneaux non nuls ($1_A \\neq 0_A$, $1_B \\neq 0_B$). Quelles affirmations sont nécessairement vraies ?\n",
+      "solution": "\n\n**Réponses : [B, D]**\n\nCette question explore les propriétés des morphismes d'anneaux et comment ils transportent les structures.\n\n- **A)** Ceci est faux. Considérez le morphisme d'inclusion $f: \\mathbb{Q} \\to \\mathbb{R}[X]$ où $f(q)$ est le polynôme constant $q$. $\\mathbb{Q}$ est un corps, mais l'anneau des polynômes $\\mathbb{R}[X]$ n'en est pas un. Un autre contre-exemple est le morphisme $f: \\mathbb{Q} \\to \\mathbb{Q} \\times \\mathbb{Q}$ donné par $f(q)=(q,0)$. L'anneau d'arrivée n'est pas un corps (il a des diviseurs de zéro comme $(1,0)\\cdot(0,1)=(0,0)$).\n\n- **B)** C'est vrai. Soit $A$ un corps. Le noyau d'un morphisme d'anneaux, $\\text{Ker}(f)$, est un idéal de $A$. Les seuls idéaux d'un corps $A$ sont $\\{0_A\\}$ et $A$ lui-même. Si $\\text{Ker}(f) = A$, alors $f(1_A)=0_B$. Mais par définition d'un morphisme d'anneaux, $f(1_A)=1_B$. Donc $1_B=0_B$, ce qui contredit l'hypothèse que $B$ est un anneau non nul. Par conséquent, la seule possibilité est $\\text{Ker}(f)=\\{0_A\\}$. Un morphisme d'anneaux (ou de groupes) est injectif si et seulement si son noyau est trivial. Donc, $f$ est injectif.\n\n- **C)** C'est faux. L'exemple $f: \\mathbb{Z} \\to \\mathbb{Z}/6\\mathbb{Z}$ est un contre-exemple. $\\mathbb{Z}$ est un anneau intègre, mais $\\mathbb{Z}/6\\mathbb{Z}$ ne l'est pas car $\\bar{2} \\cdot \\bar{3} = \\bar{0}$. Pour que la propriété soit transmise, il faudrait que le morphisme soit injectif, mais même dans ce cas, ce n'est pas garanti. Si $f$ est une injection de $A$ dans $B$, alors $f(A)$ est un sous-anneau de $B$ isomorphe à $A$, et donc intègre. Mais $B$ lui-même peut avoir des diviseurs de zéro en dehors de $f(A)$.\n\n- **D)** C'est vrai par définition et une propriété fondamentale. Le noyau d'un morphisme d'anneaux est toujours un idéal de l'anneau de départ. C'est le sous-groupe additif $f^{-1}(\\{0_B\\})$, et il est absorbant car si $x \\in \\text{Ker}(f)$ et $a \\in A$, alors $f(ax) = f(a)f(x) = f(a) \\cdot 0_B = 0_B$, donc $ax \\in \\text{Ker}(f)$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Si $A$ est un corps, alors $B$ est un corps.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Si $A$ est un corps, alors $f$ est injectif.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Si $A$ est un anneau intègre, alors $B$ est un anneau intègre.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Le noyau $\\text{Ker}(f)$ est un idéal de $A$.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "stackId": "f760971b",
+      "content": "#### Question 6 : Propriété Universelle du Quotient\n\nSoit $f: G \\to H$ un morphisme de groupes, et soit $K = \\text{Ker}(f)$. Soit $\\pi: G \\to G/K$ la projection canonique. Le premier théorème d'isomorphisme stipule qu'il existe un isomorphisme unique $\\bar{f}: G/K \\to \\text{Im}(f)$ tel que $f = i \\circ \\bar{f} \\circ \\pi$, où $i: \\text{Im}(f) \\to H$ est l'inclusion. Quelle est la justification formelle de l'**existence** de l'application $\\bar{f}$ ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nCette question porte sur le fondement théorique du théorème d'isomorphisme, qui est la propriété universelle.\n\n- **A)** Le théorème de Lagrange concerne les ordres des groupes finis et de leurs sous-groupes. Il n'est pas utilisé pour construire des morphismes ou prouver leur existence dans ce contexte général.\n\n- **B)** C'est la justification exacte. Pour pouvoir \"passer au quotient\", on doit s'assurer que l'application de départ a la même valeur pour tous les éléments d'une même classe d'équivalence. Ici, les classes sont les co-classes $gK$. Si $g_1$ et $g_2$ sont dans la même classe, alors $g_1 K = g_2 K$, ce qui signifie $g_2^{-1}g_1 \\in K = \\text{Ker}(f)$. Alors $f(g_2^{-1}g_1)=e_H$, ce qui donne $f(g_2)^{-1}f(g_1)=e_H$, et donc $f(g_1)=f(g_2)$. Puisque $f$ est constante sur les classes, la propriété universelle du quotient garantit l'existence (et l'unicité) d'une application $\\bar{f}: G/K \\to H$ telle que $f = \\bar{f} \\circ \\pi$. On ajuste ensuite le codomaine à $\\text{Im}(f)$ pour la rendre surjective.\n\n- **C)** L'axiome du choix n'est pas nécessaire ici. La définition de $\\bar{f}$ se fait directement par $\\bar{f}(gK) = f(g)$, et on prouve que cette définition ne dépend pas du choix du représentant $g$, comme montré en B).\n\n- **D)** Le fait que $\\text{Im}(f)$ soit un sous-groupe est une propriété importante, mais ce n'est pas la raison pour laquelle on peut définir $\\bar{f}$. C'est une condition nécessaire pour que l'isomorphisme final soit un isomorphisme *de groupes*, mais l'existence de l'application $\\bar{f}$ elle-même vient de la propriété universelle.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Le théorème de Lagrange.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** La propriété universelle de l'ensemble quotient, car $f$ est constante sur les classes d'équivalence modulo $K$.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** L'axiome du choix, qui permet de choisir un représentant pour chaque classe de $G/K$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Le fait que $\\text{Im}(f)$ soit un sous-groupe de $H$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "stackId": "f760971b",
+      "content": "#### Question 7 : Idéaux Premiers et Anneaux Quotients\n\nSoit $A$ un anneau commutatif. Un idéal $I \\subsetneq A$ est dit **premier** si $\\forall a,b \\in A, ab \\in I \\Rightarrow (a \\in I \\text{ ou } b \\in I)$. Quelle est la propriété équivalente pour l'anneau quotient $A/I$ ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nCette question teste la connaissance du lien fondamental entre les types d'idéaux et les structures des anneaux quotients correspondants.\n\n- **A)** L'équivalence est que $A/I$ est un corps si et seulement si $I$ est un idéal **maximal**. Tout idéal maximal est premier, mais la réciproque n'est pas toujours vraie. Par exemple, dans $\\mathbb{Z}[X]$, l'idéal $(X)$ est premier (car $\\mathbb{Z}[X]/(X) \\cong \\mathbb{Z}$ est intègre) mais pas maximal (car $\\mathbb{Z}$ n'est pas un corps).\n\n- **B)** Il n'y a pas de lien direct. L'anneau $A$ peut être infini et l'idéal $I$ tel que $A/I$ soit fini (ex: $\\mathbb{Z}/5\\mathbb{Z}$) ou infini (ex: $\\mathbb{Z}[X]/(X) \\cong \\mathbb{Z}$).\n\n- **C)** C'est la bonne équivalence. Prouvons-le. $A/I$ est intègre signifie que si $(a+I)(b+I) = 0+I$, alors $a+I=0+I$ ou $b+I=0+I$. La condition $(a+I)(b+I) = 0+I$ se traduit par $ab+I=0+I$, soit $ab \\in I$. Les conditions $a+I=0+I$ et $b+I=0+I$ se traduisent par $a \\in I$ et $b \\in I$. Ainsi, la définition de l'intégrité de $A/I$ est : $ab \\in I \\Rightarrow (a \\in I \\text{ ou } b \\in I)$, ce qui est exactement la définition d'un idéal premier $I$. On suppose aussi $1 \\neq 0$ dans $A/I$, ce qui équivaut à $I \\neq A$.\n\n- **D)** Cette propriété est vraie dans de nombreux anneaux mais n'est pas la définition de l'intégrité. Dans un anneau intègre, il n'y a pas de diviseurs de zéro non nuls, donc tout élément non nul est soit inversible, soit non-inversible (mais pas un diviseur de zéro).\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $A/I$ est un corps.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $A/I$ est un anneau fini.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $A/I$ est un anneau intègre.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Tout élément non nul de $A/I$ est soit inversible, soit un diviseur de zéro.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "stackId": "f760971b",
+      "content": "#### Question 8 : Démonstration de la maximalité d'un idéal\n\nSoit $A$ un anneau commutatif et $I$ un idéal. On veut prouver que si l'anneau quotient $A/I$ est un corps, alors l'idéal $I$ est maximal. Un idéal $I$ est maximal s'il est propre ($I \\neq A$) et si pour tout idéal $J$ tel que $I \\subseteq J \\subseteq A$, on a $J=I$ ou $J=A$.\n\nQuelle est l'étape clé de cette preuve ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nCette question demande d'identifier l'argument central dans une preuve importante de la théorie des anneaux.\n\n- **A)** La surjectivité de $\\pi$ est vraie par définition, mais ce n'est qu'une prémisse. Elle ne constitue pas l'argument principal pour prouver la maximalité de $I$.\n\n- **B)** C'est exactement l'argument central. Soit $J$ un idéal tel que $I \\subsetneq J \\subseteq A$. On veut montrer que $J=A$. Puisque l'inclusion est stricte, il existe un $x \\in J$ tel que $x \\notin I$. Dans l'anneau quotient $A/I$, la classe $\\bar{x} = x+I$ est non nulle. Comme $A/I$ est un corps, $\\bar{x}$ est inversible. Il existe donc $\\bar{y} = y+I$ dans $A/I$ tel que $\\bar{x}\\bar{y} = \\bar{1}$. Cela signifie $xy+I = 1+I$, donc $1-xy \\in I$. On peut écrire $1 = xy+i$ pour un $i \\in I$. Or, $x \\in J$ et $y \\in A$, donc $xy \\in J$ (car $J$ est un idéal). De plus, $i \\in I \\subset J$. Donc $xy+i \\in J$. On a donc montré que $1 \\in J$. Si un idéal $J$ contient l'unité $1_A$, alors pour tout $a \\in A$, $a=a \\cdot 1 \\in J$, donc $J=A$. Ceci conclut la preuve.\n\n- **C)** C'est une approche plus avancée (le théorème de correspondance). C'est un moyen élégant de voir le résultat : les idéaux de $A/I$ sont $\\{0\\}$ et $A/I$ lui-même. Par correspondance, les idéaux de $A$ contenant $I$ ne sont que $I$ et $A$. C'est correct, mais l'option B décrit l'argument \"de base\" qui sous-tend ce théorème de correspondance. La question demande l'étape clé de \"la\" preuve (implicitement, la preuve directe).\n\n- **D)** C'est une étape correcte (un corps est toujours intègre, donc $I$ est premier), mais cela ne suffit pas pour prouver que $I$ est maximal. Savoir que $I$ est premier n'est pas aussi fort que de savoir qu'il est maximal.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Montrer que l'homomorphisme canonique $\\pi: A \\to A/I$ est surjectif.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Considérer un idéal $J$ tel que $I \\subsetneq J$, choisir un élément $x \\in J \\setminus I$, et utiliser l'inversibilité de sa classe $\\bar{x}$ dans $A/I$ pour montrer que $1_A \\in J$.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Utiliser le premier théorème d'isomorphisme pour construire une bijection entre les idéaux de $A/I$ et les idéaux de $A$ contenant $I$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Prouver que si $A/I$ est un corps, alors il est nécessairement un anneau intègre, ce qui implique que $I$ est premier.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "stackId": "f760971b",
+      "content": "#### Question 9 : Groupes Quotients non Abéliens\n\nSoit $G$ un groupe et $H$ un sous-groupe. Pour que l'ensemble des classes à gauche $G/H = \\{gH \\mid g \\in G\\}$ puisse être muni d'une structure de groupe via l'opération $(g_1 H)(g_2 H) = (g_1 g_2)H$, il est nécessaire que cette opération soit bien définie. Cela signifie que si $g_1 H = g'_1 H$ and $g_2 H = g'_2 H$, alors $(g_1 g_2)H = (g'_1 g'_2)H$. Quelle condition sur $H$ est nécessaire et suffisante pour cela ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nCette question teste la compréhension de la condition fondamentale pour la construction d'un groupe quotient dans le cas général (non nécessairement abélien).\n\n- **A)** La commutativité de $H$ n'est ni nécessaire ni suffisante. Par exemple, $SL_n(\\mathbb{R})$ est un sous-groupe normal de $GL_n(\\mathbb{R})$ (c'est le noyau du déterminant), mais il n'est pas abélien pour $n \\ge 3$. Le groupe quotient $GL_n/SL_n \\cong \\mathbb{R}^*$ est bien défini.\n\n- **B)** Si $G$ est abélien, alors tout sous-groupe $H$ est normal, car $g h g^{-1} = g g^{-1} h = h \\in H$ pour tout $g \\in G, h \\in H$. Donc la construction fonctionne toujours. Cependant, cette condition est suffisante mais pas nécessaire. Il existe de nombreux groupes quotients bien définis où $G$ n'est pas abélien.\n\n- **C)** C'est la condition exacte. Démontrons-le brièvement. Supposons $H$ normal. Si $g'_1 = g_1 h_1$ et $g'_2 = g_2 h_2$ avec $h_1, h_2 \\in H$. Alors $g'_1 g'_2 = g_1 h_1 g_2 h_2$. On veut montrer que ceci est dans $(g_1 g_2)H$. On a $g_1 h_1 g_2 h_2 = g_1 (g_2 g_2^{-1}) h_1 g_2 h_2 = (g_1 g_2) (g_2^{-1} h_1 g_2) h_2$. Puisque $H$ est normal, l'élément $h'_1 = g_2^{-1} h_1 g_2$ est dans $H$. L'expression devient $(g_1 g_2) (h'_1 h_2)$. Comme $h'_1 h_2 \\in H$, on a bien $g'_1 g'_2 \\in (g_1 g_2)H$. La réciproque se prouve également. C'est la condition nécessaire et suffisante.\n\n- **D)** Le centre de $G$ est l'ensemble des éléments qui commutent avec tous les autres. C'est un sous-groupe normal, mais son existence (non-triviale) n'a pas de rapport direct avec la normalité d'un sous-groupe *quelconque* $H$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $H$ doit être un sous-groupe abélien.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $G$ doit être un groupe abélien.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $H$ doit être un sous-groupe normal (ou distingué) de $G$, c'est-à-dire $\\forall g \\in G, gHg^{-1} = H$.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Le centre de $G$, $Z(G)$, doit être non trivial.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "stackId": "f760971b",
+      "content": "#### Question 10 : Axiome du Choix et Surjectivité\n\nLa preuve qu'une application surjective $f:X \\to Y$ (avec $X, Y$ non vides) admet un inverse à droite (une section) repose de manière cruciale sur l'Axiome du Choix (AC). Identifiez précisément où et comment l'AC est utilisé dans la construction de la section $s: Y \\to X$.\n",
+      "solution": "\n\n**Réponse : [A]**\n\nCette question teste une compréhension fine d'un point théorique important en théorie des ensembles, souvent mentionné en introduction aux structures algébriques.\n\n- **A)** C'est l'utilisation exacte de l'Axiome du Choix dans ce contexte. La surjectivité de $f$ garantit que pour chaque $y \\in Y$, l'ensemble $f^{-1}(\\{y\\})$ est une partie non vide de $X$. On considère alors la collection de tous ces ensembles non vides, indexée par $Y$ : $\\mathcal{C} = \\{ f^{-1}(\\{y\\}) \\mid y \\in Y \\}$. L'Axiome du Choix affirme qu'il existe une fonction $s: Y \\to \\bigcup_{y \\in Y} f^{-1}(\\{y\\}) = X$ telle que pour tout $y \\in Y$, $s(y) \\in f^{-1}(\\{y\\})$. Par définition de $f^{-1}(\\{y\\})$, cela signifie que $f(s(y))=y$ pour tout $y \\in Y$, donc $f \\circ s = \\text{id}_Y$.\n\n- **B)** L'associativité de la composition est une propriété fondamentale des applications qui ne dépend pas de l'Axiome du Choix. Elle se démontre directement à partir de la définition de la composition.\n\n- **C)** Le principe du bon ordre est en effet équivalent à l'Axiome du Choix. Il est donc vrai que l'on *pourrait* utiliser cette équivalence pour construire $s$. Cependant, l'approche décrite en A) est la formulation la plus directe et la plus standard de l'application de l'AC dans cette preuve. L'option A décrit le mécanisme même de l'axiome plutôt qu'une de ses conséquences équivalentes.\n\n- **D)** C'est faux. Même si $X$ et $Y$ sont dénombrables, l'AC (ou une forme plus faible comme l'Axiome du Choix Dénombrable) peut être nécessaire. Si l'on n'a pas de règle explicite pour choisir un antécédent, on doit invoquer un principe de choix. Par exemple, pour la fonction $f: \\mathbb{R} \\to \\mathbb{R}_{\\ge 0}$, $f(x)=x^2$, on peut définir explicitement une section $s(y)=\\sqrt{y}$ sans l'AC. Mais si $f: \\mathbb{R} \\to \\mathbb{R}$ est une surjection très \"pathologique\", il peut n'exister aucune section définissable explicitement.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Pour chaque $y \\in Y$, l'ensemble des antécédents $f^{-1}(\\{y\\})$ est non vide. L'AC postule l'existence d'une fonction de choix qui sélectionne simultanément un élément $x_y \\in f^{-1}(\\{y\\})$ pour chaque $y \\in Y$.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** L'AC est utilisé pour prouver que la composition d'applications est associative, ce qui est nécessaire pour vérifier que $f \\circ s = \\text{id}_Y$.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** L'AC garantit que si $Y$ est infini, il est possible de bien ordonner ses éléments, ce qui permet de construire $s$ par récurrence transfinie.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** L'AC n'est pas nécessaire si les ensembles $X$ et $Y$ sont dénombrables.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "stackId": "f760971b",
+      "content": "#### Question 11 : Construction de $\\mathbb{Z}$ à partir de $\\mathbb{N}$\n\nLa construction de l'ensemble des entiers relatifs $\\mathbb{Z}$ se fait en considérant l'ensemble $E=\\mathbb{N} \\times \\mathbb{N}$ muni de la relation d'équivalence $(a,b) \\sim (c,d) \\iff a+d=b+c$. On pose $\\mathbb{Z} = E/\\sim$. Soit $\\text{cl}(a,b)$ la classe d'équivalence de $(a,b)$. Comment l'addition sur $\\mathbb{Z}$ est-elle définie et pourquoi est-elle bien définie ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nCette question examine la rigueur dans la construction des structures algébriques par quotient. La vérification que les opérations sont bien définies est une étape cruciale et non triviale.\n\n- **A)** La formule proposée est incorrecte. Elle ne correspond pas à l'intuition que $\\text{cl}(a,b)$ représente \"$a-b$\". En effet, $(a-b)+(c-d)$ devrait être $(a+c)-(b+d)$, ce qui correspond à la formule de l'option B.\n\n- **B)** C'est la définition correcte. Pour prouver qu'elle est bien définie, on part des hypothèses $a+b' = b+a'$ et $c+d' = d+c'$. On veut prouver que $(a+c) + (b'+d') = (b+d) + (a'+c')$. En additionnant les deux hypothèses membre à membre, on obtient $(a+b') + (c+d') = (b+a') + (d+c')$. Par associativité et commutativité de l'addition dans $\\mathbb{N}$, on peut réarranger les termes pour obtenir $(a+c) + (b'+d') = (a'+c') + (b+d)$, ce qui est exactement la condition pour que $\\text{cl}(a+c,b+d) = \\text{cl}(a'+c', b'+d')$.\n\n- **C)** Cette formule est celle de la multiplication des fractions, pas de l'addition des entiers relatifs. La multiplication sur $\\mathbb{Z}$ est définie par $\\text{cl}(a,b) \\times \\text{cl}(c,d) = \\text{cl}(ac+bd, ad+bc)$, qui correspond à l'identité $(a-b)(c-d)=(ac+bd)-(ad+bc)$.\n\n- **D)** C'est faux. C'est précisément de cette manière, via un ensemble quotient, que l'on construit rigoureusement $\\mathbb{Z}$ (et son addition) à partir de $\\mathbb{N}$. Cette construction est un exemple paradigmatique de la méthode des quotients. C'est la construction de Grothendieck appliquée au monoïde $(\\mathbb{N},+)$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\text{cl}(a,b) + \\text{cl}(c,d) = \\text{cl}(a+b, c+d)$. Cette opération est bien définie car l'addition sur $\\mathbb{N}$ est associative.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\text{cl}(a,b) + \\text{cl}(c,d) = \\text{cl}(a+c, b+d)$. La vérification de la bonne définition requiert de montrer que si $(a,b) \\sim (a',b')$ et $(c,d) \\sim (c',d')$, alors $(a+c, b+d) \\sim (a'+c', b'+d')$.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $\\text{cl}(a,b) + \\text{cl}(c,d) = \\text{cl}(ad+bc, bd)$. C'est la définition de la multiplication, pas de l'addition.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** On ne peut pas définir une addition sur $\\mathbb{Z}$ de cette manière, il faut utiliser la propriété universelle des groupes.",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

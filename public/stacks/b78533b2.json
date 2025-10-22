@@ -1,0 +1,110 @@
+{
+  "info": {
+    "id": "b78533b2",
+    "title": "Rappels de logique et suites numériques - fiches de révision (A)",
+    "type": "cards",
+    "level": "regular",
+    "chapter": "Rappels de logique et suites numériques",
+    "course": "Analyse",
+    "tags": [
+      "logique",
+      "suites numériques",
+      "analyse",
+      "mathématiques"
+    ],
+    "count": 13
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "b78533b2",
+      "content": "Qu'est-ce qu'une implication logique ($A \\Rightarrow B$) et quand est-elle vraie ?",
+      "solution": "\n\nUne implication est un énoncé de la forme \"Si A est vraie, alors B est vraie\", noté $A \\Rightarrow B$.\n\n-   $A$ est l'**hypothèse**.\n-   $B$ est la **conclusion**.\n\nUne implication $A \\Rightarrow B$ est considérée comme **vraie dans tous les cas, sauf un seul** : lorsque l'hypothèse $A$ est vraie et que la conclusion $B$ est fausse.\n\nCela peut paraître surprenant, mais si l'hypothèse $A$ est fausse, l'implication est toujours considérée comme vraie, peu importe la conclusion. Par exemple, l'affirmation \"Si la lune est en fromage ($A$, faux), alors $2+2=5$ ($B$, faux)\" est une implication logiquement vraie.\n\n**Exemple :** Soit l'implication $x = 3 \\Rightarrow x^2 = 9$.\n\n-   Si $x=3$ (hypothèse vraie), alors $x^2=9$ (conclusion vraie). L'implication est vraie.\n-   Si $x=-3$ (hypothèse fausse), alors $x^2=9$ (conclusion vraie). L'implication est vraie.\n-   Si $x=2$ (hypothèse fausse), alors $x^2=4$ (conclusion fausse). L'implication est vraie.\n\nLe seul cas qui rendrait cette implication fausse serait de trouver un $x$ tel que $x=3$ soit vrai mais $x^2=9$ soit faux, ce qui est impossible.\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "b78533b2",
+      "content": "Expliquez le principe de la démonstration par contraposée.",
+      "solution": "\n\nLa démonstration par contraposée est une technique de preuve indirecte. Elle repose sur le fait qu'une implication $A \\Rightarrow B$ est logiquement équivalente à sa **contraposée** : $non(B) \\Rightarrow non(A)$.\n\n$$ (A \\Rightarrow B) \\Leftrightarrow (non(B) \\Rightarrow non(A)) $$\n\nCela signifie que prouver l'une revient exactement à prouver l'autre. On utilise cette méthode lorsque la démonstration de la contraposée est plus simple ou plus intuitive que la démonstration directe de l'implication originale.\n\n**Étapes :**\n\n1.  Identifier l'hypothèse $A$ et la conclusion $B$ de l'implication à prouver.\n2.  Énoncer la contraposée : formuler la négation de la conclusion ($non(B)$) et la négation de l'hypothèse ($non(A)$).\n3.  Prouver l'implication $non(B) \\Rightarrow non(A)$ par un raisonnement direct.\n4.  Conclure que, puisque la contraposée est vraie, l'implication originale $A \\Rightarrow B$ est également vraie.\n\n**Exemple :** Montrons que \"Si $n^2$ est pair, alors $n$ est pair\" pour un entier $n$.\n\n-   $A :$ \"$n^2$ est pair\"\n-   $B :$ \"$n$ est pair\"\n\nLa contraposée est $non(B) \\Rightarrow non(A)$, ce qui se traduit par : \"Si $n$ est impair, alors $n^2$ est impair\".\n\n**Démonstration de la contraposée :**\n\nSupposons que $n$ est impair ($non(B)$). Il existe donc un entier $k$ tel que $n = 2k + 1$.\n\nCalculons $n^2$ :\n\n$n^2 = (2k+1)^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1$.\n\nEn posant $k' = 2k^2 + 2k$, on a $n^2 = 2k' + 1$, ce qui prouve que $n^2$ est impair ($non(A)$).\n\nLa contraposée est vraie, donc l'implication originale l'est aussi.\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "b78533b2",
+      "content": "Que sont les quantificateurs universel ($\\forall$) et existentiel ($\\exists$) ?",
+      "solution": "\n\nLes quantificateurs sont des symboles logiques qui précisent pour combien d'éléments d'un ensemble une certaine propriété est vraie.\n\n1.  **Le Quantificateur Universel ($\\forall$)**\n    -   **Symbole :** $\\forall$\n    -   **Signification :** \"Pour tout\" ou \"Quel que soit\".\n    -   **Utilisation :** Une proposition $\\forall x \\in E, P(x)$ affirme que la propriété $P(x)$ est vraie pour **tous les éléments sans exception** de l'ensemble $E$.\n    -   **Pour être vraie :** La propriété doit être vérifiée par chaque élément de $E$. Un seul contre-exemple suffit à la rendre fausse.\n\n    **Exemple :** $\\forall x \\in \\mathbb{R}, x^2 \\ge 0$. (Vrai)\n\n2.  **Le Quantificateur Existentiel ($\\exists$)**\n    -   **Symbole :** $\\exists$\n    -   **Signification :** \"Il existe\".\n    -   **Utilisation :** Une proposition $\\exists x \\in E, P(x)$ affirme qu'il y a **au moins un** élément dans l'ensemble $E$ qui vérifie la propriété $P(x)$.\n    -   **Pour être vraie :** Il suffit de trouver un seul élément de $E$ qui vérifie la propriété.\n\n    **Exemple :** $\\exists x \\in \\mathbb{R}, x^2 - 4 = 0$. (Vrai, car $x=2$ est une solution).\n\nUn quantificateur apparenté est $\\exists!$ qui signifie \"il existe un unique\".\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "b78533b2",
+      "content": "Pourquoi l'ordre des quantificateurs est-il crucial ? Illustrez avec un exemple.",
+      "solution": "\n\nInverser l'ordre de deux quantificateurs de nature différente ($\\forall$ et $\\exists$) change radicalement le sens d'une proposition.\n\nConsidérons une propriété $P(x,y)$ qui dépend de deux variables $x \\in E$ et $y \\in F$.\n\n1.  **$\\forall x \\in E, \\exists y \\in F, P(x, y)$**\n    -   **Lecture :** \"Pour chaque $x$ que l'on choisit, on peut trouver un $y$ qui fait que $P(x,y)$ est vraie.\"\n    -   **Interprétation :** Le choix de $y$ peut **dépendre** de $x$. Pour un $x_1$, on peut trouver un $y_1$. Pour un autre $x_2$, on peut trouver un $y_2$ différent.\n\n2.  **$\\exists y \\in F, \\forall x \\in E, P(x, y)$**\n    -   **Lecture :** \"Il existe un $y$ particulier qui fonctionne pour tous les $x$ à la fois.\"\n    -   **Interprétation :** Ce $y$ est \"universel\", il ne dépend pas de $x$. C'est une condition beaucoup plus forte que la première.\n\n**Exemple :** Soit $f: \\mathbb{R} \\to \\mathbb{R}$ une fonction.\n\n-   **Proposition 1 :** $\\forall x \\in \\mathbb{R}, \\exists M \\in \\mathbb{R}, f(x) \\le M$.\n    -   **Signification :** Pour n'importe quel $x$, $f(x)$ est une valeur réelle. On peut toujours trouver un $M$ plus grand, par exemple $M = f(x)+1$. Cette proposition est **toujours vraie** pour n'importe quelle fonction.\n\n-   **Proposition 2 :** $\\exists M \\in \\mathbb{R}, \\forall x \\in \\mathbb{R}, f(x) \\le M$.\n    -   **Signification :** Il existe un nombre $M$ qui est plus grand que **toutes** les valeurs prises par la fonction $f$.\n    -   Ceci est la définition d'une **fonction majorée**. C'est vrai pour $f(x)=-x^2$ (on peut prendre $M=0$), mais faux pour $f(x)=x$.\n\nL'inversion des quantificateurs a transformé une affirmation triviale en une propriété mathématique importante (être majorée).\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "b78533b2",
+      "content": "Comment nie-t-on une proposition contenant des quantificateurs ?",
+      "solution": "\n\nPour nier une proposition quantifiée, on suit deux règles simples :\n\n1.  On transforme chaque $\\forall$ en $\\exists$.\n2.  On transforme chaque $\\exists$ en $\\forall$.\n3.  On nie la propriété qui suit les quantificateurs.\n\n$$ non(\\forall x \\in E, P(x)) \\Leftrightarrow \\exists x \\in E, non(P(x)) $$\n\nLa négation de \"pour tous les $x$, $P(x)$ est vraie\" est \"il existe au moins un $x$ pour lequel $P(x)$ est fausse\".\n\n$$ non(\\exists x \\in E, P(x)) \\Leftrightarrow \\forall x \\in E, non(P(x)) $$\n\nLa négation de \"il existe un $x$ tel que $P(x)$ est vraie\" est \"pour tous les $x$, $P(x)$ est fausse\".\n\n**Exemple :** Nier la proposition \"Tous les chats ($\\forall$) sont noirs ($P$)\".\n\n-   $non(\\forall \\text{ chat}, \\text{ est_noir(chat)})$\n-   $\\Leftrightarrow \\exists \\text{ chat}, non(\\text{est_noir(chat)})$\n-   Traduction : \"Il existe au moins un chat qui n'est pas noir\".\n\n**Exemple avec plusieurs quantificateurs :**\n\nNier $P : \\forall x \\in \\mathbb{R}, \\exists y \\in \\mathbb{R}, x+y > 0$.\n\n-   $non(P) \\Leftrightarrow non(\\forall x \\in \\mathbb{R}, \\exists y \\in \\mathbb{R}, x+y > 0)$\n-   $\\Leftrightarrow \\exists x \\in \\mathbb{R}, non(\\exists y \\in \\mathbb{R}, x+y > 0)$\n-   $\\Leftrightarrow \\exists x \\in \\mathbb{R}, \\forall y \\in \\mathbb{R}, non(x+y > 0)$\n-   $\\Leftrightarrow \\exists x \\in \\mathbb{R}, \\forall y \\in \\mathbb{R}, x+y \\le 0$\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "b78533b2",
+      "content": "Comment structurer une démonstration par récurrence ?",
+      "solution": "\n\nUne démonstration par récurrence sert à prouver qu'une propriété $P(n)$ est vraie pour tous les entiers $n$ à partir d'un certain rang $n_0$. Elle se déroule en deux étapes cruciales.\n\n**Étapes :**\n\n1.  **Initialisation (ou Cas de base)**\n    -   On vérifie que la propriété est vraie pour le premier entier concerné, $n_0$.\n    -   On calcule ce que donne la propriété pour $n=n_0$ et on s'assure que l'énoncé est vrai.\n    -   Cette étape est indispensable, c'est le \"premier domino qui tombe\".\n\n2.  **Hérédité (ou Pas de récurrence)**\n    -   L'objectif est de prouver que si la propriété est vraie pour un certain rang, alors elle est aussi vraie pour le rang suivant. On prouve l'implication $P(k) \\Rightarrow P(k+1)$ pour un entier $k \\ge n_0$ quelconque.\n    -   **Hypothèse de Récurrence (HR) :** On *suppose* que $P(k)$ est vraie pour un entier $k \\ge n_0$ fixé. On énonce clairement cette hypothèse.\n    -   **Démonstration :** En utilisant l'hypothèse de récurrence comme un fait acquis, on doit démontrer que $P(k+1)$ est vraie. On part généralement d'une expression de $P(k+1)$ pour la manipuler et faire apparaître l'expression de $P(k)$, que l'on peut alors remplacer grâce à l'HR.\n\n**Conclusion :**\n\nSi l'initialisation et l'hérédité sont vérifiées, on conclut par le principe de récurrence que la propriété $P(n)$ est vraie pour tout entier $n \\ge n_0$.\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "b78533b2",
+      "content": "Démontrez par récurrence que pour tout $n \\ge 1$, $\\sum_{i=1}^{n} (2i-1) = n^2$.",
+      "solution": "\n\nSoit $P(n)$ la proposition : $\\sum_{i=1}^{n} (2i-1) = n^2$.\n\n1.  **Initialisation (pour $n=1$)**\n    -   Le membre de gauche est $\\sum_{i=1}^{1} (2i-1) = 2(1)-1 = 1$.\n    -   Le membre de droite est $1^2 = 1$.\n    -   On a bien $1=1$, donc $P(1)$ est vraie.\n\n2.  **Hérédité**\n    -   Soit $k \\ge 1$ un entier quelconque.\n    -   **Hypothèse de Récurrence (HR) :** Supposons que $P(k)$ est vraie, c'est-à-dire : $\\sum_{i=1}^{k} (2i-1) = k^2$.\n    -   **But :** Montrons que $P(k+1)$ est vraie, c'est-à-dire : $\\sum_{i=1}^{k+1} (2i-1) = (k+1)^2$.\n\n    Calculons la somme au rang $k+1$ en séparant le dernier terme :\n\n    $$ \\sum_{i=1}^{k+1} (2i-1) = \\left( \\sum_{i=1}^{k} (2i-1) \\right) + (2(k+1)-1) $$\n\n    Grâce à l'hypothèse de récurrence, nous pouvons remplacer la somme jusqu'à $k$ par $k^2$ :\n\n    $$ = k^2 + (2(k+1)-1) $$\n\n    $$ = k^2 + (2k+2-1) $$\n\n    $$ = k^2 + 2k + 1 $$\n\n    On reconnaît une identité remarquable :\n\n    $$ = (k+1)^2 $$\n\n    Nous avons bien prouvé que $\\sum_{i=1}^{k+1} (2i-1) = (k+1)^2$. Donc $P(k+1)$ est vraie.\n\n**Conclusion :** Par le principe de récurrence, la propriété $P(n)$ est vraie pour tout entier $n \\ge 1$.\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "b78533b2",
+      "content": "Quelle est la définition formelle de la convergence d'une suite $(s_n)$ vers une limite $l$ ?",
+      "solution": "\n\nUne suite $(s_n)_{n \\in \\mathbb{N}}$ à valeurs dans $\\mathbb{K}$ (typiquement $\\mathbb{R}$ ou $\\mathbb{C}$) converge vers une limite $l \\in \\mathbb{K}$ si :\n\n$$ \\forall \\epsilon > 0, \\exists N \\in \\mathbb{N}, \\forall n \\in \\mathbb{N}, (n \\ge N \\Rightarrow |s_n - l| \\le \\epsilon) $$\n\nOn note alors $\\lim_{n \\to +\\infty} s_n = l$.\n\n**Explication détaillée de la définition :**\n\n-   **$\\forall \\epsilon > 0$ : \"Pour n'importe quelle marge d'erreur $\\epsilon$...\"**\n\n    Imaginez que $\\epsilon$ est un seuil de tolérance, aussi petit que vous voulez (ex: 0.1, 0.001, ...). Il définit un \"corridor\" de largeur $2\\epsilon$ autour de la limite $l$, c'est-à-dire l'intervalle $[l-\\epsilon, l+\\epsilon]$.\n\n-   **$\\exists N \\in \\mathbb{N}$ : \"...il existe un certain rang $N$...\"**\n\n    Pour le $\\epsilon$ que vous avez choisi, je suis capable de trouver un rang $N$ dans la suite. Ce rang $N$ dépend du $\\epsilon$ : plus $\\epsilon$ est petit, plus $N$ devra être grand.\n\n-   **$\\forall n \\ge N \\Rightarrow |s_n - l| \\le \\epsilon$ : \"...tel qu'à partir de ce rang, tous les termes de la suite sont dans le corridor.\"**\n\n    Cette partie garantit que pour tous les indices $n$ qui viennent après $N$, le terme correspondant $s_n$ est à une distance de $l$ plus petite que $\\epsilon$. La suite \"rentre\" dans le corridor et n'en sort plus jamais.\n\nEn résumé, la convergence signifie que la suite finit par s'accumuler aussi près que l'on veut de la limite $l$.\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "b78533b2",
+      "content": "En utilisant la définition formelle, montrez que la suite $s_n = \\frac{1}{n}$ (pour $n \\ge 1$) converge vers 0.",
+      "solution": "\n\nNous voulons montrer que $\\lim_{n \\to +\\infty} \\frac{1}{n} = 0$.\n\nLa limite candidate est $l=0$. Nous devons appliquer la définition en $\\epsilon-N$.\n\nSoit $\\epsilon > 0$ un réel quelconque.\n\nNous devons trouver un rang $N \\in \\mathbb{N}$ tel que pour tout entier $n \\ge N$, on ait $|s_n - l| \\le \\epsilon$.\n\nRemplaçons $s_n$ et $l$ par leurs valeurs :\n\n$$ |\\frac{1}{n} - 0| \\le \\epsilon $$\n\n$$ \\frac{1}{n} \\le \\epsilon \\quad (\\text{car } n \\ge 1, \\text{ donc } 1/n > 0) $$\n\nPour trouver $N$, nous devons isoler $n$. Comme $n$ et $\\epsilon$ sont positifs, on peut inverser l'inégalité en changeant son sens :\n\n$$ n \\ge \\frac{1}{\\epsilon} $$\n\nLa condition $|s_n - 0| \\le \\epsilon$ est donc satisfaite pour tous les entiers $n$ qui sont plus grands ou égaux à $1/\\epsilon$.\n\nNous pouvons donc choisir un entier $N$ qui vérifie cette condition. Un choix possible est $N = \\lfloor \\frac{1}{\\epsilon} \\rfloor + 1$ (la partie entière de $1/\\epsilon$ plus un, ce qui garantit d'avoir un entier supérieur à $1/\\epsilon$).\n\n**Conclusion formelle :**\n\nPour tout $\\epsilon > 0$, posons $N = \\lfloor \\frac{1}{\\epsilon} \\rfloor + 1$. Alors pour tout entier $n \\ge N$, on a :\n\n$$ n \\ge \\lfloor \\frac{1}{\\epsilon} \\rfloor + 1 > \\frac{1}{\\epsilon} $$\n\n$$ \\implies \\frac{1}{n} < \\epsilon $$\n\n$$ \\implies |\\frac{1}{n} - 0| < \\epsilon $$\n\nComme on peut prendre $\\le$ à la place de $<$, la définition est bien vérifiée. Donc, $\\lim_{n \\to +\\infty} \\frac{1}{n} = 0$.\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "b78533b2",
+      "content": "Quelle est la relation entre une suite convergente et le fait d'être bornée ? La réciproque est-elle vraie ?",
+      "solution": "\n\n**Théorème : Toute suite convergente est bornée.**\n\nSi une suite $(s_n)$ converge vers une limite $l$, alors il existe un nombre réel positif $A$ tel que $|s_n| \\le A$ pour tous les entiers $n$.\n\n**Intuition :**\n\nSi une suite converge, ses termes se rapprochent de la limite $l$. À partir d'un certain rang, tous les termes sont \"piégés\" dans un petit intervalle autour de $l$ et sont donc bornés. Les quelques termes au début de la suite sont en nombre fini, donc ils ne peuvent pas \"s'échapper vers l'infini\". L'ensemble de tous les termes est donc borné.\n\n**La réciproque est FAUSSE.**\n\nUne suite peut être bornée sans être convergente. Être bornée est une condition **nécessaire** à la convergence, mais pas **suffisante**.\n\n**Contre-exemple :**\n\nLa suite $s_n = (-1)^n$. Les termes de la suite sont $1, -1, 1, -1, \\dots$.\n\n-   **Elle est bornée :** Pour tout $n$, $|s_n| = |(-1)^n| = 1$. On peut donc prendre $A=1$. La suite est bien bornée.\n-   **Elle est divergente :** La suite oscille perpétuellement entre 1 et -1 et ne se rapproche d'aucune valeur unique. Elle ne peut donc pas converger.\n\n",
+      "options": []
+    },
+    {
+      "id": "11",
+      "stackId": "b78533b2",
+      "content": "Quelles sont les principales règles de calcul (algèbre) sur les limites de suites ?",
+      "solution": "\n\nSoient $(s_n)$ et $(t_n)$ deux suites qui convergent respectivement vers les limites $l$ et $l'$. Soit $\\lambda$ un scalaire (un nombre réel ou complexe).\n\n-   **Limite d'une somme :** La suite $(s_n + t_n)$ converge et sa limite est la somme des limites.\n\n    $$ \\lim_{n \\to +\\infty} (s_n + t_n) = l + l' $$\n\n-   **Limite d'un produit par un scalaire :** La suite $(\\lambda s_n)$ converge.\n\n    $$ \\lim_{n \\to +\\infty} (\\lambda s_n) = \\lambda l $$\n\n-   **Limite d'un produit :** La suite $(s_n \\cdot t_n)$ converge et sa limite est le produit des limites.\n\n    $$ \\lim_{n \\to +\\infty} (s_n \\cdot t_n) = l \\cdot l' $$\n\n-   **Limite d'un inverse :** Si la limite $l$ est non nulle ($l \\ne 0$), alors la suite $(1/s_n)$ converge.\n\n    $$ \\lim_{n \\to +\\infty} \\frac{1}{s_n} = \\frac{1}{l} $$\n\n-   **Limite d'un quotient :** Si la limite $l'$ est non nulle ($l' \\ne 0$), alors la suite $(s_n / t_n)$ converge.\n\n    $$ \\lim_{n \\to +\\infty} \\frac{s_n}{t_n} = \\frac{l}{l'} $$\n\n**Attention :** Ces règles ne s'appliquent pas directement en cas de formes indéterminées comme \"$\\infty/\\infty$\", \"$\\infty-\\infty$\", etc.\n\n",
+      "options": []
+    },
+    {
+      "id": "12",
+      "stackId": "b78533b2",
+      "content": "Comment calcule-t-on la limite de $s_n = \\frac{3n^2 - 4n + 1}{2n^2 + 5}$ quand $n \\to +\\infty$ ?",
+      "solution": "\n\nCette limite est une forme indéterminée du type \"$\\infty/\\infty$\", on ne peut donc pas appliquer directement le théorème sur le quotient des limites. La méthode consiste à factoriser le numérateur et le dénominateur par le terme de plus haut degré.\n\n**Étapes :**\n\n1.  **Identifier le terme dominant :** Au numérateur et au dénominateur, le terme de plus haut degré est $n^2$.\n\n2.  **Factoriser par ce terme :**\n\n    $$ s_n = \\frac{n^2(3 - \\frac{4n}{n^2} + \\frac{1}{n^2})}{n^2(2 + \\frac{5}{n^2})} $$\n\n3.  **Simplifier l'expression :**\n\n    $$ s_n = \\frac{3 - \\frac{4}{n} + \\frac{1}{n^2}}{2 + \\frac{5}{n^2}} $$\n\n4.  **Calculer la limite des nouvelles expressions :**\n\n    On utilise le fait que $\\lim_{n \\to +\\infty} \\frac{1}{n} = 0$ et $\\lim_{n \\to +\\infty} \\frac{1}{n^2} = 0$.\n\n    -   Limite du numérateur :\n\n        $$ \\lim_{n \\to +\\infty} (3 - \\frac{4}{n} + \\frac{1}{n^2}) = 3 - 4(0) + 0 = 3 $$\n\n    -   Limite du dénominateur :\n\n        $$ \\lim_{n \\to +\\infty} (2 + \\frac{5}{n^2}) = 2 + 5(0) = 2 $$\n\n5.  **Appliquer la règle du quotient :**\n\n    Comme la limite du dénominateur est $2 \\ne 0$, on peut maintenant appliquer la règle :\n\n    $$ \\lim_{n \\to +\\infty} s_n = \\frac{3}{2} $$\n\n**Règle générale :** La limite d'une fraction rationnelle en $n$ à l'infini est égale à la limite du quotient de ses termes de plus haut degré. Ici, $\\lim \\frac{3n^2}{2n^2} = \\frac{3}{2}$.\n\n",
+      "options": []
+    },
+    {
+      "id": "13",
+      "stackId": "b78533b2",
+      "content": "Qu'est-ce qu'un contre-exemple et à quoi sert-il ?",
+      "solution": "\n\nUn **contre-exemple** est un cas particulier qui suffit à démontrer qu'une affirmation générale (une proposition universelle) est **fausse**.\n\nIl est utilisé pour réfuter des énoncés de la forme \"Pour tout $x$ dans l'ensemble $E$, la propriété $P(x)$ est vraie\" (noté $\\forall x \\in E, P(x)$).\n\nPour prouver que cet énoncé est faux, il n'est pas nécessaire de montrer qu'il est faux pour tous les $x$. Il suffit de trouver **un seul** élément $x_0 \\in E$ pour lequel $P(x_0)$ est fausse. Cet élément $x_0$ est le contre-exemple.\n\n**Exemple 1 :**\n\n-   **Affirmation :** \"Tous les nombres premiers sont impairs.\"\n-   **Analyse :** C'est une proposition universelle sur l'ensemble des nombres premiers.\n-   **Contre-exemple :** Le nombre 2 est un nombre premier, mais il est pair, et non impair.\n-   **Conclusion :** L'affirmation est fausse.\n\n**Exemple 2 :**\n\n-   **Affirmation :** Pour tout réel $x$, $x^2 = 9 \\Rightarrow x = 3$.\n-   **Analyse :** On teste la validité de l'implication réciproque de $x=3 \\Rightarrow x^2=9$.\n-   **Contre-exemple :** Prenons $x = -3$.\n    -   L'hypothèse $x^2=9$ est vraie, car $(-3)^2 = 9$.\n    -   La conclusion $x=3$ est fausse, car $-3 \\ne 3$.\n-   **Conclusion :** Puisqu'on a trouvé un cas où l'hypothèse est vraie et la conclusion fausse, l'implication est fausse.\n\n",
+      "options": []
+    }
+  ]
+}

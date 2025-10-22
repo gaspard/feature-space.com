@@ -1,0 +1,105 @@
+{
+  "info": {
+    "id": "8f7acf8e",
+    "title": "Analyse: Suites récurrentes - fiches de révision (A)",
+    "type": "cards",
+    "level": "regular",
+    "chapter": "Analyse: Suites récurrentes",
+    "course": "Constructions et raisonnements mathématiques",
+    "tags": [
+      "analyse",
+      "suites",
+      "limites",
+      "continuité",
+      "dérivabilité",
+      "intégration"
+    ],
+    "count": 12
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "8f7acf8e",
+      "content": "Qu'est-ce qu'une suite récurrente réelle ?",
+      "solution": "\n\nUne **suite récurrente** réelle est une suite de nombres $(u_n)_{n\\in\\mathbb{N}}$ où chaque terme est défini à partir du précédent par une fonction.\n\nLa relation de récurrence s'écrit sous la forme :\n\n$$ u_{n+1} = f(u_n) $$\n\nPour que la suite soit entièrement définie, il faut deux éléments :\n\n1.  Le **premier terme** $u_0$, qui est une valeur donnée.\n2.  La **fonction** $f$, qui permet de calculer n'importe quel terme à partir du précédent.\n\n**Exemple :**\n\nSoit la suite définie par $u_0 = 5$ et la relation $u_{n+1} = \\sqrt{u_n}$.\n\nIci, la fonction est $f(x) = \\sqrt{x}$.\n\n- $u_0 = 5$\n- $u_1 = f(u_0) = f(5) = \\sqrt{5}$\n- $u_2 = f(u_1) = f(\\sqrt{5}) = \\sqrt{\\sqrt{5}} = 5^{1/4}$\n- et ainsi de suite...\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "8f7acf8e",
+      "content": "Qu'est-ce qu'un intervalle stable par une fonction $f$ ?",
+      "solution": "\n\nUn intervalle $I$ est dit **stable** par une fonction $f$ si l'image de n'importe quel élément de $I$ par la fonction $f$ est encore dans $I$.\n\nMathématiquement, cela se traduit par :\n\n$$ \\forall x \\in I, \\quad f(x) \\in I $$\n\nou de manière équivalente, $f(I) \\subset I$.\n\nCette propriété est cruciale pour les suites récurrentes $u_{n+1} = f(u_n)$. Si l'intervalle $I$ est stable par $f$ et que le premier terme $u_0$ appartient à $I$, alors tous les termes suivants $u_1, u_2, u_3, \\dots$ appartiendront aussi à $I$. Cela garantit que la suite est bien définie pour tout $n$.\n\n**Exemple :**\n\nSoit $f(x) = x^2$ et $I = [0, 1]$.\n\nSi on prend n'importe quel $x$ dans $[0, 1]$ (c'est-à-dire $0 \\le x \\le 1$), alors son carré $x^2$ sera aussi dans $[0, 1]$ (car $0^2 \\le x^2 \\le 1^2$).\n\nDonc, l'intervalle $I=[0,1]$ est stable par la fonction $f(x)=x^2$.\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "8f7acf8e",
+      "content": "Comment représenter graphiquement les termes d'une suite récurrente $u_{n+1} = f(u_n)$ ?",
+      "solution": "\n\nOn utilise une méthode visuelle appelée **diagramme en toile d'araignée** (ou en escargot). Pour cela, on a besoin de deux courbes dans un repère :\n\n1.  Le graphe de la fonction $f$, noté $\\mathcal{G}_f$.\n2.  La droite d'équation $y=x$, appelée la première bissectrice, notée $\\mathcal{D}$.\n\nLes étapes de la construction sont les suivantes :\n\n1.  **Placement de $u_0$** : On place la valeur $u_0$ sur l'axe des abscisses.\n2.  **Calcul de $u_1$** : On trace un segment vertical depuis le point $(u_0, 0)$ jusqu'à la courbe $\\mathcal{G}_f$. Le point d'arrivée a pour coordonnées $(u_0, f(u_0))$, c'est-à-dire $(u_0, u_1)$. L'ordonnée de ce point est $u_1$.\n3.  **Report de $u_1$ sur l'abscisse** : Pour continuer le processus, il faut ramener $u_1$ sur l'axe des abscisses. On trace un segment horizontal depuis $(u_0, u_1)$ jusqu'à la droite $\\mathcal{D}$. Le point d'arrivée a pour coordonnées $(u_1, u_1)$.\n4.  **Itération** : On répète les étapes 2 et 3. Depuis $(u_1, u_1)$, on trace un segment vertical vers $\\mathcal{G}_f$ pour trouver $u_2$, puis un segment horizontal vers $\\mathcal{D}$ pour reporter $u_2$, et ainsi de suite.\n\nLa séquence des points sur l'axe des abscisses $(u_0, u_1, u_2, \\dots)$ représente les termes de la suite.\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "8f7acf8e",
+      "content": "Quelles informations peut-on déduire de la représentation en \"toile d'araignée\" d'une suite récurrente ?",
+      "solution": "\n\nLe diagramme en toile d'araignée est un outil puissant pour **conjecturer** le comportement d'une suite récurrente $u_{n+1}=f(u_n)$. Il permet de visualiser :\n\n1.  **La convergence ou la divergence :**\n    - Si la \"toile\" (escalier ou spirale) se rapproche d'un point d'intersection entre le graphe de $f$ et la droite $y=x$, la suite semble converger vers l'abscisse de ce point (qui est un point fixe).\n    - Si la \"toile\" s'éloigne indéfiniment, la suite semble diverger.\n\n2.  **La monotonie :**\n    - Si la construction forme un **escalier** qui \"monte\" (on se déplace vers la droite et vers le haut), la suite est probablement croissante. Cela arrive typiquement si $\\mathcal{G}_f$ est au-dessus de $y=x$.\n    - Si la construction forme un **escalier** qui \"descend\" (on se déplace vers la gauche et vers le bas), la suite est probablement décroissante. Cela arrive typiquement si $\\mathcal{G}_f$ est en dessous de $y=x$.\n    - Si la construction forme une **spirale** (ou un \"escargot\"), la suite n'est pas monotone. Elle oscille autour de la limite. Cela arrive lorsque la fonction $f$ est décroissante.\n\n**Attention :** Cette méthode est visuelle et ne constitue pas une preuve mathématique rigoureuse. Elle sert à formuler des hypothèses.\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "8f7acf8e",
+      "content": "Qu'est-ce qu'un point fixe d'une fonction $f$ et quel est son lien avec la limite d'une suite récurrente ?",
+      "solution": "\n\nUn **point fixe** d'une fonction $f$ est une valeur $l$ qui reste inchangée lorsqu'on lui applique la fonction $f$. Autrement dit :\n\n$$ f(l) = l $$\n\nGraphiquement, les points fixes sont les abscisses des points d'intersection entre le graphe de la fonction $f$ et la droite d'équation $y=x$.\n\nLe lien avec les suites récurrentes $u_{n+1}=f(u_n)$ est fondamental. Le **théorème du point fixe** nous dit que :\n\nSi une suite récurrente $(u_n)$ converge vers une limite $l$, ET si la fonction $f$ est **continue** au point $l$, alors cette limite $l$ est nécessairement un point fixe de $f$.\n\n**En pratique :** Pour trouver la limite potentielle d'une suite, on commence par chercher les points fixes en résolvant l'équation $f(x)=x$. Si la suite converge, sa limite sera l'un de ces points fixes.\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "8f7acf8e",
+      "content": "Comment déterminer la monotonie d'une suite récurrente $u_{n+1}=f(u_n)$ si la fonction $f$ est croissante ?",
+      "solution": "\n\nSi la fonction $f$ est **croissante** sur un intervalle stable $I$ contenant tous les termes de la suite, alors la suite $(u_n)$ est **monotone**.\n\nPour déterminer son sens de variation (croissante ou décroissante), il suffit de comparer les deux premiers termes, $u_0$ et $u_1$.\n\n-   **Si $u_1 \\ge u_0$**, alors la suite $(u_n)$ est **croissante**.\n-   **Si $u_1 \\le u_0$**, alors la suite $(u_n)$ est **décroissante**.\n\n**Démonstration (idée) :**\n\nOn utilise un raisonnement par récurrence.\n\nSupposons que $u_1 \\ge u_0$. Montrons que si $u_{n+1} \\ge u_n$ pour un certain $n$, alors $u_{n+2} \\ge u_{n+1}$.\n\nComme $f$ est croissante, on peut l'appliquer à l'inégalité $u_{n+1} \\ge u_n$ sans changer le sens :\n\n$f(u_{n+1}) \\ge f(u_n)$.\n\nPar définition de la suite, cela signifie $u_{n+2} \\ge u_{n+1}$.\n\nLa propriété est héréditaire, donc la suite est croissante.\n\n**Exemple :**\n\nSoit $u_{n+1} = \\sqrt{u_n+2}$ avec $u_0=1$.\n\nLa fonction $f(x) = \\sqrt{x+2}$ est croissante sur $I=[0, +\\infty[$.\n\n$u_0 = 1$\n\n$u_1 = \\sqrt{1+2} = \\sqrt{3} \\approx 1.732$.\n\nPuisque $u_1 > u_0$, la suite $(u_n)$ est croissante.\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "8f7acf8e",
+      "content": "Soit la suite $u_{n+1} = \\frac{1}{2}\\left(u_n + \\frac{9}{u_n}\\right)$ avec $u_0=4$. On admet que cette suite converge. Quelle est sa limite ?",
+      "solution": "\n\nPour trouver la limite potentielle de la suite, on utilise le **théorème du point fixe**. Si la suite converge vers une limite $l$, et si la fonction associée $f$ est continue, alors $l$ doit être un point fixe de $f$.\n\n1.  **Identifier la fonction $f$ :**\n\n    La relation de récurrence est $u_{n+1} = f(u_n)$, donc $f(x) = \\frac{1}{2}\\left(x + \\frac{9}{x}\\right)$.\n\n    La fonction $f$ est continue sur $]0, +\\infty[$. Comme $u_0=4>0$, on peut supposer que tous les termes resteront positifs.\n\n2.  **Résoudre l'équation du point fixe $f(l) = l$ :**\n\n    $$ l = \\frac{1}{2}\\left(l + \\frac{9}{l}\\right) $$\n\n    On multiplie par 2 :\n\n    $$ 2l = l + \\frac{9}{l} $$\n\n    On soustrait $l$ :\n\n    $$ l = \\frac{9}{l} $$\n\n    On multiplie par $l$ (en supposant $l \\neq 0$) :\n\n    $$ l^2 = 9 $$\n\n    Les solutions sont $l=3$ et $l=-3$.\n\n3.  **Choisir la bonne limite :**\n\n    La suite commence avec $u_0 = 4$, qui est positif. Tous les termes suivants, calculés par $f(x) = \\frac{1}{2}(x+\\frac{9}{x})$, seront également positifs (car si $x>0$, $x+\\frac{9}{x}>0$).\n\n    La limite $l$ d'une suite de termes positifs doit être positive ou nulle.\n\n    Par conséquent, la seule limite possible est $l=3$.\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "8f7acf8e",
+      "content": "Qu'est-ce qu'une fonction contractante ?",
+      "solution": "\n\nUne fonction $f$ est dite **contractante** sur un intervalle $I$ si elle \"rapproche\" les points.\n\nFormellement, il doit exister une constante $k$ telle que $0 \\le k < 1$ et pour tous $x, y$ dans $I$ :\n\n$$ |f(x) - f(y)| \\le k |x - y| $$\n\nLa constante $k$ est appelée le **rapport de contraction**.\n\nCela signifie que la distance entre les images $f(x)$ et $f(y)$ est toujours plus petite que la distance initiale entre $x$ et $y$, réduite d'un facteur au moins $k$.\n\n**Comment vérifier si une fonction est contractante ?**\n\nUne méthode simple s'applique si la fonction $f$ est dérivable. D'après l'inégalité des accroissements finis, il suffit de vérifier si la valeur absolue de sa dérivée est majorée par $k < 1$ sur tout l'intervalle $I$.\n\nSi $\\sup_{x \\in I} |f'(x)| \\le k < 1$, alors $f$ est $k$-contractante sur $I$.\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "8f7acf8e",
+      "content": "Qu'énonce le théorème du point fixe pour une fonction contractante ?",
+      "solution": "\n\nLe **théorème du point fixe contractant** (aussi appelé théorème de Banach-Picard) est un résultat très puissant qui garantit non seulement l'existence et l'unicité d'un point fixe, mais aussi la convergence vers ce point.\n\n**Hypothèses :**\n\nSoit $I$ un intervalle **fermé** de $\\mathbb{R}$, et $f$ une fonction qui vérifie :\n\n1.  $I$ est **stable** par $f$ (c'est-à-dire $f(I) \\subset I$).\n2.  $f$ est **contractante** sur $I$ (avec un rapport $k < 1$).\n\n**Conclusion :**\n\n1.  Il existe un **unique point fixe** $l$ pour la fonction $f$ dans l'intervalle $I$.\n2.  Pour **n'importe quel point de départ** $u_0 \\in I$, la suite récurrente définie par $u_{n+1} = f(u_n)$ **converge** vers cet unique point fixe $l$.\n\nCe théorème est très fort car il ne demande aucune information sur la monotonie et garantit la convergence pour n'importe quel point de départ dans l'intervalle stable.\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "8f7acf8e",
+      "content": "Comment savoir si un point fixe $l$ est attractif ou répulsif ?",
+      "solution": "\n\nLa nature d'un point fixe $l$ (c'est-à-dire s'il attire ou repousse les termes de la suite proches de lui) peut être déterminée en étudiant la valeur de la **dérivée** de la fonction $f$ en ce point, notée $f'(l)$.\n\nSoit $l$ un point fixe tel que $f(l)=l$.\n\n1.  **Point fixe attractif :**\n\n    Si $|f'(l)| < 1$, le point fixe est **attractif**.\n\n    Cela signifie que si on démarre la suite avec un $u_0$ suffisamment proche de $l$, la suite $(u_n)$ convergera vers $l$. La convergence est d'autant plus rapide que $|f'(l)|$ est proche de 0. Si $f'(l)=0$, le point est dit *super-attractif*.\n\n2.  **Point fixe répulsif :**\n\n    Si $|f'(l)| > 1$, le point fixe est **répulsif**.\n\n    Cela signifie que si on démarre la suite avec un $u_0$ très proche de $l$ (mais différent de $l$), la suite va s'éloigner de $l$.\n\n3.  **Cas douteux :**\n\n    Si $|f'(l)| = 1$, on ne peut pas conclure avec la dérivée première. Le comportement de la suite dépend des termes d'ordre supérieur et doit être étudié plus en détail.\n\n",
+      "options": []
+    },
+    {
+      "id": "11",
+      "stackId": "8f7acf8e",
+      "content": "Quelle est la formule de récurrence de la méthode de Newton et quel est son objectif ?",
+      "solution": "\n\nLa **méthode de Newton** est un algorithme qui a pour objectif de trouver une approximation numérique d'une **racine** (ou un zéro) d'une fonction $F(x)$, c'est-à-dire une solution à l'équation $F(x)=0$.\n\nL'idée est de construire une suite $(u_n)$ qui converge très rapidement vers la racine. Partant d'une estimation initiale $u_0$, la formule de récurrence pour calculer le terme suivant est :\n\n$$ u_{n+1} = u_n - \\frac{F(u_n)}{F'(u_n)} $$\n\n**Où :**\n\n- $u_n$ est l'approximation actuelle de la racine.\n- $F(u_n)$ est la valeur de la fonction en ce point.\n- $F'(u_n)$ est la valeur de la dérivée de la fonction en ce point.\n\n**Interprétation géométrique :**\n\n$u_{n+1}$ est l'abscisse du point où la tangente à la courbe de $F$ au point $(u_n, F(u_n))$ coupe l'axe des abscisses. On remplace la courbe par sa tangente pour trouver une meilleure approximation de la racine.\n\n",
+      "options": []
+    },
+    {
+      "id": "12",
+      "stackId": "8f7acf8e",
+      "content": "Pourquoi la méthode de Newton est-elle en général si rapide ?",
+      "solution": "\n\nLa rapidité de la méthode de Newton vient de la nature du point fixe de sa fonction d'itération.\n\nLa méthode de Newton est une suite récurrente $u_{n+1} = f(u_n)$ avec la fonction d'itération $f(x) = x - \\frac{F(x)}{F'(x)}$.\n\nOn cherche une racine $l$ de $F$, c'est-à-dire un point où $F(l)=0$. Ce point $l$ est un point fixe de $f$. Pour analyser la vitesse de convergence, on regarde la dérivée $f'(l)$.\n\nLe calcul de la dérivée de $f$ donne :\n\n$$ f'(x) = 1 - \\frac{[F'(x)]^2 - F(x)F''(x)}{[F'(x)]^2} $$\n\nLorsqu'on évalue cette dérivée au point fixe $l$, on a $F(l)=0$. La formule se simplifie énormément :\n\n$$ f'(l) = 1 - \\frac{[F'(l)]^2 - 0}{[F'(l)]^2} = 1 - 1 = 0 $$\n\nPuisque $|f'(l)| = 0 < 1$, le point fixe $l$ est non seulement attractif, mais **super-attractif**.\n\nUne dérivée nulle au point fixe implique une convergence **quadratique**. Cela signifie qu'à chaque étape, le nombre de chiffres décimaux corrects double approximativement. C'est une convergence extrêmement rapide par rapport à des méthodes où $|f'(l)|$ est simplement inférieur à 1 (convergence géométrique/linéaire).\n\n",
+      "options": []
+    }
+  ]
+}

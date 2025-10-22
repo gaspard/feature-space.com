@@ -4,6 +4,30 @@ import * as S from "sury/src/S.mjs";
 import * as Card from "./Card.mjs";
 import * as CardProgress from "./CardProgress.mjs";
 
+function stackTypeToString(stackType) {
+  if (stackType === "cards") {
+    return "Cards";
+  } else {
+    return "Quiz";
+  }
+}
+
+function stackTypeToEmoji(stackType) {
+  if (stackType === "cards") {
+    return "📚";
+  } else {
+    return "✅";
+  }
+}
+
+function levelToString(level) {
+  if (level === "regular") {
+    return "Regular";
+  } else {
+    return "Pro";
+  }
+}
+
 var stackTypeSchema = S.union([
       S.literal("cards"),
       S.literal("quiz")
@@ -45,6 +69,9 @@ var stackSchema = S.object(function (s) {
 var tocSchema = S.array(infoSchema);
 
 export {
+  stackTypeToString ,
+  stackTypeToEmoji ,
+  levelToString ,
   stackTypeSchema ,
   levelSchema ,
   infoSchema ,

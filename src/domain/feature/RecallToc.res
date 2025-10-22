@@ -1,63 +1,66 @@
 type sprog = Loading | NotStarted | Started(Stack.progress)
 
+type pstack = {
+  info: Stack.info,
+  prog: sprog,
+}
+
 type t = {
-  stacks: array<(Stack.info, sprog)>,
+  stacks: array<pstack>,
   setActive: (string, bool) => unit,
 }
 
 let loadProgress = async (prog: RepositoryType.progress, set, info: Stack.info) => {
   switch await prog.get(info.id) {
-  | None => set((info, NotStarted))
-  | Some(p) => set((info, Started(p)))
+  | None => set({info, prog: NotStarted})
+  | Some(p) => set({info, prog: Started(p)})
   }
 }
 
-let stacks = async (repo: RepositoryType.t, setList) => {
-  let list = (await repo.stack.toc())->Array.map(info => (info, Loading))
-  // Early toc display
-  setList(list)
-  let set = (idx, value) => list[idx] = value
-  list->Array.forEachWithIndex(((info, _), i) => {
-    // Async load of progress
-    ignore(loadProgress(repo.progress, set(i, ...), info))
-  })
+let stacks = (repo: RepositoryType.t, path: string) => {
+  async setList => {
+    Js.log("LOADING STACKS")
+    let list = (await repo.stack.toc(path))->Array.map(info => {info, prog: Loading})
+    Js.log(`STACKS: ${list->JSON.stringifyAny(~space=2)->Option.getExn}`)
+    // Early toc display
+    setList(list)
+    let set = (idx, value) => list[idx] = value
+    list->Array.forEachWithIndex(({info}, i) => {
+      // Async load of progress
+      ignore(loadProgress(repo.progress, set(i, ...), info))
+    })
+  }
 }
 
-let setActive = (
-  {save}: RepositoryType.progress,
-  list: Tilia.signal<array<(Stack.info, sprog)>>,
-) => (id, active) => {
-  switch list.value->Array.findIndex(((v, _)) => v.id == id) {
+let setActive = ({save}: RepositoryType.progress) => ({stacks}) => (id, active) => {
+  switch stacks->Array.findIndex(v => v.info.id == id) {
   | -1 => () // Not found: ignore for now
   | i =>
-    switch list.value[i] {
-    | Some((_, Started(p))) => {
+    switch stacks[i] {
+    | Some({prog: Started(p)}) => {
         p.active = active
         ignore(save(p))
       }
-    | Some((info, NotStarted)) => {
+    | Some({info, prog: NotStarted}) => {
         let p: Stack.progress = {
           id: info.id,
           active,
           cards: Dict.make(),
         }
-        list.value[i] = (info, Started(p))
+        stacks[i] = {info, prog: Started(p)}
         ignore(save(p))
       }
-    | Some((_, Loading)) => () // Ignore for now
+    | Some({prog: Loading}) => () // Ignore for now
     | None => () // Unreachable
     }
   }
 }
 
-let make = (repo: RepositoryType.t): t => {
+let make = (repo: RepositoryType.t, path: string): t => {
   open Tilia
 
-  let (list, set) = signal([])
-  ignore(stacks(repo, set))
-
-  tilia({
-    stacks: lift(list),
-    setActive: setActive(repo.progress, list),
+  carve(({derived}) => {
+    stacks: source(stacks(repo, path), []),
+    setActive: derived(setActive(repo.progress)),
   })
 }

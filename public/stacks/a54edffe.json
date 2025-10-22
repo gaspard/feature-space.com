@@ -1,0 +1,112 @@
+{
+  "info": {
+    "id": "a54edffe",
+    "title": "Outillage - fiches de révision (A)",
+    "type": "cards",
+    "level": "regular",
+    "chapter": "Outillage",
+    "course": "Constructions et raisonnements mathématiques",
+    "tags": [
+      "logique",
+      "ensembles",
+      "fonctions",
+      "nombres réels",
+      "nombres complexes",
+      "langage mathématique"
+    ],
+    "count": 13
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "a54edffe",
+      "content": "Qu'est-ce qu'une **proposition** en logique mathématique ?",
+      "solution": "\n\nUne **proposition** est un énoncé (une phrase déclarative) qui possède une et une seule **valeur de vérité** : soit elle est vraie (V), soit elle est fausse (F), mais jamais les deux en même temps.\n\nCette caractéristique permet d'appliquer des opérations logiques pour construire des raisonnements rigoureux.\n\n**Exemples :**\n\n-   \"Paris est la capitale de la France.\" est une proposition vraie.\n-   \"$2 + 2 = 5$\" est une proposition fausse.\n-   \"$n$ est un nombre pair\" n'est pas une proposition tant que $n$ n'est pas défini. C'est un prédicat.\n\n**Contre-exemples (ce qui n'est pas une proposition) :**\n\n-   Une question : \"Quelle heure est-il ?\" (n'est ni vraie ni fausse).\n-   Un ordre : \"Faites cet exercice.\" (n'est ni vrai ni faux).\n-   Un paradoxe : \"Cette phrase est fausse.\" (ne peut avoir une valeur de vérité cohérente).\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "a54edffe",
+      "content": "Que sont les **lois de De Morgan** et à quoi servent-elles ?",
+      "solution": "\n\nLes **lois de De Morgan** sont des règles de logique qui expliquent comment distribuer la négation (`non`) sur une conjonction (`et`) ou une disjonction (`ou`). Elles sont essentielles pour nier des propositions composées.\n\n**Formules :**\n\nSoient $P$ et $Q$ deux propositions.\n\n1.  Négation de la conjonction (\"et\") :\n\n    $\\text{non}(P \\text{ et } Q) \\Leftrightarrow (\\text{non } P) \\text{ ou } (\\text{non } Q)$\n\n    Nier que \"P et Q sont vraies\" signifie que \"soit P est fausse, soit Q est fausse (soit les deux)\".\n\n2.  Négation de la disjonction (\"ou\") :\n\n    $\\text{non}(P \\text{ ou } Q) \\Leftrightarrow (\\text{non } P) \\text{ et } (\\text{non } Q)$\n\n    Nier que \"l'une des deux est vraie\" signifie que \"P est fausse et Q est fausse\".\n\n**Exemple :**\n\nNier la phrase \"Il fait beau et je suis heureux\".\n\n-   $P$ : \"Il fait beau\"\n-   $Q$ : \"Je suis heureux\"\n-   La phrase est $P \\text{ et } Q$.\n-   Sa négation $\\text{non}(P \\text{ et } Q)$ est, d'après la première loi de De Morgan, $(\\text{non } P) \\text{ ou } (\\text{non } Q)$.\n-   La négation est donc : \"Il ne fait pas beau ou je ne suis pas heureux\".\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "a54edffe",
+      "content": "Dans quel unique cas une **implication logique** $P \\Rightarrow Q$ est-elle fausse ? Expliquez à l'aide de sa table de vérité.",
+      "solution": "\n\nUne implication logique $P \\Rightarrow Q$ (lue \"si $P$, alors $Q$\") est fausse dans un seul et unique cas : **lorsque l'hypothèse $P$ est vraie et que la conclusion $Q$ est fausse**.\n\nDans tous les autres cas, l'implication est considérée comme vraie. En particulier, si l'hypothèse $P$ est fausse, l'implication est toujours vraie, quelle que soit la valeur de vérité de $Q$. On dit qu'\"avec une hypothèse fausse, on peut prouver n'importe quoi\".\n\n**Table de vérité :**\n\n| P | Q | P ⇒ Q | Commentaire |\n\n|---|---|---|---|\n\n| V | V | V | Une hypothèse vraie mène à une conclusion vraie. L'implication est respectée. |\n\n| **V** | **F** | **F** | **Une hypothèse vraie mène à une conclusion fausse. C'est le seul cas de rupture de l'implication.** |\n\n| F | V | V | L'hypothèse est fausse, l'implication est vraie par défaut. |\n\n| F | F | V | L'hypothèse est fausse, l'implication est vraie par défaut. |\n\n**Exemple :**\n\nConsidérons l'affirmation \"S'il pleut ($P$), alors le sol est mouillé ($Q$)\".\n\n-   Si il pleut (P vrai) et que le sol n'est pas mouillé (Q faux), l'affirmation est clairement fausse.\n-   Si il ne pleut pas (P faux), l'affirmation reste valable que le sol soit mouillé (par un arroseur) ou sec.\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "a54edffe",
+      "content": "Étant donnée une implication $P \\Rightarrow Q$, définissez sa **réciproque** et sa **contraposée**. Laquelle est logiquement équivalente à l'implication de départ ?",
+      "solution": "\n\nÀ partir d'une implication de base $P \\Rightarrow Q$, on peut former deux autres implications importantes :\n\n1.  La **réciproque** : On inverse l'hypothèse et la conclusion. La réciproque est $Q \\Rightarrow P$.\n\n    La vérité de la réciproque est indépendante de celle de l'implication de départ.\n\n2.  La **contraposée** : On nie l'hypothèse et la conclusion, puis on les inverse. La contraposée est $(\\text{non } Q) \\Rightarrow (\\text{non } P)$.\n\nLa **contraposée** est toujours logiquement équivalente à l'implication de départ. Cela signifie que $P \\Rightarrow Q$ et $(\\text{non } Q) \\Rightarrow (\\text{non } P)$ ont exactement la même table de vérité. Démontrer l'une revient à démontrer l'autre.\n\n**Exemple :**\n\n-   **Implication** : \"Si un animal est un chien ($P$), alors c'est un mammifère ($Q$).\" (Vrai)\n-   **Réciproque** : \"Si un animal est un mammifère ($Q$), alors c'est un chien ($P$).\" (Faux, un chat est un mammifère mais pas un chien).\n-   **Contraposée** : \"Si un animal n'est pas un mammifère ($\\text{non } Q$), alors ce n'est pas un chien ($\\text{non } P$).\" (Vrai).\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "a54edffe",
+      "content": "Quelle est la différence fondamentale entre les énoncés `∀x, ∃y, P(x, y)` et `∃y, ∀x, P(x, y)` ?",
+      "solution": "\n\nLa différence fondamentale réside dans l'**ordre des quantificateurs**, qui change radicalement le sens de l'énoncé.\n\n1.  `∀x, ∃y, P(x, y)` : \"Pour tout $x$, il existe un $y$ tel que $P(x, y)$ soit vraie.\"\n    -   Ici, le choix de $y$ peut **dépendre** de $x$. Pour chaque $x$ que l'on choisit, on doit pouvoir trouver un $y$ qui fonctionne. Le $y$ peut être différent pour chaque $x$.\n\n2.  `∃y, ∀x, P(x, y)` : \"Il existe un $y$ tel que pour tout $x$, $P(x, y)$ soit vraie.\"\n    -   Ici, on doit trouver **un seul et même** $y$ qui fonctionne pour **tous** les $x$ à la fois. C'est une condition beaucoup plus forte.\n\n**Exemple dans $\\mathbb{R}$ :**\n\n-   `∀x ∈ ℝ, ∃y ∈ ℝ, y > x` : \"Pour tout réel $x$, il existe un réel $y$ plus grand que $x$.\"\n    -   Cette proposition est **vraie**. Si on me donne un $x$, je peux toujours choisir $y = x+1$. Le $y$ dépend du $x$ choisi.\n\n-   `∃y ∈ ℝ, ∀x ∈ ℝ, y > x` : \"Il existe un réel $y$ qui est plus grand que tous les réels $x$.\"\n    -   Cette proposition est **fausse**. Elle affirmerait l'existence d'un \"plus grand nombre réel\", ce qui est impossible. Si un tel $y$ existait, on pourrait prendre $x=y$ et l'inégalité $y > y$ serait fausse.\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "a54edffe",
+      "content": "Comment nie-t-on une proposition avec un quantificateur universel (∀) ?",
+      "solution": "\n\nPour nier une proposition universelle, on transforme le quantificateur universel (`∀`, \"pour tout\") en quantificateur existentiel (`∃`, \"il existe\") et on nie la propriété qui suit.\n\n**Règle de négation :**\n\nLa négation de `∀x ∈ E, P(x)` est `∃x ∈ E, non P(x)`.\n\n**Explication intuitive :**\n\nPour prouver que l'affirmation \"Tous les éléments vérifient la propriété P\" est fausse, il suffit de trouver **un seul contre-exemple**, c'est-à-dire un élément qui ne vérifie pas la propriété P.\n\n**Exemple :**\n\nSoit la proposition $A$ : \"Tous les étudiants de la classe ont eu la moyenne.\"\n\n-   Formalisation : `∀e ∈ Classe, Moyenne(e)` où `Moyenne(e)` signifie \"l'étudiant $e$ a eu la moyenne\".\n-   Négation de $A$ : Pour nier cette phrase, on n'a pas besoin de prouver que *personne* n'a eu la moyenne. Il suffit qu'au moins une personne n'ait pas eu la moyenne.\n-   La négation est donc : \"Il existe au moins un étudiant de la classe qui n'a pas eu la moyenne.\"\n-   Formalisation de la négation : `∃e ∈ Classe, non Moyenne(e)`.\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "a54edffe",
+      "content": "Quelles sont les deux conditions fondamentales qu'une relation entre un ensemble de départ $A$ et un ensemble d'arrivée $B$ doit satisfaire pour être une **fonction** ?",
+      "solution": "\n\nPour qu'une relation $f$ entre un ensemble $A$ et un ensemble $B$ soit une fonction (notée $f: A \\to B$), elle doit respecter deux conditions strictes :\n\n1.  **Existence de l'image** : Chaque élément de l'ensemble de départ $A$ doit avoir une image dans l'ensemble d'arrivée $B$. Autrement dit, la fonction doit être définie pour tous les éléments de son domaine.\n    -   $\\forall a \\in A, \\exists b \\in B \\text{ tel que } b = f(a)$.\n\n2.  **Unicité de l'image** : Chaque élément de l'ensemble de départ $A$ ne peut avoir qu'une seule et unique image dans $B$. Un élément ne peut pas être envoyé sur deux résultats différents.\n    -   Si $f(a) = b_1$ et $f(a) = b_2$, alors on doit avoir $b_1 = b_2$.\n\n**Interprétation graphique (pour une fonction de $\\mathbb{R}$ dans $\\mathbb{R}$) :**\n\nCes deux conditions sont résumées par le \"test de la droite verticale\" : toute droite verticale d'abscisse $a$ appartenant au domaine de définition doit couper le graphe de la fonction en **exactement un point**.\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "a54edffe",
+      "content": "Comment le \"test de la droite horizontale\" permet-il de déterminer si une fonction de $\\mathbb{R}$ dans $\\mathbb{R}$ est injective, surjective ou bijective ?",
+      "solution": "\n\nLe \"test de la droite horizontale\" est une méthode visuelle pour analyser les propriétés d'une fonction $f: A \\to B$ (où $A$ et $B$ sont des sous-ensembles de $\\mathbb{R}$) en examinant son graphe. Il consiste à tracer des droites horizontales d'équation $y=b$ pour $b$ dans l'ensemble d'arrivée $B$ et à compter le nombre d'intersections avec le graphe.\n\n-   **Fonction Injective** : Une fonction est injective si chaque élément de l'ensemble d'arrivée a *au plus un* antécédent.\n    -   **Test graphique** : Toute droite horizontale coupe le graphe **au plus une fois**.\n\n-   **Fonction Surjective** : Une fonction est surjective si chaque élément de l'ensemble d'arrivée a *au moins un* antécédent.\n    -   **Test graphique** : Toute droite horizontale (pour $y$ dans l'ensemble d'arrivée) coupe le graphe **au moins une fois**.\n\n-   **Fonction Bijective** : Une fonction est bijective si elle est à la fois injective et surjective, c'est-à-dire si chaque élément de l'ensemble d'arrivée a *exactement un* antécédent.\n    -   **Test graphique** : Toute droite horizontale (pour $y$ dans l'ensemble d'arrivée) coupe le graphe **exactement une fois**.\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "a54edffe",
+      "content": "Comment trouve-t-on l'expression de la **fonction réciproque** $f^{-1}$ d'une fonction bijective $f$ ?",
+      "solution": "\n\nSi une fonction $f: A \\to B$ est bijective, elle admet une fonction réciproque $f^{-1}: B \\to A$. Pour trouver son expression, on suit les étapes suivantes :\n\n**Étapes :**\n\n1.  On part de l'équation $y = f(x)$, où $y$ est un élément de l'ensemble d'arrivée $B$ et $x$ un élément de l'ensemble de départ $A$.\n2.  On résout cette équation pour **isoler $x$** en fonction de $y$.\n3.  L'expression de $x$ que l'on obtient est la formule de $f^{-1}(y)$.\n4.  (Optionnel) On peut renommer la variable $y$ en $x$ pour obtenir la notation plus habituelle $f^{-1}(x)$.\n\n**Exemple :**\n\nSoit la fonction $f: \\mathbb{R} \\to \\mathbb{R}$ définie par $f(x) = 4x - 5$. Cette fonction est bijective.\n\n1.  On pose $y = f(x) \\implies y = 4x - 5$.\n2.  On isole $x$ :\n\n    $y + 5 = 4x$\n\n    $x = \\frac{y+5}{4}$\n\n3.  L'expression de la réciproque est $f^{-1}(y) = \\frac{y+5}{4}$.\n4.  En renommant la variable, on écrit $f^{-1}(x) = \\frac{x+5}{4}$.\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "a54edffe",
+      "content": "Qu'est-ce que l'**inégalité triangulaire** pour les nombres réels et comment l'interpréter ?",
+      "solution": "\n\nL'**inégalité triangulaire** est une propriété fondamentale de la valeur absolue des nombres réels.\n\n**Formule :**\n\nPour tous les nombres réels $x$ et $y$ :\n\n$$|x+y| \\le |x|+|y|$$\n\n**Explication :**\n\nElle stipule que la valeur absolue d'une somme est toujours inférieure ou égale à la somme des valeurs absolues.\n\n**Interprétation géométrique :**\n\nSur la droite réelle, $|a|$ est la distance de $a$ à 0. L'inégalité triangulaire peut être vue de plusieurs manières :\n\n1.  **Distance à l'origine** : La distance de $x+y$ à l'origine est toujours plus petite que la somme des distances de $x$ à l'origine et de $y$ à l'origine.\n    -   Si $x=3$ et $y=2$, $|3+2| = |5| = 5$ et $|3|+|2|=5$. On a égalité.\n    -   Si $x=3$ et $y=-2$, $|3+(-2)| = |1| = 1$, alors que $|3|+|-2|=3+2=5$. L'inégalité est stricte ($1 < 5$). L'égalité n'a lieu que si $x$ et $y$ ont le même signe (ou si l'un est nul).\n\n2.  **Distance entre points** : En posant $x=a-c$ et $y=c-b$, l'inégalité devient $|(a-c)+(c-b)| \\le |a-c| + |c-b|$, soit $|a-b| \\le |a-c| + |c-b|$.\n\n    Cela signifie que la distance entre $a$ et $b$ est toujours plus courte que le chemin qui passe par un point intermédiaire $c$. C'est l'analogue de \"la ligne droite est le plus court chemin\".\n\n",
+      "options": []
+    },
+    {
+      "id": "11",
+      "stackId": "a54edffe",
+      "content": "Comment multiplier un nombre complexe par un autre en forme algébrique ?",
+      "solution": "\n\nPour multiplier deux nombres complexes $z_1 = a+ib$ et $z_2 = c+id$, on applique les règles de la distributivité comme pour les expressions algébriques, puis on utilise la propriété fondamentale $i^2 = -1$.\n\n**Étapes :**\n\n1.  On écrit le produit : $(a+ib)(c+id)$.\n2.  On distribue chaque terme du premier facteur sur le second :\n\n    $ac + a(id) + (ib)c + (ib)(id)$\n\n    $= ac + i(ad) + i(bc) + i^2(bd)$\n\n3.  On regroupe les termes réels et les termes avec $i$ :\n\n    $= ac + i(ad+bc) + i^2(bd)$\n\n4.  On remplace $i^2$ par $-1$ :\n\n    $= ac + i(ad+bc) - bd$\n\n5.  On groupe les parties réelles et imaginaires pour obtenir la forme finale :\n\n    $= (ac-bd) + i(ad+bc)$\n\n**Exemple :**\n\nCalculer $(2+3i) \\cdot (4-i)$.\n\n-   $(2+3i)(4-i) = 2 \\cdot 4 + 2 \\cdot (-i) + 3i \\cdot 4 + 3i \\cdot (-i)$\n-   $= 8 - 2i + 12i - 3i^2$\n-   $= 8 + 10i - 3(-1)$\n-   $= 8 + 10i + 3$\n-   $= 11 + 10i$\n\n",
+      "options": []
+    },
+    {
+      "id": "12",
+      "stackId": "a54edffe",
+      "content": "Comment calcule-t-on la **division** de deux nombres complexes en forme algébrique ?",
+      "solution": "\n\nPour diviser un nombre complexe $z_1 = a+ib$ par un autre nombre complexe non nul $z_2 = c+id$, on utilise une astuce qui consiste à rendre le dénominateur réel. Pour cela, on multiplie le numérateur et le dénominateur par le **conjugué** du dénominateur.\n\nLe conjugué de $z_2 = c+id$ est $\\bar{z_2} = c-id$.\n\n**Étapes :**\n\n1.  On écrit la fraction : $\\frac{a+ib}{c+id}$.\n2.  On multiplie le haut et le bas par $\\bar{z_2} = c-id$ :\n\n    $\\frac{a+ib}{c+id} = \\frac{(a+ib)(c-id)}{(c+id)(c-id)}$\n\n3.  On développe le numérateur et le dénominateur.\n    -   Au dénominateur, on utilise l'identité $z_2 \\cdot \\bar{z_2} = |z_2|^2 = c^2+d^2$, qui est un nombre réel.\n    -   Au numérateur, on effectue la multiplication classiquement : $(ac+bd) + i(bc-ad)$.\n4.  On sépare la partie réelle et la partie imaginaire du résultat final.\n\n**Exemple :**\n\nCalculer $\\frac{2+5i}{3-4i}$.\n\n-   Le conjugué du dénominateur est $3+4i$.\n-   $\\frac{2+5i}{3-4i} = \\frac{(2+5i)(3+4i)}{(3-4i)(3+4i)}$\n-   Numérateur : $(2+5i)(3+4i) = 6 + 8i + 15i + 20i^2 = 6 + 23i - 20 = -14+23i$.\n-   Dénominateur : $(3-4i)(3+4i) = 3^2 - (4i)^2 = 9 - 16i^2 = 9 + 16 = 25$.\n-   Résultat : $\\frac{-14+23i}{25} = -\\frac{14}{25} + i\\frac{23}{25}$.\n\n",
+      "options": []
+    },
+    {
+      "id": "13",
+      "stackId": "a54edffe",
+      "content": "Quelle est la définition du **module** d'un nombre complexe et quelle est son interprétation géométrique ?",
+      "solution": "\n\nLe **module** d'un nombre complexe $z = a+ib$ est un nombre réel positif qui représente la \"taille\" ou la \"longueur\" de ce nombre. Il est noté $|z|$.\n\n**Définition (formule) :**\n\n$$|z| = \\sqrt{a^2+b^2}$$\n\noù $a = \\text{Re}(z)$ est la partie réelle et $b = \\text{Im}(z)$ est la partie imaginaire.\n\n**Interprétation géométrique :**\n\nDans le plan complexe (plan d'Argand), un nombre complexe $z = a+ib$ est associé au point de coordonnées $(a,b)$. Le module $|z|$ est simplement la **distance** entre l'origine du repère $(0,0)$ et ce point $(a,b)$. C'est une application directe du théorème de Pythagore dans le triangle rectangle formé par l'origine, le point $(a,0)$ et le point $(a,b)$.\n\n**Propriété importante (lien avec le conjugué) :**\n\nLe carré du module est très utile en calcul, car il évite les racines carrées :\n\n$$|z|^2 = z \\cdot \\bar{z} = (a+ib)(a-ib) = a^2+b^2$$\n\n**Exemple :**\n\nSi $z = 3-4i$, son module est :\n\n$|z| = \\sqrt{3^2 + (-4)^2} = \\sqrt{9+16} = \\sqrt{25} = 5$.\n\nGéométriquement, le point $(3, -4)$ est à une distance de 5 de l'origine.\n\n",
+      "options": []
+    }
+  ]
+}

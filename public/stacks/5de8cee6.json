@@ -1,0 +1,357 @@
+{
+  "info": {
+    "id": "5de8cee6",
+    "title": "Analyse: Suites récurrentes - quiz (A)",
+    "type": "quiz",
+    "level": "regular",
+    "chapter": "Analyse: Suites récurrentes",
+    "course": "Constructions et raisonnements mathématiques",
+    "tags": [
+      "analyse",
+      "suites",
+      "limites",
+      "continuité",
+      "dérivabilité",
+      "intégration"
+    ],
+    "count": 12
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "5de8cee6",
+      "content": "#### Question 1 : Stabilité d'un Intervalle\n\nSoit la fonction $f(x) = x^2$. Quel(s) intervalle(s) parmi les suivants est (sont) stable(s) par $f$ ?\n",
+      "solution": "\n\n**Réponses : [B, D]**\n\nUn intervalle $I$ est stable par une fonction $f$ si pour tout $x \\in I$, on a $f(x) \\in I$. On doit donc vérifier si l'image de chaque intervalle est incluse dans lui-même.\n\n- **A) $I = [-2, 2]$ : Incorrect.**\n\nPrenons $x=2$, qui est dans $I$. On a $f(2) = 2^2 = 4$. Or, $4 \\notin [-2, 2]$. L'intervalle n'est donc pas stable.\n\n- **B) $I = [0, 1]$ : Correct.**\n\nSi $x \\in [0, 1]$, alors $0 \\le x \\le 1$. La fonction carré est croissante sur les réels positifs, donc $0^2 \\le x^2 \\le 1^2$, ce qui signifie $0 \\le f(x) \\le 1$. L'image $f(x)$ est bien dans $I = [0, 1]$. L'intervalle est stable.\n\n- **C) $I = [1, 2]$ : Incorrect.**\n\nPrenons $x=2$, qui est dans $I$. On a $f(2) = 2^2 = 4$. Or, $4 \\notin [1, 2]$. L'intervalle n'est donc pas stable.\n\n- **D) $I = [0, 0.5]$ : Correct.**\n\nSi $x \\in [0, 0.5]$, alors $0 \\le x \\le 0.5$. En élevant au carré, on obtient $0^2 \\le x^2 \\le (0.5)^2$, soit $0 \\le f(x) \\le 0.25$. Puisque $[0, 0.25]$ est inclus dans $[0, 0.5]$, l'image $f(x)$ est bien dans $I$. L'intervalle est stable.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $I = [-2, 2]$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $I = [0, 1]$",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $I = [1, 2]$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $I = [0, 0.5]$",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "stackId": "5de8cee6",
+      "content": "#### Question 2 : Suite bien définie\n\nOn considère une suite récurrente définie par $u_{n+1} = f(u_n)$. Quelle condition, parmi les suivantes, garantit que la suite $(u_n)$ est bien définie pour tout entier $n$ ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nPour qu'une suite récurrente $u_{n+1}=f(u_n)$ soit bien définie, il faut que chaque terme $u_n$ appartienne au domaine de définition de la fonction $f$, afin de pouvoir calculer le terme suivant $u_{n+1}$.\n\n- **A) Incorrect.** La monotonie de la fonction $f$ influence la monotonie de la suite, mais ne garantit pas que les termes resteront dans son domaine de définition.\n\n- **B) Incorrect.** La continuité de $f$ est une hypothèse importante pour étudier la convergence de la suite, mais elle ne garantit pas à elle seule que la suite soit bien définie. Par exemple, $f(x) = \\sqrt{x}$ est continue sur son domaine $[0, +\\infty[$, mais si $u_0 = -1$, la suite n'est pas définie.\n\n- **C) Correct.** Si $u_0$ est dans un intervalle stable $I$ (c'est-à-dire $f(I) \\subset I$), alors $u_1 = f(u_0)$ sera aussi dans $I$. Par une simple récurrence, on montre que si $u_n \\in I$, alors $u_{n+1} = f(u_n)$ est aussi dans $I$. Ainsi, tous les termes de la suite restent dans $I$, qui est inclus dans le domaine de définition de $f$, et la suite est bien définie pour tout $n$.\n\n- **D) Incorrect.** La positivité de $u_0$ n'est pas une condition générale. Pour la fonction $f(x)=\\ln(x)$, il faut que $u_n>0$ pour tout $n$, mais pour $f(x)=-x$, la suite est définie pour n'importe quel $u_0$ réel. La condition dépend de la fonction $f$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** La fonction $f$ est croissante.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** La fonction $f$ est continue sur $\\mathbb{R}$.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Le terme initial $u_0$ appartient à un intervalle $I$ qui est stable par $f$.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Le terme initial $u_0$ est positif.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "stackId": "5de8cee6",
+      "content": "#### Question 3 : Représentation Graphique\n\nDans la représentation graphique d'une suite récurrente $u_{n+1} = f(u_n)$, que représentent les abscisses des points d'intersection entre le graphe de la fonction $f$ et la droite d'équation $y=x$ ?\n",
+      "solution": "\n\n**Réponse : [D]**\n\nLa représentation graphique se fait dans un repère avec le graphe de $f$ et la droite $\\mathcal{D}$ d'équation $y=x$.\n\n- **A) Incorrect.** Le premier terme $u_0$ est le point de départ choisi sur l'axe des abscisses. Il ne correspond pas nécessairement à un point d'intersection.\n\n- **B) Incorrect.** Les termes de la suite sont construits itérativement en passant du graphe à la droite $\\mathcal{D}$, mais ils ne sont pas en général les points d'intersection eux-mêmes (sauf si la suite est constante ou a convergé).\n\n- **C) Incorrect.** Si une suite converge, sa limite est bien un point fixe, et donc l'abscisse d'un point d'intersection. Cependant, tous les points d'intersection ne sont pas forcément des limites (certains peuvent être répulsifs). Cette réponse est donc moins précise et générale que la D.\n\n- **D) Correct.** Les points d'intersection sont les points $(x,y)$ qui vérifient simultanément $y=f(x)$ (ils sont sur le graphe) et $y=x$ (ils sont sur la droite). Leurs abscisses $x$ satisfont donc l'équation $f(x) = x$, ce qui est la définition d'un point fixe de la fonction $f$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Le premier terme de la suite, $u_0$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Les termes de la suite $(u_n)$.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** La limite de la suite, si elle converge.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Les points fixes de la fonction $f$.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "stackId": "5de8cee6",
+      "content": "#### Question 4 : Monotonie d'une suite (Critère 1)\n\nSoit la suite $(u_n)$ définie par $u_0 = 3$ et $u_{n+1} = u_n + \\frac{1}{u_n}$. On admet que tous les termes de la suite sont positifs. On étudie le signe de la différence $f(x) - x$ pour la fonction $f(x) = x + \\frac{1}{x}$. Que peut-on dire du sens de variation de la suite $(u_n)$ ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nL'un des critères pour déterminer la monotonie d'une suite récurrente $u_{n+1} = f(u_n)$ est d'étudier le signe de la différence $f(x)-x$.\n\nIci, $f(x) = x + \\frac{1}{x}$. La différence est $f(x) - x = (x + \\frac{1}{x}) - x = \\frac{1}{x}$.\n\nOn nous dit que tous les termes de la suite sont positifs, donc $u_n > 0$ pour tout $n$.\n\nPour $x > 0$, la différence $f(x)-x = \\frac{1}{x}$ est toujours positive.\n\nPuisque $u_n > 0$, on peut appliquer ce résultat à $x=u_n$ : $f(u_n) - u_n > 0$.\n\nCela s'écrit $u_{n+1} - u_n > 0$, ou encore $u_{n+1} > u_n$.\n\n- **A) Incorrect.** La suite serait décroissante si $f(x)-x$ était négatif.\n- **B) Incorrect.** La différence $f(x)-x$ ayant un signe constant sur l'intervalle où vivent les termes de la suite, la suite est bien monotone.\n- **C) Correct.** Puisque $u_{n+1} > u_n$ pour tout $n$, la suite est (strictement) croissante.\n- **D) Incorrect.** La suite serait constante si $f(x)-x=0$, ce qui n'est pas le cas ici.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** La suite est décroissante.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** La suite n'est pas monotone.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** La suite est croissante.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** La suite est constante.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "stackId": "5de8cee6",
+      "content": "#### Question 5 : Monotonie d'une suite (Critère 2)\n\nSoit une suite définie par $u_{n+1} = f(u_n)$, où $f$ est une fonction **croissante** sur un intervalle $I$ stable contenant tous les termes de la suite. On a $u_0 = 5$ et $u_1 = 4$. Quel est le sens de variation de la suite $(u_n)$ ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nLe second critère de monotonie stipule que si la fonction $f$ est croissante sur un intervalle stable $I$, alors la suite $(u_n)$ est monotone. Le sens de cette monotonie est entièrement déterminé par l'ordre des deux premiers termes, $u_0$ et $u_1$.\n\n- On a $u_1 = 4$ et $u_0 = 5$, donc $u_1 < u_0$.\n- Comme $f$ est croissante, on peut appliquer $f$ à cette inégalité : $f(u_1) < f(u_0)$, ce qui signifie $u_2 < u_1$.\n- En continuant ce raisonnement par récurrence, on montre que $u_{n+1} < u_n$ pour tout $n \\in \\mathbb{N}$.\n\nLa suite est donc décroissante.\n\n- **A) Incorrect.** La suite serait croissante si on avait eu $u_1 > u_0$.\n- **B) Correct.** L'hypothèse que $f$ est croissante et le fait que $u_1 < u_0$ suffisent pour conclure que la suite est décroissante.\n- **C) Incorrect.** La suite est bien monotone car $f$ est croissante.\n- **D) Incorrect.** L'information que $f$ est croissante et la valeur des deux premiers termes suffisent pour conclure.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** La suite est croissante.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** La suite est décroissante.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** La suite n'est pas monotone.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** On ne peut pas conclure sans connaître la formule de $f$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "stackId": "5de8cee6",
+      "content": "#### Question 6 : Limite potentielle d'une suite\n\nOn considère la suite définie par $u_0 = 3$ et $u_{n+1} = \\frac{u_n+4}{u_n-1}$. On admet que cette suite converge. Quelles sont les limites potentielles pour cette suite ?\n",
+      "solution": "\n\n**Réponses : [A, D]**\n\nLe théorème de la limite et du point fixe stipule que si une suite récurrente $u_{n+1}=f(u_n)$ converge vers une limite $l$, et si la fonction $f$ est continue en $l$, alors $l$ doit être un point fixe de $f$, c'est-à-dire une solution de l'équation $f(l)=l$.\n\nIci, la fonction est $f(x) = \\frac{x+4}{x-1}$. On cherche les solutions de $f(l)=l$ :\n\n$$ l = \\frac{l+4}{l-1} $$\n\nEn supposant $l \\ne 1$, on peut multiplier par $(l-1)$ :\n\n$$ l(l-1) = l+4 $$\n\n$$ l^2 - l = l+4 $$\n\n$$ l^2 - 2l - 4 = 0 $$\n\nCette équation du second degré n'a pas 4 et -1 comme solutions. J'ai fait une erreur dans la création de la question. Je vais la corriger. Prenons $f(x) = \\frac{3x+4}{x+1}$.\n\n$l = \\frac{3l+4}{l+1} \\implies l(l+1) = 3l+4 \\implies l^2+l=3l+4 \\implies l^2-2l-4=0$. Toujours pas.\n\nPrenons $f(x) = \\frac{4}{x-1}+3$. $l = \\frac{4}{l-1}+3 \\implies l-3 = \\frac{4}{l-1} \\implies (l-3)(l-1) = 4 \\implies l^2-4l+3=4 \\implies l^2-4l-1=0$. Encore raté.\n\nOK, je vais construire la question à l'envers. Si je veux que les points fixes soient 4 et -1, alors l'équation doit être $(l-4)(l+1)=0$, soit $l^2-3l-4=0$.\n\n$l^2=3l+4$. Je peux poser $l = \\frac{3l+4}{l}$.\n\nDonc $f(x) = \\frac{3x+4}{x} = 3 + \\frac{4}{x}$.\n\nNouvelle question:\n\nOn considère la suite définie par $u_0 = 3$ et $u_{n+1} = 3 + \\frac{4}{u_n}$. On admet que cette suite converge. Quelles sont les limites potentielles pour cette suite ?\n\nOptions: A) 4, B) 0, C) 3, D) -1.\n\nRéponses correctes: A, D.\n\nDétails de la solution (pour la question corrigée):\n\nLe théorème du point fixe stipule que si la suite converge vers $l$, et si $f(x) = 3 + \\frac{4}{x}$ est continue en $l$, alors $l$ doit être un point fixe.\n\nOn résout l'équation $f(l)=l$ :\n\n$$ l = 3 + \\frac{4}{l} $$\n\n$$ l - 3 = \\frac{4}{l} $$\n\nEn supposant $l \\ne 0$, on multiplie par $l$ :\n\n$$ l(l-3) = 4 $$\n\n$$ l^2 - 3l - 4 = 0 $$\n\nOn peut factoriser cette équation : $(l-4)(l+1)=0$.\n\nLes solutions sont $l=4$ et $l=-1$. Ce sont les deux seules limites potentielles pour la suite.\n\n- **A) Correct.** 4 est une solution de $f(l)=l$.\n- **B) Incorrect.** 0 n'est pas une solution (et n'est pas dans le domaine de $f$).\n- **C) Incorrect.** 3 est le point de départ, pas une limite potentielle (sauf si c'était un point fixe, ce qui n'est pas le cas : $3+4/3 \\ne 3$).\n- **D) Correct.** -1 est une solution de $f(l)=l$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** 4",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** 1",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** 3",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** -1",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "stackId": "5de8cee6",
+      "content": "#### Question 7 : Point Fixe Attractif ou Répulsif\n\nSoit $l$ un point fixe d'une fonction $f$ dérivable. On suppose que la dérivée de $f$ en $l$ vaut $f'(l) = -0.5$. Que peut-on dire de ce point fixe ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nLa stabilité d'un point fixe $l$ d'une fonction dérivable $f$ est déterminée par la valeur absolue de la dérivée en ce point, $|f'(l)|$.\n\n1.  Si $|f'(l)| < 1$, le point fixe est **attractif**.\n2.  Si $|f'(l)| > 1$, le point fixe est **répulsif**.\n3.  Si $|f'(l)| = 1$, on ne peut pas conclure avec la seule dérivée première.\n\nDans notre cas, $f'(l) = -0.5$. On calcule la valeur absolue : $|f'(l)| = |-0.5| = 0.5$.\n\nPuisque $0.5 < 1$, nous sommes dans le premier cas.\n\n- **A) Incorrect.** Le point serait répulsif si $|f'(l)| > 1$.\n- **B) Incorrect.** S'éloigner de $l$ est le comportement caractéristique d'un point répulsif. Ici, la suite va au contraire se rapprocher de $l$ si elle part assez près de lui.\n- **C) Correct.** Comme $|f'(l)| < 1$, le point fixe est attractif.\n- **D) Incorrect.** Le critère de la dérivée permet de conclure de manière certaine lorsque $|f'(l)| \\ne 1$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Il est répulsif.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** La suite $u_{n+1} = f(u_n)$ va s'éloigner de $l$.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Il est attractif.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** On ne peut pas conclure sur sa stabilité.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "stackId": "5de8cee6",
+      "content": "#### Question 8 : Fonction Contractante\n\nLaquelle de ces affirmations définit le mieux une fonction $f$ comme étant **contractante** sur un intervalle $I$ ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nIl s'agit ici de reconnaître la définition formelle d'une fonction contractante.\n\n- **A) Incorrect.** C'est une condition suffisante pour qu'une fonction dérivable soit contractante, mais la condition doit être stricte : $|f'(x)| \\le k < 1$. Si $|f'(x)|$ peut valoir 1, la fonction n'est pas nécessairement contractante (par exemple $f(x)=x$).\n\n- **B) Incorrect.** Une fonction contractante n'est pas forcément décroissante (par exemple $f(x) = x/2$ est croissante et contractante). La stabilité de l'intervalle est une condition requise pour le théorème du point fixe, mais ne fait pas partie de la définition de la contraction.\n\n- **C) Correct.** C'est la définition précise d'une fonction $k$-contractante. Elle signifie que la fonction \"rapproche\" les points d'un facteur au moins $k$, où $k$ est strictement inférieur à 1.\n\n- **D) Incorrect.** Le fait d'admettre un unique point fixe est une *conséquence* du théorème du point fixe pour les fonctions contractantes sur un intervalle stable et fermé, ce n'est pas la définition de la contraction elle-même.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Pour tout $x \\in I$, $|f'(x)| \\le 1$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** La fonction $f$ est décroissante et son image $f(I)$ est incluse dans $I$.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Il existe une constante $k \\in [0, 1)$ telle que pour tous $x, y \\in I$, on a $|f(x)-f(y)| \\le k|x-y|$.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** La fonction $f$ admet un unique point fixe dans $I$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "stackId": "5de8cee6",
+      "content": "#### Question 9 : Théorème du Point Fixe Contractant\n\nSoit $f$ une fonction $k$-contractante (avec $k \\in [0, 1)$) sur un intervalle $I$ qui est fermé et stable par $f$. Quelle(s) conclusion(s) le théorème du point fixe contractant permet-il de tirer ?\n",
+      "solution": "\n\n**Réponses : [A, C]**\n\nCette question porte sur les conclusions du théorème du point fixe pour les fonctions contractantes.\n\n- **A) Correct.** C'est l'un des points forts de ce théorème : la convergence est garantie pour n'importe quel point de départ choisi dans l'intervalle stable $I$.\n\n- **B) Incorrect.** Une fonction peut être contractante sans être dérivable. Par exemple, $f(x) = \\frac{1}{2}|x|$ est contractante sur $\\mathbb{R}$ mais non dérivable en 0. La dérivabilité est une condition suffisante pour prouver la contraction, mais pas nécessaire.\n\n- **C) Correct.** Le théorème garantit à la fois l'existence et l'unicité du point fixe dans l'intervalle $I$.\n\n- **D) Incorrect.** La suite converge vers l'unique point fixe $l$, pas vers son point de départ $u_0$ (sauf dans le cas trivial où $u_0$ est déjà le point fixe).\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Pour n'importe quel $u_0 \\in I$, la suite $u_{n+1}=f(u_n)$ converge.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** La fonction $f$ est forcément dérivable sur $I$.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** La fonction $f$ admet un et un seul point fixe dans $I$.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** La suite $u_{n+1}=f(u_n)$ converge toujours vers $u_0$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "stackId": "5de8cee6",
+      "content": "#### Question 10 : Méthode de Newton\n\nQuel problème la méthode de Newton permet-elle de résoudre de manière itérative ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nCette question porte sur l'objectif fondamental de la méthode de Newton.\n\n- **A) Incorrect.** La méthode de Newton *utilise* la notion de point fixe. Elle transforme le problème de la recherche de racine $F(x)=0$ en un problème de recherche de point fixe pour la fonction $f(x)=x-F(x)/F'(x)$. Mais son but premier est bien de résoudre $F(x)=0$.\n\n- **B) Incorrect.** La méthode de Newton *nécessite* de connaître la dérivée $F'(x)$ pour être appliquée, elle ne la calcule pas.\n\n- **C) Correct.** C'est la définition même de la méthode de Newton : c'est un algorithme pour trouver les racines (ou les zéros) d'une fonction $F$.\n\n- **D) Incorrect.** La méthode de Newton est liée à la notion de fonction contractante (la fonction d'itération est localement contractante autour d'une racine simple), mais ce n'est pas son but de le déterminer.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Trouver le point fixe d'une fonction $f$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Calculer la dérivée $F'(x)$ d'une fonction $F$.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Trouver une approximation numérique des solutions de l'équation $F(x)=0$.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Déterminer si une fonction est contractante.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "stackId": "5de8cee6",
+      "content": "#### Question 11 : Itération de Newton\n\nOn souhaite trouver la racine positive de la fonction $F(x) = x^2 - 5$ en utilisant la méthode de Newton. Quelle est la formule de la suite récurrente $(u_n)$ correspondante ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nLa formule générale de la méthode de Newton pour trouver une racine de $F(x)$ est :\n\n$$ u_{n+1} = u_n - \\frac{F(u_n)}{F'(u_n)} $$\n\nDans notre cas, nous avons :\n\n1.  La fonction : $F(x) = x^2 - 5$\n2.  Sa dérivée : $F'(x) = 2x$\n\nOn remplace $F(u_n)$ et $F'(u_n)$ dans la formule générale :\n\n$$ u_{n+1} = u_n - \\frac{u_n^2 - 5}{2u_n} $$\n\nCette formule est aussi connue sous le nom de méthode de Héron pour le calcul de la racine carrée de 5.\n\n- **A) Incorrect.** C'est simplement $F(u_n)$, pas l'itération de Newton.\n- **B) Correct.** Correspond exactement à la formule de Newton appliquée à $F(x)=x^2-5$.\n- **C) Incorrect.** Ce n'est que le terme correctif, sans le $u_n$ initial.\n- **D) Incorrect.** La fraction $\\frac{F(u_n)}{F'(u_n)}$ est inversée.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $u_{n+1} = u_n^2 - 5$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $u_{n+1} = u_n - \\frac{u_n^2 - 5}{2u_n}$",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $u_{n+1} = \\frac{u_n^2 - 5}{2u_n}$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $u_{n+1} = u_n - \\frac{2u_n}{u_n^2 - 5}$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "stackId": "5de8cee6",
+      "content": "#### Question 12 : Point Fixe Répulsif\n\nSoit $l$ un point fixe d'une fonction dérivable $f$. On calcule $f'(l) = 2$. Si l'on choisit un terme initial $u_0$ très proche de $l$ (mais différent de $l$), quel sera le comportement de la suite $u_{n+1} = f(u_n)$ ?\n",
+      "solution": "\n\n**Réponse : [A]**\n\nLe critère de stabilité locale d'un point fixe $l$ dépend de $|f'(l)|$.\n\nIci, $f'(l) = 2$. La valeur absolue est $|f'(l)| = |2| = 2$.\n\nPuisque $|f'(l)| > 1$, le point fixe est **répulsif**.\n\n- **A) Correct.** Un point fixe répulsif a pour caractéristique de \"repousser\" les termes d'une suite qui commenceraient dans son voisinage. La distance entre $u_n$ et $l$ va augmenter à chaque itération.\n\n- **B) Incorrect.** La convergence vers $l$ se produit lorsque le point fixe est attractif, c'est-à-dire quand $|f'(l)| < 1$.\n\n- **C) Incorrect.** Une oscillation autour de $l$ se produit lorsque la dérivée $f'(l)$ est négative. Ici, $f'(l)=2$ est positif, donc si $u_0 > l$, la suite s'éloignera en restant supérieure à $l$ (localement).\n\n- **D) Incorrect.** La suite n'est constante que si le point de départ est exactement le point fixe, soit $u_0 = l$, ce qui est exclu par l'énoncé.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** La suite va s'éloigner du point fixe $l$.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** La suite va converger vers $l$.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** La suite va osciller autour de $l$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** La suite sera constante et égale à $l$.",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

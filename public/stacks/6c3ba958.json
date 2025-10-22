@@ -1,0 +1,356 @@
+{
+  "info": {
+    "id": "6c3ba958",
+    "title": "Normes sur Rⁿ et suites convergentes - quiz (A)",
+    "type": "quiz",
+    "level": "regular",
+    "chapter": "Normes sur Rⁿ et suites convergentes",
+    "course": "Topologie",
+    "tags": [
+      "normes",
+      "suites",
+      "convergence",
+      "topologie",
+      "analyse"
+    ],
+    "count": 12
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "6c3ba958",
+      "content": "#### Question 1 : Définition d'une Norme\n\nParmi les affirmations suivantes, laquelle n'est PAS l'un des trois axiomes fondamentaux d'une norme $N$ sur $\\mathbb{R}^n$ ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nUne norme sur un espace vectoriel $\\mathbb{R}^n$ est définie par trois axiomes :\n\n1.  **Séparation** (ou non-dégénérescence) : $N(x) = 0 \\iff x = 0_{\\mathbb{R}^n}$.\n2.  **Homogénéité** : $N(\\lambda x) = |\\lambda| N(x)$.\n3.  **Inégalité triangulaire** (ou sous-additivité) : $N(x+y) \\le N(x) + N(y)$.\n\n- **A.** L'inégalité triangulaire est l'un des trois axiomes fondamentaux d'une norme. Cette option est donc incorrecte.\n\n- **B.** La symétrie, $N(x) = N(-x)$, est une *propriété* qui découle de l'axiome d'homogénéité, mais ce n'est pas un axiome fondamental en soi. On peut le prouver en prenant $\\lambda = -1$ dans l'axiome d'homogénéité : $N(-x) = N(-1 \\cdot x) = |-1| N(x) = 1 \\cdot N(x) = N(x)$. Puisque c'est une conséquence et non un axiome de base, cette réponse est correcte.\n\n- **C.** La séparation est le premier axiome d'une norme, assurant que seul le vecteur nul a une longueur nulle. Cette option est donc incorrecte.\n\n- **D.** L'homogénéité est le deuxième axiome d'une norme, décrivant comment la norme se comporte lors de la mise à l'échelle d'un vecteur. Cette option est donc incorrecte.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Inégalité triangulaire : $N(x+y) \\le N(x) + N(y)$ pour tous $x, y \\in \\mathbb{R}^n$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Symétrie : $N(x) = N(-x)$ pour tout $x \\in \\mathbb{R}^n$.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Séparation : $N(x) = 0 \\iff x = 0_{\\mathbb{R}^n}$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Homogénéité : $N(\\lambda x) = |\\lambda| N(x)$ pour tout $\\lambda \\in \\mathbb{R}$ et $x \\in \\mathbb{R}^n$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "stackId": "6c3ba958",
+      "content": "#### Question 2 : Identification d'une Norme\n\nParmi les applications suivantes de $\\mathbb{R}^2$ dans $\\mathbb{R}$, laquelle définit une norme ? On note $x = (x_1, x_2)$.\n",
+      "solution": "\n\n**Réponse : [C]**\n\nNous devons vérifier les trois axiomes d'une norme pour chaque application.\n\n- **A.** $f(x) = |x_1 + x_2|$ viole l'axiome de **séparation**. Par exemple, si $x = (1, -1)$, alors $x \\neq (0,0)$, mais $f(1, -1) = |1 + (-1)| = |0| = 0$. Une norme ne peut être nulle que pour le vecteur nul.\n\n- **B.** $g(x) = x_1^2 + x_2^2$ viole l'axiome d'**homogénéité**. On a $g(\\lambda x) = (\\lambda x_1)^2 + (\\lambda x_2)^2 = \\lambda^2(x_1^2 + x_2^2) = \\lambda^2 g(x)$. L'axiome requiert $|\\lambda| g(x)$, et $\\lambda^2 \\neq |\\lambda|$ en général. (Note : cette fonction est le carré de la norme euclidienne).\n\n- **C.** $h(x) = \\max(|x_1|, |x_2|)$ est la **norme infinie** ($\\|x\\|_\\infty$), qui est une norme valide.\n    - **Séparation** : $\\max(|x_1|, |x_2|) = 0 \\iff |x_1|=0$ et $|x_2|=0 \\iff x_1=0$ et $x_2=0$.\n    - **Homogénéité** : $\\max(|\\lambda x_1|, |\\lambda x_2|) = \\max(|\\lambda||x_1|, |\\lambda||x_2|) = |\\lambda|\\max(|x_1|, |x_2|)$.\n    - **Inégalité triangulaire** : $\\max(|x_1+y_1|, |x_2+y_2|) \\le \\max(|x_1|+|y_1|, |x_2|+|y_2|) \\le \\max(|x_1|,|x_2|) + \\max(|y_1|,|y_2|)$.\n\n- **D.** $k(x) = |x_1| - |x_2|$ viole la **positivité**, qui est une conséquence des axiomes. Par exemple, si $x=(1, 2)$, $k(x) = |1| - |2| = -1$. Une norme doit toujours être positive ou nulle.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $f(x) = |x_1 + x_2|$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $g(x) = x_1^2 + x_2^2$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $h(x) = \\max(|x_1|, |x_2|)$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $k(x) = |x_1| - |x_2|$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "stackId": "6c3ba958",
+      "content": "#### Question 3 : Calcul des Normes Fondamentales\n\nSoit le vecteur $v = (1, -2, 2)$ dans $\\mathbb{R}^3$. Quelles sont les valeurs de ses normes $\\|v\\|_1$, $\\|v\\|_2$ et $\\|v\\|_\\infty$ ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nCalculons chaque norme pour le vecteur $v = (1, -2, 2)$.\n\n- **Norme 1 (Norme de Manhattan)** :\n\n  $\\|v\\|_1 = \\sum_{j=1}^3 |v_j| = |1| + |-2| + |2| = 1 + 2 + 2 = 5$.\n\n- **Norme 2 (Norme Euclidienne)** :\n\n  $\\|v\\|_2 = \\sqrt{\\sum_{j=1}^3 v_j^2} = \\sqrt{1^2 + (-2)^2 + 2^2} = \\sqrt{1 + 4 + 4} = \\sqrt{9} = 3$.\n\n- **Norme infinie (Norme du maximum)** :\n\n  $\\|v\\|_\\infty = \\max_{1 \\le j \\le 3} |v_j| = \\max(|1|, |-2|, |2|) = \\max(1, 2, 2) = 2$.\n\nL'option C correspond à ces trois résultats.\n\n- **A.** Le calcul de $\\|v\\|_1$ et $\\|v\\|_2$ est incorrect.\n- **B.** Le calcul de $\\|v\\|_2$ et $\\|v\\|_\\infty$ est incorrect.\n- **D.** Une norme ne peut pas être négative, donc $\\|v\\|_\\infty = -2$ est impossible. De plus, le calcul de $\\|v\\|_1$ est incorrect.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\|v\\|_1 = 3$, $\\|v\\|_2 = 9$, $\\|v\\|_\\infty = 2$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\|v\\|_1 = 5$, $\\|v\\|_2 = \\sqrt{5}$, $\\|v\\|_\\infty = 1$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $\\|v\\|_1 = 5$, $\\|v\\|_2 = 3$, $\\|v\\|_\\infty = 2$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $\\|v\\|_1 = 1$, $\\|v\\|_2 = 3$, $\\|v\\|_\\infty = -2$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "stackId": "6c3ba958",
+      "content": "#### Question 4 : Boules Unité\n\nDans $\\mathbb{R}^2$, quelle est la forme géométrique de la sphère unité $\\{x \\in \\mathbb{R}^2 : \\|x\\|=1\\}$ pour la norme 1 ($\\| \\cdot \\|_1$) et la norme infinie ($\\| \\cdot \\|_\\infty$) ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nAnalysons l'équation de la sphère unité $\\|x\\|=1$ pour un vecteur $x=(x_1, x_2)$ dans $\\mathbb{R}^2$.\n\n- **Pour la norme 1** : L'équation est $\\|x\\|_1 = |x_1| + |x_2| = 1$.\n    - Dans le premier quadrant ($x_1 \\ge 0, x_2 \\ge 0$), l'équation est $x_1 + x_2 = 1$.\n    - Dans le deuxième quadrant ($x_1 \\le 0, x_2 \\ge 0$), c'est $-x_1 + x_2 = 1$.\n    - Et ainsi de suite pour les autres quadrants.\n\n    Ces quatre segments de droite forment un carré dont les sommets sont $(1,0), (0,1), (-1,0), (0,-1)$, qui sont situés sur les axes de coordonnées.\n\n- **Pour la norme infinie** : L'équation est $\\|x\\|_\\infty = \\max(|x_1|, |x_2|) = 1$.\n    - Cela signifie que soit $|x_1|=1$ et $|x_2| \\le 1$, soit $|x_2|=1$ et $|x_1| \\le 1$.\n    - L'ensemble des points vérifiant cela est un carré dont les côtés sont les droites $x_1=1, x_1=-1, x_2=1, x_2=-1$. C'est un carré dont les côtés sont parallèles aux axes et les sommets sont $(1,1), (-1,1), (-1,-1), (1,-1)$.\n\nL'option C décrit correctement ces deux formes géométriques. L'option D inverse les descriptions.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Un cercle pour la norme 1 et un carré pour la norme infinie.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Un carré dont les côtés sont parallèles aux axes pour les deux normes.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Un carré dont les sommets sont sur les axes pour la norme 1, et un carré dont les côtés sont parallèles aux axes pour la norme infinie.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Un carré dont les côtés sont parallèles aux axes pour la norme 1, et un carré dont les sommets sont sur les axes pour la norme infinie.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "stackId": "6c3ba958",
+      "content": "#### Question 5 : Définition des Normes Équivalentes\n\nQuand dit-on que deux normes $N_1$ et $N_2$ sur $\\mathbb{R}^n$ sont équivalentes ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nLa définition formelle de l'équivalence de deux normes $N_1$ et $N_2$ sur un même espace vectoriel est l'existence de deux constantes réelles **strictement positives** $\\alpha$ et $\\beta$ qui \"encadrent\" une norme par l'autre pour tous les vecteurs de l'espace.\n\n- **A.** Cette option ne représente qu'une partie de la définition ($N_2 \\le \\beta N_1$ avec $\\beta=1/\\alpha$ et $N_1 \\le N_2$). Il manque l'inégalité dans l'autre sens. Deux normes peuvent vérifier cette relation sans être équivalentes.\n\n- **B.** C'est la définition exacte de l'équivalence des normes. Elle garantit que les deux normes mesurent la \"taille\" des vecteurs de manière comparable.\n\n- **C.** Vérifier l'égalité pour un seul vecteur non nul ne donne aucune information sur la relation entre les normes pour tous les autres vecteurs. C'est une condition beaucoup trop faible.\n\n- **D.** C'est un cas particulier d'équivalence où $N_1$ est simplement un multiple de $N_2$. Dans ce cas, on peut prendre $\\alpha = \\beta = c$. Cependant, la définition générale (B) est moins restrictive. Par exemple, $\\| \\cdot \\|_1$ et $\\| \\cdot \\|_\\infty$ sont équivalentes sur $\\mathbb{R}^2$, mais il n'existe pas de constante $c$ telle que $\\|x\\|_1 = c \\|x\\|_\\infty$ pour tous les $x$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Quand $N_1(x) \\le N_2(x)$ pour tout $x \\in \\mathbb{R}^n$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Quand il existe deux constantes $\\alpha, \\beta > 0$ telles que $\\alpha N_1(x) \\le N_2(x) \\le \\beta N_1(x)$ pour tout $x \\in \\mathbb{R}^n$.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Quand elles donnent la même valeur pour la norme du vecteur $(1, 1, \\dots, 1)$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Quand $N_1(x) = c \\cdot N_2(x)$ pour une certaine constante $c > 0$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "stackId": "6c3ba958",
+      "content": "#### Question 6 : Théorème d'Équivalence des Normes\n\nLe fait que toutes les normes sur $\\mathbb{R}^n$ soient équivalentes est un théorème fondamental. Quelles sont les conséquences directes de ce théorème ? (Cochez toutes les réponses correctes)\n",
+      "solution": "\n\n**Réponses : [B, C]**\n\nLe théorème stipule qu'en dimension finie (comme $\\mathbb{R}^n$), toutes les normes sont équivalentes. Cela signifie que les notions topologiques (convergence, ouverts, fermés, compacité) ne dépendent pas du choix de la norme.\n\n- **A.** C'est incorrect. Les normes équivalentes ne donnent pas nécessairement les mêmes valeurs. Par exemple, pour $x=(1,1) \\in \\mathbb{R}^2$, $\\|x\\|_1=2$, $\\|x\\|_2=\\sqrt{2}$ et $\\|x\\|_\\infty=1$.\n\n- **B.** C'est une conséquence fondamentale. Si une suite converge pour une norme $N_1$, c'est-à-dire $\\|x^k - a\\|_{N_1} \\to 0$, alors grâce aux inégalités d'équivalence, on peut montrer que $\\|x^k - a\\|_{N_2} \\to 0$ pour toute autre norme $N_2$.\n\n- **C.** C'est une application directe de l'affirmation B. La norme euclidienne ($\\| \\cdot \\|_2$) et la norme de Manhattan ($\\| \\cdot \\|_1$) sont deux normes sur $\\mathbb{R}^n$. Puisqu'elles sont équivalentes, la convergence pour l'une implique la convergence pour l'autre (vers la même limite).\n\n- **D.** C'est l'inverse qui est vrai : le théorème d'équivalence des normes s'applique aux espaces de dimension finie. Il est faux en dimension infinie, où l'on peut trouver des normes non équivalentes.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** La valeur numérique de $\\|x\\|_1$, $\\|x\\|_2$ et $\\|x\\|_\\infty$ est la même pour tout vecteur $x$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** La notion de convergence d'une suite de vecteurs dans $\\mathbb{R}^n$ est indépendante de la norme choisie.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Si une suite $(x^k)$ tend vers $a$ pour la norme euclidienne, elle tend aussi vers $a$ pour la norme de Manhattan.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Tout espace vectoriel normé est de dimension finie.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "stackId": "6c3ba958",
+      "content": "#### Question 7 : Convergence d'une Suite\n\nConsidérons la suite de vecteurs $(x^k)_{k \\in \\mathbb{N}}$ dans $\\mathbb{R}^2$ définie par $x^k = \\left( \\frac{2k^2 - 1}{k^2 + k}, e^{-k} \\cos(k\\pi) \\right)$. Quelle est la limite de cette suite quand $k \\to \\infty$ ?\n",
+      "solution": "\n\n**Réponse : [D]**\n\nPour trouver la limite d'une suite de vecteurs dans $\\mathbb{R}^n$, on étudie la limite de chaque composante séparément.\n\n- **Première composante :** $x_1^k = \\frac{2k^2 - 1}{k^2 + k}$.\n\n  Pour trouver la limite, on factorise par le terme de plus haut degré au numérateur et au dénominateur :\n\n  $x_1^k = \\frac{k^2(2 - 1/k^2)}{k^2(1 + 1/k)} = \\frac{2 - 1/k^2}{1 + 1/k}$.\n\n  Quand $k \\to \\infty$, $1/k^2 \\to 0$ et $1/k \\to 0$. Donc, $\\lim_{k \\to \\infty} x_1^k = \\frac{2-0}{1+0} = 2$.\n\n- **Deuxième composante :** $x_2^k = e^{-k} \\cos(k\\pi)$.\n\n  Le terme $\\cos(k\\pi)$ est égal à $(-1)^k$, il oscille donc entre -1 et 1. Il est borné : $-1 \\le \\cos(k\\pi) \\le 1$.\n\n  Le terme $e^{-k} = 1/e^k$ tend vers 0 quand $k \\to \\infty$.\n\n  Nous avons donc une suite qui est le produit d'une suite bornée ($\\cos(k\\pi)$) et d'une suite qui tend vers 0 ($e^{-k}$). Par le théorème des gendarmes, le produit tend vers 0.\n\n  Formellement : $-e^{-k} \\le e^{-k} \\cos(k\\pi) \\le e^{-k}$. Comme $\\lim_{k \\to \\infty} -e^{-k} = 0$ et $\\lim_{k \\to \\infty} e^{-k} = 0$, on conclut que $\\lim_{k \\to \\infty} x_2^k = 0$.\n\nLa suite de vecteurs converge donc vers le vecteur dont les composantes sont les limites trouvées : $a = (2, 0)$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** La suite diverge car le terme $\\cos(k\\pi)$ oscille.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** La limite est $(2, 1)$.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** La limite est $(\\infty, 0)$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** La limite est $(2, 0)$.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "stackId": "6c3ba958",
+      "content": "#### Question 8 : Convergence Composante par Composante\n\nUne suite de vecteurs $x^k = (x_1^k, \\dots, x_n^k)$ converge vers un vecteur $a = (a_1, \\dots, a_n)$ dans $\\mathbb{R}^n$. Quelle affirmation est une condition nécessaire et suffisante à cette convergence ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nLe théorème de la convergence composante par composante est un résultat central pour l'étude des suites dans $\\mathbb{R}^n$.\n\n- **A.** C'est une condition nécessaire (car la norme est une fonction continue), mais pas suffisante. Par exemple, dans $\\mathbb{R}^2$, la suite $x^k = (\\cos(k), \\sin(k))$ reste sur le cercle unité, donc $\\|x^k\\|_2 = 1$ pour tout $k$. La suite des normes converge vers 1. Cependant, la suite de vecteurs $(x^k)$ ne converge pas car ses composantes oscillent.\n\n- **B.** C'est une condition nécessaire, mais pas suffisante. Considérons la suite $x^k = (k, -k)$ dans $\\mathbb{R}^2$. La somme des composantes est $k + (-k) = 0$ pour tout $k$. La suite des sommes converge vers 0. Cependant, la suite $(x^k)$ diverge clairement.\n\n- **C.** C'est la définition équivalente de la convergence dans $\\mathbb{R}^n$. Une suite de vecteurs converge si et seulement si chacune de ses suites de composantes (qui sont des suites de nombres réels) converge vers la composante correspondante du vecteur limite. C'est ce qui rend l'étude de la convergence dans $\\mathbb{R}^n$ gérable.\n\n- **D.** Il ne suffit pas qu'une seule composante converge. Toutes les composantes doivent converger. Par exemple, la suite $x^k = (1/k, (-1)^k)$ dans $\\mathbb{R}^2$ a sa première composante qui converge vers 0, mais la deuxième diverge, donc la suite de vecteurs ne converge pas.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** La norme de chaque vecteur, $\\|x^k\\|$, doit converger vers la norme de la limite, $\\|a\\|$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** La somme des composantes $\\sum_{j=1}^n x_j^k$ doit converger vers $\\sum_{j=1}^n a_j$.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Pour chaque $j \\in \\{1, \\dots, n\\}$, la suite réelle $(x_j^k)$ doit converger vers $a_j$.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Au moins une des suites de composantes $(x_j^k)$ doit converger vers $a_j$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "stackId": "6c3ba958",
+      "content": "#### Question 9 : Suite de Cauchy\n\nConceptuellement, que signifie pour une suite $(x^k)$ d'être une suite de Cauchy ?\n",
+      "solution": "\n\n**Réponse : [A]**\n\nLa définition d'une suite de Cauchy formalise l'idée d'une suite dont les termes se \"regroupent\" ou se \"contractent\".\n\n- **A.** C'est la description la plus juste et la plus intuitive de la définition formelle $\\forall \\varepsilon > 0, \\exists k_\\varepsilon, \\forall p,q \\ge k_\\varepsilon, \\|x^p - x^q\\| < \\varepsilon$. Cela signifie que l'écart entre n'importe quels deux termes de la suite peut être rendu aussi petit que l'on veut, à condition de les prendre suffisamment loin dans la suite.\n\n- **B.** Cette condition est nécessaire pour qu'une suite soit de Cauchy, mais elle n'est pas suffisante. L'exemple classique est la suite des sommes partielles de la série harmonique, $S_k = \\sum_{j=1}^k 1/j$. On a $|S_{k+1} - S_k| = 1/(k+1) \\to 0$, mais la suite $(S_k)$ diverge vers l'infini et n'est donc pas de Cauchy.\n\n- **C.** Dans $\\mathbb{R}$, une suite bornée et monotone est convergente, et donc de Cauchy. Cependant, la notion de monotonie n'a pas de sens général pour les suites de vecteurs dans $\\mathbb{R}^n$ avec $n>1$. De plus, une suite peut être de Cauchy sans être monotone (par exemple, $x_k = (-1)^k/k$).\n\n- **D.** C'est une description de la convergence. Bien que dans $\\mathbb{R}^n$ les suites de Cauchy soient exactement les suites convergentes, la définition de Cauchy se concentre sur le comportement des termes *entre eux*, sans faire référence à une limite externe.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Les termes de la suite se rapprochent arbitrairement les uns des autres à mesure que leurs indices augmentent.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** La distance entre deux termes consécutifs, $\\|x^{k+1} - x^k\\|$, tend vers 0.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** La suite est bornée et monotone.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** La suite s'approche d'une valeur limite sans jamais nécessairement l'atteindre.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "stackId": "6c3ba958",
+      "content": "#### Question 10 : Complétude de Rⁿ\n\nQuelle est la relation entre les suites de Cauchy et les suites convergentes dans l'espace $\\mathbb{R}^n$ muni d'une norme quelconque ? (Cochez toutes les réponses correctes)\n",
+      "solution": "\n\n**Réponses : [A, B]**\n\nLa relation entre ces deux concepts est au cœur de la notion de complétude d'un espace.\n\n- **A.** C'est une propriété vraie dans n'importe quel espace vectoriel normé. Si les termes d'une suite se rapprochent tous d'une limite $a$, alors par l'inégalité triangulaire, ils doivent se rapprocher les uns des autres. C'est donc correct.\n\n- **B.** C'est la propriété de **complétude**. Un espace est dit complet si cette affirmation est vraie. L'espace $\\mathbb{R}^n$ (avec n'importe quelle norme, puisqu'elles sont toutes équivalentes) est un espace complet. C'est donc correct.\n\n- **C.** C'est le contraire de l'affirmation A. Si une suite converge, elle doit être de Cauchy. Cette affirmation est donc fausse.\n\n- **D.** La complétude de $\\mathbb{R}^n$ signifie que toute suite de Cauchy y converge. Le fait que toutes les suites soient bornées est faux (par exemple, la suite $x^k = (k, 0)$ n'est pas bornée). La complétude n'est pas liée au fait que toutes les suites soient bornées.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Toute suite convergente est une suite de Cauchy.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** Toute suite de Cauchy est une suite convergente.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Une suite peut être convergente sans être de Cauchy.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $\\mathbb{R}^n$ est dit complet car toutes les suites y sont bornées.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "stackId": "6c3ba958",
+      "content": "#### Question 11 : Application des Propriétés d'une Norme\n\nL'application $N: \\mathbb{R}^2 \\to \\mathbb{R}$ définie par $N(x_1, x_2) = 2|x_1| + |x_2|$ est une norme. Soit le vecteur $v=(-3, 4)$. Quelle est la valeur de $N(v)$ ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nIl s'agit d'une simple application de la formule de la norme donnée au vecteur $v=(-3, 4)$.\n\n- Les composantes du vecteur sont $x_1 = -3$ et $x_2 = 4$.\n- On applique la définition de la norme $N$:\n\n  $N(v) = N(-3, 4) = 2|-3| + |4|$\n\n- On calcule les valeurs absolues :\n\n  $N(v) = 2 \\times 3 + 4$\n\n- On termine le calcul :\n\n  $N(v) = 6 + 4 = 10$.\n\nLes autres options sont des erreurs de calcul plausibles :\n\n- **A)** $2 = |-3| - |4| \\times \\text{signe}(-3)$... ou une autre erreur.\n- **B)** $7 = |-3| + |4|$, ce qui correspondrait à la norme 1 classique.\n- **D)** $14 = 2(|-3|+|4|)$, une erreur de distributivité.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** 2",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** 7",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** 10",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** 14",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "stackId": "6c3ba958",
+      "content": "#### Question 12 : Inégalité Triangulaire Renversée\n\nLaquelle des inégalités suivantes, valable pour toute norme $N$ sur $\\mathbb{R}^n$ et tous vecteurs $x, y \\in \\mathbb{R}^n$, est connue sous le nom d'inégalité triangulaire renversée ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nL'inégalité triangulaire renversée est une conséquence directe de l'inégalité triangulaire standard. Elle fournit une borne inférieure à la norme d'une différence.\n\nLa démonstration est la suivante :\n\n1.  On écrit $N(x) = N(x - y + y)$. Par l'inégalité triangulaire, $N(x) \\le N(x-y) + N(y)$, ce qui donne $N(x) - N(y) \\le N(x-y)$.\n2.  De même, on écrit $N(y) = N(y - x + x)$. Par l'inégalité triangulaire, $N(y) \\le N(y-x) + N(x)$, ce qui donne $N(y) - N(x) \\le N(y-x)$. Comme $N(y-x) = N(-(x-y)) = |-1|N(x-y) = N(x-y)$, on a $-(N(x)-N(y)) \\le N(x-y)$.\n3.  En combinant les deux inégalités, on obtient que $N(x-y)$ est plus grand à la fois que $(N(x)-N(y))$ et son opposé. Cela s'écrit de manière compacte : $|N(x) - N(y)| \\le N(x - y)$.\n\n- **A.** Incorrect. Le membre de droite peut être négatif alors que celui de gauche est toujours positif ou nul.\n- **B.** Incorrect. C'est l'inverse de l'inégalité triangulaire standard.\n- **D.** Incorrect. C'est aussi en contradiction avec l'inégalité triangulaire.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $N(x-y) \\le N(x) - N(y)$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $N(x+y) \\ge N(x) + N(y)$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $|N(x) - N(y)| \\le N(x - y)$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $N(x) + N(y) \\le N(x-y)$",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

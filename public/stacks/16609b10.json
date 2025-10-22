@@ -1,0 +1,99 @@
+{
+  "info": {
+    "id": "16609b10",
+    "title": "'Chapitre 2: Groupes d''isométries - fiches de révision (A)'",
+    "type": "cards",
+    "level": "regular",
+    "chapter": "Chapitre 2: Groupes d'isométries",
+    "course": "L2 MA223: Géométrie",
+    "tags": [
+      "isométrie",
+      "espace euclidien",
+      "espace hermitien",
+      "groupe orthogonal",
+      "groupe unitaire",
+      "produit vectoriel",
+      "rotation"
+    ],
+    "count": 11
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "16609b10",
+      "content": "Qu'est-ce qu'une **isométrie** dans un espace euclidien ou hermitien ?",
+      "solution": "\n\nUne **isométrie** est une application linéaire $f: E \\to E$ d'un espace euclidien ou hermitien $E$ dans lui-même qui **préserve la norme**.\n\nMathématiquement, cela se traduit par :\n\n$$ \\forall x \\in E, \\quad \\|f(x)\\| = \\|x\\| $$\n\noù $\\|.\\|$ est la norme issue du produit scalaire.\n\n**Explication intuitive :**\n\nUne isométrie est une transformation qui ne déforme pas les objets. Elle conserve les longueurs des vecteurs, et par conséquent, les distances entre les points et les angles entre les vecteurs. Pensez à une rotation ou une réflexion : ce sont des \"mouvements rigides\" qui fixent l'origine.\n\n- Dans un espace **euclidien** (sur $\\mathbb{R}$), on parle de **transformation orthogonale**.\n- Dans un espace **hermitien** (sur $\\mathbb{C}$), on parle de **transformation unitaire**.\n\n**Exemple :** Une rotation dans le plan est une isométrie. Un vecteur tourné conserve sa longueur.\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "16609b10",
+      "content": "Quelles sont les propriétés équivalentes qui caractérisent une isométrie $f$ ?",
+      "solution": "\n\nSoit $f$ un endomorphisme d'un espace euclidien ou hermitien $E$. Les affirmations suivantes sont équivalentes et peuvent toutes servir de définition à une isométrie :\n\n1.  **$f$ préserve la norme** (définition de base) :\n\n    $\\forall x \\in E, \\|f(x)\\| = \\|x\\|$.\n\n2.  **$f$ préserve le produit scalaire** :\n\n    $\\forall x, y \\in E, \\varphi(f(x), f(y)) = \\varphi(x, y)$.\n\n    *C'est une conséquence des identités de polarisation. Préserver les longueurs équivaut à préserver les angles.*\n\n3.  **$f$ est un isomorphisme et son inverse est son adjoint** :\n\n    $f$ est bijectif et $f^{-1} = f^*$.\n\n    *Rappel : l'adjoint $f^*$ est l'unique endomorphisme tel que $\\varphi(f(x), y) = \\varphi(x, f^*(y))$ pour tous $x,y$.*\n\n4.  **L'image d'une base orthonormée par $f$ est une base orthonormée.**\n\n    *C'est une caractérisation très pratique pour vérifier si une transformation est une isométrie.*\n\n5.  **La matrice de $f$ dans une base orthonormée est une matrice orthogonale (cas réel) ou unitaire (cas complexe).**\n\n    Si $M$ est la matrice de $f$ dans une base orthonormée, alors ${}^tMM = I$ (cas réel) ou ${}^t\\bar{M}M = I$ (cas complexe).\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "16609b10",
+      "content": "Montrez par le calcul que la rotation d'angle $\\theta$ dans le plan $\\mathbb{R}^2$ est une isométrie.",
+      "solution": "\n\nSoit $f$ la rotation d'angle $\\theta$ autour de l'origine. Sa matrice dans la base canonique (qui est orthonormée) est :\n\n$R_\\theta = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix}$.\n\nSoit un vecteur quelconque $x = (u, v) \\in \\mathbb{R}^2$. Son image par $f$ est $f(x) = R_\\theta \\begin{pmatrix} u \\\\ v \\end{pmatrix} = \\begin{pmatrix} u\\cos\\theta - v\\sin\\theta \\\\ u\\sin\\theta + v\\cos\\theta \\end{pmatrix}$.\n\nPour montrer que $f$ est une isométrie, nous devons vérifier que $\\|f(x)\\| = \\|x\\|$. Il est plus simple de comparer les normes au carré.\n\n**1. Calcul de la norme de $x$ au carré :**\n\n$$ \\|x\\|^2 = u^2 + v^2 $$\n\n**2. Calcul de la norme de $f(x)$ au carré :**\n\n$$ \\|f(x)\\|^2 = (u\\cos\\theta - v\\sin\\theta)^2 + (u\\sin\\theta + v\\cos\\theta)^2 $$\n\nDéveloppons les deux termes :\n\n$$ = (u^2\\cos^2\\theta - 2uv\\cos\\theta\\sin\\theta + v^2\\sin^2\\theta) + (u^2\\sin^2\\theta + 2uv\\sin\\theta\\cos\\theta + v^2\\cos^2\\theta) $$\n\nRegroupons les termes en $u^2$ et $v^2$ :\n\n$$ = u^2(\\cos^2\\theta + \\sin^2\\theta) + v^2(\\sin^2\\theta + \\cos^2\\theta) $$\n\nEn utilisant l'identité $\\cos^2\\theta + \\sin^2\\theta = 1$, on obtient :\n\n$$ = u^2(1) + v^2(1) = u^2 + v^2 $$\n\n**Conclusion :**\n\nOn a bien $\\|f(x)\\|^2 = \\|x\\|^2$. Puisque les normes sont positives, cela implique $\\|f(x)\\| = \\|x\\|$. La rotation préserve la norme, c'est donc une isométrie.\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "16609b10",
+      "content": "Pourquoi une homothétie de rapport $k \\neq \\pm 1$ n'est-elle pas une isométrie ?",
+      "solution": "\n\nUne homothétie de rapport $k$ est une application $h: E \\to E$ définie par $h(x) = kx$.\n\nPour qu'elle soit une isométrie, elle doit préserver la norme pour **tout** vecteur $x \\in E$, c'est-à-dire $\\|h(x)\\| = \\|x\\|$.\n\nCalculons la norme de l'image $h(x)$ :\n\n$$ \\|h(x)\\| = \\|kx\\| $$\n\nPar propriété de la norme, on peut sortir le scalaire $k$ en prenant sa valeur absolue :\n\n$$ \\|h(x)\\| = |k| \\|x\\| $$\n\nLa condition d'isométrie $|k| \\|x\\| = \\|x\\|$ doit être vraie pour tout $x$. Si on prend un vecteur $x$ non nul, on peut diviser par $\\|x\\|$ et obtenir :\n\n$$ |k| = 1 $$\n\nCe qui signifie $k=1$ ou $k=-1$.\n\n**Conclusion :**\n\nSi $k \\neq \\pm 1$, alors $|k| \\neq 1$, et l'égalité $\\|h(x)\\| = \\|x\\|$ n'est pas satisfaite pour les vecteurs non nuls. Par conséquent, une homothétie de rapport $k \\neq \\pm 1$ n'est pas une isométrie. Elle agrandit ($|k|>1$) ou rétrécit ($|k|<1$) les vecteurs.\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "16609b10",
+      "content": "Qu'est-ce que le **groupe orthogonal** $O_n(\\mathbb{R})$ et le **groupe spécial orthogonal** $SO_n(\\mathbb{R})$ ?",
+      "solution": "\n\nLe **groupe orthogonal** d'ordre $n$, noté $O_n(\\mathbb{R})$, est l'ensemble des matrices réelles carrées $M$ de taille $n \\times n$ qui représentent des isométries de l'espace euclidien $\\mathbb{R}^n$ dans sa base canonique.\n\nLa condition pour qu'une matrice $M$ soit dans $O_n(\\mathbb{R})$ est :\n\n$$ {}^tMM = I_n $$\n\noù ${}^tM$ est la transposée de $M$ et $I_n$ est la matrice identité. Cette condition implique que $M$ est inversible et que $M^{-1} = {}^tM$.\n\nLe **groupe spécial orthogonal** d'ordre $n$, noté $SO_n(\\mathbb{R})$, est un sous-ensemble de $O_n(\\mathbb{R})$. Il contient uniquement les matrices orthogonales dont le **déterminant est égal à 1**.\n\n$$ SO_n(\\mathbb{R}) = \\{ M \\in O_n(\\mathbb{R}) \\mid \\det(M)=1 \\} $$\n\n**Signification géométrique :**\n\n- Les matrices de $O_n(\\mathbb{R})$ correspondent à toutes les isométries (rotations, réflexions...).\n- Les matrices de $SO_n(\\mathbb{R})$ correspondent aux isométries qui **préservent l'orientation** de l'espace (les rotations, aussi appelées isométries directes).\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "16609b10",
+      "content": "Quelle est la valeur possible du déterminant d'une matrice orthogonale et quelle est sa signification ?",
+      "solution": "\n\nSi $M$ est une matrice du groupe orthogonal $O_n(\\mathbb{R})$, alors son déterminant ne peut prendre que deux valeurs : **1** ou **-1**.\n\n**Démonstration :**\n\nLa définition d'une matrice orthogonale est ${}^tMM = I_n$.\n\nEn appliquant le déterminant des deux côtés :\n\n$$ \\det({}^tMM) = \\det(I_n) $$\n\nOn utilise les propriétés du déterminant : $\\det(AB) = \\det(A)\\det(B)$ et $\\det({}^tM) = \\det(M)$.\n\n$$ \\det({}^tM)\\det(M) = 1 $$\n\n$$ (\\det(M))^2 = 1 $$\n\nL'unique solution réelle de cette équation est $\\det(M) = \\pm 1$.\n\n**Signification géométrique :**\n\nLe signe du déterminant d'une isométrie indique si elle préserve ou inverse l'orientation de l'espace.\n\n-   **$\\det(M) = 1$** : L'isométrie **préserve l'orientation**. On parle d'isométrie **directe**. Géométriquement, cela correspond à des rotations. L'ensemble de ces matrices forme le groupe spécial orthogonal $SO_n(\\mathbb{R})$.\n\n-   **$\\det(M) = -1$** : L'isométrie **inverse l'orientation**. On parle d'isométrie **indirecte**. Géométriquement, cela correspond à des réflexions ou des compositions d'une rotation et d'une réflexion.\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "16609b10",
+      "content": "Quelle est la formule pour calculer l'**angle non-orienté** $\\theta$ entre deux vecteurs non nuls ?",
+      "solution": "\n\nDans un espace euclidien $(E, \\varphi)$, l'angle non-orienté $\\theta$ entre deux vecteurs non nuls $x$ et $y$ est l'unique réel dans l'intervalle $[0, \\pi]$ défini par la formule :\n\n$$ \\theta = \\arccos\\left(\\frac{\\varphi(x,y)}{\\|x\\|\\|y\\|}\\right) $$\n\n**Explication des termes :**\n\n-   $\\varphi(x,y)$ est le **produit scalaire** entre $x$ et $y$.\n-   $\\|x\\|$ et $\\|y\\|$ sont les **normes** (longueurs) respectives des vecteurs $x$ et $y$.\n-   $\\arccos$ est la fonction arc cosinus, qui renvoie un angle dans $[0, \\pi]$.\n\n**Pourquoi cette formule est-elle toujours valide ?**\n\nL'**inégalité de Cauchy-Schwarz** garantit que $|\\varphi(x,y)| \\le \\|x\\|\\|y\\|$.\n\nPar conséquent, la fraction $\\frac{\\varphi(x,y)}{\\|x\\|\\|y\\|}$ est toujours un nombre compris entre -1 et 1, ce qui est le domaine de définition de la fonction $\\arccos$.\n\nCet angle est dit \"non-orienté\" car il ne dépend pas de l'ordre des vecteurs : $\\theta(x,y) = \\theta(y,x)$.\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "16609b10",
+      "content": "Comment calculer l'angle non-orienté entre les vecteurs $x=(1, 2, 3)$ et $y=(1, 1, -1)$ dans $\\mathbb{R}^3$ ?",
+      "solution": "\n\nOn utilise la formule $\\theta = \\arccos\\left(\\frac{\\langle x,y \\rangle}{\\|x\\|\\|y\\|}\\right)$, où $\\langle \\cdot, \\cdot \\rangle$ est le produit scalaire canonique de $\\mathbb{R}^3$.\n\n**Étapes :**\n\n1.  **Calculer le produit scalaire $\\langle x, y \\rangle$ :**\n\n    $$ \\langle x, y \\rangle = (1)(1) + (2)(1) + (3)(-1) = 1 + 2 - 3 = 0 $$\n\n2.  **Analyser le résultat :**\n\n    Puisque le produit scalaire est nul, les vecteurs sont **orthogonaux**. Nous n'avons même pas besoin de calculer les normes.\n\n3.  **Calculer le cosinus de l'angle :**\n\n    $$ \\cos(\\theta) = \\frac{\\langle x,y \\rangle}{\\|x\\|\\|y\\|} = \\frac{0}{\\|x\\|\\|y\\|} = 0 $$\n\n    (Note : les vecteurs ne sont pas nuls, donc leurs normes ne sont pas nulles).\n\n4.  **Trouver l'angle $\\theta$ :**\n\n    L'unique angle $\\theta$ dans l'intervalle $[0, \\pi]$ tel que $\\cos(\\theta) = 0$ est :\n\n    $$ \\theta = \\arccos(0) = \\frac{\\pi}{2} $$\n\n**Conclusion :** L'angle entre les vecteurs $x$ et $y$ est de $\\frac{\\pi}{2}$ radians (ou 90 degrés). Ils sont orthogonaux.\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "16609b10",
+      "content": "Quand dit-on que deux bases $\\mathcal{B}$ et $\\mathcal{B}'$ d'un espace vectoriel réel ont la **même orientation** ?",
+      "solution": "\n\nDeux bases $\\mathcal{B}$ et $\\mathcal{B}'$ d'un $\\mathbb{R}$-espace vectoriel de dimension finie sont dites de **même orientation** si la matrice de passage de $\\mathcal{B}$ à $\\mathcal{B}'$, notée $P_{\\mathcal{B} \\to \\mathcal{B}'}$, a un **déterminant strictement positif**.\n\n$$ \\det(P_{\\mathcal{B} \\to \\mathcal{B}'}) > 0 $$\n\nSi le déterminant est strictement négatif ($\\det(P_{\\mathcal{B} \\to \\mathcal{B}'}) < 0$), les bases sont dites d'orientations opposées.\n\n**Explication :**\n\nLa relation \"avoir la même orientation\" est une relation d'équivalence. Elle divise l'ensemble de toutes les bases possibles en exactement deux classes. **Orienter un espace**, c'est choisir l'une de ces deux classes comme étant la classe des bases \"directes\" (ou positives). L'autre classe est alors celle des bases \"indirectes\" (ou négatives).\n\nPar convention, dans $\\mathbb{R}^n$, la base canonique est choisie comme base directe de référence.\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "16609b10",
+      "content": "Expliquez ce que signifie \"orienter un espace vectoriel\" et le lien avec le déterminant d'un endomorphisme.",
+      "solution": "\n\n**Orienter un espace vectoriel** réel de dimension finie, c'est choisir une \"direction de référence\". Techniquement, cela consiste à décréter que l'une des deux classes d'orientation des bases est \"directe\" (ou \"positive\").\n\n-   **En dimension 2 (plan)** : Choisir une orientation, c'est choisir un sens de rotation comme étant le sens positif (généralement le sens anti-horaire, dit trigonométrique). Une base $(u,v)$ est directe si on passe de $u$ à $v$ par une rotation dans ce sens positif d'un angle inférieur à $\\pi$.\n-   **En dimension 3 (espace)** : Choisir une orientation, c'est choisir une règle de \"chiralité\", comme la règle de la main droite. Une base $(u,v,w)$ est directe si elle se comporte comme les doigts (pouce, index, majeur) d'une main droite.\n\n**Lien avec le déterminant d'un endomorphisme :**\n\nLe signe du déterminant d'un endomorphisme $f$ nous dit comment $f$ transforme l'orientation de l'espace.\n\n-   Si **$\\det(f) > 0$**, $f$ **préserve l'orientation**. L'image d'une base directe par $f$ est une autre base directe. L'image d'une base indirecte est une autre base indirecte.\n\n    *Exemple : Les rotations ont un déterminant de +1.*\n\n-   Si **$\\det(f) < 0$**, $f$ **inverse l'orientation**. L'image d'une base directe par $f$ devient une base indirecte, et vice-versa.\n\n    *Exemple : Les réflexions ont un déterminant de -1.*\n\n-   Si $\\det(f) = 0$, $f$ n'est pas un automorphisme, l'image n'est plus une base, la notion d'orientation ne s'applique pas à l'image.\n\n",
+      "options": []
+    },
+    {
+      "id": "11",
+      "stackId": "16609b10",
+      "content": "Les bases $\\mathcal{B}_1 = ((1,0), (0,1))$ et $\\mathcal{B}_2 = ((0,1), (1,0))$ de $\\mathbb{R}^2$ ont-elles la même orientation ?",
+      "solution": "\n\nPour déterminer si les deux bases ont la même orientation, nous devons calculer le déterminant de la matrice de passage de $\\mathcal{B}_1$ à $\\mathcal{B}_2$.\n\nLa base $\\mathcal{B}_1$ est la base canonique de $\\mathbb{R}^2$, notons ses vecteurs $e_1 = (1,0)$ et $e_2 = (0,1)$.\n\nLa base $\\mathcal{B}_2$ est constituée des vecteurs $u_1 = (0,1)$ et $u_2 = (1,0)$.\n\nLa **matrice de passage** $P_{\\mathcal{B}_1 \\to \\mathcal{B}_2}$ a pour colonnes les coordonnées des vecteurs de $\\mathcal{B}_2$ exprimées dans la base $\\mathcal{B}_1$.\n\n-   $u_1 = (0,1) = 0 \\cdot e_1 + 1 \\cdot e_2$. La première colonne est $\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}$.\n-   $u_2 = (1,0) = 1 \\cdot e_1 + 0 \\cdot e_2$. La deuxième colonne est $\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}$.\n\nLa matrice de passage est donc :\n\n$$ P = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix} $$\n\nMaintenant, calculons son déterminant :\n\n$$ \\det(P) = (0)(0) - (1)(1) = -1 $$\n\n**Conclusion :**\n\nLe déterminant est négatif ($\\det(P) < 0$). Par conséquent, les bases $\\mathcal{B}_1$ et $\\mathcal{B}_2$ ont des **orientations opposées**. Si $\\mathcal{B}_1$ est considérée comme directe (ce qui est la convention), alors $\\mathcal{B}_2$ est une base indirecte.\n\n",
+      "options": []
+    }
+  ]
+}

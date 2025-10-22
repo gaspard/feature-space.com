@@ -1,0 +1,107 @@
+{
+  "info": {
+    "id": "0cf7334d",
+    "title": "Structures algébriques - fiches de révision (A)",
+    "type": "cards",
+    "level": "regular",
+    "chapter": "Structures algébriques",
+    "course": "Algèbre",
+    "tags": [
+      "structures algébriques",
+      "ensembles",
+      "applications",
+      "groupes",
+      "anneaux",
+      "corps",
+      "relations d'équivalence",
+      "quotients"
+    ],
+    "count": 12
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "0cf7334d",
+      "content": "Qu'est-ce qu'une application (ou fonction) ?",
+      "solution": "\n\nSoient $X$ et $Y$ deux ensembles. Une **application** (ou **fonction**) $f$ de $X$ dans $Y$, notée $f: X \\to Y$, est une règle qui associe à **chaque** élément $x$ de l'ensemble de départ $X$ un **unique** élément $y$ de l'ensemble d'arrivée $Y$. Cet unique élément $y$ est noté $f(x)$ et est appelé l'image de $x$ par $f$.\n\nDeux conditions sont donc essentielles :\n\n1.  **Existence** : Chaque élément de l'ensemble de départ $X$ doit avoir une image dans $Y$.\n2.  **Unicité** : Chaque élément de $X$ ne doit avoir qu'une seule image.\n\nFormellement, le **graphe** de l'application est un sous-ensemble $\\Gamma_f \\subset X \\times Y$ tel que pour tout $x \\in X$, il existe un et un seul $y \\in Y$ pour lequel le couple $(x, y)$ appartient à $\\Gamma_f$.\n\n**Exemple :**\n\nL'application $f: \\mathbb{R} \\to \\mathbb{R}$ définie par $f(x) = x^2$.\n\n- À chaque réel $x$, on associe un unique réel $x^2$. Par exemple, $f(3) = 9$.\n- Un contre-exemple serait une relation qui à $x=4$ associerait $y=2$ et $y=-2$. Ce ne serait pas une application car l'image ne serait pas unique.\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "0cf7334d",
+      "content": "Définissez l'injectivité, la surjectivité et la bijectivité d'une application.",
+      "solution": "\n\nSoit $f : X \\to Y$ une application.\n\n1.  **Injectivité**\n\n    On dit que $f$ est **injective** si deux éléments distincts de l'ensemble de départ ont toujours des images distinctes. Autrement dit, chaque élément de l'ensemble d'arrivée $Y$ est l'image d'au plus un élément de $X$.\n    \n    Mathématiquement : Pour tous $x_1, x_2 \\in X$,\n\n    $$ f(x_1) = f(x_2) \\implies x_1 = x_2 $$\n\n2.  **Surjectivité**\n\n    On dit que $f$ est **surjective** si tout élément de l'ensemble d'arrivée est l'image d'au moins un élément de l'ensemble de départ.\n    \n    Mathématiquement : Pour tout $y \\in Y$, il existe au moins un $x \\in X$ tel que :\n\n    $$ f(x) = y $$\n\n3.  **Bijectivité**\n\n    On dit que $f$ est **bijective** si elle est à la fois injective et surjective. Cela signifie que pour tout élément $y \\in Y$, il existe un et un seul $x \\in X$ tel que $f(x)=y$. Une bijection établit une correspondance parfaite \"un pour un\" entre les éléments de $X$ et de $Y$.\n\n**Exemple :**\n\nSoit $f: \\mathbb{R} \\to \\mathbb{R}$ définie par $f(x) = 2x - 3$.\n\n- Elle est **injective** car si $2x_1 - 3 = 2x_2 - 3$, alors $x_1=x_2$.\n- Elle est **surjective** car pour tout $y \\in \\mathbb{R}$, on peut trouver $x = (y+3)/2$ tel que $f(x)=y$.\n- Elle est donc **bijective**.\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "0cf7334d",
+      "content": "Qu'est-ce qu'une loi de composition interne (ou opération binaire) ?",
+      "solution": "\n\nUne **loi de composition interne** (LCI) ou **opération binaire** sur un ensemble non vide $X$ est une application $*: X \\times X \\to X$.\n\nCela signifie qu'une opération binaire prend deux éléments de l'ensemble $X$ et leur associe un unique élément qui appartient **aussi** à $X$. Pour un couple $(x, y) \\in X \\times X$, on note l'image $*(x,y)$ par la notation infixe $x*y$.\n\nLa propriété fondamentale est la **stabilité** : le résultat de l'opération sur deux éléments de $X$ reste dans $X$.\n\n**Exemples :**\n\n- L'addition $(+)$ est une loi de composition interne sur l'ensemble des entiers $\\mathbb{Z}$, car la somme de deux entiers est toujours un entier.\n- La division $(/)$ n'est pas une loi de composition interne sur $\\mathbb{Z}$, car le résultat de $3/2$ n'est pas un entier.\n\n**Contre-exemple :**\n\nL'addition sur l'ensemble $I = \\{1, 3, 5, ...\\}$ des entiers impairs n'est pas une loi de composition interne, car $1+3=4$, et 4 n'est pas dans $I$.\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "0cf7334d",
+      "content": "Qu'est-ce qu'un groupe ? Listez ses trois axiomes.",
+      "solution": "\n\nUn **groupe** est un couple $(G, *)$ où $G$ est un ensemble non vide et $*$ est une loi de composition interne sur $G$, satisfaisant les trois axiomes suivants :\n\n1.  **Associativité** : L'opération est associative. Pour tous $a, b, c \\in G$, on a :\n\n    $$ (a * b) * c = a * (b * c) $$\n\n2.  **Élément neutre** : Il existe un élément $e \\in G$, appelé élément neutre, tel que pour tout $a \\in G$ :\n\n    $$ a * e = e * a = a $$\n\n3.  **Inverse** : Pour chaque élément $a \\in G$, il existe un élément $a^{-1} \\in G$, appelé l'inverse de $a$, tel que :\n\n    $$ a * a^{-1} = a^{-1} * a = e $$\n\nSi, de plus, l'opération $*$ est commutative ($a * b = b * a$), on dit que le groupe est **abélien** (ou commutatif).\n\n**Exemple fondamental :**\n\nL'ensemble des entiers relatifs muni de l'addition, $(\\mathbb{Z}, +)$, est un groupe abélien.\n\n- L'addition est associative.\n- L'élément neutre est $0$.\n- L'inverse de tout entier $a$ est son opposé $-a$.\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "0cf7334d",
+      "content": "Expliquez la notion d'anneau intègre et donnez un exemple d'anneau non intègre.",
+      "solution": "\n\nUn **anneau intègre** est un anneau $(A, +, \\times)$ qui remplit trois conditions :\n\n1.  Il est **commutatif** (la multiplication $a \\times b = b \\times a$ est commutative).\n2.  Il n'est pas l'anneau nul, c'est-à-dire que son élément neutre pour l'addition $0$ est différent de son élément neutre pour la multiplication $1$ ($1 \\neq 0$).\n3.  Il n'a pas de **diviseurs de zéro**. Cela signifie que si l'on prend deux éléments quelconques $a, b \\in A$, leur produit ne peut être nul que si l'un des deux est nul :\n\n    $$ a \\times b = 0 \\implies a=0 \\text{ ou } b=0 $$\n\n**Exemple d'anneau intègre :**\n\nL'anneau des entiers $(\\mathbb{Z}, +, \\times)$ est intègre. Si le produit de deux entiers $a \\times b$ est $0$, alors il est certain que $a=0$ ou $b=0$.\n\n**Exemple d'anneau non intègre :**\n\nL'anneau $\\mathbb{Z}/6\\mathbb{Z}$ des entiers modulo 6 n'est pas intègre. Dans cet anneau, les éléments sont les classes $\\{\\bar{0}, \\bar{1}, \\bar{2}, \\bar{3}, \\bar{4}, \\bar{5}\\}$. On a :\n\n$$ \\bar{2} \\times \\bar{3} = \\overline{2 \\times 3} = \\bar{6} = \\bar{0} $$\n\nPourtant, $\\bar{2} \\neq \\bar{0}$ et $\\bar{3} \\neq \\bar{0}$. Les éléments $\\bar{2}$ et $\\bar{3}$ sont des diviseurs de zéro.\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "0cf7334d",
+      "content": "Quelle est la différence fondamentale entre un anneau et un corps ?",
+      "solution": "\n\nLa différence fondamentale réside dans la structure de la multiplication pour les éléments non nuls.\n\nUn **anneau** $(A, +, \\times)$ est une structure où :\n\n- $(A, +)$ est un groupe abélien.\n- $(A, \\times)$ est un monoïde (la multiplication est associative et a un neutre, 1).\n- La multiplication est distributive sur l'addition.\n\nUn **corps** $(K, +, \\times)$ est un anneau qui a des propriétés supplémentaires :\n\n- L'anneau est commutatif.\n- $1 \\neq 0$.\n- **Tout élément non nul est inversible pour la multiplication.**\n\nEn d'autres termes, un corps est un anneau commutatif où l'ensemble des éléments non nuls, noté $K^* = K \\setminus \\{0\\}$, forme un **groupe** pour la multiplication.\n\n**Illustration par l'exemple :**\n\n- L'anneau $(\\mathbb{Z}, +, \\times)$ n'est **pas un corps**. C'est un anneau intègre, mais la plupart des éléments non nuls n'ont pas d'inverse multiplicatif *dans $\\mathbb{Z}$*. Par exemple, l'inverse de 2 est $1/2$, qui n'est pas un entier. Les seuls éléments inversibles sont $1$ et $-1$.\n- L'ensemble des nombres rationnels $(\\mathbb{Q}, +, \\times)$ **est un corps**. Tout rationnel non nul $p/q$ a un inverse multiplicatif $q/p$ qui est aussi dans $\\mathbb{Q}$.\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "0cf7334d",
+      "content": "Comment prouver qu'un sous-ensemble $H$ d'un groupe $G$ est un sous-groupe ?",
+      "solution": "\n\nIl existe deux méthodes principales pour montrer qu'un sous-ensemble $H$ d'un groupe $(G, *)$ est un sous-groupe.\n\n**Méthode 1 : Vérification des 3 axiomes**\n\nUn sous-ensemble $H \\subseteq G$ est un sous-groupe si :\n\n1.  $H$ est non vide. Le plus simple est de vérifier que l'élément neutre de $G$, noté $e_G$, est dans $H$.\n2.  $H$ est stable par l'opération : pour tous $x, y \\in H$, le produit $x * y$ est aussi dans $H$.\n3.  $H$ est stable par passage à l'inverse : pour tout $x \\in H$, son inverse $x^{-1}$ est aussi dans $H$.\n\n**Méthode 2 : Utilisation du critère unique (plus rapide)**\n\nUn sous-ensemble **non vide** $H$ de $G$ est un sous-groupe si et seulement si :\n\n$$ \\forall x, y \\in H, \\quad x * y^{-1} \\in H $$\n\nCette unique propriété combine la stabilité par l'opération et par l'inverse.\n\n**Exemple avec le critère unique :**\n\nMontrons que $H = n\\mathbb{Z}$ est un sous-groupe de $(\\mathbb{Z}, +)$.\n\n1.  $H$ est non vide car $0 = n \\cdot 0 \\in H$.\n2.  Soient $x, y \\in n\\mathbb{Z}$. Alors $x=nk_1$ et $y=nk_2$ pour $k_1, k_2 \\in \\mathbb{Z}$. L'opération est l'addition et l'inverse de $y$ est son opposé $-y$. On calcule $x + (-y) = x-y$.\n\n    $$ x - y = nk_1 - nk_2 = n(k_1 - k_2) $$\n\n    Puisque $k_1 - k_2$ est un entier, $x - y$ est un multiple de $n$ et appartient donc à $H$.\n\n3.  Le critère est vérifié, donc $n\\mathbb{Z}$ est un sous-groupe de $\\mathbb{Z}$.\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "0cf7334d",
+      "content": "Qu'est-ce qu'un morphisme de groupes ?",
+      "solution": "\n\nUn **morphisme de groupes** est une application entre deux groupes qui \"préserve\" la structure de groupe.\n\nSoient $(G, *_G, e_G)$ et $(H, *_H, e_H)$ deux groupes. Une application $f : G \\to H$ est un morphisme de groupes si elle respecte l'opération de groupe, c'est-à-dire :\n\n$$ \\forall g_1, g_2 \\in G, \\quad f(g_1 *_G g_2) = f(g_1) *_H f(g_2) $$\n\nL'image du produit est le produit des images.\n\n**Propriétés importantes :**\n\n- Un morphisme de groupes envoie toujours l'élément neutre du premier groupe sur l'élément neutre du second : $f(e_G) = e_H$.\n- Il préserve aussi les inverses : $f(g^{-1}) = (f(g))^{-1}$.\n\n**Exemple : Le déterminant**\n\nL'application déterminant, $\\det: (\\text{GL}_n(\\mathbb{R}), \\times) \\to (\\mathbb{R}^*, \\times)$, est un morphisme de groupes.\n\n- $\\text{GL}_n(\\mathbb{R})$ est le groupe des matrices carrées inversibles.\n- $\\mathbb{R}^*$ est le groupe des réels non nuls.\n- La propriété $\\det(A \\times B) = \\det(A) \\times \\det(B)$ montre que le déterminant est un morphisme.\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "0cf7334d",
+      "content": "Définissez le noyau et l'image d'un morphisme de groupes.",
+      "solution": "\n\nSoit $f : (G, *_G, e_G) \\to (H, *_H, e_H)$ un morphisme de groupes.\n\n1.  **Noyau (Kernel)**\n\n    Le **noyau** de $f$, noté $\\text{Ker}(f)$, est le sous-ensemble des éléments du groupe de départ $G$ qui sont envoyés sur l'élément neutre $e_H$ du groupe d'arrivée.\n\n    $$ \\text{Ker}(f) = \\{ g \\in G \\mid f(g) = e_H \\} $$\n\n    Le noyau est un sous-groupe de $G$.\n\n2.  **Image**\n\n    L'**image** de $f$, notée $\\text{Im}(f)$, est le sous-ensemble des éléments du groupe d'arrivée $H$ qui sont l'image d'au moins un élément de $G$.\n\n    $$ \\text{Im}(f) = \\{ f(g) \\mid g \\in G \\} $$\n\n    L'image est un sous-groupe de $H$.\n\n**Relation avec l'injectivité et la surjectivité :**\n\n- Un morphisme $f$ est **injectif** si et seulement si son noyau est réduit à l'élément neutre : $\\text{Ker}(f) = \\{e_G\\}$.\n- Un morphisme $f$ est **surjectif** si et seulement si son image est le groupe d'arrivée tout entier : $\\text{Im}(f) = H$.\n\n**Exemple :**\n\nPour le morphisme $\\det : \\text{GL}_n(\\mathbb{R}) \\to \\mathbb{R}^*$,\n\n- Le **noyau** est l'ensemble des matrices $M$ telles que $\\det(M)=1$. C'est le groupe spécial linéaire $\\text{SL}_n(\\mathbb{R})$.\n- L'**image** est $\\mathbb{R}^*$, car tout réel non nul peut être le déterminant d'une matrice.\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "0cf7334d",
+      "content": "Qu'est-ce qu'une relation d'équivalence ?",
+      "solution": "\n\nUne **relation d'équivalence** sur un ensemble $E$ est une relation binaire, notée $\\sim$, qui est :\n\n1.  **Réflexive** : Chaque élément est en relation avec lui-même.\n\n    $$ \\forall x \\in E, \\quad x \\sim x $$\n\n2.  **Symétrique** : Si $x$ est en relation avec $y$, alors $y$ est en relation avec $x$.\n\n    $$ \\forall x, y \\in E, \\quad (x \\sim y \\implies y \\sim x) $$\n\n3.  **Transitive** : Si $x$ est en relation avec $y$, et $y$ est en relation avec $z$, alors $x$ est en relation avec $z$.\n\n    $$ \\forall x, y, z \\in E, \\quad (x \\sim y \\text{ et } y \\sim z \\implies x \\sim z) $$\n\nUne relation d'équivalence permet de regrouper les éléments d'un ensemble en \"paquets\" appelés **classes d'équivalence**, où tous les éléments d'un même paquet sont considérés comme équivalents.\n\n**Exemple : La congruence modulo 3 sur $\\mathbb{Z}$**\n\nOn dit que $a \\sim b$ si $a-b$ est un multiple de 3.\n\n- **Réflexive** : $a-a=0$, qui est un multiple de 3. Donc $a \\sim a$.\n- **Symétrique** : Si $a-b = 3k$, alors $b-a = -3k = 3(-k)$, donc $b \\sim a$.\n- **Transitive** : Si $a-b = 3k_1$ et $b-c = 3k_2$, alors $a-c = (a-b)+(b-c) = 3k_1+3k_2 = 3(k_1+k_2)$, donc $a \\sim c$.\n\nLes classes d'équivalence sont les ensembles des nombres ayant le même reste dans la division par 3: $\\{\\dots, -3, 0, 3, \\dots\\}$, $\\{\\dots, -2, 1, 4, \\dots\\}$, et $\\{\\dots, -1, 2, 5, \\dots\\}$.\n\n",
+      "options": []
+    },
+    {
+      "id": "11",
+      "stackId": "0cf7334d",
+      "content": "Qu'est-ce qu'un idéal d'un anneau commutatif ?",
+      "solution": "\n\nSoit $(A, +, \\times)$ un anneau commutatif. Un sous-ensemble $I \\subseteq A$ est un **idéal** de $A$ s'il satisfait deux conditions :\n\n1.  **$(I, +)$ est un sous-groupe additif de $(A, +)$**.\n\n    Cela implique que $0 \\in I$, et que pour tous $x, y \\in I$, leur différence $x-y$ est aussi dans $I$.\n\n2.  **Propriété d'absorption** : Pour tout élément $a \\in A$ (de l'anneau entier) et tout élément $x \\in I$, le produit $ax$ est encore dans $I$.\n\n    $$ \\forall a \\in A, \\forall x \\in I, \\quad ax \\in I $$\n\nUn idéal est donc un sous-groupe additif qui \"absorbe\" la multiplication par n'importe quel élément de l'anneau. C'est une notion plus forte que celle de sous-anneau.\n\n**Exemple fondamental :**\n\nDans l'anneau des entiers $(\\mathbb{Z}, +, \\times)$, les idéaux sont exactement les ensembles de la forme $n\\mathbb{Z}$ (les multiples de $n$).\n\n- Prenons $I = 5\\mathbb{Z}$. C'est bien un sous-groupe additif.\n- Vérifions l'absorption : soit $a \\in \\mathbb{Z}$ et $x \\in 5\\mathbb{Z}$. On peut écrire $x=5k$ pour un certain $k \\in \\mathbb{Z}$. Le produit $ax = a(5k) = 5(ak)$. Comme $ak$ est un entier, $ax$ est bien un multiple de 5, donc il est dans $5\\mathbb{Z}$.\n\n",
+      "options": []
+    },
+    {
+      "id": "12",
+      "stackId": "0cf7334d",
+      "content": "Expliquez la construction d'un anneau quotient $A/I$.",
+      "solution": "\n\nLa construction d'un **anneau quotient** permet de créer un nouvel anneau à partir d'un anneau existant $A$ et d'un de ses idéaux $I$. L'idée est de \"rendre nuls\" tous les éléments de l'idéal $I$.\n\n**Étapes de la construction :**\n\n1.  **Relation d'équivalence** : On définit sur l'anneau $A$ la relation $a \\sim b \\iff a-b \\in I$. C'est une relation d'équivalence.\n\n2.  **Ensemble quotient** : On considère l'ensemble des classes d'équivalence, noté $A/I$. La classe d'un élément $a$ est l'ensemble $a+I = \\{a+i \\mid i \\in I\\}$, souvent notée $\\bar{a}$.\n\n3.  **Définition des opérations** : On munit l'ensemble $A/I$ de deux opérations :\n    -   **Addition** : $\\bar{a} + \\bar{b} = \\overline{a+b}$\n    -   **Multiplication** : $\\bar{a} \\times \\bar{b} = \\overline{ab}$\n\nLe fait que $I$ soit un idéal (et pas seulement un sous-anneau) est crucial pour garantir que la multiplication est **bien définie**, c'est-à-dire que le résultat ne dépend pas des représentants $a$ et $b$ choisis dans leurs classes.\n\nLe triplet $(A/I, +, \\times)$ est alors un nouvel anneau, appelé **anneau quotient**.\n\n- Son élément nul est $\\bar{0} = I$.\n- Son élément unité est $\\bar{1} = 1+I$.\n\n**Exemple : L'anneau $\\mathbb{Z}/4\\mathbb{Z}$**\n\n- On part de l'anneau $A=\\mathbb{Z}$ et de l'idéal $I=4\\mathbb{Z}$.\n- L'anneau quotient $\\mathbb{Z}/4\\mathbb{Z}$ a pour éléments $\\{\\bar{0}, \\bar{1}, \\bar{2}, \\bar{3}\\}$.\n- Dans cet anneau, on a par exemple $\\bar{2} + \\bar{3} = \\overline{2+3} = \\bar{5} = \\bar{1}$, et $\\bar{2} \\times \\bar{3} = \\overline{2 \\times 3} = \\bar{6} = \\bar{2}$.\n\n",
+      "options": []
+    }
+  ]
+}

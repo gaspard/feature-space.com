@@ -1,0 +1,300 @@
+{
+  "info": {
+    "id": "f399bde7",
+    "title": "Principes de dénombrement - quiz (B)",
+    "type": "quiz",
+    "level": "pro",
+    "chapter": "Principes de dénombrement",
+    "course": "Graphes et Combinatoire",
+    "tags": [
+      "Combinatoire",
+      "Dénombrement",
+      "Cardinalité",
+      "Ensembles finis",
+      "Principes de comptage"
+    ],
+    "count": 10
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "f399bde7",
+      "content": "#### Question 1 : Preuve du Théorème de Comparaison des Cardinaux\n\nLa preuve de l'assertion \"S'il existe une injection $f : [n] \\to [m]$, alors $n \\le m$\" se fait par récurrence sur $n$. Dans l'étape d'hérédité, en supposant la propriété vraie pour $n$ et en considérant une injection $f : [n+1] \\to [m]$, la preuve examine deux cas pour la valeur de $f(n+1)$.\n\nSi $f(n+1) = k \\neq m$, on introduit une transposition $\\sigma$ qui échange $k$ et $m$ et on considère la nouvelle fonction $g = \\sigma \\circ f$. Quel est le rôle principal de cette construction ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nL'objectif de la preuve par récurrence est d'utiliser l'hypothèse de récurrence, qui porte sur des injections depuis $[n]$. Pour cela, on doit \"isoler\" l'élément $n+1$ et son image, et se ramener à un problème de taille inférieure.\n\n- **A)** La composition par une bijection (la transposition $\\sigma$) ne change pas la nature injective de la fonction, elle ne la transforme pas en surjection. Le but n'est pas de créer une surjection.\n\n- **B)** L'ensemble d'arrivée reste $[m]$. La fonction $g$ est toujours une application de $[n+1]$ dans $[m]$. Ce qui change, c'est l'image de l'élément $n+1$.\n\n- **C)** C'est la justification correcte. L'injection initiale $f$ envoie $n+1$ sur un élément $k$ quelconque dans $[m]$. La construction de $g = \\sigma \\circ f$ crée une nouvelle injection où $g(n+1) = \\sigma(f(n+1)) = \\sigma(k) = m$. En ayant $g(n+1)=m$, on peut considérer la restriction de $g$ à $[n]$. Cette restriction, $g|_{[n]}$, est une injection de $[n]$ dans $[m] \\setminus \\{m\\} = [m-1]$. C'est sur cette nouvelle injection que l'on peut appliquer l'hypothèse de récurrence pour conclure que $n \\le m-1$, et donc $n+1 \\le m$. La transposition est une astuce pour se ramener proprement à ce cas favorable.\n\n- **D)** C'est l'énoncé que l'on cherche à prouver (ou sa contraposée), pas une étape de la démonstration. La construction avec $\\sigma$ est un mécanisme interne à la preuve, pas une réaffirmation de l'objectif.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Montrer que toute injection peut être transformée en une surjection, simplifiant ainsi le problème.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Modifier l'ensemble d'arrivée $[m]$ pour qu'il ait $m-1$ éléments, ce qui permet d'appliquer directement l'hypothèse de récurrence.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Se ramener au cas où l'image de $n+1$ est $m$, afin de pouvoir considérer une injection sur des ensembles de taille réduite, à savoir $[n]$ et $[m-1]$.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Démontrer que l'ensemble des injections de $[n+1]$ dans $[m]$ est non vide si et seulement si $n+1 \\le m$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "stackId": "f399bde7",
+      "content": "#### Question 2 : Preuve bijective d'une identité combinatoire\n\nL'identité $\\binom{n}{k} = \\binom{n}{n-k}$ peut être prouvée bijectivement en utilisant l'application \"passage au complémentaire\". Considérons maintenant l'identité plus complexe de \"l'équipe et son capitaine\" : $k \\binom{n}{k} = n \\binom{n-1}{k-1}$. Une preuve bijective de cette identité requiert de trouver deux ensembles $E$ et $F$ de cardinaux respectifs $k \\binom{n}{k}$ et $n \\binom{n-1}{k-1}$, puis de construire une bijection entre eux.\n\nParmi les descriptions suivantes, laquelle correspond à une preuve bijective valide de cette identité ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nUne preuve bijective nécessite d'expliciter deux ensembles et une bijection entre eux.\n\n- **A)** $|E| = \\binom{n}{k} \\cdot \\binom{k}{1} = k \\binom{n}{k}$, ce qui est correct. Cependant, $|F|=\\binom{n}{k}$ et l'application $f(A,B) = A \\setminus B$ va de $E$ vers l'ensemble des parties de taille $k-1$, pas $k$. De plus, elle n'est pas bijective. Cette option est incorrecte.\n\n- **B)** Cette option décrit parfaitement une preuve bijective.\n    - L'ensemble $E$ est l'ensemble des comités de $k$ personnes avec un capitaine désigné. Pour le construire, on choisit d'abord le comité de $k$ personnes ($\\binom{n}{k}$ façons), puis on choisit le capitaine parmi ces $k$ personnes ($k$ façons). Par le principe de multiplication, $|E| = k \\binom{n}{k}$.\n    - L'ensemble $F$ est construit différemment : on choisit d'abord le capitaine parmi les $n$ personnes ($n$ façons), puis on choisit les $k-1$ autres membres du comité parmi les $n-1$ personnes restantes ($\\binom{n-1}{k-1}$ façons). Par le principe de multiplication, $|F| = n \\binom{n-1}{k-1}$.\n    - Les deux ensembles $E$ et $F$ représentent exactement la même chose : \"un comité de $k$ personnes avec un capitaine désigné, choisi dans un groupe de $n$ personnes\". Il y a donc une bijection naturelle entre eux. Ceci constitue une preuve bijective valide.\n\n- **C)** Les cardinaux des ensembles ne correspondent pas aux termes de l'identité. $|E|=\\binom{n}{k}$ et $|F|=\\binom{n}{k-1}$. L'application n'est pas une bijection et ne prouve pas l'identité demandée.\n\n- **D)** Ceci est une description d'une preuve par \"dénombrement double\" (double counting), ce qui est une technique de preuve combinatoire valide et très proche. Cependant, la question demande spécifiquement une preuve *bijective*, qui implique la construction explicite d'une fonction bijective entre deux ensembles. L'option B décrit les ensembles et la bijection implicite, ce qui est la structure d'une preuve bijective. L'option D décrit la logique du double comptage, qui est une technique différente bien que conceptuellement liée.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $E$ est l'ensemble des couples $(A, B)$ où $A \\subseteq [n]$ avec $|A|=k$ et $B \\subseteq A$ avec $|B|=1$. $F$ est l'ensemble des sous-ensembles de $[n]$ de taille $k$. La bijection associe $(A, B)$ à $A \\setminus B$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $E$ est l'ensemble des couples $(A, c)$ où $A$ est un sous-ensemble de $k$ personnes choisies parmi $n$, et $c$ est un capitaine choisi dans $A$. $F$ est l'ensemble des couples $(p, C)$ où $p$ est une personne choisie parmi $n$ pour être capitaine, et $C$ est un comité de $k-1$ autres personnes choisies parmi les $n-1$ restantes. La bijection est évidente.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $E$ est l'ensemble des sous-ensembles de $[n]$ de taille $k$. $F$ est l'ensemble des sous-ensembles de $[n]$ de taille $k-1$. La bijection consiste à retirer l'élément maximal du sous-ensemble de $E$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** On compte de deux manières le nombre de façons de former un comité de $k$ personnes parmi $n$ et un sous-comité de 1 personne. La première façon donne $k \\binom{n}{k}$. La deuxième façon donne $n \\binom{n-1}{k-1}$. Puisque les deux expressions comptent la même chose, elles doivent être égales.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "stackId": "f399bde7",
+      "content": "#### Question 3 : Analyse de la preuve du Théorème d'Erdos-Szekeres\n\nLa preuve du théorème d'Erdos-Szekeres (cas simple) stipule que toute séquence de $n^2+1$ nombres réels distincts contient une sous-séquence monotone de longueur $n+1$. La preuve utilise le principe des tiroirs. Pour une séquence $a_1, \\dots, a_{n^2+1}$, on associe à chaque terme $a_i$ un couple $(x_i, y_i)$, où $x_i$ est la longueur de la plus longue sous-séquence croissante finissant en $a_i$, et $y_i$ la longueur de la plus longue sous-séquence décroissante finissant en $a_i$.\n\nQuelles affirmations concernant cette preuve sont correctes ?\n",
+      "solution": "\n\n**Réponses : [A, C]**\n\nCette question teste la compréhension fine de la structure de la preuve.\n\n- **A)** C'est la modélisation correcte pour le principe des tiroirs. On a $m=n^2+1$ \"objets\" qui sont les termes $a_1, \\dots, a_{n^2+1}$. On les range dans des \"tiroirs\" qui sont les couples $(x_i, y_i)$.\n\n- **B)** Le principe des tiroirs conclut qu'il existe deux objets distincts, disons $a_i$ et $a_j$ (avec $i \\neq j$, supposons $i < j$), qui sont dans le même tiroir. Cela signifie que le couple associé est le même : $(x_i, y_i) = (x_j, y_j)$. Cela ne dit rien sur l'égalité de $a_i$ et $a_j$ (qui sont d'ailleurs supposés distincts).\n\n- **C)** C'est exactement le cœur de la contradiction. Si on a trouvé $i<j$ tel que $(x_i, y_i) = (x_j, y_j)$, on regarde la relation entre $a_i$ et $a_j$ (qui sont distincts).\n    - Si $a_i < a_j$, on peut prendre la plus longue sous-séquence croissante finissant en $a_i$ (de longueur $x_i$) et y ajouter $a_j$. On obtient une sous-séquence croissante finissant en $a_j$ de longueur $x_i+1$. Donc, la plus longue doit être d'au moins cette taille : $x_j \\ge x_i+1$. Ceci contredit $x_j=x_i$.\n    - Si $a_i > a_j$, un argument similaire montre que $y_j \\ge y_i+1$, contredisant $y_j=y_i$.\n\n    Dans tous les cas, l'égalité des couples est impossible.\n\n- **D)** L'argument de la preuve repose sur le fait qu'il n'existe *pas* de sous-séquence monotone de longueur $n+1$. Si c'est le cas, alors pour tout $i$, les longueurs $x_i$ et $y_i$ sont bornées par $n$. Donc, les couples $(x_i, y_i)$ appartiennent à l'ensemble $\\{1, \\dots, n\\} \\times \\{1, \\dots, n\\}$. Le nombre de \"tiroirs\" est donc $n^2$. Puisque l'on a $n^2+1$ \"objets\", le principe des tiroirs s'applique. L'affirmation que le nombre de tiroirs est $(n+1)^2$ est incorrecte.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Les \"objets\" sont les termes $a_i$ de la séquence, et les \"tiroirs\" sont les couples d'entiers $(x,y)$ possibles.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** La conclusion du principe des tiroirs est qu'il existe $i < j$ avec $a_i = a_j$, ce qui contredit l'hypothèse que les termes sont distincts.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** La contradiction finale est atteinte en montrant que si $(x_i, y_i) = (x_j, y_j)$ pour $i<j$, alors soit $x_j > x_i$ (si $a_i < a_j$), soit $y_j > y_i$ (si $a_i > a_j$), ce qui contredit l'égalité des couples.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Le nombre de \"tiroirs\" possibles est $(n+1)^2$, ce qui force, par le principe des tiroirs, un tiroir à contenir au moins deux objets car $n^2+1 > n^2$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "stackId": "f399bde7",
+      "content": "#### Question 4 : Formule d'inclusion-exclusion et dérangements\n\nUn dérangement de $[n]$ est une permutation $\\sigma$ de $[n]$ sans point fixe, c'est-à-dire $\\forall i \\in [n], \\sigma(i) \\neq i$. Le nombre de dérangements de $[n]$ est noté $D_n$. Pour calculer $D_n$, on utilise le principe d'inclusion-exclusion sur l'ensemble de toutes les permutations $S_n$.\n\nSoit $U = S_n$ l'ensemble de toutes les permutations. Pour $i \\in [n]$, on définit $E_i$ comme l'ensemble des permutations $\\sigma \\in S_n$ telles que $\\sigma(i)=i$ (permutations qui fixent $i$). Le nombre de dérangements est alors $D_n = |U| - \\left| \\bigcup_{i=1}^n E_i \\right|$.\n\nSelon la formule d'inclusion-exclusion généralisée, lequel des termes suivants représente la somme des cardinaux des intersections de $k$ de ces ensembles ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nLa formule d'inclusion-exclusion généralisée (formule de Poincaré) est :\n\n$$ \\left| \\bigcup_{i=1}^n E_i \\right| = \\sum_{k=1}^n (-1)^{k-1} \\sum_{|I|=k, I \\subseteq [n]} \\left| \\bigcap_{i \\in I} E_i \\right| $$\n\nLa question porte sur le terme $\\sum_{|I|=k} \\left| \\bigcap_{i \\in I} E_i \\right|$.\n\nSoit $I \\subseteq [n]$ un sous-ensemble de $k$ indices, par exemple $I=\\{i_1, \\dots, i_k\\}$. L'ensemble $\\bigcap_{j \\in I} E_j$ est l'ensemble des permutations qui fixent tous les éléments de $I$. Pour construire une telle permutation, les $k$ éléments de $I$ sont envoyés sur eux-mêmes. Les $n-k$ autres éléments de $[n] \\setminus I$ peuvent être permutés de n'importe quelle manière entre eux. Il y a $(n-k)!$ façons de le faire.\n\nDonc, pour un ensemble $I$ de taille $k$ donné, on a $\\left| \\bigcap_{i \\in I} E_i \\right| = (n-k)!$.\n\nMaintenant, nous devons sommer ces cardinaux pour tous les sous-ensembles $I$ de taille $k$. Le nombre de tels sous-ensembles $I$ est $\\binom{n}{k}$.\n\nPuisque le cardinal de l'intersection est le même pour tous les ensembles $I$ de même taille $k$, la somme est :\n\n$$ \\sum_{|I|=k} \\left| \\bigcap_{i \\in I} E_i \\right| = \\binom{n}{k} (n-k)! $$\n\nAnalysons les autres options :\n\n- **A)** $\\binom{n}{k} (n-k)$ n'a pas de sens combinatoire direct dans ce contexte.\n- **C)** $(-1)^{k-1} \\binom{n}{k} (n-k)! = (-1)^{k-1} \\frac{n!}{k!}$ est le terme complet (avec son signe) dans la somme de Poincaré. La question ne demandait que la somme des cardinaux.\n- **D)** $(n-k)!$ est le cardinal d'une *seule* intersection de $k$ ensembles, pas la somme sur tous les choix possibles de $k$ ensembles.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\binom{n}{k} (n-k)$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\binom{n}{k} (n-k)!$",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $(-1)^{k-1} n!/k!$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $(n-k)!$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "stackId": "f399bde7",
+      "content": "#### Question 5 : Principe des bergers et Dénombrement de Colliers\n\nOn souhaite dénombrer le nombre de colliers distincts à $n$ perles de $k$ couleurs différentes, où $n$ est un nombre premier. Deux colliers sont considérés identiques s'ils peuvent être obtenus l'un de l'autre par rotation.\n\nSoit $E$ l'ensemble des $k^n$ séquences linéaires de $n$ perles colorées. Soit $F$ l'ensemble des colliers distincts. On définit une application $f: E \\to F$ qui enroule la séquence pour former un collier.\n\nEn utilisant le principe des bergers, quelles affirmations sont vraies ? (Supposez $n$ premier, $k \\ge 2$).\n",
+      "solution": "\n\n**Réponses : [B, C]**\n\nCette question explore une application non triviale du principe des bergers où les fibres n'ont pas toutes la même taille.\n\n- **A)** Cette affirmation est fausse. Si un collier est monochrome (toutes les perles de la même couleur, par exemple \"RR...R\"), n'importe laquelle des $n$ rotations le laisse inchangé. La séquence linéaire \"RR...R\" est la seule qui produit ce collier. Sa fibre est donc de taille 1, et non $n$. L'hypothèse du principe des bergers (cas régulier) n'est pas satisfaite sur tout l'ensemble $E$.\n\n- **B)** C'est vrai. Il y a $k$ couleurs possibles. Pour chaque couleur, on peut former un collier monochrome. Ce collier est généré par une unique séquence linéaire (par exemple, \"RR...R\" pour la couleur R). Donc, pour chacun de ces $k$ colliers, la préimage (fibre) a un cardinal de 1.\n\n- **C)** C'est vrai. Un collier non monochrome a au moins deux couleurs. Supposons qu'une rotation de $d$ positions ($0 < d < n$) laisse un tel collier invariant. Cela signifie que le collier est périodique avec une période $d$. Comme $n$ est premier, le seul diviseur de $n$ est 1. La plus petite période doit diviser $n$, donc si le collier n'est pas monochrome (période 1), sa plus petite période doit être $n$. Par conséquent, seules les rotations multiples de $n$ (c'est-à-dire la rotation nulle) laissent le collier invariant. Les $n$ rotations distinctes d'une séquence linéaire non-périodique génèrent $n$ séquences linéaires distinctes, qui correspondent toutes au même collier. La fibre a donc bien une taille de $n$.\n\n- **D)** C'est presque correct, mais il y a une erreur. Il y a $k$ colliers monochromes. Le nombre total de séquences linéaires est $k^n$. Parmi elles, $k$ sont monochromes. Les $k^n - k$ séquences restantes correspondent aux colliers non-monochromes. D'après C), chaque collier non-monochrome a une fibre de taille $n$. Par le principe des bergers, le nombre de colliers non-monochromes est $\\frac{k^n-k}{n}$. Le nombre total de colliers est la somme des colliers monochromes et non-monochromes : $\\frac{k^n-k}{n} + k$. L'option D propose $+n$ au lieu de $+k$. C'est ce qu'on appelle le petit théorème de Fermat pour les colliers.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Tous les colliers ont une fibre de taille $n$, donc le nombre de colliers est toujours $k^n/n$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Il existe exactement $k$ colliers monochromes, et la fibre de chacun de ces colliers sous l'application $f$ est de taille 1.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Pour tout collier non monochrome, la fibre sous l'application $f$ est de taille $n$, car $n$ étant premier, aucune rotation (autre que l'identité) ne peut laisser le collier invariant.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Le nombre total de colliers est donné par $\\frac{k^n-k}{n} + n$, en appliquant le principe des bergers séparément aux colliers monochromes et non-monochromes.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "stackId": "f399bde7",
+      "content": "#### Question 6 : Fondements théoriques des principes de dénombrement\n\nLe principe de multiplication stipule que $|E_1 \\times \\dots \\times E_n| = |E_1| \\times \\dots \\times |E_n|$. Comment ce principe peut-il être formellement démontré pour un $n$ quelconque ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nLa question porte sur la justification formelle des principes de base, ce qui est une question théorique avancée.\n\n- **A)** Bien que le principe soit intuitivement fondamental, en mathématiques formelles, il est un théorème qui découle de définitions plus élémentaires (ensembles, fonctions, cardinalité). Il n'est pas un axiome.\n\n- **B)** Construire une bijection explicite est une manière valide de prouver l'égalité des cardinaux (principe de bijection). Cependant, ce n'est pas la démarche la plus simple ou la plus standard. La preuve standard s'appuie sur des principes plus structurants comme la récurrence et le principe des bergers, qui évitent la construction d'une bijection complexe avec un segment des entiers.\n\n- **C)** C'est la démarche de preuve la plus rigoureuse et la plus courante.\n    - **Cas de base (n=2)** : On veut montrer $|E_1 \\times E_2| = |E_1| \\cdot |E_2|$. On considère l'application de projection $p: E_1 \\times E_2 \\to E_2$ définie par $p(x_1, x_2) = x_2$. Cette application est surjective (si $E_1$ n'est pas vide). Pour tout $y \\in E_2$, la préimage (fibre) $p^{-1}(\\{y\\})$ est l'ensemble des couples $(x_1, y)$ où $x_1 \\in E_1$. Cet ensemble est en bijection évidente avec $E_1$ et a donc pour cardinal $|E_1|$. Comme toutes les fibres ont la même taille $|E_1|$, le principe des bergers (cas régulier) s'applique et donne $|E_1 \\times E_2| = |\\text{Im}(p)| \\cdot |E_1| = |E_2| \\cdot |E_1|$.\n    - **Hérédité** : On suppose la formule vraie pour $n$. On a alors $|E_1 \\times \\dots \\times E_{n+1}| = |(E_1 \\times \\dots \\times E_n) \\times E_{n+1}|$. En appliquant le cas de base à ce produit de deux ensembles, on obtient $|E_1 \\times \\dots \\times E_n| \\cdot |E_{n+1}|$. Par hypothèse de récurrence, cela vaut $(|E_1| \\cdots |E_n|) \\cdot |E_{n+1}|$.\n\n- **D)** Le principe d'inclusion-exclusion s'applique à l'union d'ensembles, pas à leur produit cartésien. Il n'y a pas de lien direct entre ces deux principes.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Il est pris comme un axiome fondamental de la combinatoire et ne nécessite pas de preuve.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** En construisant une bijection explicite entre le produit cartésien $E_1 \\times \\dots \\times E_n$ et l'ensemble des entiers $[|E_1| \\cdot \\dots \\cdot |E_n|]$, bien que cette bijection soit souvent trop complexe à formuler.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Par une preuve par récurrence sur $n$, où le cas de base $n=2$ est prouvé en utilisant le principe des bergers sur la projection $p: E_1 \\times E_2 \\to E_2$.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** En appliquant le principe d'inclusion-exclusion à l'union des ensembles $E_i$, qui se simplifie en un produit car les ensembles sont considérés comme \"indépendants\".",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "stackId": "f399bde7",
+      "content": "#### Question 7 : Argument diagonal de Cantor\n\nLe théorème de Cantor stipule que pour tout ensemble $E$, il n'existe pas de surjection de $E$ dans son ensemble des parties $P(E)$. La preuve procède par l'absurde en supposant l'existence d'une telle surjection $f: E \\to P(E)$ et en construisant l'ensemble \"diagonal\" $A = \\{x \\in E \\mid x \\notin f(x)\\}$.\n\nLequel des énoncés suivants capture le plus précisément la nature de la contradiction dérivée de l'existence de l'ensemble $A$ ?\n",
+      "solution": "\n\n**Réponse : [A]**\n\nCette question sonde la compréhension du cœur logique de l'argument diagonal.\n\n- **A)** C'est l'explication exacte.\n    1.  $A$ est un sous-ensemble de $E$ par construction, donc $A \\in P(E)$.\n    2.  L'hypothèse de départ est que $f$ est surjective, ce qui signifie que *chaque* élément de $P(E)$ doit être l'image d'au moins un élément de $E$.\n    3.  Donc, il doit exister un $y \\in E$ tel que $f(y) = A$.\n    4.  On se pose alors la question : est-ce que cet élément $y$ appartient à $A$ ?\n        -   Si $y \\in A$, alors par la définition de $A$, on doit avoir $y \\notin f(y)$. Mais comme $f(y)=A$, cela signifie $y \\notin A$. Contradiction.\n        -   Si $y \\notin A$, alors par la définition de $A$, la condition $y \\notin f(y)$ est fausse, donc on doit avoir $y \\in f(y)$. Mais comme $f(y)=A$, cela signifie $y \\in A$. Contradiction.\n    5.  L'existence d'un tel $y$ mène inévitablement à un paradoxe. L'hypothèse de départ (la surjectivité de $f$) doit donc être fausse.\n\n- **B)** L'argument de Cantor est valable pour les ensembles finis et infinis. Si $E$ est fini de cardinal $n$, $|P(E)| = 2^n$. Comme $2^n > n$, aucune surjection n'est possible par le principe des tiroirs. L'argument diagonal fournit une preuve qui ne dépend pas de la cardinalité, et est surtout puissant pour les ensembles infinis.\n\n- **C)** L'ensemble $A$ n'est pas nécessairement l'ensemble vide. Par exemple, si $f(x) = \\{x\\}$ pour tout $x$, alors $A = \\{x \\in E \\mid x \\notin \\{x\\}\\} = \\emptyset$. Mais si $f(x) = E \\setminus \\{x\\}$, alors $A = \\{x \\in E \\mid x \\notin E \\setminus \\{x\\}\\} = \\{x \\in E \\mid x \\in \\{x\\}\\} = E$. La nature de $A$ dépend de $f$, mais l'argument logique fonctionne quelle que soit la forme de $A$.\n\n- **D)** La preuve de Cantor et son argument diagonal sont constructifs. L'ensemble $A$ est défini explicitement sans avoir besoin de faire une infinité de choix arbitraires. La preuve ne dépend donc pas de l'axiome du choix. Elle est acceptée dans des systèmes axiomatiques plus faibles que ZFC, comme la théorie des ensembles de Zermelo (Z).\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** L'ensemble $A$ est un élément de $P(E)$, et puisque $f$ est supposée surjective, $A$ doit avoir un antécédent $y \\in E$. Cependant, la définition même de $A$ rend impossible de déterminer si $y$ appartient à $A$ ou non sans créer de paradoxe.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** L'ensemble $A$ est infini alors que $E$ pourrait être fini, ce qui contredit le fait que $f$ est une fonction.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** L'ensemble $A$ est l'ensemble vide, ce qui implique que pour tout $x \\in E$, $x \\in f(x)$. Mais il n'existe aucun $y \\in E$ tel que $f(y) = \\emptyset$, ce qui contredit la surjectivité de $f$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** La construction de $A$ dépend de l'axiome du choix, qui n'est pas toujours accepté, rendant ainsi la preuve non universelle.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "stackId": "f399bde7",
+      "content": "#### Question 8 : Stabilité de la Dénombrabilité\n\nOn sait que l'ensemble $\\mathbb{N}$ des entiers naturels est dénombrable. En utilisant les propriétés de stabilité des ensembles dénombrables (union, produit cartésien fini), laquelle des constructions suivantes produit un ensemble qui n'est **pas** dénombrable ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nLa question teste la connaissance des frontières de la dénombrabilité.\n\n- **A)** L'ensemble $\\mathbb{Q}[X]$ est dénombrable. Un polynôme de degré $n$ est déterminé par ses $n+1$ coefficients rationnels, c'est-à-dire un élément de $\\mathbb{Q}^{n+1}$. L'ensemble de tous les polynômes est l'union dénombrable $\\bigcup_{n \\in \\mathbb{N}} P_n$, où $P_n$ est l'ensemble des polynômes de degré au plus $n$. Chaque $P_n$ est en bijection avec $\\mathbb{Q}^{n+1}$, qui est un produit fini d'ensembles dénombrables, donc dénombrable. Une union dénombrable d'ensembles dénombrables est dénombrable.\n\n- **B)** L'ensemble $\\{0,1\\}^{\\mathbb{N}}$ est l'ensemble des fonctions de $\\mathbb{N}$ dans $\\{0,1\\}$. Cet ensemble est en bijection avec $P(\\mathbb{N})$ via la fonction caractéristique. D'après le théorème de Cantor, $P(\\mathbb{N})$ n'est pas équipotent à $\\mathbb{N}$, et comme il est infini, il n'est pas dénombrable. C'est l'exemple prototypique d'un ensemble non dénombrable (ayant la puissance du continu).\n\n- **C)** L'ensemble de tous les sous-ensembles finis de $\\mathbb{N}$ est dénombrable. Soit $F_k$ l'ensemble des sous-ensembles de $\\mathbb{N}$ de cardinal $k$. Chaque $F_k$ est en bijection avec un sous-ensemble de $\\mathbb{N}^k$ et est donc dénombrable. L'ensemble de tous les sous-ensembles finis est l'union $\\bigcup_{k \\in \\mathbb{N}} F_k$. C'est une union dénombrable d'ensembles dénombrables, donc elle est dénombrable.\n\n- **D)** $\\mathbb{Z}$ est dénombrable. Le produit cartésien d'un nombre *fini* d'ensembles dénombrables est dénombrable. Par conséquent, $\\mathbb{Z}^k$ est dénombrable pour tout $k \\ge 1$ fixé.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** L'ensemble $\\mathbb{Q}[X]$ des polynômes à coefficients rationnels.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** L'ensemble de toutes les suites infinies de 0 et de 1, noté $\\{0,1\\}^{\\mathbb{N}}$.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** L'ensemble de tous les sous-ensembles finis de $\\mathbb{N}$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** L'ensemble $\\mathbb{Z}^k$ pour un entier $k \\ge 1$ fixé.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "stackId": "f399bde7",
+      "content": "#### Question 9 : Théorème de Cantor-Bernstein\n\nSoient deux ensembles $E$ et $F$. On suppose qu'il existe une injection $f: E \\to F$ et une injection $g: F \\to E$. Le théorème de Cantor-Bernstein affirme qu'il existe alors une bijection $h: E \\to F$.\n\nQuelles sont les implications correctes de ce théorème ?\n",
+      "solution": "\n\n**Réponses : [A, D]**\n\nCette question évalue la compréhension théorique et les limites du théorème de Cantor-Bernstein.\n\n- **A)** C'est l'utilité principale du théorème en pratique. Prouver l'existence de deux injections est souvent beaucoup plus simple que de construire une bijection de toutes pièces. Par exemple, pour montrer que $(0,1)$ et $[0,1]$ sont équipotents, il est facile de trouver des injections dans les deux sens, alors qu'une bijection est plus délicate à écrire.\n\n- **B)** C'est incorrect. La bijection $h$ dont le théorème garantit l'existence n'est en général ni $f$ ni $g^{-1}$. $f$ n'est pas forcément surjective, et $g$ n'est pas forcément surjective (donc $g^{-1}$ n'est pas définie sur tout $E$). La bijection $h$ est une construction \"hybride\" qui utilise des morceaux de $f$ et des morceaux de $g^{-1}$ sur différentes parties de l'ensemble de départ.\n\n- **C)** Le théorème de Cantor-Bernstein et le principe des tiroirs sont liés par le concept d'injection et de cardinalité, mais ils ne sont pas équivalents. Le principe des tiroirs est une conséquence directe de la définition de la cardinalité finie et de l'inégalité ($n > m \\implies \\neg \\exists \\text{injection de } [n] \\text{ dans } [m]$). Le théorème de Cantor-Bernstein est un résultat beaucoup plus profond, en particulier pour les ensembles infinis, qui établit que la relation $\\le$ sur les cardinaux (définie par l'existence d'une injection) est antisymétrique.\n\n- **D)** C'est une description correcte de la preuve standard. La preuve partitionne $E$ en trois ensembles : ceux dont la \"chaîne d'ancêtres\" (en appliquant alternativement $g^{-1}$ et $f^{-1}$) remonte indéfiniment, ceux dont elle s'arrête dans $E$, et ceux dont elle s'arrête dans $F$. La bijection $h$ est alors définie comme étant $f$ sur certains de ces sous-ensembles et $g^{-1}$ sur l'autre.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Il permet de prouver que deux ensembles ont le même cardinal sans avoir à construire explicitement une bijection entre eux.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** La bijection $h$ est nécessairement soit $f$, soit $g^{-1}$ (là où $g$ est bijective sur son image).",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Le théorème est équivalent au principe des tiroirs, car si $|E|>|F|$ aucune injection n'existe de $E$ dans $F$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** La preuve classique du théorème construit la bijection $h$ en partitionnant $E$ et $F$ en fonction de \"l'ascendance\" des éléments via les applications $f$ et $g$.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "stackId": "f399bde7",
+      "content": "#### Question 10 : Cardinalité des sous-ensembles et infini\n\nSoit $E$ un ensemble et $F$ un sous-ensemble de $E$ ($F \\subseteq E$). La proposition 1.12 stipule que si $E$ est fini, alors $|F| = |E|$ si et seulement si $F=E$.\n\nAnalysez la validité de cette proposition lorsque l'hypothèse \"$E$ est fini\" est levée.\n",
+      "solution": "\n\n**Réponses : [B, C]**\n\nCette question teste la compréhension d'une différence fondamentale entre les ensembles finis et infinis.\n\n- **A)** C'est incorrect. Cette propriété est en fait une des définitions possibles d'un ensemble fini (critère de Dedekind : un ensemble est infini si et seulement s'il est équipotent à l'un de ses sous-ensembles propres).\n\n- **B)** C'est l'affirmation correcte. C'est une caractéristique essentielle des ensembles infinis. Par exemple, l'hôtel de Hilbert illustre ce concept : même si l'hôtel est plein (un ensemble $\\mathbb{N}$ d'occupants), on peut toujours loger un nouvel arrivant en décalant tout le monde, ce qui revient à créer une bijection entre $\\mathbb{N}$ et $\\mathbb{N} \\setminus \\{0\\}$.\n\n- **C)** C'est un contre-exemple parfait et standard. $2\\mathbb{N}$ est un sous-ensemble propre de $\\mathbb{N}$ (par exemple, $1 \\in \\mathbb{N}$ mais $1 \\notin 2\\mathbb{N}$). Pourtant, la fonction $f: \\mathbb{N} \\to 2\\mathbb{N}$ définie par $f(n) = 2n$ est injective (si $2n_1=2n_2$, alors $n_1=n_2$) et surjective (tout entier pair $2k$ a pour antécédent $k \\in \\mathbb{N}$). Il existe donc une bijection, ce qui signifie $|2\\mathbb{N}| = |\\mathbb{N}| = \\aleph_0$. La proposition est donc fausse pour $E=\\mathbb{N}$.\n\n- **D)** La proposition est fausse pour *tous* les ensembles infinis, qu'ils soient dénombrables ou non. Par exemple, l'intervalle $[0, 1]$ est un sous-ensemble propre de $\\mathbb{R}$, mais on peut montrer qu'ils sont équipotents (par exemple via une fonction tangente modifiée). L'échec de la proposition n'est pas limité aux ensembles non dénombrables.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** La proposition reste vraie : si un sous-ensemble a le même cardinal que l'ensemble, il doit être l'ensemble lui-même, quelle que soit sa nature.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** La proposition devient fausse. Un sous-ensemble propre d'un ensemble infini peut être équipotent à l'ensemble lui-même.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** L'ensemble $2\\mathbb{N} = \\{0, 2, 4, \\dots\\}$ est un contre-exemple, car il est un sous-ensemble propre de $\\mathbb{N}$ mais l'application $f(n)=2n$ est une bijection de $\\mathbb{N}$ sur $2\\mathbb{N}$.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** La proposition reste vraie pour les ensembles dénombrables mais devient fausse pour les ensembles non dénombrables.",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

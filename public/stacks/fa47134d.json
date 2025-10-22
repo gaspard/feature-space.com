@@ -1,0 +1,104 @@
+{
+  "info": {
+    "id": "fa47134d",
+    "title": "Normes sur Rⁿ et suites convergentes - fiches de révision (A)",
+    "type": "cards",
+    "level": "regular",
+    "chapter": "Normes sur Rⁿ et suites convergentes",
+    "course": "Topologie",
+    "tags": [
+      "normes",
+      "suites",
+      "convergence",
+      "topologie",
+      "analyse"
+    ],
+    "count": 12
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "fa47134d",
+      "content": "Qu'est-ce qu'une norme sur l'espace vectoriel $\\mathbb{R}^n$ ?",
+      "solution": "\n\nUne **norme** sur $\\mathbb{R}^n$ est une application, notée $\\| \\cdot \\|$, qui associe à chaque vecteur $x \\in \\mathbb{R}^n$ un nombre réel positif ou nul $\\|x\\|$, et qui doit satisfaire trois propriétés fondamentales (appelées axiomes).\n\nPour tous vecteurs $x, y \\in \\mathbb{R}^n$ et tout scalaire $\\lambda \\in \\mathbb{R}$ :\n\n1.  **Séparation (ou non-dégénérescence)** : $\\|x\\| = 0 \\iff x = 0_{\\mathbb{R}^n}$.\n    -   **Explication** : Seul le vecteur nul a une longueur nulle. Tout autre vecteur a une longueur strictement positive. C'est ce qui permet de \"séparer\" les points.\n\n2.  **Homogénéité** : $\\|\\lambda x\\| = |\\lambda| \\|x\\|$.\n    -   **Explication** : Si on multiplie un vecteur par un scalaire $\\lambda$ (on l'étire ou le comprime), sa nouvelle longueur est l'ancienne longueur multipliée par la valeur absolue de $\\lambda$.\n\n3.  **Inégalité triangulaire (ou sous-additivité)** : $\\|x + y\\| \\le \\|x\\| + \\|y\\|$.\n    -   **Explication** : Géométriquement, la longueur du côté d'un triangle formé par les vecteurs $x$, $y$ et $x+y$ est toujours inférieure ou égale à la somme des longueurs des deux autres côtés. En d'autres termes, le chemin direct est le plus court.\n\nUn espace vectoriel muni d'une norme est appelé un **espace vectoriel normé**. La norme généralise la notion intuitive de \"longueur\" d'un vecteur.\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "fa47134d",
+      "content": "Expliquez l'inégalité triangulaire pour une norme et son interprétation géométrique.",
+      "solution": "\n\nL'inégalité triangulaire est le troisième axiome de la définition d'une norme. Elle s'énonce ainsi :\n\nPour tous vecteurs $x, y \\in \\mathbb{R}^n$, on a :\n\n$$ \\|x + y\\| \\le \\|x\\| + \\|y\\| $$\n\n**Interprétation conceptuelle :**\n\nCette propriété formalise l'idée que \"le chemin le plus court entre deux points est la ligne droite\".\n\n**Interprétation géométrique :**\n\nImaginons trois points dans l'espace : l'origine $O$, le point $A$ (extrémité du vecteur $x$) et le point $B$ (extrémité du vecteur $x+y$).\n\n- Le vecteur $x$ va de $O$ à $A$. Sa longueur est $\\|x\\|$.\n- Le vecteur $y$ va de $A$ à $B$. Sa longueur est $\\|y\\|$.\n- Le vecteur $x+y$ va directement de $O$ à $B$. Sa longueur est $\\|x+y\\|$.\n\nLes points $O, A, B$ forment un triangle. L'inégalité triangulaire $\\|x+y\\| \\le \\|x\\| + \\|y\\|$ signifie que la longueur du trajet direct de $O$ à $B$ est inférieure ou égale à la longueur du trajet qui passe par $A$ ($O \\to A \\to B$).\n\nL'égalité $\\|x+y\\| = \\|x\\| + \\|y\\|$ se produit lorsque les vecteurs $x$ et $y$ sont colinéaires et de même sens (le point $A$ est sur le segment $[OB]$).\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "fa47134d",
+      "content": "Quelles sont les formules des trois normes fondamentales sur $\\mathbb{R}^n$ ?",
+      "solution": "\n\nPour un vecteur $x = (x_1, x_2, \\dots, x_n) \\in \\mathbb{R}^n$, les trois normes les plus courantes sont :\n\n**1. Norme 1 (ou Norme de Manhattan)**\n\n$$ \\|x\\|_1 = \\sum_{j=1}^{n} |x_j| = |x_1| + |x_2| + \\dots + |x_n| $$\n\n**Utilisée pour :** Mesurer une distance \"en grille\", comme un taxi qui ne peut se déplacer que le long des rues.\n\n**2. Norme 2 (ou Norme Euclidienne)**\n\n$$ \\|x\\|_2 = \\sqrt{\\sum_{j=1}^{n} x_j^2} = \\sqrt{x_1^2 + x_2^2 + \\dots + x_n^2} $$\n\n**Utilisée pour :** C'est la notion habituelle de longueur \"à vol d'oiseau\", issue du théorème de Pythagore. C'est la norme la plus intuitive.\n\n**3. Norme infinie (ou Norme du maximum)**\n\n$$ \\|x\\|_\\infty = \\max_{1 \\le j \\le n} |x_j| = \\max(|x_1|, |x_2|, \\dots, |x_n|) $$\n\n**Utilisée pour :** Mesurer la plus grande composante d'un vecteur en valeur absolue. Utile pour contrôler l'erreur maximale dans des approximations.\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "fa47134d",
+      "content": "Calculez les normes $\\| \\cdot \\|_1$, $\\| \\cdot \\|_2$ et $\\| \\cdot \\|_\\infty$ pour le vecteur $v = (2, -4, 4)$ dans $\\mathbb{R}^3$.",
+      "solution": "\n\nSoit le vecteur $v = (2, -4, 4) \\in \\mathbb{R}^3$.\n\n**1. Calcul de la norme 1 :**\n\nLa norme 1 est la somme des valeurs absolues des composantes.\n\n$$ \\|v\\|_1 = |2| + |-4| + |4| = 2 + 4 + 4 = 10 $$\n\n**2. Calcul de la norme 2 :**\n\nLa norme 2 est la racine carrée de la somme des carrés des composantes.\n\n$$ \\|v\\|_2 = \\sqrt{2^2 + (-4)^2 + 4^2} = \\sqrt{4 + 16 + 16} = \\sqrt{36} = 6 $$\n\n**3. Calcul de la norme infinie :**\n\nLa norme infinie est le maximum des valeurs absolues des composantes.\n\n$$ \\|v\\|_\\infty = \\max(|2|, |-4|, |4|) = \\max(2, 4, 4) = 4 $$\n\nOn remarque bien que pour un même vecteur, les trois normes donnent des valeurs de \"longueur\" différentes.\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "fa47134d",
+      "content": "Comment vérifier si une application $N: \\mathbb{R}^2 \\to \\mathbb{R}_+$ est une norme ?",
+      "solution": "\n\nPour vérifier si une application $N$ est une norme sur $\\mathbb{R}^2$, il faut vérifier un par un les trois axiomes de la définition pour des vecteurs génériques $x=(x_1, x_2)$, $y=(y_1, y_2)$ et un scalaire $\\lambda \\in \\mathbb{R}$.\n\n**Étapes :**\n\n1.  **Vérifier la séparation :** Montrer que $N(x) = 0 \\iff x = (0,0)$.\n    -   Montrer que si $x=(0,0)$, alors $N(x)=0$.\n    -   Montrer que si $N(x)=0$, alors cela implique nécessairement $x_1=0$ et $x_2=0$.\n\n2.  **Vérifier l'homogénéité :** Montrer que $N(\\lambda x) = |\\lambda| N(x)$.\n    -   Calculer $N(\\lambda x) = N(\\lambda x_1, \\lambda x_2)$ en utilisant la définition de $N$.\n    -   Manipuler l'expression pour faire apparaître $|\\lambda|$ en facteur de l'expression de $N(x)$.\n\n3.  **Vérifier l'inégalité triangulaire :** Montrer que $N(x+y) \\le N(x) + N(y)$.\n    -   Calculer $N(x+y) = N(x_1+y_1, x_2+y_2)$.\n    -   Utiliser les propriétés de la valeur absolue (notamment $|a+b| \\le |a|+|b|$) sur les composantes pour majorer l'expression.\n    -   Réarranger les termes pour faire apparaître la somme $N(x) + N(y)$.\n\n**Exemple rapide :** $N(x_1, x_2) = |x_1| + |x_2|$ (norme 1).\n\n- **Séparation :** $|x_1|+|x_2|=0 \\iff |x_1|=0$ et $|x_2|=0 \\iff x_1=0$ et $x_2=0$. C'est vérifié.\n- **Homogénéité :** $N(\\lambda x_1, \\lambda x_2) = |\\lambda x_1| + |\\lambda x_2| = |\\lambda||x_1| + |\\lambda||x_2| = |\\lambda|(|x_1|+|x_2|) = |\\lambda|N(x)$. C'est vérifié.\n- **Inégalité triangulaire :** $N(x_1+y_1, x_2+y_2) = |x_1+y_1| + |x_2+y_2| \\le (|x_1|+|y_1|) + (|x_2|+|y_2|) = (|x_1|+|x_2|) + (|y_1|+|y_2|) = N(x)+N(y)$. C'est vérifié.\n\nDonc $N$ est bien une norme.\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "fa47134d",
+      "content": "Quand dit-on que deux normes sur $\\mathbb{R}^n$ sont équivalentes ?",
+      "solution": "\n\nSoient $N_1$ et $N_2$ deux normes sur l'espace vectoriel $\\mathbb{R}^n$.\n\nOn dit que $N_1$ et $N_2$ sont **équivalentes** s'il existe deux constantes réelles **strictement positives**, $\\alpha > 0$ et $\\beta > 0$, telles que pour **tout** vecteur $x \\in \\mathbb{R}^n$, l'encadrement suivant est vrai :\n\n$$ \\alpha N_1(x) \\le N_2(x) \\le \\beta N_1(x) $$\n\n**Explication :**\n\nCette double inégalité signifie que les deux normes se \"contrôlent\" mutuellement. Si un vecteur est considéré comme \"petit\" par la norme $N_1$ (c'est-à-dire que $N_1(x)$ est proche de zéro), alors il sera aussi considéré comme \"petit\" par la norme $N_2$, et inversement.\n\nLes constantes $\\alpha$ et $\\beta$ sont universelles, c'est-à-dire qu'elles doivent être les mêmes pour tous les vecteurs $x$ de l'espace. Elles peuvent cependant dépendre de la dimension $n$ de l'espace.\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "fa47134d",
+      "content": "Quel est le théorème fondamental sur l'équivalence des normes, et sa principale conséquence ?",
+      "solution": "\n\n**Théorème fondamental :**\n\nDans un espace vectoriel de dimension finie, comme $\\mathbb{R}^n$, **toutes les normes sont équivalentes entre elles**.\n\n**Principale conséquence :**\n\nLa conséquence la plus importante de ce théorème est que les notions topologiques (liées à la \"proximité\") ne dépendent pas du choix de la norme. Plus précisément :\n\n-   **Convergence des suites :** Une suite de vecteurs $(x^k)$ qui converge vers une limite $a$ pour une certaine norme, convergera aussi vers la même limite $a$ pour n'importe quelle autre norme.\n\nOn peut donc parler de \"suite convergente dans $\\mathbb{R}^n$\" sans avoir à préciser la norme utilisée. Cela simplifie énormément l'étude de l'analyse dans $\\mathbb{R}^n$, car on peut choisir la norme la plus pratique pour un problème donné (souvent la norme infinie $\\| \\cdot \\|_\\infty$ ou la norme 1 $\\| \\cdot \\|_1$) en sachant que les résultats sur la convergence seront valables pour toutes les autres normes.\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "fa47134d",
+      "content": "Comment définit-on la convergence d'une suite de vecteurs $(x^k)$ vers un vecteur $a$ dans $\\mathbb{R}^n$ ?",
+      "solution": "\n\nSoit $(x^k)_{k \\in \\mathbb{N}}$ une suite de vecteurs de $\\mathbb{R}^n$, $a$ un vecteur de $\\mathbb{R}^n$, et $\\| \\cdot \\|$ une norme sur $\\mathbb{R}^n$.\n\nOn dit que la suite $(x^k)$ **converge vers** $a$ si la suite des distances (qui est une suite de nombres réels positifs) $\\|x^k - a\\|$ tend vers $0$ lorsque $k$ tend vers l'infini.\n\nLa définition formelle, très similaire à celle pour les suites réelles, est :\n\n$$ \\forall \\varepsilon > 0, \\quad \\exists k_\\varepsilon \\in \\mathbb{N} \\text{ tel que } \\forall k \\ge k_\\varepsilon, \\quad \\|x^k - a\\| < \\varepsilon $$\n\n**Interprétation :**\n\nPour n'importe quelle petite distance $\\varepsilon > 0$ que vous choisissez, il existe un rang $k_\\varepsilon$ à partir duquel tous les termes de la suite $x^k$ se trouvent à l'intérieur de la \"boule\" de centre $a$ et de rayon $\\varepsilon$. La suite se \"rapproche\" indéfiniment de $a$.\n\nOn note alors $\\lim_{k \\to \\infty} x^k = a$ ou $x^k \\xrightarrow{k \\to \\infty} a$.\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "fa47134d",
+      "content": "Quel est le lien entre la convergence d'une suite de vecteurs dans $\\mathbb{R}^n$ et la convergence de ses composantes ?",
+      "solution": "\n\nC'est une propriété fondamentale et très utile : une suite de vecteurs converge si et seulement si chacune de ses suites de composantes converge.\n\nSoit une suite de vecteurs $x^k = (x_1^k, x_2^k, \\dots, x_n^k)$ et un vecteur limite $a = (a_1, a_2, \\dots, a_n)$. On a l'équivalence suivante :\n\n$$ \\lim_{k \\to \\infty} x^k = a \\quad \\iff \\quad \\forall j \\in \\{1, \\dots, n\\}, \\quad \\lim_{k \\to \\infty} x_j^k = a_j $$\n\n**Explication :**\n\nCette propriété permet de ramener l'étude de la convergence d'une suite dans l'espace $\\mathbb{R}^n$ à l'étude de $n$ suites de nombres réels, ce que l'on sait déjà faire.\n\n**Preuve (idée) :**\n\nCette équivalence découle directement des inégalités liant une norme (par exemple la norme infinie) aux composantes.\n\nPour tout $j \\in \\{1, \\dots, n\\}$ :\n\n$$ |x_j^k - a_j| \\le \\max_{i=1,\\dots,n} |x_i^k - a_i| = \\|x^k - a\\|_\\infty $$\n\n- Si $\\|x^k - a\\|_\\infty \\to 0$, alors chaque $|x_j^k - a_j| \\to 0$, donc chaque composante converge.\n- Inversement, si chaque $|x_j^k - a_j| \\to 0$, alors leur maximum, $\\|x^k - a\\|_\\infty$, tend aussi vers 0.\n\nComme toutes les normes sont équivalentes, le résultat est valable pour n'importe quelle norme.\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "fa47134d",
+      "content": "Déterminez si la suite $x^k = \\left( \\frac{1}{k}, (-1)^k \\right)$ converge dans $\\mathbb{R}^2$.",
+      "solution": "\n\nPour déterminer si la suite de vecteurs $(x^k)$ converge, nous étudions la convergence de chacune de ses composantes.\n\nLe vecteur au rang $k$ est $x^k = (x_1^k, x_2^k)$ avec :\n\n-   $x_1^k = \\frac{1}{k}$\n-   $x_2^k = (-1)^k$\n\n**1. Étude de la première composante :**\n\nLa suite $(x_1^k) = (\\frac{1}{k})_{k \\ge 1}$ est une suite réelle de référence. On sait que :\n\n$$ \\lim_{k \\to \\infty} x_1^k = \\lim_{k \\to \\infty} \\frac{1}{k} = 0 $$\n\nLa première composante converge vers $0$.\n\n**2. Étude de la deuxième composante :**\n\nLa suite $(x_2^k) = ((-1)^k)_{k \\in \\mathbb{N}}$ est la suite qui alterne entre $-1$ (pour $k$ impair) et $1$ (pour $k$ pair). Cette suite n'admet pas de limite ; elle est divergente.\n\n**Conclusion :**\n\nPour qu'une suite de vecteurs converge, **toutes** ses composantes doivent converger. Puisque la deuxième composante de $(x^k)$ ne converge pas, la suite de vecteurs $(x^k)$ **ne converge pas** dans $\\mathbb{R}^2$.\n\n",
+      "options": []
+    },
+    {
+      "id": "11",
+      "stackId": "fa47134d",
+      "content": "Qu'est-ce qu'une suite de Cauchy dans $\\mathbb{R}^n$ ?",
+      "solution": "\n\nUne suite de vecteurs $(x^k)_{k \\in \\mathbb{N}}$ dans $\\mathbb{R}^n$ est dite **de Cauchy** si ses termes se rapprochent arbitrairement les uns des autres à mesure que leurs indices augmentent.\n\nFormellement, cela signifie que pour toute \"marge d'erreur\" $\\varepsilon > 0$, on peut trouver un rang $k_\\varepsilon$ à partir duquel la distance entre n'importe quels deux termes de la suite est plus petite que $\\varepsilon$.\n\n$$ \\forall \\varepsilon > 0, \\quad \\exists k_\\varepsilon \\in \\mathbb{N} \\text{ tel que } \\forall p, q \\ge k_\\varepsilon, \\quad \\|x^p - x^q\\| < \\varepsilon $$\n\n**Intuition :**\n\nLa suite se \"contracte\" ou \"se concentre\" sur elle-même. Contrairement à la définition de la convergence, celle-ci ne fait pas référence à une potentielle limite $a$. C'est un critère **intrinsèque** à la suite.\n\n",
+      "options": []
+    },
+    {
+      "id": "12",
+      "stackId": "fa47134d",
+      "content": "Quelle est la relation fondamentale entre une suite de Cauchy et une suite convergente dans $\\mathbb{R}^n$ ?",
+      "solution": "\n\nDans l'espace $\\mathbb{R}^n$, les notions de suite de Cauchy et de suite convergente sont équivalentes.\n\n1.  **Toute suite convergente est une suite de Cauchy.**\n    -   **Idée :** Si les termes de la suite se rapprochent tous d'une même limite $a$, alors par l'inégalité triangulaire, ils doivent nécessairement se rapprocher les uns des autres.\n\n2.  **Toute suite de Cauchy est une suite convergente.**\n    -   **Idée :** Si les termes de la suite se \"contractent\" indéfiniment, ils ne peuvent le faire qu'autour d'un point limite qui doit exister dans l'espace.\n\nCe deuxième point est une propriété très importante appelée la **complétude** de $\\mathbb{R}^n$. Un espace vectoriel normé où toute suite de Cauchy converge est dit **complet** (ou un **espace de Banach**).\n\n**En résumé :**\n\nDans $\\mathbb{R}^n$, une suite est de Cauchy si et seulement si elle est convergente.\n\n",
+      "options": []
+    }
+  ]
+}

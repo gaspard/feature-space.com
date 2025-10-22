@@ -1,0 +1,415 @@
+{
+  "info": {
+    "id": "1fcafd1f",
+    "title": "Structures algébriques - quiz (A)",
+    "type": "quiz",
+    "level": "regular",
+    "chapter": "Structures algébriques",
+    "course": "Algèbre",
+    "tags": [
+      "structures algébriques",
+      "ensembles",
+      "applications",
+      "groupes",
+      "anneaux",
+      "corps",
+      "relations d'équivalence",
+      "quotients"
+    ],
+    "count": 14
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "1fcafd1f",
+      "content": "#### Question 1 : Définition d'une Application\n\nSelon la définition formelle, qu'est-ce qui caractérise une application $f: X \\to Y$ ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nUne application (ou fonction) est une règle qui associe à **chaque** élément de l'ensemble de départ un **unique** élément de l'ensemble d'arrivée.\n\n- **A.** Cette proposition décrit une application bijective, pas une application en général. Elle impose que chaque élément de l'ensemble d'arrivée ait un et un seul antécédent.\n- **B.** C'est la définition formelle correcte. \"Pour tout $x \\in X$\" signifie que chaque élément de l'ensemble de départ doit avoir une image. \"Il existe un unique $y \\in Y$\" signifie que cette image doit être unique.\n- **C.** Cette proposition omet la condition d'unicité. Une relation où un $x$ pourrait être associé à plusieurs $y$ n'est pas une application.\n- **D.** C'est la définition d'une relation binaire, qui est plus générale. Pour être une application, le sous-ensemble (le graphe) doit satisfaire les conditions d'existence et d'unicité pour chaque élément de l'ensemble de départ.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Pour tout $y \\in Y$, il existe un unique $x \\in X$ tel que le couple $(x, y)$ appartienne au graphe de $f$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Pour tout $x \\in X$, il existe un unique $y \\in Y$ tel que le couple $(x, y)$ appartienne au graphe de $f$.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Pour tout $x \\in X$, il existe au moins un $y \\in Y$ tel que le couple $(x, y)$ appartienne au graphe de $f$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Le graphe de $f$ est un sous-ensemble quelconque du produit cartésien $X \\times Y$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "stackId": "1fcafd1f",
+      "content": "#### Question 2 : Composition d'Applications\n\nSoient les applications $f: \\mathbb{R} \\to \\mathbb{R}$ définie par $f(x) = x^2$ et $g: \\mathbb{R} \\to \\mathbb{R}$ définie par $g(y) = y - 1$. Quelle est l'expression de la composition $(g \\circ f)(x)$ ?\n",
+      "solution": "\n\n**Réponse : [D]**\n\nLa composition $(g \\circ f)(x)$ se calcule en appliquant d'abord $f$ à $x$, puis $g$ au résultat $f(x)$.\n\nLa définition est $(g \\circ f)(x) = g(f(x))$.\n\n1.  On calcule l'image de $x$ par $f$ : $f(x) = x^2$.\n2.  On applique $g$ à ce résultat : $g(f(x)) = g(x^2)$.\n3.  L'expression de $g(y)$ est $y-1$, donc pour $y=x^2$, on obtient $g(x^2) = x^2 - 1$.\n\nDonc, $(g \\circ f)(x) = x^2 - 1$.\n\n- **A.** L'expression $(x-1)^2$ correspond à la composition inverse, $(f \\circ g)(x) = f(g(x)) = f(x-1) = (x-1)^2$.\n- **B.** Cette expression ne correspond à aucune composition standard des fonctions données.\n- **C.** Cette expression est le développement de $(x-1)^2$, qui correspond à $(f \\circ g)(x)$, et non $(g \\circ f)(x)$.\n- **D.** C'est le résultat correct du calcul de $g(f(x))$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $(x-1)^2$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $x^2 - x$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $x^2 - 2x + 1$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $x^2 - 1$",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "stackId": "1fcafd1f",
+      "content": "#### Question 3 : Injectivité et Surjectivité\n\nUne application $f: X \\to Y$ est dite **surjective**. Quelles affirmations sont correctes par définition ?\n",
+      "solution": "\n\n**Réponses : [B, C]**\n\nLa surjectivité concerne le fait que tous les éléments de l'ensemble d'arrivée sont \"atteints\" par l'application.\n\n- **A.** Cette affirmation (\"un unique $x$\") décrit une application bijective (à la fois injective et surjective). La surjectivité seule ne garantit pas l'unicité de l'antécédent.\n- **B.** C'est la définition même de la surjectivité, formulée en langage courant.\n- **C.** C'est une autre façon, plus formelle, de définir la surjectivité. L'image de $f$, notée $f(X)$, est l'ensemble de toutes les valeurs que $f$ peut prendre. Si cet ensemble est égal à l'ensemble d'arrivée tout entier, l'application est surjective.\n- **D.** Cette affirmation décrit une application injective. Une application peut être surjective sans être injective (par exemple, $f: \\mathbb{R} \\to \\mathbb{R}_+$ définie par $f(x)=x^2$).\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Pour tout $y \\in Y$, il existe un unique $x \\in X$ tel que $f(x)=y$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Tout élément de l'ensemble d'arrivée $Y$ est l'image d'au moins un élément de l'ensemble de départ $X$.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** L'image de l'application est égale à l'ensemble d'arrivée, c'est-à-dire $f(X) = Y$.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Deux éléments distincts de $X$ ont toujours des images distinctes dans $Y$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "stackId": "1fcafd1f",
+      "content": "#### Question 4 : Propriétés d'une Loi de Composition Interne\n\nOn considère l'opération de soustraction $(-)$ sur l'ensemble des entiers relatifs $(\\mathbb{Z})$. Quelle est la seule affirmation correcte à son sujet ?\n",
+      "solution": "\n\n**Réponse : [A]**\n\nUne loi de composition interne sur un ensemble $E$ est une application de $E \\times E$ dans $E$.\n\n- **A.** La soustraction prend deux entiers et leur associe un autre entier (la différence). C'est donc bien une loi de composition interne sur $\\mathbb{Z}$.\n- **B.** La soustraction n'est pas associative. Par exemple, $(8 - 4) - 2 = 4 - 2 = 2$, mais $8 - (4 - 2) = 8 - 2 = 6$. Les résultats sont différents.\n- **C.** La soustraction n'est pas commutative. Par exemple, $5 - 3 = 2$, mais $3 - 5 = -2$. L'ordre des opérandes change le résultat.\n- **D.** Elle ne possède pas d'élément neutre $e$. Un tel élément devrait vérifier $a - e = a$ et $e - a = a$ pour tout $a$. La première équation donne $e=0$. Mais la deuxième équation $0 - a = a$ n'est vraie que si $a=0$. Donc, $0$ n'est pas un élément neutre.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** C'est une loi de composition interne.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** Elle est associative.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Elle est commutative.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Elle possède un élément neutre.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "stackId": "1fcafd1f",
+      "content": "#### Question 5 : Identification d'un Groupe\n\nParmi les structures suivantes, laquelle n'est **pas** un groupe ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nUn groupe est un ensemble avec une opération binaire qui est associative, possède un élément neutre, et où chaque élément a un inverse.\n\n- **A.** $(\\mathbb{Z}, +)$ est un groupe. L'addition est associative, $0$ est le neutre, et l'inverse de $a$ est $-a$.\n- **B.** $(\\mathbb{N}, +)$ n'est pas un groupe. Bien que l'addition soit associative et que $0$ soit un élément neutre, les éléments non nuls n'ont pas d'inverse *dans $\\mathbb{N}$*. Par exemple, l'inverse de $3$ est $-3$, qui n'est pas un entier naturel. C'est un monoïde.\n- **C.** $(\\mathbb{R} \\setminus \\{0\\}, \\times)$ est un groupe. La multiplication est associative, $1$ est le neutre, et l'inverse de $x$ est $1/x$.\n- **D.** L'ensemble des rotations est un groupe. La composition est associative, la rotation d'angle nul est le neutre, et l'inverse de la rotation d'angle $\\theta$ est la rotation d'angle $-\\theta$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $(\\mathbb{Z}, +)$, l'ensemble des entiers relatifs avec l'addition.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $(\\mathbb{N}, +)$, l'ensemble des entiers naturels avec l'addition.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $(\\mathbb{R} \\setminus \\{0\\}, \\times)$, l'ensemble des nombres réels non nuls avec la multiplication.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** L'ensemble des rotations du plan centrées à l'origine, avec la composition.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "stackId": "1fcafd1f",
+      "content": "#### Question 6 : Structure de Monoïde\n\nQu'est-ce qui distingue un monoïde d'un groupe ?\n",
+      "solution": "\n\n**Réponse : [D]**\n\nUn groupe est un type particulier de monoïde.\n\n- **A.** L'associativité est une condition requise à la fois pour les monoïdes et pour les groupes.\n- **B.** L'existence d'un élément neutre est également une condition requise pour les deux structures.\n- **C.** La commutativité n'est requise ni pour un groupe général, ni pour un monoïde général. Un groupe non commutatif est appelé non abélien.\n- **D.** C'est la différence fondamentale. Un monoïde est un ensemble avec une loi associative et un neutre. Un groupe est un monoïde où, en plus, chaque élément possède un inverse. Par exemple, $(\\mathbb{N}, +, 0)$ est un monoïde mais pas un groupe.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** L'opération d'un monoïde n'est pas nécessairement associative.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Un monoïde n'a pas d'élément neutre.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Dans un groupe, l'opération doit être commutative, pas dans un monoïde.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Dans un monoïde, tous les éléments ne sont pas nécessairement inversibles.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "stackId": "1fcafd1f",
+      "content": "#### Question 7 : Distinction entre Anneau et Corps\n\nQuelle est la propriété principale qui différencie un corps d'un anneau commutatif général ?\n",
+      "solution": "\n\n**Réponse : [A]**\n\nUn corps est un type particulier d'anneau commutatif avec une structure multiplicative plus forte.\n\n- **A.** C'est la définition d'un corps. Un corps est un anneau commutatif non nul où l'ensemble des éléments non nuls, muni de la multiplication, forme un groupe. L'exemple typique est $(\\mathbb{Z}, +, \\times)$ qui est un anneau, mais pas un corps car seul 1 et -1 ont un inverse multiplicatif. $(\\mathbb{Q}, +, \\times)$ est un corps.\n- **B.** L'addition doit être associative (et former un groupe abélien) dans la définition même d'un anneau.\n- **C.** La définition d'anneau utilisée dans ce cours (et la plus courante) inclut l'existence d'un élément neutre pour la multiplication. Un anneau est unitaire.\n- **D.** La distributivité de la multiplication sur l'addition est un des axiomes fondamentaux des anneaux.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Dans un corps, tout élément non nul est inversible pour la multiplication.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** L'addition dans un corps doit être associative, ce qui n'est pas obligatoire pour un anneau.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Un corps possède un élément neutre pour la multiplication (noté 1), alors qu'un anneau n'en a pas toujours.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** La multiplication est distributive par rapport à l'addition dans un corps, mais pas nécessairement dans un anneau.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "stackId": "1fcafd1f",
+      "content": "#### Question 8 : Morphisme de Groupes\n\nParmi les applications suivantes de $(\\mathbb{Z}, +)$ dans $(\\mathbb{Z}, +)$, laquelle est un morphisme de groupes ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nUne application $f: (G, *) \\to (H, \\star)$ est un morphisme de groupes si $f(x * y) = f(x) \\star f(y)$ pour tous $x, y \\in G$. Ici, les deux opérations sont l'addition. On doit donc vérifier si $f(x+y) = f(x)+f(y)$.\n\n- **A)** $f(x+y) = (x+y) + 2$. Or, $f(x)+f(y) = (x+2) + (y+2) = x+y+4$. Ce n'est pas un morphisme.\n- **B)** $f(x+y) = 5(x+y) = 5x + 5y$. Or, $f(x)+f(y) = (5x) + (5y) = 5x + 5y$. L'égalité est vérifiée, c'est un morphisme.\n- **C)** $f(x+y) = (x+y)^2 = x^2+2xy+y^2$. Or, $f(x)+f(y) = x^2+y^2$. Ces expressions ne sont pas égales en général. Ce n'est pas un morphisme.\n- **D)** $f(-1+1) = f(0) = 0$. Or, $f(-1)+f(1) = |-1|+|1| = 1+1=2$. Ce n'est pas un morphisme.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $f(x) = x + 2$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $f(x) = 5x$",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $f(x) = x^2$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $f(x) = |x|$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "stackId": "1fcafd1f",
+      "content": "#### Question 9 : Caractérisation d'un Sous-groupe\n\nSoit $(G, *)$ un groupe. Un sous-ensemble non vide $H$ de $G$ est un sous-groupe si et seulement si :\n",
+      "solution": "\n\n**Réponse : [D]**\n\nCette question teste la connaissance du critère de caractérisation d'un sous-groupe.\n\n- **A.** La stabilité par l'opération est une condition nécessaire mais pas suffisante. L'ensemble $(\\mathbb{N}, +)$ est stable dans $(\\mathbb{Z}, +)$, mais n'est pas un sous-groupe car il n'est pas stable par passage à l'inverse.\n- **B.** Ces deux conditions sont nécessaires mais pas suffisantes. Il manque la stabilité par l'opération.\n- **C.** L'union de deux sous-groupes n'est généralement pas un sous-groupe. Par exemple, dans $(\\mathbb{Z}, +)$, $2\\mathbb{Z} \\cup 3\\mathbb{Z}$ n'est pas un sous-groupe car il contient $2$ et $3$ mais pas leur somme $5$.\n- **D.** C'est le critère de caractérisation (ou \"critère en une étape\"). Si $H$ est non vide et que pour tous $x, y \\in H$, on a $x * y^{-1} \\in H$, alors $H$ est un sous-groupe. Ce critère combine astucieusement les conditions de stabilité par l'inverse et par l'opération.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $H$ est stable pour l'opération $*$, c'est-à-dire que pour tous $x, y \\in H$, $x*y \\in H$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $H$ contient l'élément neutre $e$ et est stable par passage à l'inverse.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** L'union de $H$ avec n'importe quel autre sous-groupe est un sous-groupe.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Pour tous $x, y \\in H$, l'élément $x * y^{-1}$ est aussi dans $H$.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "stackId": "1fcafd1f",
+      "content": "#### Question 10 : Noyau d'un Morphisme\n\nSoit $f: G \\to H$ un morphisme de groupes, avec $e_G$ et $e_H$ leurs éléments neutres respectifs. Comment le noyau de $f$, noté $\\text{Ker}(f)$, est-il défini ?\n",
+      "solution": "\n\n**Réponse : [D]**\n\nLe noyau d'un morphisme de groupes est un concept central qui mesure à quel point le morphisme \"n'est pas injectif\".\n\n- **A.** Cette définition correspond à l'image du morphisme, $\\text{Im}(f)$, qui est un sous-ensemble de $H$.\n- **B.** Cette affirmation est triviale et ne définit rien d'utile. Par définition de $f$, l'image de tout élément de $G$ est dans $H$. Donc cet ensemble serait $G$ tout entier.\n- **C.** Le noyau est égal à $\\{e_G\\}$ si et seulement si le morphisme est injectif. Ce n'est pas la définition générale.\n- **D.** C'est la définition correcte du noyau. C'est le sous-ensemble du groupe de départ dont les éléments sont envoyés sur l'élément neutre du groupe d'arrivée.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\text{Ker}(f) = \\{h \\in H \\mid \\exists g \\in G, f(g) = h\\}$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\text{Ker}(f) = \\{g \\in G \\mid f(g) \\in H\\}$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $\\text{Ker}(f) = \\{e_G\\}$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $\\text{Ker}(f) = \\{g \\in G \\mid f(g) = e_H\\}$",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "stackId": "1fcafd1f",
+      "content": "#### Question 11 : Relation d'Équivalence\n\nQuelle est la conséquence fondamentale d'une relation d'équivalence sur un ensemble non vide $E$ ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nUne relation d'équivalence sert à regrouper les éléments d'un ensemble qui sont considérés comme \"similaires\" selon un certain critère.\n\n- **A.** Une relation d'ordre est caractérisée par l'antisymétrie, alors qu'une relation d'équivalence est caractérisée par la symétrie. Ce sont deux types de relations très différents.\n- **B.** C'est la propriété fondamentale. Les classes d'équivalence sont des sous-ensembles non vides, deux à deux disjoints, dont l'union est l'ensemble $E$ tout entier. C'est la définition d'une partition.\n- **C.** Une relation d'équivalence ne confère pas en soi une structure de groupe. Il faut déjà avoir une structure de groupe sur $E$ et une relation compatible (venant d'un sous-groupe distingué) pour munir l'ensemble quotient d'une structure de groupe.\n- **D.** Les relations d'équivalence peuvent être définies sur des ensembles finis comme infinis (par exemple, la congruence modulo $n$ sur $\\mathbb{Z}$).\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Elle permet de définir un ordre sur tous les éléments de $E$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Elle induit une partition de $E$ en classes d'équivalence.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Elle garantit que $E$ peut être muni d'une structure de groupe.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Elle prouve que $E$ est un ensemble fini.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "stackId": "1fcafd1f",
+      "content": "#### Question 12 : Définition d'un Idéal\n\nSoit $(A, +, \\times)$ un anneau commutatif. Qu'est-ce qui caractérise un idéal $I$ de $A$ par rapport à un simple sous-groupe additif ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nUn idéal est un type de sous-structure spécifique aux anneaux, plus forte que celle de sous-anneau.\n\n- **A.** Un idéal n'est généralement pas stable pour la multiplication (sauf s'il est aussi un sous-anneau), et n'a aucune raison de former un groupe multiplicatif.\n- **B.** C'est la propriété clé, souvent appelée \"absorption\". Pour tout $x \\in I$ et tout $a \\in A$, le produit $ax$ doit rester dans $I$. C'est ce qui permet de définir une multiplication cohérente sur l'anneau quotient. Par exemple, $3\\mathbb{Z}$ est un idéal de $\\mathbb{Z}$ car tout multiple de 3 multiplié par n'importe quel entier reste un multiple de 3.\n- **C.** Si un idéal $I$ contient $1$, alors par la propriété d'absorption, pour tout $a \\in A$, $a \\cdot 1 = a$ doit être dans $I$. Cela signifie que $I=A$. Ce n'est donc pas une condition générale.\n- **D.** L'anneau $A$ lui-même est toujours un idéal de $A$ (appelé idéal trivial).\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Un idéal doit aussi être un sous-groupe pour la multiplication.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Un idéal doit être stable par multiplication par n'importe quel élément de l'anneau $A$.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Un idéal doit contenir l'élément neutre de la multiplication, $1$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Un idéal ne peut pas être l'anneau $A$ tout entier.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "stackId": "1fcafd1f",
+      "content": "#### Question 13 : Anneau Quotient $\\mathbb{Z}/n\\mathbb{Z}$\n\nDans l'anneau quotient $\\mathbb{Z}/12\\mathbb{Z}$, quel est le résultat du produit $\\bar{5} \\times \\bar{7}$ ?\n",
+      "solution": "\n\n**Réponses : [B, C]**\n\nLes opérations dans l'anneau quotient $\\mathbb{Z}/n\\mathbb{Z}$ se font \"modulo n\".\n\n1.  On effectue d'abord l'opération dans $\\mathbb{Z}$ : $5 \\times 7 = 35$.\n2.  On cherche ensuite la classe d'équivalence de ce résultat dans $\\mathbb{Z}/12\\mathbb{Z}$. Cela revient à trouver le reste de la division euclidienne de 35 par 12.\n3.  $35 = 2 \\times 12 + 11$. Le reste est 11.\n4.  Donc, $\\overline{35} = \\overline{11}$.\n\n- **A)** $\\overline{35}$ est techniquement correct, mais dans $\\mathbb{Z}/12\\mathbb{Z}$, on représente généralement les classes par un entier compris entre 0 et 11. Cette réponse est donc moins précise que $\\overline{11}$.\n- **B)** C'est le représentant standard de la classe de 35 modulo 12.\n- **C)** Dans $\\mathbb{Z}/12\\mathbb{Z}$, la classe $\\overline{11}$ est la même que la classe $\\overline{11-12} = \\overline{-1}$. Ces deux notations désignent le même élément. Donc cette réponse est également correcte.\n- **D)** Le produit ne vaut pas 1. $\\bar{5}$ et $\\bar{7}$ sont d'ailleurs leurs propres inverses dans cet anneau, car $\\bar{5} \\times \\bar{5} = \\overline{25} = \\bar{1}$ et $\\bar{7} \\times \\bar{7} = \\overline{49} = \\bar{1}$.\n\n*Note : Pour un quiz à choix unique, $\\overline{11}$ serait la meilleure réponse attendue. Mais $\\overline{-1}$ étant mathématiquement identique, il est aussi correct.*\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\overline{35}$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\overline{11}$",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $\\overline{-1}$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $\\overline{1}$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "stackId": "1fcafd1f",
+      "content": "#### Question 14 : Principe de Récurrence\n\nPour démontrer par récurrence qu'une propriété $P(n)$ est vraie pour tout entier $n \\ge 0$, quelles sont les deux étapes indispensables ?\n",
+      "solution": "\n\n**Réponses : [A, D]**\n\nUne démonstration par récurrence repose sur un effet \"domino\". Il faut pousser le premier domino (initialisation) et s'assurer que chaque domino en fait tomber le suivant (hérédité).\n\n- **A.** C'est l'étape d'**hérédité**. On suppose la propriété vraie à un rang $k$ (hypothèse de récurrence) pour prouver qu'elle est vraie au rang suivant $k+1$.\n- **B.** Démontrer la propriété pour $n=1$ est l'étape d'initialisation si l'on veut prouver la propriété pour tout $n \\ge 1$. Mais si la propriété doit être vraie pour tout $n \\ge 0$, l'initialisation doit se faire à $n=0$.\n- **C.** Ce n'est pas une méthode de démonstration par récurrence. Vérifier la propriété pour quelques valeurs, même une infinité (par exemple, tous les nombres pairs), ne prouve pas qu'elle est vraie pour toutes les valeurs.\n- **D.** C'est l'étape d'**initialisation** (ou cas de base) pour une propriété énoncée pour $n \\ge 0$. Sans cette étape, l'hérédité seule ne prouve rien.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Démontrer que si $P(k)$ est vraie pour un entier $k \\ge 0$, alors $P(k+1)$ est aussi vraie.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** Démontrer que la propriété est vraie pour $n=1$.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Démontrer que la propriété est vraie pour une infinité de valeurs de $n$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Démontrer que la propriété $P(0)$ est vraie.",
+          "correct": true
+        }
+      ]
+    }
+  ]
+}

@@ -2,6 +2,7 @@
 import { readdir } from "fs/promises"
 import { join, extname } from "path"
 import { type TOCItem, itemFromFile } from "./utils"
+import { make as RecallTocView } from "../view/RecallTocView.gen"
 
 const pagesDir = join(process.cwd(), "src/pages")
 const currentPath = Astro.url.pathname
@@ -128,6 +129,10 @@ function translateLevel(level: string) {
 const items = await collectChildren(currentDir, "")
 const grouped = groupItems(items)
 ---
+
+<h2>Recall Toc</h2>
+
+<RecallTocView client:only="react" />
 
 <nav aria-label="Table des matières" class="toc">
   {

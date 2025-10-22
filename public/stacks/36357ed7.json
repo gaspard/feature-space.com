@@ -1,0 +1,302 @@
+{
+  "info": {
+    "id": "36357ed7",
+    "title": "Groupes d'isométries - quiz (B)",
+    "type": "quiz",
+    "level": "pro",
+    "chapter": "Groupes d'isométries",
+    "course": "Géométrie",
+    "tags": [
+      "isométrie",
+      "espace euclidien",
+      "espace hermitien",
+      "groupe orthogonal",
+      "groupe unitaire",
+      "produit vectoriel",
+      "rotation"
+    ],
+    "count": 10
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "36357ed7",
+      "content": "#### Question 1 : Caractérisation des transformations unitaires\n\nSoit $f$ un endomorphisme d'un espace hermitien $E$ de dimension finie $n$. Laquelle des conditions suivantes n'est **pas** suffisante pour garantir que $f$ est une isométrie (une transformation unitaire) ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nUne isométrie vectorielle dans un espace hermitien est aussi appelée transformation unitaire. Plusieurs caractérisations équivalentes existent.\n\n- **A.** Cette condition est suffisante. Si $(e_i)$ est une base orthonormée (BON) et que $(f(e_i))$ est aussi une BON, alors pour tout vecteur $x = \\sum x_i e_i$, on a $\\|x\\|^2 = \\sum |x_i|^2$. L'image est $f(x) = \\sum x_i f(e_i)$. Comme $(f(e_i))$ est une BON, $\\|f(x)\\|^2 = \\sum |x_i|^2 = \\|x\\|^2$. Donc $f$ préserve la norme et est une isométrie.\n\n- **B.** Cette condition n'est pas suffisante. Une isométrie a toutes ses valeurs propres de module 1, mais la réciproque est fausse. Par exemple, dans $\\mathbb{C}^2$, considérons l'endomorphisme de matrice $M = \\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$. Ses valeurs propres sont toutes égales à 1 (donc de module 1), mais $M$ n'est pas une matrice unitaire. En effet, $M^*M = \\begin{pmatrix} 1 & 0 \\\\ 1 & 1 \\end{pmatrix} \\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix} = \\begin{pmatrix} 1 & 1 \\\\ 1 & 2 \\end{pmatrix} \\neq I_2$.\n\n- **C.** Cette condition est suffisante. Un endomorphisme normal est diagonalisable dans une base orthonormée. Soit $(e_i)$ une telle base de vecteurs propres, avec $f(e_i) = \\lambda_i e_i$. La matrice de $f$ dans cette base est diagonale avec les $\\lambda_i$ sur la diagonale. La matrice de $f^*$ est la matrice diagonale avec les $\\bar{\\lambda}_i$. La matrice de $f^*f$ est donc diagonale avec les $|\\lambda_i|^2$. Si tous les $|\\lambda_i|=1$, alors $f^*f = \\text{Id}$, ce qui est une caractérisation d'une isométrie.\n\n- **D.** Cette condition est suffisante. C'est l'une des définitions d'une transformation unitaire. Si $U$ est la matrice de $f$ dans une BON, la condition $U^*U=I$ est équivalente à $f^*f=\\text{Id}$, ce qui est une caractérisation des isométries.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** L'image par $f$ d'une base orthonormée de $E$ est une base orthonormée de $E$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Toutes les valeurs propres de $f$ sont de module 1.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $f$ est normal ($f \\circ f^* = f^* \\circ f$) et toutes ses valeurs propres sont de module 1.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** La matrice de $f$ dans une base orthonormée est une matrice unitaire.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "stackId": "36357ed7",
+      "content": "#### Question 2 : Propriétés topologiques des groupes d'isométries\n\nLes groupes orthogonaux et unitaires sont des exemples fondamentaux de groupes de Lie. Quelles affirmations concernant leurs propriétés topologiques sont correctes ?\n",
+      "solution": "\n\n**Réponses : [B, D]**\n\nCette question teste une compréhension fine des structures topologiques de ces groupes.\n\n- **A.** Incorrect. Le groupe $O_n(\\mathbb{R})$ a deux composantes connexes pour $n \\ge 1$. L'application continue $\\det: O_n(\\mathbb{R}) \\to \\{-1, 1\\}$ a une image qui est un espace discret à deux points. L'image réciproque de $\\{1\\}$ est $SO_n(\\mathbb{R})$ et celle de $\\{-1\\}$ est l'ensemble des isométries indirectes. Ces deux ensembles sont les composantes connexes de $O_n(\\mathbb{R})$.\n\n- **B.** Correct. Le groupe $SU_2(\\mathbb{C})$ est homéomorphe à la sphère $S^3$, qui est simplement connexe. Pour $n > 2$, il est également vrai que $SU_n(\\mathbb{C})$ est simplement connexe. Cela signifie que tout lacet (boucle fermée) dans $SU_n(\\mathbb{C})$ peut être continûment déformé en un point.\n\n- **C.** Incorrect. Un homéomorphisme est une bijection continue dont la réciproque est continue. L'application déterminant est continue et surjective, mais elle n'est pas injective (de nombreuses matrices ont un déterminant de 1). Ce n'est donc pas une bijection, et encore moins un homéomorphisme.\n\n- **D.** Correct. L'application $\\det$ est un morphisme de groupe continu de $U_n(\\mathbb{C})$ vers le groupe multiplicatif $S^1 = \\{z \\in \\mathbb{C} \\mid |z|=1\\}$. Ce morphisme est surjectif. Le noyau de ce morphisme est par définition $SU_n(\\mathbb{C})$. En théorie des groupes de Lie, cela définit une structure de fibré principal : $SU_n(\\mathbb{C}) \\hookrightarrow U_n(\\mathbb{C}) \\to S^1$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $O_n(\\mathbb{R})$ est un espace topologique connexe pour tout $n \\ge 1$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Pour $n \\ge 2$, le groupe spécial unitaire $SU_n(\\mathbb{C})$ est simplement connexe.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** L'application déterminant, $\\det : O_3(\\mathbb{R}) \\to \\{1, -1\\}$, est un homéomorphisme.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** L'application déterminant, $\\det : U_n(\\mathbb{C}) \\to S^1$ (où $S^1$ est le cercle unité dans $\\mathbb{C}$), est un morphisme de groupe surjectif et continu, faisant de $U_n(\\mathbb{C})$ un fibré principal sur $S^1$ de fibre $SU_n(\\mathbb{C})$.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "stackId": "36357ed7",
+      "content": "#### Question 3 : Analyse d'une isométrie dans $\\mathbb{R}^3$\n\nSoit $f$ une isométrie de l'espace euclidien $\\mathbb{R}^3$ dont la matrice dans la base canonique est $M = \\frac{1}{3}\\begin{pmatrix} 2 & -1 & 2 \\\\ 2 & 2 & -1 \\\\ -1 & 2 & 2 \\end{pmatrix}$. Quelles sont les affirmations correctes concernant $f$ ?\n",
+      "solution": "\n\n**Réponses : [A, C]**\n\nIl faut analyser la nature de l'isométrie $f$.\n\n1.  **Calcul du déterminant** :\n\n    $\\det(M) = \\left(\\frac{1}{3}\\right)^3 \\det \\begin{pmatrix} 2 & -1 & 2 \\\\ 2 & 2 & -1 \\\\ -1 & 2 & 2 \\end{pmatrix} = \\frac{1}{27} [2(4 - (-2)) - (-1)(4 - 1) + 2(4 - (-2))] = \\frac{1}{27} [12 + 3 + 12] = \\frac{27}{27} = 1$.\n\n    Puisque $\\det(f)=1$, $f$ est une isométrie directe, c'est-à-dire une rotation. L'option B est donc incorrecte.\n\n2.  **Recherche de l'axe de rotation** :\n\n    L'axe de rotation est l'ensemble des points fixes, c'est-à-dire le sous-espace propre associé à la valeur propre 1. On résout $Mv = v$, soit $(M-I)v = 0$.\n\n    $M-I = \\frac{1}{3}\\begin{pmatrix} -1 & -1 & 2 \\\\ 2 & -1 & -1 \\\\ -1 & 2 & -1 \\end{pmatrix}$.\n\n    On cherche le noyau de cette matrice. La somme des colonnes est nulle, donc $(1,1,1)$ est dans le noyau. On vérifie : $(-1-1+2, 2-1-1, -1+2-1) = (0,0,0)$. L'axe de rotation est donc bien la droite engendrée par $N=(1,1,1)$. L'option A est correcte.\n\n3.  **Calcul de l'angle de rotation** :\n\n    La trace d'une matrice de rotation dans $\\mathbb{R}^3$ est liée à son angle $\\theta$ par la formule $\\text{Tr}(M) = 1 + 2\\cos(\\theta)$.\n\n    $\\text{Tr}(M) = \\frac{1}{3}(2+2+2) = \\frac{6}{3} = 2$.\n\n    Donc, $2 = 1 + 2\\cos(\\theta)$, ce qui donne $2\\cos(\\theta) = 1$, soit $\\cos(\\theta) = 1/2$. L'option C est correcte.\n\n4.  **Détermination du signe de l'angle** :\n\n    L'angle peut être $\\pi/3$ ou $-\\pi/3$. Le signe dépend de l'orientation de l'axe $N=(1,1,1)$. Prenons un vecteur non colinéaire à l'axe, par exemple $U=(1,0,0)$.\n\n    Son image est $f(U) = \\frac{1}{3}(2, 2, -1)$.\n\n    Le signe de l'angle est donné par le signe du produit mixte $\\det(U, f(U), N)$.\n\n    $\\det(U, f(U), N) = \\det \\begin{pmatrix} 1 & 2/3 & 1 \\\\ 0 & 2/3 & 1 \\\\ 0 & -1/3 & 1 \\end{pmatrix} = 1 \\cdot (\\frac{2}{3} \\cdot 1 - 1 \\cdot (-\\frac{1}{3})) = \\frac{2}{3} + \\frac{1}{3} = 1 > 0$.\n\n    Le signe est positif, donc l'angle est $\\theta = +\\pi/3$. L'option D est incorrecte.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** L'axe de rotation de $f$ est la droite vectorielle engendrée par le vecteur $(1, 1, 1)$.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** $f$ est une réflexion par rapport à un plan.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** L'angle de rotation $\\theta$ de $f$ vérifie $\\cos(\\theta) = 1/2$.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** L'angle de rotation de $f$ est de $-\\pi/3$ radians (ou $-60^\\circ$).",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "stackId": "36357ed7",
+      "content": "#### Question 4 : Généralisation du théorème d'Euler\n\nLe théorème d'Euler affirme que toute isométrie directe de $\\mathbb{R}^3$ (i.e., $f \\in SO_3(\\mathbb{R})$) est une rotation autour d'un axe. La preuve standard repose sur le fait que le polynôme caractéristique, étant de degré 3, admet au moins une racine réelle (qui doit être $\\pm 1$). Pourquoi un argument similaire échoue-t-il à garantir que toute isométrie $f \\in SO_4(\\mathbb{R})$ admette une valeur propre réelle ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nCette question analyse la portée de la preuve du théorème d'Euler.\n\n- **A.** Incorrect. Le déterminant d'une matrice carrée est toujours le produit de ses valeurs propres (comptées avec multiplicité) dans le corps de décomposition de son polynôme caractéristique (ici, $\\mathbb{C}$).\n\n- **B.** Incorrect. Si $f$ est une isométrie d'un espace euclidien et $\\lambda$ est une valeur propre (réelle ou complexe) associée à un vecteur propre $v$, alors $\\|f(v)\\| = \\|\\lambda v\\| = |\\lambda| \\|v\\|$. Comme $f$ préserve la norme, $\\|f(v)\\|=\\|v\\|$. Donc $|\\lambda|=1$. Cette propriété est vraie quelle que soit la dimension.\n\n- **C.** Correct. Le polynôme caractéristique $\\chi_f(\\lambda)$ d'une matrice $4 \\times 4$ réelle est un polynôme de degré 4 à coefficients réels. Un tel polynôme peut ne pas avoir de racines réelles. Par exemple, le polynôme $(\\lambda^2+1)(\\lambda^2+1) = \\lambda^4+2\\lambda^2+1$ n'a que les racines $\\pm i$. Les racines d'un polynôme réel viennent par paires conjuguées. Pour un polynôme de degré 4, les racines peuvent être quatre racines réelles, deux réelles et deux complexes conjuguées, ou deux paires de complexes conjuguées. Dans ce dernier cas, il n'y a aucune racine réelle. Une isométrie de $SO_4(\\mathbb{R})$ peut avoir pour valeurs propres $\\{e^{i\\theta_1}, e^{-i\\theta_1}, e^{i\\theta_2}, e^{-i\\theta_2}\\}$ avec $\\theta_1, \\theta_2 \\notin \\pi\\mathbb{Z}$. Le produit est 1, mais il n'y a pas de valeur propre réelle, donc pas nécessairement de vecteur invariant. Un tel endomorphisme est une double rotation.\n\n- **D.** Incorrect. La matrice d'un endomorphisme d'un $\\mathbb{R}$-espace vectoriel dans une base de cet espace est une matrice à coefficients réels. Son polynôme caractéristique est donc à coefficients réels.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Le déterminant d'une matrice dans $SO_4(\\mathbb{R})$ n'est pas le produit de ses valeurs propres.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Les valeurs propres d'une isométrie de $\\mathbb{R}^4$ ne sont pas contraintes d'avoir un module égal à 1.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Un polynôme réel de degré 4 peut n'avoir aucune racine réelle.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Le polynôme caractéristique d'une matrice de $SO_4(\\mathbb{R})$ n'est pas nécessairement à coefficients réels.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "stackId": "36357ed7",
+      "content": "#### Question 5 : Identité de Lagrange et produit vectoriel\n\nDans un espace euclidien orienté de dimension 3, l'identité de Lagrange s'écrit : $\\langle u \\wedge v, w \\wedge z \\rangle = \\langle u, w \\rangle \\langle v, z \\rangle - \\langle u, z \\rangle \\langle v, w \\rangle$. Quelles affirmations sont des conséquences ou interprétations correctes de cette identité ?\n",
+      "solution": "\n\n**Réponses : [A, B, D]**\n\nCette question explore en profondeur les propriétés algébriques du produit vectoriel.\n\n- **A.** Correct. On utilise la propriété de permutation du produit mixte et la formule du double produit vectoriel (dite \"BAC-CAB\") :\n\n    $\\langle u \\wedge v, w \\wedge z \\rangle = \\det(u, v, w \\wedge z) = \\langle u, v \\wedge (w \\wedge z) \\rangle$\n\n    En appliquant la formule BAC-CAB à $v \\wedge (w \\wedge z)$:\n\n    $v \\wedge (w \\wedge z) = \\langle v, z \\rangle w - \\langle v, w \\rangle z$\n\n    En substituant :\n\n    $\\langle u, \\langle v, z \\rangle w - \\langle v, w \\rangle z \\rangle = \\langle v, z \\rangle \\langle u, w \\rangle - \\langle v, w \\rangle \\langle u, z \\rangle$.\n\n    C'est bien l'identité de Lagrange.\n\n- **B.** Correct. Le déterminant de la matrice de Gram $G = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$ est $ad-bc$. Ici, avec $a=\\langle u,w \\rangle, b=\\langle u,z \\rangle, c=\\langle v,w \\rangle, d=\\langle v,z \\rangle$, le déterminant est $\\langle u,w \\rangle \\langle v,z \\rangle - \\langle u,z \\rangle \\langle v,w \\rangle$, ce qui correspond exactement au membre de droite.\n\n- **C.** Incorrect. En posant $w=u$ et $z=v$, le membre de gauche devient $\\langle u \\wedge v, u \\wedge v \\rangle = \\|u \\wedge v\\|^2$. Le membre de droite devient $\\langle u, u \\rangle \\langle v, v \\rangle - \\langle u, v \\rangle \\langle v, u \\rangle = \\|u\\|^2 \\|v\\|^2 - (\\langle u,v \\rangle)^2$. L'identité est donc $\\|u \\wedge v\\|^2 = \\|u\\|^2 \\|v\\|^2 - (\\langle u,v \\rangle)^2$, pas $\\|u \\wedge v\\|$.\n\n- **D.** Correct. Comme démontré ci-dessus, la spécialisation de l'identité de Lagrange pour $w=u$ et $z=v$ donne la célèbre formule reliant la norme du produit vectoriel aux normes des vecteurs et à leur produit scalaire. Cette formule est elle-même équivalente à $\\|u \\wedge v\\| = \\|u\\|\\|v\\||\\sin\\theta|$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Cette identité peut être démontrée en utilisant la formule du double produit vectoriel $a \\wedge (b \\wedge c) = \\langle a,c \\rangle b - \\langle a,b \\rangle c$.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** Le membre de droite de l'identité est le déterminant de la matrice de Gram $\\begin{pmatrix} \\langle u,w \\rangle & \\langle u,z \\rangle \\\\ \\langle v,w \\rangle & \\langle v,z \\rangle \\end{pmatrix}$.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Pour $w=u$ et $z=v$, l'identité se réduit à $\\|u \\wedge v\\| = \\|u\\| \\|v\\| - \\langle u,v \\rangle$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Pour $w=u$ et $z=v$, l'identité implique que $\\|u \\wedge v\\|^2 = \\|u\\|^2 \\|v\\|^2 - (\\langle u,v \\rangle)^2$.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "stackId": "36357ed7",
+      "content": "#### Question 6 : Isomorphisme d'algèbres de Lie\n\nSoit l'application $\\phi: (\\mathbb{R}^3, \\wedge) \\to (\\mathfrak{so}(3), [,])$ qui à un vecteur $v=(a,b,c)$ associe la matrice antisymétrique $K_v = \\begin{pmatrix} 0 & -c & b \\\\ c & 0 & -a \\\\ -b & a & 0 \\end{pmatrix}$. L'espace $\\mathfrak{so}(3)$ est l'ensemble des matrices réelles $3 \\times 3$ antisymétriques, muni du commutateur $[A,B]=AB-BA$. Quelles sont les propriétés correctes de cette application ?\n",
+      "solution": "\n\n**Réponses : [A, B]**\n\nCette question porte sur la relation fondamentale entre le produit vectoriel et le groupe des rotations, via son algèbre de Lie.\n\n- **A.** Correct. La matrice $K_v$ représente l'endomorphisme $f_v(x) = v \\wedge x$. La relation $R K_v R^{-1} = K_{Rv}$ traduit la manière dont cet endomorphisme se transforme par changement de base. Elle signifie que pour tout $x \\in \\mathbb{R}^3$, $R(v \\wedge (R^{-1}x)) = (Rv) \\wedge x$. C'est une propriété connue des rotations : une rotation appliquée à un produit vectoriel est le produit vectoriel des images des vecteurs par la rotation, i.e., $R(a \\wedge b) = Ra \\wedge Rb$. En posant $b=R^{-1}x$, on a $R(v \\wedge R^{-1}x) = Rv \\wedge R(R^{-1}x) = Rv \\wedge x$, ce qui prouve la relation.\n\n- **B.** Correct. $\\phi$ est clairement un isomorphisme d'espaces vectoriels (linéaire et bijectif entre deux espaces de dimension 3). La propriété cruciale d'un isomorphisme d'algèbres de Lie est la préservation du crochet. Un calcul direct montre que $[K_u, K_v] = K_{u \\wedge v}$. Cette identité est en fait équivalente à l'identité de Jacobi pour le produit vectoriel.\n\n- **C.** Incorrect. Puisque $\\phi$ est un isomorphisme d'espaces vectoriels, l'image d'une base de $\\mathbb{R}^3$ (qui est un espace de dimension 3) est une base de $\\mathfrak{so}(3)$ (qui est aussi de dimension 3).\n\n- **D.** Incorrect. Le crochet de Lie $[A,B]$ est le commutateur $AB-BA$, pas la composition $AB$. La composition des applications $x \\mapsto u \\wedge (v \\wedge x)$ n'est pas antisymétrique en $(u,v)$ et ne correspond pas au produit vectoriel $u \\wedge v$. C'est le commutateur qui a la bonne structure.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Pour toute matrice de rotation $R \\in SO_3(\\mathbb{R})$ et tout vecteur $v \\in \\mathbb{R}^3$, on a la relation d'équivariance $R K_v R^{-1} = K_{Rv}$.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\phi$ est un isomorphisme d'algèbres de Lie, c'est-à-dire un isomorphisme d'espaces vectoriels qui préserve la structure de crochet : $\\phi(u \\wedge v) = [\\phi(u), \\phi(v)]$.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** L'image par $\\phi$ d'une base orthonormée de $\\mathbb{R}^3$ n'est pas nécessairement une base de $\\mathfrak{so}(3)$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Le crochet de Lie $[\\phi(u), \\phi(v)]$ correspond à la composition des applications $x \\mapsto u \\wedge x$ et $x \\mapsto v \\wedge x$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "stackId": "36357ed7",
+      "content": "#### Question 7 : Analyse de la formule de Rodrigues\n\nLa matrice d'une rotation $R_{N,\\theta}$ d'angle $\\theta$ autour d'un axe dirigé par le vecteur unitaire $N$ peut s'écrire $R = I + (\\sin\\theta)K + (1-\\cos\\theta)K^2$, où $K$ est la matrice de l'application $U \\mapsto N \\wedge U$. Quelles affirmations peuvent être déduites rigoureusement de cette formule et des propriétés de $K$ ?\n",
+      "solution": "\n\n**Réponses : [A, C]**\n\nCette question examine les fondements mathématiques de la formule de Rodrigues.\n\n- **A.** Correct. L'opérateur associé à $K$ est $f_N(U)=N \\wedge U$. Appliquons-le trois fois :\n\n    $K^2(U) = N \\wedge (N \\wedge U) = \\langle N, U \\rangle N - \\langle N, N \\rangle U = \\langle N, U \\rangle N - U$.\n\n    $K^3(U) = N \\wedge (\\langle N, U \\rangle N - U) = \\langle N, U \\rangle (N \\wedge N) - (N \\wedge U) = 0 - K(U) = -K(U)$.\n\n    Donc $K^3 = -K$. Cette relation est une conséquence du fait que le polynôme caractéristique de $K$ est $\\lambda(\\lambda^2+1)$.\n\n- **B.** Incorrect. La formule n'est pas une approximation mais une expression exacte. La série de Taylor de l'exponentielle de matrice est $\\exp(\\theta K) = \\sum_{j=0}^{\\infty} \\frac{(\\theta K)^j}{j!} = I + \\theta K + \\frac{\\theta^2}{2}K^2 + \\frac{\\theta^3}{6}K^3 + \\dots$. En utilisant $K^3=-K$, $K^4=-K^2$, etc., on peut regrouper les termes en $K$ et $K^2$ pour retrouver la formule de Rodrigues, qui est la somme de la série entière :\n\n    $\\exp(\\theta K) = I + (\\theta - \\frac{\\theta^3}{3!} + \\dots)K + (\\frac{\\theta^2}{2!} - \\frac{\\theta^4}{4!} + \\dots)K^2 = I + (\\sin\\theta)K + (1-\\cos\\theta)K^2$.\n\n- **C.** Correct. On calcule la trace de chaque terme :\n\n    $\\text{Tr}(I) = 3$.\n\n    $K$ est une matrice antisymétrique, donc $\\text{Tr}(K)=0$.\n\n    Pour $K^2$, on a $\\text{Tr}(K^2) = \\sum_{i,j} K_{ij}K_{ji}$. Comme $K$ est antisymétrique, $K_{ji}=-K_{ij}$, donc $\\text{Tr}(K^2) = -\\sum_{i,j} K_{ij}^2$. Si $N=(a,b,c)$ avec $a^2+b^2+c^2=1$, alors $\\sum K_{ij}^2 = 2(a^2+b^2+c^2) = 2$. Donc $\\text{Tr}(K^2)=-2$.\n\n    $\\text{Tr}(R) = 3 + (\\sin\\theta) \\cdot 0 + (1-\\cos\\theta)(-2) = 3 - 2 + 2\\cos\\theta = 1+2\\cos\\theta$.\n\n- **D.** Incorrect. L'opérateur $P_N(U) = \\langle N, U \\rangle N$ est la projection orthogonale sur l'axe $N$. Or, $K^2(U) = \\langle N, U \\rangle N - U = P_N(U) - U$. Il s'agit de la projection sur l'axe moins l'identité, ce qui correspond à la projection sur le plan orthogonal à l'axe, mais avec un signe négatif.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** La matrice $K$ satisfait la relation $K^3 = -K$.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** La formule de Rodrigues est une approximation de $\\exp(\\theta K)$ à l'ordre 2.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** La trace de la matrice de rotation $R$ est égale à $1 + 2\\cos\\theta$.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** L'opérateur $K^2$ représente la projection orthogonale sur l'axe de rotation $N$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "stackId": "36357ed7",
+      "content": "#### Question 8 : Conséquences topologiques du lien entre $SU_2(\\mathbb{C})$ et $SO_3(\\mathbb{R})$\n\nL'homomorphisme de groupes $\\mathcal{J}: SU_2(\\mathbb{C}) \\to SO_3(\\mathbb{R})$ est surjectif et son noyau est $\\{\\pm I_2\\}$. On dit que $SU_2(\\mathbb{C})$ est un revêtement double de $SO_3(\\mathbb{R})$. Quelle est une conséquence topologique majeure de cette relation ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nCette question porte sur l'interprétation topologique de la relation de revêtement.\n\n- **A.** Incorrect. Un homéomorphisme est en particulier une bijection. Or, l'application $\\mathcal{J}$ est 2-pour-1 (sauf pour l'identité dans $SO_3(\\mathbb{R})$ qui a deux préimages $\\pm I_2$). Les espaces ne sont donc pas homéomorphes. $SU_2(\\mathbb{C})$ est homéomorphe à la sphère $S^3$, tandis que $SO_3(\\mathbb{R})$ est homéomorphe à l'espace projectif réel $\\mathbb{P}^3(\\mathbb{R})$.\n\n- **B.** Correct. C'est l'illustration la plus fameuse du fait que $SO_3(\\mathbb{R})$ n'est pas simplement connexe. Un chemin représentant une rotation complète de $2\\pi$ autour d'un axe dans $SO_3(\\mathbb{R})$ est un lacet (il part de l'identité et y revient). Le relevé de ce chemin dans $SU_2(\\mathbb{C})$ part de $I_2$ mais aboutit à $-I_2$. Il faut une rotation de $4\\pi$ dans $SO_3(\\mathbb{R})$ pour que le chemin relevé dans $SU_2(\\mathbb{C})$ revienne à $I_2$. Ce phénomène est parfois illustré par l'\"astuce de la ceinture de Dirac\".\n\n- **C.** Incorrect. La propriété de relèvement des chemins garantit que pour un point de départ choisi dans la fibre (par exemple $I_2$ au-dessus de l'identité), le chemin relevé est unique. Cependant, l'affirmation est ambiguë. Si on ne fixe pas le point de départ, il y a deux relevés possibles (un partant de $I_2$, l'autre de $-I_2$).\n\n- **D.** Incorrect. Le fait que le revêtement ne soit pas trivial (noyau non réduit à l'élément neutre) et que l'espace de base $SU_2(\\mathbb{C})$ soit simplement connexe implique que l'espace d'arrivée $SO_3(\\mathbb{R})$ n'est PAS simplement connexe. Son groupe fondamental est $\\pi_1(SO_3(\\mathbb{R})) \\cong \\mathbb{Z}/2\\mathbb{Z}$, ce qui correspond au noyau $\\{\\pm I_2\\}$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $SU_2(\\mathbb{C})$ et $SO_3(\\mathbb{R})$ sont homéomorphes.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Il existe un chemin continu dans $SO_3(\\mathbb{R})$ qui part de l'identité et y retourne (un lacet), dont le relevé dans $SU_2(\\mathbb{C})$ partant de $I_2$ se termine en $-I_2$.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Tout chemin dans $SO_3(\\mathbb{R})$ peut être relevé en un unique chemin dans $SU_2(\\mathbb{C})$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $SO_3(\\mathbb{R})$ est simplement connexe.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "stackId": "36357ed7",
+      "content": "#### Question 9 : Propriétés de l'action adjointe de $SU_2(\\mathbb{C})$\n\nOn considère le $\\mathbb{R}$-espace vectoriel $\\mathcal{V}$ des matrices $2 \\times 2$ hermitiennes et de trace nulle. L'action d'un élément $U \\in SU_2(\\mathbb{C})$ sur $M \\in \\mathcal{V}$ est $\\text{Ad}_U(M) = UMU^*$. Quelles sont les propriétés correctes de cette action et de l'espace $\\mathcal{V}$?\n",
+      "solution": "\n\n**Réponses : [A, C]**\n\nCette question vérifie la compréhension des objets mathématiques utilisés pour lier $SU_2(\\mathbb{C})$ à $SO_3(\\mathbb{R})$.\n\n- **A.** Correct. Une matrice $M \\in \\mathcal{V}$ s'écrit $M = \\begin{pmatrix} a & z \\\\ \\bar{z} & -a \\end{pmatrix}$ avec $a \\in \\mathbb{R}$ et $z \\in \\mathbb{C}$. Comme $\\text{Tr}(M)=0$, les valeurs propres sont $\\lambda$ et $-\\lambda$. $\\det(M)=-\\lambda^2$. Comme $M$ est hermitienne, ses valeurs propres sont réelles, donc $\\lambda \\in \\mathbb{R}$. Ainsi $\\det(M) = -\\lambda^2 \\le 0$.\n\nLe déterminant est préservé par l'action : $\\det(UMU^*) = \\det(U)\\det(M)\\det(U^*) = \\det(U)\\det(M)\\overline{\\det(U)} = |\\det(U)|^2\\det(M)$. Comme $U \\in SU_2(\\mathbb{C})$, $\\det(U)=1$, donc $|\\det(U)|^2=1$, et $\\det(UMU^*)=\\det(M)$.\n\n- **B.** Incorrect. $\\mathcal{V}$ n'est pas stable par produit matriciel. Par exemple, soient $T_2 = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$ et $T_3 = \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}$, qui sont dans $\\mathcal{V}$. Leur produit $T_2 T_3 = \\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}$ n'est pas hermitien, donc il n'appartient pas à $\\mathcal{V}$. En revanche, $\\mathcal{V}$ est stable par le crochet de Lie $[A,B]=AB-BA$ à un facteur $i$ près (c'est l'algèbre de Lie $\\mathfrak{su}(2)$).\n\n- **C.** Correct. Soit $M=\\begin{pmatrix} a & z \\\\ \\bar{z} & -a \\end{pmatrix}$. Son polynôme caractéristique est $\\chi_M(\\lambda) = \\lambda^2 - \\text{Tr}(M)\\lambda + \\det(M) = \\lambda^2 + \\det(M)$. D'après le théorème de Cayley-Hamilton, $M^2 + \\det(M)I_2 = 0$, donc $M^2 = -\\det(M)I_2$. On peut aussi le vérifier par calcul direct.\n\n- **D.** Incorrect. L'action préserve bien le caractère hermitien : $(\\text{Ad}_U(M))^* = (UMU^*)^* = (U^*)^*M^*U^* = U M U^* = \\text{Ad}_U(M)$, car $M$ est hermitienne ($M^*=M$). La trace est aussi préservée par cyclicité: $\\text{Tr}(UMU^*) = \\text{Tr}(U^*UM) = \\text{Tr}(M)$. L'action est bien définie comme une application de $\\mathcal{V}$ dans $\\mathcal{V}$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Pour tout $M \\in \\mathcal{V}$, son déterminant est un nombre réel négatif ou nul, et il est préservé par l'action adjointe.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** L'espace $\\mathcal{V}$ est stable par le produit matriciel usuel.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Pour toute matrice $M \\in \\mathcal{V}$, on a la relation $M^2 = -\\det(M) I_2$.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** L'action $\\text{Ad}_U$ préserve la trace de $M$, mais pas nécessairement son caractère hermitien.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "stackId": "36357ed7",
+      "content": "#### Question 10 : Conditions suffisantes pour être une isométrie\n\nSoit $f$ un endomorphisme d'un espace euclidien $E$ de dimension finie. Parmi les conditions suivantes, lesquelles sont suffisantes, prises individuellement, pour affirmer que $f$ est une isométrie ?\n",
+      "solution": "\n\n**Réponses : [A, C, D]**\n\nCette question récapitule plusieurs caractérisations et propriétés des isométries.\n\n- **A.** Correct. Un endomorphisme normal sur un espace euclidien est diagonalisable dans une base orthonormée (dans une complexification de l'espace). Si toutes ses valeurs propres $\\lambda_i$ sont de module 1, alors dans cette base, la matrice de $f^*f$ sera diagonale avec les termes $|\\lambda_i|^2=1$. Donc $f^*f=\\text{Id}$, ce qui est une caractérisation d'une isométrie.\n\n- **B.** Incorrect. Cette condition n'est pas suffisante. Un contre-exemple classique est une homothétie $f(x) = kx$ avec $k \\in \\mathbb{R} \\setminus \\{\\pm 1\\}$. Si $\\langle x,y \\rangle = 0$, alors $\\langle kx, ky \\rangle = k^2\\langle x,y \\rangle = 0$, donc l'orthogonalité est préservée. Cependant, $\\|f(x)\\| = |k|\\|x\\| \\neq \\|x\\|$ (pour $x\\neq 0$), donc $f$ n'est pas une isométrie.\n\n- **C.** Correct. Si $f=f^*$ et $f^2=\\text{Id}$, alors on peut écrire $f^*f = f \\circ f = f^2 = \\text{Id}$. La condition $f^*f=\\text{Id}$ est une des définitions d'une isométrie. Les endomorphismes satisfaisant ces deux conditions sont les symétries orthogonales.\n\n- **D.** Correct. C'est l'une des caractérisations fondamentales d'une isométrie. Si $(e_i)$ est une BON et $(f(e_i))$ est aussi une BON, alors pour tout vecteur $x = \\sum_i x_i e_i$, on a $\\|f(x)\\|^2 = \\|\\sum_i x_i f(e_i)\\|^2$. Comme $(f(e_i))$ est une BON, cette norme au carré vaut $\\sum_i x_i^2$, qui est aussi $\\|x\\|^2$. Donc $f$ préserve la norme.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $f$ est un endomorphisme normal ($f \\circ f^* = f^* \\circ f$) et toutes ses valeurs propres complexes sont de module 1.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** $f$ préserve l'orthogonalité (si $\\langle x, y \\rangle=0$, alors $\\langle f(x), f(y) \\rangle=0$).",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $f$ est une involution ($f^2 = \\text{Id}$) et est autoadjoint ($f=f^*$).",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** L'image par $f$ d'une seule base orthonormée $(e_1, \\dots, e_n)$ de $E$ est une base orthonormée.",
+          "correct": true
+        }
+      ]
+    }
+  ]
+}

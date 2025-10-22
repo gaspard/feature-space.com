@@ -1,0 +1,356 @@
+{
+  "info": {
+    "id": "6d06753a",
+    "title": "Principes de dénombrement - quiz (A)",
+    "type": "quiz",
+    "level": "regular",
+    "chapter": "Principes de dénombrement",
+    "course": "Graphes et Combinatoire",
+    "tags": [
+      "Combinatoire",
+      "Dénombrement",
+      "Cardinalité",
+      "Ensembles finis",
+      "Principes de comptage"
+    ],
+    "count": 12
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "6d06753a",
+      "content": "#### Question 1 : Définition du Cardinal\n\nSelon la définition formelle, que signifie que le cardinal d'un ensemble fini non vide $E$ est égal à $n$ (où $n \\in \\mathbb{N}^*$) ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\n- **A)** Une injection de $E$ dans $\\{1, 2, \\dots, n\\}$ prouve seulement que $|E| \\le n$. Par exemple, l'ensemble $\\{\\text{pomme, poire}\\}$ a une injection dans $\\{1, 2, 3\\}$, mais son cardinal est 2, pas 3. Cette condition n'est pas suffisante.\n\n- **B)** Une surjection de $E$ vers $\\{1, 2, \\dots, n\\}$ prouve seulement que $|E| \\ge n$. Par exemple, l'ensemble $\\{\\text{pomme, poire, orange}\\}$ a une surjection vers $\\{1, 2\\}$, mais son cardinal est 3, pas 2. Cette condition n'est pas suffisante.\n\n- **C)** C'est la définition exacte du cardinal. Établir une bijection entre $E$ et $\\{1, 2, \\dots, n\\}$ (noté $[n]$) revient à \"compter\" les éléments de $E$ en les associant un par un, sans oubli ni répétition, aux entiers de 1 à $n$. Le nombre $n$ est alors le nombre d'éléments, ou cardinal, de $E$.\n\n- **D)** Le cardinal d'un ensemble est un nombre qui représente sa taille, mais les éléments de l'ensemble n'ont aucun rapport nécessaire avec ce nombre. L'ensemble $\\{\\text{rouge, vert, bleu}\\}$ a pour cardinal 3, mais il ne contient pas l'entier 3.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Il existe une injection de $E$ dans l'ensemble $\\{1, 2, \\dots, n\\}$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Il existe une surjection de $E$ vers l'ensemble $\\{1, 2, \\dots, n\\}$.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Il existe une bijection entre $E$ et l'ensemble $\\{1, 2, \\dots, n\\}$.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** L'ensemble $E$ contient l'entier $n$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "stackId": "6d06753a",
+      "content": "#### Question 2 : Principe de Bijection\n\nLequel de ces problèmes de dénombrement est le plus élégamment résolu en utilisant le principe de bijection ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\n- **A)** Ce problème se résout avec le principe d'addition (ou la formule d'inclusion-exclusion), car on compte l'union de deux ensembles (ceux qui aiment le sport et ceux qui aiment la musique).\n\n- **B)** C'est un exemple classique d'utilisation du principe de bijection. Pour prouver que $|P_k([n])| = |P_{n-k}([n])|$, on établit une bijection entre les deux ensembles. L'application qui, à un sous-ensemble $A$ de taille $k$, associe son complémentaire $\\bar{A}$ (qui est de taille $n-k$) est une bijection. Cela prouve l'égalité des cardinaux.\n\n- **C)** Ce problème est une application directe du principe de multiplication. Le nombre total de menus est le produit du nombre de choix à chaque étape : $3 \\times 5 \\times 4$.\n\n- **D)** Ce problème est l'application la plus célèbre du principe des tiroirs. Les 367 personnes sont les \"objets\" et les 366 jours possibles de l'année (en incluant le 29 février) sont les \"tiroirs\". Comme il y a plus de personnes que de jours, au moins deux personnes partagent un \"tiroir\" (une date d'anniversaire).\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Compter le nombre d'étudiants dans une classe qui aiment soit le sport, soit la musique, soit les deux.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Démontrer que le nombre de sous-ensembles de taille $k$ d'un ensemble de $n$ éléments est égal au nombre de sous-ensembles de taille $n-k$.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Calculer le nombre total de menus possibles dans un restaurant offrant 3 entrées, 5 plats et 4 desserts.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Prouver que dans un groupe de 367 personnes, au moins deux ont la même date d'anniversaire.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "stackId": "6d06753a",
+      "content": "#### Question 3 : Propriétés des Ensembles Finis\n\nSoient $E$ un ensemble fini et $F$ un sous-ensemble de $E$ ($F \\subseteq E$). Si l'on sait que $|F| = |E|$, que peut-on conclure ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nC'est une propriété fondamentale des ensembles finis.\n\n- **A)** Si $F$ était l'ensemble vide, son cardinal serait 0. Pour que $|E|=0$, $E$ devrait aussi être l'ensemble vide. Dans ce cas, $F=E$, ce qui est un cas particulier de la bonne réponse, mais ce n'est pas la conclusion générale.\n\n- **B)** On sait déjà par hypothèse que $F \\subseteq E$. Dire que $E \\subseteq F$ est équivalent à dire que $E=F$. C'est donc la même chose que l'option C, mais l'affirmation de base est que $F=E$.\n\n- **C)** Si un sous-ensemble d'un ensemble fini a le même nombre d'éléments que l'ensemble lui-même, il ne peut pas lui manquer le moindre élément. Par conséquent, le sous-ensemble doit être égal à l'ensemble tout entier. Si $F$ était un sous-ensemble strict de $E$, il existerait au moins un élément $x \\in E$ tel que $x \\notin F$, ce qui impliquerait $|F| < |E|$, contredisant l'hypothèse.\n\n- **D)** Cette situation est non seulement possible, mais elle implique l'égalité des ensembles. Par exemple, si $E=\\{1, 2, 3\\}$ et $F=\\{1, 2, 3\\}$, on a bien $F \\subseteq E$ et $|F|=|E|=3$, et la conclusion est $F=E$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $F$ est l'ensemble vide.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $E$ doit être un sous-ensemble de $F$.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $F$ est égal à $E$ ($F=E$).",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Cette situation est impossible pour des ensembles finis.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "stackId": "6d06753a",
+      "content": "#### Question 4 : Principe des Tiroirs\n\nUn facteur doit distribuer 50 lettres dans une rue qui ne comporte que 40 boîtes aux lettres. En utilisant le principe des tiroirs (ou principe de Dirichlet), quelle conclusion est-on certain de pouvoir tirer ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nIci, les \"objets\" sont les 50 lettres et les \"tiroirs\" sont les 40 boîtes aux lettres.\n\n- **A)** Le principe des tiroirs ne garantit pas que tous les tiroirs seront utilisés. Le facteur pourrait, par exemple, mettre les 50 lettres dans la première boîte aux lettres et laisser les 39 autres vides.\n\n- **B)** C'est l'énoncé direct du principe des tiroirs. Puisqu'il y a plus d'objets (lettres) que de tiroirs (boîtes), il est impossible que chaque tiroir contienne au plus un objet. Mathématiquement, il n'existe pas d'application injective de l'ensemble des lettres vers l'ensemble des boîtes. Par conséquent, au moins un \"tiroir\" doit contenir au moins deux \"objets\".\n\n- **C)** Le principe des tiroirs est un principe d'existence non constructif. Il garantit qu'un tiroir aura *au moins* un certain nombre d'objets, mais il ne dit rien sur la distribution exacte, ni sur un nombre maximum. On ne peut pas conclure qu'une boîte recevra exactement 10 lettres.\n\n- **D)** C'est très peu probable et certainement pas une conclusion garantie par le principe.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Toutes les boîtes aux lettres recevront au moins une lettre.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Au moins une boîte aux lettres recevra au moins deux lettres.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Une boîte aux lettres exactement recevra 10 lettres.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Chaque boîte aux lettres recevra un nombre différent de lettres.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "stackId": "6d06753a",
+      "content": "#### Question 5 : Principe d'Addition\n\nDans un groupe de 50 personnes, 30 parlent anglais et 25 parlent espagnol. Sachant que 12 personnes parlent les deux langues, combien de personnes parlent au moins une de ces deux langues ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nIl s'agit d'une application de la formule d'inclusion-exclusion (principe d'addition pour des ensembles non-disjoints).\n\n- Soit $A$ l'ensemble des personnes parlant anglais, $|A|=30$.\n- Soit $E$ l'ensemble des personnes parlant espagnol, $|E|=25$.\n- L'ensemble des personnes parlant les deux langues est l'intersection $A \\cap E$, et $|A \\cap E|=12$.\n- On cherche le nombre de personnes parlant au moins une de ces langues, c'est-à-dire le cardinal de l'union $A \\cup E$.\n\nLa formule est : $|A \\cup E| = |A| + |E| - |A \\cap E|$.\n\nApplication numérique : $|A \\cup E| = 30 + 25 - 12 = 55 - 12 = 43$.\n\n- **A)** 55 est le résultat de l'addition simple $30+25$. C'est incorrect car on compte deux fois les 12 personnes qui parlent les deux langues.\n- **B)** 67 est une valeur impossible car le groupe ne contient que 50 personnes.\n- **C)** 43 est la bonne réponse, obtenue en appliquant correctement la formule.\n- **D)** 30 est simplement le nombre de personnes parlant anglais, ce qui ne répond pas à la question.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** 55",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** 67",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** 43",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** 30",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "stackId": "6d06753a",
+      "content": "#### Question 6 : Conditions d'Application des Principes\n\nLa formule simplifiée du principe d'addition, $|E \\cup F| = |E| + |F|$, est valide si et seulement si :\n",
+      "solution": "\n\n**Réponse : [C]**\n\n- **A)** Le fait que les ensembles aient le même cardinal n'a pas d'influence sur la validité de la formule. Par exemple, si $E=\\{1,2\\}$ et $F=\\{2,3\\}$, alors $|E|=|F|=2$, mais $|E \\cup F|=|\\{1,2,3\\}|=3$, alors que $|E|+|F|=4$. La formule n'est pas valide.\n\n- **B)** Si $E \\subseteq F$, alors $E \\cup F = F$. La formule deviendrait $|F| = |E| + |F|$, ce qui n'est vrai que si $|E|=0$, c'est-à-dire si $E=\\emptyset$. Ce n'est donc pas la condition générale.\n\n- **C)** La formule générale est $|E \\cup F| = |E| + |F| - |E \\cap F|$. Pour que la formule simplifiée soit valide, il faut que le terme soustrait soit nul, c'est-à-dire $|E \\cap F|=0$. Cela signifie que l'intersection de $E$ et $F$ est l'ensemble vide, ce qui est la définition d'ensembles disjoints.\n\n- **D)** Le fait que les ensembles soient non vides n'est pas une condition suffisante. L'exemple de l'option A utilise des ensembles non vides, et la formule y est incorrecte.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $E$ et $F$ ont le même cardinal.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $E$ est un sous-ensemble de $F$.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $E$ et $F$ sont disjoints.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $E$ et $F$ sont des ensembles non vides.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "stackId": "6d06753a",
+      "content": "#### Question 7 : Principe des Bergers\n\nSoit une application $f: E \\to F$ entre deux ensembles finis. Le principe des bergers permet de conclure que $|E| = p \\cdot |F|$ à une condition. Quelle est cette condition ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\n- **A)** Si $f$ est une bijection, alors chaque élément de $F$ a exactement un antécédent, donc $p=1$. Dans ce cas, $|E| = 1 \\cdot |F| = |F|$, ce qui est correct. Cependant, c'est un cas très particulier du principe des bergers, et non la condition générale qui le définit.\n\n- **B)** C'est la définition même de la condition d'application du principe des bergers. L'idée est que l'ensemble de départ $E$ peut être partitionné en $|F|$ \"paquets\", où chaque paquet correspond aux antécédents d'un élément de $F$. Si tous ces paquets ont la même taille $p$, alors le nombre total d'éléments dans $E$ est la somme des tailles de ces paquets, soit $p$ ajouté $|F|$ fois, d'où $|E| = p \\cdot |F|$.\n\n- **C)** Si chaque élément de $F$ a exactement $p$ antécédents (avec $p \\ge 1$), alors $f$ est bien surjective. Le fait que $|E|$ soit un multiple de $p$ est une conséquence du principe, pas sa condition d'application.\n\n- **D)** Un élément de l'ensemble de départ ne peut avoir qu'une seule image par une application (fonction). Cette proposition est donc contraire à la définition même d'une application.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $f$ est une bijection et $p=1$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Chaque élément de $F$ a exactement $p$ antécédents par $f$.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $f$ est surjective et le cardinal de $E$ est un multiple de $p$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Chaque élément de $E$ a exactement $p$ images dans $F$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "stackId": "6d06753a",
+      "content": "#### Question 8 : Principe de Multiplication\n\nUne serrure à code possède 4 rouleaux. Le premier rouleau a les chiffres de 0 à 9, le deuxième a les lettres de A à F, le troisième a les chiffres de 0 à 9, et le quatrième a les lettres A ou B. Combien de codes différents sont possibles ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nCe problème se résout en utilisant le principe de multiplication, car la composition d'un code est une suite de choix indépendants.\n\n- **Choix 1 (premier rouleau)** : Il y a 10 possibilités (chiffres de 0 à 9).\n- **Choix 2 (deuxième rouleau)** : Il y a 6 possibilités (lettres A, B, C, D, E, F).\n- **Choix 3 (troisième rouleau)** : Il y a 10 possibilités (chiffres de 0 à 9).\n- **Choix 4 (quatrième rouleau)** : Il y a 2 possibilités (lettres A, B).\n\nLe nombre total de codes est le produit du nombre de possibilités à chaque étape :\n\nNombre de codes = $10 \\times 6 \\times 10 \\times 2 = 1200$.\n\n- **A)** Cette option utilise le principe d'addition, ce qui serait correct si on devait choisir *un seul* caractère parmi toutes les options disponibles sur tous les rouleaux, ce qui n'est pas le cas ici.\n- **B)** Cette option est un calcul incorrect qui ne correspond à aucun principe de dénombrement clair.\n- **C)** C'est l'application correcte du principe de multiplication.\n- **D)** Cette option regroupe les choix de manière incorrecte avant de les multiplier.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $10 + 6 + 10 + 2$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $10 \\times 2 + 6 \\times 2$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $10 \\times 6 \\times 10 \\times 2$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $(10+6) \\times (10+2)$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "stackId": "6d06753a",
+      "content": "#### Question 9 : Cardinalité des Ensembles Infinis\n\nParmi les ensembles suivants, lesquels sont dénombrables (c'est-à-dire, peuvent être mis en bijection avec l'ensemble des entiers naturels $\\mathbb{N}$) ?\n",
+      "solution": "\n\n**Réponses : [A, C]**\n\nUn ensemble est dénombrable s'il est possible de lister tous ses éléments dans une séquence infinie.\n\n- **A)** L'ensemble $\\mathbb{Z} = \\{\\dots, -2, -1, 0, 1, 2, \\dots\\}$ est dénombrable. On peut l'énumérer en alternant : $0, 1, -1, 2, -2, \\dots$. Cette énumération établit une bijection avec $\\mathbb{N}$, prouvant que $\\mathbb{Z}$ est dénombrable.\n\n- **B)** L'ensemble $\\mathbb{R}$ des nombres réels est l'exemple canonique d'un ensemble non dénombrable. L'argument diagonal de Cantor montre qu'il est impossible de créer une liste (même infinie) contenant tous les nombres réels. Son \"infini\" est plus grand que celui de $\\mathbb{N}$.\n\n- **C)** Bien que les nombres rationnels soient denses dans les réels, l'ensemble $\\mathbb{Q}$ est dénombrable. On peut montrer qu'il est en bijection avec $\\mathbb{N} \\times \\mathbb{N}$, qui est lui-même dénombrable. On peut lister tous les rationnels, par exemple en suivant les diagonales dans un tableau de fractions.\n\n- **D)** Le théorème de Cantor stipule que pour tout ensemble $E$, son ensemble des parties $P(E)$ a un cardinal strictement supérieur à celui de $E$. Donc, $|P(\\mathbb{N})| > |\\mathbb{N}|$. Par conséquent, $P(\\mathbb{N})$ n'est pas dénombrable.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** L'ensemble $\\mathbb{Z}$ des entiers relatifs.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** L'ensemble $\\mathbb{R}$ des nombres réels.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** L'ensemble $\\mathbb{Q}$ des nombres rationnels.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** L'ensemble $P(\\mathbb{N})$ des parties de $\\mathbb{N}$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "stackId": "6d06753a",
+      "content": "#### Question 10 : Théorème de Cantor\n\nQue nous apprend le Théorème de Cantor sur la relation entre un ensemble $E$ et son ensemble des parties $P(E)$ ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\n- **A)** Si $E$ est fini, le cardinal de son ensemble des parties est $|P(E)| = 2^{|E|}$, et non $2 \\cdot |E|$. Par exemple, si $E=\\{1,2\\}$, $|E|=2$, alors $P(E)=\\{\\emptyset, \\{1\\}, \\{2\\}, \\{1,2\\}\\}$ et $|P(E)|=4$, ce qui est bien $2^2$.\n\n- **B)** C'est précisément ce que dit le théorème de Cantor. Pour tout ensemble $E$ (fini ou infini), il est impossible de trouver une fonction surjective de $E$ vers $P(E)$. Cela implique qu'il n'y a pas non plus de bijection, et donc que $|E| < |P(E)|$ au sens des cardinaux.\n\n- **C)** C'est le contraire direct du théorème de Cantor. L'impossibilité d'une surjection (voir B) entraîne l'impossibilité d'une bijection.\n\n- **D)** Les éléments de $P(E)$ sont les *sous-ensembles* de $E$, pas les éléments de $E$. Par exemple, si $E=\\{a, b\\}$, alors $\\{a\\}$ est un élément de $P(E)$, mais $\\{a\\}$ n'est pas un élément de $E$ (seuls $a$ et $b$ le sont).\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Si $E$ est fini, alors $|P(E)| = 2 \\cdot |E|$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Il n'existe aucune surjection de $E$ vers $P(E)$.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Il existe toujours une bijection entre $E$ et $P(E)$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Un élément de $P(E)$ est aussi un élément de $E$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "stackId": "6d06753a",
+      "content": "#### Question 11 : Utilisation des Principes Combinés\n\nPour former une plaque d'immatriculation, on doit choisir 2 lettres distinctes parmi les 26 de l'alphabet, suivies de 3 chiffres non nécessairement distincts (de 0 à 9). Lequel des calculs suivants donne le nombre total de plaques possibles ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nCe problème combine deux applications du principe de multiplication.\n\n1.  **Partie \"Lettres\"**: On doit choisir une séquence de 2 lettres distinctes.\n    -   Pour la première lettre, il y a 26 choix.\n    -   Comme la deuxième lettre doit être distincte, il ne reste que 25 choix.\n    -   Le nombre de façons de choisir les deux lettres est $26 \\times 25$.\n\n2.  **Partie \"Chiffres\"**: On doit choisir une séquence de 3 chiffres, avec répétition autorisée.\n    -   Pour le premier chiffre, il y a 10 choix (0-9).\n    -   Pour le deuxième, il y a aussi 10 choix.\n    -   Pour le troisième, il y a également 10 choix.\n    -   Le nombre de façons de choisir les trois chiffres est $10 \\times 10 \\times 10 = 10^3$.\n\nPour obtenir le nombre total de plaques, on applique de nouveau le principe de multiplication entre la partie \"lettres\" et la partie \"chiffres\".\n\nNombre total = (Nombre de choix pour les lettres) $\\times$ (Nombre de choix pour les chiffres) = $(26 \\times 25) \\times (10 \\times 10 \\times 10)$.\n\n- **A)** Utilise le principe d'addition au lieu de la multiplication.\n- **B)** Applique correctement le principe de multiplication pour chaque partie, puis les combine correctement.\n- **C)** Les factorielles seraient utilisées pour permuter *tous* les éléments des ensembles, ce qui n'est pas ce que l'on fait ici.\n- **D)** Utilise le principe d'addition pour combiner les deux parties, ce qui serait correct si une plaque était soit 2 lettres, *soit* 3 chiffres, mais pas les deux à la suite.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $(26+25) \\times (10+10+10)$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $(26 \\times 25) \\times (10 \\times 10 \\times 10)$",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $26! \\times 10!$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $26^2 + 10^3$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "stackId": "6d06753a",
+      "content": "#### Question 12 : Principe des Tiroirs (Généralisé)\n\nOn range 25 livres dans une bibliothèque à 4 étagères. Quelle est la conclusion la plus forte que l'on puisse tirer avec certitude ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nIl s'agit d'une application du principe des tiroirs généralisé.\n\n- Les \"objets\" sont les 25 livres ($m=25$).\n- Les \"tiroirs\" sont les 4 étagères ($n=4$).\n\nLe principe généralisé dit qu'il y a au moins un tiroir contenant au moins $\\lceil m/n \\rceil$ objets.\n\nIci, $\\lceil 25/4 \\rceil = \\lceil 6.25 \\rceil = 7$.\n\n- **A)** On ne peut pas garantir que *chaque* étagère ait un nombre minimum de livres. On pourrait mettre 25 livres sur la première étagère et 0 sur les autres.\n- **B)** Le principe garantit une quantité *minimale* dans au moins une catégorie, pas une quantité exacte. Une étagère pourrait contenir 8, 10 ou même les 25 livres.\n- **C)** C'est la conclusion directe du principe des tiroirs généralisé. Il existe au moins une étagère avec un nombre de livres supérieur ou égal à 7. Si toutes les étagères contenaient 6 livres ou moins, le nombre total de livres serait au maximum $4 \\times 6 = 24$, ce qui est inférieur à 25. C'est une contradiction.\n- **D)** Le principe ne dit rien sur la distribution entre les étagères spécifiques, seulement sur l'existence d'une étagère remplissant une certaine condition.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Chaque étagère contient au moins 6 livres.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Une étagère contient exactement 7 livres.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Au moins une étagère contient au moins 7 livres.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** La première étagère contient plus de livres que la dernière.",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

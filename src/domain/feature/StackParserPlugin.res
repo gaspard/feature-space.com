@@ -11,11 +11,11 @@ let default = () => {
         let system = System.make()
         let generator = StackParser.makeStacksToJson(system.fs, system.path)
         try {
-          let toc = generator("src/pages", "dist", "dist/stacks")
+          let toc = generator("src/pages", "public", "public/stacks")
           Js.log(
             `*********************************************\nStacks to JSON: ${toc
               ->Array.length
-              ->Int.toString} stacks generated\n*********************************************`,
+              ->Int.toString} stacks generated\n*******************************************************`,
           )
         } catch {
         | Js.Exn.Error(error) => {
