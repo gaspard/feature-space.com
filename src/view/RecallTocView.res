@@ -1,18 +1,5 @@
 open TiliaReact
 
-module StackItem = {
-  @react.component
-  let make = (~item: RecallToc.pstack) => {
-    useTilia()
-    let {info, prog} = item
-    <div className="grid grid-cols-subgrid" key={info.id}>
-      <span> {info.kind->Stack.stackTypeToEmoji->React.string} </span>
-      <span> {info.chapter->React.string} </span>
-      <span> {info.course->React.string} </span>
-    </div>
-  }
-}
-
 type group<'a, 'b> = {
   key: 'b,
   list: array<'a>,
@@ -31,79 +18,113 @@ let partition = (list: array<'a>, predicate: 'a => 'b) => {
   map->Map.values->Iterator.toArray
 }
 
+// Helper functions
+let translateLevel = (level: Stack.level) => {
+  switch level {
+  | Stack.Regular => "Parcours doux"
+  | Stack.Pro => "Parcours intensif"
+  }
+}
+
+let translateType = (stackType: Stack.stackType) => {
+  switch stackType {
+  | Stack.Cards => "Fiches de révision"
+  | Stack.Quiz => "Quiz"
+  }
+}
+
+module ChapterItem = {
+  @react.component
+  let make = (~chapter: RecallToc.pstack) => {
+    <li key={chapter.info.id}>
+      <a href={chapter.info.chapter}>
+        <span className="emoji"> {chapter.info.kind->Stack.stackTypeToEmoji->React.string} </span>
+        {" "->React.string}
+        {chapter.info.chapter->React.string}
+      </a>
+    </li>
+  }
+}
+
+module CourseGroup = {
+  @react.component
+  let make = (~courseGroup: group<RecallToc.pstack, string>, ~level: Stack.level) => {
+    <section className="course" key={courseGroup.key}>
+      <h4>
+        <a href={`/${courseGroup.key}#${level->Stack.levelToString}`}>
+          {courseGroup.key->React.string}
+        </a>
+      </h4>
+      <ul>
+        {courseGroup.list
+        ->Array.map(chapter => <ChapterItem chapter key={chapter.info.id} />)
+        ->React.array}
+      </ul>
+    </section>
+  }
+}
+
+module TypeGroup = {
+  @react.component
+  let make = (~typeGroup: group<RecallToc.pstack, Stack.stackType>, ~level: Stack.level) => {
+    <section className="type" key={typeGroup.key->Stack.stackTypeToString}>
+      <h3>
+        <a
+          href={`/#${typeGroup.key->Stack.stackTypeToString}`}
+          id={typeGroup.key->Stack.stackTypeToString}>
+          <span className="emoji"> {typeGroup.key->Stack.stackTypeToEmoji->React.string} </span>
+          {" "->React.string}
+          {typeGroup.key->translateType->React.string}
+        </a>
+      </h3>
+      {typeGroup.list
+      ->partition(v => v.info.course)
+      ->Array.map(courseGroup => <CourseGroup courseGroup level key={courseGroup.key} />)
+      ->React.array}
+    </section>
+  }
+}
+
+module LevelGroup = {
+  @react.component
+  let make = (~levelGroup: group<RecallToc.pstack, Stack.level>) => {
+    <section
+      className="level"
+      id={levelGroup.key->Stack.levelToString}
+      key={levelGroup.key->Stack.levelToString}>
+      <h2 className={levelGroup.key->Stack.levelToString}>
+        {levelGroup.key->translateLevel->React.string}
+      </h2>
+      {levelGroup.list
+      ->partition(v => v.info.kind)
+      ->Array.map(typeGroup =>
+        <TypeGroup typeGroup level={levelGroup.key} key={typeGroup.key->Stack.stackTypeToString} />
+      )
+      ->React.array}
+    </section>
+  }
+}
+
 @react.component @genType
 let make = () => {
   useTilia()
   let {toc} = App.app
 
-  let groups = toc.stacks->partition(v => v.info.level)
+  // Group by level first
+  let levelGroups = toc.stacks->partition(v => v.info.level)
 
-  groups
-  ->Array.map(group =>
-    <div key={group.key->Stack.levelToString}>
-      <h1> {group.key->Stack.levelToString->React.string} </h1>
-      <div className="grid grid-cols-[0_fr_1fr_2fr] gap-2">
-        {group.list
-        ->Array.map(item => <StackItem item key={item.info.id} />)
-        ->React.array}
-      </div>
-    </div>
-  )
-  ->React.array
+  <nav ariaLabel="Table des matières" className="toc">
+    {levelGroups
+    ->Array.toSorted((a, b) => {
+      // Sort levels: Regular (0) before Pro (1)
+      let levelOrder = level =>
+        switch level {
+        | Stack.Regular => 0.
+        | Stack.Pro => 1.
+        }
+      levelOrder(a.key) -. levelOrder(b.key)
+    })
+    ->Array.map(levelGroup => <LevelGroup levelGroup key={levelGroup.key->Stack.levelToString} />)
+    ->React.array}
+  </nav>
 }
-
-<nav aria-label="Table des matières" class="toc">
-  {
-    Object.entries(grouped)
-      .sort(([a], [b]) => {
-        const levelA = parseInt(a.split("-")[1])
-        const levelB = parseInt(b.split("-")[1])
-        return levelA - levelB
-      })
-      .map(([levelKey, types]) => {
-        const level = levelKey.split("-")[1]
-        return (
-          <section class="level" id={level}>
-            <h2 class={level}>{translateLevel(level)}</h2>
-
-            {Object.entries(types).map(([typeKey, courses]) => {
-              const type = typeKey.split("-")[1]
-              return (
-                <section class="type">
-                  <h3>
-                    <a href={`/#${type}`} id={type}>
-                      <span class="emoji">{itemEmoji(type)}</span>{" "}
-                      {translateType(type)}
-                    </a>
-                  </h3>
-
-                  {Object.entries(courses).map(([courseKey, chapters]) => {
-                    const course = courseKey.split("-")[1]
-                    return (
-                      <section class="course">
-                        <h4>
-                          <a href={coursePath(chapters, level)}>{course}</a>
-                        </h4>
-                        <ul>
-                          {chapters.map((chapter) => (
-                            <li>
-                              <a href={chapter.path}>
-                                <span class="emoji">
-                                  {itemEmoji(chapter.type)}
-                                </span>{" "}
-                                {chapter.chapter}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      </section>
-                    )
-                  })}
-                </section>
-              )
-            })}
-          </section>
-        )
-      })
-  }
-</nav>

@@ -5,29 +5,6 @@ import * as Stack from "../domain/api/entity/Stack.mjs";
 import * as TiliaReact from "@tilia/react/src/TiliaReact.mjs";
 import * as JsxRuntime from "react/jsx-runtime";
 
-function RecallTocView$StackItem(props) {
-  TiliaReact.useTilia();
-  var info = props.item.info;
-  return JsxRuntime.jsxs("div", {
-              children: [
-                JsxRuntime.jsx("span", {
-                      children: Stack.stackTypeToEmoji(info.kind)
-                    }),
-                JsxRuntime.jsx("span", {
-                      children: info.chapter
-                    }),
-                JsxRuntime.jsx("span", {
-                      children: info.course
-                    })
-              ],
-              className: "grid grid-cols-subgrid"
-            }, info.id);
-}
-
-var StackItem = {
-  make: RecallTocView$StackItem
-};
-
 function partition(list, predicate) {
   var map = new Map();
   list.forEach(function (item) {
@@ -43,35 +20,166 @@ function partition(list, predicate) {
   return Array.from(map.values());
 }
 
+function translateLevel(level) {
+  if (level === "regular") {
+    return "Parcours doux";
+  } else {
+    return "Parcours intensif";
+  }
+}
+
+function translateType(stackType) {
+  if (stackType === "cards") {
+    return "Fiches de révision";
+  } else {
+    return "Quiz";
+  }
+}
+
+function RecallTocView$ChapterItem(props) {
+  var chapter = props.chapter;
+  return JsxRuntime.jsx("li", {
+              children: JsxRuntime.jsxs("a", {
+                    children: [
+                      JsxRuntime.jsx("span", {
+                            children: Stack.stackTypeToEmoji(chapter.info.kind),
+                            className: "emoji"
+                          }),
+                      " ",
+                      chapter.info.chapter
+                    ],
+                    href: chapter.info.chapter
+                  })
+            }, chapter.info.id);
+}
+
+var ChapterItem = {
+  make: RecallTocView$ChapterItem
+};
+
+function RecallTocView$CourseGroup(props) {
+  var courseGroup = props.courseGroup;
+  return JsxRuntime.jsxs("section", {
+              children: [
+                JsxRuntime.jsx("h4", {
+                      children: JsxRuntime.jsx("a", {
+                            children: courseGroup.key,
+                            href: "/" + courseGroup.key + "#" + Stack.levelToString(props.level)
+                          })
+                    }),
+                JsxRuntime.jsx("ul", {
+                      children: courseGroup.list.map(function (chapter) {
+                            return JsxRuntime.jsx(RecallTocView$ChapterItem, {
+                                        chapter: chapter
+                                      }, chapter.info.id);
+                          })
+                    })
+              ],
+              className: "course"
+            }, courseGroup.key);
+}
+
+var CourseGroup = {
+  make: RecallTocView$CourseGroup
+};
+
+function RecallTocView$TypeGroup(props) {
+  var level = props.level;
+  var typeGroup = props.typeGroup;
+  return JsxRuntime.jsxs("section", {
+              children: [
+                JsxRuntime.jsx("h3", {
+                      children: JsxRuntime.jsxs("a", {
+                            children: [
+                              JsxRuntime.jsx("span", {
+                                    children: Stack.stackTypeToEmoji(typeGroup.key),
+                                    className: "emoji"
+                                  }),
+                              " ",
+                              translateType(typeGroup.key)
+                            ],
+                            id: Stack.stackTypeToString(typeGroup.key),
+                            href: "/#" + Stack.stackTypeToString(typeGroup.key)
+                          })
+                    }),
+                partition(typeGroup.list, (function (v) {
+                          return v.info.course;
+                        })).map(function (courseGroup) {
+                      return JsxRuntime.jsx(RecallTocView$CourseGroup, {
+                                  courseGroup: courseGroup,
+                                  level: level
+                                }, courseGroup.key);
+                    })
+              ],
+              className: "type"
+            }, Stack.stackTypeToString(typeGroup.key));
+}
+
+var TypeGroup = {
+  make: RecallTocView$TypeGroup
+};
+
+function RecallTocView$LevelGroup(props) {
+  var levelGroup = props.levelGroup;
+  return JsxRuntime.jsxs("section", {
+              children: [
+                JsxRuntime.jsx("h2", {
+                      children: translateLevel(levelGroup.key),
+                      className: Stack.levelToString(levelGroup.key)
+                    }),
+                partition(levelGroup.list, (function (v) {
+                          return v.info.kind;
+                        })).map(function (typeGroup) {
+                      return JsxRuntime.jsx(RecallTocView$TypeGroup, {
+                                  typeGroup: typeGroup,
+                                  level: levelGroup.key
+                                }, Stack.stackTypeToString(typeGroup.key));
+                    })
+              ],
+              className: "level",
+              id: Stack.levelToString(levelGroup.key)
+            }, Stack.levelToString(levelGroup.key));
+}
+
+var LevelGroup = {
+  make: RecallTocView$LevelGroup
+};
+
 function RecallTocView(props) {
   TiliaReact.useTilia();
-  var groups = partition(App.app.toc.stacks, (function (v) {
+  var levelGroups = partition(App.app.toc.stacks, (function (v) {
           return v.info.level;
         }));
-  return groups.map(function (group) {
-              return JsxRuntime.jsxs("div", {
-                          children: [
-                            JsxRuntime.jsx("h1", {
-                                  children: Stack.levelToString(group.key)
-                                }),
-                            JsxRuntime.jsx("div", {
-                                  children: group.list.map(function (item) {
-                                        return JsxRuntime.jsx(RecallTocView$StackItem, {
-                                                    item: item
-                                                  }, item.info.id);
-                                      }),
-                                  className: "grid grid-cols-[0_fr_1fr_2fr] gap-2"
-                                })
-                          ]
-                        }, Stack.levelToString(group.key));
+  return JsxRuntime.jsx("nav", {
+              children: levelGroups.toSorted(function (a, b) {
+                      var levelOrder = function (level) {
+                        if (level === "regular") {
+                          return 0;
+                        } else {
+                          return 1;
+                        }
+                      };
+                      return levelOrder(a.key) - levelOrder(b.key);
+                    }).map(function (levelGroup) {
+                    return JsxRuntime.jsx(RecallTocView$LevelGroup, {
+                                levelGroup: levelGroup
+                              }, Stack.levelToString(levelGroup.key));
+                  }),
+              "aria-label": "Table des matières",
+              className: "toc"
             });
 }
 
 var make = RecallTocView;
 
 export {
-  StackItem ,
   partition ,
+  translateLevel ,
+  translateType ,
+  ChapterItem ,
+  CourseGroup ,
+  TypeGroup ,
+  LevelGroup ,
   make ,
 }
 /* App Not a pure module */
