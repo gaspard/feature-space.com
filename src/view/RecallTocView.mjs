@@ -3,8 +3,9 @@
 import * as App from "./App.mjs";
 import * as Stack from "../domain/api/entity/Stack.mjs";
 import * as Utils from "../service/Utils.mjs";
-import * as RecallView from "./RecallView.mjs";
 import * as TiliaReact from "@tilia/react/src/TiliaReact.mjs";
+import * as Core__Float from "@rescript/core/src/Core__Float.mjs";
+import * as Core__Option from "@rescript/core/src/Core__Option.mjs";
 import * as JsxRuntime from "react/jsx-runtime";
 
 function translateLevel(level) {
@@ -24,11 +25,8 @@ function translateType(stackType) {
 }
 
 function RecallTocView$ChapterProgress(props) {
-  var chapter = props.chapter;
   TiliaReact.useTilia();
-  var match = App.app.toc;
-  var setActive = match.setActive;
-  var prog = chapter.prog;
+  var prog = props.chapter.prog;
   if (typeof prog !== "object") {
     if (prog === "Loading") {
       return JsxRuntime.jsx("span", {
@@ -39,19 +37,19 @@ function RecallTocView$ChapterProgress(props) {
                   checked: false,
                   type: "checkbox",
                   onChange: (function (param) {
-                      setActive(chapter.info.id, true);
+                      
                     })
                 });
     }
+  } else {
+    return JsxRuntime.jsx("input", {
+                checked: prog._0.active,
+                type: "checkbox",
+                onChange: (function (param) {
+                    
+                  })
+              });
   }
-  var prog$1 = prog._0;
-  return JsxRuntime.jsx("input", {
-              checked: prog$1.active,
-              type: "checkbox",
-              onChange: (function (param) {
-                  setActive(chapter.info.id, !prog$1.active);
-                })
-            });
 }
 
 var ChapterProgress = {
@@ -61,24 +59,36 @@ var ChapterProgress = {
 function RecallTocView$ChapterItem(props) {
   var chapter = props.chapter;
   TiliaReact.useTilia();
-  return JsxRuntime.jsx("li", {
-              children: JsxRuntime.jsxs("a", {
-                    children: [
-                      JsxRuntime.jsx("span", {
-                            children: JsxRuntime.jsx(RecallTocView$ChapterProgress, {
-                                  chapter: chapter
-                                }),
-                            className: "toggle"
+  var match = App.app.toc;
+  var setActive = match.setActive;
+  var toggle = function (param) {
+    var prog = chapter.prog;
+    if (typeof prog !== "object") {
+      if (prog === "Loading") {
+        return ;
+      } else {
+        return setActive(chapter.info.id, true);
+      }
+    } else {
+      return setActive(chapter.info.id, !prog._0.active);
+    }
+  };
+  return JsxRuntime.jsxs("li", {
+              children: [
+                JsxRuntime.jsx("span", {
+                      children: JsxRuntime.jsx(RecallTocView$ChapterProgress, {
+                            chapter: chapter
                           }),
-                      JsxRuntime.jsx("span", {
-                            children: Stack.stackTypeToEmoji(chapter.info.kind),
-                            className: "emoji"
-                          }),
-                      " ",
-                      chapter.info.chapter
-                    ],
-                    href: chapter.info.chapter
-                  })
+                      className: "toggle"
+                    }),
+                JsxRuntime.jsx("span", {
+                      children: Stack.stackTypeToEmoji(chapter.info.kind),
+                      className: "emoji"
+                    }),
+                " ",
+                chapter.info.chapter
+              ],
+              onClick: toggle
             }, chapter.info.id);
 }
 
@@ -92,10 +102,7 @@ function RecallTocView$CourseGroup(props) {
   return JsxRuntime.jsxs("section", {
               children: [
                 JsxRuntime.jsx("h4", {
-                      children: JsxRuntime.jsx("a", {
-                            children: courseGroup.key,
-                            href: "/" + courseGroup.key + "#" + Stack.levelToString(props.level)
-                          })
+                      children: courseGroup.key
                     }),
                 JsxRuntime.jsx("ul", {
                       children: courseGroup.list.map(function (chapter) {
@@ -114,7 +121,6 @@ var CourseGroup = {
 };
 
 function RecallTocView$TypeGroup(props) {
-  var level = props.level;
   var typeGroup = props.typeGroup;
   return JsxRuntime.jsxs("section", {
               children: [
@@ -136,8 +142,7 @@ function RecallTocView$TypeGroup(props) {
                           return v.info.course;
                         })).map(function (courseGroup) {
                       return JsxRuntime.jsx(RecallTocView$CourseGroup, {
-                                  courseGroup: courseGroup,
-                                  level: level
+                                  courseGroup: courseGroup
                                 }, courseGroup.key);
                     })
               ],
@@ -175,17 +180,60 @@ var LevelGroup = {
   make: RecallTocView$LevelGroup
 };
 
+function value(e) {
+  return e.target.value;
+}
+
+var $$Event = {
+  value: value
+};
+
 function RecallTocView(props) {
   TiliaReact.useTilia();
-  var levelGroups = Utils.partition(App.app.toc.stacks, (function (v) {
+  var toc = App.app.toc;
+  var levelGroups = Utils.partition(toc.stacks, (function (v) {
           return v.info.level;
         }));
   return JsxRuntime.jsxs(JsxRuntime.Fragment, {
               children: [
-                JsxRuntime.jsx(RecallView.make, {}),
+                JsxRuntime.jsx("p", {
+                      children: "Séléctionnez les matières que vous souhaitez réviser et pressez sur start."
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("span", {
+                              children: "base de répétition (en heures)"
+                            }),
+                        JsxRuntime.jsx("span", {
+                              children: toc.dayLength.toString() + "h"
+                            }),
+                        JsxRuntime.jsx("input", {
+                              max: "24",
+                              min: "1",
+                              type: "range",
+                              value: toc.dayLength.toString(),
+                              onChange: (function (e) {
+                                  toc.setDayLength(Core__Option.getExn(Core__Float.fromString(value(e)), undefined));
+                                })
+                            })
+                      ],
+                      className: "settings"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("span", {
+                              children: "nombre de fiches"
+                            }),
+                        JsxRuntime.jsx("span", {
+                              children: toc.cardCount.toString()
+                            })
+                      ],
+                      className: "settings"
+                    }),
                 JsxRuntime.jsx("button", {
                       children: "Start",
                       className: "start",
+                      disabled: toc.cardCount === 0,
                       onClick: (function (param) {
                           App.app.start();
                         })
@@ -222,6 +270,7 @@ export {
   CourseGroup ,
   TypeGroup ,
   LevelGroup ,
+  $$Event ,
   make ,
 }
 /* App Not a pure module */

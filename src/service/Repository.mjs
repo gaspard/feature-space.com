@@ -15,7 +15,7 @@ var $$Storage = {
 };
 
 async function fetchData(path) {
-  console.log("FETCHING " + path);
+  console.log("FETCHING " + Core__Option.getOr(JSON.stringify(path), ""));
   try {
     var response = await fetch(path);
     return await response.text();
@@ -39,7 +39,9 @@ function make(stacksPath) {
   return {
           stack: {
             toc: (async function (path) {
-                var body = await fetchData(path + "/stacks-toc.json");
+                var body = await fetchData((
+                      path === "/" ? "/" : path + "/"
+                    ) + "stacks-toc.json");
                 if (body !== undefined) {
                   return S.parseJsonStringOrThrow(body, Stack.tocSchema);
                 } else {
@@ -65,6 +67,14 @@ function make(stacksPath) {
               }),
             save: (async function (progress) {
                 localStorage.setItem(progressId(progress.id), Core__Option.getExn(JSON.stringify(S.reverseConvertOrThrow(progress, Stack.progressSchema), undefined, 2), undefined));
+              })
+          },
+          settings: {
+            get: (function (key) {
+                return localStorage.getItem("settings-" + key);
+              }),
+            save: (function (key, value) {
+                localStorage.setItem("settings-" + key, value);
               })
           }
         };

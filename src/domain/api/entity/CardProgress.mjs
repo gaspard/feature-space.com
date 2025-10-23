@@ -3,23 +3,18 @@
 import * as S from "sury/src/S.mjs";
 import * as Core__Int from "@rescript/core/src/Core__Int.mjs";
 
-var hard = 1 * 3600 * 24;
-
-var good = 3 * 3600 * 24;
-
-var easy = 6 * 3600 * 24;
-
-function recallTime(timestamp, s) {
+function recallTime(timestamp, s, dayLengthOpt) {
+  var dayLength = dayLengthOpt !== undefined ? dayLengthOpt : 3600 * 24;
   if (typeof s === "object") {
-    return timestamp + easy * Math.pow(s._0, 2);
+    return timestamp + 6 * dayLength * Math.pow(s._0, 2);
   }
   switch (s) {
     case "again" :
-        return timestamp + 0;
+        return timestamp + 0 * dayLength;
     case "hard" :
-        return timestamp + hard;
+        return timestamp + 1 * dayLength;
     case "good" :
-        return timestamp + good;
+        return timestamp + 3 * dayLength;
     
   }
 }
@@ -49,7 +44,6 @@ function next(prev, state) {
   var timestamp = Date.now();
   return {
           timestamp: timestamp,
-          recall: recallTime(timestamp, state$1),
           state: state$1
         };
 }
@@ -95,7 +89,6 @@ var easySchema = S.schema(function (s) {
 var progressSchema = S.object(function (s) {
       return {
               timestamp: s.f("timestamp", S.$$float),
-              recall: s.f("recall", S.$$float),
               state: s.f("state", S.union([
                         S.literal("again"),
                         S.literal("hard"),
@@ -106,6 +99,12 @@ var progressSchema = S.object(function (s) {
     });
 
 var again = 0;
+
+var hard = 1;
+
+var good = 3;
+
+var easy = 6;
 
 export {
   again ,

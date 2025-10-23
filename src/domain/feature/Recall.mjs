@@ -5,7 +5,7 @@ import * as Js_exn from "rescript/lib/es6/js_exn.js";
 import * as Core__Array from "@rescript/core/src/Core__Array.mjs";
 import * as CardProgress from "../api/entity/CardProgress.mjs";
 
-function back(saveProgress, card, options, set) {
+function back(evaluate, card, options, set) {
   var options$1 = options.map(function (option) {
         var match = option.checked;
         var match$1 = option.correct;
@@ -27,12 +27,12 @@ function back(saveProgress, card, options, set) {
           content: card.content,
           solution: card.solution,
           options: options$1,
-          evaluate: saveProgress
+          evaluate: evaluate
         }
       });
 }
 
-function front(saveProgress, card) {
+function front(evaluate, card) {
   return function (set) {
     var card$1 = card.value;
     if (card$1 === undefined) {
@@ -52,7 +52,7 @@ function front(saveProgress, card) {
               content: card$1.content,
               options: options,
               turn: (function () {
-                  back(saveProgress, card$1, options, set);
+                  back(evaluate, card$1, options, set);
                 })
             }
           };
@@ -64,10 +64,13 @@ var Ui = {
   front: front
 };
 
-function sort(cards) {
+function sort(cards, dayLengthOpt) {
+  var dayLength = dayLengthOpt !== undefined ? dayLengthOpt : 3600 * 24;
   return cards.toSorted(function (param, param$1) {
-              var aProgress = param[1].recall;
-              var bProgress = param$1[1].recall;
+              var b = param$1[1];
+              var a = param[1];
+              var aProgress = CardProgress.recallTime(a.timestamp, a.state, dayLength);
+              var bProgress = CardProgress.recallTime(b.timestamp, b.state, dayLength);
               if (aProgress < bProgress) {
                 return -1.0;
               } else {
@@ -76,9 +79,9 @@ function sort(cards) {
             });
 }
 
-function nextRecall(stacks, maxOpt, nowOpt) {
-  var max = maxOpt !== undefined ? maxOpt : 20;
+function toRecall(stacks, nowOpt, dayLengthOpt) {
   var now = nowOpt !== undefined ? nowOpt : Date.now();
+  var dayLength = dayLengthOpt !== undefined ? dayLengthOpt : 3600 * 24;
   var newCards = [];
   var seenCards = [];
   stacks.forEach(function (param) {
@@ -95,62 +98,91 @@ function nextRecall(stacks, maxOpt, nowOpt) {
               }
             });
       });
-  var seenCards$1 = sort(seenCards);
+  var seenCards$1 = sort(seenCards, dayLength);
   var afterIdx = seenCards$1.findIndex(function (param) {
-        return param[1].recall > now;
+        var match = param[1];
+        return CardProgress.recallTime(match.timestamp, match.state, dayLength) > now;
       });
-  var toRecall = seenCards$1.slice(0, afterIdx).map(function (param) {
-            return param[0];
-          }).concat(newCards).slice(0, max);
-  Core__Array.shuffle(toRecall);
-  return toRecall;
+  return seenCards$1.slice(0, afterIdx).map(function (param) {
+                return param[0];
+              }).concat(newCards);
 }
 
-function make(repo, stacks) {
-  var recall = nextRecall(stacks, undefined, undefined);
-  var match = Tilia.signal(0);
-  var setCardIdx = match[1];
-  var cardIdx = match[0];
+function nextRecall(stacks, shuffleOpt, nowOpt, maxOpt, dayLengthOpt) {
+  var shuffle = shuffleOpt !== undefined ? shuffleOpt : Core__Array.shuffle;
+  var now = nowOpt !== undefined ? nowOpt : Date.now();
+  var max = maxOpt !== undefined ? maxOpt : 20;
+  var dayLength = dayLengthOpt !== undefined ? dayLengthOpt : 3600 * 24;
+  var toRecall$1 = toRecall(stacks, now, dayLength).slice(0, max);
+  shuffle(toRecall$1);
+  return toRecall$1;
+}
+
+function make(repo, stacks, shuffleOpt, nowOpt, maxOpt, dayLengthOpt) {
+  var shuffle = shuffleOpt !== undefined ? shuffleOpt : Core__Array.shuffle;
+  var now = nowOpt !== undefined ? nowOpt : Date.now();
+  var max = maxOpt !== undefined ? maxOpt : 20;
+  var dayLength = dayLengthOpt !== undefined ? dayLengthOpt : 3600 * 24;
+  var stacks$1 = Tilia.tilia(stacks);
+  var match = Tilia.signal(nextRecall(stacks$1, shuffle, now, max, dayLength));
+  var stack = match[0];
   var card = Tilia.derived(function () {
-        return recall[cardIdx.value];
+        return stack.value[0];
       });
-  var nextCard = function () {
-    var idx = cardIdx.value + 1 | 0;
-    if (idx < recall.length) {
-      return setCardIdx(idx);
-    }
-    
-  };
-  var prog = Object.fromEntries(stacks.map(function (param) {
+  var prog = Object.fromEntries(stacks$1.map(function (param) {
             var prog = param.prog;
             return [
                     prog.id,
                     prog
                   ];
           }));
-  var saveProgress = function (state) {
+  var evaluate = function (state) {
     var card$1 = card.value;
-    if (card$1 !== undefined) {
-      var p = prog[card$1.stackId];
-      if (p !== undefined) {
-        p.cards[card$1.id] = CardProgress.next(p.cards[card$1.id], state);
-        repo.progress.save(p);
+    if (card$1 === undefined) {
+      return Js_exn.raiseError("No card selected");
+    }
+    var p = prog[card$1.stackId];
+    if (p !== undefined) {
+      p.cards[card$1.id] = CardProgress.next(p.cards[card$1.id], state);
+      repo.progress.save(p);
+      var card$2 = stack.value.shift();
+      if (card$2 !== undefined && state === "again") {
+        stack.value.push(card$2);
+        return ;
       } else {
-        Js_exn.raiseError("No progress found for card " + card$1.stackId);
+        return ;
       }
     } else {
-      Js_exn.raiseError("No card selected");
+      return Js_exn.raiseError("No progress found for card " + card$1.stackId);
     }
-    nextCard();
   };
+  var stats = Tilia.derived(function () {
+        var total = Core__Array.reduce(stacks$1, 0, (function (acc, param) {
+                return acc + param.stack.cards.length | 0;
+              }));
+        var seen = Core__Array.reduce(stacks$1, 0, (function (acc, param) {
+                return acc + Object.values(param.prog.cards).length | 0;
+              }));
+        return {
+                total: total,
+                seen: seen,
+                new: total - seen | 0,
+                toRecall: toRecall(stacks$1, now, dayLength).length
+              };
+      });
   return Tilia.tilia({
-              view: Tilia.store(front(saveProgress, card))
+              card: Tilia.lift(card),
+              evaluate: evaluate,
+              view: Tilia.store(front(evaluate, card)),
+              stack: Tilia.lift(stack),
+              stats: Tilia.lift(stats)
             });
 }
 
 export {
   Ui ,
   sort ,
+  toRecall ,
   nextRecall ,
   make ,
 }

@@ -6,22 +6,21 @@ type state =
   | @as("easy") Easy(int)
 
 let again = 0.
-let hard = 1. *. 3600. *. 24.
-let good = 3. *. 3600. *. 24.
-let easy = 6. *. 3600. *. 24.
+let hard = 1.
+let good = 3.
+let easy = 6.
 
 type t = {
   timestamp: float, // Last seen ms since epoch
-  recall: float, // Recall time ms since epoch
   state: state, // Last evaluation
 }
 
-let recallTime = (timestamp, s) =>
+let recallTime = (timestamp, s, ~dayLength=3600. *. 24.) =>
   switch s {
-  | Again => timestamp +. again
-  | Hard => timestamp +. hard
-  | Good => timestamp +. good
-  | Easy(i) => timestamp +. easy *. i->Int.toFloat->Math.pow(~exp=2.)
+  | Again => timestamp +. again *. dayLength
+  | Hard => timestamp +. hard *. dayLength
+  | Good => timestamp +. good *. dayLength
+  | Easy(i) => timestamp +. easy *. dayLength *. i->Int.toFloat->Math.pow(~exp=2.)
   }
 
 let next = (prev, state) => {
@@ -31,7 +30,7 @@ let next = (prev, state) => {
   | _ => state
   }
   let timestamp = Date.now()
-  {timestamp, recall: recallTime(timestamp, state), state}
+  {timestamp, state}
 }
 
 let ofString = s =>
@@ -51,7 +50,6 @@ let easySchema = S.schema(s => Easy(s.matches(S.int)))
 
 let progressSchema = S.object(s => {
   timestamp: s.field("timestamp", S.float),
-  recall: s.field("recall", S.float),
   state: s.field(
     "state",
     S.union([S.literal(Again), S.literal(Hard), S.literal(Good), easySchema]),

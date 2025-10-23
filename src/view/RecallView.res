@@ -30,16 +30,16 @@ module Back = {
           </summary>
           <div className="card-evaluate">
             <button className="eval again" onClick={_ => back.evaluate(CardProgress.Again)}>
-              {"Again"->React.string}
+              {"Encore"->React.string}
             </button>
             <button className="eval hard" onClick={_ => back.evaluate(CardProgress.Hard)}>
-              {"Hard"->React.string}
+              {"Difficile"->React.string}
             </button>
             <button className="eval good" onClick={_ => back.evaluate(CardProgress.Good)}>
-              {"Good"->React.string}
+              {"Bien"->React.string}
             </button>
             <button className="eval easy" onClick={_ => back.evaluate(CardProgress.Easy(1))}>
-              {"Easy"->React.string}
+              {"Facile"->React.string}
             </button>
           </div>
           <Markdown text={back.solution} />
@@ -49,23 +49,23 @@ module Back = {
   }
 }
 
-module RecallView = {
-  @react.component
-  let make = (~recall: Recall.t) => {
-    useTilia()
-    switch recall.view {
+@react.component
+let make = (~recall: Recall.t) => {
+  useTilia()
+  <div>
+    <div className="stats">
+      <span> {"à réviser"->React.string} </span>
+      <span> {recall.stats.toRecall->Int.toString->React.string} </span>
+      <span> {"vues"->React.string} </span>
+      <span> {recall.stats.seen->Int.toString->React.string} </span>
+      <span> {"nouvelles"->React.string} </span>
+      <span> {recall.stats.new->Int.toString->React.string} </span>
+      <span> {"total"->React.string} </span>
+      <span> {recall.stats.total->Int.toString->React.string} </span>
+    </div>
+    {switch recall.view {
     | Front(front) => <Front front />
     | Back(back) => <Back back />
-    }
-  }
-}
-
-@react.component
-let make = () => {
-  useTilia()
-  let {recall} = App.app
-  switch recall {
-  | None => <div> {"No recall found"->React.string} </div>
-  | Some(recall) => <RecallView recall />
-  }
+    }}
+  </div>
 }

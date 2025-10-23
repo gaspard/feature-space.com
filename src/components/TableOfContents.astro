@@ -2,7 +2,7 @@
 import { readdir } from "fs/promises"
 import { join, extname } from "path"
 import { type TOCItem, itemFromFile } from "./utils"
-import { make as RecallTocView } from "../view/RecallTocView.gen"
+import { make as AppView } from "../view/AppView.gen"
 
 const pagesDir = join(process.cwd(), "src/pages")
 const currentPath = Astro.url.pathname
@@ -130,8 +130,12 @@ const items = await collectChildren(currentDir, "")
 const grouped = groupItems(items)
 ---
 
-<RecallTocView client:only="react" />
+<AppView client:only="react" />
 
+<div class="mt-84">
+  <hr />
+  Table des matières pour explorer le contenu sans révision :
+</div>
 <nav aria-label="Table des matières" class="toc">
   {
     Object.entries(grouped)

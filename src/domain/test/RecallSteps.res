@@ -1,6 +1,38 @@
 open VitestBdd
 open Recall
 
+// Stable "shuffle" for testing
+let shuffle = (array: array<Card.t>) => {
+  array->Array.sort((a, b) => a.id->String.compare(b.id))
+}
+
+let mockRepo: RepositoryType.t = {
+  stack: {
+    toc: async (_path: string) => {
+      []
+    },
+    get: async (_id: string) => {
+      None
+    },
+  },
+  progress: {
+    get: async (_id: string) => {
+      None
+    },
+    save: async (_progress: Stack.progress) => {
+      ()
+    },
+  },
+  settings: {
+    get: async (_key: string) => {
+      None
+    },
+    save: async (_key: string, _value: string) => {
+      ()
+    },
+  },
+}
+
 given("stacks", ({step}, table) => {
   let pair = Dict.make()
 
@@ -14,14 +46,13 @@ given("stacks", ({step}, table) => {
       solution: "",
       options: [],
     }
-    let cprog: option<CardProgress.t> = switch record["recall"] {
+    let cprog: option<CardProgress.t> = switch record["timestamp"] {
     | None => None
     | Some("") => None
-    | Some(recall) =>
+    | Some(timestamp) =>
       Some({
-        recall: recall->Float.fromString->Option.getExn,
-        timestamp: 0., // not used
-        state: Good, // not used
+        timestamp: timestamp->Float.fromString->Option.getExn,
+        state: record["state"]->Option.getExn->CardProgress.ofString,
       })
     }
     switch pair->Dict.get(stackId) {
@@ -59,9 +90,42 @@ given("stacks", ({step}, table) => {
   step("the next recall for {number} cards should be", (nb, table) => {
     let cards = toStrings(table)
     let nextRecall =
-      nextRecall(pair->Dict.valuesToArray, ~max=nb->Float.toInt, ~now=1000.)
-      ->Array.toSorted((a, b) => a.id->String.compare(b.id))
-      ->Array.map(card => card.id)
+      nextRecall(
+        pair->Dict.valuesToArray,
+        ~max=nb->Float.toInt,
+        ~now=1000.,
+        ~shuffle,
+        ~dayLength=100.,
+      )->Array.map(card => card.id)
     expect(nextRecall).toEqual(cards)
+  })
+
+  step("the next cards for {number} cards should be", (nb, table) => {
+    let cards = toRecords(table)
+    let recall = Recall.make(
+      mockRepo,
+      pair->Dict.valuesToArray,
+      ~shuffle,
+      ~now=1000.,
+      ~max=nb->Float.toInt,
+      ~dayLength=100.,
+    )
+    cards->Array.forEach(
+      card => {
+        let id = card["id"]->Option.getExn
+        if id == "none" {
+          expect(recall.card).toBe(None)
+        } else {
+          let eval = card["eval"]->Option.getExn
+          switch recall.card {
+          | None => expect(None).toBe(Some(id))
+          | Some(card) => {
+              expect(card.id).toBe(id)
+              recall.evaluate(eval->CardProgress.ofString)
+            }
+          }
+        }
+      },
+    )
   })
 })

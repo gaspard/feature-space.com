@@ -9,9 +9,12 @@ type t = {
   stacks: array<tstack>,
   setActive: (string, bool) => unit,
   start: (option<Recall.t> => unit) => promise<unit>,
+  cardCount: int,
+  setDayLength: float => unit,
+  dayLength: float,
 }
 
-let start = (repo: RepositoryType.t) => ({stacks}) => {
+let start = (repo: RepositoryType.t) => ({stacks, dayLength}) => {
   async setRecall => {
     let stacks = (
       await Promise.all(
@@ -31,7 +34,7 @@ let start = (repo: RepositoryType.t) => ({stacks}) => {
       )
     )->Array.keepSome
 
-    setRecall(Some(Recall.make(repo, stacks)))
+    setRecall(Some(Recall.make(repo, stacks, ~dayLength=dayLength *. 3600.)))
   }
 }
 
@@ -79,12 +82,37 @@ let setActive = ({save}: RepositoryType.progress) => ({stacks}) => (id, active) 
   }
 }
 
+let cardCount = ({stacks}) => {
+  let active = (prog: sprog) =>
+    switch prog {
+    | Started(p) => p.active
+    | _ => false
+    }
+  stacks->Array.reduce(0, (acc, {info, prog}) =>
+    acc + (active(prog) ? info.count->Option.getOr(0) : 0)
+  )
+}
+
 let make = (repo: RepositoryType.t, path: string): t => {
   open Tilia
+
+  let day =
+    repo.settings.get("dayLength")
+    ->Nullable.getOr("24")
+    ->Float.fromString
+    ->Option.getOr(24.)
+  let (dayLength, setDayLength) = signal(day)
+  let setDayLength = (value: float) => {
+    repo.settings.save("dayLength", value->Float.toString)
+    setDayLength(value)
+  }
 
   carve(({derived}) => {
     stacks: source(stacks(repo, path), []),
     setActive: derived(setActive(repo.progress)),
     start: derived(start(repo)),
+    setDayLength,
+    dayLength: lift(dayLength),
+    cardCount: derived(cardCount),
   })
 }

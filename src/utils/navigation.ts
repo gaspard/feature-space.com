@@ -1,5 +1,5 @@
 import { readdir } from 'fs/promises';
-import { join, extname, basename } from 'path';
+import { join, extname } from 'path';
 import matter from 'gray-matter';
 import { readFile } from 'fs/promises';
 

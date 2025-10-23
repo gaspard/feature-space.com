@@ -9,7 +9,7 @@ module Browser = {
   external fetch: string => promise<response> = "fetch"
 
   let fetchData = async (path: string) => {
-    Js.log(`FETCHING ${path}`)
+    Js.log(`FETCHING ${JSON.stringifyAny(path)->Option.getOr("")}`)
     try {
       let response = await fetch(path)
       Some(await response.text())
@@ -31,7 +31,7 @@ let make: string => RepositoryType.t = (stacksPath: string) => {
   {
     stack: {
       toc: async path => {
-        switch await Browser.fetchData(`${path}/stacks-toc.json`) {
+        switch await Browser.fetchData(`${path === "/" ? "/" : `${path}/`}stacks-toc.json`) {
         | None => []
         | Some(body) => body->S.parseJsonStringOrThrow(Stack.tocSchema)
         }
@@ -59,6 +59,10 @@ let make: string => RepositoryType.t = (stacksPath: string) => {
           ->Option.getExn,
         )
       },
+    },
+    settings: {
+      get: key => getItem(`settings-${key}`),
+      save: (key, value) => setItem(`settings-${key}`, value),
     },
   }
 }

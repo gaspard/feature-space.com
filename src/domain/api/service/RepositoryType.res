@@ -8,7 +8,13 @@ type progress = {
   save: Stack.progress => promise<unit>,
 }
 
+type settings = {
+  get: string => nullable<string>,
+  save: (string, string) => unit,
+}
+
 type t = {
   stack: stack,
   progress: progress,
+  settings: settings,
 }

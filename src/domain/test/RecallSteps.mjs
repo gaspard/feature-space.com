@@ -5,9 +5,50 @@ import * as Recall from "../feature/Recall.mjs";
 import * as Vitest from "vitest";
 import * as VitestBdd from "vitest-bdd";
 import * as Core__Float from "@rescript/core/src/Core__Float.mjs";
+import * as CardProgress from "../api/entity/CardProgress.mjs";
 import * as Core__Option from "@rescript/core/src/Core__Option.mjs";
 
+function shuffle(array) {
+  array.sort(function (a, b) {
+        return Caml.string_compare(a.id, b.id);
+      });
+}
+
+var mockRepo_stack = {
+  toc: (async function (_path) {
+      return [];
+    }),
+  get: (async function (_id) {
+      
+    })
+};
+
+var mockRepo_progress = {
+  get: (async function (_id) {
+      
+    }),
+  save: (async function (_progress) {
+      
+    })
+};
+
+var mockRepo_settings = {
+  get: (async function (_key) {
+      
+    }),
+  save: (async function (_key, _value) {
+      
+    })
+};
+
+var mockRepo = {
+  stack: mockRepo_stack,
+  progress: mockRepo_progress,
+  settings: mockRepo_settings
+};
+
 VitestBdd.Given("stacks", (function (param, table) {
+        var step = param.step;
         var pair = {};
         VitestBdd.toRecords(table).forEach(function (record) {
               var stackId = Core__Option.getExn(record.stackId, undefined);
@@ -20,11 +61,10 @@ VitestBdd.Given("stacks", (function (param, table) {
                 solution: "",
                 options: card_options
               };
-              var recall = record.recall;
-              var cprog = recall !== undefined && recall !== "" ? ({
-                    timestamp: 0,
-                    recall: Core__Option.getExn(Core__Float.fromString(recall), undefined),
-                    state: "good"
+              var timestamp = record.timestamp;
+              var cprog = timestamp !== undefined && timestamp !== "" ? ({
+                    timestamp: Core__Option.getExn(Core__Float.fromString(timestamp), undefined),
+                    state: CardProgress.ofString(Core__Option.getExn(record.state, undefined))
                   }) : undefined;
               var match = pair[stackId];
               if (match !== undefined) {
@@ -64,18 +104,35 @@ VitestBdd.Given("stacks", (function (param, table) {
                 prog: prog
               };
             });
-        param.step("the next recall for {number} cards should be", (function (nb, table) {
+        step("the next recall for {number} cards should be", (function (nb, table) {
                 var cards = VitestBdd.toStrings(table);
-                var nextRecall = Recall.nextRecall(Object.values(pair), nb | 0, 1000).toSorted(function (a, b) {
-                        return Caml.string_compare(a.id, b.id);
-                      }).map(function (card) {
+                var nextRecall = Recall.nextRecall(Object.values(pair), shuffle, 1000, nb | 0, 100).map(function (card) {
                       return card.id;
                     });
                 Vitest.expect(nextRecall).toEqual(cards);
               }));
+        step("the next cards for {number} cards should be", (function (nb, table) {
+                var cards = VitestBdd.toRecords(table);
+                var recall = Recall.make(mockRepo, Object.values(pair), shuffle, 1000, nb | 0, 100);
+                cards.forEach(function (card) {
+                      var id = Core__Option.getExn(card.id, undefined);
+                      if (id === "none") {
+                        return Vitest.expect(recall.card).toBe(undefined);
+                      }
+                      var $$eval = Core__Option.getExn(card.eval, undefined);
+                      var card$1 = recall.card;
+                      if (card$1 !== undefined) {
+                        Vitest.expect(card$1.id).toBe(id);
+                        return recall.evaluate(CardProgress.ofString($$eval));
+                      } else {
+                        return Vitest.expect(undefined).toBe(id);
+                      }
+                    });
+              }));
       }));
 
 export {
-  
+  shuffle ,
+  mockRepo ,
 }
 /*  Not a pure module */

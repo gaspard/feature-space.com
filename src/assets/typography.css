@@ -103,25 +103,29 @@ main {
     color: #606;
   }
 
+  .stats, .settings {
+    @apply bg-slate-100 grid grid-cols-[2fr_0fr_1fr_0fr] gap-2 text-xs text-gray-500 w-auto my-4 mx-4 border-1 p-2 rounded-md border-slate-200 float-right;
+  }
   .toc {
-    h2.regular {
+    @apply clear-both;
+    h2.regular, h2.Regular {
       @apply font-semibold text-2xl text-blue-600 saturate-30 opacity-40;
     }
 
-    h2.pro {
+    h2.pro, h2.Pro {
       @apply font-semibold text-2xl text-red-800 saturate-30 opacity-40;
     }
 
     h3 {
-      @apply text-left m-0 border-b border-slate-700 p-2 bg-amber-50 text-xl;
+      @apply text-left m-0 border-b border-slate-700 p-2 bg-amber-50 text-xl ;
 
-      a {
+      a  {
         @apply text-slate-500 border-0;
       }
     }
 
     h4 {
-      @apply font-semibold text-xl text-slate-400 m-3;
+      @apply text-xl text-slate-500 border-0 font-medium;
       a {
         @apply text-slate-500 border-0;
       }
@@ -143,7 +147,7 @@ main {
       }
 
       li {
-        @apply font-bold text-xl list-none my-1 text-slate-300;
+        @apply text-xl list-none my-1 text-slate-500 font-normal;
 
         a {
           @apply text-slate-500 border-0;
@@ -436,7 +440,10 @@ main {
     }
 
     .card-question {
-      @apply p-4;
+      @apply p-4 cursor-pointer;
+      p:first-child {
+        @apply m-0;
+      }
 
       ul {
         @apply m-0 mt-8;
@@ -560,6 +567,7 @@ details[open] {
 
 button.toggle-check,
 button.card-focus,
+button.start,
 button.reset,
 button.card-next {
   @apply cursor-pointer rounded-md bg-gray-100 md:px-4 md:py-2 text-center text-sm text-gray-500 border-gray-400 border md:m-4 px-2 py-1 mt-1 mx-2;

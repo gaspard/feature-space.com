@@ -1,7 +1,7 @@
 import matter from "gray-matter"
 import { readFile } from "fs/promises"
 import * as S from "sury"
-import { basename, extname, join } from "path"
+import { extname, join } from "path"
 
 // === FROM llmath
 
