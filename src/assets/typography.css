@@ -503,7 +503,7 @@ li:not(:has(input)) {
   @apply list-disc p-0 indent-0;
 }
 
-li:has(input) {
+li:has(input), .card li:has(input) {
   @apply list-none;
   cursor: pointer;
   padding: 2px 7px;
@@ -519,7 +519,7 @@ li:has(input:checked) {
   background-color: rgb(239, 246, 252);
 }
 
-.check li:has(input:not(.correct):checked) {
+.check li:has(input:not(.correct):checked), li.incorrect:has(input) {
   background-color: rgb(255, 225, 213);
 
   input {
@@ -527,11 +527,11 @@ li:has(input:checked) {
   }
 }
 
-.check li:has(input.correct:not(:checked)) {
+.check li:has(input.correct:not(:checked)), li.missed:has(input) {
   background-color: rgb(254, 251, 222);
 }
 
-.check li:has(input.correct:checked) {
+.check li:has(input.correct:checked), li.correct:has(input) {
   background-color: rgb(225, 254, 222);
 
   input {
@@ -568,6 +568,7 @@ details[open] {
 button.toggle-check,
 button.card-focus,
 button.start,
+button.more,
 button.reset,
 button.card-next {
   @apply cursor-pointer rounded-md bg-gray-100 md:px-4 md:py-2 text-center text-sm text-gray-500 border-gray-400 border md:m-4 px-2 py-1 mt-1 mx-2;

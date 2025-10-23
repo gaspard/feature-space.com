@@ -8,22 +8,66 @@ module Markdown = {
 module Front = {
   @react.component
   let make = (~front: Recall.Ui.front) => {
+    useTilia()
+
     <div className="card">
-      <div className="card-question" onClick={_ => front.turn()}>
+      <div className="card-question">
         <Markdown text={front.content} />
+        <ul className="options">
+          {front.options
+          ->Array.map(option =>
+            <li key={option.id} onClick={_ => option.checked = !option.checked}>
+              <input type_="checkbox" checked={option.checked} onChange={_ => ()} />
+              <Markdown text={option.content} />
+            </li>
+          )
+          ->React.array}
+        </ul>
+        <div className="card-anwser" onClick={_ => front.turn()}>
+          <details open_={false}>
+            <summary>
+              <strong> {"Solution"->React.string} </strong>
+            </summary>
+          </details>
+        </div>
       </div>
     </div>
   }
 }
 
 module Back = {
+  let correctionClassname = (correction: Recall.Ui.correction) => {
+    switch correction {
+    | Correct => "flex correct"
+    | Incorrect => "flex incorrect"
+    | Missed => "flex missed"
+    | Blank => "flex blank"
+    }
+  }
   @react.component
   let make = (~back: Recall.Ui.back) => {
+    useTilia()
+
+    let hasErrors =
+      back.options->Array.some(option =>
+        option.correction == Missed || option.correction == Incorrect
+      )
+
     <div className="card">
       <div className="card-question">
         <Markdown text={back.content} />
+        <ul className="options">
+          {back.options
+          ->Array.map(option =>
+            <li key={option.id} className={option.correction->correctionClassname}>
+              <input type_="checkbox" defaultChecked={option.checked} />
+              <Markdown text={"\n\n" ++ option.content ++ "\n\n"} />
+            </li>
+          )
+          ->React.array}
+        </ul>
       </div>
-      <div className="card-answer">
+      <div className="card-answer" onClick={_ => back.turn()}>
         <details open_={true}>
           <summary>
             <strong> {"Solution"->React.string} </strong>
@@ -35,15 +79,35 @@ module Back = {
             <button className="eval hard" onClick={_ => back.evaluate(CardProgress.Hard)}>
               {"Difficile"->React.string}
             </button>
-            <button className="eval good" onClick={_ => back.evaluate(CardProgress.Good)}>
-              {"Bien"->React.string}
-            </button>
-            <button className="eval easy" onClick={_ => back.evaluate(CardProgress.Easy(1))}>
-              {"Facile"->React.string}
-            </button>
+            {hasErrors
+              ? <> </>
+              : <>
+                  <button className="eval good" onClick={_ => back.evaluate(CardProgress.Good)}>
+                    {"Bien"->React.string}
+                  </button>
+                  <button className="eval easy" onClick={_ => back.evaluate(CardProgress.Easy(1))}>
+                    {"Facile"->React.string}
+                  </button>
+                </>}
           </div>
           <Markdown text={back.solution} />
         </details>
+      </div>
+    </div>
+  }
+}
+
+module Done = {
+  @react.component
+  let make = () => {
+    useTilia()
+
+    <div className="card">
+      <div className="card-question">
+        <p>
+          {"Tout est terminé. Si vous voulez révixer encore, cliquez sur le bouton."->React.string}
+          <button className="more" onClick={_ => App.app.start()}> {"Plus"->React.string} </button>
+        </p>
       </div>
     </div>
   }
@@ -54,6 +118,10 @@ let make = (~recall: Recall.t) => {
   useTilia()
   <div>
     <div className="stats">
+      <span> {"session"->React.string} </span>
+      <span className="col-span-3 font-bold text-left">
+        {recall.stats.stackCount->Int.toString->React.string}
+      </span>
       <span> {"à réviser"->React.string} </span>
       <span> {recall.stats.toRecall->Int.toString->React.string} </span>
       <span> {"vues"->React.string} </span>
@@ -66,6 +134,7 @@ let make = (~recall: Recall.t) => {
     {switch recall.view {
     | Front(front) => <Front front />
     | Back(back) => <Back back />
+    | Done => <Done />
     }}
   </div>
 }

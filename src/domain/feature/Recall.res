@@ -31,12 +31,13 @@ module Ui = {
     solution: string,
     options: array<correctedOption>,
     evaluate: CardProgress.state => unit,
+    turn: unit => unit,
   }
 
-  type view = Front(front) | Back(back)
+  type view = Front(front) | Back(back) | Done
 
-  let back = (evaluate, card, options: array<questionOption>, set: view => unit) => {
-    let options = options->Array.map(option => {
+  let back = (evaluate, card, boptions: array<questionOption>, setShowBack: bool => unit) => {
+    let options = boptions->Array.map(option => {
       let correction = switch (option.checked, option.correct) {
       | (true, true) => Correct
       | (true, false) => Incorrect
@@ -50,34 +51,13 @@ module Ui = {
         correction,
       }
     })
-    set(
-      Back({
-        content: card.Card.content,
-        options,
-        solution: card.Card.solution,
-        evaluate,
-      }),
-    )
-  }
-  let front = (evaluate, card) => (set: view => unit) => {
-    switch card.Tilia.value {
-    | None => Js.Exn.raiseError(`No card selected`)
-    | Some(card) =>
-      let options = Tilia.tilia(
-        card.Card.options->Array.map(option => {
-          id: option.id,
-          content: option.content,
-          correct: option.correct,
-          checked: false,
-        }),
-      )
-
-      Front({
-        content: card.content,
-        options,
-        turn: () => back(evaluate, card, options, set),
-      })
-    }
+    Back({
+      content: card.Card.content,
+      options,
+      solution: card.Card.solution,
+      evaluate,
+      turn: () => setShowBack(false),
+    })
   }
 }
 
@@ -86,6 +66,7 @@ type stats = {
   seen: int,
   new: int,
   toRecall: int,
+  stackCount: int,
 }
 
 // Maybe we should move "view" into some other module.
@@ -105,7 +86,7 @@ let sort = (cards: array<(Card.t, CardProgress.t)>, ~dayLength=3600. *. 24.): ar
   cards->Array.toSorted(((_, a), (_, b)) => {
     let aProgress = CardProgress.recallTime(a.timestamp, a.state, ~dayLength)
     let bProgress = CardProgress.recallTime(b.timestamp, b.state, ~dayLength)
-    aProgress < bProgress ? -1.0 : 1.0
+    aProgress < bProgress ? -1.0 : aProgress === bProgress ? 0.0 : 1.0
   })
 }
 
@@ -177,7 +158,8 @@ let make = (
       switch prog->Dict.get(card.Card.stackId) {
       | None => Js.Exn.raiseError(`No progress found for card ${card.stackId}`)
       | Some(p) => {
-          p.cards->Dict.set(card.id, CardProgress.next(p.cards->Dict.get(card.id), state))
+          let c = CardProgress.next(p.cards->Dict.get(card.id), state, ~now)
+          p.cards->Dict.set(card.id, c)
           ignore(repo.progress.save(p))
           advance(state)
         }
@@ -197,6 +179,41 @@ let make = (
       seen,
       new: total - seen,
       toRecall: toRecall(stacks, ~now, ~dayLength)->Array.length,
+      stackCount: stack.value->Array.length,
+    }
+  })
+
+  let (showBack, setShowBack) = signal(false)
+
+  let options = derived(() => {
+    switch card.Tilia.value {
+    | None => []
+    | Some(card) =>
+      card.Card.options->Array.map(option => {
+        let opt: Ui.questionOption = {
+          id: option.id,
+          content: option.content,
+          correct: option.correct,
+          checked: false,
+        }
+        opt
+      })
+    }
+  })
+
+  let view = derived(() => {
+    switch card.value {
+    | None => Ui.Done
+    | Some(card) =>
+      switch showBack.value {
+      | true => Ui.back(evaluate, card, options.value, setShowBack)
+      | false =>
+        Front({
+          content: card.content,
+          options: options.value,
+          turn: () => setShowBack(true),
+        })
+      }
     }
   })
 
@@ -204,7 +221,7 @@ let make = (
     card: lift(card),
     stack: lift(stack),
     evaluate,
-    view: store(Ui.front(evaluate, card)),
+    view: lift(view),
     stats: lift(stats),
   })
 }

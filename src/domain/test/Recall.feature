@@ -33,13 +33,13 @@ Feature: Recall
       | stack2  | card7 | 300       | Good  | 600    |
       | stack2  | card8 |           |       |        |
     Then the next cards for 5 cards should be
-      | id    | eval  |
-      | card1 | Again |
-      | card2 | Good  |
-      | card5 | Again |
-      | card6 | Hard  |
-      | card7 | Good  |
-      | card1 | Again |
-      | card5 | Hard  |
-      | card1 | Hard  |
-      | none  |       |
+      | id    | eval  | toRecall | stackCount |
+      | card1 | Again | 6        | 5          |
+      | card2 | Good  | 6        | 5          |
+      | card5 | Again | 5        | 4          |
+      | card6 | Hard  | 5        | 4          |
+      | card7 | Good  | 4        | 3          |
+      | card1 | Again | 3        | 2          |
+      | card5 | Hard  | 3        | 2          |
+      | card1 | Hard  | 2        | 1          |
+      | none  |       | 1        | 0          |

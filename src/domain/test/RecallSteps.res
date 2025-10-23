@@ -113,6 +113,10 @@ given("stacks", ({step}, table) => {
     cards->Array.forEach(
       card => {
         let id = card["id"]->Option.getExn
+        let toRecall = card["toRecall"]->Option.getExn->Float.toInt
+        let stackCount = card["stackCount"]->Option.getExn->Float.toInt
+        expect(recall.stats.toRecall).toBe(toRecall)
+        expect(recall.stats.stackCount).toBe(stackCount)
         if id == "none" {
           expect(recall.card).toBe(None)
         } else {

@@ -19,7 +19,7 @@ function recallTime(timestamp, s, dayLengthOpt) {
   }
 }
 
-function next(prev, state) {
+function next(prev, state, now) {
   var state$1;
   var exit = 0;
   if (prev !== undefined) {
@@ -41,9 +41,8 @@ function next(prev, state) {
           _0: 1
         });
   }
-  var timestamp = Date.now();
   return {
-          timestamp: timestamp,
+          timestamp: now,
           state: state$1
         };
 }

@@ -23,13 +23,13 @@ let recallTime = (timestamp, s, ~dayLength=3600. *. 24.) =>
   | Easy(i) => timestamp +. easy *. dayLength *. i->Int.toFloat->Math.pow(~exp=2.)
   }
 
-let next = (prev, state) => {
+let next = (prev, state, ~now) => {
   let state = switch (prev, state) {
   | (Some({state: Easy(i)}), Easy(_)) => Easy(i + 1)
   | (_, Easy(_)) => Easy(1)
   | _ => state
   }
-  let timestamp = Date.now()
+  let timestamp = now
   {timestamp, state}
 }
 

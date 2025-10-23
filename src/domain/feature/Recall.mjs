@@ -5,8 +5,8 @@ import * as Js_exn from "rescript/lib/es6/js_exn.js";
 import * as Core__Array from "@rescript/core/src/Core__Array.mjs";
 import * as CardProgress from "../api/entity/CardProgress.mjs";
 
-function back(evaluate, card, options, set) {
-  var options$1 = options.map(function (option) {
+function back(evaluate, card, boptions, setShowBack) {
+  var options = boptions.map(function (option) {
         var match = option.checked;
         var match$1 = option.correct;
         var correction = match ? (
@@ -21,47 +21,22 @@ function back(evaluate, card, options, set) {
                 correction: correction
               };
       });
-  set({
-        TAG: "Back",
-        _0: {
-          content: card.content,
-          solution: card.solution,
-          options: options$1,
-          evaluate: evaluate
-        }
-      });
-}
-
-function front(evaluate, card) {
-  return function (set) {
-    var card$1 = card.value;
-    if (card$1 === undefined) {
-      return Js_exn.raiseError("No card selected");
-    }
-    var options = Tilia.tilia(card$1.options.map(function (option) {
-              return {
-                      id: option.id,
-                      content: option.content,
-                      correct: option.correct,
-                      checked: false
-                    };
-            }));
-    return {
-            TAG: "Front",
-            _0: {
-              content: card$1.content,
-              options: options,
-              turn: (function () {
-                  back(evaluate, card$1, options, set);
-                })
-            }
-          };
-  };
+  return {
+          TAG: "Back",
+          _0: {
+            content: card.content,
+            solution: card.solution,
+            options: options,
+            evaluate: evaluate,
+            turn: (function () {
+                setShowBack(false);
+              })
+          }
+        };
 }
 
 var Ui = {
-  back: back,
-  front: front
+  back: back
 };
 
 function sort(cards, dayLengthOpt) {
@@ -73,6 +48,8 @@ function sort(cards, dayLengthOpt) {
               var bProgress = CardProgress.recallTime(b.timestamp, b.state, dayLength);
               if (aProgress < bProgress) {
                 return -1.0;
+              } else if (aProgress === bProgress) {
+                return 0.0;
               } else {
                 return 1.0;
               }
@@ -142,19 +119,18 @@ function make(repo, stacks, shuffleOpt, nowOpt, maxOpt, dayLengthOpt) {
       return Js_exn.raiseError("No card selected");
     }
     var p = prog[card$1.stackId];
-    if (p !== undefined) {
-      p.cards[card$1.id] = CardProgress.next(p.cards[card$1.id], state);
-      repo.progress.save(p);
-      var card$2 = stack.value.shift();
-      if (card$2 !== undefined && state === "again") {
-        stack.value.push(card$2);
-        return ;
-      } else {
-        return ;
-      }
-    } else {
+    if (p === undefined) {
       return Js_exn.raiseError("No progress found for card " + card$1.stackId);
     }
+    var c = CardProgress.next(p.cards[card$1.id], state, now);
+    p.cards[card$1.id] = c;
+    repo.progress.save(p);
+    var card$2 = stack.value.shift();
+    if (card$2 !== undefined && state === "again") {
+      stack.value.push(card$2);
+      return ;
+    }
+    
   };
   var stats = Tilia.derived(function () {
         var total = Core__Array.reduce(stacks$1, 0, (function (acc, param) {
@@ -167,13 +143,53 @@ function make(repo, stacks, shuffleOpt, nowOpt, maxOpt, dayLengthOpt) {
                 total: total,
                 seen: seen,
                 new: total - seen | 0,
-                toRecall: toRecall(stacks$1, now, dayLength).length
+                toRecall: toRecall(stacks$1, now, dayLength).length,
+                stackCount: stack.value.length
               };
+      });
+  var match$1 = Tilia.signal(false);
+  var setShowBack = match$1[1];
+  var showBack = match$1[0];
+  var options = Tilia.derived(function () {
+        var card$1 = card.value;
+        if (card$1 !== undefined) {
+          return card$1.options.map(function (option) {
+                      return {
+                              id: option.id,
+                              content: option.content,
+                              correct: option.correct,
+                              checked: false
+                            };
+                    });
+        } else {
+          return [];
+        }
+      });
+  var view = Tilia.derived(function () {
+        var card$1 = card.value;
+        if (card$1 !== undefined) {
+          if (showBack.value) {
+            return back(evaluate, card$1, options.value, setShowBack);
+          } else {
+            return {
+                    TAG: "Front",
+                    _0: {
+                      content: card$1.content,
+                      options: options.value,
+                      turn: (function () {
+                          setShowBack(true);
+                        })
+                    }
+                  };
+          }
+        } else {
+          return "Done";
+        }
       });
   return Tilia.tilia({
               card: Tilia.lift(card),
               evaluate: evaluate,
-              view: Tilia.store(front(evaluate, card)),
+              view: Tilia.lift(view),
               stack: Tilia.lift(stack),
               stats: Tilia.lift(stats)
             });
