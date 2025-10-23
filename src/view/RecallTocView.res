@@ -70,7 +70,7 @@ module CourseGroup = {
 
 module TypeGroup = {
   @react.component
-  let make = (~typeGroup: group<RecallToc.tstack, Stack.stackType>, ~level: Stack.level) => {
+  let make = (~typeGroup: group<RecallToc.tstack, Stack.stackType>) => {
     <section className="type" key={typeGroup.key->Stack.stackTypeToString}>
       <h3>
         <a
@@ -101,9 +101,7 @@ module LevelGroup = {
       </h2>
       {levelGroup.list
       ->partition(v => v.info.kind)
-      ->Array.map(typeGroup =>
-        <TypeGroup typeGroup level={levelGroup.key} key={typeGroup.key->Stack.stackTypeToString} />
-      )
+      ->Array.map(typeGroup => <TypeGroup typeGroup key={typeGroup.key->Stack.stackTypeToString} />)
       ->React.array}
     </section>
   }
@@ -111,6 +109,7 @@ module LevelGroup = {
 
 module Event = {
   let value = (e: ReactEvent.Form.t) => {
+    ignore(e)
     let s: string = %raw(`e.target.value`)
     s
   }

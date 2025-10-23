@@ -33,10 +33,10 @@ var mockRepo_progress = {
 };
 
 var mockRepo_settings = {
-  get: (async function (_key) {
-      
+  get: (function (_key) {
+      return null;
     }),
-  save: (async function (_key, _value) {
+  save: (function (_key, _value) {
       
     })
 };

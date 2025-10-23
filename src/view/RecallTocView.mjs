@@ -166,8 +166,7 @@ function RecallTocView$LevelGroup(props) {
                           return v.info.kind;
                         })).map(function (typeGroup) {
                       return JsxRuntime.jsx(RecallTocView$TypeGroup, {
-                                  typeGroup: typeGroup,
-                                  level: levelGroup.key
+                                  typeGroup: typeGroup
                                 }, Stack.stackTypeToString(typeGroup.key));
                     })
               ],

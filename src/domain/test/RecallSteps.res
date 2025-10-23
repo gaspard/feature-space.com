@@ -24,10 +24,10 @@ let mockRepo: RepositoryType.t = {
     },
   },
   settings: {
-    get: async (_key: string) => {
-      None
+    get: (_key: string) => {
+      null
     },
-    save: async (_key: string, _value: string) => {
+    save: (_key: string, _value: string) => {
       ()
     },
   },
