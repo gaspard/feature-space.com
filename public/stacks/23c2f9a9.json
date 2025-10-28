@@ -1,0 +1,91 @@
+{
+  "info": {
+    "id": "23c2f9a9",
+    "title": "Groupes, anneaux et corps - fiches de révision (A)",
+    "type": "cards",
+    "level": "regular",
+    "chapter": "Groupes, anneaux et corps",
+    "course": "Algèbre I - TD1",
+    "tags": [
+      "groupes",
+      "anneaux",
+      "corps",
+      "morphismes",
+      "isomorphismes",
+      "structures algébriques"
+    ],
+    "count": 10
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "23c2f9a9",
+      "content": "Qu'est-ce qu'un groupe ?",
+      "solution": "\n\nUn groupe est une structure algébrique de base. C'est un ensemble non vide $G$ muni d'une loi de composition interne (une opération) notée $*$ qui satisfait quatre propriétés (axiomes) :\n\n1.  **Loi de composition interne :** Pour tous $a, b \\in G$, le résultat $a * b$ est aussi dans $G$.\n\n2.  **Associativité :** Pour tous $a, b, c \\in G$, on a $(a * b) * c = a * (b * c)$.\n\n3.  **Élément neutre :** Il existe un élément $e \\in G$ (appelé élément neutre) tel que pour tout $a \\in G$, on a $a * e = e * a = a$.\n\n4.  **Élément symétrique (ou inverse) :** Pour chaque élément $a \\in G$, il existe un élément $a^{-1} \\in G$ (appelé l'inverse de $a$) tel que $a * a^{-1} = a^{-1} * a = e$.\n\nSi en plus la loi est commutative ($a * b = b * a$ pour tous $a, b \\in G$), le groupe est dit **commutatif** ou **abélien**.\n\n**Exemple :** L'ensemble des entiers relatifs $(\\mathbb{Z}, +)$ est un groupe abélien.\n\n- L'addition est interne et associative.\n- L'élément neutre est $0$.\n- L'inverse de tout entier $n$ est $-n$.\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "23c2f9a9",
+      "content": "Dans un groupe $(G, *)$ où chaque élément est son propre inverse (c'est-à-dire $x^2 = e$ pour tout $x \\in G$), pourquoi le groupe est-il nécessairement commutatif ?",
+      "solution": "\n\nSi pour tout $x \\in G$, on a $x^2 = x * x = e$, cela signifie que chaque élément est son propre inverse, car en multipliant par $x^{-1}$ (qui est $x$ lui-même), on trouve $x = x^{-1}$.\n\nPour montrer que le groupe est commutatif, nous devons prouver que $x * y = y * x$ pour n'importe quels éléments $x, y \\in G$.\n\n**Démonstration :**\n\n1.  Soient $x, y \\in G$. Puisque la loi est interne, l'élément $x * y$ est aussi dans $G$.\n2.  Par hypothèse, tout élément au carré est égal à l'élément neutre $e$. Donc, $(x * y)^2 = e$.\n3.  Cela s'écrit : $(x * y) * (x * y) = e$.\n4.  Multiplions cette équation à gauche par $x$. Comme $x$ est son propre inverse ($x * x = e$), cela revient à multiplier par $x^{-1}$.\n\n    $x * ((x * y) * (x * y)) = x * e$\n\n    $(x * x) * y * x * y = x$\n\n    $e * y * x * y = x$\n\n    $y * x * y = x$\n\n5.  Maintenant, multiplions cette nouvelle équation à gauche par $y$. Comme $y$ est son propre inverse ($y * y = e$) :\n\n    $y * (y * x * y) = y * x$\n\n    $(y * y) * x * y = y * x$\n\n    $e * x * y = y * x$\n\n    $x * y = y * x$\n\nNous avons donc montré que $x * y = y * x$ pour tous $x, y \\in G$, ce qui signifie que le groupe $G$ est commutatif.\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "23c2f9a9",
+      "content": "Qu'est-ce qu'un isomorphisme de groupes ?",
+      "solution": "\n\nUn **isomorphisme de groupes** est une application entre deux groupes qui préserve la structure de groupe.\n\nFormellement, soient deux groupes $(G, *)$ et $(H, \\cdot)$. Une application $f: G \\to H$ est un isomorphisme si :\n\n1.  **C'est un morphisme de groupes :** $f$ préserve l'opération. Pour tous $a, b \\in G$, on a $f(a * b) = f(a) \\cdot f(b)$.\n2.  **C'est une bijection :** L'application $f$ est à la fois injective (deux éléments distincts de $G$ ont des images distinctes dans $H$) et surjective (chaque élément de $H$ est l'image d'au moins un élément de $G$).\n\nDeux groupes sont dits **isomorphes** s'il existe un isomorphisme entre eux. Cela signifie qu'ils ont la même \"structure\", même si les éléments et les opérations ont des noms différents.\n\n**Exemple :** L'application $f(x) = e^x$ est un isomorphisme du groupe $(\\mathbb{R}, +)$ vers le groupe $(\\mathbb{R}^*_+, \\cdot)$.\n\n- **Morphisme :** $f(x+y) = e^{x+y} = e^x \\cdot e^y = f(x) \\cdot f(y)$.\n- **Bijective :** L'application exponentielle est bien une bijection de $\\mathbb{R}$ dans $\\mathbb{R}^*_+$. Son inverse est le logarithme népérien.\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "23c2f9a9",
+      "content": "Pourquoi un morphisme de groupe bijectif est-il toujours un isomorphisme ?",
+      "solution": "\n\nPour qu'un morphisme bijectif $f: G \\to H$ soit un isomorphisme, il faut que son application réciproque $f^{-1}: H \\to G$ soit également un morphisme de groupes. C'est toujours le cas, et voici pourquoi.\n\nSoient $(G, *_G, e_G)$ et $(H, *_H, e_H)$ deux groupes et $f: G \\to H$ un morphisme bijectif.\n\nNous devons montrer que $f^{-1}(h_1 *_H h_2) = f^{-1}(h_1) *_G f^{-1}(h_2)$ pour tous $h_1, h_2 \\in H$.\n\n**Démonstration :**\n\n1.  Soient $h_1, h_2 \\in H$. Puisque $f$ est surjective, il existe des éléments uniques $g_1, g_2 \\in G$ tels que $f(g_1) = h_1$ et $f(g_2) = h_2$.\n2.  Par définition de l'application réciproque, on a donc $g_1 = f^{-1}(h_1)$ et $g_2 = f^{-1}(h_2)$.\n3.  Calculons l'image de $g_1 *_G g_2$ par $f$. Comme $f$ est un morphisme, on a :\n\n    $f(g_1 *_G g_2) = f(g_1) *_H f(g_2) = h_1 *_H h_2$.\n\n4.  Appliquons maintenant $f^{-1}$ aux deux côtés de l'équation $f(g_1 *_G g_2) = h_1 *_H h_2$ :\n\n    $f^{-1}(f(g_1 *_G g_2)) = f^{-1}(h_1 *_H h_2)$.\n\n5.  Puisque $f^{-1} \\circ f$ est l'identité, on obtient :\n\n    $g_1 *_G g_2 = f^{-1}(h_1 *_H h_2)$.\n\n6.  Enfin, en remplaçant $g_1$ et $g_2$ par leurs expressions en fonction de $h_1$ et $h_2$ :\n\n    $f^{-1}(h_1) *_G f^{-1}(h_2) = f^{-1}(h_1 *_H h_2)$.\n\nCela prouve que $f^{-1}$ est un morphisme de groupes. Un morphisme bijectif dont la réciproque est un morphisme est la définition d'un isomorphisme.\n\n**Conclusion :** Cette propriété est valable pour les groupes, les monoïdes et les anneaux.\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "23c2f9a9",
+      "content": "Qu'est-ce qu'un anneau intègre ?",
+      "solution": "\n\nUn **anneau intègre** est un type particulier d'anneau qui généralise les propriétés des entiers relatifs $\\mathbb{Z}$.\n\nUn anneau $(A, +, \\cdot)$ est dit intègre s'il vérifie les trois conditions suivantes :\n\n1.  **Commutatif :** La multiplication est commutative ($a \\cdot b = b \\cdot a$ pour tous $a, b \\in A$).\n2.  **Non trivial :** L'anneau n'est pas réduit à l'élément nul, c'est-à-dire que $1 \\neq 0$ (où $1$ est le neutre multiplicatif et $0$ le neutre additif).\n3.  **Intégrité (pas de diviseurs de zéro) :** Pour tous $a, b \\in A$, si le produit $a \\cdot b = 0$, alors on doit avoir $a=0$ ou $b=0$.\n\nCette dernière propriété est la plus importante : elle signifie qu'un produit de deux éléments non nuls ne peut pas être nul. On ne peut pas \"créer\" zéro à partir de rien.\n\n**Exemples :**\n\n- $(\\mathbb{Z}, +, \\cdot)$ est un anneau intègre.\n- Tout corps (comme $\\mathbb{Q}, \\mathbb{R}, \\mathbb{C}$) est un anneau intègre.\n\n**Contre-exemple :**\n\n- L'anneau $(\\mathbb{Z}/6\\mathbb{Z}, +, \\cdot)$ n'est pas intègre. Par exemple, $2 \\neq 0$ et $3 \\neq 0$, mais $2 \\cdot 3 = 6 \\equiv 0 \\pmod{6}$. Les éléments 2 et 3 sont des **diviseurs de zéro**.\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "23c2f9a9",
+      "content": "Expliquez pourquoi tout corps est un anneau intègre.",
+      "solution": "\n\nUn corps $(K, +, \\cdot)$ est un anneau commutatif où tout élément non nul possède un inverse pour la multiplication. Pour montrer qu'un corps est un anneau intègre, il suffit de prouver qu'il n'a pas de diviseurs de zéro.\n\nLa démonstration se fait par l'absurde.\n\n**Démonstration :**\n\n1.  Soit $K$ un corps. Par définition, c'est un anneau commutatif et non trivial ($1 \\neq 0$).\n2.  Supposons que $K$ ne soit pas intègre. Cela signifie qu'il existe deux éléments $a, b \\in K$ tels que :\n    - $a \\cdot b = 0$\n    - $a \\neq 0$\n    - $b \\neq 0$\n3.  Puisque $K$ est un corps et que $a \\neq 0$, $a$ possède un inverse multiplicatif, noté $a^{-1}$, tel que $a^{-1} \\cdot a = 1$.\n4.  Partons de l'équation $a \\cdot b = 0$ et multiplions-la à gauche par $a^{-1}$ :\n\n    $a^{-1} \\cdot (a \\cdot b) = a^{-1} \\cdot 0$\n\n5.  Par associativité de la multiplication, le côté gauche devient :\n\n    $(a^{-1} \\cdot a) \\cdot b = 1 \\cdot b = b$.\n\n6.  Le côté droit est $a^{-1} \\cdot 0 = 0$.\n7.  En égalant les deux côtés, on obtient $b = 0$.\n8.  Ceci est une **contradiction** avec notre hypothèse de départ qui était $b \\neq 0$.\n\nNotre supposition initiale (que $K$ n'est pas intègre) est donc fausse. Par conséquent, tout corps est un anneau intègre.\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "23c2f9a9",
+      "content": "Pourquoi tout anneau intègre fini est-il un corps ?",
+      "solution": "\n\nC'est un théorème fondamental qui relie ces deux structures dans le cas fini. Pour qu'un anneau intègre $(A, +, \\cdot)$ soit un corps, il suffit de montrer que tout élément non nul $a \\in A$ admet un inverse multiplicatif.\n\n**Démonstration :**\n\n1.  Soit $A$ un anneau intègre fini. Soit $a$ un élément quelconque de $A$ tel que $a \\neq 0$. Nous cherchons un élément $a' \\in A$ tel que $a \\cdot a' = 1$.\n\n2.  Considérons l'application \"multiplication par $a$\", notée $m_a: A \\to A$, définie par $m_a(x) = a \\cdot x$.\n\n3.  Montrons que cette application est **injective**.\n\n    Supposons que $m_a(x) = m_a(y)$ pour deux éléments $x, y \\in A$.\n\n    Cela signifie $a \\cdot x = a \\cdot y$, donc $a \\cdot x - a \\cdot y = 0$, ce qui donne $a \\cdot (x - y) = 0$.\n\n    Comme $A$ est un anneau intègre et que nous avons supposé $a \\neq 0$, la propriété d'intégrité implique que $x - y = 0$, soit $x = y$.\n\n    L'application $m_a$ est donc bien injective.\n\n4.  Maintenant, nous utilisons le fait que $A$ est **fini**. Une application injective d'un ensemble fini dans lui-même est nécessairement **bijective** (surjective et injective).\n\n5.  Puisque $m_a$ est surjective, cela signifie que tout élément de $A$ peut être atteint par cette application. En particulier, l'élément neutre de la multiplication, $1$, a un antécédent. Il existe donc un élément, que nous noterons $a'$, tel que $m_a(a') = 1$.\n\n6.  Par définition, cela signifie $a \\cdot a' = 1$. Nous avons trouvé l'inverse de $a$.\n\nComme nous avons montré que tout élément non nul $a \\in A$ a un inverse, l'anneau intègre fini $A$ est un corps.\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "23c2f9a9",
+      "content": "Quel type de morphisme est la fonction déterminant sur les matrices inversibles ?",
+      "solution": "\n\nLa fonction déterminant est un **morphisme de groupes**.\n\nConsidérons :\n\n- Le groupe des matrices carrées inversibles de taille $n \\times n$ à coefficients réels, noté $(\\text{GL}_n(\\mathbb{R}), \\cdot)$, où $\\cdot$ est la multiplication matricielle. L'élément neutre est la matrice identité $I_n$.\n- Le groupe des nombres réels non nuls, noté $(\\mathbb{R}^*, \\cdot)$, où $\\cdot$ est la multiplication usuelle. L'élément neutre est $1$.\n\nL'application $\\det : (\\text{GL}_n(\\mathbb{R}), \\cdot) \\to (\\mathbb{R}^*, \\cdot)$ est un morphisme de groupes car elle respecte la loi de composition interne des deux groupes.\n\nPour toutes matrices $M, M' \\in \\text{GL}_n(\\mathbb{R})$, la propriété fondamentale du déterminant est :\n\n$$ \\det(M \\cdot M') = \\det(M) \\cdot \\det(M') $$\n\nCette formule montre que l'image du produit est le produit des images, ce qui est la définition d'un morphisme de groupes.\n\n**Note :** Ce morphisme n'est généralement pas un isomorphisme. Il n'est pas injectif (plusieurs matrices peuvent avoir le même déterminant) et il n'est pas toujours surjectif (par exemple, pour $n$ pair, le déterminant ne peut pas être négatif si on travaille sur $\\mathbb{R}$ avec des transformations qui préservent l'orientation, ou si le corps de base ne contient pas toutes les racines).\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "23c2f9a9",
+      "content": "Comment démontrer que les groupes $(\\mathbb{Q}, +)$ et $(\\mathbb{Q}^*, \\cdot)$ ne sont pas isomorphes ?",
+      "solution": "\n\nPour montrer que deux groupes ne sont pas isomorphes, il suffit de trouver une propriété structurelle que l'un possède mais pas l'autre. Un isomorphisme préserve toutes les propriétés de groupe. La méthode ici repose sur la notion de \"divisibilité\" des éléments.\n\n**Démonstration par l'absurde :**\n\n1.  Supposons qu'il existe un isomorphisme de groupes $f: (\\mathbb{Q}, +) \\to (\\mathbb{Q}^*, \\cdot)$.\n\n2.  Puisque $f$ est un isomorphisme, il est surjectif. Cela signifie que tout élément de $\\mathbb{Q}^*$ est l'image d'un élément de $\\mathbb{Q}$. Prenons par exemple le nombre $2 \\in \\mathbb{Q}^*$. Il doit exister un nombre rationnel $x \\in \\mathbb{Q}$ tel que $f(x) = 2$.\n\n3.  Dans le groupe $(\\mathbb{Q}, +)$, tout élément est \"divisible par 2\". C'est-à-dire que pour tout $x \\in \\mathbb{Q}$, l'élément $x/2$ est aussi dans $\\mathbb{Q}$. On a $x/2 + x/2 = x$.\n\n4.  Appliquons le morphisme $f$ à cette relation :\n\n    $f(x) = f(x/2 + x/2)$\n\n5.  Comme $f$ est un morphisme, $f(a+b) = f(a) \\cdot f(b)$. Donc :\n\n    $f(x/2 + x/2) = f(x/2) \\cdot f(x/2) = (f(x/2))^2$.\n\n6.  En combinant les étapes, nous avons :\n\n    $f(x) = (f(x/2))^2$.\n\n7.  Nous savons que $f(x) = 2$. L'équation devient donc :\n\n    $2 = (f(x/2))^2$.\n\n8.  L'élément $f(x/2)$ est un nombre rationnel (car $f$ est à valeurs dans $\\mathbb{Q}^*$). Notons-le $q = f(x/2)$. L'équation est $q^2 = 2$.\n\n9.  Cela signifierait qu'il existe un nombre rationnel $q$ dont le carré est 2. Or, nous savons que $\\sqrt{2}$ est un nombre irrationnel.\n\n10. Nous arrivons à une **contradiction**. Notre supposition initiale (l'existence d'un isomorphisme $f$) est donc fausse.\n\n**Conclusion :** Les groupes $(\\mathbb{Q}, +)$ et $(\\mathbb{Q}^*, \\cdot)$ ne sont pas isomorphes.\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "23c2f9a9",
+      "content": "Comment prouver que les groupes multiplicatifs $(\\mathbb{C}^*, \\cdot)$ et $(\\mathbb{R}^*, \\cdot)$ ne sont pas isomorphes ?",
+      "solution": "\n\nUne méthode efficace pour prouver que deux groupes ne sont pas isomorphes est de comparer leurs éléments d'ordre fini. Un isomorphisme doit préserver l'ordre des éléments.\n\n**Démonstration :**\n\n1.  Considérons le groupe des nombres complexes non nuls $(\\mathbb{C}^*, \\cdot)$ et le groupe des nombres réels non nuls $(\\mathbb{R}^*, \\cdot)$.\n\n2.  Cherchons les éléments d'ordre 4 dans chaque groupe. Un élément $g$ est d'ordre 4 si $g^4 = 1$ (où $1$ est l'élément neutre) et $g^k \\neq 1$ pour $k=1, 2, 3$.\n\n3.  **Dans $\\mathbb{C}^*$ :**\n\n    Nous cherchons les solutions de l'équation $z^4 = 1$. Ce sont les racines quatrièmes de l'unité.\n\n    $z^4 - 1 = (z^2 - 1)(z^2 + 1) = (z-1)(z+1)(z-i)(z+i) = 0$.\n\n    Les solutions sont $\\{1, -1, i, -i\\}$.\n\n    - L'ordre de $1$ est 1.\n    - L'ordre de $-1$ est 2.\n    - L'ordre de $i$ est 4 (car $i^1=i, i^2=-1, i^3=-i, i^4=1$).\n    - L'ordre de $-i$ est 4.\n\n    Le groupe $\\mathbb{C}^*$ possède donc au moins deux éléments d'ordre 4.\n\n4.  **Dans $\\mathbb{R}^*$ :**\n\n    Nous cherchons les solutions de l'équation $r^4 = 1$ où $r \\in \\mathbb{R}$.\n\n    Les seules solutions réelles sont $r=1$ et $r=-1$.\n\n    - L'ordre de $1$ est 1.\n    - L'ordre de $-1$ est 2 (car $(-1)^2 = 1$).\n\n    Le groupe $\\mathbb{R}^*$ ne possède **aucun** élément d'ordre 4.\n\n5.  **Conclusion :**\n\n    Supposons qu'il existe un isomorphisme $\\phi : \\mathbb{C}^* \\to \\mathbb{R}^*$. Un isomorphisme préserve l'ordre des éléments. Donc, l'image de $i$ par $\\phi$, c'est-à-dire $\\phi(i)$, devrait être un élément d'ordre 4 dans $\\mathbb{R}^*$.\n\n    Mais comme nous l'avons vu, $\\mathbb{R}^*$ n'a pas d'éléments d'ordre 4.\n\n    Ceci est une **contradiction**.\n\nPar conséquent, les groupes $(\\mathbb{C}^*, \\cdot)$ et $(\\mathbb{R}^*, \\cdot)$ ne sont pas isomorphes.\n\n",
+      "options": []
+    }
+  ]
+}

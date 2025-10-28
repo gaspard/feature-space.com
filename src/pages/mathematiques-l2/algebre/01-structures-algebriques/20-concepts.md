@@ -2,7 +2,7 @@
 id: 41fbfbc8
 type: concepts
 order: 20
-title: 'Structures algébriques - concepts (B)'
+title: Structures algébriques - concepts (B)
 tags:
   - structures algébriques
   - ensembles

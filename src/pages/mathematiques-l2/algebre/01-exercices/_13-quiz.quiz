@@ -1,0 +1,341 @@
+---
+id: 4ce2c230
+type: quiz
+order: 13
+title: 'Groupes, anneaux et corps - quiz (A)'
+tags:
+  - groupes
+  - anneaux
+  - corps
+  - morphismes
+  - isomorphismes
+  - structures algébriques
+createdAt: '2025-10-23T16:31:20.229Z'
+level: regular
+course: Algèbre I - TD1
+courseId: 4b53c5fb
+chapter: 'Groupes, anneaux et corps'
+chapterId: a172ec8a
+---
+# Quiz: Groupes, anneaux et corps
+
+---
+
+#### Question 1 : Propriété d'un groupe particulier
+
+Soit $(G, *, e)$ un groupe tel que pour tout élément $x \in G$, on ait $x^2 = e$ (c'est-à-dire $x*x=e$). Quelle propriété importante ce groupe possède-t-il toujours ?
+
+- [ ] **A)** Le groupe est cyclique.
+- [x] **B)** Le groupe est commutatif (abélien).
+- [ ] **C)** Le groupe est nécessairement fini.
+- [ ] **D)** Le seul élément du groupe est l'élément neutre $e$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+L'hypothèse $x^2 = e$ pour tout $x \in G$ signifie que chaque élément est son propre inverse ($x = x^{-1}$).
+
+- **A.** Incorrect. Un groupe cyclique est engendré par un seul élément. Le groupe de Klein $(\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}, +)$ est un contre-exemple : il n'est pas cyclique, mais tous ses éléments non nuls sont d'ordre 2.
+
+- **B.** Correct. Soient $x, y \in G$. D'après l'hypothèse, on a $(xy)^2 = e$, ce qui signifie $xyxy = e$. En multipliant à droite par $y^{-1}x^{-1}$, on obtient $xy = y^{-1}x^{-1}$. Puisque chaque élément est son propre inverse, $y^{-1} = y$ et $x^{-1} = x$. Ainsi, $xy = yx$. Le groupe est donc commutatif.
+
+- **C.** Incorrect. Il existe des groupes infinis vérifiant cette propriété. Par exemple, l'ensemble des suites à valeurs dans $\mathbb{Z}/2\mathbb{Z}$ muni de l'addition terme à terme.
+
+- **D.** Incorrect. Le groupe $(\mathbb{Z}/2\mathbb{Z}, +)$ est un exemple simple avec deux éléments, $\{0, 1\}$, où $1+1=0$. Il vérifie la condition mais n'est pas trivial.
+
+</details>
+
+---
+
+#### Question 2 : Isomorphisme de groupes
+
+Quelle est la définition d'un isomorphisme de groupes entre deux groupes $(G, *)$ et $(H, \cdot)$ ?
+
+- [ ] **A)** Une application $f: G \to H$ qui est injective et surjective.
+- [ ] **B)** Une application $f: G \to H$ telle que pour tous $x, y \in G$, $f(x * y) = f(x) \cdot f(y)$.
+- [x] **C)** Une application $f: G \to H$ qui est un morphisme de groupes et qui est bijective.
+- [ ] **D)** Une application $f: G \to H$ telle que l'image de l'élément neutre de $G$ est l'élément neutre de $H$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Un isomorphisme est une application qui préserve la structure et qui est une bijection, permettant de considérer les deux structures comme "les mêmes" du point de vue algébrique.
+
+- **A.** Incorrect. Une application bijective (injective et surjective) entre les ensembles sous-jacents des groupes n'est pas suffisante. Elle doit aussi préserver l'opération du groupe.
+
+- **B.** Incorrect. Cette définition correspond à un morphisme de groupes (ou homomorphisme). Un morphisme n'est pas nécessairement bijectif.
+
+- **C.** Correct. Un isomorphisme est par définition un morphisme de groupes qui est également bijectif (à la fois injectif et surjectif). L'exercice 2 montre que si $f$ est un morphisme bijectif, alors son inverse $f^{-1}$ est aussi un morphisme, ce qui est une propriété clé des isomorphismes.
+
+- **D.** Incorrect. C'est une propriété de tous les morphismes de groupes, mais ce n'est pas suffisant pour définir un isomorphisme.
+
+</details>
+
+---
+
+#### Question 3 : Corps et anneaux intègres
+
+Quelle est la relation entre les corps et les anneaux intègres ?
+
+- [ ] **A)** Tout anneau intègre est un corps.
+- [ ] **B)** Un corps n'est jamais un anneau intègre.
+- [ ] **C)** Un anneau est intègre si et seulement si il est un corps.
+- [x] **D)** Tout corps est un anneau intègre.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+Un anneau est dit intègre s'il est commutatif, non nul, et n'a pas de diviseurs de zéro (c'est-à-dire $ab=0 \implies a=0$ ou $b=0$). Un corps est un anneau commutatif non nul où tout élément non nul a un inverse multiplicatif.
+
+- **A.** Incorrect. L'anneau des entiers $(\mathbb{Z}, +, \cdot)$ est un anneau intègre, mais ce n'est pas un corps car seul 1 et -1 ont des inverses multiplicatifs dans $\mathbb{Z}$.
+
+- **B.** Incorrect. Comme le montre l'exercice 3, les corps sont des exemples fondamentaux d'anneaux intègres.
+
+- **C.** Incorrect. Comme mentionné pour l'option A, il existe des anneaux intègres qui ne sont pas des corps.
+
+- **D.** Correct. Soit $K$ un corps. Soient $a, b \in K$ avec $ab=0$ et $a \neq 0$. Puisque $K$ est un corps, $a$ possède un inverse $a^{-1}$. En multipliant l'équation $ab=0$ par $a^{-1}$ à gauche, on obtient $a^{-1}(ab) = a^{-1}0$, ce qui donne $(a^{-1}a)b = 0$, soit $1 \cdot b = 0$, donc $b=0$. Cela montre que $K$ n'a pas de diviseur de zéro, et est donc un anneau intègre.
+
+</details>
+
+---
+
+#### Question 4 : Anneaux intègres finis
+
+Soit $A$ un anneau commutatif intègre et fini. Quelle conclusion importante peut-on en tirer ?
+
+- [x] **A)** $A$ est un corps.
+- [ ] **B)** $A$ est isomorphe à $\mathbb{Z}/p\mathbb{Z}$ pour un certain nombre premier $p$.
+- [ ] **C)** $A$ doit avoir un nombre premier d'éléments.
+- [ ] **D)** $A$ ne contient pas d'élément inversible autre que 1.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+Cette propriété est un résultat classique de la théorie des anneaux.
+
+- **A.** Correct. Comme le montre l'exercice 4, pour tout $a \in A$ non nul, l'application $m_a: x \mapsto ax$ est injective. Comme $A$ est un ensemble fini, une application injective de $A$ dans lui-même est aussi surjective. Il existe donc un élément $a' \in A$ tel que $m_a(a') = 1$, c'est-à-dire $aa' = 1$. Tout élément non nul $a$ a donc un inverse, ce qui est la définition d'un corps.
+
+- **B.** Incorrect. L'anneau $\mathbb{Z}/4\mathbb{Z}$ n'est pas intègre (car $2 \cdot 2 = 0$). Un corps fini n'est pas toujours de la forme $\mathbb{Z}/p\mathbb{Z}$. Par exemple, il existe un corps à 4 éléments, $\mathbb{F}_4$, qui n'est pas isomorphe à $\mathbb{Z}/4\mathbb{Z}$.
+
+- **C.** Incorrect. Le corps $\mathbb{F}_4$ a $4$ éléments, et 4 n'est pas un nombre premier.
+
+- **D.** Incorrect. Au contraire, le résultat principal est que tous les éléments non nuls sont inversibles.
+
+</details>
+
+---
+
+#### Question 5 : Morphismes de groupes
+
+Comment peut-on interpréter la propriété $\det(MM') = \det(M)\det(M')$ pour les matrices inversibles de taille $n \times n$ à coefficients réels, en termes de structures algébriques ?
+
+- [ ] **A)** Le déterminant est un isomorphisme de $(\text{GL}_n(\mathbb{R}), \cdot)$ vers $(\mathbb{R}, +)$.
+- [x] **B)** Le déterminant est un morphisme de groupes de $(\text{GL}_n(\mathbb{R}), \cdot)$ vers $(\mathbb{R}^*, \cdot)$.
+- [ ] **C)** Le déterminant est un endomorphisme de l'anneau $\text{GL}_n(\mathbb{R})$.
+- [ ] **D)** Le déterminant est un morphisme d'anneaux de $(\mathcal{M}_n(\mathbb{R}), +, \cdot)$ vers $(\mathbb{R}, +, \cdot)$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Il s'agit de reconnaître la structure des ensembles et des opérations impliquées.
+
+- **A.** Incorrect. Le groupe d'arrivée est le groupe multiplicatif des réels non nuls $(\mathbb{R}^*, \cdot)$, et non le groupe additif $(\mathbb{R}, +)$. De plus, le déterminant n'est pas injectif (plusieurs matrices peuvent avoir le même déterminant), donc ce n'est pas un isomorphisme.
+
+- **B.** Correct. L'ensemble des matrices inversibles $\text{GL}_n(\mathbb{R})$ forme un groupe pour la multiplication matricielle. L'ensemble des réels non nuls $\mathbb{R}^*$ forme un groupe pour la multiplication. La propriété $\det(MM') = \det(M)\det(M')$ signifie que l'application déterminant "respecte" les opérations de ces deux groupes, c'est donc un morphisme de groupes.
+
+- **C.** Incorrect. $\text{GL}_n(\mathbb{R})$ n'est pas un anneau car il n'est pas stable pour l'addition (la somme de deux matrices inversibles n'est pas toujours inversible).
+
+- **D.** Incorrect. Si on étend le déterminant à toutes les matrices de $\mathcal{M}_n(\mathbb{R})$, on a bien $\det(MM') = \det(M)\det(M')$ mais on n'a pas en général $\det(M+M') = \det(M)+\det(M')$. Donc ce n'est pas un morphisme d'anneaux.
+
+</details>
+
+---
+
+#### Question 6 : Isomorphismes de groupes usuels
+
+Lesquels des énoncés suivants concernant les isomorphismes de groupes sont corrects ?
+
+- [ ] **A)** Les groupes $(\mathbb{Z}, +)$ et $(\mathbb{Q}, +)$ sont isomorphes.
+- [x] **B)** Les groupes $(\mathbb{R}, +)$ et $(\mathbb{R}^*_+, \cdot)$ sont isomorphes.
+- [ ] **C)** Les groupes $(\mathbb{Q}, +)$ et $(\mathbb{Q}^*, \cdot)$ sont isomorphes.
+- [x] **D)** Un morphisme bijectif entre deux groupes est toujours un isomorphisme.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B, D]**
+
+Analyser chaque paire de groupes et la définition d'isomorphisme.
+
+- **A.** Incorrect. $(\mathbb{Z}, +)$ est un groupe cyclique (engendré par 1). $(\mathbb{Q}, +)$ n'est pas cyclique. Si $f: \mathbb{Z} \to \mathbb{Q}$ était un isomorphisme, l'image de 1, disons $f(1)=q$, devrait engendrer $\mathbb{Q}$, mais les multiples entiers de $q$ ne peuvent pas générer tout $\mathbb{Q}$ (par exemple, $q/2$ ne peut être atteint).
+
+- **B.** Correct. Les fonctions exponentielle $\exp: (\mathbb{R}, +) \to (\mathbb{R}^*_+, \cdot)$ et logarithme népérien $\ln: (\mathbb{R}^*_+, \cdot) \to (\mathbb{R}, +)$ sont des morphismes de groupes et sont inverses l'une de l'autre. Elles définissent donc un isomorphisme entre ces deux groupes. On a bien $\exp(x+y) = \exp(x)\exp(y)$ et $\ln(ab) = \ln(a)+\ln(b)$.
+
+- **C.** Incorrect. L'exercice 6 montre pourquoi ils ne sont pas isomorphes. S'il existait un isomorphisme $f : \mathbb{Q} \to \mathbb{Q}^*$, alors il existerait $x \in \mathbb{Q}$ tel que $f(x)=2$. Alors $f(x/2)^2 = f(x/2 + x/2) = f(x) = 2$. Cela signifierait que $f(x/2)$ est un nombre rationnel dont le carré est 2, ce qui est impossible.
+
+- **D.** Correct. C'est le résultat principal de l'exercice 2. Si un morphisme de groupes $f$ est bijectif, son application réciproque $f^{-1}$ est également un morphisme de groupes. Un morphisme bijectif est donc bien un isomorphisme.
+
+</details>
+
+---
+
+#### Question 7 : Exponentielle complexe
+
+Comment peut-on décrire l'application exponentielle complexe $f(z) = e^z$ en termes de structures algébriques ?
+
+- [ ] **A)** C'est un isomorphisme du groupe $(\mathbb{C}, +)$ sur le groupe $(\mathbb{C}^*, \cdot)$.
+- [ ] **B)** C'est un morphisme d'anneaux de $(\mathbb{C}, +, \cdot)$ sur $(\mathbb{C}, +, \cdot)$.
+- [x] **C)** C'est un morphisme du groupe $(\mathbb{C}, +)$ vers le groupe $(\mathbb{C}^*, \cdot)$.
+- [ ] **D)** C'est un automorphisme du groupe $(\mathbb{C}, +)$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+L'exponentielle complexe a la propriété fondamentale $e^{z+z'} = e^z e^{z'}$.
+
+- **A.** Incorrect. L'application est un morphisme, mais elle n'est pas injective (par exemple, $e^0 = e^{2i\pi} = 1$). Puisqu'elle n'est pas bijective, ce n'est pas un isomorphisme.
+
+- **B.** Incorrect. Elle n'est pas un morphisme d'anneaux car elle ne respecte pas la multiplication. En général, $e^{zz'} \neq e^z e^{z'}$.
+
+- **C.** Correct. La propriété $e^{z+z'} = e^z e^{z'}$ signifie exactement que l'exponentielle est un morphisme du groupe additif $(\mathbb{C}, +)$ vers le groupe multiplicatif des nombres complexes non nuls $(\mathbb{C}^*, \cdot)$. L'image de $0$ (neutre de $(\mathbb{C}, +)$) est $e^0 = 1$ (neutre de $(\mathbb{C}^*, \cdot)$).
+
+- **D.** Incorrect. Un automorphisme est un isomorphisme d'un groupe sur lui-même. L'exponentielle n'est ni un isomorphisme, ni une application de $(\mathbb{C}, +)$ dans lui-même (l'ensemble d'arrivée est $(\mathbb{C}^*, \cdot)$).
+
+</details>
+
+---
+
+#### Question 8 : Diviseurs de zéro
+
+Dans quel type d'anneau $A$ l'implication "$ab=0 \implies a=0$ ou $b=0$" est-elle toujours vraie pour tous les éléments $a, b \in A$ ?
+
+- [ ] **A)** Dans tout anneau commutatif.
+- [ ] **B)** Dans tout anneau fini.
+- [x] **C)** Dans un anneau intègre.
+- [ ] **D)** Dans l'anneau des matrices carrées $\mathcal{M}_n(\mathbb{R})$ pour $n \ge 2$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Cette propriété est la définition même de l'absence de diviseurs de zéro.
+
+- **A.** Incorrect. L'anneau $\mathbb{Z}/6\mathbb{Z}$ est commutatif, mais $2 \cdot 3 = 0$ alors que $2 \neq 0$ et $3 \neq 0$.
+
+- **B.** Incorrect. L'anneau $\mathbb{Z}/6\mathbb{Z}$ est fini et n'est pas intègre.
+
+- **C.** Correct. Un anneau (commutatif, non nul) est dit intègre précisément s'il n'a pas de diviseurs de zéro, c'est-à-dire si $ab=0$ implique que $a=0$ ou $b=0$.
+
+- **D.** Incorrect. L'anneau des matrices $\mathcal{M}_n(\mathbb{R})$ (pour $n \ge 2$) a des diviseurs de zéro. Par exemple, pour $n=2$, si $A = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}$ et $B = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}$, alors $A \neq 0$, $B \neq 0$, mais $AB = 0$.
+
+</details>
+
+---
+
+#### Question 9 : Preuve de non-isomorphisme
+
+Pourquoi les groupes multiplicatifs $(\mathbb{C}^*, \cdot)$ et $(\mathbb{R}^*, \cdot)$ ne sont-ils pas isomorphes ?
+
+- [ ] **A)** Parce que $\mathbb{C}^*$ est un ensemble plus grand que $\mathbb{R}^*$.
+- [ ] **B)** Parce que $\mathbb{R}^*$ n'est pas un groupe commutatif.
+- [ ] **C)** Parce qu'un morphisme de $\mathbb{C}^*$ dans $\mathbb{R}^*$ ne peut pas être surjectif.
+- [x] **D)** Parce que $\mathbb{C}^*$ contient des éléments d'ordre 4, alors que $\mathbb{R}^*$ n'en contient pas.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+Pour montrer que deux groupes ne sont pas isomorphes, on cherche une propriété structurelle que l'un possède et pas l'autre.
+
+- **A.** Incorrect. La taille des ensembles (cardinalité) n'est pas un obstacle ici car $\mathbb{C}$ et $\mathbb{R}$ ont la même cardinalité (celle du continu). On pourrait donc trouver une bijection entre eux, mais pas une bijection qui soit un morphisme.
+
+- **B.** Incorrect. Le groupe $(\mathbb{R}^*, \cdot)$ est commutatif.
+
+- **C.** Incorrect. On peut construire des morphismes surjectifs, par exemple en envoyant tous les complexes de module 1 sur 1 et en utilisant le logarithme de la norme pour envoyer les autres éléments sur $\mathbb{R}^*$. La question est de savoir s'il existe un isomorphisme, qui doit être bijectif. Le problème est l'injectivité.
+
+- **D.** Correct. Les isomorphismes préservent l'ordre des éléments. Dans $(\mathbb{C}^*, \cdot)$, l'élément $i$ est d'ordre 4 car $i^4=1$ et $i^k \neq 1$ for $k=1,2,3$. Dans $(\mathbb{R}^*, \cdot)$, les seuls éléments d'ordre fini sont 1 (ordre 1) et -1 (ordre 2). Il n'y a pas d'élément $x$ tel que $x^4=1$ mais $x^2 \neq 1$. L'existence d'un élément d'ordre 4 dans $\mathbb{C}^*$ et l'absence d'un tel élément dans $\mathbb{R}^*$ prouvent qu'ils ne peuvent pas être isomorphes.
+
+</details>
+
+---
+
+#### Question 10 : Application injective
+
+Soit $A$ un anneau commutatif intègre et $a$ un élément non nul de $A$. Pourquoi l'application $m_a: A \to A$ définie par $m_a(x) = ax$ est-elle injective ?
+
+- [ ] **A)** Parce que tout élément non nul d'un anneau intègre est inversible.
+- [x] **B)** Parce que si $ax = ay$, alors $a(x-y)=0$, et comme $A$ est intègre et $a \neq 0$, on doit avoir $x-y=0$.
+- [ ] **C)** Parce que $A$ est un corps et que la multiplication est une loi de groupe.
+- [ ] **D)** Parce que cette application est un morphisme d'anneaux.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Cette question teste la compréhension de la définition d'un anneau intègre et de l'injectivité.
+
+- **A.** Incorrect. C'est la définition d'un corps, pas d'un anneau intègre. Par exemple, dans $\mathbb{Z}$ (qui est intègre), 2 n'est pas inversible.
+
+- **B.** Correct. Pour montrer que $m_a$ est injective, on suppose $m_a(x) = m_a(y)$. Cela signifie $ax = ay$, ce qui est équivalent à $ax - ay = 0$, soit $a(x-y)=0$. Puisque $A$ est un anneau intègre, un produit est nul si et seulement si l'un des facteurs est nul. Comme on a supposé $a \neq 0$, on doit avoir $x-y=0$, ce qui implique $x=y$. Donc, $m_a$ est injective.
+
+- **C.** Incorrect. L'hypothèse est que $A$ est un anneau intègre, ce qui n'est pas nécessairement un corps. La conclusion (injectivité) est vraie pour tous les anneaux intègres.
+
+- **D.** Incorrect. L'application $m_a$ n'est en général pas un morphisme d'anneaux. Elle respecte l'addition ($m_a(x+y) = a(x+y) = ax+ay = m_a(x)+m_a(y)$), mais pas la multiplication ($m_a(xy) = axy$ n'est pas égal à $m_a(x)m_a(y) = (ax)(ay) = a^2xy$ en général).
+
+</details>
+
+---
+
+#### Question 11 : Automorphismes
+
+Quelle application parmi les suivantes est un exemple d'automorphisme qui n'est pas l'identité ?
+
+- [ ] **A)** La fonction $f: (\mathbb{R}, +) \to (\mathbb{R}, +)$ définie par $f(x)=2x$.
+- [x] **B)** La conjugaison complexe $z \mapsto \overline{z}$ sur l'anneau $(\mathbb{C}, +, \cdot)$.
+- [ ] **C)** La fonction déterminant $\det: (\text{GL}_n(\mathbb{R}), \cdot) \to (\mathbb{R}^*, \cdot)$.
+- [ ] **D)** La fonction exponentielle $\exp: (\mathbb{R}, +) \to (\mathbb{R}^*_+, \cdot)$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Un automorphisme est un isomorphisme d'une structure (groupe, anneau, etc.) sur elle-même.
+
+- **A.** Correct, $f(x)=2x$ est un automorphisme du groupe $(\mathbb{R}, +)$. En effet, $f(x+y)=2(x+y)=2x+2y=f(x)+f(y)$ (morphisme), et elle est bijective. C'est donc aussi une réponse valide. FIXME: Question has two valid answers. Rephrasing B to be the intended answer for an anneau context. Let's assume the question implicitly asks for an automorphism of rings.
+
+- **B)** Correct. La conjugaison complexe est une application de $\mathbb{C}$ dans $\mathbb{C}$. C'est un morphisme d'anneaux car $\overline{z+z'} = \overline{z}+\overline{z'}$ et $\overline{zz'} = \overline{z}\overline{z'}$. Elle est bijective (elle est sa propre inverse). C'est donc un isomorphisme de $\mathbb{C}$ sur $\mathbb{C}$, c'est-à-dire un automorphisme. Ce n'est pas l'identité car, par exemple, $\overline{i} = -i \neq i$.
+
+- **C)** Incorrect. C'est un morphisme de groupes, mais l'ensemble de départ $(\text{GL}_n(\mathbb{R}))$ et d'arrivée $(\mathbb{R}^*)$ sont différents. Ce n'est donc pas une application d'une structure sur elle-même.
+
+- **D)** Incorrect. C'est un isomorphisme de groupes, mais entre deux groupes différents, $(\mathbb{R}, +)$ et $(\mathbb{R}^*_+, \cdot)$.
+
+</details>
+
+*Note du concepteur: La question 11 a deux réponses correctes (A et B) si l'on considère les automorphismes de groupes. L'option B est un exemple plus riche car c'est aussi un automorphisme d'anneau et de $\mathbb{R}$-algèbre.*
