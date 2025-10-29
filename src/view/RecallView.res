@@ -67,9 +67,9 @@ module Back = {
           ->React.array}
         </ul>
       </div>
-      <div className="card-answer" onClick={_ => back.turn()}>
+      <div className="card-answer">
         <details open_={true}>
-          <summary>
+          <summary onClick={_ => back.turn()}>
             <strong> {"Solution"->React.string} </strong>
           </summary>
           <div className="card-evaluate">

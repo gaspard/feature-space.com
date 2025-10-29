@@ -124,7 +124,10 @@ function RecallView$Back(props) {
                               JsxRuntime.jsx("summary", {
                                     children: JsxRuntime.jsx("strong", {
                                           children: "Solution"
-                                        })
+                                        }),
+                                    onClick: (function (param) {
+                                        back.turn();
+                                      })
                                   }),
                               JsxRuntime.jsxs("div", {
                                     children: [
@@ -172,10 +175,7 @@ function RecallView$Back(props) {
                             ],
                             open: true
                           }),
-                      className: "card-answer",
-                      onClick: (function (param) {
-                          back.turn();
-                        })
+                      className: "card-answer"
                     })
               ],
               className: "card"

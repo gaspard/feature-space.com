@@ -2,7 +2,7 @@
 id: 5b9685d9
 type: concepts
 order: 10
-title: Rappels de logique et suites numériques
+title: Rappels de logique et suites numériques - Concepts (A)
 tags:
   - logique
   - suites numériques
