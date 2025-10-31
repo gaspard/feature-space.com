@@ -150,6 +150,7 @@ let make = (
   }
 
   let prog = Dict.fromArray(stacks->Array.map(({prog}) => (prog.id, prog)))
+  let (showBack, setShowBack) = signal(false)
 
   let evaluate = (state: CardProgress.state) => {
     switch card.value {
@@ -161,6 +162,7 @@ let make = (
           let c = CardProgress.next(p.cards->Dict.get(card.id), state, ~now)
           p.cards->Dict.set(card.id, c)
           ignore(repo.progress.save(p))
+          setShowBack(false)
           advance(state)
         }
       }
@@ -182,8 +184,6 @@ let make = (
       stackCount: stack.value->Array.length,
     }
   })
-
-  let (showBack, setShowBack) = signal(false)
 
   let options = derived(() => {
     switch card.Tilia.value {

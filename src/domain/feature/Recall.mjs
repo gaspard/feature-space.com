@@ -113,6 +113,9 @@ function make(repo, stacks, shuffleOpt, nowOpt, maxOpt, dayLengthOpt) {
                     prog
                   ];
           }));
+  var match$1 = Tilia.signal(false);
+  var setShowBack = match$1[1];
+  var showBack = match$1[0];
   var evaluate = function (state) {
     var card$1 = card.value;
     if (card$1 === undefined) {
@@ -125,6 +128,7 @@ function make(repo, stacks, shuffleOpt, nowOpt, maxOpt, dayLengthOpt) {
     var c = CardProgress.next(p.cards[card$1.id], state, now);
     p.cards[card$1.id] = c;
     repo.progress.save(p);
+    setShowBack(false);
     var card$2 = stack.value.shift();
     if (card$2 !== undefined && state === "again") {
       stack.value.push(card$2);
@@ -147,9 +151,6 @@ function make(repo, stacks, shuffleOpt, nowOpt, maxOpt, dayLengthOpt) {
                 stackCount: stack.value.length
               };
       });
-  var match$1 = Tilia.signal(false);
-  var setShowBack = match$1[1];
-  var showBack = match$1[0];
   var options = Tilia.derived(function () {
         var card$1 = card.value;
         if (card$1 !== undefined) {
