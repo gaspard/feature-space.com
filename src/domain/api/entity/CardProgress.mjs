@@ -38,7 +38,7 @@ function next(prev, state, now) {
   if (exit === 1) {
     state$1 = typeof state !== "object" ? state : ({
           kind: "easy",
-          _0: 1
+          _0: 0
         });
   }
   return {
