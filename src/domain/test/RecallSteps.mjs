@@ -116,12 +116,15 @@ VitestBdd.Given("stacks", (function (param, table) {
                 var recall = Recall.make(mockRepo, Object.values(pair), shuffle, (function () {
                         return 1000;
                       }), nb | 0, 100);
-                cards.forEach(function (card) {
+                cards.forEach(function (card, i) {
+                      var check = function (expected, actual) {
+                        Vitest.expect((i + 1 | 0).toString() + ": " + expected.toString()).toBe((i + 1 | 0).toString() + ": " + actual.toString());
+                      };
                       var id = Core__Option.getExn(card.id, undefined);
                       var toRecall = Core__Option.getExn(card.toRecall, undefined) | 0;
                       var stackCount = Core__Option.getExn(card.stackCount, undefined) | 0;
-                      Vitest.expect(recall.stats.toRecall).toBe(toRecall);
-                      Vitest.expect(recall.stats.stackCount).toBe(stackCount);
+                      check(recall.stats.toRecall, toRecall);
+                      check(recall.stats.stackCount, stackCount);
                       if (id === "none") {
                         return Vitest.expect(recall.card).toBe(undefined);
                       }

@@ -9,9 +9,9 @@ import * as Core__Option from "@rescript/core/src/Core__Option.mjs";
 VitestBdd.Given("a card evaluation", (function (param, table) {
         param.step("the recall times should match", (function () {
                 VitestBdd.toRecords(table).forEach(function (record) {
-                      var timestamp = Core__Option.getExn(Core__Float.fromString(Core__Option.getExn(record.day, undefined)), undefined) * 3600 * 24;
+                      var timestamp = Core__Option.getExn(Core__Float.fromString(Core__Option.getExn(record.day, undefined)), undefined);
                       var state = CardProgress.ofString(Core__Option.getExn(record.state, undefined));
-                      Vitest.expect(CardProgress.recallTime(timestamp, state, undefined) / 3600 / 24).toBe(Core__Option.getExn(Core__Float.fromString(Core__Option.getExn(record.recall, undefined)), undefined));
+                      Vitest.expect(CardProgress.recallTime(timestamp, state, 1)).toBe(Core__Option.getExn(Core__Float.fromString(Core__Option.getExn(record.recall, undefined)), undefined));
                     });
               }));
       }));

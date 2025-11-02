@@ -34,12 +34,12 @@ Feature: Recall
       | stack2  | card8 |           |       |        |
     Then the next cards for 5 cards should be
       | id    | eval  | toRecall | stackCount |
-      | card1 | Again | 6        | 5          |
-      | card2 | Good  | 6        | 5          |
-      | card5 | Again | 5        | 4          |
-      | card6 | Hard  | 5        | 4          |
-      | card7 | Good  | 4        | 3          |
-      | card1 | Again | 3        | 2          |
-      | card5 | Hard  | 3        | 2          |
-      | card1 | Hard  | 2        | 1          |
-      | none  |       | 1        | 0          |
+      | card1 | Again | 3        | 5          |
+      | card2 | Good  | 3        | 5          |
+      | card5 | Again | 2        | 4          |
+      | card6 | Hard  | 3        | 4          |
+      | card7 | Good  | 3        | 3          |
+      | card1 | Again | 2        | 2          |
+      | card5 | Hard  | 2        | 2          |
+      | card1 | Hard  | 1        | 1          |
+      | none  |       | 0        | 0          |

@@ -110,13 +110,17 @@ given("stacks", ({step}, table) => {
       ~max=nb->Float.toInt,
       ~dayLength=100.,
     )
-    cards->Array.forEach(
-      card => {
+    cards->Array.forEachWithIndex(
+      (card, i) => {
+        let check = (expected: int, actual: int) =>
+          expect((i + 1)->Int.toString ++ ": " ++ expected->Int.toString).toBe(
+            (i + 1)->Int.toString ++ ": " ++ actual->Int.toString,
+          )
         let id = card["id"]->Option.getExn
         let toRecall = card["toRecall"]->Option.getExn->Float.toInt
         let stackCount = card["stackCount"]->Option.getExn->Float.toInt
-        expect(recall.stats.toRecall).toBe(toRecall)
-        expect(recall.stats.stackCount).toBe(stackCount)
+        check(recall.stats.toRecall, toRecall)
+        check(recall.stats.stackCount, stackCount)
         if id == "none" {
           expect(recall.card).toBe(None)
         } else {
