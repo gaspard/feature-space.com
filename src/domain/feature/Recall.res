@@ -184,18 +184,20 @@ let make = (
     }
   }
 
-  // FIXME: This is not efficient, we should compute the stats once and then update them when the cards change.
+  // FIXME: This
   let stats = derived(() => {
     let total = Array.reduce(stacks, 0, (acc, {stack}: rstack) => acc + stack.cards->Array.length)
     let seen = Array.reduce(stacks, 0, (acc, {prog}: rstack) =>
       acc + prog.cards->Dict.valuesToArray->Array.length
     )
 
+    let newCount = total - seen
+
     {
       total,
       seen,
       new: total - seen,
-      toRecall: toRecall(stacks, ~now=now(), ~dayLength)->Array.length,
+      toRecall: toRecall(stacks, ~now=now(), ~dayLength)->Array.length - newCount,
       stackCount: stack.value->Array.length,
     }
   })

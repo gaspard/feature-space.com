@@ -157,11 +157,12 @@ function make(repo, stacks, shuffleOpt, nowOpt, maxOpt, dayLengthOpt) {
         var seen = Core__Array.reduce(stacks$1, 0, (function (acc, param) {
                 return acc + Object.values(param.prog.cards).length | 0;
               }));
+        var newCount = total - seen | 0;
         return {
                 total: total,
                 seen: seen,
                 new: total - seen | 0,
-                toRecall: toRecall(stacks$1, now(), dayLength).length,
+                toRecall: toRecall(stacks$1, now(), dayLength).length - newCount | 0,
                 stackCount: stack.value.length
               };
       });
