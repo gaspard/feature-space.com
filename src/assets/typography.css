@@ -435,6 +435,10 @@ main {
     }
   }
 
+  .card-wrapper {
+    @apply -mx-5 md:mx-0;
+  }
+
   .card {
     @apply bg-white md:m-4 md:rounded-xl md:border md:border-slate-300 w-full lg:max-w-3xl overflow-hidden;
 
@@ -467,6 +471,10 @@ main {
       &.easy {
         @apply bg-cyan-100;
       }
+    }
+    
+    .card-evaluate {
+      @apply mt-0;
     }
   }
 
@@ -507,7 +515,7 @@ li:not(:has(input)) {
 }
 
 li:has(input), .card li:has(input) {
-  @apply list-none;
+  @apply list-none flex items-start;
   cursor: pointer;
   padding: 2px 7px;
   border-radius: 4px;
@@ -548,7 +556,7 @@ span.correct:empty {
 }
 
 details {
-  @apply px-4 md:py-3 py-1 border-t border-t-transparent;
+  @apply px-4 md:py-3 py-1 border-t border-slate-200 mt-0;
 }
 
 .main-content details summary+p {
@@ -556,16 +564,41 @@ details {
 }
 
 summary {
-  @apply cursor-pointer text-slate-500;
+  @apply cursor-pointer text-slate-500 list-none mt-0 mb-0 py-3;
+  
+  /* Hide default marker and use custom one */
+  &::-webkit-details-marker {
+    display: none;
+  }
+  
+  &::marker {
+    display: none;
+  }
+  
+  /* Custom arrow marker */
+  &::before {
+    content: '▶';
+    @apply inline-block mr-2 text-xs transition-transform;
+  }
 
   strong {
     @apply pl-2 text-slate-300;
   }
 }
 
+details {
+  background: hsla(204, 50%, 96%, 50%);
+}
 details[open] {
-  @apply border-t border-slate-200 bg-slate-100;
   background: hsl(204, 50%, 96%);
+  
+  summary {
+    @apply mt-0 mb-0;
+  }
+  
+  summary::before {
+    @apply rotate-90;
+  }
 }
 
 button.toggle-check,
@@ -588,42 +621,28 @@ button.card-next {
 
 /* Interactive checkboxes for quiz content */
 input[type='checkbox'] {
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #d1d5db;
-  border-radius: 3px;
-  background: white;
-  cursor: pointer;
-  position: relative;
-  top: 4px;
-  margin-right: 8px;
+  @apply appearance-none w-5 h-5 border-2 border-gray-300 rounded bg-white cursor-pointer relative top-1 mr-2;
+  box-sizing: border-box;
+  min-width: 20px;
+  min-height: 20px;
+  flex-shrink: 0;
 }
 
 input[type='checkbox']:checked {
-  background: #3b82f6;
-  border-color: #3b82f6;
+  @apply bg-blue-500 border-blue-500;
 }
 
 input[type='checkbox']:checked::after {
   content: '✓';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 1;
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-sm font-bold leading-none;
 }
 
 input[type='checkbox']:hover {
-  border-color: #9ca3af;
+  @apply border-gray-400;
 }
 
 input[type='checkbox']:checked:hover {
-  background: #2563eb;
-  border-color: #2563eb;
+  @apply bg-blue-600 border-blue-600;
 }
 
 @media (max-width: 500px) {
@@ -635,6 +654,17 @@ input[type='checkbox']:checked:hover {
     max-width: 100% !important;
     height: auto !important;
     float: none !important;
+  }
+
+  input[type='checkbox'] {
+    @apply w-6 h-6 border-2 rounded;
+    box-sizing: border-box;
+    min-width: 24px;
+    min-height: 24px;
+  }
+
+  input[type='checkbox']:checked::after {
+    @apply text-lg;
   }
 }
 

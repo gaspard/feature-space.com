@@ -23,13 +23,13 @@ module Front = {
           )
           ->React.array}
         </ul>
-        <div className="card-anwser" onClick={_ => front.turn()}>
-          <details open_={false}>
-            <summary>
-              <strong> {"Solution"->React.string} </strong>
-            </summary>
-          </details>
-        </div>
+      </div>
+      <div className="card-anwser" onClick={_ => front.turn()}>
+        <details open_={false}>
+          <summary>
+            <strong> {"Solution"->React.string} </strong>
+          </summary>
+        </details>
       </div>
     </div>
   }
@@ -38,10 +38,10 @@ module Front = {
 module Back = {
   let correctionClassname = (correction: Recall.Ui.correction) => {
     switch correction {
-    | Correct => "flex correct"
-    | Incorrect => "flex incorrect"
-    | Missed => "flex missed"
-    | Blank => "flex blank"
+    | Correct => "correct"
+    | Incorrect => "incorrect"
+    | Missed => "missed"
+    | Blank => "blank"
     }
   }
   @react.component
@@ -116,7 +116,7 @@ module Done = {
 @react.component
 let make = (~recall: Recall.t) => {
   useTilia()
-  <div>
+  <div className="card-wrapper">
     <div className="stats">
       <span> {"session"->React.string} </span>
       <span className="col-span-3 font-bold text-left">

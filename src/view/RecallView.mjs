@@ -14,51 +14,53 @@ var Markdown = {
 function RecallView$Front(props) {
   var front = props.front;
   TiliaReact.useTilia();
-  return JsxRuntime.jsx("div", {
-              children: JsxRuntime.jsxs("div", {
-                    children: [
-                      JsxRuntime.jsx(make, {
-                            text: front.content
-                          }),
-                      JsxRuntime.jsx("ul", {
-                            children: front.options.map(function (option) {
-                                  return JsxRuntime.jsxs("li", {
-                                              children: [
-                                                JsxRuntime.jsx("input", {
-                                                      checked: option.checked,
-                                                      type: "checkbox",
-                                                      onChange: (function (param) {
-                                                          
-                                                        })
-                                                    }),
-                                                JsxRuntime.jsx(make, {
-                                                      text: option.content
-                                                    })
-                                              ],
-                                              onClick: (function (param) {
-                                                  option.checked = !option.checked;
-                                                })
-                                            }, option.id);
+  return JsxRuntime.jsxs("div", {
+              children: [
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx(make, {
+                              text: front.content
+                            }),
+                        JsxRuntime.jsx("ul", {
+                              children: front.options.map(function (option) {
+                                    return JsxRuntime.jsxs("li", {
+                                                children: [
+                                                  JsxRuntime.jsx("input", {
+                                                        checked: option.checked,
+                                                        type: "checkbox",
+                                                        onChange: (function (param) {
+                                                            
+                                                          })
+                                                      }),
+                                                  JsxRuntime.jsx(make, {
+                                                        text: option.content
+                                                      })
+                                                ],
+                                                onClick: (function (param) {
+                                                    option.checked = !option.checked;
+                                                  })
+                                              }, option.id);
+                                  }),
+                              className: "options"
+                            })
+                      ],
+                      className: "card-question"
+                    }),
+                JsxRuntime.jsx("div", {
+                      children: JsxRuntime.jsx("details", {
+                            children: JsxRuntime.jsx("summary", {
+                                  children: JsxRuntime.jsx("strong", {
+                                        children: "Solution"
+                                      })
                                 }),
-                            className: "options"
+                            open: false
                           }),
-                      JsxRuntime.jsx("div", {
-                            children: JsxRuntime.jsx("details", {
-                                  children: JsxRuntime.jsx("summary", {
-                                        children: JsxRuntime.jsx("strong", {
-                                              children: "Solution"
-                                            })
-                                      }),
-                                  open: false
-                                }),
-                            className: "card-anwser",
-                            onClick: (function (param) {
-                                front.turn();
-                              })
-                          })
-                    ],
-                    className: "card-question"
-                  }),
+                      className: "card-anwser",
+                      onClick: (function (param) {
+                          front.turn();
+                        })
+                    })
+              ],
               className: "card"
             });
 }
@@ -70,13 +72,13 @@ var Front = {
 function correctionClassname(correction) {
   switch (correction) {
     case "Correct" :
-        return "flex correct";
+        return "correct";
     case "Missed" :
-        return "flex missed";
+        return "missed";
     case "Incorrect" :
-        return "flex incorrect";
+        return "incorrect";
     case "Blank" :
-        return "flex blank";
+        return "blank";
     
   }
 }
@@ -264,7 +266,8 @@ function RecallView(props) {
                       className: "stats"
                     }),
                 tmp
-              ]
+              ],
+              className: "card-wrapper"
             });
 }
 
