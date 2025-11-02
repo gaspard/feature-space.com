@@ -105,8 +105,8 @@ module Done = {
     <div className="card">
       <div className="card-question">
         <p>
-          {"Tout est terminé. Si vous voulez révixer encore, cliquez sur le bouton."->React.string}
-          <button className="more" onClick={_ => App.app.start()}> {"Plus"->React.string} </button>
+          {"Tout est terminé. Si vous voulez revoir encore, cliquez sur le bouton."->React.string}
+          <button className="more" onClick={_ => App.app.done()}> {"Plus"->React.string} </button>
         </p>
       </div>
     </div>

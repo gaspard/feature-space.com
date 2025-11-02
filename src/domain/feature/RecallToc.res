@@ -5,16 +5,52 @@ type tstack = {
   prog: sprog,
 }
 
+type stats = {
+  toRecall: int,
+  seen: int,
+  new: int,
+  total: int,
+}
+
 type t = {
   stacks: array<tstack>,
   setActive: (string, bool) => unit,
   start: (option<Recall.t> => unit) => promise<unit>,
-  cardCount: int,
   setDayLength: float => unit,
-  dayLength: float,
+  dayLengthH: float,
+  stats: stats,
 }
 
-let start = (repo: RepositoryType.t) => ({stacks, dayLength}) => {
+let stats = (~now) => ({stacks, dayLengthH}: t) => {
+  let total = Array.reduce(stacks, 0, (acc, elem: tstack) =>
+    acc +
+    switch elem {
+    | {info, prog: Started(p)} if p.active => info.count->Option.getOr(0)
+    | _ => 0
+    }
+  )
+  let seen =
+    stacks
+    ->Array.map(({prog}) =>
+      switch prog {
+      | Started(p) => Some(p)
+      | _ => None
+      }
+    )
+    ->Array.keepSome
+
+  let seenCount = Array.reduce(seen, 0, (acc, prog) =>
+    acc + prog.cards->Dict.valuesToArray->Array.length
+  )
+  {
+    total,
+    seen: seenCount,
+    new: total - seenCount,
+    toRecall: Recall.recallCount(seen, ~now=now(), ~dayLength=dayLengthH *. 3600. *. 1000.),
+  }
+}
+
+let start = (repo: RepositoryType.t) => ({stacks, dayLengthH}) => {
   async setRecall => {
     let stacks = (
       await Promise.all(
@@ -34,7 +70,7 @@ let start = (repo: RepositoryType.t) => ({stacks, dayLength}) => {
       )
     )->Array.keepSome
 
-    setRecall(Some(Recall.make(repo, stacks, ~dayLength=dayLength *. 3600.)))
+    setRecall(Some(Recall.make(repo, stacks, ~dayLength=dayLengthH *. 3600. *. 1000.)))
   }
 }
 
@@ -82,17 +118,6 @@ let setActive = ({save}: RepositoryType.progress) => ({stacks}) => (id, active) 
   }
 }
 
-let cardCount = ({stacks}) => {
-  let active = (prog: sprog) =>
-    switch prog {
-    | Started(p) => p.active
-    | _ => false
-    }
-  stacks->Array.reduce(0, (acc, {info, prog}) =>
-    acc + (active(prog) ? info.count->Option.getOr(0) : 0)
-  )
-}
-
 let make = (repo: RepositoryType.t, path: string): t => {
   open Tilia
 
@@ -101,10 +126,10 @@ let make = (repo: RepositoryType.t, path: string): t => {
     ->Nullable.getOr("24")
     ->Float.fromString
     ->Option.getOr(24.)
-  let (dayLength, setDayLength) = signal(day)
+  let (dayLengthH, setDayLengthH) = signal(day)
   let setDayLength = (value: float) => {
     repo.settings.save("dayLength", value->Float.toString)
-    setDayLength(value)
+    setDayLengthH(value)
   }
 
   carve(({derived}) => {
@@ -112,7 +137,7 @@ let make = (repo: RepositoryType.t, path: string): t => {
     setActive: derived(setActive(repo.progress)),
     start: derived(start(repo)),
     setDayLength,
-    dayLength: lift(dayLength),
-    cardCount: derived(cardCount),
+    dayLengthH: lift(dayLengthH),
+    stats: derived(stats(~now=Date.now)),
   })
 }

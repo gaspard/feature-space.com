@@ -15,7 +15,6 @@ var $$Storage = {
 };
 
 async function fetchData(path) {
-  console.log("FETCHING " + Core__Option.getOr(JSON.stringify(path), ""));
   try {
     var response = await fetch(path);
     return await response.text();

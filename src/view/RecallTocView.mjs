@@ -190,6 +190,7 @@ var $$Event = {
 function RecallTocView(props) {
   TiliaReact.useTilia();
   var toc = App.app.toc;
+  var stats = toc.stats;
   var levelGroups = Utils.partition(toc.stacks, (function (v) {
           return v.info.level;
         }));
@@ -201,16 +202,49 @@ function RecallTocView(props) {
                 JsxRuntime.jsxs("div", {
                       children: [
                         JsxRuntime.jsx("span", {
+                              children: "à revoir"
+                            }),
+                        JsxRuntime.jsx("span", {
+                              children: stats.toRecall.toString(),
+                              className: "num"
+                            }),
+                        JsxRuntime.jsx("span", {
+                              children: "vues"
+                            }),
+                        JsxRuntime.jsx("span", {
+                              children: stats.seen.toString(),
+                              className: "num"
+                            }),
+                        JsxRuntime.jsx("span", {
+                              children: "nouvelles"
+                            }),
+                        JsxRuntime.jsx("span", {
+                              children: stats.new.toString(),
+                              className: "num"
+                            }),
+                        JsxRuntime.jsx("span", {
+                              children: "total"
+                            }),
+                        JsxRuntime.jsx("span", {
+                              children: stats.total.toString(),
+                              className: "num"
+                            })
+                      ],
+                      className: "stats"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("span", {
                               children: "base de répétition (en heures)"
                             }),
                         JsxRuntime.jsx("span", {
-                              children: toc.dayLength.toString() + "h"
+                              children: toc.dayLengthH.toString() + "h"
                             }),
                         JsxRuntime.jsx("input", {
                               max: "24",
-                              min: "1",
+                              min: "0",
                               type: "range",
-                              value: toc.dayLength.toString(),
+                              value: toc.dayLengthH.toString(),
                               onChange: (function (e) {
                                   toc.setDayLength(Core__Option.getExn(Core__Float.fromString(value(e)), undefined));
                                 })
@@ -218,21 +252,10 @@ function RecallTocView(props) {
                       ],
                       className: "settings"
                     }),
-                JsxRuntime.jsxs("div", {
-                      children: [
-                        JsxRuntime.jsx("span", {
-                              children: "nombre de fiches"
-                            }),
-                        JsxRuntime.jsx("span", {
-                              children: toc.cardCount.toString()
-                            })
-                      ],
-                      className: "settings"
-                    }),
                 JsxRuntime.jsx("button", {
                       children: "Start",
                       className: "start",
-                      disabled: toc.cardCount === 0,
+                      disabled: (stats.toRecall + stats.new | 0) === 0,
                       onClick: (function (param) {
                           App.app.start();
                         })

@@ -79,7 +79,7 @@ type t = {
   stats: stats,
 }
 
-let sort = (cards: array<(Card.t, CardProgress.t)>, ~dayLength=3600. *. 24.): array<(
+let sort = (cards: array<(Card.t, CardProgress.t)>, ~dayLength=24. *. 3600. *. 1000.): array<(
   Card.t,
   CardProgress.t,
 )> => {
@@ -90,7 +90,19 @@ let sort = (cards: array<(Card.t, CardProgress.t)>, ~dayLength=3600. *. 24.): ar
   })
 }
 
-let toRecall = (stacks: array<rstack>, ~now=Date.now(), ~dayLength=3600. *. 24.) => {
+let recallCount = (
+  progs: array<Stack.progress>,
+  ~now=Date.now(),
+  ~dayLength=24. *. 3600. *. 1000.,
+) =>
+  progs
+  ->Array.flatMap(prog => prog.cards->Dict.valuesToArray)
+  ->Array.filter(({timestamp, state}) => {
+    CardProgress.recallTime(timestamp, state, ~dayLength) <= now
+  })
+  ->Array.length
+
+let toRecall = (stacks: array<rstack>, ~now=Date.now(), ~dayLength=24. *. 3600. *. 1000.) => {
   let newCards = []
   let seenCards = []
   stacks->Array.forEach(({stack, prog}) => {
@@ -121,7 +133,7 @@ let nextRecall = (
   ~shuffle=Array.shuffle,
   ~now=Date.now(),
   ~max=20,
-  ~dayLength=3600. *. 24.,
+  ~dayLength=24. *. 3600. *. 1000.,
 ) => {
   let toRecall = toRecall(stacks, ~now, ~dayLength)->Array.slice(~start=0, ~end=max)
   toRecall->shuffle
@@ -134,7 +146,7 @@ let make = (
   ~shuffle=Array.shuffle,
   ~now=Date.now,
   ~max=20,
-  ~dayLength=3600. *. 24.,
+  ~dayLength=24. *. 3600. *. 1000.,
 ): t => {
   open Tilia
   let stacks = tilia(stacks)

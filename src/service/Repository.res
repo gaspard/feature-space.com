@@ -9,7 +9,6 @@ module Browser = {
   external fetch: string => promise<response> = "fetch"
 
   let fetchData = async (path: string) => {
-    Js.log(`FETCHING ${JSON.stringifyAny(path)->Option.getOr("")}`)
     try {
       let response = await fetch(path)
       Some(await response.text())

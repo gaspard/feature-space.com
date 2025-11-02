@@ -104,7 +104,10 @@ main {
   }
 
   .stats, .settings {
-    @apply bg-slate-100 grid grid-cols-[2fr_0fr_1fr_0fr] gap-2 text-xs text-gray-500 w-auto my-4 mx-4 border-1 p-2 rounded-md border-slate-200 float-right;
+    @apply bg-slate-100 grid grid-cols-[2fr_0fr_1fr_0fr] gap-2 text-xs text-gray-500 w-auto my-4 mx-4 border-1 p-2 rounded-md border-slate-200 float-right min-w-48;
+    .num {
+      @apply text-right;
+    }
   }
   .toc {
     @apply clear-both;
@@ -572,6 +575,9 @@ button.more,
 button.reset,
 button.card-next {
   @apply cursor-pointer rounded-md bg-gray-100 md:px-4 md:py-2 text-center text-sm text-gray-500 border-gray-400 border md:m-4 px-2 py-1 mt-1 mx-2;
+  &:disabled {
+    @apply opacity-30 cursor-not-allowed;
+  }
 }
 
 .check {

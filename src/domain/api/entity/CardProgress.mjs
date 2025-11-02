@@ -3,12 +3,12 @@
 import * as S from "sury/src/S.mjs";
 import * as Core__Int from "@rescript/core/src/Core__Int.mjs";
 
-function recallTime(timestamp, s, dayLengthOpt) {
-  var dayLength = dayLengthOpt !== undefined ? dayLengthOpt : 3600 * 24;
-  if (typeof s === "object") {
-    return timestamp + 6 * dayLength * Math.pow(s._0, 2);
+function recallTime(timestamp, state, dayLengthOpt) {
+  var dayLength = dayLengthOpt !== undefined ? dayLengthOpt : 3600 * 24 * 1000;
+  if (typeof state === "object") {
+    return timestamp + 6 * dayLength * Math.pow(2, state._0);
   }
-  switch (s) {
+  switch (state) {
     case "again" :
         return timestamp + 0 * dayLength;
     case "hard" :

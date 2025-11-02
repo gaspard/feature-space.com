@@ -21,7 +21,10 @@ function make() {
                             return function () {
                               toc.start(setRecall);
                             };
-                          })
+                          }),
+                      done: (function () {
+                          setRecall(undefined);
+                        })
                     };
             });
 }

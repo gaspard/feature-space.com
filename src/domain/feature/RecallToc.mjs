@@ -7,9 +7,38 @@ import * as Core__Float from "@rescript/core/src/Core__Float.mjs";
 import * as Core__Option from "@rescript/core/src/Core__Option.mjs";
 import * as Core__Nullable from "@rescript/core/src/Core__Nullable.mjs";
 
+function stats(now) {
+  return function (param) {
+    var stacks = param.stacks;
+    var total = Core__Array.reduce(stacks, 0, (function (acc, elem) {
+            var p = elem.prog;
+            var tmp;
+            tmp = typeof p !== "object" || !p._0.active ? 0 : Core__Option.getOr(elem.info.count, 0);
+            return acc + tmp | 0;
+          }));
+    var seen = Core__Array.keepSome(stacks.map(function (param) {
+              var prog = param.prog;
+              if (typeof prog !== "object") {
+                return ;
+              } else {
+                return prog._0;
+              }
+            }));
+    var seenCount = Core__Array.reduce(seen, 0, (function (acc, prog) {
+            return acc + Object.values(prog.cards).length | 0;
+          }));
+    return {
+            toRecall: Recall.recallCount(seen, now(), param.dayLengthH * 3600 * 1000),
+            seen: seenCount,
+            new: total - seenCount | 0,
+            total: total
+          };
+  };
+}
+
 function start(repo) {
   return function (param) {
-    var dayLength = param.dayLength;
+    var dayLengthH = param.dayLengthH;
     var stacks = param.stacks;
     return async function (setRecall) {
       var stacks$1 = Core__Array.keepSome(await Promise.all(stacks.map(async function (param) {
@@ -33,7 +62,7 @@ function start(repo) {
                       return ;
                     }
                   })));
-      return setRecall(Recall.make(repo, stacks$1, undefined, undefined, undefined, dayLength * 3600));
+      return setRecall(Recall.make(repo, stacks$1, undefined, undefined, undefined, dayLengthH * 3600 * 1000));
     };
   };
 }
@@ -118,29 +147,14 @@ function setActive(param) {
   };
 }
 
-function cardCount(param) {
-  var active = function (prog) {
-    if (typeof prog !== "object") {
-      return false;
-    } else {
-      return prog._0.active;
-    }
-  };
-  return Core__Array.reduce(param.stacks, 0, (function (acc, param) {
-                return acc + (
-                        active(param.prog) ? Core__Option.getOr(param.info.count, 0) : 0
-                      ) | 0;
-              }));
-}
-
 function make(repo, path) {
   var day = Core__Option.getOr(Core__Float.fromString(Core__Nullable.getOr(repo.settings.get("dayLength"), "24")), 24);
   var match = Tilia.signal(day);
-  var setDayLength = match[1];
-  var dayLength = match[0];
-  var setDayLength$1 = function (value) {
+  var setDayLengthH = match[1];
+  var dayLengthH = match[0];
+  var setDayLength = function (value) {
     repo.settings.save("dayLength", value.toString());
-    setDayLength(value);
+    setDayLengthH(value);
   };
   return Tilia.carve(function (param) {
               var derived = param.derived;
@@ -148,19 +162,21 @@ function make(repo, path) {
                       stacks: Tilia.source(stacks(repo, path), []),
                       setActive: derived(setActive(repo.progress)),
                       start: derived(start(repo)),
-                      cardCount: derived(cardCount),
-                      setDayLength: setDayLength$1,
-                      dayLength: Tilia.lift(dayLength)
+                      setDayLength: setDayLength,
+                      dayLengthH: Tilia.lift(dayLengthH),
+                      stats: derived(stats(function (prim) {
+                                return Date.now();
+                              }))
                     };
             });
 }
 
 export {
+  stats ,
   start ,
   loadProgress ,
   stacks ,
   setActive ,
-  cardCount ,
   make ,
 }
 /* Tilia Not a pure module */

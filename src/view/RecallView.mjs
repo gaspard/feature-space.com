@@ -193,12 +193,12 @@ function RecallView$Done(props) {
               children: JsxRuntime.jsx("div", {
                     children: JsxRuntime.jsxs("p", {
                           children: [
-                            "Tout est terminé. Si vous voulez révixer encore, cliquez sur le bouton.",
+                            "Tout est terminé. Si vous voulez revoir encore, cliquez sur le bouton.",
                             JsxRuntime.jsx("button", {
                                   children: "Plus",
                                   className: "more",
                                   onClick: (function (param) {
-                                      App.app.start();
+                                      App.app.done();
                                     })
                                 })
                           ]

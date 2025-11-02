@@ -40,7 +40,7 @@ var Ui = {
 };
 
 function sort(cards, dayLengthOpt) {
-  var dayLength = dayLengthOpt !== undefined ? dayLengthOpt : 3600 * 24;
+  var dayLength = dayLengthOpt !== undefined ? dayLengthOpt : 24 * 3600 * 1000;
   return cards.toSorted(function (param, param$1) {
               var b = param$1[1];
               var a = param[1];
@@ -56,9 +56,19 @@ function sort(cards, dayLengthOpt) {
             });
 }
 
+function recallCount(progs, nowOpt, dayLengthOpt) {
+  var now = nowOpt !== undefined ? nowOpt : Date.now();
+  var dayLength = dayLengthOpt !== undefined ? dayLengthOpt : 24 * 3600 * 1000;
+  return progs.flatMap(function (prog) {
+                return Object.values(prog.cards);
+              }).filter(function (param) {
+              return CardProgress.recallTime(param.timestamp, param.state, dayLength) <= now;
+            }).length;
+}
+
 function toRecall(stacks, nowOpt, dayLengthOpt) {
   var now = nowOpt !== undefined ? nowOpt : Date.now();
-  var dayLength = dayLengthOpt !== undefined ? dayLengthOpt : 3600 * 24;
+  var dayLength = dayLengthOpt !== undefined ? dayLengthOpt : 24 * 3600 * 1000;
   var newCards = [];
   var seenCards = [];
   stacks.forEach(function (param) {
@@ -91,7 +101,7 @@ function nextRecall(stacks, shuffleOpt, nowOpt, maxOpt, dayLengthOpt) {
   var shuffle = shuffleOpt !== undefined ? shuffleOpt : Core__Array.shuffle;
   var now = nowOpt !== undefined ? nowOpt : Date.now();
   var max = maxOpt !== undefined ? maxOpt : 20;
-  var dayLength = dayLengthOpt !== undefined ? dayLengthOpt : 3600 * 24;
+  var dayLength = dayLengthOpt !== undefined ? dayLengthOpt : 24 * 3600 * 1000;
   var toRecall$1 = toRecall(stacks, now, dayLength).slice(0, max);
   shuffle(toRecall$1);
   return toRecall$1;
@@ -103,7 +113,7 @@ function make(repo, stacks, shuffleOpt, nowOpt, maxOpt, dayLengthOpt) {
         return Date.now();
       });
   var max = maxOpt !== undefined ? maxOpt : 20;
-  var dayLength = dayLengthOpt !== undefined ? dayLengthOpt : 3600 * 24;
+  var dayLength = dayLengthOpt !== undefined ? dayLengthOpt : 24 * 3600 * 1000;
   var stacks$1 = Tilia.tilia(stacks);
   var match = Tilia.signal(nextRecall(stacks$1, shuffle, now(), max, dayLength));
   var stack = match[0];
@@ -203,6 +213,7 @@ function make(repo, stacks, shuffleOpt, nowOpt, maxOpt, dayLengthOpt) {
 export {
   Ui ,
   sort ,
+  recallCount ,
   toRecall ,
   nextRecall ,
   make ,

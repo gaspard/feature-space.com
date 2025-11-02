@@ -119,6 +119,7 @@ module Event = {
 let make = () => {
   useTilia()
   let {toc} = App.app
+  let {stats} = toc
 
   // Group by level first
   let levelGroups = toc.stacks->partition(v => v.info.level)
@@ -127,22 +128,29 @@ let make = () => {
     <p>
       {"Séléctionnez les matières que vous souhaitez réviser et pressez sur start."->React.string}
     </p>
+    <div className="stats">
+      <span> {"à revoir"->React.string} </span>
+      <span className="num"> {stats.toRecall->Int.toString->React.string} </span>
+      <span> {"vues"->React.string} </span>
+      <span className="num"> {stats.seen->Int.toString->React.string} </span>
+      <span> {"nouvelles"->React.string} </span>
+      <span className="num"> {stats.new->Int.toString->React.string} </span>
+      <span> {"total"->React.string} </span>
+      <span className="num"> {stats.total->Int.toString->React.string} </span>
+    </div>
     <div className="settings">
       <span> {"base de répétition (en heures)"->React.string} </span>
-      <span> {(toc.dayLength->Float.toString ++ "h")->React.string} </span>
+      <span> {(toc.dayLengthH->Float.toString ++ "h")->React.string} </span>
       <input
         type_="range"
-        min="1"
+        min="0"
         max="24"
-        value={toc.dayLength->Float.toString}
+        value={toc.dayLengthH->Float.toString}
         onChange={e => toc.setDayLength(Event.value(e)->Float.fromString->Option.getExn)}
       />
     </div>
-    <div className="settings">
-      <span> {"nombre de fiches"->React.string} </span>
-      <span> {toc.cardCount->Int.toString->React.string} </span>
-    </div>
-    <button className="start" disabled={toc.cardCount == 0} onClick={_ => App.app.start()}>
+    <button
+      className="start" disabled={stats.toRecall + stats.new === 0} onClick={_ => App.app.start()}>
       {"Start"->React.string}
     </button>
     <nav ariaLabel="Table des matières" className="toc">
