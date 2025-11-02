@@ -235,7 +235,7 @@ function RecallTocView(props) {
                 JsxRuntime.jsxs("div", {
                       children: [
                         JsxRuntime.jsx("span", {
-                              children: "base de répétition (en heures)"
+                              children: "base de répétition"
                             }),
                         JsxRuntime.jsx("span", {
                               children: toc.dayLengthH.toString() + "h"

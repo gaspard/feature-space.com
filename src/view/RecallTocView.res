@@ -139,7 +139,7 @@ let make = () => {
       <span className="num"> {stats.total->Int.toString->React.string} </span>
     </div>
     <div className="settings">
-      <span> {"base de répétition (en heures)"->React.string} </span>
+      <span> {"base de répétition"->React.string} </span>
       <span> {(toc.dayLengthH->Float.toString ++ "h")->React.string} </span>
       <input
         type_="range"
