@@ -113,7 +113,9 @@ VitestBdd.Given("stacks", (function (param, table) {
               }));
         step("the next cards for {number} cards should be", (function (nb, table) {
                 var cards = VitestBdd.toRecords(table);
-                var recall = Recall.make(mockRepo, Object.values(pair), shuffle, 1000, nb | 0, 100);
+                var recall = Recall.make(mockRepo, Object.values(pair), shuffle, (function () {
+                        return 1000;
+                      }), nb | 0, 100);
                 cards.forEach(function (card) {
                       var id = Core__Option.getExn(card.id, undefined);
                       var toRecall = Core__Option.getExn(card.toRecall, undefined) | 0;

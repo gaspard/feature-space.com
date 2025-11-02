@@ -106,7 +106,7 @@ given("stacks", ({step}, table) => {
       mockRepo,
       pair->Dict.valuesToArray,
       ~shuffle,
-      ~now=1000.,
+      ~now=() => 1000.,
       ~max=nb->Float.toInt,
       ~dayLength=100.,
     )

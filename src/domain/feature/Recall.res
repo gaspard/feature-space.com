@@ -107,8 +107,11 @@ let toRecall = (stacks: array<rstack>, ~now=Date.now(), ~dayLength=3600. *. 24.)
     seenCards->Array.findIndex(((_, {timestamp, state})) =>
       CardProgress.recallTime(timestamp, state, ~dayLength) > now
     )
-  seenCards
-  ->Array.slice(~start=0, ~end=afterIdx) // If cards to review > max, no new cards will ever be seen...
+
+  switch afterIdx {
+  | -1 => seenCards
+  | idx => seenCards->Array.slice(~start=0, ~end=idx)
+  }
   ->Array.map(((card, _)) => card)
   ->Array.concat(newCards)
 }
@@ -129,14 +132,14 @@ let make = (
   repo: RepositoryType.t,
   stacks: array<rstack>,
   ~shuffle=Array.shuffle,
-  ~now=Date.now(),
+  ~now=Date.now,
   ~max=20,
   ~dayLength=3600. *. 24.,
 ): t => {
   open Tilia
   let stacks = tilia(stacks)
 
-  let (stack, _setStack) = signal(nextRecall(stacks, ~shuffle, ~now, ~max, ~dayLength))
+  let (stack, _setStack) = signal(nextRecall(stacks, ~shuffle, ~now=now(), ~max, ~dayLength))
 
   let card = derived(() => stack.value[0])
   let advance = eval => {
@@ -159,7 +162,7 @@ let make = (
       switch prog->Dict.get(card.Card.stackId) {
       | None => Js.Exn.raiseError(`No progress found for card ${card.stackId}`)
       | Some(p) => {
-          let c = CardProgress.next(p.cards->Dict.get(card.id), state, ~now)
+          let c = CardProgress.next(p.cards->Dict.get(card.id), state, ~now=now())
           p.cards->Dict.set(card.id, c)
           ignore(repo.progress.save(p))
           setShowBack(false)
@@ -180,7 +183,7 @@ let make = (
       total,
       seen,
       new: total - seen,
-      toRecall: toRecall(stacks, ~now, ~dayLength)->Array.length,
+      toRecall: toRecall(stacks, ~now=now(), ~dayLength)->Array.length,
       stackCount: stack.value->Array.length,
     }
   })

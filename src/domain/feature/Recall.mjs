@@ -80,7 +80,9 @@ function toRecall(stacks, nowOpt, dayLengthOpt) {
         var match = param[1];
         return CardProgress.recallTime(match.timestamp, match.state, dayLength) > now;
       });
-  return seenCards$1.slice(0, afterIdx).map(function (param) {
+  return (
+              afterIdx !== -1 ? seenCards$1.slice(0, afterIdx) : seenCards$1
+            ).map(function (param) {
                 return param[0];
               }).concat(newCards);
 }
@@ -97,11 +99,13 @@ function nextRecall(stacks, shuffleOpt, nowOpt, maxOpt, dayLengthOpt) {
 
 function make(repo, stacks, shuffleOpt, nowOpt, maxOpt, dayLengthOpt) {
   var shuffle = shuffleOpt !== undefined ? shuffleOpt : Core__Array.shuffle;
-  var now = nowOpt !== undefined ? nowOpt : Date.now();
+  var now = nowOpt !== undefined ? nowOpt : (function (prim) {
+        return Date.now();
+      });
   var max = maxOpt !== undefined ? maxOpt : 20;
   var dayLength = dayLengthOpt !== undefined ? dayLengthOpt : 3600 * 24;
   var stacks$1 = Tilia.tilia(stacks);
-  var match = Tilia.signal(nextRecall(stacks$1, shuffle, now, max, dayLength));
+  var match = Tilia.signal(nextRecall(stacks$1, shuffle, now(), max, dayLength));
   var stack = match[0];
   var card = Tilia.derived(function () {
         return stack.value[0];
@@ -125,7 +129,7 @@ function make(repo, stacks, shuffleOpt, nowOpt, maxOpt, dayLengthOpt) {
     if (p === undefined) {
       return Js_exn.raiseError("No progress found for card " + card$1.stackId);
     }
-    var c = CardProgress.next(p.cards[card$1.id], state, now);
+    var c = CardProgress.next(p.cards[card$1.id], state, now());
     p.cards[card$1.id] = c;
     repo.progress.save(p);
     setShowBack(false);
@@ -147,7 +151,7 @@ function make(repo, stacks, shuffleOpt, nowOpt, maxOpt, dayLengthOpt) {
                 total: total,
                 seen: seen,
                 new: total - seen | 0,
-                toRecall: toRecall(stacks$1, now, dayLength).length,
+                toRecall: toRecall(stacks$1, now(), dayLength).length,
                 stackCount: stack.value.length
               };
       });
