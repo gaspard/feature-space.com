@@ -242,25 +242,29 @@ function RecallView(props) {
                               children: "à réviser"
                             }),
                         JsxRuntime.jsx("span", {
-                              children: recall.stats.toRecall.toString()
+                              children: recall.stats.toRecall.toString(),
+                              className: "num"
                             }),
                         JsxRuntime.jsx("span", {
                               children: "vues"
                             }),
                         JsxRuntime.jsx("span", {
-                              children: recall.stats.seen.toString()
+                              children: recall.stats.seen.toString(),
+                              className: "num"
                             }),
                         JsxRuntime.jsx("span", {
                               children: "nouvelles"
                             }),
                         JsxRuntime.jsx("span", {
-                              children: recall.stats.new.toString()
+                              children: recall.stats.new.toString(),
+                              className: "num"
                             }),
                         JsxRuntime.jsx("span", {
                               children: "total"
                             }),
                         JsxRuntime.jsx("span", {
-                              children: recall.stats.total.toString()
+                              children: recall.stats.total.toString(),
+                              className: "num"
                             })
                       ],
                       className: "stats"

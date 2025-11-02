@@ -20,7 +20,7 @@
     {
       "id": "1",
       "stackId": "0eaef5e4",
-      "content": "#### Question 1 : Définition de la convergence d'une série\n\nQu'est-ce qui définit la convergence d'une série numérique $\\sum u_n$ ?\n",
+      "content": "#### Définition de la convergence d'une série\n\nQu'est-ce qui définit la convergence d'une série numérique $\\sum u_n$ ?\n",
       "solution": "\n\n**Réponse : [C]**\n\n- **A)** C'est une condition nécessaire pour la convergence, mais pas suffisante. Par exemple, la série harmonique $\\sum \\frac{1}{n}$ a un terme général qui tend vers 0, mais elle diverge.\n\n- **B)** Le fait que la suite du terme général soit décroissante n'est ni nécessaire ni suffisant pour garantir la convergence. Par exemple, $\\sum \\frac{1}{n}$ a un terme général décroissant mais diverge.\n\n- **C)** C'est la définition même de la convergence d'une série. Une série converge si et seulement si la suite de ses sommes partielles, $s_n = \\sum_{k=0}^{n} u_k$, converge vers une limite finie.\n\n- **D)** Le fait que la suite des sommes partielles soit majorée n'est suffisant que si la série est à termes positifs (car la suite $(s_n)$ est alors croissante). Pour une série à termes de signe quelconque, ce n'est pas suffisant (par exemple, $\\sum (-1)^n$ a des sommes partielles bornées par 0 et 1, mais elle diverge).\n\n",
       "options": [
         {
@@ -48,7 +48,7 @@
     {
       "id": "2",
       "stackId": "0eaef5e4",
-      "content": "#### Question 2 : Condition nécessaire de convergence\n\nSoit une série $\\sum u_n$ qui est convergente. Quelle conclusion peut-on en tirer avec certitude ?\n",
+      "content": "#### Condition nécessaire de convergence\n\nSoit une série $\\sum u_n$ qui est convergente. Quelle conclusion peut-on en tirer avec certitude ?\n",
       "solution": "\n\n**Réponse : [C]**\n\n- **A)** C'est la définition de la convergence absolue. Une série convergente n'est pas forcément absolument convergente. L'exemple classique est la série harmonique alternée $\\sum \\frac{(-1)^{n+1}}{n}$ qui converge, mais $\\sum |\\frac{(-1)^{n+1}}{n}| = \\sum \\frac{1}{n}$ diverge.\n\n- **B)** La somme d'une série convergente peut être n'importe quel nombre réel (ou complexe). Par exemple, la série géométrique $\\sum (\\frac{1}{2})^n$ converge vers 2.\n\n- **C)** C'est la condition nécessaire de convergence. Si une série converge, son terme général doit impérativement tendre vers 0. C'est une conséquence directe de la définition de la convergence.\n\n- **D)** La suite des sommes partielles n'a aucune raison d'être décroissante. Pour une série convergente à termes positifs, elle est croissante. Pour une série alternée, elle oscille en s'amortissant.\n\n",
       "options": [
         {
@@ -76,7 +76,7 @@
     {
       "id": "3",
       "stackId": "0eaef5e4",
-      "content": "#### Question 3 : Test de divergence grossière\n\nQuelle est la nature de la série $\\sum_{n=1}^{\\infty} \\frac{2n}{3n+1}$ ?\n",
+      "content": "#### Test de divergence grossière\n\nQuelle est la nature de la série $\\sum_{n=1}^{\\infty} \\frac{2n}{3n+1}$ ?\n",
       "solution": "\n\n**Réponse : [B]**\n\n- **A)** Le fait que le terme général soit borné ne suffit pas pour garantir la convergence. Ici, le terme général $u_n = \\frac{2n}{3n+1}$ est borné, mais la série diverge.\n\n- **B)** C'est l'application directe du test de divergence grossière. Calculons la limite du terme général :\n\n  $$ \\lim_{n \\to \\infty} u_n = \\lim_{n \\to \\infty} \\frac{2n}{3n+1} = \\lim_{n \\to \\infty} \\frac{2n}{n(3+1/n)} = \\frac{2}{3} $$\n\n  Comme la limite est $\\frac{2}{3} \\neq 0$, la condition nécessaire de convergence n'est pas satisfaite, donc la série diverge.\n\n- **C)** Une série de Riemann est de la forme $\\sum \\frac{1}{n^p}$. Cette série n'est pas de ce type.\n\n- **D)** Le test de divergence grossière est un des outils les plus simples et il permet de conclure immédiatement ici.\n\n",
       "options": [
         {
@@ -104,7 +104,7 @@
     {
       "id": "4",
       "stackId": "0eaef5e4",
-      "content": "#### Question 4 : Série Harmonique\n\nConsidérons la série harmonique $\\sum_{n=1}^{\\infty} \\frac{1}{n}$. Laquelle de ces affirmations est correcte ?\n",
+      "content": "#### Série Harmonique\n\nConsidérons la série harmonique $\\sum_{n=1}^{\\infty} \\frac{1}{n}$. Laquelle de ces affirmations est correcte ?\n",
       "solution": "\n\n**Réponse : [B]**\n\n- **A)** C'est le piège classique. Le fait que le terme général tende vers 0 est une condition nécessaire mais **non suffisante**. La série harmonique est le contre-exemple le plus important à connaître.\n\n- **B)** C'est la propriété fondamentale de la série harmonique. Elle diverge (vers $+\\infty$), ce qui illustre parfaitement que la condition $\\lim u_n = 0$ n'est pas suffisante pour assurer la convergence.\n\n- **C)** L'affirmation est incorrecte car la série diverge, elle n'a donc pas de somme finie.\n\n- **D)** La série harmonique n'est pas télescopique. Une série télescopique a un terme général de la forme $v_n - v_{n+1}$.\n\n",
       "options": [
         {
@@ -132,7 +132,7 @@
     {
       "id": "5",
       "stackId": "0eaef5e4",
-      "content": "#### Question 5 : Calcul de la somme d'une série géométrique\n\nQuelle est la somme de la série $\\sum_{n=0}^{\\infty} \\left(\\frac{1}{3}\\right)^n$ ?\n",
+      "content": "#### Calcul de la somme d'une série géométrique\n\nQuelle est la somme de la série $\\sum_{n=0}^{\\infty} \\left(\\frac{1}{3}\\right)^n$ ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nIl s'agit d'une série géométrique de premier terme $a=1$ et de raison $r = 1/3$.\n\n- **D)** La condition de convergence pour une série géométrique est $|r|<1$. Ici, $|1/3| < 1$, donc la série converge. Cette option est incorrecte.\n\n- **A, B, C)** La somme d'une série géométrique convergente est donnée par la formule $S = \\frac{a}{1-r}$. Ici, $a = (1/3)^0 = 1$ et $r=1/3$.\n\n  $$ S = \\frac{1}{1 - 1/3} = \\frac{1}{2/3} = \\frac{3}{2} $$\n\n  La somme est donc 3/2.\n\n",
       "options": [
         {
@@ -160,7 +160,7 @@
     {
       "id": "6",
       "stackId": "0eaef5e4",
-      "content": "#### Question 6 : Convergence absolue et simple\n\nQuelle est la relation entre la convergence absolue et la convergence simple pour une série $\\sum u_n$ ?\n",
+      "content": "#### Convergence absolue et simple\n\nQuelle est la relation entre la convergence absolue et la convergence simple pour une série $\\sum u_n$ ?\n",
       "solution": "\n\n**Réponse : [D]**\n\n- **A)** C'est faux. La réciproque du théorème principal est fausse. Une série peut converger sans converger absolument. On l'appelle alors semi-convergente. Exemple : $\\sum \\frac{(-1)^n}{n}$.\n\n- **B)** C'est faux. Comme expliqué en A, la convergence n'implique pas la convergence absolue. Les deux notions ne sont pas équivalentes.\n\n- **C)** C'est faux. Il y a un lien de dépendance fort : la convergence absolue est une condition plus forte qui implique la convergence simple.\n\n- **D)** C'est le théorème fondamental sur la convergence absolue. Si la série des valeurs absolues $\\sum |u_n|$ converge, alors la série $\\sum u_n$ converge aussi.\n\n",
       "options": [
         {
@@ -188,7 +188,7 @@
     {
       "id": "7",
       "stackId": "0eaef5e4",
-      "content": "#### Question 7 : Séries à termes positifs\n\nSoit $\\sum u_n$ une série à termes positifs ($u_n \\ge 0$). Sa suite de sommes partielles $(s_n)$ est...\n",
+      "content": "#### Séries à termes positifs\n\nSoit $\\sum u_n$ une série à termes positifs ($u_n \\ge 0$). Sa suite de sommes partielles $(s_n)$ est...\n",
       "solution": "\n\n**Réponse : [C]**\n\n- **A)** C'est faux. Par exemple, la série harmonique $\\sum 1/n$ est à termes positifs mais diverge.\n\n- **B)** C'est faux. Comme tous les termes ajoutés sont positifs ou nuls, la somme partielle ne peut que croître ou stagner. Elle ne peut pas tendre vers $-\\infty$. Si elle diverge, c'est vers $+\\infty$.\n\n- **C)** C'est la propriété clé des séries à termes positifs. Comme $s_n = s_{n-1} + u_n$ et que $u_n \\ge 0$, on a toujours $s_n \\ge s_{n-1}$. La suite $(s_n)$ est donc croissante. Par le théorème de la limite monotone, elle converge si et seulement si elle est majorée.\n\n- **D)** C'est faux. Comme expliqué en C, la suite est nécessairement croissante.\n\n",
       "options": [
         {
@@ -216,7 +216,7 @@
     {
       "id": "8",
       "stackId": "0eaef5e4",
-      "content": "#### Question 8 : Théorème de comparaison par inégalité\n\nOn s'intéresse à la nature de la série $\\sum_{n=1}^{\\infty} \\frac{\\sin^2(n)}{n^2}$. Quelle est la conclusion correcte ?\n",
+      "content": "#### Théorème de comparaison par inégalité\n\nOn s'intéresse à la nature de la série $\\sum_{n=1}^{\\infty} \\frac{\\sin^2(n)}{n^2}$. Quelle est la conclusion correcte ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nIl s'agit d'une série à termes positifs, car $\\sin^2(n) \\ge 0$ et $n^2 > 0$. On peut donc utiliser les théorèmes de comparaison.\n\n- **A)** Le terme général $u_n = \\frac{\\sin^2(n)}{n^2}$ tend bien vers 0 (car $\\sin^2(n)$ est borné par 1 et $n^2 \\to \\infty$). Donc l'argument de divergence est invalide.\n\n- **B)** Pour tout $n \\ge 1$, on a $0 \\le \\sin^2(n) \\le 1$. En divisant par $n^2$, on obtient :\n\n  $$ 0 \\le \\frac{\\sin^2(n)}{n^2} \\le \\frac{1}{n^2} $$\n\n  La série $\\sum \\frac{1}{n^2}$ est une série de Riemann avec $p=2 > 1$, elle est donc convergente. Par le théorème de comparaison par inégalité, comme la série $\\sum \\frac{\\sin^2(n)}{n^2}$ est majorée par une série convergente, elle converge aussi.\n\n- **C)** C'est faux. On ne peut pas minorer cette série par la série harmonique.\n\n- **D)** L'oscillation du numérateur ne pose pas de problème ici, car on peut le majorer par une constante (1), ce qui est suffisant pour appliquer le critère de comparaison.\n\n",
       "options": [
         {
@@ -244,7 +244,7 @@
     {
       "id": "9",
       "stackId": "0eaef5e4",
-      "content": "#### Question 9 : Théorème de comparaison par équivalent\n\nQuelle est la nature de la série $\\sum_{n=1}^{\\infty} \\ln\\left(1 + \\frac{1}{n^2}\\right)$ ?\n",
+      "content": "#### Théorème de comparaison par équivalent\n\nQuelle est la nature de la série $\\sum_{n=1}^{\\infty} \\ln\\left(1 + \\frac{1}{n^2}\\right)$ ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nLa série est à termes positifs car pour $n \\ge 1$, $1 + \\frac{1}{n^2} > 1$, donc $\\ln(1 + \\frac{1}{n^2}) > 0$.\n\n- **D)** Le terme général tend bien vers 0. Quand $n \\to \\infty$, $\\frac{1}{n^2} \\to 0$, donc $\\ln(1 + \\frac{1}{n^2}) \\to \\ln(1) = 0$.\n\n- **A, B, C)** On utilise un équivalent du terme général. On sait que lorsque $x \\to 0$, $\\ln(1+x) \\sim x$.\n\n  Ici, on pose $x = \\frac{1}{n^2}$. Comme $x \\to 0$ quand $n \\to \\infty$, on a :\n\n  $$ u_n = \\ln\\left(1 + \\frac{1}{n^2}\\right) \\sim \\frac{1}{n^2} $$\n\n  La série $\\sum \\frac{1}{n^2}$ est une série de Riemann avec $p=2 > 1$, donc elle converge.\n\n  Par le critère de comparaison par équivalence pour les séries à termes positifs, la série $\\sum \\ln(1 + \\frac{1}{n^2})$ a la même nature, et donc elle converge.\n\n",
       "options": [
         {

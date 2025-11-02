@@ -123,13 +123,13 @@ let make = (~recall: Recall.t) => {
         {recall.stats.stackCount->Int.toString->React.string}
       </span>
       <span> {"à réviser"->React.string} </span>
-      <span> {recall.stats.toRecall->Int.toString->React.string} </span>
+      <span className="num"> {recall.stats.toRecall->Int.toString->React.string} </span>
       <span> {"vues"->React.string} </span>
-      <span> {recall.stats.seen->Int.toString->React.string} </span>
+      <span className="num"> {recall.stats.seen->Int.toString->React.string} </span>
       <span> {"nouvelles"->React.string} </span>
-      <span> {recall.stats.new->Int.toString->React.string} </span>
+      <span className="num"> {recall.stats.new->Int.toString->React.string} </span>
       <span> {"total"->React.string} </span>
-      <span> {recall.stats.total->Int.toString->React.string} </span>
+      <span className="num"> {recall.stats.total->Int.toString->React.string} </span>
     </div>
     {switch recall.view {
     | Front(front) => <Front front />

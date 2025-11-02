@@ -20,7 +20,7 @@
     {
       "id": "1",
       "stackId": "4ce2c230",
-      "content": "#### Question 1 : Propriété d'un groupe particulier\n\nSoit $(G, *, e)$ un groupe tel que pour tout élément $x \\in G$, on ait $x^2 = e$ (c'est-à-dire $x*x=e$). Quelle propriété importante ce groupe possède-t-il toujours ?\n",
+      "content": "#### Propriété d'un groupe particulier\n\nSoit $(G, *, e)$ un groupe tel que pour tout élément $x \\in G$, on ait $x^2 = e$ (c'est-à-dire $x*x=e$). Quelle propriété importante ce groupe possède-t-il toujours ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nL'hypothèse $x^2 = e$ pour tout $x \\in G$ signifie que chaque élément est son propre inverse ($x = x^{-1}$).\n\n- **A.** Incorrect. Un groupe cyclique est engendré par un seul élément. Le groupe de Klein $(\\mathbb{Z}/2\\mathbb{Z} \\times \\mathbb{Z}/2\\mathbb{Z}, +)$ est un contre-exemple : il n'est pas cyclique, mais tous ses éléments non nuls sont d'ordre 2.\n\n- **B.** Correct. Soient $x, y \\in G$. D'après l'hypothèse, on a $(xy)^2 = e$, ce qui signifie $xyxy = e$. En multipliant à droite par $y^{-1}x^{-1}$, on obtient $xy = y^{-1}x^{-1}$. Puisque chaque élément est son propre inverse, $y^{-1} = y$ et $x^{-1} = x$. Ainsi, $xy = yx$. Le groupe est donc commutatif.\n\n- **C.** Incorrect. Il existe des groupes infinis vérifiant cette propriété. Par exemple, l'ensemble des suites à valeurs dans $\\mathbb{Z}/2\\mathbb{Z}$ muni de l'addition terme à terme.\n\n- **D.** Incorrect. Le groupe $(\\mathbb{Z}/2\\mathbb{Z}, +)$ est un exemple simple avec deux éléments, $\\{0, 1\\}$, où $1+1=0$. Il vérifie la condition mais n'est pas trivial.\n\n",
       "options": [
         {
@@ -48,7 +48,7 @@
     {
       "id": "2",
       "stackId": "4ce2c230",
-      "content": "#### Question 2 : Isomorphisme de groupes\n\nQuelle est la définition d'un isomorphisme de groupes entre deux groupes $(G, *)$ et $(H, \\cdot)$ ?\n",
+      "content": "#### Isomorphisme de groupes\n\nQuelle est la définition d'un isomorphisme de groupes entre deux groupes $(G, *)$ et $(H, \\cdot)$ ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nUn isomorphisme est une application qui préserve la structure et qui est une bijection, permettant de considérer les deux structures comme \"les mêmes\" du point de vue algébrique.\n\n- **A.** Incorrect. Une application bijective (injective et surjective) entre les ensembles sous-jacents des groupes n'est pas suffisante. Elle doit aussi préserver l'opération du groupe.\n\n- **B.** Incorrect. Cette définition correspond à un morphisme de groupes (ou homomorphisme). Un morphisme n'est pas nécessairement bijectif.\n\n- **C.** Correct. Un isomorphisme est par définition un morphisme de groupes qui est également bijectif (à la fois injectif et surjectif). L'exercice 2 montre que si $f$ est un morphisme bijectif, alors son inverse $f^{-1}$ est aussi un morphisme, ce qui est une propriété clé des isomorphismes.\n\n- **D.** Incorrect. C'est une propriété de tous les morphismes de groupes, mais ce n'est pas suffisant pour définir un isomorphisme.\n\n",
       "options": [
         {
@@ -76,7 +76,7 @@
     {
       "id": "3",
       "stackId": "4ce2c230",
-      "content": "#### Question 3 : Corps et anneaux intègres\n\nQuelle est la relation entre les corps et les anneaux intègres ?\n",
+      "content": "#### Corps et anneaux intègres\n\nQuelle est la relation entre les corps et les anneaux intègres ?\n",
       "solution": "\n\n**Réponse : [D]**\n\nUn anneau est dit intègre s'il est commutatif, non nul, et n'a pas de diviseurs de zéro (c'est-à-dire $ab=0 \\implies a=0$ ou $b=0$). Un corps est un anneau commutatif non nul où tout élément non nul a un inverse multiplicatif.\n\n- **A.** Incorrect. L'anneau des entiers $(\\mathbb{Z}, +, \\cdot)$ est un anneau intègre, mais ce n'est pas un corps car seul 1 et -1 ont des inverses multiplicatifs dans $\\mathbb{Z}$.\n\n- **B.** Incorrect. Comme le montre l'exercice 3, les corps sont des exemples fondamentaux d'anneaux intègres.\n\n- **C.** Incorrect. Comme mentionné pour l'option A, il existe des anneaux intègres qui ne sont pas des corps.\n\n- **D.** Correct. Soit $K$ un corps. Soient $a, b \\in K$ avec $ab=0$ et $a \\neq 0$. Puisque $K$ est un corps, $a$ possède un inverse $a^{-1}$. En multipliant l'équation $ab=0$ par $a^{-1}$ à gauche, on obtient $a^{-1}(ab) = a^{-1}0$, ce qui donne $(a^{-1}a)b = 0$, soit $1 \\cdot b = 0$, donc $b=0$. Cela montre que $K$ n'a pas de diviseur de zéro, et est donc un anneau intègre.\n\n",
       "options": [
         {
@@ -104,7 +104,7 @@
     {
       "id": "4",
       "stackId": "4ce2c230",
-      "content": "#### Question 4 : Anneaux intègres finis\n\nSoit $A$ un anneau commutatif intègre et fini. Quelle conclusion importante peut-on en tirer ?\n",
+      "content": "#### Anneaux intègres finis\n\nSoit $A$ un anneau commutatif intègre et fini. Quelle conclusion importante peut-on en tirer ?\n",
       "solution": "\n\n**Réponse : [A]**\n\nCette propriété est un résultat classique de la théorie des anneaux.\n\n- **A.** Correct. Comme le montre l'exercice 4, pour tout $a \\in A$ non nul, l'application $m_a: x \\mapsto ax$ est injective. Comme $A$ est un ensemble fini, une application injective de $A$ dans lui-même est aussi surjective. Il existe donc un élément $a' \\in A$ tel que $m_a(a') = 1$, c'est-à-dire $aa' = 1$. Tout élément non nul $a$ a donc un inverse, ce qui est la définition d'un corps.\n\n- **B.** Incorrect. L'anneau $\\mathbb{Z}/4\\mathbb{Z}$ n'est pas intègre (car $2 \\cdot 2 = 0$). Un corps fini n'est pas toujours de la forme $\\mathbb{Z}/p\\mathbb{Z}$. Par exemple, il existe un corps à 4 éléments, $\\mathbb{F}_4$, qui n'est pas isomorphe à $\\mathbb{Z}/4\\mathbb{Z}$.\n\n- **C.** Incorrect. Le corps $\\mathbb{F}_4$ a $4$ éléments, et 4 n'est pas un nombre premier.\n\n- **D.** Incorrect. Au contraire, le résultat principal est que tous les éléments non nuls sont inversibles.\n\n",
       "options": [
         {
@@ -132,7 +132,7 @@
     {
       "id": "5",
       "stackId": "4ce2c230",
-      "content": "#### Question 5 : Morphismes de groupes\n\nComment peut-on interpréter la propriété $\\det(MM') = \\det(M)\\det(M')$ pour les matrices inversibles de taille $n \\times n$ à coefficients réels, en termes de structures algébriques ?\n",
+      "content": "#### Morphismes de groupes\n\nComment peut-on interpréter la propriété $\\det(MM') = \\det(M)\\det(M')$ pour les matrices inversibles de taille $n \\times n$ à coefficients réels, en termes de structures algébriques ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nIl s'agit de reconnaître la structure des ensembles et des opérations impliquées.\n\n- **A.** Incorrect. Le groupe d'arrivée est le groupe multiplicatif des réels non nuls $(\\mathbb{R}^*, \\cdot)$, et non le groupe additif $(\\mathbb{R}, +)$. De plus, le déterminant n'est pas injectif (plusieurs matrices peuvent avoir le même déterminant), donc ce n'est pas un isomorphisme.\n\n- **B.** Correct. L'ensemble des matrices inversibles $\\text{GL}_n(\\mathbb{R})$ forme un groupe pour la multiplication matricielle. L'ensemble des réels non nuls $\\mathbb{R}^*$ forme un groupe pour la multiplication. La propriété $\\det(MM') = \\det(M)\\det(M')$ signifie que l'application déterminant \"respecte\" les opérations de ces deux groupes, c'est donc un morphisme de groupes.\n\n- **C.** Incorrect. $\\text{GL}_n(\\mathbb{R})$ n'est pas un anneau car il n'est pas stable pour l'addition (la somme de deux matrices inversibles n'est pas toujours inversible).\n\n- **D.** Incorrect. Si on étend le déterminant à toutes les matrices de $\\mathcal{M}_n(\\mathbb{R})$, on a bien $\\det(MM') = \\det(M)\\det(M')$ mais on n'a pas en général $\\det(M+M') = \\det(M)+\\det(M')$. Donc ce n'est pas un morphisme d'anneaux.\n\n",
       "options": [
         {
@@ -160,7 +160,7 @@
     {
       "id": "6",
       "stackId": "4ce2c230",
-      "content": "#### Question 6 : Isomorphismes de groupes usuels\n\nLesquels des énoncés suivants concernant les isomorphismes de groupes sont corrects ?\n",
+      "content": "#### Isomorphismes de groupes usuels\n\nLesquels des énoncés suivants concernant les isomorphismes de groupes sont corrects ?\n",
       "solution": "\n\n**Réponses : [B, D]**\n\nAnalyser chaque paire de groupes et la définition d'isomorphisme.\n\n- **A.** Incorrect. $(\\mathbb{Z}, +)$ est un groupe cyclique (engendré par 1). $(\\mathbb{Q}, +)$ n'est pas cyclique. Si $f: \\mathbb{Z} \\to \\mathbb{Q}$ était un isomorphisme, l'image de 1, disons $f(1)=q$, devrait engendrer $\\mathbb{Q}$, mais les multiples entiers de $q$ ne peuvent pas générer tout $\\mathbb{Q}$ (par exemple, $q/2$ ne peut être atteint).\n\n- **B.** Correct. Les fonctions exponentielle $\\exp: (\\mathbb{R}, +) \\to (\\mathbb{R}^*_+, \\cdot)$ et logarithme népérien $\\ln: (\\mathbb{R}^*_+, \\cdot) \\to (\\mathbb{R}, +)$ sont des morphismes de groupes et sont inverses l'une de l'autre. Elles définissent donc un isomorphisme entre ces deux groupes. On a bien $\\exp(x+y) = \\exp(x)\\exp(y)$ et $\\ln(ab) = \\ln(a)+\\ln(b)$.\n\n- **C.** Incorrect. L'exercice 6 montre pourquoi ils ne sont pas isomorphes. S'il existait un isomorphisme $f : \\mathbb{Q} \\to \\mathbb{Q}^*$, alors il existerait $x \\in \\mathbb{Q}$ tel que $f(x)=2$. Alors $f(x/2)^2 = f(x/2 + x/2) = f(x) = 2$. Cela signifierait que $f(x/2)$ est un nombre rationnel dont le carré est 2, ce qui est impossible.\n\n- **D.** Correct. C'est le résultat principal de l'exercice 2. Si un morphisme de groupes $f$ est bijectif, son application réciproque $f^{-1}$ est également un morphisme de groupes. Un morphisme bijectif est donc bien un isomorphisme.\n\n",
       "options": [
         {
@@ -188,7 +188,7 @@
     {
       "id": "7",
       "stackId": "4ce2c230",
-      "content": "#### Question 7 : Exponentielle complexe\n\nComment peut-on décrire l'application exponentielle complexe $f(z) = e^z$ en termes de structures algébriques ?\n",
+      "content": "#### Exponentielle complexe\n\nComment peut-on décrire l'application exponentielle complexe $f(z) = e^z$ en termes de structures algébriques ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nL'exponentielle complexe a la propriété fondamentale $e^{z+z'} = e^z e^{z'}$.\n\n- **A.** Incorrect. L'application est un morphisme, mais elle n'est pas injective (par exemple, $e^0 = e^{2i\\pi} = 1$). Puisqu'elle n'est pas bijective, ce n'est pas un isomorphisme.\n\n- **B.** Incorrect. Elle n'est pas un morphisme d'anneaux car elle ne respecte pas la multiplication. En général, $e^{zz'} \\neq e^z e^{z'}$.\n\n- **C.** Correct. La propriété $e^{z+z'} = e^z e^{z'}$ signifie exactement que l'exponentielle est un morphisme du groupe additif $(\\mathbb{C}, +)$ vers le groupe multiplicatif des nombres complexes non nuls $(\\mathbb{C}^*, \\cdot)$. L'image de $0$ (neutre de $(\\mathbb{C}, +)$) est $e^0 = 1$ (neutre de $(\\mathbb{C}^*, \\cdot)$).\n\n- **D.** Incorrect. Un automorphisme est un isomorphisme d'un groupe sur lui-même. L'exponentielle n'est ni un isomorphisme, ni une application de $(\\mathbb{C}, +)$ dans lui-même (l'ensemble d'arrivée est $(\\mathbb{C}^*, \\cdot)$).\n\n",
       "options": [
         {
@@ -216,7 +216,7 @@
     {
       "id": "8",
       "stackId": "4ce2c230",
-      "content": "#### Question 8 : Diviseurs de zéro\n\nDans quel type d'anneau $A$ l'implication \"$ab=0 \\implies a=0$ ou $b=0$\" est-elle toujours vraie pour tous les éléments $a, b \\in A$ ?\n",
+      "content": "#### Diviseurs de zéro\n\nDans quel type d'anneau $A$ l'implication \"$ab=0 \\implies a=0$ ou $b=0$\" est-elle toujours vraie pour tous les éléments $a, b \\in A$ ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nCette propriété est la définition même de l'absence de diviseurs de zéro.\n\n- **A.** Incorrect. L'anneau $\\mathbb{Z}/6\\mathbb{Z}$ est commutatif, mais $2 \\cdot 3 = 0$ alors que $2 \\neq 0$ et $3 \\neq 0$.\n\n- **B.** Incorrect. L'anneau $\\mathbb{Z}/6\\mathbb{Z}$ est fini et n'est pas intègre.\n\n- **C.** Correct. Un anneau (commutatif, non nul) est dit intègre précisément s'il n'a pas de diviseurs de zéro, c'est-à-dire si $ab=0$ implique que $a=0$ ou $b=0$.\n\n- **D.** Incorrect. L'anneau des matrices $\\mathcal{M}_n(\\mathbb{R})$ (pour $n \\ge 2$) a des diviseurs de zéro. Par exemple, pour $n=2$, si $A = \\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix}$ et $B = \\begin{pmatrix} 0 & 0 \\\\ 0 & 1 \\end{pmatrix}$, alors $A \\neq 0$, $B \\neq 0$, mais $AB = 0$.\n\n",
       "options": [
         {
@@ -244,7 +244,7 @@
     {
       "id": "9",
       "stackId": "4ce2c230",
-      "content": "#### Question 9 : Preuve de non-isomorphisme\n\nPourquoi les groupes multiplicatifs $(\\mathbb{C}^*, \\cdot)$ et $(\\mathbb{R}^*, \\cdot)$ ne sont-ils pas isomorphes ?\n",
+      "content": "#### Preuve de non-isomorphisme\n\nPourquoi les groupes multiplicatifs $(\\mathbb{C}^*, \\cdot)$ et $(\\mathbb{R}^*, \\cdot)$ ne sont-ils pas isomorphes ?\n",
       "solution": "\n\n**Réponse : [D]**\n\nPour montrer que deux groupes ne sont pas isomorphes, on cherche une propriété structurelle que l'un possède et pas l'autre.\n\n- **A.** Incorrect. La taille des ensembles (cardinalité) n'est pas un obstacle ici car $\\mathbb{C}$ et $\\mathbb{R}$ ont la même cardinalité (celle du continu). On pourrait donc trouver une bijection entre eux, mais pas une bijection qui soit un morphisme.\n\n- **B.** Incorrect. Le groupe $(\\mathbb{R}^*, \\cdot)$ est commutatif.\n\n- **C.** Incorrect. On peut construire des morphismes surjectifs, par exemple en envoyant tous les complexes de module 1 sur 1 et en utilisant le logarithme de la norme pour envoyer les autres éléments sur $\\mathbb{R}^*$. La question est de savoir s'il existe un isomorphisme, qui doit être bijectif. Le problème est l'injectivité.\n\n- **D.** Correct. Les isomorphismes préservent l'ordre des éléments. Dans $(\\mathbb{C}^*, \\cdot)$, l'élément $i$ est d'ordre 4 car $i^4=1$ et $i^k \\neq 1$ for $k=1,2,3$. Dans $(\\mathbb{R}^*, \\cdot)$, les seuls éléments d'ordre fini sont 1 (ordre 1) et -1 (ordre 2). Il n'y a pas d'élément $x$ tel que $x^4=1$ mais $x^2 \\neq 1$. L'existence d'un élément d'ordre 4 dans $\\mathbb{C}^*$ et l'absence d'un tel élément dans $\\mathbb{R}^*$ prouvent qu'ils ne peuvent pas être isomorphes.\n\n",
       "options": [
         {

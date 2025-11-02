@@ -20,7 +20,7 @@
     {
       "id": "1",
       "stackId": "b85469bb",
-      "content": "#### Question 1 : Forme des boules unités\n\nDans $\\mathbb{R}^2$, à quelle forme géométrique correspond la boule unité fermée $B_\\infty^f(0, 1)$ pour la norme infinie $\\|\\cdot\\|_\\infty$ ?\n",
+      "content": "#### Forme des boules unités\n\nDans $\\mathbb{R}^2$, à quelle forme géométrique correspond la boule unité fermée $B_\\infty^f(0, 1)$ pour la norme infinie $\\|\\cdot\\|_\\infty$ ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nLa boule unité fermée pour la norme infinie, $B_\\infty^f(0, 1)$, est définie comme l'ensemble des points $z=(x,y) \\in \\mathbb{R}^2$ tels que $\\|z - 0\\|_\\infty \\le 1$.\n\nLa définition de la norme infinie est $\\|(x,y)\\|_\\infty = \\max(|x|, |y|)$.\n\nLa condition est donc $\\max(|x|, |y|) \\le 1$. Cette inégalité est équivalente à avoir simultanément $|x| \\le 1$ et $|y| \\le 1$.\n\nL'ensemble des points vérifiant ces deux conditions est le carré $[-1, 1] \\times [-1, 1]$.\n\n- **A)** Ceci est incorrect. Le disque de rayon 1 correspond à la boule unité pour la norme euclidienne $\\|\\cdot\\|_2$, définie par $\\sqrt{x^2 + y^2} \\le 1$.\n- **B)** Ceci est incorrect. Le losange (ou carré tourné) correspond à la boule unité pour la norme 1, $\\|\\cdot\\|_1$, définie par $|x| + |y| \\le 1$.\n- **C)** Ceci est correct. C'est la description géométrique de l'ensemble $[-1, 1] \\times [-1, 1]$.\n- **D)** Ceci est incorrect. Une boule, par définition, est un ensemble borné.\n\n",
       "options": [
         {
@@ -48,7 +48,7 @@
     {
       "id": "2",
       "stackId": "b85469bb",
-      "content": "#### Question 2 : Appartenance à une boule\n\nLequel (lesquels) de ces points $z \\in \\mathbb{R}^2$ appartient (appartiennent) à la boule ouverte $B_1(x, 3)$ de centre $x=(1,1)$ et de rayon $r=3$ pour la norme 1, $\\|\\cdot\\|_1$ ?\n",
+      "content": "#### Appartenance à une boule\n\nLequel (lesquels) de ces points $z \\in \\mathbb{R}^2$ appartient (appartiennent) à la boule ouverte $B_1(x, 3)$ de centre $x=(1,1)$ et de rayon $r=3$ pour la norme 1, $\\|\\cdot\\|_1$ ?\n",
       "solution": "\n\n**Réponses : [A, B]**\n\nUn point $z$ appartient à la boule ouverte $B_1(x, 3)$ si sa distance au centre $x=(1,1)$ pour la norme 1 est strictement inférieure à 3. La distance est $d_1(z, x) = \\|z - x\\|_1 = |z_1 - x_1| + |z_2 - x_2|$. La condition est donc $|z_1 - 1| + |z_2 - 1| < 3$.\n\n- **A)** Pour $z=(3,1)$, la distance est $|3 - 1| + |1 - 1| = 2 + 0 = 2$. Comme $2 < 3$, le point appartient à la boule ouverte.\n- **B)** Pour $z=(2,2)$, la distance est $|2 - 1| + |2 - 1| = 1 + 1 = 2$. Comme $2 < 3$, le point appartient à la boule ouverte.\n- **C)** Pour $z=(-1,-1)$, la distance est $|-1 - 1| + |-1 - 1| = |-2| + |-2| = 2 + 2 = 4$. Comme $4 \\not< 3$, le point n'appartient pas à la boule ouverte.\n- **D)** Pour $z=(1,4)$, la distance est $|1 - 1| + |4 - 1| = 0 + 3 = 3$. Comme la distance est égale au rayon, le point se trouve sur la sphère (la frontière), mais pas dans la boule *ouverte* qui exige une inégalité stricte.\n\n",
       "options": [
         {
@@ -76,7 +76,7 @@
     {
       "id": "3",
       "stackId": "b85469bb",
-      "content": "#### Question 3 : Définition d'un ensemble ouvert\n\nSoit $U$ un sous-ensemble de $\\mathbb{R}^n$. Que signifie que $U$ est un ensemble ouvert ?\n",
+      "content": "#### Définition d'un ensemble ouvert\n\nSoit $U$ un sous-ensemble de $\\mathbb{R}^n$. Que signifie que $U$ est un ensemble ouvert ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nLa définition d'un ensemble ouvert $U$ est que pour *chaque* point de $U$, on peut trouver une petite \"zone de sécurité\" (une boule ouverte) autour de ce point qui reste entièrement dans $U$.\n\n- **A)** Ceci est incorrect. Cette proposition affirme qu'il suffit de trouver un seul point vérifiant la condition, ce qui n'est pas assez fort. Par exemple, l'ensemble $[0,1]$ vérifierait cette condition avec le point $x=0.5$, mais il n'est pas ouvert.\n- **B)** Ceci est correct. C'est la définition formelle d'un ensemble ouvert. Le quantificateur \"pour tout $x \\in U$\" est crucial.\n- **C)** Ceci est incorrect. Cette condition est beaucoup trop forte et n'est satisfaite que par $\\mathbb{R}^n$ lui-même (et l'ensemble vide, trivialement). Un intervalle ouvert comme $]0,1[$ ne la satisfait pas, car une boule centrée en $0.5$ de rayon $1$ n'est pas incluse dans $]0,1[$.\n- **D)** Ceci est incorrect. C'est la caractérisation séquentielle d'un ensemble **fermé**, pas d'un ensemble ouvert.\n\n",
       "options": [
         {
@@ -104,7 +104,7 @@
     {
       "id": "4",
       "stackId": "b85469bb",
-      "content": "#### Question 4 : Propriétés des ensembles ouverts\n\nLaquelle (lesquelles) des affirmations suivantes concernant les ensembles ouverts de $\\mathbb{R}^n$ est (sont) vraie(s) ?\n",
+      "content": "#### Propriétés des ensembles ouverts\n\nLaquelle (lesquelles) des affirmations suivantes concernant les ensembles ouverts de $\\mathbb{R}^n$ est (sont) vraie(s) ?\n",
       "solution": "\n\n**Réponses : [B, D]**\n\nCes questions testent les propriétés de stabilité des ouverts pour les opérations ensemblistes.\n\n- **A)** Ceci est faux. Une intersection infinie d'ouverts n'est pas nécessairement un ouvert. Un contre-exemple classique dans $\\mathbb{R}$ est l'intersection des intervalles ouverts $U_n = ]-1/n, 1/n[$ pour $n \\ge 1$. Leur intersection est $\\bigcap_{n=1}^\\infty U_n = \\{0\\}$, qui est un ensemble fermé et non ouvert.\n- **B)** Ceci est vrai. C'est une propriété fondamentale de la topologie : une union quelconque d'ensembles ouverts est un ensemble ouvert.\n- **C)** Ceci est faux. Le complémentaire d'un ensemble ouvert est, par définition, un ensemble **fermé**.\n- **D)** Ceci est vrai. C'est une autre propriété fondamentale : une intersection finie d'ensembles ouverts est un ensemble ouvert.\n\n",
       "options": [
         {
@@ -132,7 +132,7 @@
     {
       "id": "5",
       "stackId": "b85469bb",
-      "content": "#### Question 5 : Caractérisation séquentielle des fermés\n\nUn sous-ensemble $F \\subset \\mathbb{R}^n$ est dit fermé si et seulement si...\n",
+      "content": "#### Caractérisation séquentielle des fermés\n\nUn sous-ensemble $F \\subset \\mathbb{R}^n$ est dit fermé si et seulement si...\n",
       "solution": "\n\n**Réponse : [B]**\n\nCette question porte sur la caractérisation séquentielle, un outil très important pour prouver qu'un ensemble est fermé.\n\n- **A)** Ceci est incorrect. Cette propriété (toute suite admet une sous-suite convergente *dans F*) est la définition d'un ensemble **compact**. Un ensemble fermé n'est pas nécessairement compact (par exemple, $\\mathbb{R}$ est fermé mais pas compact).\n- **B)** Ceci est correct. C'est la définition séquentielle d'un ensemble fermé. Cela signifie qu'on ne peut pas \"sortir\" de l'ensemble par un processus de limite.\n- **C)** Ceci est incorrect. La définition d'un ensemble fermé est que son complémentaire est **ouvert**.\n- **D)** Ceci est incorrect. C'est la définition d'un ensemble **ouvert**, pas fermé.\n\n",
       "options": [
         {
@@ -160,7 +160,7 @@
     {
       "id": "6",
       "stackId": "b85469bb",
-      "content": "#### Question 6 : Identification d'ensembles fermés\n\nParmi les ensembles suivants de $\\mathbb{R}$, lequel (lesquels) est (sont) fermé(s) ?\n",
+      "content": "#### Identification d'ensembles fermés\n\nParmi les ensembles suivants de $\\mathbb{R}$, lequel (lesquels) est (sont) fermé(s) ?\n",
       "solution": "\n\n**Réponses : [B, D]**\n\nPour déterminer si un ensemble est fermé, on peut utiliser la définition (complémentaire ouvert) ou la caractérisation séquentielle.\n\n- **A)** Ceci est incorrect. L'ensemble $[0, 1[$ n'est pas fermé. La suite $x_k = 1 - 1/(k+1)$ est une suite de points de $[0, 1[$ qui converge vers $1$, mais la limite $1$ n'appartient pas à l'ensemble. Il n'est pas ouvert non plus à cause du point 0.\n- **B)** Ceci est correct. L'ensemble $\\mathbb{Z}$ est fermé. Son complémentaire, $\\mathbb{R} \\setminus \\mathbb{Z} = \\bigcup_{k \\in \\mathbb{Z}} ]k, k+1[$, est une union d'ensembles ouverts, donc c'est un ouvert.\n- **C)** Ceci est incorrect. L'ensemble $\\mathbb{Q}$ n'est pas fermé. On peut construire une suite de nombres rationnels (par exemple les approximations décimales de $\\sqrt{2}$) qui converge vers un nombre irrationnel. La limite n'est donc pas dans $\\mathbb{Q}$.\n- **D)** Ceci est correct. Soit $F = \\{0\\} \\cup \\{1/n \\mid n \\ge 1\\}$. Considérons une suite $(x_k)$ de points de $F$ qui converge vers une limite $x$. Si la suite ne contient qu'un nombre fini de termes distincts, sa limite est l'un de ces termes, donc elle est dans $F$. Si elle contient une infinité de termes distincts, la seule limite possible est $0$ (car les termes s'accumulent en 0). Puisque $0 \\in F$, la limite est dans $F$. L'ensemble est donc fermé.\n\n",
       "options": [
         {
@@ -188,7 +188,7 @@
     {
       "id": "7",
       "stackId": "b85469bb",
-      "content": "#### Question 7 : Calcul d'adhérence et d'intérieur\n\nOn considère l'ensemble $A = ]0, 1] \\cup \\{2\\}$ dans $\\mathbb{R}$. Quelle est l'adhérence $\\bar{A}$ et l'intérieur $\\mathring{A}$ de $A$ ?\n",
+      "content": "#### Calcul d'adhérence et d'intérieur\n\nOn considère l'ensemble $A = ]0, 1] \\cup \\{2\\}$ dans $\\mathbb{R}$. Quelle est l'adhérence $\\bar{A}$ et l'intérieur $\\mathring{A}$ de $A$ ?\n",
       "solution": "\n\n**Réponse : [C]**\n\n- **Intérieur $\\mathring{A}$**: L'intérieur est le plus grand ouvert contenu dans $A$.\n    - Pour tout point $x \\in ]0, 1[$, on peut trouver un petit intervalle ouvert autour de $x$ qui est encore dans $]0, 1[$. Donc $]0,1[ \\subset \\mathring{A}$.\n    - Pour le point $1$, tout intervalle ouvert $]1-r, 1+r[$ contient des points plus grands que 1, qui ne sont pas dans $A$. Donc $1 \\notin \\mathring{A}$.\n    - Pour le point $2$, qui est isolé, tout intervalle ouvert $]2-r, 2+r[$ contient des points différents de 2, qui ne sont pas dans $A$. Donc $2 \\notin \\mathring{A}$.\n    - Conclusion : $\\mathring{A} = ]0, 1[$.\n\n- **Adhérence $\\bar{A}$**: L'adhérence est le plus petit fermé contenant $A$. C'est l'ensemble des limites de suites de points de $A$.\n    - Tous les points de $A$ sont dans $\\bar{A}$.\n    - Le point $0$ est la limite de la suite $(1/n)_{n \\ge 2}$, qui est une suite de points de $A$. Donc $0 \\in \\bar{A}$.\n    - Tout point en dehors de $[0,1] \\cup \\{2\\}$ ne peut pas être une limite de points de $A$.\n    - Conclusion : $\\bar{A} = [0, 1] \\cup \\{2\\}$.\n\nEn combinant les deux, la bonne réponse est la C.\n\n- **A)** L'adhérence est incorrecte, le point 0 a été oublié.\n- **B)** L'adhérence est incorrecte, elle inclut des points comme $1.5$ qui ne sont pas adhérents à $A$.\n- **C)** Correct.\n- **D)** L'intérieur est incorrect, il inclut les points 1 et 2 qui ne sont pas des points intérieurs.\n\n",
       "options": [
         {
@@ -216,7 +216,7 @@
     {
       "id": "8",
       "stackId": "b85469bb",
-      "content": "#### Question 8 : Théorème de Heine-Borel\n\nLequel (lesquels) de ces sous-ensembles de $\\mathbb{R}^2$ est (sont) compact(s) ?\n",
+      "content": "#### Théorème de Heine-Borel\n\nLequel (lesquels) de ces sous-ensembles de $\\mathbb{R}^2$ est (sont) compact(s) ?\n",
       "solution": "\n\n**Réponses : [B, D]**\n\nLe théorème de Heine-Borel stipule qu'une partie de $\\mathbb{R}^n$ est compacte si et seulement si elle est **fermée** et **bornée**.\n\n- **A)** La droite $y=x$ est un ensemble fermé (son complémentaire est ouvert). Cependant, elle n'est pas bornée car elle s'étend à l'infini dans les deux directions. Elle n'est donc **pas compacte**.\n- **B)** Le disque unité fermé est **fermé** (il est défini par une inégalité large sur une fonction continue) et **borné** (il est contenu dans le carré $[-1,1]\\times[-1,1]$ par exemple). Il est donc **compact**.\n- **C)** Le premier quadrant ouvert est **ouvert**, donc il n'est pas fermé. Il n'est pas non plus borné. Il n'est donc **pas compact**.\n- **D)** Le cercle unité est **fermé** (défini par une égalité sur une fonction continue) et **borné** (il est contenu dans le disque unité fermé). Il est donc **compact**.\n\n",
       "options": [
         {
@@ -244,7 +244,7 @@
     {
       "id": "9",
       "stackId": "b85469bb",
-      "content": "#### Question 9 : Définition de la densité\n\nOn dit qu'un sous-ensemble $A$ est dense dans $\\mathbb{R}^n$ si... (choisir toutes les propositions équivalentes).\n",
+      "content": "#### Définition de la densité\n\nOn dit qu'un sous-ensemble $A$ est dense dans $\\mathbb{R}^n$ si... (choisir toutes les propositions équivalentes).\n",
       "solution": "\n\n**Réponses : [A, C]**\n\nLa densité exprime l'idée qu'un ensemble \"remplit\" tout l'espace, au sens où on peut approcher n'importe quel point de l'espace par des points de cet ensemble.\n\n- **A)** Ceci est correct. C'est la définition formelle de la densité dans $\\mathbb{R}^n$.\n- **B)** Ceci est incorrect. Un ensemble peut être dense mais avoir un intérieur vide. L'exemple le plus célèbre est $\\mathbb{Q}$ dans $\\mathbb{R}$: $\\bar{\\mathbb{Q}}=\\mathbb{R}$ (dense) mais $\\mathring{\\mathbb{Q}} = \\emptyset$.\n- **C)** Ceci est correct. C'est une caractérisation équivalente de la densité. Si toute boule ouverte rencontre $A$, cela signifie que tout point de $\\mathbb{R}^n$ est adhérent à $A$, donc $\\bar{A} = \\mathbb{R}^n$.\n- **D)** Ceci est incorrect. Le complémentaire d'un ensemble dense peut aussi être dense. Par exemple, $\\mathbb{Q}$ est dense dans $\\mathbb{R}$, et son complémentaire $\\mathbb{R} \\setminus \\mathbb{Q}$ (les irrationnels) est également dense dans $\\mathbb{R}$.\n\n",
       "options": [
         {

@@ -20,7 +20,7 @@
     {
       "id": "1",
       "stackId": "143daf03",
-      "content": "#### Question 1 : Définition de la limite\n\nQue signifie la notation $\\lim_{x\\to a} f(x) = l$ selon la définition formelle (avec $\\varepsilon$ et $\\eta$) ?\n",
+      "content": "#### Définition de la limite\n\nQue signifie la notation $\\lim_{x\\to a} f(x) = l$ selon la définition formelle (avec $\\varepsilon$ et $\\eta$) ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nL'énoncé correct de la définition de la limite est : \"Pour tout $\\varepsilon > 0$, il existe un $\\eta > 0$, tel que pour tout $x$ dans le domaine de $f$, si $|x - a| < \\eta$, alors $|f(x) - l| < \\varepsilon$\".\n\n- **A)** Cette option inverse les rôles de $\\varepsilon$ et $\\eta$. La définition stipule que pour n'importe quelle marge d'erreur $\\varepsilon$ que l'on se fixe autour de la limite $l$, on doit pouvoir trouver une marge $\\eta$ autour de $a$ correspondante.\n- **B)** C'est la définition correcte. On choisit d'abord une précision souhaitée $\\varepsilon$ pour la valeur de la fonction, puis on trouve un intervalle de largeur $\\eta$ autour de $a$ qui garantit cette précision.\n- **C)** Cette option utilise \"Il existe un $\\varepsilon$\", ce qui est trop faible. La propriété doit être vraie pour *tous* les $\\varepsilon > 0$, aussi petits soient-ils.\n- **D)** Cette option est trop forte. Elle exigerait que la condition soit vraie pour n'importe quel $\\eta$, ce qui n'est pas le cas. Le choix de $\\eta$ doit dépendre de $\\varepsilon$.\n\n",
       "options": [
         {
@@ -48,7 +48,7 @@
     {
       "id": "2",
       "stackId": "143daf03",
-      "content": "#### Question 2 : Caractérisation séquentielle de la limite\n\nSoit $f$ une fonction. On a montré que pour la suite $x_n = 1/n$, la suite $f(x_n)$ converge vers $L$. Que peut-on conclure sur la limite de $f$ en $0$ ?\n",
+      "content": "#### Caractérisation séquentielle de la limite\n\nSoit $f$ une fonction. On a montré que pour la suite $x_n = 1/n$, la suite $f(x_n)$ converge vers $L$. Que peut-on conclure sur la limite de $f$ en $0$ ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nLa caractérisation séquentielle de la limite stipule que $\\lim_{x\\to a} f(x) = L$ si et seulement si *pour toute* suite $(x_n)$ tendant vers $a$ (avec $x_n \\neq a$), la suite $(f(x_n))$ converge vers $L$.\n\n- **A)** C'est incorrect. Avoir vérifié la condition pour une seule suite ne suffit pas. Il faudrait la vérifier pour toutes les suites possibles qui tendent vers 0.\n- **B)** C'est incorrect pour la même raison que A. Bien que la suite $x_n = 1/n$ approche 0 par la droite, cela ne suffit pas pour conclure sur la limite à droite. Par exemple, la suite $y_n = 1/(n \\sqrt{2})$ approche aussi 0 par la droite et pourrait donner une autre limite.\n- **C)** C'est la bonne réponse. Pour prouver l'existence d'une limite, il faut considérer toutes les suites. L'information sur une seule suite est insuffisante. C'est en trouvant *deux* suites qui donnent des limites différentes qu'on peut prouver que la limite n'existe pas (voir le contre-exemple de $\\sin(1/x)$).\n- **D)** C'est incorrect. On ne peut pas prouver que la limite n'existe pas avec une seule suite. Il se pourrait que la limite soit bien $L$. On manque simplement d'information.\n\n",
       "options": [
         {
@@ -76,7 +76,7 @@
     {
       "id": "3",
       "stackId": "143daf03",
-      "content": "#### Question 3 : Définition de la continuité\n\nQuelle est la définition d'une fonction $f$ continue en un point $a$ de son domaine de définition ?\n",
+      "content": "#### Définition de la continuité\n\nQuelle est la définition d'une fonction $f$ continue en un point $a$ de son domaine de définition ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nLa continuité en un point $a$ combine trois conditions :\n\n1. $f$ doit être définie en $a$ (c'est-à-dire que $f(a)$ existe).\n2. La limite $\\lim_{x\\to a} f(x)$ doit exister et être finie.\n3. Ces deux valeurs doivent être égales.\n\n- **A)** C'est une condition nécessaire, mais pas suffisante. Une fonction peut être définie en $a$ mais avoir un \"saut\" à cet endroit.\n- **B)** C'est la définition complète et correcte. Elle implique que la limite existe, que la fonction est définie, et que les deux coïncident.\n- **C)** Si la limite existe mais est différente de $f(a)$, la fonction présente une discontinuité (un \"trou\" qui a été \"rebouché\" ailleurs). Elle n'est donc pas continue.\n- **D)** Si les limites à gauche et à droite sont égales, cela signifie que $\\lim_{x\\to a} f(x)$ existe. C'est une partie de la définition, mais il manque la condition cruciale que cette limite soit égale à $f(a)$.\n\n",
       "options": [
         {
@@ -104,7 +104,7 @@
     {
       "id": "4",
       "stackId": "143daf03",
-      "content": "#### Question 4 : Application du Théorème des Valeurs Intermédiaires\n\nOn considère une fonction $f$ continue sur le segment $[0, 5]$. On sait que $f(0) = -2$ et $f(5) = 10$. Lequel des énoncés suivants est une conséquence directe du Théorème des Valeurs Intermédiaires (TVI) ?\n",
+      "content": "#### Application du Théorème des Valeurs Intermédiaires\n\nOn considère une fonction $f$ continue sur le segment $[0, 5]$. On sait que $f(0) = -2$ et $f(5) = 10$. Lequel des énoncés suivants est une conséquence directe du Théorème des Valeurs Intermédiaires (TVI) ?\n",
       "solution": "\n\n**Réponse : [A]**\n\nLe TVI stipule qu'une fonction continue sur un segment $[a, b]$ prend toutes les valeurs intermédiaires entre $f(a)$ et $f(b)$.\n\n- **A)** Ici, $f(0) = -2$ et $f(5) = 10$. Le nombre $y=0$ est bien une valeur intermédiaire entre -2 et 10. Le TVI garantit donc qu'il existe un $c \\in [0, 5]$ tel que $f(c)=0$. C'est correct (il s'agit du corollaire de Bolzano).\n- **B)** Le TVI ne donne aucune information sur la monotonie de la fonction. La fonction pourrait monter, descendre, puis remonter pour aller de -2 à 10.\n- **C)** Le fait que $f(5)$ soit la plus grande des deux valeurs aux bornes ne signifie pas que c'est le maximum global sur l'intervalle. La fonction pourrait atteindre une valeur supérieure à 10 quelque part dans $]0, 5[$.\n- **D)** Le nombre 12 n'est pas compris entre $f(0)=-2$ et $f(5)=10$. Le TVI ne permet donc pas de conclure sur l'existence d'une solution à $f(x)=12$.\n\n",
       "options": [
         {
@@ -132,7 +132,7 @@
     {
       "id": "5",
       "stackId": "143daf03",
-      "content": "#### Question 5 : Théorème des bornes atteintes\n\nSoit $f(x) = \\frac{1}{x}$ sur l'intervalle $I = ]0, 1]$. Que peut-on dire de cette fonction ?\n",
+      "content": "#### Théorème des bornes atteintes\n\nSoit $f(x) = \\frac{1}{x}$ sur l'intervalle $I = ]0, 1]$. Que peut-on dire de cette fonction ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nLe théorème des bornes atteintes nécessite deux hypothèses cruciales : la fonction doit être continue et l'intervalle doit être un **segment** (fermé et borné).\n\n- **A)** C'est incorrect. Le théorème ne s'applique pas. En effet, la fonction n'admet pas de maximum sur $]0, 1]$ (elle tend vers $+\\infty$ quand $x$ tend vers 0).\n- **B)** C'est incorrect. La fonction n'est pas bornée sur $I$. Plus précisément, elle n'est pas majorée car $\\lim_{x\\to 0^+} f(x) = +\\infty$. Elle est minorée par $f(1)=1$.\n- **C)** C'est la bonne réponse. L'intervalle $I=]0, 1]$ n'est pas fermé en 0, ce n'est donc pas un segment. Une des hypothèses du théorème n'est pas satisfaite, il ne s'applique donc pas.\n- **D)** C'est incorrect. La fonction $f(x) = 1/x$ est une fonction rationnelle, elle est donc continue sur son domaine de définition $\\mathbb{R}^*$. En particulier, elle est continue sur l'intervalle $]0, 1]$.\n\n",
       "options": [
         {
@@ -160,7 +160,7 @@
     {
       "id": "6",
       "stackId": "143daf03",
-      "content": "#### Question 6 : Dérivabilité et Continuité\n\nLequel des énoncés suivants est vrai ?\n",
+      "content": "#### Dérivabilité et Continuité\n\nLequel des énoncés suivants est vrai ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nCette question teste la relation hiérarchique entre la dérivabilité et la continuité.\n\n- **A)** C'est faux. Le contre-exemple classique est la fonction valeur absolue $f(x)=|x|$ qui est continue en 0 mais pas dérivable en 0.\n- **B)** C'est vrai. La dérivabilité est une condition plus forte que la continuité. Si une fonction peut être approchée localement par une droite (sa tangente), elle ne peut pas avoir de \"saut\", donc elle doit être continue.\n- **C)** C'est faux car l'implication \"continue $\\implies$ dérivable\" est fausse.\n- **D)** C'est faux. Les notions sont liées par l'implication \"dérivable $\\implies$ continue\".\n\n",
       "options": [
         {
@@ -188,7 +188,7 @@
     {
       "id": "7",
       "stackId": "143daf03",
-      "content": "#### Question 7 : Interprétation géométrique de la dérivée\n\nSoit $f$ une fonction dérivable en un point $a$. Que représente le nombre dérivé $f'(a)$ ?\n",
+      "content": "#### Interprétation géométrique de la dérivée\n\nSoit $f$ une fonction dérivable en un point $a$. Que représente le nombre dérivé $f'(a)$ ?\n",
       "solution": "\n\n**Réponse : [A]**\n\nLa définition de la dérivée est la limite du taux d'accroissement, qui correspond à la limite des pentes des sécantes.\n\n- **A)** C'est la définition géométrique du nombre dérivé. La tangente est la position limite des droites sécantes, et sa pente est la limite des pentes des sécantes.\n- **B)** L'ordonnée du point d'abscisse $a$ est $f(a)$, pas $f'(a)$.\n- **C)** La pente de cette droite est le taux d'accroissement $\\frac{f(a+1) - f(a)}{(a+1) - a} = f(a+1) - f(a)$. Ce n'est qu'une approximation de la dérivée, pas la dérivée elle-même.\n- **D)** L'aire sous la courbe est liée à l'intégrale de la fonction, pas à sa dérivée.\n\n",
       "options": [
         {
@@ -216,7 +216,7 @@
     {
       "id": "8",
       "stackId": "143daf03",
-      "content": "#### Question 8 : Dérivée d'une fonction composée\n\nQuelle est la dérivée de la fonction $h(x) = (x^2 + 1)^3$ ?\n",
+      "content": "#### Dérivée d'une fonction composée\n\nQuelle est la dérivée de la fonction $h(x) = (x^2 + 1)^3$ ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nOn utilise la règle de dérivation des fonctions composées (règle de la chaîne) : $(g \\circ f)'(x) = g'(f(x)) \\times f'(x)$.\n\nIci, $f(x) = x^2+1$ et $g(y) = y^3$.\n\n1.  On calcule les dérivées de $f$ et $g$ :\n    -   $f'(x) = 2x$\n    -   $g'(y) = 3y^2$\n\n2.  On applique la formule :\n    -   $g'(f(x)) = g'(x^2+1) = 3(x^2+1)^2$\n    -   $h'(x) = g'(f(x)) \\times f'(x) = 3(x^2+1)^2 \\times (2x) = 6x(x^2+1)^2$\n\n- **A)** Cette réponse oublie de multiplier par la dérivée de la fonction intérieure, $f'(x)=2x$. C'est une erreur fréquente.\n- **B)** Cette réponse est une confusion incorrecte des formules.\n- **C)** C'est la réponse correcte obtenue en appliquant la règle de la chaîne.\n- **D)** Cette réponse est incorrecte et ne correspond à aucune règle de dérivation.\n\n",
       "options": [
         {
@@ -244,7 +244,7 @@
     {
       "id": "9",
       "stackId": "143daf03",
-      "content": "#### Question 9 : Application du Théorème de Rolle\n\nSoit $f(x) = x(x-2)$ sur le segment $[0, 2]$. Quelles conclusions peut-on tirer du Théorème de Rolle ?\n",
+      "content": "#### Application du Théorème de Rolle\n\nSoit $f(x) = x(x-2)$ sur le segment $[0, 2]$. Quelles conclusions peut-on tirer du Théorème de Rolle ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nVérifions les hypothèses du Théorème de Rolle pour $f(x) = x^2-2x$ sur $[0, 2]$.\n\n1.  **Continuité :** $f$ est une fonction polynomiale, donc elle est continue sur $[0, 2]$.\n2.  **Dérivabilité :** $f$ est dérivable sur $]0, 2[$.\n3.  **Égalité aux bornes :** $f(0) = 0(0-2) = 0$ et $f(2) = 2(2-2) = 0$. Donc $f(0) = f(2)$.\n\nLes trois hypothèses sont vérifiées.\n\n- **A)** Incorrect, la fonction est continue.\n- **B)** C'est une conclusion du TVI, pas de Rolle. De plus, on a déjà trouvé deux solutions pour $f(x)=0$ (les bornes), Rolle s'intéresse à la dérivée.\n- **C)** C'est la conclusion exacte du Théorème de Rolle : il existe un point à l'intérieur de l'intervalle où la tangente est horizontale (dérivée nulle). En effet, $f'(x) = 2x-2$, et $f'(c)=0$ donne $c=1$, qui est bien dans $]0, 2[$.\n- **D)** Incorrect, on a bien $f(0)=f(2)=0$.\n\n",
       "options": [
         {

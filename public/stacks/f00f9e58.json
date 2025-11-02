@@ -20,7 +20,7 @@
     {
       "id": "1",
       "stackId": "f00f9e58",
-      "content": "#### Question 1 : Définition d'une intégrale généralisée convergente\n\nComment la convergence de l'intégrale généralisée $\\int_a^{+\\infty} f(t)dt$ est-elle définie, pour une fonction $f$ continue sur $[a, +\\infty[$ ?\n",
+      "content": "#### Définition d'une intégrale généralisée convergente\n\nComment la convergence de l'intégrale généralisée $\\int_a^{+\\infty} f(t)dt$ est-elle définie, pour une fonction $f$ continue sur $[a, +\\infty[$ ?\n",
       "solution": "\n\n**Réponse : [B]**\n\n- **A)** C'est une condition nécessaire pour la convergence si $f$ est positive, mais elle n'est pas suffisante. Par exemple, pour $f(t) = 1/t$, la limite est 0 mais l'intégrale $\\int_1^{+\\infty} (1/t)dt$ diverge.\n\n- **B)** C'est la définition même de la convergence d'une intégrale généralisée en $+\\infty$. On calcule l'intégrale sur un segment $[a, b]$ puis on regarde si cette valeur a une limite finie lorsque la borne $b$ tend vers l'infini.\n\n- **C)** Une fonction non bornée peut avoir une intégrale convergente. Par exemple, l'intégrale $\\int_0^1 \\frac{1}{\\sqrt{t}}dt$ converge, bien que la fonction $t \\mapsto 1/\\sqrt{t}$ ne soit pas bornée au voisinage de 0.\n\n- **D)** La positivité de l'intégrale n'est pas une condition de convergence. Une fonction peut changer de signe et son intégrale peut converger. De plus, la fonction elle-même n'a pas besoin d'être positive.\n\n",
       "options": [
         {
@@ -48,7 +48,7 @@
     {
       "id": "2",
       "stackId": "f00f9e58",
-      "content": "#### Question 2 : Nature des intégrales de Riemann\n\nPour quelles valeurs du paramètre réel $\\alpha$ l'intégrale de Riemann $\\int_1^{+\\infty} \\frac{1}{t^\\alpha} dt$ est-elle convergente ?\n",
+      "content": "#### Nature des intégrales de Riemann\n\nPour quelles valeurs du paramètre réel $\\alpha$ l'intégrale de Riemann $\\int_1^{+\\infty} \\frac{1}{t^\\alpha} dt$ est-elle convergente ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nC'est un résultat fondamental concernant les intégrales de Riemann.\n\nLe calcul de l'intégrale donne :\n\n- Si $\\alpha \\neq 1$, $\\int_1^b \\frac{1}{t^\\alpha} dt = \\left[ \\frac{t^{1-\\alpha}}{1-\\alpha} \\right]_1^b = \\frac{b^{1-\\alpha}-1}{1-\\alpha}$. Pour que cette expression ait une limite finie quand $b \\to +\\infty$, il faut que l'exposant de $b$ soit négatif, c'est-à-dire $1-\\alpha < 0$, ce qui équivaut à $\\alpha > 1$.\n- Si $\\alpha = 1$, $\\int_1^b \\frac{1}{t} dt = [\\ln(t)]_1^b = \\ln(b)$. Quand $b \\to +\\infty$, $\\ln(b) \\to +\\infty$, donc l'intégrale diverge.\n\nEn conclusion, l'intégrale converge si et seulement si $\\alpha > 1$.\n\n- **A)** Si $\\alpha < 1$, alors $1-\\alpha > 0$, et la limite est infinie. L'intégrale diverge.\n- **B)** Si $\\alpha \\le 1$, cela inclut le cas $\\alpha=1$ et les cas où $\\alpha < 1$. L'intégrale diverge.\n- **D)** L'intégrale converge pour une infinité de valeurs, pas seulement pour $\\alpha=2$.\n\n",
       "options": [
         {
@@ -76,7 +76,7 @@
     {
       "id": "3",
       "stackId": "f00f9e58",
-      "content": "#### Question 3 : Conditions du critère de comparaison série-intégrale\n\nPour appliquer le critère de comparaison série-intégrale à la série $\\sum f(n)$, quelles sont les hypothèses requises pour la fonction $f$ sur un intervalle $[N, +\\infty[$ ?\n",
+      "content": "#### Conditions du critère de comparaison série-intégrale\n\nPour appliquer le critère de comparaison série-intégrale à la série $\\sum f(n)$, quelles sont les hypothèses requises pour la fonction $f$ sur un intervalle $[N, +\\infty[$ ?\n",
       "solution": "\n\n**Réponses : [A, C, D]**\n\nLe critère de comparaison série-intégrale stipule que si une fonction $f$ est continue par morceaux, positive et décroissante sur $[N, +\\infty[$, alors la série $\\sum_{n=N}^\\infty f(n)$ et l'intégrale $\\int_N^{+\\infty} f(t)dt$ sont de même nature.\n\n- **A)** La continuité (ou continuité par morceaux) est nécessaire pour que l'intégrale de Riemann $\\int_N^b f(t)dt$ soit bien définie. C'est une condition correcte.\n\n- **B)** La fonction doit être positive ($f(t) \\ge 0$), mais pas nécessairement *strictement* positive. Si $f(n)=0$ à partir d'un certain rang, la série est trivialement convergente. C'est donc une condition trop forte.\n\n- **C)** La décroissance de la fonction est une hypothèse essentielle. C'est elle qui permet d'encadrer l'intégrale par la somme des aires des rectangles, et vice-versa. C'est une condition correcte.\n\n- **D)** La positivité est également une hypothèse fondamentale. Le critère ne s'applique pas aux fonctions qui changent de signe. La condition est $f(t) \\ge 0$. C'est une condition correcte.\n\n",
       "options": [
         {
@@ -104,7 +104,7 @@
     {
       "id": "4",
       "stackId": "f00f9e58",
-      "content": "#### Question 4 : Application du critère série-intégrale\n\nSelon le critère de comparaison série-intégrale, la nature de la série $\\sum_{n \\ge 2} \\frac{1}{n \\ln(n)}$ est la même que la nature de quelle intégrale ?\n",
+      "content": "#### Application du critère série-intégrale\n\nSelon le critère de comparaison série-intégrale, la nature de la série $\\sum_{n \\ge 2} \\frac{1}{n \\ln(n)}$ est la même que la nature de quelle intégrale ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nLe critère de comparaison série-intégrale relie la nature de la série $\\sum f(n)$ à celle de l'intégrale $\\int f(t)dt$, à condition que la fonction $f$ respecte les hypothèses (continuité, positivité, décroissance).\n\nPour la série $\\sum_{n \\ge 2} \\frac{1}{n \\ln(n)}$, le terme général est $u_n = f(n)$ avec $f(t) = \\frac{1}{t \\ln(t)}$.\n\nLa fonction $f(t) = \\frac{1}{t \\ln(t)}$ est bien continue, positive et décroissante sur $[2, +\\infty[$. Le critère s'applique.\n\nLa série a donc la même nature que l'intégrale $\\int_2^{+\\infty} \\frac{1}{t \\ln(t)} dt$.\n\n- **A)** C'est l'intégrale associée à la série $\\sum 1/n^2$. Incorrect.\n- **B)** C'est l'intégrale associée à la série $\\sum 1/\\ln(n)$. Incorrect.\n- **C)** C'est l'intégrale correspondant exactement à la fonction $f(t)$ associée au terme général de la série. Correct.\n- **D)** La borne inférieure de l'intégrale doit correspondre au début de l'intervalle où la fonction est définie et respecte les hypothèses. Ici, $\\ln(1)=0$, donc la fonction n'est pas définie en $t=1$. La borne doit être supérieure à 1, par exemple 2, comme dans la série.\n\n",
       "options": [
         {
@@ -132,7 +132,7 @@
     {
       "id": "5",
       "stackId": "f00f9e58",
-      "content": "#### Question 5 : Hypothèse du critère des équivalents\n\nLe critère des équivalents pour les séries stipule que si $u_n \\sim v_n$, alors les séries $\\sum u_n$ et $\\sum v_n$ sont de même nature. Quelle est une hypothèse cruciale pour que ce théorème soit valide ?\n",
+      "content": "#### Hypothèse du critère des équivalents\n\nLe critère des équivalents pour les séries stipule que si $u_n \\sim v_n$, alors les séries $\\sum u_n$ et $\\sum v_n$ sont de même nature. Quelle est une hypothèse cruciale pour que ce théorème soit valide ?\n",
       "solution": "\n\n**Réponse : [B]**\n\n- **A)** La monotonie n'est pas une condition requise pour le critère des équivalents.\n\n- **B)** C'est l'hypothèse fondamentale. Le critère n'est vrai que pour les séries à termes de signe constant (positif ou négatif) à partir d'un certain rang. Si les termes changent de signe, le critère peut être mis en défaut, comme le montre le contre-exemple $u_n = \\frac{(-1)^n}{\\sqrt{n}}$ et $v_n = \\frac{(-1)^n}{\\sqrt{n}} + \\frac{1}{n}$.\n\n- **C)** Le théorème sert justement à déterminer la nature (convergence OU divergence) d'une série. On ne peut pas supposer la convergence au départ.\n\n- **D)** Le critère n'est pas toujours vrai. L'hypothèse de signe constant est indispensable.\n\n",
       "options": [
         {
@@ -160,7 +160,7 @@
     {
       "id": "6",
       "stackId": "f00f9e58",
-      "content": "#### Question 6 : Application du critère des équivalents\n\nQuelle est la nature de la série de terme général $u_n = \\ln\\left(1 + \\frac{1}{n^3}\\right)$ ?\n",
+      "content": "#### Application du critère des équivalents\n\nQuelle est la nature de la série de terme général $u_n = \\ln\\left(1 + \\frac{1}{n^3}\\right)$ ?\n",
       "solution": "\n\n**Réponse : [D]**\n\nPour déterminer la nature de la série, nous allons chercher un équivalent simple de son terme général $u_n$.\n\nLes termes $u_n = \\ln(1 + 1/n^3)$ sont positifs pour $n \\ge 1$. On peut donc utiliser le critère des équivalents.\n\nQuand $n \\to +\\infty$, on a $\\frac{1}{n^3} \\to 0$. On utilise l'équivalent usuel $\\ln(1+x) \\sim x$ lorsque $x \\to 0$.\n\nEn posant $x = \\frac{1}{n^3}$, on obtient :\n\n$$ u_n = \\ln\\left(1 + \\frac{1}{n^3}\\right) \\sim \\frac{1}{n^3} $$\n\nLa série $\\sum \\frac{1}{n^3}$ est une série de Riemann avec $\\alpha=3$. Puisque $3 > 1$, elle converge.\n\nPar le critère de comparaison par équivalents pour les séries à termes positifs, la série $\\sum u_n$ converge également.\n\n- **A)** L'équivalent n'est pas $1/n$ mais $1/n^3$.\n- **B)** Le critère des équivalents s'applique parfaitement ici.\n- **C)** Le terme général tend bien vers 0, car $\\ln(1+0) = 0$.\n- **D)** Le raisonnement est correct.\n\n",
       "options": [
         {
@@ -188,7 +188,7 @@
     {
       "id": "7",
       "stackId": "f00f9e58",
-      "content": "#### Question 7 : Critère des séries alternées\n\nSoit une série de la forme $\\sum_{n=1}^\\infty (-1)^n b_n$. Quelles sont les conditions suffisantes sur la suite $(b_n)$ pour garantir la convergence de la série d'après le critère des séries alternées ?\n",
+      "content": "#### Critère des séries alternées\n\nSoit une série de la forme $\\sum_{n=1}^\\infty (-1)^n b_n$. Quelles sont les conditions suffisantes sur la suite $(b_n)$ pour garantir la convergence de la série d'après le critère des séries alternées ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nLe critère des séries alternées (ou critère de Leibniz) énonce précisément les conditions suffisantes pour qu'une série alternée converge.\n\n- **A)** Être bornée ne suffit pas. Par exemple, si $b_n = 1$ pour tout $n$, la suite est positive et bornée, mais la série $\\sum (-1)^n$ diverge.\n- **B)** Tendre vers 0 ne suffit pas si la décroissance n'est pas assurée. Il existe des contre-exemples où la compensation des termes ne se fait pas correctement.\n- **C)** Ces trois conditions (positivité, décroissance, limite nulle) sont exactement les hypothèses du critère des séries alternées.\n- **D)** Si $\\sum b_n$ converge, alors la série $\\sum (-1)^n b_n$ est absolument convergente, et donc convergente. C'est une condition suffisante, mais plus forte que ce que demande le critère des séries alternées. Ce critère est particulièrement utile quand $\\sum b_n$ diverge (cas des séries semi-convergentes comme $\\sum \\frac{(-1)^n}{n}$).\n\n",
       "options": [
         {
@@ -216,7 +216,7 @@
     {
       "id": "8",
       "stackId": "f00f9e58",
-      "content": "#### Question 8 : Majoration du reste d'une série alternée\n\nOn considère la somme $S = \\sum_{n=1}^\\infty \\frac{(-1)^{n+1}}{n^2}$. On l'approxime par la somme partielle $S_{10} = \\sum_{n=1}^{10} \\frac{(-1)^{n+1}}{n^2}$. Quelle est l'estimation de l'erreur $|S - S_{10}|$ donnée par le critère des séries alternées ?\n",
+      "content": "#### Majoration du reste d'une série alternée\n\nOn considère la somme $S = \\sum_{n=1}^\\infty \\frac{(-1)^{n+1}}{n^2}$. On l'approxime par la somme partielle $S_{10} = \\sum_{n=1}^{10} \\frac{(-1)^{n+1}}{n^2}$. Quelle est l'estimation de l'erreur $|S - S_{10}|$ donnée par le critère des séries alternées ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nPour une série alternée $\\sum (-1)^n b_n$ qui satisfait les conditions du critère, le reste d'ordre $N$, $R_N = S - S_N$, est majoré en valeur absolue par le premier terme négligé, $|u_{N+1}| = b_{N+1}$.\n\nLa série est $\\sum_{n=1}^\\infty (-1)^{n+1} \\frac{1}{n^2}$. Ici, le terme général est $u_n = (-1)^{n+1} b_n$ avec $b_n = \\frac{1}{n^2}$. La suite $(b_n)$ est bien positive, décroissante et tend vers 0.\n\nL'erreur commise en approximant $S$ par $S_{10}$ est $R_{10} = S - S_{10}$.\n\nLa majoration est :\n\n$$ |S - S_{10}| \\le b_{10+1} = b_{11} $$\n\n$$ b_{11} = \\frac{1}{11^2} = \\frac{1}{121} $$\n\n- **A)** $1/100$ correspond à $b_{10}$, pas $b_{11}$.\n- **B)** $1/10$ correspond à $\\sqrt{b_{10}}$, ce qui n'est pas la bonne formule.\n- **C)** L'erreur est bien majorée par le premier terme négligé, qui est $b_{11} = 1/11^2 = 1/121$.\n- **D)** Il s'agit d'une majoration (une inégalité), pas d'une égalité. L'erreur est inférieure ou égale à cette valeur.\n\n",
       "options": [
         {
@@ -244,7 +244,7 @@
     {
       "id": "9",
       "stackId": "f00f9e58",
-      "content": "#### Question 9 : Théorème de réarrangement de Riemann\n\nSoit $\\sum u_n$ une série semi-convergente (c'est-à-dire convergente, mais pas absolument convergente). Que peut-on dire de la série $\\sum u_{\\sigma(n)}$ obtenue en réarrangeant ses termes selon une permutation $\\sigma$ ?\n",
+      "content": "#### Théorème de réarrangement de Riemann\n\nSoit $\\sum u_n$ une série semi-convergente (c'est-à-dire convergente, mais pas absolument convergente). Que peut-on dire de la série $\\sum u_{\\sigma(n)}$ obtenue en réarrangeant ses termes selon une permutation $\\sigma$ ?\n",
       "solution": "\n\n**Réponses : [A, D]**\n\nCeci est le contenu du théorème de réarrangement de Riemann, qui met en évidence la nature \"fragile\" de la convergence des séries semi-convergentes.\n\n- **A)** C'est une partie du théorème de Riemann. On peut réorganiser les termes pour que la somme converge vers n'importe quel nombre réel. Ceci est correct.\n\n- **B)** C'est faux. Cette propriété n'est vraie que pour les séries absolument convergentes.\n\n- **C)** C'est faux car un réarrangement peut aussi faire diverger la série.\n\n- **D)** C'est également une partie du théorème de Riemann. On peut choisir un réarrangement qui fait diverger la série vers $+\\infty$, $-\\infty$, ou même qui la fait osciller sans limite. Ceci est correct.\n\n",
       "options": [
         {

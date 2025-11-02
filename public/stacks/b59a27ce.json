@@ -19,7 +19,7 @@
     {
       "id": "1",
       "stackId": "b59a27ce",
-      "content": "#### Question 1 : Appartenance et Inclusion\n\nSoit l'ensemble $E = \\{a, b, \\{c, d\\}\\}$. Quelles sont les affirmations correctes concernant cet ensemble ?\n",
+      "content": "#### Appartenance et Inclusion\n\nSoit l'ensemble $E = \\{a, b, \\{c, d\\}\\}$. Quelles sont les affirmations correctes concernant cet ensemble ?\n",
       "solution": "\n\n**Réponses : [B, D]**\n\nCette question teste la différence fondamentale entre le symbole d'appartenance $\\in$ (un élément est dans un ensemble) et le symbole d'inclusion $\\subseteq$ (un ensemble est un sous-ensemble d'un autre).\n\nL'ensemble $E$ a trois éléments : la lettre $a$, la lettre $b$, et l'ensemble $\\{c, d\\}$.\n\n- **A) Incorrecte.** L'affirmation $\\{c, d\\} \\subseteq E$ signifierait que tous les éléments de $\\{c, d\\}$ (c'est-à-dire $c$ et $d$) sont aussi des éléments de $E$. Or, ni $c$ ni $d$ ne sont des éléments de $E$. C'est l'ensemble $\\{c, d\\}$ *lui-même* qui est un élément de $E$.\n\n- **B) Correcte.** L'affirmation $\\{a, b\\} \\subseteq E$ signifie que tous les éléments de $\\{a, b\\}$ sont des éléments de $E$. L'élément $a$ est dans $E$, et l'élément $b$ est dans $E$. L'affirmation est donc correcte.\n\n- **C) Incorrecte.** L'élément $c$ n'appartient pas directement à l'ensemble $E$. Il est un élément de l'ensemble $\\{c, d\\}$, qui lui-même est un élément de $E$. On a $c \\in \\{c, d\\}$ et $\\{c, d\\} \\in E$, mais pas $c \\in E$.\n\n- **D) Correcte.** L'ensemble $E$ est défini comme la collection des trois objets $a$, $b$ et $\\{c, d\\}$. L'ensemble $\\{c, d\\}$ est bien l'un de ces trois objets. Il est donc un élément de $E$.\n\n",
       "options": [
         {
@@ -47,7 +47,7 @@
     {
       "id": "2",
       "stackId": "b59a27ce",
-      "content": "#### Question 2 : Égalité d'Ensembles\n\nSoient les ensembles $A = \\{n \\in \\mathbb{N} \\mid 1 \\le n < 4\\}$ et $B = \\{1, 2, 3\\}$. Quelle est la relation entre $A$ et $B$ ?\n",
+      "content": "#### Égalité d'Ensembles\n\nSoient les ensembles $A = \\{n \\in \\mathbb{N} \\mid 1 \\le n < 4\\}$ et $B = \\{1, 2, 3\\}$. Quelle est la relation entre $A$ et $B$ ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nPour comparer les ensembles $A$ et $B$, il faut d'abord lister les éléments de $A$.\n\nL'ensemble $A$ est défini en compréhension comme l'ensemble des entiers naturels $n$ tels que $1 \\le n < 4$. Les entiers naturels qui satisfont cette condition sont 1, 2 et 3.\n\nDonc, en extension, $A = \\{1, 2, 3\\}$.\n\nL'ensemble $B$ est déjà donné en extension : $B = \\{1, 2, 3\\}$.\n\nDeux ensembles sont égaux s'ils contiennent exactement les mêmes éléments. Ici, $A$ et $B$ contiennent tous les deux les éléments 1, 2 et 3, et aucun autre.\n\n- **A) Incorrecte.** Cette option serait vraie si $A$ était un sous-ensemble propre de $B$, ce qui n'est pas le cas.\n- **B) Incorrecte.** Cette option serait vraie si $B$ était un sous-ensemble propre de $A$, ce qui n'est pas le cas.\n- **C) Correcte.** Les deux ensembles ont exactement les mêmes éléments, donc $A=B$.\n- **D) Incorrecte.** Deux ensembles sont disjoints si leur intersection est vide. Ici, $A \\cap B = \\{1, 2, 3\\}$, ce qui est non vide.\n\n",
       "options": [
         {
@@ -75,7 +75,7 @@
     {
       "id": "3",
       "stackId": "b59a27ce",
-      "content": "#### Question 3 : Opérations sur les Ensembles\n\nSoient $A = \\{1, 2, 3, 4\\}$ et $B = \\{3, 4, 5\\}$. Quel est le résultat de l'opération $(A \\cup B) \\setminus (A \\cap B)$ ?\n",
+      "content": "#### Opérations sur les Ensembles\n\nSoient $A = \\{1, 2, 3, 4\\}$ et $B = \\{3, 4, 5\\}$. Quel est le résultat de l'opération $(A \\cup B) \\setminus (A \\cap B)$ ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nCette opération est appelée la différence symétrique. Calculons chaque partie étape par étape.\n\n1.  **Calcul de l'union $A \\cup B$ :**\n\n    L'union contient tous les éléments qui sont dans $A$, ou dans $B$, ou dans les deux.\n\n    $A \\cup B = \\{1, 2, 3, 4\\} \\cup \\{3, 4, 5\\} = \\{1, 2, 3, 4, 5\\}$.\n\n2.  **Calcul de l'intersection $A \\cap B$ :**\n\n    L'intersection contient les éléments qui sont à la fois dans $A$ et dans $B$.\n\n    $A \\cap B = \\{1, 2, 3, 4\\} \\cap \\{3, 4, 5\\} = \\{3, 4\\}$.\n\n3.  **Calcul de la différence $(A \\cup B) \\setminus (A \\cap B)$ :**\n\n    On prend l'ensemble résultat de l'union et on lui enlève les éléments de l'intersection.\n\n    $\\{1, 2, 3, 4, 5\\} \\setminus \\{3, 4\\} = \\{1, 2, 5\\}$.\n\n- **A) Incorrecte.** $\\{3, 4\\}$ correspond à l'intersection $A \\cap B$.\n- **B) Incorrecte.** $\\{1, 2, 3, 4, 5\\}$ correspond à l'union $A \\cup B$.\n- **C) Correcte.** Le résultat du calcul est bien $\\{1, 2, 5\\}$.\n- **D) Incorrecte.** L'ensemble vide serait le résultat si $A \\cup B = A \\cap B$, ce qui n'est possible que si $A=B$.\n\n",
       "options": [
         {
@@ -103,7 +103,7 @@
     {
       "id": "4",
       "stackId": "b59a27ce",
-      "content": "#### Question 4 : Ensemble des Parties\n\nSoit l'ensemble $C = \\{x, y\\}$. Quel est l'ensemble de ses parties $\\mathcal{P}(C)$ ?\n",
+      "content": "#### Ensemble des Parties\n\nSoit l'ensemble $C = \\{x, y\\}$. Quel est l'ensemble de ses parties $\\mathcal{P}(C)$ ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nL'ensemble des parties $\\mathcal{P}(C)$ est l'ensemble de **tous les sous-ensembles** de $C$. Pour trouver tous les sous-ensembles d'un ensemble à deux éléments $\\{x, y\\}$, on peut les lister par taille :\n\n-   Les sous-ensembles à 0 élément : il y a seulement l'ensemble vide, $\\emptyset$.\n-   Les sous-ensembles à 1 élément : il y a $\\{x\\}$ et $\\{y\\}$.\n-   Les sous-ensembles à 2 éléments : il y a l'ensemble lui-même, $\\{x, y\\}$.\n\nEn rassemblant tous ces sous-ensembles, on obtient $\\mathcal{P}(C) = \\{\\emptyset, \\{x\\}, \\{y\\}, \\{x, y\\}\\}$.\n\nLe cardinal de $C$ est $|C|=2$, donc le cardinal de $\\mathcal{P}(C)$ doit être $2^{|C|} = 2^2 = 4$.\n\n- **A) Incorrecte.** Cette liste mélange des éléments et des sous-ensembles de $C$, ce n'est pas la définition de $\\mathcal{P}(C)$.\n- **B) Correcte.** Cette option liste bien les 4 sous-ensembles de $C$.\n- **C) Incorrecte.** Ceci est la définition du produit cartésien $C \\times C$, qui est un ensemble de couples, pas de sous-ensembles.\n- **D) Incorrecte.** Cette option ne liste que les sous-ensembles à un seul élément et oublie l'ensemble vide et l'ensemble lui-même.\n\n",
       "options": [
         {
@@ -131,7 +131,7 @@
     {
       "id": "5",
       "stackId": "b59a27ce",
-      "content": "#### Question 5 : Produit Cartésien\n\nSoient $A = \\{1, 2\\}$ et $B = \\{a\\}$. Lesquelles des affirmations suivantes sur le produit cartésien sont correctes ?\n",
+      "content": "#### Produit Cartésien\n\nSoient $A = \\{1, 2\\}$ et $B = \\{a\\}$. Lesquelles des affirmations suivantes sur le produit cartésien sont correctes ?\n",
       "solution": "\n\n**Réponses : [A, D]**\n\nLe produit cartésien $A \\times B$ est l'ensemble de tous les couples ordonnés $(x, y)$ où $x \\in A$ et $y \\in B$.\n\nIci, $A = \\{1, 2\\}$ et $B = \\{a\\}$.\n\nLes éléments $x$ peuvent être 1 ou 2. L'élément $y$ ne peut être que $a$.\n\nLes couples possibles sont donc $(1, a)$ et $(2, a)$.\n\nAinsi, $A \\times B = \\{(1, a), (2, a)\\}$.\n\n- **A) Correcte.** Ceci est la définition correcte de $A \\times B$ pour les ensembles donnés.\n\n- **B) Incorrecte.** Le cardinal de $A \\times B$ est le nombre de couples qu'il contient. Il y en a 2. Le cardinal est donc 2, pas 3.\n\n- **C) Incorrecte.** Calculons $B \\times A$. Les couples sont de la forme $(y, x)$ où $y \\in B$ et $x \\in A$.\n\n$B \\times A = \\{(a, 1), (a, 2)\\}$.\n\nLe couple $(1, a)$ est différent du couple $(a, 1)$. Donc $A \\times B \\neq B \\times A$. Le produit cartésien n'est pas commutatif.\n\n- **D) Correcte.** C'est la formule générale du cardinal du produit cartésien de deux ensembles finis. Ici, $|A|=2$ et $|B|=1$, donc $|A \\times B| = 2 \\cdot 1 = 2$, ce qui est cohérent avec l'option A.\n\n",
       "options": [
         {
@@ -159,7 +159,7 @@
     {
       "id": "6",
       "stackId": "b59a27ce",
-      "content": "#### Question 6 : Types d'applications\n\nConsidérons l'application $f: \\mathbb{Z} \\to \\mathbb{Z}$ définie par $f(x) = x^2$. Comment peut-on qualifier cette application ?\n",
+      "content": "#### Types d'applications\n\nConsidérons l'application $f: \\mathbb{Z} \\to \\mathbb{Z}$ définie par $f(x) = x^2$. Comment peut-on qualifier cette application ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nAnalysons les propriétés d'injectivité et de surjectivité de $f(x) = x^2$ avec $E=F=\\mathbb{Z}$ (l'ensemble des entiers relatifs).\n\n1.  **Injectivité :** Une application est injective si des éléments distincts ont toujours des images distinctes.\n\n    Regardons les images de 2 et -2 :\n\n    $f(2) = 2^2 = 4$\n\n    $f(-2) = (-2)^2 = 4$\n\n    On a $2 \\neq -2$, mais $f(2) = f(-2)$. Deux éléments distincts ont la même image.\n\n    Donc, $f$ n'est **pas injective**.\n\n2.  **Surjectivité :** Une application est surjective si tout élément de l'ensemble d'arrivée a au moins un antécédent.\n\n    L'ensemble d'arrivée est $\\mathbb{Z}$. Prenons un élément de $\\mathbb{Z}$, par exemple $y = -1$. Existe-t-il un antécédent $x \\in \\mathbb{Z}$ tel que $f(x) = -1$ ?\n\n    Cela reviendrait à résoudre $x^2 = -1$. Il n'y a pas d'entier (ni même de réel) dont le carré est négatif.\n\n    Donc, $-1$ n'a pas d'antécédent. L'application n'est **pas surjective**. (De plus, seuls les carrés parfaits positifs ont des antécédents).\n\nPuisque $f$ n'est ni injective, ni surjective, elle n'est pas bijective non plus.\n\n- **A) Incorrecte.** $f$ n'est pas injective.\n- **B) Incorrecte.** $f$ n'est pas surjective.\n- **C) Correcte.** $f$ n'est ni injective, ni surjective.\n- **D) Incorrecte.** Pour être bijective, une application doit être à la fois injective et surjective.\n\n",
       "options": [
         {
@@ -187,7 +187,7 @@
     {
       "id": "7",
       "stackId": "b59a27ce",
-      "content": "#### Question 7 : Définitions de l'Injectivité et de la Surjectivité\n\nSoit une application $f: E \\to F$. Que signifie le fait que $f$ soit surjective ?\n",
+      "content": "#### Définitions de l'Injectivité et de la Surjectivité\n\nSoit une application $f: E \\to F$. Que signifie le fait que $f$ soit surjective ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nCette question porte sur les définitions formelles des propriétés des applications.\n\n- **A) Incorrecte.** Cette proposition, $\\forall x_1, x_2 \\in E, (f(x_1) = f(x_2) \\implies x_1 = x_2)$, est la définition de l'**injectivité**. Elle stipule que si deux images sont égales, alors les antécédents doivent être les mêmes.\n\n- **B) Correcte.** Cette proposition, $\\forall y \\in F, \\exists x \\in E, y = f(x)$, est la définition de la **surjectivité**. Elle signifie que pour tout élément $y$ de l'ensemble d'arrivée $F$, il existe au moins un élément $x$ dans l'ensemble de départ $E$ qui a $y$ pour image. Autrement dit, tout élément de $F$ est \"atteint\" par l'application.\n\n- **C) Incorrecte.** L'affirmation \"Chaque élément de $E$ a une unique image dans $F$\" est la **définition même d'une application**. Ce n'est pas une propriété spécifique comme la surjectivité.\n\n- **D) Incorrecte.** Cette proposition, $\\forall y \\in F, \\exists! x \\in E, y = f(x)$ (le symbole $\\exists!$ signifie \"il existe un unique\"), est la définition de la **bijectivité**. Elle combine l'existence d'un antécédent (surjectivité) et son unicité (injectivité).\n\n",
       "options": [
         {
@@ -215,7 +215,7 @@
     {
       "id": "8",
       "stackId": "b59a27ce",
-      "content": "#### Question 8 : Relations d'Équivalence\n\nSur l'ensemble des élèves d'une classe, on définit la relation $x \\mathcal{R} y$ si \"x et y sont nés le même mois\". Quelles propriétés cette relation vérifie-t-elle ?\n",
+      "content": "#### Relations d'Équivalence\n\nSur l'ensemble des élèves d'une classe, on définit la relation $x \\mathcal{R} y$ si \"x et y sont nés le même mois\". Quelles propriétés cette relation vérifie-t-elle ?\n",
       "solution": "\n\n**Réponses : [A, B, C]**\n\nPour être une relation d'équivalence, une relation doit être réflexive, symétrique ET transitive. Analysons chaque propriété pour la relation \"être né le même mois\".\n\n- **A) Réflexivité ($\\forall x, x \\mathcal{R} x$) :**\n\nEst-ce qu'un élève $x$ est né le même mois que lui-même ? Oui, évidemment. La relation est **réflexive**.\n\n- **B) Symétrie ($\\forall x, y, x \\mathcal{R} y \\implies y \\mathcal{R} x$) :**\n\nSi $x$ est né le même mois que $y$, est-ce que $y$ est né le même mois que $x$ ? Oui, la condition est la même pour les deux. La relation est **symétrique**.\n\n- **C) Transitivité ($\\forall x, y, z, (x \\mathcal{R} y \\text{ et } y \\mathcal{R} z) \\implies x \\mathcal{R} z$) :**\n\nSi $x$ est né le même mois que $y$ (disons janvier), et $y$ est né le même mois que $z$ (donc aussi janvier), est-ce que $x$ est né le même mois que $z$ ? Oui, ils sont tous les trois nés en janvier. La relation est **transitive**.\n\n- **D) Antisymétrie ($\\forall x, y, (x \\mathcal{R} y \\text{ et } y \\mathcal{R} x) \\implies x = y$) :**\n\nSi $x$ est né le même mois que $y$ et $y$ est né le même mois que $x$, est-ce que cela implique que $x$ et $y$ sont la même personne ? Non. Deux personnes distinctes, comme Alice et Bob, peuvent être nées en mars. On aurait Alice $\\mathcal{R}$ Bob et Bob $\\mathcal{R}$ Alice, mais Alice $\\neq$ Bob. La relation n'est **pas antisymétrique**.\n\nPuisqu'elle est réflexive, symétrique et transitive, c'est une relation d'équivalence. Les classes d'équivalence sont les groupes d'élèves nés en janvier, en février, etc.\n\n",
       "options": [
         {
@@ -243,7 +243,7 @@
     {
       "id": "9",
       "stackId": "b59a27ce",
-      "content": "#### Question 9 : Relation d'Ordre vs Relation d'Équivalence\n\nQuelle propriété fondamentale distingue une relation d'ordre d'une relation d'équivalence (en dehors des cas triviaux) ?\n",
+      "content": "#### Relation d'Ordre vs Relation d'Équivalence\n\nQuelle propriété fondamentale distingue une relation d'ordre d'une relation d'équivalence (en dehors des cas triviaux) ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nLes relations d'ordre et d'équivalence sont deux types de relations binaires très importantes qui structurent les ensembles. Elles partagent certaines propriétés mais diffèrent sur un point crucial.\n\n-   **Relation d'équivalence :** Réflexive, **Symétrique**, Transitive.\n-   **Relation d'ordre :** Réflexive, **Antisymétrique**, Transitive.\n\n- **A) Incorrecte.** La réflexivité ($\\forall x, x \\mathcal{R} x$) est une condition requise pour les deux types de relations.\n\n- **B) Incorrecte.** La transitivité ($\\forall x,y,z, (x \\mathcal{R} y \\text{ et } y \\mathcal{R} z) \\implies x \\mathcal{R} z$) est également une condition requise pour les deux.\n\n- **C) Correcte.** C'est la différence clé.\n    - La **symétrie** ($x \\mathcal{R} y \\implies y \\mathcal{R} x$) exprime une idée d'indiscernabilité ou de \"ressemblance\".\n    - L'**antisymétrie** ($x \\mathcal{R} y \\text{ et } y \\mathcal{R} x \\implies x = y$) exprime une idée de hiérarchie ou de direction. Si deux éléments sont mutuellement \"plus grands\" l'un que l'autre, ils doivent être le même.\n\n    Ces deux propriétés sont généralement exclusives (sauf pour la relation d'égalité qui possède les deux).\n\n- **D) Incorrecte.** Une relation d'ordre peut être **partielle**. Par exemple, la relation de divisibilité sur les entiers n'est pas totale (3 ne divise pas 5 et 5 не divise pas 3).\n\n",
       "options": [
         {

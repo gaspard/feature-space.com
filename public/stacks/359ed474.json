@@ -20,7 +20,7 @@
     {
       "id": "1",
       "stackId": "359ed474",
-      "content": "#### Question 1 : Définition d'une fonction en escalier\n\nQu'est-ce qui caractérise une fonction $f$ comme étant \"en escalier\" sur un intervalle $[a, b]$ ?\n",
+      "content": "#### Définition d'une fonction en escalier\n\nQu'est-ce qui caractérise une fonction $f$ comme étant \"en escalier\" sur un intervalle $[a, b]$ ?\n",
       "solution": "\n\n**Réponse : [C]**\n\n- **A)** Incorrect. Les fonctions en escalier sont typiquement discontinues aux points de la subdivision. Une fonction continue et en escalier sur un intervalle est nécessairement une fonction constante.\n\n- **B)** Incorrect. Le graphe est composé de segments horizontaux, mais les \"sauts\" entre les marches ne sont pas nécessairement des segments verticaux. Une fonction ne peut pas avoir de segment vertical dans son graphe.\n\n- **C)** Correct. C'est la définition formelle d'une fonction en escalier. La subdivision est dite \"adaptée\" à la fonction. La définition ne contraint pas les valeurs de la fonction aux points $x_i$ de la subdivision.\n\n- **D)** Incorrect. Bien qu'une fonction en escalier prenne un nombre fini de valeurs, cette condition n'est pas suffisante. Par exemple, la fonction $f(x) = 1$ si $x \\in \\mathbb{Q}$ et $f(x) = 0$ si $x \\notin \\mathbb{Q}$ ne prend que deux valeurs, mais n'est en escalier sur aucun intervalle.\n\n",
       "options": [
         {
@@ -48,7 +48,7 @@
     {
       "id": "2",
       "stackId": "359ed474",
-      "content": "#### Question 2 : Calcul de l'intégrale d'une fonction en escalier\n\nSoit la fonction $f$ définie sur $[0, 5]$ par :\n\n$$ f(x) = \\begin{cases} 4 & \\text{si } 0 \\le x < 3 \\\\ -2 & \\text{si } 3 \\le x \\le 5 \\end{cases} $$\n\nQuelle est la valeur de l'intégrale $\\int_0^5 f(x) dx$ ?\n",
+      "content": "#### Calcul de l'intégrale d'une fonction en escalier\n\nSoit la fonction $f$ définie sur $[0, 5]$ par :\n\n$$ f(x) = \\begin{cases} 4 & \\text{si } 0 \\le x < 3 \\\\ -2 & \\text{si } 3 \\le x \\le 5 \\end{cases} $$\n\nQuelle est la valeur de l'intégrale $\\int_0^5 f(x) dx$ ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nL'intégrale d'une fonction en escalier est la somme des aires des rectangles formés par son graphe. Une subdivision adaptée est $\\sigma = \\{0, 3, 5\\}$.\n\n- Sur l'intervalle $]0, 3[$, la fonction est constante et vaut $c_1 = 4$. La longueur de l'intervalle est $3 - 0 = 3$. L'aire du premier rectangle est $3 \\times 4 = 12$.\n\n- Sur l'intervalle $]3, 5[$, la fonction est constante et vaut $c_2 = -2$. La longueur de l'intervalle est $5 - 3 = 2$. L'aire (algébrique) du second rectangle est $2 \\times (-2) = -4$.\n\nL'intégrale est la somme de ces aires :\n\n$$ \\int_0^5 f(x) dx = (3 - 0) \\times 4 + (5 - 3) \\times (-2) = 12 - 4 = 8. $$\n\n- **A)** Incorrect. 16 correspondrait à $(3-0)\\times 4 + (5-3)\\times 2 = 12+4$. Cela ignore le signe négatif de la fonction sur le deuxième intervalle.\n- **B)** Correct. Le calcul $12 - 4 = 8$ est exact.\n- **C)** Incorrect. 12 est seulement l'aire du premier rectangle.\n- **D)** Incorrect. Ce résultat ne correspond à aucun calcul simple basé sur les données du problème.\n\n",
       "options": [
         {
@@ -76,7 +76,7 @@
     {
       "id": "3",
       "stackId": "359ed474",
-      "content": "#### Question 3 : Propriété de l'intégrale d'une fonction en escalier\n\nSoit $f$ une fonction en escalier sur $[a, b]$. Si on modifie la valeur de $f$ en un seul point $c \\in [a, b]$ pour créer une nouvelle fonction $g$, comment l'intégrale est-elle affectée ?\n",
+      "content": "#### Propriété de l'intégrale d'une fonction en escalier\n\nSoit $f$ une fonction en escalier sur $[a, b]$. Si on modifie la valeur de $f$ en un seul point $c \\in [a, b]$ pour créer une nouvelle fonction $g$, comment l'intégrale est-elle affectée ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nLa définition de l'intégrale d'une fonction en escalier est $\\sum_{i=1}^n (x_i - x_{i-1}) c_i$, où $c_i$ est la valeur de la fonction sur l'intervalle *ouvert* $]x_{i-1}, x_i[$.\n\n- **A)** Incorrect. La nouvelle fonction $g$ est toujours une fonction en escalier. On peut utiliser la même subdivision (ou une subdivision plus fine incluant le point $c$) pour le montrer.\n\n- **B)** Incorrect. La valeur de la fonction en des points isolés n'intervient pas dans le calcul de l'intégrale.\n\n- **C)** Correct. L'intégrale ne dépend que des valeurs constantes que prend la fonction sur les intervalles ouverts entre les points de la subdivision. Modifier la valeur en un seul point n'affecte aucune de ces valeurs constantes $c_i$. L'intégrale est donc la même.\n\n- **D)** Incorrect. Puisque l'intégrale reste la même, cette affirmation est fausse.\n\n",
       "options": [
         {
@@ -104,7 +104,7 @@
     {
       "id": "4",
       "stackId": "359ed474",
-      "content": "#### Question 4 : Condition d'intégrabilité de Riemann\n\nSelon la définition de Riemann, quand une fonction bornée $f$ sur $[a, b]$ est-elle dite intégrable ?\n",
+      "content": "#### Condition d'intégrabilité de Riemann\n\nSelon la définition de Riemann, quand une fonction bornée $f$ sur $[a, b]$ est-elle dite intégrable ?\n",
       "solution": "\n\n**Réponse : [A]**\n\nL'idée de l'intégrale de Riemann est d'encadrer la fonction $f$ par des fonctions en escalier.\n\n- L'intégrale inférieure $I_{a,b}^-(f)$ est la borne supérieure des intégrales des fonctions en escalier minorant $f$.\n- L'intégrale supérieure $I_{a,b}^+(f)$ est la borne inférieure des intégrales des fonctions en escalier majorant $f$.\n\n- **A)** Correct. C'est la définition même de l'intégrabilité au sens de Riemann. Si la meilleure approximation par en dessous coïncide avec la meilleure approximation par au-dessus, alors on dit que la fonction est intégrable et cette valeur commune est son intégrale.\n\n- **B)** Incorrect. Une fonction peut être négative et parfaitement intégrable (par exemple, $f(x) = -1$). La positivité n'est pas une condition nécessaire.\n\n- **C)** Incorrect. Pour toute fonction *bornée* $f$ sur $[a, b]$, il existe un $M$ tel que $f(x) \\le M$. La fonction constante $\\psi(x) = M$ est une fonction en escalier qui majore $f$. Cette condition est donc toujours remplie pour une fonction bornée, mais ne garantit pas l'intégrabilité.\n\n- **D)** Incorrect. C'est la condition pour qu'une fonction ne soit *pas* intégrable.\n\n",
       "options": [
         {
@@ -132,7 +132,7 @@
     {
       "id": "5",
       "stackId": "359ed474",
-      "content": "#### Question 5 : Contre-exemple à l'intégrabilité de Riemann\n\nLaquelle des fonctions suivantes, définie sur $[0, 1]$, n'est PAS intégrable au sens de Riemann ?\n",
+      "content": "#### Contre-exemple à l'intégrabilité de Riemann\n\nLaquelle des fonctions suivantes, définie sur $[0, 1]$, n'est PAS intégrable au sens de Riemann ?\n",
       "solution": "\n\n**Réponse : [D]**\n\n- **A)** Incorrect. La fonction partie entière est une fonction en escalier. Toute fonction en escalier est intégrable.\n\n- **B)** Incorrect. C'est une fonction continue sur $[0, 1]$. Toute fonction continue sur un segment est intégrable.\n\n- **C)** Incorrect. C'est une fonction qui est constante partout sauf en un point. Elle est intégrable (et son intégrale est la même que celle de la fonction constante $g(x)=1$). On peut l'encadrer par des fonctions en escalier dont l'intégrale est aussi proche de 1 que l'on veut.\n\n- **D)** Correct. C'est le contre-exemple classique. Sur n'importe quel sous-intervalle, la fonction prend les valeurs 0 et 1. Toute fonction en escalier $\\varphi \\le f$ doit être $\\le 0$ partout, donc $I^-(f)=0$. Toute fonction en escalier $\\psi \\ge f$ doit être $\\ge 1$ partout, donc $I^+(f)=1$. Comme $I^-(f) \\ne I^+(f)$, la fonction n'est pas intégrable.\n\n",
       "options": [
         {
@@ -160,7 +160,7 @@
     {
       "id": "6",
       "stackId": "359ed474",
-      "content": "#### Question 6 : Théorèmes d'intégrabilité\n\nParmi les affirmations suivantes, lesquelles sont vraies concernant l'intégrabilité au sens de Riemann sur un segment $[a, b]$ ? (Plusieurs réponses peuvent être correctes)\n",
+      "content": "#### Théorèmes d'intégrabilité\n\nParmi les affirmations suivantes, lesquelles sont vraies concernant l'intégrabilité au sens de Riemann sur un segment $[a, b]$ ? (Plusieurs réponses peuvent être correctes)\n",
       "solution": "\n\n**Réponses : [A, B, C]**\n\n- **A)** Correct. Une fonction dérivable sur un segment $[a, b]$ est nécessairement continue sur ce segment. Et comme toute fonction continue est intégrable, cette affirmation est vraie.\n\n- **B)** Correct. C'est un théorème du cours. Les fonctions continues par morceaux sont une classe importante de fonctions intégrables, incluant les fonctions en escalier et les fonctions continues.\n\n- **C)** Correct. C'est l'un des théorèmes fondamentaux de l'intégrale de Riemann. La continuité sur un segment est une condition suffisante pour garantir l'intégrabilité.\n\n- **D)** Incorrect. C'est une erreur courante. L'hypothèse \"bornée\" est nécessaire pour construire les intégrales supérieure et inférieure, mais elle n'est pas suffisante pour garantir l'intégrabilité. La fonction de Dirichlet est bornée (par 0 et 1) mais n'est pas intégrable.\n\n",
       "options": [
         {
@@ -188,7 +188,7 @@
     {
       "id": "7",
       "stackId": "359ed474",
-      "content": "#### Question 7 : Théorème fondamental de l'analyse\n\nSoit $F$ la fonction définie pour tout $x \\in \\mathbb{R}$ par $F(x) = \\int_1^x \\ln(1+t^2) dt$. Quelle est l'expression de la dérivée $F'(x)$ ?\n",
+      "content": "#### Théorème fondamental de l'analyse\n\nSoit $F$ la fonction définie pour tout $x \\in \\mathbb{R}$ par $F(x) = \\int_1^x \\ln(1+t^2) dt$. Quelle est l'expression de la dérivée $F'(x)$ ?\n",
       "solution": "\n\n**Réponse : [D]**\n\nLe théorème fondamental de l'analyse stipule que si $f$ est une fonction continue sur un intervalle $I$, alors la fonction $F(x) = \\int_a^x f(t) dt$ est dérivable sur $I$ et sa dérivée est $F'(x) = f(x)$.\n\nIci, la fonction $f(t) = \\ln(1+t^2)$ est continue sur $\\mathbb{R}$.\n\n- **A)** Incorrect. C'est la dérivée de $\\ln(1+x^2)$, pas la valeur de la fonction elle-même.\n\n- **B)** Incorrect. C'est une confusion avec le calcul de l'intégrale définie $\\int_1^x \\ln(1+t^2) dt = G(x) - G(1)$ où $G$ est une primitive. La borne inférieure $a=1$ n'apparaît pas dans la dérivée $F'(x)$.\n\n- **C)** Incorrect. Le théorème fondamental garantit l'existence de la dérivée et donne sa valeur, même si on ne connaît pas d'expression simple pour la primitive de $f$. C'est justement un des points forts du théorème.\n\n- **D)** Correct. Par application directe du théorème fondamental de l'analyse, la dérivée de $F(x)$ est simplement la fonction sous le signe intégral, évaluée en $x$. Donc $F'(x) = \\ln(1+x^2)$.\n\n",
       "options": [
         {
@@ -216,7 +216,7 @@
     {
       "id": "8",
       "stackId": "359ed474",
-      "content": "#### Question 8 : Compréhension des sommes de Riemann\n\nUne somme de Riemann $S = \\sum_{i=1}^n (x_i - x_{i-1}) f(y_i)$ représente géométriquement :\n",
+      "content": "#### Compréhension des sommes de Riemann\n\nUne somme de Riemann $S = \\sum_{i=1}^n (x_i - x_{i-1}) f(y_i)$ représente géométriquement :\n",
       "solution": "\n\n**Réponse : [B]**\n\n- **A)** Incorrect. La longueur de la courbe (ou longueur d'arc) est un concept différent, calculé par une autre intégrale : $\\int_a^b \\sqrt{1 + (f'(x))^2} dx$.\n\n- **B)** Correct. Chaque terme de la somme, $(x_i - x_{i-1}) f(y_i)$, est l'aire (algébrique) d'un rectangle de base $(x_i - x_{i-1})$ et de hauteur $f(y_i)$, où $y_i$ est un point choisi dans l'intervalle de base. La somme de Riemann est donc la somme totale des aires de ces rectangles.\n\n- **C)** Incorrect. La somme de Riemann est une *approximation* de l'intégrale (qui représente l'aire exacte). L'intégrale est la *limite* des sommes de Riemann lorsque le pas de la subdivision tend vers zéro.\n\n- **D)** Incorrect. L'approximation par des trapèzes (méthode des trapèzes) correspond à la somme $\\sum_{i=1}^n (x_i - x_{i-1}) \\frac{f(x_{i-1})+f(x_i)}{2}$.\n\n",
       "options": [
         {
@@ -244,7 +244,7 @@
     {
       "id": "9",
       "stackId": "359ed474",
-      "content": "#### Question 9 : Limite d'une somme de Riemann\n\nLa limite $\\lim_{n \\to \\infty} \\sum_{k=1}^n \\frac{1}{n} \\sqrt{1 + \\frac{k}{n}}$ est égale à :\n",
+      "content": "#### Limite d'une somme de Riemann\n\nLa limite $\\lim_{n \\to \\infty} \\sum_{k=1}^n \\frac{1}{n} \\sqrt{1 + \\frac{k}{n}}$ est égale à :\n",
       "solution": "\n\n**Réponse : [A]**\n\nIl faut reconnaître cette somme comme une somme de Riemann pour une certaine fonction sur un certain intervalle. La forme générale d'une somme de Riemann avec une subdivision régulière de $[a, b]$ est $\\sum_{k=1}^n (b-a)/n \\cdot f(a+k(b-a)/n)$.\n\nIci, le terme $\\frac{1}{n}$ correspond à la largeur des rectangles $(b-a)/n$. Le terme $\\sqrt{1 + \\frac{k}{n}}$ correspond à $f(y_k)$.\n\nEn choisissant l'intervalle $[0, 1]$, on a $a=0, b=1$, donc $(b-a)/n = 1/n$.\n\nLes points d'évaluation (à droite) sont $y_k = a + k/n = k/n$.\n\nLa fonction serait donc $f(x) = \\sqrt{1+x}$.\n\nLa somme s'écrit donc $\\sum_{k=1}^n \\frac{1}{n} f(\\frac{k}{n})$, ce qui correspond bien à la somme donnée. Comme $f(x) = \\sqrt{1+x}$ est continue sur $[0, 1]$, la limite de ses sommes de Riemann est l'intégrale de $f$ sur $[0, 1]$.\n\n- **A)** Correct. La limite est $\\int_0^1 \\sqrt{1+x} \\, dx$.\n\n- **B)** Incorrect. Cela correspondrait à la fonction $f(x) = \\sqrt{x}$ et à la somme $\\sum \\frac{1}{n} \\sqrt{\\frac{k}{n}}$.\n\n- **C)** Incorrect. L'intégrale sur $[1, 2]$ correspondrait à une somme de la forme $\\sum \\frac{1}{n} \\sqrt{1+(1+\\frac{k}{n})}$.\n\n- **D)** Incorrect. Le calcul de l'intégrale donne $\\int_0^1 (1+x)^{1/2} dx = \\left[ \\frac{2}{3}(1+x)^{3/2} \\right]_0^1 = \\frac{2}{3}(2\\sqrt{2} - 1)$, ce qui n'est pas 1.\n\n",
       "options": [
         {

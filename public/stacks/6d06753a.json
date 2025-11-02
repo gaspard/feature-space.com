@@ -19,7 +19,7 @@
     {
       "id": "1",
       "stackId": "6d06753a",
-      "content": "#### Question 1 : Définition du Cardinal\n\nSelon la définition formelle, que signifie que le cardinal d'un ensemble fini non vide $E$ est égal à $n$ (où $n \\in \\mathbb{N}^*$) ?\n",
+      "content": "#### Définition du Cardinal\n\nSelon la définition formelle, que signifie que le cardinal d'un ensemble fini non vide $E$ est égal à $n$ (où $n \\in \\mathbb{N}^*$) ?\n",
       "solution": "\n\n**Réponse : [C]**\n\n- **A)** Une injection de $E$ dans $\\{1, 2, \\dots, n\\}$ prouve seulement que $|E| \\le n$. Par exemple, l'ensemble $\\{\\text{pomme, poire}\\}$ a une injection dans $\\{1, 2, 3\\}$, mais son cardinal est 2, pas 3. Cette condition n'est pas suffisante.\n\n- **B)** Une surjection de $E$ vers $\\{1, 2, \\dots, n\\}$ prouve seulement que $|E| \\ge n$. Par exemple, l'ensemble $\\{\\text{pomme, poire, orange}\\}$ a une surjection vers $\\{1, 2\\}$, mais son cardinal est 3, pas 2. Cette condition n'est pas suffisante.\n\n- **C)** C'est la définition exacte du cardinal. Établir une bijection entre $E$ et $\\{1, 2, \\dots, n\\}$ (noté $[n]$) revient à \"compter\" les éléments de $E$ en les associant un par un, sans oubli ni répétition, aux entiers de 1 à $n$. Le nombre $n$ est alors le nombre d'éléments, ou cardinal, de $E$.\n\n- **D)** Le cardinal d'un ensemble est un nombre qui représente sa taille, mais les éléments de l'ensemble n'ont aucun rapport nécessaire avec ce nombre. L'ensemble $\\{\\text{rouge, vert, bleu}\\}$ a pour cardinal 3, mais il ne contient pas l'entier 3.\n\n",
       "options": [
         {
@@ -47,7 +47,7 @@
     {
       "id": "2",
       "stackId": "6d06753a",
-      "content": "#### Question 2 : Principe de Bijection\n\nLequel de ces problèmes de dénombrement est le plus élégamment résolu en utilisant le principe de bijection ?\n",
+      "content": "#### Principe de Bijection\n\nLequel de ces problèmes de dénombrement est le plus élégamment résolu en utilisant le principe de bijection ?\n",
       "solution": "\n\n**Réponse : [B]**\n\n- **A)** Ce problème se résout avec le principe d'addition (ou la formule d'inclusion-exclusion), car on compte l'union de deux ensembles (ceux qui aiment le sport et ceux qui aiment la musique).\n\n- **B)** C'est un exemple classique d'utilisation du principe de bijection. Pour prouver que $|P_k([n])| = |P_{n-k}([n])|$, on établit une bijection entre les deux ensembles. L'application qui, à un sous-ensemble $A$ de taille $k$, associe son complémentaire $\\bar{A}$ (qui est de taille $n-k$) est une bijection. Cela prouve l'égalité des cardinaux.\n\n- **C)** Ce problème est une application directe du principe de multiplication. Le nombre total de menus est le produit du nombre de choix à chaque étape : $3 \\times 5 \\times 4$.\n\n- **D)** Ce problème est l'application la plus célèbre du principe des tiroirs. Les 367 personnes sont les \"objets\" et les 366 jours possibles de l'année (en incluant le 29 février) sont les \"tiroirs\". Comme il y a plus de personnes que de jours, au moins deux personnes partagent un \"tiroir\" (une date d'anniversaire).\n\n",
       "options": [
         {
@@ -75,7 +75,7 @@
     {
       "id": "3",
       "stackId": "6d06753a",
-      "content": "#### Question 3 : Propriétés des Ensembles Finis\n\nSoient $E$ un ensemble fini et $F$ un sous-ensemble de $E$ ($F \\subseteq E$). Si l'on sait que $|F| = |E|$, que peut-on conclure ?\n",
+      "content": "#### Propriétés des Ensembles Finis\n\nSoient $E$ un ensemble fini et $F$ un sous-ensemble de $E$ ($F \\subseteq E$). Si l'on sait que $|F| = |E|$, que peut-on conclure ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nC'est une propriété fondamentale des ensembles finis.\n\n- **A)** Si $F$ était l'ensemble vide, son cardinal serait 0. Pour que $|E|=0$, $E$ devrait aussi être l'ensemble vide. Dans ce cas, $F=E$, ce qui est un cas particulier de la bonne réponse, mais ce n'est pas la conclusion générale.\n\n- **B)** On sait déjà par hypothèse que $F \\subseteq E$. Dire que $E \\subseteq F$ est équivalent à dire que $E=F$. C'est donc la même chose que l'option C, mais l'affirmation de base est que $F=E$.\n\n- **C)** Si un sous-ensemble d'un ensemble fini a le même nombre d'éléments que l'ensemble lui-même, il ne peut pas lui manquer le moindre élément. Par conséquent, le sous-ensemble doit être égal à l'ensemble tout entier. Si $F$ était un sous-ensemble strict de $E$, il existerait au moins un élément $x \\in E$ tel que $x \\notin F$, ce qui impliquerait $|F| < |E|$, contredisant l'hypothèse.\n\n- **D)** Cette situation est non seulement possible, mais elle implique l'égalité des ensembles. Par exemple, si $E=\\{1, 2, 3\\}$ et $F=\\{1, 2, 3\\}$, on a bien $F \\subseteq E$ et $|F|=|E|=3$, et la conclusion est $F=E$.\n\n",
       "options": [
         {
@@ -103,7 +103,7 @@
     {
       "id": "4",
       "stackId": "6d06753a",
-      "content": "#### Question 4 : Principe des Tiroirs\n\nUn facteur doit distribuer 50 lettres dans une rue qui ne comporte que 40 boîtes aux lettres. En utilisant le principe des tiroirs (ou principe de Dirichlet), quelle conclusion est-on certain de pouvoir tirer ?\n",
+      "content": "#### Principe des Tiroirs\n\nUn facteur doit distribuer 50 lettres dans une rue qui ne comporte que 40 boîtes aux lettres. En utilisant le principe des tiroirs (ou principe de Dirichlet), quelle conclusion est-on certain de pouvoir tirer ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nIci, les \"objets\" sont les 50 lettres et les \"tiroirs\" sont les 40 boîtes aux lettres.\n\n- **A)** Le principe des tiroirs ne garantit pas que tous les tiroirs seront utilisés. Le facteur pourrait, par exemple, mettre les 50 lettres dans la première boîte aux lettres et laisser les 39 autres vides.\n\n- **B)** C'est l'énoncé direct du principe des tiroirs. Puisqu'il y a plus d'objets (lettres) que de tiroirs (boîtes), il est impossible que chaque tiroir contienne au plus un objet. Mathématiquement, il n'existe pas d'application injective de l'ensemble des lettres vers l'ensemble des boîtes. Par conséquent, au moins un \"tiroir\" doit contenir au moins deux \"objets\".\n\n- **C)** Le principe des tiroirs est un principe d'existence non constructif. Il garantit qu'un tiroir aura *au moins* un certain nombre d'objets, mais il ne dit rien sur la distribution exacte, ni sur un nombre maximum. On ne peut pas conclure qu'une boîte recevra exactement 10 lettres.\n\n- **D)** C'est très peu probable et certainement pas une conclusion garantie par le principe.\n\n",
       "options": [
         {
@@ -131,7 +131,7 @@
     {
       "id": "5",
       "stackId": "6d06753a",
-      "content": "#### Question 5 : Principe d'Addition\n\nDans un groupe de 50 personnes, 30 parlent anglais et 25 parlent espagnol. Sachant que 12 personnes parlent les deux langues, combien de personnes parlent au moins une de ces deux langues ?\n",
+      "content": "#### Principe d'Addition\n\nDans un groupe de 50 personnes, 30 parlent anglais et 25 parlent espagnol. Sachant que 12 personnes parlent les deux langues, combien de personnes parlent au moins une de ces deux langues ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nIl s'agit d'une application de la formule d'inclusion-exclusion (principe d'addition pour des ensembles non-disjoints).\n\n- Soit $A$ l'ensemble des personnes parlant anglais, $|A|=30$.\n- Soit $E$ l'ensemble des personnes parlant espagnol, $|E|=25$.\n- L'ensemble des personnes parlant les deux langues est l'intersection $A \\cap E$, et $|A \\cap E|=12$.\n- On cherche le nombre de personnes parlant au moins une de ces langues, c'est-à-dire le cardinal de l'union $A \\cup E$.\n\nLa formule est : $|A \\cup E| = |A| + |E| - |A \\cap E|$.\n\nApplication numérique : $|A \\cup E| = 30 + 25 - 12 = 55 - 12 = 43$.\n\n- **A)** 55 est le résultat de l'addition simple $30+25$. C'est incorrect car on compte deux fois les 12 personnes qui parlent les deux langues.\n- **B)** 67 est une valeur impossible car le groupe ne contient que 50 personnes.\n- **C)** 43 est la bonne réponse, obtenue en appliquant correctement la formule.\n- **D)** 30 est simplement le nombre de personnes parlant anglais, ce qui ne répond pas à la question.\n\n",
       "options": [
         {
@@ -159,7 +159,7 @@
     {
       "id": "6",
       "stackId": "6d06753a",
-      "content": "#### Question 6 : Conditions d'Application des Principes\n\nLa formule simplifiée du principe d'addition, $|E \\cup F| = |E| + |F|$, est valide si et seulement si :\n",
+      "content": "#### Conditions d'Application des Principes\n\nLa formule simplifiée du principe d'addition, $|E \\cup F| = |E| + |F|$, est valide si et seulement si :\n",
       "solution": "\n\n**Réponse : [C]**\n\n- **A)** Le fait que les ensembles aient le même cardinal n'a pas d'influence sur la validité de la formule. Par exemple, si $E=\\{1,2\\}$ et $F=\\{2,3\\}$, alors $|E|=|F|=2$, mais $|E \\cup F|=|\\{1,2,3\\}|=3$, alors que $|E|+|F|=4$. La formule n'est pas valide.\n\n- **B)** Si $E \\subseteq F$, alors $E \\cup F = F$. La formule deviendrait $|F| = |E| + |F|$, ce qui n'est vrai que si $|E|=0$, c'est-à-dire si $E=\\emptyset$. Ce n'est donc pas la condition générale.\n\n- **C)** La formule générale est $|E \\cup F| = |E| + |F| - |E \\cap F|$. Pour que la formule simplifiée soit valide, il faut que le terme soustrait soit nul, c'est-à-dire $|E \\cap F|=0$. Cela signifie que l'intersection de $E$ et $F$ est l'ensemble vide, ce qui est la définition d'ensembles disjoints.\n\n- **D)** Le fait que les ensembles soient non vides n'est pas une condition suffisante. L'exemple de l'option A utilise des ensembles non vides, et la formule y est incorrecte.\n\n",
       "options": [
         {
@@ -187,7 +187,7 @@
     {
       "id": "7",
       "stackId": "6d06753a",
-      "content": "#### Question 7 : Principe des Bergers\n\nSoit une application $f: E \\to F$ entre deux ensembles finis. Le principe des bergers permet de conclure que $|E| = p \\cdot |F|$ à une condition. Quelle est cette condition ?\n",
+      "content": "#### Principe des Bergers\n\nSoit une application $f: E \\to F$ entre deux ensembles finis. Le principe des bergers permet de conclure que $|E| = p \\cdot |F|$ à une condition. Quelle est cette condition ?\n",
       "solution": "\n\n**Réponse : [B]**\n\n- **A)** Si $f$ est une bijection, alors chaque élément de $F$ a exactement un antécédent, donc $p=1$. Dans ce cas, $|E| = 1 \\cdot |F| = |F|$, ce qui est correct. Cependant, c'est un cas très particulier du principe des bergers, et non la condition générale qui le définit.\n\n- **B)** C'est la définition même de la condition d'application du principe des bergers. L'idée est que l'ensemble de départ $E$ peut être partitionné en $|F|$ \"paquets\", où chaque paquet correspond aux antécédents d'un élément de $F$. Si tous ces paquets ont la même taille $p$, alors le nombre total d'éléments dans $E$ est la somme des tailles de ces paquets, soit $p$ ajouté $|F|$ fois, d'où $|E| = p \\cdot |F|$.\n\n- **C)** Si chaque élément de $F$ a exactement $p$ antécédents (avec $p \\ge 1$), alors $f$ est bien surjective. Le fait que $|E|$ soit un multiple de $p$ est une conséquence du principe, pas sa condition d'application.\n\n- **D)** Un élément de l'ensemble de départ ne peut avoir qu'une seule image par une application (fonction). Cette proposition est donc contraire à la définition même d'une application.\n\n",
       "options": [
         {
@@ -215,7 +215,7 @@
     {
       "id": "8",
       "stackId": "6d06753a",
-      "content": "#### Question 8 : Principe de Multiplication\n\nUne serrure à code possède 4 rouleaux. Le premier rouleau a les chiffres de 0 à 9, le deuxième a les lettres de A à F, le troisième a les chiffres de 0 à 9, et le quatrième a les lettres A ou B. Combien de codes différents sont possibles ?\n",
+      "content": "#### Principe de Multiplication\n\nUne serrure à code possède 4 rouleaux. Le premier rouleau a les chiffres de 0 à 9, le deuxième a les lettres de A à F, le troisième a les chiffres de 0 à 9, et le quatrième a les lettres A ou B. Combien de codes différents sont possibles ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nCe problème se résout en utilisant le principe de multiplication, car la composition d'un code est une suite de choix indépendants.\n\n- **Choix 1 (premier rouleau)** : Il y a 10 possibilités (chiffres de 0 à 9).\n- **Choix 2 (deuxième rouleau)** : Il y a 6 possibilités (lettres A, B, C, D, E, F).\n- **Choix 3 (troisième rouleau)** : Il y a 10 possibilités (chiffres de 0 à 9).\n- **Choix 4 (quatrième rouleau)** : Il y a 2 possibilités (lettres A, B).\n\nLe nombre total de codes est le produit du nombre de possibilités à chaque étape :\n\nNombre de codes = $10 \\times 6 \\times 10 \\times 2 = 1200$.\n\n- **A)** Cette option utilise le principe d'addition, ce qui serait correct si on devait choisir *un seul* caractère parmi toutes les options disponibles sur tous les rouleaux, ce qui n'est pas le cas ici.\n- **B)** Cette option est un calcul incorrect qui ne correspond à aucun principe de dénombrement clair.\n- **C)** C'est l'application correcte du principe de multiplication.\n- **D)** Cette option regroupe les choix de manière incorrecte avant de les multiplier.\n\n",
       "options": [
         {
@@ -243,7 +243,7 @@
     {
       "id": "9",
       "stackId": "6d06753a",
-      "content": "#### Question 9 : Cardinalité des Ensembles Infinis\n\nParmi les ensembles suivants, lesquels sont dénombrables (c'est-à-dire, peuvent être mis en bijection avec l'ensemble des entiers naturels $\\mathbb{N}$) ?\n",
+      "content": "#### Cardinalité des Ensembles Infinis\n\nParmi les ensembles suivants, lesquels sont dénombrables (c'est-à-dire, peuvent être mis en bijection avec l'ensemble des entiers naturels $\\mathbb{N}$) ?\n",
       "solution": "\n\n**Réponses : [A, C]**\n\nUn ensemble est dénombrable s'il est possible de lister tous ses éléments dans une séquence infinie.\n\n- **A)** L'ensemble $\\mathbb{Z} = \\{\\dots, -2, -1, 0, 1, 2, \\dots\\}$ est dénombrable. On peut l'énumérer en alternant : $0, 1, -1, 2, -2, \\dots$. Cette énumération établit une bijection avec $\\mathbb{N}$, prouvant que $\\mathbb{Z}$ est dénombrable.\n\n- **B)** L'ensemble $\\mathbb{R}$ des nombres réels est l'exemple canonique d'un ensemble non dénombrable. L'argument diagonal de Cantor montre qu'il est impossible de créer une liste (même infinie) contenant tous les nombres réels. Son \"infini\" est plus grand que celui de $\\mathbb{N}$.\n\n- **C)** Bien que les nombres rationnels soient denses dans les réels, l'ensemble $\\mathbb{Q}$ est dénombrable. On peut montrer qu'il est en bijection avec $\\mathbb{N} \\times \\mathbb{N}$, qui est lui-même dénombrable. On peut lister tous les rationnels, par exemple en suivant les diagonales dans un tableau de fractions.\n\n- **D)** Le théorème de Cantor stipule que pour tout ensemble $E$, son ensemble des parties $P(E)$ a un cardinal strictement supérieur à celui de $E$. Donc, $|P(\\mathbb{N})| > |\\mathbb{N}|$. Par conséquent, $P(\\mathbb{N})$ n'est pas dénombrable.\n\n",
       "options": [
         {
