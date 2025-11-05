@@ -16,7 +16,7 @@ export interface Card {
 export interface ParsedCards {
   title: string;
   cards: Card[];
-  type: 'cards' | 'quiz';
+  type: 'cards' | 'quiz' | 'proofs';
   id: string;
   level: string;
   chapter: string;

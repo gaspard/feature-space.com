@@ -1,5 +1,5 @@
 ---
-id: '70793e46'
+id: a76472c4
 type: proofs
 order: 15
 title: Espaces Euclidiens et Hermitiens - preuves (A)
@@ -22,19 +22,17 @@ chapterId: 67b3d760
 
 ---
 
-#### Propriété de Réalité de la Forme Hermitienne
+#### Propriété de Réalité de la Forme Quadratique Hermitienne
 
-Prouvez que pour une forme sesquilinéaire hermitienne $\varphi$ sur un espace vectoriel complexe $E$, la valeur $\varphi(x, x)$ est toujours un nombre réel pour tout vecteur $x \in E$.
+Prouver que pour une forme sesquilinéaire hermitienne $\varphi$ sur un $\mathbb{C}$-espace vectoriel $E$, la valeur $\varphi(x, x)$ est un nombre réel pour tout vecteur $x \in E$.
 
 <details class="hint">
 
-<summary>Indices et Stratégie Générale</summary>
+<summary>Hint</summary>
 
-La clé de cette preuve réside dans l'utilisation directe de la définition d'une forme hermitienne.
+Utilisez la définition de la symétrie hermitienne, qui relie $\varphi(x, y)$ à $\varphi(y, x)$.
 
-Rappelez-vous la propriété de symétrie hermitienne : $\varphi(x, y) = \overline{\varphi(y, x)}$.
-
-Appliquez cette propriété au cas particulier où $y=x$. Vous obtiendrez une relation entre $\varphi(x, x)$ et son propre conjugué complexe.
+Appliquez cette propriété au cas particulier où $y = x$.
 
 Rappelez-vous qu'un nombre complexe $z$ est réel si et seulement si $z = \bar{z}$.
 
@@ -42,95 +40,31 @@ Rappelez-vous qu'un nombre complexe $z$ est réel si et seulement si $z = \bar{z
 
 <details>
 
-<summary>Preuve Détaillée</summary>
+<summary>Solution</summary>
 
-Soit $E$ un espace vectoriel sur $\mathbb{C}$ et $\varphi: E \times E \to \mathbb{C}$ une forme sesquilinéaire hermitienne.
+Soit $\varphi: E \times E \to \mathbb{C}$ une forme sesquilinéaire hermitienne.
 
-**Étape 1 : Énoncer la propriété de symétrie hermitienne**
+**Étape 1 : Rappel de la définition de la symétrie hermitienne**
 
-Par définition, une forme hermitienne satisfait la condition suivante pour tous les vecteurs $x, y \in E$ :
+Par définition, une forme sesquilinéaire $\varphi$ est hermitienne si pour tous vecteurs $x, y \in E$, on a :
 
 $$ \varphi(x, y) = \overline{\varphi(y, x)} $$
 
-**Étape 2 : Appliquer la propriété au cas $y=x$**
+**Étape 2 : Appliquer la définition au cas $y=x$**
 
-Nous voulons étudier la nature de $\varphi(x, x)$. Posons $y=x$ dans la relation de symétrie hermitienne. On obtient :
+Nous nous intéressons à la valeur $\varphi(x, x)$. Appliquons la propriété de symétrie hermitienne en posant $y = x$. On obtient :
 
 $$ \varphi(x, x) = \overline{\varphi(x, x)} $$
 
-**Étape 3 : Conclure en utilisant les propriétés des nombres complexes**
+**Étape 3 : Conclure sur la nature de $\varphi(x, x)$**
 
-Soit $z = \varphi(x, x)$. L'équation de l'étape 2 devient $z = \bar{z}$.
+Soit $z = \varphi(x, x)$. L'équation de l'étape 2 s'écrit $z = \bar{z}$.
 
 Un nombre complexe est égal à son propre conjugué si et seulement si sa partie imaginaire est nulle. C'est la définition d'un nombre réel.
 
 **Conclusion :**
 
-Puisque $\varphi(x, x)$ est égal à son propre conjugué complexe, nous pouvons conclure que $\varphi(x, x)$ est un nombre réel pour tout $x \in E$. Cette propriété est fondamentale car elle permet de définir la notion de positivité pour ces formes, qui est à la base de la définition d'une norme.
-
-</details>
-
----
-
-#### Nullité de la Forme sur le Vecteur Nul
-
-Prouvez que pour toute forme bilinéaire ou sesquilinéaire $\varphi$ sur un espace vectoriel $E$, on a $\varphi(x, 0_E) = \varphi(0_E, x) = 0$ pour tout $x \in E$.
-
-<details class="hint">
-
-<summary>Indices et Stratégie Générale</summary>
-
-Utilisez la propriété de linéarité (à gauche ou à droite) de la forme.
-
-Rappelez-vous que le vecteur nul $0_E$ peut s'écrire de plusieurs manières, par exemple $0_E = 0 \cdot y$ pour n'importe quel vecteur $y$, ou $0_E = 0_E + 0_E$.
-
-Pour prouver $\varphi(0_E, x) = 0$, utilisez la linéarité à gauche. Écrivez $0_E = 0 \cdot 0_E$ et sortez le scalaire 0.
-
-Pour prouver $\varphi(x, 0_E) = 0$, utilisez la linéarité à droite (ou la semi-linéarité dans le cas sesquilinéaire). La démarche est similaire.
-
-</details>
-
-<details>
-
-<summary>Preuve Détaillée</summary>
-
-Soit $E$ un $\mathbb{K}$-espace vectoriel et $\varphi: E \times E \to \mathbb{K}$ une forme bilinéaire ou sesquilinéaire. Soit $x \in E$ un vecteur quelconque.
-
-**Étape 1 : Prouver que $\varphi(0_E, x) = 0$**
-
-Nous utilisons la linéarité à gauche de $\varphi$. Pour tous vecteurs $u_1, u_2 \in E$ et tout scalaire $\lambda \in \mathbb{K}$, on a $\varphi(\lambda u_1 + u_2, x) = \lambda \varphi(u_1, x) + \varphi(u_2, x)$.
-
-Choisissons $\lambda=0$ et $u_1 = x$. La propriété de linéarité implique :
-
-$$ \varphi(0 \cdot x, x) = 0 \cdot \varphi(x, x) $$
-
-Puisque $0 \cdot x = 0_E$ dans l'espace vectoriel $E$, et $0 \cdot \varphi(x, x) = 0$ dans le corps $\mathbb{K}$, on obtient :
-
-$$ \varphi(0_E, x) = 0 $$
-
-**Étape 2 : Prouver que $\varphi(x, 0_E) = 0$**
-
-La preuve est similaire en utilisant la propriété de la deuxième variable.
-
-*   **Cas bilinéaire :** On utilise la linéarité à droite.
-
-    $$ \varphi(x, 0 \cdot x) = 0 \cdot \varphi(x, x) $$
-
-    Ce qui donne :
-
-    $$ \varphi(x, 0_E) = 0 $$
-
-*   **Cas sesquilinéaire :** On utilise la semi-linéarité à droite. Le scalaire sort conjugué.
-
-    $$ \varphi(x, 0 \cdot x) = \bar{0} \cdot \varphi(x, x) $$
-
-    Puisque $\bar{0} = 0$, on obtient :
-
-    $$ \varphi(x, 0_E) = 0 $$
-
-**Conclusion :**
-
-Dans tous les cas, en utilisant les propriétés de linéarité ou de semi-linéarité par rapport à l'une ou l'autre des variables, nous avons montré que le produit de n'importe quel vecteur avec le vecteur nul est le scalaire nul.
+Par conséquent, pour tout $x \in E$, la valeur $\varphi(x, x)$ est un nombre réel.
 
 </details>
 
@@ -138,79 +72,75 @@ Dans tous les cas, en utilisant les propriétés de linéarité ou de semi-liné
 
 #### Inégalité de Cauchy-Schwarz (Cas Réel)
 
-Prouvez l'inégalité de Cauchy-Schwarz pour un espace euclidien $(E, \langle \cdot, \cdot \rangle)$. Pour tous vecteurs $x, y \in E$, on a :
+Soit $(E, \langle \cdot, \cdot \rangle)$ un espace euclidien. Prouver que pour tous vecteurs $x, y \in E$, on a :
 
 $$ |\langle x, y \rangle| \le \|x\| \|y\| $$
 
 <details class="hint">
 
-<summary>Indices et Stratégie Générale</summary>
+<summary>Hint</summary>
 
-L'idée principale est d'utiliser la positivité du produit scalaire. Pour tout vecteur $v \in E$, on a $\langle v, v \rangle = \|v\|^2 \ge 0$.
+Considérez le vecteur $x + \lambda y$ pour un scalaire réel $\lambda$.
 
-Considérez le vecteur $v = x + \lambda y$ pour un scalaire réel $\lambda \in \mathbb{R}$.
+Utilisez la propriété de positivité du produit scalaire, qui stipule que $\langle v, v \rangle \ge 0$ pour tout vecteur $v \in E$.
 
-Développez l'expression $\|x + \lambda y\|^2 = \langle x + \lambda y, x + \lambda y \rangle$. Vous obtiendrez un polynôme du second degré en $\lambda$.
-
-Puisque ce polynôme est toujours positif ou nul (car c'est une norme au carré), que pouvez-vous dire de son discriminant $\Delta$ ?
-
-L'inégalité sur le discriminant vous donnera directement le résultat attendu.
+Développez $\langle x + \lambda y, x + \lambda y \rangle$ et analysez l'expression obtenue comme un polynôme du second degré en $\lambda$. Quel doit être le signe de son discriminant ?
 
 </details>
 
 <details>
 
-<summary>Preuve Détaillée</summary>
+<summary>Solution</summary>
 
-Soit $(E, \langle \cdot, \cdot \rangle)$ un espace euclidien. Soient $x, y \in E$.
+Soient $x, y \in E$.
 
 **Cas 1 : $y = 0_E$**
 
-Si $y$ est le vecteur nul, alors $\langle x, y \rangle = \langle x, 0_E \rangle = 0$ et $\|y\| = 0$.
-
-L'inégalité devient $|0| \le \|x\| \cdot 0$, soit $0 \le 0$, ce qui est vrai.
+Si $y$ est le vecteur nul, alors $\langle x, y \rangle = \langle x, 0_E \rangle = 0$ et $\|y\| = 0$. L'inégalité devient $0 \le 0$, ce qui est vrai.
 
 **Cas 2 : $y \neq 0_E$**
 
-**Étape 1 : Construire un polynôme du second degré**
+Soit $\lambda \in \mathbb{R}$ un scalaire quelconque. Considérons le vecteur $v = x + \lambda y$.
 
-Pour tout scalaire $\lambda \in \mathbb{R}$, considérons le vecteur $x + \lambda y$. Par la propriété de positivité du produit scalaire, la norme au carré de ce vecteur est toujours positive ou nulle :
+**Étape 1 : Utiliser la positivité de la norme**
 
-$$ \|x + \lambda y\|^2 \ge 0 $$
+Par définition de la norme associée à un produit scalaire, nous savons que $\|v\|^2 = \langle v, v \rangle \ge 0$.
 
-Développons cette expression en utilisant la bilinéarité du produit scalaire :
+Donc, pour tout $\lambda \in \mathbb{R}$ :
+
+$$ \langle x + \lambda y, x + \lambda y \rangle \ge 0 $$
+
+**Étape 2 : Développer l'expression**
+
+En utilisant la bilinéarité du produit scalaire réel :
 
 $$ \langle x + \lambda y, x + \lambda y \rangle = \langle x, x \rangle + \langle x, \lambda y \rangle + \langle \lambda y, x \rangle + \langle \lambda y, \lambda y \rangle $$
 
 $$ = \langle x, x \rangle + \lambda \langle x, y \rangle + \lambda \langle y, x \rangle + \lambda^2 \langle y, y \rangle $$
 
-Puisque le produit scalaire est symétrique ($\langle x,y \rangle = \langle y,x \rangle$), cela se simplifie en :
+Comme le produit scalaire est symétrique ($\langle x, y \rangle = \langle y, x \rangle$), cela se simplifie en :
 
-$$ \|x\|^2 + 2\lambda \langle x, y \rangle + \lambda^2 \|y\|^2 \ge 0 $$
+$$ = \langle x, x \rangle + 2\lambda \langle x, y \rangle + \lambda^2 \langle y, y \rangle $$
 
-**Étape 2 : Analyser le polynôme**
+En notation de norme, on a le polynôme $P(\lambda)$:
 
-Soit $P(\lambda) = \|y\|^2 \lambda^2 + 2\langle x, y \rangle \lambda + \|x\|^2$.
+$$ P(\lambda) = \|y\|^2 \lambda^2 + 2\langle x, y \rangle \lambda + \|x\|^2 $$
 
-Ceci est un polynôme du second degré en $\lambda$ de la forme $a\lambda^2 + b\lambda + c$, avec $a=\|y\|^2$, $b=2\langle x, y \rangle$ et $c=\|x\|^2$.
+**Étape 3 : Analyser le signe du discriminant**
 
-Comme $y \neq 0_E$, on a $a = \|y\|^2 > 0$.
+Nous avons établi que $P(\lambda) \ge 0$ pour tout $\lambda \in \mathbb{R}$. C'est un polynôme du second degré en $\lambda$ qui est toujours positif ou nul. Cela signifie qu'il a au plus une racine réelle. Par conséquent, son discriminant $\Delta$ doit être négatif ou nul.
 
-La condition $P(\lambda) \ge 0$ pour tout $\lambda \in \mathbb{R}$ signifie que ce polynôme (qui représente une parabole ouverte vers le haut) ne peut avoir au plus qu'une seule racine réelle. Son discriminant $\Delta$ doit donc être négatif ou nul.
+Le discriminant de $A\lambda^2 + B\lambda + C$ est $\Delta = B^2 - 4AC$. Ici, $A=\|y\|^2$, $B=2\langle x, y \rangle$, $C=\|x\|^2$.
 
-**Étape 3 : Calculer le discriminant et conclure**
+$$ \Delta = (2\langle x, y \rangle)^2 - 4 (\|y\|^2) (\|x\|^2) \le 0 $$
 
-Le discriminant du polynôme est $\Delta = b^2 - 4ac$.
-
-$$ \Delta = (2\langle x, y \rangle)^2 - 4(\|y\|^2)(\|x\|^2) \le 0 $$
-
-$$ 4\langle x, y \rangle^2 - 4\|x\|^2 \|y\|^2 \le 0 $$
-
-$$ 4\langle x, y \rangle^2 \le 4\|x\|^2 \|y\|^2 $$
+$$ 4 \langle x, y \rangle^2 - 4 \|x\|^2 \|y\|^2 \le 0 $$
 
 $$ \langle x, y \rangle^2 \le \|x\|^2 \|y\|^2 $$
 
-En prenant la racine carrée des deux côtés (qui sont positifs), on obtient :
+**Étape 4 : Conclure**
+
+En prenant la racine carrée des deux côtés (qui sont des nombres réels positifs), on obtient :
 
 $$ \sqrt{\langle x, y \rangle^2} \le \sqrt{\|x\|^2 \|y\|^2} $$
 
@@ -218,7 +148,72 @@ $$ |\langle x, y \rangle| \le \|x\| \|y\| $$
 
 **Conclusion :**
 
-L'inégalité est donc prouvée pour tous les vecteurs $x, y \in E$.
+L'inégalité est donc prouvée pour tous les vecteurs $x, y$ de l'espace euclidien $E$.
+
+</details>
+
+---
+
+#### Cas d'Égalité de l'Inégalité de Cauchy-Schwarz
+
+Prouver que dans l'inégalité de Cauchy-Schwarz $|\langle x, y \rangle| \le \|x\| \|y\|$, l'égalité a lieu si et seulement si les vecteurs $x$ et $y$ sont colinéaires (c'est-à-dire, linéairement dépendants).
+
+<details class="hint">
+
+<summary>Hint</summary>
+
+Reprenez la démonstration de l'inégalité de Cauchy-Schwarz. L'égalité se produit lorsque le discriminant du polynôme $P(\lambda) = \|x+\lambda y\|^2$ est nul.
+
+Que signifie, pour un polynôme du second degré toujours positif, d'avoir un discriminant nul ? Cela signifie qu'il admet une unique racine réelle $\lambda_0$.
+
+Quelle est la signification de $P(\lambda_0) = \|x+\lambda_0 y\|^2 = 0$ ? Utilisez la propriété de séparation de la norme (ou le caractère défini du produit scalaire).
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Nous devons prouver l'équivalence : $|\langle x, y \rangle| = \|x\| \|y\| \iff (x \text{ et } y \text{ sont colinéaires})$.
+
+**Partie 1 : (Colinéarité $\implies$ Égalité)**
+
+Supposons que $x$ et $y$ sont colinéaires. Il existe donc un scalaire $k$ tel que $x = ky$.
+
+Calculons les deux membres de l'inégalité :
+
+- $|\langle x, y \rangle| = |\langle ky, y \rangle| = |k \langle y, y \rangle| = |k| \langle y, y \rangle = |k| \|y\|^2$.
+- $\|x\| \|y\| = \|ky\| \|y\| = (|k| \|y\|) \|y\| = |k| \|y\|^2$.
+
+Les deux membres sont égaux. Donc, si les vecteurs sont colinéaires, il y a égalité.
+
+**Partie 2 : (Égalité $\implies$ Colinéarité)**
+
+Supposons que $|\langle x, y \rangle| = \|x\| \|y\|$. Cela équivaut à $\langle x, y \rangle^2 = \|x\|^2 \|y\|^2$.
+
+Reprenons la preuve de Cauchy-Schwarz, basée sur le polynôme $P(\lambda) = \|x+\lambda y\|^2 = \|y\|^2 \lambda^2 + 2\langle x, y \rangle \lambda + \|x\|^2$.
+
+L'hypothèse d'égalité signifie que le discriminant $\Delta$ de ce polynôme est nul :
+
+$$ \Delta = (2\langle x, y \rangle)^2 - 4 \|y\|^2 \|x\|^2 = 4(\langle x, y \rangle^2 - \|x\|^2 \|y\|^2) = 0 $$
+
+Si $y=0_E$, $x$ et $y$ sont colinéaires (car $y=0x$). Supposons donc $y \neq 0_E$.
+
+Un polynôme du second degré avec un discriminant nul admet une unique racine réelle, notée $\lambda_0$.
+
+Pour cette valeur $\lambda_0$, on a $P(\lambda_0) = 0$.
+
+$$ P(\lambda_0) = \|x + \lambda_0 y\|^2 = 0 $$
+
+Par la propriété de séparation de la norme (ou le caractère défini du produit scalaire), une norme nulle implique un vecteur nul :
+
+$$ \|x + \lambda_0 y\| = 0 \iff x + \lambda_0 y = 0_E $$
+
+Cette dernière égalité s'écrit $x = -\lambda_0 y$. Ceci est la définition de la colinéarité de $x$ et $y$.
+
+**Conclusion :**
+
+Nous avons montré les deux implications. L'égalité dans l'inégalité de Cauchy-Schwarz est vérifiée si et seulement si les vecteurs $x$ et $y$ sont colinéaires.
 
 </details>
 
@@ -226,145 +221,77 @@ L'inégalité est donc prouvée pour tous les vecteurs $x, y \in E$.
 
 #### Inégalité Triangulaire pour la Norme
 
-Prouvez que la norme $\| \cdot \|$ induite par un produit scalaire $\langle \cdot, \cdot \rangle$ sur un espace euclidien ou hermitien $E$ vérifie l'inégalité triangulaire :
+Soit $(E, \langle \cdot, \cdot \rangle)$ un espace préhilbertien. Prouver que la norme associée $\|x\| = \sqrt{\langle x, x \rangle}$ vérifie l'inégalité triangulaire :
 
 $$ \|x+y\| \le \|x\| + \|y\| $$
 
-pour tous les vecteurs $x, y \in E$.
+pour tous vecteurs $x, y \in E$.
 
 <details class="hint">
 
-<summary>Indices et Stratégie Générale</summary>
+<summary>Hint</summary>
 
-Comme les deux membres de l'inégalité sont positifs, prouver $\|x+y\| \le \|x\| + \|y\|$ est équivalent à prouver $\|x+y\|^2 \le (\|x\| + \|y\|)^2$.
+Comme la norme est toujours positive, l'inégalité est équivalente à $\|x+y\|^2 \le (\|x\| + \|y\|)^2$.
 
-Commencez par développer le membre de gauche, $\|x+y\|^2 = \langle x+y, x+y \rangle$.
+Commencez par développer $\|x+y\|^2 = \langle x+y, x+y \rangle$.
 
-Développez ensuite le membre de droite, $(\|x\| + \|y\|)^2$.
-
-Comparez les deux expressions développées. À un moment, vous devriez avoir besoin d'utiliser l'inégalité de Cauchy-Schwarz pour majorer un terme. Dans le cas hermitien, n'oubliez pas que $\langle y,x \rangle = \overline{\langle x,y \rangle}$, et que pour tout nombre complexe $z$, $z+\bar{z} = 2\text{Re}(z)$ et $\text{Re}(z) \le |z|$.
+Dans l'expression obtenue, utilisez l'inégalité de Cauchy-Schwarz sur le terme $\langle x, y \rangle$. Dans le cas complexe, vous devrez manipuler le terme $\langle x,y \rangle + \overline{\langle x,y \rangle} = 2 \text{Re}(\langle x,y \rangle)$.
 
 </details>
 
 <details>
 
-<summary>Preuve Détaillée</summary>
+<summary>Solution</summary>
 
-Soient $x, y \in E$. Nous voulons prouver que $\|x+y\| \le \|x\| + \|y\|$.
+Soient $x, y \in E$.
 
-Puisque les normes sont des nombres réels positifs, cette inégalité est équivalente à $\|x+y\|^2 \le (\|x\| + \|y\|)^2$.
+**Étape 1 : Travailler avec le carré de la norme**
 
-**Étape 1 : Développer le membre de gauche**
+Les termes de l'inégalité sont positifs, il est donc équivalent de prouver $\|x+y\|^2 \le (\|x\| + \|y\|)^2$.
 
-En utilisant la définition de la norme et les propriétés du produit scalaire :
+Développons le membre de gauche en utilisant les propriétés du produit scalaire :
 
-$$ \|x+y\|^2 = \langle x+y, x+y \rangle $$
+$$ \|x+y\|^2 = \langle x+y, x+y \rangle = \langle x,x \rangle + \langle x,y \rangle + \langle y,x \rangle + \langle y,y \rangle $$
 
-$$ = \langle x, x \rangle + \langle x, y \rangle + \langle y, x \rangle + \langle y, y \rangle $$
+En utilisant la symétrie (hermitienne), on sait que $\langle y,x \rangle = \overline{\langle x,y \rangle}$.
 
-$$ = \|x\|^2 + \langle x, y \rangle + \overline{\langle x, y \rangle} + \|y\|^2 $$
+$$ \|x+y\|^2 = \|x\|^2 + \langle x,y \rangle + \overline{\langle x,y \rangle} + \|y\|^2 $$
 
-Rappelons que pour tout nombre complexe $z$, $z + \bar{z} = 2\text{Re}(z)$, où $\text{Re}(z)$ est la partie réelle de $z$. Donc :
+Rappelons que pour tout nombre complexe $z$, $z + \bar{z} = 2 \text{Re}(z)$.
 
-$$ \|x+y\|^2 = \|x\|^2 + 2\text{Re}(\langle x, y \rangle) + \|y\|^2 $$
+$$ \|x+y\|^2 = \|x\|^2 + 2 \text{Re}(\langle x,y \rangle) + \|y\|^2 $$
 
-(Note : dans le cas réel, $\text{Re}(\langle x, y \rangle) = \langle x, y \rangle$, la formule reste donc valable).
+(Dans le cas réel, $\text{Re}(\langle x,y \rangle) = \langle x,y \rangle$, la formule reste donc juste).
 
-**Étape 2 : Utiliser l'inégalité de Cauchy-Schwarz**
+**Étape 2 : Appliquer l'inégalité de Cauchy-Schwarz**
 
-Pour tout nombre complexe $z$, on sait que sa partie réelle est inférieure ou égale à son module : $\text{Re}(z) \le |z|$.
+Pour tout nombre complexe $z$, on a $\text{Re}(z) \le |z|$. Donc :
 
-Donc, $\text{Re}(\langle x, y \rangle) \le |\langle x, y \rangle|$.
+$$ 2 \text{Re}(\langle x,y \rangle) \le 2 |\langle x,y \rangle| $$
 
-En appliquant cette inégalité à l'expression de l'étape 1, nous obtenons :
+L'inégalité de Cauchy-Schwarz nous dit que $|\langle x,y \rangle| \le \|x\|\|y\|$. En combinant ces deux inégalités :
 
-$$ \|x+y\|^2 \le \|x\|^2 + 2|\langle x, y \rangle| + \|y\|^2 $$
+$$ 2 \text{Re}(\langle x,y \rangle) \le 2 \|x\|\|y\| $$
 
-Maintenant, nous utilisons l'inégalité de Cauchy-Schwarz, $|\langle x, y \rangle| \le \|x\| \|y\|$, pour majorer ce terme :
+**Étape 3 : Substituer et conclure**
 
-$$ \|x+y\|^2 \le \|x\|^2 + 2\|x\|\|y\| + \|y\|^2 $$
+En substituant ce résultat dans l'expression de $\|x+y\|^2$ :
 
-**Étape 3 : Conclure**
+$$ \|x+y\|^2 \le \|x\|^2 + 2 \|x\|\|y\| + \|y\|^2 $$
 
-Le membre de droite est une identité remarquable :
-
-$$ \|x\|^2 + 2\|x\|\|y\| + \|y\|^2 = (\|x\| + \|y\|)^2 $$
-
-Nous avons donc montré que :
+On reconnaît le développement d'une identité remarquable :
 
 $$ \|x+y\|^2 \le (\|x\| + \|y\|)^2 $$
 
-Puisque la fonction racine carrée est croissante sur $\mathbb{R}^+$, nous pouvons prendre la racine carrée des deux côtés pour obtenir :
+**Étape 4 : Revenir à la norme**
+
+Puisque la norme est une quantité positive, on peut prendre la racine carrée des deux côtés de l'inégalité pour obtenir le résultat final :
 
 $$ \|x+y\| \le \|x\| + \|y\| $$
 
 **Conclusion :**
 
-L'inégalité triangulaire est vérifiée, ce qui confirme que l'application $\|x\| = \sqrt{\langle x, x \rangle}$ est bien une norme.
-
-</details>
-
----
-
-#### Théorème de Pythagore
-
-Prouvez que si deux vecteurs $x$ et $y$ d'un espace euclidien ou hermitien sont orthogonaux, alors $\|x+y\|^2 = \|x\|^2 + \|y\|^2$.
-
-<details class="hint">
-
-<summary>Indices et Stratégie Générale</summary>
-
-La preuve est une application très directe de la définition de la norme.
-
-Commencez par écrire l'expression $\|x+y\|^2$ en utilisant le produit scalaire : $\|x+y\|^2 = \langle x+y, x+y \rangle$.
-
-Développez ce produit scalaire en utilisant la bilinéarité (ou sesquilinéarité).
-
-Utilisez l'hypothèse que $x$ et $y$ sont orthogonaux. Qu'est-ce que cela signifie pour $\langle x, y \rangle$ ? Et pour $\langle y, x \rangle$ ? Simplifiez l'expression développée.
-
-</details>
-
-<details>
-
-<summary>Preuve Détaillée</summary>
-
-Soient $x$ et $y$ deux vecteurs dans un espace euclidien ou hermitien $E$.
-
-**Étape 1 : Hypothèse d'orthogonalité**
-
-L'hypothèse est que $x$ et $y$ sont orthogonaux. Par définition, cela signifie que leur produit scalaire est nul :
-
-$$ \langle x, y \rangle = 0 $$
-
-Dans le cas hermitien, cela implique aussi $\langle y, x \rangle = \overline{\langle x, y \rangle} = \bar{0} = 0$.
-
-Dans le cas euclidien, $\langle y, x \rangle = \langle x, y \rangle = 0$.
-
-Donc, dans tous les cas, $\langle x, y \rangle = 0$ et $\langle y, x \rangle = 0$.
-
-**Étape 2 : Développer la norme au carré de la somme**
-
-Nous partons de l'expression $\|x+y\|^2$ et utilisons la définition de la norme :
-
-$$ \|x+y\|^2 = \langle x+y, x+y \rangle $$
-
-En utilisant les propriétés de linéarité du produit scalaire, nous développons cette expression :
-
-$$ \|x+y\|^2 = \langle x, x \rangle + \langle x, y \rangle + \langle y, x \rangle + \langle y, y \rangle $$
-
-**Étape 3 : Appliquer l'hypothèse et conclure**
-
-Nous remplaçons maintenant les termes $\langle x, y \rangle$ et $\langle y, x \rangle$ par 0, conformément à l'hypothèse d'orthogonalité :
-
-$$ \|x+y\|^2 = \langle x, x \rangle + 0 + 0 + \langle y, y \rangle $$
-
-En revenant à la notation de la norme, où $\|v\|^2 = \langle v, v \rangle$, nous obtenons :
-
-$$ \|x+y\|^2 = \|x\|^2 + \|y\|^2 $$
-
-**Conclusion :**
-
-Nous avons démontré le théorème de Pythagore dans le cadre général des espaces préhilbertiens. Ce résultat étend la relation géométrique familière des triangles rectangles à des espaces abstraits de dimension quelconque.
+La norme induite par un produit scalaire satisfait bien l'inégalité triangulaire.
 
 </details>
 
@@ -372,71 +299,121 @@ Nous avons démontré le théorème de Pythagore dans le cadre général des esp
 
 #### Identité du Parallélogramme
 
-Prouvez l'identité du parallélogramme pour une norme induite par un produit scalaire. Pour tous vecteurs $x, y \in E$ :
+Soit $(E, \langle \cdot, \cdot \rangle)$ un espace préhilbertien. Prouver que pour tous vecteurs $x, y \in E$, la norme associée au produit scalaire vérifie l'identité du parallélogramme :
 
 $$ \|x+y\|^2 + \|x-y\|^2 = 2(\|x\|^2 + \|y\|^2) $$
 
 <details class="hint">
 
-<summary>Indices et Stratégie Générale</summary>
+<summary>Hint</summary>
 
-La preuve est un calcul direct.
+Exprimez les termes $\|x+y\|^2$ et $\|x-y\|^2$ en utilisant la définition de la norme, c'est-à-dire $\|v\|^2 = \langle v, v \rangle$.
 
-Commencez par développer le premier terme, $\|x+y\|^2$, en utilisant le produit scalaire.
+Développez les deux expressions $\langle x+y, x+y \rangle$ et $\langle x-y, x-y \rangle$ en utilisant la linéarité (et semi-linéarité) du produit scalaire.
 
-Faites de même pour le second terme, $\|x-y\|^2 = \langle x-y, x-y \rangle$. Soyez attentif aux signes.
-
-Additionnez les deux expressions développées. Vous devriez voir des termes s'annuler.
-
-Regroupez les termes restants pour obtenir l'expression de droite.
+Additionnez les deux expressions développées et observez les simplifications.
 
 </details>
 
 <details>
 
-<summary>Preuve Détaillée</summary>
+<summary>Solution</summary>
 
-Soient $x, y$ deux vecteurs d'un espace euclidien ou hermitien $E$.
+Soient $x, y \in E$.
 
-**Étape 1 : Développer le premier terme**
+**Étape 1 : Développer $\|x+y\|^2$**
 
-Nous développons $\|x+y\|^2$ en utilisant le produit scalaire :
+En utilisant la définition de la norme et les propriétés du produit scalaire :
 
-$$ \|x+y\|^2 = \langle x+y, x+y \rangle $$
+$$ \|x+y\|^2 = \langle x+y, x+y \rangle = \langle x,x \rangle + \langle x,y \rangle + \langle y,x \rangle + \langle y,y \rangle $$
 
-$$ = \langle x, x \rangle + \langle x, y \rangle + \langle y, x \rangle + \langle y, y \rangle \quad (*)$$
+$$ \|x+y\|^2 = \|x\|^2 + \langle x,y \rangle + \langle y,x \rangle + \|y\|^2 \quad (1) $$
 
-**Étape 2 : Développer le second terme**
+**Étape 2 : Développer $\|x-y\|^2$**
 
-De la même manière, nous développons $\|x-y\|^2$ :
+De manière similaire :
 
-$$ \|x-y\|^2 = \langle x-y, x-y \rangle $$
+$$ \|x-y\|^2 = \langle x-y, x-y \rangle = \langle x,x \rangle - \langle x,y \rangle - \langle y,x \rangle + \langle y,y \rangle $$
 
-$$ = \langle x, x \rangle - \langle x, y \rangle - \langle y, x \rangle + \langle y, y \rangle \quad (**) $$
+$$ \|x-y\|^2 = \|x\|^2 - \langle x,y \rangle - \langle y,x \rangle + \|y\|^2 \quad (2) $$
 
 **Étape 3 : Additionner les deux expressions**
 
-Maintenant, nous additionnons les résultats des équations $(*)$ et $(**)$ :
+Additionnons les équations (1) et (2) :
 
-$$ \|x+y\|^2 + \|x-y\|^2 = (\langle x, x \rangle + \langle x, y \rangle + \langle y, x \rangle + \langle y, y \rangle) + (\langle x, x \rangle - \langle x, y \rangle - \langle y, x \rangle + \langle y, y \rangle) $$
+$$ \|x+y\|^2 + \|x-y\|^2 = (\|x\|^2 + \langle x,y \rangle + \langle y,x \rangle + \|y\|^2) + (\|x\|^2 - \langle x,y \rangle - \langle y,x \rangle + \|y\|^2) $$
 
-Les termes "croisés" s'annulent : $\langle x, y \rangle$ s'annule avec $-\langle x, y \rangle$, et $\langle y, x \rangle$ s'annule avec $-\langle y, x \rangle$. Il nous reste :
+Les termes "croisés" $\langle x,y \rangle$ et $\langle y,x \rangle$ s'annulent :
 
-$$ \|x+y\|^2 + \|x-y\|^2 = \langle x, x \rangle + \langle y, y \rangle + \langle x, x \rangle + \langle y, y \rangle $$
-
-$$ = 2\langle x, x \rangle + 2\langle y, y \rangle $$
-
-**Étape 4 : Conclure**
-
-En revenant à la notation de la norme, $\langle v,v \rangle = \|v\|^2$, nous obtenons :
+$$ \|x+y\|^2 + \|x-y\|^2 = \|x\|^2 + \|y\|^2 + \|x\|^2 + \|y\|^2 $$
 
 $$ \|x+y\|^2 + \|x-y\|^2 = 2\|x\|^2 + 2\|y\|^2 $$
 
-$$ = 2(\|x\|^2 + \|y\|^2) $$
+**Conclusion :**
+
+En factorisant le membre de droite, on obtient l'identité du parallélogramme :
+
+$$ \|x+y\|^2 + \|x-y\|^2 = 2(\|x\|^2 + \|y\|^2) $$
+
+</details>
+
+---
+
+#### Théorème de Pythagore
+
+Soit $(E, \langle \cdot, \cdot \rangle)$ un espace préhilbertien. Prouver que si deux vecteurs $x, y \in E$ sont orthogonaux, alors :
+
+$$ \|x+y\|^2 = \|x\|^2 + \|y\|^2 $$
+
+<details class="hint">
+
+<summary>Hint</summary>
+
+Commencez par développer $\|x+y\|^2$ en utilisant sa définition en termes de produit scalaire : $\langle x+y, x+y \rangle$.
+
+Utilisez la définition de l'orthogonalité. Que vaut $\langle x, y \rangle$ si $x$ et $y$ sont orthogonaux ?
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soient $x, y \in E$ deux vecteurs orthogonaux.
+
+**Étape 1 : Définition de l'orthogonalité**
+
+Par définition, $x$ et $y$ sont orthogonaux si leur produit scalaire est nul :
+
+$$ \langle x, y \rangle = 0 $$
+
+Dans un espace hermitien, cela implique aussi $\langle y, x \rangle = \overline{\langle x, y \rangle} = \overline{0} = 0$.
+
+**Étape 2 : Développer le carré de la norme de la somme**
+
+On exprime $\|x+y\|^2$ à l'aide du produit scalaire :
+
+$$ \|x+y\|^2 = \langle x+y, x+y \rangle $$
+
+Par (sesqui-)linéarité du produit scalaire, on développe :
+
+$$ \|x+y\|^2 = \langle x, x \rangle + \langle x, y \rangle + \langle y, x \rangle + \langle y, y \rangle $$
+
+En utilisant la notation de la norme, cela devient :
+
+$$ \|x+y\|^2 = \|x\|^2 + \langle x, y \rangle + \langle y, x \rangle + \|y\|^2 $$
+
+**Étape 3 : Appliquer l'hypothèse d'orthogonalité**
+
+Puisque $x$ et $y$ sont orthogonaux, $\langle x, y \rangle = 0$ et $\langle y, x \rangle = 0$. En substituant ces valeurs dans l'équation précédente :
+
+$$ \|x+y\|^2 = \|x\|^2 + 0 + 0 + \|y\|^2 $$
+
+$$ \|x+y\|^2 = \|x\|^2 + \|y\|^2 $$
 
 **Conclusion :**
 
-L'identité est prouvée. Cette relation est fondamentale car elle caractérise les normes qui proviennent d'un produit scalaire. Si une norme vérifie cette identité, alors on peut définir un produit scalaire qui induit cette norme (via les identités de polarisation).
+Nous avons démontré que pour deux vecteurs orthogonaux, le carré de la norme de leur somme est égal à la somme de leurs carrés, ce qui est l'énoncé du théorème de Pythagore.
 
 </details>
 
@@ -444,79 +421,140 @@ L'identité est prouvée. Cette relation est fondamentale car elle caractérise 
 
 #### Liberté d'une Famille Orthogonale
 
-Prouvez que toute famille orthogonale de vecteurs non nuls est une famille libre.
+Prouver que toute famille orthogonale de vecteurs non nuls d'un espace préhilbertien est une famille libre.
 
 <details class="hint">
 
-<summary>Indices et Stratégie Générale</summary>
+<summary>Hint</summary>
 
-Pour prouver qu'une famille de vecteurs $(v_1, v_2, \dots, v_n)$ est libre, vous devez montrer que la seule combinaison linéaire de ces vecteurs qui égale le vecteur nul est celle où tous les coefficients sont nuls.
+Soit $(v_1, v_2, \dots, v_n)$ une famille orthogonale de vecteurs non nuls.
 
-Commencez par poser une combinaison linéaire égale au vecteur nul :
+Pour prouver qu'elle est libre, partez de la définition : supposez qu'il existe une combinaison linéaire nulle de ces vecteurs, $\sum_{i=1}^n \lambda_i v_i = 0_E$.
 
-$$ \sum_{i=1}^n \lambda_i v_i = 0_E $$
-
-L'objectif est de montrer que $\lambda_j = 0$ pour chaque $j \in \{1, \dots, n\}$.
-
-Pour isoler un coefficient particulier $\lambda_j$, utilisez l'arme de l'orthogonalité : faites le produit scalaire de l'équation entière avec le vecteur $v_j$.
-
-Développez le produit scalaire $\langle \sum_{i=1}^n \lambda_i v_i, v_j \rangle$. Que se passe-t-il avec les termes où $i \neq j$ ? Que reste-t-il ?
-
-N'oubliez pas d'utiliser l'hypothèse que les vecteurs $v_j$ sont non nuls. Qu'est-ce que cela implique pour $\|v_j\|^2$ ?
+L'objectif est de montrer que tous les scalaires $\lambda_i$ sont nuls. Pour isoler un scalaire particulier $\lambda_j$, prenez le produit scalaire de la combinaison linéaire avec le vecteur $v_j$.
 
 </details>
 
 <details>
 
-<summary>Preuve Détaillée</summary>
+<summary>Solution</summary>
 
-Soit $(v_1, v_2, \dots, v_n)$ une famille orthogonale de vecteurs d'un espace euclidien ou hermitien $E$. On suppose de plus que pour tout $i$, $v_i \neq 0_E$.
+Soit $S = (v_1, v_2, \dots, v_n)$ une famille orthogonale de vecteurs non nuls dans un espace préhilbertien $E$.
 
-**Étape 1 : Poser l'équation de dépendance linéaire**
+**Étape 1 : Hypothèses sur la famille $S$**
 
-Pour montrer que la famille est libre, nous devons prouver que si une combinaison linéaire de ces vecteurs est nulle, alors tous les coefficients de cette combinaison sont nuls. Soient $\lambda_1, \lambda_2, \dots, \lambda_n$ des scalaires tels que :
+- **Orthogonale :** Pour tout $i \neq j$, $\langle v_i, v_j \rangle = 0$.
+- **Vecteurs non nuls :** Pour tout $i$, $v_i \neq 0_E$, ce qui implique $\langle v_i, v_i \rangle = \|v_i\|^2 > 0$.
+
+**Étape 2 : Écrire la condition de dépendance linéaire**
+
+Pour montrer que $S$ est une famille libre, nous devons montrer que la seule combinaison linéaire de ses vecteurs qui soit égale au vecteur nul est celle où tous les coefficients sont nuls.
+
+Supposons qu'il existe des scalaires $\lambda_1, \lambda_2, \dots, \lambda_n$ tels que :
 
 $$ \sum_{i=1}^n \lambda_i v_i = 0_E $$
 
-**Étape 2 : Isoler un coefficient $\lambda_j$**
+**Étape 3 : Isoler un coefficient $\lambda_j$**
 
-Soit $j$ un indice quelconque entre $1$ et $n$. Pour trouver la valeur de $\lambda_j$, nous calculons le produit scalaire de l'équation ci-dessus avec le vecteur $v_j$ :
+Fixons un indice $j \in \{1, \dots, n\}$. Pour isoler $\lambda_j$, calculons le produit scalaire de l'équation ci-dessus avec le vecteur $v_j$ :
 
 $$ \left\langle \sum_{i=1}^n \lambda_i v_i, v_j \right\rangle = \langle 0_E, v_j \rangle $$
 
-Le membre de droite est nul : $\langle 0_E, v_j \rangle = 0$.
-
-Utilisons la linéarité à gauche du produit scalaire pour développer le membre de gauche :
-
-$$ \sum_{i=1}^n \left\langle \lambda_i v_i, v_j \right\rangle = 0 $$
+Le membre de droite est nul. Utilisons la linéarité à gauche pour le membre de gauche :
 
 $$ \sum_{i=1}^n \lambda_i \langle v_i, v_j \rangle = 0 $$
 
-**Étape 3 : Utiliser l'hypothèse d'orthogonalité**
+**Étape 4 : Utiliser l'orthogonalité**
 
-La famille $(v_1, \dots, v_n)$ est orthogonale, ce qui signifie que $\langle v_i, v_j \rangle = 0$ pour tout $i \neq j$.
+La famille est orthogonale, donc $\langle v_i, v_j \rangle = 0$ pour tous les indices $i$ différents de $j$. La somme se simplifie donc radicalement, car un seul terme est potentiellement non nul (celui pour $i=j$) :
 
-Dans la somme ci-dessus, tous les termes sont nuls, sauf potentiellement celui où $i=j$. La somme se réduit donc à ce seul terme :
+$$ \lambda_1 \langle v_1, v_j \rangle + \dots + \lambda_j \langle v_j, v_j \rangle + \dots + \lambda_n \langle v_n, v_j \rangle = 0 $$
 
-$$ \lambda_j \langle v_j, v_j \rangle = 0 $$
-
-**Étape 4 : Utiliser l'hypothèse de vecteurs non nuls**
-
-L'équation se réécrit :
+$$ 0 + \dots + \lambda_j \langle v_j, v_j \rangle + \dots + 0 = 0 $$
 
 $$ \lambda_j \|v_j\|^2 = 0 $$
 
-Par hypothèse, le vecteur $v_j$ est non nul. La propriété de "caractère défini" du produit scalaire implique que si $v_j \neq 0_E$, alors $\|v_j\|^2 \neq 0$.
+**Étape 5 : Conclure sur la nullité du coefficient**
 
-Puisque $\|v_j\|^2$ est un scalaire non nul, nous pouvons diviser l'équation par $\|v_j\|^2$ pour obtenir :
+Par hypothèse, tous les vecteurs $v_j$ de la famille sont non nuls, donc $\|v_j\|^2 \neq 0$.
+
+Puisque le produit $\lambda_j \|v_j\|^2$ est nul et que $\|v_j\|^2$ n'est pas nul, c'est nécessairement le scalaire $\lambda_j$ qui doit être nul.
 
 $$ \lambda_j = 0 $$
 
+Comme ce raisonnement est valable pour n'importe quel indice $j$ de $1$ à $n$, nous avons montré que $\lambda_1 = \lambda_2 = \dots = \lambda_n = 0$.
+
 **Conclusion :**
 
-Nous avons montré que pour un indice $j$ arbitraire, le coefficient $\lambda_j$ doit être nul. Comme cela est vrai pour tous les $j$ de $1$ à $n$, tous les coefficients de la combinaison linéaire sont nuls.
+La seule combinaison linéaire des vecteurs de $S$ qui donne le vecteur nul est la combinaison triviale. La famille $S$ est donc libre.
 
-Ceci est la définition d'une famille libre.
+</details>
+
+---
+
+#### Expression des Coordonnées dans une Base Orthonormée
+
+Soit $\mathcal{B} = (e_1, \dots, e_n)$ une base orthonormée d'un espace préhilbertien $E$. Prouver que pour tout vecteur $x \in E$, ses coordonnées $(x_1, \dots, x_n)$ dans la base $\mathcal{B}$ sont données par $x_i = \langle x, e_i \rangle$. En d'autres termes, prouver que :
+
+$$ x = \sum_{i=1}^n \langle x, e_i \rangle e_i $$
+
+<details class="hint">
+
+<summary>Hint</summary>
+
+Puisque $\mathcal{B}$ est une base, tout vecteur $x$ peut s'écrire de manière unique comme une combinaison linéaire $x = \sum_{j=1}^n x_j e_j$, où les $x_j$ sont les coordonnées de $x$.
+
+Votre objectif est de trouver la valeur d'un coefficient particulier, disons $x_i$.
+
+Pour cela, calculez le produit scalaire de l'expression de $x$ avec le vecteur de base $e_i$. Utilisez la propriété fondamentale d'une base orthonormée : $\langle e_j, e_i \rangle = \delta_{ji}$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $\mathcal{B} = (e_1, \dots, e_n)$ une base orthonormée de $E$. Soit $x$ un vecteur quelconque de $E$.
+
+**Étape 1 : Décomposition de $x$ dans la base $\mathcal{B}$**
+
+Puisque $\mathcal{B}$ est une base de $E$, il existe un unique n-uplet de scalaires $(x_1, \dots, x_n)$, appelés coordonnées de $x$ dans $\mathcal{B}$, tel que :
+
+$$ x = \sum_{j=1}^n x_j e_j $$
+
+**Étape 2 : Calcul du produit scalaire avec un vecteur de base $e_i$**
+
+Fixons un indice $i \in \{1, \dots, n\}$. Calculons le produit scalaire de $x$ avec $e_i$ :
+
+$$ \langle x, e_i \rangle = \left\langle \sum_{j=1}^n x_j e_j, e_i \right\rangle $$
+
+Par linéarité (ou semi-linéarité selon la variable) du produit scalaire, on peut écrire :
+
+$$ \langle x, e_i \rangle = \sum_{j=1}^n \langle x_j e_j, e_i \rangle $$
+
+Dans le cas euclidien (réel) : $\langle x, e_i \rangle = \sum_{j=1}^n x_j \langle e_j, e_i \rangle$.
+
+Dans le cas hermitien (complexe) : $\langle x, e_i \rangle = \sum_{j=1}^n x_j \langle e_j, e_i \rangle$. La formule est identique.
+
+**Étape 3 : Utilisation de l'orthonormalité de la base**
+
+La base $\mathcal{B}$ est orthonormée, ce qui signifie par définition que $\langle e_j, e_i \rangle = \delta_{ji}$, où $\delta_{ji}$ est le symbole de Kronecker ($\delta_{ji}=1$ si $j=i$ et $\delta_{ji}=0$ si $j \neq i$).
+
+Substituons cette propriété dans la somme. Tous les termes de la somme vont s'annuler, sauf celui pour lequel l'indice $j$ est égal à $i$ :
+
+$$ \langle x, e_i \rangle = x_1 \langle e_1, e_i \rangle + \dots + x_i \langle e_i, e_i \rangle + \dots + x_n \langle e_n, e_i \rangle $$
+
+$$ \langle x, e_i \rangle = x_1 \cdot 0 + \dots + x_i \cdot 1 + \dots + x_n \cdot 0 $$
+
+$$ \langle x, e_i \rangle = x_i $$
+
+**Étape 4 : Conclusion**
+
+Nous avons montré que la i-ème coordonnée $x_i$ du vecteur $x$ est égale au produit scalaire $\langle x, e_i \rangle$. Ce résultat étant valable pour tout $i \in \{1, \dots, n\}$, on peut substituer ces expressions dans la décomposition de $x$ :
+
+$$ x = \sum_{i=1}^n x_i e_i = \sum_{i=1}^n \langle x, e_i \rangle e_i $$
+
+Ceci prouve la formule requise.
 
 </details>
 
@@ -524,268 +562,154 @@ Ceci est la définition d'une famille libre.
 
 #### Caractérisation des Endomorphismes Orthogonaux
 
-Soit $f$ un endomorphisme d'un espace euclidien $E$. Prouvez que $f$ est un endomorphisme orthogonal si et seulement si $f$ préserve la norme, c'est-à-dire, pour tout $x \in E$, $\|f(x)\| = \|x\|$.
+Soit $f$ un endomorphisme d'un espace euclidien $E$. Prouver que $f$ est un endomorphisme orthogonal (c'est-à-dire qu'il préserve le produit scalaire) si et seulement si il préserve la norme.
+
+$$ (\forall x,y \in E, \langle f(x), f(y) \rangle = \langle x, y \rangle) \iff (\forall z \in E, \|f(z)\| = \|z\|) $$
 
 <details class="hint">
 
-<summary>Indices et Stratégie Générale</summary>
+<summary>Hint</summary>
 
-C'est une preuve par double implication ("si et seulement si"). Il faut prouver les deux sens.
+L'implication "préserve le produit scalaire $\implies$ préserve la norme" est directe. Il suffit de considérer le cas $x=y$.
 
-**Sens 1 : $f$ est orthogonal $\implies$ $f$ préserve la norme.**
-
-C'est le sens le plus simple. Partez de la définition d'un endomorphisme orthogonal : $\langle f(x), f(y) \rangle = \langle x, y \rangle$ pour tous $x, y \in E$.
-
-Appliquez cette définition au cas particulier où $y=x$. Vous obtiendrez une relation entre $\|f(x)\|^2$ et $\|x\|^2$.
-
-**Sens 2 : $f$ préserve la norme $\implies$ $f$ est orthogonal.**
-
-C'est le sens le plus délicat. L'hypothèse est que $\|f(v)\|^2 = \|v\|^2$ pour tout vecteur $v \in E$. Vous devez prouver que $\langle f(x), f(y) \rangle = \langle x, y \rangle$ pour tous $x, y \in E$.
-
-L'astuce consiste à utiliser une identité de polarisation, qui relie le produit scalaire à la norme. La plus simple est :
+Pour l'implication "préserve la norme $\implies$ préserve le produit scalaire", utilisez l'identité de polarisation qui exprime le produit scalaire en fonction de la norme. L'identité pour le cas euclidien est :
 
 $$ \langle u, v \rangle = \frac{1}{2} (\|u+v\|^2 - \|u\|^2 - \|v\|^2) $$
 
-Appliquez cette identité à $\langle f(x), f(y) \rangle$. Utilisez la linéarité de $f$ et l'hypothèse de conservation de la norme pour simplifier l'expression et retrouver $\langle x, y \rangle$.
+Appliquez cette identité à $\langle f(x), f(y) \rangle$.
 
 </details>
 
 <details>
 
-<summary>Preuve Détaillée</summary>
+<summary>Solution</summary>
 
-**Partie 1 : Implication ( $\implies$ )**
+**Partie 1 : Un endomorphisme orthogonal préserve la norme.**
 
-Supposons que $f$ est un endomorphisme orthogonal. Nous voulons montrer que $\|f(x)\| = \|x\|$ pour tout $x \in E$.
-
-Par définition d'un endomorphisme orthogonal, pour tous vecteurs $u, v \in E$, nous avons :
-
-$$ \langle f(u), f(v) \rangle = \langle u, v \rangle $$
-
-Soit $x \in E$ un vecteur quelconque. Appliquons cette égalité au cas où $u=v=x$ :
-
-$$ \langle f(x), f(x) \rangle = \langle x, x \rangle $$
-
-Par définition de la norme, ceci s'écrit :
-
-$$ \|f(x)\|^2 = \|x\|^2 $$
-
-Puisque la norme est toujours un nombre réel positif, nous pouvons prendre la racine carrée des deux côtés :
-
-$$ \|f(x)\| = \|x\| $$
-
-Le premier sens est donc prouvé.
-
-**Partie 2 : Implication ( $\impliedby$ )**
-
-Supposons maintenant que $f$ préserve la norme, c'est-à-dire que pour tout $v \in E$, $\|f(v)\| = \|v\|$, ce qui est équivalent à $\|f(v)\|^2 = \|v\|^2$. Nous voulons montrer que $f$ est orthogonal, c'est-à-dire $\langle f(x), f(y) \rangle = \langle x, y \rangle$ pour tous $x, y \in E$.
-
-**Étape 1 : Utiliser une identité de polarisation**
-
-L'identité de polarisation dans un espace euclidien nous permet d'exprimer le produit scalaire en termes de normes :
-
-$$ \langle u, v \rangle = \frac{1}{2} (\|u+v\|^2 - \|u\|^2 - \|v\|^2) $$
-
-Appliquons cette identité au produit scalaire $\langle f(x), f(y) \rangle$ :
-
-$$ \langle f(x), f(y) \rangle = \frac{1}{2} (\|f(x)+f(y)\|^2 - \|f(x)\|^2 - \|f(y)\|^2) $$
-
-**Étape 2 : Utiliser la linéarité de $f$ et l'hypothèse**
-
-Puisque $f$ est un endomorphisme, il est linéaire, donc $f(x)+f(y) = f(x+y)$. Remplaçons cela dans l'équation :
-
-$$ \langle f(x), f(y) \rangle = \frac{1}{2} (\|f(x+y)\|^2 - \|f(x)\|^2 - \|f(y)\|^2) $$
-
-Maintenant, nous utilisons notre hypothèse de conservation de la norme. Pour tout vecteur $v$, $\|f(v)\|^2 = \|v\|^2$. Appliquons ceci à $x+y$, $x$ et $y$ :
-
-$$ \|f(x+y)\|^2 = \|x+y\|^2 $$
-
-$$ \|f(x)\|^2 = \|x\|^2 $$
-
-$$ \|f(y)\|^2 = \|y\|^2 $$
-
-Substituons ces égalités dans notre expression pour $\langle f(x), f(y) \rangle$ :
-
-$$ \langle f(x), f(y) \rangle = \frac{1}{2} (\|x+y\|^2 - \|x\|^2 - \|y\|^2) $$
-
-**Étape 3 : Conclure**
-
-Nous reconnaissons que le membre de droite est simplement l'identité de polarisation pour $\langle x, y \rangle$ :
-
-$$ \frac{1}{2} (\|x+y\|^2 - \|x\|^2 - \|y\|^2) = \langle x, y \rangle $$
-
-Nous avons donc montré que :
+Supposons que $f$ est un endomorphisme orthogonal. Par définition, pour tous $x, y \in E$, on a :
 
 $$ \langle f(x), f(y) \rangle = \langle x, y \rangle $$
 
-Ceci étant vrai pour tous $x, y \in E$, l'endomorphisme $f$ est orthogonal.
+Pour montrer que $f$ préserve la norme, nous devons prouver que $\|f(z)\| = \|z\|$ pour tout $z \in E$. Cela est équivalent à $\|f(z)\|^2 = \|z\|^2$.
+
+Soit $z \in E$. On a :
+
+$$ \|f(z)\|^2 = \langle f(z), f(z) \rangle $$
+
+En utilisant la propriété de conservation du produit scalaire avec $x=z$ et $y=z$, on obtient :
+
+$$ \langle f(z), f(z) \rangle = \langle z, z \rangle = \|z\|^2 $$
+
+Donc, $\|f(z)\|^2 = \|z\|^2$. Comme les normes sont positives, on en déduit $\|f(z)\| = \|z\|$.
+
+L'implication est démontrée.
+
+**Partie 2 : Un endomorphisme qui préserve la norme est orthogonal.**
+
+Supposons maintenant que $f$ préserve la norme, c'est-à-dire que pour tout $z \in E$, $\|f(z)\| = \|z\|$. Nous voulons montrer que $\langle f(x), f(y) \rangle = \langle x, y \rangle$ pour tous $x,y \in E$.
+
+**Étape 1 : Utiliser l'identité de polarisation**
+
+L'identité de polarisation dans un espace euclidien permet d'exprimer le produit scalaire à partir de la norme :
+
+$$ \langle u, v \rangle = \frac{1}{2} (\|u+v\|^2 - \|u\|^2 - \|v\|^2) $$
+
+Appliquons cette identité au produit scalaire $\langle f(x), f(y) \rangle$ en posant $u = f(x)$ et $v = f(y)$.
+
+$$ \langle f(x), f(y) \rangle = \frac{1}{2} (\|f(x)+f(y)\|^2 - \|f(x)\|^2 - \|f(y)\|^2) $$
+
+**Étape 2 : Utiliser la linéarité de $f$ et l'hypothèse de conservation de la norme**
+
+Par linéarité de $f$, on a $f(x)+f(y) = f(x+y)$. On peut donc réécrire le premier terme :
+
+$$ \|f(x)+f(y)\|^2 = \|f(x+y)\|^2 $$
+
+Maintenant, nous utilisons notre hypothèse : $f$ préserve la norme. Donc, pour tout vecteur $z$, $\|f(z)\|^2 = \|z\|^2$. Appliquons ceci à $x$, $y$ et $x+y$ :
+
+- $\|f(x)\|^2 = \|x\|^2$
+- $\|f(y)\|^2 = \|y\|^2$
+- $\|f(x+y)\|^2 = \|x+y\|^2$
+
+**Étape 3 : Substituer et conclure**
+
+En substituant ces égalités dans l'expression de $\langle f(x), f(y) \rangle$ :
+
+$$ \langle f(x), f(y) \rangle = \frac{1}{2} (\|x+y\|^2 - \|x\|^2 - \|y\|^2) $$
+
+On reconnaît le membre de droite comme étant l'expression de $\langle x, y \rangle$ par l'identité de polarisation.
+
+$$ \langle f(x), f(y) \rangle = \langle x, y \rangle $$
 
 **Conclusion :**
 
-Nous avons prouvé les deux implications, établissant ainsi l'équivalence entre le fait d'être un endomorphisme orthogonal et le fait de préserver la norme.
+Nous avons démontré les deux implications, ce qui prouve l'équivalence entre la préservation du produit scalaire et la préservation de la norme pour un endomorphisme en espace euclidien.
 
 </details>
 
 ---
 
-#### Théorème de la Meilleure Approximation (Projection Orthogonale)
+#### Adjoint d'une Composition d'Endomorphismes
 
-Soit $F$ un sous-espace vectoriel d'un espace euclidien $E$. Prouvez que pour tout $x \in E$, le projeté orthogonal $P_F(x)$ de $x$ sur $F$ est l'unique vecteur de $F$ qui minimise la distance à $x$. Autrement dit, pour tout $y \in F$ avec $y \neq P_F(x)$, on a :
+Soient $f$ et $g$ deux endomorphismes d'un espace préhilbertien $E$ de dimension finie. Prouver que l'adjoint de la composition $f \circ g$ est la composition des adjoints en ordre inversé :
 
-$$ \|x - P_F(x)\| < \|x - y\| $$
+$$ (f \circ g)^* = g^* \circ f^* $$
 
 <details class="hint">
 
-<summary>Indices et Stratégie Générale</summary>
+<summary>Hint</summary>
 
-L'idée principale est d'utiliser le théorème de Pythagore.
+L'adjoint d'un endomorphisme $h$, noté $h^*$, est défini par la relation unique $\langle h(x), y \rangle = \langle x, h^*(y) \rangle$ pour tous $x, y \in E$.
 
-Considérez la distance au carré $\|x-y\|^2$ pour un $y$ quelconque dans $F$.
+Votre but est de trouver un endomorphisme $h'$ tel que $\langle (f \circ g)(x), y \rangle = \langle x, h'(y) \rangle$. Par unicité de l'adjoint, vous aurez alors $h' = (f \circ g)^*$.
 
-Utilisez une astuce en ajoutant et en soustrayant $P_F(x)$ à l'intérieur de la norme :
-
-$$ x-y = (x - P_F(x)) + (P_F(x) - y) $$
-
-Vous avez maintenant une somme de deux vecteurs. Pour appliquer le théorème de Pythagore, vous devez montrer que ces deux vecteurs sont orthogonaux.
-
-Le premier vecteur, $x - P_F(x)$, est dans $F^\perp$ par définition de la projection.
-
-Le second vecteur, $P_F(x) - y$, est une différence de deux vecteurs de $F$. Dans quel sous-espace se trouve-t-il ?
-
-Une fois que vous avez établi l'orthogonalité, appliquez le théorème de Pythagore à $\|(x - P_F(x)) + (P_F(x) - y)\|^2$.
-
-Analysez l'expression obtenue pour voir quand elle est minimale.
+Commencez par $\langle (f \circ g)(x), y \rangle = \langle f(g(x)), y \rangle$ et appliquez la définition de l'adjoint successivement pour $f$ puis pour $g$.
 
 </details>
 
 <details>
 
-<summary>Preuve Détaillée</summary>
+<summary>Solution</summary>
 
-Soit $x \in E$ et $F$ un sous-espace vectoriel de $E$. Soit $P_F(x)$ le projeté orthogonal de $x$ sur $F$. Soit $y$ un vecteur quelconque de $F$.
+Soient $f, g$ deux endomorphismes de $E$. Nous cherchons à déterminer l'endomorphisme $(f \circ g)^*$.
 
-**Étape 1 : Décomposer le vecteur $x-y$**
+**Étape 1 : Définition de l'adjoint**
 
-Nous voulons comparer $\|x-y\|$ à $\|x - P_F(x)\|$. Pour ce faire, nous étudions $\|x-y\|^2$. Nous introduisons $P_F(x)$ dans l'expression :
-
-$$ x-y = (x - P_F(x)) + (P_F(x) - y) $$
-
-**Étape 2 : Montrer l'orthogonalité des deux composantes**
-
-Soient $v_1 = x - P_F(x)$ et $v_2 = P_F(x) - y$.
-
-Par définition de la projection orthogonale, le vecteur $x$ se décompose de manière unique en $x = P_F(x) + P_{F^\perp}(x)$. Le vecteur $v_1 = x - P_F(x) = P_{F^\perp}(x)$ appartient donc à l'orthogonal de $F$, c'est-à-dire $v_1 \in F^\perp$.
-
-Le vecteur $P_F(x)$ est dans $F$ par définition. Le vecteur $y$ est dans $F$ par hypothèse. Comme $F$ est un sous-espace vectoriel, la différence de deux de ses vecteurs, $v_2 = P_F(x) - y$, est aussi dans $F$.
-
-Nous avons donc $v_1 \in F^\perp$ et $v_2 \in F$. Par définition de l'orthogonal d'un sous-espace, tout vecteur de $F^\perp$ est orthogonal à tout vecteur de $F$. Donc, $\langle v_1, v_2 \rangle = 0$.
-
-**Étape 3 : Appliquer le théorème de Pythagore**
-
-Puisque les vecteurs $v_1 = x - P_F(x)$ et $v_2 = P_F(x) - y$ sont orthogonaux, nous pouvons appliquer le théorème de Pythagore à leur somme :
-
-$$ \|x-y\|^2 = \|v_1 + v_2\|^2 = \|v_1\|^2 + \|v_2\|^2 $$
-
-$$ \|x-y\|^2 = \|x - P_F(x)\|^2 + \|P_F(x) - y\|^2 $$
-
-**Étape 4 : Analyser le résultat et conclure**
-
-L'équation ci-dessus est $\|x-y\|^2 = \|x - P_F(x)\|^2 + \|P_F(x) - y\|^2$.
-
-Le terme $\|P_F(x) - y\|^2$ est une norme au carré, il est donc toujours positif ou nul.
-
-$$ \|P_F(x) - y\|^2 \ge 0 $$
-
-Par conséquent, nous avons l'inégalité :
-
-$$ \|x-y\|^2 \ge \|x - P_F(x)\|^2 $$
-
-En prenant la racine carrée, on obtient $\|x-y\| \ge \|x - P_F(x)\|$. Cela montre que la distance est bien minimisée lorsque $y=P_F(x)$.
-
-Pour l'unicité, l'égalité $\|x-y\|^2 = \|x - P_F(x)\|^2$ a lieu si et seulement si le terme supplémentaire est nul :
-
-$$ \|P_F(x) - y\|^2 = 0 $$
-
-Par la propriété de séparation de la norme, cela est équivalent à :
-
-$$ P_F(x) - y = 0_E \iff y = P_F(x) $$
-
-Donc, si $y \neq P_F(x)$, l'inégalité est stricte : $\|x - y\| > \|x - P_F(x)\|$.
-
-**Conclusion :**
-
-Le projeté orthogonal $P_F(x)$ est bien l'unique vecteur de $F$ qui minimise la distance à $x$.
-
-</details>
-
----
-
-#### Propriétés de l'Adjoint
-
-Prouvez que pour deux endomorphismes $f$ et $g$ d'un espace hermitien $E$, on a $(f \circ g)^* = g^* \circ f^*$.
-
-<details class="hint">
-
-<summary>Indices et Stratégie Générale</summary>
-
-Pour prouver que l'adjoint de l'endomorphisme $A = f \circ g$ est l'endomorphisme $B = g^* \circ f^*$, vous devez montrer que $B$ satisfait la définition de l'adjoint de $A$.
-
-La définition de l'adjoint $A^*$ de $A$ est l'unique endomorphisme tel que pour tous $x, y \in E$ :
-
-$$ \langle A(x), y \rangle = \langle x, A^*(y) \rangle $$
-
-Vous devez donc prouver que pour tous $x, y \in E$ :
-
-$$ \langle (f \circ g)(x), y \rangle = \langle x, (g^* \circ f^*)(y) \rangle $$
-
-Commencez par le membre de gauche $\langle f(g(x)), y \rangle$ et appliquez la définition de l'adjoint successivement pour "déplacer" $f$ puis $g$ de l'autre côté du produit scalaire.
-
-</details>
-
-<details>
-
-<summary>Preuve Détaillée</summary>
-
-Soient $f, g$ deux endomorphismes de $E$. Soient $x, y \in E$ des vecteurs quelconques.
-
-Nous cherchons l'adjoint de l'endomorphisme composé $f \circ g$. Notons-le $(f \circ g)^*$. Par définition, il doit satisfaire pour tous $x, y$ :
+Par définition, l'adjoint $(f \circ g)^*$ est l'unique endomorphisme qui vérifie pour tous $x, y \in E$ :
 
 $$ \langle (f \circ g)(x), y \rangle = \langle x, (f \circ g)^*(y) \rangle $$
 
-Notre but est de montrer que l'endomorphisme $g^* \circ f^*$ vérifie cette propriété.
+Notre stratégie est de partir du membre de gauche et de le transformer en une expression de la forme $\langle x, h(y) \rangle$. L'endomorphisme $h$ sera alors, par unicité, l'adjoint recherché.
 
-**Étape 1 : Partir du membre de gauche**
+**Étape 2 : Application successive de la définition de l'adjoint**
 
-Commençons par l'expression $\langle (f \circ g)(x), y \rangle$.
+Partons du membre de gauche.
 
 $$ \langle (f \circ g)(x), y \rangle = \langle f(g(x)), y \rangle $$
 
-**Étape 2 : Utiliser la définition de l'adjoint de $f$**
-
-On peut voir $g(x)$ comme un seul vecteur. En appliquant la définition de $f^*$, qui est $\langle f(u), v \rangle = \langle u, f^*(v) \rangle$, avec $u=g(x)$ et $v=y$, on obtient :
+Considérons le vecteur $g(x)$ comme un seul bloc. On peut appliquer la définition de l'adjoint de $f$, qui est $f^*$. On a $\langle f(u), v \rangle = \langle u, f^*(v) \rangle$. En posant $u = g(x)$ et $v = y$ :
 
 $$ \langle f(g(x)), y \rangle = \langle g(x), f^*(y) \rangle $$
 
-**Étape 3 : Utiliser la définition de l'adjoint de $g$**
-
-Maintenant, nous avons une expression de la forme $\langle g(u), v \rangle$. En appliquant la définition de $g^*$, qui est $\langle g(u), v \rangle = \langle u, g^*(v) \rangle$, avec $u=x$ et $v=f^*(y)$, on obtient :
+Maintenant, nous avons une nouvelle expression $\langle g(x), f^*(y) \rangle$. On peut y appliquer la définition de l'adjoint de $g$, qui est $g^*$. On a $\langle g(u), v \rangle = \langle u, g^*(v) \rangle$. En posant $u = x$ et $v = f^*(y)$ :
 
 $$ \langle g(x), f^*(y) \rangle = \langle x, g^*(f^*(y)) \rangle $$
 
-**Étape 4 : Conclure**
+**Étape 3 : Identification de l'adjoint**
 
-Par définition de la composition d'applications, $g^*(f^*(y)) = (g^* \circ f^*)(y)$.
+En combinant les étapes, nous avons montré que pour tous $x, y \in E$ :
 
-En rassemblant les étapes, nous avons montré que :
+$$ \langle (f \circ g)(x), y \rangle = \langle x, g^*(f^*(y)) \rangle $$
+
+L'expression $g^*(f^*(y))$ peut s'écrire comme la composition $(g^* \circ f^*)(y)$.
 
 $$ \langle (f \circ g)(x), y \rangle = \langle x, (g^* \circ f^*)(y) \rangle $$
 
-En comparant cette équation avec la définition de l'adjoint de $(f \circ g)$, nous voyons que l'endomorphisme $g^* \circ f^*$ se comporte exactement comme $(f \circ g)^*$. Par unicité de l'adjoint, nous pouvons conclure :
+En comparant cette égalité avec la relation de définition $\langle (f \circ g)(x), y \rangle = \langle x, (f \circ g)^*(y) \rangle$, par unicité de l'endomorphisme adjoint, on doit avoir :
 
 $$ (f \circ g)^* = g^* \circ f^* $$
 
 **Conclusion :**
 
-Nous avons prouvé que l'adjoint d'une composée d'endomorphismes est la composée des adjoints, mais en inversant l'ordre.
+L'adjoint de la composition de deux endomorphismes est bien la composition de leurs adjoints, avec inversion de l'ordre.
 
 </details>

@@ -11,6 +11,86 @@ var Markdown = {
   make: make
 };
 
+function RecallView$Options(props) {
+  var options = props.options;
+  TiliaReact.useTilia();
+  if (options.length === 0) {
+    return JsxRuntime.jsx(JsxRuntime.Fragment, {});
+  } else {
+    return JsxRuntime.jsx("ul", {
+                children: options.map(function (option) {
+                      return JsxRuntime.jsxs("li", {
+                                  children: [
+                                    JsxRuntime.jsx("input", {
+                                          checked: option.checked,
+                                          type: "checkbox",
+                                          onChange: (function (param) {
+                                              
+                                            })
+                                        }),
+                                    JsxRuntime.jsx(make, {
+                                          text: option.content
+                                        })
+                                  ],
+                                  onClick: (function (param) {
+                                      option.checked = !option.checked;
+                                    })
+                                }, option.id);
+                    }),
+                className: "options"
+              });
+  }
+}
+
+var Options = {
+  make: RecallView$Options
+};
+
+function correctionClassname(correction) {
+  switch (correction) {
+    case "Correct" :
+        return "correct";
+    case "Missed" :
+        return "missed";
+    case "Incorrect" :
+        return "incorrect";
+    case "Blank" :
+        return "blank";
+    
+  }
+}
+
+function RecallView$BackOptions(props) {
+  var options = props.options;
+  TiliaReact.useTilia();
+  if (options.length === 0) {
+    return JsxRuntime.jsx(JsxRuntime.Fragment, {});
+  } else {
+    return JsxRuntime.jsx("ul", {
+                children: options.map(function (option) {
+                      return JsxRuntime.jsxs("li", {
+                                  children: [
+                                    JsxRuntime.jsx("input", {
+                                          defaultChecked: option.checked,
+                                          type: "checkbox"
+                                        }),
+                                    JsxRuntime.jsx(make, {
+                                          text: "\n\n" + option.content + "\n\n"
+                                        })
+                                  ],
+                                  className: correctionClassname(option.correction)
+                                }, option.id);
+                    }),
+                className: "options"
+              });
+  }
+}
+
+var BackOptions = {
+  correctionClassname: correctionClassname,
+  make: RecallView$BackOptions
+};
+
 function RecallView$Front(props) {
   var front = props.front;
   TiliaReact.useTilia();
@@ -21,27 +101,8 @@ function RecallView$Front(props) {
                         JsxRuntime.jsx(make, {
                               text: front.content
                             }),
-                        JsxRuntime.jsx("ul", {
-                              children: front.options.map(function (option) {
-                                    return JsxRuntime.jsxs("li", {
-                                                children: [
-                                                  JsxRuntime.jsx("input", {
-                                                        checked: option.checked,
-                                                        type: "checkbox",
-                                                        onChange: (function (param) {
-                                                            
-                                                          })
-                                                      }),
-                                                  JsxRuntime.jsx(make, {
-                                                        text: option.content
-                                                      })
-                                                ],
-                                                onClick: (function (param) {
-                                                    option.checked = !option.checked;
-                                                  })
-                                              }, option.id);
-                                  }),
-                              className: "options"
+                        JsxRuntime.jsx(RecallView$Options, {
+                              options: front.options
                             })
                       ],
                       className: "card-question"
@@ -49,9 +110,7 @@ function RecallView$Front(props) {
                 JsxRuntime.jsx("div", {
                       children: JsxRuntime.jsx("details", {
                             children: JsxRuntime.jsx("summary", {
-                                  children: JsxRuntime.jsx("strong", {
-                                        children: "Solution"
-                                      })
+                                  children: "Solution"
                                 }),
                             open: false
                           }),
@@ -68,20 +127,6 @@ function RecallView$Front(props) {
 var Front = {
   make: RecallView$Front
 };
-
-function correctionClassname(correction) {
-  switch (correction) {
-    case "Correct" :
-        return "correct";
-    case "Missed" :
-        return "missed";
-    case "Incorrect" :
-        return "incorrect";
-    case "Blank" :
-        return "blank";
-    
-  }
-}
 
 function RecallView$Back(props) {
   var back = props.back;
@@ -100,22 +145,8 @@ function RecallView$Back(props) {
                         JsxRuntime.jsx(make, {
                               text: back.content
                             }),
-                        JsxRuntime.jsx("ul", {
-                              children: back.options.map(function (option) {
-                                    return JsxRuntime.jsxs("li", {
-                                                children: [
-                                                  JsxRuntime.jsx("input", {
-                                                        defaultChecked: option.checked,
-                                                        type: "checkbox"
-                                                      }),
-                                                  JsxRuntime.jsx(make, {
-                                                        text: "\n\n" + option.content + "\n\n"
-                                                      })
-                                                ],
-                                                className: correctionClassname(option.correction)
-                                              }, option.id);
-                                  }),
-                              className: "options"
+                        JsxRuntime.jsx(RecallView$BackOptions, {
+                              options: back.options
                             })
                       ],
                       className: "card-question"
@@ -124,9 +155,7 @@ function RecallView$Back(props) {
                       children: JsxRuntime.jsxs("details", {
                             children: [
                               JsxRuntime.jsx("summary", {
-                                    children: JsxRuntime.jsx("strong", {
-                                          children: "Solution"
-                                        }),
+                                    children: "Solution",
                                     onClick: (function (param) {
                                         back.turn();
                                       })
@@ -185,7 +214,6 @@ function RecallView$Back(props) {
 }
 
 var Back = {
-  correctionClassname: correctionClassname,
   make: RecallView$Back
 };
 
@@ -279,6 +307,8 @@ var make$1 = RecallView;
 
 export {
   Markdown ,
+  Options ,
+  BackOptions ,
   Front ,
   Back ,
   Done ,

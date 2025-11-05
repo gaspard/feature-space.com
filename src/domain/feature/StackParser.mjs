@@ -10,6 +10,8 @@ import * as Caml_js_exceptions from "rescript/lib/es6/caml_js_exceptions.js";
 
 var contentRe = /^(.*?)\s*<details>/s;
 
+var hintRe = /[\s\S]*?<details class=\"hint\">(.*?)<\/details>/;
+
 var solutionRe = /[\s\S]*?<summary>.*?<\/summary>([\s\S]*?)<\/details>/;
 
 function makeId() {
@@ -66,18 +68,42 @@ function parseCards(stackId, body) {
                   text.slice(r[0].length)
                 ];
               var text$1 = match[1];
-              var match$1 = getOptions(match[0]);
-              var r$1 = solutionRe.exec(text$1);
-              var match$2 = (r$1 == null) ? (console.log("Cannot extract solution\n=================="), console.log(text$1), console.log("=================="), Js_exn.raiseError("Cannot extract solution")) : [
-                  r$1[1],
-                  text$1.slice(r$1[0].length)
+              var content = match[0];
+              var r$1 = hintRe.exec(text$1);
+              var match$1;
+              if (r$1 == null) {
+                match$1 = [
+                  content,
+                  text$1
+                ];
+              } else {
+                var match$2 = r$1.slice(1);
+                if (match$2.length !== 1) {
+                  match$1 = [
+                    content,
+                    text$1
+                  ];
+                } else {
+                  var hint = match$2[0];
+                  match$1 = [
+                    content + hint,
+                    text$1.slice(r$1[0].length)
+                  ];
+                }
+              }
+              var text$2 = match$1[1];
+              var match$3 = getOptions(match$1[0]);
+              var r$2 = solutionRe.exec(text$2);
+              var match$4 = (r$2 == null) ? (console.log("Cannot extract solution\n=================="), console.log(text$2), console.log("=================="), Js_exn.raiseError("Cannot extract solution")) : [
+                  r$2[1],
+                  text$2.slice(r$2[0].length)
                 ];
               return {
                       id: id(),
                       stackId: stackId,
-                      content: match$1[0],
-                      solution: match$2[0],
-                      options: match$1[1]
+                      content: match$3[0],
+                      solution: match$4[0],
+                      options: match$3[1]
                     };
             });
 }
@@ -101,7 +127,7 @@ function parse(content) {
         };
 }
 
-var pathRe = /(\.cards|\.quiz)$/;
+var pathRe = /(\.cards|\.quiz|\.proofs)$/;
 
 function makeStacksToJson(fs, path) {
   return function (dir, outdir, stacksDir) {
@@ -114,7 +140,7 @@ function makeStacksToJson(fs, path) {
       }
       var toc = [];
       fs.readdirSync(dir).forEach(function (dirent) {
-            if (!(dirent.name.endsWith(".cards") || dirent.name.endsWith(".quiz"))) {
+            if (!(dirent.name.endsWith(".cards") || dirent.name.endsWith(".quiz") || dirent.name.endsWith(".proofs"))) {
               if (dirent.isDirectory()) {
                 Caml_splice_call.spliceObjApply(toc, "push", [aux(path.join(dir, dirent.name), path.join(outdir, dirent.name))]);
                 return ;
@@ -153,6 +179,7 @@ function makeStacksToJson(fs, path) {
 
 export {
   contentRe ,
+  hintRe ,
   solutionRe ,
   makeId ,
   getOptions ,

@@ -5,37 +5,29 @@ module Markdown = {
   external make: (~text: string) => React.element = "default"
 }
 
-module Front = {
+module Options = {
   @react.component
-  let make = (~front: Recall.Ui.front) => {
+  let make = (~options: array<Recall.Ui.questionOption>) => {
     useTilia()
 
-    <div className="card">
-      <div className="card-question">
-        <Markdown text={front.content} />
-        <ul className="options">
-          {front.options
-          ->Array.map(option =>
-            <li key={option.id} onClick={_ => option.checked = !option.checked}>
-              <input type_="checkbox" checked={option.checked} onChange={_ => ()} />
-              <Markdown text={option.content} />
-            </li>
-          )
-          ->React.array}
-        </ul>
-      </div>
-      <div className="card-anwser" onClick={_ => front.turn()}>
-        <details open_={false}>
-          <summary>
-            <strong> {"Solution"->React.string} </strong>
-          </summary>
-        </details>
-      </div>
-    </div>
+    if options->Array.length == 0 {
+      <> </>
+    } else {
+      <ul className="options">
+        {options
+        ->Array.map(option =>
+          <li key={option.id} onClick={_ => option.checked = !option.checked}>
+            <input type_="checkbox" checked={option.checked} onChange={_ => ()} />
+            <Markdown text={option.content} />
+          </li>
+        )
+        ->React.array}
+      </ul>
+    }
   }
 }
 
-module Back = {
+module BackOptions = {
   let correctionClassname = (correction: Recall.Ui.correction) => {
     switch correction {
     | Correct => "correct"
@@ -44,6 +36,47 @@ module Back = {
     | Blank => "blank"
     }
   }
+
+  @react.component
+  let make = (~options: array<Recall.Ui.correctedOption>) => {
+    useTilia()
+
+    if options->Array.length == 0 {
+      <> </>
+    } else {
+      <ul className="options">
+        {options
+        ->Array.map(option =>
+          <li key={option.id} className={option.correction->correctionClassname}>
+            <input type_="checkbox" defaultChecked={option.checked} />
+            <Markdown text={"\n\n" ++ option.content ++ "\n\n"} />
+          </li>
+        )
+        ->React.array}
+      </ul>
+    }
+  }
+}
+module Front = {
+  @react.component
+  let make = (~front: Recall.Ui.front) => {
+    useTilia()
+
+    <div className="card">
+      <div className="card-question">
+        <Markdown text={front.content} />
+        <Options options={front.options} />
+      </div>
+      <div className="card-anwser" onClick={_ => front.turn()}>
+        <details open_={false}>
+          <summary> {"Solution"->React.string} </summary>
+        </details>
+      </div>
+    </div>
+  }
+}
+
+module Back = {
   @react.component
   let make = (~back: Recall.Ui.back) => {
     useTilia()
@@ -56,22 +89,11 @@ module Back = {
     <div className="card">
       <div className="card-question">
         <Markdown text={back.content} />
-        <ul className="options">
-          {back.options
-          ->Array.map(option =>
-            <li key={option.id} className={option.correction->correctionClassname}>
-              <input type_="checkbox" defaultChecked={option.checked} />
-              <Markdown text={"\n\n" ++ option.content ++ "\n\n"} />
-            </li>
-          )
-          ->React.array}
-        </ul>
+        <BackOptions options={back.options} />
       </div>
       <div className="card-answer">
         <details open_={true}>
-          <summary onClick={_ => back.turn()}>
-            <strong> {"Solution"->React.string} </strong>
-          </summary>
+          <summary onClick={_ => back.turn()}> {"Solution"->React.string} </summary>
           <div className="card-evaluate">
             <button className="eval again" onClick={_ => back.evaluate(CardProgress.Again)}>
               {"Encore"->React.string}

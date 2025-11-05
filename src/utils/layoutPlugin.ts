@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 const LAYOUTS: Record<string, string> = {
   quiz: 'Quiz.astro',
   cards: 'Cards.astro',
+  proofs: 'Proofs.astro',
   exercises: 'Exercises.astro',
   podcast: 'Podcast.astro',
   concepts: 'Concepts.astro',

@@ -1,0 +1,62 @@
+open TiliaReact
+
+@react.component
+let make = () => {
+  useTilia()
+  let {migration, viewToc} = App.app
+
+  Js.log("[MigrateView] Component rendering")
+
+  <div className="migrate">
+    <h2> {"Migration requise"->React.string} </h2>
+    <p>
+      {"Vous avez des données locales qui n'ont pas été synchronisées avec votre compte. Que souhaitez-vous faire ?"->React.string}
+    </p>
+    <div>
+      <button
+        type_="button"
+        onClick={_ => {
+          Js.log("[MigrateView] Button clicked: Import progress")
+          let handleImport = async () => {
+            Js.log(
+              `[MigrateView] migration.needed before import: ${migration.needed
+                  ? "true"
+                  : "false"}`,
+            )
+            Js.log("[MigrateView] Calling migration.importProgress()...")
+            try {
+              await migration.importProgress()
+              Js.log("[MigrateView] migration.importProgress() completed")
+              Js.log(
+                `[MigrateView] migration.needed after import: ${migration.needed
+                    ? "true"
+                    : "false"}`,
+              )
+              Js.log("[MigrateView] Calling viewToc()...")
+              viewToc()
+              Js.log("[MigrateView] viewToc() called")
+            } catch {
+            | _ =>
+              Js.log(
+                "[MigrateView] ERROR in importProgress: An exception occurred - check console for details",
+              )
+              ignore(%raw(`console.error("[MigrateView] Full error:", arguments[0])`))
+            }
+          }
+          ignore(handleImport())
+        }}>
+        {"Importer"->React.string}
+      </button>
+      <button
+        type_="button"
+        onClick={_ => {
+          Js.log("[Migration] User selected: Clear progress")
+          migration.clearProgress()
+          Js.log("[Migration] Clear completed, transitioning to Toc")
+          viewToc()
+        }}>
+        {"Effacer les données locales"->React.string}
+      </button>
+    </div>
+  </div>
+}

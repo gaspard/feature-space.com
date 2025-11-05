@@ -1,11 +1,13 @@
 type stackType =
   | @as("cards") Cards
   | @as("quiz") Quiz
+  | @as("proofs") Proofs
 
 let stackTypeToString = (stackType: stackType) => {
   switch stackType {
   | Cards => "Cards"
   | Quiz => "Quiz"
+  | Proofs => "Proofs"
   }
 }
 
@@ -13,6 +15,7 @@ let stackTypeToEmoji = (stackType: stackType) => {
   switch stackType {
   | Cards => "📚"
   | Quiz => "✅"
+  | Proofs => "👁️"
   }
 }
 
@@ -49,7 +52,7 @@ type progress = {
   cards: dict<CardProgress.t>,
 }
 
-let stackTypeSchema = S.union([S.literal(Cards), S.literal(Quiz)])
+let stackTypeSchema = S.union([S.literal(Cards), S.literal(Quiz), S.literal(Proofs)])
 let levelSchema = S.union([S.literal(Regular), S.literal(Pro)])
 
 let infoSchema = S.object(s => {

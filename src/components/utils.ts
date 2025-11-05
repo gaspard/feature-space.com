@@ -13,6 +13,7 @@ const itemSchema = S.schema({
     "exercises",
     "quiz",
     "cards",
+    "proofs",
     "podcast",
     "audio"
   ]),

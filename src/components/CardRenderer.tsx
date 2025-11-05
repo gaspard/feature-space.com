@@ -121,8 +121,7 @@ function Card({ card, onClick, quiz, setOption }: { card: Card, onClick?: () => 
         ))}</ul>}
       </div>
       <details ref={ref}>
-        <summary><strong>Solution</strong>
-        </summary>
+        <summary>Solution</summary>
         <ReactMarkdown
           remarkPlugins={[remarkMath, remarkGfm]}
           rehypePlugins={[rehypeRaw, rehypeKatex]}

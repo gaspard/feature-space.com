@@ -1,0 +1,712 @@
+---
+id: 99b73908
+type: proofs
+order: 15
+title: Structures algébriques - preuves (A)
+tags:
+  - structures algébriques
+  - ensembles
+  - applications
+  - groupes
+  - anneaux
+  - corps
+  - relations d'équivalence
+  - quotients
+createdAt: '2025-10-12T15:59:21.285Z'
+level: regular
+course: Algèbre
+courseId: 3b74b601
+chapter: Structures algébriques
+chapterId: 436c223a
+---
+# Preuves "Structures algébriques" (A)
+
+---
+
+#### Associativité de la composition d'applications
+
+Prouver que si $f : X \to Y$, $g : Y \to Z$ et $h : Z \to T$ sont trois applications, alors la composition est associative, c'est-à-dire $h \circ (g \circ f) = (h \circ g) \circ f$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Deux applications sont égales si elles ont le même ensemble de départ, le même ensemble d'arrivée, et si elles associent la même image à chaque élément de l'ensemble de départ.
+
+Appliquez cette définition aux deux applications $h \circ (g \circ f)$ et $(h \circ g) \circ f$. Pour un élément arbitraire $x \in X$, calculez son image par chaque application en utilisant la définition de la composition.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Pour prouver l'égalité de deux applications, nous devons vérifier trois points : qu'elles ont le même ensemble de départ, le même ensemble d'arrivée et qu'elles donnent la même image pour tout élément de l'ensemble de départ.
+
+**Étape 1 : Ensembles de départ et d'arrivée**
+
+L'application $g \circ f$ est définie de $X$ vers $Z$. Par conséquent, l'application $h \circ (g \circ f)$ est définie de $X$ vers $T$.
+
+De même, l'application $h \circ g$ est définie de $Y$ vers $T$. Par conséquent, l'application $(h \circ g) \circ f$ est définie de $X$ vers $T$.
+
+Les deux applications $h \circ (g \circ f)$ et $(h \circ g) \circ f$ ont donc le même ensemble de départ $X$ et le même ensemble d'arrivée $T$.
+
+**Étape 2 : Égalité des images**
+
+Soit $x$ un élément quelconque de $X$. Nous calculons l'image de $x$ par chaque application.
+
+Pour $h \circ (g \circ f)$, on applique la définition de la composition deux fois :
+
+$$ (h \circ (g \circ f))(x) = h((g \circ f)(x)) = h(g(f(x))) $$
+
+Pour $(h \circ g) \circ f$, on fait de même :
+
+$$ ((h \circ g) \circ f)(x) = (h \circ g)(f(x)) = h(g(f(x))) $$
+
+**Conclusion**
+
+Pour tout $x \in X$, les deux applications donnent la même image $h(g(f(x)))$. Puisqu'elles ont les mêmes ensembles de départ et d'arrivée et associent la même image à chaque élément, les deux applications sont égales. On a donc bien :
+
+$$ h \circ (g \circ f) = (h \circ g) \circ f $$
+
+</details>
+
+---
+
+#### Unicité de l'élément neutre
+
+Prouver que si un ensemble $(X, *)$ muni d'une opération binaire admet un élément neutre, alors cet élément neutre est unique.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Raisonnez par l'absurde. Supposez qu'il existe deux éléments neutres distincts, disons $e$ et $e'$.
+
+Utilisez la définition de l'élément neutre pour chacun d'eux. Considérez le produit $e * e'$. Que pouvez-vous en déduire en considérant $e$ comme élément neutre ? Et en considérant $e'$ comme élément neutre ?
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $(X, *)$ un ensemble muni d'une opération binaire. Supposons qu'il existe deux éléments neutres, que nous noterons $e$ et $e'$.
+
+**Étape 1 : Utiliser la propriété de $e$**
+
+Puisque $e$ est un élément neutre, par définition, pour tout $x \in X$, on a $e * x = x * e = x$.
+
+En particulier, si on choisit $x = e'$, on obtient :
+
+$$ e * e' = e' $$
+
+**Étape 2 : Utiliser la propriété de $e'$**
+
+Puisque $e'$ est un élément neutre, par définition, pour tout $x \in X$, on a $e' * x = x * e' = x$.
+
+En particulier, si on choisit $x = e$, on obtient :
+
+$$ e * e' = e $$
+
+**Conclusion**
+
+En combinant les résultats des deux étapes, nous avons :
+
+$$ e' = e * e' = e $$
+
+Cela montre que $e = e'$. Les deux éléments neutres que nous avions supposés sont en fait égaux. L'élément neutre, s'il existe, est donc unique.
+
+</details>
+
+---
+
+#### Unicité de l'inverse dans un groupe
+
+Prouver que dans un groupe $(G, *)$, chaque élément $a \in G$ admet un inverse unique.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Soit $a \in G$. Supposez que $b$ et $c$ sont deux inverses de $a$. Vous devez montrer que $b=c$.
+
+Par définition, vous avez $a*b = b*a = e$ et $a*c = c*a = e$, où $e$ est l'élément neutre.
+
+Considérez l'expression $c * (a * b)$. Calculez-la de deux manières différentes en utilisant l'associativité de l'opération $*$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+# Preuve de l'unicité de l'inverse dans un groupe
+
+Soit \(G\) un groupe, \(a \in G\), et supposons que \(c\) et \(b\) sont deux inverses de \(a\). Par définition d'inverse, on a :
+
+$$
+a * c = e \quad \text{et} \quad a * b = e,
+$$
+
+où \(e\) est l'élément neutre de \(G\).
+
+Pour montrer que \(c = b\), on procède comme suit :
+
+1. On écrit \( c \) en insérant l'élément neutre \(e\) :
+$$
+c = c * e
+$$
+
+2. Or \( e = a * b \), donc
+$$
+c = c * (a * b)
+$$
+
+3. Par associativité,
+$$
+c * (a * b) = (c * a) * b
+$$
+
+4. Puisque \(c\) est inverse de \(a\), on a \(c * a = e\), donc
+$$
+(c * a) * b = e * b = b
+$$
+
+5. On conclut donc que
+$$
+c = b
+$$
+
+Cela montre que l'inverse d'un élément dans un groupe est unique.
+
+
+</details>
+
+---
+
+#### Composition de deux applications injectives
+
+Prouver que si $f : X \to Y$ et $g : Y \to Z$ sont deux applications injectives, alors leur composition $g \circ f : X \to Z$ est également injective.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Pour prouver qu'une application $h$ est injective, vous devez montrer que pour tous $x_1, x_2$ dans son ensemble de départ, $h(x_1) = h(x_2)$ implique $x_1 = x_2$.
+
+Appliquez cette démarche à $h = g \circ f$. Partez de l'hypothèse $(g \circ f)(x_1) = (g \circ f)(x_2)$ et utilisez successivement l'injectivité de $g$ puis celle de $f$ pour arriver à la conclusion $x_1 = x_2$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soient $f : X \to Y$ et $g : Y \to Z$ deux applications injectives. Nous voulons prouver que l'application $g \circ f : X \to Z$ est injective.
+
+**Étape 1 : Énoncé de l'objectif**
+
+Selon la définition de l'injectivité, nous devons montrer que pour tous les éléments $x_1, x_2 \in X$, l'égalité $(g \circ f)(x_1) = (g \circ f)(x_2)$ implique que $x_1 = x_2$.
+
+**Étape 2 : Application de la définition de la composition**
+
+Soient $x_1, x_2 \in X$ tels que $(g \circ f)(x_1) = (g \circ f)(x_2)$.
+
+Par définition de la composition d'applications, cela signifie que :
+
+$$ g(f(x_1)) = g(f(x_2)) $$
+
+**Étape 3 : Utilisation de l'injectivité de $g$**
+
+Nous avons une égalité entre les images de deux éléments, $f(x_1)$ et $f(x_2)$, par l'application $g$. Puisque $g$ est injective, cette égalité implique que les antécédents sont égaux :
+
+$$ f(x_1) = f(x_2) $$
+
+**Étape 4 : Utilisation de l'injectivité de $f$**
+
+Nous avons maintenant une égalité entre les images de $x_1$ et $x_2$ par l'application $f$. Puisque $f$ est injective, cette égalité implique que les antécédents sont égaux :
+
+$$ x_1 = x_2 $$
+
+**Conclusion**
+
+Nous avons montré que si $(g \circ f)(x_1) = (g \circ f)(x_2)$, alors $x_1 = x_2$. Par conséquent, l'application $g \circ f$ est injective.
+
+</details>
+
+---
+
+#### Composition de deux applications surjectives
+
+Prouver que si $f : X \to Y$ et $g : Y \to Z$ sont deux applications surjectives, alors leur composition $g \circ f : X \to Z$ est également surjective.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Pour prouver qu'une application $h: A \to B$ est surjective, vous devez montrer que pour tout élément $b \in B$, il existe au moins un élément $a \in A$ tel que $h(a) = b$.
+
+Appliquez cette démarche à $h = g \circ f$. Prenez un élément arbitraire $z \in Z$. Utilisez d'abord la surjectivité de $g$ pour trouver un antécédent $y \in Y$ à $z$. Ensuite, utilisez la surjectivité de $f$ pour trouver un antécédent $x \in X$ à ce $y$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soient $f : X \to Y$ et $g : Y \to Z$ deux applications surjectives. Nous voulons prouver que l'application $g \circ f : X \to Z$ est surjective.
+
+**Étape 1 : Énoncé de l'objectif**
+
+Selon la définition de la surjectivité, nous devons montrer que pour tout élément $z \in Z$, il existe au moins un élément $x \in X$ tel que $(g \circ f)(x) = z$.
+
+**Étape 2 : Utilisation de la surjectivité de $g$**
+
+Soit $z$ un élément quelconque de l'ensemble d'arrivée $Z$.
+
+Puisque l'application $g: Y \to Z$ est surjective, il existe par définition au moins un élément $y \in Y$ tel que $g(y) = z$.
+
+**Étape 3 : Utilisation de la surjectivité de $f$**
+
+Nous avons trouvé un élément $y$ dans l'ensemble $Y$.
+
+Puisque l'application $f: X \to Y$ est surjective, il existe par définition au moins un élément $x \in X$ tel que $f(x) = y$.
+
+**Étape 4 : Combinaison des résultats**
+
+Nous avons maintenant un $x \in X$ tel que $f(x) = y$, et ce $y$ est tel que $g(y) = z$.
+
+Calculons l'image de cet $x$ par $g \circ f$ :
+
+$$ (g \circ f)(x) = g(f(x)) = g(y) = z $$
+
+**Conclusion**
+
+Pour un $z$ arbitraire dans $Z$, nous avons réussi à trouver un antécédent $x$ dans $X$ par l'application $g \circ f$. Ceci prouve que $g \circ f$ est surjective.
+
+</details>
+
+---
+
+#### Inverse d'un produit dans un groupe
+
+Soit $(G, *)$ un groupe. Prouver que pour tous les éléments $a, b \in G$, on a $(a * b)^{-1} = b^{-1} * a^{-1}$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Par définition, l'inverse d'un élément $x$ est l'unique élément $y$ tel que $x*y = e$ et $y*x = e$.
+
+Pour prouver que $b^{-1} * a^{-1}$ est l'inverse de $(a * b)$, vous devez donc vérifier que $(a * b) * (b^{-1} * a^{-1}) = e$ et $(b^{-1} * a^{-1}) * (a * b) = e$. Utilisez l'associativité pour réarranger les parenthèses.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $(G, *)$ un groupe, et $e$ son élément neutre. Soient $a, b \in G$. Nous voulons montrer que l'inverse de l'élément $(a*b)$ est $b^{-1} * a^{-1}$. Pour ce faire, nous devons vérifier que leur produit dans les deux sens donne l'élément neutre $e$.
+
+**Étape 1 : Produit à droite**
+
+Calculons le produit $(a * b) * (b^{-1} * a^{-1})$.
+
+$$
+
+\begin{align*}
+
+(a * b) * (b^{-1} * a^{-1}) &= a * (b * b^{-1}) * a^{-1} & & \text{(par associativité)} \\
+
+&= a * e * a^{-1} & & \text{(par définition de l'inverse } b^{-1}) \\
+
+&= a * a^{-1} & & \text{(par définition de l'élément neutre } e) \\
+
+&= e & & \text{(par définition de l'inverse } a^{-1})
+
+\end{align*}
+
+$$
+
+**Étape 2 : Produit à gauche**
+
+Calculons maintenant le produit $(b^{-1} * a^{-1}) * (a * b)$.
+
+$$
+
+\begin{align*}
+
+(b^{-1} * a^{-1}) * (a * b) &= b^{-1} * (a^{-1} * a) * b & & \text{(par associativité)} \\
+
+&= b^{-1} * e * b & & \text{(par définition de l'inverse } a^{-1}) \\
+
+&= b^{-1} * b & & \text{(par définition de l'élément neutre } e) \\
+
+&= e & & \text{(par définition de l'inverse } b^{-1})
+
+\end{align*}
+
+$$
+
+**Conclusion**
+
+Puisque $(a * b) * (b^{-1} * a^{-1}) = e$ et $(b^{-1} * a^{-1}) * (a * b) = e$, l'élément $b^{-1} * a^{-1}$ est bien l'inverse de $(a * b)$ par définition. On a donc :
+
+$$ (a * b)^{-1} = b^{-1} * a^{-1} $$
+
+</details>
+
+---
+
+#### Absorption par zéro dans un anneau
+
+Prouver que pour tout élément $a$ d'un anneau $(A, +, \times)$, on a $a \times 0 = 0 \times a = 0$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Rappelez-vous que dans un anneau, $0$ est l'élément neutre pour l'addition, ce qui signifie que $0 + 0 = 0$.
+
+Utilisez cette propriété et la distributivité de la multiplication par rapport à l'addition. Partez de l'expression $a \times 0$ et remplacez $0$ par $(0+0)$. Après avoir appliqué la distributivité, vous obtiendrez une équation dans le groupe $(A, +)$ que vous pourrez simplifier.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $(A, +, \times)$ un anneau. Soit $0$ l'élément neutre de l'addition. Soit $a \in A$. Nous allons prouver que $a \times 0 = 0$. La preuve pour $0 \times a = 0$ est analogue en utilisant la distributivité à droite.
+
+**Étape 1 : Utiliser la propriété de l'élément neutre additif**
+
+Par définition de l'élément neutre pour l'addition, nous savons que $0 = 0 + 0$.
+
+**Étape 2 : Utiliser la distributivité**
+
+Considérons l'expression $a \times 0$. En substituant $0$ par $0+0$, nous obtenons :
+
+$$ a \times 0 = a \times (0 + 0) $$
+
+Par la propriété de distributivité de $\times$ sur $+$, nous pouvons développer le membre de droite :
+
+$$ a \times (0 + 0) = (a \times 0) + (a \times 0) $$
+
+Nous avons donc l'égalité :
+
+$$ a \times 0 = (a \times 0) + (a \times 0) $$
+
+**Étape 3 : Simplifier dans le groupe $(A, +)$**
+
+Notons $x = a \times 0$. L'équation devient $x = x + x$.
+
+Puisque $(A, +)$ est un groupe, chaque élément a un opposé (inverse additif). Ajoutons l'opposé de $x$, noté $-x$, à chaque côté de l'équation :
+
+$$ x + (-x) = (x + x) + (-x) $$
+
+Par définition de l'opposé, le membre de gauche est $0$.
+
+$$ 0 = x + (x + (-x)) \quad \text{(par associativité de +)} $$
+
+$$ 0 = x + 0 \quad \text{(par définition de l'opposé)} $$
+
+$$ 0 = x \quad \text{(par définition de l'élément neutre)} $$
+
+**Conclusion**
+
+Puisque $x = a \times 0$, nous avons prouvé que $a \times 0 = 0$. La preuve que $0 \times a = 0$ se fait de manière identique en partant de $(0+0) \times a$.
+
+</details>
+
+---
+
+#### Un corps est un anneau intègre
+
+Prouver que tout corps $(K, +, \times)$ est un anneau intègre.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Un anneau est dit intègre s'il est commutatif, non nul ($1 \neq 0$), et n'a pas de diviseurs de zéro.
+
+Par définition (dans ce cours), un corps est un anneau commutatif où $1 \neq 0$. Il vous reste donc à prouver la troisième propriété : l'absence de diviseurs de zéro.
+
+Pour cela, prenez deux éléments $a, b \in K$ tels que $a \times b = 0$. Vous devez montrer que soit $a=0$, soit $b=0$. Procédez par disjonction de cas : si $a=0$, c'est terminé. Si $a \neq 0$, que pouvez-vous dire de $a$ dans un corps ? Utilisez cette propriété pour montrer que $b$ doit être nul.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $(K, +, \times)$ un corps. Pour prouver que $K$ est un anneau intègre, nous devons vérifier trois conditions.
+
+**1. $K$ est un anneau commutatif**
+
+Par définition, un corps est un anneau dont la multiplication est commutative. Cette condition est donc satisfaite.
+
+**2. $K$ est non nul ($1 \neq 0$)**
+
+La définition d'un corps inclut explicitement l'axiome $1 \neq 0$. Cette condition est également satisfaite.
+
+**3. $K$ n'a pas de diviseurs de zéro**
+
+C'est le point principal à démontrer. Nous devons prouver que pour tous $a, b \in K$, si $a \times b = 0$, alors $a = 0$ ou $b = 0$.
+
+Soient $a, b \in K$ tels que $a \times b = 0$.
+
+Nous raisonnons par disjonction de cas sur $a$.
+
+*   **Cas 1 : $a = 0$**
+
+    Dans ce cas, la condition ($a=0$ ou $b=0$) est immédiatement satisfaite.
+
+*   **Cas 2 : $a \neq 0$**
+
+    Puisque $K$ est un corps, tout élément non nul est inversible pour la multiplication. Donc, si $a \neq 0$, il existe un élément $a^{-1} \in K$ tel que $a^{-1} \times a = 1$.
+
+    Partons de notre équation $a \times b = 0$. Multiplions les deux membres à gauche par $a^{-1}$ :
+
+    $$ a^{-1} \times (a \times b) = a^{-1} \times 0 $$
+
+    En utilisant l'associativité de la multiplication et la propriété d'absorption par zéro (prouvée précédemment) :
+
+    $$ (a^{-1} \times a) \times b = 0 $$
+
+    Par définition de l'inverse :
+
+    $$ 1 \times b = 0 $$
+
+    Et par définition de l'élément neutre multiplicatif :
+
+    $$ b = 0 $$
+
+    Dans ce cas, nous avons montré que $b$ doit être nul.
+
+**Conclusion**
+
+Dans tous les cas, si $a \times b = 0$, alors on a nécessairement $a=0$ ou $b=0$. L'anneau $K$ n'a pas de diviseurs de zéro.
+
+Puisque les trois conditions sont remplies, tout corps est un anneau intègre.
+
+</details>
+
+---
+
+#### Caractérisation d'un sous-groupe
+
+Soit $(G, *)$ un groupe et $H$ un sous-ensemble de $G$. Prouver que $H$ est un sous-groupe de $G$ si et seulement si $H$ est non vide et pour tous $x, y \in H$, on a $x * y^{-1} \in H$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Il s'agit d'une preuve par double implication ("si et seulement si").
+
+**Sens direct ($\Rightarrow$)**: Supposez que $H$ est un sous-groupe. Vous devez montrer que $H$ est non vide et que pour tous $x, y \in H$, $x * y^{-1} \in H$. Cela découle directement de la définition d'un sous-groupe (stabilité par inverse et par produit).
+
+**Sens réciproque ($\Leftarrow$)**: Supposez que $H$ est non vide et que pour tous $x, y \in H$, $x * y^{-1} \in H$. Vous devez prouver que $H$ est un sous-groupe, c'est-à-dire que $H$ vérifie les trois axiomes (NOSOI, NOn-vide, Stable Opération Inverse) :
+
+1.  L'élément neutre $e$ est dans $H$. (Utilisez le fait que $H$ est non vide: prenez un élément $x \in H$ et appliquez la propriété avec $y=x$).
+2.  $H$ est stable par passage à l'inverse. (Prenez $y \in H$. Utilisez la propriété avec $x=e$, que vous venez de prouver être dans $H$).
+3.  $H$ est stable par l'opération $*$. (Prenez $x, z \in H$. Vous voulez montrer que $x*z \in H$. Utilisez la propriété avec $y=z^{-1}$, dont vous venez de prouver l'appartenance à $H$).
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Il s'agit d'une preuve par double implication.
+
+**Partie 1 : Implication directe ($\Rightarrow$)**
+
+Supposons que $H$ est un sous-groupe de $G$. Nous devons montrer que $H$ est non vide et que pour tous $x, y \in H$, $x * y^{-1} \in H$.
+
+1.  Par définition, un sous-groupe contient l'élément neutre $e_G$, donc $H$ n'est pas vide.
+2.  Soient $x, y \in H$. Puisque $H$ est un sous-groupe, il est stable par passage à l'inverse. Donc, $y^{-1} \in H$.
+3.  Puisque $H$ est stable par l'opération $*$, et que $x \in H$ et $y^{-1} \in H$, leur produit $x * y^{-1}$ est aussi dans $H$.
+
+L'implication directe est donc prouvée.
+
+**Partie 2 : Implication réciproque ($\Leftarrow$)**
+
+Supposons que $H$ est un sous-ensemble non vide de $G$ tel que pour tous $x, y \in H$, l'élément $x * y^{-1}$ est aussi dans $H$. Nous devons montrer que $H$ est un sous-groupe, c'est-à-dire qu'il vérifie les trois axiomes d'un sous-groupe.
+
+1.  **Présence de l'élément neutre** :
+
+    Puisque $H$ est non vide, il existe au moins un élément $a \in H$.
+
+    Appliquons la propriété avec $x=a$ et $y=a$. Puisque $a \in H$, on doit avoir $a * a^{-1} \in H$.
+
+    Or, $a * a^{-1} = e_G$. Donc, $e_G \in H$.
+
+2.  **Stabilité par passage à l'inverse** :
+
+    Soit $y$ un élément quelconque de $H$. Nous voulons montrer que $y^{-1} \in H$.
+
+    Nous savons maintenant que $e_G \in H$. Appliquons la propriété avec $x=e_G$ et notre élément $y \in H$.
+
+    On doit avoir $e_G * y^{-1} \in H$.
+
+    Or, $e_G * y^{-1} = y^{-1}$. Donc, $y^{-1} \in H$.
+
+    $H$ est donc stable par passage à l'inverse.
+
+3.  **Stabilité par l'opération** :
+
+    Soient $x$ et $z$ deux éléments quelconques de $H$. Nous voulons montrer que $x * z \in H$.
+
+    D'après le point précédent, puisque $z \in H$, son inverse $z^{-1}$ est aussi dans $H$.
+
+    Appliquons maintenant la propriété de l'énoncé aux éléments $x \in H$ et $y = z^{-1} \in H$.
+
+    On doit avoir $x * (z^{-1})^{-1} \in H$.
+
+    Or, $(z^{-1})^{-1} = z$. Donc, $x * z \in H$.
+
+    $H$ est donc stable par l'opération $*$.
+
+**Conclusion**
+
+Nous avons prouvé que si la condition est vraie, alors $H$ contient le neutre, est stable par inverse et par produit. $H$ est donc bien un sous-groupe. L'équivalence est démontrée.
+
+</details>
+
+---
+
+#### Le noyau d'un morphisme de groupes est un sous-groupe
+
+Soient $(G, *_G, e_G)$ et $(H, *_H, e_H)$ deux groupes et $f: G \to H$ un morphisme de groupes. Prouver que le noyau de $f$, défini par $\text{Ker}(f) = \{ g \in G \mid f(g) = e_H \}$, est un sous-groupe de $G$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Pour prouver que $\text{Ker}(f)$ est un sous-groupe de $G$, le plus simple est d'utiliser la caractérisation des sous-groupes :
+
+1. Montrer que $\text{Ker}(f)$ n'est pas vide. (Il suffit de montrer que $e_G$ est dedans. Quelle est l'image de $e_G$ par un morphisme ?)
+2. Montrer que pour tous $x, y \in \text{Ker}(f)$, on a $x *_G y^{-1} \in \text{Ker}(f)$. (Pour cela, calculez $f(x *_G y^{-1})$ en utilisant les propriétés des morphismes et montrez que le résultat est $e_H$).
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $f: G \to H$ un morphisme de groupes. Le noyau de $f$ est $\text{Ker}(f) = \{ g \in G \mid f(g) = e_H \}$. Nous utilisons la caractérisation des sous-groupes pour prouver que $\text{Ker}(f)$ est un sous-groupe de $G$.
+
+**Étape 1 : Montrer que $\text{Ker}(f)$ est non vide**
+
+Une propriété des morphismes de groupes est qu'ils envoient l'élément neutre sur l'élément neutre, i.e., $f(e_G) = e_H$. (Pour le prouver : $f(e_G) = f(e_G *_G e_G) = f(e_G) *_H f(e_G)$. En simplifiant par $f(e_G)$ dans le groupe $H$, on obtient $e_H = f(e_G)$).
+
+Puisque $f(e_G) = e_H$, par définition du noyau, $e_G \in \text{Ker}(f)$.
+
+Le noyau n'est donc pas vide.
+
+**Étape 2 : Montrer la stabilité par l'opération $x * y^{-1}$**
+
+Soient $x, y$ deux éléments quelconques de $\text{Ker}(f)$. Par définition du noyau, cela signifie que :
+
+- $f(x) = e_H$
+- $f(y) = e_H$
+
+Nous devons montrer que $x *_G y^{-1}$ appartient aussi à $\text{Ker}(f)$. Pour cela, calculons son image par $f$ :
+
+$$ f(x *_G y^{-1}) $$
+
+Puisque $f$ est un morphisme, il respecte l'opération et les inverses :
+
+$$ f(x *_G y^{-1}) = f(x) *_H f(y^{-1}) = f(x) *_H (f(y))^{-1} $$
+
+Maintenant, nous utilisons le fait que $x$ et $y$ sont dans le noyau :
+
+$$ f(x) *_H (f(y))^{-1} = e_H *_H (e_H)^{-1} $$
+
+L'inverse de l'élément neutre est lui-même, donc $(e_H)^{-1} = e_H$.
+
+$$ e_H *_H (e_H)^{-1} = e_H *_H e_H = e_H $$
+
+Nous avons donc montré que $f(x *_G y^{-1}) = e_H$. Par définition du noyau, cela signifie que $x *_G y^{-1} \in \text{Ker}(f)$.
+
+**Conclusion**
+
+Puisque $\text{Ker}(f)$ est une partie non vide de $G$ et que pour tous $x, y \in \text{Ker}(f)$, on a $x *_G y^{-1} \in \text{Ker}(f)$, nous pouvons conclure que $\text{Ker}(f)$ est un sous-groupe de $G$.
+
+</details>
+
+---
+
+#### Somme des $n$ premiers entiers par récurrence
+
+Prouver par récurrence que pour tout entier $n \geq 0$, la somme des entiers de 0 à $n$ est donnée par la formule :
+
+$$ \sum_{i=0}^{n} i = \frac{n(n+1)}{2} $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Suivez les deux étapes canoniques d'une démonstration par récurrence.
+
+1.  **Initialisation** : Vérifiez que la formule est correcte pour le premier cas, $n=0$. Le membre de gauche est la somme de 0 à 0, et le membre de droite est le calcul de la formule pour $n=0$.
+
+2.  **Hérédité** : Supposez que la formule est vraie pour un certain entier $k \geq 0$. C'est votre hypothèse de récurrence : $\sum_{i=0}^{k} i = \frac{k(k+1)}{2}$.
+
+    Votre objectif est de prouver que la formule est vraie pour le rang suivant, $k+1$. Pour cela, partez de la somme $\sum_{i=0}^{k+1} i$, séparez le dernier terme, utilisez l'hypothèse de récurrence, puis simplifiez l'expression algébrique pour obtenir $\frac{(k+1)(k+2)}{2}$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $P(n)$ la proposition : "$\sum_{i=0}^{n} i = \frac{n(n+1)}{2}$". Nous allons prouver par récurrence que $P(n)$ est vraie pour tout entier $n \geq 0$.
+
+**Étape 1 : Initialisation**
+
+Nous devons vérifier que la proposition $P(0)$ est vraie.
+
+Pour $n=0$, le membre de gauche de l'égalité est :
+
+$$ \sum_{i=0}^{0} i = 0 $$
+
+Le membre de droite est :
+
+$$ \frac{0(0+1)}{2} = \frac{0}{2} = 0 $$
+
+Les deux membres sont égaux, donc $P(0)$ est vraie.
+
+**Étape 2 : Hérédité**
+
+Supposons que $P(k)$ est vraie pour un certain entier $k \geq 0$. C'est notre **hypothèse de récurrence** :
+
+$$ \sum_{i=0}^{k} i = \frac{k(k+1)}{2} \quad (HR) $$
+
+Nous devons montrer que $P(k+1)$ est également vraie, c'est-à-dire que :
+
+$$ \sum_{i=0}^{k+1} i = \frac{(k+1)((k+1)+1)}{2} = \frac{(k+1)(k+2)}{2} $$
+
+Considérons la somme jusqu'au rang $k+1$ et isolons le dernier terme :
+
+$$ \sum_{i=0}^{k+1} i = \left( \sum_{i=0}^{k} i \right) + (k+1) $$
+
+Nous pouvons maintenant utiliser l'hypothèse de récurrence (HR) pour remplacer la somme jusqu'à $k$ :
+
+$$ \sum_{i=0}^{k+1} i = \frac{k(k+1)}{2} + (k+1) $$
+
+Mettons les termes au même dénominateur et factorisons :
+
+$$ \frac{k(k+1)}{2} + \frac{2(k+1)}{2} = \frac{k(k+1) + 2(k+1)}{2} $$
+
+$$ = \frac{(k+1)(k+2)}{2} $$
+
+Ceci est exactement la formule que nous voulions prouver pour le rang $k+1$. L'hérédité est donc établie.
+
+**Conclusion**
+
+Par le principe de récurrence, la proposition $P(n)$ est vraie pour tout entier $n \geq 0$.
+
+</details>

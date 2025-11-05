@@ -17,10 +17,14 @@ function translateLevel(level) {
 }
 
 function translateType(stackType) {
-  if (stackType === "cards") {
-    return "Fiches de révision";
-  } else {
-    return "Quiz";
+  switch (stackType) {
+    case "cards" :
+        return "Fiches de révision";
+    case "quiz" :
+        return "Quiz";
+    case "proofs" :
+        return "Preuves";
+    
   }
 }
 

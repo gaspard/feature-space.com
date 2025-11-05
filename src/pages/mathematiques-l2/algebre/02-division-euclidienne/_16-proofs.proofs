@@ -1,0 +1,666 @@
+---
+id: 800f645e
+type: proofs
+order: 15
+title: Division euclidienne - preuves (A)
+tags:
+  - algèbre
+  - anneau
+  - division euclidienne
+  - polynôme
+  - idéal
+  - bézout
+createdAt: '2025-10-12T20:59:11.112Z'
+level: regular
+course: Algèbre
+courseId: 3b74b601
+chapter: Division euclidienne
+chapterId: e5009a65
+---
+# Preuves "Division euclidienne" (A)
+
+---
+
+#### Degré du produit dans un anneau intègre
+
+Démontrez que si $A$ est un anneau intègre, alors pour tous polynômes non nuls $P, Q \in A[X]$, on a $\text{deg}(PQ) = \text{deg}(P) + \text{deg}(Q)$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Soient $P(X) = \sum_{i=0}^n a_i X^i$ et $Q(X) = \sum_{j=0}^m b_j X^j$ les formes générales de vos polynômes, avec $n = \text{deg}(P)$ et $m = \text{deg}(Q)$. Par définition du degré, leurs coefficients dominants $a_n$ et $b_m$ sont non nuls.
+
+Exprimez le coefficient du terme de plus haut degré possible dans le produit $P(X)Q(X)$. Utilisez ensuite la propriété fondamentale d'un anneau intègre sur ce coefficient.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soient $P, Q$ deux polynômes non nuls de $A[X]$. Notons $n = \text{deg}(P)$ et $m = \text{deg}(Q)$. On peut écrire :
+
+$P(X) = a_n X^n + a_{n-1} X^{n-1} + \dots + a_0$, avec $a_n \neq 0$.
+
+$Q(X) = b_m X^m + b_{m-1} X^{m-1} + \dots + b_0$, avec $b_m \neq 0$.
+
+**Étape 1 : Calcul du produit**
+
+Le produit $P(X)Q(X)$ est donné par la formule :
+
+$$ P(X)Q(X) = \sum_{k=0}^{n+m} c_k X^k \quad \text{où} \quad c_k = \sum_{i+j=k} a_i b_j $$
+
+**Étape 2 : Identification du coefficient dominant**
+
+Le terme de plus haut degré possible dans le produit est $X^{n+m}$. Son coefficient est $c_{n+m}$. Calculons-le.
+
+Pour que $i+j = n+m$, avec $0 \le i \le n$ et $0 \le j \le m$, la seule possibilité est $i=n$ et $j=m$.
+
+Ainsi, le coefficient $c_{n+m}$ est simplement $a_n b_m$.
+
+**Étape 3 : Utilisation de la propriété de l'anneau intègre**
+
+L'anneau $A$ est intègre. Cela signifie que le produit de deux éléments non nuls est non nul.
+
+Par hypothèse, $a_n \neq 0$ et $b_m \neq 0$. Puisque $A$ est intègre, leur produit $a_n b_m$ est également non nul.
+
+Donc, $c_{n+m} = a_n b_m \neq 0$.
+
+**Conclusion**
+
+Le coefficient du terme en $X^{n+m}$ du polynôme produit $P(X)Q(X)$ est non nul, et tous les termes de degré supérieur sont nuls. Par définition du degré, on a donc :
+
+$$ \text{deg}(PQ) = n+m = \text{deg}(P) + \text{deg}(Q) $$
+
+</details>
+
+---
+
+#### Éléments inversibles de K[X]
+
+Démontrez que si $K$ est un corps, les seuls éléments inversibles de l'anneau $K[X]$ sont les polynômes constants non nuls.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Soit $P \in K[X]$ un polynôme inversible. Par définition, il existe un autre polynôme $Q \in K[X]$ tel que $P(X)Q(X) = 1$, où $1$ est le polynôme constant égal à l'élément neutre de la multiplication dans $K$.
+
+Appliquez la propriété du degré du produit. Rappelez-vous qu'un corps est toujours un anneau intègre.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $P \in K[X]$ un élément inversible.
+
+**Étape 1 : Utilisation de la définition d'un élément inversible**
+
+Par définition, il existe un polynôme $Q \in K[X]$, l'inverse de $P$, tel que $P(X)Q(X) = 1$.
+
+Le polynôme $1$ est un polynôme constant non nul, son degré est $0$.
+
+**Étape 2 : Application de la formule du degré du produit**
+
+Comme $K$ est un corps, c'est un anneau intègre. La propriété du degré du produit s'applique donc :
+
+$\text{deg}(P(X)Q(X)) = \text{deg}(P) + \text{deg}(Q)$.
+
+En combinant avec l'étape 1, nous avons :
+
+$\text{deg}(P) + \text{deg}(Q) = \text{deg}(1) = 0$.
+
+**Étape 3 : Analyse des degrés**
+
+Le degré d'un polynôme non nul est un entier naturel (supérieur ou égal à 0). La somme de deux entiers naturels est nulle si et seulement si chacun de ces entiers est nul.
+
+On a donc $\text{deg}(P) = 0$ et $\text{deg}(Q) = 0$.
+
+Un polynôme de degré 0 est un polynôme constant non nul. Donc $P(X) = c$ pour une constante $c \in K$ avec $c \neq 0$.
+
+**Conclusion**
+
+Nous avons montré que si un polynôme $P$ est inversible dans $K[X]$, il doit être un polynôme constant non nul. Réciproquement, tout polynôme constant $P(X)=c$ avec $c \in K \setminus \{0\}$ est inversible, son inverse étant le polynôme constant $Q(X)=c^{-1}$ (qui existe car $K$ est un corps).
+
+Les éléments inversibles de $K[X]$ sont donc précisément les éléments de $K^\times$.
+
+</details>
+
+---
+
+#### Anneau euclidien implique anneau principal
+
+Démontrez que tout anneau euclidien est un anneau principal.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Soit $A$ un anneau euclidien muni d'un stathme $\delta$. Pour montrer que $A$ est principal, vous devez prouver que tout idéal $I$ de $A$ est principal.
+
+Si $I = \{0\}$, il est engendré par $0$, donc il est principal.
+
+Si $I \neq \{0\}$, considérez l'ensemble $S = \{\delta(x) \mid x \in I \setminus \{0\}\}$. C'est un sous-ensemble non vide de $\mathbb{N}$. Il admet donc un plus petit élément. Soit $a \in I \setminus \{0\}$ un élément tel que $\delta(a)$ est minimal.
+
+Montrez que cet élément $a$ engendre $I$, c'est-à-dire que $I = (a)$. Pour cela, prenez un élément quelconque $b \in I$ et utilisez la division euclidienne par $a$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $A$ un anneau euclidien avec pour stathme la fonction $\delta: A \to \mathbb{N} \cup \{-\infty\}$. Soit $I$ un idéal de $A$.
+
+**Étape 1 : Traiter le cas de l'idéal nul**
+
+Si $I = \{0\}$, alors $I$ est engendré par l'élément $0$, c'est-à-dire $I = (0)$. Il est donc principal.
+
+**Étape 2 : Choisir un élément de stathme minimal**
+
+Supposons que $I \neq \{0\}$. L'ensemble $S = \{\delta(x) \mid x \in I \setminus \{0\}\}$ est une partie non vide de $\mathbb{N}$. D'après le principe du bon ordre, $S$ admet un plus petit élément.
+
+Soit $m = \min(S)$. Il existe donc au moins un élément $a \in I \setminus \{0\}$ tel que $\delta(a) = m$.
+
+**Étape 3 : Montrer que cet élément engendre l'idéal**
+
+Nous allons montrer que $I = (a)$.
+
+L'inclusion $(a) \subseteq I$ est évidente. En effet, $a \in I$, et comme $I$ est un idéal, tous les multiples de $a$, de la forme $ax$ pour $x \in A$, sont aussi dans $I$.
+
+Montrons l'inclusion inverse : $I \subseteq (a)$.
+
+Soit $b$ un élément quelconque de $I$. Puisque $A$ est un anneau euclidien et $a \neq 0$, on peut effectuer la division euclidienne de $b$ par $a$. Il existe un quotient $q \in A$ et un reste $r \in A$ tels que :
+
+$b = aq + r$ et $\delta(r) < \delta(a)$.
+
+Exprimons le reste $r$ : $r = b - aq$.
+
+Comme $b \in I$ et $a \in I$, on a $aq \in I$. Puisque $I$ est un sous-groupe additif, $r = b - aq$ est aussi un élément de $I$.
+
+Nous avons donc $r \in I$ et $\delta(r) < \delta(a)$. Rappelons que $\delta(a)$ est la valeur minimale du stathme pour tous les éléments non nuls de $I$. Si $r$ était non nul, on aurait $\delta(r) \in S$ et $\delta(r) < \delta(a)$, ce qui contredirait la minimalité de $\delta(a)$.
+
+Par conséquent, le reste $r$ doit être nul.
+
+Si $r=0$, alors $b = aq$. Cela signifie que tout élément $b$ de $I$ est un multiple de $a$.
+
+Donc, $I \subseteq (a)$.
+
+**Conclusion**
+
+Les deux inclusions étant prouvées, on a $I = (a)$. Puisque tout idéal $I$ de $A$ peut être engendré par un seul élément, l'anneau $A$ est un anneau principal.
+
+</details>
+
+---
+
+#### Identité de Bézout dans un anneau principal
+
+Soit $A$ un anneau principal et $a, b \in A$. Démontrez que si $d = \text{pgcd}(a, b)$, alors il existe $u, v \in A$ tels que $d = au + bv$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Cette preuve est une application directe des définitions.
+
+1.  Quelle est la définition du $\text{pgcd}(a, b)$ dans un anneau principal en termes d'idéaux ?
+2.  Quelle est la définition de l'idéal somme $(a,b)$ engendré par $a$ et $b$ ?
+3.  Mettez en relation ces deux définitions.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Définition du PGCD via les idéaux**
+
+Soit $A$ un anneau principal. Par définition, le plus grand commun diviseur (PGCD) de deux éléments $a$ et $b$ est un générateur $d$ de l'idéal somme $(a) + (b)$.
+
+Cet idéal somme est noté $(a, b)$. On a donc :
+
+$$ (d) = (a,b) $$
+
+**Étape 2 : Définition de l'idéal somme**
+
+L'idéal $(a,b)$ est l'ensemble de toutes les combinaisons linéaires de $a$ et $b$ à coefficients dans $A$. Formellement :
+
+$$ (a,b) = \{ ax + by \mid x, y \in A \} $$
+
+**Étape 3 : Connexion des définitions**
+
+Puisque $(d) = (a,b)$, cela signifie que l'ensemble des multiples de $d$ est identique à l'ensemble des combinaisons linéaires de $a$ et $b$.
+
+$$ \{dz \mid z \in A\} = \{ ax + by \mid x, y \in A \} $$
+
+L'élément $d$ lui-même appartient à l'idéal $(d)$ (en prenant $z=1$). Il doit donc aussi appartenir à l'ensemble $\{ ax + by \mid x, y \in A \}$.
+
+**Conclusion**
+
+Puisque $d \in \{ ax + by \mid x, y \in A \}$, il existe nécessairement des coefficients $u, v \in A$ tels que :
+
+$$ d = au + bv $$
+
+Ceci est l'identité de Bézout.
+
+</details>
+
+---
+
+#### Lemme de Gauss
+
+Soit $A$ un anneau principal. Soient $a, b, c \in A$. Démontrez que si $a$ divise $bc$ et que $a$ et $b$ sont premiers entre eux, alors $a$ divise $c$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Que signifie le fait que $a$ et $b$ sont premiers entre eux en termes de leur PGCD ?
+
+Utilisez l'identité de Bézout qui découle de cette propriété. Une fois l'identité écrite, une manipulation algébrique simple vous permettra de conclure.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Traduire les hypothèses**
+
+L'hypothèse "$a$ et $b$ sont premiers entre eux" signifie que leur PGCD est un élément inversible. Dans un anneau principal, on peut choisir le générateur de l'idéal $(a,b)$ comme étant $1$. Donc, $\text{pgcd}(a,b)=1$.
+
+D'après le théorème de Bézout, il existe des éléments $u, v \in A$ tels que :
+
+$$ au + bv = 1 $$
+
+L'hypothèse "$a$ divise $bc$" signifie qu'il existe un élément $k \in A$ tel que $bc = ak$.
+
+**Étape 2 : Manipulation de l'identité de Bézout**
+
+Multiplions l'identité de Bézout par $c$ :
+
+$$ c \cdot (au + bv) = c \cdot 1 $$
+
+$$ acu + bcv = c $$
+
+**Étape 3 : Utiliser la deuxième hypothèse**
+
+Nous cherchons à montrer que $a$ divise $c$. Regardons les termes de l'équation obtenue :
+
+-   Le terme $acu$ est clairement un multiple de $a$, donc $a | acu$.
+-   Le terme $bcv$ peut être réécrit comme $(bc)v$. Par hypothèse, nous savons que $bc = ak$. Donc, $bcv = (ak)v = a(kv)$. Ce terme est aussi un multiple de $a$, donc $a | bcv$.
+
+**Conclusion**
+
+Puisque $a$ divise $acu$ et $a$ divise $bcv$, il divise leur somme.
+
+$$ a \mid (acu + bcv) $$
+
+Or, cette somme est égale à $c$. On a donc bien montré que $a$ divise $c$.
+
+</details>
+
+---
+
+#### Premier implique Irréductible
+
+Démontrez que dans un anneau intègre $A$, tout élément premier est irréductible.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Soit $p \in A$ un élément premier non nul et non inversible. Pour montrer qu'il est irréductible, vous devez partir d'une factorisation $p = ab$ et prouver que l'un des facteurs, $a$ ou $b$, est inversible.
+
+Utilisez la définition d'un élément premier. Le fait que $p=ab$ implique que $p$ divise le produit $ab$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $A$ un anneau intègre et $p \in A$ un élément premier. Par définition, $p$ est non nul et non inversible.
+
+**Étape 1 : Poser l'hypothèse de la réductibilité**
+
+Pour montrer que $p$ est irréductible, nous devons montrer que si $p=ab$ pour $a,b \in A$, alors soit $a$, soit $b$ est un élément inversible.
+
+Supposons donc que $p=ab$.
+
+**Étape 2 : Utiliser la définition de l'élément premier**
+
+L'égalité $p=ab$ implique que $p$ divise le produit $ab$. Puisque $p$ est un élément premier, par définition, il doit diviser l'un des facteurs :
+
+$p|a$ ou $p|b$.
+
+**Étape 3 : Analyser les deux cas**
+
+*   **Cas 1 : $p$ divise $a$.**
+
+    Par définition de la divisibilité, il existe un élément $c \in A$ tel que $a=pc$.
+
+    En substituant cette expression dans l'égalité de départ, on obtient :
+
+    $p = ab = (pc)b = p(cb)$.
+
+    Comme $p \neq 0$ et que l'anneau $A$ est intègre, on peut simplifier par $p$ :
+
+    $1 = cb$.
+
+    Cette égalité signifie que $c$ et $b$ sont inverses l'un de l'autre. En particulier, $b$ est un élément inversible.
+
+*   **Cas 2 : $p$ divise $b$.**
+
+    Le raisonnement est symétrique. Il existe $d \in A$ tel que $b=pd$.
+
+    En substituant, on a $p = a(pd) = p(ad)$.
+
+    On simplifie par $p$ pour obtenir $1 = ad$.
+
+    Ceci montre que $a$ est un élément inversible.
+
+**Conclusion**
+
+Dans tous les cas, si $p=ab$, l'un des facteurs $a$ ou $b$ est nécessairement inversible. Ceci est la définition d'un élément irréductible. Donc, tout élément premier est irréductible.
+
+</details>
+
+---
+
+#### Irréductible implique Premier dans un anneau principal
+
+Démontrez que dans un anneau principal $A$, tout élément irréductible est premier.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Soit $p \in A$ un élément irréductible. Pour montrer qu'il est premier, vous devez supposer que $p|ab$ et montrer que cela implique $p|a$ ou $p|b$.
+
+Considérez le cas où $p$ ne divise pas $a$. Quel est alors le $\text{pgcd}(p, a)$ ? Rappelez-vous que les seuls diviseurs d'un élément irréductible sont les éléments inversibles et ses associés. Utilisez ensuite le lemme de Gauss (ou l'identité de Bézout).
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $A$ un anneau principal et $p \in A$ un élément irréductible.
+
+Nous voulons prouver que $p$ est premier. Soient $a, b \in A$ tels que $p$ divise $ab$. Nous devons montrer que $p$ divise $a$ ou que $p$ divise $b$.
+
+**Étape 1 : Hypothèse et but**
+
+Supposons que $p | ab$.
+
+Supposons également que $p$ ne divise pas $a$ ($p \nmid a$). Notre but est de prouver qu'alors $p$ doit nécessairement diviser $b$.
+
+**Étape 2 : Calcul du PGCD**
+
+Considérons $d = \text{pgcd}(p, a)$.
+
+Puisque $d$ est un diviseur de $p$, et que $p$ est irréductible, les seuls diviseurs de $p$ sont les éléments inversibles et les associés de $p$.
+
+Donc, $d$ est soit un élément inversible, soit un associé de $p$.
+
+Si $d$ était un associé de $p$, alors $d$ diviserait $a$ et $p$ diviserait $d$ (car $d$ est un associé de $p$), ce qui impliquerait que $p$ divise $a$. Ceci contredit notre hypothèse $p \nmid a$.
+
+Par conséquent, $d$ doit être un élément inversible. On peut donc dire que $\text{pgcd}(p, a) = 1$.
+
+**Étape 3 : Application du lemme de Gauss**
+
+Nous sommes dans la situation suivante :
+
+-   $p$ divise $ab$.
+-   $p$ et $a$ sont premiers entre eux ($\text{pgcd}(p, a) = 1$).
+
+Puisque $A$ est un anneau principal, nous pouvons appliquer le lemme de Gauss, qui stipule que dans ce cas, $p$ doit diviser $b$.
+
+**Conclusion**
+
+Nous avons montré que si $p|ab$, alors soit $p|a$, soit (si $p \nmid a$) on a forcément $p|b$. Ceci est exactement la définition d'un élément premier.
+
+Ainsi, dans un anneau principal, tout élément irréductible est premier.
+
+</details>
+
+---
+
+#### Unicité de la décomposition en facteurs irréductibles
+
+Soit $A$ un anneau euclidien. Démontrez l'unicité (à l'ordre des facteurs et aux associés près) de la décomposition d'un élément en produit d'éléments irréductibles.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Supposez qu'un élément $a$ admette deux décompositions en produits d'irréductibles :
+
+$a = p_1 p_2 \cdots p_n = q_1 q_2 \cdots q_m$.
+
+Utilisez le fait que dans un anneau euclidien (qui est principal), "irréductible" est équivalent à "premier".
+
+L'élément $p_1$ divise le produit $q_1 \cdots q_m$. Puisque $p_1$ est premier, il doit diviser l'un des facteurs $q_j$.
+
+Procédez ensuite par récurrence ou par induction sur le nombre de facteurs.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $a \in A$ un élément non nul et non inversible. Supposons que $a$ admette deux décompositions en produits d'éléments irréductibles :
+
+$$ a = p_1 p_2 \cdots p_n = q_1 q_2 \cdots q_m $$
+
+Nous allons procéder par récurrence sur $n$, le nombre de facteurs dans la première décomposition.
+
+**Étape 1 : Cas de base (n=1)**
+
+Si $n=1$, on a $a = p_1$. L'équation devient $p_1 = q_1 \cdots q_m$.
+
+Puisque $p_1$ est irréductible, cette décomposition ne peut contenir qu'un seul facteur non inversible. Si $m > 1$, alors $q_1$ serait un diviseur propre de $p_1$, contredisant son irréductibilité. Donc, $m=1$.
+
+On a alors $p_1 = q_1$. Les deux décompositions sont identiques.
+
+**Étape 2 : Hypothèse de récurrence**
+
+Supposons que l'unicité de la décomposition est vraie pour tout élément qui peut s'écrire comme un produit de $k < n$ facteurs irréductibles.
+
+**Étape 3 : Étape d'induction**
+
+Considérons l'égalité $p_1 p_2 \cdots p_n = q_1 q_2 \cdots q_m$.
+
+L'élément $p_1$ divise le membre de gauche, il doit donc diviser le membre de droite : $p_1 \mid (q_1 q_2 \cdots q_m)$.
+
+Puisque $A$ est un anneau euclidien, il est principal, et donc tout élément irréductible est premier. $p_1$ est donc premier.
+
+Par définition d'un élément premier, $p_1$ doit diviser l'un des facteurs $q_j$. Quitte à réordonner les $q_j$, supposons que $p_1 | q_1$.
+
+Comme $q_1$ est lui-même irréductible, ses seuls diviseurs sont les inversibles et ses associés. Puisque $p_1$ est irréductible (donc non inversible), $p_1$ doit être un associé de $q_1$. Il existe donc un élément inversible $u \in A$ tel que $q_1 = u p_1$.
+
+**Étape 4 : Simplification et récurrence**
+
+Substituons cette relation dans l'égalité initiale :
+
+$p_1 p_2 \cdots p_n = (u p_1) q_2 \cdots q_m$.
+
+Puisque $A$ est un anneau intègre et $p_1 \neq 0$, nous pouvons simplifier par $p_1$ :
+
+$p_2 \cdots p_n = u q_2 \cdots q_m$.
+
+Nous avons maintenant deux décompositions pour un nouvel élément. La première décomposition a $n-1$ facteurs. On peut appliquer l'hypothèse de récurrence.
+
+Celle-ci nous dit que le nombre de facteurs doit être le même, donc $n-1 = m-1$ (d'où $n=m$), et que les facteurs sont les mêmes à l'ordre et aux associés près.
+
+Donc, après réarrangement, $p_i$ est associé à $q_i$ pour $i=2, \dots, n$ (en absorbant l'inversible $u$ dans l'un des associés, par exemple $p_2$ est associé à $uq_2$).
+
+**Conclusion**
+
+Nous avons montré que $n=m$, et que chaque $p_i$ est associé à un unique $q_j$. La décomposition est donc unique à l'ordre et aux associés près.
+
+</details>
+
+---
+
+#### L'annulateur d'un endomorphisme est un idéal
+
+Soit $u$ un endomorphisme d'un $K$-espace vectoriel $E$ de dimension finie. Démontrez que l'ensemble $\text{Ann}(u) = \{ P \in K[X] \mid P(u) = 0 \}$ est un idéal de $K[X]$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Pour montrer qu'un sous-ensemble $I$ d'un anneau $A$ est un idéal, il faut vérifier trois propriétés :
+
+1.  $I$ n'est pas vide (le plus simple est de montrer que l'élément nul de $A$ est dans $I$).
+2.  $I$ est stable par soustraction : si $P_1, P_2 \in I$, alors $P_1 - P_2 \in I$.
+3.  $I$ est "absorbant" pour la multiplication : si $P \in I$ et $Q \in A$, alors $QP \in I$.
+
+Utilisez les propriétés du morphisme d'évaluation $\text{ev}_u(P) = P(u)$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Nous devons vérifier les axiomes qui définissent un idéal de l'anneau $K[X]$.
+
+**Étape 1 : Vérifier que l'ensemble n'est pas vide**
+
+Considérons le polynôme nul, $P_0(X) = 0$.
+
+Son évaluation en $u$ donne $P_0(u) = 0_E$, l'endomorphisme nul.
+
+Donc, le polynôme nul appartient à $\text{Ann}(u)$, et cet ensemble n'est pas vide.
+
+**Étape 2 : Stabilité par soustraction**
+
+Soient $P_1(X)$ et $P_2(X)$ deux polynômes dans $\text{Ann}(u)$. Par définition, cela signifie que :
+
+$P_1(u) = 0_E$ et $P_2(u) = 0_E$.
+
+Considérons le polynôme différence $D(X) = P_1(X) - P_2(X)$. Évaluons-le en $u$ :
+
+$D(u) = (P_1 - P_2)(u)$.
+
+L'évaluation d'un polynôme en un endomorphisme est un morphisme d'anneaux, donc :
+
+$D(u) = P_1(u) - P_2(u) = 0_E - 0_E = 0_E$.
+
+Ainsi, $D(X) \in \text{Ann}(u)$. L'ensemble est stable par soustraction.
+
+**Étape 3 : Stabilité par multiplication externe**
+
+Soit $P(X) \in \text{Ann}(u)$ et $Q(X)$ un polynôme quelconque de $K[X]$.
+
+On sait que $P(u) = 0_E$.
+
+Considérons le polynôme produit $S(X) = Q(X)P(X)$. Évaluons-le en $u$ :
+
+$S(u) = (QP)(u)$.
+
+L'évaluation étant un morphisme d'anneaux, on a :
+
+$S(u) = Q(u) \circ P(u)$, où $\circ$ est la composition des endomorphismes.
+
+$S(u) = Q(u) \circ 0_E = 0_E$.
+
+Ainsi, $S(X) \in \text{Ann}(u)$. L'ensemble est absorbant pour la multiplication.
+
+**Conclusion**
+
+L'ensemble $\text{Ann}(u)$ est un sous-ensemble non vide de $K[X]$, stable par soustraction et par multiplication par n'importe quel élément de $K[X]$. C'est donc bien un idéal de $K[X]$.
+
+</details>
+
+---
+
+#### Propriété fondamentale du polynôme minimal
+
+Soit $u$ un endomorphisme et $M_u(X)$ son polynôme minimal. Démontrez qu'un polynôme $P(X)$ annule $u$ (c'est-à-dire $P(u)=0$) si et seulement si $M_u(X)$ divise $P(X)$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Cette propriété découle directement de la définition du polynôme minimal comme étant un générateur de l'idéal annulateur $\text{Ann}(u)$.
+
+L'énoncé peut se reformuler ainsi : $P \in \text{Ann}(u) \iff P \in (M_u)$. C'est la définition même de $(M_u) = \text{Ann}(u)$.
+
+Pour le démontrer formellement, utilisez la division euclidienne d'un polynôme $P$ par $M_u$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+L'anneau $K[X]$ est euclidien, on peut donc y effectuer la division euclidienne.
+
+**Partie 1 : ($\Leftarrow$) Si $M_u$ divise $P$, alors $P(u)=0$.**
+
+Supposons que $M_u(X)$ divise $P(X)$.
+
+Alors il existe un polynôme $Q(X) \in K[X]$ tel que $P(X) = Q(X) M_u(X)$.
+
+Évaluons cette égalité en $u$ :
+
+$P(u) = (Q M_u)(u)$.
+
+Comme l'évaluation est un morphisme d'anneaux, on a :
+
+$P(u) = Q(u) \circ M_u(u)$.
+
+Par définition du polynôme minimal, $M_u(u) = 0_E$ (l'endomorphisme nul).
+
+Donc, $P(u) = Q(u) \circ 0_E = 0_E$.
+
+Le polynôme $P$ annule bien $u$.
+
+**Partie 2 : ($\Rightarrow$) Si $P(u)=0$, alors $M_u$ divise $P$.**
+
+Supposons que $P(u) = 0_E$.
+
+Effectuons la division euclidienne de $P(X)$ par $M_u(X)$ (qui est non nul) :
+
+Il existe un unique couple de polynômes $(Q(X), R(X))$ tel que :
+
+$P(X) = Q(X)M_u(X) + R(X)$, avec $\text{deg}(R) < \text{deg}(M_u)$.
+
+Évaluons cette relation en $u$ :
+
+$P(u) = Q(u) \circ M_u(u) + R(u)$.
+
+Par hypothèse, $P(u)=0_E$. Par définition, $M_u(u)=0_E$. L'équation devient :
+
+$0_E = Q(u) \circ 0_E + R(u)$
+
+$0_E = 0_E + R(u)$
+
+$R(u) = 0_E$.
+
+Cela signifie que le polynôme $R(X)$ est un polynôme annulateur de $u$.
+
+Or, le polynôme minimal $M_u(X)$ est, par définition, le polynôme unitaire de plus bas degré qui annule $u$.
+
+Nous avons trouvé un polynôme annulateur $R(X)$ tel que $\text{deg}(R) < \text{deg}(M_u)$. La seule possibilité pour que cela ne contredise pas la minimalité du degré de $M_u$ est que $R(X)$ soit le polynôme nul.
+
+Donc $R(X) = 0$.
+
+L'égalité de la division euclidienne devient $P(X) = Q(X)M_u(X)$, ce qui signifie que $M_u(X)$ divise $P(X)$.
+
+**Conclusion**
+
+Les deux implications étant démontrées, on a bien l'équivalence : $P(u) = 0 \iff M_u(X) \mid P(X)$.
+
+</details>
+
+---

@@ -1,4 +1,5 @@
 let contentRe = %re("/^(.*?)\s*<details>/s")
+let hintRe = %re("/[\s\S]*?<details class=\"hint\">(.*?)<\/details>/")
 let solutionRe = %re("/[\s\S]*?<summary>.*?<\/summary>([\s\S]*?)<\/details>/")
 
 let makeId = () => {
@@ -54,6 +55,17 @@ let parseCards = (stackId, body): array<Card.t> => {
         text->String.sliceToEnd(~start=r->RegExp.Result.fullMatch->String.length),
       )
     }
+    let (content, text) = switch hintRe->RegExp.exec(text) {
+    | None => (content, text)
+    | Some(r) =>
+      switch r->RegExp.Result.matches {
+      | [hint] => (
+          content ++ hint,
+          text->String.sliceToEnd(~start=r->RegExp.Result.fullMatch->String.length),
+        )
+      | _ => (content, text)
+      }
+    }
 
     let (content, options) = getOptions(content)
 
@@ -87,7 +99,7 @@ let parse = (content: string): Stack.t => {
   {info: {...info, count: Some(cards->Array.length)}, cards}
 }
 
-let pathRe = %re("/(\.cards|\.quiz)$/")
+let pathRe = %re("/(\.cards|\.quiz|\.proofs)$/")
 
 let makeStacksToJson = (fs: SystemType.fs, path: SystemType.path) => {
   (dir: string, outdir: string, stacksDir: string) => {
@@ -100,7 +112,11 @@ let makeStacksToJson = (fs: SystemType.fs, path: SystemType.path) => {
       }
       let toc = []
       fs.readdirSync(dir)->Array.forEach(dirent => {
-        if dirent.name->String.endsWith(".cards") || dirent.name->String.endsWith(".quiz") {
+        if (
+          dirent.name->String.endsWith(".cards") ||
+          dirent.name->String.endsWith(".quiz") ||
+          dirent.name->String.endsWith(".proofs")
+        ) {
           let p = path.join(dir, dirent.name)
           try {
             let stack = parse(fs.readFileSync(p, "utf-8"))

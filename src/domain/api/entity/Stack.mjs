@@ -5,18 +5,26 @@ import * as Card from "./Card.mjs";
 import * as CardProgress from "./CardProgress.mjs";
 
 function stackTypeToString(stackType) {
-  if (stackType === "cards") {
-    return "Cards";
-  } else {
-    return "Quiz";
+  switch (stackType) {
+    case "cards" :
+        return "Cards";
+    case "quiz" :
+        return "Quiz";
+    case "proofs" :
+        return "Proofs";
+    
   }
 }
 
 function stackTypeToEmoji(stackType) {
-  if (stackType === "cards") {
-    return "📚";
-  } else {
-    return "✅";
+  switch (stackType) {
+    case "cards" :
+        return "📚";
+    case "quiz" :
+        return "✅";
+    case "proofs" :
+        return "👁️";
+    
   }
 }
 
@@ -30,7 +38,8 @@ function levelToString(level) {
 
 var stackTypeSchema = S.union([
       S.literal("cards"),
-      S.literal("quiz")
+      S.literal("quiz"),
+      S.literal("proofs")
     ]);
 
 var levelSchema = S.union([

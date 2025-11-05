@@ -5,8 +5,10 @@ export function cardsIntegration(): AstroIntegration {
     name: 'cards-integration',
     hooks: {
       'astro:config:setup': ({ addPageExtension }) => {
-        // Tell Astro to treat .cards files as pages
+        // Tell Astro to treat .cards, .quiz, and .proofs files as pages
         addPageExtension('.cards');
+        addPageExtension('.quiz');
+        addPageExtension('.proofs');
       },
     },
   };

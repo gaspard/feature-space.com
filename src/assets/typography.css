@@ -135,7 +135,7 @@ main {
     }
 
     span.emoji {
-      @apply hue-rotate-100 saturate-70;
+      @apply hue-rotate-100 saturate-70 mr-2;
     }
 
     section.type {
@@ -443,7 +443,7 @@ main {
     @apply bg-white md:m-4 md:rounded-xl md:border md:border-slate-300 w-full lg:max-w-3xl overflow-hidden;
 
     p {
-      @apply indent-0;
+      @apply indent-0 my-5;
     }
 
     .card-question {
@@ -555,9 +555,6 @@ span.correct:empty {
   display: none;
 }
 
-details {
-  @apply px-4 md:py-3 py-1 border-t border-slate-200 mt-0;
-}
 
 .main-content details summary+p {
   @apply mt-1;
@@ -581,24 +578,32 @@ summary {
     @apply inline-block mr-2 text-xs transition-transform;
   }
 
-  strong {
-    @apply pl-2 text-slate-300;
-  }
+  @apply text-slate-400/70 font-bold;
 }
 
 details {
+  @apply px-4 md:py-3 py-1 border-t border-slate-200 mt-0;
   background: hsla(204, 50%, 96%, 50%);
+  &.hint {
+    @apply -mb-5 -mx-4;
+    background: hsla(55, 35%, 93%, 0.5);
+  }
 }
+
 details[open] {
   background: hsl(204, 50%, 96%);
+  &.hint {
+    background: rgba(243, 242, 231, 0.723);
+  }
   
   summary {
-    @apply mt-0 mb-0;
+    @apply mt-0 mb-0 -mx-4;
   }
   
   summary::before {
     @apply rotate-90;
   }
+  @apply pb-8 px-8;
 }
 
 button.toggle-check,

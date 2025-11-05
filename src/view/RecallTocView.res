@@ -13,6 +13,7 @@ let translateType = (stackType: Stack.stackType) => {
   switch stackType {
   | Stack.Cards => "Fiches de révision"
   | Stack.Quiz => "Quiz"
+  | Stack.Proofs => "Preuves"
   }
 }
 

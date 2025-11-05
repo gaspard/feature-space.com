@@ -1,0 +1,738 @@
+---
+id: 03b056e9
+type: proofs
+order: 15
+title: Groupes d'isométries - preuves (A)
+tags:
+  - isométrie
+  - espace euclidien
+  - espace hermitien
+  - groupe orthogonal
+  - groupe unitaire
+  - produit vectoriel
+  - rotation
+createdAt: '2025-10-12T18:10:33.114Z'
+level: regular
+course: Géométrie
+courseId: d9494343
+chapter: Groupes d'isométries
+chapterId: b85ab516
+---
+# Preuves "Groupes d'isométries" (A)
+
+---
+
+#### Équivalence entre la préservation de la norme et du produit scalaire
+
+Prouver que pour un endomorphisme $f$ d'un espace euclidien $E$, $f$ est une isométrie (préserve la norme) si et seulement si $f$ préserve le produit scalaire.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Pour montrer que la préservation de la norme implique la préservation du produit scalaire, utilisez une des identités de polarisation, qui exprime le produit scalaire en termes de la norme. Par exemple, $\varphi(x, y) = \frac{1}{2}(\|x+y\|^2 - \|x\|^2 - \|y\|^2)$.
+
+L'implication inverse est plus directe.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $f$ un endomorphisme de l'espace euclidien $(E, \varphi)$. Nous devons prouver l'équivalence :
+
+$$ (\forall x \in E, \|f(x)\| = \|x\|) \iff (\forall x, y \in E, \varphi(f(x), f(y)) = \varphi(x, y)) $$
+
+**Étape 1 : (Préservation du produit scalaire $\implies$ Préservation de la norme)**
+
+Supposons que $f$ préserve le produit scalaire. Pour tout $x, y \in E$, on a $\varphi(f(x), f(y)) = \varphi(x, y)$.
+
+Prenons $y=x$. On a alors $\varphi(f(x), f(x)) = \varphi(x, x)$.
+
+Par définition de la norme associée au produit scalaire, $\|v\|^2 = \varphi(v,v)$.
+
+Donc, l'équation devient $\|f(x)\|^2 = \|x\|^2$.
+
+Puisque les normes sont des réels positifs, on peut prendre la racine carrée des deux côtés, ce qui donne $\|f(x)\| = \|x\|$.
+
+Ainsi, $f$ préserve la norme.
+
+**Étape 2 : (Préservation de la norme $\implies$ Préservation du produit scalaire)**
+
+Supposons que $f$ préserve la norme. Pour tout $v \in E$, on a $\|f(v)\| = \|v\|$.
+
+Nous utilisons l'identité de polarisation : $\varphi(x, y) = \frac{1}{2}(\|x+y\|^2 - \|x\|^2 - \|y\|^2)$.
+
+Appliquons cette identité aux vecteurs images $f(x)$ et $f(y)$ :
+
+$$ \varphi(f(x), f(y)) = \frac{1}{2}(\|f(x)+f(y)\|^2 - \|f(x)\|^2 - \|f(y)\|^2) $$
+
+Puisque $f$ est un endomorphisme (linéaire), $f(x)+f(y) = f(x+y)$.
+
+$$ \varphi(f(x), f(y)) = \frac{1}{2}(\|f(x+y)\|^2 - \|f(x)\|^2 - \|f(y)\|^2) $$
+
+Nous savons par hypothèse que $f$ préserve la norme, donc $\|f(v)\| = \|v\|$ pour tout $v \in E$. Appliquons ceci pour $v=x+y$, $v=x$, et $v=y$ :
+
+$$ \varphi(f(x), f(y)) = \frac{1}{2}(\|x+y\|^2 - \|x\|^2 - \|y\|^2) $$
+
+On reconnaît dans le membre de droite l'identité de polarisation pour $\varphi(x, y)$.
+
+$$ \varphi(f(x), f(y)) = \varphi(x, y) $$
+
+Ainsi, $f$ préserve le produit scalaire.
+
+**Conclusion :** Les deux propriétés sont bien équivalentes.
+
+</details>
+
+---
+
+#### Caractérisation d'une isométrie par son adjoint
+
+Prouver qu'un endomorphisme $f$ d'un espace euclidien ou hermitien $E$ est une isométrie si et seulement si $f^* \circ f = \text{Id}_E$, où $f^*$ est l'endomorphisme adjoint de $f$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez la définition de l'application adjointe $f^*$, qui est : $\forall x, y \in E, \varphi(f(x), y) = \varphi(x, f^*(y))$.
+
+Montrez l'équivalence entre la condition $f^* \circ f = \text{Id}_E$ et la condition de préservation du produit scalaire $\varphi(f(x), f(y)) = \varphi(x, y)$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $f$ un endomorphisme de $E$. Nous allons prouver l'équivalence en montrant les deux implications.
+
+**Étape 1 : ($f^* \circ f = \text{Id}_E \implies f$ est une isométrie)**
+
+Supposons que $f^* \circ f = \text{Id}_E$. Cela signifie que pour tout $x \in E$, $f^*(f(x)) = x$.
+
+Considérons le produit scalaire $\varphi(f(x), f(y))$ pour $x, y \in E$ quelconques. Par définition de l'adjoint $f^*$, on peut écrire :
+
+$$ \varphi(f(x), f(y)) = \varphi(x, f^*(f(y))) $$
+
+En utilisant notre hypothèse $f^*(f(y)) = y$, on obtient :
+
+$$ \varphi(f(x), f(y)) = \varphi(x, y) $$
+
+Ceci montre que $f$ préserve le produit scalaire. D'après la propriété démontrée précédemment, un endomorphisme qui préserve le produit scalaire préserve aussi la norme, donc $f$ est une isométrie.
+
+**Étape 2 : ($f$ est une isométrie $\implies f^* \circ f = \text{Id}_E$)**
+
+Supposons que $f$ est une isométrie. Cela signifie que $f$ préserve le produit scalaire, donc $\forall x, y \in E, \varphi(f(x), f(y)) = \varphi(x, y)$.
+
+Par définition de l'adjoint, on a aussi $\varphi(f(x), f(y)) = \varphi(x, f^*(f(y)))$.
+
+En combinant ces deux égalités, on obtient :
+
+$$ \varphi(x, y) = \varphi(x, f^*(f(y))) $$
+
+$$ \varphi(x, y) - \varphi(x, f^*(f(y))) = 0 $$
+
+Par linéarité du produit scalaire par rapport à la deuxième variable (ou sesquilinéarité dans le cas hermitien) :
+
+$$ \varphi(x, y - f^*(f(y))) = 0 $$
+
+Cette égalité est vraie pour tout $x \in E$. Le seul vecteur de $E$ qui est orthogonal à tous les vecteurs de $E$ est le vecteur nul (car le produit scalaire est non dégénéré). Donc, pour un $y$ fixé, on doit avoir :
+
+$$ y - f^*(f(y)) = 0 $$
+
+$$ y = f^*(f(y)) $$
+
+Ceci étant vrai pour tout $y \in E$, on conclut que l'application $f^* \circ f$ est l'application identité $\text{Id}_E$.
+
+**Conclusion :** Un endomorphisme $f$ est une isométrie si et seulement si $f^* \circ f = \text{Id}_E$. Cela implique aussi que toute isométrie en dimension finie est un isomorphisme (car elle est injective), et que son inverse est son adjoint : $f^{-1} = f^*$.
+
+</details>
+
+---
+
+#### Image d'une base orthonormée par une isométrie
+
+Prouver qu'un endomorphisme $f$ est une isométrie si et seulement si l'image par $f$ d'une base orthonormée est une base orthonormée.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Soit $\mathcal{B} = (e_1, \dots, e_n)$ une base orthonormée. Pour prouver que son image $\mathcal{B}' = (f(e_1), \dots, f(e_n))$ est orthonormée, il faut montrer que $\varphi(f(e_i), f(e_j)) = \delta_{ij}$ (symbole de Kronecker).
+
+Pour la réciproque, exprimez un vecteur $x$ quelconque dans la base $\mathcal{B}$, $x = \sum_{i=1}^n x_i e_i$. Calculez $\|x\|^2$ puis $\|f(x)\|^2$ et montrez qu'ils sont égaux.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $f$ un endomorphisme de $E$, et $\mathcal{B} = (e_1, \dots, e_n)$ une base orthonormée de $E$.
+
+**Étape 1 : (Si $f$ est une isométrie, alors l'image de $\mathcal{B}$ est une base orthonormée)**
+
+Supposons que $f$ est une isométrie. Alors $f$ préserve le produit scalaire.
+
+Soit $\mathcal{B}' = (f(e_1), \dots, f(e_n))$ l'image de la base $\mathcal{B}$ par $f$. Pour montrer que $\mathcal{B}'$ est une base orthonormée, nous devons vérifier que $\varphi(f(e_i), f(e_j)) = \delta_{ij}$ pour tous $i, j \in \{1, \dots, n\}$.
+
+Puisque $f$ préserve le produit scalaire, on a :
+
+$$ \varphi(f(e_i), f(e_j)) = \varphi(e_i, e_j) $$
+
+Comme $\mathcal{B}$ est une base orthonormée, on sait que $\varphi(e_i, e_j) = \delta_{ij}$.
+
+Donc, $\varphi(f(e_i), f(e_j)) = \delta_{ij}$.
+
+Ceci prouve que la famille $\mathcal{B}'$ est une famille orthonormée. Une famille orthonormée de $n$ vecteurs dans un espace de dimension $n$ est toujours une base. Donc $\mathcal{B}'$ est une base orthonormée.
+
+**Étape 2 : (Si l'image d'une base orthonormée est une base orthonormée, alors $f$ est une isométrie)**
+
+Supposons qu'il existe une base orthonormée $\mathcal{B}=(e_1, \dots, e_n)$ telle que son image $\mathcal{B}' = (f(e_1), \dots, f(e_n))$ soit aussi une base orthonormée.
+
+On a donc $\varphi(f(e_i), f(e_j)) = \delta_{ij}$.
+
+Soit $x$ un vecteur quelconque de $E$. On peut le décomposer dans la base $\mathcal{B}$ : $x = \sum_{i=1}^n x_i e_i$.
+
+La norme au carré de $x$ est donnée par (puisque $\mathcal{B}$ est orthonormée) :
+
+$$ \|x\|^2 = \varphi\left(\sum_{i=1}^n x_i e_i, \sum_{j=1}^n x_j e_j\right) = \sum_{i,j} x_i x_j \varphi(e_i, e_j) = \sum_{i,j} x_i x_j \delta_{ij} = \sum_{i=1}^n x_i^2 $$
+
+Maintenant, calculons l'image de $x$ par $f$. Par linéarité de $f$ :
+
+$$ f(x) = f\left(\sum_{i=1}^n x_i e_i\right) = \sum_{i=1}^n x_i f(e_i) $$
+
+Calculons la norme au carré de $f(x)$. Comme la base $(f(e_1), \dots, f(e_n))$ est orthonormée par hypothèse, le calcul est similaire :
+
+$$ \|f(x)\|^2 = \varphi\left(\sum_{i=1}^n x_i f(e_i), \sum_{j=1}^n x_j f(e_j)\right) = \sum_{i,j} x_i x_j \varphi(f(e_i), f(e_j)) = \sum_{i,j} x_i x_j \delta_{ij} = \sum_{i=1}^n x_i^2 $$
+
+Nous avons donc $\|x\|^2 = \sum_{i=1}^n x_i^2$ et $\|f(x)\|^2 = \sum_{i=1}^n x_i^2$.
+
+Il s'ensuit que $\|f(x)\|^2 = \|x\|^2$, et donc $\|f(x)\| = \|x\|$.
+
+Ceci étant vrai pour tout $x \in E$, $f$ est une isométrie.
+
+</details>
+
+---
+
+#### Le groupe des isométries $O(E)$
+
+Prouver que l'ensemble des isométries d'un espace euclidien $E$, noté $O(E)$, muni de la composition d'applications $(\circ)$, forme un groupe.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Pour prouver qu'un ensemble muni d'une loi de composition est un groupe, il faut vérifier trois axiomes :
+
+1.  **Stabilité :** Si $f, g \in O(E)$, est-ce que $f \circ g \in O(E)$ ?
+2.  **Élément neutre :** L'application identité est-elle une isométrie ?
+3.  **Inverse :** Si $f \in O(E)$, son inverse $f^{-1}$ existe-t-il et est-il aussi une isométrie ? (Rappel : en dimension finie, une application linéaire injective est bijective).
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Pour montrer que $(O(E), \circ)$ est un groupe, nous devons vérifier les trois axiomes de la structure de groupe.
+
+**1. Stabilité (ou loi de composition interne)**
+
+Soient $f$ et $g$ deux isométries de $E$. Nous devons montrer que leur composée $f \circ g$ est aussi une isométrie.
+
+Pour tout $x \in E$, nous devons vérifier que $\|(f \circ g)(x)\| = \|x\|$.
+
+$$ \|(f \circ g)(x)\| = \|f(g(x))\| $$
+
+Puisque $f$ est une isométrie, $\|f(y)\| = \|y\|$ pour tout $y \in E$. Appliquons ceci avec $y=g(x)$:
+
+$$ \|f(g(x))\| = \|g(x)\| $$
+
+Puisque $g$ est une isométrie, $\|g(x)\| = \|x\|$.
+
+En combinant les deux, on obtient $\|(f \circ g)(x)\| = \|x\|$.
+
+La composition est donc bien une loi interne sur $O(E)$.
+
+**2. Élément neutre**
+
+L'élément neutre pour la composition d'applications est l'application identité, $\text{Id}_E$, définie par $\text{Id}_E(x) = x$ pour tout $x \in E$.
+
+Vérifions si $\text{Id}_E$ est une isométrie :
+
+$$ \|\text{Id}_E(x)\| = \|x\| $$
+
+Ceci est vrai par définition. Donc, $\text{Id}_E \in O(E)$.
+
+**3. Existence de l'inverse**
+
+Soit $f \in O(E)$. Nous devons montrer que $f$ est bijective et que son inverse $f^{-1}$ est aussi une isométrie.
+
+*   **Bijectivité :** Pour montrer que $f$ est bijective, il suffit de montrer qu'elle est injective, car $f$ est un endomorphisme en dimension finie. Pour montrer l'injectivité, on montre que son noyau est réduit au vecteur nul. Soit $x \in \ker(f)$, alors $f(x) = 0$. On a $\|f(x)\| = \|0\| = 0$. Comme $f$ est une isométrie, $\|f(x)\| = \|x\|$. Donc $\|x\|=0$, ce qui implique $x=0$. Le noyau est donc $\ker(f) = \{0\}$, et $f$ est injective, donc bijective. L'inverse $f^{-1}$ existe.
+*   **$f^{-1}$ est une isométrie :** Nous devons montrer que $\|f^{-1}(y)\| = \|y\|$ pour tout $y \in E$.
+
+Soit $y \in E$. Puisque $f$ est surjective, il existe un $x \in E$ tel que $y = f(x)$. Alors, par définition de l'inverse, $x = f^{-1}(y)$.
+
+On a $\|y\| = \|f(x)\|$.
+
+Puisque $f$ est une isométrie, $\|f(x)\| = \|x\|$.
+
+Donc $\|y\| = \|x\|$.
+
+En substituant $x = f^{-1}(y)$, on obtient $\|y\| = \|f^{-1}(y)\|$.
+
+Ceci montre que $f^{-1}$ est une isométrie. Donc $f^{-1} \in O(E)$.
+
+**Conclusion :** Les trois axiomes étant vérifiés, $(O(E), \circ)$ est un groupe.
+
+</details>
+
+---
+
+#### Structure de groupe de $O_n(\mathbb{R})$
+
+Prouver que l'ensemble des matrices orthogonales $O_n(\mathbb{R}) = \{ M \in M_n(\mathbb{R}) \mid {}^tMM = I_n \}$ est un groupe pour la multiplication matricielle.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Vérifiez les trois axiomes de groupe :
+
+1.  **Stabilité :** Si $A, B \in O_n(\mathbb{R})$, est-ce que $AB \in O_n(\mathbb{R})$ ? Calculez ${}^t(AB)(AB)$ et utilisez la propriété ${}^t(AB) = {}^tB{}^tA$.
+2.  **Élément neutre :** La matrice identité $I_n$ est-elle dans $O_n(\mathbb{R})$ ?
+3.  **Inverse :** Si $A \in O_n(\mathbb{R})$, son inverse $A^{-1}$ existe-t-il et est-il dans $O_n(\mathbb{R})$ ? La définition ${}^tAA=I_n$ donne une expression simple pour $A^{-1}$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Pour montrer que $(O_n(\mathbb{R}), \times)$ est un groupe, nous vérifions les trois axiomes.
+
+**1. Stabilité par multiplication**
+
+Soient $A, B \in O_n(\mathbb{R})$. Par définition, nous avons ${}^tAA = I_n$ et ${}^tBB = I_n$.
+
+Nous devons montrer que le produit $AB$ est aussi dans $O_n(\mathbb{R})$, c'est-à-dire que ${}^t(AB)(AB) = I_n$.
+
+$$ {}^t(AB)(AB) = ({}^tB{}^tA)(AB) $$
+
+Par associativité de la multiplication matricielle :
+
+$$ {}^tB({}^tA A)B $$
+
+Puisque $A \in O_n(\mathbb{R})$, on a ${}^tAA = I_n$.
+
+$$ {}^tB(I_n)B = {}^tBB $$
+
+Et puisque $B \in O_n(\mathbb{R})$, on a ${}^tBB = I_n$.
+
+Donc, ${}^t(AB)(AB) = I_n$, ce qui prouve que $AB \in O_n(\mathbb{R})$.
+
+**2. Élément neutre**
+
+L'élément neutre pour la multiplication matricielle est la matrice identité $I_n$.
+
+Nous devons vérifier si $I_n \in O_n(\mathbb{R})$. On calcule :
+
+$$ {}^tI_n I_n = I_n I_n = I_n $$
+
+La condition est vérifiée, donc $I_n \in O_n(\mathbb{R})$.
+
+**3. Existence de l'inverse**
+
+Soit $A \in O_n(\mathbb{R})$. Par définition, ${}^tAA = I_n$.
+
+Cette relation montre que $A$ est inversible et que son inverse est $A^{-1} = {}^tA$.
+
+Il nous reste à vérifier que cet inverse $A^{-1}$ est bien dans $O_n(\mathbb{R})$.
+
+Nous devons donc montrer que ${}^t(A^{-1})(A^{-1}) = I_n$.
+
+Substituons $A^{-1}$ par ${}^tA$ :
+
+$$ {}^t({}^tA)({}^tA) = A({}^tA) $$
+
+Nous savons que ${}^tAA = I_n$. En multipliant à droite par $A^{-1}$ (qui est ${}^tA$), on obtient ${}^tA = A^{-1}$. Et en multipliant ${}^tAA=I_n$ à gauche par $A$, on obtient $A({}^tA A) = A I_n$, donc $(A{}^tA)A=A$. Comme A est inversible, on peut multiplier par $A^{-1}$ à droite pour obtenir $A{}^tA = I_n$.
+
+Ainsi, ${}^t(A^{-1})(A^{-1}) = I_n$, et donc $A^{-1} \in O_n(\mathbb{R})$.
+
+**Conclusion :** Les trois axiomes étant satisfaits, $O_n(\mathbb{R})$ est un groupe pour la multiplication matricielle.
+
+</details>
+
+---
+
+#### Déterminant d'une matrice orthogonale
+
+Prouver que si $M \in O_n(\mathbb{R})$, alors $\det(M) = \pm 1$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Partez de l'équation qui définit une matrice orthogonale : ${}^tMM = I_n$.
+
+Appliquez la fonction déterminant à chaque côté de l'équation. Utilisez ensuite deux propriétés fondamentales du déterminant : $\det(AB) = \det(A)\det(B)$ et $\det({}^tM) = \det(M)$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $M$ une matrice appartenant au groupe orthogonal $O_n(\mathbb{R})$.
+
+**Étape 1 : Utiliser la définition de $O_n(\mathbb{R})$**
+
+Par définition, $M$ satisfait la relation :
+
+$$ {}^tMM = I_n $$
+
+où $I_n$ est la matrice identité d'ordre $n$.
+
+**Étape 2 : Appliquer le déterminant**
+
+Appliquons la fonction déterminant aux deux membres de cette équation :
+
+$$ \det({}^tMM) = \det(I_n) $$
+
+**Étape 3 : Utiliser les propriétés du déterminant**
+
+Nous utilisons deux propriétés du déterminant :
+
+1.  Le déterminant d'un produit de matrices est le produit de leurs déterminants : $\det(AB) = \det(A)\det(B)$.
+2.  Le déterminant d'une matrice transposée est égal au déterminant de la matrice originale : $\det({}^tM) = \det(M)$.
+
+Appliquons la première propriété au membre de gauche :
+
+$$ \det({}^tM)\det(M) = \det(I_n) $$
+
+Appliquons la seconde propriété :
+
+$$ \det(M)\det(M) = \det(I_n) $$
+
+$$ (\det(M))^2 = \det(I_n) $$
+
+**Étape 4 : Calculer le déterminant de l'identité et résoudre**
+
+Le déterminant de la matrice identité est 1.
+
+$$ (\det(M))^2 = 1 $$
+
+L'équation $x^2 = 1$ pour une variable réelle $x = \det(M)$ a exactement deux solutions : $x=1$ et $x=-1$.
+
+**Conclusion :**
+
+Le déterminant d'une matrice orthogonale $M$ ne peut prendre que les valeurs 1 ou -1.
+
+$$ \det(M) \in \{-1, 1\} $$
+
+</details>
+
+---
+
+#### Caractérisation des matrices orthogonales par leurs colonnes
+
+Prouver qu'une matrice $M \in M_n(\mathbb{R})$ est orthogonale si et seulement si ses vecteurs colonnes forment une base orthonormée de $\mathbb{R}^n$ pour le produit scalaire canonique.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Notez $C_1, C_2, \dots, C_n$ les vecteurs colonnes de $M$. La matrice transposée ${}^tM$ a pour lignes les transposées de ces vecteurs, c'est-à-dire ${}^tC_1, {}^tC_2, \dots, {}^tC_n$.
+
+Calculez le produit matriciel $P = {}^tMM$. Exprimez l'élément $P_{ij}$ (à la ligne $i$ et colonne $j$ de $P$) en fonction des colonnes de $M$. Rappelez-vous que le produit scalaire canonique de deux vecteurs colonnes $U$ et $V$ est ${}^tUV$.
+
+Comparez la condition "$P = I_n$" avec la définition d'une base orthonormée.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $M$ une matrice de $M_n(\mathbb{R})$. Notons ses vecteurs colonnes $C_1, C_2, \dots, C_n$, où chaque $C_j \in \mathbb{R}^n$.
+
+$$ M = \begin{pmatrix} | & | & & | \\ C_1 & C_2 & \dots & C_n \\ | & | & & | \end{pmatrix} $$
+
+La matrice transposée ${}^tM$ a pour lignes les transposées de ces vecteurs colonnes :
+
+$$ {}^tM = \begin{pmatrix} - & {}^tC_1 & - \\ - & {}^tC_2 & - \\ & \vdots & \\ - & {}^tC_n & - \end{pmatrix} $$
+
+**Étape 1 : Calculer le produit ${}^tMM$**
+
+Effectuons le produit matriciel $P = {}^tMM$. L'élément $P_{ij}$ situé à la $i$-ème ligne et $j$-ème colonne de $P$ est obtenu en multipliant la $i$-ème ligne de ${}^tM$ par la $j$-ème colonne de $M$.
+
+La $i$-ème ligne de ${}^tM$ est ${}^tC_i$.
+
+La $j$-ème colonne de $M$ est $C_j$.
+
+Ainsi, l'élément $P_{ij}$ est le produit matriciel ${}^tC_i C_j$. Ce produit est une matrice $1 \times 1$, que l'on identifie à un scalaire. Il correspond exactement au produit scalaire canonique de $C_i$ et $C_j$.
+
+$$ P_{ij} = {}^tC_i C_j = \varphi(C_i, C_j) $$
+
+La matrice produit est donc :
+
+$$ {}^tMM = \begin{pmatrix} \varphi(C_1, C_1) & \varphi(C_1, C_2) & \dots & \varphi(C_1, C_n) \\ \varphi(C_2, C_1) & \varphi(C_2, C_2) & \dots & \varphi(C_2, C_n) \\ \vdots & \vdots & \ddots & \vdots \\ \varphi(C_n, C_1) & \varphi(C_n, C_2) & \dots & \varphi(C_n, C_n) \end{pmatrix} $$
+
+**Étape 2 : Relier la condition d'orthogonalité à la condition sur les colonnes**
+
+Par définition, $M$ est une matrice orthogonale si et seulement si ${}^tMM = I_n$.
+
+La matrice identité $I_n$ est la matrice dont les coefficients $(I_n)_{ij}$ sont donnés par le symbole de Kronecker $\delta_{ij}$ :
+
+$$ (I_n)_{ij} = \delta_{ij} = \begin{cases} 1 & \text{si } i=j \\ 0 & \text{si } i \neq j \end{cases} $$
+
+En identifiant les coefficients de la matrice ${}^tMM$ avec ceux de $I_n$, la condition ${}^tMM = I_n$ est équivalente à :
+
+$$ \varphi(C_i, C_j) = \delta_{ij} \quad \text{pour tous } i, j \in \{1, \dots, n\} $$
+
+**Étape 3 : Interpréter la condition sur les colonnes**
+
+La condition $\varphi(C_i, C_j) = \delta_{ij}$ signifie que :
+
+- Si $i=j$, $\varphi(C_i, C_i) = \|C_i\|^2 = 1$, donc les vecteurs colonnes sont de norme 1 (unitaires).
+- Si $i \neq j$, $\varphi(C_i, C_j) = 0$, donc deux vecteurs colonnes distincts sont orthogonaux.
+
+L'ensemble de ces conditions est précisément la définition d'une famille orthonormée. Une famille orthonormée de $n$ vecteurs dans un espace de dimension $n$ comme $\mathbb{R}^n$ forme une base.
+
+**Conclusion :**
+
+La matrice $M$ est orthogonale si et seulement si la famille de ses vecteurs colonnes $(C_1, \dots, C_n)$ est une base orthonormée de $\mathbb{R}^n$.
+
+</details>
+
+---
+
+#### Justification de la définition de l'angle non-orienté
+
+Prouver que pour deux vecteurs non nuls $x, y$ d'un espace euclidien $E$, la quantité $\frac{\varphi(x,y)}{\|x\|\|y\|}$ est bien définie et appartient toujours à l'intervalle $[-1, 1]$, justifiant ainsi l'utilisation de la fonction $\arccos$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Le point crucial de cette preuve est l'inégalité de Cauchy-Schwarz. Elle stipule que pour tous vecteurs $x, y$ d'un espace euclidien, on a :
+
+$$ |\varphi(x,y)| \le \|x\|\|y\| $$
+
+Comment cette inégalité permet-elle d'encadrer la fraction en question ?
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $(E, \varphi)$ un espace euclidien, et soient $x, y$ deux vecteurs non nuls de $E$.
+
+La définition de l'angle non-orienté $\theta$ entre $x$ et $y$ est donnée par la relation $\cos(\theta) = \frac{\varphi(x,y)}{\|x\|\|y\|}$.
+
+Pour que cette définition soit mathématiquement valide, il faut que l'argument de la fonction $\arccos$ (qui est $\cos(\theta)$) soit toujours dans son domaine de définition, c'est-à-dire l'intervalle $[-1, 1]$.
+
+**Étape 1 : S'assurer que l'expression est bien définie**
+
+Les vecteurs $x$ et $y$ sont supposés non nuls. Par conséquent, leurs normes $\|x\|$ et $\|y\|$ sont strictement positives. Le dénominateur $\|x\|\|y\|$ n'est donc jamais nul, et la fraction est bien définie.
+
+**Étape 2 : Appliquer l'inégalité de Cauchy-Schwarz**
+
+L'inégalité de Cauchy-Schwarz est une propriété fondamentale de tout produit scalaire. Elle s'énonce ainsi :
+
+$$ |\varphi(x, y)| \leq \|x\| \|y\| $$
+
+où $|\cdot|$ désigne la valeur absolue.
+
+**Étape 3 : Manipuler l'inégalité**
+
+Puisque $\|x\|\|y\|$ est un nombre réel strictement positif, nous pouvons diviser les deux membres de l'inégalité par cette quantité sans changer le sens de l'inégalité :
+
+$$ \frac{|\varphi(x, y)|}{\|x\| \|y\|} \leq 1 $$
+
+En utilisant la propriété $|a/b| = |a|/|b|$, on peut réécrire le membre de gauche :
+
+$$ \left| \frac{\varphi(x, y)}{\|x\| \|y\|} \right| \leq 1 $$
+
+**Étape 4 : Conclure**
+
+L'inégalité $|A| \leq 1$ est équivalente à $-1 \leq A \leq 1$.
+
+En posant $A = \frac{\varphi(x,y)}{\|x\|\|y\|}$, nous avons donc :
+
+$$ -1 \leq \frac{\varphi(x,y)}{\|x\|\|y\|} \leq 1 $$
+
+**Conclusion :**
+
+La quantité $\frac{\varphi(x,y)}{\|x\|\|y\|}$ est toujours un nombre réel compris dans l'intervalle $[-1, 1]$. Par conséquent, il existe un unique angle $\theta$ dans l'intervalle $[0, \pi]$ tel que $\cos(\theta)$ soit égal à cette valeur. La définition de l'angle non-orienté par la fonction $\arccos$ est donc bien fondée.
+
+</details>
+
+---
+
+#### Préservation des angles par les isométries
+
+Prouver qu'une isométrie $f$ d'un espace euclidien préserve l'angle non-orienté entre deux vecteurs non nuls.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Soient $x, y$ deux vecteurs non nuls. L'angle $\theta(x,y)$ est défini par $\cos(\theta(x,y)) = \frac{\varphi(x,y)}{\|x\|\|y\|}$.
+
+Pour montrer que l'angle est préservé, il suffit de montrer que $\cos(\theta(f(x),f(y))) = \cos(\theta(x,y))$.
+
+Exprimez $\cos(\theta(f(x),f(y)))$ en utilisant la définition et simplifiez l'expression en vous servant des propriétés d'une isométrie.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $f$ une isométrie d'un espace euclidien $E$. Soient $x, y$ deux vecteurs non nuls de $E$.
+
+L'angle non-orienté $\theta(x,y)$ entre $x$ et $y$ est l'unique réel dans $[0, \pi]$ tel que :
+
+$$ \cos(\theta(x,y)) = \frac{\varphi(x,y)}{\|x\|\|y\|} $$
+
+Nous voulons prouver que l'angle entre les images $f(x)$ et $f(y)$ est le même, c'est-à-dire $\theta(f(x),f(y)) = \theta(x,y)$.
+
+**Étape 1 : Définir l'angle entre les vecteurs images**
+
+Si $x$ et $y$ sont non nuls, et comme $f$ est une isométrie (donc injective), leurs images $f(x)$ et $f(y)$ sont aussi non nulles. On peut donc définir l'angle $\theta(f(x),f(y))$ entre elles :
+
+$$ \cos(\theta(f(x),f(y))) = \frac{\varphi(f(x),f(y))}{\|f(x)\|\|f(y)\|} $$
+
+**Étape 2 : Utiliser les propriétés de l'isométrie**
+
+Une isométrie $f$ a deux propriétés clés que nous allons utiliser :
+
+1.  Elle préserve le produit scalaire : $\varphi(f(x),f(y)) = \varphi(x,y)$.
+2.  Elle préserve la norme : $\|f(v)\| = \|v\|$ pour tout vecteur $v$.
+
+Appliquons ces propriétés à l'expression de $\cos(\theta(f(x),f(y)))$.
+
+Le numérateur devient :
+
+$$ \varphi(f(x),f(y)) = \varphi(x,y) $$
+
+Le dénominateur devient :
+
+$$ \|f(x)\|\|f(y)\| = \|x\|\|y\| $$
+
+**Étape 3 : Comparer les cosinus**
+
+En substituant ces résultats dans la formule, on obtient :
+
+$$ \cos(\theta(f(x),f(y))) = \frac{\varphi(x,y)}{\|x\|\|y\|} $$
+
+On reconnaît dans le membre de droite l'expression de $\cos(\theta(x,y))$.
+
+$$ \cos(\theta(f(x),f(y))) = \cos(\theta(x,y)) $$
+
+**Étape 4 : Conclure sur l'égalité des angles**
+
+La fonction cosinus est injective sur l'intervalle $[0, \pi]$. Puisque par définition, les angles non-orientés $\theta(x,y)$ et $\theta(f(x),f(y))$ appartiennent tous deux à cet intervalle, l'égalité de leurs cosinus implique l'égalité des angles eux-mêmes.
+
+$$ \theta(f(x),f(y)) = \theta(x,y) $$
+
+**Conclusion :** Toute isométrie préserve l'angle non-orienté entre deux vecteurs.
+
+</details>
+
+---
+
+#### L'orientation comme relation d'équivalence
+
+Prouver que la relation $\mathcal{R}$ définie sur l'ensemble des bases d'un $\mathbb{R}$-espace vectoriel $E$ par "$\mathcal{B} \mathcal{R} \mathcal{B}' \iff \det(P_{\mathcal{B},\mathcal{B}'}) > 0$" est une relation d'équivalence.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Pour prouver que $\mathcal{R}$ est une relation d'équivalence, vous devez vérifier les trois propriétés suivantes :
+
+1.  **Réflexivité :** $\mathcal{B} \mathcal{R} \mathcal{B}$. Quelle est la matrice de passage $P_{\mathcal{B},\mathcal{B}}$ de la base $\mathcal{B}$ à elle-même ? Quel est son déterminant ?
+2.  **Symétrie :** Si $\mathcal{B} \mathcal{R} \mathcal{B}'$, a-t-on $\mathcal{B}' \mathcal{R} \mathcal{B}$ ? Utilisez la relation $P_{\mathcal{B}',\mathcal{B}} = (P_{\mathcal{B},\mathcal{B}'})^{-1}$ et la propriété du déterminant d'une inverse.
+3.  **Transitivité :** Si $\mathcal{B} \mathcal{R} \mathcal{B}'$ et $\mathcal{B}' \mathcal{R} \mathcal{B}''$, a-t-on $\mathcal{B} \mathcal{R} \mathcal{B}''$ ? Utilisez la formule de Chasles pour les matrices de passage : $P_{\mathcal{B},\mathcal{B}''} = P_{\mathcal{B},\mathcal{B}'} P_{\mathcal{B}',\mathcal{B}''}$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $E$ un $\mathbb{R}$-espace vectoriel de dimension finie. Soit $\mathcal{E}$ l'ensemble de toutes les bases de $E$. La relation $\mathcal{R}$ est définie sur $\mathcal{E}$ par :
+
+$$ \forall \mathcal{B}, \mathcal{B}' \in \mathcal{E}, \quad \mathcal{B} \mathcal{R} \mathcal{B}' \iff \det(P_{\mathcal{B},\mathcal{B}'}) > 0 $$
+
+où $P_{\mathcal{B},\mathcal{B}'}$ est la matrice de passage de la base $\mathcal{B}$ à la base $\mathcal{B}'$.
+
+**1. Réflexivité**
+
+Nous devons montrer que $\mathcal{B} \mathcal{R} \mathcal{B}$ pour toute base $\mathcal{B}$.
+
+La matrice de passage de la base $\mathcal{B}$ à elle-même est la matrice identité $I_n$.
+
+$$ P_{\mathcal{B},\mathcal{B}} = I_n $$
+
+Le déterminant de la matrice identité est 1.
+
+$$ \det(P_{\mathcal{B},\mathcal{B}}) = \det(I_n) = 1 $$
+
+Puisque $1 > 0$, la condition est satisfaite. Donc, $\mathcal{B} \mathcal{R} \mathcal{B}$. La relation est réflexive.
+
+**2. Symétrie**
+
+Supposons que $\mathcal{B} \mathcal{R} \mathcal{B}'$. Nous devons montrer que $\mathcal{B}' \mathcal{R} \mathcal{B}$.
+
+L'hypothèse $\mathcal{B} \mathcal{R} \mathcal{B}'$ signifie que $\det(P_{\mathcal{B},\mathcal{B}'}) > 0$.
+
+La matrice de passage de $\mathcal{B}'$ à $\mathcal{B}$ est l'inverse de la matrice de passage de $\mathcal{B}$ à $\mathcal{B}'$ :
+
+$$ P_{\mathcal{B}',\mathcal{B}} = (P_{\mathcal{B},\mathcal{B}'})^{-1} $$
+
+Le déterminant de l'inverse d'une matrice est l'inverse du déterminant de la matrice :
+
+$$ \det(P_{\mathcal{B}',\mathcal{B}}) = \det((P_{\mathcal{B},\mathcal{B}'})^{-1}) = \frac{1}{\det(P_{\mathcal{B},\mathcal{B}'})} $$
+
+Par hypothèse, $\det(P_{\mathcal{B},\mathcal{B}'})$ est un nombre réel strictement positif. L'inverse d'un réel strictement positif est aussi un réel strictement positif.
+
+Donc, $\det(P_{\mathcal{B}',\mathcal{B}}) > 0$.
+
+Ceci montre que $\mathcal{B}' \mathcal{R} \mathcal{B}$. La relation est symétrique.
+
+**3. Transitivité**
+
+Supposons que $\mathcal{B} \mathcal{R} \mathcal{B}'$ et $\mathcal{B}' \mathcal{R} \mathcal{B}''$. Nous devons montrer que $\mathcal{B} \mathcal{R} \mathcal{B}''$.
+
+Les hypothèses se traduisent par :
+
+1.  $\det(P_{\mathcal{B},\mathcal{B}'}) > 0$
+2.  $\det(P_{\mathcal{B}',\mathcal{B}''}) > 0$
+
+La formule de changement de base (relation de Chasles) nous dit que :
+
+$$ P_{\mathcal{B},\mathcal{B}''} = P_{\mathcal{B},\mathcal{B}'} P_{\mathcal{B}',\mathcal{B}''} $$
+
+En utilisant la propriété $\det(AB) = \det(A)\det(B)$, on a :
+
+$$ \det(P_{\mathcal{B},\mathcal{B}''}) = \det(P_{\mathcal{B},\mathcal{B}'}) \times \det(P_{\mathcal{B}',\mathcal{B}''}) $$
+
+Par hypothèse, nous multiplions deux nombres réels strictement positifs. Le produit de deux nombres réels strictement positifs est un nombre réel strictement positif.
+
+Donc, $\det(P_{\mathcal{B},\mathcal{B}''}) > 0$.
+
+Ceci montre que $\mathcal{B} \mathcal{R} \mathcal{B}''$. La relation est transitive.
+
+**Conclusion :**
+
+La relation $\mathcal{R}$ est réflexive, symétrique et transitive. C'est donc une relation d'équivalence sur l'ensemble des bases de $E$.
+
+</details>

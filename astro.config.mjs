@@ -8,6 +8,7 @@ import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
 import { parseCards } from "./src/utils/cardParser.ts";
 import { parseQuiz } from "./src/utils/quizParser.ts";
+import { parseProofs } from "./src/utils/proofParser.ts";
 import stackJsonPlugin from './src/domain/feature/StackParserPlugin.gen';
 import { layoutPlugin } from "./src/utils/layoutPlugin.ts";
 
@@ -29,11 +30,11 @@ export default defineConfig({
       {
         name: 'cards-loader',
         transform(src, id) {
-          const type = id.endsWith('.cards') ? 'cards' : id.endsWith('.quiz') ? 'quiz' : null;
+          const type = id.endsWith('.cards') ? 'cards' : id.endsWith('.quiz') ? 'quiz' : id.endsWith('.proofs') ? 'proofs' : null;
           if (type === null) {
             return null;
           }
-          const parse = type === 'cards' ? parseCards : parseQuiz;
+          const parse = type === 'cards' ? parseCards : type === 'quiz' ? parseQuiz : parseProofs;
           try {
             const fileName = id.split('/').pop()
             if (!fileName) {

@@ -1,0 +1,162 @@
+// Migration feature for handling anonymous progress migration to Supabase
+module Storage = Repository.Storage
+
+type t = {
+  needed: bool,
+  importProgress: unit => promise<unit>,
+  clearProgress: unit => unit,
+}
+
+let hasAnonymousProgress = () => {
+  // Check if there are any progress keys without userId prefix
+  let keys = Storage.getAllKeys()
+  let hasProgress = keys->Array.some(key => key->String.startsWith("progress-"))
+  if hasProgress {
+    let count = keys->Array.filter(key => key->String.startsWith("progress-"))->Array.length
+    Js.log(`[Migration] Found ${count->Int.toString} anonymous progress keys`)
+  }
+  hasProgress
+}
+
+let getAllAnonymousProgressKeys = () => {
+  let keys = Storage.getAllKeys()
+  keys->Array.filter(key => key->String.startsWith("progress-"))
+}
+
+let extractStackId = (key: string) => {
+  // Key format: "progress-{stackId}"
+  if key->String.startsWith("progress-") {
+    let len = key->String.length
+    Some(key->String.slice(~start=9, ~end=len))
+  } else {
+    None
+  }
+}
+
+let importAnonymousProgress = async (auth: Auth.t) => {
+  Js.log("[Migration.importAnonymousProgress] Started")
+  // Get all anonymous progress keys
+  let keys = getAllAnonymousProgressKeys()
+  let keyCount = keys->Array.length
+  Js.log(`[Migration.importAnonymousProgress] Found ${keyCount->Int.toString} keys to import`)
+  Js.log(`[Migration.importAnonymousProgress] Keys: ${keys->Array.join(",")}`)
+
+  // Import each anonymous progress
+  let importedCount = ref(0)
+  if keyCount > 0 {
+    Js.log("[Migration.importAnonymousProgress] Creating repositories...")
+    // Create anonymous auth for loading anonymous progress
+    let anonymousAuth: Auth.t = {
+      userId: None,
+      online: true,
+      logout: () => (),
+    }
+    let repo = Repository.make("/stacks", anonymousAuth)
+    // Use the provided auth for saving with userId
+    let userRepo = Repository.make("/stacks", auth)
+    Js.log("[Migration.importAnonymousProgress] Repositories created, starting import loop...")
+
+    ignore(
+      await Promise.all(
+        keys->Array.map(async key => {
+          Js.log(`[Migration.importAnonymousProgress] Processing key: ${key}`)
+          switch extractStackId(key) {
+          | Some(stackId) =>
+            Js.log(`[Migration.importAnonymousProgress] Extracted stackId: ${stackId}`)
+            // Load anonymous progress (using anonymous repo)
+            switch await repo.progress.get(stackId) {
+            | Some(progress) =>
+              Js.log(
+                `[Migration.importAnonymousProgress] Loaded progress for ${stackId}, saving...`,
+              )
+              // Save with userId prefix (Repository will handle this automatically)
+              try {
+                ignore(await userRepo.progress.save(progress))
+                Js.log(`[Migration.importAnonymousProgress] Saved progress for ${stackId}`)
+                // Only remove anonymous key if save succeeded
+                Storage.removeItem(key)
+                Js.log(`[Migration.importAnonymousProgress] Removed key: ${key}`)
+                importedCount := importedCount.contents + 1
+              } catch {
+              | _ =>
+                Js.log(`[Migration.importAnonymousProgress] ERROR saving progress for ${stackId}`)
+                ignore(
+                  %raw(`console.error("[Migration.importAnonymousProgress] Full error:", arguments[0])`),
+                )
+              // Do NOT remove the key on error - keep it for retry
+              }
+            | None => Js.log(`[Migration.importAnonymousProgress] No progress found for ${stackId}`)
+            }
+          | None =>
+            Js.log(`[Migration.importAnonymousProgress] Could not extract stackId from key: ${key}`)
+          }
+        }),
+      ),
+    )
+  }
+  Js.log(
+    `[Migration.importAnonymousProgress] Import completed: ${importedCount.contents->Int.toString} keys imported`,
+  )
+}
+
+let clearProgressFn = () => {
+  // Clear all anonymous progress
+  let keys = getAllAnonymousProgressKeys()
+  let keyCount = keys->Array.length
+  Js.log(`[Migration] Clearing ${keyCount->Int.toString} anonymous progress keys`)
+  keys->Array.forEach(key => {
+    Storage.removeItem(key)
+  })
+  Js.log(`[Migration] Clear completed: ${keyCount->Int.toString} keys removed`)
+}
+
+let make = (auth: Auth.t): t => {
+  open Tilia
+
+  // Signal to track anonymous progress existence
+  // This gets updated when we clear/import progress
+  let (hasAnonymousProgressSignal, setHasAnonymousProgress) = signal(hasAnonymousProgress())
+
+  // Migration is needed if user is logged in AND there's anonymous progress
+  let needed = derived(() => {
+    switch auth.userId {
+    | Some(_) =>
+      let needsMigration = hasAnonymousProgressSignal.value
+      Js.log(`[Migration] Migration needed: ${needsMigration ? "true" : "false"}`)
+      needsMigration
+    | None => false
+    }
+  })
+
+  let importProgress = async () => {
+    Js.log("[Migration.importProgress] Started")
+    switch auth.userId {
+    | Some(userId) =>
+      Js.log(`[Migration.importProgress] User ID found: ${userId}`)
+      Js.log("[Migration.importProgress] Calling importAnonymousProgress...")
+      await importAnonymousProgress(auth)
+      Js.log("[Migration.importProgress] importAnonymousProgress completed")
+      let hasProgress = hasAnonymousProgress()
+      Js.log(
+        `[Migration.importProgress] hasAnonymousProgress() = ${hasProgress ? "true" : "false"}`,
+      )
+      Js.log("[Migration.importProgress] Updating signal...")
+      setHasAnonymousProgress(hasProgress)
+      Js.log(`[Migration.importProgress] Signal updated to: ${hasProgress ? "true" : "false"}`)
+      Js.log("[Migration.importProgress] Completed")
+    | None => Js.log("[Migration.importProgress] No user ID, skipping import")
+    }
+  }
+
+  let clearProgress = () => {
+    clearProgressFn()
+    // Update signal after clear - this will reactively update migration.needed
+    setHasAnonymousProgress(hasAnonymousProgress())
+  }
+
+  tilia({
+    needed: lift(needed),
+    importProgress,
+    clearProgress,
+  })
+}
