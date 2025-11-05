@@ -90,11 +90,14 @@ function toRecall(stacks, nowOpt, dayLengthOpt) {
         var match = param[1];
         return CardProgress.recallTime(match.timestamp, match.state, dayLength) > now;
       });
-  return (
+  return [
+          (
               afterIdx !== -1 ? seenCards$1.slice(0, afterIdx) : seenCards$1
             ).map(function (param) {
                 return param[0];
-              }).concat(newCards);
+              }),
+          newCards
+        ];
 }
 
 function nextRecall(stacks, shuffleOpt, nowOpt, maxOpt, dayLengthOpt) {
@@ -102,9 +105,20 @@ function nextRecall(stacks, shuffleOpt, nowOpt, maxOpt, dayLengthOpt) {
   var now = nowOpt !== undefined ? nowOpt : Date.now();
   var max = maxOpt !== undefined ? maxOpt : 20;
   var dayLength = dayLengthOpt !== undefined ? dayLengthOpt : 24 * 3600 * 1000;
-  var toRecall$1 = toRecall(stacks, now, dayLength).slice(0, max);
-  shuffle(toRecall$1);
-  return toRecall$1;
+  var match = toRecall(stacks, now, dayLength);
+  var toRecall$1 = match[0];
+  var toRecall$2;
+  if (toRecall$1.length < max) {
+    var newCards = match[1].slice();
+    shuffle(newCards);
+    var len = max - toRecall$1.length | 0;
+    var newCards$1 = len > newCards.length ? newCards : newCards.slice(0, len);
+    toRecall$2 = toRecall$1.concat(newCards$1);
+  } else {
+    toRecall$2 = toRecall$1;
+  }
+  shuffle(toRecall$2);
+  return toRecall$2;
 }
 
 function make(repo, stacks, shuffleOpt, nowOpt, maxOpt, dayLengthOpt) {
@@ -157,12 +171,12 @@ function make(repo, stacks, shuffleOpt, nowOpt, maxOpt, dayLengthOpt) {
         var seen = Core__Array.reduce(stacks$1, 0, (function (acc, param) {
                 return acc + Object.values(param.prog.cards).length | 0;
               }));
-        var newCount = total - seen | 0;
+        var match = toRecall(stacks$1, now(), dayLength);
         return {
                 total: total,
                 seen: seen,
                 new: total - seen | 0,
-                toRecall: toRecall(stacks$1, now(), dayLength).length - newCount | 0,
+                toRecall: match[0].length,
                 stackCount: stack.value.length
               };
       });

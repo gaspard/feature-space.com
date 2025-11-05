@@ -120,12 +120,13 @@ let toRecall = (stacks: array<rstack>, ~now=Date.now(), ~dayLength=24. *. 3600. 
       CardProgress.recallTime(timestamp, state, ~dayLength) > now
     )
 
-  switch afterIdx {
-  | -1 => seenCards
-  | idx => seenCards->Array.slice(~start=0, ~end=idx)
-  }
-  ->Array.map(((card, _)) => card)
-  ->Array.concat(newCards)
+  (
+    switch afterIdx {
+    | -1 => seenCards
+    | idx => seenCards->Array.slice(~start=0, ~end=idx)
+    }->Array.map(((card, _)) => card),
+    newCards,
+  )
 }
 
 let nextRecall = (
@@ -135,7 +136,17 @@ let nextRecall = (
   ~max=20,
   ~dayLength=24. *. 3600. *. 1000.,
 ) => {
-  let toRecall = toRecall(stacks, ~now, ~dayLength)->Array.slice(~start=0, ~end=max)
+  let (toRecall, newCards) = toRecall(stacks, ~now, ~dayLength)
+  let toRecall = if toRecall->Array.length < max {
+    let newCards = newCards->Array.copy
+    newCards->shuffle
+    let len = max - toRecall->Array.length
+    let newCards =
+      len > newCards->Array.length ? newCards : newCards->Array.slice(~start=0, ~end=len)
+    toRecall->Array.concat(newCards)
+  } else {
+    toRecall
+  }
   toRecall->shuffle
   toRecall
 }
@@ -191,13 +202,13 @@ let make = (
       acc + prog.cards->Dict.valuesToArray->Array.length
     )
 
-    let newCount = total - seen
+    let (toRecall, _) = toRecall(stacks, ~now=now(), ~dayLength)
 
     {
       total,
       seen,
       new: total - seen,
-      toRecall: toRecall(stacks, ~now=now(), ~dayLength)->Array.length - newCount,
+      toRecall: toRecall->Array.length,
       stackCount: stack.value->Array.length,
     }
   })
