@@ -1045,3 +1045,65 @@ L'union de deux sous-groupes n'est généralement pas un sous-groupe. Dans $(\ma
 -   **Noyau d'un morphisme** : Le noyau d'un morphisme de groupes est toujours un sous-groupe (et il est même normal).
 -   **Théorème de Lagrange** : Dans un groupe fini, l'ordre (le nombre d'éléments) de tout sous-groupe divise l'ordre du groupe.
 
+---
+
+## Concept 13: Isomorphismes d'ensembles ordonnés
+
+### Prérequis
+
+-   [Concept 10: Relation d'Ordre](link_to_concept_order_relation)
+-   [Concept 6: Injectivité, Surjectivité et Bijectivité](link_to_concept_bijectivity)
+
+### Définition
+
+Soient $(E, \le_E)$ and $(F, \le_F)$ deux ensembles ordonnés.
+
+1.  Une application $f: E \to F$ est dite **croissante** (ou préserve l'ordre) si pour tous $x, y \in E$:
+    $$ x \le_E y \implies f(x) \le_F f(y) $$
+2.  Un **isomorphisme d'ensembles ordonnés** est une application bijective $f: E \to F$ telle que $f$ et sa réciproque $f^{-1}$ sont toutes les deux croissantes.
+
+### Propriétés Clés
+
+-   Une application bijective $f: E \to F$ est un isomorphisme d'ensembles ordonnés si et seulement si pour tous $x, y \in E$:
+    $$ x \le_E y \iff f(x) \le_F f(y) $$
+    Cette condition unique est plus forte que la simple croissance. Elle garantit que la structure d'ordre est parfaitement préservée dans les deux sens.
+-   Si deux ensembles sont isomorphes, leurs structures d'ordre sont "les mêmes". Par exemple, si $E$ a un plus petit élément, alors $F$ en a un aussi.
+-   La composition de deux isomorphismes d'ensembles ordonnés est un isomorphisme d'ensembles ordonnés.
+
+### Exemples
+
+**Exemple 1 : Isomorphisme trivial**
+
+Soit $f: (\mathbb{Z}, \le) \to (\mathbb{Z}, \le)$ définie par $f(n) = n + 5$.
+-   **Bijective ?** Oui. Sa réciproque est $f^{-1}(m) = m - 5$.
+-   **Croissante ?** Oui. Si $n_1 \le n_2$, alors $n_1+5 \le n_2+5$, donc $f(n_1) \le f(n_2)$.
+-   **$f^{-1}$ croissante ?** Oui. Si $m_1 \le m_2$, alors $m_1-5 \le m_2-5$, donc $f^{-1}(m_1) \le f^{-1}(m_2)$.
+$f$ est donc un isomorphisme d'ensembles ordonnés.
+
+**Exemple 2 : $(\mathbb{N}, \le)$ et $(2\mathbb{N}, \le)$**
+
+Soit $2\mathbb{N}$ l'ensemble des entiers naturels pairs $\{0, 2, 4, ...\}$. Montrons que $(\mathbb{N}, \le)$ et $(2\mathbb{N}, \le)$ sont isomorphes.
+Soit $f: \mathbb{N} \to 2\mathbb{N}$ définie par $f(n)=2n$.
+-   **Bijective ?** Oui. $f$ est injective ($2n_1=2n_2 \implies n_1=n_2$) et surjective (tout pair s'écrit $2n$).
+-   **$x \le y \iff f(x) \le f(y)$ ?**
+    - $\Rightarrow$: Si $n_1 \le n_2$, alors $2n_1 \le 2n_2$, donc $f(n_1) \le f(n_2)$.
+    - $\Leftarrow$: Si $f(n_1) \le f(n_2)$, alors $2n_1 \le 2n_2$. Comme $2>0$, on peut diviser par 2 sans changer le sens de l'inégalité, donc $n_1 \le n_2$.
+La condition est vérifiée, donc $f$ est un isomorphisme.
+
+**Exemple 3 : Une bijection non-isomorphe**
+
+Considérons $(\mathbb{Z}, \le)$. Soit $f: \mathbb{Z} \to \mathbb{Z}$ définie par $f(n) = -n$.
+-   **Bijective ?** Oui, elle est sa propre réciproque.
+-   **Croissante ?** Non. $2 \le 3$ mais $f(2)=-2$ et $f(3)=-3$. On n'a pas $-2 \le -3$. L'application est décroissante. Ce n'est pas un isomorphisme d'ordre.
+
+### Contre-exemples
+
+**Contre-exemple 1 : $(\mathbb{Z}, \le)$ et $(\mathbb{Q}, \le)$**
+
+Ces deux ensembles ne sont pas isomorphes. $\mathbb{Q}$ est un ordre dense (entre deux rationnels, il y en a toujours un autre), alors que $\mathbb{Z}$ est un ordre discret (entre $n$ et $n+1$, il n'y a aucun autre entier). Un isomorphisme préserverait cette propriété de densité, donc il ne peut en exister.
+
+### Concepts Connexes
+
+-   **Morphisme de groupes/anneaux**: C'est une notion similaire mais pour des structures algébriques. Un isomorphisme de groupes est une bijection qui préserve l'opération.
+-   **Topologie de l'ordre**: Une relation d'ordre peut être utilisée pour définir une topologie sur un ensemble.
+

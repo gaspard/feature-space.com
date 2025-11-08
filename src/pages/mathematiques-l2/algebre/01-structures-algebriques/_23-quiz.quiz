@@ -341,3 +341,35 @@ Cette question examine la rigueur dans la construction des structures algébriqu
 - **D)** C'est faux. C'est précisément de cette manière, via un ensemble quotient, que l'on construit rigoureusement $\mathbb{Z}$ (et son addition) à partir de $\mathbb{N}$. Cette construction est un exemple paradigmatique de la méthode des quotients. C'est la construction de Grothendieck appliquée au monoïde $(\mathbb{N},+)$.
 
 </details>
+
+---
+
+#### Question 12 : Isomorphismes d'ensembles ordonnés
+
+Lesquels des ensembles ordonnés suivants, munis de l'ordre usuel $\le$, sont isomorphes à $(\mathbb{Z}, \le)$ ?
+
+- [ ] **A)** $(\mathbb{N}, \le)$
+- [x] **B)** $(2\mathbb{Z}, \le)$, l'ensemble des entiers pairs.
+- [ ] **C)** $([0, 1], \le)$
+- [ ] **D)** $(\mathbb{Q}, \le)$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Deux ensembles ordonnés sont isomorphes s'il existe une bijection entre eux qui préserve l'ordre. On cherche un ensemble qui a la même "forme" que la chaîne des entiers.
+
+- **A) $(\mathbb{N}, \le)$ :** Cet ensemble n'est pas isomorphe à $\mathbb{Z}$. Une propriété structurelle clé d'un ensemble ordonné est l'existence d'un plus petit élément. $\mathbb{N}$ a un plus petit élément (0), alors que $\mathbb{Z}$ n'en a pas. Un isomorphisme d'ordre préserverait cette propriété, donc il ne peut pas en exister un entre $\mathbb{N}$ et $\mathbb{Z}$.
+
+- **B) $(2\mathbb{Z}, \le)$ :** Cet ensemble est isomorphe à $\mathbb{Z}$. Considérons l'application $f: \mathbb{Z} \to 2\mathbb{Z}$ définie par $f(n) = 2n$.
+    - **Bijectivité :** C'est une bijection. Elle est injective car $2n_1=2n_2 \implies n_1=n_2$. Elle est surjective car tout entier pair peut s'écrire $2n$ pour un certain $n \in \mathbb{Z}$.
+    - **Préservation de l'ordre :** On doit vérifier que $n_1 \le n_2 \iff f(n_1) \le f(n_2)$. C'est vrai car $n_1 \le n_2 \iff 2n_1 \le 2n_2$ (la multiplication par un réel positif préserve le sens de l'inégalité).
+    L'application $f$ est donc un isomorphisme d'ordre.
+
+- **C) $([0, 1], \le)$ :** Cet ensemble n'est pas isomorphe à $\mathbb{Z}$. L'ordre sur $\mathbb{Z}$ est discret (entre $n$ et $n+1$, il n'y a aucun autre élément), alors que l'ordre sur $[0,1]$ est dense. De plus, $\mathbb{Z}$ est infini dénombrable alors que $[0,1]$ est infini non dénombrable, il ne peut donc même pas y avoir de bijection entre eux.
+
+- **D) $(\mathbb{Q}, \le)$ :** Cet ensemble n'est pas isomorphe à $\mathbb{Z}$. L'ordre sur $\mathbb{Q}$ est dense (entre deux rationnels, il y en a toujours un autre), alors que l'ordre sur $\mathbb{Z}$ est discret. Cette propriété structurelle doit être préservée par un isomorphisme.
+
+</details>

@@ -420,3 +420,52 @@ Le triplet $(A/I, +, \times)$ est alors un nouvel anneau, appelé **anneau quoti
 - Dans cet anneau, on a par exemple $\bar{2} + \bar{3} = \overline{2+3} = \bar{5} = \bar{1}$, et $\bar{2} \times \bar{3} = \overline{2 \times 3} = \bar{6} = \bar{2}$.
 
 </details>
+
+---
+
+Qu'est-ce qu'une application croissante entre deux ensembles ordonnés ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Soient $(E, \le_E)$ et $(F, \le_F)$ deux ensembles ordonnés.
+
+Une application $f: E \to F$ est dite **croissante** si elle préserve la relation d'ordre. C'est-à-dire que si un élément est "plus petit" qu'un autre dans l'ensemble de départ, alors son image doit être "plus petite" que l'image de l'autre dans l'ensemble d'arrivée.
+
+Mathématiquement : Pour tous $x, y \in E$,
+$$ x \le_E y \implies f(x) \le_F f(y) $$
+
+**Exemple :**
+L'application $f: (\mathbb{R}, \le) \to (\mathbb{R}, \le)$ définie par $f(x) = 2x$ est croissante. Si $x \le y$, alors en multipliant par 2 (qui est positif), on obtient $2x \le 2y$, donc $f(x) \le f(y)$.
+
+**Contre-exemple :**
+L'application $g: (\mathbb{R}, \le) \to (\mathbb{R}, \le)$ définie par $g(x) = -x$ n'est pas croissante. Par exemple, $2 \le 3$, mais $g(2)=-2$ et $g(3)=-3$, et on n'a pas $-2 \le -3$. Cette application est dite décroissante.
+
+</details>
+
+---
+
+Qu'est-ce qu'un isomorphisme d'ensembles ordonnés ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Un **isomorphisme d'ensembles ordonnés** est une application $f: (E, \le_E) \to (F, \le_F)$ qui préserve parfaitement la structure d'ordre entre les deux ensembles. Pour cela, elle doit satisfaire deux conditions :
+
+1.  **Être une bijection** : L'application doit établir une correspondance "un pour un" entre les éléments de $E$ et $F$.
+2.  **Préserver l'ordre dans les deux sens** : La relation d'ordre entre deux éléments doit être équivalente à la relation d'ordre entre leurs images.
+
+Mathématiquement, une application bijective $f: E \to F$ est un isomorphisme d'ordre si pour tous $x, y \in E$ :
+$$ x \le_E y \iff f(x) \le_F f(y) $$
+
+Cette condition unique implique que $f$ est croissante et que sa réciproque $f^{-1}$ est aussi croissante.
+
+**Intuition :**
+Si deux ensembles ordonnés sont isomorphes, alors du point de vue de leur structure d'ordre, ils sont "identiques". Ils ont la même "forme". Par exemple, si l'un a un plus grand élément, l'autre en aura un aussi.
+
+**Exemple :**
+L'application $f: (\mathbb{N}, \le) \to (2\mathbb{N}, \le)$ définie par $f(n)=2n$ (où $2\mathbb{N}=\{0, 2, 4, ...\}$) est un isomorphisme. Elle est bijective, et $n_1 \le n_2 \iff 2n_1 \le 2n_2$.
+
+</details>

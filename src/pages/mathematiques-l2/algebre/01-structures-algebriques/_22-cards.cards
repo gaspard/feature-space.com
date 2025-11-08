@@ -53,7 +53,7 @@ Expliquer comment la propriété universelle des entiers naturels $(\mathbb{N}, 
 
 <summary>Réponse</summary>
 
-La propriété universelle de $(\mathbb{N}, S: \mathbb{N} \to \mathbb{N}, 0 \in \mathbb{N})$ stipule que pour tout triplet $(X, T: X \to X, x_0 \in X)$, il existe une **unique** application $f : \mathbb{N} \to X$ telle que $f(0) = x_0$ et le diagramme suivant commute : $f \circ S = T \circ f$.
+La propriété universelle de $(\mathbb{N}, S: \mathbb{N} \to \mathbb{N}, 0 \in \mathbb{N})$ stipule que pour tout triplet $(X, T, x_0 \in X)$, il existe une **unique** application $f : \mathbb{N} \to X$ telle que $f(0) = x_0$ et le diagramme suivant commute : $f \circ S = T \circ f$.
 
 Pour définir l'addition d'un entier $m \in \mathbb{N}$ à n'importe quel autre entier, nous fixons $m$ et cherchons à définir l'application $add_m: \mathbb{N} \to \mathbb{N}$ où $add_m(n) = m+n$.
 
@@ -461,5 +461,64 @@ Le foncteur $U: \textbf{Mon} \to \textbf{Grp}$ est défini comme suit :
 Ce foncteur établit une relation formelle entre les deux catégories. Il existe aussi un foncteur "d'oubli" $F: \textbf{Grp} \to \textbf{Mon}$ qui "oublie" simplement que les inverses existent et considère chaque groupe comme un monoïde.
 
 Le foncteur $U$ est l'**adjoint à gauche** du foncteur d'oubli $F$. Cette relation d'adjonction est une structure fondamentale en théorie des catégories et exprime de manière concise le fait que le groupe des unités est la "meilleure approximation par un groupe" d'un monoïde, d'une certaine manière. Il capture l'idée que les groupes sont des monoïdes avec une propriété supplémentaire (l'inversibilité).
+
+</details>
+
+---
+
+Comment un isomorphisme d'ordre préserve-t-il les éléments remarquables comme les minima/maxima ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Soit $f: (E, \le_E) \to (F, \le_F)$ un isomorphisme d'ordre. Un élément remarquable est défini uniquement par la structure d'ordre. Puisque l'isomorphisme préserve parfaitement cette structure, il doit préserver ces éléments.
+
+**Preuve pour le plus petit élément (minimum) :**
+
+Soit $m_E$ le plus petit élément de $E$.
+- **Définition de $m_E$ :** Pour tout $x \in E$, on a $m_E \le_E x$.
+
+Montrons que $f(m_E)$ est le plus petit élément de $F$. Soit $y$ un élément quelconque de $F$.
+1.  Puisque $f$ est une bijection, il existe un unique $x \in E$ tel que $f(x)=y$.
+2.  Par définition de $m_E$, on a $m_E \le_E x$.
+3.  Puisque $f$ est un isomorphisme d'ordre, l'équivalence $a \le_E b \iff f(a) \le_F f(b)$ est vraie. En l'appliquant à $m_E \le_E x$, on obtient :
+    $$ f(m_E) \le_F f(x) $$
+4.  En substituant $f(x)$ par $y$, on a $f(m_E) \le_F y$.
+
+Ceci est vrai pour tout $y \in F$, donc $f(m_E)$ est le plus petit élément de $F$.
+
+**Argument général :**
+Toute propriété qui peut être exprimée uniquement en termes de la relation d'ordre (e.g., "être un élément minimal", "être une borne supérieure d'un sous-ensemble", "former une chaîne") sera préservée par un isomorphisme d'ordre. L'isomorphisme agit comme une "traduction" parfaite de la structure d'ordre de $E$ vers $F$.
+
+</details>
+
+---
+
+Quelles sont les conditions pour que deux ensembles ordonnés finis et totalement ordonnés soient isomorphes ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Deux ensembles finis et totalement ordonnés $(E, \le_E)$ et $(F, \le_F)$ sont isomorphes si et seulement s'ils ont le **même cardinal** (le même nombre d'éléments).
+
+**Preuve :**
+
+- **Sens direct ($\Rightarrow$) :** Si $E$ et $F$ sont isomorphes, il existe une bijection entre eux. Par définition, deux ensembles en bijection ont le même cardinal.
+
+- **Sens réciproque ($\Leftarrow$) :** Supposons que $|E| = |F| = n$.
+    1.  Puisque $E$ est fini et totalement ordonné, on peut ordonner ses éléments de manière unique du plus petit au plus grand : $e_1 <_E e_2 <_E \dots <_E e_n$.
+    2.  De même, on peut ordonner les éléments de $F$ : $f_1 <_F f_2 <_F \dots <_F f_n$.
+    3.  On définit une application $h: E \to F$ en associant le $k$-ième élément de $E$ au $k$-ième élément de $F$ :
+        $$ h(e_k) = f_k \quad \text{pour } k=1, \dots, n $$
+    4.  **$h$ est une bijection :** C'est évident par construction. Elle associe chaque élément de $E$ à un unique élément de $F$.
+    5.  **$h$ est un isomorphisme d'ordre :** On doit vérifier $e_i \le_E e_j \iff h(e_i) \le_F h(e_j)$.
+        -   Si $e_i \le_E e_j$, alors $i \le j$. Par construction, $h(e_i) = f_i$ et $h(e_j) = f_j$. Comme l'ordre des indices est préservé, on a $f_i \le_F f_j$.
+        -   Réciproquement, si $h(e_i) \le_F h(e_j)$, alors $f_i \le_F f_j$, ce qui implique $i \le j$, et donc $e_i \le_E e_j$.
+
+L'application $h$ est donc un isomorphisme d'ordre.
+
+**Conclusion :** Pour les ensembles finis et totalement ordonnés, la structure est entièrement déterminée par le nombre d'éléments. Tout ensemble de ce type de cardinal $n$ est isomorphe à l'ensemble de référence $(\{1, 2, \dots, n\}, \le)$.
 
 </details>

@@ -467,7 +467,7 @@ Puisque $U$ est une partie non vide de $\mathbb{C}^*$ et que pour tous $x,y \in 
 
 | $\bar{1}$ | $\bar{0}$ | $\bar{1}$ | $\bar{2}$ | $\bar{3}$ | $\bar{4}$ | $\bar{5}$ | $\bar{6}$ |
 
-| $\bar{2}$ | $\bar{0}$ | $\bar{2}$ | $\bar{4}$ | $\bar{6}$ | $\bar{8}=\bar{1}$ | $\overline{10}=\bar{3}$| $\overline{12}=\bar{5}$|
+| $\bar{2}$ | $\bar{0}$ | $\bar{2}$ | $\bar{4}$ | $\bar{6}$ | $\overline{10}=\bar{3}$ | $\overline{12}=\bar{5}$| $\overline{14}=\bar{1}$|
 
 | $\bar{3}$ | $\bar{0}$ | $\bar{3}$ | $\bar{6}$ | $\bar{9}=\bar{2}$ | $\overline{12}=\bar{5}$| $\overline{15}=\bar{1}$| $\overline{18}=\bar{4}$|
 
@@ -872,5 +872,45 @@ Puisque $I$ est un sous-groupe additif de $\mathbb{R}[X]$ et qu'il absorbe la mu
     On sait que le noyau d'un morphisme d'anneaux est toujours un idéal de l'anneau de départ. Puisque $I = \text{Ker}(\text{ev}_5)$, $I$ est un idéal de $\mathbb{R}[X]$.
 
 **Réponse:** L'ensemble $I = \{ P(X) \in \mathbb{R}[X] \mid P(5) = 0 \}$ est bien un **idéal** de $\mathbb{R}[X]$.
+
+</details>
+
+## Exercice 13: Isomorphismes d'ensembles ordonnés
+
+**Problème:** Soit $c$ un nombre réel. Montrer que l'application $f: \mathbb{R} \to \mathbb{R}$ définie par $f(x) = x + c$ est un isomorphisme d'ensembles ordonnés pour l'ordre usuel $(\mathbb{R}, \le)$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Méthode:** Pour montrer que $f$ est un isomorphisme d'ensembles ordonnés, nous devons vérifier deux conditions :
+1.  $f$ est une bijection.
+2.  $f$ et son application réciproque $f^{-1}$ sont toutes les deux croissantes.
+Une condition équivalente et plus directe est de vérifier que $f$ est bijective et que, pour tous $x, y \in \mathbb{R}$, on a $x \le y \iff f(x) \le f(y)$.
+
+**Étapes:**
+
+1.  **Vérifier la bijectivité :**
+    -   **Injectivité :** Soient $x_1, x_2 \in \mathbb{R}$ tels que $f(x_1) = f(x_2)$. Alors $x_1 + c = x_2 + c$. En soustrayant $c$ des deux côtés, on obtient $x_1 = x_2$. L'application est injective.
+    -   **Surjectivité :** Soit $y \in \mathbb{R}$ un élément quelconque de l'ensemble d'arrivée. On cherche un antécédent $x \in \mathbb{R}$ tel que $f(x) = y$. L'équation est $x + c = y$, qui a pour solution $x = y - c$. Cet antécédent existe toujours dans $\mathbb{R}$. L'application est surjective.
+    -   Puisque $f$ est injective et surjective, elle est **bijective**. Son application réciproque est $f^{-1}(y) = y - c$.
+
+2.  **Vérifier la préservation de l'ordre :**
+    On doit montrer l'équivalence $x \le y \iff f(x) \le f(y)$.
+    -   **Sens direct ($\Rightarrow$) :** Supposons que $x \le y$.
+        En ajoutant la constante $c$ aux deux membres de l'inégalité, le sens de l'inégalité est préservé :
+        $x + c \le y + c$.
+        Ceci est équivalent à $f(x) \le f(y)$.
+        Donc $f$ est une application croissante.
+    -   **Sens réciproque ($\Leftarrow$) :** Supposons que $f(x) \le f(y)$.
+        Ceci signifie que $x + c \le y + c$.
+        En soustrayant la constante $c$ aux deux membres, le sens de l'inégalité est préservé :
+        $x \le y$.
+        La condition est donc bien une équivalence.
+
+**Conclusion:**
+L'application $f(x) = x+c$ est une bijection qui préserve l'ordre dans les deux sens. C'est donc un isomorphisme d'ensembles ordonnés.
+
+**Réponse:** L'application $f(x) = x + c$ est un **isomorphisme d'ensembles ordonnés** de $(\mathbb{R}, \le)$ sur lui-même.
 
 </details>

@@ -646,3 +646,48 @@ $$ (n_1, h_1) \cdot (n_2, h_2) = (n_1 \cdot_N \varphi_{h_1}(n_2), h_1 \cdot_H h_
 **Réponse :** L'existence d'un bon ordre sur tout ensemble $X$ est prouvée en appliquant le lemme de Zorn à l'ensemble $\mathcal{W}$ des bons ordres sur les sous-ensembles de $X$, partiellement ordonné par la relation d'extension de segment initial. Une chaîne dans $\mathcal{W}$ a pour borne supérieure l'union de ses éléments, ce qui permet d'appliquer Zorn. L'élément maximal résultant est nécessairement un bon ordre sur $X$ tout entier, sans quoi on pourrait l'étendre, contredisant sa maximalité.
 
 </details>
+
+## Exercice 11: Isomorphismes d'ensembles ordonnés (Pro)
+
+**Problème:** Démontrer que les ensembles ordonnés $(]0, 1[, \le)$ et $(\mathbb{R}, \le)$ sont isomorphes, où $\le$ est l'ordre usuel sur les réels.
+
+<details>
+
+<summary>Solution</summary>
+
+**Méthode:** Pour prouver que deux ensembles ordonnés sont isomorphes, nous devons trouver une application bijective $f$ de l'un vers l'autre qui préserve l'ordre. Dans le cas des ordres totaux sur des sous-ensembles de $\mathbb{R}$, une application strictement croissante est automatiquement un isomorphisme d'ordre sur son image. Nous devons donc trouver une bijection strictement croissante de $]0, 1[$ vers $\mathbb{R}$. Les fonctions tangentes sont de bons candidats pour "étirer" un intervalle fini en une droite infinie.
+
+**Étapes:**
+
+1.  **Choisir une fonction candidate :**
+    Considérons la fonction tangente, $\tan(x)$, qui est une bijection de $]-\pi/2, \pi/2[$ vers $\mathbb{R}$. Nous pouvons adapter cette fonction à notre intervalle $]0, 1[$.
+    -   Nous avons besoin d'une transformation affine qui envoie $]0, 1[$ sur $]-\pi/2, \pi/2[$.
+    -   Soit $u(x) = ax+b$. On veut $u(0) = -\pi/2$ et $u(1) = \pi/2$.
+    -   $u(0) = b = -\pi/2$.
+    -   $u(1) = a+b = \pi/2 \implies a - \pi/2 = \pi/2 \implies a = \pi$.
+    -   La transformation est donc $u(x) = \pi x - \pi/2 = \pi(x - 1/2)$.
+
+2.  **Définir l'isomorphisme :**
+    Soit l'application $f: ]0, 1[ \to \mathbb{R}$ définie par :
+    $$ f(x) = \tan(\pi(x - 1/2)) $$
+
+3.  **Vérifier les propriétés de l'isomorphisme :**
+    -   **Bien définie :** Si $x \in ]0, 1[$, alors $x-1/2 \in ]-1/2, 1/2[$. Donc $\pi(x-1/2) \in ]-\pi/2, \pi/2[$. La fonction tangente est bien définie et continue sur cet intervalle.
+    -   **Bijectivité :** L'application $f$ est une composition de trois bijections :
+        -   $x \mapsto x-1/2$ est une bijection de $]0,1[$ sur $]-1/2, 1/2[$.
+        -   $y \mapsto \pi y$ est une bijection de $]-1/2, 1/2[$ sur $]-\pi/2, \pi/2[$.
+        -   $z \mapsto \tan(z)$ est une bijection de $]-\pi/2, \pi/2[$ sur $\mathbb{R}$.
+        La composition de bijections est une bijection. Donc $f$ est bijective de $]0,1[$ vers $\mathbb{R}$.
+    -   **Préservation de l'ordre :** Il suffit de montrer que la condition $x \le y \iff f(x) \le f(y)$ est satisfaite.
+        Calculons la dérivée de $f$ :
+        $$ f'(x) = \pi \cdot (1 + \tan^2(\pi(x-1/2))) $$
+        La dérivée est la composée de $\pi$ (positif) et d'un terme toujours supérieur ou égal à 1. Donc $f'(x) > 0$ pour tout $x \in ]0,1[$.
+        Puisque la dérivée est strictement positive sur l'intervalle, la fonction $f$ est strictement croissante.
+        Pour une fonction strictement croissante, l'équivalence $x \le y \iff f(x) \le f(y)$ est toujours vérifiée.
+
+**Conclusion:**
+L'application $f(x) = \tan(\pi(x - 1/2))$ est une bijection de $]0,1[$ vers $\mathbb{R}$ qui préserve l'ordre. Par conséquent, les ensembles ordonnés $(]0, 1[, \le)$ et $(\mathbb{R}, \le)$ sont isomorphes.
+
+**Réponse :** Oui, les ensembles ordonnés $(]0, 1[, \le)$ et $(\mathbb{R}, \le)$ sont **isomorphes**. Un isomorphisme possible est donné par la fonction $f(x) = \tan(\pi(x - 1/2))$.
+
+</details>

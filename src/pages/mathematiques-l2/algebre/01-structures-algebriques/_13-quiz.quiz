@@ -399,3 +399,29 @@ Une démonstration par récurrence repose sur un effet "domino". Il faut pousser
 - **D.** C'est l'étape d'**initialisation** (ou cas de base) pour une propriété énoncée pour $n \ge 0$. Sans cette étape, l'hérédité seule ne prouve rien.
 
 </details>
+
+---
+
+#### Question 15 : Isomorphismes d'ensembles ordonnés
+
+Soit $f: (\mathbb{Z}, \le) \to (\mathbb{Z}, \le)$ une application. Laquelle des affirmations suivantes garantit que $f$ est un isomorphisme d'ensembles ordonnés ?
+
+- [ ] **A)** $f$ est une application strictement croissante.
+- [ ] **B)** $f$ est une bijection.
+- [x] **C)** $f$ est une bijection croissante et sa réciproque $f^{-1}$ est aussi croissante.
+- [ ] **D)** Pour tous $x, y \in \mathbb{Z}$, si $x \le y$, alors $f(x) \le f(y)$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Un isomorphisme d'ensembles ordonnés doit préserver la structure d'ordre de manière parfaite, ce qui implique une bijection qui respecte l'ordre dans les deux sens.
+
+- **A)** Une application strictement croissante est injective, mais pas forcément surjective. Par exemple, $f(n) = 2n$ est strictement croissante sur $\mathbb{Z}$ mais n'est pas surjective (les nombres impairs n'ont pas d'antécédent). Elle n'est donc pas une bijection, et ne peut pas être un isomorphisme de $(\mathbb{Z}, \le)$ sur lui-même.
+- **B)** Une bijection ne préserve pas forcément l'ordre. Par exemple, $f(n) = -n$ est une bijection de $\mathbb{Z}$ sur $\mathbb{Z}$, mais elle est décroissante. Si $2 \le 3$, alors $f(2)=-2$ et $f(3)=-3$, et on a $-2 \ge -3$. L'ordre est inversé.
+- **C)** C'est la définition complète d'un isomorphisme d'ensembles ordonnés. Une bijection dont l'application et la réciproque sont croissantes. Cette double condition est équivalente à l'affirmation unique : $x \le y \iff f(x) \le f(y)$.
+- **D)** Cette affirmation définit simplement une application croissante. Comme vu en A), ce n'est pas suffisant.
+
+</details>

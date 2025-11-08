@@ -579,3 +579,77 @@ Dans l'anneau non commutatif $M_2(\mathbb{R})$, l'ensemble des matrices de la fo
     - $A/I$ est un anneau intègre $\iff I$ est un idéal premier.
     - $A/I$ est un corps $\iff I$ est un idéal maximal.
 - **Géométrie Algébrique** : Le concept d'idéal est central. L'ensemble des idéaux premiers d'un anneau commutatif $A$, noté $\text{Spec}(A)$, peut être muni d'une topologie (de Zariski) et d'un faisceau d'anneaux, le transformant en un objet géométrique appelé schéma affine.
+
+---
+
+## Concept 9: Isomorphismes d'ensembles ordonnés et invariants
+
+### Prérequis
+
+-   Relations d'ordre (partiel et total).
+-   Injectivité, Surjectivité, Bijectivité.
+
+### Définition
+
+Soient $(E, \le_E)$ et $(F, \le_F)$ deux ensembles ordonnés (posets).
+
+Une application $f: E \to F$ est un **isomorphisme d'ordre** si elle est bijective et si, pour tous $x, y \in E$, on a l'équivalence :
+$$ x \le_E y \iff f(x) \le_F f(y) $$
+
+Cette condition unique implique que $f$ et sa réciproque $f^{-1}$ sont toutes deux croissantes. Deux ensembles ordonnés sont dits **isomorphes** s'il existe un isomorphisme d'ordre entre eux.
+
+### Propriétés Clés
+
+-   **Invariants d'ordre** : Un isomorphisme d'ordre préserve toutes les propriétés structurelles liées à l'ordre. Si $f: E \to F$ est un isomorphisme :
+    -   $x$ est un **élément minimal** de $E \iff f(x)$ est un élément minimal de $F$.
+    -   $x$ est le **plus petit élément** de $E \iff f(x)$ est le plus petit élément de $F$.
+    -   Une partie $A \subset E$ admet une **borne supérieure** (supremum) $s \iff f(A) \subset F$ admet une borne supérieure $f(s)$.
+    -   $E$ est un **ordre total** $\iff F$ est un ordre total.
+    -   $E$ est un **bon ordre** (well-ordering) $\iff F$ est un bon ordre.
+    -   $E$ est un **treillis** (lattice) $\iff F$ est un treillis.
+
+-   **Caractérisation pour les ordres totaux finis** : Deux ensembles finis totalement ordonnés sont isomorphes si et seulement si ils ont le même cardinal. L'isomorphisme canonique entre deux tels ensembles de cardinal $n$ et $(\{1, ..., n\}, \le)$ envoie le $k$-ième plus petit élément sur $k$.
+
+### Exemples
+
+**Exemple 1 : Isomorphisme entre $(\mathbb{Z}, \le)$ et $(\mathbb{Z}+a, \le)$**
+
+Pour tout $a \in \mathbb{Z}$, l'application $f(n)=n+a$ est un isomorphisme d'ordre de $(\mathbb{Z}, \le)$ sur lui-même (un automorphisme). Elle préserve la structure discrète "sans début ni fin" de $\mathbb{Z}$.
+
+**Exemple 2 : Isomorphisme entre $(]0,1[, \le)$ et $(\mathbb{R}, \le)$**
+
+L'intervalle ouvert $]0,1[$ et la droite réelle $\mathbb{R}$, tous deux munis de l'ordre usuel, sont isomorphes. Une fonction comme $f(x) = \tan(\pi(x - 1/2))$ est un isomorphisme d'ordre.
+-   Elle est bijective de $]0,1[$ vers $\mathbb{R}$.
+-   Elle est strictement croissante, ce qui garantit que $x \le y \iff f(x) \le f(y)$.
+Cet isomorphisme montre que d'un point de vue de l'ordre pur, un intervalle borné (sans ses bornes) est indiscernable de la droite réelle entière.
+
+**Exemple 3 : Isomorphisme de posets**
+
+Soit $E = \{1, 2, 3, 4, 6, 12\}$ ordonné par la divisibilité. Soit $F = \mathcal{P}(\{a,b\}) \times \mathcal{P}(\{c\})$ ordonné par l'ordre produit (i.e., $(A,B) \le (A',B') \iff A \subseteq A'$ et $B \subseteq B'$). Ces deux posets sont isomorphes.
+L'isomorphisme $f: E \to F$ peut être défini par la décomposition en facteurs premiers : $n = 2^x 3^y \in E$.
+$f(n) = (\{a \mid x \ge 1\}, \{c \mid y \ge 1\})$.
+- $f(1)=f(2^0 3^0) = (\emptyset, \emptyset)$
+- $f(2)=f(2^1 3^0) = (\{a\}, \emptyset)$
+- $f(3)=f(2^0 3^1) = (\emptyset, \{c\})$
+- $f(6)=f(2^1 3^1) = (\{a\}, \{c\})$
+Cet isomorphisme préserve la structure de treillis des deux ensembles.
+
+### Contre-exemples
+
+**Contre-exemple 1 : $(\mathbb{N}, \le)$ et $(\mathbb{Z}, \le)$**
+
+Ces deux ensembles ne sont pas isomorphes. $(\mathbb{N}, \le)$ a un plus petit élément (0), alors que $(\mathbb{Z}, \le)$ n'en a pas. Puisque l'existence d'un plus petit élément est un invariant d'ordre, il ne peut y avoir d'isomorphisme entre eux.
+
+**Contre-exemple 2 : $([0,1], \le)$ et $(]0,1[, \le)$**
+
+Ces deux ensembles ne sont pas isomorphes. $[0,1]$ a un plus petit et un plus grand élément, alors que $]0,1[$ n'en a pas.
+
+**Contre-exemple 3 : Deux posets finis de même cardinal**
+
+Soit $E=\{1,2,3,4\}$ avec l'ordre usuel. Soit $F=\{a,b,c,d\}$ avec l'ordre partiel défini par $a \le c, a \le d, b \le c, b \le d$.
+$E$ est un ordre total, $F$ ne l'est pas ( $a$ et $b$ ne sont pas comparables). Bien que $|E|=|F|=4$, ils ne sont pas isomorphes car la totalité de l'ordre est un invariant.
+
+### Concepts Connexes
+
+-   **Théorème de dualité de Birkhoff (pour les treillis)** : Il établit un isomorphisme entre la catégorie des treillis distributifs finis et la catégorie des ensembles partiellement ordonnés finis.
+-   **Automomorphismes d'un ordre** : Un isomorphisme d'un ensemble ordonné sur lui-même. Le groupe d'automorphismes $\text{Aut}(E, \le)$ capture les symétries de la structure d'ordre. Pour un ordre total fini, ce groupe est trivial. Pour $(\mathbb{Z}, \le)$, il est isomorphe à $(\mathbb{Z}, +)$ (les translations).

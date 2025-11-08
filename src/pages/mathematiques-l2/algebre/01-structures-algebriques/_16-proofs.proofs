@@ -710,3 +710,60 @@ Ceci est exactement la formule que nous voulions prouver pour le rang $k+1$. L'h
 Par le principe de récurrence, la proposition $P(n)$ est vraie pour tout entier $n \geq 0$.
 
 </details>
+
+---
+
+#### Composition de deux isomorphismes d'ensembles ordonnés
+
+Prouver que si $f: (E, \le_E) \to (F, \le_F)$ et $g: (F, \le_F) \to (H, \le_H)$ sont deux isomorphismes d'ensembles ordonnés, alors leur composition $g \circ f: (E, \le_E) \to (H, \le_H)$ est aussi un isomorphisme d'ensembles ordonnés.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Pour prouver que $g \circ f$ est un isomorphisme d'ensembles ordonnés, vous devez vérifier deux points :
+1.  $g \circ f$ est une bijection. (Utilisez le fait que la composition de deux bijections est une bijection).
+2.  $g \circ f$ préserve l'ordre dans les deux sens, c'est-à-dire que pour tous $x, y \in E$, on a $x \le_E y \iff (g \circ f)(x) \le_H (g \circ f)(y)$.
+
+Pour prouver le point 2, séparez l'équivalence en deux implications et utilisez les propriétés d'isomorphisme de $f$ et $g$ successivement.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soient $f: (E, \le_E) \to (F, \le_F)$ et $g: (F, \le_F) \to (H, \le_H)$ deux isomorphismes d'ensembles ordonnés. Nous devons prouver que leur composition $h = g \circ f$ est également un isomorphisme d'ensembles ordonnés.
+
+**Étape 1 : Vérifier que $g \circ f$ est une bijection**
+
+-   Par définition, un isomorphisme est une bijection. Donc $f$ et $g$ sont toutes les deux des bijections.
+-   La composition de deux bijections est une bijection. L'application $g \circ f: E \to H$ est donc une bijection.
+
+**Étape 2 : Vérifier la préservation de l'ordre**
+
+Nous devons montrer que pour tous les éléments $x, y \in E$, l'équivalence suivante est vraie :
+$$ x \le_E y \iff (g \circ f)(x) \le_H (g \circ f)(y) $$
+
+Pour ce faire, nous allons prouver les deux implications séparément.
+
+-   **Implication directe ($\Rightarrow$) :**
+    -   Supposons que $x \le_E y$.
+    -   Puisque $f$ est un isomorphisme d'ordre, elle est croissante. Donc, $f(x) \le_F f(y)$.
+    -   Puisque $g$ est un isomorphisme d'ordre, elle est également croissante. En appliquant $g$ à l'inégalité précédente, on obtient : $g(f(x)) \le_H g(f(y))$.
+    -   Ceci est équivalent à $(g \circ f)(x) \le_H (g \circ f)(y)$.
+    -   L'implication directe est donc prouvée.
+
+-   **Implication réciproque ($\Leftarrow$) :**
+    -   Supposons que $(g \circ f)(x) \le_H (g \circ f)(y)$. Cela signifie $g(f(x)) \le_H g(f(y))$.
+    -   Puisque $g$ est un isomorphisme d'ordre, sa réciproque $g^{-1}$ est aussi croissante. Appliquons $g^{-1}$ à l'inégalité : $g^{-1}(g(f(x))) \le_F g^{-1}(g(f(y)))$.
+    -   Cela se simplifie en $f(x) \le_F f(y)$.
+    -   Puisque $f$ est un isomorphisme d'ordre, sa réciproque $f^{-1}$ est aussi croissante. Appliquons $f^{-1}$ à l'inégalité : $f^{-1}(f(x)) \le_E f^{-1}(f(y))$.
+    -   Cela se simplifie en $x \le_E y$.
+    -   L'implication réciproque est donc prouvée.
+
+**Conclusion**
+
+Nous avons montré que $g \circ f$ est une bijection et que pour tous $x, y \in E$, $x \le_E y \iff (g \circ f)(x) \le_H (g \circ f)(y)$. Par conséquent, $g \circ f$ est un isomorphisme d'ensembles ordonnés.
+
+</details>
