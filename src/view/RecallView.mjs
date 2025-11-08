@@ -3,6 +3,7 @@
 import * as App from "./App.mjs";
 import * as Browser from "../service/Browser.mjs";
 import * as TiliaReact from "@tilia/react/src/TiliaReact.mjs";
+import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import MarkdownTsx from "./Markdown.tsx";
 import * as JsxRuntime from "react/jsx-runtime";
 
@@ -275,58 +276,56 @@ function RecallView(props) {
               back: front._0
             })
     );
-  return JsxRuntime.jsxs(JsxRuntime.Fragment, {
-              children: [
-                JsxRuntime.jsx("a", {
-                      id: "recall"
-                    }),
-                JsxRuntime.jsxs("div", {
-                      children: [
-                        JsxRuntime.jsxs("div", {
-                              children: [
-                                JsxRuntime.jsx("span", {
-                                      children: "session"
-                                    }),
-                                JsxRuntime.jsx("span", {
-                                      children: recall.stats.stackCount.toString(),
-                                      className: "col-span-3 font-bold text-left"
-                                    }),
-                                JsxRuntime.jsx("span", {
-                                      children: "à réviser"
-                                    }),
-                                JsxRuntime.jsx("span", {
-                                      children: recall.stats.toRecall.toString(),
-                                      className: "num"
-                                    }),
-                                JsxRuntime.jsx("span", {
-                                      children: "vues"
-                                    }),
-                                JsxRuntime.jsx("span", {
-                                      children: recall.stats.seen.toString(),
-                                      className: "num"
-                                    }),
-                                JsxRuntime.jsx("span", {
-                                      children: "nouvelles"
-                                    }),
-                                JsxRuntime.jsx("span", {
-                                      children: recall.stats.new.toString(),
-                                      className: "num"
-                                    }),
-                                JsxRuntime.jsx("span", {
-                                      children: "total"
-                                    }),
-                                JsxRuntime.jsx("span", {
-                                      children: recall.stats.total.toString(),
-                                      className: "num"
-                                    })
-                              ],
-                              className: "stats"
-                            }),
-                        tmp
-                      ],
-                      className: "card-wrapper"
-                    })
-              ]
+  return JsxRuntime.jsx(JsxRuntime.Fragment, {
+              children: Caml_option.some(JsxRuntime.jsxs("div", {
+                        children: [
+                          JsxRuntime.jsx("a", {
+                                id: "recall"
+                              }),
+                          JsxRuntime.jsxs("div", {
+                                children: [
+                                  JsxRuntime.jsx("span", {
+                                        children: "session"
+                                      }),
+                                  JsxRuntime.jsx("span", {
+                                        children: recall.stats.stackCount.toString(),
+                                        className: "col-span-3 font-bold text-left"
+                                      }),
+                                  JsxRuntime.jsx("span", {
+                                        children: "à réviser"
+                                      }),
+                                  JsxRuntime.jsx("span", {
+                                        children: recall.stats.toRecall.toString(),
+                                        className: "num"
+                                      }),
+                                  JsxRuntime.jsx("span", {
+                                        children: "vues"
+                                      }),
+                                  JsxRuntime.jsx("span", {
+                                        children: recall.stats.seen.toString(),
+                                        className: "num"
+                                      }),
+                                  JsxRuntime.jsx("span", {
+                                        children: "nouvelles"
+                                      }),
+                                  JsxRuntime.jsx("span", {
+                                        children: recall.stats.new.toString(),
+                                        className: "num"
+                                      }),
+                                  JsxRuntime.jsx("span", {
+                                        children: "total"
+                                      }),
+                                  JsxRuntime.jsx("span", {
+                                        children: recall.stats.total.toString(),
+                                        className: "num"
+                                      })
+                                ],
+                                className: "stats"
+                              }),
+                          tmp
+                        ],
+                        className: "card-wrapper"
+                      }))
             });
 }
 

@@ -155,8 +155,8 @@ let make = (~recall: Recall.t) => {
   useTilia()
 
   <>
-    <a id="recall" />
     <div className="card-wrapper">
+      <a id="recall" />
       <div className="stats">
         <span> {"session"->React.string} </span>
         <span className="col-span-3 font-bold text-left">
