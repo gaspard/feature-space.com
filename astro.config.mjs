@@ -15,6 +15,10 @@ import { layoutPlugin } from "./src/utils/layoutPlugin.ts";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://feature-space.com',
+  redirects: {
+    '/mathematique-L1': '/mathematique-l1',
+    '/mathematique-L1/:path*': '/mathematique-l1/:path*',
+  },
   integrations: [
     react(),
     sitemap(),

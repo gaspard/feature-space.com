@@ -49,7 +49,7 @@ main {
     @apply bg-red-100 rounded-md px-2 py-1 text-sm m-4 italic text-gray-800 flex flex-col gap-4;
 
     p {
-      @apply m-0 indent-0;
+      @apply m-0;
     }
 
     svg {
@@ -61,7 +61,7 @@ main {
     @apply bg-purple-100 text-2xl rounded-md p-4 text-black table my-8 mx-auto;
 
     p {
-      @apply m-0 indent-0;
+      @apply m-0;
 
       a {
         color: rgb(30, 13, 30);
@@ -104,7 +104,7 @@ main {
   }
 
   .stats, .settings {
-    @apply bg-slate-100 grid grid-cols-[2fr_0fr_1fr_0fr] gap-2 text-xs text-gray-500 w-auto my-4 mx-4 border-1 p-2 rounded-md border-slate-200 float-right min-w-48;
+    @apply bg-slate-100 grid grid-cols-[2fr_0fr_1fr_0fr] gap-2 text-xs text-gray-500 w-auto my-4 mb-8 mx-4 border-1 p-2 rounded-md border-slate-200 float-right min-w-48;
     .num {
       @apply text-right;
     }
@@ -221,7 +221,6 @@ main {
   }
 
   p {
-    @apply sm:indent-2;
     font-size: 100%;
     margin: 1em 0 0 0em;
   }
@@ -241,9 +240,6 @@ main {
     margin-bottom: 1.5em;
   }
 
-  p.lead+p {
-    text-indent: 0;
-  }
 
   ul,
   ol {
@@ -252,7 +248,6 @@ main {
 
   ol li:not(:has(input)),
   ul li:not(:has(input)) {
-    text-indent: 0;
     margin-left: 1em;
   }
 
@@ -360,7 +355,6 @@ main {
   }
 
   .aside {
-    text-indent: 0;
     float: right;
     width: 50%;
     background: hsl(208deg 50% 97.06%);
@@ -443,7 +437,7 @@ main {
     @apply bg-white md:m-4 md:rounded-xl md:border md:border-slate-300 w-full lg:max-w-3xl overflow-hidden;
 
     p {
-      @apply indent-0 my-5;
+      @apply my-5;
     }
 
     .card-question {
@@ -516,7 +510,7 @@ td {
 }
 
 li:not(:has(input)) {
-  @apply list-disc p-0 indent-0;
+  @apply list-disc p-0;
 }
 
 li:has(input), .card li:has(input) {
