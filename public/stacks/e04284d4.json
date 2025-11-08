@@ -1,0 +1,329 @@
+{
+  "info": {
+    "id": "e04284d4",
+    "title": "Dérivées - quiz (A)",
+    "type": "quiz",
+    "level": "regular",
+    "chapter": "Dérivées",
+    "course": "Bases mathématiques",
+    "tags": [
+      "dérivées",
+      "analyse",
+      "calcul différentiel",
+      "fonctions",
+      "limites",
+      "mathématiques"
+    ],
+    "count": 11
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "e04284d4",
+      "content": "#### Question 1 : Définition du nombre dérivé\n\nQuelle est la définition correcte du nombre dérivé $f'(a)$ d'une fonction $f$ en un point $a$, en supposant que la limite existe et est finie ?\n",
+      "solution": "\n\n**Réponses : [B, D]**\n\nLe nombre dérivé d'une fonction $f$ en un point $a$ est défini comme la limite du taux d'accroissement de la fonction autour de ce point. Il existe deux formulations équivalentes principales.\n\n- **A)** Cette option est incorrecte, bien que très proche. Si on pose $k = -h$, alors quand $h \\to 0$, $k \\to 0$. L'expression devient $\\lim_{k \\to 0} \\frac{f(a) - f(a+k)}{k} = \\lim_{k \\to 0} -\\frac{f(a+k) - f(a)}{k} = -f'(a)$. L'expression est donc l'opposé de la dérivée.\n\n- **B)** C'est l'une des définitions standard du nombre dérivé. Elle représente la limite de la pente des sécantes passant par les points $(a, f(a))$ et $(x, f(x))$ lorsque $x$ se rapproche de $a$.\n\n- **C)** Cette option représente le taux d'accroissement de $f$ entre $a$ et $a+h$, mais elle omet l'opération cruciale de passage à la limite lorsque $h$ tend vers 0.\n\n- **D)** C'est l'autre définition standard du nombre dérivé, utilisant un petit écart $h$ qui tend vers 0. C'est la plus couramment utilisée pour les calculs de base.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $f'(a) = \\lim_{h \\to 0} \\frac{f(a) - f(a-h)}{-h}$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $f'(a) = \\lim_{x \\to a} \\frac{f(x) - f(a)}{x - a}$",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $f'(a) = \\frac{f(a+h) - f(a)}{h}$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $f'(a) = \\lim_{h \\to 0} \\frac{f(a+h) - f(a)}{h}$",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "stackId": "e04284d4",
+      "content": "#### Question 2 : Lien entre dérivabilité et continuité\n\nLaquelle des affirmations suivantes concernant le lien entre la dérivabilité et la continuité d'une fonction $f$ en un point $a$ est correcte ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nCette question teste un théorème fondamental du calcul différentiel.\n\n- **A)** Cette affirmation est fausse. C'est la réciproque du théorème qui est fausse. Un contre-exemple classique est la fonction valeur absolue $f(x) = |x|$, qui est continue en $0$ mais n'y est pas dérivable (elle présente un \"point anguleux\").\n\n- **B)** Cette affirmation est vraie. C'est un théorème clé : \"toute fonction dérivable en un point est continue en ce point\". Intuitivement, pour qu'une tangente unique existe, la courbe ne doit pas avoir de \"saut\".\n\n- **C)** Cette affirmation est fausse car elle implique que les deux concepts sont équivalents, ce qui est contredit par le contre-exemple de la fonction valeur absolue.\n\n- **D)** Cette affirmation est fausse. Les concepts sont fortement liés, comme le montre le théorème \"dérivabilité implique continuité\".\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Si $f$ est continue en $a$, alors elle est nécessairement dérivable en $a$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Si $f$ est dérivable en $a$, alors elle est nécessairement continue en $a$.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Une fonction est dérivable en $a$ si et seulement si elle est continue en $a$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** La dérivabilité et la continuité en un point sont des concepts totalement indépendants.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "stackId": "e04284d4",
+      "content": "#### Question 3 : Interprétation géométrique\n\nSoit $f$ une fonction dérivable en un point $a$. Que représente géométriquement le nombre dérivé $f'(a)$ ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nL'interprétation géométrique de la dérivée est un concept central.\n\n- **A)** C'est incorrect. $f'(a)$ est un nombre (une pente), alors que l'équation de la tangente est une relation entre $x$ et $y$, donnée par $y = f(a) + f'(a)(x-a)$. Le nombre dérivé n'est qu'un des éléments de cette équation.\n\n- **B)** L'ordonnée du point de la courbe d'abscisse $a$ est $f(a)$, et non $f'(a)$.\n\n- **C)** C'est la définition géométrique exacte. Le nombre dérivé est la pente (ou le coefficient directeur) de la ligne droite qui \"touche\" la courbe au point $(a, f(a))$ et qui approxime le mieux la courbe localement.\n\n- **D)** Le point où la courbe coupe l'axe des ordonnées est le point $(0, f(0))$. Cela n'a pas de rapport direct avec la dérivée en un point $a$ quelconque.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** L'équation de la droite tangente à la courbe de $f$ au point d'abscisse $a$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** L'ordonnée du point de la courbe d'abscisse $a$.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Le coefficient directeur de la droite tangente à la courbe de $f$ au point d'abscisse $a$.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Le point où la courbe de $f$ coupe l'axe des ordonnées.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "stackId": "e04284d4",
+      "content": "#### Question 4 : Règle de dérivation du produit\n\nQuelle est la dérivée de la fonction $h(x) = x^2 \\sin(x)$ ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nPour dériver un produit de deux fonctions, on utilise la règle $(fg)' = f'g + fg'$.\n\nIci, posons $f(x) = x^2$ et $g(x) = \\sin(x)$.\n\nLeurs dérivées sont $f'(x) = 2x$ et $g'(x) = \\cos(x)$.\n\nEn appliquant la formule :\n\n$h'(x) = f'(x)g(x) + f(x)g'(x) = (2x)(\\sin(x)) + (x^2)(\\cos(x)) = 2x \\sin(x) + x^2 \\cos(x)$.\n\n- **A)** Cette réponse correspond à l'erreur fréquente de penser que la dérivée d'un produit est le produit des dérivées : $f'(x)g'(x) = (2x)(\\cos(x))$. C'est incorrect.\n- **B)** C'est la bonne application de la règle du produit.\n- **C)** Le signe du second terme est incorrect.\n- **D)** Cette réponse correspond à l'erreur de penser que la dérivée d'un produit est la somme des dérivées : $f'(x) + g'(x)$. C'est incorrect.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $2x \\cos(x)$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $2x \\sin(x) + x^2 \\cos(x)$",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $2x \\sin(x) - x^2 \\cos(x)$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $2x + \\cos(x)$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "stackId": "e04284d4",
+      "content": "#### Question 5 : Règle de dérivation du quotient\n\nQuelle est la dérivée de la fonction $g(x) = \\frac{e^x}{x}$ pour $x \\neq 0$ ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nPour dériver un quotient de deux fonctions, on utilise la règle $\\left(\\frac{f}{g}\\right)' = \\frac{f'g - fg'}{g^2}$.\n\nIci, posons $f(x) = e^x$ et $g(x) = x$.\n\nLeurs dérivées sont $f'(x) = e^x$ et $g'(x) = 1$.\n\nEn appliquant la formule :\n\n$g'(x) = \\frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2} = \\frac{(e^x)(x) - (e^x)(1)}{x^2} = \\frac{xe^x - e^x}{x^2}$.\n\nOn peut factoriser le numérateur pour obtenir $\\frac{e^x(x-1)}{x^2}$.\n\n- **A)** Cette réponse correspond à l'erreur fréquente de penser que la dérivée d'un quotient est le quotient des dérivées : $\\frac{f'(x)}{g'(x)}$. C'est incorrect.\n- **B)** Les termes au numérateur sont inversés, ce qui correspond à la formule incorrecte $\\frac{fg' - f'g}{g^2}$.\n- **C)** C'est la bonne application de la règle du quotient.\n- **D)** Cette réponse est incorrecte et ne correspond à aucune règle standard.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\frac{e^x}{1} = e^x$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\frac{e^x - xe^x}{x^2}$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $\\frac{xe^x - e^x}{x^2}$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $\\frac{e^x}{x^2}$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "stackId": "e04284d4",
+      "content": "#### Question 6 : Règle de la chaîne\n\nQuelle est la dérivée de la fonction $h(x) = \\cos(x^3)$ ?\n",
+      "solution": "\n\n**Réponse : [A]**\n\nCette fonction est une composition $h(x) = g(f(x))$. On doit utiliser la règle de la chaîne : $(g \\circ f)'(x) = g'(f(x)) \\cdot f'(x)$.\n\n1.  Identifions la fonction intérieure et la fonction extérieure :\n    - Fonction intérieure : $f(x) = x^3$\n    - Fonction extérieure : $g(u) = \\cos(u)$\n\n2.  Calculons leurs dérivées :\n    - $f'(x) = 3x^2$\n    - $g'(u) = -\\sin(u)$\n\n3.  Appliquons la formule :\n\n    $h'(x) = g'(f(x)) \\cdot f'(x) = -\\sin(x^3) \\cdot (3x^2) = -3x^2 \\sin(x^3)$.\n\n- **A)** C'est la réponse correcte.\n- **B)** Cette réponse provient de l'oubli de multiplier par la dérivée de la fonction intérieure, $f'(x)$. C'est une erreur très courante.\n- **C)** Le signe est incorrect, la dérivée de $\\cos(u)$ est $-\\sin(u)$.\n- **D)** Cette réponse mélange la dérivation de la fonction intérieure et extérieure de manière incorrecte.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $-3x^2 \\sin(x^3)$",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** $-\\sin(x^3)$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $3x^2 \\cos(x^3)$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $-\\sin(3x^2)$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "stackId": "e04284d4",
+      "content": "#### Question 7 : Dérivée seconde\n\nQuelle est la dérivée seconde, notée $f''(x)$, de la fonction $f(x) = x^4 - 5x^2 + 10$ ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nLa dérivée seconde est la dérivée de la dérivée première. On doit donc dériver la fonction deux fois.\n\n1.  **Calcul de la dérivée première ($f'(x)$) :**\n\n    On dérive $f(x) = x^4 - 5x^2 + 10$ terme à terme.\n\n    $f'(x) = 4x^{4-1} - 5(2x^{2-1}) + 0 = 4x^3 - 10x$.\n\n2.  **Calcul de la dérivée seconde ($f''(x)$) :**\n\n    On dérive $f'(x) = 4x^3 - 10x$.\n\n    $f''(x) = (f')'(x) = 4(3x^{3-1}) - 10(1) = 12x^2 - 10$.\n\n- **A)** C'est la dérivée première, $f'(x)$, et non la seconde.\n- **B)** Cette réponse omet de dériver le terme $-10x$ de la dérivée première.\n- **C)** C'est la réponse correcte.\n- **D)** C'est la dérivée troisième, $f^{(3)}(x)$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $4x^3 - 10x$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $12x^2$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $12x^2 - 10$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $24x$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "stackId": "e04284d4",
+      "content": "#### Question 8 : Conditions du Théorème de Rolle\n\nSoit la fonction $f$ définie sur un intervalle $[a, b]$. Quelles sont les conditions nécessaires pour appliquer le théorème de Rolle ? (Plusieurs réponses peuvent être correctes)\n",
+      "solution": "\n\n**Réponses : [A, B, C]**\n\nLe théorème de Rolle stipule que si une fonction $f$ remplit trois conditions spécifiques sur un intervalle $[a, b]$, alors il existe au moins un point $c$ dans $]a, b[$ où la dérivée s'annule ($f'(c) = 0$).\n\n- **A)** La continuité sur l'intervalle fermé est la première hypothèse essentielle. Elle garantit que la courbe ne présente pas de \"sauts\".\n- **B)** La dérivabilité sur l'intervalle ouvert est la deuxième hypothèse. Elle garantit que la courbe est \"lisse\" et n'a pas de points anguleux à l'intérieur de l'intervalle.\n- **C)** L'égalité des valeurs aux bornes ($f(a) = f(b)$) est la troisième hypothèse. Géométriquement, cela signifie que le point de départ et le point d'arrivée de l'arc de courbe sont à la même hauteur.\n- **D)** La monotonie de la fonction n'est pas une condition du théorème de Rolle. Au contraire, si la fonction était strictement croissante, sa dérivée serait strictement positive et ne pourrait jamais s'annuler.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $f$ doit être continue sur l'intervalle fermé $[a, b]$.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** $f$ doit être dérivable sur l'intervalle ouvert $]a, b[$.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Il faut que $f(a) = f(b)$.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $f$ doit être strictement croissante sur $[a, b]$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "stackId": "e04284d4",
+      "content": "#### Question 9 : Interprétation du Théorème des Accroissements Finis\n\nQuelle est l'interprétation géométrique correcte du Théorème des Accroissements Finis (TAF) pour une fonction $f$ sur $[a, b]$ ?\n",
+      "solution": "\n\n**Réponse : [D]**\n\nLe TAF énonce qu'il existe un $c \\in ]a, b[$ tel que $f'(c) = \\frac{f(b) - f(a)}{b - a}$.\n\n- Le terme de gauche, $f'(c)$, est le coefficient directeur de la tangente à la courbe au point d'abscisse $c$.\n- Le terme de droite, $\\frac{f(b) - f(a)}{b - a}$, est le coefficient directeur de la droite sécante qui passe par les points $(a, f(a))$ et $(b, f(b))$.\n\nLe théorème garantit donc l'existence d'un point où la tangente est parallèle à la corde joignant les extrémités de l'arc.\n\n- **A)** C'est l'interprétation du théorème de la moyenne pour les intégrales.\n- **B)** Le TAF garantit un parallélisme, pas une perpendicularité.\n- **C)** C'est l'interprétation du théorème de Rolle, qui est un cas particulier du TAF lorsque $f(a) = f(b)$.\n- **D)** C'est l'interprétation géométrique exacte du TAF.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** L'aire sous la courbe est égale à la hauteur en un point $c$ multipliée par la largeur de l'intervalle.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Il existe un point où la tangente à la courbe est perpendiculaire à la droite reliant $(a, f(a))$ et $(b, f(b))$.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Il existe au moins un point où la tangente à la courbe est horizontale.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Il existe au moins un point où la tangente à la courbe a la même pente que la droite reliant les points d'extrémité $(a, f(a))$ et $(b, f(b))$.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "stackId": "e04284d4",
+      "content": "#### Question 10 : Points critiques et extremums\n\nLaquelle des affirmations suivantes est vraie concernant les points critiques ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nCette question clarifie la relation entre les points critiques et les extremums locaux.\n\n- **A)** Cette affirmation est fausse. Un extremum local peut aussi se produire en un point où la fonction n'est pas dérivable (par exemple, le minimum de $f(x)=|x|$ en $x=0$) ou aux bornes de l'intervalle de définition.\n\n- **B)** Cette affirmation est fausse. Un point critique n'est pas nécessairement un extremum. Le contre-exemple classique est la fonction $f(x) = x^3$. On a $f'(0)=0$, donc $x=0$ est un point critique, mais ce n'est ni un maximum ni un minimum local (c'est un point d'inflexion à tangente horizontale).\n\n- **C)** Cette affirmation est vraie. Par définition, un point critique $a$ est un point où $f'(a)=0$. Géométriquement, le nombre dérivé $f'(a)$ est la pente de la tangente. Une pente de 0 signifie que la tangente est horizontale.\n\n- **D)** Cette affirmation est fausse. Si $f''(a)=0$, le test de la dérivée seconde ne permet pas de conclure. Le point $a$ peut être un extremum (comme pour $f(x)=x^4$ en $x=0$) ou ne pas en être un (comme pour $f(x)=x^3$ en $x=0$).\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Tout extremum local d'une fonction se produit en un point critique.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Un point critique est toujours un maximum ou un minimum local.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Un point critique $a$ d'une fonction dérivable $f$ est un point où la tangente à la courbe est horizontale.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Si $f'(a) = 0$ et $f''(a) = 0$, alors $a$ est un extremum local.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "stackId": "e04284d4",
+      "content": "#### Question 11 : Test de la dérivée seconde\n\nSoit $a$ un point critique pour une fonction $f$ ($f'(a)=0$). On suppose que $f$ est deux fois dérivable et que $f''(a) > 0$. Que peut-on conclure ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nC'est une application directe du test de la dérivée seconde pour la classification des points critiques.\n\nSoit $a$ un point tel que $f'(a)=0$.\n\n1.  Si $f''(a) < 0$, la fonction est localement concave (\"tournée vers le bas\"), ce qui correspond à un **maximum local**.\n2.  Si $f''(a) > 0$, la fonction est localement convexe (\"tournée vers le haut\"), ce qui correspond à un **minimum local**.\n3.  Si $f''(a) = 0$, le test ne permet pas de conclure.\n\nDans ce cas, $f''(a) > 0$, donc la fonction admet un minimum local en $a$.\n\n- **A)** Incorrect. Cela correspond au cas $f''(a) < 0$.\n- **B)** Incorrect. Le test de la dérivée seconde est conclusif lorsque $f''(a) \\neq 0$.\n- **C)** Correct. C'est le résultat du test de la dérivée seconde.\n- **D)** Un point d'inflexion est un point où la convexité change, ce qui est généralement associé à l'annulation de la dérivée seconde, pas à un signe strictement positif.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $f$ admet un maximum local en $a$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** On ne peut rien conclure sans connaître le signe de la dérivée troisième.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $f$ admet un minimum local en $a$.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $f$ admet un point d'inflexion en $a$.",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

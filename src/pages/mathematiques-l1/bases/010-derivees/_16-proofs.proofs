@@ -1,0 +1,672 @@
+---
+id: 267728cd
+type: proofs
+order: 15
+title: Dérivées - preuves (A)
+tags:
+  - dérivées
+  - analyse
+  - calcul différentiel
+  - fonctions
+  - limites
+  - mathématiques
+createdAt: '2025-11-08T14:25:56.675Z'
+level: regular
+course: Bases mathématiques
+courseId: 4e5f6a7b
+chapter: Dérivées
+chapterId: 7a8b9c0d
+---
+# Preuves "Dérivées" (A)
+
+---
+
+#### Dérivabilité et Continuité
+
+Démontrez que si une fonction $f$ est dérivable en un point $a$, alors elle est nécessairement continue en ce point $a$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Pour prouver la continuité de $f$ en $a$, vous devez montrer que $\lim_{x \to a} f(x) = f(a)$, ce qui est équivalent à montrer que $\lim_{x \to a} (f(x) - f(a)) = 0$.
+
+Essayez de relier l'expression $f(x) - f(a)$ au taux d'accroissement $\frac{f(x) - f(a)}{x - a}$, dont vous connaissez la limite par hypothèse.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Par hypothèse, la fonction $f$ est dérivable au point $a$. Cela signifie que la limite du taux d'accroissement existe et est finie. Nous la notons $f'(a)$ :
+
+$$ f'(a) = \lim_{x \to a} \frac{f(x) - f(a)}{x - a} $$
+
+Notre objectif est de prouver que $f$ est continue en $a$, c'est-à-dire que $\lim_{x \to a} f(x) = f(a)$. Ceci est équivalent à montrer que $\lim_{x \to a} [f(x) - f(a)] = 0$.
+
+Pour $x \neq a$, nous pouvons écrire l'identité algébrique suivante :
+
+$$ f(x) - f(a) = \frac{f(x) - f(a)}{x - a} \times (x - a) $$
+
+Nous allons maintenant calculer la limite de cette expression lorsque $x$ tend vers $a$. En utilisant les propriétés des limites (la limite d'un produit est le produit des limites, si elles existent), nous avons :
+
+$$ \lim_{x \to a} [f(x) - f(a)] = \lim_{x \to a} \left( \frac{f(x) - f(a)}{x - a} \times (x - a) \right) $$
+
+$$ \lim_{x \to a} [f(x) - f(a)] = \left( \lim_{x \to a} \frac{f(x) - f(a)}{x - a} \right) \times \left( \lim_{x \to a} (x - a) \right) $$
+
+Par définition de la dérivabilité, nous savons que le premier terme de la limite est $f'(a)$. Le second terme est clairement $0$ :
+
+$$ \lim_{x \to a} [f(x) - f(a)] = f'(a) \times 0 = 0 $$
+
+Nous avons donc montré que $\lim_{x \to a} [f(x) - f(a)] = 0$, ce qui implique que $\lim_{x \to a} f(x) = f(a)$.
+
+**Conclusion :** Ceci est exactement la définition de la continuité de $f$ au point $a$. Par conséquent, si $f$ est dérivable en $a$, elle est continue en $a$.
+
+</details>
+
+---
+
+#### Dérivée d'une somme de fonctions
+
+Soient $f$ et $g$ deux fonctions dérivables en un point $a$. Démontrez que leur somme $S = f+g$ est également dérivable en $a$ et que $S'(a) = f'(a) + g'(a)$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Commencez par écrire la définition du nombre dérivé pour la fonction $S(x) = f(x) + g(x)$ au point $a$.
+
+Le taux d'accroissement de $S$ en $a$ est $\frac{S(a+h) - S(a)}{h}$. Remplacez $S$ par son expression en termes de $f$ et $g$, puis réarrangez les termes pour faire apparaître les taux d'accroissement de $f$ et de $g$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Pour démontrer que la fonction $S = f+g$ est dérivable en $a$ et trouver sa dérivée, nous devons calculer la limite de son taux d'accroissement lorsque $h \to 0$.
+
+**Étape 1 : Écrire le taux d'accroissement de S**
+
+Le taux d'accroissement de $S$ entre $a$ et $a+h$ est :
+
+$$ \frac{S(a+h) - S(a)}{h} = \frac{(f(a+h) + g(a+h)) - (f(a) + g(a))}{h} $$
+
+**Étape 2 : Réarranger les termes**
+
+Nous pouvons regrouper les termes concernant $f$ et ceux concernant $g$ :
+
+$$ \frac{f(a+h) - f(a) + g(a+h) - g(a)}{h} $$
+
+En séparant la fraction en deux, on obtient :
+
+$$ \frac{f(a+h) - f(a)}{h} + \frac{g(a+h) - g(a)}{h} $$
+
+**Étape 3 : Passer à la limite**
+
+Nous devons maintenant calculer la limite de cette expression lorsque $h \to 0$.
+
+$$ S'(a) = \lim_{h \to 0} \left( \frac{f(a+h) - f(a)}{h} + \frac{g(a+h) - g(a)}{h} \right) $$
+
+Puisque la limite d'une somme est la somme des limites (si elles existent), nous pouvons écrire :
+
+$$ S'(a) = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h} + \lim_{h \to 0} \frac{g(a+h) - g(a)}{h} $$
+
+**Conclusion :** Par hypothèse, $f$ et $g$ sont dérivables en $a$. Nous reconnaissons donc leurs nombres dérivés respectifs :
+
+$$ S'(a) = f'(a) + g'(a) $$
+
+La limite existe et est finie, donc la fonction $S=f+g$ est dérivable en $a$ et sa dérivée est la somme des dérivées.
+
+</details>
+
+---
+
+#### Dérivée d'un produit de fonctions
+
+Soient $f$ et $g$ deux fonctions dérivables en un point $a$. Démontrez que leur produit $P = fg$ est également dérivable en $a$ et que $P'(a) = f'(a)g(a) + f(a)g'(a)$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Commencez par écrire le taux d'accroissement de $P(x) = f(x)g(x)$ en $a$. Vous obtiendrez l'expression $\frac{f(a+h)g(a+h) - f(a)g(a)}{h}$.
+
+L'astuce consiste à ajouter et soustraire un même terme au numérateur pour faire apparaître les taux d'accroissement de $f$ et de $g$. Le terme "magique" à utiliser est $f(a)g(a+h)$ (ou de manière équivalente $f(a+h)g(a)$).
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Pour démontrer la formule de dérivation d'un produit, nous partons de la définition de la dérivée appliquée à la fonction $P = fg$.
+
+**Étape 1 : Écrire le taux d'accroissement de P**
+
+Le taux d'accroissement de $P$ entre $a$ et $a+h$ est :
+
+$$ \frac{P(a+h) - P(a)}{h} = \frac{f(a+h)g(a+h) - f(a)g(a)}{h} $$
+
+**Étape 2 : Ajouter et soustraire un terme**
+
+Nous ajoutons et soustrayons le terme $f(a)g(a+h)$ au numérateur :
+
+$$ \frac{f(a+h)g(a+h) - f(a)g(a+h) + f(a)g(a+h) - f(a)g(a)}{h} $$
+
+**Étape 3 : Factoriser et séparer l'expression**
+
+On factorise les deux premiers termes par $g(a+h)$ et les deux derniers par $f(a)$ :
+
+$$ \frac{g(a+h)(f(a+h) - f(a)) + f(a)(g(a+h) - g(a))}{h} $$
+
+On peut maintenant séparer la fraction en deux parties :
+
+$$ g(a+h) \frac{f(a+h) - f(a)}{h} + f(a) \frac{g(a+h) - g(a)}{h} $$
+
+**Étape 4 : Passer à la limite**
+
+Nous calculons la limite de cette expression lorsque $h \to 0$ :
+
+$$ P'(a) = \lim_{h \to 0} \left( g(a+h) \frac{f(a+h) - f(a)}{h} + f(a) \frac{g(a+h) - g(a)}{h} \right) $$
+
+En utilisant les propriétés des limites :
+
+$$ P'(a) = \left(\lim_{h \to 0} g(a+h)\right) \left(\lim_{h \to 0} \frac{f(a+h) - f(a)}{h}\right) + \left(\lim_{h \to 0} f(a)\right) \left(\lim_{h \to 0} \frac{g(a+h) - g(a)}{h}\right) $$
+
+Comme $g$ est dérivable en $a$, elle y est aussi continue, donc $\lim_{h \to 0} g(a+h) = g(a)$. Les autres limites sont, par définition, $f'(a)$, $f(a)$, et $g'(a)$.
+
+**Conclusion :** En substituant ces valeurs, nous obtenons :
+
+$$ P'(a) = g(a) \cdot f'(a) + f(a) \cdot g'(a) $$
+
+La limite existe et est finie, donc $P=fg$ est dérivable en $a$ et $(fg)'(a) = f'(a)g(a) + f(a)g'(a)$.
+
+</details>
+
+---
+
+#### Dérivée d'un quotient de fonctions
+
+Soient $f$ et $g$ deux fonctions dérivables en un point $a$, avec $g(a) \neq 0$. Démontrez que leur quotient $Q = f/g$ est également dérivable en $a$ et que $Q'(a) = \frac{f'(a)g(a) - f(a)g'(a)}{[g(a)]^2}$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Écrivez le taux d'accroissement de $Q(x) = f(x)/g(x)$ en $a$. Mettez l'expression au même dénominateur.
+
+Au numérateur, vous obtiendrez $f(a+h)g(a) - f(a)g(a+h)$. Comme pour la preuve du produit, ajoutez et soustrayez un terme judicieusement choisi. Le terme $f(a)g(a)$ est un bon candidat.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $Q(x) = f(x)/g(x)$. Nous partons de la définition de la dérivée.
+
+**Étape 1 : Écrire le taux d'accroissement de Q**
+
+$$ \frac{Q(a+h) - Q(a)}{h} = \frac{\frac{f(a+h)}{g(a+h)} - \frac{f(a)}{g(a)}}{h} $$
+
+**Étape 2 : Simplifier l'expression**
+
+Mettons le numérateur au même dénominateur, $g(a+h)g(a)$ :
+
+$$ \frac{1}{h} \left( \frac{f(a+h)g(a) - f(a)g(a+h)}{g(a+h)g(a)} \right) $$
+
+**Étape 3 : Ajouter et soustraire un terme**
+
+Au numérateur de la grande fraction, ajoutons et soustrayons le terme $f(a)g(a)$ :
+
+$$ \frac{1}{h} \left( \frac{f(a+h)g(a) - f(a)g(a) + f(a)g(a) - f(a)g(a+h)}{g(a+h)g(a)} \right) $$
+
+**Étape 4 : Factoriser et réarranger**
+
+Factorisons par $g(a)$ et $-f(a)$ :
+
+$$ \frac{1}{g(a+h)g(a)} \left( \frac{g(a)(f(a+h) - f(a)) - f(a)(g(a+h) - g(a))}{h} \right) $$
+
+Séparons en deux fractions :
+
+$$ \frac{1}{g(a+h)g(a)} \left( g(a)\frac{f(a+h) - f(a)}{h} - f(a)\frac{g(a+h) - g(a)}{h} \right) $$
+
+**Étape 5 : Passer à la limite**
+
+Calculons la limite lorsque $h \to 0$. Comme $g$ est dérivable en $a$, elle y est continue, donc $\lim_{h \to 0} g(a+h) = g(a)$. Par hypothèse, $g(a) \neq 0$.
+
+Les autres termes tendent vers $f'(a)$ et $g'(a)$.
+
+$$ Q'(a) = \lim_{h \to 0} \frac{1}{g(a+h)g(a)} \left( g(a)\frac{f(a+h) - f(a)}{h} - f(a)\frac{g(a+h) - g(a)}{h} \right) $$
+
+$$ Q'(a) = \frac{1}{g(a)g(a)} \left( g(a) f'(a) - f(a) g'(a) \right) $$
+
+**Conclusion :** En simplifiant, nous obtenons la formule de la dérivée d'un quotient :
+
+$$ Q'(a) = \frac{f'(a)g(a) - f(a)g'(a)}{[g(a)]^2} $$
+
+La limite existe et est finie, ce qui prouve le résultat.
+
+</details>
+
+---
+
+#### Règle de dérivation en chaîne
+
+Soit $f$ une fonction dérivable en $a$ et $g$ une fonction dérivable en $b = f(a)$. Démontrez que la fonction composée $h = g \circ f$ est dérivable en $a$ et que $h'(a) = g'(f(a)) \cdot f'(a)$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Une preuve totalement rigoureuse est délicate à cause du dénominateur $f(x)-f(a)$ qui peut s'annuler pour des $x \neq a$. Pour contourner ce problème, on introduit une fonction auxiliaire $\varepsilon(y)$ qui représente "l'erreur" dans l'approximation affine de $g$ au voisinage de $b=f(a)$.
+
+Définissez une fonction $\phi(y)$ pour $y \neq b$ par $\phi(y) = \frac{g(y) - g(b)}{y - b}$ et prolongez-la par continuité en $b$ en posant $\phi(b) = g'(b)$. Montrez que $g(y)-g(b) = \phi(y)(y-b)$ est toujours vraie et que $\phi$ est continue en $b$. Appliquez ensuite cette relation à $y=f(x)$ et $b=f(a)$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $b = f(a)$. Par hypothèse, $f$ est dérivable en $a$ et $g$ est dérivable en $b$.
+
+**Étape 1 : Introduction d'une fonction auxiliaire**
+
+Considérons la fonction $\phi$ définie sur le domaine de $g$ par :
+
+$$ \phi(y) = \begin{cases} \frac{g(y) - g(b)}{y - b} & \text{si } y \neq b \\ g'(b) & \text{si } y = b \end{cases} $$
+
+Puisque $g$ est dérivable en $b$, on a $\lim_{y \to b} \phi(y) = \lim_{y \to b} \frac{g(y) - g(b)}{y - b} = g'(b) = \phi(b)$.
+
+Ceci montre que la fonction $\phi$ est continue en $b$.
+
+Par construction, l'égalité $g(y) - g(b) = \phi(y)(y - b)$ est vraie pour tout $y$ dans le domaine de $g$. Si $y \neq b$, c'est la définition de $\phi(y)$. Si $y=b$, les deux côtés sont nuls.
+
+**Étape 2 : Application à la fonction composée**
+
+Considérons le taux d'accroissement de $h = g \circ f$ au point $a$, pour $x \neq a$:
+
+$$ \frac{h(x) - h(a)}{x-a} = \frac{g(f(x)) - g(f(a))}{x-a} $$
+
+En posant $y = f(x)$ et $b = f(a)$, on peut utiliser l'égalité de l'étape 1 :
+
+$$ g(f(x)) - g(f(a)) = \phi(f(x))(f(x) - f(a)) $$
+
+Donc, le taux d'accroissement de $h$ devient :
+
+$$ \frac{h(x) - h(a)}{x-a} = \phi(f(x)) \frac{f(x) - f(a)}{x-a} $$
+
+Cette égalité est valable pour tout $x \neq a$.
+
+**Étape 3 : Passage à la limite**
+
+Nous cherchons la limite de cette expression quand $x \to a$ :
+
+$$ h'(a) = \lim_{x \to a} \left( \phi(f(x)) \frac{f(x) - f(a)}{x-a} \right) $$
+
+$$ h'(a) = \left( \lim_{x \to a} \phi(f(x)) \right) \cdot \left( \lim_{x \to a} \frac{f(x) - f(a)}{x-a} \right) $$
+
+La deuxième limite est par définition $f'(a)$.
+
+Pour la première limite, on sait que $f$ est dérivable en $a$, donc elle est continue en $a$. Ainsi, $\lim_{x \to a} f(x) = f(a) = b$.
+
+Comme $\phi$ est continue en $b$, par composition de limites, on a $\lim_{x \to a} \phi(f(x)) = \phi(\lim_{x \to a} f(x)) = \phi(b) = g'(b)$.
+
+**Conclusion :** En substituant les valeurs des limites, on obtient :
+
+$$ h'(a) = g'(b) \cdot f'(a) $$
+
+En remplaçant $b$ par $f(a)$, on a la formule de la règle de la chaîne :
+
+$$ (g \circ f)'(a) = g'(f(a)) \cdot f'(a) $$
+
+</details>
+
+---
+
+#### Formule de Leibniz
+
+Soient $f$ et $g$ deux fonctions $n$ fois dérivables. Démontrez par récurrence sur $n \in \mathbb{N}^*$ la formule de Leibniz pour la dérivée $n$-ième de leur produit :
+
+$$ (fg)^{(n)} = \sum_{k=0}^{n} \binom{n}{k} f^{(k)} g^{(n-k)} $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+**Initialisation :** Vérifiez que la formule est vraie pour $n=1$.
+
+**Hérédité :** Supposez que la formule est vraie pour un certain entier $n \ge 1$. Vous voulez la prouver pour $n+1$.
+
+Commencez par écrire $(fg)^{(n+1)} = \left((fg)^{(n)}\right)'$. Utilisez l'hypothèse de récurrence pour remplacer $(fg)^{(n)}$. Vous obtiendrez la dérivée d'une somme.
+
+Appliquez la règle de dérivation d'un produit à chaque terme de la somme. Vous obtiendrez deux sommes. Effectuez un changement d'indice dans l'une des deux sommes pour pouvoir les regrouper. Utilisez la relation de Pascal : $\binom{n}{k} + \binom{n}{k-1} = \binom{n+1}{k}$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Nous allons prouver la formule de Leibniz par récurrence sur l'entier $n \ge 1$. Soit $P(n)$ la proposition : $(fg)^{(n)} = \sum_{k=0}^{n} \binom{n}{k} f^{(k)} g^{(n-k)}$.
+
+**Étape 1 : Initialisation (n=1)**
+
+Pour $n=1$, la formule s'écrit :
+
+$$ (fg)^{(1)} = \sum_{k=0}^{1} \binom{1}{k} f^{(k)} g^{(1-k)} = \binom{1}{0}f^{(0)}g^{(1)} + \binom{1}{1}f^{(1)}g^{(0)} $$
+
+Sachant que $\binom{1}{0}=1$, $\binom{1}{1}=1$, $f^{(0)}=f$, $g^{(0)}=g$, $f^{(1)}=f'$ et $g^{(1)}=g'$, on obtient :
+
+$$ (fg)' = 1 \cdot f \cdot g' + 1 \cdot f' \cdot g = f'g + fg' $$
+
+C'est la formule classique de la dérivée d'un produit. La proposition $P(1)$ est donc vraie.
+
+**Étape 2 : Hérédité**
+
+Supposons que $P(n)$ est vraie pour un certain $n \ge 1$. Montrons que $P(n+1)$ est vraie.
+
+On a $(fg)^{(n+1)} = \left( (fg)^{(n)} \right)'$. En utilisant l'hypothèse de récurrence $P(n)$ :
+
+$$ (fg)^{(n+1)} = \left( \sum_{k=0}^{n} \binom{n}{k} f^{(k)} g^{(n-k)} \right)' $$
+
+Par linéarité de la dérivation :
+
+$$ (fg)^{(n+1)} = \sum_{k=0}^{n} \binom{n}{k} \left( f^{(k)} g^{(n-k)} \right)' $$
+
+On applique la règle de dérivation du produit à chaque terme :
+
+$$ (fg)^{(n+1)} = \sum_{k=0}^{n} \binom{n}{k} \left[ f^{(k+1)} g^{(n-k)} + f^{(k)} g^{(n-k+1)} \right] $$
+
+On sépare la somme en deux :
+
+$$ (fg)^{(n+1)} = \sum_{k=0}^{n} \binom{n}{k} f^{(k+1)} g^{(n-k)} + \sum_{k=0}^{n} \binom{n}{k} f^{(k)} g^{(n+1-k)} $$
+
+Dans la première somme, effectuons le changement d'indice $j = k+1$ (donc $k=j-1$). Lorsque $k$ va de $0$ à $n$, $j$ va de $1$ à $n+1$.
+
+$$ \sum_{j=1}^{n+1} \binom{n}{j-1} f^{(j)} g^{(n-(j-1))} + \sum_{k=0}^{n} \binom{n}{k} f^{(k)} g^{(n+1-k)} $$
+
+Renommons l'indice $j$ en $k$ dans la première somme :
+
+$$ \sum_{k=1}^{n+1} \binom{n}{k-1} f^{(k)} g^{(n+1-k)} + \sum_{k=0}^{n} \binom{n}{k} f^{(k)} g^{(n+1-k)} $$
+
+On isole les termes extrêmes ($k=0$ dans la deuxième somme et $k=n+1$ dans la première) et on regroupe les termes pour $k$ de $1$ à $n$ :
+
+$$ \binom{n}{0} f^{(0)} g^{(n+1)} + \sum_{k=1}^{n} \left( \binom{n}{k-1} + \binom{n}{k} \right) f^{(k)} g^{(n+1-k)} + \binom{n}{n} f^{(n+1)} g^{(0)} $$
+
+En utilisant la relation de Pascal $\binom{n}{k-1} + \binom{n}{k} = \binom{n+1}{k}$, et sachant que $\binom{n}{0} = 1 = \binom{n+1}{0}$ et $\binom{n}{n} = 1 = \binom{n+1}{n+1}$, on obtient :
+
+$$ \binom{n+1}{0} f^{(0)} g^{(n+1)} + \sum_{k=1}^{n} \binom{n+1}{k} f^{(k)} g^{(n+1-k)} + \binom{n+1}{n+1} f^{(n+1)} g^{(0)} $$
+
+Cette expression est exactement $\sum_{k=0}^{n+1} \binom{n+1}{k} f^{(k)} g^{(n+1-k)}$.
+
+Ceci est la proposition $P(n+1)$.
+
+**Conclusion :** Par le principe de récurrence, la formule de Leibniz est vraie pour tout $n \in \mathbb{N}^*$.
+
+</details>
+
+---
+
+#### Théorème de Rolle
+
+Soit $f$ une fonction continue sur $[a, b]$, dérivable sur $]a, b[$, et telle que $f(a) = f(b)$. Démontrez qu'il existe au moins un point $c \in ]a, b[$ tel que $f'(c) = 0$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Le point de départ est le théorème des bornes atteintes : une fonction continue sur un segment $[a,b]$ atteint son maximum et son minimum.
+
+Considérez deux cas :
+
+1. La fonction $f$ est constante sur $[a, b]$. Que pouvez-vous dire de sa dérivée ?
+2. La fonction $f$ n'est pas constante. Dans ce cas, au moins l'un de ses extremums (maximum ou minimum) est atteint en un point $c$ à l'intérieur de l'intervalle, c'est-à-dire $c \in ]a, b[$. Utilisez alors la condition nécessaire du premier ordre pour un extremum local.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $f$ une fonction satisfaisant les hypothèses du théorème de Rolle.
+
+**Étape 1 : Utilisation du théorème des bornes atteintes**
+
+La fonction $f$ est continue sur l'intervalle fermé et borné $[a, b]$. D'après le théorème des bornes atteintes, $f$ est bornée sur $[a, b]$ et atteint ses bornes. Il existe donc $m$ et $M$ tels que pour tout $x \in [a, b]$, on a $m \le f(x) \le M$. De plus, il existe des points $c_1, c_2 \in [a, b]$ tels que $f(c_1) = m$ (minimum) et $f(c_2) = M$ (maximum).
+
+**Étape 2 : Distinction de deux cas**
+
+*   **Cas 1 : La fonction est constante.**
+
+    Si $m = M$, cela signifie que la fonction $f$ est constante sur $[a, b]$. Dans ce cas, pour n'importe quel point $c \in ]a, b[$, sa dérivée est nulle, $f'(c) = 0$. Le théorème est vérifié.
+
+*   **Cas 2 : La fonction n'est pas constante.**
+
+    Si $m \neq M$, alors au moins l'une de ces valeurs est différente de la valeur commune $f(a) = f(b)$.
+
+    Supposons que $M > f(a)$. Le maximum $M$ n'est donc pas atteint aux bornes $a$ ou $b$. Il est atteint en un point $c = c_2$ qui doit se trouver à l'intérieur de l'intervalle, i.e., $c \in ]a, b[$.
+
+    (Si $M=f(a)$, alors on aurait $m < f(a)$, et le minimum serait atteint en un point $c=c_1 \in ]a,b[$; le raisonnement est identique).
+
+**Étape 3 : Application de la condition nécessaire d'extremum**
+
+Nous avons trouvé un point $c \in ]a, b[$ où $f$ admet un extremum local (ici un maximum). Par hypothèse, $f$ est dérivable sur $]a, b[$, donc elle est dérivable en $c$.
+
+D'après le théorème de Fermat (condition nécessaire du premier ordre), si une fonction dérivable atteint un extremum local en un point intérieur à son domaine, sa dérivée en ce point est nulle.
+
+Donc, $f'(c) = 0$.
+
+**Conclusion :** Dans les deux cas, nous avons démontré l'existence d'au moins un point $c \in ]a, b[$ tel que $f'(c) = 0$.
+
+</details>
+
+---
+
+#### Théorème des Accroissements Finis
+
+Soit $f$ une fonction continue sur $[a, b]$ et dérivable sur $]a, b[$. Démontrez qu'il existe au moins un point $c \in ]a, b[$ tel que $f'(c) = \frac{f(b) - f(a)}{b - a}$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+L'idée est de se ramener au théorème de Rolle. Pour cela, il faut construire une fonction auxiliaire $g(x)$ qui satisfait les trois hypothèses du théorème de Rolle, en particulier $g(a) = g(b)$.
+
+Considérez la fonction $g(x)$ comme l'écart vertical entre la courbe de $f(x)$ et la droite (la corde) passant par les points $(a, f(a))$ et $(b, f(b))$. L'équation de cette corde est $y(x) = f(a) + \frac{f(b) - f(a)}{b - a}(x-a)$.
+
+Définissez $g(x) = f(x) - y(x)$ et vérifiez qu'elle satisfait les hypothèses de Rolle. Appliquez ensuite le théorème de Rolle à $g(x)$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Construction d'une fonction auxiliaire**
+
+Nous voulons utiliser le théorème de Rolle. Pour ce faire, nous introduisons une fonction auxiliaire $g$ qui vérifie les hypothèses de ce théorème. Soit $g$ la fonction définie sur $[a, b]$ par :
+
+$$ g(x) = f(x) - \left( f(a) + \frac{f(b) - f(a)}{b - a}(x - a) \right) $$
+
+Cette fonction représente la différence entre $f(x)$ et la valeur sur la droite passant par $(a, f(a))$ et $(b, f(b))$.
+
+**Étape 2 : Vérification des hypothèses du théorème de Rolle pour g**
+
+1.  **Continuité :** $f(x)$ est continue sur $[a, b]$ par hypothèse. Le terme $f(a) + \frac{f(b) - f(a)}{b - a}(x - a)$ est une fonction affine, donc elle est continue sur $[a, b]$. La fonction $g(x)$, étant la différence de deux fonctions continues, est continue sur $[a, b]$.
+
+2.  **Dérivabilité :** De même, $f(x)$ est dérivable sur $]a, b[$ et la fonction affine l'est aussi. Donc $g(x)$ est dérivable sur $]a, b[$.
+
+3.  **Égalité aux bornes :** Calculons $g(a)$ et $g(b)$.
+
+    $$ g(a) = f(a) - \left( f(a) + \frac{f(b) - f(a)}{b - a}(a - a) \right) = f(a) - f(a) = 0 $$
+
+    $$ g(b) = f(b) - \left( f(a) + \frac{f(b) - f(a)}{b - a}(b - a) \right) = f(b) - (f(a) + f(b) - f(a)) = f(b) - f(b) = 0 $$
+
+    On a bien $g(a) = g(b) = 0$.
+
+**Étape 3 : Application du théorème de Rolle**
+
+La fonction $g$ satisfait les trois hypothèses du théorème de Rolle. Il existe donc au moins un point $c \in ]a, b[$ tel que $g'(c) = 0$.
+
+Calculons la dérivée de $g(x)$ :
+
+$$ g'(x) = f'(x) - \frac{d}{dx}\left( f(a) + \frac{f(b) - f(a)}{b - a}(x - a) \right) $$
+
+Le terme $f(a)$ et le coefficient $\frac{f(b) - f(a)}{b - a}$ sont des constantes par rapport à $x$.
+
+$$ g'(x) = f'(x) - \frac{f(b) - f(a)}{b - a} $$
+
+La condition $g'(c)=0$ se traduit par :
+
+$$ f'(c) - \frac{f(b) - f(a)}{b - a} = 0 $$
+
+**Conclusion :** En réarrangeant les termes, on obtient le résultat souhaité :
+
+$$ f'(c) = \frac{f(b) - f(a)}{b - a} $$
+
+</details>
+
+---
+
+#### Monotonie et signe de la dérivée
+
+Soit $f$ une fonction continue sur un intervalle $I$ et dérivable sur l'intérieur de $I$. Démontrez que si $f'(x) > 0$ pour tout $x$ à l'intérieur de $I$, alors $f$ est strictement croissante sur $I$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Pour montrer que $f$ est strictement croissante, vous devez prendre deux points quelconques $x_1$ et $x_2$ dans $I$ tels que $x_1 < x_2$ et montrer que $f(x_1) < f(x_2)$.
+
+Appliquez le Théorème des Accroissements Finis (TAF) à la fonction $f$ sur l'intervalle $[x_1, x_2]$. Le TAF garantit l'existence d'un $c \in ]x_1, x_2[$. Utilisez l'information que vous avez sur le signe de $f'(c)$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Pour démontrer que $f$ est strictement croissante sur l'intervalle $I$, nous devons montrer que pour toute paire de points $x_1, x_2$ dans $I$ avec $x_1 < x_2$, on a $f(x_1) < f(x_2)$.
+
+**Étape 1 : Choisir deux points et un intervalle**
+
+Soient $x_1$ et $x_2$ deux points quelconques de $I$ tels que $x_1 < x_2$.
+
+Considérons l'intervalle fermé $[x_1, x_2]$, qui est inclus dans $I$.
+
+**Étape 2 : Appliquer le Théorème des Accroissements Finis (TAF)**
+
+La fonction $f$ est continue sur $[x_1, x_2]$ et dérivable sur $]x_1, x_2[$ car ces intervalles sont inclus dans $I$ où $f$ a ces propriétés.
+
+D'après le TAF, il existe au moins un point $c \in ]x_1, x_2[$ tel que :
+
+$$ f'(c) = \frac{f(x_2) - f(x_1)}{x_2 - x_1} $$
+
+**Étape 3 : Utiliser l'hypothèse sur le signe de la dérivée**
+
+Par hypothèse, nous savons que $f'(x) > 0$ pour tout $x$ à l'intérieur de $I$. Comme $c \in ]x_1, x_2[$, $c$ est à l'intérieur de $I$, donc $f'(c) > 0$.
+
+En substituant dans l'équation du TAF, nous avons :
+
+$$ \frac{f(x_2) - f(x_1)}{x_2 - x_1} > 0 $$
+
+**Étape 4 : Conclure sur le signe de $f(x_2) - f(x_1)$**
+
+Puisque nous avons choisi $x_1 < x_2$, le dénominateur $x_2 - x_1$ est strictement positif.
+
+Pour que le quotient soit strictement positif, le numérateur doit également être strictement positif.
+
+Donc, $f(x_2) - f(x_1) > 0$, ce qui est équivalent à $f(x_2) > f(x_1)$.
+
+**Conclusion :** Nous avons montré que pour tous $x_1, x_2 \in I$ tels que $x_1 < x_2$, on a $f(x_1) < f(x_2)$. Ceci est la définition d'une fonction strictement croissante sur $I$.
+
+</details>
+
+---
+
+#### Condition nécessaire d'extremum local (Théorème de Fermat)
+
+Soit $f$ une fonction définie sur un intervalle ouvert $I$. Si $f$ admet un extremum local en un point $a \in I$ et si $f$ est dérivable en $a$, alors démontrez que $f'(a) = 0$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Supposez que $f$ admet un maximum local en $a$ (le raisonnement pour un minimum est similaire).
+
+Par définition, il existe un voisinage de $a$ où $f(x) \le f(a)$.
+
+Étudiez le signe du taux d'accroissement $\frac{f(x) - f(a)}{x-a}$ de part et d'autre de $a$.
+
+- Pour $x > a$ (et proche de $a$), quel est le signe du taux d'accroissement ? Quelle est la conséquence pour la limite à droite, $f'_d(a)$ ?
+- Pour $x < a$ (et proche de $a$), quel est le signe du taux d'accroissement ? Quelle est la conséquence pour la limite à gauche, $f'_g(a)$ ?
+
+Puisque $f$ est dérivable en $a$, on doit avoir $f'_d(a) = f'_g(a) = f'(a)$. Concluez.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Supposons, sans perte de généralité, que $f$ admet un maximum local en $a$. Cela signifie qu'il existe un intervalle ouvert $V \subset I$ contenant $a$ tel que pour tout $x \in V$, on a $f(x) \leq f(a)$.
+
+Ceci implique que pour tout $x \in V$, $f(x) - f(a) \leq 0$.
+
+Par hypothèse, $f$ est dérivable en $a$, ce qui signifie que la limite $f'(a) = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h}$ existe et est finie. Cette limite doit être la même que l'on approche $0$ par la droite ($h \to 0^+$) ou par la gauche ($h \to 0^-$).
+
+**Étape 1 : Étude de la dérivée à droite ($h \to 0^+$)**
+
+Considérons des $h > 0$ suffisamment petits pour que $a+h \in V$.
+
+Pour ces $h$, nous avons :
+
+- $f(a+h) - f(a) \leq 0$ (car $a+h$ est dans le voisinage du maximum)
+- $h > 0$
+
+Le taux d'accroissement est donc le quotient d'un nombre négatif ou nul par un nombre strictement positif :
+
+$$ \frac{f(a+h) - f(a)}{h} \leq 0 $$
+
+En passant à la limite lorsque $h \to 0^+$, et par le théorème de conservation des inégalités pour les limites, on obtient :
+
+$$ f'_d(a) = \lim_{h \to 0^+} \frac{f(a+h) - f(a)}{h} \leq 0 $$
+
+**Étape 2 : Étude de la dérivée à gauche ($h \to 0^-$)**
+
+Considérons des $h < 0$ suffisamment petits pour que $a+h \in V$.
+
+Pour ces $h$, nous avons :
+
+- $f(a+h) - f(a) \leq 0$
+- $h < 0$
+
+Le taux d'accroissement est donc le quotient d'un nombre négatif ou nul par un nombre strictement négatif :
+
+$$ \frac{f(a+h) - f(a)}{h} \geq 0 $$
+
+En passant à la limite lorsque $h \to 0^-$, on obtient :
+
+$$ f'_g(a) = \lim_{h \to 0^-} \frac{f(a+h) - f(a)}{h} \geq 0 $$
+
+**Étape 3 : Conclusion**
+
+Puisque $f$ est dérivable en $a$, ses dérivées à gauche et à droite doivent exister et être égales :
+
+$$ f'(a) = f'_d(a) = f'_g(a) $$
+
+D'après les étapes 1 et 2, nous avons :
+
+$f'(a) \leq 0$ et $f'(a) \geq 0$.
+
+La seule façon pour qu'un nombre soit à la fois inférieur ou égal à zéro et supérieur ou égal à zéro est que ce nombre soit zéro.
+
+**Conclusion :** Nous avons donc nécessairement $f'(a) = 0$. (Le cas où $f$ admet un minimum local se traite de façon analogue, en inversant les inégalités).
+
+</details>
+
+---

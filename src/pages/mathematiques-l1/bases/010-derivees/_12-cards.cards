@@ -1,0 +1,670 @@
+---
+id: 943b6c5f
+type: cards
+order: 12
+title: Dérivées - fiches de révision (A)
+tags:
+  - dérivées
+  - analyse
+  - calcul différentiel
+  - fonctions
+  - limites
+  - mathématiques
+createdAt: '2025-11-08T14:25:56.675Z'
+level: regular
+course: Bases mathématiques
+courseId: 4e5f6a7b
+chapter: Dérivées
+chapterId: 7a8b9c0d
+---
+# Fiches de révision "Dérivées" (A)
+
+---
+
+Qu'est-ce que le nombre dérivé d'une fonction en un point ?
+
+<details>
+
+<summary>Answer</summary>
+
+Soit $f$ une fonction définie sur un intervalle $I$ et soit $a$ un point de $I$. Le **nombre dérivé** de $f$ en $a$, noté $f'(a)$, est la limite (si elle existe et est finie) du taux d'accroissement de la fonction entre $a$ et un point voisin.
+
+Il représente la pente de la tangente à la courbe de $f$ au point d'abscisse $a$.
+
+**Formule principale :**
+
+La définition mathématique est :
+
+$$ f'(a) = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h} $$
+
+**Formulation équivalente :**
+
+Une autre façon de l'écrire, en posant $x = a+h$, est :
+
+$$ f'(a) = \lim_{x \to a} \frac{f(x) - f(a)}{x - a} $$
+
+**Exemple :**
+
+Pour $f(x) = x^2$ au point $a=3$ :
+
+$$ f'(3) = \lim_{h \to 0} \frac{(3+h)^2 - 3^2}{h} = \lim_{h \to 0} \frac{9 + 6h + h^2 - 9}{h} = \lim_{h \to 0} \frac{h(6+h)}{h} = \lim_{h \to 0} (6+h) = 6 $$
+
+Le nombre dérivé de $f(x)=x^2$ en $a=3$ est $6$.
+
+</details>
+
+---
+
+Quel est le lien entre la dérivabilité et la continuité d'une fonction en un point ?
+
+<details>
+
+<summary>Answer</summary>
+
+Le lien est une implication à sens unique : la dérivabilité implique la continuité.
+
+**Théorème :** Si une fonction $f$ est dérivable en un point $a$, alors elle est **nécessairement continue** en ce point $a$.
+
+**Explication intuitive :**
+
+Pour qu'une tangente puisse être tracée en un point, la courbe ne doit pas avoir de "saut" ou de "trou" à cet endroit. Le fait d'être dérivable signifie que la courbe est "lisse" au point $a$, ce qui est une condition plus forte que la simple continuité.
+
+**Attention : La réciproque est fausse !**
+
+Une fonction peut être continue en un point sans y être dérivable.
+
+**Contre-exemple :**
+
+La fonction valeur absolue $f(x) = |x|$ est continue en $0$. Cependant, elle n'est pas dérivable en $0$ car la courbe présente un "point anguleux".
+
+- La dérivée à gauche est : $f'_g(0) = -1$
+- La dérivée à droite est : $f'_d(0) = 1$
+
+Comme les dérivées à gauche et à droite sont différentes, la fonction n'est pas dérivable en $0$.
+
+</details>
+
+---
+
+Quelle est l'équation de la tangente à la courbe d'une fonction $f$ en un point d'abscisse $a$ ?
+
+<details>
+
+<summary>Answer</summary>
+
+L'équation de la tangente à la courbe représentative de la fonction $f$ au point d'abscisse $a$ est donnée par la formule :
+
+$$ y = f(a) + f'(a)(x - a) $$
+
+**Explication des termes :**
+
+- $(a, f(a))$ est le point de tangence, c'est-à-dire le point sur la courbe où la tangente est tracée.
+- $f'(a)$ est le nombre dérivé de $f$ en $a$. Il représente le **coefficient directeur** (la pente) de la tangente.
+- $(x, y)$ sont les coordonnées d'un point quelconque sur la droite tangente.
+
+Cette équation est la meilleure approximation affine de la fonction $f$ au voisinage du point $a$.
+
+**Exemple :**
+
+Trouvons l'équation de la tangente à la courbe de $f(x) = x^2$ au point $a=3$.
+
+1.  **Calculer $f(a)$ :** $f(3) = 3^2 = 9$. Le point de tangence est $(3, 9)$.
+2.  **Calculer $f'(a)$ :** On sait que $f'(x) = 2x$, donc $f'(3) = 2(3) = 6$. La pente est de 6.
+3.  **Appliquer la formule :**
+
+    $y = f(3) + f'(3)(x - 3)$
+
+    $y = 9 + 6(x - 3)$
+
+    $y = 9 + 6x - 18$
+
+    $y = 6x - 9$
+
+L'équation de la tangente est $y = 6x - 9$.
+
+</details>
+
+---
+
+Quelles sont les formules de dérivation pour un produit et un quotient de deux fonctions ?
+
+<details>
+
+<summary>Answer</summary>
+
+Soient $u$ et $v$ deux fonctions dérivables sur un intervalle $I$.
+
+**1. Formule de dérivation d'un produit :**
+
+La dérivée du produit $uv$ n'est PAS le produit des dérivées. La formule correcte est :
+
+$$ (uv)' = u'v + uv' $$
+
+**Exemple :** Soit $h(x) = x^2 \sin(x)$.
+
+Posons $u(x) = x^2$ et $v(x) = \sin(x)$.
+
+On a $u'(x) = 2x$ et $v'(x) = \cos(x)$.
+
+$h'(x) = (2x)(\sin(x)) + (x^2)(\cos(x)) = 2x \sin(x) + x^2 \cos(x)$.
+
+**2. Formule de dérivation d'un quotient :**
+
+Pour que le quotient $\frac{u}{v}$ soit dérivable, il faut que $v(x) \neq 0$ sur l'intervalle $I$. La formule est :
+
+$$ \left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^2} $$
+
+**Exemple :** Soit $g(x) = \frac{e^x}{x^2+1}$.
+
+Posons $u(x) = e^x$ et $v(x) = x^2+1$.
+
+On a $u'(x) = e^x$ et $v'(x) = 2x$.
+
+$g'(x) = \frac{(e^x)(x^2+1) - (e^x)(2x)}{(x^2+1)^2} = \frac{e^x(x^2 - 2x + 1)}{(x^2+1)^2}$.
+
+</details>
+
+---
+
+Quelle est la formule de la dérivée d'une fonction composée (règle de la chaîne) ?
+
+<details>
+
+<summary>Answer</summary>
+
+La règle de la chaîne permet de dériver une fonction qui est la composition de deux autres fonctions, de la forme $g(f(x))$.
+
+**Formule :**
+
+Si $f$ est dérivable en $x$ et $g$ est dérivable en $f(x)$, alors la fonction composée $h = g \circ f$ est dérivable en $x$ et sa dérivée est :
+
+$$ h'(x) = (g \circ f)'(x) = g'(f(x)) \cdot f'(x) $$
+
+**Explication intuitive :**
+
+"On dérive la fonction extérieure $g$ en laissant l'intérieur $f(x)$ inchangé, puis on multiplie par la dérivée de la fonction intérieure $f$."
+
+**Notation de Leibniz (très parlante) :**
+
+Si on pose $y = g(u)$ et $u = f(x)$, la règle de la chaîne s'écrit :
+
+$$ \frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx} $$
+
+**Exemple :**
+
+Dériver $h(x) = (x^3 + 2x)^4$.
+
+- La fonction intérieure est $f(x) = u = x^3 + 2x$. Sa dérivée est $f'(x) = 3x^2 + 2$.
+- La fonction extérieure est $g(u) = u^4$. Sa dérivée est $g'(u) = 4u^3$.
+
+On applique la formule :
+
+$h'(x) = g'(f(x)) \cdot f'(x)$
+
+$h'(x) = 4(f(x))^3 \cdot (3x^2 + 2)$
+
+$h'(x) = 4(x^3 + 2x)^3 (3x^2 + 2)$
+
+</details>
+
+---
+
+Comment dériver la fonction $h(x) = \cos(x^2)$ en utilisant la règle de la chaîne ?
+
+<details>
+
+<summary>Answer</summary>
+
+Pour dériver $h(x) = \cos(x^2)$, on doit identifier la fonction intérieure et la fonction extérieure.
+
+**Étapes :**
+
+1.  **Identifier les fonctions :**
+    - La fonction "intérieure" est celle qui est appliquée en premier : $f(x) = x^2$.
+    - La fonction "extérieure" est celle qui est appliquée au résultat de la première : $g(u) = \cos(u)$.
+
+    On a bien $h(x) = g(f(x))$.
+
+2.  **Calculer les dérivées de chaque fonction :**
+    - Dérivée de l'intérieure : $f'(x) = 2x$.
+    - Dérivée de l'extérieure : $g'(u) = -\sin(u)$.
+
+3.  **Appliquer la formule de la règle de la chaîne :** $(g \circ f)'(x) = g'(f(x)) \cdot f'(x)$.
+    - $g'(f(x))$ signifie qu'on prend la dérivée de $g$, qui est $-\sin(u)$, et on remplace $u$ par $f(x) = x^2$. On obtient donc $-\sin(x^2)$.
+    - On multiplie ce résultat par la dérivée de la fonction intérieure, $f'(x) = 2x$.
+
+4.  **Combiner les résultats :**
+
+    $$ h'(x) = -\sin(x^2) \cdot (2x) $$
+
+    $$ h'(x) = -2x \sin(x^2) $$
+
+**Erreur fréquente à éviter :** Oublier de multiplier par la dérivée de la fonction intérieure. Écrire que la dérivée est $-\sin(x^2)$ est incorrect.
+
+</details>
+
+---
+
+Expliquez le Théorème de Rolle et son interprétation géométrique.
+
+<details>
+
+<summary>Answer</summary>
+
+Le Théorème de Rolle est un résultat fondamental sur les fonctions dérivables.
+
+**Énoncé du Théorème :**
+
+Soit $f$ une fonction qui respecte trois conditions :
+
+1.  $f$ est continue sur un intervalle fermé $[a, b]$.
+2.  $f$ est dérivable sur l'intervalle ouvert $]a, b[$.
+3.  Les valeurs de la fonction aux bornes sont égales : $f(a) = f(b)$.
+
+**Conclusion :**
+
+Alors, il existe au moins un point $c$ dans l'intervalle ouvert $]a, b[$ tel que la dérivée s'annule : $f'(c) = 0$.
+
+**Interprétation géométrique :**
+
+Imaginez une courbe continue et sans "point anguleux" qui part d'un point $(a, f(a))$ et arrive à un point $(b, f(b))$ situé à la même hauteur ($f(a)=f(b)$). Le théorème nous dit qu'il doit y avoir au moins un endroit entre $a$ et $b$ où la courbe atteint un sommet ou un creux, c'est-à-dire un point où la **tangente est horizontale**. Une tangente horizontale a une pente nulle, d'où $f'(c)=0$.
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Mvt_rolle.svg/400px-Mvt_rolle.svg.png" alt="Illustration du Théorème de Rolle" width="400"/>
+
+**Exemple :**
+
+Pour $f(x) = x^2 - 4x$ sur $[0, 4]$.
+
+- $f$ est continue et dérivable partout.
+- $f(0) = 0$ et $f(4) = 4^2 - 4(4) = 0$. Donc $f(0)=f(4)$.
+- Le théorème s'applique. Il existe un $c \in ]0, 4[$ où $f'(c)=0$.
+- $f'(x) = 2x-4$. On résout $2c-4=0$, ce qui donne $c=2$. On a bien $2 \in ]0, 4[$.
+
+</details>
+
+---
+
+Quelle est la différence entre le Théorème de Rolle et le Théorème des Accroissements Finis (TAF) ?
+
+<details>
+
+<summary>Answer</summary>
+
+Le Théorème des Accroissements Finis (TAF) est une **généralisation** du Théorème de Rolle. Le Théorème de Rolle est en fait un cas particulier du TAF.
+
+**Rappel des hypothèses :**
+
+- **Rolle :** $f$ continue sur $[a,b]$, dérivable sur $]a,b[$ ET $f(a)=f(b)$.
+- **TAF :** $f$ continue sur $[a,b]$, dérivable sur $]a,b[$. (Pas besoin de $f(a)=f(b)$).
+
+**Rappel des conclusions :**
+
+- **Rolle :** Il existe $c \in ]a, b[$ tel que $f'(c) = 0$.
+- **TAF :** Il existe $c \in ]a, b[$ tel que $f'(c) = \frac{f(b) - f(a)}{b - a}$.
+
+**Différence principale et interprétation géométrique :**
+
+- **Théorème de Rolle :** Cherche un point où la tangente est **horizontale**. Cela est garanti si les points de départ et d'arrivée sont à la même altitude. La pente de la corde reliant $(a, f(a))$ et $(b, f(b))$ est nulle.
+
+- **Théorème des Accroissements Finis :** Cherche un point où la tangente est **parallèle à la corde** qui relie les points d'extrémités $(a, f(a))$ et $(b, f(b))$. Le terme $\frac{f(b) - f(a)}{b - a}$ est précisément le coefficient directeur de cette corde.
+
+**Lien :**
+
+Si on ajoute la condition $f(a)=f(b)$ au TAF, le coefficient directeur de la corde devient $\frac{f(b) - f(b)}{b-a} = 0$. La conclusion du TAF devient alors $f'(c)=0$, ce qui est exactement la conclusion du Théorème de Rolle.
+
+</details>
+
+---
+
+Qu'est-ce qu'un point critique et comment aide-t-il à trouver les extremums locaux ?
+
+<details>
+
+<summary>Answer</summary>
+
+**Définition d'un point critique :**
+
+Un point $a$ dans le domaine de définition d'une fonction $f$ est appelé un **point critique** (ou point stationnaire) si la dérivée de la fonction en ce point est nulle :
+
+$$ f'(a) = 0 $$
+
+**Lien avec les extremums locaux :**
+
+Un **extremum local** (maximum ou minimum local) est un point où la fonction atteint une valeur plus grande ou plus petite que dans son voisinage immédiat.
+
+Le lien est donné par la **condition nécessaire du premier ordre** :
+
+Si une fonction $f$ atteint un extremum local en un point $a$ (qui n'est pas une borne de l'intervalle) et si $f$ est dérivable en $a$, alors $a$ doit être un point critique, c'est-à-dire $f'(a) = 0$.
+
+**En pratique :**
+
+Pour trouver les extremums locaux d'une fonction, on commence par chercher ses points critiques. Ces points sont les **candidats** à être des extremums.
+
+**Attention :**
+
+Un point critique n'est pas forcément un extremum !
+
+**Contre-exemple :**
+
+Soit $f(x) = x^3$.
+
+- Sa dérivée est $f'(x) = 3x^2$.
+- $f'(x) = 0$ pour $x=0$. Donc $x=0$ est un point critique.
+- Cependant, $f(0)=0$ n'est ni un maximum ni un minimum local, car la fonction est croissante avant et après $0$. C'est un point d'inflexion à tangente horizontale.
+
+Pour savoir si un point critique est un extremum, il faut une analyse plus poussée (étude du signe de la dérivée ou test de la dérivée seconde).
+
+</details>
+
+---
+
+Comment utiliser le test de la dérivée seconde pour identifier un maximum ou un minimum local ?
+
+<details>
+
+<summary>Answer</summary>
+
+Le test de la dérivée seconde est une méthode efficace pour déterminer la nature d'un point critique.
+
+**Théorème (Condition suffisante du second ordre) :**
+
+Soit $a$ un point critique d'une fonction $f$, c'est-à-dire que $f'(a) = 0$. On suppose que $f$ est deux fois dérivable en $a$.
+
+1.  Si **$f''(a) > 0$**, alors $f$ admet un **minimum local** en $a$.
+
+    *(Intuition : la pente de la tangente passe de négative à positive, la courbe est "convexe" ou "tournée vers le haut" comme un bol).*
+
+2.  Si **$f''(a) < 0$**, alors $f$ admet un **maximum local** en $a$.
+
+    *(Intuition : la pente de la tangente passe de positive à négative, la courbe est "concave" ou "tournée vers le bas" comme une cloche).*
+
+3.  Si **$f''(a) = 0$**, le test **ne permet pas de conclure**. Le point peut être un minimum, un maximum, ou aucun des deux (comme un point d'inflexion).
+
+**Exemple :**
+
+Trouver les extremums de $f(x) = 2x^3 - 3x^2 - 12x + 1$.
+
+1.  **Trouver les points critiques :**
+
+    $f'(x) = 6x^2 - 6x - 12 = 6(x-2)(x+1)$.
+
+    Les points critiques sont $x=-1$ et $x=2$.
+
+2.  **Calculer la dérivée seconde :**
+
+    $f''(x) = 12x - 6$.
+
+3.  **Appliquer le test pour chaque point :**
+    - Pour $x=-1$ : $f''(-1) = 12(-1) - 6 = -18$.
+
+      Comme $f''(-1) < 0$, le point $x=-1$ est un **maximum local**.
+
+    - Pour $x=2$ : $f''(2) = 12(2) - 6 = 18$.
+
+      Comme $f''(2) > 0$, le point $x=2$ est un **minimum local**.
+
+</details>
+
+---
+
+Quelle est la formule de Leibniz pour la dérivée n-ième d'un produit ?
+
+<details>
+
+<summary>Answer</summary>
+
+La formule de Leibniz généralise la règle de dérivation d'un produit $(uv)' = u'v + uv'$ à des ordres de dérivation supérieurs.
+
+**Formule :**
+
+Si $f$ et $g$ sont deux fonctions $n$ fois dérivables, alors leur produit $fg$ est également $n$ fois dérivable, et sa dérivée $n$-ième est donnée par :
+
+$$ (fg)^{(n)} = \sum_{k=0}^{n} \binom{n}{k} f^{(k)} g^{(n-k)} $$
+
+**Explication de la formule :**
+
+- $(fg)^{(n)}$ est la dérivée $n$-ième du produit.
+- $\binom{n}{k}$ est le coefficient binomial "k parmi n", calculé par $\frac{n!}{k!(n-k)!}$.
+- $f^{(k)}$ est la dérivée $k$-ième de $f$ (avec $f^{(0)}=f$).
+- $g^{(n-k)}$ est la dérivée $(n-k)$-ième de $g$.
+- La somme $\sum_{k=0}^{n}$ signifie qu'on additionne les termes pour $k$ allant de 0 à $n$.
+
+**Analogie avec le binôme de Newton :**
+
+La structure de la formule est très similaire à celle du binôme de Newton pour $(a+b)^n$.
+
+**Exemple pour n=3 :**
+
+Calculons la dérivée troisième de $h(x) = x^2 e^x$. Posons $g(x) = x^2$ et $f(x) = e^x$.
+
+$(fg)^{(3)} = \binom{3}{0}f^{(0)}g^{(3)} + \binom{3}{1}f^{(1)}g^{(2)} + \binom{3}{2}f^{(2)}g^{(1)} + \binom{3}{3}f^{(3)}g^{(0)}$
+
+Dérivées de $f(x)=e^x$ : $f^{(0)}=e^x, f^{(1)}=e^x, f^{(2)}=e^x, f^{(3)}=e^x$.
+
+Dérivées de $g(x)=x^2$ : $g^{(0)}=x^2, g^{(1)}=2x, g^{(2)}=2, g^{(3)}=0$.
+
+$h^{(3)}(x) = (1)(e^x)(0) + (3)(e^x)(2) + (3)(e^x)(2x) + (1)(e^x)(x^2)$
+
+$h^{(3)}(x) = 0 + 6e^x + 6xe^x + x^2e^x = (x^2+6x+6)e^x$
+
+</details>
+
+---
+
+Quelles sont les dérivées des fonctions usuelles (constante, puissance) ?
+
+<details>
+
+<summary>Answer</summary>
+
+Voici les formules de base pour les fonctions les plus simples.
+
+**1. Fonction constante :**
+
+Si $f(x) = c$, où $c$ est une constante, alors sa dérivée est nulle.
+
+$$ (c)' = 0 $$
+
+*Interprétation : La courbe d'une fonction constante est une droite horizontale, sa pente est donc toujours de 0.*
+
+**2. Fonction puissance :**
+
+Si $f(x) = x^n$, où $n$ est un nombre réel, alors sa dérivée est :
+
+$$ (x^n)' = n x^{n-1} $$
+
+**Exemples :**
+
+- Pour $f(x) = x^3$ ($n=3$) : $f'(x) = 3x^{3-1} = 3x^2$.
+- Pour $g(x) = \sqrt{x} = x^{1/2}$ ($n=1/2$) : $g'(x) = \frac{1}{2}x^{\frac{1}{2}-1} = \frac{1}{2}x^{-1/2} = \frac{1}{2\sqrt{x}}$.
+- Pour $h(x) = \frac{1}{x} = x^{-1}$ ($n=-1$) : $h'(x) = -1x^{-1-1} = -x^{-2} = -\frac{1}{x^2}$.
+
+</details>
+
+---
+
+Quelles sont les dérivées des fonctions exponentielles et logarithmiques ?
+
+<details>
+
+<summary>Answer</summary>
+
+**1. Exponentielle de base $e$ :**
+
+La fonction exponentielle $f(x) = e^x$ a la particularité d'être sa propre dérivée.
+
+$$ (e^x)' = e^x $$
+
+**2. Logarithme népérien :**
+
+La dérivée de la fonction logarithme népérien $f(x) = \ln(x)$, pour $x > 0$, est :
+
+$$ (\ln(x))' = \frac{1}{x} $$
+
+**Cas général (bases autres que $e$) :**
+
+- **Exponentielle de base $a$ :** Pour $a > 0$ et $a \neq 1$, la dérivée de $f(x) = a^x$ est :
+  $$ (a^x)' = a^x \ln(a) $$
+
+- **Logarithme de base $a$ :** Pour $a > 0$ et $a \neq 1$, la dérivée de $f(x) = \log_a(x)$ est :
+  $$ (\log_a(x))' = \frac{1}{x \ln(a)} $$
+
+</details>
+
+---
+
+Quelles sont les dérivées des fonctions trigonométriques de base (sinus, cosinus, tangente) ?
+
+<details>
+
+<summary>Answer</summary>
+
+**1. Fonction sinus :**
+
+$$ (\sin(x))' = \cos(x) $$
+
+**2. Fonction cosinus :**
+
+$$ (\cos(x))' = -\sin(x) $$
+
+**3. Fonction tangente :**
+
+Pour la fonction tangente, il existe deux formes courantes pour la dérivée :
+
+$$ (\tan(x))' = \frac{1}{\cos^2(x)} = 1 + \tan^2(x) $$
+
+On peut retrouver ce résultat en utilisant la règle du quotient sur $\tan(x) = \frac{\sin(x)}{\cos(x)}$.
+
+</details>
+
+---
+
+Quelles sont les dérivées des fonctions trigonométriques inverses (arcsin, arccos, arctan) ?
+
+<details>
+
+<summary>Answer</summary>
+
+**1. Fonction arc sinus :**
+
+Pour $x \in ]-1, 1[$ :
+
+$$ (\arcsin(x))' = \frac{1}{\sqrt{1 - x^2}} $$
+
+**2. Fonction arc cosinus :**
+
+Pour $x \in ]-1, 1[$ :
+
+$$ (\arccos(x))' = -\frac{1}{\sqrt{1 - x^2}} $$
+
+**3. Fonction arc tangente :**
+
+Pour tout $x \in \mathbb{R}$ :
+
+$$ (\arctan(x))' = \frac{1}{1 + x^2} $$
+
+</details>
+
+---
+
+Quelles sont les règles de dérivation pour la somme et le multiple constant ?
+
+<details>
+
+<summary>Answer</summary>
+
+La dérivation est une opération linéaire, ce qui signifie qu'elle se comporte bien avec les additions et les multiplications par des constantes.
+
+**1. Dérivée d'une somme :**
+
+La dérivée d'une somme de fonctions est la somme de leurs dérivées.
+
+$$ (u + v)' = u' + v' $$
+
+**Exemple :** Pour $h(x) = x^2 + \sin(x)$, on a $h'(x) = (x^2)' + (\sin(x))' = 2x + \cos(x)$.
+
+**2. Dérivée d'un multiple constant :**
+
+La dérivée d'une fonction multipliée par une constante est la constante multipliée par la dérivée de la fonction.
+
+$$ (c \cdot u)' = c \cdot u' $$
+
+**Exemple :** Pour $g(x) = 3x^4$, on a $g'(x) = 3 \cdot (x^4)' = 3 \cdot (4x^3) = 12x^3$.
+
+</details>
+
+---
+
+Quelle est la formule de la dérivée de l'inverse d'une fonction ?
+
+<details>
+
+<summary>Answer</summary>
+
+La formule pour dériver l'inverse d'une fonction $u$ (où $u(x) \neq 0$) est un cas particulier de la règle du quotient :
+
+$$ \left(\frac{1}{u}\right)' = -\frac{u'}{u^2} $$
+
+**Démonstration (via la règle du quotient) :**
+
+On pose $f=1$ et $g=u$. On a $f'=0$.
+
+$$ \left(\frac{1}{u}\right)' = \frac{(1)' \cdot u - 1 \cdot u'}{u^2} = \frac{0 \cdot u - u'}{u^2} = -\frac{u'}{u^2} $$
+
+**Exemple :**
+
+Pour $h(x) = \frac{1}{\cos(x)}$, on pose $u(x)=\cos(x)$. Alors $u'(x)=-\sin(x)$.
+
+$$ h'(x) = -\frac{-\sin(x)}{(\cos(x))^2} = \frac{\sin(x)}{\cos^2(x)} $$
+
+</details>
+
+---
+
+Quelles sont les dérivées des fonctions hyperboliques (sinh, cosh, tanh) ?
+
+<details>
+
+<summary>Answer</summary>
+
+Les dérivées des fonctions hyperboliques de base sont très similaires à celles des fonctions trigonométriques, mais sans les changements de signe.
+
+**1. Sinus hyperbolique :**
+
+$$ (\sinh(x))' = \cosh(x) $$
+
+**2. Cosinus hyperbolique :**
+
+$$ (\cosh(x))' = \sinh(x) $$
+
+**3. Tangente hyperbolique :**
+
+$$ (\tanh(x))' = \frac{1}{\cosh^2(x)} = 1 - \tanh^2(x) $$
+
+</details>
+
+---
+
+Quelles sont les dérivées des fonctions hyperboliques inverses (arcsinh, arccosh, artanh) ?
+
+<details>
+
+<summary>Answer</summary>
+
+**1. Arc sinus hyperbolique :**
+
+$$ (\text{arcsinh}(x))' = \frac{1}{\sqrt{x^2 + 1}} $$
+
+**2. Arc cosinus hyperbolique :**
+
+Pour $x > 1$ :
+
+$$ (\text{arccosh}(x))' = \frac{1}{\sqrt{x^2 - 1}} $$
+
+**3. Arc tangente hyperbolique :**
+
+Pour $x \in ]-1, 1[$ :
+
+$$ (\text{arctanh}(x))' = \frac{1}{1 - x^2} $$
+
+</details>

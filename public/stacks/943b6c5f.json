@@ -1,0 +1,98 @@
+{
+  "info": {
+    "id": "943b6c5f",
+    "title": "Dérivées - fiches de révision (A)",
+    "type": "cards",
+    "level": "regular",
+    "chapter": "Dérivées",
+    "course": "Bases mathématiques",
+    "tags": [
+      "dérivées",
+      "analyse",
+      "calcul différentiel",
+      "fonctions",
+      "limites",
+      "mathématiques"
+    ],
+    "count": 11
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "943b6c5f",
+      "content": "Qu'est-ce que le nombre dérivé d'une fonction en un point ?",
+      "solution": "\n\nSoit $f$ une fonction définie sur un intervalle $I$ et soit $a$ un point de $I$. Le **nombre dérivé** de $f$ en $a$, noté $f'(a)$, est la limite (si elle existe et est finie) du taux d'accroissement de la fonction entre $a$ et un point voisin.\n\nIl représente la pente de la tangente à la courbe de $f$ au point d'abscisse $a$.\n\n**Formule principale :**\n\nLa définition mathématique est :\n\n$$ f'(a) = \\lim_{h \\to 0} \\frac{f(a+h) - f(a)}{h} $$\n\n**Formulation équivalente :**\n\nUne autre façon de l'écrire, en posant $x = a+h$, est :\n\n$$ f'(a) = \\lim_{x \\to a} \\frac{f(x) - f(a)}{x - a} $$\n\n**Exemple :**\n\nPour $f(x) = x^2$ au point $a=3$ :\n\n$$ f'(3) = \\lim_{h \\to 0} \\frac{(3+h)^2 - 3^2}{h} = \\lim_{h \\to 0} \\frac{9 + 6h + h^2 - 9}{h} = \\lim_{h \\to 0} \\frac{h(6+h)}{h} = \\lim_{h \\to 0} (6+h) = 6 $$\n\nLe nombre dérivé de $f(x)=x^2$ en $a=3$ est $6$.\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "943b6c5f",
+      "content": "Quel est le lien entre la dérivabilité et la continuité d'une fonction en un point ?",
+      "solution": "\n\nLe lien est une implication à sens unique : la dérivabilité implique la continuité.\n\n**Théorème :** Si une fonction $f$ est dérivable en un point $a$, alors elle est **nécessairement continue** en ce point $a$.\n\n**Explication intuitive :**\n\nPour qu'une tangente puisse être tracée en un point, la courbe ne doit pas avoir de \"saut\" ou de \"trou\" à cet endroit. Le fait d'être dérivable signifie que la courbe est \"lisse\" au point $a$, ce qui est une condition plus forte que la simple continuité.\n\n**Attention : La réciproque est fausse !**\n\nUne fonction peut être continue en un point sans y être dérivable.\n\n**Contre-exemple :**\n\nLa fonction valeur absolue $f(x) = |x|$ est continue en $0$. Cependant, elle n'est pas dérivable en $0$ car la courbe présente un \"point anguleux\".\n\n- La dérivée à gauche est : $f'_g(0) = -1$\n- La dérivée à droite est : $f'_d(0) = 1$\n\nComme les dérivées à gauche et à droite sont différentes, la fonction n'est pas dérivable en $0$.\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "943b6c5f",
+      "content": "Quelle est l'équation de la tangente à la courbe d'une fonction $f$ en un point d'abscisse $a$ ?",
+      "solution": "\n\nL'équation de la tangente à la courbe représentative de la fonction $f$ au point d'abscisse $a$ est donnée par la formule :\n\n$$ y = f(a) + f'(a)(x - a) $$\n\n**Explication des termes :**\n\n- $(a, f(a))$ est le point de tangence, c'est-à-dire le point sur la courbe où la tangente est tracée.\n- $f'(a)$ est le nombre dérivé de $f$ en $a$. Il représente le **coefficient directeur** (la pente) de la tangente.\n- $(x, y)$ sont les coordonnées d'un point quelconque sur la droite tangente.\n\nCette équation est la meilleure approximation affine de la fonction $f$ au voisinage du point $a$.\n\n**Exemple :**\n\nTrouvons l'équation de la tangente à la courbe de $f(x) = x^2$ au point $a=3$.\n\n1.  **Calculer $f(a)$ :** $f(3) = 3^2 = 9$. Le point de tangence est $(3, 9)$.\n2.  **Calculer $f'(a)$ :** On sait que $f'(x) = 2x$, donc $f'(3) = 2(3) = 6$. La pente est de 6.\n3.  **Appliquer la formule :**\n\n    $y = f(3) + f'(3)(x - 3)$\n\n    $y = 9 + 6(x - 3)$\n\n    $y = 9 + 6x - 18$\n\n    $y = 6x - 9$\n\nL'équation de la tangente est $y = 6x - 9$.\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "943b6c5f",
+      "content": "Quelles sont les formules de dérivation pour un produit et un quotient de deux fonctions ?",
+      "solution": "\n\nSoient $u$ et $v$ deux fonctions dérivables sur un intervalle $I$.\n\n**1. Formule de dérivation d'un produit :**\n\nLa dérivée du produit $uv$ n'est PAS le produit des dérivées. La formule correcte est :\n\n$$ (uv)' = u'v + uv' $$\n\n**Exemple :** Soit $h(x) = x^2 \\sin(x)$.\n\nPosons $u(x) = x^2$ et $v(x) = \\sin(x)$.\n\nOn a $u'(x) = 2x$ et $v'(x) = \\cos(x)$.\n\n$h'(x) = (2x)(\\sin(x)) + (x^2)(\\cos(x)) = 2x \\sin(x) + x^2 \\cos(x)$.\n\n**2. Formule de dérivation d'un quotient :**\n\nPour que le quotient $\\frac{u}{v}$ soit dérivable, il faut que $v(x) \\neq 0$ sur l'intervalle $I$. La formule est :\n\n$$ \\left(\\frac{u}{v}\\right)' = \\frac{u'v - uv'}{v^2} $$\n\n**Exemple :** Soit $g(x) = \\frac{e^x}{x^2+1}$.\n\nPosons $u(x) = e^x$ et $v(x) = x^2+1$.\n\nOn a $u'(x) = e^x$ et $v'(x) = 2x$.\n\n$g'(x) = \\frac{(e^x)(x^2+1) - (e^x)(2x)}{(x^2+1)^2} = \\frac{e^x(x^2 - 2x + 1)}{(x^2+1)^2}$.\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "943b6c5f",
+      "content": "Quelle est la formule de la dérivée d'une fonction composée (règle de la chaîne) ?",
+      "solution": "\n\nLa règle de la chaîne permet de dériver une fonction qui est la composition de deux autres fonctions, de la forme $g(f(x))$.\n\n**Formule :**\n\nSi $f$ est dérivable en $x$ et $g$ est dérivable en $f(x)$, alors la fonction composée $h = g \\circ f$ est dérivable en $x$ et sa dérivée est :\n\n$$ h'(x) = (g \\circ f)'(x) = g'(f(x)) \\cdot f'(x) $$\n\n**Explication intuitive :**\n\n\"On dérive la fonction extérieure $g$ en laissant l'intérieur $f(x)$ inchangé, puis on multiplie par la dérivée de la fonction intérieure $f$.\"\n\n**Notation de Leibniz (très parlante) :**\n\nSi on pose $y = g(u)$ et $u = f(x)$, la règle de la chaîne s'écrit :\n\n$$ \\frac{dy}{dx} = \\frac{dy}{du} \\cdot \\frac{du}{dx} $$\n\n**Exemple :**\n\nDériver $h(x) = (x^3 + 2x)^4$.\n\n- La fonction intérieure est $f(x) = u = x^3 + 2x$. Sa dérivée est $f'(x) = 3x^2 + 2$.\n- La fonction extérieure est $g(u) = u^4$. Sa dérivée est $g'(u) = 4u^3$.\n\nOn applique la formule :\n\n$h'(x) = g'(f(x)) \\cdot f'(x)$\n\n$h'(x) = 4(f(x))^3 \\cdot (3x^2 + 2)$\n\n$h'(x) = 4(x^3 + 2x)^3 (3x^2 + 2)$\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "943b6c5f",
+      "content": "Comment dériver la fonction $h(x) = \\cos(x^2)$ en utilisant la règle de la chaîne ?",
+      "solution": "\n\nPour dériver $h(x) = \\cos(x^2)$, on doit identifier la fonction intérieure et la fonction extérieure.\n\n**Étapes :**\n\n1.  **Identifier les fonctions :**\n    - La fonction \"intérieure\" est celle qui est appliquée en premier : $f(x) = x^2$.\n    - La fonction \"extérieure\" est celle qui est appliquée au résultat de la première : $g(u) = \\cos(u)$.\n\n    On a bien $h(x) = g(f(x))$.\n\n2.  **Calculer les dérivées de chaque fonction :**\n    - Dérivée de l'intérieure : $f'(x) = 2x$.\n    - Dérivée de l'extérieure : $g'(u) = -\\sin(u)$.\n\n3.  **Appliquer la formule de la règle de la chaîne :** $(g \\circ f)'(x) = g'(f(x)) \\cdot f'(x)$.\n    - $g'(f(x))$ signifie qu'on prend la dérivée de $g$, qui est $-\\sin(u)$, et on remplace $u$ par $f(x) = x^2$. On obtient donc $-\\sin(x^2)$.\n    - On multiplie ce résultat par la dérivée de la fonction intérieure, $f'(x) = 2x$.\n\n4.  **Combiner les résultats :**\n\n    $$ h'(x) = -\\sin(x^2) \\cdot (2x) $$\n\n    $$ h'(x) = -2x \\sin(x^2) $$\n\n**Erreur fréquente à éviter :** Oublier de multiplier par la dérivée de la fonction intérieure. Écrire que la dérivée est $-\\sin(x^2)$ est incorrect.\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "943b6c5f",
+      "content": "Expliquez le Théorème de Rolle et son interprétation géométrique.",
+      "solution": "\n\nLe Théorème de Rolle est un résultat fondamental sur les fonctions dérivables.\n\n**Énoncé du Théorème :**\n\nSoit $f$ une fonction qui respecte trois conditions :\n\n1.  $f$ est continue sur un intervalle fermé $[a, b]$.\n2.  $f$ est dérivable sur l'intervalle ouvert $]a, b[$.\n3.  Les valeurs de la fonction aux bornes sont égales : $f(a) = f(b)$.\n\n**Conclusion :**\n\nAlors, il existe au moins un point $c$ dans l'intervalle ouvert $]a, b[$ tel que la dérivée s'annule : $f'(c) = 0$.\n\n**Interprétation géométrique :**\n\nImaginez une courbe continue et sans \"point anguleux\" qui part d'un point $(a, f(a))$ et arrive à un point $(b, f(b))$ situé à la même hauteur ($f(a)=f(b)$). Le théorème nous dit qu'il doit y avoir au moins un endroit entre $a$ et $b$ où la courbe atteint un sommet ou un creux, c'est-à-dire un point où la **tangente est horizontale**. Une tangente horizontale a une pente nulle, d'où $f'(c)=0$.\n\n<img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Mvt_rolle.svg/400px-Mvt_rolle.svg.png\" alt=\"Illustration du Théorème de Rolle\" width=\"400\"/>\n\n**Exemple :**\n\nPour $f(x) = x^2 - 4x$ sur $[0, 4]$.\n\n- $f$ est continue et dérivable partout.\n- $f(0) = 0$ et $f(4) = 4^2 - 4(4) = 0$. Donc $f(0)=f(4)$.\n- Le théorème s'applique. Il existe un $c \\in ]0, 4[$ où $f'(c)=0$.\n- $f'(x) = 2x-4$. On résout $2c-4=0$, ce qui donne $c=2$. On a bien $2 \\in ]0, 4[$.\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "943b6c5f",
+      "content": "Quelle est la différence entre le Théorème de Rolle et le Théorème des Accroissements Finis (TAF) ?",
+      "solution": "\n\nLe Théorème des Accroissements Finis (TAF) est une **généralisation** du Théorème de Rolle. Le Théorème de Rolle est en fait un cas particulier du TAF.\n\n**Rappel des hypothèses :**\n\n- **Rolle :** $f$ continue sur $[a,b]$, dérivable sur $]a,b[$ ET $f(a)=f(b)$.\n- **TAF :** $f$ continue sur $[a,b]$, dérivable sur $]a,b[$. (Pas besoin de $f(a)=f(b)$).\n\n**Rappel des conclusions :**\n\n- **Rolle :** Il existe $c \\in ]a, b[$ tel que $f'(c) = 0$.\n- **TAF :** Il existe $c \\in ]a, b[$ tel que $f'(c) = \\frac{f(b) - f(a)}{b - a}$.\n\n**Différence principale et interprétation géométrique :**\n\n- **Théorème de Rolle :** Cherche un point où la tangente est **horizontale**. Cela est garanti si les points de départ et d'arrivée sont à la même altitude. La pente de la corde reliant $(a, f(a))$ et $(b, f(b))$ est nulle.\n\n- **Théorème des Accroissements Finis :** Cherche un point où la tangente est **parallèle à la corde** qui relie les points d'extrémités $(a, f(a))$ et $(b, f(b))$. Le terme $\\frac{f(b) - f(a)}{b - a}$ est précisément le coefficient directeur de cette corde.\n\n**Lien :**\n\nSi on ajoute la condition $f(a)=f(b)$ au TAF, le coefficient directeur de la corde devient $\\frac{f(b) - f(b)}{b-a} = 0$. La conclusion du TAF devient alors $f'(c)=0$, ce qui est exactement la conclusion du Théorème de Rolle.\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "943b6c5f",
+      "content": "Qu'est-ce qu'un point critique et comment aide-t-il à trouver les extremums locaux ?",
+      "solution": "\n\n**Définition d'un point critique :**\n\nUn point $a$ dans le domaine de définition d'une fonction $f$ est appelé un **point critique** (ou point stationnaire) si la dérivée de la fonction en ce point est nulle :\n\n$$ f'(a) = 0 $$\n\n**Lien avec les extremums locaux :**\n\nUn **extremum local** (maximum ou minimum local) est un point où la fonction atteint une valeur plus grande ou plus petite que dans son voisinage immédiat.\n\nLe lien est donné par la **condition nécessaire du premier ordre** :\n\nSi une fonction $f$ atteint un extremum local en un point $a$ (qui n'est pas une borne de l'intervalle) et si $f$ est dérivable en $a$, alors $a$ doit être un point critique, c'est-à-dire $f'(a) = 0$.\n\n**En pratique :**\n\nPour trouver les extremums locaux d'une fonction, on commence par chercher ses points critiques. Ces points sont les **candidats** à être des extremums.\n\n**Attention :**\n\nUn point critique n'est pas forcément un extremum !\n\n**Contre-exemple :**\n\nSoit $f(x) = x^3$.\n\n- Sa dérivée est $f'(x) = 3x^2$.\n- $f'(x) = 0$ pour $x=0$. Donc $x=0$ est un point critique.\n- Cependant, $f(0)=0$ n'est ni un maximum ni un minimum local, car la fonction est croissante avant et après $0$. C'est un point d'inflexion à tangente horizontale.\n\nPour savoir si un point critique est un extremum, il faut une analyse plus poussée (étude du signe de la dérivée ou test de la dérivée seconde).\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "943b6c5f",
+      "content": "Comment utiliser le test de la dérivée seconde pour identifier un maximum ou un minimum local ?",
+      "solution": "\n\nLe test de la dérivée seconde est une méthode efficace pour déterminer la nature d'un point critique.\n\n**Théorème (Condition suffisante du second ordre) :**\n\nSoit $a$ un point critique d'une fonction $f$, c'est-à-dire que $f'(a) = 0$. On suppose que $f$ est deux fois dérivable en $a$.\n\n1.  Si **$f''(a) > 0$**, alors $f$ admet un **minimum local** en $a$.\n\n    *(Intuition : la pente de la tangente passe de négative à positive, la courbe est \"convexe\" ou \"tournée vers le haut\" comme un bol).*\n\n2.  Si **$f''(a) < 0$**, alors $f$ admet un **maximum local** en $a$.\n\n    *(Intuition : la pente de la tangente passe de positive à négative, la courbe est \"concave\" ou \"tournée vers le bas\" comme une cloche).*\n\n3.  Si **$f''(a) = 0$**, le test **ne permet pas de conclure**. Le point peut être un minimum, un maximum, ou aucun des deux (comme un point d'inflexion).\n\n**Exemple :**\n\nTrouver les extremums de $f(x) = 2x^3 - 3x^2 - 12x + 1$.\n\n1.  **Trouver les points critiques :**\n\n    $f'(x) = 6x^2 - 6x - 12 = 6(x-2)(x+1)$.\n\n    Les points critiques sont $x=-1$ et $x=2$.\n\n2.  **Calculer la dérivée seconde :**\n\n    $f''(x) = 12x - 6$.\n\n3.  **Appliquer le test pour chaque point :**\n    - Pour $x=-1$ : $f''(-1) = 12(-1) - 6 = -18$.\n\n      Comme $f''(-1) < 0$, le point $x=-1$ est un **maximum local**.\n\n    - Pour $x=2$ : $f''(2) = 12(2) - 6 = 18$.\n\n      Comme $f''(2) > 0$, le point $x=2$ est un **minimum local**.\n\n",
+      "options": []
+    },
+    {
+      "id": "11",
+      "stackId": "943b6c5f",
+      "content": "Quelle est la formule de Leibniz pour la dérivée n-ième d'un produit ?",
+      "solution": "\n\nLa formule de Leibniz généralise la règle de dérivation d'un produit $(uv)' = u'v + uv'$ à des ordres de dérivation supérieurs.\n\n**Formule :**\n\nSi $f$ et $g$ sont deux fonctions $n$ fois dérivables, alors leur produit $fg$ est également $n$ fois dérivable, et sa dérivée $n$-ième est donnée par :\n\n$$ (fg)^{(n)} = \\sum_{k=0}^{n} \\binom{n}{k} f^{(k)} g^{(n-k)} $$\n\n**Explication de la formule :**\n\n- $(fg)^{(n)}$ est la dérivée $n$-ième du produit.\n- $\\binom{n}{k}$ est le coefficient binomial \"k parmi n\", calculé par $\\frac{n!}{k!(n-k)!}$.\n- $f^{(k)}$ est la dérivée $k$-ième de $f$ (avec $f^{(0)}=f$).\n- $g^{(n-k)}$ est la dérivée $(n-k)$-ième de $g$.\n- La somme $\\sum_{k=0}^{n}$ signifie qu'on additionne les termes pour $k$ allant de 0 à $n$.\n\n**Analogie avec le binôme de Newton :**\n\nLa structure de la formule est très similaire à celle du binôme de Newton pour $(a+b)^n$.\n\n**Exemple pour n=3 :**\n\nCalculons la dérivée troisième de $h(x) = x^2 e^x$. Posons $g(x) = x^2$ et $f(x) = e^x$.\n\n$(fg)^{(3)} = \\binom{3}{0}f^{(0)}g^{(3)} + \\binom{3}{1}f^{(1)}g^{(2)} + \\binom{3}{2}f^{(2)}g^{(1)} + \\binom{3}{3}f^{(3)}g^{(0)}$\n\nDérivées de $f(x)=e^x$ : $f^{(0)}=e^x, f^{(1)}=e^x, f^{(2)}=e^x, f^{(3)}=e^x$.\n\nDérivées de $g(x)=x^2$ : $g^{(0)}=x^2, g^{(1)}=2x, g^{(2)}=2, g^{(3)}=0$.\n\n$h^{(3)}(x) = (1)(e^x)(0) + (3)(e^x)(2) + (3)(e^x)(2x) + (1)(e^x)(x^2)$\n\n$h^{(3)}(x) = 0 + 6e^x + 6xe^x + x^2e^x = (x^2+6x+6)e^x$\n\n",
+      "options": []
+    }
+  ]
+}
