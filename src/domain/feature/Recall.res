@@ -137,15 +137,15 @@ let nextRecall = (
   ~dayLength=24. *. 3600. *. 1000.,
 ) => {
   let (toRecall, newCards) = toRecall(stacks, ~now, ~dayLength)
-  let toRecall = if toRecall->Array.length < max {
+  let more = max - toRecall->Array.length
+  let toRecall = if more > 0 {
     let newCards = newCards->Array.copy
     newCards->shuffle
-    let len = max - toRecall->Array.length
     let newCards =
-      len > newCards->Array.length ? newCards : newCards->Array.slice(~start=0, ~end=len)
+      more > newCards->Array.length ? newCards : newCards->Array.slice(~start=0, ~end=more)
     toRecall->Array.concat(newCards)
   } else {
-    toRecall
+    toRecall->Array.slice(~start=0, ~end=max)
   }
   toRecall->shuffle
   toRecall
@@ -195,7 +195,6 @@ let make = (
     }
   }
 
-  // FIXME: This
   let stats = derived(() => {
     let total = Array.reduce(stacks, 0, (acc, {stack}: rstack) => acc + stack.cards->Array.length)
     let seen = Array.reduce(stacks, 0, (acc, {prog}: rstack) =>

@@ -76,7 +76,7 @@ module Front = {
   }
 }
 
-module Back = {
+module Evaluate = {
   @react.component
   let make = (~back: Recall.Ui.back) => {
     useTilia()
@@ -86,6 +86,37 @@ module Back = {
         option.correction == Missed || option.correction == Incorrect
       )
 
+    let evaluate = (state: CardProgress.state) => {
+      back.evaluate(state)
+      Browser.scrollTo("recall", ~behavior=Instant)
+    }
+
+    <div className="card-evaluate">
+      <button className="eval again" onClick={_ => evaluate(CardProgress.Again)}>
+        {"Encore"->React.string}
+      </button>
+      <button className="eval hard" onClick={_ => evaluate(CardProgress.Hard)}>
+        {"Difficile"->React.string}
+      </button>
+      {hasErrors
+        ? <> </>
+        : <>
+            <button className="eval good" onClick={_ => evaluate(CardProgress.Good)}>
+              {"Bien"->React.string}
+            </button>
+            <button className="eval easy" onClick={_ => evaluate(CardProgress.Easy(1))}>
+              {"Facile"->React.string}
+            </button>
+          </>}
+    </div>
+  }
+}
+
+module Back = {
+  @react.component
+  let make = (~back: Recall.Ui.back) => {
+    useTilia()
+
     <div className="card">
       <div className="card-question">
         <Markdown text={back.content} />
@@ -94,25 +125,9 @@ module Back = {
       <div className="card-answer">
         <details open_={true}>
           <summary onClick={_ => back.turn()}> {"Solution"->React.string} </summary>
-          <div className="card-evaluate">
-            <button className="eval again" onClick={_ => back.evaluate(CardProgress.Again)}>
-              {"Encore"->React.string}
-            </button>
-            <button className="eval hard" onClick={_ => back.evaluate(CardProgress.Hard)}>
-              {"Difficile"->React.string}
-            </button>
-            {hasErrors
-              ? <> </>
-              : <>
-                  <button className="eval good" onClick={_ => back.evaluate(CardProgress.Good)}>
-                    {"Bien"->React.string}
-                  </button>
-                  <button className="eval easy" onClick={_ => back.evaluate(CardProgress.Easy(1))}>
-                    {"Facile"->React.string}
-                  </button>
-                </>}
-          </div>
+          <Evaluate back={back} />
           <Markdown text={back.solution} />
+          <Evaluate back={back} />
         </details>
       </div>
     </div>
@@ -138,25 +153,29 @@ module Done = {
 @react.component
 let make = (~recall: Recall.t) => {
   useTilia()
-  <div className="card-wrapper">
-    <div className="stats">
-      <span> {"session"->React.string} </span>
-      <span className="col-span-3 font-bold text-left">
-        {recall.stats.stackCount->Int.toString->React.string}
-      </span>
-      <span> {"à réviser"->React.string} </span>
-      <span className="num"> {recall.stats.toRecall->Int.toString->React.string} </span>
-      <span> {"vues"->React.string} </span>
-      <span className="num"> {recall.stats.seen->Int.toString->React.string} </span>
-      <span> {"nouvelles"->React.string} </span>
-      <span className="num"> {recall.stats.new->Int.toString->React.string} </span>
-      <span> {"total"->React.string} </span>
-      <span className="num"> {recall.stats.total->Int.toString->React.string} </span>
+
+  <>
+    <a id="recall" />
+    <div className="card-wrapper">
+      <div className="stats">
+        <span> {"session"->React.string} </span>
+        <span className="col-span-3 font-bold text-left">
+          {recall.stats.stackCount->Int.toString->React.string}
+        </span>
+        <span> {"à réviser"->React.string} </span>
+        <span className="num"> {recall.stats.toRecall->Int.toString->React.string} </span>
+        <span> {"vues"->React.string} </span>
+        <span className="num"> {recall.stats.seen->Int.toString->React.string} </span>
+        <span> {"nouvelles"->React.string} </span>
+        <span className="num"> {recall.stats.new->Int.toString->React.string} </span>
+        <span> {"total"->React.string} </span>
+        <span className="num"> {recall.stats.total->Int.toString->React.string} </span>
+      </div>
+      {switch recall.view {
+      | Front(front) => <Front front />
+      | Back(back) => <Back back />
+      | Done => <Done />
+      }}
     </div>
-    {switch recall.view {
-    | Front(front) => <Front front />
-    | Back(back) => <Back back />
-    | Done => <Done />
-    }}
-  </div>
+  </>
 }

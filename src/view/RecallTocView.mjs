@@ -3,6 +3,7 @@
 import * as App from "./App.mjs";
 import * as Stack from "../domain/api/entity/Stack.mjs";
 import * as Utils from "../service/Utils.mjs";
+import * as Browser from "../service/Browser.mjs";
 import * as TiliaReact from "@tilia/react/src/TiliaReact.mjs";
 import * as Core__Float from "@rescript/core/src/Core__Float.mjs";
 import * as Core__Option from "@rescript/core/src/Core__Option.mjs";
@@ -198,10 +199,19 @@ function RecallTocView(props) {
   var levelGroups = Utils.partition(toc.stacks, (function (v) {
           return v.info.level;
         }));
+  var start = function () {
+    App.app.start();
+    setTimeout((function () {
+            Browser.scrollTo("recall", "smooth");
+          }), 200);
+  };
   return JsxRuntime.jsxs(JsxRuntime.Fragment, {
               children: [
-                JsxRuntime.jsx("p", {
-                      children: "Séléctionnez les matières que vous souhaitez réviser et pressez sur start."
+                JsxRuntime.jsx("div", {
+                      children: JsxRuntime.jsx("p", {
+                            children: "Séléctionnez les matières que vous souhaitez réviser et pressez sur start."
+                          }),
+                      className: "m-8 text-center text-slate-500 text-xl"
                     }),
                 JsxRuntime.jsxs("div", {
                       children: [
@@ -261,7 +271,7 @@ function RecallTocView(props) {
                       className: "start",
                       disabled: (stats.toRecall + stats.new | 0) === 0,
                       onClick: (function (param) {
-                          App.app.start();
+                          start();
                         })
                     }),
                 JsxRuntime.jsx("nav", {
@@ -281,6 +291,14 @@ function RecallTocView(props) {
                           }),
                       "aria-label": "Table des matières",
                       className: "toc"
+                    }),
+                JsxRuntime.jsx("button", {
+                      children: "Start",
+                      className: "start",
+                      disabled: (stats.toRecall + stats.new | 0) === 0,
+                      onClick: (function (param) {
+                          start();
+                        })
                     })
               ]
             });

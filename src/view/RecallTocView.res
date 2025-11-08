@@ -124,11 +124,19 @@ let make = () => {
 
   // Group by level first
   let levelGroups = toc.stacks->partition(v => v.info.level)
+  let start = () => {
+    App.app.start()
+    ignore(setTimeout(() => {
+        Browser.scrollTo("recall", ~behavior=Smooth)
+      }, 200))
+  }
 
   <>
-    <p>
-      {"Séléctionnez les matières que vous souhaitez réviser et pressez sur start."->React.string}
-    </p>
+    <div className="m-8 text-center text-slate-500 text-xl">
+      <p>
+        {"Séléctionnez les matières que vous souhaitez réviser et pressez sur start."->React.string}
+      </p>
+    </div>
     <div className="stats">
       <span> {"à revoir"->React.string} </span>
       <span className="num"> {stats.toRecall->Int.toString->React.string} </span>
@@ -150,8 +158,7 @@ let make = () => {
         onChange={e => toc.setDayLength(Event.value(e)->Float.fromString->Option.getExn)}
       />
     </div>
-    <button
-      className="start" disabled={stats.toRecall + stats.new === 0} onClick={_ => App.app.start()}>
+    <button className="start" disabled={stats.toRecall + stats.new === 0} onClick={_ => start()}>
       {"Start"->React.string}
     </button>
     <nav ariaLabel="Table des matières" className="toc">
@@ -168,5 +175,8 @@ let make = () => {
       ->Array.map(levelGroup => <LevelGroup levelGroup key={levelGroup.key->Stack.levelToString} />)
       ->React.array}
     </nav>
+    <button className="start" disabled={stats.toRecall + stats.new === 0} onClick={_ => start()}>
+      {"Start"->React.string}
+    </button>
   </>
 }

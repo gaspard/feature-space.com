@@ -10,9 +10,12 @@ function AppView(props) {
   TiliaReact.useTilia();
   var recall = App.app.recall;
   return JsxRuntime.jsx("div", {
-              children: recall !== undefined ? JsxRuntime.jsx(RecallView.make, {
-                      recall: recall
-                    }) : JsxRuntime.jsx(RecallTocView.make, {})
+              children: JsxRuntime.jsx("div", {
+                    children: recall !== undefined ? JsxRuntime.jsx(RecallView.make, {
+                            recall: recall
+                          }) : JsxRuntime.jsx(RecallTocView.make, {})
+                  }),
+              className: "mt-8 border-t-slate-200 border-t-2"
             });
 }
 

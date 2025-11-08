@@ -107,15 +107,15 @@ function nextRecall(stacks, shuffleOpt, nowOpt, maxOpt, dayLengthOpt) {
   var dayLength = dayLengthOpt !== undefined ? dayLengthOpt : 24 * 3600 * 1000;
   var match = toRecall(stacks, now, dayLength);
   var toRecall$1 = match[0];
+  var more = max - toRecall$1.length | 0;
   var toRecall$2;
-  if (toRecall$1.length < max) {
+  if (more > 0) {
     var newCards = match[1].slice();
     shuffle(newCards);
-    var len = max - toRecall$1.length | 0;
-    var newCards$1 = len > newCards.length ? newCards : newCards.slice(0, len);
+    var newCards$1 = more > newCards.length ? newCards : newCards.slice(0, more);
     toRecall$2 = toRecall$1.concat(newCards$1);
   } else {
-    toRecall$2 = toRecall$1;
+    toRecall$2 = toRecall$1.slice(0, max);
   }
   shuffle(toRecall$2);
   return toRecall$2;
