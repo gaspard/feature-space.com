@@ -37,9 +37,8 @@ main {
 }
 
 .main-content {
-  @apply lg:p-4 lg:pb-5 lg:max-w-5xl w-full h-full flex flex-col;
+  @apply lg:p-4 lg:pb-5 lg:max-w-5xl w-full h-full flex flex-col text-base sm:text-lg;
   min-height: calc(100vh - 64px);
-  font-size: 18px;
 
   .article {
     @apply py-4 md:px-12 px-6;
@@ -430,7 +429,7 @@ main {
   }
 
   .card-wrapper {
-    @apply -mx-5 md:mx-0;
+    @apply -mx-5 md:mx-0 min-h-screen;
   }
 
   .card {
@@ -484,6 +483,12 @@ main {
 
   .katex-display {
     @apply my-6;
+  }
+}
+
+@media (min-width: 640px) {
+  .main-content {
+    font-size: 18px; /* sm screens and up */
   }
 }
 
