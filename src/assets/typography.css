@@ -1,7 +1,7 @@
 /* from https://github.com/hypertexthero/typography/blob/master/style.css */
 body {
   font-family: georgia, serif;
-  font-size: 100%;
+  @apply text-sm sm:text-base lg:text-lg;
   line-height: 1.6;
   background: rgb(253, 253, 253);
   color: rgb(10, 10, 10);
@@ -36,8 +36,8 @@ main {
   @apply w-full h-full;
 }
 
-.main-content {
-  @apply lg:p-4 lg:pb-5 lg:max-w-5xl w-full h-full flex flex-col text-base sm:text-lg;
+  .main-content {
+  @apply lg:p-4 lg:pb-5 lg:max-w-5xl w-full h-full flex flex-col;
   min-height: calc(100vh - 64px);
 
   .article {
@@ -486,12 +486,6 @@ main {
   }
 }
 
-@media (min-width: 640px) {
-  .main-content {
-    font-size: 18px; /* sm screens and up */
-  }
-}
-
 .main-content>table {
   margin: 1.5em auto;
 }
@@ -650,15 +644,11 @@ input[type='checkbox']:hover {
   @apply border-gray-400;
 }
 
-input[type='checkbox']:checked:hover {
+  input[type='checkbox']:checked:hover {
   @apply bg-blue-600 border-blue-600;
 }
 
 @media (max-width: 500px) {
-  body {
-    font-size: 80%;
-  }
-
   img {
     max-width: 100% !important;
     height: auto !important;
