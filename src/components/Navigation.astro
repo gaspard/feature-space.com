@@ -1,6 +1,7 @@
 ---
 import { generateNavigation, getCurrentPagePath } from "../utils/navigation.ts"
 import NavigationReact from "./NavigationReact"
+import { make as FontSizeView } from "../view/FontSizeView.gen"
 
 interface Props {
   currentPath?: string
@@ -22,10 +23,23 @@ const navigationItems = await generateNavigation(Astro.url.pathname, 10)
   client:visible
 />
 
+<div class="sidebar-font-size-controls">
+  <FontSizeView client:only="react" />
+</div>
+
 <style>
   /* Additional custom styles if needed */
   nav.sidebar {
     min-height: 100vh;
+    position: relative;
+  }
+
+  /* Position font size controls fixed on page - always top right */
+  .sidebar-font-size-controls {
+    position: fixed;
+    top: 0.5rem;
+    right: 0.75rem;
+    z-index: 100;
   }
 
   /* Smooth transitions for hover effects */

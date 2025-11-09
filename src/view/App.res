@@ -3,6 +3,7 @@ type t = {
   recall: option<Recall.t>,
   start: unit => unit,
   done: unit => unit,
+  settings: Settings.t,
 }
 
 let repo = Repository.make("/stacks")
@@ -23,6 +24,7 @@ let make = () => {
       () => ignore(toc.start(setRecall))
     }),
     done: () => setRecall(None),
+    settings: Settings.make(repo),
   })
 }
 

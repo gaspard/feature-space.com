@@ -1,8 +1,11 @@
 /* from https://github.com/hypertexthero/typography/blob/master/style.css */
+html {
+  font-size: var(--font-size, 16px);
+}
+
 body {
   font-family: georgia, serif;
-  font-size: 16px;
-  @apply lg:text-lg;
+  font-size: var(--font-size, 16px);
   line-height: 1.6;
   background: rgb(253, 253, 253);
   color: rgb(10, 10, 10);
@@ -607,6 +610,17 @@ details[open] {
     @apply rotate-90;
   }
   @apply pb-8 px-8;
+}
+
+button.font-size-control {
+  @apply cursor-pointer text-gray-600 hover:text-gray-900 disabled:opacity-30 disabled:cursor-not-allowed p-1;
+  background: none;
+  border: none;
+  margin: 0;
+  font-family: inherit;
+  &:disabled {
+    @apply opacity-30 cursor-not-allowed;
+  }
 }
 
 button.toggle-check,
