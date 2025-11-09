@@ -272,7 +272,7 @@
     {
       "id": "10",
       "stackId": "5de8cee6",
-      "content": "#### Question 10 : Méthode de Newton\n\nQuel problème la méthode de Newton permet-elle de résoudre de manière itérative ?\n",
+      "content": "#### Méthode de Newton\n\nQuel problème la méthode de Newton permet-elle de résoudre de manière itérative ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nCette question porte sur l'objectif fondamental de la méthode de Newton.\n\n- **A) Incorrect.** La méthode de Newton *utilise* la notion de point fixe. Elle transforme le problème de la recherche de racine $F(x)=0$ en un problème de recherche de point fixe pour la fonction $f(x)=x-F(x)/F'(x)$. Mais son but premier est bien de résoudre $F(x)=0$.\n\n- **B) Incorrect.** La méthode de Newton *nécessite* de connaître la dérivée $F'(x)$ pour être appliquée, elle ne la calcule pas.\n\n- **C) Correct.** C'est la définition même de la méthode de Newton : c'est un algorithme pour trouver les racines (ou les zéros) d'une fonction $F$.\n\n- **D) Incorrect.** La méthode de Newton est liée à la notion de fonction contractante (la fonction d'itération est localement contractante autour d'une racine simple), mais ce n'est pas son but de le déterminer.\n\n",
       "options": [
         {
@@ -300,7 +300,7 @@
     {
       "id": "11",
       "stackId": "5de8cee6",
-      "content": "#### Question 11 : Itération de Newton\n\nOn souhaite trouver la racine positive de la fonction $F(x) = x^2 - 5$ en utilisant la méthode de Newton. Quelle est la formule de la suite récurrente $(u_n)$ correspondante ?\n",
+      "content": "#### Itération de Newton\n\nOn souhaite trouver la racine positive de la fonction $F(x) = x^2 - 5$ en utilisant la méthode de Newton. Quelle est la formule de la suite récurrente $(u_n)$ correspondante ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nLa formule générale de la méthode de Newton pour trouver une racine de $F(x)$ est :\n\n$$ u_{n+1} = u_n - \\frac{F(u_n)}{F'(u_n)} $$\n\nDans notre cas, nous avons :\n\n1.  La fonction : $F(x) = x^2 - 5$\n2.  Sa dérivée : $F'(x) = 2x$\n\nOn remplace $F(u_n)$ et $F'(u_n)$ dans la formule générale :\n\n$$ u_{n+1} = u_n - \\frac{u_n^2 - 5}{2u_n} $$\n\nCette formule est aussi connue sous le nom de méthode de Héron pour le calcul de la racine carrée de 5.\n\n- **A) Incorrect.** C'est simplement $F(u_n)$, pas l'itération de Newton.\n- **B) Correct.** Correspond exactement à la formule de Newton appliquée à $F(x)=x^2-5$.\n- **C) Incorrect.** Ce n'est que le terme correctif, sans le $u_n$ initial.\n- **D) Incorrect.** La fraction $\\frac{F(u_n)}{F'(u_n)}$ est inversée.\n\n",
       "options": [
         {
@@ -328,7 +328,7 @@
     {
       "id": "12",
       "stackId": "5de8cee6",
-      "content": "#### Question 12 : Point Fixe Répulsif\n\nSoit $l$ un point fixe d'une fonction dérivable $f$. On calcule $f'(l) = 2$. Si l'on choisit un terme initial $u_0$ très proche de $l$ (mais différent de $l$), quel sera le comportement de la suite $u_{n+1} = f(u_n)$ ?\n",
+      "content": "#### Point Fixe Répulsif\n\nSoit $l$ un point fixe d'une fonction dérivable $f$. On calcule $f'(l) = 2$. Si l'on choisit un terme initial $u_0$ très proche de $l$ (mais différent de $l$), quel sera le comportement de la suite $u_{n+1} = f(u_n)$ ?\n",
       "solution": "\n\n**Réponse : [A]**\n\nLe critère de stabilité locale d'un point fixe $l$ dépend de $|f'(l)|$.\n\nIci, $f'(l) = 2$. La valeur absolue est $|f'(l)| = |2| = 2$.\n\nPuisque $|f'(l)| > 1$, le point fixe est **répulsif**.\n\n- **A) Correct.** Un point fixe répulsif a pour caractéristique de \"repousser\" les termes d'une suite qui commenceraient dans son voisinage. La distance entre $u_n$ et $l$ va augmenter à chaque itération.\n\n- **B) Incorrect.** La convergence vers $l$ se produit lorsque le point fixe est attractif, c'est-à-dire quand $|f'(l)| < 1$.\n\n- **C) Incorrect.** Une oscillation autour de $l$ se produit lorsque la dérivée $f'(l)$ est négative. Ici, $f'(l)=2$ est positif, donc si $u_0 > l$, la suite s'éloignera en restant supérieure à $l$ (localement).\n\n- **D) Incorrect.** La suite n'est constante que si le point de départ est exactement le point fixe, soit $u_0 = l$, ce qui est exclu par l'énoncé.\n\n",
       "options": [
         {

@@ -272,7 +272,7 @@
     {
       "id": "10",
       "stackId": "359ed474",
-      "content": "#### Question 10 : Formule de Taylor avec reste intégral\n\nQue nous donne la formule de Taylor avec reste intégral pour une fonction $f$ de classe $\\mathcal{C}^{n+1}$ ?\n",
+      "content": "#### Formule de Taylor avec reste intégral\n\nQue nous donne la formule de Taylor avec reste intégral pour une fonction $f$ de classe $\\mathcal{C}^{n+1}$ ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nLa formule s'écrit $f(b) = P_n(b) + R_n(b)$, où $P_n$ est le polynôme de Taylor et $R_n$ est le reste intégral.\n\n- **A)** Incorrect. La formule est une égalité mathématique vraie pour tous $a, b$ dans l'intervalle où $f$ est suffisamment régulière. L'approximation $f(b) \\approx P_n(b)$ n'est cependant *utile* que lorsque $b$ est proche de $a$ (car le reste $R_n(b)$ est alors petit).\n\n- **B)** Correct. C'est la caractéristique principale de cette formule. Contrairement à la formule de Taylor-Young qui donne une information qualitative sur le reste (un \"petit o\"), la formule avec reste intégral donne une expression *exacte* pour ce reste : $R_n(b) = \\int_a^b \\frac{f^{(n+1)}(t)}{n!} (b-t)^n dt$.\n\n- **C)** Incorrect. Ceci décrit le reste sous la forme de Taylor-Lagrange ($R_n(b) = \\frac{f^{(n+1)}(c)}{(n+1)!}(b-a)^{n+1}$), qui est une autre forme du reste, non intégrale.\n\n- **D)** Incorrect. L'erreur est précisément quantifiée par l'intégrale du reste.\n\n",
       "options": [
         {
@@ -300,7 +300,7 @@
     {
       "id": "11",
       "stackId": "359ed474",
-      "content": "#### Question 11 : Application de la formule de Taylor\n\nOn applique la formule de Taylor avec reste intégral à la fonction $f(x) = e^x$ à l'ordre $n=1$ au point $a=0$. Quelle est l'expression correcte de $e^b$ ?\n",
+      "content": "#### Application de la formule de Taylor\n\nOn applique la formule de Taylor avec reste intégral à la fonction $f(x) = e^x$ à l'ordre $n=1$ au point $a=0$. Quelle est l'expression correcte de $e^b$ ?\n",
       "solution": "\n\n**Réponse : [A]**\n\nLa formule de Taylor avec reste intégral à l'ordre $n$ est :\n\n$$ f(b) = \\sum_{k=0}^n \\frac{f^{(k)}(a)}{k!} (b-a)^k + \\int_a^b \\frac{f^{(n+1)}(t)}{n!} (b-t)^n dt $$\n\nIci, $f(x)=e^x$, $n=1$ et $a=0$.\n\nToutes les dérivées de $e^x$ sont $e^x$, donc $f^{(k)}(0) = e^0 = 1$ pour tout $k$.\n\nLe polynôme de Taylor à l'ordre $n=1$ est :\n\n$$ P_1(b) = \\frac{f^{(0)}(0)}{0!}b^0 + \\frac{f^{(1)}(0)}{1!}b^1 = \\frac{1}{1} \\cdot 1 + \\frac{1}{1} \\cdot b = 1+b $$\n\nLe reste intégral $R_1(b)$ est :\n\n$$ R_1(b) = \\int_0^b \\frac{f^{(1+1)}(t)}{1!} (b-t)^1 dt = \\int_0^b \\frac{e^t}{1} (b-t) dt = \\int_0^b e^t(b-t) dt $$\n\nEn combinant les deux, on obtient $e^b = 1 + b + \\int_0^b e^t(b-t) dt$.\n\n- **A)** Correct. C'est l'expression exacte.\n- **B)** Incorrect. C'est le polynôme de Taylor de $e^b$ à l'ordre 2, ce n'est pas une égalité exacte pour $e^b$.\n- **C)** Incorrect. C'est la formule pour $e^b$ à l'ordre $n=2$ (polynôme $1+b+b^2/2$ et reste $R_2(b)$).\n- **D)** Incorrect. C'est la formule à l'ordre $n=0$.\n\n",
       "options": [
         {
@@ -328,7 +328,7 @@
     {
       "id": "12",
       "stackId": "359ed474",
-      "content": "#### Question 12 : Lien entre formules d'analyse\n\nLa formule de Taylor avec reste intégral à l'ordre $n=0$ pour une fonction $f$ de classe $\\mathcal{C}^1$ est $f(b) = f(a) + \\int_a^b f'(t) dt$. À quel autre théorème fondamental de l'analyse cette formule est-elle équivalente ?\n",
+      "content": "#### Lien entre formules d'analyse\n\nLa formule de Taylor avec reste intégral à l'ordre $n=0$ pour une fonction $f$ de classe $\\mathcal{C}^1$ est $f(b) = f(a) + \\int_a^b f'(t) dt$. À quel autre théorème fondamental de l'analyse cette formule est-elle équivalente ?\n",
       "solution": "\n\n**Réponse : [C]**\n\n- **A)** Incorrect. La relation de Chasles stipule que $\\int_a^c f + \\int_c^b f = \\int_a^b f$, ce qui est un concept de \"découpage\" d'intégrale, différent de celui-ci.\n\n- **B)** Incorrect. L'intégration par parties est utilisée pour *prouver* la formule de Taylor pour des ordres supérieurs ($n \\ge 1$), mais la formule pour $n=0$ ne lui est pas équivalente.\n\n- **C)** Correct. Si on réarrange la formule, on obtient $\\int_a^b f'(t) dt = f(b) - f(a)$. Ceci énonce que l'intégrale de la dérivée d'une fonction est égale à la différence des valeurs de la fonction aux bornes. C'est précisément l'énoncé du théorème fondamental de l'analyse, qui lie l'intégrale (calcul d'aire) à la notion de primitive (opération inverse de la dérivation).\n\n- **D)** Incorrect. Le théorème des valeurs intermédiaires concerne les propriétés des fonctions continues (le fait qu'elles prennent toutes les valeurs entre deux points), ce qui n'est pas directement lié à cette formule intégrale.\n\n",
       "options": [
         {

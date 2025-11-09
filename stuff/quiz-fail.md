@@ -20,7 +20,7 @@ chapterId: 629d2832
 
 ---
 
-#### Question 1 : Propriétés géométriques de la boule unité
+#### Propriétés géométriques de la boule unité
 
 Soit $E$ un espace vectoriel réel. On sait que la boule unité fermée $B = \{ x \in E \mid \|x\| \le 1 \}$ associée à une norme $\|\cdot\|$ est une partie convexe, symétrique par rapport à l'origine, et absorbante. Soit $K \subset E$ une partie possédant ces trois propriétés. La jauge de Minkowski de $K$ est définie par $p_K(x) = \inf\{\lambda > 0 \mid x \in \lambda K \}$.
 
@@ -51,7 +51,7 @@ Cette question explore la connexion profonde entre la définition axiomatique d'
 
 ---
 
-#### Question 2 : Vérification des axiomes d'une norme
+#### Vérification des axiomes d'une norme
 
 Considérons l'application $N: \mathbb{R}^n \to \mathbb{R}$ définie par $N(x) = \min(\|x\|_1, \|x\|_\infty)$. Analysez si $N$ est une norme sur $\mathbb{R}^n$ pour $n \ge 2$.
 
@@ -339,25 +339,25 @@ Cette question teste la compréhension des axiomes d'une norme en utilisant une 
     - D) Faux. La concavité avec $\phi(0)=0$ implique la sous-additivité. Mais l'homogénéité n'est pas garantie. e.g. $\phi(t)=\sqrt{t}$. $N_\phi(x)=\sqrt{N(x)}$. $N_\phi(\lambda x) = \sqrt{|\lambda|} N_\phi(x) \neq |\lambda|N_\phi(x)$.
     - C'est une excellente question. Je la mets en question 2.
 
-**Question 3:** Ok, cas d'égalité dans Cauchy-Schwarz.
+**** Ok, cas d'égalité dans Cauchy-Schwarz.
 
-**Question 4:** Identité du parallélogramme. Ok.
+**** Identité du parallélogramme. Ok.
 
-**Question 5:** Comparaison des normes p. Limite p->infty.
+**** Comparaison des normes p. Limite p->infty.
 
-**Question 6:** Norme induite, mais plus complexe. $N(x) = \sup_{t \in [0,1]} |p(t) + p'(t)|$ sur l'espace des polynômes de degré $\le n$. C'est un ev de dim finie. C'est une bonne question.
+**** Norme induite, mais plus complexe. $N(x) = \sup_{t \in [0,1]} |p(t) + p'(t)|$ sur l'espace des polynômes de degré $\le n$. C'est un ev de dim finie. C'est une bonne question.
 
-**Question 7:** Preuve de l'équivalence des normes. OK, le rôle de la compacité.
+**** Preuve de l'équivalence des normes. OK, le rôle de la compacité.
 
-**Question 8:** Contre-exemple en dim infinie. $C^1([0,1])$ avec $\|.\|_\infty$ et $\|.\|_{C^1} = \|f\|_\infty + \|f'\|_\infty$.
+**** Contre-exemple en dim infinie. $C^1([0,1])$ avec $\|.\|_\infty$ et $\|.\|_{C^1} = \|f\|_\infty + \|f'\|_\infty$.
 
-**Question 9:** Complétude de $\mathbb{R}^n$. Lien avec $\mathbb{R}$.
+**** Complétude de $\mathbb{R}^n$. Lien avec $\mathbb{R}$.
 
-**Question 10:** Suite de Cauchy qui ne converge pas. Espace des polynômes avec la norme L1 sur [-1,1]. Et la suite est une série de Taylor de $e^x$.
+**** Suite de Cauchy qui ne converge pas. Espace des polynômes avec la norme L1 sur [-1,1]. Et la suite est une série de Taylor de $e^x$.
 
-**Question 11:** Convergence d'une suite, mais avec une norme non standard.
+**** Convergence d'une suite, mais avec une norme non standard.
 
-**Question 12:** Distance induite par une norme. $d(x,y) = |\|x\| - \|y\||$. Est-ce une distance? Non. C'est l'inégalité triangulaire renversée. $|\|x\|-\|y\|| \le \|x-y\|$. C'est une semi-distance. Et elle n'est pas induite par une norme.
+**** Distance induite par une norme. $d(x,y) = |\|x\| - \|y\||$. Est-ce une distance? Non. C'est l'inégalité triangulaire renversée. $|\|x\|-\|y\|| \le \|x-y\|$. C'est une semi-distance. Et elle n'est pas induite par une norme.
 
 $d(x,y)=f(x-y)$ où $f(z)=|\|z\||$. non. $d(x,y)=\|x-y\|$.
 
@@ -369,7 +369,7 @@ Ok, je suis prêt à écrire les 12 questions. Je vais essayer de varier la posi
 
 ---
 
-#### Question 1 : Preuve de l'inégalité triangulaire renversée
+#### Preuve de l'inégalité triangulaire renversée
 
 La démonstration de l'inégalité triangulaire renversée, $|N(x) - N(y)| \le N(x - y)$, repose sur une application judicieuse de l'inégalité triangulaire standard. Quelle est l'étape cruciale de la preuve ?
 
@@ -401,7 +401,7 @@ Cette question teste la compréhension d'une preuve classique et fondamentale li
 
 ---
 
-#### Question 2 : Composition et axiomes de norme
+#### Composition et axiomes de norme
 
 Soit $(E, N)$ un espace vectoriel normé et $\phi : \mathbb{R}_+ \to \mathbb{R}_+$ une fonction. On définit une nouvelle application $N_\phi(x) = \phi(N(x))$. Quelle est la condition nécessaire et suffisante sur $\phi$ pour que $N_\phi$ soit une norme sur $E$, quel que soit le choix initial de la norme $N$ ?
 
@@ -435,7 +435,7 @@ Cette question théorique demande d'analyser comment les axiomes d'une norme se 
 
 ---
 
-#### Question 3 : Caractérisation des normes euclidiennes
+#### Caractérisation des normes euclidiennes
 
 L'identité du parallélogramme, $\|x+y\|^2 + \|x-y\|^2 = 2(\|x\|^2 + \|y\|^2)$, caractérise les normes qui découlent d'un produit scalaire. Considérez la norme $N$ sur $\mathbb{R}^2$ définie par $N(x,y) = \sqrt{x^2 + 2y^2}$. Cette norme est-elle euclidienne (c'est-à-dire, dérive-t-elle d'un produit scalaire) ?
 
@@ -473,7 +473,7 @@ Cette question teste la compréhension de ce qui définit une norme euclidienne,
 
 ---
 
-#### Question 4 : Comparaison des normes p
+#### Comparaison des normes p
 
 Pour $p \ge 1$, la norme p sur $\mathbb{R}^n$ est $\|x\|_p = (\sum_{i=1}^n |x_i|^p)^{1/p}$, et $\|x\|_\infty = \max_i |x_i|$. Quelle est la relation correcte entre $\|x\|_p$ et $\|x\|_\infty$ lorsque $p \to \infty$ ?
 
@@ -523,7 +523,7 @@ Lorsque $p \to \infty$, on a $n^{1/p} \to 1$. Par le théorème des gendarmes, o
 
 ---
 
-#### Question 5 : Preuve de l'équivalence des normes en dimension finie
+#### Preuve de l'équivalence des normes en dimension finie
 
 Le théorème fondamental stipulant que toutes les normes sur un espace vectoriel de dimension finie sont équivalentes repose sur un argument clé. Lequel ?
 
@@ -554,7 +554,7 @@ Cette question de théorie porte sur l'ingrédient principal de l'une des preuve
 
 ---
 
-#### Question 6 : Non-équivalence des normes en dimension infinie
+#### Non-équivalence des normes en dimension infinie
 
 Considérons l'espace vectoriel $E = C^1([0, 1], \mathbb{R})$ des fonctions de classe $C^1$ sur $[0,1]$. On le munit de deux normes : la norme de la convergence uniforme, $\|f\|_\infty = \sup_{t \in [0,1]} |f(t)|$, et la norme $C^1$, $\|f\|_{C^1} = \|f\|_\infty + \|f'\|_\infty$. Sont-elles équivalentes ?
 
@@ -596,7 +596,7 @@ Cette question applique le concept d'équivalence de normes à un exemple classi
 
 ---
 
-#### Question 7 : Complétude de Rⁿ
+#### Complétude de Rⁿ
 
 Le fait que $\mathbb{R}^n$ soit complet (c'est-à-dire que toute suite de Cauchy y converge) est une pierre angulaire de l'analyse. La preuve de ce théorème repose fondamentalement sur :
 
@@ -633,7 +633,7 @@ Cette question de théorie interroge sur la structure logique de la preuve de la
 
 ---
 
-#### Question 8 : Convergence et normes équivalentes
+#### Convergence et normes équivalentes
 
 Soit $(x^k)_{k \in \mathbb{N}}$ une suite dans $\mathbb{R}^n$. On suppose que la suite des normes euclidiennes $(\|x^k\|_2)_{k \in \mathbb{N}}$ converge vers $0$. Que peut-on conclure sur la convergence de la suite $(x^k)$ elle-même ?
 
@@ -670,7 +670,7 @@ Cette question teste la conséquence la plus importante de l'équivalence des no
 
 ---
 
-#### Question 9 : Suites de Cauchy dans des espaces de polynômes
+#### Suites de Cauchy dans des espaces de polynômes
 
 Soit $E = \mathcal{P}([0, 1])$ l'espace vectoriel des fonctions polynomiales sur $[0, 1]$. On le munit de la norme de la convergence uniforme $\|P\|_\infty = \sup_{t \in [0,1]} |P(t)|$.
 
@@ -709,7 +709,7 @@ Cette question met en évidence la notion de complétude en utilisant un exemple
 
 ---
 
-#### Question 10 : Distance induite par une norme
+#### Distance induite par une norme
 
 Une distance $d$ sur un espace vectoriel $E$ est dite "induite par une norme" s'il existe une norme $\|\cdot\|$ sur $E$ telle que $d(x, y) = \|x-y\|$ pour tous $x, y \in E$. Quelles propriétés parmi les suivantes une distance $d$ doit-elle nécessairement vérifier pour être induite par une norme ?
 
@@ -738,7 +738,7 @@ Cette question de synthèse explore les liens entre les structures métriques et
 
 ---
 
-#### Question 11 : Cas d'égalité dans l'inégalité de Cauchy-Schwarz
+#### Cas d'égalité dans l'inégalité de Cauchy-Schwarz
 
 L'inégalité de Cauchy-Schwarz $|\langle x, y \rangle| \le \|x\|_2 \|y\|_2$ devient une égalité si et seulement si les vecteurs $x$ et $y$ sont colinéaires. Soient $x, y, z$ trois vecteurs dans $\mathbb{R}^n$ tels que $\|x\|_2=\|y\|_2=\|z\|_2=1$. On suppose que l'inégalité triangulaire pour la norme euclidienne est une égalité, c'est-à-dire $\|x+y+z\|_2 = \|x\|_2 + \|y\|_2 + \|z\|_2$. Que peut-on en déduire sur $x, y, z$ ?
 
@@ -795,7 +795,7 @@ Cela signifie que $x=y=z=u$.
 
 ---
 
-#### Question 12 : Norme définie par une matrice
+#### Norme définie par une matrice
 
 Soit $A$ une matrice réelle inversible de taille $n \times n$. On définit l'application $N_A: \mathbb{R}^n \to \mathbb{R}$ par $N_A(x) = \|Ax\|_2$, où $\|\cdot\|_2$ est la norme euclidienne canonique. Laquelle des affirmations suivantes est fausse ?
 

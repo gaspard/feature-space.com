@@ -274,7 +274,7 @@
     {
       "id": "10",
       "stackId": "1fcafd1f",
-      "content": "#### Question 10 : Noyau d'un Morphisme\n\nSoit $f: G \\to H$ un morphisme de groupes, avec $e_G$ et $e_H$ leurs éléments neutres respectifs. Comment le noyau de $f$, noté $\\text{Ker}(f)$, est-il défini ?\n",
+      "content": "#### Noyau d'un Morphisme\n\nSoit $f: G \\to H$ un morphisme de groupes, avec $e_G$ et $e_H$ leurs éléments neutres respectifs. Comment le noyau de $f$, noté $\\text{Ker}(f)$, est-il défini ?\n",
       "solution": "\n\n**Réponse : [D]**\n\nLe noyau d'un morphisme de groupes est un concept central qui mesure à quel point le morphisme \"n'est pas injectif\".\n\n- **A.** Cette définition correspond à l'image du morphisme, $\\text{Im}(f)$, qui est un sous-ensemble de $H$.\n- **B.** Cette affirmation est triviale et ne définit rien d'utile. Par définition de $f$, l'image de tout élément de $G$ est dans $H$. Donc cet ensemble serait $G$ tout entier.\n- **C.** Le noyau est égal à $\\{e_G\\}$ si et seulement si le morphisme est injectif. Ce n'est pas la définition générale.\n- **D.** C'est la définition correcte du noyau. C'est le sous-ensemble du groupe de départ dont les éléments sont envoyés sur l'élément neutre du groupe d'arrivée.\n\n",
       "options": [
         {
@@ -302,7 +302,7 @@
     {
       "id": "11",
       "stackId": "1fcafd1f",
-      "content": "#### Question 11 : Relation d'Équivalence\n\nQuelle est la conséquence fondamentale d'une relation d'équivalence sur un ensemble non vide $E$ ?\n",
+      "content": "#### Relation d'Équivalence\n\nQuelle est la conséquence fondamentale d'une relation d'équivalence sur un ensemble non vide $E$ ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nUne relation d'équivalence sert à regrouper les éléments d'un ensemble qui sont considérés comme \"similaires\" selon un certain critère.\n\n- **A.** Une relation d'ordre est caractérisée par l'antisymétrie, alors qu'une relation d'équivalence est caractérisée par la symétrie. Ce sont deux types de relations très différents.\n- **B.** C'est la propriété fondamentale. Les classes d'équivalence sont des sous-ensembles non vides, deux à deux disjoints, dont l'union est l'ensemble $E$ tout entier. C'est la définition d'une partition.\n- **C.** Une relation d'équivalence ne confère pas en soi une structure de groupe. Il faut déjà avoir une structure de groupe sur $E$ et une relation compatible (venant d'un sous-groupe distingué) pour munir l'ensemble quotient d'une structure de groupe.\n- **D.** Les relations d'équivalence peuvent être définies sur des ensembles finis comme infinis (par exemple, la congruence modulo $n$ sur $\\mathbb{Z}$).\n\n",
       "options": [
         {
@@ -330,7 +330,7 @@
     {
       "id": "12",
       "stackId": "1fcafd1f",
-      "content": "#### Question 12 : Définition d'un Idéal\n\nSoit $(A, +, \\times)$ un anneau commutatif. Qu'est-ce qui caractérise un idéal $I$ de $A$ par rapport à un simple sous-groupe additif ?\n",
+      "content": "#### Définition d'un Idéal\n\nSoit $(A, +, \\times)$ un anneau commutatif. Qu'est-ce qui caractérise un idéal $I$ de $A$ par rapport à un simple sous-groupe additif ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nUn idéal est un type de sous-structure spécifique aux anneaux, plus forte que celle de sous-anneau.\n\n- **A.** Un idéal n'est généralement pas stable pour la multiplication (sauf s'il est aussi un sous-anneau), et n'a aucune raison de former un groupe multiplicatif.\n- **B.** C'est la propriété clé, souvent appelée \"absorption\". Pour tout $x \\in I$ et tout $a \\in A$, le produit $ax$ doit rester dans $I$. C'est ce qui permet de définir une multiplication cohérente sur l'anneau quotient. Par exemple, $3\\mathbb{Z}$ est un idéal de $\\mathbb{Z}$ car tout multiple de 3 multiplié par n'importe quel entier reste un multiple de 3.\n- **C.** Si un idéal $I$ contient $1$, alors par la propriété d'absorption, pour tout $a \\in A$, $a \\cdot 1 = a$ doit être dans $I$. Cela signifie que $I=A$. Ce n'est donc pas une condition générale.\n- **D.** L'anneau $A$ lui-même est toujours un idéal de $A$ (appelé idéal trivial).\n\n",
       "options": [
         {
@@ -358,7 +358,7 @@
     {
       "id": "13",
       "stackId": "1fcafd1f",
-      "content": "#### Question 13 : Anneau Quotient $\\mathbb{Z}/n\\mathbb{Z}$\n\nDans l'anneau quotient $\\mathbb{Z}/12\\mathbb{Z}$, quel est le résultat du produit $\\bar{5} \\times \\bar{7}$ ?\n",
+      "content": "#### Anneau Quotient $\\mathbb{Z}/n\\mathbb{Z}$\n\nDans l'anneau quotient $\\mathbb{Z}/12\\mathbb{Z}$, quel est le résultat du produit $\\bar{5} \\times \\bar{7}$ ?\n",
       "solution": "\n\n**Réponses : [B, C]**\n\nLes opérations dans l'anneau quotient $\\mathbb{Z}/n\\mathbb{Z}$ se font \"modulo n\".\n\n1.  On effectue d'abord l'opération dans $\\mathbb{Z}$ : $5 \\times 7 = 35$.\n2.  On cherche ensuite la classe d'équivalence de ce résultat dans $\\mathbb{Z}/12\\mathbb{Z}$. Cela revient à trouver le reste de la division euclidienne de 35 par 12.\n3.  $35 = 2 \\times 12 + 11$. Le reste est 11.\n4.  Donc, $\\overline{35} = \\overline{11}$.\n\n- **A)** $\\overline{35}$ est techniquement correct, mais dans $\\mathbb{Z}/12\\mathbb{Z}$, on représente généralement les classes par un entier compris entre 0 et 11. Cette réponse est donc moins précise que $\\overline{11}$.\n- **B)** C'est le représentant standard de la classe de 35 modulo 12.\n- **C)** Dans $\\mathbb{Z}/12\\mathbb{Z}$, la classe $\\overline{11}$ est la même que la classe $\\overline{11-12} = \\overline{-1}$. Ces deux notations désignent le même élément. Donc cette réponse est également correcte.\n- **D)** Le produit ne vaut pas 1. $\\bar{5}$ et $\\bar{7}$ sont d'ailleurs leurs propres inverses dans cet anneau, car $\\bar{5} \\times \\bar{5} = \\overline{25} = \\bar{1}$ et $\\bar{7} \\times \\bar{7} = \\overline{49} = \\bar{1}$.\n\n*Note : Pour un quiz à choix unique, $\\overline{11}$ serait la meilleure réponse attendue. Mais $\\overline{-1}$ étant mathématiquement identique, il est aussi correct.*\n\n",
       "options": [
         {
@@ -386,7 +386,7 @@
     {
       "id": "14",
       "stackId": "1fcafd1f",
-      "content": "#### Question 14 : Principe de Récurrence\n\nPour démontrer par récurrence qu'une propriété $P(n)$ est vraie pour tout entier $n \\ge 0$, quelles sont les deux étapes indispensables ?\n",
+      "content": "#### Principe de Récurrence\n\nPour démontrer par récurrence qu'une propriété $P(n)$ est vraie pour tout entier $n \\ge 0$, quelles sont les deux étapes indispensables ?\n",
       "solution": "\n\n**Réponses : [A, D]**\n\nUne démonstration par récurrence repose sur un effet \"domino\". Il faut pousser le premier domino (initialisation) et s'assurer que chaque domino en fait tomber le suivant (hérédité).\n\n- **A.** C'est l'étape d'**hérédité**. On suppose la propriété vraie à un rang $k$ (hypothèse de récurrence) pour prouver qu'elle est vraie au rang suivant $k+1$.\n- **B.** Démontrer la propriété pour $n=1$ est l'étape d'initialisation si l'on veut prouver la propriété pour tout $n \\ge 1$. Mais si la propriété doit être vraie pour tout $n \\ge 0$, l'initialisation doit se faire à $n=0$.\n- **C.** Ce n'est pas une méthode de démonstration par récurrence. Vérifier la propriété pour quelques valeurs, même une infinité (par exemple, tous les nombres pairs), ne prouve pas qu'elle est vraie pour toutes les valeurs.\n- **D.** C'est l'étape d'**initialisation** (ou cas de base) pour une propriété énoncée pour $n \\ge 0$. Sans cette étape, l'hérédité seule ne prouve rien.\n\n",
       "options": [
         {
@@ -414,7 +414,7 @@
     {
       "id": "15",
       "stackId": "1fcafd1f",
-      "content": "#### Question 15 : Isomorphismes d'ensembles ordonnés\n\nSoit $f: (\\mathbb{Z}, \\le) \\to (\\mathbb{Z}, \\le)$ une application. Laquelle des affirmations suivantes garantit que $f$ est un isomorphisme d'ensembles ordonnés ?\n",
+      "content": "#### Isomorphismes d'ensembles ordonnés\n\nSoit $f: (\\mathbb{Z}, \\le) \\to (\\mathbb{Z}, \\le)$ une application. Laquelle des affirmations suivantes garantit que $f$ est un isomorphisme d'ensembles ordonnés ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nUn isomorphisme d'ensembles ordonnés doit préserver la structure d'ordre de manière parfaite, ce qui implique une bijection qui respecte l'ordre dans les deux sens.\n\n- **A)** Une application strictement croissante est injective, mais pas forcément surjective. Par exemple, $f(n) = 2n$ est strictement croissante sur $\\mathbb{Z}$ mais n'est pas surjective (les nombres impairs n'ont pas d'antécédent). Elle n'est donc pas une bijection, et ne peut pas être un isomorphisme de $(\\mathbb{Z}, \\le)$ sur lui-même.\n- **B)** Une bijection ne préserve pas forcément l'ordre. Par exemple, $f(n) = -n$ est une bijection de $\\mathbb{Z}$ sur $\\mathbb{Z}$, mais elle est décroissante. Si $2 \\le 3$, alors $f(2)=-2$ et $f(3)=-3$, et on a $-2 \\ge -3$. L'ordre est inversé.\n- **C)** C'est la définition complète d'un isomorphisme d'ensembles ordonnés. Une bijection dont l'application et la réciproque sont croissantes. Cette double condition est équivalente à l'affirmation unique : $x \\le y \\iff f(x) \\le f(y)$.\n- **D)** Cette affirmation définit simplement une application croissante. Comme vu en A), ce n'est pas suffisant.\n\n",
       "options": [
         {

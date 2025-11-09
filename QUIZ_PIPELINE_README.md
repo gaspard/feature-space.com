@@ -50,7 +50,7 @@ course: 'Course Name'
 
 ---
 
-#### Question 1: Question Title
+#### Question Title
 
 Question content here...
 
@@ -69,7 +69,7 @@ Explanation here...
 
 ---
 
-#### Question 2: Another Question
+#### Another Question
 
 More content...
 ```

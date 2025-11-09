@@ -273,7 +273,7 @@
     {
       "id": "10",
       "stackId": "15352066",
-      "content": "#### Question 10 : Projection orthogonale\n\nSoit $F$ un sous-espace d'un espace euclidien $E$ et $x \\in E$. Le vecteur $P_F(x)$, le projeté orthogonal de $x$ sur $F$, est caractérisé de manière unique par le fait que :\n",
+      "content": "#### Projection orthogonale\n\nSoit $F$ un sous-espace d'un espace euclidien $E$ et $x \\in E$. Le vecteur $P_F(x)$, le projeté orthogonal de $x$ sur $F$, est caractérisé de manière unique par le fait que :\n",
       "solution": "\n\n**Réponse : [A]**\n\nCette question concerne la propriété fondamentale qui définit géométriquement la projection orthogonale.\n\n- **A)** Correct. C'est le théorème de la meilleure approximation. Le projeté orthogonal $P_F(x)$ est l'unique point de $F$ qui est le plus proche de $x$. La distance de $x$ à $F$ est atteinte en ce point.\n\n- **B)** Incorrect. La condition correcte est que le vecteur $x - P_F(x)$ doit être orthogonal à **tout vecteur de $F$**, pas seulement au vecteur $x$.\n\n- **C)** Incorrect. La distance de $x$ à $F$ est la longueur du vecteur qui \"relie\" $x$ à son projeté, c'est-à-dire $d(x,F) = \\|x - P_F(x)\\|$.\n\n- **D)** Incorrect. Cette formule n'est valide que si la base $(v_1, \\dots, v_p)$ de $F$ est **orthonormée**. Pour une base quelconque, la formule est beaucoup plus compliquée.\n\n",
       "options": [
         {
@@ -301,7 +301,7 @@
     {
       "id": "11",
       "stackId": "15352066",
-      "content": "#### Question 11 : Matrice de l'adjoint\n\nSoit $f$ un endomorphisme d'un espace hermitien $E$ (complexe). Sa matrice dans une base **orthonormée** $\\mathcal{B}$ est $A$. Quelle est la matrice de son adjoint $f^*$ dans la même base $\\mathcal{B}$ ?\n",
+      "content": "#### Matrice de l'adjoint\n\nSoit $f$ un endomorphisme d'un espace hermitien $E$ (complexe). Sa matrice dans une base **orthonormée** $\\mathcal{B}$ est $A$. Quelle est la matrice de son adjoint $f^*$ dans la même base $\\mathcal{B}$ ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nLa question porte sur le calcul de la matrice de l'endomorphisme adjoint, qui dépend du corps ($\\mathbb{R}$ ou $\\mathbb{C}$).\n\n- **A)** Incorrect. La matrice de l'adjoint n'est l'inverse que dans le cas particulier où l'endomorphisme est unitaire.\n\n- **B)** Incorrect. La transposée ${}^tA$ est la matrice de l'adjoint dans le cas d'un espace **euclidien** (réel). L'énoncé précise qu'on est dans un espace hermitien (complexe).\n\n- **C)** Correct. Dans un espace hermitien, la matrice de l'adjoint $f^*$ dans une base orthonormée est la transconjuguée (transposée puis conjuguée, ou l'inverse) de la matrice de $f$. Cette matrice est souvent notée $A^*$.\n\n- **D)** Incorrect. La conjugaison seule ne suffit pas, il faut aussi transposer la matrice.\n\n",
       "options": [
         {
@@ -329,7 +329,7 @@
     {
       "id": "12",
       "stackId": "15352066",
-      "content": "#### Question 12 : Endomorphismes orthogonaux\n\nSoit $f$ un endomorphisme d'un espace euclidien $E$ de dimension finie. Quelles sont les affirmations équivalentes au fait que $f$ est un endomorphisme orthogonal ?\n",
+      "content": "#### Endomorphismes orthogonaux\n\nSoit $f$ un endomorphisme d'un espace euclidien $E$ de dimension finie. Quelles sont les affirmations équivalentes au fait que $f$ est un endomorphisme orthogonal ?\n",
       "solution": "\n\n**Réponses : [A, B, D]**\n\nUn endomorphisme orthogonal (ou isométrie vectorielle) peut être défini de plusieurs manières équivalentes.\n\n- **A)** Correct. C'est la définition la plus fondamentale. Un endomorphisme orthogonal est une transformation qui préserve la structure géométrique de l'espace, y compris les angles et les longueurs, ce qui est encapsulé dans la conservation du produit scalaire.\n\n- **B)** Correct. En dimension finie, la conservation de la norme est équivalente à la conservation du produit scalaire (cela se démontre avec les identités de polarisation). Une transformation qui conserve les longueurs conserve aussi les angles.\n\n- **C)** Incorrect. Une matrice symétrique dans une base orthonormée correspond à un endomorphisme **auto-adjoint**, pas à un endomorphisme orthogonal.\n\n- **D)** Correct. La condition $\\langle f(x), f(y) \\rangle = \\langle x, y \\rangle$ peut se réécrire $\\langle x, f^*(f(y)) \\rangle = \\langle x, y \\rangle$. Comme c'est vrai pour tout $x$, cela implique $f^*(f(y))=y$ pour tout $y$, donc $f^* \\circ f = \\text{Id}$. En dimension finie, cela équivaut à $f^{-1} = f^*$.\n\n",
       "options": [
         {
@@ -357,7 +357,7 @@
     {
       "id": "13",
       "stackId": "15352066",
-      "content": "#### Question 13 : Classification d'endomorphismes\n\nUn endomorphisme $f$ d'un espace euclidien tel que $f=f^*$ est dit :\n",
+      "content": "#### Classification d'endomorphismes\n\nUn endomorphisme $f$ d'un espace euclidien tel que $f=f^*$ est dit :\n",
       "solution": "\n\n**Réponse : [B]**\n\nCette question est une question de reconnaissance de vocabulaire.\n\n- **A)** Incorrect. Un endomorphisme normal vérifie $f \\circ f^* = f^* \\circ f$. Tout endomorphisme auto-adjoint est normal (car si $f=f^*$, alors $f \\circ f^* = f^2 = f^* \\circ f$), mais la définition $f=f^*$ est plus spécifique.\n\n- **B)** Correct. C'est la définition d'un endomorphisme auto-adjoint. Dans le cas réel, on dit aussi endomorphisme symétrique.\n\n- **C)** Incorrect. Un endomorphisme orthogonal vérifie $f^* \\circ f = \\text{Id}$.\n\n- **D)** Incorrect. Le terme \"unitaire\" est utilisé pour les espaces hermitiens (complexes). C'est l'équivalent de \"orthogonal\".\n\n",
       "options": [
         {
@@ -385,7 +385,7 @@
     {
       "id": "14",
       "stackId": "15352066",
-      "content": "#### Question 14 : Théorème de Riesz\n\nQu'affirme le théorème de représentation de Riesz dans un espace euclidien $E$ de dimension finie ?\n",
+      "content": "#### Théorème de Riesz\n\nQu'affirme le théorème de représentation de Riesz dans un espace euclidien $E$ de dimension finie ?\n",
       "solution": "\n\n**Réponse : [D]**\n\nCette question teste la connaissance de l'énoncé d'un théorème important qui relie un espace à son dual.\n\n- **A)** Incorrect. C'est un résultat important, mais il découle du procédé de Gram-Schmidt, ce n'est pas le théorème de Riesz.\n\n- **B)** Incorrect. C'est une version simplifiée du **théorème spectral**, qui ne s'applique qu'à une classe particulière d'endomorphismes (les endomorphismes normaux).\n\n- **C)** Incorrect. Le théorème de Riesz établit une correspondance entre les vecteurs et les **formes linéaires**, pas les endomorphismes.\n\n- **D)** Correct. C'est précisément l'énoncé du théorème. Il établit un isomorphisme canonique entre un espace euclidien $E$ et son dual $E^*$, où chaque forme linéaire est \"représentée\" par un produit scalaire avec un vecteur unique.\n\n",
       "options": [
         {

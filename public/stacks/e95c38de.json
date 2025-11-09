@@ -272,7 +272,7 @@
     {
       "id": "10",
       "stackId": "e95c38de",
-      "content": "#### Question 10 : Convergence et parties d'un nombre complexe\n\nSi la suite complexe $(u_n)$ converge vers une limite $l \\in \\mathbb{C}$, quelles affirmations sont nécessairement vraies ?\n",
+      "content": "#### Convergence et parties d'un nombre complexe\n\nSi la suite complexe $(u_n)$ converge vers une limite $l \\in \\mathbb{C}$, quelles affirmations sont nécessairement vraies ?\n",
       "solution": "\n\n**Réponses : [A, C, D]**\n\n- **A)** C'est une propriété fondamentale. La convergence d'une suite complexe est équivalente à la convergence de ses parties réelle et imaginaire.\n\n- **B)** C'est une condition nécessaire mais non suffisante pour la convergence. Si $(u_n)$ converge vers $l$, alors $u_{n+1} \\to l$ et $u_n \\to l$, donc $u_{n+1}-u_n \\to l-l=0$. Cependant, la réciproque est fausse. Par exemple, pour la suite $u_n = \\sum_{k=1}^n \\frac{1}{k}$, on a $u_{n+1}-u_n = \\frac{1}{n+1} \\to 0$, mais la suite $(u_n)$ diverge.\n\n- **C)** C'est vrai. Cela se démontre avec l'inégalité triangulaire inversée : $||u_n| - |l|| \\le |u_n - l|$. Comme $|u_n - l| \\to 0$, alors $||u_n| - |l|| \\to 0$, ce qui signifie $|u_n| \\to |l|$.\n\n- **D)** C'est vrai, pour la même raison que l'affirmation A.\n\n",
       "options": [
         {
@@ -300,7 +300,7 @@
     {
       "id": "11",
       "stackId": "e95c38de",
-      "content": "#### Question 11 : Notations de Landau\n\nParmi les relations de comparaison asymptotique suivantes, lesquelles sont correctes ?\n",
+      "content": "#### Notations de Landau\n\nParmi les relations de comparaison asymptotique suivantes, lesquelles sont correctes ?\n",
       "solution": "\n\n**Réponses : [A, C, D]**\n\n- **A)** $u_n = O(v_n)$ signifie que le quotient $|u_n/v_n|$ est borné. Ici, $\\frac{n^3+2n}{n^3} = 1 + \\frac{2}{n^2}$. Ce quotient tend vers 1, c'est donc une suite convergente et par conséquent bornée. L'affirmation est vraie.\n\n- **B)** $u_n = o(v_n)$ signifie que le quotient $u_n/v_n$ tend vers 0. Ici, $\\frac{n^2}{n^2} = 1$, ce qui ne tend pas vers 0. L'affirmation est fausse.\n\n- **C)** On calcule le quotient : $\\frac{1/n^2}{1/n} = \\frac{n}{n^2} = \\frac{1}{n}$. Comme $1/n \\to 0$, la relation $\\frac{1}{n^2} = o(\\frac{1}{n})$ est correcte.\n\n- **D)** $u_n \\sim v_n$ signifie que le quotient $u_n/v_n$ tend vers 1. Ici, $\\frac{2n^3+100n^2}{2n^3} = 1 + \\frac{100}{2n} = 1 + \\frac{50}{n}$. Ce quotient tend bien vers 1. C'est un cas particulier de la règle \"un polynôme est équivalent à son monôme de plus haut degré\".\n\n",
       "options": [
         {

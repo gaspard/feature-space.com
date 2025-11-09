@@ -16,7 +16,7 @@ order: 1
 
 ---
 
-#### Question 1: Test Question
+#### Test Question
 
 What is 2+2?
 
@@ -36,7 +36,7 @@ What is 2+2?
 
 ---
 
-#### Question 2: Another Question
+#### Another Question
 
 What is 3+3?
 
@@ -92,7 +92,7 @@ order: 1
 
 ---
 
-#### Question 1: Math Question
+#### Math Question
 
 Solve: $x^2 + 2x + 1 = 0$
 
@@ -135,7 +135,7 @@ order: 1
 
 ---
 
-#### Question 1: Empty Question
+#### Empty Question
 
 No content here.
 
@@ -180,7 +180,7 @@ order: 1
 
 ---
 
-#### Question 1: Special Characters
+#### Special Characters
 
 What does "café" mean? (é, ñ, ü, ç)
 

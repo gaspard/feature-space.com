@@ -28,27 +28,23 @@ const navigationItems = await generateNavigation(Astro.url.pathname, 10)
 </div>
 
 <style>
-  /* Additional custom styles if needed */
   nav.sidebar {
     min-height: 100vh;
     position: relative;
   }
 
-  /* Position font size controls fixed on page - always top right */
   .sidebar-font-size-controls {
     position: fixed;
-    top: 0.5rem;
-    right: 0.75rem;
+    top: 0.7rem;
+    right: 1.5rem;
     z-index: 100;
   }
 
-  /* Smooth transitions for hover effects */
   nav.sidebar a,
   nav.sidebar div {
     transition: all 0.15s ease-in-out;
   }
 
-  /* Active state border styling */
   .border-l-4 {
     border-left-width: 4px;
   }

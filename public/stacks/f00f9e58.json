@@ -272,7 +272,7 @@
     {
       "id": "10",
       "stackId": "f00f9e58",
-      "content": "#### Question 10 : Sommation par paquets\n\nLaquelle des affirmations suivantes concernant la sommation par paquets (regroupement de termes) est correcte ?\n",
+      "content": "#### Sommation par paquets\n\nLaquelle des affirmations suivantes concernant la sommation par paquets (regroupement de termes) est correcte ?\n",
       "solution": "\n\n**Réponses : [B, D]**\n\n- **A)** C'est faux. Le contre-exemple classique est la série de Grandi $\\sum (-1)^n = 1-1+1-1+\\dots$ qui diverge. En la regroupant par paquets de deux $(1-1)+(1-1)+\\dots$, on obtient la série $\\sum 0$ qui converge vers 0.\n\n- **B)** C'est vrai. Si la suite des sommes partielles $S_n$ de la série initiale converge vers $S$, alors la suite des sommes partielles de la série par paquets est une sous-suite de $(S_n)$. Toute sous-suite d'une suite convergente converge vers la même limite.\n\n- **C)** C'est faux, comme le montre le contre-exemple de la série de Grandi où une série divergente devient convergente après regroupement.\n\n- **D)** C'est vrai. C'est le cas particulier important où la réciproque fonctionne. Si les termes sont positifs, il n'y a pas d'annulation possible à l'intérieur des paquets. La convergence de la somme des paquets implique que la suite des sommes partielles de la série initiale est majorée, et comme elle est croissante (termes positifs), elle converge.\n\n",
       "options": [
         {
@@ -300,7 +300,7 @@
     {
       "id": "11",
       "stackId": "f00f9e58",
-      "content": "#### Question 11 : Convergence et absolue convergence\n\nQuelle est la différence fondamentale entre une série absolument convergente et une série semi-convergente ?\n",
+      "content": "#### Convergence et absolue convergence\n\nQuelle est la différence fondamentale entre une série absolument convergente et une série semi-convergente ?\n",
       "solution": "\n\n**Réponse : [B]**\n\n- **A)** Le signe de la somme ne dépend pas du type de convergence. Par exemple, $\\sum (-1/2)^n$ est absolument convergente et sa somme est positive, tandis que $\\sum (-1)^n/n^2$ est aussi absolument convergente mais a une somme négative.\n\n- **B)** C'est la propriété clé démontrée par le théorème de réarrangement de Riemann. La convergence absolue garantit la \"commutativité\" de la somme infinie : on peut réarranger les termes sans changer la somme. Pour une série semi-convergente, l'ordre des termes est crucial et peut changer la valeur de la somme, voire sa nature.\n\n- **C)** C'est une simplification excessive. Une série absolument convergente peut très bien avoir des termes de signes quelconques (par exemple $\\sum \\sin(n)/n^2$). Une série semi-convergente est souvent alternée, mais pas toujours.\n\n- **D)** Bien que souvent vrai en pratique, ce n'est pas une définition ou une propriété fondamentale. La vitesse de convergence dépend du comportement du terme général, pas seulement du type de convergence.\n\n",
       "options": [
         {
@@ -328,7 +328,7 @@
     {
       "id": "12",
       "stackId": "f00f9e58",
-      "content": "#### Question 12 : Analyse d'une série via un équivalent\n\nQuelle est la nature de la série de terme général $u_n = \\sqrt{n+1} - \\sqrt{n}$ ?\n",
+      "content": "#### Analyse d'une série via un équivalent\n\nQuelle est la nature de la série de terme général $u_n = \\sqrt{n+1} - \\sqrt{n}$ ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nAnalysons le terme général $u_n = \\sqrt{n+1} - \\sqrt{n}$. Les termes sont positifs, on peut donc utiliser le critère des équivalents.\n\nPour trouver un équivalent, on utilise l'expression conjuguée :\n\n$$ u_n = (\\sqrt{n+1} - \\sqrt{n}) \\times \\frac{\\sqrt{n+1} + \\sqrt{n}}{\\sqrt{n+1} + \\sqrt{n}} = \\frac{(n+1) - n}{\\sqrt{n+1} + \\sqrt{n}} = \\frac{1}{\\sqrt{n+1} + \\sqrt{n}} $$\n\nAu dénominateur, lorsque $n \\to +\\infty$, $\\sqrt{n+1} = \\sqrt{n(1+1/n)} = \\sqrt{n}\\sqrt{1+1/n} \\sim \\sqrt{n}$.\n\nDonc, $\\sqrt{n+1} + \\sqrt{n} \\sim \\sqrt{n} + \\sqrt{n} = 2\\sqrt{n}$.\n\nFinalement, on obtient l'équivalent :\n\n$$ u_n \\sim \\frac{1}{2\\sqrt{n}} $$\n\nLa série $\\sum \\frac{1}{2\\sqrt{n}} = \\frac{1}{2} \\sum \\frac{1}{n^{1/2}}$ est une série de Riemann avec $\\alpha = 1/2$. Puisque $1/2 \\le 1$, elle diverge.\n\nPar le critère des équivalents pour les séries à termes positifs, la série $\\sum u_n$ diverge également.\n\n- **A)** Le terme général tend bien vers 0, mais cela ne suffit pas pour garantir la convergence.\n- **B)** Le raisonnement est correct.\n- **C)** Cette série est bien télescopique : $S_N = \\sum_{k=1}^N (\\sqrt{k+1} - \\sqrt{k}) = \\sqrt{N+1} - \\sqrt{1}$. La limite de $S_N$ quand $N \\to +\\infty$ est $+\\infty$, donc la série diverge. L'affirmation \"elle converge\" est fausse, même si la méthode télescopique est applicable pour prouver la divergence.\n- **D)** Le terme général tend bien vers 0, donc la série ne diverge pas grossièrement.\n\n",
       "options": [
         {

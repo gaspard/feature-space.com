@@ -20,7 +20,7 @@
     {
       "id": "1",
       "stackId": "e04284d4",
-      "content": "#### Question 1 : Définition du nombre dérivé\n\nQuelle est la définition correcte du nombre dérivé $f'(a)$ d'une fonction $f$ en un point $a$, en supposant que la limite existe et est finie ?\n",
+      "content": "#### Définition du nombre dérivé\n\nQuelle est la définition correcte du nombre dérivé $f'(a)$ d'une fonction $f$ en un point $a$, en supposant que la limite existe et est finie ?\n",
       "solution": "\n\n**Réponses : [B, D]**\n\nLe nombre dérivé d'une fonction $f$ en un point $a$ est défini comme la limite du taux d'accroissement de la fonction autour de ce point. Il existe deux formulations équivalentes principales.\n\n- **A)** Cette option est incorrecte, bien que très proche. Si on pose $k = -h$, alors quand $h \\to 0$, $k \\to 0$. L'expression devient $\\lim_{k \\to 0} \\frac{f(a) - f(a+k)}{k} = \\lim_{k \\to 0} -\\frac{f(a+k) - f(a)}{k} = -f'(a)$. L'expression est donc l'opposé de la dérivée.\n\n- **B)** C'est l'une des définitions standard du nombre dérivé. Elle représente la limite de la pente des sécantes passant par les points $(a, f(a))$ et $(x, f(x))$ lorsque $x$ se rapproche de $a$.\n\n- **C)** Cette option représente le taux d'accroissement de $f$ entre $a$ et $a+h$, mais elle omet l'opération cruciale de passage à la limite lorsque $h$ tend vers 0.\n\n- **D)** C'est l'autre définition standard du nombre dérivé, utilisant un petit écart $h$ qui tend vers 0. C'est la plus couramment utilisée pour les calculs de base.\n\n",
       "options": [
         {
@@ -48,7 +48,7 @@
     {
       "id": "2",
       "stackId": "e04284d4",
-      "content": "#### Question 2 : Lien entre dérivabilité et continuité\n\nLaquelle des affirmations suivantes concernant le lien entre la dérivabilité et la continuité d'une fonction $f$ en un point $a$ est correcte ?\n",
+      "content": "#### Lien entre dérivabilité et continuité\n\nLaquelle des affirmations suivantes concernant le lien entre la dérivabilité et la continuité d'une fonction $f$ en un point $a$ est correcte ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nCette question teste un théorème fondamental du calcul différentiel.\n\n- **A)** Cette affirmation est fausse. C'est la réciproque du théorème qui est fausse. Un contre-exemple classique est la fonction valeur absolue $f(x) = |x|$, qui est continue en $0$ mais n'y est pas dérivable (elle présente un \"point anguleux\").\n\n- **B)** Cette affirmation est vraie. C'est un théorème clé : \"toute fonction dérivable en un point est continue en ce point\". Intuitivement, pour qu'une tangente unique existe, la courbe ne doit pas avoir de \"saut\".\n\n- **C)** Cette affirmation est fausse car elle implique que les deux concepts sont équivalents, ce qui est contredit par le contre-exemple de la fonction valeur absolue.\n\n- **D)** Cette affirmation est fausse. Les concepts sont fortement liés, comme le montre le théorème \"dérivabilité implique continuité\".\n\n",
       "options": [
         {
@@ -76,7 +76,7 @@
     {
       "id": "3",
       "stackId": "e04284d4",
-      "content": "#### Question 3 : Interprétation géométrique\n\nSoit $f$ une fonction dérivable en un point $a$. Que représente géométriquement le nombre dérivé $f'(a)$ ?\n",
+      "content": "#### Interprétation géométrique\n\nSoit $f$ une fonction dérivable en un point $a$. Que représente géométriquement le nombre dérivé $f'(a)$ ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nL'interprétation géométrique de la dérivée est un concept central.\n\n- **A)** C'est incorrect. $f'(a)$ est un nombre (une pente), alors que l'équation de la tangente est une relation entre $x$ et $y$, donnée par $y = f(a) + f'(a)(x-a)$. Le nombre dérivé n'est qu'un des éléments de cette équation.\n\n- **B)** L'ordonnée du point de la courbe d'abscisse $a$ est $f(a)$, et non $f'(a)$.\n\n- **C)** C'est la définition géométrique exacte. Le nombre dérivé est la pente (ou le coefficient directeur) de la ligne droite qui \"touche\" la courbe au point $(a, f(a))$ et qui approxime le mieux la courbe localement.\n\n- **D)** Le point où la courbe coupe l'axe des ordonnées est le point $(0, f(0))$. Cela n'a pas de rapport direct avec la dérivée en un point $a$ quelconque.\n\n",
       "options": [
         {
@@ -104,7 +104,7 @@
     {
       "id": "4",
       "stackId": "e04284d4",
-      "content": "#### Question 4 : Règle de dérivation du produit\n\nQuelle est la dérivée de la fonction $h(x) = x^2 \\sin(x)$ ?\n",
+      "content": "#### Règle de dérivation du produit\n\nQuelle est la dérivée de la fonction $h(x) = x^2 \\sin(x)$ ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nPour dériver un produit de deux fonctions, on utilise la règle $(fg)' = f'g + fg'$.\n\nIci, posons $f(x) = x^2$ et $g(x) = \\sin(x)$.\n\nLeurs dérivées sont $f'(x) = 2x$ et $g'(x) = \\cos(x)$.\n\nEn appliquant la formule :\n\n$h'(x) = f'(x)g(x) + f(x)g'(x) = (2x)(\\sin(x)) + (x^2)(\\cos(x)) = 2x \\sin(x) + x^2 \\cos(x)$.\n\n- **A)** Cette réponse correspond à l'erreur fréquente de penser que la dérivée d'un produit est le produit des dérivées : $f'(x)g'(x) = (2x)(\\cos(x))$. C'est incorrect.\n- **B)** C'est la bonne application de la règle du produit.\n- **C)** Le signe du second terme est incorrect.\n- **D)** Cette réponse correspond à l'erreur de penser que la dérivée d'un produit est la somme des dérivées : $f'(x) + g'(x)$. C'est incorrect.\n\n",
       "options": [
         {
@@ -132,7 +132,7 @@
     {
       "id": "5",
       "stackId": "e04284d4",
-      "content": "#### Question 5 : Règle de dérivation du quotient\n\nQuelle est la dérivée de la fonction $g(x) = \\frac{e^x}{x}$ pour $x \\neq 0$ ?\n",
+      "content": "#### Règle de dérivation du quotient\n\nQuelle est la dérivée de la fonction $g(x) = \\frac{e^x}{x}$ pour $x \\neq 0$ ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nPour dériver un quotient de deux fonctions, on utilise la règle $\\left(\\frac{f}{g}\\right)' = \\frac{f'g - fg'}{g^2}$.\n\nIci, posons $f(x) = e^x$ et $g(x) = x$.\n\nLeurs dérivées sont $f'(x) = e^x$ et $g'(x) = 1$.\n\nEn appliquant la formule :\n\n$g'(x) = \\frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2} = \\frac{(e^x)(x) - (e^x)(1)}{x^2} = \\frac{xe^x - e^x}{x^2}$.\n\nOn peut factoriser le numérateur pour obtenir $\\frac{e^x(x-1)}{x^2}$.\n\n- **A)** Cette réponse correspond à l'erreur fréquente de penser que la dérivée d'un quotient est le quotient des dérivées : $\\frac{f'(x)}{g'(x)}$. C'est incorrect.\n- **B)** Les termes au numérateur sont inversés, ce qui correspond à la formule incorrecte $\\frac{fg' - f'g}{g^2}$.\n- **C)** C'est la bonne application de la règle du quotient.\n- **D)** Cette réponse est incorrecte et ne correspond à aucune règle standard.\n\n",
       "options": [
         {
@@ -160,7 +160,7 @@
     {
       "id": "6",
       "stackId": "e04284d4",
-      "content": "#### Question 6 : Règle de la chaîne\n\nQuelle est la dérivée de la fonction $h(x) = \\cos(x^3)$ ?\n",
+      "content": "#### Règle de la chaîne\n\nQuelle est la dérivée de la fonction $h(x) = \\cos(x^3)$ ?\n",
       "solution": "\n\n**Réponse : [A]**\n\nCette fonction est une composition $h(x) = g(f(x))$. On doit utiliser la règle de la chaîne : $(g \\circ f)'(x) = g'(f(x)) \\cdot f'(x)$.\n\n1.  Identifions la fonction intérieure et la fonction extérieure :\n    - Fonction intérieure : $f(x) = x^3$\n    - Fonction extérieure : $g(u) = \\cos(u)$\n\n2.  Calculons leurs dérivées :\n    - $f'(x) = 3x^2$\n    - $g'(u) = -\\sin(u)$\n\n3.  Appliquons la formule :\n\n    $h'(x) = g'(f(x)) \\cdot f'(x) = -\\sin(x^3) \\cdot (3x^2) = -3x^2 \\sin(x^3)$.\n\n- **A)** C'est la réponse correcte.\n- **B)** Cette réponse provient de l'oubli de multiplier par la dérivée de la fonction intérieure, $f'(x)$. C'est une erreur très courante.\n- **C)** Le signe est incorrect, la dérivée de $\\cos(u)$ est $-\\sin(u)$.\n- **D)** Cette réponse mélange la dérivation de la fonction intérieure et extérieure de manière incorrecte.\n\n",
       "options": [
         {
@@ -188,7 +188,7 @@
     {
       "id": "7",
       "stackId": "e04284d4",
-      "content": "#### Question 7 : Dérivée seconde\n\nQuelle est la dérivée seconde, notée $f''(x)$, de la fonction $f(x) = x^4 - 5x^2 + 10$ ?\n",
+      "content": "#### Dérivée seconde\n\nQuelle est la dérivée seconde, notée $f''(x)$, de la fonction $f(x) = x^4 - 5x^2 + 10$ ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nLa dérivée seconde est la dérivée de la dérivée première. On doit donc dériver la fonction deux fois.\n\n1.  **Calcul de la dérivée première ($f'(x)$) :**\n\n    On dérive $f(x) = x^4 - 5x^2 + 10$ terme à terme.\n\n    $f'(x) = 4x^{4-1} - 5(2x^{2-1}) + 0 = 4x^3 - 10x$.\n\n2.  **Calcul de la dérivée seconde ($f''(x)$) :**\n\n    On dérive $f'(x) = 4x^3 - 10x$.\n\n    $f''(x) = (f')'(x) = 4(3x^{3-1}) - 10(1) = 12x^2 - 10$.\n\n- **A)** C'est la dérivée première, $f'(x)$, et non la seconde.\n- **B)** Cette réponse omet de dériver le terme $-10x$ de la dérivée première.\n- **C)** C'est la réponse correcte.\n- **D)** C'est la dérivée troisième, $f^{(3)}(x)$.\n\n",
       "options": [
         {
@@ -216,7 +216,7 @@
     {
       "id": "8",
       "stackId": "e04284d4",
-      "content": "#### Question 8 : Conditions du Théorème de Rolle\n\nSoit la fonction $f$ définie sur un intervalle $[a, b]$. Quelles sont les conditions nécessaires pour appliquer le théorème de Rolle ? (Plusieurs réponses peuvent être correctes)\n",
+      "content": "#### Conditions du Théorème de Rolle\n\nSoit la fonction $f$ définie sur un intervalle $[a, b]$. Quelles sont les conditions nécessaires pour appliquer le théorème de Rolle ? (Plusieurs réponses peuvent être correctes)\n",
       "solution": "\n\n**Réponses : [A, B, C]**\n\nLe théorème de Rolle stipule que si une fonction $f$ remplit trois conditions spécifiques sur un intervalle $[a, b]$, alors il existe au moins un point $c$ dans $]a, b[$ où la dérivée s'annule ($f'(c) = 0$).\n\n- **A)** La continuité sur l'intervalle fermé est la première hypothèse essentielle. Elle garantit que la courbe ne présente pas de \"sauts\".\n- **B)** La dérivabilité sur l'intervalle ouvert est la deuxième hypothèse. Elle garantit que la courbe est \"lisse\" et n'a pas de points anguleux à l'intérieur de l'intervalle.\n- **C)** L'égalité des valeurs aux bornes ($f(a) = f(b)$) est la troisième hypothèse. Géométriquement, cela signifie que le point de départ et le point d'arrivée de l'arc de courbe sont à la même hauteur.\n- **D)** La monotonie de la fonction n'est pas une condition du théorème de Rolle. Au contraire, si la fonction était strictement croissante, sa dérivée serait strictement positive et ne pourrait jamais s'annuler.\n\n",
       "options": [
         {
@@ -244,7 +244,7 @@
     {
       "id": "9",
       "stackId": "e04284d4",
-      "content": "#### Question 9 : Interprétation du Théorème des Accroissements Finis\n\nQuelle est l'interprétation géométrique correcte du Théorème des Accroissements Finis (TAF) pour une fonction $f$ sur $[a, b]$ ?\n",
+      "content": "#### Interprétation du Théorème des Accroissements Finis\n\nQuelle est l'interprétation géométrique correcte du Théorème des Accroissements Finis (TAF) pour une fonction $f$ sur $[a, b]$ ?\n",
       "solution": "\n\n**Réponse : [D]**\n\nLe TAF énonce qu'il existe un $c \\in ]a, b[$ tel que $f'(c) = \\frac{f(b) - f(a)}{b - a}$.\n\n- Le terme de gauche, $f'(c)$, est le coefficient directeur de la tangente à la courbe au point d'abscisse $c$.\n- Le terme de droite, $\\frac{f(b) - f(a)}{b - a}$, est le coefficient directeur de la droite sécante qui passe par les points $(a, f(a))$ et $(b, f(b))$.\n\nLe théorème garantit donc l'existence d'un point où la tangente est parallèle à la corde joignant les extrémités de l'arc.\n\n- **A)** C'est l'interprétation du théorème de la moyenne pour les intégrales.\n- **B)** Le TAF garantit un parallélisme, pas une perpendicularité.\n- **C)** C'est l'interprétation du théorème de Rolle, qui est un cas particulier du TAF lorsque $f(a) = f(b)$.\n- **D)** C'est l'interprétation géométrique exacte du TAF.\n\n",
       "options": [
         {
@@ -272,7 +272,7 @@
     {
       "id": "10",
       "stackId": "e04284d4",
-      "content": "#### Question 10 : Points critiques et extremums\n\nLaquelle des affirmations suivantes est vraie concernant les points critiques ?\n",
+      "content": "#### Points critiques et extremums\n\nLaquelle des affirmations suivantes est vraie concernant les points critiques ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nCette question clarifie la relation entre les points critiques et les extremums locaux.\n\n- **A)** Cette affirmation est fausse. Un extremum local peut aussi se produire en un point où la fonction n'est pas dérivable (par exemple, le minimum de $f(x)=|x|$ en $x=0$) ou aux bornes de l'intervalle de définition.\n\n- **B)** Cette affirmation est fausse. Un point critique n'est pas nécessairement un extremum. Le contre-exemple classique est la fonction $f(x) = x^3$. On a $f'(0)=0$, donc $x=0$ est un point critique, mais ce n'est ni un maximum ni un minimum local (c'est un point d'inflexion à tangente horizontale).\n\n- **C)** Cette affirmation est vraie. Par définition, un point critique $a$ est un point où $f'(a)=0$. Géométriquement, le nombre dérivé $f'(a)$ est la pente de la tangente. Une pente de 0 signifie que la tangente est horizontale.\n\n- **D)** Cette affirmation est fausse. Si $f''(a)=0$, le test de la dérivée seconde ne permet pas de conclure. Le point $a$ peut être un extremum (comme pour $f(x)=x^4$ en $x=0$) ou ne pas en être un (comme pour $f(x)=x^3$ en $x=0$).\n\n",
       "options": [
         {
@@ -300,7 +300,7 @@
     {
       "id": "11",
       "stackId": "e04284d4",
-      "content": "#### Question 11 : Test de la dérivée seconde\n\nSoit $a$ un point critique pour une fonction $f$ ($f'(a)=0$). On suppose que $f$ est deux fois dérivable et que $f''(a) > 0$. Que peut-on conclure ?\n",
+      "content": "#### Test de la dérivée seconde\n\nSoit $a$ un point critique pour une fonction $f$ ($f'(a)=0$). On suppose que $f$ est deux fois dérivable et que $f''(a) > 0$. Que peut-on conclure ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nC'est une application directe du test de la dérivée seconde pour la classification des points critiques.\n\nSoit $a$ un point tel que $f'(a)=0$.\n\n1.  Si $f''(a) < 0$, la fonction est localement concave (\"tournée vers le bas\"), ce qui correspond à un **maximum local**.\n2.  Si $f''(a) > 0$, la fonction est localement convexe (\"tournée vers le haut\"), ce qui correspond à un **minimum local**.\n3.  Si $f''(a) = 0$, le test ne permet pas de conclure.\n\nDans ce cas, $f''(a) > 0$, donc la fonction admet un minimum local en $a$.\n\n- **A)** Incorrect. Cela correspond au cas $f''(a) < 0$.\n- **B)** Incorrect. Le test de la dérivée seconde est conclusif lorsque $f''(a) \\neq 0$.\n- **C)** Correct. C'est le résultat du test de la dérivée seconde.\n- **D)** Un point d'inflexion est un point où la convexité change, ce qui est généralement associé à l'annulation de la dérivée seconde, pas à un signe strictement positif.\n\n",
       "options": [
         {
@@ -328,7 +328,7 @@
     {
       "id": "12",
       "stackId": "e04284d4",
-      "content": "#### Question 12 : Dérivée d'une fonction puissance\n\nQuelle est la dérivée de la fonction $f(x) = \\frac{1}{x^3}$ ?\n",
+      "content": "#### Dérivée d'une fonction puissance\n\nQuelle est la dérivée de la fonction $f(x) = \\frac{1}{x^3}$ ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nPour dériver cette fonction, on utilise la règle de dérivation des puissances $(x^n)' = nx^{n-1}$.\n\n1.  **Réécrire la fonction :** $f(x) = \\frac{1}{x^3} = x^{-3}$. Ici, $n=-3$.\n\n2.  **Appliquer la formule :** $f'(x) = (-3)x^{-3-1} = -3x^{-4}$.\n\n3.  **Simplifier (facultatif) :** $f'(x) = -\\frac{3}{x^4}$.\n\n- **A)** Incorrect.\n- **B)** C'est la réponse correcte.\n- **C)** Ceci serait la dérivée de $x^3$, pas de $x^{-3}$.\n- **D)** Incorrect.\n\n",
       "options": [
         {
@@ -356,7 +356,7 @@
     {
       "id": "13",
       "stackId": "e04284d4",
-      "content": "#### Question 13 : Dérivée du logarithme\n\nQuelle est la dérivée de la fonction $g(x) = 5\\ln(x)$ ?\n",
+      "content": "#### Dérivée du logarithme\n\nQuelle est la dérivée de la fonction $g(x) = 5\\ln(x)$ ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nOn utilise la règle de dérivation d'une constante multipliée par une fonction, $(cf)' = c f'$, et la dérivée de la fonction logarithme népérien, $(\\ln(x))' = \\frac{1}{x}$.\n\n$g'(x) = (5 \\cdot \\ln(x))' = 5 \\cdot (\\ln(x))' = 5 \\cdot \\frac{1}{x} = \\frac{5}{x}$.\n\n- **A)** Incorrect.\n- **B)** Incorrect.\n- **C)** C'est la bonne application des règles.\n- **D)** Incorrect.\n\n",
       "options": [
         {
@@ -384,7 +384,7 @@
     {
       "id": "14",
       "stackId": "e04284d4",
-      "content": "#### Question 14 : Dérivées trigonométriques\n\nQuelle est la dérivée de la fonction $h(x) = \\sin(x) - \\cos(x)$ ?\n",
+      "content": "#### Dérivées trigonométriques\n\nQuelle est la dérivée de la fonction $h(x) = \\sin(x) - \\cos(x)$ ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nOn utilise la linéarité de la dérivation $(f+g)' = f' + g'$, ainsi que les dérivées des fonctions sinus et cosinus.\n\n- La dérivée de $\\sin(x)$ est $\\cos(x)$.\n- La dérivée de $\\cos(x)$ est $-\\sin(x)$.\n\nDonc, $h'(x) = (\\sin(x))' - (\\cos(x))' = \\cos(x) - (-\\sin(x)) = \\cos(x) + \\sin(x)$.\n\n- **A)** Le signe de la deuxième partie est incorrect.\n- **B)** Les deux signes sont incorrects.\n- **C)** C'est la réponse correcte.\n- **D)** Incorrect.\n\n",
       "options": [
         {
@@ -412,7 +412,7 @@
     {
       "id": "15",
       "stackId": "e04284d4",
-      "content": "#### Question 15 : Dérivée d'une fonction trigonométrique inverse\n\nQuelle est la dérivée de la fonction $f(x) = \\arctan(x)$ ?\n",
+      "content": "#### Dérivée d'une fonction trigonométrique inverse\n\nQuelle est la dérivée de la fonction $f(x) = \\arctan(x)$ ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nIl s'agit d'une formule de dérivation standard à connaître.\n\n- **A)** C'est la dérivée de $\\arcsin(x)$.\n- **B)** C'est la dérivée correcte de $\\arctan(x)$.\n- **C)** C'est la dérivée de $\\arccos(x)$.\n- **D)** C'est la dérivée de $\\tan(x)$.\n\n",
       "options": [
         {
@@ -440,7 +440,7 @@
     {
       "id": "16",
       "stackId": "e04284d4",
-      "content": "#### Question 16 : Application de la règle de la chaîne\n\nQuelle est la dérivée de la fonction $g(x) = \\ln(x^2 + 1)$ ?\n",
+      "content": "#### Application de la règle de la chaîne\n\nQuelle est la dérivée de la fonction $g(x) = \\ln(x^2 + 1)$ ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nOn utilise la règle de la chaîne pour les fonctions composées $(f(u(x)))' = f'(u(x)) \\cdot u'(x)$.\n\nIci, la fonction extérieure est $f(u) = \\ln(u)$ et la fonction intérieure est $u(x) = x^2+1$.\n\n1.  **Dérivées :**\n    - $f'(u) = \\frac{1}{u}$\n    - $u'(x) = 2x$\n\n2.  **Application de la formule :**\n    $g'(x) = f'(u(x)) \\cdot u'(x) = \\frac{1}{x^2+1} \\cdot (2x) = \\frac{2x}{x^2+1}$.\n\n- **A)** Incorrect, il manque le terme de la dérivée de la fonction intérieure.\n- **B)** Incorrect.\n- **C)** C'est la bonne application de la règle de la chaîne.\n- **D)** Incorrect.\n\n",
       "options": [
         {
@@ -468,7 +468,7 @@
     {
       "id": "17",
       "stackId": "e04284d4",
-      "content": "#### Question 17 : Règle de la somme\n\nQuelle est la dérivée de la fonction $f(x) = 3x^2 + 2e^x$ ?\n",
+      "content": "#### Règle de la somme\n\nQuelle est la dérivée de la fonction $f(x) = 3x^2 + 2e^x$ ?\n",
       "solution": "\n\n**Réponse : [A]**\n\nOn utilise la linéarité de la dérivation : la dérivée d'une somme est la somme des dérivées, et la dérivée d'une constante fois une fonction est la constante fois la dérivée de la fonction.\n\n1.  Dérivée de $3x^2$ : $3 \\cdot (x^2)' = 3 \\cdot (2x) = 6x$.\n2.  Dérivée de $2e^x$ : $2 \\cdot (e^x)' = 2 \\cdot e^x = 2e^x$.\n\nLa dérivée de la somme est donc $6x + 2e^x$.\n\n- **A)** C'est la réponse correcte.\n- **B)** Incorrect, on n'utilise pas la règle du produit ici.\n- **C)** Incorrect, la fonction n'a pas été dérivée.\n- **D)** Incorrect, seule une partie de la fonction a été dérivée.\n\n",
       "options": [
         {
@@ -496,7 +496,7 @@
     {
       "id": "18",
       "stackId": "e04284d4",
-      "content": "#### Question 18 : Dérivée de l'inverse\n\nQuelle est la dérivée de $g(x) = \\frac{1}{x^2+1}$ ?\n",
+      "content": "#### Dérivée de l'inverse\n\nQuelle est la dérivée de $g(x) = \\frac{1}{x^2+1}$ ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nOn utilise la formule de la dérivée de l'inverse : $(\\frac{1}{u})' = -\\frac{u'}{u^2}$.\n\nIci, $u(x) = x^2+1$. Sa dérivée est $u'(x) = 2x$.\n\nEn appliquant la formule :\n\n$g'(x) = -\\frac{2x}{(x^2+1)^2}$\n\n- **A)** Incorrect.\n- **B)** C'est la réponse correcte.\n- **C)** Le signe est incorrect.\n- **D)** Incorrect.\n\n",
       "options": [
         {
@@ -524,7 +524,7 @@
     {
       "id": "19",
       "stackId": "e04284d4",
-      "content": "#### Question 19 : Dérivées des fonctions hyperboliques\n\nLaquelle de ces affirmations est fausse ?\n",
+      "content": "#### Dérivées des fonctions hyperboliques\n\nLaquelle de ces affirmations est fausse ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nCette question teste la connaissance des dérivées des fonctions hyperboliques de base.\n\n- **A)** Vrai. La dérivée de $\\sinh(x)$ est $\\cosh(x)$.\n- **B)** Vrai. La dérivée de $\\cosh(x)$ est $\\sinh(x)$.\n- **C)** Faux. La dérivée de $\\tanh(x)$ est $1 - \\tanh^2(x) = \\frac{1}{\\cosh^2(x)}$.\n- **D)** Vrai. En utilisant les affirmations A et B, on a $\\sinh(x) - \\cosh(x) = \\sinh(x) - \\cosh(x)$, ce qui est une identité.\n\n",
       "options": [
         {
@@ -552,7 +552,7 @@
     {
       "id": "20",
       "stackId": "e04284d4",
-      "content": "#### Question 20 : Dérivée d'une fonction hyperbolique inverse\n\nQuelle est la dérivée de la fonction $f(x) = \\text{arcsinh}(x)$ ?\n",
+      "content": "#### Dérivée d'une fonction hyperbolique inverse\n\nQuelle est la dérivée de la fonction $f(x) = \\text{arcsinh}(x)$ ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nIl s'agit d'une formule de dérivation standard pour les fonctions hyperboliques inverses.\n\n- **A)** C'est la dérivée de $\\text{arccosh}(x)$.\n- **B)** C'est la dérivée correcte de $\\text{arcsinh}(x)$.\n- **C)** C'est la dérivée de $\\text{arctanh}(x)$.\n- **D)** Le signe est incorrect.\n\n",
       "options": [
         {

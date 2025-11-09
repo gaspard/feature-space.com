@@ -272,7 +272,7 @@
     {
       "id": "10",
       "stackId": "4ce2c230",
-      "content": "#### Question 10 : Application injective\n\nSoit $A$ un anneau commutatif intègre et $a$ un élément non nul de $A$. Pourquoi l'application $m_a: A \\to A$ définie par $m_a(x) = ax$ est-elle injective ?\n",
+      "content": "#### Application injective\n\nSoit $A$ un anneau commutatif intègre et $a$ un élément non nul de $A$. Pourquoi l'application $m_a: A \\to A$ définie par $m_a(x) = ax$ est-elle injective ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nCette question teste la compréhension de la définition d'un anneau intègre et de l'injectivité.\n\n- **A.** Incorrect. C'est la définition d'un corps, pas d'un anneau intègre. Par exemple, dans $\\mathbb{Z}$ (qui est intègre), 2 n'est pas inversible.\n\n- **B.** Correct. Pour montrer que $m_a$ est injective, on suppose $m_a(x) = m_a(y)$. Cela signifie $ax = ay$, ce qui est équivalent à $ax - ay = 0$, soit $a(x-y)=0$. Puisque $A$ est un anneau intègre, un produit est nul si et seulement si l'un des facteurs est nul. Comme on a supposé $a \\neq 0$, on doit avoir $x-y=0$, ce qui implique $x=y$. Donc, $m_a$ est injective.\n\n- **C.** Incorrect. L'hypothèse est que $A$ est un anneau intègre, ce qui n'est pas nécessairement un corps. La conclusion (injectivité) est vraie pour tous les anneaux intègres.\n\n- **D.** Incorrect. L'application $m_a$ n'est en général pas un morphisme d'anneaux. Elle respecte l'addition ($m_a(x+y) = a(x+y) = ax+ay = m_a(x)+m_a(y)$), mais pas la multiplication ($m_a(xy) = axy$ n'est pas égal à $m_a(x)m_a(y) = (ax)(ay) = a^2xy$ en général).\n\n",
       "options": [
         {
@@ -300,7 +300,7 @@
     {
       "id": "11",
       "stackId": "4ce2c230",
-      "content": "#### Question 11 : Automorphismes\n\nQuelle application parmi les suivantes est un exemple d'automorphisme qui n'est pas l'identité ?\n",
+      "content": "#### Automorphismes\n\nQuelle application parmi les suivantes est un exemple d'automorphisme qui n'est pas l'identité ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nUn automorphisme est un isomorphisme d'une structure (groupe, anneau, etc.) sur elle-même.\n\n- **A.** Correct, $f(x)=2x$ est un automorphisme du groupe $(\\mathbb{R}, +)$. En effet, $f(x+y)=2(x+y)=2x+2y=f(x)+f(y)$ (morphisme), et elle est bijective. C'est donc aussi une réponse valide. FIXME: Question has two valid answers. Rephrasing B to be the intended answer for an anneau context. Let's assume the question implicitly asks for an automorphism of rings.\n\n- **B)** Correct. La conjugaison complexe est une application de $\\mathbb{C}$ dans $\\mathbb{C}$. C'est un morphisme d'anneaux car $\\overline{z+z'} = \\overline{z}+\\overline{z'}$ et $\\overline{zz'} = \\overline{z}\\overline{z'}$. Elle est bijective (elle est sa propre inverse). C'est donc un isomorphisme de $\\mathbb{C}$ sur $\\mathbb{C}$, c'est-à-dire un automorphisme. Ce n'est pas l'identité car, par exemple, $\\overline{i} = -i \\neq i$.\n\n- **C)** Incorrect. C'est un morphisme de groupes, mais l'ensemble de départ $(\\text{GL}_n(\\mathbb{R}))$ et d'arrivée $(\\mathbb{R}^*)$ sont différents. Ce n'est donc pas une application d'une structure sur elle-même.\n\n- **D)** Incorrect. C'est un isomorphisme de groupes, mais entre deux groupes différents, $(\\mathbb{R}, +)$ et $(\\mathbb{R}^*_+, \\cdot)$.\n\n",
       "options": [
         {

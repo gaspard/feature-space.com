@@ -272,7 +272,7 @@
     {
       "id": "10",
       "stackId": "0eaef5e4",
-      "content": "#### Question 10 : Critère de d'Alembert\n\nQuelle est la nature de la série $\\sum_{n=0}^{\\infty} \\frac{n!}{100^n}$ ?\n",
+      "content": "#### Critère de d'Alembert\n\nQuelle est la nature de la série $\\sum_{n=0}^{\\infty} \\frac{n!}{100^n}$ ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nLa série est à termes positifs. Le critère de d'Alembert (règle du rapport) est bien adapté aux expressions avec des factorielles et des puissances.\n\nPosons $u_n = \\frac{n!}{100^n}$. Calculons le rapport $\\frac{u_{n+1}}{u_n}$ :\n\n$$ \\frac{u_{n+1}}{u_n} = \\frac{(n+1)! / 100^{n+1}}{n! / 100^n} = \\frac{(n+1)!}{n!} \\cdot \\frac{100^n}{100^{n+1}} $$\n\n$$ \\frac{u_{n+1}}{u_n} = (n+1) \\cdot \\frac{1}{100} = \\frac{n+1}{100} $$\n\nCalculons la limite de ce rapport :\n\n$$ L = \\lim_{n \\to \\infty} \\frac{n+1}{100} = +\\infty $$\n\n- **C)** Puisque $L = +\\infty > 1$, le critère de d'Alembert affirme que la série diverge.\n\n- **A)** C'est l'inverse, la factorielle $n!$ croît beaucoup plus vite que toute exponentielle $a^n$.\n\n- **B)** La limite du rapport est $+\\infty$, et non 1.\n\n- **D)** Le terme général ne tend pas vers 0. Au contraire, puisque le rapport $\\frac{u_{n+1}}{u_n}$ devient plus grand que 1, la suite $(u_n)$ est croissante à partir d'un certain rang et tend vers $+\\infty$.\n\n",
       "options": [
         {
@@ -300,7 +300,7 @@
     {
       "id": "11",
       "stackId": "0eaef5e4",
-      "content": "#### Question 11 : Critère de Cauchy (règle de la racine)\n\nQuelle est la nature de la série $\\sum_{n=1}^{\\infty} \\left(\\frac{2n}{5n+3}\\right)^n$ ?\n",
+      "content": "#### Critère de Cauchy (règle de la racine)\n\nQuelle est la nature de la série $\\sum_{n=1}^{\\infty} \\left(\\frac{2n}{5n+3}\\right)^n$ ?\n",
       "solution": "\n\n**Réponse : [D]**\n\nLa série est à termes positifs. La présence d'une puissance $n$ sur tout le terme général suggère d'utiliser le critère de Cauchy (règle de la racine).\n\nPosons $u_n = \\left(\\frac{2n}{5n+3}\\right)^n$. Calculons $\\sqrt[n]{u_n}$ :\n\n$$ \\sqrt[n]{u_n} = \\sqrt[n]{\\left(\\frac{2n}{5n+3}\\right)^n} = \\frac{2n}{5n+3} $$\n\nCalculons la limite de cette expression :\n\n$$ l = \\lim_{n \\to \\infty} \\frac{2n}{5n+3} = \\lim_{n \\to \\infty} \\frac{2n}{n(5+3/n)} = \\frac{2}{5} $$\n\n- **D)** Puisque $l = 2/5 < 1$, le critère de Cauchy affirme que la série converge.\n\n- **A)** La limite est $2/5$, ce qui est inférieur à 1.\n- **B)** Le terme général tend bien vers 0. En effet, comme $\\sqrt[n]{u_n} \\to 2/5 < 1$, on a $u_n$ qui se comporte comme $(2/5)^n$ qui tend vers 0.\n- **C)** La limite est $2/5$, et non 1.\n\n",
       "options": [
         {
@@ -328,7 +328,7 @@
     {
       "id": "12",
       "stackId": "0eaef5e4",
-      "content": "#### Question 12 : Cas limite des critères de rapport et de racine\n\nSi pour une série à termes positifs $\\sum u_n$, on trouve que $\\lim_{n \\to \\infty} \\frac{u_{n+1}}{u_n} = 1$, que peut-on conclure sur la nature de la série ?\n",
+      "content": "#### Cas limite des critères de rapport et de racine\n\nSi pour une série à termes positifs $\\sum u_n$, on trouve que $\\lim_{n \\to \\infty} \\frac{u_{n+1}}{u_n} = 1$, que peut-on conclure sur la nature de la série ?\n",
       "solution": "\n\n**Réponse : [D]**\n\n- **A, B, C)** Lorsque la limite dans le critère de d'Alembert (ou de Cauchy) est égale à 1, on parle de \"cas douteux\". Le critère ne permet pas de conclure. Il faut utiliser une autre méthode (comparaison, équivalents, etc.).\n\n- **D)** C'est la bonne réponse. Pour s'en convaincre, voici deux exemples :\n  1. Pour la série divergente $\\sum \\frac{1}{n}$, la limite du rapport est $\\lim \\frac{n}{n+1} = 1$.\n  2. Pour la série convergente $\\sum \\frac{1}{n^2}$, la limite du rapport est $\\lim (\\frac{n}{n+1})^2 = 1$.\n\n  Comme on peut avoir à la fois convergence et divergence quand la limite est 1, le test est non concluant.\n\n",
       "options": [
         {
@@ -356,7 +356,7 @@
     {
       "id": "13",
       "stackId": "0eaef5e4",
-      "content": "#### Question 13 : Semi-convergence\n\nComment définit-on une série semi-convergente ?\n",
+      "content": "#### Semi-convergence\n\nComment définit-on une série semi-convergente ?\n",
       "solution": "\n\n**Réponse : [A]**\n\n- **A)** C'est la définition précise de la semi-convergence. La série elle-même converge (par exemple, grâce à des annulations entre termes positifs et négatifs), mais la série des valeurs absolues, elle, diverge. L'exemple type est $\\sum \\frac{(-1)^{n+1}}{n}$.\n\n- **B)** Une série dont la suite des sommes partielles est bornée mais ne converge pas est simplement une série divergente (par exemple $\\sum (-1)^n$ dont les sommes partielles oscillent entre 1 et 0).\n\n- **C)** Une série est soit convergente, soit divergente. Il n'y a pas d'état intermédiaire.\n\n- **D)** La difficulté à calculer la somme n'est pas un critère de classification de la convergence. On peut connaître la somme de certaines séries semi-convergentes (par ex. $\\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{n} = \\ln(2)$).\n\n",
       "options": [
         {

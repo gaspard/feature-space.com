@@ -272,7 +272,7 @@
     {
       "id": "10",
       "stackId": "b162c5ec",
-      "content": "#### Question 10 : Propriétés du polynôme minimal\n\nSoit $u$ un endomorphisme, $M_u(X)$ son polynôme minimal et $\\chi_u(X)$ son polynôme caractéristique. Quelles affirmations sont vraies ?\n",
+      "content": "#### Propriétés du polynôme minimal\n\nSoit $u$ un endomorphisme, $M_u(X)$ son polynôme minimal et $\\chi_u(X)$ son polynôme caractéristique. Quelles affirmations sont vraies ?\n",
       "solution": "\n\n**Réponses : [A, C]**\n\nLe polynôme minimal et le polynôme caractéristique sont intimement liés.\n\n- **A.** C'est une conséquence directe du théorème de Cayley-Hamilton, qui affirme que $\\chi_u(u)=0$. Puisque $\\chi_u(X)$ est un polynôme annulateur, il doit être un multiple du polynôme minimal $M_u(X)$, par définition de ce dernier.\n\n- **B.** C'est le degré du polynôme caractéristique qui est égal à la dimension de l'espace. Le degré du polynôme minimal peut être strictement plus petit.\n\n- **C.** C'est une propriété fondamentale. Une valeur $\\lambda$ est une valeur propre de $u$ si et seulement si elle est une racine du polynôme minimal $M_u(X)$. Cela implique aussi que $\\chi_u(X)$ et $M_u(X)$ ont les mêmes racines, mais potentiellement avec des multiplicités différentes.\n\n- **D.** C'est faux en général. Par exemple, pour une matrice d'homothétie $A=\\lambda I_n$ (avec $n>1$), on a $M_A(X) = X-\\lambda$ tandis que $\\chi_A(X)=(X-\\lambda)^n$.\n\n",
       "options": [
         {
@@ -300,7 +300,7 @@
     {
       "id": "11",
       "stackId": "b162c5ec",
-      "content": "#### Question 11 : Algorithme d'Euclide\n\nEn utilisant l'algorithme d'Euclide dans $\\mathbb{Z}$, quel est le PGCD de 84 et 30 ?\n",
+      "content": "#### Algorithme d'Euclide\n\nEn utilisant l'algorithme d'Euclide dans $\\mathbb{Z}$, quel est le PGCD de 84 et 30 ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nL'algorithme d'Euclide consiste à effectuer des divisions euclidiennes successives jusqu'à obtenir un reste nul. Le PGCD est le dernier reste non nul.\n\n1.  On divise 84 par 30 :\n\n    $84 = 2 \\cdot 30 + 24$\n\n    Le reste est 24.\n\n2.  On divise le diviseur précédent (30) par le reste (24) :\n\n    $30 = 1 \\cdot 24 + 6$\n\n    Le reste est 6.\n\n3.  On divise le diviseur précédent (24) par le reste (6) :\n\n    $24 = 4 \\cdot 6 + 0$\n\n    Le reste est 0.\n\nL'algorithme s'arrête. Le dernier reste non nul était 6. Donc, $\\text{pgcd}(84, 30) = 6$.\n\n",
       "options": [
         {
@@ -328,7 +328,7 @@
     {
       "id": "12",
       "stackId": "b162c5ec",
-      "content": "#### Question 12 : L'anneau $\\mathbb{Z}[X]$\n\nQuelle est la raison principale pour laquelle l'anneau $\\mathbb{Z}[X]$ des polynômes à coefficients entiers n'est pas un anneau principal ?\n",
+      "content": "#### L'anneau $\\mathbb{Z}[X]$\n\nQuelle est la raison principale pour laquelle l'anneau $\\mathbb{Z}[X]$ des polynômes à coefficients entiers n'est pas un anneau principal ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nPour montrer qu'un anneau n'est pas principal, il suffit de trouver un seul idéal qui ne soit pas principal.\n\n- **A.** C'est la raison sous-jacente (un théorème dit que si $A$ est un anneau, $A[X]$ est principal si et seulement si $A$ est un corps), mais ce n'est pas une preuve directe. L'affirmation C est l'argument concret qui démontre que $\\mathbb{Z}[X]$ n'est pas principal.\n\n- **B.** L'existence de racines n'est pas directement liée à la structure des idéaux de l'anneau. Par exemple, $\\mathbb{R}[X]$ est principal mais $X^2+1$ n'a pas de racines réelles.\n\n- **C.** C'est l'argument standard. L'idéal $(2,X)$ est l'ensemble des polynômes $2P(X) + XQ(X)$. Si cet idéal était principal, il serait engendré par un polynôme $D(X)$. $D(X)$ devrait diviser 2 et $X$. Le seul diviseur commun (à un inversible $\\pm 1$ près) est 1. Donc $D(X)$ devrait être 1. Mais si $(2,X)=(1)=\\mathbb{Z}[X]$, alors on pourrait écrire $1$ sous la forme $2P(X) + XQ(X)$. En évaluant en $X=0$, on obtiendrait $1 = 2P(0)$, ce qui est impossible dans $\\mathbb{Z}$. Donc $(2,X)$ n'est pas principal.\n\n- **D.** C'est faux. La multiplication dans $\\mathbb{Z}[X]$ est commutative car elle l'est dans $\\mathbb{Z}$.\n\n",
       "options": [
         {

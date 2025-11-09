@@ -270,7 +270,7 @@
     {
       "id": "10",
       "stackId": "e1be2b45",
-      "content": "#### Question 10 : Algèbre des limites\n\nSoient $(u_n)$ et $(v_n)$ deux suites réelles telles que $\\lim_{n \\to +\\infty} u_n = 2$ et $\\lim_{n \\to +\\infty} v_n = -3$. Quelle est la limite de la suite $w_n = \\frac{u_n + v_n}{u_n - v_n}$ ?\n",
+      "content": "#### Algèbre des limites\n\nSoient $(u_n)$ et $(v_n)$ deux suites réelles telles que $\\lim_{n \\to +\\infty} u_n = 2$ et $\\lim_{n \\to +\\infty} v_n = -3$. Quelle est la limite de la suite $w_n = \\frac{u_n + v_n}{u_n - v_n}$ ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nOn utilise les règles de l'algèbre des limites pour les suites convergentes.\n\n1.  **Limite du numérateur (somme)** :\n\n    $$ \\lim_{n \\to +\\infty} (u_n + v_n) = (\\lim_{n \\to +\\infty} u_n) + (\\lim_{n \\to +\\infty} v_n) = 2 + (-3) = -1 $$\n\n2.  **Limite du dénominateur (différence)** :\n\n    $$ \\lim_{n \\to +\\infty} (u_n - v_n) = (\\lim_{n \\to +\\infty} u_n) - (\\lim_{n \\to +\\infty} v_n) = 2 - (-3) = 2 + 3 = 5 $$\n\n3.  **Limite du quotient** :\n\n    Puisque la limite du dénominateur est non nulle (elle vaut 5), on peut appliquer la règle du quotient :\n\n    $$ \\lim_{n \\to +\\infty} w_n = \\frac{\\lim (u_n + v_n)}{\\lim (u_n - v_n)} = \\frac{-1}{5} $$\n\nLa limite de la suite $(w_n)$ est donc $-1/5$.\n\n",
       "options": [
         {
@@ -298,7 +298,7 @@
     {
       "id": "11",
       "stackId": "e1be2b45",
-      "content": "#### Question 11 : Propriétés des suites convergentes\n\nQuelles affirmations parmi les suivantes sont vraies ?\n",
+      "content": "#### Propriétés des suites convergentes\n\nQuelles affirmations parmi les suivantes sont vraies ?\n",
       "solution": "\n\n**Réponses : [B, D]**\n\n- **A)** Faux. C'est la réciproque du théorème de Cesàro, qui est fausse. Par exemple, la suite $u_n = (-1)^n$ diverge, mais la suite de ses moyennes arithmétiques converge vers 0.\n- **B)** Vrai. C'est le théorème de l'unicité de la limite. Une suite ne peut pas se rapprocher simultanément de deux valeurs distinctes.\n- **C)** Faux. L'implication \"si $(z_n)$ converge vers $z$, alors $(|z_n|)$ converge vers $|z|$\" est vraie (car le module est une fonction continue). Cependant, la réciproque est fausse. Par exemple, si $z_n = i^n$, la suite des modules $|z_n| = 1$ converge vers 1, mais la suite $(z_n)$ elle-même diverge car elle tourne sur les quatre valeurs $i, -1, -i, 1$.\n- **D)** Vrai. C'est le théorème de composition des limites. Il permet de \"passer la limite à l'intérieur\" d'une fonction continue. Par exemple, comme $\\lim 1/n = 0$ et que $\\cos$ est continue en 0, on a $\\lim \\cos(1/n) = \\cos(0) = 1$.\n\n",
       "options": [
         {
@@ -326,7 +326,7 @@
     {
       "id": "12",
       "stackId": "e1be2b45",
-      "content": "#### Question 12 : Application de la récurrence\n\nOn veut démontrer par récurrence la propriété $P(n) : \\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}$ pour $n \\ge 1$.\n\nLors de l'étape d'hérédité, on suppose que $P(k)$ est vraie pour un certain $k \\ge 1$. Quelle est l'expression que l'on doit alors démontrer ?\n",
+      "content": "#### Application de la récurrence\n\nOn veut démontrer par récurrence la propriété $P(n) : \\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}$ pour $n \\ge 1$.\n\nLors de l'étape d'hérédité, on suppose que $P(k)$ est vraie pour un certain $k \\ge 1$. Quelle est l'expression que l'on doit alors démontrer ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nL'étape d'hérédité consiste à prouver l'implication $P(k) \\Rightarrow P(k+1)$.\n\n- L'**hypothèse de récurrence** est de supposer que $P(k)$ est vraie. C'est l'option **A**.\n- Le **but** est de démontrer que $P(k+1)$ est vraie, en utilisant l'hypothèse.\n\nPour trouver l'expression de $P(k+1)$, on remplace $n$ par $k+1$ dans l'énoncé de la propriété $P(n)$.\n\nLa somme va jusqu'à $k+1$ : $\\sum_{i=1}^{k+1} i$.\n\nLe membre de droite devient : $\\frac{(k+1)((k+1)+1)}{2} = \\frac{(k+1)(k+2)}{2}$.\n\nLe but de la démonstration d'hérédité est donc de prouver l'égalité de l'option **B**.\n\n- **D)** Cette égalité est vraie, car $\\frac{(k+1)(k+2)}{2} - \\frac{k(k+1)}{2} = \\frac{k+1}{2}(k+2-k) = \\frac{k+1}{2}(2) = k+1$. C'est une étape du calcul que l'on fait pour prouver B, mais ce n'est pas l'objectif final de la démonstration.\n- **C)** Cette expression n'a pas de sens clair dans ce contexte.\n\n",
       "options": [
         {

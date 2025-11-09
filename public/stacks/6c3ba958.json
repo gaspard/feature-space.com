@@ -271,7 +271,7 @@
     {
       "id": "10",
       "stackId": "6c3ba958",
-      "content": "#### Question 10 : Complétude de Rⁿ\n\nQuelle est la relation entre les suites de Cauchy et les suites convergentes dans l'espace $\\mathbb{R}^n$ muni d'une norme quelconque ? (Cochez toutes les réponses correctes)\n",
+      "content": "#### Complétude de Rⁿ\n\nQuelle est la relation entre les suites de Cauchy et les suites convergentes dans l'espace $\\mathbb{R}^n$ muni d'une norme quelconque ? (Cochez toutes les réponses correctes)\n",
       "solution": "\n\n**Réponses : [A, B]**\n\nLa relation entre ces deux concepts est au cœur de la notion de complétude d'un espace.\n\n- **A.** C'est une propriété vraie dans n'importe quel espace vectoriel normé. Si les termes d'une suite se rapprochent tous d'une limite $a$, alors par l'inégalité triangulaire, ils doivent se rapprocher les uns des autres. C'est donc correct.\n\n- **B.** C'est la propriété de **complétude**. Un espace est dit complet si cette affirmation est vraie. L'espace $\\mathbb{R}^n$ (avec n'importe quelle norme, puisqu'elles sont toutes équivalentes) est un espace complet. C'est donc correct.\n\n- **C.** C'est le contraire de l'affirmation A. Si une suite converge, elle doit être de Cauchy. Cette affirmation est donc fausse.\n\n- **D.** La complétude de $\\mathbb{R}^n$ signifie que toute suite de Cauchy y converge. Le fait que toutes les suites soient bornées est faux (par exemple, la suite $x^k = (k, 0)$ n'est pas bornée). La complétude n'est pas liée au fait que toutes les suites soient bornées.\n\n",
       "options": [
         {
@@ -299,7 +299,7 @@
     {
       "id": "11",
       "stackId": "6c3ba958",
-      "content": "#### Question 11 : Application des Propriétés d'une Norme\n\nL'application $N: \\mathbb{R}^2 \\to \\mathbb{R}$ définie par $N(x_1, x_2) = 2|x_1| + |x_2|$ est une norme. Soit le vecteur $v=(-3, 4)$. Quelle est la valeur de $N(v)$ ?\n",
+      "content": "#### Application des Propriétés d'une Norme\n\nL'application $N: \\mathbb{R}^2 \\to \\mathbb{R}$ définie par $N(x_1, x_2) = 2|x_1| + |x_2|$ est une norme. Soit le vecteur $v=(-3, 4)$. Quelle est la valeur de $N(v)$ ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nIl s'agit d'une simple application de la formule de la norme donnée au vecteur $v=(-3, 4)$.\n\n- Les composantes du vecteur sont $x_1 = -3$ et $x_2 = 4$.\n- On applique la définition de la norme $N$:\n\n  $N(v) = N(-3, 4) = 2|-3| + |4|$\n\n- On calcule les valeurs absolues :\n\n  $N(v) = 2 \\times 3 + 4$\n\n- On termine le calcul :\n\n  $N(v) = 6 + 4 = 10$.\n\nLes autres options sont des erreurs de calcul plausibles :\n\n- **A)** $2 = |-3| - |4| \\times \\text{signe}(-3)$... ou une autre erreur.\n- **B)** $7 = |-3| + |4|$, ce qui correspondrait à la norme 1 classique.\n- **D)** $14 = 2(|-3|+|4|)$, une erreur de distributivité.\n\n",
       "options": [
         {
@@ -327,7 +327,7 @@
     {
       "id": "12",
       "stackId": "6c3ba958",
-      "content": "#### Question 12 : Inégalité Triangulaire Renversée\n\nLaquelle des inégalités suivantes, valable pour toute norme $N$ sur $\\mathbb{R}^n$ et tous vecteurs $x, y \\in \\mathbb{R}^n$, est connue sous le nom d'inégalité triangulaire renversée ?\n",
+      "content": "#### Inégalité Triangulaire Renversée\n\nLaquelle des inégalités suivantes, valable pour toute norme $N$ sur $\\mathbb{R}^n$ et tous vecteurs $x, y \\in \\mathbb{R}^n$, est connue sous le nom d'inégalité triangulaire renversée ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nL'inégalité triangulaire renversée est une conséquence directe de l'inégalité triangulaire standard. Elle fournit une borne inférieure à la norme d'une différence.\n\nLa démonstration est la suivante :\n\n1.  On écrit $N(x) = N(x - y + y)$. Par l'inégalité triangulaire, $N(x) \\le N(x-y) + N(y)$, ce qui donne $N(x) - N(y) \\le N(x-y)$.\n2.  De même, on écrit $N(y) = N(y - x + x)$. Par l'inégalité triangulaire, $N(y) \\le N(y-x) + N(x)$, ce qui donne $N(y) - N(x) \\le N(y-x)$. Comme $N(y-x) = N(-(x-y)) = |-1|N(x-y) = N(x-y)$, on a $-(N(x)-N(y)) \\le N(x-y)$.\n3.  En combinant les deux inégalités, on obtient que $N(x-y)$ est plus grand à la fois que $(N(x)-N(y))$ et son opposé. Cela s'écrit de manière compacte : $|N(x) - N(y)| \\le N(x - y)$.\n\n- **A.** Incorrect. Le membre de droite peut être négatif alors que celui de gauche est toujours positif ou nul.\n- **B.** Incorrect. C'est l'inverse de l'inégalité triangulaire standard.\n- **D.** Incorrect. C'est aussi en contradiction avec l'inégalité triangulaire.\n\n",
       "options": [
         {

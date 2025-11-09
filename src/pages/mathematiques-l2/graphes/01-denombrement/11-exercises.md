@@ -207,7 +207,7 @@ chapterId: 1a14d8a4
     -   Soit $G$ l'ensemble des musiciens qui jouent de la guitare, $|G|=28$.
     -   L'ensemble des musiciens qui jouent des deux est l'intersection $P \cap G$. On nous donne $|P \cap G|=10$.
 
-2.  **Question 1 : Combien de musiciens jouent au moins d'un de ces deux instruments ?**
+2.  **Combien de musiciens jouent au moins d'un de ces deux instruments ?**
     -   Cela correspond au cardinal de l'union $P \cup G$.
     -   On applique la formule d'inclusion-exclusion :
 
@@ -219,7 +219,7 @@ chapterId: 1a14d8a4
 
     -   Il y a donc 43 musiciens qui jouent du piano ou de la guitare (ou les deux).
 
-3.  **Question 2 : Combien de musiciens ne jouent ni du piano, ni de la guitare ?**
+3.  **Combien de musiciens ne jouent ni du piano, ni de la guitare ?**
     -   Cela correspond au nombre de musiciens qui ne sont pas dans l'ensemble $P \cup G$. C'est le cardinal du complémentaire de $P \cup G$ dans l'ensemble total $M$.
     -   Le nombre de musiciens ne jouant d'aucun des deux instruments est $|M| - |P \cup G|$.
     -   Calcul :
