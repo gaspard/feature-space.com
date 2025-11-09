@@ -358,7 +358,7 @@ main {
     border-radius: 2px;
     */
     padding: 0px 3px;
-    font-size: 108%;
+    font-size: 120%;
   }
 
   .aside {
@@ -588,8 +588,10 @@ summary {
 }
 
 details {
-  @apply px-4 md:py-3 py-1 border-t border-slate-200 mt-0;
+  @apply md:py-3 py-1 border-t border-slate-200 mt-0;
   background: hsla(204, 50%, 96%, 50%);
+  padding-left: 22px;
+  padding-right: 22px;
   &.hint {
     @apply -mb-5 -mx-4;
     background: hsla(55, 35%, 93%, 0.5);
@@ -603,17 +605,17 @@ details[open] {
   }
   
   summary {
-    @apply mt-0 mb-0 -mx-4;
+    @apply mt-0 mb-0;
   }
   
   summary::before {
     @apply rotate-90;
   }
-  @apply pb-8 px-8;
+  @apply pb-8;
 }
 
 button.font-size-control {
-  @apply cursor-pointer text-gray-600 hover:text-gray-900 disabled:opacity-30 disabled:cursor-not-allowed p-1;
+  @apply cursor-pointer text-gray-600 hover:text-gray-900 disabled:opacity-30 disabled:cursor-not-allowed p-1 opacity-30 hover:opacity-100;
   background: none;
   border: none;
   margin: 0;
