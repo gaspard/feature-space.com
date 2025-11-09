@@ -21,7 +21,16 @@ export default defineConfig({
   },
   integrations: [
     react(),
-    sitemap(),
+    sitemap({
+      filter: (page) => {
+        // Filter out URLs with incorrect case (capital L in mathematiques-L1)
+        const url = typeof page === 'string' ? page : page.url;
+        if (url.includes('/mathematiques-L1') || url.includes('/mathematique-L1')) {
+          return false;
+        }
+        return true;
+      },
+    }),
     mdx()
   ],
   markdown: {
