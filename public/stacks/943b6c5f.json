@@ -14,7 +14,7 @@
       "limites",
       "mathématiques"
     ],
-    "count": 11
+    "count": 19
   },
   "cards": [
     {
@@ -92,6 +92,62 @@
       "stackId": "943b6c5f",
       "content": "Quelle est la formule de Leibniz pour la dérivée n-ième d'un produit ?",
       "solution": "\n\nLa formule de Leibniz généralise la règle de dérivation d'un produit $(uv)' = u'v + uv'$ à des ordres de dérivation supérieurs.\n\n**Formule :**\n\nSi $f$ et $g$ sont deux fonctions $n$ fois dérivables, alors leur produit $fg$ est également $n$ fois dérivable, et sa dérivée $n$-ième est donnée par :\n\n$$ (fg)^{(n)} = \\sum_{k=0}^{n} \\binom{n}{k} f^{(k)} g^{(n-k)} $$\n\n**Explication de la formule :**\n\n- $(fg)^{(n)}$ est la dérivée $n$-ième du produit.\n- $\\binom{n}{k}$ est le coefficient binomial \"k parmi n\", calculé par $\\frac{n!}{k!(n-k)!}$.\n- $f^{(k)}$ est la dérivée $k$-ième de $f$ (avec $f^{(0)}=f$).\n- $g^{(n-k)}$ est la dérivée $(n-k)$-ième de $g$.\n- La somme $\\sum_{k=0}^{n}$ signifie qu'on additionne les termes pour $k$ allant de 0 à $n$.\n\n**Analogie avec le binôme de Newton :**\n\nLa structure de la formule est très similaire à celle du binôme de Newton pour $(a+b)^n$.\n\n**Exemple pour n=3 :**\n\nCalculons la dérivée troisième de $h(x) = x^2 e^x$. Posons $g(x) = x^2$ et $f(x) = e^x$.\n\n$(fg)^{(3)} = \\binom{3}{0}f^{(0)}g^{(3)} + \\binom{3}{1}f^{(1)}g^{(2)} + \\binom{3}{2}f^{(2)}g^{(1)} + \\binom{3}{3}f^{(3)}g^{(0)}$\n\nDérivées de $f(x)=e^x$ : $f^{(0)}=e^x, f^{(1)}=e^x, f^{(2)}=e^x, f^{(3)}=e^x$.\n\nDérivées de $g(x)=x^2$ : $g^{(0)}=x^2, g^{(1)}=2x, g^{(2)}=2, g^{(3)}=0$.\n\n$h^{(3)}(x) = (1)(e^x)(0) + (3)(e^x)(2) + (3)(e^x)(2x) + (1)(e^x)(x^2)$\n\n$h^{(3)}(x) = 0 + 6e^x + 6xe^x + x^2e^x = (x^2+6x+6)e^x$\n\n",
+      "options": []
+    },
+    {
+      "id": "12",
+      "stackId": "943b6c5f",
+      "content": "Quelles sont les dérivées des fonctions usuelles (constante, puissance) ?",
+      "solution": "\n\nVoici les formules de base pour les fonctions les plus simples.\n\n**1. Fonction constante :**\n\nSi $f(x) = c$, où $c$ est une constante, alors sa dérivée est nulle.\n\n$$ (c)' = 0 $$\n\n*Interprétation : La courbe d'une fonction constante est une droite horizontale, sa pente est donc toujours de 0.*\n\n**2. Fonction puissance :**\n\nSi $f(x) = x^n$, où $n$ est un nombre réel, alors sa dérivée est :\n\n$$ (x^n)' = n x^{n-1} $$\n\n**Exemples :**\n\n- Pour $f(x) = x^3$ ($n=3$) : $f'(x) = 3x^{3-1} = 3x^2$.\n- Pour $g(x) = \\sqrt{x} = x^{1/2}$ ($n=1/2$) : $g'(x) = \\frac{1}{2}x^{\\frac{1}{2}-1} = \\frac{1}{2}x^{-1/2} = \\frac{1}{2\\sqrt{x}}$.\n- Pour $h(x) = \\frac{1}{x} = x^{-1}$ ($n=-1$) : $h'(x) = -1x^{-1-1} = -x^{-2} = -\\frac{1}{x^2}$.\n\n",
+      "options": []
+    },
+    {
+      "id": "13",
+      "stackId": "943b6c5f",
+      "content": "Quelles sont les dérivées des fonctions exponentielles et logarithmiques ?",
+      "solution": "\n\n**1. Exponentielle de base $e$ :**\n\nLa fonction exponentielle $f(x) = e^x$ a la particularité d'être sa propre dérivée.\n\n$$ (e^x)' = e^x $$\n\n**2. Logarithme népérien :**\n\nLa dérivée de la fonction logarithme népérien $f(x) = \\ln(x)$, pour $x > 0$, est :\n\n$$ (\\ln(x))' = \\frac{1}{x} $$\n\n**Cas général (bases autres que $e$) :**\n\n- **Exponentielle de base $a$ :** Pour $a > 0$ et $a \\neq 1$, la dérivée de $f(x) = a^x$ est :\n  $$ (a^x)' = a^x \\ln(a) $$\n\n- **Logarithme de base $a$ :** Pour $a > 0$ et $a \\neq 1$, la dérivée de $f(x) = \\log_a(x)$ est :\n  $$ (\\log_a(x))' = \\frac{1}{x \\ln(a)} $$\n\n",
+      "options": []
+    },
+    {
+      "id": "14",
+      "stackId": "943b6c5f",
+      "content": "Quelles sont les dérivées des fonctions trigonométriques de base (sinus, cosinus, tangente) ?",
+      "solution": "\n\n**1. Fonction sinus :**\n\n$$ (\\sin(x))' = \\cos(x) $$\n\n**2. Fonction cosinus :**\n\n$$ (\\cos(x))' = -\\sin(x) $$\n\n**3. Fonction tangente :**\n\nPour la fonction tangente, il existe deux formes courantes pour la dérivée :\n\n$$ (\\tan(x))' = \\frac{1}{\\cos^2(x)} = 1 + \\tan^2(x) $$\n\nOn peut retrouver ce résultat en utilisant la règle du quotient sur $\\tan(x) = \\frac{\\sin(x)}{\\cos(x)}$.\n\n",
+      "options": []
+    },
+    {
+      "id": "15",
+      "stackId": "943b6c5f",
+      "content": "Quelles sont les dérivées des fonctions trigonométriques inverses (arcsin, arccos, arctan) ?",
+      "solution": "\n\n**1. Fonction arc sinus :**\n\nPour $x \\in ]-1, 1[$ :\n\n$$ (\\arcsin(x))' = \\frac{1}{\\sqrt{1 - x^2}} $$\n\n**2. Fonction arc cosinus :**\n\nPour $x \\in ]-1, 1[$ :\n\n$$ (\\arccos(x))' = -\\frac{1}{\\sqrt{1 - x^2}} $$\n\n**3. Fonction arc tangente :**\n\nPour tout $x \\in \\mathbb{R}$ :\n\n$$ (\\arctan(x))' = \\frac{1}{1 + x^2} $$\n\n",
+      "options": []
+    },
+    {
+      "id": "16",
+      "stackId": "943b6c5f",
+      "content": "Quelles sont les règles de dérivation pour la somme et le multiple constant ?",
+      "solution": "\n\nLa dérivation est une opération linéaire, ce qui signifie qu'elle se comporte bien avec les additions et les multiplications par des constantes.\n\n**1. Dérivée d'une somme :**\n\nLa dérivée d'une somme de fonctions est la somme de leurs dérivées.\n\n$$ (u + v)' = u' + v' $$\n\n**Exemple :** Pour $h(x) = x^2 + \\sin(x)$, on a $h'(x) = (x^2)' + (\\sin(x))' = 2x + \\cos(x)$.\n\n**2. Dérivée d'un multiple constant :**\n\nLa dérivée d'une fonction multipliée par une constante est la constante multipliée par la dérivée de la fonction.\n\n$$ (c \\cdot u)' = c \\cdot u' $$\n\n**Exemple :** Pour $g(x) = 3x^4$, on a $g'(x) = 3 \\cdot (x^4)' = 3 \\cdot (4x^3) = 12x^3$.\n\n",
+      "options": []
+    },
+    {
+      "id": "17",
+      "stackId": "943b6c5f",
+      "content": "Quelle est la formule de la dérivée de l'inverse d'une fonction ?",
+      "solution": "\n\nLa formule pour dériver l'inverse d'une fonction $u$ (où $u(x) \\neq 0$) est un cas particulier de la règle du quotient :\n\n$$ \\left(\\frac{1}{u}\\right)' = -\\frac{u'}{u^2} $$\n\n**Démonstration (via la règle du quotient) :**\n\nOn pose $f=1$ et $g=u$. On a $f'=0$.\n\n$$ \\left(\\frac{1}{u}\\right)' = \\frac{(1)' \\cdot u - 1 \\cdot u'}{u^2} = \\frac{0 \\cdot u - u'}{u^2} = -\\frac{u'}{u^2} $$\n\n**Exemple :**\n\nPour $h(x) = \\frac{1}{\\cos(x)}$, on pose $u(x)=\\cos(x)$. Alors $u'(x)=-\\sin(x)$.\n\n$$ h'(x) = -\\frac{-\\sin(x)}{(\\cos(x))^2} = \\frac{\\sin(x)}{\\cos^2(x)} $$\n\n",
+      "options": []
+    },
+    {
+      "id": "18",
+      "stackId": "943b6c5f",
+      "content": "Quelles sont les dérivées des fonctions hyperboliques (sinh, cosh, tanh) ?",
+      "solution": "\n\nLes dérivées des fonctions hyperboliques de base sont très similaires à celles des fonctions trigonométriques, mais sans les changements de signe.\n\n**1. Sinus hyperbolique :**\n\n$$ (\\sinh(x))' = \\cosh(x) $$\n\n**2. Cosinus hyperbolique :**\n\n$$ (\\cosh(x))' = \\sinh(x) $$\n\n**3. Tangente hyperbolique :**\n\n$$ (\\tanh(x))' = \\frac{1}{\\cosh^2(x)} = 1 - \\tanh^2(x) $$\n\n",
+      "options": []
+    },
+    {
+      "id": "19",
+      "stackId": "943b6c5f",
+      "content": "Quelles sont les dérivées des fonctions hyperboliques inverses (arcsinh, arccosh, artanh) ?",
+      "solution": "\n\n**1. Arc sinus hyperbolique :**\n\n$$ (\\text{arcsinh}(x))' = \\frac{1}{\\sqrt{x^2 + 1}} $$\n\n**2. Arc cosinus hyperbolique :**\n\nPour $x > 1$ :\n\n$$ (\\text{arccosh}(x))' = \\frac{1}{\\sqrt{x^2 - 1}} $$\n\n**3. Arc tangente hyperbolique :**\n\nPour $x \\in ]-1, 1[$ :\n\n$$ (\\text{arctanh}(x))' = \\frac{1}{1 - x^2} $$\n\n",
       "options": []
     }
   ]

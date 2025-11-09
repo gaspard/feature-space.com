@@ -16,7 +16,7 @@
       "relations d'équivalence",
       "quotients"
     ],
-    "count": 14
+    "count": 15
   },
   "cards": [
     {
@@ -408,6 +408,34 @@
           "id": "4",
           "content": "**D)** Démontrer que la propriété $P(0)$ est vraie.",
           "correct": true
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "stackId": "1fcafd1f",
+      "content": "#### Question 15 : Isomorphismes d'ensembles ordonnés\n\nSoit $f: (\\mathbb{Z}, \\le) \\to (\\mathbb{Z}, \\le)$ une application. Laquelle des affirmations suivantes garantit que $f$ est un isomorphisme d'ensembles ordonnés ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nUn isomorphisme d'ensembles ordonnés doit préserver la structure d'ordre de manière parfaite, ce qui implique une bijection qui respecte l'ordre dans les deux sens.\n\n- **A)** Une application strictement croissante est injective, mais pas forcément surjective. Par exemple, $f(n) = 2n$ est strictement croissante sur $\\mathbb{Z}$ mais n'est pas surjective (les nombres impairs n'ont pas d'antécédent). Elle n'est donc pas une bijection, et ne peut pas être un isomorphisme de $(\\mathbb{Z}, \\le)$ sur lui-même.\n- **B)** Une bijection ne préserve pas forcément l'ordre. Par exemple, $f(n) = -n$ est une bijection de $\\mathbb{Z}$ sur $\\mathbb{Z}$, mais elle est décroissante. Si $2 \\le 3$, alors $f(2)=-2$ et $f(3)=-3$, et on a $-2 \\ge -3$. L'ordre est inversé.\n- **C)** C'est la définition complète d'un isomorphisme d'ensembles ordonnés. Une bijection dont l'application et la réciproque sont croissantes. Cette double condition est équivalente à l'affirmation unique : $x \\le y \\iff f(x) \\le f(y)$.\n- **D)** Cette affirmation définit simplement une application croissante. Comme vu en A), ce n'est pas suffisant.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $f$ est une application strictement croissante.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $f$ est une bijection.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $f$ est une bijection croissante et sa réciproque $f^{-1}$ est aussi croissante.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Pour tous $x, y \\in \\mathbb{Z}$, si $x \\le y$, alors $f(x) \\le f(y)$.",
+          "correct": false
         }
       ]
     }

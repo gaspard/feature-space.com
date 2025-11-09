@@ -16,7 +16,7 @@
       "relations d'équivalence",
       "quotients"
     ],
-    "count": 12
+    "count": 14
   },
   "cards": [
     {
@@ -101,6 +101,20 @@
       "stackId": "0cf7334d",
       "content": "Expliquez la construction d'un anneau quotient $A/I$.",
       "solution": "\n\nLa construction d'un **anneau quotient** permet de créer un nouvel anneau à partir d'un anneau existant $A$ et d'un de ses idéaux $I$. L'idée est de \"rendre nuls\" tous les éléments de l'idéal $I$.\n\n**Étapes de la construction :**\n\n1.  **Relation d'équivalence** : On définit sur l'anneau $A$ la relation $a \\sim b \\iff a-b \\in I$. C'est une relation d'équivalence.\n\n2.  **Ensemble quotient** : On considère l'ensemble des classes d'équivalence, noté $A/I$. La classe d'un élément $a$ est l'ensemble $a+I = \\{a+i \\mid i \\in I\\}$, souvent notée $\\bar{a}$.\n\n3.  **Définition des opérations** : On munit l'ensemble $A/I$ de deux opérations :\n    -   **Addition** : $\\bar{a} + \\bar{b} = \\overline{a+b}$\n    -   **Multiplication** : $\\bar{a} \\times \\bar{b} = \\overline{ab}$\n\nLe fait que $I$ soit un idéal (et pas seulement un sous-anneau) est crucial pour garantir que la multiplication est **bien définie**, c'est-à-dire que le résultat ne dépend pas des représentants $a$ et $b$ choisis dans leurs classes.\n\nLe triplet $(A/I, +, \\times)$ est alors un nouvel anneau, appelé **anneau quotient**.\n\n- Son élément nul est $\\bar{0} = I$.\n- Son élément unité est $\\bar{1} = 1+I$.\n\n**Exemple : L'anneau $\\mathbb{Z}/4\\mathbb{Z}$**\n\n- On part de l'anneau $A=\\mathbb{Z}$ et de l'idéal $I=4\\mathbb{Z}$.\n- L'anneau quotient $\\mathbb{Z}/4\\mathbb{Z}$ a pour éléments $\\{\\bar{0}, \\bar{1}, \\bar{2}, \\bar{3}\\}$.\n- Dans cet anneau, on a par exemple $\\bar{2} + \\bar{3} = \\overline{2+3} = \\bar{5} = \\bar{1}$, et $\\bar{2} \\times \\bar{3} = \\overline{2 \\times 3} = \\bar{6} = \\bar{2}$.\n\n",
+      "options": []
+    },
+    {
+      "id": "13",
+      "stackId": "0cf7334d",
+      "content": "Qu'est-ce qu'une application croissante entre deux ensembles ordonnés ?",
+      "solution": "\n\nSoient $(E, \\le_E)$ et $(F, \\le_F)$ deux ensembles ordonnés.\n\nUne application $f: E \\to F$ est dite **croissante** si elle préserve la relation d'ordre. C'est-à-dire que si un élément est \"plus petit\" qu'un autre dans l'ensemble de départ, alors son image doit être \"plus petite\" que l'image de l'autre dans l'ensemble d'arrivée.\n\nMathématiquement : Pour tous $x, y \\in E$,\n$$ x \\le_E y \\implies f(x) \\le_F f(y) $$\n\n**Exemple :**\nL'application $f: (\\mathbb{R}, \\le) \\to (\\mathbb{R}, \\le)$ définie par $f(x) = 2x$ est croissante. Si $x \\le y$, alors en multipliant par 2 (qui est positif), on obtient $2x \\le 2y$, donc $f(x) \\le f(y)$.\n\n**Contre-exemple :**\nL'application $g: (\\mathbb{R}, \\le) \\to (\\mathbb{R}, \\le)$ définie par $g(x) = -x$ n'est pas croissante. Par exemple, $2 \\le 3$, mais $g(2)=-2$ et $g(3)=-3$, et on n'a pas $-2 \\le -3$. Cette application est dite décroissante.\n\n",
+      "options": []
+    },
+    {
+      "id": "14",
+      "stackId": "0cf7334d",
+      "content": "Qu'est-ce qu'un isomorphisme d'ensembles ordonnés ?",
+      "solution": "\n\nUn **isomorphisme d'ensembles ordonnés** est une application $f: (E, \\le_E) \\to (F, \\le_F)$ qui préserve parfaitement la structure d'ordre entre les deux ensembles. Pour cela, elle doit satisfaire deux conditions :\n\n1.  **Être une bijection** : L'application doit établir une correspondance \"un pour un\" entre les éléments de $E$ et $F$.\n2.  **Préserver l'ordre dans les deux sens** : La relation d'ordre entre deux éléments doit être équivalente à la relation d'ordre entre leurs images.\n\nMathématiquement, une application bijective $f: E \\to F$ est un isomorphisme d'ordre si pour tous $x, y \\in E$ :\n$$ x \\le_E y \\iff f(x) \\le_F f(y) $$\n\nCette condition unique implique que $f$ est croissante et que sa réciproque $f^{-1}$ est aussi croissante.\n\n**Intuition :**\nSi deux ensembles ordonnés sont isomorphes, alors du point de vue de leur structure d'ordre, ils sont \"identiques\". Ils ont la même \"forme\". Par exemple, si l'un a un plus grand élément, l'autre en aura un aussi.\n\n**Exemple :**\nL'application $f: (\\mathbb{N}, \\le) \\to (2\\mathbb{N}, \\le)$ définie par $f(n)=2n$ (où $2\\mathbb{N}=\\{0, 2, 4, ...\\}$) est un isomorphisme. Elle est bijective, et $n_1 \\le n_2 \\iff 2n_1 \\le 2n_2$.\n\n",
       "options": []
     }
   ]

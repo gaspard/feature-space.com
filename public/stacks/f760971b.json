@@ -16,7 +16,7 @@
       "relations d'équivalence",
       "quotients"
     ],
-    "count": 11
+    "count": 12
   },
   "cards": [
     {
@@ -323,6 +323,34 @@
         {
           "id": "4",
           "content": "**D)** On ne peut pas définir une addition sur $\\mathbb{Z}$ de cette manière, il faut utiliser la propriété universelle des groupes.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "stackId": "f760971b",
+      "content": "#### Question 12 : Isomorphismes d'ensembles ordonnés\n\nLesquels des ensembles ordonnés suivants, munis de l'ordre usuel $\\le$, sont isomorphes à $(\\mathbb{Z}, \\le)$ ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nDeux ensembles ordonnés sont isomorphes s'il existe une bijection entre eux qui préserve l'ordre. On cherche un ensemble qui a la même \"forme\" que la chaîne des entiers.\n\n- **A) $(\\mathbb{N}, \\le)$ :** Cet ensemble n'est pas isomorphe à $\\mathbb{Z}$. Une propriété structurelle clé d'un ensemble ordonné est l'existence d'un plus petit élément. $\\mathbb{N}$ a un plus petit élément (0), alors que $\\mathbb{Z}$ n'en a pas. Un isomorphisme d'ordre préserverait cette propriété, donc il ne peut pas en exister un entre $\\mathbb{N}$ et $\\mathbb{Z}$.\n\n- **B) $(2\\mathbb{Z}, \\le)$ :** Cet ensemble est isomorphe à $\\mathbb{Z}$. Considérons l'application $f: \\mathbb{Z} \\to 2\\mathbb{Z}$ définie par $f(n) = 2n$.\n    - **Bijectivité :** C'est une bijection. Elle est injective car $2n_1=2n_2 \\implies n_1=n_2$. Elle est surjective car tout entier pair peut s'écrire $2n$ pour un certain $n \\in \\mathbb{Z}$.\n    - **Préservation de l'ordre :** On doit vérifier que $n_1 \\le n_2 \\iff f(n_1) \\le f(n_2)$. C'est vrai car $n_1 \\le n_2 \\iff 2n_1 \\le 2n_2$ (la multiplication par un réel positif préserve le sens de l'inégalité).\n    L'application $f$ est donc un isomorphisme d'ordre.\n\n- **C) $([0, 1], \\le)$ :** Cet ensemble n'est pas isomorphe à $\\mathbb{Z}$. L'ordre sur $\\mathbb{Z}$ est discret (entre $n$ et $n+1$, il n'y a aucun autre élément), alors que l'ordre sur $[0,1]$ est dense. De plus, $\\mathbb{Z}$ est infini dénombrable alors que $[0,1]$ est infini non dénombrable, il ne peut donc même pas y avoir de bijection entre eux.\n\n- **D) $(\\mathbb{Q}, \\le)$ :** Cet ensemble n'est pas isomorphe à $\\mathbb{Z}$. L'ordre sur $\\mathbb{Q}$ est dense (entre deux rationnels, il y en a toujours un autre), alors que l'ordre sur $\\mathbb{Z}$ est discret. Cette propriété structurelle doit être préservée par un isomorphisme.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $(\\mathbb{N}, \\le)$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $(2\\mathbb{Z}, \\le)$, l'ensemble des entiers pairs.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $([0, 1], \\le)$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $(\\mathbb{Q}, \\le)$",
           "correct": false
         }
       ]
