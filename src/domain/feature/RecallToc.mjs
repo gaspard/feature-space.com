@@ -7,9 +7,18 @@ import * as Core__Float from "@rescript/core/src/Core__Float.mjs";
 import * as Core__Option from "@rescript/core/src/Core__Option.mjs";
 import * as Core__Nullable from "@rescript/core/src/Core__Nullable.mjs";
 
+function isActive(param) {
+  var prog = param.prog;
+  if (typeof prog !== "object") {
+    return false;
+  } else {
+    return prog._0.active;
+  }
+}
+
 function stats(now) {
   return function (param) {
-    var stacks = param.stacks;
+    var stacks = param.stacks.filter(isActive);
     var total = Core__Array.reduce(stacks, 0, (function (acc, elem) {
             var p = elem.prog;
             var tmp;
@@ -172,6 +181,7 @@ function make(repo, path) {
 }
 
 export {
+  isActive ,
   stats ,
   start ,
   loadProgress ,

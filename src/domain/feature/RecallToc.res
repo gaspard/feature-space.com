@@ -21,7 +21,15 @@ type t = {
   stats: stats,
 }
 
+@inline
+let isActive = ({prog}: tstack) =>
+  switch prog {
+  | Started(p) => p.active
+  | _ => false
+  }
+
 let stats = (~now) => ({stacks, dayLengthH}: t) => {
+  let stacks = stacks->Array.filter(isActive)
   let total = Array.reduce(stacks, 0, (acc, elem: tstack) =>
     acc +
     switch elem {
