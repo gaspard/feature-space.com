@@ -19,6 +19,8 @@ chapterId: c9bf30da
 ---
 # Exercices "Séries Numériques" (B)
 
+---
+
 ## Exercice 1
 
 **Problème:** Soit la suite $(u_n)_{n \in \mathbb{N}}$ définie par $u_0 \in ]0, \pi[$ et la relation de récurrence $u_{n+1} = \ln(1 + \sin(u_n))$. Étudier la nature de la série $\sum u_n$.
@@ -91,6 +93,8 @@ L'approche consiste à d'abord étudier la convergence de la suite $(u_n)$ vers 
 
 </details>
 
+---
+
 ## Exercice 2
 
 **Problème:** Soit $(u_n)_{n \in \mathbb{N}}$ une suite de réels positifs, décroissante et telle que la série $\sum u_n$ converge. Démontrer que $\lim_{n \to \infty} n u_n = 0$.
@@ -141,6 +145,8 @@ La convergence de la série $\sum u_n$ implique que son reste d'ordre $n$, $r_n 
 
 </details>
 
+---
+
 ## Exercice 3
 
 **Problème:** Soit $\sum u_n$ une série semi-convergente. Démontrer qu'il est possible de réarranger ses termes de sorte que la nouvelle série diverge vers $+\infty$.
@@ -190,6 +196,8 @@ Nous allons utiliser le fait que pour une série semi-convergente, les séries f
 **Réponse:** La construction ci-dessus fournit un réarrangement des termes de $\sum u_n$ dont la série des sommes partielles diverge vers $+\infty$.
 
 </details>
+
+---
 
 ## Exercice 4
 
@@ -295,6 +303,8 @@ Cette série est une série alternée, mais le signe ne change pas à chaque ter
 
 </details>
 
+---
+
 ## Exercice 5
 
 **Problème:** Démontrer le théorème de Mertens (version faible) :
@@ -377,6 +387,8 @@ Nous allons analyser la différence entre la somme partielle du produit de Cauch
 
 </details>
 
+---
+
 ## Exercice 6
 
 **Problème:** Soit la série semi-convergente $\sum_{n=0}^\infty u_n$ avec $u_n = \frac{(-1)^n}{\sqrt{n+1}}$.
@@ -444,6 +456,8 @@ Nous allons analyser la différence entre la somme partielle du produit de Cauch
 **Réponse:** La série produit de Cauchy $\sum w_n$ est **divergente**.
 
 </details>
+
+---
 
 ## Exercice 7
 
@@ -535,6 +549,8 @@ La preuve consiste à comparer les sommes partielles des deux séries. En regrou
 
 </details>
 
+---
+
 ## Exercice 8
 
 **Problème:** En utilisant le critère de condensation de Cauchy, déterminer la nature de la série de Bertrand $\sum_{n=2}^\infty \frac{1}{n (\ln n)^p}$ en fonction du paramètre réel $p$.
@@ -582,6 +598,8 @@ Le terme général $u_n = \frac{1}{n(\ln n)^p}$ est positif et la suite $(u_n)$ 
 **Réponse:** La série de Bertrand $\sum_{n=2}^\infty \frac{1}{n (\ln n)^p}$ converge si et seulement si $p > 1$.
 
 </details>
+
+---
 
 ## Exercice 9
 
@@ -670,6 +688,8 @@ La preuve repose sur des manipulations d'inégalités et des passages à la limi
 $$ \liminf_{n \to \infty} \frac{u_{n+1}}{u_n} \le \liminf_{n \to \infty} (u_n)^{1/n} \le \limsup_{n \to \infty} (u_n)^{1/n} \le \limsup_{n \to \infty} \frac{u_{n+1}}{u_n} $$
 
 </details>
+
+---
 
 ## Exercice 10
 

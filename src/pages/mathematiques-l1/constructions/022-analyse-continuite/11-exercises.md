@@ -19,6 +19,8 @@ chapterId: a5489a34
 ---
 # Exercices "Analyse: Continuïté" (A)
 
+---
+
 ## Exercice 1
 
 **Problème:** Calculez la limite suivante :
@@ -66,6 +68,8 @@ $$ \lim_{x \to 3} \frac{x^2 - x - 6}{x - 3} $$
 $$ \lim_{x \to 3} \frac{x^2 - x - 6}{x - 3} = 5 $$
 
 </details>
+
+---
 
 ## Exercice 2
 
@@ -116,6 +120,8 @@ La fonction $f$ admet-elle une limite en $x=1$ ? Justifiez votre réponse en cal
 $$ \lim_{x \to 1} f(x) = 3 $$
 
 </details>
+
+---
 
 ## Exercice 3
 
@@ -169,6 +175,8 @@ $$ k = \frac{1}{4} $$
 
 </details>
 
+---
+
 ## Exercice 4
 
 **Problème:** Montrez que l'équation $x^3 - 3x + 1 = 0$ admet au moins une solution dans l'intervalle $[0, 1]$.
@@ -210,6 +218,8 @@ $$ k = \frac{1}{4} $$
 La fonction $f(x) = x^3 - 3x + 1$ est continue sur $[0,1]$. Comme $f(0) = 1 > 0$ et $f(1) = -1 < 0$, d'après le Théorème des Valeurs Intermédiaires, il existe au moins un $c \in [0, 1]$ tel que $f(c) = 0$. L'équation admet donc bien au moins une solution dans cet intervalle.
 
 </details>
+
+---
 
 ## Exercice 5
 
@@ -259,6 +269,8 @@ $$ f'(1) = -\frac{1}{9} $$
 
 </details>
 
+---
+
 ## Exercice 6
 
 **Problème:** Calculez la fonction dérivée de $h(x) = \frac{\sin(2x)}{x^2+1}$.
@@ -302,6 +314,8 @@ $$ f'(1) = -\frac{1}{9} $$
 $$ h'(x) = \frac{2(x^2+1)\cos(2x) - 2x\sin(2x)}{(x^2+1)^2} $$
 
 </details>
+
+---
 
 ## Exercice 7
 
@@ -363,6 +377,8 @@ $$ c = \frac{2\sqrt{3}}{3} \quad \text{et} \quad c = -\frac{2\sqrt{3}}{3} $$
 
 </details>
 
+---
+
 ## Exercice 8
 
 **Problème:** En utilisant l'inégalité des accroissements finis, montrez que pour tous réels $a$ et $b$ :
@@ -414,6 +430,8 @@ $$ |\cos(b) - \cos(a)| \le |b-a| $$
 $$ |\cos(b) - \cos(a)| \le 1 \cdot |b-a| $$
 
 </details>
+
+---
 
 ## Exercice 9
 
@@ -480,6 +498,8 @@ $$ |\cos(b) - \cos(a)| \le 1 \cdot |b-a| $$
 $$ (f^{-1})'(0) = \frac{1}{4} $$
 
 </details>
+
+---
 
 ## Exercice 10
 

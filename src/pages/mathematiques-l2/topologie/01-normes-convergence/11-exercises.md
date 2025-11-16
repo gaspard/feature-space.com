@@ -18,6 +18,8 @@ chapterId: 629d2832
 ---
 # Exercices "Normes sur Rⁿ et suites convergentes" (A)
 
+---
+
 ## Exercice 1
 
 **Problème:** Déterminer si l'application $N: \mathbb{R}^2 \to \mathbb{R}_+$ définie par $N(x_1, x_2) = |x_1 - 2x_2| + 3|x_1|$ est une norme sur $\mathbb{R}^2$.
@@ -66,6 +68,8 @@ chapterId: 629d2832
 
 </details>
 
+---
+
 ## Exercice 2
 
 **Problème:** L'application $A: \mathbb{R}^3 \to \mathbb{R}_+$ définie par $A(x_1, x_2, x_3) = |x_1| + |x_2|$ est-elle une norme sur $\mathbb{R}^3$? Justifiez votre réponse.
@@ -92,6 +96,8 @@ chapterId: 629d2832
 **Réponse:** Non, l'application $A$ n'est pas une norme sur $\mathbb{R}^3$ car elle ne respecte pas l'axiome de séparation. Par exemple, le vecteur non nul $x=(0,0,5)$ a une "longueur" nulle selon $A$, $A(x)=0$.
 
 </details>
+
+---
 
 ## Exercice 3
 
@@ -126,6 +132,8 @@ chapterId: 629d2832
 -   $\|v\|_\infty = 4$
 
 </details>
+
+---
 
 ## Exercice 4
 
@@ -173,6 +181,8 @@ chapterId: 629d2832
 
 </details>
 
+---
+
 ## Exercice 5
 
 **Problème:** Soit la norme $N$ sur $\mathbb{R}^2$ définie par $N(x, y) = 4|x| + |y|$. Montrer que $N$ est équivalente à la norme infinie $\| \cdot \|_\infty$.
@@ -219,6 +229,8 @@ Rappelons que $\|v\|_\infty = \max(|x|, |y|)$.
 
 </details>
 
+---
+
 ## Exercice 6
 
 **Problème:** En utilisant les inégalités d'équivalence connues entre les normes fondamentales, trouver la plus petite constante $C$ telle que $\|x\|_1 \le C \|x\|_\infty$ pour tout $x \in \mathbb{R}^5$.
@@ -257,6 +269,8 @@ Rappelons que $\|v\|_\infty = \max(|x|, |y|)$.
 **Réponse:** La plus petite constante $C$ est $C=5$.
 
 </details>
+
+---
 
 ## Exercice 7
 
@@ -300,6 +314,8 @@ Rappelons que $\|v\|_\infty = \max(|x|, |y|)$.
 
 </details>
 
+---
+
 ## Exercice 8
 
 **Problème:** Étudier la convergence de la suite $(y^k)_{k \ge 1}$ dans $\mathbb{R}^2$ définie par $y^k = \left( \frac{k^2+1}{k+1}, (-1)^k \left(1 - \frac{1}{k}\right) \right)$.
@@ -334,6 +350,8 @@ Rappelons que $\|v\|_\infty = \max(|x|, |y|)$.
 **Réponse:** La suite $(y^k)$ ne converge pas car sa première composante tend vers $+\infty$.
 
 </details>
+
+---
 
 ## Exercice 9
 
@@ -382,6 +400,8 @@ Rappelons que $\|v\|_\infty = \max(|x|, |y|)$.
 -   Pour toutes les autres valeurs de $a$, la suite diverge.
 
 </details>
+
+---
 
 ## Exercice 10
 

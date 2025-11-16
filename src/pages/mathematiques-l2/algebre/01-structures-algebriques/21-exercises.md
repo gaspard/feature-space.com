@@ -21,6 +21,8 @@ chapterId: 436c223a
 ---
 # Exercices "Structures algébriques" (B)
 
+---
+
 ## Exercice 1
 
 **Problème :** Soit $f: X \to Y$ une application entre deux ensembles non vides. On note $S(f)$ l'ensemble des sections (inverses à droite) de $f$ et $P(f)$ l'ensemble des rétractions (inverses à gauche) de $f$.
@@ -58,6 +60,8 @@ chapterId: 436c223a
 **Réponse :** La bijection est $\Phi: S(f) \to \prod_{y \in Y} f^{-1}(\{y\})$ définie par $\Phi(s) = s$. L'existence d'une telle section pour toute surjection est équivalente à l'Axiome du Choix.
 
 </details>
+
+---
 
 ## Exercice 2
 
@@ -180,6 +184,8 @@ Nous allons construire une application $P: \mathbb{N} \to \mathbb{N}$ par la pro
 
 </details>
 
+---
+
 ## Exercice 3
 
 **Problème :** Soit $(M, \cdot, 1)$ un monoïde fini. Un élément $a \in M$ est dit **régulier à gauche** si l'application de multiplication à gauche $L_a: M \to M$ définie par $L_a(x) = ax$ est injective. Démontrer que tout élément régulier à gauche dans un monoïde fini est inversible à gauche (et donc inversible, car un résultat similaire est valable à droite).
@@ -206,6 +212,8 @@ Nous allons construire une application $P: \mathbb{N} \to \mathbb{N}$ par la pro
 **Réponse :** Dans un monoïde fini, tout élément régulier à gauche est inversible. $\text{Si } a \in M \text{ est régulier à gauche, } L_a: x \mapsto ax \text{ est injective. Comme } M \text{ est fini, } L_a \text{ est surjective. Il existe donc } b \in M \text{ tel que } ab = 1. \text{Alors } a(ba)=(ab)a = 1a=a=a1. \text{ Par régularité de } a, \text{ on a } ba=1. \text{ Donc } a \text{ est inversible.}$
 
 </details>
+
+---
 
 ## Exercice 4
 
@@ -262,6 +270,8 @@ Nous allons construire une application $P: \mathbb{N} \to \mathbb{N}$ par la pro
 **Réponse :** L'application $A \mapsto \phi(A)$ est une bijection de l'ensemble des sous-groupes de $G$ contenant $\text{Ker}(\phi)$ vers l'ensemble des sous-groupes de $H$. Cette bijection préserve l'inclusion et la normalité.
 
 </details>
+
+---
 
 ## Exercice 5
 
@@ -329,6 +339,8 @@ Nous allons construire une application $P: \mathbb{N} \to \mathbb{N}$ par la pro
 
 </details>
 
+---
+
 ## Exercice 6
 
 **Problème :** Démontrer le théorème de Cantor-Bernstein-Schröder : S'il existe une injection $f: X \to Y$ et une injection $g: Y \to X$ entre deux ensembles $X$ et $Y$, alors il existe une bijection $h: X \to Y$.
@@ -380,6 +392,8 @@ Nous allons construire une application $P: \mathbb{N} \to \mathbb{N}$ par la pro
 
 </details>
 
+---
+
 ## Exercice 7
 
 **Problème :** Soit $(G, \cdot)$ un groupe. Démontrer qu'une relation d'ordre total $\le$ sur $G$ est compatible avec la loi de groupe (faisant de $(G, \cdot, \le)$ un groupe totalement ordonné) si et seulement si l'ensemble des éléments positifs $P = \{g \in G \mid e \le g\}$ satisfait les trois propriétés suivantes :
@@ -423,6 +437,8 @@ La compatibilité est définie par: $\forall a,b,c \in G, a \le b \implies (ac \
 **Réponse :** L'ensemble des éléments positifs $P=\{g \in G \mid e \le g\}$ d'un groupe ordonné satisfait les quatre propriétés. Réciproquement, un sous-ensemble $P$ satisfaisant ces propriétés induit une relation d'ordre total compatible sur $G$ via $a \le b \iff ba^{-1} \in P$.
 
 </details>
+
+---
 
 ## Exercice 8
 
@@ -549,6 +565,8 @@ $$ (n_1, h_1) \cdot (n_2, h_2) = (n_1 \cdot_N \varphi_{h_1}(n_2), h_1 \cdot_H h_
 
 </details>
 
+---
+
 ## Exercice 9
 
 **Problème :** Pour un nombre premier $p$, l'anneau des **entiers $p$-adiques** $\mathbb{Z}_p$ est défini comme l'ensemble des suites $(x_n)_{n \ge 1}$ où $x_n \in \mathbb{Z}/p^n\mathbb{Z}$ et pour tout $n \ge 1$, $x_{n+1} \equiv x_n \pmod{p^n}$. Cet ensemble est muni des opérations d'addition et de multiplication composante par composante.
@@ -600,6 +618,8 @@ $$ (n_1, h_1) \cdot (n_2, h_2) = (n_1 \cdot_N \varphi_{h_1}(n_2), h_1 \cdot_H h_
 
 </details>
 
+---
+
 ## Exercice 10
 
 **Problème :** En utilisant le lemme de Zorn, démontrer le théorème de Zermelo, qui stipule que tout ensemble peut être bien ordonné.
@@ -646,6 +666,8 @@ $$ (n_1, h_1) \cdot (n_2, h_2) = (n_1 \cdot_N \varphi_{h_1}(n_2), h_1 \cdot_H h_
 **Réponse :** L'existence d'un bon ordre sur tout ensemble $X$ est prouvée en appliquant le lemme de Zorn à l'ensemble $\mathcal{W}$ des bons ordres sur les sous-ensembles de $X$, partiellement ordonné par la relation d'extension de segment initial. Une chaîne dans $\mathcal{W}$ a pour borne supérieure l'union de ses éléments, ce qui permet d'appliquer Zorn. L'élément maximal résultant est nécessairement un bon ordre sur $X$ tout entier, sans quoi on pourrait l'étendre, contredisant sa maximalité.
 
 </details>
+
+---
 
 ## Exercice 11: Isomorphismes d'ensembles ordonnés (Pro)
 

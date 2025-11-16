@@ -20,6 +20,8 @@ chapterId: 67b3d760
 ---
 # Exercices "Espaces Euclidiens et Hermitiens" (A)
 
+---
+
 ## Exercice 1
 
 **Problème:** Soit l'application $\varphi: \mathbb{R}^2 \times \mathbb{R}^2 \to \mathbb{R}$ définie pour $x=(x_1, x_2)$ et $y=(y_1, y_2)$ par :
@@ -82,6 +84,8 @@ Montrer que $\varphi$ est une forme bilinéaire symétrique.
 
 </details>
 
+---
+
 ## Exercice 2
 
 **Problème:** Soit $E = \mathbb{C}^2$ et l'application $\varphi: E \times E \to \mathbb{C}$ définie pour $x=(x_1, x_2)$ et $y=(y_1, y_2)$ par :
@@ -141,6 +145,8 @@ Montrer que $\varphi$ est une forme sesquilinéaire hermitienne.
 **Réponse:** L'application $\varphi$ est une forme sesquilinéaire hermitienne.
 
 </details>
+
+---
 
 ## Exercice 3
 
@@ -208,6 +214,8 @@ Montrer que $\varphi$ est une forme sesquilinéaire hermitienne.
 
 </details>
 
+---
+
 ## Exercice 4
 
 **Problème:** Soit l'espace euclidien $\mathbb{R}^3$ muni de son produit scalaire usuel. Soient les vecteurs $x = (1, 2, -3)$ et $y = (2, 0, 1)$.
@@ -267,6 +275,8 @@ Montrer que $\varphi$ est une forme sesquilinéaire hermitienne.
 2. Comme $|\langle x, y \rangle| \neq \|x\| \|y\|$, les vecteurs ne sont pas colinéaires.
 
 </details>
+
+---
 
 ## Exercice 5
 
@@ -328,6 +338,8 @@ Montrer que $\varphi$ est une forme sesquilinéaire hermitienne.
 
 </details>
 
+---
+
 ## Exercice 6
 
 **Problème:** Sur $\mathbb{R}^2$, on définit la norme infinie par $\|x\|_{\infty} = \max(|x_1|, |x_2|)$. Montrer que cette norme ne dérive pas d'un produit scalaire.
@@ -373,6 +385,8 @@ Montrer que $\varphi$ est une forme sesquilinéaire hermitienne.
 **Réponse:** La norme $\|x\|_{\infty}$ ne dérive pas d'un produit scalaire car elle ne satisfait pas l'identité du parallélogramme. Par exemple, pour $x=(1,0)$ et $y=(0,1)$, on obtient $2 \neq 4$.
 
 </details>
+
+---
 
 ## Exercice 7
 
@@ -431,6 +445,8 @@ Soit le vecteur $v = (2, 3, 4)$. Trouver les coordonnées de $v$ dans la base $\
 **Réponse:** Les coordonnées de $v$ dans la base $\mathcal{B}'$ sont $\left(3\sqrt{3}, -\frac{\sqrt{2}}{2}, -\frac{\sqrt{6}}{2}\right)$.
 
 </details>
+
+---
 
 ## Exercice 8
 
@@ -504,6 +520,8 @@ $e_3 = \frac{1}{\sqrt{3}}(-1, 1, 1)$.
 
 </details>
 
+---
+
 ## Exercice 9
 
 **Problème:** Dans $\mathbb{R}^3$ muni du produit scalaire usuel, on considère le vecteur $v=(6, 2, 5)$ et le plan $F$ d'équation $x - y + 2z = 0$.
@@ -564,6 +582,8 @@ Calculer la projection orthogonale $P_F(v)$ du vecteur $v$ sur le plan $F$.
 
 </details>
 
+---
+
 ## Exercice 10
 
 **Problème:** Dans $\mathbb{R}^3$ muni de sa structure euclidienne usuelle, calculer la distance du point $A=(1, 2, 3)$ à la droite $D$ passant par l'origine et dirigée par le vecteur $u=(1, 1, 1)$.
@@ -606,6 +626,8 @@ Calculer la projection orthogonale $P_F(v)$ du vecteur $v$ sur le plan $F$.
 
 </details>
 
+---
+
 ## Exercice 11
 
 **Problème:** Soit $f$ un endomorphisme de l'espace euclidien $\mathbb{R}^3$ dont la matrice dans la base canonique (orthonormée) est :
@@ -645,6 +667,8 @@ Déterminer la matrice de l'endomorphisme adjoint $f^*$ dans la même base.
 **Réponse:** La matrice de l'adjoint $f^*$ dans la base canonique est $A^* = {}^tA = \begin{pmatrix} 1 & -1 & 4 \\ 0 & 3 & 1 \\ 2 & 0 & -2 \end{pmatrix}$.
 
 </details>
+
+---
 
 ## Exercice 12
 
@@ -697,6 +721,8 @@ Cet endomorphisme est-il auto-adjoint ? Unitaire ? Normal ?
 **Réponse:** L'endomorphisme $f$ n'est **pas auto-adjoint**, mais il est **unitaire** et **normal**.
 
 </details>
+
+---
 
 ## Exercice 13
 

@@ -19,6 +19,8 @@ chapterId: a172ec8a
 ---
 # Exercices "Groupes, anneaux et corps" (A)
 
+---
+
 ## Exercice 1
 
 **Problème :** Soit $G$ l'ensemble des matrices carrées d'ordre 2 de la forme $\begin{pmatrix} a & b \\ 0 & 1 \end{pmatrix}$ où $a, b \in \mathbb{R}$ et $a \neq 0$. Montrer que $G$ muni de la multiplication matricielle est un groupe. Est-il commutatif ?
@@ -84,6 +86,8 @@ Ensuite, pour vérifier si le groupe est commutatif (abélien), nous testerons s
 
 </details>
 
+---
+
 ## Exercice 2
 
 **Problème :** Soit $(G, \cdot)$ un groupe. Montrer que si pour tous les éléments $a, b \in G$, on a $(ab)^{-1} = a^{-1}b^{-1}$, alors le groupe $G$ est commutatif.
@@ -119,6 +123,8 @@ Ensuite, pour vérifier si le groupe est commutatif (abélien), nous testerons s
 **Réponse :** Le groupe $G$ est commutatif.
 
 </details>
+
+---
 
 ## Exercice 3
 
@@ -187,6 +193,8 @@ La commutativité et l'intégrité seront ensuite vérifiées. Pour savoir si c'
 **Réponse :** $\mathbb{Z}[\sqrt{2}]$ est un anneau commutatif et intègre, mais ce n'est pas un corps.
 
 </details>
+
+---
 
 ## Exercice 4
 
@@ -262,6 +270,8 @@ c) Oui, $h$ est un morphisme de groupes.
 
 </details>
 
+---
+
 ## Exercice 5
 
 **Problème :** On considère l'anneau $(\mathbb{Z}_6, +, \cdot)$.
@@ -290,39 +300,25 @@ c) Pour que ce soit un corps, il faut que l'anneau soit intègre et que tout él
 
     **Table d'addition (+)**
 
-    | + | 0 | 1 | 2 | 3 | 4 | 5 |
-
-    |---|---|---|---|---|---|---|
-
-    | 0 | 0 | 1 | 2 | 3 | 4 | 5 |
-
-    | 1 | 1 | 2 | 3 | 4 | 5 | 0 |
-
-    | 2 | 2 | 3 | 4 | 5 | 0 | 1 |
-
-    | 3 | 3 | 4 | 5 | 0 | 1 | 2 |
-
-    | 4 | 4 | 5 | 0 | 1 | 2 | 3 |
-
-    | 5 | 5 | 0 | 1 | 2 | 3 | 4 |
+    | +   | 0   | 1   | 2   | 3   | 4   | 5   |
+    | --- | --- | --- | --- | --- | --- | --- |
+    | 0   | 0   | 1   | 2   | 3   | 4   | 5   |
+    | 1   | 1   | 2   | 3   | 4   | 5   | 0   |
+    | 2   | 2   | 3   | 4   | 5   | 0   | 1   |
+    | 3   | 3   | 4   | 5   | 0   | 1   | 2   |
+    | 4   | 4   | 5   | 0   | 1   | 2   | 3   |
+    | 5   | 5   | 0   | 1   | 2   | 3   | 4   |
 
     **Table de multiplication (·)**
 
-    | · | 0 | 1 | 2 | 3 | 4 | 5 |
-
-    |---|---|---|---|---|---|---|
-
-    | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-
-    | 1 | 0 | 1 | 2 | 3 | 4 | 5 |
-
-    | 2 | 0 | 2 | 4 | 0 | 2 | 4 |
-
-    | 3 | 0 | 3 | 0 | 3 | 0 | 3 |
-
-    | 4 | 0 | 4 | 2 | 0 | 4 | 2 |
-
-    | 5 | 0 | 5 | 4 | 3 | 2 | 1 |
+    | ·   | 0   | 1   | 2   | 3   | 4   | 5   |
+    | --- | --- | --- | --- | --- | --- | --- |
+    | 0   | 0   | 0   | 0   | 0   | 0   | 0   |
+    | 1   | 0   | 1   | 2   | 3   | 4   | 5   |
+    | 2   | 0   | 2   | 4   | 0   | 2   | 4   |
+    | 3   | 0   | 3   | 0   | 3   | 0   | 3   |
+    | 4   | 0   | 4   | 2   | 0   | 4   | 2   |
+    | 5   | 0   | 5   | 4   | 3   | 2   | 1   |
 
 2.  **Intégrité :**
 
@@ -361,6 +357,8 @@ b) L'anneau $\mathbb{Z}_6$ n'est pas intègre car il possède des diviseurs de z
 c) L'anneau $\mathbb{Z}_6$ n'est pas un corps car il n'est pas intègre (et certains de ses éléments non nuls ne sont pas inversibles).
 
 </details>
+
+---
 
 ## Exercice 6
 
@@ -419,6 +417,8 @@ c) L'anneau $\mathbb{Z}_6$ n'est pas un corps car il n'est pas intègre (et cert
 
 </details>
 
+---
+
 ## Exercice 7
 
 **Problème :** Soient $(G, \cdot)$ un groupe, et $H_1, H_2$ deux sous-groupes de $G$. Montrer que leur intersection $H_1 \cap H_2$ est aussi un sous-groupe de $G$.
@@ -466,6 +466,8 @@ c) L'anneau $\mathbb{Z}_6$ n'est pas un corps car il n'est pas intègre (et cert
 **Réponse :** L'intersection de deux sous-groupes $H_1$ et $H_2$ d'un groupe $G$ est bien un sous-groupe de $G$.
 
 </details>
+
+---
 
 ## Exercice 8
 
@@ -549,6 +551,8 @@ c) L'anneau $\mathbb{Z}_6$ n'est pas un corps car il n'est pas intègre (et cert
 
 </details>
 
+---
+
 ## Exercice 9
 
 **Problème :** Un théorème affirme que tout anneau intègre fini est un corps. Utiliser ce résultat pour montrer que l'anneau $(\mathbb{Z}_p, +, \cdot)$ est un corps si et seulement si $p$ est un nombre premier.
@@ -594,6 +598,8 @@ c) L'anneau $\mathbb{Z}_6$ n'est pas un corps car il n'est pas intègre (et cert
 **Réponse :** Nous avons montré les deux implications : $\mathbb{Z}_p$ est un corps si $p$ est premier, et si $\mathbb{Z}_p$ est un corps, alors $p$ est premier. L'équivalence est donc prouvée.
 
 </details>
+
+---
 
 ## Exercice 10
 

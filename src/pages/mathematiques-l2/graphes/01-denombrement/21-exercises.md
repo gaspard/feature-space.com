@@ -18,6 +18,8 @@ chapterId: 1a14d8a4
 ---
 # Exercices "Principes de dénombrement" (B)
 
+---
+
 ## Exercice 1
 
 **Problème:** Soit $E$ un ensemble fini. Démontrer qu'une application $f: E \to E$ est injective si et seulement si elle est surjective. Montrer par un contre-exemple que ce résultat est faux si $E$ est infini.
@@ -62,6 +64,8 @@ chapterId: 1a14d8a4
 **Réponse:** Pour un ensemble fini $E$, une application $f:E \to E$ est injective si et seulement si elle est surjective. Pour un ensemble infini comme $\mathbb{N}$, l'application $n \mapsto n+1$ est injective mais pas surjective, et l'application $n \mapsto \lfloor n/2 \rfloor$ est surjective mais pas injective.
 
 </details>
+
+---
 
 ## Exercice 2
 
@@ -137,6 +141,8 @@ $$ \sum_{j=0}^k (-1)^j \binom{k}{j} (k-j)^n = k! S(n,k) $$
 
 </details>
 
+---
+
 ## Exercice 3
 
 **Problème:** Démontrer le théorème de Ramsey pour le cas $R(3,3)=6$ : dans tout groupe de 6 personnes, il existe soit un sous-groupe de 3 personnes qui se connaissent mutuellement, soit un sous-groupe de 3 personnes qui sont toutes étrangères les unes aux autres.
@@ -198,6 +204,8 @@ $$ \sum_{j=0}^k (-1)^j \binom{k}{j} (k-j)^n = k! S(n,k) $$
 **Réponse:** Par une application du principe des tiroirs sur les arêtes issues d'un sommet quelconque d'un $K_6$ bi-colorié, on montre qu'il existe nécessairement un sous-graphe $K_3$ monochrome, ce qui prouve que $R(3,3)=6$.
 
 </details>
+
+---
 
 ## Exercice 4
 
@@ -267,6 +275,8 @@ $$ \left| \bigcup_{i=1}^n A_i \right| = \sum_{\emptyset \neq I \subseteq [n]} (-
 
 </details>
 
+---
+
 ## Exercice 5
 
 **Problème:** On veut fabriquer des colliers de 8 perles. Chaque perle peut être de couleur rouge (R) ou bleue (B). Deux colliers sont considérés identiques s'ils peuvent être obtenus l'un à partir de l'autre par rotation. Combien de colliers distincts peut-on fabriquer ?
@@ -332,6 +342,8 @@ $$ N = \frac{1}{8} \sum_{k=0}^{7} 2^{\text{pgcd}(8,k)} = \frac{1}{8}(2^8 + 2^1 +
 
 </details>
 
+---
+
 ## Exercice 6
 
 **Problème:** Démontrer que l'ensemble $\mathbb{A}$ des nombres algébriques réels est dénombrable. Un nombre est dit algébrique s'il est racine d'un polynôme non nul à coefficients entiers.
@@ -389,6 +401,8 @@ $$ N = \frac{1}{8} \sum_{k=0}^{7} 2^{\text{pgcd}(8,k)} = \frac{1}{8}(2^8 + 2^1 +
 **Réponse:** L'ensemble des polynômes à coefficients entiers $\mathbb{Z}[X]$ est dénombrable. Chaque polynôme non nul n'a qu'un nombre fini de racines. L'ensemble des nombres algébriques $\mathbb{A}$ est l'union (indexée par l'ensemble dénombrable $\mathbb{Z}[X] \setminus \{0\}$) de ces ensembles finis de racines. Par conséquent, $\mathbb{A}$ est dénombrable.
 
 </details>
+
+---
 
 ## Exercice 7
 
@@ -469,6 +483,8 @@ $$ M_n = \sum_{k=0}^n (-1)^k \frac{2n}{2n-k} \binom{2n-k}{k} (n-k)! $$
 Les premières valeurs sont $M_1=0, M_2=0, M_3=1, M_4=2, M_5=13, M_6=80$.
 
 </details>
+
+---
 
 ## Exercice 8
 
@@ -696,6 +712,8 @@ $$ |A| < \sqrt{2n} + \frac{1}{2} $$
 
 </details>
 
+---
+
 ## Exercice 9
 
 **Problème:** Démontrer que l'ensemble des réels $\mathbb{R}$ et l'ensemble des parties de $\mathbb{N}$, noté $P(\mathbb{N})$, sont équipotents.
@@ -747,6 +765,8 @@ $$ |A| < \sqrt{2n} + \frac{1}{2} $$
 $$ |\mathbb{R}| = |P(\mathbb{N})| = 2^{|\mathbb{N}|} = \mathfrak{c} $$
 
 </details>
+
+---
 
 ## Exercice 10
 

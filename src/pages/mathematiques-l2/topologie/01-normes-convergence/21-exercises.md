@@ -18,6 +18,8 @@ chapterId: 629d2832
 ---
 # Exercices "Normes sur Rⁿ et suites convergentes" (B)
 
+---
+
 ## Exercice 1
 
 **Problème:** Soit $E$ un espace vectoriel réel. Une partie $C \subset E$ est dite **convexe** si pour tous $x, y \in C$ et tout $t \in [0, 1]$, on a $tx + (1-t)y \in C$. Elle est dite **symétrique** par rapport à l'origine si pour tout $x \in C$, on a $-x \in C$. Elle est dite **absorbante** si pour tout $x \in E$, il existe $\alpha > 0$ tel que $\alpha x \in C$.
@@ -81,6 +83,8 @@ Démontrer que $p_B$ est une norme sur $E$.
 **Réponse:** La fonctionnelle de Minkowski $p_B$ vérifie les trois axiomes de séparation, d'homogénéité absolue et d'inégalité triangulaire, c'est donc une norme sur $E$.
 
 </details>
+
+---
 
 ## Exercice 2
 
@@ -157,6 +161,8 @@ Indication : commencer par prouver l'**inégalité de Young** : pour tous $a, b 
 $$ \sum_{i=1}^n |x_i y_i| \le \|x\|_p \|y\|_q $$
 
 </details>
+
+---
 
 ## Exercice 3
 
@@ -256,6 +262,8 @@ $$ N_\infty(A) = \max_{1 \le i \le n} \sum_{j=1}^n |a_{ij}| $$
 
 </details>
 
+---
+
 ## Exercice 4
 
 **Problème:** Soit $E$ l'espace vectoriel des polynômes à coefficients réels, noté $\mathbb{R}[X]$. On considère deux normes sur $E$:
@@ -318,6 +326,8 @@ Une bonne suite de candidats sont des polynômes qui ont un pic étroit près d'
 
 </details>
 
+---
+
 ## Exercice 5
 
 **Problème:** Soit $(E, \|\cdot\|)$ un espace de Banach (un espace vectoriel normé complet) et soit $F$ un sous-espace vectoriel de $E$.
@@ -360,6 +370,8 @@ Pour le sens réciproque $(\impliedby)$, nous supposerons que $F$ est fermé et 
 **Réponse:** Un sous-espace vectoriel $F$ d'un espace de Banach $E$ est lui-même un espace de Banach si et seulement si $F$ est un fermé de $E$.
 
 </details>
+
+---
 
 ## Exercice 6
 
@@ -432,6 +444,8 @@ $$ \forall x \in \mathbb{R}^n, \quad \sigma_{\min}(A) \|x\|_2 \le \|Ax\|_2 \le \
 
 </details>
 
+---
+
 ## Exercice 7
 
 **Problème:** Soit $(\mathbb{R}^n, \langle \cdot, \cdot \rangle)$ l'espace euclidien canonique. Démontrer que l'application produit scalaire $f: \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$ définie par $f(x, y) = \langle x, y \rangle$ est continue.
@@ -500,6 +514,8 @@ La convergence de $(x_k, y_k)$ vers $(a,b)$ dans l'espace produit signifie que $
 **Réponse:** L'application produit scalaire $\langle \cdot, \cdot \rangle : \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$ est continue sur son domaine de définition.
 
 </details>
+
+---
 
 ## Exercice 8
 
@@ -576,6 +592,8 @@ Indication : Écrire $|x_i+y_i|^p$ sous la forme $|x_i+y_i| \cdot |x_i+y_i|^{p-1
 $$ \|x+y\|_p \le \|x\|_p + \|y\|_p $$
 
 </details>
+
+---
 
 ## Exercice 9
 
@@ -674,6 +692,8 @@ $$ \|x+y\|_p \le \|x\|_p + \|y\|_p $$
 **Réponse:** Pour $p \in (0,1)$, $N_p$ viole l'inégalité triangulaire. Sa "boule unité" n'est pas convexe, ce qui est une caractéristique fondamentale des espaces qui ne sont pas normés. La non-convexité de la boule unité est une preuve géométrique que l'application $N_p$ n'est pas une norme.
 
 </details>
+
+---
 
 ## Exercice 10
 

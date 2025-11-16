@@ -19,6 +19,8 @@ chapterId: c9bf30da
 ---
 # Exercices "Séries Numériques (suite)" (A)
 
+---
+
 ## Exercice 1
 
 **Problème :** Étudier la convergence et calculer la valeur de l'intégrale généralisée suivante :
@@ -65,6 +67,8 @@ L'intégrale converge et sa valeur est $\int_1^{+\infty} \frac{1}{x \sqrt{x}} dx
 
 </details>
 
+---
+
 ## Exercice 2
 
 **Problème :** Étudier la convergence et calculer la valeur de l'intégrale généralisée suivante :
@@ -110,6 +114,8 @@ $$ \int_0^8 \frac{1}{\sqrt[3]{x}} dx $$
 L'intégrale converge et sa valeur est $\int_0^8 \frac{1}{\sqrt[3]{x}} dx = 6$.
 
 </details>
+
+---
 
 ## Exercice 3
 
@@ -166,6 +172,8 @@ $$ \sum_{n=2}^\infty \frac{1}{n \ln(n)} $$
 La série $\sum_{n=2}^\infty \frac{1}{n \ln(n)}$ est **divergente**.
 
 </details>
+
+---
 
 ## Exercice 4
 
@@ -224,6 +232,8 @@ L'encadrement du reste d'ordre 5 est : $\frac{1}{72} \le R_5 \le \frac{1}{50}$.
 
 </details>
 
+---
+
 ## Exercice 5
 
 **Problème :** Déterminer la nature de la série de terme général :
@@ -278,6 +288,8 @@ La série $\sum u_n$ est **divergente**.
 
 </details>
 
+---
+
 ## Exercice 6
 
 **Problème :** Déterminer la nature de la série de terme général :
@@ -326,6 +338,8 @@ La série $\sum u_n$ est **divergente**.
 
 </details>
 
+---
+
 ## Exercice 7
 
 **Problème :** Justifier la convergence de la série suivante :
@@ -373,6 +387,8 @@ $$ \sum_{n=2}^\infty \frac{(-1)^n}{\ln(n)} $$
 La série $\sum_{n=2}^\infty \frac{(-1)^n}{\ln(n)}$ est **convergente** d'après le critère des séries alternées.
 
 </details>
+
+---
 
 ## Exercice 8
 
@@ -425,6 +441,8 @@ Il faut additionner au minimum **5 termes** de la série.
 
 </details>
 
+---
+
 ## Exercice 9
 
 **Problème :** On admet que la série harmonique alternée $\sum_{n=1}^\infty \frac{(-1)^{n+1}}{n}$ converge vers $\ln(2)$.
@@ -465,6 +483,8 @@ Il faut additionner au minimum **5 termes** de la série.
 2.  Puisqu'elle est semi-convergente, le théorème de Riemann affirme qu'il existe un réarrangement de ses termes qui peut la faire converger vers n'importe quelle valeur réelle, y compris 10.
 
 </details>
+
+---
 
 ## Exercice 10
 

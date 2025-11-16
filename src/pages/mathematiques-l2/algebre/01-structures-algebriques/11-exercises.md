@@ -21,6 +21,8 @@ chapterId: 436c223a
 ---
 # Exercices "Structures algébriques" (A)
 
+---
+
 ## Exercice 1
 
 **Problème:** Soient les applications $f: \mathbb{R} \to \mathbb{R}$ et $g: \mathbb{R} \to \mathbb{R}$ définies par $f(x) = 3x - 2$ et $g(x) = x^2 + 1$.
@@ -95,6 +97,8 @@ chapterId: 436c223a
 
 </details>
 
+---
+
 ## Exercice 2
 
 **Problème:** Soit l'application $f(x) = x^2 - 4x + 5$. Étudier si $f$ est injective, surjective ou bijective dans les cas suivants :
@@ -153,6 +157,8 @@ C'est une parabole tournée vers le haut, dont le sommet est au point $(2, 1)$. 
 3.  $f_3$: Bijective.
 
 </details>
+
+---
 
 ## Exercice 3
 
@@ -257,6 +263,8 @@ Enfin, nous vérifierons la commutativité.
 
 </details>
 
+---
+
 ## Exercice 4
 
 **Problème:** Soit $G$ l'ensemble des matrices de la forme $M_a = \begin{pmatrix} 1 & a \\ 0 & 1 \end{pmatrix}$ où $a \in \mathbb{R}$. Montrer que $G$, muni de la multiplication matricielle, est un groupe. Est-il abélien ?
@@ -321,6 +329,8 @@ Enfin, nous vérifierons la commutativité.
 
 </details>
 
+---
+
 ## Exercice 5
 
 **Problème:** Soit $(\mathbb{C}^*, \times)$ le groupe des nombres complexes non nuls muni de la multiplication. Montrer que le cercle unité, $U = \{ z \in \mathbb{C} \mid |z| = 1 \}$, est un sous-groupe de $\mathbb{C}^*$.
@@ -366,6 +376,8 @@ Puisque $U$ est une partie non vide de $\mathbb{C}^*$ et que pour tous $x,y \in 
 **Réponse:** L'ensemble $U = \{ z \in \mathbb{C} \mid |z| = 1 \}$ est un **sous-groupe** de $(\mathbb{C}^*, \times)$.
 
 </details>
+
+---
 
 ## Exercice 6
 
@@ -438,6 +450,8 @@ Puisque $U$ est une partie non vide de $\mathbb{C}^*$ et que pour tous $x,y \in 
 3.  Non, ce n'est pas un corps.
 
 </details>
+
+---
 
 ## Exercice 7
 
@@ -518,6 +532,8 @@ Puisque $U$ est une partie non vide de $\mathbb{C}^*$ et que pour tous $x,y \in 
 
 </details>
 
+---
+
 ## Exercice 8
 
 **Problème:** Soit l'application $f: (\mathbb{R}, +) \to (\mathbb{C}^*, \times)$ définie par $f(x) = \cos(x) + i\sin(x) = e^{ix}$.
@@ -591,6 +607,8 @@ Puisque $U$ est une partie non vide de $\mathbb{C}^*$ et que pour tous $x,y \in 
 
 </details>
 
+---
+
 ## Exercice 9
 
 **Problème:** Sur l'ensemble $E = \mathbb{R}^2$, on définit la relation $\sim$ par :
@@ -657,6 +675,8 @@ $$ (x, y) \sim (x', y') \iff x^2 + y^2 = (x')^2 + (y')^2 $$
 3.  L'ensemble quotient $\mathbb{R}^2/\sim$ peut être identifié à l'ensemble des rayons possibles, c'est-à-dire **l'intervalle $[0, +\infty[$**.
 
 </details>
+
+---
 
 ## Exercice 10
 
@@ -731,6 +751,8 @@ $$ (x, y) \sim (x', y') \iff x^2 + y^2 = (x')^2 + (y')^2 $$
 
 </details>
 
+---
+
 ## Exercice 11
 
 **Problème:** Démontrer par récurrence que pour tout entier $n \ge 1$, le nombre $4^n - 1$ est divisible par 3.
@@ -790,6 +812,8 @@ $$ (x, y) \sim (x', y') \iff x^2 + y^2 = (x')^2 + (y')^2 $$
 **Réponse:** La proposition "$4^n - 1$ est divisible par 3" est **vraie** pour tout entier $n \ge 1$.
 
 </details>
+
+---
 
 ## Exercice 12
 
@@ -874,6 +898,8 @@ Puisque $I$ est un sous-groupe additif de $\mathbb{R}[X]$ et qu'il absorbe la mu
 **Réponse:** L'ensemble $I = \{ P(X) \in \mathbb{R}[X] \mid P(5) = 0 \}$ est bien un **idéal** de $\mathbb{R}[X]$.
 
 </details>
+
+---
 
 ## Exercice 13: Isomorphismes d'ensembles ordonnés
 

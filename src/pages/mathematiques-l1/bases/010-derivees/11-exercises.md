@@ -19,6 +19,8 @@ chapterId: 7a8b9c0d
 ---
 # Exercices "Dérivées" (A)
 
+---
+
 ## Exercice 1
 
 **Problème :** En utilisant la définition de la dérivée comme limite du taux d'accroissement, calculez le nombre dérivé de la fonction $f(x) = x^2 + 3x - 1$ au point $a=2$.
@@ -62,6 +64,8 @@ Ici, $a=2$ et $f(x) = x^2 + 3x - 1$. L'objectif est de calculer cette limite pas
 **Réponse :** Le nombre dérivé de $f(x) = x^2 + 3x - 1$ au point $a=2$ est $f'(2) = 7$.
 
 </details>
+
+---
 
 ## Exercice 2
 
@@ -115,6 +119,8 @@ Ici, $a=2$ et $f(x) = x^2 + 3x - 1$. L'objectif est de calculer cette limite pas
 
 </details>
 
+---
+
 ## Exercice 3
 
 **Problème :** Calculez la fonction dérivée de $f(x) = (3x^2 - 4x)e^x$.
@@ -148,6 +154,8 @@ Ici, $a=2$ et $f(x) = x^2 + 3x - 1$. L'objectif est de calculer cette limite pas
 **Réponse :** La fonction dérivée est $f'(x) = (3x^2 + 2x - 4)e^x$.
 
 </details>
+
+---
 
 ## Exercice 4
 
@@ -194,6 +202,8 @@ Ici, $a=2$ et $f(x) = x^2 + 3x - 1$. L'objectif est de calculer cette limite pas
 
 </details>
 
+---
+
 ## Exercice 5
 
 **Problème :** Calculez la fonction dérivée de la fonction $h(x) = \sin^3(x)$.
@@ -225,6 +235,8 @@ Ici, $a=2$ et $f(x) = x^2 + 3x - 1$. L'objectif est de calculer cette limite pas
 **Réponse :** La fonction dérivée de $h(x) = \sin^3(x)$ est $h'(x) = 3\sin^2(x)\cos(x)$.
 
 </details>
+
+---
 
 ## Exercice 6
 
@@ -261,6 +273,8 @@ Ici, $a=2$ et $f(x) = x^2 + 3x - 1$. L'objectif est de calculer cette limite pas
 **Réponse :** Le domaine de dérivabilité est $\mathbb{R}$. La fonction dérivée est $f'(x) = \frac{2x - 4}{x^2 - 4x + 5}$.
 
 </details>
+
+---
 
 ## Exercice 7
 
@@ -311,6 +325,8 @@ Ici, $a=2$ et $f(x) = x^2 + 3x - 1$. L'objectif est de calculer cette limite pas
 
 </details>
 
+---
+
 ## Exercice 8
 
 **Problème :** En utilisant la formule de Leibniz, calculez la dérivée troisième de la fonction $h(x) = x^2\cos(x)$.
@@ -353,6 +369,8 @@ Ici, $a=2$ et $f(x) = x^2 + 3x - 1$. L'objectif est de calculer cette limite pas
 **Réponse :** La dérivée troisième de $h(x)$ est $h^{(3)}(x) = (x^2-6)\sin(x) - 6x\cos(x)$.
 
 </details>
+
+---
 
 ## Exercice 9
 
@@ -406,6 +424,8 @@ Ici, $a=2$ et $f(x) = x^2 + 3x - 1$. L'objectif est de calculer cette limite pas
 **Réponse :** 1. La fonction est continue sur $[0,1]$, dérivable sur $]0,1[$ et $f(0)=f(1)=0$, donc les hypothèses du théorème de Rolle sont vérifiées. 2. Le théorème garantit l'existence d'un $c \in ]0, 1[$ tel que $f'(c) = 0$, même si sa valeur exacte est difficile à calculer.
 
 </details>
+
+---
 
 ## Exercice 10
 
@@ -461,6 +481,8 @@ $$ \frac{x}{1+x} < \ln(1+x) < x $$
 **Réponse :** L'inégalité est démontrée en appliquant le TAF à $f(t) = \ln(1+t)$ sur $[0,x]$ et en utilisant l'encadrement $0 < c < x$ pour borner la valeur de la dérivée $f'(c)$.
 
 </details>
+
+---
 
 ## Exercice 11
 
@@ -518,6 +540,8 @@ $$ \frac{x}{1+x} < \ln(1+x) < x $$
 - Un minimum local au point $(3, -1)$.
 
 </details>
+
+---
 
 ## Exercice 12
 

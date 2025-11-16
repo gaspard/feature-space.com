@@ -19,6 +19,8 @@ chapterId: a5489a34
 ---
 # Exercices "Analyse: Suites récurrentes" (A)
 
+---
+
 ## Exercice 1
 
 **Problème:** Soit la fonction $f(x) = \frac{1}{2}x + 1$. Pour chacun des intervalles suivants, déterminez s'il est stable par la fonction $f$.
@@ -84,6 +86,8 @@ chapterId: a5489a34
 
 </details>
 
+---
+
 ## Exercice 2
 
 **Problème:** Soit la suite $(u_n)$ définie par $u_0 = 3$ et la relation de récurrence $u_{n+1} = \sqrt{u_n + 6}$.
@@ -125,6 +129,8 @@ chapterId: a5489a34
 **Réponse:** L'intervalle $I = [0, +\infty[$ est stable par $f$. Par conséquent, la suite $(u_n)$ est bien définie pour tout $n \in \mathbb{N}$ et $u_n \ge 0$ pour tout $n \in \mathbb{N}$.
 
 </details>
+
+---
 
 ## Exercice 3
 
@@ -168,6 +174,8 @@ Le diagramme en toile d'araignée suggère que la suite $(u_n)$ est croissante e
 
 </details>
 
+---
+
 ## Exercice 4
 
 **Problème:** Soit la suite $(u_n)$ définie par $u_0 = 1$ et $u_{n+1} = u_n - u_n^2 + 1$.
@@ -208,6 +216,8 @@ Le diagramme en toile d'araignée suggère que la suite $(u_n)$ est croissante e
 **Réponse:** La suite $(u_n)$ est constante et égale à 1. Elle est donc monotone (à la fois croissante et décroissante).
 
 </details>
+
+---
 
 ## Exercice 5
 
@@ -253,6 +263,8 @@ On admet que pour tout $n$, $u_n \in [0, 4]$.
 **Réponse:** La fonction $f$ est décroissante, donc la suite $(u_n)$ n'est pas monotone. La sous-suite des termes de rangs pairs $(u_{2n})$ est décroissante, et la sous-suite des termes de rangs impairs $(u_{2n+1})$ est croissante.
 
 </details>
+
+---
 
 ## Exercice 6
 
@@ -309,6 +321,8 @@ On admet que pour tout $n$, $u_n \in [0, 4]$.
 
 </details>
 
+---
+
 ## Exercice 7
 
 **Problème:** Soit la fonction $f(x) = \frac{1}{4}x + 3$.
@@ -358,6 +372,8 @@ On admet que pour tout $n$, $u_n \in [0, 4]$.
 **Réponse:** La fonction $f$ est $1/4$-contractante, l'intervalle $I=[3,5]$ est stable par $f$. Par le théorème du point fixe contractant, pour tout $u_0 \in [3,5]$, la suite $(u_n)$ converge vers l'unique point fixe $l=4$.
 
 </details>
+
+---
 
 ## Exercice 8
 
@@ -416,6 +432,8 @@ On admet que pour tout $n$, $u_n \in [0, 4]$.
 
 </details>
 
+---
+
 ## Exercice 9
 
 **Problème:** On considère une suite récurrente $u_{n+1} = f(u_n)$. Répondez aux questions suivantes en justifiant brièvement.
@@ -451,6 +469,8 @@ On admet que pour tout $n$, $u_n \in [0, 4]$.
 3. Le point fixe est répulsif, donc la suite s'éloignera de $l$.
 
 </details>
+
+---
 
 ## Exercice 10
 

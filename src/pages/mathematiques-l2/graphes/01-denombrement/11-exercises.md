@@ -18,6 +18,8 @@ chapterId: 1a14d8a4
 ---
 # Exercices "Principes de dénombrement" (A)
 
+---
+
 ## Exercice 1
 
 **Problème:** Soit $V = \{a, e, i, o, u, y\}$ l'ensemble des voyelles de l'alphabet français. Déterminez le cardinal de $V$ en construisant une bijection explicite entre $V$ et un ensemble $[n]$ pour un certain entier $n$.
@@ -48,6 +50,8 @@ chapterId: 1a14d8a4
 **Réponse:** $|V| = 6$
 
 </details>
+
+---
 
 ## Exercice 2
 
@@ -83,6 +87,8 @@ chapterId: 1a14d8a4
 **Réponse:** La fonction $f(x) = x+99$ est une bijection de $E$ vers $F$, ce qui prouve que $|E| = |F|$.
 
 </details>
+
+---
 
 ## Exercice 3
 
@@ -122,6 +128,8 @@ chapterId: 1a14d8a4
 
 </details>
 
+---
+
 ## Exercice 4
 
 **Problème:** Un amphithéâtre contient 200 étudiants. Montrez qu'au moins 17 d'entre eux sont nés le même mois. Expliquez le raisonnement en utilisant la version généralisée du principe des tiroirs.
@@ -156,6 +164,8 @@ chapterId: 1a14d8a4
 
 </details>
 
+---
+
 ## Exercice 5
 
 **Problème:** Une librairie propose 12 romans de science-fiction, 8 romans policiers et 5 biographies. Un client souhaite acheter un seul livre. Combien de choix différents a-t-il ?
@@ -185,6 +195,8 @@ chapterId: 1a14d8a4
 **Réponse:** Le client a 25 choix différents.
 
 </details>
+
+---
 
 ## Exercice 6
 
@@ -235,6 +247,8 @@ chapterId: 1a14d8a4
 
 </details>
 
+---
+
 ## Exercice 7
 
 **Problème:** On souhaite créer un mot de passe de 4 caractères. Le premier caractère doit être une lettre majuscule (26 choix), les deux suivants doivent être des chiffres (0-9), et le dernier caractère doit être un des symboles suivants : `{@, #, $, %}`. Combien de mots de passe différents peut-on créer ?
@@ -264,6 +278,8 @@ chapterId: 1a14d8a4
 **Réponse:** Il est possible de créer $10\,400$ mots de passe différents.
 
 </details>
+
+---
 
 ## Exercice 8
 
@@ -310,6 +326,8 @@ chapterId: 1a14d8a4
 
 </details>
 
+---
+
 ## Exercice 9
 
 **Problème:** Combien de nombres entiers entre 1 et 1000 (inclus) sont soit des multiples de 5, soit des multiples de 7 ?
@@ -349,6 +367,8 @@ chapterId: 1a14d8a4
 
 </details>
 
+---
+
 ## Exercice 10
 
 **Problème:** Montrez que l'ensemble $E = \{\dots, -6, -3, 0, 3, 6, \dots\}$ des entiers multiples de 3 est un ensemble dénombrable en construisant une bijection explicite entre $\mathbb{Z}$ et $E$.
@@ -384,6 +404,8 @@ chapterId: 1a14d8a4
 **Réponse:** L'application $f(k)=3k$ est une bijection de $\mathbb{Z}$ à $E$, prouvant que $E$ est dénombrable.
 
 </details>
+
+---
 
 ## Exercice 11
 

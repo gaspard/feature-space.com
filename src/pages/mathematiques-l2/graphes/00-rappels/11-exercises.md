@@ -18,6 +18,8 @@ chapterId: 58e4ac98
 ---
 # Exercices "Rappels et notation" (A)
 
+---
+
 ## Exercice 1
 
 **Problème:** Soient les ensembles suivants :
@@ -77,6 +79,8 @@ $C = \{n \in \mathbb{N} \mid 1 \le n < 7 \text{ et } n \text{ est pair}\}$
 
 </details>
 
+---
+
 ## Exercice 2
 
 **Problème:** Soit l'ensemble $E = \{ \emptyset, \{a\}, b, \{a, b\} \}$. Pour chacune des affirmations suivantes, déterminez si elle est vraie ou fausse et justifiez votre réponse.
@@ -130,6 +134,8 @@ $C = \{n \in \mathbb{N} \mid 1 \le n < 7 \text{ et } n \text{ est pair}\}$
 6. Vrai
 
 </details>
+
+---
 
 ## Exercice 3
 
@@ -230,6 +236,8 @@ Calculez les ensembles suivants :
 
 </details>
 
+---
+
 ## Exercice 4
 
 **Problème:** Soit l'ensemble $S = \{1, \alpha\}$.
@@ -294,6 +302,8 @@ Calculez les ensembles suivants :
 3.  Non, $\mathcal{P}(S) \neq S \times S$ car les éléments de $\mathcal{P}(S)$ sont des ensembles alors que les éléments de $S \times S$ sont des couples ordonnés.
 
 </details>
+
+---
 
 ## Exercice 5
 
@@ -378,6 +388,8 @@ Calculez les ensembles suivants :
 
 </details>
 
+---
+
 ## Exercice 6
 
 **Problème:** Soient les applications $f: \mathbb{R}\setminus\{1\} \to \mathbb{R}\setminus\{0\}$ définie par $f(x) = \frac{2}{x-1}$ et $g: \mathbb{R}\setminus\{0\} \to \mathbb{R}$ définie par $g(y) = y^2 + 1$.
@@ -443,6 +455,8 @@ Calculez les ensembles suivants :
 2.  Oui, $f$ est bijective. Son application inverse est $f^{-1}: \mathbb{R}\setminus\{0\} \to \mathbb{R}\setminus\{1\}$ définie par $f^{-1}(y) = 1 + \frac{2}{y}$.
 
 </details>
+
+---
 
 ## Exercice 7
 
@@ -523,6 +537,8 @@ $(x_1, y_1) \mathcal{R} (x_2, y_2) \iff x_1^2 + y_1^2 = x_2^2 + y_2^2$.
 
 </details>
 
+---
+
 ## Exercice 8
 
 **Problème:** On considère l'ensemble $E = \{1, 2, 3, 4, 5, 6\}$. La collection de sous-ensembles $P = \{\{1, 3\}, \{2\}, \{4, 5, 6\}\}$ forme une partition de $E$.
@@ -591,6 +607,8 @@ $(x_1, y_1) \mathcal{R} (x_2, y_2) \iff x_1^2 + y_1^2 = x_2^2 + y_2^2$.
 3.  $\mathcal{R} = \{(1,1), (1,3), (3,1), (3,3), (2,2), (4,4), (4,5), (4,6), (5,4), (5,5), (5,6), (6,4), (6,5), (6,6)\}$.
 
 </details>
+
+---
 
 ## Exercice 9
 
@@ -670,6 +688,8 @@ $(x_1, y_1) \mathcal{R} (x_2, y_2) \iff x_1^2 + y_1^2 = x_2^2 + y_2^2$.
 4.  Il n'y a ni plus petit élément, ni plus grand élément.
 
 </details>
+
+---
 
 ## Exercice 10
 

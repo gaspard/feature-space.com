@@ -20,6 +20,8 @@ chapterId: 67b3d760
 ---
 # Exercices "Espaces Euclidiens et Hermitiens" (B)
 
+---
+
 ## Exercice 1
 
 **Problème:** Soit $E = \mathcal{M}_n(\mathbb{R})$ l'espace vectoriel des matrices carrées de taille $n$ à coefficients réels. Soit $S \in \mathcal{M}_n(\mathbb{R})$ une matrice symétrique définie positive. On définit l'application $\varphi_S : E \times E \to \mathbb{R}$ par $\varphi_S(A, B) = \text{Tr}(A^T S B)$. Démontrer que $\varphi_S$ définit un produit scalaire sur $E$, faisant de $(E, \varphi_S)$ un espace euclidien.
@@ -91,6 +93,8 @@ chapterId: 67b3d760
 **Réponse:** L'application $\varphi_S$ est une forme bilinéaire symétrique définie positive, elle définit donc un produit scalaire sur $\mathcal{M}_n(\mathbb{R})$.
 
 </details>
+
+---
 
 ## Exercice 2
 
@@ -194,6 +198,8 @@ On se concentrera sur la partie difficile de la preuve : si l'identité du paral
 
 </details>
 
+---
+
 ## Exercice 3
 
 **Problème:** Soit $(E, \langle \cdot, \cdot \rangle)$ un espace euclidien et $a \in E$ un vecteur unitaire ($\|a\|=1$). On considère l'hyperplan affine $H = \{x \in E \mid \langle a, x \rangle = c\}$ pour une constante $c \in \mathbb{R}$.
@@ -245,6 +251,8 @@ On se concentrera sur la partie difficile de la preuve : si l'identité du paral
 **Réponse:** Le point de norme minimale est $x_0 = c a$. La norme minimale est $\|x_0\| = |c|$.
 
 </details>
+
+---
 
 ## Exercice 4
 
@@ -528,6 +536,8 @@ On se concentrera sur la partie difficile de la preuve : si l'identité du paral
 
 C'est une excellente question de niveau PRO.
 
+---
+
 ## Exercice 5
 
 **Problème:** Soit $E = C^1([0, 1], \mathbb{R})$ l'espace des fonctions réelles de classe $C^1$ sur $[0,1]$.
@@ -735,6 +745,8 @@ $\left( \int_0^1 f(t) dt \right)^2 \le \frac{1}{3} \int_0^1 (f'(t))^2 dt \implie
 
 </details>
 
+---
+
 ## Exercice 6
 
 **Problème:** Soit $(E, \langle \cdot, \cdot \rangle)$ un espace préhilbertien. Le déterminant de Gram d'une famille de vecteurs $(x_1, \dots, x_n)$ est défini par $G(x_1, \dots, x_n) = \det(M)$ où $M$ est la matrice de Gram, $M_{ij} = \langle x_i, x_j \rangle$.
@@ -818,6 +830,8 @@ Démontrer que:
 2. L'égalité $G(x_1, \dots, x_n) = 0$ a lieu si et seulement si la famille $(x_1, \dots, x_n)$ est linéairement dépendante.
 
 </details>
+
+---
 
 ## Exercice 7
 
@@ -916,6 +930,8 @@ Démontrer que:
 2. La distance minimale est $d = \frac{1}{6\sqrt{5}}$.
 
 </details>
+
+---
 
 ## Exercice 8
 
@@ -1086,6 +1102,8 @@ $\text{L'identité proposée est incorrecte.}$
 
 </details>
 
+---
+
 ## Exercice 9
 
 **Problème:** Soit $(E, \langle \cdot, \cdot \rangle_0)$ un espace euclidien de dimension $n$. L'ensemble des produits scalaires sur $E$, noté $\mathcal{P}(E)$, est un sous-ensemble de l'espace des formes bilinéaires symétriques $S_2(E)$.
@@ -1148,6 +1166,8 @@ $\text{L'identité proposée est incorrecte.}$
 3. L'application $t \mapsto \varphi_t(x,x)$ est continue pour tout $x$. Puisque $\varphi$ n'est pas définie positive, il existe $x_0 \ne 0$ tel que $\varphi(x_0, x_0) \le 0$. La fonction $g(t) = \varphi_t(x_0, x_0)$ est positive en $t=0$ et non-positive en $t=1$. Par continuité, il existe $t_0 \in (0,1]$ tel que $g(t_0)=0$. Soit $t^* = \inf \{t \in [0,1] \mid \exists x \ne 0, \varphi_t(x,x) \le 0 \}$. Par continuité des valeurs propres de la matrice de $\varphi_t$ en fonction de $t$, ce $t^*$ existe et est dans $[0,1]$. Comme $\varphi_0$ est définie positive, $t^*>0$. La forme $\varphi_{t^*}$ est la limite de formes définies positives, elle est donc positive. Mais par définition de $t^*$, il existe un $x^* \ne 0$ tel que $\varphi_{t^*}(x^*,x^*)=0$, donc elle est dégénérée.
 
 </details>
+
+---
 
 ## Exercice 10
 

@@ -20,6 +20,8 @@ chapterId: b85ab516
 ---
 # Exercices "Groupes d'isométries" (A)
 
+---
+
 ## Exercice 1
 
 **Problème:** Soit $f$ l'endomorphisme de $\mathbb{R}^2$ dont la matrice dans la base canonique est $A = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$. En utilisant la définition, montrez que $f$ est une isométrie.
@@ -53,6 +55,8 @@ chapterId: b85ab516
 **Réponse:** L'application $f$ est une isométrie car pour tout $x=(u,v) \in \mathbb{R}^2$, $\|f(x)\|^2 = v^2+u^2 = \|x\|^2$.
 
 </details>
+
+---
 
 ## Exercice 2
 
@@ -110,6 +114,8 @@ Montrez que $f$ est une isométrie en utilisant la caractérisation matricielle.
 
 </details>
 
+---
+
 ## Exercice 3
 
 **Problème:** Dans $\mathbb{R}^2$ muni du produit scalaire usuel, déterminez si la matrice suivante appartient au groupe orthogonal $O_2(\mathbb{R})$, et si oui, au groupe spécial orthogonal $SO_2(\mathbb{R})$.
@@ -150,6 +156,8 @@ $A = \frac{1}{\sqrt{5}} \begin{pmatrix} 1 & -2 \\ 2 & 1 \end{pmatrix}$
 
 </details>
 
+---
+
 ## Exercice 4
 
 **Problème:** Calculez l'angle non-orienté $\theta$ entre les vecteurs $u=(1, 1, 0)$ et $v=(1, 0, 1)$ dans l'espace $\mathbb{R}^3$ muni du produit scalaire usuel.
@@ -189,6 +197,8 @@ Il faut donc calculer le produit scalaire $\langle u, v \rangle$, les normes $\|
 **Réponse:** L'angle non-orienté entre les vecteurs $u$ et $v$ est $\theta = \frac{\pi}{3}$ radians (ou 60 degrés).
 
 </details>
+
+---
 
 ## Exercice 5
 
@@ -237,6 +247,8 @@ Il faut donc calculer le produit scalaire $\langle u, v \rangle$, les normes $\|
 
 </details>
 
+---
+
 ## Exercice 6
 
 **Problème:** Déterminer les valeurs du réel $a$ pour que la matrice suivante soit une matrice orthogonale :
@@ -280,6 +292,8 @@ $M = \begin{pmatrix} a & 1/\sqrt{2} \\ -1/\sqrt{2} & a \end{pmatrix}$
 **Réponse:** Les valeurs de $a$ pour lesquelles la matrice $M$ est orthogonale sont $a = \frac{\sqrt{2}}{2}$ et $a = -\frac{\sqrt{2}}{2}$.
 
 </details>
+
+---
 
 ## Exercice 7
 
@@ -328,6 +342,8 @@ $U = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & i \\ i & 1 \end{pmatrix}$
 **Réponse:** La matrice $U$ appartient à $SU_2(\mathbb{C})$.
 
 </details>
+
+---
 
 ## Exercice 8
 
@@ -378,6 +394,8 @@ Soit $s$ la réflexion par rapport au plan d'équation $z=0$ (le plan $(x,y)$).
 **Réponse:** La matrice de $s$ est $S = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & -1 \end{pmatrix}$. C'est une isométrie car ${}^tSS = I_3$ et elle est négative car $\det(S)=-1$.
 
 </details>
+
+---
 
 ## Exercice 9
 
@@ -434,6 +452,8 @@ Soit $s$ la réflexion par rapport au plan d'équation $z=0$ (le plan $(x,y)$).
 **Réponse:** Deux vecteurs solutions possibles sont $v_1 = (1,0)$ et $v_2 = \left(-\frac{1}{2}, \frac{\sqrt{3}}{2}\right)$.
 
 </details>
+
+---
 
 ## Exercice 10
 

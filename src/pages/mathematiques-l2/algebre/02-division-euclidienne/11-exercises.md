@@ -19,6 +19,8 @@ chapterId: e5009a65
 ---
 # Exercices "Division euclidienne" (A)
 
+---
+
 ## Exercice 1
 
 **Problème:** Soit l'anneau $A = (\mathbb{Z}/12\mathbb{Z})[X]$. On considère les polynômes $P(X) = \overline{4}X^2 + \overline{3}X + \overline{1}$ et $Q(X) = \overline{3}X + \overline{2}$.
@@ -87,6 +89,8 @@ chapterId: e5009a65
 
 </details>
 
+---
+
 ## Exercice 2
 
 **Problème:** Expliquez pourquoi l'anneau $\mathbb{Z}[X]$ des polynômes à coefficients entiers n'est pas un anneau euclidien. Pour cela, essayez d'effectuer la division euclidienne du polynôme $A(X)=X$ par le polynôme $B(X)=2$.
@@ -134,6 +138,8 @@ chapterId: e5009a65
 **Réponse:** L'anneau $\mathbb{Z}[X]$ n'est pas euclidien car la division euclidienne n'est pas toujours possible. Par exemple, pour diviser $X$ par $2$, il faudrait trouver $Q(X), R(X) \in \mathbb{Z}[X]$ tels que $X = 2Q(X) + R(X)$ avec $\text{deg}(R) < \text{deg}(2)=0$. Ceci impose $R(X)=0$, et donc $X=2Q(X)$. Cette équation n'a pas de solution dans $\mathbb{Z}[X]$, car le coefficient de $X$ dans $2Q(X)$ est toujours un entier pair.
 
 </details>
+
+---
 
 ## Exercice 3
 
@@ -207,6 +213,8 @@ $$ 2X^4 - 3X^3 + X^2 + 5X - 3 = (X^2 - 2X + 3)(2X^2 + X - 3) + (-4X + 6) $$
 
 </details>
 
+---
+
 ## Exercice 4
 
 **Problème:** Soient les entiers $a=126$ et $b=46$.
@@ -268,6 +276,8 @@ $$ 2X^4 - 3X^3 + X^2 + 5X - 3 = (X^2 - 2X + 3)(2X^2 + X - 3) + (-4X + 6) $$
 
 </details>
 
+---
+
 ## Exercice 5
 
 **Problème:** Dans l'anneau $\mathbb{R}[X]$, on considère les polynômes $A(X) = X^3 + 2X^2 - X - 2$ et $B(X) = X^2 - 1$.
@@ -328,6 +338,8 @@ $$ 2X^4 - 3X^3 + X^2 + 5X - 3 = (X^2 - 2X + 3)(2X^2 + X - 3) + (-4X + 6) $$
 2.  Une solution pour l'identité de Bézout est $U(X) = 0$ et $V(X) = 1$.
 
 </details>
+
+---
 
 ## Exercice 6
 
@@ -397,6 +409,8 @@ Comme $\mathbb{R}[X]$ est un anneau principal, $I$ est un idéal principal. Trou
 
 </details>
 
+---
+
 ## Exercice 7
 
 **Problème:** Soit le polynôme $P(X) = X^4 + X^2 - 2 \in \mathbb{R}[X]$.
@@ -446,6 +460,8 @@ Comme $\mathbb{R}[X]$ est un anneau principal, $I$ est un idéal principal. Trou
 2.  Dans $\mathbb{C}[X]$, la décomposition est $P(X) = (X-1)(X+1)(X - i\sqrt{2})(X + i\sqrt{2})$.
 
 </details>
+
+---
 
 ## Exercice 8
 
@@ -505,6 +521,8 @@ Nous allons montrer que $2$ ne vérifie pas cette condition de divisibilité.
 **Réponse:** L'élément $2$ est irréductible par hypothèse. Cependant, $2$ n'est pas premier car il divise le produit $(1+i\sqrt{5})(1-i\sqrt{5}) = 6$, mais il ne divise ni $1+i\sqrt{5}$ ni $1-i\sqrt{5}$ dans l'anneau $\mathbb{Z}[i\sqrt{5}]$.
 
 </details>
+
+---
 
 ## Exercice 9
 
@@ -573,6 +591,8 @@ Nous allons montrer que $2$ ne vérifie pas cette condition de divisibilité.
 3.  Le polynôme minimal est $M_A(X) = X^2 - 5X + 4$.
 
 </details>
+
+---
 
 ## Exercice 10
 

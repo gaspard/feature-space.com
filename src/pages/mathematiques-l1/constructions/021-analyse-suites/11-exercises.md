@@ -19,6 +19,8 @@ chapterId: a5489a34
 ---
 # Exercices "Analyse: Suites" (A)
 
+---
+
 ## Exercice 1
 
 **Problème :** Soit la suite de nombres complexes $(u_n)_{n \in \mathbb{N}}$ définie par la formule explicite :
@@ -56,6 +58,8 @@ Calculez les trois premiers termes de la suite : $u_0$, $u_1$, et $u_2$.
 **Réponse :** Les trois premiers termes sont $u_0 = 1 - 2i$, $u_1 = \frac{1}{2}$, et $u_2 = -\frac{1}{3} - \frac{2}{3}i$.
 
 </details>
+
+---
 
 ## Exercice 2
 
@@ -98,6 +102,8 @@ Calculez les termes $z_1$, $z_2$ et $z_3$. Donnez la formule explicite de $z_n$.
 **Réponse :** Les termes sont $z_1 = -1+i$, $z_2 = -\frac{1}{2} - \frac{1}{2}i$, $z_3 = \frac{1}{4} - \frac{1}{4}i$. La formule explicite est $z_n = (2+2i) \left(\frac{i}{2}\right)^n$.
 
 </details>
+
+---
 
 ## Exercice 3
 
@@ -143,6 +149,8 @@ Calculez les termes $z_1$, $z_2$ et $z_3$. Donnez la formule explicite de $z_n$.
 
 </details>
 
+---
+
 ## Exercice 4
 
 **Problème :** La suite $(u_n)_{n \in \mathbb{N}}$ définie par $u_n = n \cdot e^{i \pi / 4}$ est-elle bornée ? Justifiez votre réponse et déduisez-en sa nature (convergente ou divergente).
@@ -180,6 +188,8 @@ Calculez les termes $z_1$, $z_2$ et $z_3$. Donnez la formule explicite de $z_n$.
 **Réponse :** La suite $(u_n)$ n'est pas bornée car son module $|u_n|=n$ tend vers l'infini. Par conséquent, la suite $(u_n)$ est divergente.
 
 </details>
+
+---
 
 ## Exercice 5
 
@@ -230,6 +240,8 @@ $$ w_n = \frac{(3n-1)(n+2i)}{n^2 + 4i} $$
 
 </details>
 
+---
+
 ## Exercice 6
 
 **Problème :** Montrez que la suite $(u_n)_{n \in \mathbb{N}}$ définie par $u_n = (-1)^n \frac{n}{n+1}$ est divergente.
@@ -273,6 +285,8 @@ $$ w_n = \frac{(3n-1)(n+2i)}{n^2 + 4i} $$
 **Réponse :** La suite $(u_n)$ est divergente car les termes de rang pair convergent vers 1, tandis que les termes de rang impair convergent vers -1.
 
 </details>
+
+---
 
 ## Exercice 7
 
@@ -327,6 +341,8 @@ Déterminez si cette suite converge, et si oui, calculez sa limite.
 
 </details>
 
+---
+
 ## Exercice 8
 
 **Problème :** En utilisant les équivalents usuels, déterminez la limite de la suite $(u_n)_{n \in \mathbb{N}^*}$ définie par :
@@ -369,6 +385,8 @@ $$ u_n = n \sin\left(\frac{2}{n}\right) $$
 
 </details>
 
+---
+
 ## Exercice 9
 
 **Problème :** Montrez que la suite $u_n = \frac{5n^2 + \cos(n)}{n-1}$ (définie pour $n \ge 2$) vérifie $u_n = O(n)$.
@@ -410,6 +428,8 @@ $$ u_n = n \sin\left(\frac{2}{n}\right) $$
 **Réponse :** On a montré que la suite $\left(\frac{u_n}{n}\right)$ converge, elle est donc bornée. Ceci prouve que $u_n = O(n)$.
 
 </details>
+
+---
 
 ## Exercice 10
 

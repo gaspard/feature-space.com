@@ -20,6 +20,8 @@ chapterId: b85ab516
 ---
 # Exercices "Groupes d'isométries" (B)
 
+---
+
 ## Exercice 1
 
 **Problème:** Soit $E = \ell^2(\mathbb{Z})$ l'espace des suites de nombres complexes $(x_n)_{n \in \mathbb{Z}}$ de carré sommable, muni du produit hermitien canonique $\langle x, y \rangle = \sum_{n \in \mathbb{Z}} \overline{x_n} y_n$. On considère l'opérateur de décalage à droite (right shift) $S: E \to E$ défini par $(Sx)_n = x_{n-1}$.
@@ -85,6 +87,8 @@ chapterId: b85ab516
 4. En dimension infinie, une isométrie n'est pas nécessairement surjective, contrairement au cas de la dimension finie. Cependant, dans le cas de $\ell^2(\mathbb{Z})$, l'opérateur de décalage reste surjectif.
 
 </details>
+
+---
 
 ## Exercice 2
 
@@ -155,6 +159,8 @@ chapterId: b85ab516
 **Réponse:** Le groupe $SO_n(\mathbb{R})$ est connexe par arcs pour tout $n \ge 2$. La preuve se fait par récurrence sur $n$.
 
 </details>
+
+---
 
 ## Exercice 3
 
@@ -256,6 +262,8 @@ Déterminer l'axe et l'angle de la rotation composée $R = R_2 \circ R_1$.
 
 </details>
 
+---
+
 ## Exercice 4
 
 **Problème:** Soit $(\mathbb{R}^3, \wedge)$ l'espace euclidien orienté de dimension 3 muni du produit vectoriel.
@@ -343,6 +351,8 @@ Déterminer l'axe et l'angle de la rotation composée $R = R_2 \circ R_1$.
 
 </details>
 
+---
+
 ## Exercice 5
 
 **Problème:** Soit une rotation $\mathcal{R}$ dans $\mathbb{R}^3$ d'axe dirigé par le vecteur unitaire $N$ et d'angle $\theta \in ]0, 2\pi[$. Prouver que pour tout vecteur $U \in \mathbb{R}^3$, on a la relation suivante, qui exprime le produit vectoriel en termes de la rotation et de son adjointe:
@@ -404,6 +414,8 @@ $$ N \wedge U = \frac{1}{2\sin\theta}(\mathcal{R}(U) - \mathcal{R}^{-1}(U)) $$
 Elle découle directement de la soustraction de la formule de Rodrigues pour l'angle $-\theta$ à celle pour l'angle $\theta$.
 
 </details>
+
+---
 
 ## Exercice 6
 
@@ -477,6 +489,8 @@ $$ \forall V \in \mathbb{R}^3, \quad \phi(R(V)) = R \phi(V) R^{-1} $$
 
 </details>
 
+---
+
 ## Exercice 7
 
 **Problème:** Démontrer la surjectivité du morphisme de groupes $\mathcal{J}: SU(2) \to SO(3)$ défini par $\mathcal{J}(U) = \text{Ad}_U$, où $\text{Ad}_U(M) = UMU^*$ pour $M$ dans l'espace $\mathcal{V}$ des matrices hermitiennes de trace nulle.
@@ -527,6 +541,8 @@ $$ \forall V \in \mathbb{R}^3, \quad \phi(R(V)) = R \phi(V) R^{-1} $$
 **Réponse:** Le morphisme $\mathcal{J}: SU(2) \to SO(3)$ est surjectif. Ceci est prouvé en montrant que toutes les rotations, qui engendrent $SO(3)$, sont dans l'image de $\mathcal{J}$. On construit explicitement les préimages dans $SU(2)$ des rotations autour des axes de base.
 
 </details>
+
+---
 
 ## Exercice 8
 
@@ -597,6 +613,8 @@ Pour l'unicité, nous supposons deux décompositions et montrons qu'elles doiven
 **Réponse:** Le théorème de la décomposition polaire est vrai. L'existence est constructive : on pose $S = \sqrt{{}^tMM}$ (l'unique racine carrée symétrique définie positive) et $O=MS^{-1}$. L'unicité découle de l'unicité de la racine carrée symétrique définie positive d'une matrice.
 
 </details>
+
+---
 
 ## Exercice 9
 
@@ -679,6 +697,8 @@ Pour l'unicité, nous supposons deux décompositions et montrons qu'elles doiven
 **Réponse:** Le théorème de Cartan-Dieudonné est démontré par récurrence sur la dimension $n$. Si $f$ a un point fixe, on applique l'hypothèse de récurrence sur son hyperplan orthogonal. Sinon, on compose $f$ avec une réflexion bien choisie $s$ pour que $s \circ f$ ait un point fixe, ce qui ramène au premier cas.
 
 </details>
+
+---
 
 ## Exercice 10
 

@@ -19,6 +19,8 @@ chapterId: a5489a34
 ---
 # Exercices "Analyse: Intégration" (A)
 
+---
+
 ## Exercice 1
 
 **Problème:** Soit la fonction $f$ définie sur l'intervalle $[0, 5]$ par :
@@ -71,6 +73,8 @@ Pour montrer que la fonction est en escalier, nous devons trouver une subdivisio
 Oui, la fonction $f$ est en escalier. Une subdivision adaptée est $\sigma = \{0, 1, 3, 5\}$ et son intégrale est $\int_0^5 f(x) dx = 13$.
 
 </details>
+
+---
 
 ## Exercice 2
 
@@ -133,6 +137,8 @@ La fonction partie entière $E(y)$ change de valeur à chaque fois que $y$ franc
 La fonction $h$ est en escalier avec une subdivision adaptée $\sigma = \{0, 0.5, 1, 1.5, 2\}$. Son intégrale est $\int_0^2 E(2x) dx = 3$.
 
 </details>
+
+---
 
 ## Exercice 3
 
@@ -208,6 +214,8 @@ La fonction $f(x)=2x$ est intégrable sur $[0,1]$ et son intégrale vaut 1. On p
 
 </details>
 
+---
+
 ## Exercice 4
 
 **Problème:** Expliquez pourquoi la fonction de Dirichlet $g$, définie sur $[0, 1]$ par $g(x) = 1$ si $x \in \mathbb{Q}$ et $g(x) = 0$ si $x \notin \mathbb{Q}$, n'est pas intégrable au sens de Riemann.
@@ -261,6 +269,8 @@ Nous allons montrer que l'intégrale inférieure et l'intégrale supérieure de 
 La fonction de Dirichlet n'est pas intégrable au sens de Riemann sur $[0,1]$ car son intégrale inférieure est $0$ alors que son intégrale supérieure est $1$.
 
 </details>
+
+---
 
 ## Exercice 5
 
@@ -321,6 +331,8 @@ La fonction $f$ est continue (et donc continue par morceaux) sur $[-1, 2]$, ce q
 
 </details>
 
+---
+
 ## Exercice 6
 
 **Problème:** Calculez l'intégrale $I = \int_0^3 |x - 2| dx$.
@@ -376,6 +388,8 @@ La fonction $f(x) = |x-2|$ est continue sur $[0, 3]$, donc elle est intégrable.
 $$ \int_0^3 |x - 2| dx = \frac{5}{2} $$
 
 </details>
+
+---
 
 ## Exercice 7
 
@@ -447,6 +461,8 @@ $$ \int_0^2 x^2 dx = \frac{8}{3} $$
 
 </details>
 
+---
+
 ## Exercice 8
 
 **Problème:** Déterminez la limite de la suite $(U_n)$ définie par :
@@ -506,6 +522,8 @@ L'expression de $U_n$ ressemble à une somme. Pour la reconnaître comme une som
 $$ \lim_{n \to \infty} U_n = \frac{\ln(2)}{2} $$
 
 </details>
+
+---
 
 ## Exercice 9
 
@@ -570,6 +588,8 @@ La formule de Taylor avec reste intégral pour $f(x) = \cos(x)$ à l'ordre 3 en 
 $$ \cos(x) = 1 - \frac{x^2}{2} + \int_0^x \frac{(x-t)^3}{6} \cos(t) dt $$
 
 </details>
+
+---
 
 ## Exercice 10
 
