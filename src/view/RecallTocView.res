@@ -153,7 +153,7 @@ let make = () => {
       <input
         type_="range"
         min="0"
-        max="24"
+        max="48"
         value={toc.dayLengthH->Float.toString}
         onChange={e => toc.setDayLength(Event.value(e)->Float.fromString->Option.getExn)}
       />

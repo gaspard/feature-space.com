@@ -255,7 +255,7 @@ function RecallTocView(props) {
                               children: toc.dayLengthH.toString() + "h"
                             }),
                         JsxRuntime.jsx("input", {
-                              max: "24",
+                              max: "48",
                               min: "0",
                               type: "range",
                               value: toc.dayLengthH.toString(),
