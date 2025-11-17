@@ -4,6 +4,7 @@ import * as App from "./App.mjs";
 import * as Stack from "../domain/api/entity/Stack.mjs";
 import * as Utils from "../service/Utils.mjs";
 import * as Browser from "../service/Browser.mjs";
+import * as Core__Int from "@rescript/core/src/Core__Int.mjs";
 import * as TiliaReact from "@tilia/react/src/TiliaReact.mjs";
 import * as Core__Float from "@rescript/core/src/Core__Float.mjs";
 import * as Core__Option from "@rescript/core/src/Core__Option.mjs";
@@ -249,19 +250,50 @@ function RecallTocView(props) {
                 JsxRuntime.jsxs("div", {
                       children: [
                         JsxRuntime.jsx("span", {
-                              children: "base de répétition"
+                              children: "base de répétition",
+                              onClick: (function (param) {
+                                  toc.setDayLength(24);
+                                })
                             }),
                         JsxRuntime.jsx("span", {
-                              children: toc.dayLengthH.toString() + "h"
+                              children: toc.dayLengthH.toString() + "h",
+                              className: "num"
                             }),
-                        JsxRuntime.jsx("input", {
-                              max: "48",
-                              min: "0",
-                              type: "range",
-                              value: toc.dayLengthH.toString(),
-                              onChange: (function (e) {
-                                  toc.setDayLength(Core__Option.getExn(Core__Float.fromString(value(e)), undefined));
+                        JsxRuntime.jsx("span", {
+                              children: JsxRuntime.jsx("input", {
+                                    max: "60",
+                                    min: "0",
+                                    step: 6,
+                                    type: "range",
+                                    value: toc.dayLengthH.toString(),
+                                    onChange: (function (e) {
+                                        toc.setDayLength(Core__Option.getOr(Core__Float.fromString(value(e)), 24));
+                                      })
+                                  }),
+                              className: "range"
+                            }),
+                        JsxRuntime.jsx("span", {
+                              children: "nombre de fiches",
+                              onClick: (function (param) {
+                                  toc.setMaxCards(16);
                                 })
+                            }),
+                        JsxRuntime.jsx("span", {
+                              children: toc.maxCards.toString(),
+                              className: "num"
+                            }),
+                        JsxRuntime.jsx("span", {
+                              children: JsxRuntime.jsx("input", {
+                                    max: "40",
+                                    min: "0",
+                                    step: 4,
+                                    type: "range",
+                                    value: toc.maxCards.toString(),
+                                    onChange: (function (e) {
+                                        toc.setMaxCards(Core__Option.getOr(Core__Int.fromString(value(e), undefined), 20));
+                                      })
+                                  }),
+                              className: "range"
                             })
                       ],
                       className: "settings"

@@ -148,15 +148,30 @@ let make = () => {
       <span className="num"> {stats.total->Int.toString->React.string} </span>
     </div>
     <div className="settings">
-      <span> {"base de répétition"->React.string} </span>
-      <span> {(toc.dayLengthH->Float.toString ++ "h")->React.string} </span>
-      <input
-        type_="range"
-        min="0"
-        max="48"
-        value={toc.dayLengthH->Float.toString}
-        onChange={e => toc.setDayLength(Event.value(e)->Float.fromString->Option.getExn)}
-      />
+      <span onClick={_ => toc.setDayLength(24.)}> {"base de répétition"->React.string} </span>
+      <span className="num"> {(toc.dayLengthH->Float.toString ++ "h")->React.string} </span>
+      <span className="range">
+        <input
+          type_="range"
+          min="0"
+          max="60"
+          step=6.
+          value={toc.dayLengthH->Float.toString}
+          onChange={e => toc.setDayLength(Event.value(e)->Float.fromString->Option.getOr(24.))}
+        />
+      </span>
+      <span onClick={_ => toc.setMaxCards(16)}> {"nombre de fiches"->React.string} </span>
+      <span className="num"> {toc.maxCards->Int.toString->React.string} </span>
+      <span className="range">
+        <input
+          type_="range"
+          min="0"
+          max="40"
+          step=4.
+          value={toc.maxCards->Int.toString}
+          onChange={e => toc.setMaxCards(Event.value(e)->Int.fromString->Option.getOr(20))}
+        />
+      </span>
     </div>
     <button className="start" disabled={stats.toRecall + stats.new === 0} onClick={_ => start()}>
       {"Start"->React.string}

@@ -2,6 +2,7 @@
 
 import * as Tilia from "tilia/src/Tilia.mjs";
 import * as Recall from "./Recall.mjs";
+import * as Core__Int from "@rescript/core/src/Core__Int.mjs";
 import * as Core__Array from "@rescript/core/src/Core__Array.mjs";
 import * as Core__Float from "@rescript/core/src/Core__Float.mjs";
 import * as Core__Option from "@rescript/core/src/Core__Option.mjs";
@@ -47,6 +48,7 @@ function stats(now) {
 
 function start(repo) {
   return function (param) {
+    var maxCards = param.maxCards;
     var dayLengthH = param.dayLengthH;
     var stacks = param.stacks;
     return async function (setRecall) {
@@ -71,7 +73,7 @@ function start(repo) {
                       return ;
                     }
                   })));
-      return setRecall(Recall.make(repo, stacks$1, undefined, undefined, undefined, dayLengthH * 3600 * 1000));
+      return setRecall(Recall.make(repo, stacks$1, undefined, undefined, maxCards, dayLengthH * 3600 * 1000));
     };
   };
 }
@@ -95,7 +97,7 @@ async function loadProgress(prog, set, info) {
 }
 
 function stacks(repo, path) {
-  return async function (setList) {
+  return async function (_prev, setList) {
     var list = (await repo.stack.toc(path)).map(function (info) {
           return {
                   info: info,
@@ -158,21 +160,31 @@ function setActive(param) {
 
 function make(repo, path) {
   var day = Core__Option.getOr(Core__Float.fromString(Core__Nullable.getOr(repo.settings.get("dayLength"), "24")), 24);
+  var maxCards = Core__Option.getOr(Core__Int.fromString(Core__Nullable.getOr(repo.settings.get("maxCards"), "20"), undefined), 20);
   var match = Tilia.signal(day);
   var setDayLengthH = match[1];
   var dayLengthH = match[0];
+  var match$1 = Tilia.signal(maxCards);
+  var setMaxCards = match$1[1];
+  var maxCards$1 = match$1[0];
   var setDayLength = function (value) {
     repo.settings.save("dayLength", value.toString());
     setDayLengthH(value);
   };
+  var setMaxCards$1 = function (value) {
+    repo.settings.save("maxCards", value.toString());
+    setMaxCards(value);
+  };
   return Tilia.carve(function (param) {
               var derived = param.derived;
               return {
-                      stacks: Tilia.source(stacks(repo, path), []),
+                      stacks: Tilia.source([], stacks(repo, path)),
                       setActive: derived(setActive(repo.progress)),
                       start: derived(start(repo)),
                       setDayLength: setDayLength,
+                      setMaxCards: setMaxCards$1,
                       dayLengthH: Tilia.lift(dayLengthH),
+                      maxCards: Tilia.lift(maxCards$1),
                       stats: derived(stats(function (prim) {
                                 return Date.now();
                               }))

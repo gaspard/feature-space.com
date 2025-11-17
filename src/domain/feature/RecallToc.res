@@ -17,7 +17,9 @@ type t = {
   setActive: (string, bool) => unit,
   start: (option<Recall.t> => unit) => promise<unit>,
   setDayLength: float => unit,
+  setMaxCards: int => unit,
   dayLengthH: float,
+  maxCards: int,
   stats: stats,
 }
 
@@ -58,7 +60,7 @@ let stats = (~now) => ({stacks, dayLengthH}: t) => {
   }
 }
 
-let start = (repo: RepositoryType.t) => ({stacks, dayLengthH}) => {
+let start = (repo: RepositoryType.t) => ({stacks, dayLengthH, maxCards}) => {
   async setRecall => {
     let stacks = (
       await Promise.all(
@@ -78,7 +80,9 @@ let start = (repo: RepositoryType.t) => ({stacks, dayLengthH}) => {
       )
     )->Array.keepSome
 
-    setRecall(Some(Recall.make(repo, stacks, ~dayLength=dayLengthH *. 3600. *. 1000.)))
+    setRecall(
+      Some(Recall.make(repo, stacks, ~dayLength=dayLengthH *. 3600. *. 1000., ~max=maxCards)),
+    )
   }
 }
 
@@ -90,7 +94,7 @@ let loadProgress = async (prog: RepositoryType.progress, set, info: Stack.info) 
 }
 
 let stacks = (repo: RepositoryType.t, path: string) => {
-  async setList => {
+  async (_prev, setList) => {
     let list = (await repo.stack.toc(path))->Array.map(info => {info, prog: Loading})
     // Early toc display
     setList(list)
@@ -134,18 +138,30 @@ let make = (repo: RepositoryType.t, path: string): t => {
     ->Nullable.getOr("24")
     ->Float.fromString
     ->Option.getOr(24.)
+  let maxCards =
+    repo.settings.get("maxCards")
+    ->Nullable.getOr("20")
+    ->Int.fromString
+    ->Option.getOr(20)
   let (dayLengthH, setDayLengthH) = signal(day)
+  let (maxCards, setMaxCards) = signal(maxCards)
   let setDayLength = (value: float) => {
     repo.settings.save("dayLength", value->Float.toString)
     setDayLengthH(value)
   }
+  let setMaxCards = (value: int) => {
+    repo.settings.save("maxCards", value->Int.toString)
+    setMaxCards(value)
+  }
 
   carve(({derived}) => {
-    stacks: source(stacks(repo, path), []),
+    stacks: source([], stacks(repo, path)),
     setActive: derived(setActive(repo.progress)),
     start: derived(start(repo)),
     setDayLength,
+    setMaxCards,
     dayLengthH: lift(dayLengthH),
+    maxCards: lift(maxCards),
     stats: derived(stats(~now=Date.now)),
   })
 }
