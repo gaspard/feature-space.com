@@ -1,0 +1,320 @@
+---
+id: 56b691e8
+type: quiz
+order: 13
+title: Réduction des endomorphismes auto-adjoints - quiz (A)
+tags:
+  - endomorphismes
+  - auto-adjoints
+  - déterminants
+  - diagonalisation
+  - décomposition polaire
+createdAt: '2025-11-26T16:54:55.181Z'
+level: regular
+course: Géométrie
+courseId: d9494343
+chapter: Réduction des endomorphismes auto-adjoints
+chapterId: 3909aa4c
+---
+# Quiz: Réduction des endomorphismes auto-adjoints
+
+---
+
+#### Question 1 : Propriétés du déterminant
+
+Quelles sont les propriétés correctes du déterminant pour des matrices carrées $A$ et $B$ de taille $n \times n$ et un scalaire $\lambda$ ?
+
+- [ ] **A)** $\det(A+B) = \det(A)+\det(B)$
+- [x] **B)** $\det(AB) = \det(A)\det(B)$
+- [ ] **C)** $\det(\lambda A) = \lambda \det(A)$
+- [x] **D)** $\det({}^tA) = \det(A)$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B, D]**
+
+- **A.** Incorrect. Le déterminant n'est pas additif. Par exemple, si $A=I_2$ et $B=I_2$, $\det(A)=1, \det(B)=1$, mais $\det(A+B) = \det(2I_2) = 4$, ce qui est différent de $\det(A)+\det(B)=2$.
+
+- **B.** Correct. C'est la propriété de multiplicativité du déterminant. Le déterminant d'un produit de matrices est le produit de leurs déterminants.
+
+- **C.** Incorrect. Le déterminant est $n$-linéaire par rapport à ses colonnes. Multiplier toute la matrice par $\lambda$ revient à multiplier chaque colonne par $\lambda$, donc le déterminant est multiplié par $\lambda^n$. La propriété correcte est $\det(\lambda A) = \lambda^n \det(A)$.
+
+- **D.** Correct. Le déterminant d'une matrice est égal au déterminant de sa transposée. Cela implique que toute propriété du déterminant relative aux colonnes est également vraie pour les lignes.
+
+</details>
+
+---
+
+#### Question 2 : Caractérisation de l'inversibilité
+
+Une matrice carrée $A$ est inversible si et seulement si...
+
+- [x] **A)** son déterminant est non nul.
+- [ ] **B)** son déterminant est strictement positif.
+- [ ] **C)** son déterminant est égal à 1.
+- [ ] **D)** tous ses coefficients diagonaux sont non nuls.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+- **A.** Correct. C'est une propriété fondamentale du déterminant. Une matrice est inversible si et seulement si son déterminant est différent de zéro. Cela est lié au fait que l'endomorphisme associé est un isomorphisme.
+
+- **B.** Incorrect. Une matrice peut être inversible avec un déterminant négatif. Par exemple, $A = \begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix}$ a pour déterminant -1 et est inversible.
+
+- **C.** Incorrect. C'est une condition suffisante mais pas nécessaire. Les matrices dont le déterminant est 1 forment un sous-groupe du groupe des matrices inversibles (le groupe spécial linéaire $SL_n(\mathbb{K})$), mais il existe de nombreuses matrices inversibles dont le déterminant n'est pas 1.
+
+- **D.** Incorrect. Une matrice peut avoir des zéros sur sa diagonale et être inversible, par exemple $A = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$ avec $\det(A)=-1$. Inversement, une matrice peut avoir des coefficients diagonaux non nuls et ne pas être inversible, par exemple $A = \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}$ avec $\det(A)=0$.
+
+</details>
+
+---
+
+#### Question 3 : Définition d'un vecteur propre
+
+Soit $f$ un endomorphisme d'un espace vectoriel $E$. Qu'est-ce qu'un vecteur propre de $f$ ?
+
+- [ ] **A)** Un vecteur $x$ tel que $f(x)=x$.
+- [ ] **B)** Tout vecteur $x$ du noyau de $f$.
+- [x] **C)** Un vecteur **non nul** $x$ tel que $f(x)$ est colinéaire à $x$.
+- [ ] **D)** Le vecteur nul, car $f(0)=0$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+- **A.** Incorrect. C'est la définition d'un vecteur propre associé à la valeur propre $\lambda=1$. Un vecteur propre peut être associé à n'importe quelle autre valeur propre.
+
+- **B.** Incorrect. Un vecteur non nul du noyau de $f$ est un vecteur propre, mais spécifiquement pour la valeur propre $\lambda=0$. Il peut exister d'autres vecteurs propres pour d'autres valeurs propres.
+
+- **C.** Correct. C'est la définition géométrique. Si $x$ est non nul et $f(x)$ est colinéaire à $x$, cela signifie qu'il existe un scalaire $\lambda$ tel que $f(x) = \lambda x$. Le fait que $x$ soit non nul est une condition essentielle de la définition.
+
+- **D.** Incorrect. Par définition, un vecteur propre est **toujours non nul**. Si le vecteur nul était accepté, alors n'importe quel scalaire $\lambda$ serait une valeur propre car $f(0) = \lambda \cdot 0$ est toujours vrai, ce qui rendrait le concept inutile.
+
+</details>
+
+---
+
+#### Question 4 : Signification d'une valeur propre nulle
+
+Soit $f$ un endomorphisme d'un espace de dimension finie. Si 0 est une valeur propre de $f$, qu'est-ce que cela implique ?
+
+- [ ] **A)** L'endomorphisme $f$ est bijectif.
+- [x] **B)** L'endomorphisme $f$ n'est pas injectif.
+- [ ] **C)** Le noyau de $f$ est réduit au vecteur nul, i.e., $\ker(f)=\{0\}$.
+- [ ] **D)** L'endomorphisme $f$ est l'application nulle.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+- **A.** Incorrect. Si $f$ est bijectif, alors il est injectif, ce qui signifie que $\ker(f)=\{0\}$. Dans ce cas, 0 ne peut pas être une valeur propre.
+
+- **B.** Correct. Si 0 est une valeur propre, alors le sous-espace propre associé $E_0 = \ker(f - 0\cdot\text{Id}) = \ker(f)$ contient des vecteurs non nuls. Si le noyau n'est pas réduit au vecteur nul, l'endomorphisme n'est pas injectif.
+
+- **C.** Incorrect. C'est le contraire. L'existence de la valeur propre 0 signifie précisément que le noyau n'est pas réduit au vecteur nul.
+
+- **D.** Incorrect. Seuls les vecteurs du sous-espace propre $E_0$ sont envoyés sur le vecteur nul. Il peut y avoir d'autres sous-espaces propres associés à des valeurs propres non nulles. Par exemple, une projection sur une droite a pour valeurs propres 0 et 1, mais n'est pas l'application nulle.
+
+</details>
+
+---
+
+#### Question 5 : Condition de diagonalisation
+
+Parmi les affirmations suivantes, lesquelles sont des conditions suffisantes pour qu'un endomorphisme $f$ d'un espace de dimension $n$ soit diagonalisable sur le corps $\mathbb{K}$ ?
+
+- [x] **A)** $f$ admet $n$ valeurs propres distinctes dans $\mathbb{K}$.
+- [ ] **B)** La matrice de $f$ dans une base quelconque est triangulaire.
+- [x] **C)** Le polynôme caractéristique de $f$ est scindé sur $\mathbb{K}$, et pour chaque valeur propre $\lambda$, sa multiplicité algébrique est égale à sa multiplicité géométrique ($m_\lambda = d_\lambda$).
+- [ ] **D)** Le déterminant de $f$ est non nul.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, C]**
+
+- **A.** Correct. C'est un cas particulier important du critère général. Si un endomorphisme de dimension $n$ a $n$ valeurs propres distinctes, alors chaque sous-espace propre est de dimension 1. La somme des dimensions des sous-espaces propres est $n$, ce qui garantit la diagonalisabilité.
+
+- **B.** Incorrect. Une matrice peut être triangulaire mais non diagonalisable. L'exemple classique est $A = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$. Elle est triangulaire, mais sa seule valeur propre est 1 avec une multiplicité algébrique de 2 et une multiplicité géométrique de 1.
+
+- **C.** Correct. C'est le critère général et nécessaire et suffisant pour la diagonalisabilité. La première condition assure qu'il y a "assez" de racines, et la seconde assure que les sous-espaces propres sont "assez grands".
+
+- **D.** Incorrect. Un déterminant non nul signifie que l'endomorphisme est inversible (0 n'est pas valeur propre), mais cela ne dit rien sur la diagonalisabilité. Par exemple, une rotation dans $\mathbb{R}^2$ est inversible mais non diagonalisable sur $\mathbb{R}$.
+
+</details>
+
+---
+
+#### Question 6 : Matrice d'un endomorphisme auto-adjoint
+
+Laquelle de ces matrices réelles peut représenter un endomorphisme auto-adjoint dans une base **orthonormée** ?
+
+- [x] **A)** $\begin{pmatrix} 5 & -2 \\ -2 & 8 \end{pmatrix}$
+- [ ] **B)** $\begin{pmatrix} 1 & 2 \\ 0 & 3 \end{pmatrix}$
+- [ ] **C)** $\begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}$
+- [x] **D)** $\begin{pmatrix} 1 & 0 & 0 \\ 0 & -3 & 0 \\ 0 & 0 & 4 \end{pmatrix}$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, D]**
+
+Un endomorphisme est auto-adjoint si et seulement si sa matrice dans une base orthonormée est symétrique. Il faut donc chercher les matrices symétriques ($A = {}^tA$).
+
+- **A.** Correct. Cette matrice est symétrique car $a_{12} = -2 = a_{21}$.
+
+- **B.** Incorrect. Cette matrice est triangulaire supérieure mais pas symétrique ($a_{12} = 2 \neq a_{21} = 0$).
+
+- **C.** Incorrect. Cette matrice est antisymétrique ($A = -{}^tA$) et non symétrique. Elle représente une rotation.
+
+- **D.** Correct. Une matrice diagonale est toujours symétrique. Elle représente un endomorphisme auto-adjoint qui est déjà diagonalisé.
+
+</details>
+
+---
+
+#### Question 7 : Propriétés des endomorphismes auto-adjoints
+
+Soit $f$ un endomorphisme auto-adjoint d'un espace euclidien. Quelles affirmations sont toujours vraies ?
+
+- [x] **A)** Toutes les valeurs propres de $f$ sont réelles.
+- [ ] **B)** La matrice de $f$ dans n'importe quelle base est symétrique.
+- [x] **C)** Les sous-espaces propres associés à des valeurs propres distinctes sont orthogonaux entre eux.
+- [ ] **D)** $f$ est toujours un endomorphisme bijectif.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, C]**
+
+- **A.** Correct. C'est une propriété fondamentale des endomorphismes auto-adjoints (et des matrices symétriques réelles). Même si on les considère sur $\mathbb{C}$, leurs valeurs propres sont garanties d'être réelles.
+
+- **B.** Incorrect. La matrice de $f$ n'est symétrique que si elle est exprimée dans une base **orthonormée**. Dans une base quelconque, elle n'a pas de raison d'être symétrique.
+
+- **C.** Correct. C'est une autre propriété clé. Si $f(x) = \lambda x$ et $f(y) = \mu y$ avec $\lambda \neq \mu$, alors $\langle x, y \rangle = 0$. C'est ce qui permet de construire une base orthonormée de vecteurs propres.
+
+- **D.** Incorrect. Un endomorphisme auto-adjoint n'est pas nécessairement bijectif. Par exemple, la projection orthogonale sur un sous-espace est auto-adjointe, mais elle n'est pas bijective si le sous-espace n'est pas l'espace entier (elle a une valeur propre nulle).
+
+</details>
+
+---
+
+#### Question 8 : Le Théorème Spectral
+
+Que garantit le théorème spectral pour toute matrice symétrique réelle $S$ ?
+
+- [ ] **A)** $S$ est toujours inversible.
+- [x] **B)** Il existe une matrice orthogonale $P$ et une matrice diagonale $D$ telles que $S = PDP^T$.
+- [ ] **C)** Toutes les valeurs propres de $S$ sont strictement positives.
+- [x] **D)** Il existe une base de l'espace formée de vecteurs propres de $S$ qui est orthonormée.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B, D]**
+
+- **A.** Incorrect. Une matrice symétrique peut avoir 0 comme valeur propre et donc être non inversible. Par exemple, $S = \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}$.
+
+- **B.** Correct. C'est l'énoncé matriciel du théorème spectral. Toute matrice symétrique réelle est diagonalisable par une matrice de passage orthogonale $P$ (ce qui signifie $P^{-1} = P^T$).
+
+- **C.** Incorrect. Le théorème spectral garantit que les valeurs propres sont réelles, mais elles peuvent être positives, négatives ou nulles. Le fait qu'elles soient strictement positives caractérise les matrices symétriques *définies positives*.
+
+- **D.** Correct. C'est la version "endomorphisme" du théorème. Il garantit non seulement que l'endomorphisme est diagonalisable, mais aussi que l'on peut trouver une base de diagonalisation qui est orthonormée.
+
+</details>
+
+---
+
+#### Question 9 : Endomorphismes définis positifs
+
+Un endomorphisme auto-adjoint $f$ est dit **défini positif**. Comment cette propriété se traduit-elle sur ses valeurs propres $\lambda_i$ ?
+
+- [ ] **A)** Toutes ses valeurs propres sont positives ou nulles ($\lambda_i \ge 0$).
+- [ ] **B)** La somme de ses valeurs propres est strictement positive.
+- [x] **C)** Toutes ses valeurs propres sont strictement positives ($\lambda_i > 0$).
+- [ ] **D)** Toutes ses valeurs propres sont non nulles ($\lambda_i \neq 0$).
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+- **A.** Incorrect. Cette condition ($\lambda_i \ge 0$) caractérise les endomorphismes auto-adjoints **positifs** (ou semi-définis positifs), mais pas *définis* positifs. Pour ces derniers, le cas $\lambda_i=0$ est exclu.
+
+- **B.** Incorrect. Cette condition n'est pas suffisante. Un endomorphisme avec les valeurs propres $\{-1, -1, 3\}$ a une somme positive (1), mais il n'est pas positif car il a des valeurs propres négatives.
+
+- **C.** Correct. C'est la caractérisation fondamentale. Un endomorphisme auto-adjoint est défini positif si et seulement si toutes ses valeurs propres sont réelles et strictement positives. Cela garantit que $\langle f(x), x \rangle > 0$ pour tout $x \neq 0$.
+
+- **D.** Incorrect. Cette condition garantit l'inversibilité, mais pas la positivité. Par exemple, un endomorphisme avec valeurs propres $\{-1, 1\}$ est inversible mais non positif.
+
+</details>
+
+---
+
+#### Question 10 : Racine carrée d'une matrice
+
+Soit $A$ une matrice réelle. Sous quelle condition peut-on garantir l'existence d'une unique matrice $B$ symétrique **positive** telle que $B^2 = A$ ?
+
+- [ ] **A)** $A$ doit être inversible.
+- [x] **B)** $A$ doit être symétrique et positive.
+- [ ] **C)** $A$ doit être diagonalisable.
+- [ ] **D)** $A$ doit être une matrice diagonale.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+- **A.** Incorrect. Par exemple, $A = -I_2 = \begin{pmatrix} -1 & 0 \\ 0 & -1 \end{pmatrix}$ est inversible, mais n'admet pas de racine carrée réelle car ses valeurs propres sont négatives.
+
+- **B.** Correct. C'est le théorème de la racine carrée. Tout endomorphisme auto-adjoint positif (et donc toute matrice symétrique positive) admet une unique racine carrée qui est elle-même auto-adjointe et positive.
+
+- **C.** Incorrect. Une matrice peut être diagonalisable mais avoir des valeurs propres négatives, ce qui empêche l'existence d'une racine carrée réelle. Par exemple, $A = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$.
+
+- **D.** Incorrect. C'est une condition suffisante si les coefficients diagonaux sont positifs, mais ce n'est pas nécessaire. Une matrice symétrique positive non diagonale comme $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$ admet aussi une racine carrée.
+
+</details>
+
+---
+
+#### Question 11 : Décomposition Polaire
+
+Dans la décomposition polaire d'une matrice inversible $M = SO$, quelle est l'interprétation géométrique correcte des matrices $S$ et $O$ ?
+
+- [ ] **A)** $S$ représente une projection orthogonale et $O$ représente une symétrie.
+- [x] **B)** $S$ représente une déformation pure (étirements le long d'axes orthogonaux) et $O$ une isométrie (rotation ou réflexion).
+- [ ] **C)** $S$ représente une rotation et $O$ un changement d'échelle le long des axes.
+- [ ] **D)** $S$ et $O$ représentent toutes les deux des transformations qui préservent les angles.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+- **A.** Incorrect. C'est trop restrictif. $S$ et $O$ ne sont généralement ni des projections ni des symétries.
+
+- **B.** Correct. C'est l'essence de la décomposition polaire. Elle sépare une transformation linéaire générale $M$ en deux composantes fondamentales : une déformation sans rotation ($S$, une matrice symétrique définie positive) et une transformation rigide sans déformation ($O$, une matrice orthogonale qui préserve les longueurs et les angles).
+
+- **C.** Incorrect. L'interprétation est inversée. $S$ est la déformation/changement d'échelle, et $O$ est la rotation.
+
+- **D.** Incorrect. $S$ (la partie symétrique) ne préserve généralement pas les angles, sauf si c'est une homothétie ($S=kI$). $O$ (la partie orthogonale) préserve les angles.
+
+</details>
+
+---

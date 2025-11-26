@@ -1,0 +1,112 @@
+{
+  "info": {
+    "id": "074b759e",
+    "title": "Courbes planes - fiches de révision (A)",
+    "type": "cards",
+    "level": "regular",
+    "chapter": "Courbes planes",
+    "course": "Géométrie",
+    "tags": [
+      "courbes planes",
+      "courbes paramétrées",
+      "courbes implicites",
+      "coniques",
+      "courbure",
+      "Gauss-Bonnet"
+    ],
+    "count": 13
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "074b759e",
+      "content": "Qu'est-ce qu'une courbe paramétrée de classe $C^k$ ?",
+      "solution": "\n\nUne **courbe paramétrée** (ou arc paramétré) de classe $C^k$ dans $\\mathbb{R}^n$ est un couple $(I, \\gamma)$ où :\n\n1.  $I$ est un intervalle de $\\mathbb{R}$, appelé l'ensemble des paramètres.\n2.  $\\gamma : I \\to \\mathbb{R}^n$ est une application de classe $C^k$ (c'est-à-dire $k$ fois dérivable à dérivée $k$-ième continue).\n\nLe paramètre $t \\in I$ peut être imaginé comme le temps. La fonction $\\gamma(t)$ donne la position d'un point mobile à l'instant $t$. L'ensemble des points parcourus, $\\gamma(I)$, est appelé la **trajectoire** ou le **support** de la courbe.\n\nIl faut bien distinguer la courbe paramétrée $(I, \\gamma)$, qui est la \"manière de parcourir\", de sa trajectoire $\\gamma(I)$, qui est la \"forme géométrique\".\n\n**Exemple :** Le cercle unité\n\nLa courbe $(\\, [0, 2\\pi], \\gamma \\,)$ avec $\\gamma(t) = (\\cos(t), \\sin(t))$ est une courbe paramétrée de classe $C^\\infty$. Pour chaque $t$ entre $0$ et $2\\pi$, $\\gamma(t)$ est un point du cercle de centre $(0,0)$ et de rayon $1$.\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "074b759e",
+      "content": "Quelle est l'interprétation géométrique du vecteur dérivé $\\gamma'(t)$ d'une courbe paramétrée $\\gamma(t)$ ?",
+      "solution": "\n\nLe vecteur dérivé $\\gamma'(t)$ d'une courbe paramétrée représente le **vecteur vitesse instantanée** du point mobile $\\gamma(t)$. Il a deux interprétations géométriques principales :\n\n1.  **Direction :** La direction du vecteur $\\gamma'(t)$ est celle de la **tangente** à la courbe au point $\\gamma(t)$. Il indique la direction instantanée du mouvement.\n2.  **Norme :** La norme du vecteur, $\\|\\gamma'(t)\\|$, représente la **vitesse scalaire** (la \"vitesse au compteur\") du point mobile. C'est la vitesse à laquelle la distance est parcourue le long de la courbe.\n\nSi $\\gamma'(t) \\neq \\vec{0}$, le vecteur $\\gamma'(t)$ est un vecteur directeur de la droite tangente à la courbe au point $\\gamma(t)$.\n\n**Exemple :** Pour le cercle $\\gamma(t) = (\\cos t, \\sin t)$, le vecteur dérivé est $\\gamma'(t) = (-\\sin t, \\cos t)$. Sa norme est $\\|\\gamma'(t)\\| = \\sqrt{(-\\sin t)^2 + (\\cos t)^2} = 1$. Cela signifie que le point parcourt le cercle à une vitesse constante de 1. Le vecteur vitesse est toujours tangent au cercle.\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "074b759e",
+      "content": "Quelle est la différence entre un point régulier et un point singulier sur une courbe paramétrée ?",
+      "solution": "\n\nLa différence réside dans la nullité du vecteur vitesse. Soit une courbe paramétrée $\\gamma(t)$ et un point $\\gamma(t_0)$.\n\n-   **Point Régulier :** Le point $\\gamma(t_0)$ est dit **régulier** si son vecteur vitesse est **non nul** : $\\gamma'(t_0) \\neq \\vec{0}$.\n    -   **Interprétation :** Le point mobile a une vitesse non nulle. Il ne s'arrête pas. En un point régulier, la tangente à la courbe est bien définie et sa direction est donnée par $\\gamma'(t_0)$.\n\n-   **Point Singulier :** Le point $\\gamma(t_0)$ est dit **singulier** si son vecteur vitesse est **nul** : $\\gamma'(t_0) = \\vec{0}$.\n    -   **Interprétation :** Le point mobile s'arrête. Géométriquement, cela correspond souvent à des points où la courbe change brusquement de direction, comme un **point de rebroussement** (une \"pointe\"), ou un point où la courbe s'arrête pour repartir.\n\nUne courbe est dite **régulière** si tous ses points sont réguliers.\n\n**Exemple :**\n\n-   La parabole $\\gamma(t) = (t, t^2)$ a pour dérivée $\\gamma'(t) = (1, 2t)$, qui n'est jamais nulle. C'est une courbe régulière.\n-   L'astroïde $\\gamma(t) = (\\cos^3 t, \\sin^3 t)$ a des points singuliers en $t = 0, \\pi/2, \\pi, 3\\pi/2$, qui correspondent à ses quatre pointes.\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "074b759e",
+      "content": "Quelle est la formule pour calculer la longueur d'un arc de courbe paramétrée ?",
+      "solution": "\n\nLa longueur d'un arc de la courbe paramétrée $(I, f)$ de classe $C^1$, entre les instants $a$ et $b$ ($a, b \\in I$), est donnée par l'intégrale de la vitesse scalaire :\n\n$\\text{Formule: } L = \\int_a^b \\|f'(t)\\| \\,dt$\n\nCette formule s'appelle aussi **l'abscisse curviligne**. La fonction $s(t)$, qui donne la distance parcourue depuis un point de départ $t_0$, est définie par :\n\n$s(t) = \\int_{t_0}^t \\|f'(x)\\| \\,dx$\n\n**Où :**\n\n-   $f'(t)$ est le vecteur vitesse (dérivé) de la courbe au paramètre $t$.\n-   $\\|f'(t)\\|$ est la norme de ce vecteur, c'est-à-dire la vitesse scalaire.\n-   $dt$ est un élément infinitésimal du paramètre (souvent le temps).\n\n**Utilisation :** Cette formule permet de calculer la longueur exacte d'une trajectoire, comme la distance parcourue par un objet ou la longueur d'une route sur une carte.\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "074b759e",
+      "content": "Expliquez ce que signifie \"paramétrer une courbe par sa longueur d'arc\". Quel est l'intérêt ?",
+      "solution": "\n\nParamétrer une courbe par sa longueur d'arc (ou abscisse curviligne), notée $s$, consiste à utiliser la distance parcourue le long de la courbe depuis un point d'origine comme paramètre, à la place d'un paramètre abstrait $t$ (comme le temps).\n\nUne courbe $(J, g)$ est dite paramétrée par sa longueur d'arc si sa vitesse scalaire est constamment égale à 1 :\n\n$\\forall s \\in J, \\quad \\|g'(s)\\| = 1$\n\n**Interprétation :** Cela revient à décrire la trajectoire comme si on la parcourait à une vitesse constante de 1 unité de distance par unité de paramètre.\n\n**Intérêt principal :**\n\nCe paramétrage est considéré comme \"naturel\" car il est intrinsèque à la forme géométrique de la courbe et ne dépend pas de la \"vitesse\" arbitraire à laquelle on la parcourt. Il simplifie considérablement de nombreuses formules de géométrie différentielle, notamment celle de la courbure.\n\nPour une courbe paramétrée par sa longueur d'arc $s$, le vecteur accélération $g''(s)$ est directement lié à la courbure $\\kappa(s)$.\n\n**Propriété fondamentale :** Toute courbe régulière de classe $C^1$ peut être reparamétrée par sa longueur d'arc.\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "074b759e",
+      "content": "Qu'est-ce qu'un point birégulier sur une courbe plane ?",
+      "solution": "\n\nSoit $(I, f)$ une courbe plane paramétrée de classe $C^2$. Un point $f(t_0)$ est dit **birégulier** si les deux premiers vecteurs dérivés non triviaux, le vecteur vitesse $f'(t_0)$ et le vecteur accélération $f''(t_0)$, sont **linéairement indépendants**.\n\nCela signifie que le vecteur accélération n'est pas colinéaire au vecteur vitesse.\n\n**Interprétation géométrique :**\n\n-   Le vecteur $f'(t_0)$ donne la direction de la tangente (le mouvement \"tout droit\").\n-   Le vecteur $f''(t_0)$ indique comment la courbe s'écarte de cette tangente.\n\nSi les deux vecteurs sont indépendants, cela signifie que la courbe est en train de \"tourner\". Si l'accélération était colinéaire à la vitesse, le point mobile ne ferait qu'accélérer ou ralentir en ligne droite. La birégularité est la condition qui assure que la courbe possède une courbure non nulle en ce point.\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "074b759e",
+      "content": "Comment le vecteur accélération $f''(t_0)$ aide-t-il à décrire l'allure locale d'une courbe en un point birégulier $f(t_0)$ ?",
+      "solution": "\n\nEn un point birégulier $p = f(t_0)$, le vecteur accélération $f''(t_0)$ détermine la **concavité** de la courbe.\n\n**Théorème principal :** Au voisinage d'un point birégulier, la courbe est entièrement située d'un seul côté de sa tangente. Ce côté est le demi-plan qui contient le vecteur accélération.\n\nPlus précisément, le vecteur accélération $f''(t_0)$ \"tire\" la courbe loin de sa tangente. On dit que la courbe \"tourne sa concavité\" dans la direction de $f''(t_0)$.\n\n**Approximation locale :** L'allure de la courbe près d'un point birégulier est celle d'une **parabole**. La formule de Taylor-Young le montre :\n\n$f(t_0+h) - f(t_0) \\approx h f'(t_0) + \\frac{h^2}{2} f''(t_0)$\n\nDans la base $(f'(t_0), f''(t_0))$, les coordonnées locales du point sont approximativement $(h, h^2/2)$, ce qui est l'équation d'une parabole.\n\n**Exemple :** Pour la parabole $f(t)=(t,t^2)$ au sommet $t=0$, la tangente est l'axe des $x$ (dirigée par $f'(0)=(1,0)$) et l'accélération est verticale vers le haut ($f''(0)=(0,2)$). La courbe est bien au-dessus de sa tangente.\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "074b759e",
+      "content": "Qu'est-ce qu'une courbe implicite et quand dit-on qu'elle est algébrique ?",
+      "solution": "\n\nUne **courbe implicite** est un ensemble de points $(x,y)$ du plan dont les coordonnées satisfont une équation de la forme :\n\n$F(x,y) = 0$\n\noù $F$ est une fonction de deux variables. L'équation agit comme une condition que les points de la courbe doivent vérifier.\n\nUne courbe implicite est dite **algébrique** si la fonction $F(x,y)$ est un **polynôme** en $x$ et $y$. Le **degré** de la courbe est alors le degré de ce polynôme.\n\n**Exemples :**\n\n-   **Courbe algébrique :** Le cercle de rayon 1 a pour équation implicite $x^2 + y^2 - 1 = 0$. C'est une courbe algébrique de degré 2.\n-   **Courbe algébrique :** Le folium de Descartes, d'équation $x^3 + y^3 - 3xy = 0$, est une courbe algébrique de degré 3.\n-   **Courbe non-algébrique :** Le graphe de la fonction sinus, d'équation $y - \\sin(x) = 0$, est une courbe implicite mais n'est pas algébrique car $\\sin(x)$ n'est pas un polynôme.\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "074b759e",
+      "content": "Comment peut-on déterminer la nature d'une conique (ellipse, hyperbole, parabole) à partir de son équation générale $ax^2 + 2cxy + by^2 + dx + ey + f = 0$ ?",
+      "solution": "\n\nLa nature d'une conique (hors cas dégénérés) peut être déterminée en calculant le discriminant (ou déterminant de la partie quadratique), noté $\\Delta$ ou `det`.\n\n$\\Delta = ab - c^2$\n\nCe discriminant est associé à la matrice de la forme quadratique $M = \\begin{pmatrix} a & c \\\\ c & b \\end{pmatrix}$.\n\n**Règle de classification :**\n\n1.  Si $\\Delta > 0$ ($ab-c^2 > 0$) : la conique est du genre **ellipse** (un cercle étant un cas particulier).\n2.  Si $\\Delta < 0$ ($ab-c^2 < 0$) : la conique est du genre **hyperbole**.\n3.  Si $\\Delta = 0$ ($ab-c^2 = 0$) : la conique est du genre **parabole**.\n\n**Cas dégénérés :** Si la conique est dégénérée, elle peut représenter un point, une droite, deux droites, ou l'ensemble vide, mais le signe de $\\Delta$ reste un indicateur du type de dégénérescence. Par exemple, $x^2-y^2=0$ donne deux droites et a $\\Delta=-1<0$ (genre hyperbole).\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "074b759e",
+      "content": "Quelle est la formule générale pour calculer la courbure $\\kappa(t)$ d'une courbe plane paramétrée $\\gamma(t)=(x(t), y(t))$ ?",
+      "solution": "\n\nPour une courbe paramétrée $\\gamma(t) = (x(t), y(t))$ de classe $C^2$ et régulière, la courbure algébrique $\\kappa(t)$ est donnée par la formule :\n\n$\\text{Formule: } \\kappa(t) = \\frac{\\det(\\gamma'(t), \\gamma''(t))}{\\|\\gamma'(t)\\|^3}$\n\nCe qui s'écrit en termes de composantes :\n\n$\\kappa(t) = \\frac{x'(t)y''(t) - y'(t)x''(t)}{\\left(x'(t)^2 + y'(t)^2\\right)^{3/2}}$\n\n**Où :**\n\n-   $\\gamma'(t) = (x'(t), y'(t))$ est le vecteur vitesse.\n-   $\\gamma''(t) = (x''(t), y''(t))$ est le vecteur accélération.\n-   $\\det(\\gamma', \\gamma'')$ est le déterminant des vecteurs vitesse et accélération.\n-   $\\|\\gamma'\\|$ est la norme du vecteur vitesse (vitesse scalaire).\n\nCette formule est valide pour n'importe quel paramétrage régulier.\n\n",
+      "options": []
+    },
+    {
+      "id": "11",
+      "stackId": "074b759e",
+      "content": "Quelle est l'interprétation géométrique de la courbure $\\kappa$ et de son signe ?",
+      "solution": "\n\nLa courbure $\\kappa$ est une mesure de la façon dont une courbe \"tourne\" ou s'écarte de sa ligne tangente en un point.\n\n**Interprétation de la valeur absolue $|\\kappa|$ :**\n\n-   Si $\\kappa = 0$, la courbe est localement une droite (pas de virage).\n-   Si $|\\kappa|$ est **grande**, la courbe effectue un virage serré.\n-   Si $|\\kappa|$ est **petite**, la courbe est \"plate\" et le virage est large.\n\nLe **rayon de courbure** est $R = 1/|\\kappa|$. Il correspond au rayon du cercle qui \"épouse\" le mieux la courbe en ce point (le cercle osculateur). Un virage serré correspond à un petit rayon de courbure.\n\n**Interprétation du signe de $\\kappa$ :**\n\nLe signe de la courbure indique le **sens de la rotation**. Par convention dans une base orthonormée directe :\n\n-   Si $\\kappa > 0$, la courbe tourne \"vers la gauche\" (dans le sens trigonométrique ou anti-horaire) par rapport au sens de parcours.\n-   Si $\\kappa < 0$, la courbe tourne \"vers la droite\" (dans le sens horaire).\n\nLe signe de la courbure dépend donc de l'orientation du plan et du sens de parcours de la courbe.\n\n",
+      "options": []
+    },
+    {
+      "id": "12",
+      "stackId": "074b759e",
+      "content": "Comment déterminez-vous si un point $\\gamma(t_0)$ d'une courbe paramétrée est singulier et comment trouver ces points ?",
+      "solution": "\n\nUn point $\\gamma(t_0)$ est singulier si son vecteur vitesse $\\gamma'(t_0)$ est le vecteur nul. Voici la méthode pour les trouver :\n\n**Étapes :**\n\n1.  **Calculer le vecteur dérivé :** Soit la courbe $\\gamma(t) = (x(t), y(t))$, calculez son vecteur dérivé (vecteur vitesse) :\n\n    $\\gamma'(t) = (x'(t), y'(t))$\n\n2.  **Poser le système d'équations :** Pour trouver les points où le vecteur vitesse est nul, on doit résoudre le système d'équations où chaque composante est nulle :\n\n    $$\n\n    \\begin{cases}\n\n    x'(t) = 0 \\\\\n\n    y'(t) = 0\n\n    \\end{cases}\n\n    $$\n\n3.  **Résoudre le système :** Les solutions $t_0, t_1, \\dots$ de ce système sont les valeurs du paramètre qui correspondent aux points singuliers de la courbe.\n\n**Exemple :** L'astroïde $\\gamma(t) = (\\cos^3 t, \\sin^3 t)$.\n\n1.  $\\gamma'(t) = (-3\\cos^2 t \\sin t, \\ 3\\sin^2 t \\cos t)$.\n2.  On résout le système :\n\n    $$\n\n    \\begin{cases}\n\n    -3\\cos^2 t \\sin t = 0 \\\\\n\n    3\\sin^2 t \\cos t = 0\n\n    \\end{cases}\n\n    $$\n\n3.  La première équation est vraie si $\\cos t = 0$ ou $\\sin t = 0$. La deuxième est vraie si $\\sin t = 0$ ou $\\cos t = 0$. Les deux équations sont donc satisfaites simultanément lorsque $\\sin t = 0$ (pour $t=0, \\pi$) ou lorsque $\\cos t = 0$ (pour $t=\\pi/2, 3\\pi/2$). Les points singuliers apparaissent donc pour $t = 0, \\pi/2, \\pi, 3\\pi/2$.\n\n",
+      "options": []
+    },
+    {
+      "id": "13",
+      "stackId": "074b759e",
+      "content": "Qu'énonce le théorème de Gauss-Bonnet pour une courbe plane fermée (un lacet) ?",
+      "solution": "\n\nLe théorème de Gauss-Bonnet pour les courbes planes établit un lien fondamental entre la géométrie locale d'une courbe (sa courbure) et sa topologie globale (comment elle s'enroule).\n\nPour un **lacet** (une courbe fermée régulière de classe $C^2$), le théorème énonce que **l'intégrale de la courbure le long de la courbe est égale à $2\\pi$ fois le nombre d'enroulements de son vecteur tangent**.\n\n**Formule :**\n\n$\\int_{\\text{courbe}} \\kappa \\, ds = 2\\pi \\times \\text{Enroul}(f)$\n\n**Où :**\n\n-   $\\int_{\\text{courbe}} \\kappa \\, ds$ est la **courbure totale** de la courbe. C'est une quantité géométrique calculée en intégrant la courbure locale $\\kappa$ sur toute la longueur de la courbe.\n-   $\\text{Enroul}(f)$ est le **nombre d'enroulement** de la tangente. C'est un **nombre entier** qui compte le nombre de tours complets (avec signe) que fait le vecteur tangent unitaire lorsqu'on parcourt la courbe une fois.\n\n**Conclusion :** Ce théorème montre que la courbure totale d'une courbe fermée est \"quantifiée\" : elle ne peut prendre que des valeurs qui sont des multiples entiers de $2\\pi$. Par exemple, pour une courbe simple comme une ellipse, la tangente fait un tour, donc l'intégrale de la courbure vaut exactement $2\\pi$, quelle que soit l'excentricité de l'ellipse.\n\n",
+      "options": []
+    }
+  ]
+}

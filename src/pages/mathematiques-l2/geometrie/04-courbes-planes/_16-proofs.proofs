@@ -1,0 +1,617 @@
+---
+id: 07ea0242
+type: proofs
+order: 15
+title: Courbes planes - preuves (A)
+tags:
+  - courbes planes
+  - courbes paramétrées
+  - courbes implicites
+  - coniques
+  - courbure
+  - Gauss-Bonnet
+createdAt: '2025-11-26T16:55:39.654Z'
+level: regular
+course: Géométrie
+courseId: d9494343
+chapter: Courbes planes
+chapterId: 7eebdf24
+---
+# Preuves "Courbes planes" (A)
+
+---
+
+#### Équation de la tangente en un point régulier
+
+Démontrez que la droite passant par le point $\gamma(t_0)$ et de vecteur directeur $\gamma'(t_0)$ est la meilleure approximation affine de la courbe au voisinage de $t_0$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez un développement limité (formule de Taylor-Young) de la fonction vectorielle $\gamma(t)$ au voisinage de $t_0$ à l'ordre 1. Exprimez le vecteur $\vec{M_0M(t)} = \gamma(t) - \gamma(t_0)$ et analysez la distance entre un point sur la courbe et le point correspondant sur la droite tangente.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $(I, \gamma)$ une courbe paramétrée de classe $C^1$ et $t_0 \in I$ un point régulier, c'est-à-dire $\gamma'(t_0) \neq \vec{0}$. La droite tangente $T_{t_0}$ est définie comme la droite passant par le point $M_0 = \gamma(t_0)$ et dirigée par le vecteur vitesse $\vec{v}_0 = \gamma'(t_0)$. Un point $P(t)$ sur cette droite peut être paramétré par $P(t) = \gamma(t_0) + (t-t_0)\gamma'(t_0)$.
+
+**Étape 1 : Développement limité de la courbe**
+
+La formule de Taylor-Young pour la fonction vectorielle $\gamma$ au voisinage de $t_0$ à l'ordre 1 s'écrit :
+
+$$ \gamma(t) = \gamma(t_0) + (t-t_0)\gamma'(t_0) + (t-t_0)\vec{\varepsilon}(t) $$
+
+où $\vec{\varepsilon}(t)$ est une fonction vectorielle telle que $\lim_{t \to t_0} \vec{\varepsilon}(t) = \vec{0}$.
+
+On peut réécrire ceci en utilisant la notation "petit o" :
+
+$$ \gamma(t) = \gamma(t_0) + (t-t_0)\gamma'(t_0) + o(t-t_0) $$
+
+**Étape 2 : Comparaison avec la droite tangente**
+
+Le vecteur reliant le point $M_0$ au point courant $M(t) = \gamma(t)$ sur la courbe est $\vec{M_0M(t)} = \gamma(t) - \gamma(t_0)$.
+
+En utilisant le développement limité, on a :
+
+$$ \vec{M_0M(t)} = (t-t_0)\gamma'(t_0) + o(t-t_0) $$
+
+Le terme $(t-t_0)\gamma'(t_0)$ représente le déplacement le long de la droite tangente à partir de $\gamma(t_0)$. L'écart entre la courbe et la tangente est donc représenté par le terme $o(t-t_0)$.
+
+**Conclusion**
+
+L'écart entre la position du point sur la courbe $\gamma(t)$ et sa position sur l'approximation affine $P(t)$ est $\|\gamma(t) - P(t)\| = \|o(t-t_0)\|$. Cet écart tend vers zéro plus rapidement que $t-t_0$, ce qui signifie que la droite $P(t)$ est la meilleure approximation affine de la courbe au voisinage de $t_0$.
+
+</details>
+
+---
+
+#### Caractérisation du paramétrage par longueur d'arc
+
+Démontrez qu'une courbe régulière $\gamma(t)$ est paramétrée par la longueur d'arc si et seulement si son vecteur vitesse $\gamma'(t)$ est unitaire pour tout $t$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Pour l'implication directe $(\Rightarrow)$, utilisez la définition de la fonction abscisse curviligne $s(t) = \int_{t_0}^t \|\gamma'(u)\| du$. Que signifie "être paramétrée par la longueur d'arc" en termes de la relation entre $s$ et $t$ ? Utilisez ensuite le théorème fondamental de l'analyse.
+
+Pour l'implication réciproque $(\Leftarrow)$, supposez que $\|\gamma'(t)\| = 1$ et calculez l'abscisse curviligne $s(t)$ à partir d'un point $t_0$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $(I, \gamma)$ une courbe de classe $C^1$ régulière. L'abscisse curviligne à partir d'un point $t_0 \in I$ est définie par $s(t) = \int_{t_0}^t \|\gamma'(u)\| du$.
+
+**Partie 1 : Implication directe $(\Rightarrow)$**
+
+Supposons que la courbe est paramétrée par la longueur d'arc. Cela signifie que le paramètre, que nous noterons $s$ pour la clarté, est lui-même l'abscisse curviligne. Soit $\gamma(s)$ ce paramétrage. Par définition de l'abscisse curviligne, la distance parcourue de $s_0$ à $s$ est $s - s_0$.
+
+Nous avons donc la relation :
+
+$$ s - s_0 = \int_{s_0}^s \|\gamma'(u)\| du $$
+
+En dérivant cette équation par rapport à $s$ et en utilisant le théorème fondamental de l'analyse, on obtient :
+
+$$ \frac{d}{ds}(s - s_0) = \frac{d}{ds} \int_{s_0}^s \|\gamma'(u)\| du $$
+
+$$ 1 = \|\gamma'(s)\| $$
+
+Le vecteur vitesse est donc bien unitaire.
+
+**Partie 2 : Implication réciproque $(\Leftarrow)$**
+
+Supposons maintenant que pour tout $t \in I$, le vecteur vitesse est unitaire, c'est-à-dire $\|\gamma'(t)\| = 1$.
+
+Calculons la fonction abscisse curviligne $s(t)$ à partir d'un point $t_0$ :
+
+$$ s(t) = \int_{t_0}^t \|\gamma'(u)\| du = \int_{t_0}^t 1 \, du = [u]_{t_0}^t = t - t_0 $$
+
+À une constante additive près (le choix du point de départ $t_0$), le paramètre $t$ est égal à la longueur d'arc $s(t)$. La courbe est donc paramétrée par la longueur d'arc.
+
+**Conclusion**
+
+Nous avons démontré les deux implications de l'équivalence : une courbe est paramétrée par la longueur d'arc si et seulement si sa vitesse scalaire est constamment égale à 1.
+
+</details>
+
+---
+
+#### Orthogonalité de la vitesse et de l'accélération
+
+Démontrez que si une courbe $\gamma(t)$ de classe $C^2$ est parcourue à vitesse scalaire constante, alors son vecteur accélération $\gamma''(t)$ est orthogonal à son vecteur vitesse $\gamma'(t)$ pour tout $t$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+La condition "vitesse scalaire constante" se traduit par $\|\gamma'(t)\| = C$, où $C$ est une constante. Il est souvent plus simple de travailler avec le carré de la norme. Écrivez la condition sous la forme $\|\gamma'(t)\|^2 = C^2$. Rappelez-vous que $\|\vec{v}\|^2 = \vec{v} \cdot \vec{v}$. Dérivez ensuite l'expression $\gamma'(t) \cdot \gamma'(t) = C^2$ par rapport au temps $t$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Traduire la condition mathématiquement**
+
+Soit $\gamma(t)$ une courbe de classe $C^2$. L'hypothèse est que la vitesse scalaire est constante, ce qui s'écrit :
+
+$$ \|\gamma'(t)\| = C \quad \text{pour une constante } C \ge 0 $$
+
+En élevant au carré, nous obtenons une relation équivalente qui est plus facile à dériver :
+
+$$ \|\gamma'(t)\|^2 = C^2 $$
+
+En utilisant la définition du produit scalaire, cela devient :
+
+$$ \gamma'(t) \cdot \gamma'(t) = C^2 $$
+
+**Étape 2 : Dériver l'expression par rapport à $t$**
+
+Nous dérivons les deux membres de cette équation par rapport à $t$. Le membre de droite est une constante, sa dérivée est donc nulle. Pour le membre de gauche, nous utilisons la règle de dérivation du produit scalaire, qui est analogue à la règle du produit pour les fonctions scalaires : $(\vec{u} \cdot \vec{v})' = \vec{u}' \cdot \vec{v} + \vec{u} \cdot \vec{v}'$.
+
+$$ \frac{d}{dt} (\gamma'(t) \cdot \gamma'(t)) = \frac{d}{dt} (C^2) $$
+
+$$ \gamma''(t) \cdot \gamma'(t) + \gamma'(t) \cdot \gamma''(t) = 0 $$
+
+Comme le produit scalaire est commutatif, cela se simplifie en :
+
+$$ 2 (\gamma''(t) \cdot \gamma'(t)) = 0 $$
+
+$$ \gamma''(t) \cdot \gamma'(t) = 0 $$
+
+**Conclusion**
+
+Le produit scalaire du vecteur accélération $\gamma''(t)$ et du vecteur vitesse $\gamma'(t)$ est nul. Par définition, cela signifie que ces deux vecteurs sont orthogonaux pour tout $t$. Physiquement, cela signifie que toute l'accélération est "centripète" ; elle sert uniquement à changer la direction du mouvement, pas sa vitesse.
+
+</details>
+
+---
+
+#### Position locale d'une courbe en un point birégulier
+
+Démontrez qu'au voisinage d'un point birégulier $\gamma(t_0)$, la courbe est entièrement située d'un seul côté de sa tangente, dans le demi-plan de concavité.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Un point $t_0$ est birégulier si les vecteurs $\gamma'(t_0)$ et $\gamma''(t_0)$ sont linéairement indépendants. Ils forment donc une base du plan. Utilisez un développement de Taylor-Young à l'ordre 2 du vecteur position $\vec{M_0M(t)} = \gamma(t) - \gamma(t_0)$ au voisinage de $t_0$. Exprimez ce vecteur dans la base $(\gamma'(t_0), \gamma''(t_0))$ et analysez le signe de la composante selon $\gamma''(t_0)$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $t_0$ un point birégulier d'une courbe $\gamma$ de classe $C^2$. Par définition, les vecteurs $\vec{v}_0 = \gamma'(t_0)$ et $\vec{a}_0 = \gamma''(t_0)$ sont linéairement indépendants et forment une base du plan. Le point sur la courbe est $M_0 = \gamma(t_0)$. La tangente en $M_0$ est la droite passant par $M_0$ de direction $\vec{v}_0$.
+
+**Étape 1 : Développement de Taylor-Young**
+
+Considérons un point $M(t) = \gamma(t)$ proche de $M_0$. Posons $t = t_0 + h$, avec $h$ petit. Le vecteur $\vec{M_0M(t_0+h)}$ peut être approximé par la formule de Taylor-Young à l'ordre 2 :
+
+$$ \vec{M_0M(t_0+h)} = \gamma(t_0+h) - \gamma(t_0) = h\gamma'(t_0) + \frac{h^2}{2}\gamma''(t_0) + o(h^2) $$
+
+$$ \vec{M_0M(t_0+h)} = h\vec{v}_0 + \frac{h^2}{2}\vec{a}_0 + o(h^2) $$
+
+**Étape 2 : Analyse des coordonnées dans la base $(\vec{v}_0, \vec{a}_0)$**
+
+Dans la base $(\vec{v}_0, \vec{a}_0)$, les coordonnées du vecteur $\vec{M_0M(t_0+h)}$ sont approximativement $(h, \frac{h^2}{2})$. Plus formellement, la coordonnée selon $\vec{a}_0$ est donnée par :
+
+$$ \text{Composante}_{\vec{a}_0} = \frac{h^2}{2} + \text{terme en } o(h^2) $$
+
+Pour $h$ suffisamment petit et non nul, le terme dominant est $\frac{h^2}{2}$. Puisque $h^2 > 0$, cette composante est strictement positive.
+
+**Conclusion**
+
+Le vecteur $\vec{M_0M(t_0+h)}$ a une composante selon $\vec{a}_0$ qui est du signe de $\frac{h^2}{2}$, c'est-à-dire positive pour $h$ assez petit. Cela signifie que le point $M(t_0+h)$ se situe dans le demi-plan ouvert délimité par la tangente et contenant le vecteur accélération $\vec{a}_0$. Ce demi-plan est le demi-plan de concavité. La courbe reste donc localement d'un seul côté de sa tangente.
+
+</details>
+
+---
+
+#### Classification d'un point singulier : la parabole de Neile
+
+Considérez la courbe paramétrée par $\gamma(t) = (t^2, t^3)$. Démontrez que le point correspondant à $t=0$ est un point de rebroussement de première espèce.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Suivez la méthode de classification des points singuliers.
+
+1. Vérifiez que $\gamma'(0) = \vec{0}$.
+2. Calculez les dérivées successives $\gamma^{(k)}(t)$ et évaluez-les en $t=0$.
+3. Trouvez le plus petit entier $p \ge 2$ tel que $\gamma^{(p)}(0) \neq \vec{0}$.
+4. Trouvez le plus petit entier $q > p$ tel que la famille $(\gamma^{(p)}(0), \gamma^{(q)}(0))$ est libre.
+5. Concluez en fonction de la parité de $p$ et $q$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit la courbe $\gamma(t) = (t^2, t^3)$.
+
+**Étape 1 : Recherche du point singulier**
+
+Le vecteur vitesse est $\gamma'(t) = (2t, 3t^2)$.
+
+Pour $t=0$, on a $\gamma'(0) = (0, 0) = \vec{0}$. Le point $\gamma(0)=(0,0)$ est donc bien un point singulier.
+
+**Étape 2 : Calcul des dérivées supérieures en $t=0$**
+
+Calculons les dérivées successives et évaluons-les en $t=0$.
+
+- $\gamma''(t) = (2, 6t) \implies \gamma''(0) = (2, 0)$.
+- $\gamma'''(t) = (0, 6) \implies \gamma'''(0) = (0, 6)$.
+
+**Étape 3 : Détermination des entiers $p$ et $q$**
+
+- L'entier $p$ est l'ordre de la première dérivée non nulle à partir du rang 2.
+
+Puisque $\gamma''(0) = (2,0) \neq \vec{0}$, on a $p=2$.
+
+- L'entier $q$ est l'ordre de la première dérivée (d'ordre supérieur à $p$) qui forme une famille libre avec $\gamma^{(p)}(0)$.
+
+Nous devons tester la dépendance linéaire de $(\gamma^{(2)}(0), \gamma^{(k)}(0))$ pour $k > 2$.
+
+Pour $k=3$, la famille est $(\gamma^{(2)}(0), \gamma^{(3)}(0)) = ((2,0), (0,6))$.
+
+Le déterminant de ces deux vecteurs dans la base canonique est $\begin{vmatrix} 2 & 0 \\ 0 & 6 \end{vmatrix} = 12 \neq 0$.
+
+Les vecteurs sont donc linéairement indépendants.
+
+On a donc $q=3$.
+
+**Étape 4 : Conclusion**
+
+Nous avons trouvé $p=2$ (pair) et $q=3$ (impair).
+
+Selon la classification des points singuliers, un point avec $(p,q)$ = (pair, impair) est un **point de rebroussement de première espèce**.
+
+</details>
+
+---
+
+#### Vecteur gradient et normale à une courbe implicite
+
+Soit une courbe $\mathcal{C}$ définie par $F(x,y)=0$, où $F$ est une fonction de classe $C^1$. Soit $M_0=(x_0, y_0)$ un point de la courbe tel que le gradient $\nabla F(M_0)$ est non nul. Démontrez que le vecteur $\nabla F(M_0)$ est normal (orthogonal) à la droite tangente à la courbe $\mathcal{C}$ en $M_0$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Considérez une paramétrisation locale de la courbe, $\gamma(t) = (x(t), y(t))$, telle que $\gamma(t_0) = M_0$. Le vecteur tangent à la courbe en $M_0$ est $\gamma'(t_0)$.
+
+Puisque chaque point de la courbe satisfait $F(x,y)=0$, on a l'identité $F(x(t), y(t)) = 0$. Dérivez cette identité par rapport à $t$ en utilisant la règle de dérivation en chaîne pour les fonctions de plusieurs variables.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Mettre en place les outils**
+
+Soit la courbe $\mathcal{C}$ d'équation implicite $F(x,y)=0$. Soit $M_0=(x_0,y_0)$ un point de $\mathcal{C}$ tel que $\nabla F(M_0) = \left(\frac{\partial F}{\partial x}(M_0), \frac{\partial F}{\partial y}(M_0)\right) \neq \vec{0}$.
+
+Ce point est un point régulier de la courbe implicite, qui admet donc une tangente bien définie.
+
+Soit $\gamma(t) = (x(t), y(t))$ une paramétrisation de classe $C^1$ d'un arc de $\mathcal{C}$ passant par $M_0$. Supposons que $\gamma(t_0) = M_0$ et que $\gamma'(t_0) \neq \vec{0}$. Le vecteur $\gamma'(t_0) = (x'(t_0), y'(t_0))$ est un vecteur directeur de la droite tangente à $\mathcal{C}$ en $M_0$.
+
+**Étape 2 : Utiliser l'équation de la courbe**
+
+Pour tout $t$ dans l'intervalle de définition de $\gamma$, le point $\gamma(t)$ est sur la courbe, donc il vérifie l'équation :
+
+$$ F(x(t), y(t)) = 0 $$
+
+Cette relation est une identité en $t$. On peut donc la dériver par rapport à $t$.
+
+**Étape 3 : Dériver et interpréter**
+
+En utilisant la règle de dérivation en chaîne, la dérivée de la fonction composée $G(t) = F(x(t), y(t))$ est :
+
+$$ \frac{dG}{dt} = \frac{\partial F}{\partial x}(x(t), y(t)) \cdot x'(t) + \frac{\partial F}{\partial y}(x(t), y(t)) \cdot y'(t) $$
+
+Puisque $G(t) = 0$ pour tout $t$, sa dérivée est nulle. En évaluant en $t=t_0$, on obtient :
+
+$$ \frac{\partial F}{\partial x}(M_0) \cdot x'(t_0) + \frac{\partial F}{\partial y}(M_0) \cdot y'(t_0) = 0 $$
+
+Cette expression est précisément le produit scalaire du vecteur gradient $\nabla F(M_0)$ et du vecteur tangent $\gamma'(t_0)$ :
+
+$$ \nabla F(M_0) \cdot \gamma'(t_0) = 0 $$
+
+**Conclusion**
+
+Le produit scalaire entre le vecteur gradient et le vecteur tangent étant nul, ces deux vecteurs sont orthogonaux. Le vecteur gradient $\nabla F(M_0)$ est donc normal à la tangente de la courbe au point $M_0$.
+
+</details>
+
+---
+
+#### Classification des coniques par le discriminant
+
+Démontrez que la nature d'une conique non dégénérée d'équation $ax^2 + 2cxy + by^2 + dx + ey + f = 0$ est déterminée par le signe de son discriminant quadratique $\Delta = ab-c^2$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+La partie quadratique $Q(x,y) = ax^2 + 2cxy + by^2$ peut être représentée par la matrice symétrique $M = \begin{pmatrix} a & c \\ c & b \end{pmatrix}$. Un changement de repère par rotation correspond à diagonaliser cette matrice. La nature de la conique dépend des signes des valeurs propres de $M$. Exprimez le déterminant de $M$ (qui est égal à $\Delta$) en fonction de ses valeurs propres.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+L'équation générale d'une conique est $ax^2 + 2cxy + by^2 + dx + ey + f = 0$.
+
+**Étape 1 : Représentation matricielle de la partie quadratique**
+
+La partie quadratique $Q(x,y) = ax^2 + 2cxy + by^2$ peut s'écrire sous forme matricielle :
+
+$$ Q(x,y) = \begin{pmatrix} x & y \end{pmatrix} \begin{pmatrix} a & c \\ c & b \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} $$
+
+Soit $M = \begin{pmatrix} a & c \\ c & b \end{pmatrix}$ la matrice symétrique associée.
+
+**Étape 2 : Rotation du repère**
+
+Selon le théorème spectral, il existe une base orthonormée de vecteurs propres pour $M$. Effectuer une rotation du repère pour l'aligner avec ces vecteurs propres diagonalise la matrice $M$. Dans le nouveau repère $(X,Y)$, la partie quadratique de l'équation devient :
+
+$$ \lambda_1 X^2 + \lambda_2 Y^2 $$
+
+où $\lambda_1$ et $\lambda_2$ sont les valeurs propres de $M$. L'équation de la conique dans ce nouveau repère est de la forme :
+
+$$ \lambda_1 X^2 + \lambda_2 Y^2 + d'X + e'Y + f' = 0 $$
+
+**Étape 3 : Relation entre les valeurs propres et le discriminant**
+
+Le déterminant d'une matrice est un invariant par changement de base. De plus, le déterminant est égal au produit des valeurs propres.
+
+$$ \det(M) = \lambda_1 \lambda_2 $$
+
+Le discriminant de la conique est $\Delta = ab-c^2 = \det(M)$. On a donc :
+
+$$ \Delta = \lambda_1 \lambda_2 $$
+
+**Étape 4 : Discussion selon le signe de $\Delta$**
+
+La nature de la conique dépend des signes de $\lambda_1$ et $\lambda_2$.
+
+1.  **Cas Ellipse :** Si $\Delta = \lambda_1 \lambda_2 > 0$, alors $\lambda_1$ et $\lambda_2$ sont non nuls et de même signe. Après une éventuelle translation (pour éliminer les termes linéaires), l'équation se ramène à $\lambda_1 X'^2 + \lambda_2 Y'^2 = C$. Si $C$ est du même signe que les $\lambda_i$, on obtient une ellipse. (Si $C=0$, un point ; si $C$ est de signe opposé, l'ensemble vide).
+2.  **Cas Hyperbole :** Si $\Delta = \lambda_1 \lambda_2 < 0$, alors $\lambda_1$ et $\lambda_2$ sont non nuls et de signes opposés. L'équation se ramène à une forme du type $\frac{X'^2}{\alpha^2} - \frac{Y'^2}{\beta^2} = 1$, qui est l'équation d'une hyperbole. (Si le second membre est nul, on obtient deux droites sécantes, un cas dégénéré).
+3.  **Cas Parabole :** Si $\Delta = \lambda_1 \lambda_2 = 0$, alors au moins une des valeurs propres est nulle. Puisque la partie quadratique n'est pas identiquement nulle, une seule valeur propre est nulle, disons $\lambda_2 = 0$. L'équation devient $\lambda_1 X^2 + d'X + e'Y + f' = 0$. Si $e' \neq 0$, on peut la ramener par translation à une forme du type $Y'^2 = 2pX'$, qui est l'équation d'une parabole.
+
+**Conclusion**
+
+Le signe du discriminant $\Delta = ab-c^2$ est le même que celui du produit des valeurs propres $\lambda_1 \lambda_2$, qui détermine si la conique est du genre ellipse ($\Delta > 0$), hyperbole ($\Delta < 0$) ou parabole ($\Delta = 0$).
+
+</details>
+
+---
+
+#### Paramétrage rationnel du cercle unité
+
+Démontrez que le paramétrage $\gamma(t) = \left( \frac{1-t^2}{1+t^2}, \frac{2t}{1+t^2} \right)$ pour $t \in \mathbb{R}$ décrit le cercle unité $x^2+y^2=1$, privé d'un point que vous préciserez.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Pour prouver que les points de la courbe sont sur le cercle, substituez les expressions de $x(t)$ et $y(t)$ dans l'équation du cercle $x^2+y^2=1$ et vérifiez que l'égalité est satisfaite pour tout $t \in \mathbb{R}$.
+
+Pour déterminer quel point est manquant, étudiez la limite de $x(t)$ et $y(t)$ lorsque $t \to \pm\infty$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit le paramétrage $\gamma(t) = (x(t), y(t))$ avec $x(t) = \frac{1-t^2}{1+t^2}$ et $y(t) = \frac{2t}{1+t^2}$.
+
+**Étape 1 : Vérifier que les points sont sur le cercle**
+
+Nous devons montrer que pour tout $t \in \mathbb{R}$, on a $x(t)^2 + y(t)^2 = 1$.
+
+Calculons la somme des carrés :
+
+$$ x(t)^2 + y(t)^2 = \left( \frac{1-t^2}{1+t^2} \right)^2 + \left( \frac{2t}{1+t^2} \right)^2 $$
+
+$$ = \frac{(1-t^2)^2}{(1+t^2)^2} + \frac{(2t)^2}{(1+t^2)^2} $$
+
+$$ = \frac{(1 - 2t^2 + t^4) + 4t^2}{(1+t^2)^2} $$
+
+$$ = \frac{1 + 2t^2 + t^4}{(1+t^2)^2} $$
+
+$$ = \frac{(1+t^2)^2}{(1+t^2)^2} = 1 $$
+
+L'équation est vérifiée pour tout $t \in \mathbb{R}$. L'image de la courbe est donc bien contenue dans le cercle unité.
+
+**Étape 2 : Déterminer si tous les points du cercle sont atteints**
+
+Ce paramétrage est défini pour tout $t \in \mathbb{R}$. Pour savoir si tous les points du cercle sont atteints, nous pouvons essayer de résoudre $t$ en fonction de $(x,y)$.
+
+Si $x \neq -1$, on peut écrire $t = y / (1+x)$.
+
+$x = \frac{1-t^2}{1+t^2} = \frac{1 - (y/(1+x))^2}{1 + (y/(1+x))^2} = \frac{(1+x)^2-y^2}{(1+x)^2+y^2} = \frac{1+2x+x^2-y^2}{1+2x+x^2+y^2}$.
+
+Puisque $x^2+y^2=1$, on a $x = \frac{1+2x+x^2-(1-x^2)}{1+2x+1} = \frac{2x+2x^2}{2+2x} = \frac{2x(1+x)}{2(1+x)} = x$.
+
+Cette relation est une identité pour $x \neq -1$. Donc, tout point $(x,y)$ du cercle avec $x \neq -1$ peut être atteint en posant $t=y/(1+x)$.
+
+Considérons le point $(-1, 0)$. Si l'on essaie de résoudre $\gamma(t) = (-1,0)$, on obtient :
+
+$$ \frac{1-t^2}{1+t^2} = -1 \implies 1-t^2 = -1-t^2 \implies 1=-1 \quad \text{(impossible)} $$
+
+Le point $(-1,0)$ n'est donc jamais atteint.
+
+Alternativement, étudions la limite de $\gamma(t)$ quand $t \to \infty$ :
+
+$$ \lim_{t\to\infty} x(t) = \lim_{t\to\infty} \frac{-t^2}{t^2} = -1 $$
+
+$$ \lim_{t\to\infty} y(t) = \lim_{t\to\infty} \frac{2t}{t^2} = 0 $$
+
+Le point $(-1,0)$ est le point limite de la courbe lorsque le paramètre tend vers l'infini.
+
+**Conclusion**
+
+Le paramétrage $\gamma(t) = \left( \frac{1-t^2}{1+t^2}, \frac{2t}{1+t^2} \right)$ décrit le cercle unité $x^2+y^2=1$ privé du point $(-1, 0)$.
+
+</details>
+
+---
+
+#### Courbure du graphe d'une fonction
+
+Démontrez que la courbure d'une courbe définie par le graphe d'une fonction $y=f(x)$ de classe $C^2$ est donnée par la formule :
+
+$$ \kappa(x) = \frac{f''(x)}{(1 + [f'(x)]^2)^{3/2}} $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Le graphe d'une fonction $y=f(x)$ peut être paramétré de manière naturelle en utilisant $x$ comme paramètre. Posez $\gamma(x) = (x, f(x))$.
+
+Calculez les deux premières dérivées de ce vecteur de position, $\gamma'(x)$ et $\gamma''(x)$.
+
+Appliquez ensuite la formule générale de la courbure pour un paramétrage quelconque : $\kappa = \frac{\det(\gamma', \gamma'')}{\|\gamma'\|^3}$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Paramétrer la courbe**
+
+Une courbe définie par l'équation $y=f(x)$ peut être paramétrée en utilisant $t=x$. Le paramétrage est donc :
+
+$$ \gamma(x) = (x, f(x)) $$
+
+Les composantes sont $x(x)=x$ et $y(x)=f(x)$.
+
+**Étape 2 : Calculer les vecteurs vitesse et accélération**
+
+Nous dérivons les composantes par rapport au paramètre $x$ :
+
+- Composantes de la vitesse $\gamma'(x)$:
+
+  $$ x'(x) = \frac{d}{dx}(x) = 1 $$
+
+  $$ y'(x) = \frac{d}{dx}(f(x)) = f'(x) $$
+
+  Donc, $\gamma'(x) = (1, f'(x))$.
+
+- Composantes de l'accélération $\gamma''(x)$:
+
+  $$ x''(x) = \frac{d}{dx}(1) = 0 $$
+
+  $$ y''(x) = \frac{d}{dx}(f'(x)) = f''(x) $$
+
+  Donc, $\gamma''(x) = (0, f''(x))$.
+
+**Étape 3 : Appliquer la formule de la courbure**
+
+La formule générale de la courbure est $\kappa = \frac{\det(\gamma', \gamma'')}{\|\gamma'\|^3}$.
+
+Calculons les deux termes de cette formule :
+
+- Le déterminant :
+
+  $$ \det(\gamma'(x), \gamma''(x)) = \begin{vmatrix} 1 & 0 \\ f'(x) & f''(x) \end{vmatrix} = 1 \cdot f''(x) - 0 \cdot f'(x) = f''(x) $$
+
+- La norme de la vitesse au cube :
+
+  $$ \|\gamma'(x)\| = \sqrt{1^2 + (f'(x))^2} = \sqrt{1 + [f'(x)]^2} $$
+
+  $$ \|\gamma'(x)\|^3 = (1 + [f'(x)]^2)^{3/2} $$
+
+**Conclusion**
+
+En substituant ces deux résultats dans la formule de la courbure, on obtient :
+
+$$ \kappa(x) = \frac{f''(x)}{(1 + [f'(x)]^2)^{3/2}} $$
+
+Le signe de la courbure est déterminé par le signe de la dérivée seconde $f''(x)$, ce qui correspond bien à la notion de concavité pour le graphe d'une fonction.
+
+</details>
+
+---
+
+#### Courbure totale d'une courbe simple fermée
+
+En utilisant le théorème de Gauss-Bonnet, démontrez que l'intégrale de la courbure le long d'une courbe simple, fermée, régulière et de classe $C^2$, parcourue dans le sens trigonométrique, est égale à $2\pi$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Le théorème de Gauss-Bonnet pour une courbe plane fermée $\mathcal{C}$ stipule que $\int_{\mathcal{C}} \kappa \, ds = 2\pi \times \text{Enroul}(\mathcal{C})$.
+
+La question revient à déterminer la valeur du nombre d'enroulement de la tangente, $\text{Enroul}(\mathcal{C})$, pour une courbe qui est "simple" (ne se croise pas) et parcourue dans le sens trigonométrique (anti-horaire). Visualisez comment le vecteur tangent unitaire évolue lorsque vous parcourez une telle courbe.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Rappel du théorème de Gauss-Bonnet**
+
+Le théorème de Gauss-Bonnet pour une courbe plane $\mathcal{C}$, paramétrée par un lacet régulier $\gamma: [a,b] \to \mathbb{R}^2$ de classe $C^2$, énonce que :
+
+$$ \int_{\mathcal{C}} \kappa \, ds = \int_a^b \kappa(t) \|\gamma'(t)\| \, dt = 2\pi \cdot \text{Enroul}(\gamma) $$
+
+où $\kappa$ est la courbure et $\text{Enroul}(\gamma)$ est le nombre d'enroulement de la tangente.
+
+**Étape 2 : Interprétation du nombre d'enroulement**
+
+Le nombre d'enroulement de la tangente, $\text{Enroul}(\gamma)$, est le nombre total de tours complets (comptés algébriquement) effectués par le vecteur tangent unitaire $\tau(t) = \gamma'(t)/\|\gamma'(t)\|$ lorsque le paramètre $t$ parcourt l'intervalle $[a,b]$.
+
+Si $\varphi(t)$ est l'angle du vecteur tangent avec l'axe des abscisses, alors :
+
+$$ \text{Enroul}(\gamma) = \frac{\varphi(b) - \varphi(a)}{2\pi} $$
+
+Ce nombre est nécessairement un entier.
+
+**Étape 3 : Appliquer aux hypothèses de la courbe**
+
+On nous donne une courbe $\mathcal{C}$ qui est :
+
+- **Fermée :** Le point de départ et d'arrivée coïncident.
+- **Simple :** Elle ne se recoupe pas.
+- **Parcourue dans le sens trigonométrique (anti-horaire) :** C'est l'orientation positive.
+
+Imaginons que nous suivons la courbe. Le vecteur tangent unitaire est un point qui se déplace sur le cercle unité. Comme la courbe $\mathcal{C}$ est fermée et que l'on revient au point de départ avec la même tangente, le vecteur tangent unitaire doit revenir à sa position initiale sur le cercle unité.
+
+Puisque la courbe est simple et parcourue dans le sens positif, elle fait une unique "boucle" dans le plan. Le vecteur tangent doit donc faire lui aussi une unique "boucle" dans le sens positif autour de l'origine sur son cercle. Il accomplit donc exactement un tour complet.
+
+Le changement total d'angle est $\varphi(b) - \varphi(a) = 2\pi$.
+
+Le nombre d'enroulement est donc :
+
+$$ \text{Enroul}(\mathcal{C}) = \frac{2\pi}{2\pi} = 1 $$
+
+**Conclusion**
+
+En appliquant le théorème de Gauss-Bonnet avec $\text{Enroul}(\mathcal{C})=1$, on obtient :
+
+$$ \int_{\mathcal{C}} \kappa \, ds = 2\pi \times 1 = 2\pi $$
+
+Ce résultat remarquable montre que, quelle que soit la forme précise d'une courbe simple fermée (un cercle, une ellipse, une forme plus complexe), la somme de toutes ses petites courbures locales le long de son parcours donne toujours $2\pi$ si elle est parcourue positivement.
+
+</details>
+
+---

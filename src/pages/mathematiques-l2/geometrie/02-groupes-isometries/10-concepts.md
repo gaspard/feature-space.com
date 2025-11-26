@@ -2,7 +2,7 @@
 id: c7d09f9e
 type: concepts
 order: 10
-title: 'Groupes d''isométries - Concepts (A)'
+title: Groupes d''isométries - Concepts (A)
 tags:
   - isométrie
   - espace euclidien

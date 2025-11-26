@@ -1,0 +1,125 @@
+{
+  "info": {
+    "id": "ebc71606",
+    "title": "Réduction des endomorphismes auto-adjoints - fiches de révision (A)",
+    "type": "cards",
+    "level": "regular",
+    "chapter": "Réduction des endomorphismes auto-adjoints",
+    "course": "Géométrie",
+    "tags": [
+      "endomorphismes",
+      "auto-adjoints",
+      "déterminants",
+      "diagonalisation",
+      "décomposition polaire"
+    ],
+    "count": 15
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "ebc71606",
+      "content": "Qu'est-ce que le déterminant d'une matrice carrée ?",
+      "solution": "\n\nLe **déterminant** d'une matrice carrée $A = (a_{ij})$ de taille $n \\times n$ est un scalaire, noté $\\det(A)$, qui encode des informations importantes sur la matrice et la transformation linéaire qu'elle représente.\n\nLa formule générale, dite de Leibniz, est :\n\n$$ \\det(A) = \\sum_{\\sigma \\in S_n} \\varepsilon(\\sigma) \\prod_{i=1}^{n} a_{\\sigma(i), i} $$\n\nIntuitivement, c'est une somme de produits de $n$ coefficients de la matrice, en prenant exactement un coefficient par ligne et un par colonne. Chaque produit est affecté d'un signe $+1$ ou $-1$ selon la permutation $\\sigma$ des colonnes.\n\nLe déterminant est l'unique application qui est :\n\n1.  **n-linéaire alternée** par rapport aux colonnes (ou aux lignes).\n2.  Vaut **1** pour la matrice identité $I_n$.\n\n**Exemple (Matrice 2x2):**\n\nPour une matrice $A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$, la formule se simplifie grandement :\n\n$$ \\det(A) = ad - bc $$\n\nC'est le produit des éléments de la diagonale principale moins le produit des éléments de l'autre diagonale.\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "ebc71606",
+      "content": "Quelle est l'interprétation géométrique du déterminant ?",
+      "solution": "\n\nLe déterminant d'un endomorphisme $f$ (ou de sa matrice) mesure le **facteur de changement de volume** induit par la transformation $f$.\n\nPlus précisément, la valeur absolue du déterminant $|\\det(f)|$ est le coefficient par lequel les volumes sont multipliés.\n\n-   **En dimension 2** : Si $v_1$ et $v_2$ sont deux vecteurs de $\\mathbb{R}^2$, alors la valeur absolue de $\\det(v_1, v_2)$ est l'**aire** du parallélogramme formé par ces deux vecteurs.\n\n-   **En dimension 3** : Si $v_1, v_2, v_3$ sont trois vecteurs de $\\mathbb{R}^3$, alors la valeur absolue de $\\det(v_1, v_2, v_3)$ est le **volume** du parallélépipède formé par ces trois vecteurs.\n\nSi $\\det(f) > 0$, l'orientation de l'espace est conservée.\n\nSi $\\det(f) < 0$, l'orientation est inversée (comme une symétrie).\n\nSi $\\det(f) = 0$, les volumes sont \"aplatis\" à 0 (l'image est de dimension inférieure).\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "ebc71606",
+      "content": "Comment le déterminant permet-il de savoir si une matrice est inversible ?",
+      "solution": "\n\nUne matrice carrée $A$ est **inversible** si et seulement si son déterminant est **non nul**.\n\n$$ A \\text{ est inversible} \\iff \\det(A) \\neq 0 $$\n\nC'est l'une des propriétés les plus importantes du déterminant.\n\n**Explications :**\n\n-   Si $\\det(A) = 0$, cela signifie que la transformation associée \"aplatit\" l'espace. Elle n'est pas injective (son noyau n'est pas réduit à $\\{0\\}$) et donc pas bijective. Il est impossible de \"revenir en arrière\", donc la matrice n'est pas inversible.\n-   Si $\\det(A) \\neq 0$, la transformation préserve les volumes (à un facteur près) et est une bijection, donc la matrice est inversible.\n\nDe plus, si $A$ est inversible, on a la formule :\n\n$$ \\det(A^{-1}) = \\frac{1}{\\det(A)} $$\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "ebc71606",
+      "content": "Que sont une valeur propre et un vecteur propre d'un endomorphisme ?",
+      "solution": "\n\nSoit $f$ un endomorphisme d'un espace vectoriel $E$.\n\n-   Une **valeur propre** de $f$ est un scalaire $\\lambda$ pour lequel il existe un vecteur **non nul** $x \\in E$ tel que :\n\n    $$ f(x) = \\lambda x $$\n\n-   Un tel vecteur $x$ (non nul) est appelé **vecteur propre** de $f$ associé à la valeur propre $\\lambda$.\n\n**Intuition géométrique :**\n\nUn vecteur propre est un vecteur dont la **direction est inchangée** par la transformation $f$. L'application de $f$ à $x$ ne fait que l'étirer ou le contracter d'un facteur $\\lambda$, et éventuellement inverser son sens si $\\lambda < 0$. Les vecteurs propres révèlent les \"axes privilégiés\" d'une transformation linéaire.\n\n**Important :** Par définition, le vecteur nul **n'est jamais** un vecteur propre, même si $f(0) = \\lambda \\cdot 0$ est toujours vrai.\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "ebc71606",
+      "content": "Qu'est-ce que le polynôme caractéristique et comment l'utilise-t-on pour trouver les valeurs propres ?",
+      "solution": "\n\nLe **polynôme caractéristique** d'un endomorphisme $f$ (ou de sa matrice $A$) est un polynôme en $\\lambda$ défini par :\n\n$$ \\chi_f(\\lambda) = \\det(f - \\lambda \\text{Id}) \\quad \\text{ou} \\quad \\chi_A(\\lambda) = \\det(A - \\lambda I) $$\n\n**Utilisation :**\n\nLes **racines** du polynôme caractéristique sont précisément les **valeurs propres** de l'endomorphisme $f$.\n\nPour trouver les valeurs propres d'une matrice $A$, la méthode est donc :\n\n1.  Former la matrice $A - \\lambda I$.\n2.  Calculer son déterminant, ce qui donne un polynôme en $\\lambda$.\n3.  Trouver les racines de ce polynôme.\n\n**Exemple :**\n\nSoit $A = \\begin{pmatrix} 4 & -2 \\\\ 1 & 1 \\end{pmatrix}$.\n\n1.  $A - \\lambda I = \\begin{pmatrix} 4-\\lambda & -2 \\\\ 1 & 1-\\lambda \\end{pmatrix}$\n2.  $\\chi_A(\\lambda) = (4-\\lambda)(1-\\lambda) - (-2)(1) = \\lambda^2 - 5\\lambda + 4 + 2 = \\lambda^2 - 5\\lambda + 6$.\n3.  On résout $\\lambda^2 - 5\\lambda + 6 = 0$. Les racines sont $\\lambda_1 = 2$ et $\\lambda_2 = 3$. Les valeurs propres de A sont donc 2 et 3.\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "ebc71606",
+      "content": "Quand dit-on qu'un endomorphisme est diagonalisable ?",
+      "solution": "\n\nUn endomorphisme $f$ d'un espace vectoriel $E$ de dimension $n$ est dit **diagonalisable** s'il existe une base de $E$ entièrement constituée de **vecteurs propres** de $f$.\n\n**Conséquences :**\n\nDans une telle base $\\mathcal{B} = (v_1, \\dots, v_n)$, où chaque $v_i$ est un vecteur propre associé à une valeur propre $\\lambda_i$, la matrice de $f$ est une matrice diagonale $D$ :\n\n$$ \\text{Mat}_{\\mathcal{B}}(f) = D = \\begin{pmatrix} \\lambda_1 & 0 & \\dots & 0 \\\\ 0 & \\lambda_2 & \\dots & 0 \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ 0 & 0 & \\dots & \\lambda_n \\end{pmatrix} $$\n\nLa diagonalisation simplifie énormément l'étude de l'endomorphisme (calcul de puissances, exponentielle, etc.).\n\n**Critère simple :** Si un endomorphisme en dimension $n$ possède $n$ valeurs propres distinctes, alors il est diagonalisable.\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "ebc71606",
+      "content": "Comment vérifier si une matrice est diagonalisable ?",
+      "solution": "\n\nPour qu'une matrice $A$ de taille $n \\times n$ soit diagonalisable sur un corps $\\mathbb{K}$ (par exemple $\\mathbb{R}$), deux conditions doivent être remplies :\n\n1.  Le polynôme caractéristique $\\chi_A(\\lambda)$ doit être **scindé** sur $\\mathbb{K}$, c'est-à-dire qu'il peut s'écrire comme un produit de facteurs $( \\lambda - \\lambda_i)$ où les $\\lambda_i$ sont dans $\\mathbb{K}$. (Cette condition est toujours vraie sur $\\mathbb{C}$).\n2.  Pour chaque valeur propre $\\lambda$, sa **multiplicité algébrique** (le nombre de fois qu'elle est racine du polynôme) doit être égale à sa **multiplicité géométrique** (la dimension du sous-espace propre $E_\\lambda = \\ker(A - \\lambda I)$).\n\n**En pratique, les étapes sont :**\n\n1.  Calculer le polynôme caractéristique $\\chi_A(\\lambda)$ et trouver ses racines (les valeurs propres $\\lambda_i$) ainsi que leurs multiplicités algébriques $m_i$.\n2.  Pour chaque valeur propre $\\lambda_i$, calculer la dimension du sous-espace propre $E_{\\lambda_i} = \\ker(A - \\lambda_i I)$. C'est la multiplicité géométrique $d_i$.\n3.  Comparer : la matrice est diagonalisable si et seulement si $m_i = d_i$ pour toutes les valeurs propres $\\lambda_i$.\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "ebc71606",
+      "content": "Qu'est-ce qu'un endomorphisme auto-adjoint ?",
+      "solution": "\n\nSoit $E$ un espace vectoriel euclidien (sur $\\mathbb{R}$ avec un produit scalaire $\\langle \\cdot, \\cdot \\rangle$). Un endomorphisme $f: E \\to E$ est dit **auto-adjoint** (ou **symétrique**) si, pour tous les vecteurs $x, y \\in E$, on a :\n\n$$ \\langle f(x), y \\rangle = \\langle x, f(y) \\rangle $$\n\nCette relation signifie qu'on peut \"déplacer\" l'endomorphisme d'un côté à l'autre du produit scalaire.\n\n**Représentation matricielle :**\n\nUn endomorphisme $f$ est auto-adjoint si et seulement si sa matrice $A$ dans une **base orthonormée** est une **matrice symétrique** (c'est-à-dire $A = {}^tA$).\n\n**Exemple :**\n\nL'endomorphisme $f$ de $\\mathbb{R}^2$ dont la matrice dans la base canonique est $A = \\begin{pmatrix} 1 & 3 \\\\ 3 & 5 \\end{pmatrix}$ est auto-adjoint car $A$ est symétrique.\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "ebc71606",
+      "content": "Quelles sont les propriétés remarquables des valeurs et vecteurs propres d'un endomorphisme auto-adjoint ?",
+      "solution": "\n\nUn endomorphisme auto-adjoint $f$ possède des propriétés très fortes qui simplifient grandement son étude :\n\n1.  **Toutes ses valeurs propres sont réelles.** Même si on considère la matrice dans $\\mathbb{C}$, les valeurs propres seront toujours des nombres réels.\n2.  **Les sous-espaces propres associés à des valeurs propres distinctes sont orthogonaux.** Si $x$ est un vecteur propre pour la valeur propre $\\lambda$ et $y$ est un vecteur propre pour $\\mu$ avec $\\lambda \\neq \\mu$, alors on a obligatoirement $\\langle x, y \\rangle = 0$.\n\nCes deux propriétés sont les piliers de la démonstration du Théorème Spectral. La seconde propriété nous assure que l'on peut construire une base de vecteurs propres qui est non seulement une base, mais une base orthogonale.\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "ebc71606",
+      "content": "Quel est l'énoncé du Théorème Spectral ?",
+      "solution": "\n\nLe **Théorème Spectral** est le résultat central de ce chapitre. Il affirme que tout endomorphisme auto-adjoint peut être diagonalisé dans une base très particulière.\n\n**Énoncé :**\n\nSoit $f$ un endomorphisme **auto-adjoint** d'un espace euclidien $E$ de dimension finie. Alors, il existe une **base orthonormée** de $E$ constituée de vecteurs propres de $f$.\n\n**Version matricielle (pour les matrices symétriques réelles) :**\n\nPour toute matrice **symétrique réelle** $S$, il existe une matrice **orthogonale** $P$ (telle que $P^{-1} = {}^tP$) et une matrice **diagonale réelle** $D$ telles que :\n\n$$ S = P D P^{-1} = P D {}^tP $$\n\nLes colonnes de $P$ sont les vecteurs d'une base orthonormée de vecteurs propres de $S$, et les éléments diagonaux de $D$ sont les valeurs propres correspondantes.\n\nCe théorème garantit que toute matrice symétrique réelle est diagonalisable sur $\\mathbb{R}$.\n\n",
+      "options": []
+    },
+    {
+      "id": "11",
+      "stackId": "ebc71606",
+      "content": "Comment diagonaliser une matrice symétrique réelle dans une base orthonormée ?",
+      "solution": "\n\nVoici les étapes pour appliquer le Théorème Spectral à une matrice symétrique $S$ :\n\n1.  **Trouver les valeurs propres :** Calculez le polynôme caractéristique $\\det(S - \\lambda I)$ et trouvez ses racines $\\lambda_1, \\dots, \\lambda_n$. Le Théorème Spectral garantit qu'elles sont toutes réelles.\n\n2.  **Trouver une base pour chaque sous-espace propre :** Pour chaque valeur propre $\\lambda_i$, trouvez une base du sous-espace propre $E_{\\lambda_i} = \\ker(S - \\lambda_i I)$.\n\n3.  **Construire une base orthonormée :**\n    *   Si les valeurs propres sont toutes distinctes, les vecteurs propres associés sont déjà orthogonaux entre eux. Il suffit de **normaliser** chaque vecteur (diviser par sa norme) pour obtenir une base orthonormée.\n    *   Si une valeur propre a une multiplicité supérieure à 1, le sous-espace propre correspondant a une dimension supérieure à 1. Il faut utiliser le **procédé de Gram-Schmidt** sur la base de ce sous-espace pour la rendre orthonormée.\n\n4.  **Former les matrices P et D :**\n    *   La matrice $D$ est la matrice diagonale des valeurs propres.\n    *   La matrice de passage $P$ est la matrice dont les colonnes sont les vecteurs de la base orthonormée que vous venez de construire. $P$ sera une matrice orthogonale.\n\nOn a alors $S = PDP^T$.\n\n",
+      "options": []
+    },
+    {
+      "id": "12",
+      "stackId": "ebc71606",
+      "content": "Qu'est-ce qu'un endomorphisme (ou une matrice) positif et défini positif ?",
+      "solution": "\n\nCette notion ne s'applique qu'aux endomorphismes **auto-adjoints** (ou matrices symétriques). Soit $f$ un endomorphisme auto-adjoint.\n\n-   $f$ est dit **positif** si pour tout vecteur $x$, on a :\n\n    $$ \\langle f(x), x \\rangle \\ge 0 $$\n\n-   $f$ est dit **défini positif** si pour tout vecteur **non nul** $x \\neq 0$, on a :\n\n    $$ \\langle f(x), x \\rangle > 0 $$\n\nIntuitivement, un endomorphisme défini positif est une transformation qui \"pousse\" chaque vecteur dans une direction qui forme un angle aigu avec le vecteur d'origine, ne produisant jamais d' \"énergie\" négative.\n\n**Exemple :** L'identité est définie positive, car $\\langle \\text{Id}(x), x \\rangle = \\langle x, x \\rangle = \\|x\\|^2 > 0$ si $x \\neq 0$.\n\n",
+      "options": []
+    },
+    {
+      "id": "13",
+      "stackId": "ebc71606",
+      "content": "Comment savoir si une matrice symétrique est positive ou définie positive à partir de ses valeurs propres ?",
+      "solution": "\n\nLa caractérisation la plus simple et la plus utile d'une matrice symétrique positive ou définie positive se fait via ses valeurs propres. Soit $S$ une matrice symétrique réelle.\n\n-   $S$ est **positive** si et seulement si toutes ses valeurs propres $\\lambda_i$ sont **positives ou nulles** ($\\lambda_i \\ge 0$).\n-   $S$ est **définie positive** si et seulement si toutes ses valeurs propres $\\lambda_i$ sont **strictement positives** ($\\lambda_i > 0$).\n\n**Exemple :**\n\nSoit $S = \\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$.\n\n1.  Ses valeurs propres sont $\\lambda_1 = 1$ et $\\lambda_2 = 3$.\n2.  Comme $1 > 0$ et $3 > 0$, toutes les valeurs propres sont strictement positives.\n3.  On conclut que la matrice $S$ est **définie positive**.\n\nUne matrice définie positive est toujours inversible car 0 ne peut pas être une de ses valeurs propres.\n\n",
+      "options": []
+    },
+    {
+      "id": "14",
+      "stackId": "ebc71606",
+      "content": "Qu'est-ce que la décomposition polaire d'une matrice ?",
+      "solution": "\n\nLa **décomposition polaire** est une manière de factoriser une matrice inversible en un produit de deux matrices ayant des interprétations géométriques simples. C'est l'analogue pour les matrices de la forme polaire des nombres complexes $z = \\rho e^{i\\theta}$.\n\nPour toute matrice **inversible** $M \\in GL_n(\\mathbb{R})$, il existe un couple unique $(S, O)$ tel que :\n\n$$ M = SO $$\n\noù :\n\n-   $S$ est une matrice **symétrique définie positive**. Elle représente une déformation pure (un étirement/compression le long d'axes orthogonaux).\n-   $O$ est une matrice **orthogonale**. Elle représente une isométrie (une rotation ou une réflexion).\n\nCette décomposition sépare l'effet de \"déformation\" d'une transformation (capturé par $S$) de son effet de \"rotation\" (capturé par $O$).\n\n",
+      "options": []
+    },
+    {
+      "id": "15",
+      "stackId": "ebc71606",
+      "content": "Comment calculer la décomposition polaire $M=SO$ d'une matrice inversible $M$ ?",
+      "solution": "\n\nLa construction de la décomposition $M=SO$ est basée sur une astuce.\n\n**Étapes :**\n\n1.  **Calculer $M{}^tM$.** Remarquez que si $M=SO$, alors $M{}^tM = (SO)({}^t(SO)) = SO{}^tO{}^tS$. Comme $O$ est orthogonale, ${}^tO = O^{-1}$, donc $O{}^tO = I$. Il reste $M{}^tM = S^2$.\n\n2.  **Trouver $S$.** La matrice $M{}^tM$ est symétrique et définie positive. On la définit comme $S^2$. La matrice $S$ est alors l'unique **racine carrée symétrique définie positive** de $M{}^tM$. Pour la calculer, on diagonalise $M{}^tM = P D {}^tP$, puis on prend $S = P \\sqrt{D} {}^tP$, où $\\sqrt{D}$ est la matrice diagonale avec les racines carrées des valeurs propres de $M{}^tM$.\n\n3.  **Trouver $O$.** Une fois $S$ connue et comme elle est inversible, on peut calculer $O$ directement :\n\n    $$ O = S^{-1}M $$\n\n    On peut vérifier que la matrice $O$ ainsi obtenue est bien orthogonale.\n\n**Exemple simple :** Si $M = \\begin{pmatrix} 3 & 0 \\\\ 0 & 3 \\end{pmatrix}$, alors $M{}^tM = \\begin{pmatrix} 9 & 0 \\\\ 0 & 9 \\end{pmatrix}$.\n\n$S = \\sqrt{M{}^tM} = \\begin{pmatrix} 3 & 0 \\\\ 0 & 3 \\end{pmatrix}$ et $O = S^{-1}M = I$.\n\nLa décomposition est $M = S \\cdot I$.\n\n",
+      "options": []
+    }
+  ]
+}

@@ -1,0 +1,802 @@
+---
+id: cf85e459
+type: proofs
+order: 15
+title: Réduction des endomorphismes auto-adjoints - preuves (A)
+tags:
+  - endomorphismes
+  - auto-adjoints
+  - déterminants
+  - diagonalisation
+  - décomposition polaire
+createdAt: '2025-11-26T16:54:55.181Z'
+level: regular
+course: Géométrie
+courseId: d9494343
+chapter: Réduction des endomorphismes auto-adjoints
+chapterId: 3909aa4c
+---
+# Preuves "Réduction des endomorphismes auto-adjoints" (A)
+
+---
+
+#### Caractérisation de l'inversibilité par le déterminant
+
+Prouver qu'une matrice carrée $A \in M_n(\mathbb{K})$ est inversible si et seulement si son déterminant est non nul.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Pour le sens direct ($\Rightarrow$), si $A$ est inversible, il existe $A^{-1}$ telle que $AA^{-1} = I_n$. Utilisez la propriété de multiplicativité du déterminant.
+
+Pour le sens réciproque ($\Leftarrow$), raisonnez par contraposée. Si $A$ n'est pas inversible, ses vecteurs colonnes sont linéairement dépendants. Que pouvez-vous en déduire sur le déterminant de $A$, sachant qu'il s'agit d'une forme n-linéaire alternée ?
+
+</details>
+
+<details>
+
+<summary>Démonstration</summary>
+
+Soit $A \in M_n(\mathbb{K})$.
+
+**Étape 1 : Sens direct ($A$ inversible $\Rightarrow \det(A) \neq 0$)**
+
+Supposons que $A$ est inversible. Il existe alors une matrice $A^{-1}$ telle que $A A^{-1} = I_n$, où $I_n$ est la matrice identité d'ordre $n$.
+
+En utilisant la propriété de multiplicativité du déterminant, nous avons :
+
+$\det(A A^{-1}) = \det(I_n)$.
+
+Ceci se décompose en $\det(A) \det(A^{-1}) = 1$.
+
+Le produit de deux scalaires étant égal à 1, aucun des deux ne peut être nul. En particulier, $\det(A) \neq 0$.
+
+**Étape 2 : Sens réciproque ($\det(A) \neq 0 \Rightarrow A$ inversible)**
+
+Nous allons prouver la contraposée : si $A$ n'est pas inversible, alors $\det(A) = 0$.
+
+Si $A$ n'est pas inversible, l'endomorphisme associé n'est pas bijectif. Son rang est strictement inférieur à $n$. Cela signifie que les vecteurs colonnes de $A$, notés $C_1, C_2, \dots, C_n$, forment une famille linéairement dépendante.
+
+Il existe donc une colonne, disons $C_j$, qui est une combinaison linéaire des autres colonnes :
+
+$C_j = \sum_{k \neq j} \alpha_k C_k$.
+
+Le déterminant est une forme n-linéaire par rapport à ses colonnes. Ainsi :
+
+$\det(A) = \det(C_1, \dots, C_j, \dots, C_n) = \det(C_1, \dots, \sum_{k \neq j} \alpha_k C_k, \dots, C_n)$.
+
+Par n-linéarité, on peut décomposer cette somme :
+
+$\det(A) = \sum_{k \neq j} \alpha_k \det(C_1, \dots, C_k, \dots, C_n)$.
+
+Dans cette expression, la colonne en position $j$ est $C_k$.
+
+Pour chaque terme de la somme, la matrice dont on calcule le déterminant a deux colonnes identiques (la colonne $C_k$ en position $k$ et en position $j$). Puisque le déterminant est une forme alternée, son résultat est nul si deux de ses vecteurs d'entrée sont identiques.
+
+Ainsi, chaque terme de la somme est nul, et donc $\det(A) = 0$.
+
+**Conclusion**
+
+Nous avons prouvé les deux implications, donc $A$ est inversible si et seulement si $\det(A) \neq 0$.
+
+</details>
+
+---
+
+#### Déterminant d'une matrice triangulaire
+
+Prouver que le déterminant d'une matrice triangulaire est égal au produit de ses coefficients diagonaux.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez la formule de Leibniz pour le déterminant :
+
+$$ \det(A) = \sum_{\sigma \in S_n} \varepsilon(\sigma) \prod_{i=1}^{n} a_{\sigma(i), i} $$
+
+Considérez une matrice triangulaire supérieure $A=(a_{ij})$ où $a_{ij}=0$ si $i > j$. Analysez pour quelles permutations $\sigma$ le produit $\prod_{i=1}^{n} a_{\sigma(i), i}$ peut être non nul.
+
+</details>
+
+<details>
+
+<summary>Démonstration</summary>
+
+Soit $A = (a_{ij})$ une matrice triangulaire supérieure de taille $n \times n$. Cela signifie que $a_{ij} = 0$ pour tout $i > j$. Nous voulons prouver que $\det(A) = \prod_{i=1}^{n} a_{ii}$.
+
+La démonstration pour une matrice triangulaire inférieure est analogue en utilisant la propriété $\det(A) = \det({}^tA)$.
+
+**Étape 1 : Analyse des termes de la formule de Leibniz**
+
+La formule de Leibniz est $\det(A) = \sum_{\sigma \in S_n} \varepsilon(\sigma) \prod_{i=1}^{n} a_{\sigma(i), i}$.
+
+Un terme du produit est $a_{\sigma(1), 1} a_{\sigma(2), 2} \cdots a_{\sigma(n), n}$.
+
+Pour que ce produit soit potentiellement non nul, il faut que chaque facteur $a_{\sigma(i), i}$ soit non nul.
+
+Étant donné que $A$ est triangulaire supérieure, nous devons avoir $\sigma(i) \le i$ pour tous les $i=1, \dots, n$.
+
+**Étape 2 : Identification de la seule permutation possible**
+
+Analysons la condition $\sigma(i) \le i$ pour tout $i$:
+
+- Pour $i=1$, nous devons avoir $\sigma(1) \le 1$, ce qui impose $\sigma(1)=1$.
+- Pour $i=2$, nous devons avoir $\sigma(2) \le 2$. Comme $\sigma$ est une permutation et que $\sigma(1)=1$, $\sigma(2)$ ne peut pas être 1. Donc $\sigma(2)=2$.
+- En continuant par récurrence, supposons que $\sigma(k)=k$ pour tout $k < i$. Pour $i$, on a $\sigma(i) \le i$. Comme les valeurs $1, 2, \dots, i-1$ sont déjà prises par $\sigma(1), \dots, \sigma(i-1)$, la seule valeur possible pour $\sigma(i)$ est $i$.
+
+Ainsi, la seule permutation $\sigma \in S_n$ pour laquelle le produit $\prod_{i=1}^{n} a_{\sigma(i), i}$ peut être non nul est la permutation identité, $\sigma = \text{Id}$.
+
+**Étape 3 : Calcul final du déterminant**
+
+La somme dans la formule de Leibniz se réduit à un seul terme, celui où $\sigma = \text{Id}$.
+
+La permutation identité est une permutation paire, donc sa signature $\varepsilon(\text{Id})$ est $+1$.
+
+Le déterminant est donc :
+
+$$ \det(A) = \varepsilon(\text{Id}) \prod_{i=1}^{n} a_{\text{Id}(i), i} = 1 \cdot \prod_{i=1}^{n} a_{i, i} = a_{11} a_{22} \cdots a_{nn} $$
+
+**Conclusion**
+
+Le déterminant d'une matrice triangulaire est bien le produit de ses coefficients diagonaux.
+
+</details>
+
+---
+
+#### Somme directe des sous-espaces propres
+
+Prouver que la somme de sous-espaces propres associés à des valeurs propres distinctes est une somme directe.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Soient $\lambda_1, \dots, \lambda_k$ des valeurs propres distinctes. Pour prouver que $E_{\lambda_1} + \dots + E_{\lambda_k}$ est une somme directe, il faut montrer que si $x_1 + \dots + x_k = 0$ avec $x_i \in E_{\lambda_i}$, alors tous les $x_i$ sont nuls.
+
+Procédez par récurrence sur le nombre $k$ de sous-espaces propres. Pour l'étape d'induction, appliquez l'endomorphisme $f$ à l'équation $x_1 + \dots + x_k = 0$ et combinez le résultat avec l'équation originale pour éliminer l'un des vecteurs.
+
+</details>
+
+<details>
+
+<summary>Démonstration</summary>
+
+Soit $f$ un endomorphisme de $E$, et soient $\lambda_1, \dots, \lambda_k$ des valeurs propres distinctes de $f$. Notons $E_i = E_{\lambda_i}(f)$ le sous-espace propre associé à $\lambda_i$. Nous voulons montrer que la somme $E_1 + \dots + E_k$ est directe, c'est-à-dire $E_1 \oplus \dots \oplus E_k$.
+
+Cela revient à montrer que si $x_1 \in E_1, \dots, x_k \in E_k$ sont tels que
+
+$$ x_1 + x_2 + \dots + x_k = 0 \quad (*)$$
+
+alors $x_1 = x_2 = \dots = x_k = 0$.
+
+Nous procédons par récurrence sur $k$.
+
+**Cas de base (k=1)** : Si $x_1 = 0$, le résultat est trivial.
+
+**Cas de base (k=2)** : Soient $x_1 \in E_1$ et $x_2 \in E_2$ tels que $x_1 + x_2 = 0$.
+
+En appliquant $f$, on obtient $f(x_1) + f(x_2) = f(0) = 0$.
+
+Comme $x_1 \in E_1$ et $x_2 \in E_2$, on a $f(x_1) = \lambda_1 x_1$ et $f(x_2) = \lambda_2 x_2$. L'équation devient $\lambda_1 x_1 + \lambda_2 x_2 = 0$.
+
+De l'équation initiale, $x_2 = -x_1$. En substituant : $\lambda_1 x_1 - \lambda_2 x_1 = 0$, soit $(\lambda_1 - \lambda_2)x_1 = 0$.
+
+Puisque les valeurs propres sont distinctes, $\lambda_1 - \lambda_2 \neq 0$, donc $x_1 = 0$. Par suite, $x_2 = 0$. La somme est directe.
+
+**Étape d'induction** : Supposons que la propriété est vraie pour $k-1$ sous-espaces propres.
+
+Partons de l'équation $(*)$: $x_1 + x_2 + \dots + x_k = 0$.
+
+Appliquons l'endomorphisme $f$ :
+
+$f(x_1) + f(x_2) + \dots + f(x_k) = 0$
+
+$\lambda_1 x_1 + \lambda_2 x_2 + \dots + \lambda_k x_k = 0 \quad (**)$
+
+Multiplions l'équation $(*)$ par $\lambda_k$ :
+
+$\lambda_k x_1 + \lambda_k x_2 + \dots + \lambda_k x_k = 0 \quad (***)$
+
+Soustrayons $(**)$ de $(***)$ :
+
+$(\lambda_k - \lambda_1) x_1 + (\lambda_k - \lambda_2) x_2 + \dots + (\lambda_k - \lambda_{k-1}) x_{k-1} = 0$.
+
+C'est une somme de $k-1$ vecteurs, où chaque vecteur $(\lambda_k - \lambda_i)x_i$ appartient à $E_i$. Par hypothèse de récurrence, la somme des $k-1$ premiers sous-espaces est directe. Donc, tous les termes de cette somme sont nuls :
+
+$(\lambda_k - \lambda_i) x_i = 0$ pour $i = 1, \dots, k-1$.
+
+Comme les valeurs propres sont distinctes, $\lambda_k - \lambda_i \neq 0$ pour $i < k$. Cela implique que $x_i = 0$ pour $i=1, \dots, k-1$.
+
+En reportant ces résultats dans l'équation initiale $(*)$, il reste $x_k = 0$.
+
+**Conclusion**
+
+Nous avons montré que tous les $x_i$ sont nuls, ce qui prouve que la somme des sous-espaces propres est directe.
+
+</details>
+
+---
+
+#### Équivalence entre valeurs propres et racines du polynôme caractéristique
+
+Prouver qu'un scalaire $\lambda \in \mathbb{K}$ est une valeur propre d'un endomorphisme $f$ si et seulement si $\lambda$ est une racine de son polynôme caractéristique $\chi_f$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Suivez la chaîne d'équivalences logiques.
+
+$\lambda$ est une valeur propre de $f$
+
+$\iff$ Il existe un vecteur $x \neq 0$ tel que $f(x) = \lambda x$.
+
+$\iff$ ...
+
+$\iff$ L'endomorphisme $(f - \lambda \text{Id})$ n'est pas ...
+
+$\iff$ La matrice de $(f - \lambda \text{Id})$ n'est pas ...
+
+$\iff \det(f - \lambda \text{Id}) = \dots$
+
+</details>
+
+<details>
+
+<summary>Démonstration</summary>
+
+Soit $f$ un endomorphisme sur un $\mathbb{K}$-espace vectoriel $E$ de dimension finie, et $\lambda \in \mathbb{K}$.
+
+Par définition, $\lambda$ est une valeur propre de $f$ si et seulement s'il existe un vecteur non nul $x \in E$ tel que $f(x) = \lambda x$.
+
+**Étape 1 : Réécriture de la condition de valeur propre**
+
+L'équation $f(x) = \lambda x$ peut être réécrite comme $f(x) - \lambda x = 0$.
+
+En utilisant l'endomorphisme identité $\text{Id}_E$, on a $f(x) - \lambda \text{Id}_E(x) = 0$.
+
+Par linéarité, cela équivaut à $(f - \lambda \text{Id}_E)(x) = 0$.
+
+Ainsi, $\lambda$ est une valeur propre de $f$ si et seulement s'il existe un vecteur non nul $x$ dans le noyau de l'endomorphisme $(f - \lambda \text{Id}_E)$.
+
+**Étape 2 : Lien avec l'inversibilité**
+
+L'existence d'un vecteur non nul dans le noyau de $(f - \lambda \text{Id}_E)$ signifie que $\ker(f - \lambda \text{Id}_E) \neq \{0\}$.
+
+Un endomorphisme d'un espace de dimension finie est injectif si et seulement si son noyau est réduit au vecteur nul. Donc, $\ker(f - \lambda \text{Id}_E) \neq \{0\}$ est équivalent à dire que l'endomorphisme $(f - \lambda \text{Id}_E)$ n'est pas injectif.
+
+En dimension finie, un endomorphisme est injectif si et seulement s'il est bijectif (c'est-à-dire inversible). Par conséquent, $\lambda$ est une valeur propre si et seulement si $(f - \lambda \text{Id}_E)$ n'est pas inversible.
+
+**Étape 3 : Lien avec le déterminant**
+
+Un endomorphisme (ou sa matrice dans n'importe quelle base) est inversible si et seulement si son déterminant est non nul.
+
+Donc, l'endomorphisme $(f - \lambda \text{Id}_E)$ n'est pas inversible si et seulement si son déterminant est nul :
+
+$$ \det(f - \lambda \text{Id}_E) = 0 $$
+
+**Conclusion**
+
+Par définition, le polynôme caractéristique de $f$ est $\chi_f(\lambda) = \det(f - \lambda \text{Id}_E)$.
+
+Nous avons donc montré l'équivalence :
+
+$\lambda$ est une valeur propre de $f \iff \chi_f(\lambda) = 0$.
+
+Ceci signifie que les valeurs propres de $f$ sont exactement les racines de son polynôme caractéristique.
+
+</details>
+
+---
+
+#### Diagonalisabilité avec $n$ valeurs propres distinctes
+
+Prouver qu'un endomorphisme $f$ d'un espace vectoriel $E$ de dimension $n$ qui possède $n$ valeurs propres distinctes est diagonalisable.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Rappelez-vous qu'un endomorphisme est diagonalisable s'il existe une base de $E$ formée de vecteurs propres.
+
+Utilisez le fait que les sous-espaces propres associés à des valeurs propres distinctes sont en somme directe. Quelle est la dimension minimale de chaque sous-espace propre ? Concluez sur la dimension de la somme directe.
+
+</details>
+
+<details>
+
+<summary>Démonstration</summary>
+
+Soit $f$ un endomorphisme sur un espace vectoriel $E$ de dimension $n$.
+
+Supposons que $f$ admette $n$ valeurs propres distinctes, que nous noterons $\lambda_1, \lambda_2, \dots, \lambda_n$.
+
+**Étape 1 : Sous-espaces propres**
+
+Pour chaque valeur propre $\lambda_i$, le sous-espace propre associé $E_i = E_{\lambda_i}(f)$ est non trivial, c'est-à-dire que sa dimension est au moins 1. En effet, par définition d'une valeur propre, il existe au moins un vecteur propre (non nul) qui lui est associé. Donc $\dim(E_i) \ge 1$ pour tout $i \in \{1, \dots, n\}$.
+
+**Étape 2 : Somme directe des sous-espaces propres**
+
+Comme les $n$ valeurs propres $\lambda_1, \dots, \lambda_n$ sont distinctes, nous savons que la somme de leurs sous-espaces propres est une somme directe. Notons $S = E_1 \oplus E_2 \oplus \dots \oplus E_n$.
+
+Ce sous-espace $S$ est un sous-espace vectoriel de $E$.
+
+**Étape 3 : Dimension de la somme directe**
+
+La dimension d'une somme directe de sous-espaces est la somme des dimensions de ces sous-espaces :
+
+$$ \dim(S) = \dim(E_1) + \dim(E_2) + \dots + \dim(E_n) $$
+
+Comme $\dim(E_i) \ge 1$ pour chaque $i$, on a :
+
+$$ \dim(S) \ge \underbrace{1 + 1 + \dots + 1}_{n \text{ fois}} = n $$
+
+Donc, $\dim(S) \ge n$.
+
+**Étape 4 : Conclusion**
+
+Le sous-espace $S$ est inclus dans $E$, qui est de dimension $n$. Donc, $\dim(S) \le \dim(E) = n$.
+
+En combinant les deux inégalités, nous avons $\dim(S) = n$.
+
+Puisque $S$ est un sous-espace de $E$ de même dimension que $E$, on a $S=E$.
+
+Nous avons donc montré que $E = E_1 \oplus E_2 \oplus \dots \oplus E_n$.
+
+Cela signifie que l'on peut former une base de $E$ en juxtaposant une base de chaque sous-espace propre $E_i$. Une telle base est entièrement constituée de vecteurs propres de $f$.
+
+Par définition, l'existence d'une base de vecteurs propres signifie que $f$ est diagonalisable.
+
+</details>
+
+---
+
+#### Réalité des valeurs propres d'un endomorphisme auto-adjoint
+
+Prouver que les valeurs propres d'un endomorphisme auto-adjoint sur un espace hermitien sont réelles.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Soit $f$ un endomorphisme auto-adjoint sur un espace hermitien $E$, et soit $\lambda \in \mathbb{C}$ une valeur propre associée au vecteur propre $x \neq 0$.
+
+Calculez le produit scalaire $\langle f(x), x \rangle$.
+
+D'une part, utilisez $f(x) = \lambda x$. D'autre part, utilisez la propriété d'auto-adjontion $\langle f(x), x \rangle = \langle x, f(x) \rangle$. Comparez les deux expressions obtenues.
+
+</details>
+
+<details>
+
+<summary>Démonstration</summary>
+
+Soit $E$ un espace vectoriel hermitien (sur $\mathbb{C}$) et $f$ un endomorphisme auto-adjoint sur $E$.
+
+Soit $\lambda \in \mathbb{C}$ une valeur propre de $f$, et $x \in E$ un vecteur propre associé, avec $x \neq 0$.
+
+Par définition, on a $f(x) = \lambda x$.
+
+**Étape 1 : Calcul de $\langle f(x), x \rangle$ en utilisant la définition du vecteur propre**
+
+En utilisant $f(x)=\lambda x$ dans le produit scalaire $\langle f(x), x \rangle$, on obtient :
+
+$$ \langle f(x), x \rangle = \langle \lambda x, x \rangle $$
+
+Par sesquilinéarité du produit scalaire hermitien, le scalaire sort de la première composante :
+
+$$ \langle f(x), x \rangle = \lambda \langle x, x \rangle = \lambda \|x\|^2 $$
+
+**Étape 2 : Calcul de $\langle f(x), x \rangle$ en utilisant la propriété d'auto-adjontion**
+
+Puisque $f$ est auto-adjoint, $f=f^*$, on a $\langle f(x), y \rangle = \langle x, f(y) \rangle$ pour tous $x, y \in E$. En particulier pour $y=x$ :
+
+$$ \langle f(x), x \rangle = \langle x, f(x) \rangle $$
+
+Remplaçons $f(x)$ par $\lambda x$ dans le membre de droite :
+
+$$ \langle f(x), x \rangle = \langle x, \lambda x \rangle $$
+
+Par sesquilinéarité, le scalaire sort de la seconde composante en prenant son conjugué :
+
+$$ \langle f(x), x \rangle = \bar{\lambda} \langle x, x \rangle = \bar{\lambda} \|x\|^2 $$
+
+**Étape 3 : Comparaison et conclusion**
+
+En égalant les deux expressions obtenues pour $\langle f(x), x \rangle$, on a :
+
+$$ \lambda \|x\|^2 = \bar{\lambda} \|x\|^2 $$
+
+$$ (\lambda - \bar{\lambda}) \|x\|^2 = 0 $$
+
+Comme $x$ est un vecteur propre, il est non nul, donc $\|x\|^2 \neq 0$.
+
+On en déduit que $\lambda - \bar{\lambda} = 0$, ce qui signifie que $\lambda = \bar{\lambda}$.
+
+Un nombre complexe égal à son conjugué est un nombre réel.
+
+**Conclusion**
+
+Toute valeur propre d'un endomorphisme auto-adjoint est réelle.
+
+</details>
+
+---
+
+#### Orthogonalité des sous-espaces propres d'un endomorphisme auto-adjoint
+
+Prouver que les sous-espaces propres d'un endomorphisme auto-adjoint associés à des valeurs propres distinctes sont orthogonaux.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Soit $f$ un endomorphisme auto-adjoint. Soient $\lambda$ et $\mu$ deux valeurs propres distinctes, avec $x \in E_\lambda$ et $y \in E_\mu$.
+
+Le but est de montrer que $\langle x, y \rangle = 0$.
+
+Considérez la quantité $\langle f(x), y \rangle$. Calculez-la de deux manières différentes :
+
+1. En utilisant $f(x) = \lambda x$.
+2. En utilisant la propriété d'auto-adjontion pour "déplacer" $f$ sur $y$, puis en utilisant $f(y) = \mu y$.
+
+</details>
+
+<details>
+
+<summary>Démonstration</summary>
+
+Soit $f$ un endomorphisme auto-adjoint sur un espace euclidien ou hermitien $E$.
+
+Soient $\lambda$ et $\mu$ deux valeurs propres distinctes de $f$. Soit $x$ un vecteur propre associé à $\lambda$ ($x \in E_\lambda$) et $y$ un vecteur propre associé à $\mu$ ($y \in E_\mu$).
+
+On a donc $f(x) = \lambda x$ et $f(y) = \mu y$.
+
+**Étape 1 : Premier calcul de $\langle f(x), y \rangle$**
+
+En utilisant $f(x)=\lambda x$, on a :
+
+$$ \langle f(x), y \rangle = \langle \lambda x, y \rangle = \lambda \langle x, y \rangle $$
+
+(Note : dans le cas hermitien, le scalaire sort tel quel de la première composante).
+
+**Étape 2 : Second calcul de $\langle f(x), y \rangle$**
+
+En utilisant la propriété d'auto-adjontion de $f$, on peut écrire :
+
+$$ \langle f(x), y \rangle = \langle x, f(y) \rangle $$
+
+Maintenant, utilisons $f(y)=\mu y$ :
+
+$$ \langle x, f(y) \rangle = \langle x, \mu y \rangle $$
+
+Dans un espace euclidien, $\langle x, \mu y \rangle = \mu \langle x, y \rangle$.
+
+Dans un espace hermitien, $\langle x, \mu y \rangle = \bar{\mu} \langle x, y \rangle$.
+
+Cependant, nous savons que les valeurs propres d'un endomorphisme auto-adjoint sont réelles, donc $\mu = \bar{\mu}$. L'expression est donc $\mu \langle x, y \rangle$ dans les deux cas.
+
+On a donc :
+
+$$ \langle f(x), y \rangle = \mu \langle x, y \rangle $$
+
+**Étape 3 : Comparaison et conclusion**
+
+En égalant les deux expressions obtenues :
+
+$$ \lambda \langle x, y \rangle = \mu \langle x, y \rangle $$
+
+$$ (\lambda - \mu) \langle x, y \rangle = 0 $$
+
+Par hypothèse, les valeurs propres $\lambda$ et $\mu$ sont distinctes, donc $\lambda - \mu \neq 0$.
+
+Pour que le produit soit nul, il faut nécessairement que $\langle x, y \rangle = 0$.
+
+**Conclusion**
+
+Tout vecteur $x \in E_\lambda$ est orthogonal à tout vecteur $y \in E_\mu$ si $\lambda \neq \mu$. Les sous-espaces propres $E_\lambda$ et $E_\mu$ sont donc orthogonaux.
+
+</details>
+
+---
+
+#### Stabilité de l'orthogonal pour un endomorphisme auto-adjoint
+
+Prouver que si $F$ est un sous-espace vectoriel stable par un endomorphisme auto-adjoint $f$, alors son complément orthogonal $F^\perp$ est également stable par $f$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Soit $f$ auto-adjoint et $F$ stable par $f$, c'est-à-dire $f(F) \subseteq F$.
+
+Pour montrer que $F^\perp$ est stable par $f$, on doit prouver que pour tout $y \in F^\perp$, on a $f(y) \in F^\perp$.
+
+La condition $f(y) \in F^\perp$ signifie que pour tout $x \in F$, le produit scalaire $\langle f(y), x \rangle$ est nul.
+
+Utilisez la propriété d'auto-adjontion pour transformer cette expression.
+
+</details>
+
+<details>
+
+<summary>Démonstration</summary>
+
+Soit $f$ un endomorphisme auto-adjoint sur un espace euclidien ou hermitien $E$.
+
+Soit $F$ un sous-espace vectoriel de $E$ stable par $f$, ce qui signifie que pour tout $z \in F$, $f(z) \in F$.
+
+Nous voulons montrer que $F^\perp$ est aussi stable par $f$, c'est-à-dire que pour tout $y \in F^\perp$, on a $f(y) \in F^\perp$.
+
+**Étape 1 : Traduction de la condition de stabilité**
+
+Un vecteur $v$ appartient à $F^\perp$ si et seulement si il est orthogonal à tous les vecteurs de $F$, c'est-à-dire $\langle v, x \rangle = 0$ pour tout $x \in F$.
+
+Pour montrer que $f(y) \in F^\perp$, nous devons donc montrer que pour un $y \in F^\perp$ quelconque, on a $\langle f(y), x \rangle = 0$ pour tout $x \in F$.
+
+**Étape 2 : Utilisation de l'auto-adjontion**
+
+Soit $y \in F^\perp$ et $x \in F$. Calculons $\langle f(y), x \rangle$.
+
+Puisque $f$ est auto-adjoint, on a :
+
+$$ \langle f(y), x \rangle = \langle y, f(x) \rangle $$
+
+**Étape 3 : Utilisation de la stabilité de F**
+
+Par hypothèse, $F$ est stable par $f$. Puisque $x \in F$, on a $f(x) \in F$.
+
+Nous savons aussi que $y \in F^\perp$. Par définition de $F^\perp$, $y$ est orthogonal à tout vecteur de $F$. En particulier, $y$ est orthogonal au vecteur $f(x) \in F$.
+
+Donc :
+
+$$ \langle y, f(x) \rangle = 0 $$
+
+**Conclusion**
+
+En combinant les étapes, nous avons montré que pour tout $y \in F^\perp$ et pour tout $x \in F$ :
+
+$$ \langle f(y), x \rangle = 0 $$
+
+Ceci est la définition de $f(y) \in F^\perp$.
+
+Puisque cela est vrai pour tout $y \in F^\perp$, le sous-espace $F^\perp$ est stable par $f$.
+
+</details>
+
+---
+
+#### Caractérisation des endomorphismes positifs par leurs valeurs propres
+
+Prouver qu'un endomorphisme auto-adjoint $f$ est positif si et seulement si toutes ses valeurs propres sont positives ou nulles.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Pour le sens direct ($\Rightarrow$), supposez que $f$ est positif. Soit $\lambda$ une valeur propre et $v$ un vecteur propre associé. Calculez $\langle f(v), v \rangle$ et utilisez la définition d'un endomorphisme positif pour en déduire le signe de $\lambda$.
+
+Pour le sens réciproque ($\Leftarrow$), supposez que toutes les valeurs propres sont $\ge 0$. Utilisez le théorème spectral pour affirmer qu'il existe une base orthonormée de vecteurs propres. Décomposez un vecteur quelconque $x$ dans cette base et calculez $\langle f(x), x \rangle$.
+
+</details>
+
+<details>
+
+<summary>Démonstration</summary>
+
+Soit $f$ un endomorphisme auto-adjoint sur un espace euclidien ou hermitien $E$.
+
+**Étape 1 : Sens direct ($f$ positif $\Rightarrow$ les valeurs propres sont $\ge 0$)**
+
+Supposons que $f$ est positif. Par définition, cela signifie que $\langle f(x), x \rangle \ge 0$ pour tout $x \in E$.
+
+Soit $\lambda$ une valeur propre de $f$ et $v$ un vecteur propre associé non nul. On a $f(v) = \lambda v$.
+
+Calculons $\langle f(v), v \rangle$ :
+
+$$ \langle f(v), v \rangle = \langle \lambda v, v \rangle = \lambda \langle v, v \rangle = \lambda \|v\|^2 $$
+
+Puisque $f$ est positif, on doit avoir $\langle f(v), v \rangle \ge 0$. Donc :
+
+$$ \lambda \|v\|^2 \ge 0 $$
+
+Comme $v$ est un vecteur propre, il est non nul, donc $\|v\|^2 > 0$.
+
+On en conclut que $\lambda \ge 0$.
+
+**Étape 2 : Sens réciproque (les valeurs propres sont $\ge 0 \Rightarrow f$ positif)**
+
+Supposons que toutes les valeurs propres de $f$ sont positives ou nulles.
+
+Puisque $f$ est auto-adjoint, le théorème spectral s'applique : il existe une base orthonormée $\mathcal{B} = (e_1, \dots, e_n)$ de $E$ constituée de vecteurs propres de $f$.
+
+Soient $\lambda_1, \dots, \lambda_n$ les valeurs propres correspondantes (non nécessairement distinctes), avec $\lambda_i \ge 0$ pour tout $i$. On a $f(e_i) = \lambda_i e_i$.
+
+Soit $x$ un vecteur quelconque de $E$. On peut le décomposer dans la base $\mathcal{B}$ :
+
+$$ x = \sum_{i=1}^n x_i e_i, \quad \text{où } x_i = \langle x, e_i \rangle $$
+
+Calculons $f(x)$ :
+
+$$ f(x) = f\left(\sum_{i=1}^n x_i e_i\right) = \sum_{i=1}^n x_i f(e_i) = \sum_{i=1}^n x_i (\lambda_i e_i) = \sum_{i=1}^n \lambda_i x_i e_i $$
+
+Maintenant, calculons le produit scalaire $\langle f(x), x \rangle$ :
+
+$$ \langle f(x), x \rangle = \left\langle \sum_{i=1}^n \lambda_i x_i e_i, \sum_{j=1}^n x_j e_j \right\rangle $$
+
+Par bilinéarité (ou sesquilinéarité), et comme la base est orthonormée ($\langle e_i, e_j \rangle = \delta_{ij}$), on obtient :
+
+$$ \langle f(x), x \rangle = \sum_{i=1}^n \sum_{j=1}^n \lambda_i x_i \bar{x_j} \langle e_i, e_j \rangle = \sum_{i=1}^n \lambda_i x_i \bar{x_i} = \sum_{i=1}^n \lambda_i |x_i|^2 $$
+
+(Dans le cas réel, $\bar{x_j}=x_j$ et $|x_i|^2=x_i^2$).
+
+Par hypothèse, chaque $\lambda_i \ge 0$. De plus, $|x_i|^2 \ge 0$ pour tout $i$.
+
+La somme de termes positifs ou nuls est elle-même positive ou nulle.
+
+$$ \langle f(x), x \rangle = \sum_{i=1}^n \underbrace{\lambda_i}_{\ge 0} \underbrace{|x_i|^2}_{\ge 0} \ge 0 $$
+
+**Conclusion**
+
+Nous avons prouvé les deux implications. Un endomorphisme auto-adjoint est positif si et seulement si toutes ses valeurs propres sont positives ou nulles.
+
+</details>
+
+---
+
+#### Construction d'une matrice symétrique définie positive
+
+Prouver que pour toute matrice réelle inversible $M \in GL_n(\mathbb{R})$, la matrice $S = {}^tMM$ est symétrique et définie positive.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Pour prouver la symétrie, calculez ${}^tS$ et utilisez les propriétés de la transposition d'un produit.
+
+Pour prouver qu'elle est définie positive, vous devez montrer que pour tout vecteur colonne non nul $X \in \mathbb{R}^n$, on a ${}^tXSX > 0$. Remplacez $S$ par ${}^tMM$ et réarrangez l'expression pour faire apparaître la norme d'un vecteur. Utilisez ensuite le fait que $M$ est inversible.
+
+</details>
+
+<details>
+
+<summary>Démonstration</summary>
+
+Soit $M \in GL_n(\mathbb{R})$ une matrice réelle inversible et soit $S = {}^tMM$.
+
+**Étape 1 : Preuve de la symétrie**
+
+Calculons la transposée de $S$ :
+
+$$ {}^tS = {}^t({}^tMM) $$
+
+En utilisant la propriété ${}^t(AB) = {}^tB {}^tA$, on a :
+
+$$ {}^tS = {}^tM {}^t({}^tM) $$
+
+La double transposition est l'identité, donc ${}^t({}^tM) = M$.
+
+$$ {}^tS = {}^tMM = S $$
+
+Puisque ${}^tS = S$, la matrice $S$ est symétrique.
+
+**Étape 2 : Preuve du caractère défini positif**
+
+Pour montrer que $S$ est définie positive, nous devons montrer que pour tout vecteur colonne non nul $X \in \mathbb{R}^n \setminus \{0\}$, la forme quadratique associée est strictement positive : ${}^tXSX > 0$.
+
+Soit $X \in \mathbb{R}^n$ avec $X \neq 0$.
+
+$$ {}^tXSX = {}^tX({}^tMM)X $$
+
+Par associativité du produit matriciel, on peut regrouper les termes :
+
+$$ {}^tXSX = ({}^tX{}^tM)(MX) = {}^t(MX)(MX) $$
+
+Soit $Y = MX$. L'expression devient ${}^tYY$.
+
+Le produit ${}^tYY$ est le produit scalaire canonique de $Y$ avec lui-même, ce qui correspond au carré de sa norme euclidienne :
+
+$$ {}^tYY = \|Y\|^2 $$
+
+On a donc ${}^tXSX = \|MX\|^2$.
+
+La norme d'un vecteur est toujours positive ou nulle. Nous devons montrer qu'elle est strictement positive.
+
+$\|MX\|^2 \ge 0$.
+
+Supposons que $\|MX\|^2 = 0$. Cela implique que $MX = 0$.
+
+Puisque la matrice $M$ est inversible, elle définit une application linéaire injective. Son noyau est donc réduit au vecteur nul : $\ker(M) = \{0\}$.
+
+Ainsi, $MX=0$ implique que $X=0$.
+
+Or, nous avons pris un vecteur $X$ non nul. Par conséquent, $MX$ ne peut pas être le vecteur nul, et donc $\|MX\|^2 > 0$.
+
+**Conclusion**
+
+Pour tout $X \neq 0$, on a ${}^tXSX > 0$. La matrice $S={}^tMM$ est donc symétrique et définie positive.
+
+</details>
+
+---
+
+#### Unicité de la décomposition polaire
+
+Prouver l'unicité de la décomposition polaire $M=SO$ pour une matrice inversible $M$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Supposez qu'il existe deux décompositions : $M = S_1O_1 = S_2O_2$, où $S_1, S_2$ sont symétriques définies positives et $O_1, O_2$ sont orthogonales.
+
+Le but est de montrer que $S_1=S_2$ et $O_1=O_2$.
+
+Commencez par exprimer $M{}^tM$ en utilisant les deux décompositions. Que pouvez-vous en déduire sur $S_1^2$ et $S_2^2$ ? Utilisez ensuite l'unicité de la racine carrée d'une matrice symétrique définie positive.
+
+</details>
+
+<details>
+
+<summary>Démonstration</summary>
+
+Soit $M \in GL_n(\mathbb{R})$. Supposons qu'il existe deux décompositions polaires de $M$ :
+
+$$ M = S_1 O_1 \quad \text{et} \quad M = S_2 O_2 $$
+
+où $S_1, S_2$ sont des matrices symétriques définies positives et $O_1, O_2$ sont des matrices orthogonales.
+
+**Étape 1 : Montrer que $S_1 = S_2$**
+
+Considérons le produit $M{}^tM$. En utilisant la première décomposition :
+
+$$ M{}^tM = (S_1 O_1) {}^t(S_1 O_1) = S_1 O_1 {}^tO_1 {}^tS_1 $$
+
+Puisque $O_1$ est orthogonale, ${}^tO_1 = O_1^{-1}$, donc $O_1 {}^tO_1 = I$.
+
+Puisque $S_1$ est symétrique, ${}^tS_1 = S_1$.
+
+L'expression devient :
+
+$$ M{}^tM = S_1 I S_1 = S_1^2 $$
+
+En faisant le même calcul avec la seconde décomposition, on obtient :
+
+$$ M{}^tM = S_2^2 $$
+
+On a donc $S_1^2 = S_2^2 = M{}^tM$.
+
+La matrice $A = M{}^tM$ est une matrice symétrique définie positive (car $M$ est inversible). Or, une matrice symétrique définie positive admet une unique racine carrée symétrique définie positive.
+
+Puisque $S_1$ et $S_2$ sont toutes deux des racines carrées symétriques définies positives de $A$, elles doivent être égales :
+
+$$ S_1 = S_2 $$
+
+**Étape 2 : Montrer que $O_1 = O_2$**
+
+Maintenant que nous savons que $S_1=S_2$, notons cette matrice commune $S$.
+
+L'hypothèse de départ devient $M = S O_1 = S O_2$.
+
+$$ S O_1 = S O_2 $$
+
+Puisque $S$ est une matrice symétrique définie positive, toutes ses valeurs propres sont strictement positives. Son déterminant (le produit de ses valeurs propres) est donc non nul, ce qui signifie que $S$ est inversible.
+
+On peut donc multiplier à gauche par $S^{-1}$ :
+
+$$ S^{-1}(S O_1) = S^{-1}(S O_2) $$
+
+$$ (S^{-1}S) O_1 = (S^{-1}S) O_2 $$
+
+$$ I O_1 = I O_2 $$
+
+$$ O_1 = O_2 $$
+
+**Conclusion**
+
+Nous avons montré que si deux décompositions existent, leurs composantes respectives doivent être identiques. La décomposition polaire $M=SO$ d'une matrice inversible est donc unique.
+
+</details>

@@ -1,0 +1,357 @@
+{
+  "info": {
+    "id": "d69a9c01",
+    "title": "Courbes planes - quiz (A)",
+    "type": "quiz",
+    "level": "regular",
+    "chapter": "Courbes planes",
+    "course": "Géométrie",
+    "tags": [
+      "courbes planes",
+      "courbes paramétrées",
+      "courbes implicites",
+      "coniques",
+      "courbure",
+      "Gauss-Bonnet"
+    ],
+    "count": 12
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "d69a9c01",
+      "content": "#### Question 1 : Point Régulier\n\nQu'est-ce qui caractérise un point $\\gamma(t_0)$ comme étant **régulier** sur une courbe paramétrée $(I, \\gamma)$ ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nUn point sur une courbe paramétrée est dit régulier si le mobile qui parcourt la courbe ne s'arrête pas en ce point. Mathématiquement, cela se traduit par un vecteur vitesse non nul.\n\n- **A.** Un point où le vecteur accélération est non nul (et non colinéaire à la vitesse) est dit birégulier. Ce n'est pas la définition d'un point régulier.\n- **B.** C'est la définition d'un point régulier. Le vecteur vitesse $\\gamma'(t_0)$ est le vecteur tangent à la courbe, et sa non-nullité garantit que la tangente est bien définie.\n- **C.** La position de la courbe par rapport à l'origine n'a aucun lien avec la régularité d'un point.\n- **D.** C'est la définition d'un point **singulier**, l'opposé d'un point régulier.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Le vecteur accélération $\\gamma''(t_0)$ est non nul.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Le vecteur vitesse $\\gamma'(t_0)$ est non nul.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** La courbe passe par l'origine au temps $t_0$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Le vecteur vitesse $\\gamma'(t_0)$ est nul.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "stackId": "d69a9c01",
+      "content": "#### Question 2 : Point Singulier\n\nConsidérons la courbe paramétrée par $\\gamma(t) = (t^2, t^3)$. Pour quelle valeur du paramètre $t$ cette courbe possède-t-elle un point singulier ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nUn point singulier est un point où le vecteur vitesse s'annule. Nous devons donc calculer le vecteur vitesse $\\gamma'(t)$ et déterminer pour quelle(s) valeur(s) de $t$ il est égal au vecteur nul $(0,0)$.\n\n1.  **Calcul du vecteur vitesse :**\n\n    La courbe est donnée par $\\gamma(t) = (x(t), y(t)) = (t^2, t^3)$.\n\n    Le vecteur vitesse est $\\gamma'(t) = (x'(t), y'(t)) = (2t, 3t^2)$.\n\n2.  **Recherche du point singulier :**\n\n    On cherche $t$ tel que $\\gamma'(t) = (0,0)$.\n\n    Cela équivaut à résoudre le système d'équations :\n\n    $$\n\n    \\begin{cases}\n\n    2t = 0 \\\\\n\n    3t^2 = 0\n\n    \\end{cases}\n\n    $$\n\n    La seule solution à ce système est $t=0$.\n\n- **A, D.** Pour $t=1$, $\\gamma'(1)=(2,3) \\neq (0,0)$. Pour $t=-1$, $\\gamma'(-1)=(-2,3) \\neq (0,0)$. Ces points sont réguliers.\n- **B.** Comme nous avons trouvé une solution pour $t=0$, cette option est incorrecte.\n- **C.** Pour $t=0$, $\\gamma'(0)=(0,0)$, donc le point $\\gamma(0)=(0,0)$ est un point singulier.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $t = 1$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** La courbe n'a pas de points singuliers.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $t = 0$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $t = -1$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "stackId": "d69a9c01",
+      "content": "#### Question 3 : Paramétrage par Longueur d'Arc\n\nQuelle est la propriété fondamentale d'une courbe paramétrée par sa longueur d'arc (ou abscisse curviligne), notée $s$ ?\n",
+      "solution": "\n\n**Réponse : [A]**\n\nLe paramétrage par longueur d'arc consiste à décrire la courbe non pas en fonction d'un \"temps\" abstrait $t$, mais en fonction de la distance $s$ parcourue le long de la courbe depuis un point de départ. Cela revient à parcourir la courbe à une vitesse scalaire constante de 1.\n\n- **A.** C'est la définition même du paramétrage par longueur d'arc. La norme du vecteur vitesse (la vitesse scalaire) est toujours égale à 1.\n- **B.** C'est faux. Par exemple, un cercle de rayon 1 paramétré par sa longueur d'arc est $\\gamma(s) = (\\cos s, \\sin s)$. Son accélération est $\\gamma''(s) = (-\\cos s, -\\sin s)$, qui n'est pas nulle. Une accélération non nulle est nécessaire pour que la courbe tourne.\n- **C.** Une droite est bien paramétrée par sa longueur d'arc si on la parcourt à vitesse 1, mais ce n'est pas le seul type de courbe. Toute courbe régulière peut être reparamétrée par sa longueur d'arc.\n- **D.** La longueur totale de la courbe dépend de l'intervalle de définition du paramètre $s$. Si $s$ varie sur $[0, L]$, la longueur de la courbe est $L$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Sa vitesse scalaire $\\|\\gamma'(s)\\|$ est constamment égale à 1.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** Son vecteur accélération $\\gamma''(s)$ est toujours nul.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** La courbe est obligatoirement une droite.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** La trajectoire de la courbe a une longueur totale de 1.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "stackId": "d69a9c01",
+      "content": "#### Question 4 : Reparamétrage\n\nSoient $(I, f)$ et $(J, g)$ deux courbes paramétrées $C^1$-équivalentes. Qu'est-ce que cela implique ?\n",
+      "solution": "\n\n**Réponse : [A]**\n\nDeux courbes sont équivalentes si l'une peut être obtenue à partir de l'autre par un \"changement d'horloge\" (un difféomorphisme). Cela change la façon de parcourir la courbe, mais pas la courbe elle-même.\n\n- **A.** C'est la définition de l'équivalence. L'image de la fonction, $\\gamma(I)$, qui est la forme géométrique de la courbe (la trajectoire), est identique pour les deux.\n- **B.** C'est faux. La vitesse dépend de la dérivée de la fonction de reparamétrage $\\theta$. Si $g(u) = f(\\theta(u))$, alors $g'(u) = f'(\\theta(u)) \\cdot \\theta'(u)$. La vitesse est multipliée par $|\\theta'(u)|$.\n- **C.** C'est faux. Si la dérivée $\\theta'(u)$ de la fonction de reparamétrage est négative, le sens de parcours est inversé.\n- **D.** C'est faux. Un reparamétrage peut introduire ou supprimer des points singuliers si ce n'est pas un difféomorphisme. Par exemple, reparamétrer $f(t)=(t,t)$ par $u=t^3$ donne $g(u)=(u^{1/3}, u^{1/3})$ qui a un problème de dérivabilité en 0, alors que la droite n'en a pas. Pour des courbes $C^1$-équivalentes (via un difféomorphisme), la régularité est conservée.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Les deux paramétrages décrivent la même trajectoire géométrique.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** La vitesse scalaire est la même aux points correspondants.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Le sens de parcours de la trajectoire est obligatoirement le même.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Les deux courbes ont forcément des points singuliers aux mêmes endroits.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "stackId": "d69a9c01",
+      "content": "#### Question 5 : Point Birégulier\n\nComment définit-on un point **birégulier** $f(t_0)$ sur une courbe plane ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nLa birégularité est une condition plus forte que la régularité. Elle garantit que la courbe n'est pas \"localement droite\", c'est-à-dire qu'elle est en train de tourner.\n\n- **A.** Si $f'(t_0)$ est nul, le point est singulier, pas régulier (et donc pas birégulier).\n- **B.** Si la vitesse et l'accélération sont colinéaires, cela signifie que la courbe accélère ou décélère en ligne droite (localement). La courbe ne tourne pas. Le point n'est pas birégulier. Un tel point est par exemple un point d'inflexion.\n- **C.** C'est la définition d'un point birégulier. Le fait que les vecteurs vitesse et accélération forment une base (c'est-à-dire sont linéairement indépendants) signifie géométriquement que l'accélération a une composante non nulle perpendiculaire à la vitesse, ce qui force la courbe à tourner.\n- **D.** Un point ne peut pas être à la fois régulier et singulier, car leurs définitions sont mutuellement exclusives.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Le vecteur vitesse $f'(t_0)$ est nul, mais le vecteur accélération $f''(t_0)$ ne l'est pas.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Les vecteurs $f'(t_0)$ et $f''(t_0)$ sont non nuls et colinéaires.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Les vecteurs vitesse $f'(t_0)$ et accélération $f''(t_0)$ forment une base du plan.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Le point est à la fois régulier et singulier.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "stackId": "d69a9c01",
+      "content": "#### Question 6 : Étude Locale\n\nAu voisinage d'un point **birégulier**, quelle est la position de la courbe par rapport à sa tangente ?\n",
+      "solution": "\n\n**Réponse : [D]**\n\nL'étude locale en un point birégulier est simple et prédictible. Le vecteur accélération \"tire\" la courbe loin de sa tangente.\n\n- **A.** La courbe traverse sa tangente en un point d'inflexion, qui est un point non-birégulier.\n- **B.** La courbe est confondue avec sa tangente si c'est une droite, dont les points ne sont pas biréguliers (l'accélération est nulle).\n- **C.** Un point de rebroussement est un type de point singulier, et non un point birégulier.\n- **D.** C'est le résultat principal de l'étude locale. La courbe se situe dans le \"demi-plan de concavité\" défini par la tangente et la direction du vecteur accélération. L'allure locale est celle d'une parabole.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** La courbe traverse sa tangente.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** La courbe est confondue avec sa tangente.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** La courbe forme un point de rebroussement.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** La courbe reste entièrement d'un seul côté de sa tangente.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "stackId": "d69a9c01",
+      "content": "#### Question 7 : Classification des Points Singuliers\n\nÀ un point singulier d'une courbe, on détermine que l'ordre $p$ de la première dérivée non nulle est $p=2$ (pair) et que l'ordre $q$ de la première dérivée non colinéaire à la p-ième est $q=3$ (impair). Quelle est la nature de ce point ?\n",
+      "solution": "\n\n**Réponse : [A]**\n\nLa classification des points singuliers non dégénérés se fait en fonction de la parité des entiers $p$ et $q$.\n\n-   **$p$ (ordre de la \"vitesse généralisée\") :** Si $p$ est pair, la courbe repart en sens inverse (rebroussement). Si $p$ est impair, elle continue dans la même direction.\n-   **$q$ (ordre de l'écart à la tangente) :** Si $q$ est impair, les deux branches sont de part et d'autre de la tangente. Si $q$ est pair, elles sont du même côté.\n\nDans notre cas :\n\n-   $p=2$ est **pair** $\\implies$ c'est un point de **rebroussement**.\n-   $q=3$ est **impair** $\\implies$ les deux branches sont de part et d'autre de la tangente.\n\nLa combinaison \"rebroussement\" et \"de part et d'autre\" correspond à la définition d'un **point de rebroussement de première espèce**. L'exemple type est la courbe $y^2 = x^3$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Point de rebroussement de première espèce.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** Point de rebroussement de deuxième espèce.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Point méplat.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Point d'inflexion.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "stackId": "d69a9c01",
+      "content": "#### Question 8 : Courbes Implicites et Algébriques\n\nParmi les équations suivantes, laquelle est une représentation **implicite** d'une courbe ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nIl faut distinguer les deux manières principales de décrire une courbe :\n\n- **Paramétrique :** On donne $x$ et $y$ comme des fonctions d'un paramètre (ex: $t$ ou $\\theta$). C'est une description \"dynamique\" qui dit comment dessiner la courbe.\n- **Implicite :** On donne une équation de la forme $F(x,y)=0$ que les coordonnées d'un point doivent vérifier pour appartenir à la courbe. C'est une description \"statique\".\n\n- **A.** C'est un paramétrage (de l'astroïde).\n- **B.** C'est un paramétrage (de la parabole).\n- **C.** C'est une équation de la forme $F(x,y)=0$. Un point $(x,y)$ est sur la courbe si ses coordonnées vérifient la condition. C'est la définition d'une représentation implicite (ici, du folium de Descartes).\n- **D.** C'est une équation en coordonnées polaires, qui est une forme de paramétrage (le paramètre étant l'angle $\\theta$). On peut la transformer en paramétrage cartésien : $x(\\theta) = (1+\\cos\\theta)\\cos\\theta, y(\\theta) = (1+\\cos\\theta)\\sin\\theta$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\gamma(t) = (\\cos^3(t), \\sin^3(t))$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $x(t) = t, \\quad y(t) = t^2$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $x^3 + y^3 - 3xy = 0$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $r(\\theta) = 1 + \\cos(\\theta)$ (en coordonnées polaires)",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "stackId": "d69a9c01",
+      "content": "#### Question 9 : Identification des Coniques\n\nQuelle est la nature de la conique définie par l'équation $2x^2 + 2xy + 2y^2 - 5x + 1 = 0$ ?\n",
+      "solution": "\n\n**Réponse : [D]**\n\nPour déterminer la nature d'une conique d'équation générale $ax^2 + 2cxy + by^2 + dx + ey + f = 0$, on calcule le signe du déterminant de sa partie quadratique, $\\Delta = ab - c^2$.\n\n1.  **Identifier les coefficients :**\n\n    Dans l'équation $2x^2 + 2xy + 2y^2 - 5x + 1 = 0$, nous avons :\n\n    -   $a = 2$\n    -   $b = 2$\n    -   $2c = 2 \\implies c = 1$\n\n2.  **Calculer le déterminant :**\n\n    $\\Delta = ab - c^2 = (2)(2) - (1)^2 = 4 - 1 = 3$.\n\n3.  **Interpréter le signe :**\n    -   Si $\\Delta > 0$, la conique est du genre **ellipse** (ou un cas dégénéré comme un point ou l'ensemble vide).\n    -   Si $\\Delta < 0$, la conique est du genre **hyperbole** (ou deux droites sécantes).\n    -   Si $\\Delta = 0$, la conique est du genre **parabole** (ou deux droites parallèles, une droite, ou l'ensemble vide).\n\nPuisque $\\Delta = 3 > 0$, la conique est du genre ellipse.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**B)** Une parabole",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**C)** Une hyperbole",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**D)** Une ellipse",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**A)** Un cas dégénéré (droite, point, etc.)",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "stackId": "d69a9c01",
+      "content": "#### Question 10 : Courbure d'une Courbe Plane\n\nQue mesure géométriquement la **courbure** $\\kappa(t)$ en un point d'une courbe ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nLa courbure est la mesure quantitative de l'intensité du virage d'une courbe.\n\n- **A.** La distance à l'origine est donnée par la norme du vecteur position $\\|\\gamma(t)\\|$.\n- **B.** La longueur de la courbe est l'abscisse curviligne $s(t) = \\int_{t_0}^t \\|\\gamma'(u)\\| du$.\n- **C.** C'est l'interprétation géométrique correcte. Une grande courbure (en valeur absolue) signifie un virage serré (comme une épingle à cheveux). Une courbure nulle signifie que la courbe est localement une droite. Le signe de la courbure indique le sens du virage (gauche ou droite).\n- **D.** L'angle de la tangente est une quantité $\\varphi(t)$, mais la courbure est la *vitesse de variation* de cet angle par rapport à la longueur d'arc, $\\kappa = d\\varphi/ds$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** La distance du point à l'origine.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** La longueur de la courbe jusqu'à ce point.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** La rapidité avec laquelle la courbe tourne en ce point.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** L'angle de la tangente avec l'axe des abscisses.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "stackId": "d69a9c01",
+      "content": "#### Question 11 : Calcul de Courbure\n\nQuelle est la courbure d'un cercle de rayon $R=5$, parcouru dans le sens trigonométrique ?\n",
+      "solution": "\n\n**Réponse : [D]**\n\nLa courbure d'un cercle est constante et est l'inverse de son rayon.\n\nOn peut le retrouver par le calcul. Un paramétrage est $\\gamma(t) = (5\\cos t, 5\\sin t)$.\n\n-   Vecteur vitesse : $\\gamma'(t) = (-5\\sin t, 5\\cos t)$.\n-   Norme de la vitesse : $\\|\\gamma'(t)\\| = \\sqrt{(-5\\sin t)^2 + (5\\cos t)^2} = \\sqrt{25(\\sin^2 t + \\cos^2 t)} = 5$.\n-   Vecteur accélération : $\\gamma''(t) = (-5\\cos t, -5\\sin t)$.\n-   Déterminant : $\\det(\\gamma'(t), \\gamma''(t)) = (-5\\sin t)(-5\\sin t) - (5\\cos t)(-5\\cos t) = 25\\sin^2 t + 25\\cos^2 t = 25$.\n\nLa formule de la courbure est $\\kappa(t) = \\frac{\\det(\\gamma'(t), \\gamma''(t))}{\\|\\gamma'(t)\\|^3}$.\n\n$$ \\kappa(t) = \\frac{25}{(5)^3} = \\frac{25}{125} = \\frac{1}{5} $$\n\nLa courbure est constante et vaut $1/R$. Comme le cercle est parcouru dans le sens trigonométrique (\"tourne à gauche\"), la courbure est positive.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\kappa = 5$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\kappa = 0$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $\\kappa = 25$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $\\kappa = 1/5$",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "stackId": "d69a9c01",
+      "content": "#### Question 12 : Théorème de Gauss-Bonnet\n\nSoit une courbe fermée simple (un lacet qui ne se croise pas, comme une ellipse), régulière et de classe $C^2$. Selon le théorème de Gauss-Bonnet, que vaut son intégrale de courbure totale $\\int_{\\text{courbe}} \\kappa ds$ ?\n",
+      "solution": "\n\n**Réponse : [D]**\n\nLe théorème de Gauss-Bonnet relie la géométrie locale (la courbure $\\kappa$) à une propriété topologique globale (le nombre d'enroulements de la tangente). La formule est $\\int \\kappa ds = 2\\pi \\times \\text{Enroul}(f)$.\n\n- **A.** L'intégrale est nulle seulement si le nombre d'enroulements de la tangente est nul, ce qui arrive pour une courbe en forme de \"huit\", mais pas pour une courbe simple fermée.\n- **B.** C'est incorrect, la courbure n'est pas directement liée à la longueur de cette manière.\n- **C.** L'intégrale est un multiple de $2\\pi$, ce n'est donc en général pas un entier. C'est le *nombre d'enroulement* qui est un entier.\n- **D.** Pour une courbe **simple** et fermée, le vecteur tangent fait exactement un tour complet sur lui-même lorsqu'on parcourt la courbe. Le nombre d'enroulement $\\text{Enroul}(f)$ est donc soit $+1$ (si parcourue dans le sens trigonométrique), soit $-1$ (si parcourue dans le sens horaire). L'intégrale de courbure totale vaut donc $2\\pi \\times (\\pm 1) = \\pm 2\\pi$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Elle est toujours nulle.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Elle est égale à la longueur de la courbe.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Elle est toujours un entier.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Elle est égale à $2\\pi$ ou $-2\\pi$.",
+          "correct": true
+        }
+      ]
+    }
+  ]
+}
