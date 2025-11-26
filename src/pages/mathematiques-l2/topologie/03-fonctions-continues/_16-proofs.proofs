@@ -12,7 +12,7 @@ tags:
   - continuité uniforme
 createdAt: '2025-11-26T13:08:33.861Z'
 level: regular
-course: Topologie et Calcul Différentiel I
+course: Topologie
 courseId: 34e61f8e
 chapter: Fonctions continues
 chapterId: 70ecfb0a
@@ -27,7 +27,7 @@ Démontrez que si une fonction $f: D \subseteq \mathbb{R}^n \to \mathbb{R}^p$ ad
 
 <details class="hint">
 
-<summary>Astuce</summary>
+<summary>Indice</summary>
 
 Raisonnez par l'absurde. Supposez qu'il existe deux limites distinctes, $l_1$ et $l_2$. Utilisez la définition de la limite avec un $\varepsilon$ bien choisi pour montrer que la distance entre $l_1$ et $l_2$ doit être plus petite qu'elle-même, ce qui est une contradiction. L'inégalité triangulaire sera votre amie.
 
@@ -90,7 +90,7 @@ Soient $f, g: D \subseteq \mathbb{R}^n \to \mathbb{R}^p$ deux fonctions continue
 
 <details class="hint">
 
-<summary>Astuce</summary>
+<summary>Indice</summary>
 
 Utilisez la définition $\varepsilon-\delta$ de la continuité. L'objectif est de montrer que $d(S(x), S(a))$ peut être rendu arbitrairement petit. Utilisez l'inégalité triangulaire pour majorer $d(S(x), S(a))$ par une expression impliquant $d(f(x), f(a))$ et $d(g(x), g(a))$. Ensuite, utilisez la continuité de $f$ et $g$ avec un $\varepsilon$ bien choisi (par exemple $\varepsilon/2$).
 
@@ -151,7 +151,7 @@ Soit $f: D \subseteq \mathbb{R}^n \to \mathbb{R}^p$ une fonction. On note $f(x) 
 
 <details class="hint">
 
-<summary>Astuce</summary>
+<summary>Indice</summary>
 
 Pour prouver la continuité de $f_i$, vous devez majorer $|f_i(x) - f_i(a)|$. Rappelez-vous la relation entre la norme d'un vecteur et la valeur absolue de ses composantes. Pour n'importe quel vecteur $v = (v_1, \dots, v_p) \in \mathbb{R}^p$, on a $|v_i| \le \|v\|_\infty = \max_j |v_j|$ et aussi $|v_i| \le \|v\|_2 = \sqrt{\sum_j v_j^2}$. Utilisez l'une de ces inégalités avec le vecteur $v = f(x) - f(a)$.
 
@@ -217,7 +217,7 @@ Soit $f: D \to \mathbb{R}^p$ une fonction et $z \in \bar{D} \setminus D$. Démon
 
 <details class="hint">
 
-<summary>Astuce</summary>
+<summary>Indice</summary>
 
 Pour prouver que $f$ est prolongeable par continuité, vous devez construire une nouvelle fonction $\tilde{f}$ définie sur $D \cup \{z\}$ qui est continue en $z$ et qui coïncide avec $f$ sur $D$. La définition de $\tilde{f}$ est presque entièrement dictée par l'énoncé. Il vous reste à vérifier que la fonction $\tilde{f}$ ainsi construite est bien continue en $z$.
 
@@ -285,7 +285,7 @@ Démontrez que si une fonction $f: \mathbb{R}^n \to \mathbb{R}^p$ est continue, 
 
 <details class="hint">
 
-<summary>Astuce</summary>
+<summary>Indice</summary>
 
 Soit $V$ un ouvert de $\mathbb{R}^p$. Vous devez montrer que son image réciproque, $U = f^{-1}(V)$, est un ouvert de $\mathbb{R}^n$. Pour cela, prenez un point quelconque $a \in U$ et montrez qu'il existe une boule ouverte centrée en $a$ qui est entièrement contenue dans $U$.
 
@@ -347,7 +347,7 @@ Démontrez que si $K \subseteq \mathbb{R}^n$ est un ensemble compact et $f: K \t
 
 <details class="hint">
 
-<summary>Astuce</summary>
+<summary>Indice</summary>
 
 Utilisez la caractérisation séquentielle de la compacité (théorème de Bolzano-Weierstrass). Pour montrer que $f(K)$ est compact, prenez une suite quelconque $(y_k)$ dans $f(K)$ et montrez qu'on peut en extraire une sous-suite qui converge vers un élément de $f(K)$.
 
@@ -421,7 +421,7 @@ Soit $K \subseteq \mathbb{R}^n$ un compact non vide et $f: K \to \mathbb{R}$ une
 
 <details class="hint">
 
-<summary>Astuce</summary>
+<summary>Indice</summary>
 
 Ce théorème est une conséquence directe du théorème précédent ("l'image d'un compact est un compact").
 
@@ -480,7 +480,7 @@ Démontrez que l'image d'un ensemble connexe par arcs par une application contin
 
 <details class="hint">
 
-<summary>Astuce</summary>
+<summary>Indice</summary>
 
 Soit $A \subseteq \mathbb{R}^n$ un ensemble connexe par arcs et $f: A \to \mathbb{R}^p$ une application continue. Pour montrer que $f(A)$ est connexe par arcs, vous devez prendre deux points quelconques $y_1, y_2$ dans $f(A)$ et construire un chemin continu qui les relie en restant dans $f(A)$.
 
@@ -549,7 +549,7 @@ Démontrez que la fonction $f: \mathbb{R} \to \mathbb{R}$ définie par $f(x) = x
 
 <details class="hint">
 
-<summary>Astuce</summary>
+<summary>Indice</summary>
 
 Vous devez prouver la négation de la définition de la continuité uniforme. C'est-à-dire :
 
@@ -628,7 +628,7 @@ Démontrez que la fonction "norme euclidienne" $f: \mathbb{R}^n \to \mathbb{R}$ 
 
 <details class="hint">
 
-<summary>Astuce</summary>
+<summary>Indice</summary>
 
 Utilisez l'inégalité triangulaire renversée (ou seconde inégalité triangulaire). Elle stipule que pour tous vecteurs $x, y \in \mathbb{R}^n$, on a $| \|x\| - \|y\| | \le \|x-y\|$. Cette inégalité relie directement la quantité à contrôler, $|f(x)-f(y)|$, à la distance entre $x$ et $y$. La preuve devient alors très directe avec la définition $\varepsilon-\delta$.
 
@@ -708,7 +708,7 @@ Démontrez qu'une fonction lipschitzienne $f: D \subseteq \mathbb{R}^n \to \math
 
 <details class="hint">
 
-<summary>Astuce</summary>
+<summary>Indice</summary>
 
 Rappelez-vous la définition d'une fonction lipschitzienne : il existe une constante $k \ge 0$ telle que $d(f(x), f(y)) \le k \cdot d(x, y)$ pour tous $x, y \in D$.
 

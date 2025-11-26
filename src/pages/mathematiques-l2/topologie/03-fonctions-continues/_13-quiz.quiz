@@ -12,7 +12,7 @@ tags:
   - continuité uniforme
 createdAt: '2025-11-26T13:08:33.861Z'
 level: regular
-course: Topologie et Calcul Différentiel I
+course: Topologie
 courseId: 34e61f8e
 chapter: Fonctions continues
 chapterId: 70ecfb0a

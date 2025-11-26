@@ -18,7 +18,7 @@ chapterId: b85ab516
 level: regular
 createdAt: '2025-10-12T18:10:33.114Z'
 ---
-# Chapitre 2: Groupes d'isométries (A)
+# Groupes d'isométries (A)
 
 ---
 

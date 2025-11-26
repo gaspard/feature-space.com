@@ -1,0 +1,356 @@
+{
+  "info": {
+    "id": "887af8a4",
+    "title": "Fonctions différentiables - quiz (A)",
+    "type": "quiz",
+    "level": "regular",
+    "chapter": "Fonctions différentiables",
+    "course": "Topologie",
+    "tags": [
+      "Topologie",
+      "Calcul Différentiel",
+      "Mathématiques",
+      "Sorbonne Université",
+      "Fonctions de plusieurs variables"
+    ],
+    "count": 12
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "887af8a4",
+      "content": "#### Question 1 : Définition de la différentiabilité\n\nSoit $f: U \\subset \\mathbb{R}^n \\to \\mathbb{R}^p$ une fonction définie sur un ouvert $U$ et soit $a \\in U$. Que signifie que $f$ est différentiable au point $a$?\n",
+      "solution": "\n\n**Réponse : [B]**\n\n- **A)** L'affirmation est incorrecte. La continuité est une conséquence de la différentiabilité, mais ce n'est pas sa définition. Une fonction peut être continue sans être différentiable (par exemple, $f(x)=|x|$ en $x=0$).\n\n- **B)** L'affirmation est correcte. C'est la définition formelle d'une fonction différentiable en un point $a$. Elle signifie que la fonction peut être localement approximée par une application affine $x \\mapsto f(a) + L_a(x-a)$, avec une erreur qui tend vers zéro plus vite que la distance $\\|x-a\\|$.\n\n- **C)** L'affirmation est incorrecte. L'existence des dérivées partielles est une condition nécessaire pour la différentiabilité, mais elle n'est pas suffisante. Il existe des fonctions dont les dérivées partielles existent en un point, mais qui ne sont même pas continues en ce point.\n\n- **D)** L'affirmation est incorrecte. L'existence d'un plan tangent est liée à la différentiabilité (pour $f: \\mathbb{R}^2 \\to \\mathbb{R}$), mais il n'y a aucune raison pour qu'il soit horizontal. Un plan tangent horizontal correspondrait à une différentielle nulle ($L_a=0$).\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** La fonction $f$ est continue au point $a$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Il existe une application linéaire $L_a : \\mathbb{R}^n \\to \\mathbb{R}^p$ telle que $f(a+h) = f(a) + L_a(h) + o(\\|h\\|)$ quand $h \\to 0$.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Toutes les dérivées partielles de $f$ existent au point $a$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Le graphe de $f$ admet un plan tangent au point $(a, f(a))$ qui est horizontal.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "stackId": "887af8a4",
+      "content": "#### Question 2 : Propriétés de la différentiabilité\n\nParmi les affirmations suivantes concernant une fonction $f: U \\subset \\mathbb{R}^n \\to \\mathbb{R}^p$ en un point $a \\in U$, laquelle ou lesquelles sont vraies ?\n",
+      "solution": "\n\n**Réponses : [A, D]**\n\n- **A)** L'affirmation est correcte. C'est une propriété fondamentale : la différentiabilité est une condition plus forte que la continuité. Si une fonction peut être bien approximée par une application affine, elle doit être continue.\n\n- **B)** L'affirmation est incorrecte. C'est un contre-exemple classique. La fonction $f(x,y) = \\sqrt{x^2+y^2}$ est continue en $(0,0)$ mais n'est pas différentiable en ce point (elle a un \"cône\").\n\n- **C)** L'affirmation est incorrecte. C'est un autre contre-exemple important. La fonction $f(x,y) = \\frac{xy}{x^2+y^2}$ (avec $f(0,0)=0$) a des dérivées partielles nulles en $(0,0)$, mais n'est pas continue et donc pas différentiable en ce point.\n\n- **D)** L'affirmation est correcte. L'unicité de la différentielle fait partie de la définition. S'il existait deux applications linéaires $L_1$ et $L_2$ satisfaisant la condition, on pourrait montrer que $L_1=L_2$. C'est pourquoi on peut parler de *la* différentielle de $f$ en $a$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Si $f$ est différentiable en $a$, alors $f$ est continue en $a$.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** Si $f$ est continue en $a$, alors $f$ est différentiable en $a$.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Si toutes les dérivées partielles de $f$ existent en $a$, alors $f$ est différentiable en $a$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Si $f$ est différentiable en $a$, alors son application différentielle $df_a$ est unique.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "stackId": "887af8a4",
+      "content": "#### Question 3 : Calcul d'une dérivée partielle\n\nSoit la fonction $f: \\mathbb{R}^3 \\to \\mathbb{R}$ définie par $f(x,y,z) = x^3 y^2 + \\sin(z) - 4yz$. Quelle est la dérivée partielle de $f$ par rapport à $y$, notée $\\frac{\\partial f}{\\partial y}$ ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nPour calculer la dérivée partielle par rapport à $y$, on traite les autres variables ($x$ et $z$) comme des constantes et on dérive l'expression par rapport à $y$.\n\n$f(x,y,z) = x^3 y^2 + \\sin(z) - 4yz$\n\n- Le premier terme, $x^3 y^2$, est dérivé par rapport à $y$. $x^3$ est une constante, donc $\\frac{\\partial}{\\partial y}(x^3 y^2) = x^3 \\cdot (2y) = 2x^3y$.\n- Le deuxième terme, $\\sin(z)$, ne dépend pas de $y$, c'est donc une constante par rapport à $y$. Sa dérivée est 0.\n- Le troisième terme, $-4yz$, est dérivé par rapport à $y$. $-4z$ est une constante, donc $\\frac{\\partial}{\\partial y}(-4yz) = -4z \\cdot (1) = -4z$.\n\nEn additionnant les résultats, on obtient : $\\frac{\\partial f}{\\partial y}(x,y,z) = 2x^3y - 4z$.\n\n- **A)** Incorrect. Le premier terme est mal dérivé.\n- **B)** Incorrect. C'est une tentative de dériver par rapport à $z$.\n- **C)** Correct.\n- **D)** Incorrect. C'est un mélange de dérivations par rapport à plusieurs variables.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $3x^2y^2 - 4z$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $x^3 y^2 + \\cos(z) - 4y$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $2x^3y - 4z$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $3x^2y^2 + \\cos(z) - 4z$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "stackId": "887af8a4",
+      "content": "#### Question 4 : Structure de la Matrice Jacobienne\n\nSoit une fonction différentiable $f: \\mathbb{R}^n \\to \\mathbb{R}^p$. Quelle est la dimension (le format) de sa matrice jacobienne $J_f(a)$ en un point $a$ ?\n",
+      "solution": "\n\n**Réponse : [D]**\n\nLa structure de la matrice jacobienne est définie comme suit :\n\n- Le nombre de lignes est égal à la dimension de l'espace d'arrivée, soit $p$. Chaque ligne $i$ correspond aux dérivées partielles de la $i$-ème fonction composante $f_i$.\n- Le nombre de colonnes est égal à la dimension de l'espace de départ, soit $n$. Chaque colonne $j$ correspond aux dérivations par rapport à la $j$-ème variable $x_j$.\n\nAinsi, l'élément $(i,j)$ de la matrice est $\\frac{\\partial f_i}{\\partial x_j}(a)$. La matrice a donc $p$ lignes et $n$ colonnes, son format est $p \\times n$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $n \\times p$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $n \\times n$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $p \\times p$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $p \\times n$",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "stackId": "887af8a4",
+      "content": "#### Question 5 : Calcul de la Matrice Jacobienne\n\nSoit la fonction $f: \\mathbb{R}^2 \\to \\mathbb{R}^2$ définie par $f(x,y) = (e^{x+y}, x^2y)$. Quelle est la matrice jacobienne de $f$ ?\n",
+      "solution": "\n\n**Réponse : [D]**\n\nNous avons une fonction $f: \\mathbb{R}^2 \\to \\mathbb{R}^2$. Sa matrice jacobienne sera de taille $2 \\times 2$.\n\nLes fonctions composantes sont $f_1(x,y) = e^{x+y}$ et $f_2(x,y) = x^2y$.\n\nCalculons les quatre dérivées partielles nécessaires :\n\n- Ligne 1 (dérivées de $f_1$) :\n  - $\\frac{\\partial f_1}{\\partial x} = \\frac{\\partial}{\\partial x}(e^{x+y}) = e^{x+y} \\cdot 1 = e^{x+y}$\n  - $\\frac{\\partial f_1}{\\partial y} = \\frac{\\partial}{\\partial y}(e^{x+y}) = e^{x+y} \\cdot 1 = e^{x+y}$\n- Ligne 2 (dérivées de $f_2$) :\n  - $\\frac{\\partial f_2}{\\partial x} = \\frac{\\partial}{\\partial x}(x^2y) = 2xy$\n  - $\\frac{\\partial f_2}{\\partial y} = \\frac{\\partial}{\\partial y}(x^2y) = x^2$\n\nEn assemblant ces résultats dans la matrice jacobienne $J_f(x,y) = \\begin{pmatrix} \\frac{\\partial f_1}{\\partial x} & \\frac{\\partial f_1}{\\partial y} \\\\ \\frac{\\partial f_2}{\\partial x} & \\frac{\\partial f_2}{\\partial y} \\end{pmatrix}$, on obtient :\n\n$J_f(x,y) = \\begin{pmatrix} e^{x+y} & e^{x+y} \\\\ 2xy & x^2 \\end{pmatrix}$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\begin{pmatrix} e^{x+y} & e^{x+y} \\\\ 2xy & 2x \\end{pmatrix}$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\begin{pmatrix} e^{x+y} & 2xy \\\\ e^{x+y} & x^2 \\end{pmatrix}$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $\\begin{pmatrix} (x+y)e^{x+y} & (x+y)e^{x+y} \\\\ 2xy & x^2 \\end{pmatrix}$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $\\begin{pmatrix} e^{x+y} & e^{x+y} \\\\ 2xy & x^2 \\end{pmatrix}$",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "stackId": "887af8a4",
+      "content": "#### Question 6 : Hiérarchie des notions de régularité\n\nPour une fonction $f: U \\subset \\mathbb{R}^n \\to \\mathbb{R}^p$ définie sur un ouvert $U$, quelle est la chaîne d'implications correcte ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nLa hiérarchie des notions de régularité pour une fonction est la suivante, de la plus forte à la plus faible :\n\n1.  **Être de classe $\\mathcal{C}^1$** : Toutes les dérivées partielles existent et sont continues.\n2.  **Être différentiable** : La fonction peut être approximée localement par une application affine.\n3.  **Être continue ET avoir des dérivées partielles qui existent** : Ces deux conditions sont des conséquences de la différentiabilité, mais aucune n'implique l'autre.\n\nLe théorème fondamental du chapitre établit que si une fonction est de classe $\\mathcal{C}^1$, alors elle est différentiable. On sait aussi que si une fonction est différentiable, alors elle est continue.\n\nDonc, la chaîne correcte d'implications est :\n\nClasse $\\mathcal{C}^1$ $\\implies$ Différentiable $\\implies$ Continue.\n\nToutes les implications inverses sont fausses.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Différentiable $\\implies$ Classe $\\mathcal{C}^1$ $\\implies$ Continue",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Classe $\\mathcal{C}^1$ $\\implies$ Différentiable $\\implies$ Continue",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Continue $\\implies$ Dérivées partielles existent $\\implies$ Différentiable",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Dérivées partielles existent $\\implies$ Différentiable $\\implies$ Classe $\\mathcal{C}^1$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "stackId": "887af8a4",
+      "content": "#### Question 7 : Définition d'une fonction de classe C1\n\nQue signifie qu'une fonction $f: U \\subset \\mathbb{R}^n \\to \\mathbb{R}^p$ est de classe $\\mathcal{C}^1$ sur l'ouvert $U$ ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\n- **A)** Incorrect. Être différentiable est une conséquence d'être de classe $\\mathcal{C}^1$, mais ce n'est pas la définition. Il existe des fonctions différentiables qui ne sont pas de classe $\\mathcal{C}^1$.\n\n- **B)** Incorrect. C'est une condition beaucoup trop faible.\n\n- **C)** Correct. C'est la définition d'une fonction de classe $\\mathcal{C}^1$. Elle combine deux conditions : l'existence des dérivées partielles partout sur l'ouvert, et la continuité de ces fonctions dérivées partielles.\n\n- **D)** Incorrect. Cette condition est nécessaire mais pas suffisante. La continuité des dérivées partielles est cruciale pour la définition de la classe $\\mathcal{C}^1$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Elle est différentiable en tout point de $U$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Elle est continue en tout point de $U$.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Toutes ses dérivées partielles existent et sont des fonctions continues sur $U$.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Toutes ses dérivées partielles existent en tout point de $U$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "stackId": "887af8a4",
+      "content": "#### Question 8 : Règle de la chaîne (Chain Rule)\n\nSoient $f: \\mathbb{R}^n \\to \\mathbb{R}^m$ et $g: \\mathbb{R}^m \\to \\mathbb{R}^p$ deux fonctions différentiables. On considère la fonction composée $h = g \\circ f$. Quelle est la formule correcte pour la matrice jacobienne de $h$ en un point $a \\in \\mathbb{R}^n$ ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nLa règle de la chaîne pour les fonctions de plusieurs variables stipule que la différentielle de la composée est la composition des différentielles : $d(g \\circ f)_a = dg_{f(a)} \\circ df_a$.\n\nEn termes de matrices jacobiennes, la composition d'applications linéaires se traduit par un produit matriciel. L'ordre est crucial.\n\n- $f$ est appliquée en premier au point $a$, donc sa jacobienne $J_f(a)$ apparaît à droite dans le produit.\n- $g$ est appliquée en second, au point $f(a)$, donc sa jacobienne $J_g(f(a))$ apparaît à gauche.\n\nLa formule correcte est donc $J_{g \\circ f}(a) = J_g(f(a)) \\cdot J_f(a)$.\n\nOn peut aussi vérifier les dimensions :\n\n- $J_f(a)$ est de taille $m \\times n$.\n- $J_g(f(a))$ est de taille $p \\times m$.\n- Le produit $(p \\times m) \\cdot (m \\times n)$ est bien défini et donne une matrice de taille $p \\times n$, ce qui est la dimension attendue pour la jacobienne de $h: \\mathbb{R}^n \\to \\mathbb{R}^p$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $J_h(a) = J_f(a) \\cdot J_g(a)$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $J_h(a) = J_f(a) \\cdot J_g(f(a))$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $J_h(a) = J_g(f(a)) \\cdot J_f(a)$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $J_h(a) = J_g(a) \\cdot J_f(g(a))$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "stackId": "887af8a4",
+      "content": "#### Question 9 : Calcul du gradient\n\nSoit la fonction scalaire $f: \\mathbb{R}^3 \\to \\mathbb{R}$ définie par $f(x,y,z) = x^2 y - 3\\cos(z)$. Quel est le vecteur gradient $\\nabla f(x,y,z)$ ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nLe gradient d'une fonction scalaire $f$ est le vecteur colonne composé de ses dérivées partielles.\n\n$f(x,y,z) = x^2 y - 3\\cos(z)$\n\n1.  Dérivée partielle par rapport à $x$ :\n\n    $\\frac{\\partial f}{\\partial x} = \\frac{\\partial}{\\partial x}(x^2 y) - \\frac{\\partial}{\\partial x}(3\\cos(z)) = 2xy - 0 = 2xy$\n\n2.  Dérivée partielle par rapport à $y$ :\n\n    $\\frac{\\partial f}{\\partial y} = \\frac{\\partial}{\\partial y}(x^2 y) - \\frac{\\partial}{\\partial y}(3\\cos(z)) = x^2 - 0 = x^2$\n\n3.  Dérivée partielle par rapport à $z$ :\n\n    $\\frac{\\partial f}{\\partial z} = \\frac{\\partial}{\\partial z}(x^2 y) - \\frac{\\partial}{\\partial z}(3\\cos(z)) = 0 - 3(-\\sin(z)) = 3\\sin(z)$\n\nLe gradient est donc le vecteur colonne :\n\n$\\nabla f(x,y,z) = \\begin{pmatrix} \\frac{\\partial f}{\\partial x} \\\\ \\frac{\\partial f}{\\partial y} \\\\ \\frac{\\partial f}{\\partial z} \\end{pmatrix} = \\begin{pmatrix} 2xy \\\\ x^2 \\\\ 3\\sin(z) \\end{pmatrix}$.\n\nLes options A et D sont des vecteurs lignes (la transposée du gradient, qui correspond à la matrice jacobienne) et l'option C contient des erreurs de calcul.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $(2xy, x^2, 3\\sin(z))$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\begin{pmatrix} 2xy \\\\ x^2 \\\\ 3\\sin(z) \\end{pmatrix}$",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $\\begin{pmatrix} 2x \\\\ 1 \\\\ -3\\sin(z) \\end{pmatrix}$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $(2xy, x^2, -3\\sin(z))$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "stackId": "887af8a4",
+      "content": "#### Question 10 : Interprétation géométrique du gradient\n\nSoit $f: \\mathbb{R}^n \\to \\mathbb{R}$ une fonction différentiable. En un point $a$ où son gradient $\\nabla f(a)$ n'est pas nul, que représente géométriquement ce vecteur ? (Cochez toutes les réponses correctes)\n",
+      "solution": "\n\n**Réponses : [A, C]**\n\nLe gradient a deux interprétations géométriques majeures :\n\n- **A)** Le gradient pointe dans la direction de la plus forte pente. Le taux de variation de $f$ dans une direction donnée par un vecteur unitaire $v$ est $df_a(v) = \\langle \\nabla f(a), v \\rangle$. Par l'inégalité de Cauchy-Schwarz, cette valeur est maximale lorsque $v$ est dans la même direction que $\\nabla f(a)$.\n\n- **B)** C'est incorrect. Le gradient est orthogonal aux vecteurs tangents à la surface de niveau, pas tangent lui-même.\n\n- **C)** C'est correct. Une surface de niveau est l'ensemble des points $x$ tels que $f(x) = \\text{constante}$. Tout déplacement infinitésimal $dx$ le long de cette surface ne change pas la valeur de $f$, donc $df_a(dx) = \\langle \\nabla f(a), dx \\rangle = 0$. Cela signifie que le gradient est orthogonal à tout vecteur $dx$ tangent à la surface de niveau.\n\n- **D)** C'est incorrect. La norme du gradient, $\\|\\nabla f(a)\\|$, est égale au taux maximal d'augmentation de $f$. Elle n'est pas nécessairement égale à 1.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Il indique la direction dans laquelle la valeur de $f$ augmente le plus rapidement.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** Il est tangent à la surface de niveau de $f$ passant par $a$.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Il est orthogonal (normal) à la surface de niveau de $f$ passant par $a$.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Sa norme est toujours égale à 1.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "stackId": "887af8a4",
+      "content": "#### Question 11 : Corollaire de l'inégalité des accroissements finis\n\nSoit $U \\subset \\mathbb{R}^n$ un ouvert **connexe par arcs**. Soit $f: U \\to \\mathbb{R}^p$ une fonction de classe $\\mathcal{C}^1$ sur $U$. Si la matrice jacobienne $J_f(x)$ est la matrice nulle pour tout $x \\in U$, que peut-on conclure ?\n",
+      "solution": "\n\n**Réponse : [D]**\n\nC'est un corollaire important de l'inégalité des accroissements finis.\n\n- Pour une fonction à valeurs réelles ($p=1$), si $\\nabla f(x) = 0$ pour tout $x$ dans un ouvert connexe par arcs, l'inégalité des accroissements finis $|f(b)-f(a)| \\le \\|b-a\\| \\sup \\|\\nabla f\\|$ implique que $f(b)-f(a)=0$ pour tous points $a,b$ dans l'ouvert. La fonction est donc constante.\n- Ce résultat se généralise aux fonctions à valeurs vectorielles ($p>1$) : si la jacobienne est nulle, chaque composante a un gradient nul, donc chaque composante est constante. La fonction vectorielle $f$ est donc constante.\n\nL'hypothèse que l'ouvert $U$ soit **connexe par arcs** est essentielle. Si $U$ était composé de plusieurs morceaux disjoints, $f$ pourrait avoir une valeur constante différente sur chaque morceau.\n\n- **A)** Incorrect. $f$ est constante, mais pas nécessairement nulle. Par exemple, $f(x)=c$ pour un vecteur constant $c \\neq 0$.\n- **B)** Incorrect. L'hypothèse de connexité par arcs garantit que la fonction est constante sur l'ensemble de $U$.\n- **C)** Incorrect. Une fonction constante sur un ouvert n'atteint pas son maximum (sauf si on considère l'adhérence de l'ouvert). De plus, cette conclusion n'est pas la plus forte possible.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** La fonction $f$ est nulle sur $U$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** La fonction $f$ n'est pas nécessairement constante, cela dépend de la forme de $U$.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** La fonction $f$ atteint son maximum en au moins un point de $U$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** La fonction $f$ est constante sur $U$.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "stackId": "887af8a4",
+      "content": "#### Question 12 : Conséquence d'un gradient borné\n\nSoit $f: \\mathbb{R}^n \\to \\mathbb{R}$ une fonction différentiable. On suppose qu'il existe une constante $M > 0$ telle que la norme de son gradient est bornée : $\\|\\nabla f(x)\\| \\le M$ pour tout $x \\in \\mathbb{R}^n$. Quelle inégalité est une conséquence directe de l'inégalité des accroissements finis ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nL'inégalité des accroissements finis pour une fonction $f: \\mathbb{R}^n \\to \\mathbb{R}$ différentiable sur un domaine convexe (ici $\\mathbb{R}^n$) s'écrit :\n\n$|f(b) - f(a)| \\le \\|b-a\\| \\sup_{c \\in [a,b]} \\|\\nabla f(c)\\|$.\n\nPuisqu'on nous donne que $\\|\\nabla f(x)\\| \\le M$ pour tout $x$, le supremum de la norme du gradient sur n'importe quel segment est aussi inférieur ou égal à $M$. On a donc :\n\n$|f(b) - f(a)| \\le \\|b-a\\| \\cdot M$.\n\nCette propriété signifie que la fonction $f$ est $M$-lipschitzienne.\n\n- **A)** Incorrect. Une fonction avec un gradient borné n'est pas nécessairement bornée elle-même. Par exemple, $f(x) = x_1$ sur $\\mathbb{R}^n$. Son gradient est le vecteur $(1, 0, \\dots, 0)$, de norme 1 (donc $M=1$), mais la fonction n'est pas bornée.\n- **B)** Correct. C'est l'application directe du théorème.\n- **C)** Incorrect. Contre-exemple $f(x_1) = M x_1$. $f(0)=0$. Pour $x_1 > 1$, $f(x_1) = Mx_1 > M = f(0)+M$.\n- **D)** Incorrect. Cela ne serait vrai que si $M=0$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $|f(x)| \\le M$ pour tout $x \\in \\mathbb{R}^n$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $|f(b) - f(a)| \\le M \\|b-a\\|$ pour tous $a, b \\in \\mathbb{R}^n$.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $f(x) \\le f(0) + M$ pour tout $x \\in \\mathbb{R}^n$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** La fonction $f$ est constante.",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

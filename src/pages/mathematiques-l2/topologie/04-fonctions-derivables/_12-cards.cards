@@ -1,0 +1,473 @@
+---
+id: c6b9bd91
+type: cards
+order: 12
+title: >-
+  Fonctions différentiables -
+  fiches de révision (A)
+tags:
+  - Topologie
+  - Calcul Différentiel
+  - Mathématiques
+  - Sorbonne Université
+  - Fonctions de plusieurs variables
+createdAt: '2025-11-26T16:10:38.790Z'
+level: regular
+course: Topologie
+courseId: 34e61f8e
+chapter: 'Fonctions différentiables'
+chapterId: df863ee3
+---
+# Fiches de révision "Fonctions différentiables" (A)
+
+---
+
+Qu'est-ce qu'une dérivée partielle ?
+
+<details>
+
+<summary>Answer</summary>
+
+Une **dérivée partielle** d'une fonction de plusieurs variables est sa dérivée par rapport à l'une de ces variables, en considérant les autres variables comme des constantes.
+
+Soit $f$ une fonction définie sur un ouvert $U \subset \mathbb{R}^n$ et $a \in U$. La dérivée partielle de $f$ par rapport à sa $k$-ième variable $x_k$ au point $a$ est la limite, si elle existe :
+
+$$ \frac{\partial f}{\partial x_k}(a) = \lim_{t \to 0} \frac{f(a_1, \dots, a_k+t, \dots, a_n) - f(a_1, \dots, a_n)}{t} $$
+
+En pratique, pour calculer $\frac{\partial f}{\partial x_k}$, on dérive $f$ par rapport à $x_k$ en utilisant les règles de dérivation usuelles, comme si toutes les autres variables ($x_1, \dots, x_{k-1}, x_{k+1}, \dots, x_n$) étaient des constantes.
+
+**Exemple:**
+
+Pour $f(x,y) = x^2y + 3y^2$, la dérivée partielle par rapport à $x$ est :
+
+$$ \frac{\partial f}{\partial x}(x,y) = 2xy $$
+
+(on traite $y$ comme une constante).
+
+La dérivée partielle par rapport à $y$ est :
+
+$$ \frac{\partial f}{\partial y}(x,y) = x^2 + 6y $$
+
+(on traite $x$ comme une constante).
+
+</details>
+
+---
+
+Qu'est-ce qu'une fonction différentiable en un point ?
+
+<details>
+
+<summary>Answer</summary>
+
+Une fonction $f : U \subset \mathbb{R}^n \to \mathbb{R}^p$ est dite **différentiable** en un point $a \in U$ si sa variation locale peut être approchée par une application linéaire.
+
+Formellement, il doit exister une application linéaire $L_a : \mathbb{R}^n \to \mathbb{R}^p$ telle que :
+
+$$ f(a+h) = f(a) + L_a(h) + o(\|h\|) $$
+
+Cela signifie que l'erreur commise en approchant $f(a+h) - f(a)$ par $L_a(h)$ tend vers zéro plus vite que $\|h\|$ lorsque $h$ tend vers $0$.
+
+$$ \lim_{h \to 0} \frac{\|f(a+h) - f(a) - L_a(h)\|}{\|h\|} = 0 $$
+
+L'application linéaire $L_a$, si elle existe, est unique et s'appelle la **différentielle** de $f$ en $a$, notée $df_a$.
+
+**Intuition:**
+
+Tout comme une fonction dérivable d'une variable peut être approchée par sa tangente, une fonction différentiable de plusieurs variables peut être approchée localement par une application affine $x \mapsto f(a) + df_a(x-a)$. La différentielle $df_a$ est la généralisation de la dérivée pour les fonctions de plusieurs variables.
+
+</details>
+
+---
+
+Comment calculer les dérivées partielles de la fonction $f(x,y,z) = x^2 y^3 + 5yz^2 - \cos(x)$ ?
+
+<details>
+
+<summary>Answer</summary>
+
+Pour calculer chaque dérivée partielle, on traite les autres variables comme des constantes et on applique les règles de dérivation habituelles.
+
+**1. Dérivée partielle par rapport à $x$ ($\partial f / \partial x$):**
+
+On considère $y$ et $z$ comme des constantes.
+
+$$ \frac{\partial f}{\partial x}(x,y,z) = \frac{\partial}{\partial x}(x^2 y^3) + \frac{\partial}{\partial x}(5yz^2) - \frac{\partial}{\partial x}(\cos(x)) $$
+
+$$ = (2x) \cdot y^3 + 0 - (-\sin(x)) $$
+
+$$ = 2xy^3 + \sin(x) $$
+
+**2. Dérivée partielle par rapport à $y$ ($\partial f / \partial y$):**
+
+On considère $x$ et $z$ comme des constantes.
+
+$$ \frac{\partial f}{\partial y}(x,y,z) = \frac{\partial}{\partial y}(x^2 y^3) + \frac{\partial}{\partial y}(5yz^2) - \frac{\partial}{\partial y}(\cos(x)) $$
+
+$$ = x^2 \cdot (3y^2) + 5z^2 \cdot (1) - 0 $$
+
+$$ = 3x^2y^2 + 5z^2 $$
+
+**3. Dérivée partielle par rapport à $z$ ($\partial f / \partial z$):**
+
+On considère $x$ et $y$ comme des constantes.
+
+$$ \frac{\partial f}{\partial z}(x,y,z) = \frac{\partial}{\partial z}(x^2 y^3) + \frac{\partial}{\partial z}(5yz^2) - \frac{\partial}{\partial z}(\cos(x)) $$
+
+$$ = 0 + 5y \cdot (2z) - 0 $$
+
+$$ = 10yz $$
+
+</details>
+
+---
+
+Quel est le lien entre la différentiabilité et la continuité d'une fonction en un point ?
+
+<details>
+
+<summary>Answer</summary>
+
+Le lien est une implication à sens unique :
+
+**Différentiable $\implies$ Continue**
+
+Si une fonction $f$ est différentiable en un point $a$, alors elle est nécessairement continue en ce point $a$.
+
+**Preuve rapide :**
+
+Si $f$ est différentiable en $a$, on a $f(a+h) = f(a) + df_a(h) + o(\|h\|)$. Quand $h \to 0$, $df_a(h)$ tend vers $0$ (car $df_a$ est linéaire et continue) et $o(\|h\|)$ tend vers $0$. Donc $\lim_{h \to 0} f(a+h) = f(a)$, ce qui est la définition de la continuité en $a$.
+
+**La réciproque est fausse : Continue $\not\implies$ Différentiable**
+
+Une fonction peut être continue en un point sans y être différentiable. Les "coins" ou les "pointes" sont des exemples classiques.
+
+**Contre-exemple :**
+
+La fonction $f: \mathbb{R}^2 \to \mathbb{R}$ définie par $f(x,y) = |x| + |y|$ est continue en $(0,0)$. Cependant, elle n'est pas différentiable en $(0,0)$ car elle possède un "coin" à l'origine qui ne peut pas être approché par un plan (une application affine).
+
+</details>
+
+---
+
+Qu'est-ce que la matrice jacobienne d'une fonction $f: \mathbb{R}^n \to \mathbb{R}^p$ ?
+
+<details>
+
+<summary>Answer</summary>
+
+La **matrice jacobienne** d'une fonction $f$ en un point $a$, notée $J_f(a)$, est la matrice qui contient toutes les dérivées partielles de premier ordre des fonctions composantes de $f$. C'est une matrice de taille $p \times n$.
+
+Si $f(x_1, \dots, x_n) = (f_1(x_1, \dots, x_n), \dots, f_p(x_1, \dots, x_n))$, alors sa matrice jacobienne est :
+
+$$
+
+J_f(a) = \begin{pmatrix}
+
+\frac{\partial f_1}{\partial x_1}(a) & \frac{\partial f_1}{\partial x_2}(a) & \cdots & \frac{\partial f_1}{\partial x_n}(a) \\
+
+\frac{\partial f_2}{\partial x_1}(a) & \frac{\partial f_2}{\partial x_2}(a) & \cdots & \frac{\partial f_2}{\partial x_n}(a) \\
+
+\vdots & \vdots & \ddots & \vdots \\
+
+\frac{\partial f_p}{\partial x_1}(a) & \frac{\partial f_p}{\partial x_2}(a) & \cdots & \frac{\partial f_p}{\partial x_n}(a)
+
+\end{pmatrix}
+
+$$
+
+**Structure :**
+
+- Le nombre de **lignes** ($p$) est la dimension de l'espace d'arrivée. La ligne $i$ correspond aux dérivées partielles de la $i$-ème composante $f_i$.
+- Le nombre de **colonnes** ($n$) est la dimension de l'espace de départ. La colonne $j$ correspond aux dérivées par rapport à la $j$-ème variable $x_j$.
+
+</details>
+
+---
+
+Comment la matrice jacobienne est-elle liée à la différentielle d'une fonction ?
+
+<details>
+
+<summary>Answer</summary>
+
+La matrice jacobienne est la **représentation matricielle** de la différentielle dans les bases canoniques.
+
+Si une fonction $f: \mathbb{R}^n \to \mathbb{R}^p$ est différentiable en un point $a$, sa différentielle $df_a$ est une application linéaire de $\mathbb{R}^n$ dans $\mathbb{R}^p$. La matrice jacobienne $J_f(a)$ est la matrice qui représente cette application linéaire.
+
+Pour tout vecteur $h \in \mathbb{R}^n$ (vu comme un vecteur colonne), l'action de la différentielle peut être calculée par une multiplication matricielle :
+
+$$ df_a(h) = J_f(a) \cdot h $$
+
+Le développement limité d'ordre 1 s'écrit alors de manière très pratique :
+
+$$ f(a+h) = f(a) + J_f(a)h + o(\|h\|) $$
+
+Cette relation est fondamentale car elle connecte le concept abstrait de la différentielle à un objet concret et calculable, la matrice jacobienne.
+
+</details>
+
+---
+
+Qu'est-ce qu'une fonction de classe $\mathcal{C}^1$ sur un ouvert $U$ ?
+
+<details>
+
+<summary>Answer</summary>
+
+Une fonction $f : U \subset \mathbb{R}^n \to \mathbb{R}^p$ est dite de **classe $\mathcal{C}^1$** sur l'ouvert $U$ si elle satisfait deux conditions :
+
+1.  **Existence des dérivées partielles** : Toutes les dérivées partielles $\frac{\partial f_i}{\partial x_j}$ existent en tout point de $U$.
+
+2.  **Continuité des dérivées partielles** : Chacune des fonctions $(x_1, \dots, x_n) \mapsto \frac{\partial f_i}{\partial x_j}(x_1, \dots, x_n)$ est une fonction continue sur $U$.
+
+Être de classe $\mathcal{C}^1$ est une condition de régularité forte. Cela signifie non seulement que la fonction a des dérivées partielles, mais que ces dérivées varient de manière continue.
+
+**Hiérarchie de la régularité :**
+
+$$ \text{Classe } \mathcal{C}^1 \implies \text{Différentiable} \implies \text{Continue} $$
+
+</details>
+
+---
+
+L'existence de toutes les dérivées partielles en un point garantit-elle que la fonction est continue en ce point ?
+
+<details>
+
+<summary>Answer</summary>
+
+Non, absolument pas. C'est une idée fausse courante. Une fonction peut avoir toutes ses dérivées partielles en un point sans même y être continue.
+
+**Contre-exemple classique :**
+
+Soit la fonction $f : \mathbb{R}^2 \rightarrow \mathbb{R}$ définie par :
+
+$$ f(x,y) = \begin{cases} \frac{xy}{x^2+y^2} & \text{si } (x,y) \neq (0,0) \\ 0 & \text{si } (x,y) = (0,0) \end{cases} $$
+
+1.  **Existence des dérivées partielles en (0,0) :**
+
+    On utilise la définition :
+
+    $$ \frac{\partial f}{\partial x}(0,0) = \lim_{t \to 0} \frac{f(t,0) - f(0,0)}{t} = \lim_{t \to 0} \frac{0 - 0}{t} = 0 $$
+
+    $$ \frac{\partial f}{\partial y}(0,0) = \lim_{t \to 0} \frac{f(0,t) - f(0,0)}{t} = \lim_{t \to 0} \frac{0 - 0}{t} = 0 $$
+
+    Les deux dérivées partielles existent et sont nulles à l'origine.
+
+2.  **Non-continuité en (0,0) :**
+
+    Si on s'approche de l'origine le long de la droite $y=x$, on a :
+
+    $$ \lim_{x \to 0} f(x,x) = \lim_{x \to 0} \frac{x \cdot x}{x^2+x^2} = \lim_{x \to 0} \frac{x^2}{2x^2} = \frac{1}{2} $$
+
+    Comme la limite (1/2) est différente de la valeur de la fonction en ce point ($f(0,0)=0$), la fonction n'est pas continue en $(0,0)$.
+
+Puisqu'elle n'est pas continue, elle ne peut pas non plus être différentiable en $(0,0)$.
+
+</details>
+
+---
+
+Quel est le principal avantage de savoir qu'une fonction est de classe $\mathcal{C}^1$ ?
+
+<details>
+
+<summary>Answer</summary>
+
+Le principal avantage est un théorème fondamental qui fournit un critère simple et puissant pour prouver la différentiabilité.
+
+**Théorème :**
+
+Si une fonction $f: U \subset \mathbb{R}^n \to \mathbb{R}^p$ est de classe $\mathcal{C}^1$ sur un ouvert $U$, alors **$f$ est différentiable en tout point de $U$**.
+
+**Pourquoi est-ce si utile ?**
+
+Vérifier la différentiabilité d'une fonction en utilisant la définition (avec la limite et le $o(\|h\|)$) peut être très long et complexe.
+
+Le théorème offre une méthode beaucoup plus directe en pratique :
+
+1.  Calculer toutes les dérivées partielles de la fonction.
+2.  Étudier la continuité de ces dérivées partielles. Si elles sont toutes continues (ce qui est souvent le cas pour les fonctions construites à partir de fonctions usuelles comme les polynômes, sin, cos, exp...), alors on peut directement conclure que la fonction est différentiable.
+
+</details>
+
+---
+
+Quelle est la formule de la règle de la chaîne pour la composition de fonctions $g \circ f$ en termes de matrices jacobiennes ?
+
+<details>
+
+<summary>Answer</summary>
+
+La règle de la chaîne (ou "chain rule") permet de calculer la jacobienne d'une fonction composée.
+
+**Formule :**
+
+Soient $f: U \subset \mathbb{R}^n \to V \subset \mathbb{R}^m$ et $g: V \to \mathbb{R}^p$ deux fonctions différentiables. La jacobienne de la composée $h = g \circ f$ au point $a \in U$ est donnée par le **produit des matrices jacobiennes** :
+
+$$ J_{g \circ f}(a) = J_g(f(a)) \cdot J_f(a) $$
+
+**Explication des termes :**
+
+- $J_{g \circ f}(a)$ : La jacobienne de la fonction composée $h$ en $a$. C'est une matrice $p \times n$.
+- $J_g(f(a))$ : La jacobienne de $g$, évaluée au point image $f(a)$. C'est une matrice $p \times m$.
+- $J_f(a)$ : La jacobienne de $f$, évaluée en $a$. C'est une matrice $m \times n$.
+
+**Attention à l'ordre !**
+
+L'ordre de la multiplication matricielle est crucial et non commutatif. Il suit l'ordre de la composition des fonctions : la jacobienne de la fonction "extérieure" ($g$) est à gauche, et celle de la fonction "intérieure" ($f$) est à droite. La multiplication est bien définie : $(p \times m) \cdot (m \times n) \to (p \times n)$.
+
+</details>
+
+---
+
+Qu'est-ce que le gradient d'une fonction numérique $f: \mathbb{R}^n \to \mathbb{R}$ ?
+
+<details>
+
+<summary>Answer</summary>
+
+Le **gradient** d'une fonction numérique (ou champ scalaire) $f: U \subset \mathbb{R}^n \to \mathbb{R}$ en un point $a$ est le **vecteur** de $\mathbb{R}^n$ dont les composantes sont les dérivées partielles de $f$ en ce point.
+
+Il est noté $\nabla f(a)$ (lire "nabla f de a") et est défini par :
+
+$$ \nabla f(a) = \begin{pmatrix}
+
+\frac{\partial f}{\partial x_1}(a) \\
+
+\frac{\partial f}{\partial x_2}(a) \\
+
+\vdots \\
+
+\frac{\partial f}{\partial x_n}(a)
+
+\end{pmatrix} $$
+
+**Relation avec la Jacobienne :**
+
+Pour une fonction numérique ($p=1$), la jacobienne $J_f(a)$ est une matrice ligne $1 \times n$. Le gradient est simplement la transposée de cette matrice jacobienne :
+
+$$ \nabla f(a) = (J_f(a))^T $$
+
+Le gradient est un concept fondamental en optimisation et en physique, car il pointe dans la direction où la fonction augmente le plus rapidement.
+
+</details>
+
+---
+
+Quelle est l'interprétation géométrique du vecteur gradient $\nabla f(a)$ ?
+
+<details>
+
+<summary>Answer</summary>
+
+Le vecteur gradient $\nabla f(a)$ a deux interprétations géométriques majeures en un point $a$ où il n'est pas nul :
+
+**1. Direction de la plus forte pente :**
+
+Le vecteur $\nabla f(a)$ pointe dans la direction dans laquelle la fonction $f$ augmente le plus rapidement à partir du point $a$. La norme du gradient, $\|\nabla f(a)\|$, donne la valeur de ce taux d'accroissement maximal (la pente la plus forte).
+
+**Exemple :** Si $f(x,y)$ représente l'altitude d'une montagne, le gradient en un point $(x,y)$ est un vecteur sur la carte qui indique la direction de la pente la plus raide pour monter.
+
+**2. Orthogonalité aux lignes de niveau :**
+
+Le vecteur $\nabla f(a)$ est orthogonal (perpendiculaire) à la ligne de niveau (ou surface de niveau en 3D) de la fonction $f$ qui passe par le point $a$. Une ligne de niveau est l'ensemble des points $x$ tels que $f(x) = C$ pour une constante $C$.
+
+**Exemple :** Sur une carte topographique, les lignes de niveau relient les points de même altitude. Le gradient en un point est perpendiculaire à la ligne de niveau passant par ce point.
+
+</details>
+
+---
+
+Pour une fonction numérique différentiable $f$, comment s'exprime sa différentielle $df_a(h)$ à l'aide du gradient ?
+
+<details>
+
+<summary>Answer</summary>
+
+Si $f: U \subset \mathbb{R}^n \to \mathbb{R}$ est différentiable en $a$, sa différentielle $df_a(h)$ peut être exprimée très simplement à l'aide du **produit scalaire** avec le gradient.
+
+**Formule :**
+
+Pour tout vecteur $h \in \mathbb{R}^n$, on a :
+
+$$ df_a(h) = \langle \nabla f(a), h \rangle $$
+
+où $\langle \cdot, \cdot \rangle$ est le produit scalaire euclidien usuel.
+
+**Détail du calcul :**
+
+Rappelons que $df_a(h) = J_f(a)h$. Comme $f$ est une fonction numérique, $J_f(a)$ est une matrice ligne $1 \times n$ et $\nabla f(a)$ est le vecteur colonne transposé.
+
+$$ J_f(a) = (\nabla f(a))^T = \begin{pmatrix} \frac{\partial f}{\partial x_1}(a) & \cdots & \frac{\partial f}{\partial x_n}(a) \end{pmatrix} $$
+
+La multiplication matricielle $J_f(a)h$ est donc :
+
+$$ \begin{pmatrix} \frac{\partial f}{\partial x_1}(a) & \cdots & \frac{\partial f}{\partial x_n}(a) \end{pmatrix} \begin{pmatrix} h_1 \\ \vdots \\ h_n \end{pmatrix} = \frac{\partial f}{\partial x_1}(a)h_1 + \dots + \frac{\partial f}{\partial x_n}(a)h_n $$
+
+Ceci est exactement la définition du produit scalaire $\langle \nabla f(a), h \rangle$.
+
+</details>
+
+---
+
+Énoncez l'inégalité des accroissements finis pour une fonction différentiable $f: U \to \mathbb{R}$.
+
+<details>
+
+<summary>Answer</summary>
+
+L'inégalité des accroissements finis est une généralisation du théorème des accroissements finis aux fonctions de plusieurs variables. Elle permet de borner la variation d'une fonction entre deux points.
+
+**Théorème (Inégalité des Accroissements Finis)**
+
+Soit $f: U \to \mathbb{R}$ une fonction différentiable sur un ouvert $U \subset \mathbb{R}^n$. Soient $a, b \in U$ tels que le segment $[a,b]$ soit inclus dans $U$.
+
+Alors, il existe un point $c$ sur le segment $]a,b[$ tel que :
+
+$$ f(b) - f(a) = \langle \nabla f(c), b-a \rangle $$
+
+De cette égalité, on déduit une inégalité très utile en utilisant l'inégalité de Cauchy-Schwarz :
+
+$$ |f(b) - f(a)| \le \|\nabla f(c)\| \cdot \|b-a\| $$
+
+Cela mène à la borne générale suivante :
+
+$$ |f(b) - f(a)| \le \left( \sup_{c \in [a,b]} \|\nabla f(c)\| \right) \cdot \|b-a\| $$
+
+**En mots :** La variation totale de la fonction entre $a$ et $b$ est au plus égale à la distance entre les points, multipliée par la plus grande valeur de la norme du gradient (la "pente maximale") rencontrée sur le segment qui les relie.
+
+</details>
+
+---
+
+Que peut-on dire d'une fonction différentiable dont le gradient est nul sur un ouvert connexe par arcs ?
+
+<details>
+
+<summary>Answer</summary>
+
+Si une fonction différentiable $f: U \to \mathbb{R}$ a un gradient nul en tout point d'un ouvert **connexe par arcs** $U$, alors la fonction $f$ est **constante** sur $U$.
+
+**Théorème :**
+
+Soit $U \subset \mathbb{R}^n$ un ouvert connexe par arcs.
+
+Soit $f: U \to \mathbb{R}$ différentiable.
+
+Si $\nabla f(x) = \vec{0}$ pour tout $x \in U$, alors il existe une constante $C \in \mathbb{R}$ telle que $f(x) = C$ pour tout $x \in U$.
+
+**Importance de la connexité par arcs :**
+
+L'hypothèse "connexe par arcs" est cruciale. Elle garantit qu'on peut relier n'importe quels deux points de $U$ par un chemin continu. Le théorème des accroissements finis est appliqué le long de ce chemin pour montrer que la fonction ne varie pas.
+
+**Contre-exemple (domaine non connexe) :**
+
+Soit $U$ l'union de deux boules ouvertes disjointes : $U = B_1 \cup B_2$.
+
+Définissons $f(x) = 0$ pour $x \in B_1$ et $f(x) = 5$ pour $x \in B_2$.
+
+Le gradient de $f$ est nul partout sur $U$ (car $f$ est localement constante). Cependant, la fonction $f$ n'est pas constante sur l'ensemble de $U$.
+
+</details>

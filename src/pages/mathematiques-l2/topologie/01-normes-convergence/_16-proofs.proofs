@@ -1,0 +1,774 @@
+---
+id: 733f7947
+type: proofs
+order: 15
+title: Normes sur Rⁿ et suites convergentes - preuves (A)
+tags:
+  - normes
+  - suites
+  - convergence
+  - topologie
+  - analyse
+createdAt: '2025-10-12T15:02:23.733Z'
+level: regular
+course: Topologie
+courseId: 34e61f8e
+chapter: Normes sur Rⁿ et suites convergentes
+chapterId: 629d2832
+---
+# Preuves "Normes sur Rⁿ et suites convergentes" (A)
+
+---
+
+#### Preuve de l'inégalité triangulaire renversée
+
+Démontrer que pour toute norme $\| \cdot \|$ sur $\mathbb{R}^n$ et pour tous vecteurs $x, y \in \mathbb{R}^n$, on a l'inégalité suivante :
+
+$|\|x\| - \|y\|| \le \|x - y\|$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+L'idée est d'utiliser l'inégalité triangulaire standard de deux manières différentes.
+
+1.  Écrivez $x$ comme $x = (x-y) + y$ et appliquez l'inégalité triangulaire pour obtenir une borne pour $\|x\|$.
+2.  Faites de même pour $y$ en l'écrivant comme $y = (y-x) + x$.
+3.  Combinez les deux inégalités obtenues pour encadrer $\|x\| - \|y\|$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soient $x, y \in \mathbb{R}^n$. Nous utilisons l'axiome de l'inégalité triangulaire de la norme $\| \cdot \|$.
+
+**Étape 1 : Majorer $\|x\| - \|y\|$**
+
+On écrit $x = (x-y) + y$. En appliquant l'inégalité triangulaire, on obtient :
+
+$\|x\| = \|(x-y) + y\| \le \|x-y\| + \|y\|$.
+
+En soustrayant $\|y\|$ des deux côtés, on a :
+
+$\|x\| - \|y\| \le \|x-y\|$. (1)
+
+**Étape 2 : Minorer $\|x\| - \|y\|$**
+
+De la même manière, on écrit $y = (y-x) + x$. En appliquant l'inégalité triangulaire :
+
+$\|y\| = \|(y-x) + x\| \le \|y-x\| + \|x\|$.
+
+On sait par l'axiome d'homogénéité que $\|y-x\| = \|(-1)(x-y)\| = |-1|\|x-y\| = \|x-y\|$.
+
+L'inégalité devient donc $\|y\| \le \|x-y\| + \|x\|$.
+
+En réarrangeant les termes, on obtient :
+
+$\|y\| - \|x\| \le \|x-y\|$, ce qui est équivalent à $-(\|x\| - \|y\|) \le \|x-y\|$. (2)
+
+**Conclusion**
+
+En combinant les inégalités (1) et (2), on a :
+
+$- \|x-y\| \le \|x\| - \|y\| \le \|x-y\|$.
+
+Ceci est exactement la définition de la valeur absolue, donc on peut conclure :
+
+$|\|x\| - \|y\|| \le \|x - y\|$.
+
+</details>
+
+---
+
+#### Vérification qu'une application est une norme
+
+Démontrer que l'application $N: \mathbb{R}^2 \to \mathbb{R}_+$ définie par $N(x, y) = |x + 2y| + 3|y|$ est une norme sur $\mathbb{R}^2$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Pour prouver que $N$ est une norme, vous devez vérifier les trois axiomes un par un :
+
+1.  **Séparation** : Montrez que $N(x,y) = 0$ si et seulement si $(x,y) = (0,0)$. Rappelez-vous qu'une somme de termes positifs est nulle si et seulement si chaque terme est nul.
+2.  **Homogénéité** : Calculez $N(\lambda x, \lambda y)$ et utilisez les propriétés de la valeur absolue pour factoriser $|\lambda|$.
+3.  **Inégalité triangulaire** : Calculez $N(x+x', y+y')$ et utilisez l'inégalité triangulaire de la valeur absolue sur $\mathbb{R}$ ($|a+b| \le |a|+|b|$) pour séparer les termes en $N(x,y)$ et $N(x',y')$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soient $v = (x, y)$ et $v' = (x', y')$ des vecteurs de $\mathbb{R}^2$, et $\lambda \in \mathbb{R}$ un scalaire. Nous vérifions les trois axiomes d'une norme.
+
+**1. Axiome de séparation : $N(v) = 0 \iff v = (0,0)$**
+
+($\implies$) Supposons que $N(x, y) = 0$. Par définition, cela signifie $|x + 2y| + 3|y| = 0$.
+
+Comme $|x + 2y| \ge 0$ et $3|y| \ge 0$, leur somme est nulle si et seulement si les deux termes sont nuls :
+
+$|x + 2y| = 0$ et $3|y| = 0$.
+
+La deuxième équation, $3|y|=0$, implique $|y|=0$, donc $y=0$.
+
+En substituant $y=0$ dans la première équation, on obtient $|x + 2(0)| = 0$, soit $|x|=0$, ce qui implique $x=0$.
+
+Ainsi, $(x, y) = (0,0)$.
+
+($\impliedby$) Supposons que $(x, y) = (0,0)$. Alors $N(0,0) = |0 + 2(0)| + 3|0| = 0+0=0$.
+
+L'axiome de séparation est donc vérifié.
+
+**2. Axiome d'homogénéité : $N(\lambda v) = |\lambda| N(v)$**
+
+Calculons $N(\lambda v) = N(\lambda x, \lambda y)$ :
+
+$$ \begin{align*} N(\lambda x, \lambda y) &= |(\lambda x) + 2(\lambda y)| + 3|\lambda y| \\ &= |\lambda(x + 2y)| + 3|\lambda||y| \\ &= |\lambda| |x + 2y| + 3|\lambda||y| \quad \text{(propriété de la valeur absolue)} \\ &= |\lambda| (|x + 2y| + 3|y|) \\ &= |\lambda| N(x,y). \end{align*} $$
+
+L'axiome d'homogénéité est vérifié.
+
+**3. Inégalité triangulaire : $N(v+v') \le N(v) + N(v')$**
+
+Calculons $N(v+v') = N(x+x', y+y')$ :
+
+$$ \begin{align*} N(x+x', y+y') &= |(x+x') + 2(y+y')| + 3|y+y'| \\ &= |(x+2y) + (x'+2y')| + 3|y+y'| \end{align*} $$
+
+En utilisant l'inégalité triangulaire pour la valeur absolue sur $\mathbb{R}$ (c'est-à-dire $|a+b| \le |a|+|b|$), on peut majorer chaque terme :
+
+$$ \begin{align*} N(x+x', y+y') &\le \left(|x+2y| + |x'+2y'|\right) + 3\left(|y| + |y'|\right) \\ &= (|x+2y| + 3|y|) + (|x'+2y'| + 3|y'|) \\ &= N(x,y) + N(x',y'). \end{align*} $$
+
+L'inégalité triangulaire est vérifiée.
+
+**Conclusion**
+
+Puisque les trois axiomes sont satisfaits, $N$ est bien une norme sur $\mathbb{R}^2$.
+
+</details>
+
+---
+
+#### Preuve que la norme infinie est une norme
+
+Démontrer que l'application $\| \cdot \|_\infty$ définie pour tout $x = (x_1, \dots, x_n) \in \mathbb{R}^n$ par $\|x\|_\infty = \max_{1 \le j \le n} |x_j|$ est une norme sur $\mathbb{R}^n$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Vérifiez les trois axiomes.
+
+1.  **Séparation** : Si le maximum des valeurs absolues des composantes est zéro, que pouvez-vous dire de chaque composante ?
+2.  **Homogénéité** : Utilisez la propriété $\max(c \cdot a_j) = c \cdot \max(a_j)$ pour un scalaire positif $c$. Ici, $c = |\lambda|$.
+3.  **Inégalité triangulaire** : Soit $x, y \in \mathbb{R}^n$. Pour n'importe quelle composante $j$, on a $|x_j + y_j| \le |x_j| + |y_j|$. Comment pouvez-vous majorer $|x_j|$ et $|y_j|$ en utilisant $\|x\|_\infty$ et $\|y\|_\infty$ ? Appliquez ensuite le maximum sur $j$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soient $x, y \in \mathbb{R}^n$ et $\lambda \in \mathbb{R}$.
+
+**1. Axiome de séparation : $\|x\|_\infty = 0 \iff x = 0_{\mathbb{R}^n}$**
+
+($\implies$) Supposons $\|x\|_\infty = 0$. Cela signifie $\max_{1 \le j \le n} |x_j| = 0$.
+
+Comme $|x_j| \ge 0$ pour tout $j$, le maximum ne peut être 0 que si toutes les composantes sont nulles. Donc, $|x_j| = 0$ pour tout $j \in \{1, \dots, n\}$.
+
+Cela implique $x_j=0$ pour tout $j$, et donc $x = (0, \dots, 0) = 0_{\mathbb{R}^n}$.
+
+($\impliedby$) Si $x = 0_{\mathbb{R}^n}$, alors $x_j=0$ pour tout $j$. Ainsi $\|x\|_\infty = \max(|0|, \dots, |0|) = 0$.
+
+L'axiome est vérifié.
+
+**2. Axiome d'homogénéité : $\|\lambda x\|_\infty = |\lambda| \|x\|_\infty$**
+
+Le vecteur $\lambda x$ a pour composantes $(\lambda x_1, \dots, \lambda x_n)$.
+
+$$ \begin{align*} \|\lambda x\|_\infty &= \max_{1 \le j \le n} |\lambda x_j| \\ &= \max_{1 \le j \le n} (|\lambda| |x_j|) \end{align*} $$
+
+Comme $|\lambda|$ est une constante non-négative, on peut la sortir du maximum :
+
+$$ \|\lambda x\|_\infty = |\lambda| \left(\max_{1 \le j \le n} |x_j|\right) = |\lambda| \|x\|_\infty. $$
+
+L'axiome est vérifié.
+
+**3. Inégalité triangulaire : $\|x+y\|_\infty \le \|x\|_\infty + \|y\|_\infty$**
+
+Le vecteur $x+y$ a pour composantes $(x_1+y_1, \dots, x_n+y_n)$.
+
+$$ \|x+y\|_\infty = \max_{1 \le j \le n} |x_j + y_j| $$
+
+Soit $j_0$ l'indice où ce maximum est atteint : $\|x+y\|_\infty = |x_{j_0} + y_{j_0}|$.
+
+En utilisant l'inégalité triangulaire pour la valeur absolue sur $\mathbb{R}$, on a :
+
+$$ |x_{j_0} + y_{j_0}| \le |x_{j_0}| + |y_{j_0}| $$
+
+Par définition de la norme infinie, pour tout indice $j$, on a $|x_j| \le \max_{k} |x_k| = \|x\|_\infty$ et $|y_j| \le \max_{k} |y_k| = \|y\|_\infty$.
+
+Ceci est vrai en particulier pour $j_0$ :
+
+$$ |x_{j_0}| \le \|x\|_\infty \quad \text{et} \quad |y_{j_0}| \le \|y\|_\infty $$
+
+En combinant ces inégalités, on obtient :
+
+$$ \|x+y\|_\infty = |x_{j_0} + y_{j_0}| \le |x_{j_0}| + |y_{j_0}| \le \|x\|_\infty + \|y\|_\infty. $$
+
+L'axiome est vérifié.
+
+**Conclusion**
+
+Les trois axiomes étant satisfaits, $\| \cdot \|_\infty$ est une norme sur $\mathbb{R}^n$.
+
+</details>
+
+---
+
+#### Preuve que la norme 1 est une norme
+
+Démontrer que l'application $\| \cdot \|_1$ définie pour tout $x = (x_1, \dots, x_n) \in \mathbb{R}^n$ par $\|x\|_1 = \sum_{j=1}^n |x_j|$ est une norme sur $\mathbb{R}^n$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Vérifiez les trois axiomes.
+
+1.  **Séparation** : $\|x\|_1$ est une somme de termes positifs ou nuls. Quand une telle somme est-elle nulle ?
+2.  **Homogénéité** : Utilisez les propriétés de la somme ($\sum c \cdot a_j = c \sum a_j$) et de la valeur absolue.
+3.  **Inégalité triangulaire** : Appliquez l'inégalité triangulaire pour les nombres réels ($|a+b| \le |a|+|b|$) à chaque composante $|x_j + y_j|$ avant de sommer.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soient $x, y \in \mathbb{R}^n$ et $\lambda \in \mathbb{R}$.
+
+**1. Axiome de séparation : $\|x\|_1 = 0 \iff x = 0_{\mathbb{R}^n}$**
+
+($\implies$) Supposons $\|x\|_1 = 0$. Cela signifie $\sum_{j=1}^n |x_j| = 0$.
+
+Chaque terme $|x_j|$ est positif ou nul. Une somme de termes positifs ou nuls est égale à zéro si et seulement si chaque terme de la somme est nul.
+
+Donc, $|x_j| = 0$ pour tout $j \in \{1, \dots, n\}$, ce qui implique $x_j = 0$ pour tout $j$.
+
+Ainsi, $x = (0, \dots, 0) = 0_{\mathbb{R}^n}$.
+
+($\impliedby$) Si $x = 0_{\mathbb{R}^n}$, alors $x_j=0$ pour tout $j$. Ainsi $\|x\|_1 = \sum_{j=1}^n |0| = 0$.
+
+L'axiome est vérifié.
+
+**2. Axiome d'homogénéité : $\|\lambda x\|_1 = |\lambda| \|x\|_1$**
+
+Le vecteur $\lambda x$ a pour composantes $(\lambda x_1, \dots, \lambda x_n)$.
+
+$$ \begin{align*} \|\lambda x\|_1 &= \sum_{j=1}^n |\lambda x_j| \\ &= \sum_{j=1}^n |\lambda| |x_j| \\ &= |\lambda| \sum_{j=1}^n |x_j| \quad \text{(mise en facteur de la constante } |\lambda| \text{)} \\ &= |\lambda| \|x\|_1. \end{align*} $$
+
+L'axiome est vérifié.
+
+**3. Inégalité triangulaire : $\|x+y\|_1 \le \|x\|_1 + \|y\|_1$**
+
+Le vecteur $x+y$ a pour composantes $(x_1+y_1, \dots, x_n+y_n)$.
+
+$$ \|x+y\|_1 = \sum_{j=1}^n |x_j + y_j| $$
+
+En utilisant l'inégalité triangulaire pour la valeur absolue sur $\mathbb{R}$ pour chaque composante $j$, on a $|x_j + y_j| \le |x_j| + |y_j|$.
+
+En sommant sur toutes les composantes :
+
+$$ \sum_{j=1}^n |x_j + y_j| \le \sum_{j=1}^n (|x_j| + |y_j|) $$
+
+Par les propriétés de la somme, on peut la séparer en deux :
+
+$$ \sum_{j=1}^n (|x_j| + |y_j|) = \sum_{j=1}^n |x_j| + \sum_{j=1}^n |y_j| = \|x\|_1 + \|y\|_1. $$
+
+On a donc bien $\|x+y\|_1 \le \|x\|_1 + \|y\|_1$. L'axiome est vérifié.
+
+**Conclusion**
+
+Les trois axiomes étant satisfaits, $\| \cdot \|_1$ est une norme sur $\mathbb{R}^n$.
+
+</details>
+
+---
+
+#### Inégalité de Minkowski (Inégalité triangulaire pour la norme 2)
+
+Démontrer l'inégalité triangulaire pour la norme euclidienne $\| \cdot \|_2$ sur $\mathbb{R}^n$. Autrement dit, prouver que pour tous $x, y \in \mathbb{R}^n$, on a $\|x+y\|_2 \le \|x\|_2 + \|y\|_2$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Il est plus facile de travailler avec les carrés des normes pour éviter les racines carrées. Commencez par développer l'expression $\|x+y\|_2^2 = \sum_{j=1}^n (x_j+y_j)^2$.
+
+Séparez la somme en trois parties : $\sum x_j^2$, $\sum y_j^2$, et le terme croisé $2\sum x_j y_j$.
+
+Reconnaissez que le terme croisé est $2 \langle x, y \rangle$, le produit scalaire de $x$ et $y$. Utilisez l'**inégalité de Cauchy-Schwarz**, $|\langle x, y \rangle| \le \|x\|_2 \|y\|_2$, pour majorer ce terme.
+
+Enfin, vous devriez arriver à une expression de la forme $(\|x\|_2 + \|y\|_2)^2$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soient $x, y \in \mathbb{R}^n$. L'inégalité que nous voulons prouver est $\sqrt{\sum (x_j+y_j)^2} \le \sqrt{\sum x_j^2} + \sqrt{\sum y_j^2}$.
+
+Comme les deux membres sont positifs, cette inégalité est équivalente à l'inégalité entre leurs carrés :
+
+$\|x+y\|_2^2 \le (\|x\|_2 + \|y\|_2)^2$.
+
+**Étape 1 : Développer $\|x+y\|_2^2$**
+
+Par définition de la norme euclidienne :
+
+$$ \begin{align*} \|x+y\|_2^2 &= \sum_{j=1}^n (x_j+y_j)^2 \\ &= \sum_{j=1}^n (x_j^2 + 2x_j y_j + y_j^2) \\ &= \sum_{j=1}^n x_j^2 + 2 \sum_{j=1}^n x_j y_j + \sum_{j=1}^n y_j^2 \end{align*} $$
+
+**Étape 2 : Reconnaître les termes**
+
+On reconnaît les carrés des normes de $x$ et $y$, ainsi que le produit scalaire usuel $\langle x, y \rangle = \sum_{j=1}^n x_j y_j$.
+
+L'expression devient :
+
+$\|x+y\|_2^2 = \|x\|_2^2 + 2 \langle x, y \rangle + \|y\|_2^2$.
+
+**Étape 3 : Appliquer l'inégalité de Cauchy-Schwarz**
+
+L'inégalité de Cauchy-Schwarz nous dit que $\langle x, y \rangle \le |\langle x, y \rangle| \le \|x\|_2 \|y\|_2$.
+
+En utilisant cette majoration dans notre expression :
+
+$$ \|x+y\|_2^2 \le \|x\|_2^2 + 2 \|x\|_2 \|y\|_2 + \|y\|_2^2 $$
+
+**Étape 4 : Conclure**
+
+Le membre de droite est une identité remarquable :
+
+$\|x\|_2^2 + 2 \|x\|_2 \|y\|_2 + \|y\|_2^2 = (\|x\|_2 + \|y\|_2)^2$.
+
+Nous avons donc montré que $\|x+y\|_2^2 \le (\|x\|_2 + \|y\|_2)^2$.
+
+Puisque la fonction racine carrée est croissante sur $\mathbb{R}_+$, on peut prendre la racine carrée des deux côtés tout en préservant l'inégalité :
+
+$\|x+y\|_2 \le \|x\|_2 + \|y\|_2$.
+
+Ceci prouve l'inégalité triangulaire pour la norme euclidienne.
+
+</details>
+
+---
+
+#### Preuve de l'équivalence des normes 1 et infinie
+
+Démontrer que les normes $\| \cdot \|_1$ et $\| \cdot \|_\infty$ sont équivalentes sur $\mathbb{R}^n$. C'est-à-dire, trouver deux constantes réelles $\alpha > 0$ et $\beta > 0$ telles que pour tout $x \in \mathbb{R}^n$ :
+
+$\alpha \|x\|_\infty \le \|x\|_1 \le \beta \|x\|_\infty$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+La preuve se fait en deux parties, en montrant les deux inégalités séparément.
+
+1.  **Pour l'inégalité $\|x\|_1 \le \beta \|x\|_\infty$** :
+
+    Écrivez la définition de $\|x\|_1 = \sum_{j=1}^n |x_j|$. Pour chaque $j$, comment pouvez-vous majorer $|x_j|$ en utilisant $\|x\|_\infty = \max_k |x_k|$ ? Appliquez cette majoration à chaque terme de la somme.
+
+2.  **Pour l'inégalité $\alpha \|x\|_\infty \le \|x\|_1$** :
+
+    Soit $j_0$ l'indice pour lequel la valeur absolue de la composante est maximale, c'est-à-dire $|x_{j_0}| = \|x\|_\infty$. Comparez ce terme seul à la somme de tous les termes (qui est $\|x\|_1$).
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $x = (x_1, \dots, x_n) \in \mathbb{R}^n$. Nous devons trouver des constantes $\alpha, \beta > 0$ indépendantes de $x$.
+
+**Partie 1 : Majoration de $\|x\|_1$ par $\|x\|_\infty$**
+
+Par définition, $\|x\|_1 = \sum_{j=1}^n |x_j| = |x_1| + |x_2| + \dots + |x_n|$.
+
+La norme infinie est définie comme $\|x\|_\infty = \max_{1 \le k \le n} |x_k|$.
+
+Par définition du maximum, pour n'importe quel indice $j \in \{1, \dots, n\}$, on a :
+
+$|x_j| \le \|x\|_\infty$.
+
+En appliquant cette majoration à chaque terme de la somme définissant $\|x\|_1$ :
+
+$$ \|x\|_1 = \sum_{j=1}^n |x_j| \le \sum_{j=1}^n \|x\|_\infty $$
+
+La somme $\sum_{j=1}^n \|x\|_\infty$ est une somme de $n$ termes identiques, donc elle est égale à $n \|x\|_\infty$.
+
+Nous avons donc montré que :
+
+$\|x\|_1 \le n \|x\|_\infty$.
+
+On peut choisir $\beta = n$. Cette constante est bien strictement positive.
+
+**Partie 2 : Minoration de $\|x\|_1$ par $\|x\|_\infty$**
+
+Soit $j_0 \in \{1, \dots, n\}$ un indice tel que le maximum de la norme infinie est atteint, c'est-à-dire :
+
+$|x_{j_0}| = \max_{1 \le k \le n} |x_k| = \|x\|_\infty$.
+
+Considérons la somme définissant la norme 1 :
+
+$\|x\|_1 = |x_1| + |x_2| + \dots + |x_{j_0}| + \dots + |x_n|$.
+
+Puisque tous les termes $|x_j|$ sont non-négatifs, la somme est supérieure ou égale à n'importe lequel de ses termes. En particulier, elle est supérieure ou égale à $|x_{j_0}|$.
+
+$\|x\|_1 \ge |x_{j_0}|$.
+
+En utilisant le fait que $|x_{j_0}| = \|x\|_\infty$, on obtient :
+
+$\|x\|_1 \ge \|x\|_\infty$.
+
+On peut aussi l'écrire $1 \cdot \|x\|_\infty \le \|x\|_1$.
+
+On peut donc choisir $\alpha = 1$. Cette constante est bien strictement positive.
+
+**Conclusion**
+
+Nous avons trouvé deux constantes $\alpha=1 > 0$ et $\beta=n > 0$ telles que pour tout $x \in \mathbb{R}^n$ :
+
+$1 \cdot \|x\|_\infty \le \|x\|_1 \le n \cdot \|x\|_\infty$.
+
+Les normes $\| \cdot \|_1$ et $\| \cdot \|_\infty$ sont donc équivalentes sur $\mathbb{R}^n$.
+
+</details>
+
+---
+
+#### Unicité de la limite d'une suite
+
+Démontrer que si une suite $(x^k)_{k \in \mathbb{N}}$ de vecteurs de $\mathbb{R}^n$ converge, alors sa limite est unique.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Raisonnez par l'absurde. Supposez que la suite $(x^k)$ admette deux limites distinctes, $a$ et $b$, avec $a \neq b$.
+
+1.  La distance $\|a-b\|$ est donc strictement positive.
+2.  Utilisez l'inégalité triangulaire en écrivant $\|a-b\| = \|(a-x^k) + (x^k-b)\|$.
+3.  Par définition de la convergence vers $a$ et vers $b$, les termes $\|a-x^k\|$ et $\|x^k-b\|$ peuvent être rendus aussi petits que l'on veut pour $k$ assez grand.
+4.  Montrez que cela conduit à une contradiction avec le fait que $\|a-b\| > 0$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $(x^k)_{k \in \mathbb{N}}$ une suite de $\mathbb{R}^n$ munie d'une norme $\| \cdot \|$.
+
+Supposons par l'absurde que la suite admette deux limites distinctes, $a \in \mathbb{R}^n$ et $b \in \mathbb{R}^n$, avec $a \neq b$.
+
+Puisque $a \neq b$, le vecteur $a-b$ n'est pas le vecteur nul. Par l'axiome de séparation de la norme, on a $\|a-b\| > 0$.
+
+Posons $\varepsilon = \frac{\|a-b\|}{2}$. Par construction, $\varepsilon > 0$.
+
+Par définition de la convergence :
+
+1.  Puisque $x^k \to a$, il existe un rang $k_1 \in \mathbb{N}$ tel que pour tout $k \ge k_1$, on a $\|x^k - a\| < \varepsilon$.
+2.  Puisque $x^k \to b$, il existe un rang $k_2 \in \mathbb{N}$ tel que pour tout $k \ge k_2$, on a $\|x^k - b\| < \varepsilon$.
+
+Soit $k_0 = \max(k_1, k_2)$. Pour tout entier $k \ge k_0$, les deux conditions sont satisfaites simultanément.
+
+Considérons la distance $\|a-b\|$. En utilisant l'astuce d'ajouter et de soustraire $x^k$ et en appliquant l'inégalité triangulaire, nous avons pour $k \ge k_0$ :
+
+$$ \|a-b\| = \|(a-x^k) + (x^k-b)\| \le \|a-x^k\| + \|x^k-b\| $$
+
+On sait que $\|a-x^k\| = \|x^k-a\|$. Donc pour $k \ge k_0$ :
+
+$$ \|a-b\| \le \|x^k-a\| + \|x^k-b\| < \varepsilon + \varepsilon = 2\varepsilon $$
+
+En remplaçant $\varepsilon$ par sa valeur $\frac{\|a-b\|}{2}$, on obtient :
+
+$\|a-b\| < 2 \left( \frac{\|a-b\|}{2} \right)$, ce qui simplifie en $\|a-b\| < \|a-b\|$.
+
+Ceci est une contradiction stricte. L'hypothèse de départ (l'existence de deux limites distinctes) est donc fausse.
+
+**Conclusion**
+
+La limite d'une suite convergente dans $\mathbb{R}^n$ est unique.
+
+</details>
+
+---
+
+#### Convergence vectorielle et convergence des composantes (Partie 1)
+
+Soit $(x^k)_{k \in \mathbb{N}}$ une suite de vecteurs de $\mathbb{R}^n$.
+
+Démontrer que si la suite $(x^k)$ converge vers un vecteur $a \in \mathbb{R}^n$, alors pour chaque composante $j \in \{1, \dots, n\}$, la suite réelle $(x_j^k)_{k \in \mathbb{N}}$ converge vers la composante correspondante $a_j$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+L'objectif est de montrer que $|x_j^k - a_j| \to 0$ pour chaque $j$.
+
+Pour ce faire, il faut relier la quantité $|x_j^k - a_j|$ à $\|x^k - a\|$, qui tend vers 0 par hypothèse.
+
+Rappelez-vous la relation entre la valeur absolue d'une composante et les normes usuelles. Par exemple, pour tout vecteur $v = (v_1, ..., v_n)$, on a $|v_j| \le \|v\|_\infty$ et $|v_j| \le \|v\|_2$. Utilisez l'une de ces inégalités avec le vecteur $v = x^k - a$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $(x^k)$ une suite de vecteurs dans $\mathbb{R}^n$ qui converge vers $a \in \mathbb{R}^n$. Cela signifie que $\lim_{k \to \infty} \|x^k - a\| = 0$ pour n'importe quelle norme sur $\mathbb{R}^n$ (puisqu'elles sont toutes équivalentes).
+
+Nous voulons montrer que pour tout $j \in \{1, \dots, n\}$, la suite réelle $(x_j^k)$ converge vers $a_j$, c'est-à-dire $\lim_{k \to \infty} |x_j^k - a_j| = 0$.
+
+Soit $j$ un indice de composante fixé. Considérons le vecteur $v^k = x^k - a$. Ses composantes sont $v_j^k = x_j^k - a_j$.
+
+Nous savons que pour tout vecteur $v \in \mathbb{R}^n$, et pour toute composante $j$, on a l'inégalité suivante :
+
+$|v_j| \le \max_{1 \le i \le n} |v_i| = \|v\|_\infty$.
+
+Appliquons cette inégalité au vecteur $v^k = x^k - a$ :
+
+$|x_j^k - a_j| \le \|x^k - a\|_\infty$.
+
+Nous avons donc l'encadrement suivant pour chaque $j$ :
+
+$0 \le |x_j^k - a_j| \le \|x^k - a\|_\infty$.
+
+Par hypothèse, la suite de vecteurs $(x^k)$ converge vers $a$. Puisque toutes les normes sont équivalentes, la convergence est vraie pour la norme infinie. Donc :
+
+$\lim_{k \to \infty} \|x^k - a\|_\infty = 0$.
+
+Par le théorème des gendarmes (ou théorème d'encadrement) appliqué aux suites réelles, comme $|x_j^k - a_j|$ est encadré par $0$ et une suite qui tend vers $0$, on peut conclure que :
+
+$\lim_{k \to \infty} |x_j^k - a_j| = 0$.
+
+Ceci est vrai pour chaque composante $j \in \{1, \dots, n\}$. La convergence de la suite de vecteurs implique donc la convergence de chacune de ses suites de composantes.
+
+</details>
+
+---
+
+#### Convergence vectorielle et convergence des composantes (Partie 2)
+
+Soit $(x^k)_{k \in \mathbb{N}}$ une suite de vecteurs de $\mathbb{R}^n$.
+
+Démontrer que si, pour chaque composante $j \in \{1, \dots, n\}$, la suite réelle $(x_j^k)_{k \in \mathbb{N}}$ converge vers $a_j$, alors la suite de vecteurs $(x^k)$ converge vers le vecteur $a = (a_1, \dots, a_n)$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+L'objectif est de montrer que $\|x^k - a\| \to 0$. Pour cela, il faut majorer $\|x^k - a\|$ par une expression qui dépend des quantités $|x_j^k - a_j|$, qui tendent vers 0 par hypothèse.
+
+Choisissez une norme pratique qui s'exprime facilement en fonction des composantes, comme la norme 1 ou la norme infinie.
+
+Par exemple, avec la norme 1 : $\|x^k-a\|_1 = \sum_{j=1}^n |x_j^k - a_j|$. Vous avez une somme *finie* de termes qui tendent tous vers 0. Quelle est la limite d'une somme finie de suites convergentes ?
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Supposons que pour chaque $j \in \{1, \dots, n\}$, la suite réelle $(x_j^k)$ converge vers $a_j$. Cela signifie que :
+
+$\forall j \in \{1, \dots, n\}, \quad \lim_{k \to \infty} |x_j^k - a_j| = 0$.
+
+Nous voulons montrer que la suite de vecteurs $(x^k)$ converge vers $a$, c'est-à-dire $\lim_{k \to \infty} \|x^k - a\| = 0$. Grâce à l'équivalence de toutes les normes sur $\mathbb{R}^n$, il suffit de le démontrer pour une seule norme de notre choix. Choisissons la norme 1, $\| \cdot \|_1$, car son expression est pratique.
+
+La norme 1 du vecteur $x^k - a$ est donnée par :
+
+$\|x^k - a\|_1 = \sum_{j=1}^n |x_j^k - a_j|$.
+
+Nous avons une somme de $n$ termes. Par hypothèse, pour chaque $j$, le terme $|x_j^k - a_j|$ tend vers 0 lorsque $k \to \infty$.
+
+La limite d'une somme finie de suites convergentes est la somme de leurs limites.
+
+Donc :
+
+$$ \lim_{k \to \infty} \|x^k - a\|_1 = \lim_{k \to \infty} \sum_{j=1}^n |x_j^k - a_j| $$
+
+$$ = \sum_{j=1}^n \left( \lim_{k \to \infty} |x_j^k - a_j| \right) $$
+
+$$ = \sum_{j=1}^n 0 = 0 $$
+
+Puisque $\lim_{k \to \infty} \|x^k - a\|_1 = 0$, la suite de vecteurs $(x^k)$ converge vers $a$ pour la norme 1.
+
+Comme toutes les normes sur $\mathbb{R}^n$ sont équivalentes, la convergence pour la norme 1 implique la convergence pour n'importe quelle autre norme.
+
+**Conclusion**
+
+La convergence de toutes les suites de composantes implique la convergence de la suite de vecteurs.
+
+</details>
+
+---
+
+#### Une suite convergente est une suite de Cauchy
+
+Démontrer que toute suite convergente $(x^k)_{k \in \mathbb{N}}$ dans un espace vectoriel normé $(\mathbb{R}^n, \| \cdot \|)$ est une suite de Cauchy.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Soit $a$ la limite de la suite $(x^k)$.
+
+La définition de la convergence vous dit que pour $k$ grand, $x^k$ est proche de $a$.
+
+Vous voulez montrer que pour $p, q$ grands, $x^p$ est proche de $x^q$.
+
+Utilisez l'inégalité triangulaire pour relier la distance $\|x^p - x^q\|$ aux distances $\|x^p - a\|$ et $\|x^q - a\|$. L'astuce consiste à écrire $x^p - x^q = (x^p - a) + (a - x^q)$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $(x^k)_{k \in \mathbb{N}}$ une suite de vecteurs dans $\mathbb{R}^n$ qui converge vers une limite $a \in \mathbb{R}^n$.
+
+Par définition de la convergence, pour tout $\delta > 0$, il existe un rang $k_\delta \in \mathbb{N}$ tel que pour tout $k \ge k_\delta$, on a $\|x^k - a\| < \delta$.
+
+Nous voulons démontrer que $(x^k)$ est une suite de Cauchy. C'est-à-dire, nous devons montrer que :
+
+$\forall \varepsilon > 0, \quad \exists k_\varepsilon \in \mathbb{N} \text{ tel que } \forall p, q \ge k_\varepsilon, \quad \|x^p - x^q\| < \varepsilon$.
+
+Soit $\varepsilon > 0$ un réel quelconque.
+
+Posons $\delta = \frac{\varepsilon}{2}$. Puisque $\delta > 0$, la définition de la convergence nous assure qu'il existe un rang, que nous nommerons $k_\varepsilon$, tel que pour tout indice $k \ge k_\varepsilon$ :
+
+$\|x^k - a\| < \frac{\varepsilon}{2}$.
+
+Maintenant, considérons deux indices quelconques $p$ et $q$ tels que $p \ge k_\varepsilon$ et $q \ge k_\varepsilon$.
+
+Nous voulons majorer la distance $\|x^p - x^q\|$. En utilisant l'inégalité triangulaire, on a :
+
+$$ \|x^p - x^q\| = \|(x^p - a) + (a - x^q)\| \le \|x^p - a\| + \|a - x^q\| $$
+
+On sait que $\|a - x^q\| = \|(-1)(x^q - a)\| = |-1|\|x^q - a\| = \|x^q - a\|$.
+
+L'inégalité devient donc :
+
+$$ \|x^p - x^q\| \le \|x^p - a\| + \|x^q - a\| $$
+
+Puisque $p \ge k_\varepsilon$ et $q \ge k_\varepsilon$, nous pouvons utiliser la propriété de convergence :
+
+$\|x^p - a\| < \frac{\varepsilon}{2}$
+
+$\|x^q - a\| < \frac{\varepsilon}{2}$
+
+En substituant ces majorations dans notre inégalité, on obtient :
+
+$$ \|x^p - x^q\| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon $$
+
+Nous avons donc montré que pour tout $\varepsilon > 0$, il existe un rang $k_\varepsilon$ tel que pour tous $p, q \ge k_\varepsilon$, on a $\|x^p - x^q\| < \varepsilon$.
+
+Ceci est précisément la définition d'une suite de Cauchy.
+
+**Conclusion**
+
+Toute suite convergente dans $\mathbb{R}^n$ est une suite de Cauchy.
+
+</details>
+
+---
+
+#### Transitivité de l'équivalence des normes
+
+Démontrer que la relation "être équivalente à" est transitive pour les normes sur $\mathbb{R}^n$. Autrement dit, si une norme $N_1$ est équivalente à une norme $N_2$, et $N_2$ est équivalente à une norme $N_3$, alors $N_1$ est équivalente à $N_3$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Commencez par écrire les définitions formelles des deux hypothèses.
+
+1.  $N_1$ est équivalente à $N_2$ : il existe $\alpha_1, \beta_1 > 0$ tels que $\alpha_1 N_2(x) \le N_1(x) \le \beta_1 N_2(x)$.
+2.  $N_2$ est équivalente à $N_3$ : il existe $\alpha_2, \beta_2 > 0$ tels que $\alpha_2 N_3(x) \le N_2(x) \le \beta_2 N_3(x)$.
+
+Votre objectif est de trouver des constantes $\alpha_3, \beta_3 > 0$ telles que $\alpha_3 N_3(x) \le N_1(x) \le \beta_3 N_3(x)$.
+
+Pour cela, combinez les inégalités que vous avez écrites pour éliminer $N_2$. Par exemple, pour majorer $N_1$ en fonction de $N_3$, partez de $N_1(x) \le \beta_1 N_2(x)$ et majorez ensuite $N_2(x)$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soient $N_1, N_2, N_3$ trois normes sur $\mathbb{R}^n$.
+
+**Hypothèses :**
+
+1.  $N_1$ est équivalente à $N_2$. Cela signifie qu'il existe deux constantes réelles $\alpha_1 > 0$ et $\beta_1 > 0$ telles que pour tout $x \in \mathbb{R}^n$ :
+
+    $\alpha_1 N_2(x) \le N_1(x) \le \beta_1 N_2(x)$. (I)
+
+2.  $N_2$ est équivalente à $N_3$. Cela signifie qu'il existe deux constantes réelles $\alpha_2 > 0$ et $\beta_2 > 0$ telles que pour tout $x \in \mathbb{R}^n$ :
+
+    $\alpha_2 N_3(x) \le N_2(x) \le \beta_2 N_3(x)$. (II)
+
+**Objectif :**
+
+Nous voulons prouver que $N_1$ est équivalente à $N_3$. Nous devons donc trouver des constantes $\alpha_3 > 0$ et $\beta_3 > 0$ telles que pour tout $x \in \mathbb{R}^n$ :
+
+$\alpha_3 N_3(x) \le N_1(x) \le \beta_3 N_3(x)$.
+
+**Étape 1 : Trouver la majoration (la constante $\beta_3$)**
+
+Nous partons de l'inégalité de droite dans (I) :
+
+$N_1(x) \le \beta_1 N_2(x)$.
+
+Maintenant, nous utilisons l'inégalité de droite dans (II) pour majorer $N_2(x)$ :
+
+$N_2(x) \le \beta_2 N_3(x)$.
+
+En combinant les deux, on obtient :
+
+$N_1(x) \le \beta_1 \left( \beta_2 N_3(x) \right) = (\beta_1 \beta_2) N_3(x)$.
+
+Posons $\beta_3 = \beta_1 \beta_2$. Puisque $\beta_1 > 0$ et $\beta_2 > 0$, leur produit $\beta_3$ est aussi strictement positif. Nous avons donc la moitié de la preuve : $N_1(x) \le \beta_3 N_3(x)$.
+
+**Étape 2 : Trouver la minoration (la constante $\alpha_3$)**
+
+Nous partons de l'inégalité de gauche dans (I) :
+
+$\alpha_1 N_2(x) \le N_1(x)$.
+
+Maintenant, nous utilisons l'inégalité de gauche dans (II) pour minorer $N_2(x)$ :
+
+$\alpha_2 N_3(x) \le N_2(x)$.
+
+En combinant les deux, on obtient :
+
+$N_1(x) \ge \alpha_1 N_2(x) \ge \alpha_1 \left( \alpha_2 N_3(x) \right) = (\alpha_1 \alpha_2) N_3(x)$.
+
+Posons $\alpha_3 = \alpha_1 \alpha_2$. Puisque $\alpha_1 > 0$ et $\alpha_2 > 0$, leur produit $\alpha_3$ est aussi strictement positif. Nous avons donc l'autre moitié de la preuve : $\alpha_3 N_3(x) \le N_1(x)$.
+
+**Conclusion**
+
+Nous avons trouvé deux constantes $\alpha_3 = \alpha_1 \alpha_2 > 0$ et $\beta_3 = \beta_1 \beta_2 > 0$ telles que pour tout $x \in \mathbb{R}^n$ :
+
+$\alpha_3 N_3(x) \le N_1(x) \le \beta_3 N_3(x)$.
+
+Ceci prouve que $N_1$ est équivalente à $N_3$. La relation d'équivalence des normes est donc transitive.
+
+</details>
+
+---
