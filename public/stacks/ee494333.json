@@ -1,0 +1,119 @@
+{
+  "info": {
+    "id": "ee494333",
+    "title": "Fonctions continues - fiches de révision (A)",
+    "type": "cards",
+    "level": "regular",
+    "chapter": "Fonctions continues",
+    "course": "Topologie et Calcul Différentiel I",
+    "tags": [
+      "fonctions continues",
+      "limite",
+      "topologie",
+      "connexité",
+      "compacité",
+      "continuité uniforme"
+    ],
+    "count": 14
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "ee494333",
+      "content": "Qu'est-ce que le domaine de définition d'une fonction de plusieurs variables ?",
+      "solution": "\n\nLe **domaine de définition** d'une fonction $f: D \\subseteq \\mathbb{R}^n \\to \\mathbb{R}^p$, noté $D_f$, est le plus grand sous-ensemble de $\\mathbb{R}^n$ pour lequel l'expression de $f(x_1, \\dots, x_n)$ a un sens mathématique. C'est l'ensemble de tous les points pour lesquels la fonction peut être calculée.\n\nPour le déterminer, on identifie toutes les contraintes mathématiques imposées par l'expression de la fonction. Les plus courantes sont :\n\n1.  **Dénominateurs non nuls** : Pour une fraction $\\frac{N(x)}{D(x)}$, on doit avoir $D(x) \\neq 0$.\n2.  **Arguments de logarithmes strictement positifs** : Pour $\\ln(u(x))$, on doit avoir $u(x) > 0$.\n3.  **Arguments de racines carrées positifs ou nuls** : Pour $\\sqrt{u(x)}$, on doit avoir $u(x) \\ge 0$.\n4.  **Autres fonctions** : Fonctions comme $\\tan(u(x))$ ou $\\arcsin(u(x))$ ont aussi des contraintes spécifiques.\n\n**Exemple :**\n\nSoit la fonction $f(x, y) = \\frac{\\sqrt{x-1}}{y-2}$.\n\nLes contraintes sont :\n\n1.  L'argument de la racine carrée doit être positif ou nul : $x-1 \\ge 0 \\implies x \\ge 1$.\n2.  Le dénominateur doit être non nul : $y-2 \\neq 0 \\implies y \\neq 2$.\n\nLe domaine de définition est donc $D_f = \\{ (x, y) \\in \\mathbb{R}^2 \\mid x \\ge 1 \\text{ et } y \\neq 2 \\}$. C'est le demi-plan à droite de la droite verticale $x=1$ (incluse), privé de la droite horizontale $y=2$.\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "ee494333",
+      "content": "Comment déterminer le domaine de définition de la fonction $f(x, y) = \\ln(x^2 + y^2 - 4)$ ?",
+      "solution": "\n\nPour déterminer le domaine de définition de cette fonction, nous devons identifier et résoudre les contraintes imposées par sa formule.\n\n**Étapes :**\n\n1.  **Identifier la contrainte principale :** La fonction utilise un logarithme népérien, $\\ln(u)$. La seule contrainte est que son argument doit être strictement positif.\n    \n    Dans notre cas, l'argument est $u(x,y) = x^2 + y^2 - 4$.\n    \n\n2.  **Poser l'inéquation :** Nous devons donc résoudre l'inéquation :\n    \n    $$ x^2 + y^2 - 4 > 0 $$\n    \n\n3.  **Résoudre l'inéquation :** En réarrangeant les termes, on obtient :\n    \n    $$ x^2 + y^2 > 4 $$\n    \n\n4.  **Interpréter géométriquement :** L'équation $x^2 + y^2 = 4$ représente le cercle de centre $(0,0)$ et de rayon $r = \\sqrt{4} = 2$. L'inéquation $x^2 + y^2 > 4$ représente donc l'ensemble de tous les points $(x,y)$ du plan qui sont situés à l'extérieur de ce cercle.\n    \n**Conclusion :**\n\nLe domaine de définition de $f$ est l'ensemble des points du plan situés à l'extérieur du cercle de centre l'origine et de rayon 2.\n\n$$ D_f = \\{ (x, y) \\in \\mathbb{R}^2 \\mid x^2 + y^2 > 4 \\} $$\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "ee494333",
+      "content": "Qu'est-ce que la limite d'une fonction de plusieurs variables ?",
+      "solution": "\n\nSoit $f$ une fonction définie sur un domaine $D \\subset \\mathbb{R}^n$ et $z$ un point adhérent à $D$. On dit que $f(x)$ **tend vers une limite** $l \\in \\mathbb{R}^p$ quand $x$ tend vers $z$ si on peut rendre $f(x)$ aussi proche que l'on veut de $l$ à condition de prendre $x$ suffisamment proche de $z$.\n\nFormellement, avec la notation $\\varepsilon-\\delta$ :\n\n$$ \\forall \\varepsilon > 0, \\exists \\delta > 0 : \\forall x \\in D, (d(x, z) < \\delta \\implies d(f(x), l) < \\varepsilon) $$\n\n**Explication intuitive :**\n\n-   $\\varepsilon$ est la marge d'erreur tolérée à l'arrivée : \"Je veux que $f(x)$ soit à une distance de $l$ inférieure à $\\varepsilon$\".\n-   $\\delta$ est la condition de proximité au départ : \"Si vous prenez n'importe quel $x$ à une distance de $z$ inférieure à $\\delta$, alors je vous garantis que $f(x)$ respectera la marge $\\varepsilon$\".\n\nUne propriété fondamentale est que cette définition ne dépend pas de la norme choisie dans $\\mathbb{R}^n$ ou $\\mathbb{R}^p$.\n\n**Caractérisation séquentielle (souvent plus simple en pratique) :**\n\n$\\lim_{x\\to z} f(x) = l$ si et seulement si pour **toute suite** $(x^k)$ de points de $D$ qui converge vers $z$, la suite des images $(f(x^k))$ converge vers $l$.\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "ee494333",
+      "content": "Comment prouver qu'une limite d'une fonction de plusieurs variables n'existe pas ?",
+      "solution": "\n\nPour qu'une limite existe en un point $z$, la valeur de la limite doit être la même quel que soit le chemin par lequel on s'approche de $z$. Contrairement aux fonctions d'une variable (où il n'y a que la gauche et la droite), dans $\\mathbb{R}^n$ avec $n \\ge 2$, il y a une infinité de chemins possibles (droites, paraboles, etc.).\n\nPour prouver que la limite n'existe pas, il suffit de trouver **deux chemins d'approche différents** qui mènent à **deux limites différentes**.\n\n**Étapes :**\n\n1.  **Choisir un premier chemin simple** : Souvent une droite, comme l'axe des abscisses ($y=0$) ou l'axe des ordonnées ($x=0$). On calcule la limite le long de ce chemin.\n2.  **Choisir un deuxième chemin** : Une autre droite (par ex. $y=x$ ou plus généralement $y=mx$) ou une courbe (par ex. une parabole $y=x^2$). On calcule la limite le long de ce nouveau chemin.\n3.  **Comparer les résultats** : Si les deux limites calculées sont différentes, alors la limite globale n'existe pas.\n\n**Exemple :** Montrer que $\\lim_{(x,y) \\to (0,0)} \\frac{xy}{x^2 + y^2}$ n'existe pas.\n\n-   **Chemin 1 (axe des x, $y=0$) :**\n\n    Pour $x \\neq 0$, la fonction devient $f(x, 0) = \\frac{x \\cdot 0}{x^2 + 0^2} = 0$.\n\n    La limite le long de ce chemin est $\\lim_{x \\to 0} 0 = 0$.\n\n-   **Chemin 2 (droite $y=x$) :**\n\n    Pour $x \\neq 0$, la fonction devient $f(x, x) = \\frac{x \\cdot x}{x^2 + x^2} = \\frac{x^2}{2x^2} = \\frac{1}{2}$.\n\n    La limite le long de ce chemin est $\\lim_{x \\to 0} \\frac{1}{2} = \\frac{1}{2}$.\n\nComme $0 \\neq \\frac{1}{2}$, la limite en $(0,0)$ n'existe pas.\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "ee494333",
+      "content": "Quelles sont les conditions équivalentes pour qu'une fonction $f$ soit continue en un point $a$ ?",
+      "solution": "\n\nSoit $f: D \\subset \\mathbb{R}^n \\to \\mathbb{R}^p$ une fonction et $a$ un point de $D$. On dit que $f$ est **continue en $a$** si l'une des trois conditions équivalentes suivantes est vérifiée :\n\n1.  **Définition avec la limite :** C'est la plus intuitive. La fonction doit avoir une limite en $a$ et cette limite doit être exactement la valeur de la fonction en $a$.\n\n    $$ \\lim_{x\\to a} f(x) = f(a) $$\n\n2.  **Définition avec $\\varepsilon-\\delta$ :** C'est la définition formelle. Elle est très similaire à celle de la limite, mais la limite $l$ est remplacée par $f(a)$.\n\n    $$ \\forall \\varepsilon > 0, \\exists \\delta > 0 : \\forall x \\in D, (d(x, a) < \\delta \\implies d(f(x), f(a)) < \\varepsilon) $$\n\n3.  **Caractérisation séquentielle :** Très utile pour prouver la continuité ou la non-continuité. Pour toute suite de points $(x^k)$ qui converge vers $a$, la suite des images $(f(x^k))$ doit converger vers l'image de $a$, c'est-à-dire $f(a)$.\n\n    $$ ( \\forall (x^k) \\in D^{\\mathbb{N}}, \\lim_{k\\to\\infty} x^k = a ) \\implies ( \\lim_{k\\to\\infty} f(x^k) = f(a) ) $$\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "ee494333",
+      "content": "Si les fonctions partielles d'une fonction $f(x,y)$ sont continues, la fonction $f$ est-elle nécessairement continue ?",
+      "solution": "\n\n**Non, absolument pas.** C'est un piège classique. La continuité des fonctions partielles est une condition nécessaire mais **non suffisante** pour la continuité de la fonction de plusieurs variables.\n\nLa continuité en un point $(x_0, y_0)$ signifie que la fonction se comporte bien dans **toutes les directions** simultanément, et pas seulement le long des axes parallèles aux axes de coordonnées.\n\n**Contre-exemple classique :**\n\nConsidérons la fonction $f: \\mathbb{R}^2 \\to \\mathbb{R}$ définie par :\n\n$$ f(x, y) = \\begin{cases} \\frac{xy}{x^2 + y^2} & \\text{si } (x, y) \\neq (0, 0) \\\\ 0 & \\text{si } (x, y) = (0, 0) \\end{cases} $$\n\nÉtudions les fonctions partielles en $(0,0)$ :\n\n1.  **Fonction partielle en $x$ (on fixe $y=0$) :**\n\n    $x \\mapsto f(x, 0) = \\frac{x \\cdot 0}{x^2+0^2} = 0$. C'est la fonction nulle, qui est continue partout.\n\n2.  **Fonction partielle en $y$ (on fixe $x=0$) :**\n\n    $y \\mapsto f(0, y) = \\frac{0 \\cdot y}{0^2+y^2} = 0$. C'est aussi la fonction nulle, continue partout.\n\nLes deux fonctions partielles sont donc continues en $(0,0)$.\n\nCependant, comme nous l'avons vu précédemment, la limite de $f(x,y)$ en $(0,0)$ n'existe pas (elle vaut 0 le long des axes mais $1/2$ le long de la droite $y=x$). Puisque la limite n'existe pas, la fonction $f$ n'est **pas continue** en $(0,0)$, bien que ses fonctions partielles le soient.\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "ee494333",
+      "content": "Quelles sont les propriétés de stabilité de la continuité par rapport aux opérations usuelles ?",
+      "solution": "\n\nLes fonctions continues se comportent très bien avec les opérations algébriques et la composition. Ces propriétés permettent de construire des fonctions continues complexes à partir de fonctions continues simples.\n\nSoient $f, g: D \\subset \\mathbb{R}^n \\to \\mathbb{R}^p$ deux fonctions continues en un point $a \\in D$.\n\n1.  **Stabilité par combinaison linéaire :** Pour tous scalaires $\\lambda, \\mu \\in \\mathbb{R}$, la fonction $\\lambda f + \\mu g$ est continue en $a$. L'ensemble des fonctions continues est un espace vectoriel.\n\n2.  **Stabilité par produit (pour $p=1$) :** Si les fonctions sont à valeurs réelles ($f, g: D \\to \\mathbb{R}$), alors le produit $f \\cdot g$ est continu en $a$.\n\n3.  **Stabilité par quotient (pour $p=1$) :** Si les fonctions sont à valeurs réelles et si $g(a) \\neq 0$, alors la fonction $f/g$ est continue en $a$.\n\n4.  **Stabilité par composition :** Si $f: \\mathbb{R}^n \\to \\mathbb{R}^p$ est continue en $a$, et $g: \\mathbb{R}^p \\to \\mathbb{R}^r$ est continue en $f(a)$, alors la fonction composée $g \\circ f$ est continue en $a$.\n\n**Exemple d'application :**\n\nLa fonction $h(x, y) = \\exp(\\sin(xy))$ est continue sur $\\mathbb{R}^2$.\n\n- Les projections $(x,y) \\mapsto x$ et $(x,y) \\mapsto y$ sont continues.\n- Leur produit $xy$ est continu.\n- $\\sin(t)$ est continue, donc par composition, $\\sin(xy)$ est continue.\n- $\\exp(u)$ est continue, donc par composition, $\\exp(\\sin(xy))$ est continue.\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "ee494333",
+      "content": "Quand dit-on qu'une fonction est \"prolongeable par continuité\" en un point ?",
+      "solution": "\n\nSoit une fonction $f$ définie sur un domaine $D$, et soit $z$ un point qui n'est pas dans $D$ mais qui est \"au bord\" de $D$ (un point adhérent à $D$).\n\nOn dit que $f$ est **prolongeable par continuité** en $z$ s'il est possible de définir une valeur pour $f$ en $z$ de telle manière que la nouvelle fonction obtenue, notée $\\tilde{f}$, soit continue en $z$.\n\n**Condition d'existence et unicité :**\n\nUne fonction $f$ admet un prolongement continu en $z$ si et seulement si la limite $\\lim_{x\\to z} f(x)$ existe et est finie.\n\nSi cette limite existe et vaut $\\ell$, alors le prolongement par continuité est unique et est défini par :\n\n$$ \\tilde{f}(x) = \\begin{cases} f(x) & \\text{si } x \\in D, \\\\ \\ell & \\text{si } x = z. \\end{cases} $$\n\n**Exemple :**\n\nLa fonction $f(x, y) = \\frac{x^2 y}{x^2 + y^2}$ est définie sur $D = \\mathbb{R}^2 \\setminus \\{(0,0)\\}$.\n\nOn a montré que $\\lim_{(x,y) \\to (0,0)} f(x,y) = 0$.\n\nLa limite existe et est finie. Donc, $f$ est prolongeable par continuité en $(0,0)$. Son prolongement est :\n\n$$ \\tilde{f}(x, y) = \\begin{cases} \\frac{x^2 y}{x^2 + y^2} & \\text{si } (x, y) \\neq (0, 0) \\\\ 0 & \\text{si } (x, y) = (0, 0) \\end{cases} $$\n\nCette fonction $\\tilde{f}$ est continue sur $\\mathbb{R}^2$.\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "ee494333",
+      "content": "Comment la continuité est-elle caractérisée par les ensembles ouverts et fermés ?",
+      "solution": "\n\nLa continuité d'une fonction $f : \\mathbb{R}^n \\to \\mathbb{R}^p$ peut être décrite globalement par la manière dont elle interagit avec la structure topologique (les ensembles ouverts et fermés) des espaces de départ et d'arrivée.\n\nLes trois affirmations suivantes sont équivalentes :\n\n(i) $f$ est continue sur $\\mathbb{R}^n$.\n\n(ii) Pour tout ensemble **ouvert** $V$ de $\\mathbb{R}^p$, son **image réciproque** $f^{-1}(V)$ est un ensemble **ouvert** de $\\mathbb{R}^n$.\n\n(iii) Pour tout ensemble **fermé** $F$ de $\\mathbb{R}^p$, son **image réciproque** $f^{-1}(F)$ est un ensemble **fermé** de $\\mathbb{R}^n$.\n\n**Rappel :** L'image réciproque de $B \\subset \\mathbb{R}^p$ est $f^{-1}(B) = \\{ x \\in \\mathbb{R}^n \\mid f(x) \\in B \\}$.\n\nCette caractérisation est très puissante pour prouver qu'un ensemble est ouvert ou fermé.\n\n**Exemple :** Montrer que l'ensemble $E = \\{ (x, y) \\in \\mathbb{R}^2 \\mid \\cos(xy) \\le 1/2 \\}$ est un fermé.\n\n1.  Considérons la fonction $f(x,y) = \\cos(xy)$. C'est une fonction continue sur $\\mathbb{R}^2$.\n2.  L'ensemble $E$ peut s'écrire $E = \\{ (x,y) \\mid f(x,y) \\in ]-\\infty, 1/2] \\}$.\n3.  C'est donc l'image réciproque par $f$ de l'intervalle $F = ]-\\infty, 1/2]$.\n\n    $$ E = f^{-1}(F) $$\n\n4.  L'intervalle $F$ est un fermé de $\\mathbb{R}$. Comme $f$ est continue, son image réciproque $E$ est un fermé de $\\mathbb{R}^2$.\n\n**Attention :** Cette propriété ne s'applique qu'à l'**image réciproque**. L'image **directe** d'un ouvert par une fonction continue n'est pas forcément un ouvert.\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "ee494333",
+      "content": "Qu'énonce le théorème sur l'image d'un ensemble compact par une fonction continue ?",
+      "solution": "\n\nCe théorème fondamental stipule que la propriété de compacité est préservée par les applications continues.\n\n**Théorème :** L'image d'une partie **compacte** par une fonction **continue** est une partie **compacte**.\n\nPlus formellement :\n\nSoit $K$ une partie compacte de $\\mathbb{R}^n$ et $f : K \\to \\mathbb{R}^p$ une fonction continue. Alors l'ensemble image $f(K)$ est une partie compacte de $\\mathbb{R}^p$.\n\n**Implication pratique :**\n\nRappelons que dans $\\mathbb{R}^n$, un ensemble est compact si et seulement s'il est **fermé et borné**. Le théorème signifie donc que si vous prenez un ensemble de départ fermé et borné et que vous lui appliquez une fonction continue, l'ensemble d'arrivée que vous obtiendrez sera également fermé et borné.\n\n**Exemple :**\n\nSoit $\\gamma: [0, 2\\pi] \\to \\mathbb{R}^2$ la fonction définie par $\\gamma(t) = (\\cos(t), \\sin(t))$.\n\n- Le domaine de départ, l'intervalle $K = [0, 2\\pi]$, est un compact de $\\mathbb{R}$ (car fermé et borné).\n- La fonction $\\gamma$ est continue.\n- Le théorème nous assure que l'image, $\\gamma(K)$, est un compact de $\\mathbb{R}^2$.\n\nEn effet, l'image est le cercle unité, qui est bien un ensemble fermé et borné dans $\\mathbb{R}^2$.\n\n",
+      "options": []
+    },
+    {
+      "id": "11",
+      "stackId": "ee494333",
+      "content": "Qu'énonce le Théorème des bornes atteintes (ou Théorème de Weierstrass) ?",
+      "solution": "\n\nCe théorème garantit l'existence d'un minimum et d'un maximum globaux pour une fonction continue définie sur un compact.\n\n**Théorème :**\n\nSoit $K$ une partie **compacte** et **non vide** de $\\mathbb{R}^n$ et $f : K \\to \\mathbb{R}$ une fonction **continue** à valeurs réelles.\n\nAlors $f$ est **bornée** sur $K$ et **atteint ses bornes**. Cela signifie qu'il existe des points $a \\in K$ et $b \\in K$ tels que :\n\n$$ f(a) = \\inf_{x \\in K} f(x) = \\min_{x \\in K} f(x) $$\n\n$$ f(b) = \\sup_{x \\in K} f(x) = \\max_{x \\in K} f(x) $$\n\n**Explication :**\n\nLes deux hypothèses sont cruciales :\n\n1.  **Le domaine $K$ doit être compact** (fermé et borné).\n2.  **La fonction $f$ doit être continue** sur $K$.\n\nSi ces conditions sont remplies, le théorème nous assure non seulement que la fonction ne peut pas \"partir vers l'infini\" (elle est bornée), mais aussi que son minimum et son maximum existent et sont des valeurs effectivement prises par la fonction en des points du domaine.\n\n**Exemple d'application (Optimisation) :**\n\nSoit $f(x,y) = x^2 - 2xy + 3y^2$ sur le disque unité fermé $K = \\{ (x,y) \\in \\mathbb{R}^2 \\mid x^2+y^2 \\le 1 \\}$.\n\n- Le domaine $K$ est compact.\n- La fonction $f$ est un polynôme, donc elle est continue.\n\nLe théorème nous garantit l'existence d'un point $(x_0, y_0) \\in K$ où $f$ atteint son maximum global, et d'un point $(x_1, y_1) \\in K$ où elle atteint son minimum global. Le théorème ne donne pas la valeur de ces points, mais il prouve leur existence.\n\n",
+      "options": []
+    },
+    {
+      "id": "12",
+      "stackId": "ee494333",
+      "content": "Qu'est-ce qu'un ensemble \"connexe par arcs\" ?",
+      "solution": "\n\nIntuitivement, un ensemble connexe par arcs est un ensemble \"d'un seul tenant\", dans lequel on peut se déplacer d'un point à un autre sans jamais quitter l'ensemble.\n\n**Définition formelle :**\n\nUne partie $A$ de $\\mathbb{R}^n$ est dite **connexe par arcs** si pour tout couple de points $(a, b)$ dans $A$, il existe une application continue $\\gamma : [0, 1] \\to A$, appelée un **chemin** (ou un arc), telle que :\n\n-   $\\gamma(0) = a$ (le point de départ)\n-   $\\gamma(1) = b$ (le point d'arrivée)\n\nLa condition importante est que l'image du chemin, $\\gamma([0,1])$, est entièrement contenue dans $A$.\n\n**Exemples :**\n\n-   Tout ensemble **convexe** (comme une boule, un carré, ou $\\mathbb{R}^n$ entier) est connexe par arcs. On peut toujours relier deux points par le segment de droite qui les joint.\n-   Une sphère ou un tore sont des exemples d'ensembles connexes par arcs mais non convexes.\n-   Le plan privé de l'origine, $\\mathbb{R}^2 \\setminus \\{(0,0)\\}$, est connexe par arcs.\n\n**Contre-exemple :**\n\nL'union de deux disques disjoints n'est pas connexe par arcs. Il est impossible de tracer un chemin continu d'un disque à l'autre sans sortir de l'ensemble.\n\n**Propriété importante (Généralisation du TVI) :**\n\nL'image d'un ensemble connexe par arcs par une fonction continue à valeurs réelles est un **intervalle**.\n\n",
+      "options": []
+    },
+    {
+      "id": "13",
+      "stackId": "ee494333",
+      "content": "Quelle est la différence entre la continuité simple et la continuité uniforme ?",
+      "solution": "\n\nLa continuité uniforme est une forme plus forte de continuité. La différence réside dans la manière dont le paramètre $\\delta$ est choisi par rapport à $\\varepsilon$ et au point considéré.\n\n**Continuité simple (point par point) sur $D$ :**\n\n$$ \\forall a \\in D, \\forall \\varepsilon > 0, \\exists \\delta > 0 : \\forall x \\in D, (d(x, a) < \\delta \\implies d(f(x), f(a)) < \\varepsilon) $$\n\nIci, $\\delta$ dépend de $\\varepsilon$ **et** du point $a$. Si la fonction a une pente très forte en un point $a$, il faudra un $\\delta$ très petit. En un autre point $b$ où la fonction est plus \"plate\", un $\\delta$ plus grand pourrait convenir pour le même $\\varepsilon$.\n\nOn écrit : $\\delta = \\delta(\\varepsilon, a)$.\n\n**Continuité uniforme sur $D$ :**\n\n$$ \\forall \\varepsilon > 0, \\exists \\delta > 0 : \\forall x \\in D, \\forall y \\in D, (d(x, y) < \\delta \\implies d(f(x), f(y)) < \\varepsilon) $$\n\nIci, le $\\delta$ ne dépend **que** de $\\varepsilon$. On trouve un $\\delta$ \"universel\" qui fonctionne pour n'importe quelle paire de points $(x,y)$ dans tout le domaine $D$.\n\nOn écrit : $\\delta = \\delta(\\varepsilon)$.\n\n**Intuition :**\n\nUne fonction est uniformément continue si son \"degré d'oscillation\" est contrôlé de la même manière partout sur son domaine. Elle ne peut pas devenir \"arbitrairement raide\".\n\n**Exemple :**\n\n-   $f(x) = x$ est uniformément continue sur $\\mathbb{R}$.\n-   $g(x) = x^2$ est continue sur $\\mathbb{R}$ mais **pas** uniformément continue, car sa pente devient de plus en plus raide à mesure que $|x|$ augmente.\n\n",
+      "options": []
+    },
+    {
+      "id": "14",
+      "stackId": "ee494333",
+      "content": "Qu'affirme le Théorème de Heine ?",
+      "solution": "\n\nLe Théorème de Heine établit un lien puissant entre la continuité simple, la continuité uniforme et la compacité du domaine de définition.\n\n**Théorème de Heine :**\n\nToute fonction **continue** sur une partie **compacte** est **uniformément continue** sur cette partie.\n\nPlus formellement :\n\nSoit $K$ une partie compacte de $\\mathbb{R}^n$ et $f : K \\to \\mathbb{R}^p$ une fonction continue sur $K$. Alors $f$ est uniformément continue sur $K$.\n\n**Signification :**\n\nCe théorème nous dit que sur un domaine \"idéal\" (c'est-à-dire compact : fermé et borné), la notion plus faible de continuité simple est automatiquement promue en la notion plus forte de continuité uniforme.\n\nLes problèmes qui empêchent la continuité uniforme (pentes qui tendent vers l'infini ou oscillations infiniment rapides) ne peuvent pas se produire pour une fonction continue sur un domaine compact.\n\n**Exemples d'application :**\n\n-   La fonction $f(x) = x^2$ n'est pas uniformément continue sur $\\mathbb{R}$ (non compact). Cependant, sur tout intervalle fermé et borné comme $[-M, M]$ (qui est compact), $f$ est uniformément continue d'après le théorème de Heine.\n-   La fonction $g(x) = \\sin(1/x)$ n'est pas uniformément continue sur $]0, 1]$ (non compact). Mais si on la considère sur $[\\varepsilon, 1]$ avec $\\varepsilon > 0$ (qui est compact), alors elle y est uniformément continue.\n\nCe théorème est essentiel, par exemple, pour démontrer que toute fonction continue sur un intervalle $[a,b]$ est intégrable au sens de Riemann.\n\n",
+      "options": []
+    }
+  ]
+}

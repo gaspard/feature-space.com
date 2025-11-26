@@ -1,0 +1,783 @@
+---
+id: ea86092f
+type: proofs
+order: 15
+title: Fonctions continues - preuves (A)
+tags:
+  - fonctions continues
+  - limite
+  - topologie
+  - connexité
+  - compacité
+  - continuité uniforme
+createdAt: '2025-11-26T13:08:33.861Z'
+level: regular
+course: Topologie et Calcul Différentiel I
+courseId: 34e61f8e
+chapter: Fonctions continues
+chapterId: 70ecfb0a
+---
+# Preuves "Fonctions continues" (A)
+
+---
+
+#### Unicité de la limite
+
+Démontrez que si une fonction $f: D \subseteq \mathbb{R}^n \to \mathbb{R}^p$ admet une limite en un point adhérent $z \in \bar{D}$, alors cette limite est unique.
+
+<details class="hint">
+
+<summary>Astuce</summary>
+
+Raisonnez par l'absurde. Supposez qu'il existe deux limites distinctes, $l_1$ et $l_2$. Utilisez la définition de la limite avec un $\varepsilon$ bien choisi pour montrer que la distance entre $l_1$ et $l_2$ doit être plus petite qu'elle-même, ce qui est une contradiction. L'inégalité triangulaire sera votre amie.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $f: D \subseteq \mathbb{R}^n \to \mathbb{R}^p$ une fonction et $z$ un point adhérent à $D$.
+
+**Étape 1 : Hypothèse par l'absurde**
+
+Supposons que $f$ admette deux limites distinctes en $z$, notées $l_1$ et $l_2$, avec $l_1 \neq l_2$. Puisque $l_1 \neq l_2$, la distance entre elles $d(l_1, l_2)$ est strictement positive.
+
+**Étape 2 : Choix d'un $\varepsilon$ stratégique**
+
+Posons $\varepsilon = \frac{d(l_1, l_2)}{2}$. Comme $d(l_1, l_2) > 0$, on a $\varepsilon > 0$.
+
+**Étape 3 : Application de la définition de la limite**
+
+Puisque $\lim_{x\to z} f(x) = l_1$, par définition de la limite, il existe $\delta_1 > 0$ tel que pour tout $x \in D$, si $d(x, z) < \delta_1$, alors $d(f(x), l_1) < \varepsilon$.
+
+De même, puisque $\lim_{x\to z} f(x) = l_2$, il existe $\delta_2 > 0$ tel que pour tout $x \in D$, si $d(x, z) < \delta_2$, alors $d(f(x), l_2) < \varepsilon$.
+
+**Étape 4 : Contradiction**
+
+Posons $\delta = \min(\delta_1, \delta_2)$. Puisque $\delta_1 > 0$ et $\delta_2 > 0$, on a $\delta > 0$. Comme $z$ est un point adhérent à $D$, il existe au moins un point $x_0 \in D$ tel que $d(x_0, z) < \delta$.
+
+Pour ce point $x_0$, les deux conditions sont vérifiées :
+
+1.  $d(x_0, z) < \delta \le \delta_1 \implies d(f(x_0), l_1) < \varepsilon$
+2.  $d(x_0, z) < \delta \le \delta_2 \implies d(f(x_0), l_2) < \varepsilon$
+
+Utilisons l'inégalité triangulaire pour la distance :
+
+$d(l_1, l_2) \le d(l_1, f(x_0)) + d(f(x_0), l_2)$.
+
+En utilisant les inégalités ci-dessus, on obtient :
+
+$d(l_1, l_2) < \varepsilon + \varepsilon = 2\varepsilon$.
+
+En remplaçant $\varepsilon$ par sa valeur, on a :
+
+$d(l_1, l_2) < 2 \left( \frac{d(l_1, l_2)}{2} \right) = d(l_1, l_2)$.
+
+On arrive à la contradiction $d(l_1, l_2) < d(l_1, l_2)$.
+
+**Conclusion**
+
+L'hypothèse de départ (l'existence de deux limites distinctes) est donc fausse. La limite, si elle existe, est nécessairement unique.
+
+</details>
+
+---
+
+#### Continuité de la somme de deux fonctions
+
+Soient $f, g: D \subseteq \mathbb{R}^n \to \mathbb{R}^p$ deux fonctions continues en un point $a \in D$. Démontrez que la fonction somme $S = f+g$ est également continue en $a$.
+
+<details class="hint">
+
+<summary>Astuce</summary>
+
+Utilisez la définition $\varepsilon-\delta$ de la continuité. L'objectif est de montrer que $d(S(x), S(a))$ peut être rendu arbitrairement petit. Utilisez l'inégalité triangulaire pour majorer $d(S(x), S(a))$ par une expression impliquant $d(f(x), f(a))$ et $d(g(x), g(a))$. Ensuite, utilisez la continuité de $f$ et $g$ avec un $\varepsilon$ bien choisi (par exemple $\varepsilon/2$).
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Objectif**
+
+Nous voulons montrer que la fonction $S(x) = f(x) + g(x)$ est continue en $a$. Selon la définition, cela signifie que pour tout $\varepsilon > 0$, il existe un $\delta > 0$ tel que pour tout $x \in D$, si $d(x, a) < \delta$, alors $d(S(x), S(a)) < \varepsilon$.
+
+**Étape 2 : Majoration de la distance à l'arrivée**
+
+Exprimons la distance $d(S(x), S(a))$ et utilisons l'inégalité triangulaire. Pour des fonctions à valeurs dans $\mathbb{R}^p$, la distance est donnée par la norme de la différence.
+
+$d(S(x), S(a)) = \|S(x) - S(a)\| = \|(f(x)+g(x)) - (f(a)+g(a))\| = \|(f(x)-f(a)) + (g(x)-g(a))\|$.
+
+Par l'inégalité triangulaire pour les normes, on a :
+
+$\| (f(x)-f(a)) + (g(x)-g(a)) \| \le \|f(x)-f(a)\| + \|g(x)-g(a)\| = d(f(x), f(a)) + d(g(x), g(a))$.
+
+Nous avons donc la majoration : $d(S(x), S(a)) \le d(f(x), f(a)) + d(g(x), g(a))$.
+
+**Étape 3 : Utilisation de la continuité de $f$ et $g$**
+
+Soit $\varepsilon > 0$ un réel quelconque. Posons $\varepsilon' = \varepsilon/2 > 0$.
+
+-   Puisque $f$ est continue en $a$, il existe un $\delta_1 > 0$ tel que si $d(x, a) < \delta_1$, alors $d(f(x), f(a)) < \varepsilon'$.
+-   Puisque $g$ est continue en $a$, il existe un $\delta_2 > 0$ tel que si $d(x, a) < \delta_2$, alors $d(g(x), g(a)) < \varepsilon'$.
+
+**Étape 4 : Choix du $\delta$ final**
+
+Posons $\delta = \min(\delta_1, \delta_2)$. Ce $\delta$ est strictement positif.
+
+Si $x \in D$ et $d(x, a) < \delta$, alors on a à la fois $d(x, a) < \delta_1$ et $d(x, a) < \delta_2$.
+
+Par conséquent, les deux conditions de continuité sont satisfaites : $d(f(x), f(a)) < \varepsilon'$ et $d(g(x), g(a)) < \varepsilon'$.
+
+En reprenant notre majoration de l'étape 2 :
+
+$d(S(x), S(a)) \le d(f(x), f(a)) + d(g(x), g(a)) < \varepsilon' + \varepsilon' = 2\varepsilon' = 2(\varepsilon/2) = \varepsilon$.
+
+**Conclusion**
+
+Nous avons montré que pour tout $\varepsilon > 0$, il existe un $\delta > 0$ (en l'occurrence $\delta = \min(\delta_1, \delta_2)$) tel que pour tout $x \in D$ satisfaisant $d(x,a) < \delta$, on a $d(S(x), S(a)) < \varepsilon$.
+
+Ceci est la définition de la continuité de $S = f+g$ au point $a$.
+
+</details>
+
+---
+
+#### Continuité d'une fonction et de ses composantes
+
+Soit $f: D \subseteq \mathbb{R}^n \to \mathbb{R}^p$ une fonction. On note $f(x) = (f_1(x), \dots, f_p(x))$, où les $f_i: D \to \mathbb{R}$ sont les fonctions composantes de $f$. Démontrez que si $f$ est continue en un point $a \in D$, alors chacune de ses fonctions composantes $f_i$ est continue en $a$.
+
+<details class="hint">
+
+<summary>Astuce</summary>
+
+Pour prouver la continuité de $f_i$, vous devez majorer $|f_i(x) - f_i(a)|$. Rappelez-vous la relation entre la norme d'un vecteur et la valeur absolue de ses composantes. Pour n'importe quel vecteur $v = (v_1, \dots, v_p) \in \mathbb{R}^p$, on a $|v_i| \le \|v\|_\infty = \max_j |v_j|$ et aussi $|v_i| \le \|v\|_2 = \sqrt{\sum_j v_j^2}$. Utilisez l'une de ces inégalités avec le vecteur $v = f(x) - f(a)$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Hypothèse et Objectif**
+
+L'hypothèse est que $f$ est continue en $a \in D$. Cela signifie que $\lim_{x \to a} f(x) = f(a)$, ou en termes $\varepsilon-\delta$ :
+
+Pour tout $\varepsilon > 0$, il existe $\delta > 0$ tel que pour tout $x \in D$, si $d(x, a) < \delta$, alors $d(f(x), f(a)) < \varepsilon$.
+
+Notre objectif est de montrer que pour un $i \in \{1, \dots, p\}$ quelconque, la fonction composante $f_i$ est continue en $a$. C'est-à-dire :
+
+Pour tout $\varepsilon' > 0$, il existe $\delta' > 0$ tel que pour tout $x \in D$, si $d(x, a) < \delta'$, alors $|f_i(x) - f_i(a)| < \varepsilon'$.
+
+**Étape 2 : Relier la distance des composantes à la distance globale**
+
+Soit $x \in D$. Considérons le vecteur $f(x) - f(a)$ dans $\mathbb{R}^p$. Ses composantes sont $(f_1(x) - f_1(a), \dots, f_p(x) - f_p(a))$.
+
+La distance dans $\mathbb{R}^p$ entre $f(x)$ et $f(a)$ est $\|f(x) - f(a)\|$.
+
+La distance dans $\mathbb{R}$ entre $f_i(x)$ et $f_i(a)$ est $|f_i(x) - f_i(a)|$.
+
+Pour n'importe quel vecteur $v=(v_1, \dots, v_p)$ et n'importe quelle norme sur $\mathbb{R}^p$, il existe une constante $C > 0$ telle que $|v_i| \le C \|v\|$. Plus simplement, en utilisant la norme euclidienne $\|v\|_2 = \sqrt{\sum_j v_j^2}$, nous avons :
+
+$|f_i(x) - f_i(a)| \le \sqrt{\sum_{j=1}^p (f_j(x) - f_j(a))^2} = \|f(x) - f(a)\|_2$.
+
+Cette inégalité clé relie ce que nous voulons contrôler ($|f_i(x) - f_i(a)|$) à ce que nous pouvons contrôler par l'hypothèse de continuité de $f$ ($\|f(x) - f(a)\|_2$).
+
+**Étape 3 : Démonstration de la continuité de $f_i$**
+
+Soit $i \in \{1, \dots, p\}$ fixé. Soit $\varepsilon' > 0$.
+
+Nous utilisons l'hypothèse de continuité de $f$ en posant $\varepsilon = \varepsilon'$. Il existe donc un $\delta > 0$ tel que pour tout $x \in D$, si $d(x,a) < \delta$, alors $\|f(x) - f(a)\|_2 < \varepsilon$.
+
+Maintenant, pour ce même $\delta$, considérons un $x \in D$ tel que $d(x,a) < \delta$.
+
+En utilisant l'inégalité de l'étape 2 :
+
+$|f_i(x) - f_i(a)| \le \|f(x) - f(a)\|_2$.
+
+Puisque $d(x,a) < \delta$, on sait que $\|f(x) - f(a)\|_2 < \varepsilon$. Donc :
+
+$|f_i(x) - f_i(a)| < \varepsilon$.
+
+En posant $\delta' = \delta$ et $\varepsilon = \varepsilon'$, nous avons bien montré que pour tout $\varepsilon' > 0$, il existe $\delta' > 0$ tel que pour tout $x \in D$ avec $d(x,a) < \delta'$, on a $|f_i(x) - f_i(a)| < \varepsilon'$.
+
+**Conclusion**
+
+La continuité de la fonction vectorielle $f$ en un point $a$ implique la continuité de chacune de ses fonctions composantes $f_i$ en ce même point $a$.
+
+</details>
+
+---
+
+#### Caractérisation du prolongement par continuité
+
+Soit $f: D \to \mathbb{R}^p$ une fonction et $z \in \bar{D} \setminus D$. Démontrez que si $\lim_{x\to z} f(x)$ existe et est finie (notons la $\ell$), alors $f$ est prolongeable par continuité en $z$.
+
+<details class="hint">
+
+<summary>Astuce</summary>
+
+Pour prouver que $f$ est prolongeable par continuité, vous devez construire une nouvelle fonction $\tilde{f}$ définie sur $D \cup \{z\}$ qui est continue en $z$ et qui coïncide avec $f$ sur $D$. La définition de $\tilde{f}$ est presque entièrement dictée par l'énoncé. Il vous reste à vérifier que la fonction $\tilde{f}$ ainsi construite est bien continue en $z$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Construction du prolongement**
+
+L'hypothèse est que $\lim_{x\to z} f(x) = \ell$, où $\ell \in \mathbb{R}^p$.
+
+On cherche à définir une fonction $\tilde{f}: D \cup \{z\} \to \mathbb{R}^p$ qui soit continue en $z$ et égale à $f$ sur $D$.
+
+Définissons la fonction $\tilde{f}$ de la manière suivante :
+
+$$
+
+\tilde{f}(x) = \begin{cases}
+
+f(x) & \text{si } x \in D, \\
+
+\ell & \text{si } x = z.
+
+\end{cases}
+
+$$
+
+Par construction, $\tilde{f}$ coïncide bien avec $f$ sur $D$. Il nous reste à prouver que $\tilde{f}$ est continue au point $z$.
+
+**Étape 2 : Vérification de la continuité en $z$**
+
+Pour que $\tilde{f}$ soit continue en $z$, il faut par définition que $\lim_{x\to z} \tilde{f}(x) = \tilde{f}(z)$.
+
+Calculons la valeur de la fonction au point $z$ : $\tilde{f}(z) = \ell$.
+
+Calculons maintenant la limite de $\tilde{f}$ en $z$. Par définition de la limite, on s'intéresse aux valeurs de $\tilde{f}(x)$ pour $x$ proche de $z$ mais différent de $z$. Pour de tels $x$, qui sont dans $D$, on a $\tilde{f}(x) = f(x)$.
+
+Donc,
+
+$$ \lim_{x\to z} \tilde{f}(x) = \lim_{x\to z} f(x) $$
+
+Or, par hypothèse, nous savons que $\lim_{x\to z} f(x) = \ell$.
+
+On a donc :
+
+$$ \lim_{x\to z} \tilde{f}(x) = \ell $$
+
+**Étape 3 : Conclusion**
+
+Nous avons établi que $\lim_{x\to z} \tilde{f}(x) = \ell$ et que $\tilde{f}(z) = \ell$.
+
+Par conséquent, $\lim_{x\to z} \tilde{f}(x) = \tilde{f}(z)$, ce qui est exactement la définition de la continuité de $\tilde{f}$ en $z$.
+
+La fonction $\tilde{f}$ est donc un prolongement continu de $f$ au point $z$. L'existence d'une limite finie est une condition suffisante pour le prolongement par continuité.
+
+</details>
+
+---
+
+#### Caractérisation topologique de la continuité
+
+Démontrez que si une fonction $f: \mathbb{R}^n \to \mathbb{R}^p$ est continue, alors l'image réciproque de tout ensemble ouvert de $\mathbb{R}^p$ est un ensemble ouvert de $\mathbb{R}^n$.
+
+<details class="hint">
+
+<summary>Astuce</summary>
+
+Soit $V$ un ouvert de $\mathbb{R}^p$. Vous devez montrer que son image réciproque, $U = f^{-1}(V)$, est un ouvert de $\mathbb{R}^n$. Pour cela, prenez un point quelconque $a \in U$ et montrez qu'il existe une boule ouverte centrée en $a$ qui est entièrement contenue dans $U$.
+
+Utilisez les définitions :
+
+1.  Que signifie $a \in U = f^{-1}(V)$ ? Cela signifie $f(a) \in V$.
+2.  Que signifie que $V$ est ouvert ? Cela signifie que pour le point $f(a) \in V$, il existe une boule ouverte $B(f(a), \varepsilon)$ entièrement contenue dans $V$.
+3.  Que signifie que $f$ est continue en $a$ ? Utilisez la définition $\varepsilon-\delta$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Objectif**
+
+Soit $f: \mathbb{R}^n \to \mathbb{R}^p$ une fonction continue. Soit $V$ un ensemble ouvert quelconque de $\mathbb{R}^p$. Nous devons démontrer que l'ensemble $U = f^{-1}(V) = \{x \in \mathbb{R}^n \mid f(x) \in V\}$ est un ouvert de $\mathbb{R}^n$.
+
+Pour prouver que $U$ est ouvert, nous devons montrer que pour tout point $a \in U$, il existe un rayon $\delta > 0$ tel que la boule ouverte $B(a, \delta)$ est incluse dans $U$.
+
+**Étape 2 : Utiliser les définitions**
+
+Soit $a$ un point quelconque de $U$.
+
+1.  Par définition de $U = f^{-1}(V)$, si $a \in U$, alors $f(a) \in V$.
+2.  Puisque $V$ est un ouvert de $\mathbb{R}^p$, il existe un rayon $\varepsilon > 0$ tel que la boule ouverte $B(f(a), \varepsilon)$ est entièrement contenue dans $V$. En d'autres termes, pour tout $y \in \mathbb{R}^p$, si $d(y, f(a)) < \varepsilon$, alors $y \in V$.
+3.  Puisque $f$ est continue sur $\mathbb{R}^n$, elle est en particulier continue au point $a$. Par la définition $\varepsilon-\delta$ de la continuité, pour cet $\varepsilon > 0$ trouvé à l'instant, il existe un $\delta > 0$ tel que pour tout $x \in \mathbb{R}^n$, si $d(x, a) < \delta$, alors $d(f(x), f(a)) < \varepsilon$.
+
+**Étape 3 : Mettre les pièces ensemble**
+
+Montrons que la boule $B(a, \delta)$, avec le $\delta$ trouvé à l'étape 2.3, est bien incluse dans $U$.
+
+Soit $x$ un point quelconque dans $B(a, \delta)$. Par définition de la boule, cela signifie que $d(x, a) < \delta$.
+
+D'après le point 2.3 (continuité de $f$), puisque $d(x, a) < \delta$, on a $d(f(x), f(a)) < \varepsilon$.
+
+Appelons $y = f(x)$. On a donc $d(y, f(a)) < \varepsilon$.
+
+D'après le point 2.2 (ouverture de $V$), puisque $d(y, f(a)) < \varepsilon$, ce point $y$ appartient à $V$.
+
+Donc, $f(x) \in V$.
+
+D'après le point 2.1 (définition de $U$), puisque $f(x) \in V$, le point $x$ appartient à $U = f^{-1}(V)$.
+
+**Conclusion**
+
+Nous avons pris un point $x$ quelconque dans $B(a, \delta)$ et montré qu'il est dans $U$. Cela signifie que $B(a, \delta) \subseteq U$.
+
+Comme nous avons pu faire cela pour un point $a$ arbitraire dans $U$, nous avons prouvé que $U$ est un ensemble ouvert.
+
+</details>
+
+---
+
+#### Image d'un compact par une fonction continue
+
+Démontrez que si $K \subseteq \mathbb{R}^n$ est un ensemble compact et $f: K \to \mathbb{R}^p$ est une fonction continue, alors son image $f(K)$ est un ensemble compact de $\mathbb{R}^p$.
+
+<details class="hint">
+
+<summary>Astuce</summary>
+
+Utilisez la caractérisation séquentielle de la compacité (théorème de Bolzano-Weierstrass). Pour montrer que $f(K)$ est compact, prenez une suite quelconque $(y_k)$ dans $f(K)$ et montrez qu'on peut en extraire une sous-suite qui converge vers un élément de $f(K)$.
+
+La stratégie est la suivante :
+
+1.  Construire une suite d'antécédents $(x_k)$ dans $K$.
+2.  Utiliser la compacité de $K$ pour extraire une sous-suite convergente de $(x_k)$.
+3.  Utiliser la continuité de $f$ pour conclure sur la suite des images.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Utilisation de la caractérisation séquentielle de la compacité**
+
+Pour démontrer que l'ensemble $f(K)$ est compact, nous allons montrer que de toute suite de points de $f(K)$, on peut extraire une sous-suite qui converge vers un point de $f(K)$.
+
+Soit $(y_k)_{k \in \mathbb{N}}$ une suite quelconque d'éléments de $f(K)$.
+
+**Étape 2 : Construction de la suite des antécédents**
+
+Par définition de l'ensemble image $f(K)$, pour chaque $y_k \in f(K)$, il existe au moins un antécédent $x_k \in K$ tel que $f(x_k) = y_k$.
+
+Cela nous permet de construire une suite $(x_k)_{k \in \mathbb{N}}$ d'éléments de $K$.
+
+**Étape 3 : Application de la compacité du domaine de départ $K$**
+
+L'ensemble de départ $K$ est compact. Par le théorème de Bolzano-Weierstrass, de toute suite d'éléments de $K$ (ici, la suite $(x_k)$), on peut extraire une sous-suite qui converge vers un élément de $K$.
+
+Il existe donc une sous-suite $(x_{\varphi(k)})_{k \in \mathbb{N}}$ et un point $a \in K$ tels que :
+
+$$ \lim_{k \to \infty} x_{\varphi(k)} = a $$
+
+Le point limite $a$ est bien dans $K$ car un ensemble compact est nécessairement fermé.
+
+**Étape 4 : Application de la continuité de la fonction $f$**
+
+La fonction $f$ est continue sur $K$, donc elle est continue au point $a \in K$.
+
+Par la caractérisation séquentielle de la continuité, si une suite converge vers $a$, la suite des images converge vers $f(a)$.
+
+Appliquons cela à notre sous-suite convergente $(x_{\varphi(k)})$ :
+
+$$ \lim_{k \to \infty} f(x_{\varphi(k)}) = f(a) $$
+
+**Étape 5 : Conclusion**
+
+Rappelons que par construction, $f(x_{\varphi(k)}) = y_{\varphi(k)}$.
+
+Nous avons donc montré que :
+
+$$ \lim_{k \to \infty} y_{\varphi(k)} = f(a) $$
+
+Nous avons extrait de notre suite de départ $(y_k)$ une sous-suite $(y_{\varphi(k)})$ qui converge.
+
+De plus, la limite de cette sous-suite est $f(a)$. Puisque $a \in K$, la limite $f(a)$ appartient à l'ensemble image $f(K)$.
+
+Nous avons donc prouvé que de toute suite d'éléments de $f(K)$, on peut extraire une sous-suite qui converge vers un élément de $f(K)$. C'est la caractérisation séquentielle de la compacité.
+
+Par conséquent, $f(K)$ est un ensemble compact.
+
+</details>
+
+---
+
+#### Théorème des bornes atteintes (de Weierstrass)
+
+Soit $K \subseteq \mathbb{R}^n$ un compact non vide et $f: K \to \mathbb{R}$ une fonction continue. Démontrez que $f$ est bornée et atteint ses bornes sur $K$.
+
+<details class="hint">
+
+<summary>Astuce</summary>
+
+Ce théorème est une conséquence directe du théorème précédent ("l'image d'un compact est un compact").
+
+1. Appliquez ce théorème pour déterminer la nature de l'ensemble image $f(K) \subseteq \mathbb{R}$.
+2. Rappelez-vous la caractérisation des compacts dans $\mathbb{R}$ (théorème de Heine-Borel).
+3. Un ensemble fermé et borné de $\mathbb{R}$ contient-il sa borne supérieure et sa borne inférieure ?
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Nature de l'ensemble image $f(K)$**
+
+Nous savons que $K$ est un ensemble compact de $\mathbb{R}^n$ et que la fonction $f: K \to \mathbb{R}$ est continue.
+
+D'après le théorème "l'image d'un compact par une fonction continue est un compact", nous pouvons affirmer que l'ensemble image $f(K)$ est une partie compacte de $\mathbb{R}$.
+
+**Étape 2 : Propriétés d'un compact de $\mathbb{R}$**
+
+Dans $\mathbb{R}$, le théorème de Heine-Borel stipule qu'un ensemble est compact si et seulement s'il est fermé et borné.
+
+Puisque $f(K)$ est un compact de $\mathbb{R}$, il est donc un ensemble fermé et borné.
+
+**Étape 3 : La fonction $f$ est bornée**
+
+Dire que l'ensemble image $f(K)$ est borné signifie qu'il existe des nombres réels $m'$ et $M'$ tels que pour tout $y \in f(K)$, on a $m' \le y \le M'$.
+
+Par définition de $f(K)$, cela veut dire que pour tout $x \in K$, on a $m' \le f(x) \le M'$.
+
+Ceci est la définition d'une fonction bornée sur $K$.
+
+**Étape 4 : La fonction $f$ atteint ses bornes**
+
+Puisque $f(K)$ est une partie non vide et bornée de $\mathbb{R}$, elle admet une borne supérieure $M = \sup(f(K))$ et une borne inférieure $m = \inf(f(K))$.
+
+De plus, nous savons que $f(K)$ est un ensemble fermé. Une propriété des ensembles fermés de $\mathbb{R}$ est qu'ils contiennent leurs points adhérents, et en particulier leur borne supérieure et leur borne inférieure (si elles existent).
+
+Donc, $m \in f(K)$ et $M \in f(K)$.
+
+-   Puisque $M \in f(K)$, par définition de l'ensemble image, il existe au moins un élément $b \in K$ tel que $f(b) = M$. Comme $M$ est la borne supérieure de $f(K)$, $f(b)$ est le maximum de $f$ sur $K$.
+-   Puisque $m \in f(K)$, il existe au moins un élément $a \in K$ tel que $f(a) = m$. Comme $m$ est la borne inférieure de $f(K)$, $f(a)$ est le minimum de $f$ sur $K$.
+
+**Conclusion**
+
+Nous avons démontré que la fonction $f$ est bornée sur $K$, et qu'il existe des points $a,b \in K$ tels que $f(a) = \inf_{x \in K} f(x)$ et $f(b) = \sup_{x \in K} f(x)$. La fonction atteint donc son minimum et son maximum sur $K$.
+
+</details>
+
+---
+
+#### Image d'un connexe par arcs
+
+Démontrez que l'image d'un ensemble connexe par arcs par une application continue est un ensemble connexe par arcs.
+
+<details class="hint">
+
+<summary>Astuce</summary>
+
+Soit $A \subseteq \mathbb{R}^n$ un ensemble connexe par arcs et $f: A \to \mathbb{R}^p$ une application continue. Pour montrer que $f(A)$ est connexe par arcs, vous devez prendre deux points quelconques $y_1, y_2$ dans $f(A)$ et construire un chemin continu qui les relie en restant dans $f(A)$.
+
+1.  Partez de $y_1$ et $y_2$ et trouvez leurs antécédents $x_1, x_2$ dans $A$.
+2.  Utilisez la connexité par arcs de $A$ pour trouver un chemin $\gamma$ entre $x_1$ et $x_2$.
+3.  Utilisez la fonction $f$ pour "transformer" ce chemin en un chemin dans l'espace d'arrivée. La composition de fonctions continues est continue.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Objectif**
+
+Soit $A \subseteq \mathbb{R}^n$ un ensemble connexe par arcs et $f: A \to \mathbb{R}^p$ une fonction continue. Nous voulons montrer que l'ensemble image $f(A)$ est connexe par arcs.
+
+Pour ce faire, nous devons prendre deux points arbitraires $y_a, y_b \in f(A)$ et montrer qu'il existe un chemin continu $\tilde{\gamma}: [0, 1] \to f(A)$ tel que $\tilde{\gamma}(0) = y_a$ et $\tilde{\gamma}(1) = y_b$.
+
+**Étape 2 : Utilisation des définitions**
+
+Soient $y_a, y_b$ deux points quelconques dans $f(A)$.
+
+Par définition de l'ensemble image, il existe des antécédents $a, b \in A$ tels que $f(a) = y_a$ et $f(b) = y_b$.
+
+L'ensemble de départ $A$ est connexe par arcs. Par définition, cela signifie qu'il existe un chemin continu $\gamma: [0, 1] \to A$ tel que $\gamma(0) = a$ et $\gamma(1) = b$.
+
+**Étape 3 : Construction du nouveau chemin**
+
+Considérons la fonction composée $\tilde{\gamma} = f \circ \gamma$.
+
+Analysons cette nouvelle fonction :
+
+-   Le domaine de définition de $\tilde{\gamma}$ est $[0, 1]$.
+-   L'espace d'arrivée de $\tilde{\gamma}$ est $\mathbb{R}^p$.
+-   $\gamma$ est une fonction continue de $[0, 1]$ vers $A$.
+-   $f$ est une fonction continue de $A$ vers $\mathbb{R}^p$.
+-   La composée de deux fonctions continues est une fonction continue. Donc, $\tilde{\gamma}: [0, 1] \to \mathbb{R}^p$ est une fonction continue.
+
+**Étape 4 : Vérification des propriétés du chemin**
+
+Vérifions si ce chemin $\tilde{\gamma}$ relie bien $y_a$ à $y_b$ et reste dans $f(A)$.
+
+-   Point de départ : $\tilde{\gamma}(0) = f(\gamma(0)) = f(a) = y_a$.
+-   Point d'arrivée : $\tilde{\gamma}(1) = f(\gamma(1)) = f(b) = y_b$.
+
+Le chemin relie bien les deux points.
+
+-   Image du chemin : Pour tout $t \in [0, 1]$, le point $\gamma(t)$ appartient à $A$. Par conséquent, son image $\tilde{\gamma}(t) = f(\gamma(t))$ appartient par définition à l'ensemble image $f(A)$. L'image entière du chemin, $\tilde{\gamma}([0,1])$, est donc incluse dans $f(A)$.
+
+**Conclusion**
+
+Pour tout couple de points $(y_a, y_b)$ dans $f(A)$, nous avons construit un chemin continu $\tilde{\gamma} = f \circ \gamma$ qui part de $y_a$, arrive à $y_b$ et dont la trace est entièrement contenue dans $f(A)$.
+
+Ceci est la définition d'un ensemble connexe par arcs.
+
+Par conséquent, $f(A)$ est connexe par arcs.
+
+</details>
+
+---
+
+#### Fonction non uniformément continue
+
+Démontrez que la fonction $f: \mathbb{R} \to \mathbb{R}$ définie par $f(x) = x^2$ n'est pas uniformément continue sur $\mathbb{R}$.
+
+<details class="hint">
+
+<summary>Astuce</summary>
+
+Vous devez prouver la négation de la définition de la continuité uniforme. C'est-à-dire :
+
+$\exists \varepsilon > 0, \forall \delta > 0, \exists x \in \mathbb{R}, \exists y \in \mathbb{R}$ tels que $|x-y| < \delta$ et $|f(x)-f(y)| \ge \varepsilon$.
+
+1.  Fixez un $\varepsilon$ (par exemple $\varepsilon=1$).
+2.  Pour un $\delta > 0$ quelconque, votre but est de trouver deux points $x$ et $y$ qui sont très proches (distance $<\delta$) mais dont les images sont éloignées (distance $\ge \varepsilon$).
+3.  Examinez l'expression $|x^2 - y^2| = |x-y||x+y|$. Même si $|x-y|$ est petit, comment pouvez-vous rendre le produit grand ?
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Négation de la définition**
+
+Nous voulons prouver que $f(x)=x^2$ n'est pas uniformément continue sur $\mathbb{R}$. Nous devons donc trouver un $\varepsilon_0 > 0$ tel que pour n'importe quel $\delta > 0$, on puisse trouver deux points $x, y \in \mathbb{R}$ vérifiant $|x-y| < \delta$ mais $|f(x) - f(y)| \ge \varepsilon_0$.
+
+**Étape 2 : Choix d'un $\varepsilon_0$**
+
+Fixons $\varepsilon_0 = 1$. Notre objectif est de montrer que peu importe à quel point deux points sont proches, si ces points sont assez grands, la différence de leurs carrés sera supérieure à 1.
+
+**Étape 3 : Trouver $x$ et $y$ pour un $\delta$ donné**
+
+Soit $\delta > 0$ un réel quelconque. Nous devons trouver $x$ et $y$ qui dépendent de $\delta$.
+
+Cherchons $x$ et $y$ de la forme $y = x + \frac{\delta}{2}$. De cette façon, la condition $|x-y| = \frac{\delta}{2} < \delta$ est automatiquement satisfaite.
+
+Maintenant, calculons la différence des images :
+
+$|f(x) - f(y)| = |x^2 - (x+\frac{\delta}{2})^2| = |x^2 - (x^2 + x\delta + \frac{\delta^2}{4})| = |-x\delta - \frac{\delta^2}{4}| = |x\delta + \frac{\delta^2}{4}|$.
+
+Nous voulons que cette quantité soit supérieure ou égale à $\varepsilon_0=1$.
+
+$|x\delta + \frac{\delta^2}{4}| \ge 1$.
+
+Puisque $\delta > 0$, si nous choisissons $x > 0$, l'expression devient $x\delta + \frac{\delta^2}{4}$.
+
+Nous cherchons donc $x$ tel que $x\delta + \frac{\delta^2}{4} \ge 1$.
+
+$x\delta \ge 1 - \frac{\delta^2}{4}$.
+
+$x \ge \frac{1}{\delta} - \frac{\delta}{4}$.
+
+Puisqu'on peut toujours trouver un $x$ aussi grand que l'on veut, il est toujours possible de satisfaire cette condition. Par exemple, choisissons simplement $x = \frac{1}{\delta}$.
+
+**Étape 4 : Vérification**
+
+Soit $\varepsilon_0=1$.
+
+Soit $\delta > 0$ quelconque.
+
+Posons $x = \frac{1}{\delta}$ et $y = x + \frac{\delta}{2} = \frac{1}{\delta} + \frac{\delta}{2}$.
+
+1.  On a bien $|x-y| = \frac{\delta}{2} < \delta$.
+2.  Calculons $|f(x) - f(y)| = |x^2 - y^2| = |x-y||x+y|$:
+
+    $|f(x) - f(y)| = \left(\frac{\delta}{2}\right) \left| \frac{1}{\delta} + \frac{1}{\delta} + \frac{\delta}{2} \right| = \frac{\delta}{2} \left| \frac{2}{\delta} + \frac{\delta}{2} \right| = \frac{\delta}{2} \left( \frac{2}{\delta} + \frac{\delta}{2} \right) = 1 + \frac{\delta^2}{4}$.
+
+Puisque $\delta > 0$, $\frac{\delta^2}{4} > 0$, et donc $|f(x) - f(y)| = 1 + \frac{\delta^2}{4} > 1 = \varepsilon_0$.
+
+**Conclusion**
+
+Nous avons montré que pour $\varepsilon_0=1$, pour tout $\delta > 0$, il existe un couple $(x, y)$ tel que $|x-y|<\delta$ mais $|f(x)-f(y)| \ge \varepsilon_0$.
+
+La fonction $f(x)=x^2$ n'est donc pas uniformément continue sur $\mathbb{R}$.
+
+</details>
+
+---
+
+#### Continuité de la norme euclidienne
+
+Démontrez que la fonction "norme euclidienne" $f: \mathbb{R}^n \to \mathbb{R}$ définie par $f(x) = \|x\|_2$ est continue sur $\mathbb{R}^n$.
+
+<details class="hint">
+
+<summary>Astuce</summary>
+
+Utilisez l'inégalité triangulaire renversée (ou seconde inégalité triangulaire). Elle stipule que pour tous vecteurs $x, y \in \mathbb{R}^n$, on a $| \|x\| - \|y\| | \le \|x-y\|$. Cette inégalité relie directement la quantité à contrôler, $|f(x)-f(y)|$, à la distance entre $x$ et $y$. La preuve devient alors très directe avec la définition $\varepsilon-\delta$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Objectif**
+
+Nous voulons prouver que la fonction $f(x) = \|x\|_2$ est continue en tout point $a \in \mathbb{R}^n$.
+
+Selon la définition $\varepsilon-\delta$, cela signifie que pour tout $a \in \mathbb{R}^n$ et pour tout $\varepsilon > 0$, il existe un $\delta > 0$ tel que pour tout $x \in \mathbb{R}^n$, si $\|x-a\|_2 < \delta$, alors $|f(x)-f(a)| < \varepsilon$.
+
+**Étape 2 : L'inégalité triangulaire renversée**
+
+L'inégalité triangulaire standard nous dit que $\|u+v\| \le \|u\| + \|v\|$.
+
+À partir de celle-ci, nous pouvons déduire l'inégalité triangulaire renversée.
+
+Pour tous vecteurs $x, y \in \mathbb{R}^n$:
+
+$\|x\| = \|(x-y)+y\| \le \|x-y\| + \|y\| \implies \|x\| - \|y\| \le \|x-y\|$.
+
+$\|y\| = \|(y-x)+x\| \le \|y-x\| + \|x\| = \|x-y\| + \|x\| \implies \|y\| - \|x\| \le \|x-y\|$.
+
+Puisque $\|x\| - \|y\|$ et son opposé $\|y\| - \|x\|$ sont tous deux inférieurs ou égaux à $\|x-y\|$, cela signifie que :
+
+$| \|x\| - \|y\| | \le \|x-y\|$.
+
+(Nous utilisons ici la norme euclidienne, mais cette propriété est vraie pour n'importe quelle norme).
+
+**Étape 3 : Application à la continuité**
+
+La quantité que nous devons contrôler pour la continuité de $f$ est $|f(x) - f(a)|$.
+
+$|f(x) - f(a)| = | \|x\|_2 - \|a\|_2 |$.
+
+En utilisant l'inégalité triangulaire renversée, nous avons directement :
+
+$| \|x\|_2 - \|a\|_2 | \le \|x-a\|_2$.
+
+**Étape 4 : Démonstration $\varepsilon-\delta$**
+
+Soit $a \in \mathbb{R}^n$ et soit $\varepsilon > 0$.
+
+Nous cherchons un $\delta > 0$.
+
+Choisissons $\delta = \varepsilon$.
+
+Maintenant, soit $x$ un point de $\mathbb{R}^n$ tel que $\|x-a\|_2 < \delta$.
+
+D'après l'inégalité de l'étape 3 :
+
+$|f(x)-f(a)| = | \|x\|_2 - \|a\|_2 | \le \|x-a\|_2$.
+
+Puisque $\|x-a\|_2 < \delta$ et que $\delta = \varepsilon$, nous avons :
+
+$|f(x)-f(a)| < \varepsilon$.
+
+**Conclusion**
+
+Pour tout $a \in \mathbb{R}^n$ et pour tout $\varepsilon > 0$, nous avons trouvé un $\delta$ (en l'occurrence $\delta=\varepsilon$) qui satisfait la définition de la continuité.
+
+La fonction norme euclidienne est donc continue en tout point de $\mathbb{R}^n$.
+
+*Remarque :* Puisque le choix de $\delta$ ne dépend que de $\varepsilon$ et non du point $a$, cette preuve montre même que la fonction norme est uniformément continue sur $\mathbb{R}^n$.
+
+</details>
+
+---
+
+#### Les fonctions lipschitziennes sont uniformément continues
+
+Démontrez qu'une fonction lipschitzienne $f: D \subseteq \mathbb{R}^n \to \mathbb{R}^p$ est uniformément continue sur $D$.
+
+<details class="hint">
+
+<summary>Astuce</summary>
+
+Rappelez-vous la définition d'une fonction lipschitzienne : il existe une constante $k \ge 0$ telle que $d(f(x), f(y)) \le k \cdot d(x, y)$ pour tous $x, y \in D$.
+
+Vous devez prouver la continuité uniforme. L'objectif est de trouver, pour un $\varepsilon > 0$ donné, un $\delta > 0$ (qui ne dépend que de $\varepsilon$) tel que si $d(x,y) < \delta$, alors $d(f(x), f(y)) < \varepsilon$. L'inégalité de Lipschitz vous donne un contrôle direct sur $d(f(x), f(y))$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Définitions**
+
+Une fonction $f: D \to \mathbb{R}^p$ est dite $k$-lipschitzienne s'il existe une constante $k \ge 0$ telle que pour tous les points $x, y \in D$ :
+
+$$ d(f(x), f(y)) \le k \cdot d(x, y) $$
+
+Une fonction $f$ est uniformément continue sur $D$ si :
+
+$$ \forall \varepsilon > 0, \exists \delta > 0 \text{ tel que } \forall x \in D, \forall y \in D, \quad (d(x, y) < \delta \implies d(f(x), f(y)) < \varepsilon). $$
+
+**Étape 2 : Recherche du $\delta$**
+
+Soit $\varepsilon > 0$ un réel quelconque. Nous cherchons un $\delta > 0$ approprié.
+
+Grâce à la propriété de Lipschitz, nous savons que $d(f(x), f(y))$ est majoré par $k \cdot d(x,y)$.
+
+Notre but est de rendre $d(f(x), f(y))$ plus petit que $\varepsilon$.
+
+Il suffit donc de s'assurer que le majorant $k \cdot d(x,y)$ est plus petit que $\varepsilon$.
+
+$k \cdot d(x, y) < \varepsilon \iff d(x,y) < \frac{\varepsilon}{k}$.
+
+Ceci nous suggère un choix naturel pour $\delta$.
+
+**Étape 3 : Cas et choix de $\delta$**
+
+Il y a deux cas à considérer pour la constante de Lipschitz $k$.
+
+*   **Cas 1 : $k > 0$**
+
+    Soit $\varepsilon > 0$. Posons $\delta = \frac{\varepsilon}{k}$. Puisque $\varepsilon > 0$ et $k > 0$, on a $\delta > 0$.
+
+    Maintenant, soient $x, y \in D$ tels que $d(x, y) < \delta$.
+
+    Par la propriété de Lipschitz :
+
+    $d(f(x), f(y)) \le k \cdot d(x, y)$.
+
+    Puisque $d(x, y) < \delta = \frac{\varepsilon}{k}$, on a :
+
+    $d(f(x), f(y)) < k \cdot \left(\frac{\varepsilon}{k}\right) = \varepsilon$.
+
+    La définition de la continuité uniforme est donc satisfaite.
+
+*   **Cas 2 : $k = 0$**
+
+    Si $k=0$, alors l'inégalité de Lipschitz devient $d(f(x), f(y)) \le 0 \cdot d(x,y) = 0$.
+
+    Puisque la distance est toujours positive ou nulle, cela implique $d(f(x), f(y)) = 0$ pour tous $x, y \in D$.
+
+    Cela signifie que $f(x) = f(y)$ pour tous $x,y$, donc $f$ est une fonction constante.
+
+    Une fonction constante est trivialement uniformément continue : pour tout $\varepsilon > 0$, n'importe quel $\delta > 0$ fonctionne, car $d(f(x), f(y)) = 0 < \varepsilon$ est toujours vrai.
+
+**Conclusion**
+
+Dans tous les cas, nous avons montré que pour tout $\varepsilon > 0$, il existe un $\delta > 0$ (qui ne dépend que de $\varepsilon$ et de la constante $k$) qui satisfait la définition de la continuité uniforme.
+
+Par conséquent, toute fonction lipschitzienne est uniformément continue.
+
+</details>
