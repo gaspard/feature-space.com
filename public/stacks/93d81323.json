@@ -1,0 +1,48 @@
+{
+  "info": {
+    "id": "93d81323",
+    "title": "Rappels d’algèbre linéaire - quiz (A)",
+    "type": "quiz",
+    "level": "regular",
+    "chapter": "Rappels d’algèbre linéaire",
+    "course": "Algèbre",
+    "tags": [
+      "Algèbre linéaire",
+      "Espaces vectoriels",
+      "Déterminant",
+      "Endomorphismes",
+      "Diagonalisation"
+    ],
+    "count": 1
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "93d81323",
+      "content": "#### Question 1 : Sous-espace vectoriel\n\nParmi les sous-ensembles suivants de l'espace vectoriel $\\mathbb{R}^2$, lequel est un **sous-espace vectoriel** ?\n",
+      "solution": "\n\n**Réponses : [C]**\n\nUn sous-espace vectoriel doit contenir le vecteur nul et être stable par combinaison linéaire (somme et multiplication par un scalaire).\n\n- **A.** Incorrect. $E_1$ ne contient pas le vecteur nul $(0,0)$ car $0+0 \\neq 1$.\n- **B.** Incorrect. $E_2$ est l'union des deux axes. Il n'est pas stable par somme : $(1,0) \\in E_2$ et $(0,1) \\in E_2$, mais leur somme $(1,1)$ n'est pas dans $E_2$ car $1 \\cdot 1 \\neq 0$.\n- **C.** Correct. $E_3$ est une droite passant par l'origine (équation linéaire homogène). Le vecteur nul $(0,0)$ vérifie l'équation. Si $u, v \\in E_3$, alors $\\lambda u + v \\in E_3$.\n- **D.** Incorrect. $E_4$ n'est pas stable par multiplication par un scalaire réel. Par exemple, $(1,0) \\in \\mathbb{Z}^2$ mais $0.5 \\cdot (1,0) = (0.5, 0) \\notin \\mathbb{Z}^2$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** L'ensemble $E_1 = \\{(x, y) \\in \\mathbb{R}^2 \\mid x + y = 1\\}$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** L'ensemble $E_2 = \\{(x, y) \\in \\mathbb{R}^2 \\mid x \\cdot y = 0\\}$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** L'ensemble $E_3 = \\{(x, y) \\in \\mathbb{R}^2 \\mid 2x - 3y = 0\\}$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** L'ensemble $E_4 = \\mathbb{Z}^2$ (les couples d'entiers relatifs)",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

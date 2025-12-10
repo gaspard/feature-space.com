@@ -1,0 +1,282 @@
+---
+id: 93d81323
+type: quiz
+order: 13
+title: Rappels d’algèbre linéaire - quiz (A)
+tags:
+  - Algèbre linéaire
+  - Espaces vectoriels
+  - Déterminant
+  - Endomorphismes
+  - Diagonalisation
+createdAt: '2025-11-27T07:58:43.842Z'
+level: regular
+course: Algèbre
+courseId: 3b74b601
+chapter: Rappels d’algèbre linéaire
+chapterId: 7e9b2b30
+---
+# Quiz: Rappels d’algèbre linéaire
+
+---
+
+#### Question 1 : Sous-espace vectoriel
+
+Parmi les sous-ensembles suivants de l'espace vectoriel $\mathbb{R}^2$, lequel est un **sous-espace vectoriel** ?
+
+- [ ] **A)** L'ensemble $E_1 = \{(x, y) \in \mathbb{R}^2 \mid x + y = 1\}$
+- [ ] **B)** L'ensemble $E_2 = \{(x, y) \in \mathbb{R}^2 \mid x \cdot y = 0\}$
+- [x] **C)** L'ensemble $E_3 = \{(x, y) \in \mathbb{R}^2 \mid 2x - 3y = 0\}$
+- [ ] **D)** L'ensemble $E_4 = \mathbb{Z}^2$ (les couples d'entiers relatifs)
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [C]**
+
+Un sous-espace vectoriel doit contenir le vecteur nul et être stable par combinaison linéaire (somme et multiplication par un scalaire).
+
+- **A.** Incorrect. $E_1$ ne contient pas le vecteur nul $(0,0)$ car $0+0 \neq 1$.
+- **B.** Incorrect. $E_2$ est l'union des deux axes. Il n'est pas stable par somme : $(1,0) \in E_2$ et $(0,1) \in E_2$, mais leur somme $(1,1)$ n'est pas dans $E_2$ car $1 \cdot 1 \neq 0$.
+- **C.** Correct. $E_3$ est une droite passant par l'origine (équation linéaire homogène). Le vecteur nul $(0,0)$ vérifie l'équation. Si $u, v \in E_3$, alors $\lambda u + v \in E_3$.
+- **D.** Incorrect. $E_4$ n'est pas stable par multiplication par un scalaire réel. Par exemple, $(1,0) \in \mathbb{Z}^2$ mais $0.5 \cdot (1,0) = (0.5, 0) \notin \mathbb{Z}^2$.
+
+</details>
+
+---
+
+## Question 2
+
+Soit $V$ un espace vectoriel de dimension finie $n$. Quelle est la définition exacte d'une **base** de $V$ ?
+
+- [ ] **A)** Une famille de vecteurs qui engendre $V$ et qui contient exactement $n$ éléments.
+- [x] **B)** Une famille de vecteurs qui est à la fois libre et génératrice de $V$.
+- [ ] **C)** Une famille de vecteurs linéairement indépendants (libre).
+- [ ] **D)** Une famille de vecteurs dont toute combinaison linéaire est égale au vecteur nul.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B]**
+
+Une base combine deux propriétés essentielles : l'indépendance linéaire et la capacité à engendrer tout l'espace.
+
+- **A.** Incorrect. Cette définition est incomplète. Une famille génératrice de $n$ éléments est bien une base, mais la définition fondamentale ne présuppose pas la connaissance de la dimension $n$ a priori, elle définit la structure. De plus, sans préciser "libre", l'énoncé est techniquement une conséquence (théorème), pas la définition première donnée dans le cours. Cependant, la réponse B est la définition formelle complète.
+- **B.** Correct. C'est la définition exacte : une famille libre (indépendance linéaire) et génératrice (couvre tout l'espace).
+- **C.** Incorrect. Une famille libre n'est pas nécessairement génératrice (ex: un seul vecteur non nul dans un plan).
+- **D.** Incorrect. Ceci décrit une propriété triviale mal formulée. La définition d'une famille libre est que la *seule* combinaison linéaire nulle est celle dont les coefficients sont tous nuls.
+
+</details>
+
+---
+
+## Question 3
+
+Laquelle des applications suivantes $f : \mathbb{R} \to \mathbb{R}$ est une **application linéaire** ?
+
+- [ ] **A)** $f(x) = x + 2$
+- [x] **B)** $f(x) = -3x$
+- [ ] **C)** $f(x) = x^2$
+- [ ] **D)** $f(x) = \sin(x)$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B]**
+
+Une application linéaire doit satisfaire $f(\lambda x + y) = \lambda f(x) + f(y)$ pour tous scalaires et vecteurs. Une conséquence immédiate est que $f(0) = 0$.
+
+- **A.** Incorrect. C'est une application affine. $f(0) = 2 \neq 0$, donc elle n'est pas linéaire.
+- **B.** Correct. Vérifions : $f(\lambda x + y) = -3(\lambda x + y) = \lambda(-3x) + (-3y) = \lambda f(x) + f(y)$.
+- **C.** Incorrect. $f(2x) = (2x)^2 = 4x^2 \neq 2f(x)$, donc non linéaire.
+- **D.** Incorrect. $f(2x) = \sin(2x) \neq 2\sin(x)$ en général.
+
+</details>
+
+---
+
+## Question 4
+
+Soit $f$ un endomorphisme de $V$. Soit $A$ sa matrice dans une base $\mathfrak{B}$ et $B$ sa matrice dans une base $\mathcal{C}$. Si $P$ est la **matrice de passage** de $\mathfrak{B}$ vers $\mathcal{C}$ (contenant les vecteurs de $\mathcal{C}$ exprimés dans $\mathfrak{B}$), quelle est la relation entre $A$ et $B$ ?
+
+- [ ] **A)** $B = P A P^{-1}$
+- [ ] **B)** $B = A P$
+- [x] **C)** $B = P^{-1} A P$
+- [ ] **D)** $B = P A$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [C]**
+
+C'est la formule de changement de base pour un endomorphisme.
+
+- **A.** Incorrect. L'ordre des matrices inverses est inversé par rapport à la convention standard où $P$ contient les colonnes de la nouvelle base.
+- **B.** Incorrect. Ce n'est pas une formule de conjugaison valide (les dimensions ne correspondraient même pas pour une application vers un autre espace).
+- **C.** Correct. Si $X$ sont les coordonnées dans $\mathfrak{B}$ et $X'$ dans $\mathcal{C}$, on a $X = P X'$. L'équation $Y = AX$ devient $P Y' = A (P X')$, soit $Y' = (P^{-1} A P) X'$. Donc $B = P^{-1} A P$.
+- **D.** Incorrect. Manque l'inverse et la multiplication à droite.
+
+</details>
+
+---
+
+## Question 5
+
+Soit une application linéaire $f : \mathbb{R}^5 \to \mathbb{R}^3$. On sait que la dimension du noyau de $f$ est 2 ($\dim(\text{Ker}(f)) = 2$). Quel est le **rang** de $f$ ?
+
+- [ ] **A)** 2
+- [x] **B)** 3
+- [ ] **C)** 5
+- [ ] **D)** 1
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B]**
+
+On utilise le **Théorème du rang**.
+
+- **A.** Incorrect. Ce serait vrai si la dimension de l'espace de départ était 4.
+- **B.** Correct. Le théorème stipule : $\dim(\text{Espace de départ}) = \dim(\text{Ker}(f)) + \dim(\text{Im}(f))$.
+
+  Ici : $5 = 2 + \text{rang}(f)$. Donc $\text{rang}(f) = 5 - 2 = 3$.
+
+- **C.** Incorrect. Le rang ne peut pas dépasser la dimension de l'espace d'arrivée (3) ni être égal à la dimension de départ si le noyau n'est pas nul.
+- **D.** Incorrect. Mauvais calcul.
+
+</details>
+
+---
+
+## Question 6
+
+Soit $V$ un espace vectoriel de dimension finie et $W$ un sous-espace vectoriel de $V$. Quelle est la dimension de l'**espace quotient** $V/W$ ?
+
+- [ ] **A)** $\dim(V) + \dim(W)$
+- [x] **B)** $\dim(V) - \dim(W)$
+- [ ] **C)** $\dim(W) - \dim(V)$
+- [ ] **D)** $\frac{\dim(V)}{\dim(W)}$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B]**
+
+La dimension de l'espace quotient correspond à la "différence" de degrés de liberté.
+
+- **A.** Incorrect. Ceci correspondrait à la dimension d'un produit cartésien $V \times W$.
+- **B.** Correct. Si l'on complète une base de $W$ en une base de $V$, les vecteurs ajoutés forment une base de $V/W$. La formule est $\dim(V/W) = \dim(V) - \dim(W)$.
+- **C.** Incorrect. Une dimension ne peut pas être négative (puisque $W \subset V$, $\dim(W) \le \dim(V)$).
+- **D.** Incorrect. Il n'y a pas de division de dimensions en algèbre linéaire standard.
+
+</details>
+
+---
+
+## Question 7
+
+Quelle condition est nécessaire et suffisante pour qu'une matrice carrée $A$ soit **inversible** ?
+
+- [ ] **A)** $\det(A) = 0$
+- [ ] **B)** $\text{Trace}(A) = 0$
+- [x] **C)** $\det(A) \neq 0$
+- [ ] **D)** $A$ est diagonalisable
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [C]**
+
+Le déterminant mesure si la matrice "écrase" le volume (si elle n'est pas injective).
+
+- **A.** Incorrect. $\det(A) = 0$ signifie que la matrice est singulière (non inversible).
+- **B.** Incorrect. La trace n'a pas de lien direct systématique avec l'inversibilité (ex: $\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$ a une trace nulle mais est inversible).
+- **C.** Correct. Une matrice est inversible si et seulement si son déterminant est non nul.
+- **D.** Incorrect. Une matrice peut être inversible sans être diagonalisable (ex: $\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$) et inversement.
+
+</details>
+
+---
+
+## Question 8
+
+Soit $u$ un endomorphisme et $\lambda$ une valeur propre de $u$. Qu'est-ce qu'un **vecteur propre** associé à $\lambda$ ?
+
+- [ ] **A)** N'importe quel vecteur $v$ tel que $u(v) = \lambda v$.
+- [x] **B)** Un vecteur non nul $v$ tel que $u(v) = \lambda v$.
+- [ ] **C)** Un vecteur $v$ tel que $u(v) = 0$.
+- [ ] **D)** Un vecteur $v$ tel que $v = \lambda u(v)$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B]**
+
+La définition stricte d'un vecteur propre exclut le vecteur nul.
+
+- **A.** Incorrect. Cette définition inclut le vecteur nul $0_V$ (car $u(0) = 0 = \lambda \cdot 0$), or le vecteur nul n'est pas considéré comme un vecteur propre.
+- **B.** Correct. Il faut que $v \neq 0_V$ et que l'image de $v$ soit proportionnelle à $v$ avec le rapport $\lambda$.
+- **C.** Incorrect. Ceci définit les vecteurs du noyau (associés à la valeur propre 0 uniquement).
+- **D.** Incorrect. C'est la relation inverse (ou fausse).
+
+</details>
+
+---
+
+## Question 9
+
+Quand dit-on que deux sous-espaces vectoriels $E$ et $F$ de $V$ sont **supplémentaires** ($V = E \oplus F$) ?
+
+- [ ] **A)** Si $E \cap F = \{0_V\}$.
+- [ ] **B)** Si $E + F = V$.
+- [x] **C)** Si $E \cap F = \{0_V\}$ et $E + F = V$.
+- [ ] **D)** Si $E \cup F = V$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [C]**
+
+La supplémentarité requiert deux conditions : l'intersection triviale (somme directe) et la somme totale (génératrice).
+
+- **A.** Incorrect. Cela signifie seulement que la somme est directe ($E \oplus F$), mais pas forcément égale à tout l'espace $V$.
+- **B.** Incorrect. Cela signifie qu'ils engendrent $V$, mais l'intersection pourrait ne pas être nulle (somme non directe).
+- **C.** Correct. C'est la définition exacte : tout vecteur de $V$ se décompose de manière unique comme somme d'un élément de $E$ et d'un élément de $F$.
+- **D.** Incorrect. L'union de deux sous-espaces n'est pas un sous-espace (sauf inclusion), et ce n'est pas la définition de la somme directe.
+
+</details>
+
+---
+
+## Question 10
+
+Soit $A$ une matrice carrée $n \times n$. Quelle condition garantit que $A$ est **diagonalisable** ?
+
+- [ ] **A)** $\det(A) \neq 0$.
+- [x] **B)** La somme des dimensions des espaces propres est égale à $n$.
+- [ ] **C)** $A$ possède $n$ valeurs propres (comptées avec multiplicité) même si certaines sont confondues.
+- [ ] **D)** Le polynôme caractéristique est scindé (se factorise entièrement).
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B]**
+
+Il existe plusieurs critères, mais celui sur les dimensions est une condition nécessaire et suffisante fondamentale.
+
+- **A.** Incorrect. Cela garantit l'inversibilité, pas la diagonalisation.
+- **B.** Correct. Si la somme des multiplicités géométriques ($\dim V_\lambda$) vaut la dimension de l'espace ($n$), alors il existe une base de vecteurs propres.
+- **C.** Incorrect. Avoir $n$ racines dans le polynôme caractéristique (polynôme scindé) est nécessaire, mais pas suffisant. Il faut aussi que pour chaque racine, la dimension de l'espace propre soit égale à la multiplicité algébrique.
+- **D.** Incorrect. C'est la condition pour être trigonalisable, pas nécessairement diagonalisable (ex: $\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$ a un polynôme scindé $(1-X)^2$ mais n'est pas diagonalisable).
+
+</details>

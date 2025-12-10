@@ -1,0 +1,99 @@
+{
+  "info": {
+    "id": "a50698cb",
+    "title": "Algèbre bilinéaire - fiches de révision (A)",
+    "type": "cards",
+    "level": "regular",
+    "chapter": "Algèbre bilinéaire",
+    "course": "Algèbre",
+    "tags": [
+      "Algèbre bilinéaire",
+      "Dualité",
+      "Formes bilinéaires",
+      "Formes quadratiques",
+      "Espaces euclidiens",
+      "Diagonalisation",
+      "Gram-Schmidt"
+    ],
+    "count": 11
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "a50698cb",
+      "content": "Qu'est-ce qu'une **forme linéaire** ?",
+      "solution": "\n\nUne forme linéaire sur un espace vectoriel $V$ (sur un corps $K$) est une **application linéaire** qui va de $V$ dans le corps $K$ (les scalaires).\n\nSi $\\varphi$ est une forme linéaire, alors pour tous vecteurs $u, v \\in V$ et scalaire $\\lambda \\in K$ :\n\n$$\\varphi(\\lambda u + v) = \\lambda \\varphi(u) + \\varphi(v)$$\n\nL'ensemble de toutes les formes linéaires sur $V$ forme l'**espace dual**, noté $V^*$.\n\n**Exemple :**\n\nSi $V = \\mathbb{R}^3$ et $v = (x, y, z)$, l'application $\\varphi(v) = 2x - 5y$ est une forme linéaire.\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "a50698cb",
+      "content": "Qu'est-ce que la **base duale** ?",
+      "solution": "\n\nSi $V$ est de dimension finie et possède une base $\\mathfrak{B} = \\{e_1, \\dots, e_n\\}$, la **base duale** est l'unique base $\\mathfrak{B}^* = \\{e_1^*, \\dots, e_n^*\\}$ de l'espace dual $V^*$ définie par la relation :\n\n$$e_i^*(e_j) = \\delta_{i,j} = \\begin{cases} 1 & \\text{si } i = j \\\\ 0 & \\text{si } i \\ne j \\end{cases}$$\n\nCela signifie que la $i$-ème forme de la base duale renvoie la $i$-ème coordonnée d'un vecteur dans la base $\\mathfrak{B}$.\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "a50698cb",
+      "content": "Quelle est la formule matricielle d'une **forme bilinéaire** ?",
+      "solution": "\n\nSoit $\\varphi$ une forme bilinéaire sur $V$ et $A$ sa matrice dans une base donnée. Si $X$ et $Y$ sont les vecteurs colonnes des coordonnées de deux vecteurs $u$ et $v$, alors la valeur de la forme bilinéaire est donnée par :\n\n$$\\varphi(u, v) = {}^t X A Y$$\n\n**Où :**\n\n- $X$ : colonne des coordonnées de $u$\n- $Y$ : colonne des coordonnées de $v$\n- $A$ : matrice carrée définie par $A_{i,j} = \\varphi(e_i, e_j)$\n- ${}^t X$ : transposée de $X$ (vecteur ligne)\n\n**Note :** Si la forme est symétrique, alors la matrice $A$ est symétrique ($A = {}^t A$).\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "a50698cb",
+      "content": "Qu'est-ce que l'**orthogonal** d'un sous-ensemble ($X^\\perp$) ?",
+      "solution": "\n\nSoit $\\varphi$ une forme bilinéaire symétrique (comme un produit scalaire). L'orthogonal d'un sous-ensemble $X \\subset V$, noté $X^\\perp$, est l'ensemble des vecteurs qui sont orthogonaux à **tous** les vecteurs de $X$.\n\n$$X^\\perp = \\{v \\in V \\mid \\forall x \\in X, \\varphi(v, x) = 0\\}$$\n\n**Propriétés clés :**\n\n- $X^\\perp$ est toujours un sous-espace vectoriel.\n- Si l'espace est euclidien (dimension finie), $\\dim(F^\\perp) = n - \\dim(F)$.\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "a50698cb",
+      "content": "Quelle est la formule reliant une **forme quadratique** et sa forme polaire ?",
+      "solution": "\n\nUne forme quadratique $q$ est définie à partir d'une forme bilinéaire symétrique $\\varphi$ par $q(v) = \\varphi(v, v)$.\n\nOn peut retrouver la forme bilinéaire $\\varphi$ (appelée forme polaire) à partir de $q$ grâce à la **formule de polarisation** :\n\n$$\\varphi(u, v) = \\frac{1}{2} (q(u + v) - q(u) - q(v))$$\n\n**Utilisation :**\n\nCette formule permet de passer de l'expression quadratique (avec des carrés) à l'expression bilinéaire (avec deux variables).\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "a50698cb",
+      "content": "Qu'est-ce qu'un **espace Euclidien** ?",
+      "solution": "\n\nUn espace euclidien est un espace vectoriel réel de dimension finie muni d'un **produit scalaire**.\n\nUn produit scalaire est une forme bilinéaire symétrique qui est :\n\n1. **Positive :** $\\forall x, \\varphi(x, x) \\ge 0$.\n2. **Définie :** $\\varphi(x, x) = 0 \\iff x = 0$.\n\nOn note généralement le produit scalaire $\\langle x, y \\rangle$ ou $(x | y)$, et la norme associée $\\|x\\| = \\sqrt{(x | x)}$.\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "a50698cb",
+      "content": "Quelle est l'**Inégalité de Cauchy-Schwarz** ?",
+      "solution": "\n\nDans un espace euclidien, pour tous vecteurs $x$ et $y$ :\n\n$$|(x | y)| \\le \\|x\\| \\cdot \\|y\\|$$\n\nAutrement dit, la valeur absolue du produit scalaire est inférieure ou égale au produit des normes.\n\n**Cas d'égalité :**\n\nL'égalité est vérifiée si et seulement si les vecteurs $x$ et $y$ sont colinéaires (liés).\n\n**Application :**\n\nElle permet de définir l'angle $\\theta$ entre deux vecteurs car $\\frac{(x | y)}{\\|x\\|\\|y\\|} \\in [-1, 1]$.\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "a50698cb",
+      "content": "Qu'est-ce qu'une famille **orthonormée** ?",
+      "solution": "\n\nUne famille de vecteurs $(e_1, \\dots, e_n)$ est dite orthonormée si elle vérifie deux conditions :\n\n1. **Orthogonalité :** Les vecteurs sont deux à deux orthogonaux ($(e_i | e_j) = 0$ pour $i \\ne j$).\n2. **Normalisation :** Chaque vecteur a une norme égale à 1 ($(e_i | e_i) = 1$).\n\nCela se résume par la formule :\n\n$$(e_i | e_j) = \\delta_{i,j}$$\n\n**Propriété :** Une famille orthonormée est toujours une famille libre.\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "a50698cb",
+      "content": "Comment calcule-t-on les **coordonnées** d'un vecteur dans une base orthonormée ?",
+      "solution": "\n\nSi $\\mathfrak{B} = (e_1, \\dots, e_n)$ est une base orthonormée de l'espace $E$, alors tout vecteur $x \\in E$ se décompose très simplement :\n\n$$x = \\sum_{i=1}^n (x | e_i) e_i$$\n\nLa $i$-ème coordonnée du vecteur $x$ est simplement le produit scalaire $(x | e_i)$.\n\n**Exemple :**\n\nSi $x$ est un vecteur géométrique et $e_1$ un vecteur unitaire de l'axe des abscisses, $(x|e_1)$ est l'abscisse de $x$.\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "a50698cb",
+      "content": "Quelle est la formule de la **projection orthogonale** sur un sous-espace ?",
+      "solution": "\n\nSoit $F$ un sous-espace vectoriel muni d'une **base orthonormée** $(e_1, \\dots, e_k)$. La projection orthogonale d'un vecteur $x$ sur $F$, notée $\\pi_F(x)$, est donnée par :\n\n$$\\pi_F(x) = \\sum_{i=1}^k (x | e_i) e_i$$\n\n**Note :**\n\nLe vecteur $x - \\pi_F(x)$ est orthogonal à $F$. $\\pi_F(x)$ représente la meilleure approximation de $x$ dans $F$ (distance minimale).\n\n",
+      "options": []
+    },
+    {
+      "id": "11",
+      "stackId": "a50698cb",
+      "content": "Que dit le **Théorème Spectral** pour les matrices symétriques ?",
+      "solution": "\n\nLe théorème spectral affirme que toute matrice symétrique réelle $A$ (c'est-à-dire ${}^t A = A$) est **diagonalisable** dans une base **orthonormée**.\n\nCela signifie qu'il existe :\n\n- Une matrice diagonale $D$ (valeurs propres réelles).\n- Une matrice orthogonale $P$ (dont les colonnes forment une base orthonormée, vérifiant $P^{-1} = {}^t P$).\n\nTelles que :\n\n$$A = P D P^{-1} = P D {}^t P$$\n\n**Conséquence :**\n\nLes sous-espaces propres d'une matrice symétrique sont orthogonaux entre eux.\n\n",
+      "options": []
+    }
+  ]
+}

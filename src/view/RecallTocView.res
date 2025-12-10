@@ -155,7 +155,7 @@ let make = () => {
           type_="range"
           min="0"
           max="60"
-          step=6.
+          step=3.
           value={toc.dayLengthH->Float.toString}
           onChange={e => toc.setDayLength(Event.value(e)->Float.fromString->Option.getOr(24.))}
         />

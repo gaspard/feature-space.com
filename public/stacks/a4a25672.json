@@ -1,0 +1,97 @@
+{
+  "info": {
+    "id": "a4a25672",
+    "title": "Rappels d’algèbre linéaire - fiches de révision (A)",
+    "type": "cards",
+    "level": "regular",
+    "chapter": "Rappels d’algèbre linéaire",
+    "course": "Algèbre",
+    "tags": [
+      "Algèbre linéaire",
+      "Espaces vectoriels",
+      "Déterminant",
+      "Endomorphismes",
+      "Diagonalisation"
+    ],
+    "count": 11
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "a4a25672",
+      "content": "Qu'est-ce qu'un **sous-espace vectoriel** et comment démontrer qu'un ensemble en est un ?",
+      "solution": "\n\nUn **sous-espace vectoriel** $W$ d'un espace vectoriel $V$ est un sous-ensemble non vide qui conserve la structure d'espace vectoriel (il est stable par les opérations).\n\n**Méthode de vérification (Stabilité) :**\n\nPour prouver que $W \\subset V$ est un sous-espace, il suffit de vérifier 3 points :\n\n1.  **Non-vacuité** : $W$ contient le vecteur nul $0_V$.\n2.  **Stabilité par addition** : Si $u, v \\in W$, alors $u + v \\in W$.\n3.  **Stabilité par multiplication scalaire** : Si $u \\in W$ et $\\lambda \\in K$, alors $\\lambda \\cdot u \\in W$.\n\n**Exemple :**\n\nDans $\\mathbb{R}^2$, la droite d'équation $y = 2x$ est un sous-espace vectoriel car elle passe par $(0,0)$ et toute combinaison linéaire de points de la droite reste sur la droite.\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "a4a25672",
+      "content": "Quelle est la définition d'une **famille libre** et d'une **famille génératrice** ?",
+      "solution": "\n\nSoit une famille de vecteurs $\\mathcal{F} = \\{v_1, \\dots, v_n\\}$ dans un espace $V$.\n\n1.  **Famille Génératrice** :\n\n    $\\mathcal{F}$ engendre $V$ si **tout** vecteur de $V$ peut s'écrire comme une combinaison linéaire des vecteurs de $\\mathcal{F}$.\n\n    $$ V = \\text{Vect}(v_1, \\dots, v_n) $$\n\n2.  **Famille Libre** (Linéairement indépendante) :\n\n    $\\mathcal{F}$ est libre si la seule façon d'obtenir le vecteur nul par combinaison linéaire est de choisir tous les coefficients nuls.\n\n    $$ \\lambda_1 v_1 + \\dots + \\lambda_n v_n = 0 \\implies \\lambda_1 = \\dots = \\lambda_n = 0 $$\n\n**Note :** Une famille qui est à la fois libre et génératrice est une **base**.\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "a4a25672",
+      "content": "Quelle est la définition d'une **application linéaire** ?",
+      "solution": "\n\nUne application $f : V \\to W$ est dite **linéaire** si elle respecte les deux opérations de l'espace vectoriel (addition et multiplication externe).\n\n**Formule générale :**\n\nPour tous vecteurs $u, v \\in V$ et tout scalaire $\\lambda \\in K$ :\n\n$$ f(\\lambda u + v) = \\lambda f(u) + f(v) $$\n\n**Conséquence importante :**\n\nUne application linéaire envoie toujours l'origine sur l'origine :\n\n$$ f(0_V) = 0_W $$\n\n**Exemple :** La dérivation $P \\mapsto P'$ dans l'espace des polynômes est linéaire.\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "a4a25672",
+      "content": "Quelle est la formule de changement de base pour un endomorphisme ?",
+      "solution": "\n\nSi un endomorphisme $f$ est représenté par la matrice $A$ dans une base $\\mathfrak{B}$ et par la matrice $B$ dans une base $\\mathcal{C}$, alors :\n\n$$ B = P^{-1} A P $$\n\n**Où :**\n\n-   $B$ est la matrice dans la **nouvelle** base.\n-   $A$ est la matrice dans l'**ancienne** base.\n-   $P$ est la **matrice de passage** de l'ancienne base $\\mathfrak{B}$ vers la nouvelle base $\\mathcal{C}$ (ses colonnes sont les vecteurs de la nouvelle base exprimés dans l'ancienne).\n\n**Moyen mnémotechnique :** On \"insère\" la nouvelle base au milieu via $P$.\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "a4a25672",
+      "content": "Qu'est-ce que le **Théorème du rang** ?",
+      "solution": "\n\nLe théorème du rang relie les dimensions de l'espace de départ, du noyau et de l'image d'une application linéaire $f: V \\to W$ (lorsque $V$ est de dimension finie).\n\n**Formule :**\n\n$$ \\dim(V) = \\dim(\\text{Ker}(f)) + \\dim(\\text{Im}(f)) $$\n\n**Interprétation :**\n\nLa dimension totale de l'espace de départ se divise en deux parties :\n\n1.  Ce qui est \"écrasé\" sur 0 (le noyau).\n2.  Ce qui \"survit\" dans l'arrivée (l'image, ou le rang).\n\n**Rappel :** $\\text{rang}(f) = \\dim(\\text{Im}(f))$.\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "a4a25672",
+      "content": "Comment définir le **Noyau** ($\\text{Ker}$) et l'**Image** ($\\text{Im}$) d'une application linéaire ?",
+      "solution": "\n\nSoit $f : V \\to W$ une application linéaire.\n\n1.  **Noyau ($\\text{Ker}(f)$)** :\n\n    C'est l'ensemble des vecteurs de départ qui sont envoyés sur le vecteur nul de l'arrivée.\n\n    $$ \\text{Ker}(f) = \\{ v \\in V \\mid f(v) = 0_W \\} $$\n\n    *Propriété :* $f$ est injective $\\iff \\text{Ker}(f) = \\{0_V\\}$.\n\n2.  **Image ($\\text{Im}(f)$)** :\n\n    C'est l'ensemble des vecteurs d'arrivée qui sont atteints par l'application.\n\n    $$ \\text{Im}(f) = \\{ w \\in W \\mid \\exists v \\in V, f(v) = w \\} $$\n\n    *Propriété :* $f$ est surjective $\\iff \\text{Im}(f) = W$.\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "a4a25672",
+      "content": "Qu'est-ce qu'un **espace vectoriel quotient** $V/W$ ?",
+      "solution": "\n\nSi $W$ est un sous-espace vectoriel de $V$, l'espace quotient $V/W$ est l'ensemble constitué des \"classes\" de vecteurs modulo $W$. On \"assimile\" tous les vecteurs dont la différence appartient à $W$.\n\n**Éléments :**\n\nUn élément de $V/W$ s'écrit $v + W$.\n\n**Dimension (si finie) :**\n\n$$ \\dim(V/W) = \\dim(V) - \\dim(W) $$\n\n**Intuition :**\n\nSi on imagine $V = \\mathbb{R}^3$ et $W$ est une droite verticale (axe $z$), l'espace quotient $V/W$ correspond au plan horizontal (plan $xy$) obtenu en \"écrasant\" la dimension $z$.\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "a4a25672",
+      "content": "Comment calculer les **valeurs propres** d'une matrice (Polynôme caractéristique) ?",
+      "solution": "\n\nLes valeurs propres d'une matrice carrée $A$ sont les racines de son **polynôme caractéristique**.\n\n**Étapes :**\n\n1.  Calculer le polynôme caractéristique $P_A(X)$ défini par le déterminant :\n\n    $$ P_A(X) = \\det(A - X I_n) $$\n\n    (On soustrait l'inconnue $X$ sur la diagonale de $A$).\n\n2.  Résoudre l'équation $P_A(X) = 0$.\n\n    Les solutions $\\lambda$ trouvées sont les valeurs propres.\n\n**Exemple :**\n\nPour $A = \\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}$, $P_A(X) = (2-X)(3-X)$. Les valeurs propres sont 2 et 3.\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "a4a25672",
+      "content": "Que signifie que deux sous-espaces sont en **somme directe** ($E \\oplus F$) ?",
+      "solution": "\n\nDeux sous-espaces $E$ et $F$ de $V$ sont en somme directe si tout vecteur de leur somme se décompose de manière **unique** sur $E$ et $F$.\n\n**Condition pratique :**\n\nLa somme est directe si et seulement si leur intersection est réduite au vecteur nul :\n\n$$ E \\cap F = \\{0_V\\} $$\n\nSi de plus $E + F = V$, on dit que $E$ et $F$ sont **supplémentaires** dans $V$. On a alors $\\dim(E) + \\dim(F) = \\dim(V)$ (en dimension finie).\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "a4a25672",
+      "content": "Quelles sont les conditions pour qu'une matrice soit **diagonalisable** ?",
+      "solution": "\n\nUne matrice carrée $A$ de taille $n$ est diagonalisable si elle est semblable à une matrice diagonale.\n\n**Critères principaux :**\n\n1.  **Somme des dimensions :** La somme des dimensions des espaces propres est égale à $n$ (dimension de l'espace entier).\n\n    $$ \\sum \\dim(V_\\lambda) = n $$\n\n2.  **Condition suffisante (racines distinctes) :** Si $A$ possède $n$ valeurs propres **distinctes**, alors elle est automatiquement diagonalisable.\n\n**Note :** Si le polynôme caractéristique n'est pas scindé (ne se factorise pas complètement dans le corps $K$), la matrice n'est pas diagonalisable sur ce corps.\n\n",
+      "options": []
+    },
+    {
+      "id": "11",
+      "stackId": "a4a25672",
+      "content": "Quelle est la relation entre le **déterminant** et l'**inversibilité** d'une matrice ?",
+      "solution": "\n\nLe déterminant est un scalaire qui indique si une matrice est inversible.\n\n**Propriété fondamentale :**\n\nUne matrice carrée $A$ est inversible si et seulement si son déterminant est **non nul**.\n\n$$ A \\text{ est inversible} \\iff \\det(A) \\neq 0 $$\n\n**Lien avec l'inverse :**\n\nSi $A$ est inversible, alors :\n\n$$ \\det(A^{-1}) = \\frac{1}{\\det(A)} $$\n\n",
+      "options": []
+    }
+  ]
+}

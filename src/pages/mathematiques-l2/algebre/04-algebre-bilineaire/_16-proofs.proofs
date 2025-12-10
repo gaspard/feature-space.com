@@ -1,0 +1,628 @@
+---
+id: e86f3c89
+type: proofs
+order: 15
+title: Algèbre bilinéaire - preuves (A)
+tags:
+  - Algèbre bilinéaire
+  - Dualité
+  - Formes bilinéaires
+  - Formes quadratiques
+  - Espaces euclidiens
+  - Diagonalisation
+  - Gram-Schmidt
+createdAt: '2025-11-27T08:32:48.606Z'
+level: regular
+course: Algèbre
+courseId: 3b74b601
+chapter: Algèbre bilinéaire
+chapterId: 6d99d679
+---
+# Preuves "Algèbre bilinéaire" (A)
+
+---
+
+#### Formule de Polarisation
+
+Prouver que pour toute forme quadratique $q$ associée à une forme bilinéaire symétrique $\varphi$ sur un espace vectoriel $V$ (où le corps $K$ est de caractéristique différente de 2), on peut retrouver $\varphi$ par la formule :
+
+$$\varphi(u, v) = \frac{1}{2} (q(u + v) - q(u) - q(v))$$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Rappelez-vous la définition d'une forme quadratique : $q(x) = \varphi(x, x)$.
+
+Développez l'expression $q(u + v) = \varphi(u + v, u + v)$ en utilisant la bilinéarité (linéarité par rapport aux deux variables) et la symétrie de $\varphi$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $\varphi$ une forme bilinéaire symétrique et $q$ la forme quadratique associée, définie par $q(x) = \varphi(x, x)$.
+
+**Étape 1 : Développement de $q(u+v)$**
+
+Calculons $q(u + v)$ en utilisant la définition :
+
+$$q(u + v) = \varphi(u + v, u + v)$$
+
+Par la propriété de bilinéarité (distributivité), nous développons l'expression :
+
+$$\varphi(u + v, u + v) = \varphi(u, u) + \varphi(u, v) + \varphi(v, u) + \varphi(v, v)$$
+
+**Étape 2 : Utilisation de la symétrie**
+
+Comme $\varphi$ est symétrique, on a $\varphi(v, u) = \varphi(u, v)$. De plus, par définition, $\varphi(u, u) = q(u)$ et $\varphi(v, v) = q(v)$.
+
+L'expression devient :
+
+$$q(u + v) = q(u) + 2\varphi(u, v) + q(v)$$
+
+**Conclusion :**
+
+En isolant le terme $\varphi(u, v)$, on obtient :
+
+$$2\varphi(u, v) = q(u + v) - q(u) - q(v)$$
+
+$$\varphi(u, v) = \frac{1}{2} (q(u + v) - q(u) - q(v))$$
+
+</details>
+
+---
+
+#### Changement de base pour une forme bilinéaire
+
+Soit $\varphi$ une forme bilinéaire sur $V$. Soient $\mathfrak{B}$ et $\mathcal{C}$ deux bases de $V$, et $P$ la matrice de passage de $\mathfrak{B}$ à $\mathcal{C}$.
+
+Prouver que si $A$ est la matrice de $\varphi$ dans la base $\mathfrak{B}$ et $A'$ est la matrice de $\varphi$ dans la base $\mathcal{C}$, alors :
+
+$$A' = {}^t P A P$$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez l'expression matricielle de la forme bilinéaire. Si $X$ et $Y$ sont les vecteurs colonnes des coordonnées dans $\mathfrak{B}$, et $X', Y'$ ceux dans $\mathcal{C}$, rappelez-vous la relation de changement de base : $X = PX'$.
+
+Substituez cette relation dans l'expression $\varphi(u, v) = {}^t X A Y$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soient $u, v$ deux vecteurs de $V$.
+
+Notons $X, Y$ leurs matrices colonnes de coordonnées dans la base $\mathfrak{B}$, et $X', Y'$ leurs coordonnées dans la base $\mathcal{C}$.
+
+**Étape 1 : Expression matricielle et changement de coordonnées**
+
+La valeur de la forme bilinéaire peut être calculée dans la base $\mathfrak{B}$ par :
+
+$$\varphi(u, v) = {}^t X A Y$$
+
+La formule de changement de base pour les vecteurs est $X = P X'$ et $Y = P Y'$.
+
+**Étape 2 : Substitution**
+
+Remplaçons $X$ et $Y$ dans l'expression de $\varphi$ :
+
+$$\varphi(u, v) = {}^t (P X') A (P Y')$$
+
+Utilisons la propriété de la transposition $^t(MN) = {}^tN {}^tM$ :
+
+$$\varphi(u, v) = ({}^t X' {}^t P) A (P Y') = {}^t X' ({}^t P A P) Y'$$
+
+**Conclusion :**
+
+Par définition de la matrice $A'$ dans la base $\mathcal{C}$, on doit avoir $\varphi(u, v) = {}^t X' A' Y'$ pour tous vecteurs $u, v$ (donc pour tous $X', Y'$).
+
+En identifiant les termes, on obtient :
+
+$$A' = {}^t P A P$$
+
+</details>
+
+---
+
+#### Inégalité de Cauchy-Schwarz
+
+Soit $E$ un espace euclidien muni d'un produit scalaire noté $(x | y)$ et de la norme associée $\|x\| = \sqrt{(x | x)}$.
+
+Prouver que pour tous $x, y \in E$ :
+
+$$|(x | y)| \le \|x\| \cdot \|y\|$$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Considérez la fonction réelle $P(t) = \|x + ty\|^2$ pour un réel $t$.
+
+Cette fonction est toujours positive ou nulle. Développez-la pour obtenir un polynôme du second degré en $t$. Que pouvez-vous dire de son discriminant ?
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soient $x, y \in E$.
+
+**Étape 1 : Cas trivial**
+
+Si $y = 0$, alors $(x | 0) = 0$ et $\|x\| \cdot \|0\| = 0$. L'égalité $0 \le 0$ est vérifiée. Supposons donc $y \ne 0$.
+
+**Étape 2 : Étude du polynôme quadratique**
+
+Pour tout réel $t \in \mathbb{R}$, considérons le vecteur $x + ty$. Par la propriété de positivité du produit scalaire :
+
+$$\|x + ty\|^2 = (x + ty | x + ty) \ge 0$$
+
+Développons cette expression grâce à la bilinéarité et la symétrie :
+
+$$(x | x) + 2t(x | y) + t^2(y | y) \ge 0$$
+
+$$\|x\|^2 + 2t(x | y) + t^2\|y\|^2 \ge 0$$
+
+**Étape 3 : Discriminant**
+
+Il s'agit d'un polynôme du second degré en $t$ de la forme $At^2 + Bt + C$ avec $A = \|y\|^2$, $B = 2(x | y)$ et $C = \|x\|^2$.
+
+Puisque ce polynôme est toujours positif ou nul pour tout $t \in \mathbb{R}$, il ne peut pas avoir deux racines réelles distinctes. Son discriminant $\Delta$ doit donc être négatif ou nul ($\Delta \le 0$).
+
+$$\Delta = B^2 - 4AC = (2(x | y))^2 - 4\|y\|^2 \|x\|^2 \le 0$$
+
+$$4(x | y)^2 - 4\|x\|^2 \|y\|^2 \le 0$$
+
+**Conclusion :**
+
+En divisant par 4 et en réarrangeant :
+
+$$(x | y)^2 \le \|x\|^2 \|y\|^2$$
+
+En prenant la racine carrée (croissante sur $\mathbb{R}^+$) :
+
+$$|(x | y)| \le \|x\| \cdot \|y\|$$
+
+</details>
+
+---
+
+#### Coordonnées dans une base orthonormée
+
+Soit $(e_1, \dots, e_n)$ une base orthonormée d'un espace euclidien $E$.
+
+Prouver que pour tout vecteur $x \in E$, ses coordonnées sont données par les produits scalaires avec les vecteurs de la base, c'est-à-dire :
+
+$$x = \sum_{i=1}^n (x | e_i) e_i$$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Écrivez $x$ comme une combinaison linéaire quelconque $x = \sum_{j=1}^n \lambda_j e_j$.
+
+Calculez le produit scalaire $(x | e_i)$ en utilisant cette expression et la propriété d'orthonormalité $(e_j | e_i) = \delta_{ji}$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $x \in E$. Puisque $(e_1, \dots, e_n)$ est une base, il existe des scalaires uniques $\lambda_1, \dots, \lambda_n$ tels que :
+
+$$x = \sum_{j=1}^n \lambda_j e_j$$
+
+**Étape 1 : Calcul du produit scalaire**
+
+Fixons un indice $i \in \{1, \dots, n\}$ et calculons le produit scalaire $(x | e_i)$ :
+
+$$(x | e_i) = \left( \sum_{j=1}^n \lambda_j e_j \;\Bigg|\; e_i \right)$$
+
+**Étape 2 : Utilisation de la linéarité**
+
+Par linéarité à gauche du produit scalaire :
+
+$$(x | e_i) = \sum_{j=1}^n \lambda_j (e_j | e_i)$$
+
+**Étape 3 : Utilisation de l'orthonormalité**
+
+La famille est orthonormée, donc $(e_j | e_i) = \delta_{ji}$ (vaut 1 si $j=i$, 0 sinon).
+
+Dans la somme, tous les termes sont nuls sauf celui où $j=i$ :
+
+$$(x | e_i) = \lambda_i (e_i | e_i) = \lambda_i \cdot 1 = \lambda_i$$
+
+**Conclusion :**
+
+Nous avons montré que le coefficient $\lambda_i$ est exactement $(x | e_i)$. Ainsi :
+
+$$x = \sum_{i=1}^n (x | e_i) e_i$$
+
+</details>
+
+---
+
+#### Orthogonalité des sous-espaces propres (Matrices symétriques)
+
+Soit $A$ une matrice symétrique réelle (${}^tA = A$) représentant un endomorphisme $u$ dans une base orthonormée.
+
+Prouver que si $v_1$ et $v_2$ sont deux vecteurs propres de $A$ associés à des valeurs propres distinctes $\lambda_1$ et $\lambda_2$, alors $v_1$ et $v_2$ sont orthogonaux.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Considérez le produit scalaire $(Av_1 | v_2)$ (qui matriciellement est ${}^t(Av_1)v_2$).
+
+Calculez ce produit de deux façons :
+
+1. En utilisant $Av_1 = \lambda_1 v_1$.
+2. En utilisant la propriété de symétrie $(Av_1 | v_2) = (v_1 | Av_2)$ et $Av_2 = \lambda_2 v_2$.
+
+Comparez les résultats.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soient $v_1, v_2$ tels que $Av_1 = \lambda_1 v_1$ et $Av_2 = \lambda_2 v_2$ avec $\lambda_1 \ne \lambda_2$.
+
+Dans $\mathbb{R}^n$, le produit scalaire canonique est $(x|y) = {}^tx y$.
+
+**Étape 1 : Calcul du produit scalaire $(Av_1 | v_2)$**
+
+En remplaçant $Av_1$ :
+
+$$(Av_1 | v_2) = (\lambda_1 v_1 | v_2) = \lambda_1 (v_1 | v_2)$$
+
+**Étape 2 : Utilisation de la symétrie de la matrice**
+
+Pour une matrice symétrique réelle $A$, on a l'identité $(Ax | y) = (x | Ay)$ pour tout $x, y$.
+
+En effet : ${}^t(Ax)y = {}^tx {}^tA y = {}^tx A y = (x | Ay)$.
+
+Donc :
+
+$$(Av_1 | v_2) = (v_1 | Av_2)$$
+
+En remplaçant $Av_2$ :
+
+$$(v_1 | Av_2) = (v_1 | \lambda_2 v_2) = \lambda_2 (v_1 | v_2)$$
+
+**Étape 3 : Comparaison**
+
+Nous avons obtenu :
+
+$$\lambda_1 (v_1 | v_2) = \lambda_2 (v_1 | v_2)$$
+
+Ce qui équivaut à :
+
+$$(\lambda_1 - \lambda_2) (v_1 | v_2) = 0$$
+
+**Conclusion :**
+
+Puisque $\lambda_1 \ne \lambda_2$, le terme $(\lambda_1 - \lambda_2)$ n'est pas nul. On peut diviser par ce terme, ce qui impose :
+
+$$(v_1 | v_2) = 0$$
+
+Les vecteurs propres sont donc orthogonaux.
+
+</details>
+
+---
+
+#### Minimisation de la distance (Projection Orthogonale)
+
+Soit $F$ un sous-espace vectoriel d'un espace euclidien $E$. Soit $x \in E$ et $\pi_F(x)$ sa projection orthogonale sur $F$.
+
+Prouver que $\pi_F(x)$ est la meilleure approximation de $x$ dans $F$, c'est-à-dire :
+
+$$\forall y \in F, \quad \|x - \pi_F(x)\| \le \|x - y\|$$
+
+et que l'égalité n'a lieu que si $y = \pi_F(x)$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Écrivez le vecteur différence $x - y$ comme $(x - \pi_F(x)) + (\pi_F(x) - y)$.
+
+Remarquez que le premier terme est dans $F^\perp$ et le second est dans $F$.
+
+Appliquez le théorème de Pythagore.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $y$ un vecteur quelconque de $F$.
+
+**Étape 1 : Décomposition du vecteur**
+
+Introduisons $\pi_F(x)$ dans la norme que nous voulons minimiser :
+
+$$x - y = (x - \pi_F(x)) + (\pi_F(x) - y)$$
+
+Posons $u = x - \pi_F(x)$ et $v = \pi_F(x) - y$.
+
+**Étape 2 : Vérification de l'orthogonalité**
+
+*   Le vecteur $u = x - \pi_F(x)$ appartient à $F^\perp$ par définition de la projection orthogonale.
+*   Le vecteur $v = \pi_F(x) - y$ appartient à $F$ car $\pi_F(x) \in F$ et $y \in F$, et $F$ est un sous-espace vectoriel.
+
+Donc $u$ et $v$ sont orthogonaux : $(u | v) = 0$.
+
+**Étape 3 : Théorème de Pythagore**
+
+Puisque $u \perp v$, on a :
+
+$$\|x - y\|^2 = \|u + v\|^2 = \|u\|^2 + \|v\|^2$$
+
+$$\|x - y\|^2 = \|x - \pi_F(x)\|^2 + \|\pi_F(x) - y\|^2$$
+
+**Conclusion :**
+
+Comme $\|\pi_F(x) - y\|^2 \ge 0$, on obtient directement :
+
+$$\|x - y\|^2 \ge \|x - \pi_F(x)\|^2$$
+
+Donc $\|x - y\| \ge \|x - \pi_F(x)\|$.
+
+L'égalité a lieu si et seulement si le terme positif ajouté est nul, c'est-à-dire $\|\pi_F(x) - y\|^2 = 0$, soit $y = \pi_F(x)$.
+
+</details>
+
+---
+
+#### Caractérisation des isométries et produit scalaire
+
+Soit $u$ un endomorphisme d'un espace euclidien $E$.
+
+Prouver que $u$ conserve la norme ($\forall x, \|u(x)\| = \|x\|$) si et seulement si $u$ conserve le produit scalaire ($\forall x, y, (u(x) | u(y)) = (x | y)$).
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+*   Pour le sens "conserve le produit scalaire $\implies$ conserve la norme", c'est immédiat par définition de la norme.
+*   Pour le sens inverse, utilisez l'identité de polarisation qui exprime le produit scalaire en fonction de la norme : $(x|y) = \frac{1}{2}(\|x+y\|^2 - \|x\|^2 - \|y\|^2)$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Sens direct ($\Longleftarrow$) :**
+
+Supposons que $u$ conserve le produit scalaire : $\forall x, y \in E, (u(x) | u(y)) = (x | y)$.
+
+En prenant $y = x$, on obtient :
+
+$$(u(x) | u(x)) = (x | x) \implies \|u(x)\|^2 = \|x\|^2$$
+
+Comme la norme est positive, $\|u(x)\| = \|x\|$.
+
+**Sens réciproque ($\Longrightarrow$) :**
+
+Supposons que $u$ conserve la norme : $\forall v \in E, \|u(v)\| = \|v\|$.
+
+Utilisons l'identité de polarisation pour le produit scalaire réel :
+
+$$(x | y) = \frac{1}{2} \left( \|x+y\|^2 - \|x\|^2 - \|y\|^2 \right)$$
+
+Calculons $(u(x) | u(y))$ :
+
+$$(u(x) | u(y)) = \frac{1}{2} \left( \|u(x)+u(y)\|^2 - \|u(x)\|^2 - \|u(y)\|^2 \right)$$
+
+Par linéarité de $u$, $u(x)+u(y) = u(x+y)$, donc :
+
+$$(u(x) | u(y)) = \frac{1}{2} \left( \|u(x+y)\|^2 - \|u(x)\|^2 - \|u(y)\|^2 \right)$$
+
+Par l'hypothèse de conservation de la norme, $\|u(v)\| = \|v\|$ pour tout $v$, donc :
+
+$$(u(x) | u(y)) = \frac{1}{2} \left( \|x+y\|^2 - \|x\|^2 - \|y\|^2 \right)$$
+
+Le membre de droite est exactement la définition de $(x | y)$.
+
+Donc $(u(x) | u(y)) = (x | y)$.
+
+</details>
+
+---
+
+#### Caractérisation des matrices orthogonales
+
+Prouver qu'une matrice carrée réelle $M$ est orthogonale (c'est-à-dire que ses colonnes forment une base orthonormée pour le produit scalaire canonique) si et seulement si :
+
+$${}^t M M = I_n$$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Notez $C_1, \dots, C_n$ les colonnes de $M$.
+
+Exprimez l'élément $(i, j)$ de la matrice produit ${}^t M M$ en fonction des colonnes de $M$. Rappelez-vous que le produit scalaire canonique de deux vecteurs colonnes $U$ et $V$ est ${}^t U V$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $M \in M_n(\mathbb{R})$. Notons $C_1, \dots, C_n$ les vecteurs colonnes de $M$.
+
+Calculons le produit $P = {}^t M M$.
+
+**Étape 1 : Expression des coefficients du produit**
+
+L'élément à la ligne $i$ et colonne $j$ de la matrice $P$, noté $P_{ij}$, est le produit de la ligne $i$ de ${}^t M$ par la colonne $j$ de $M$.
+
+La ligne $i$ de ${}^t M$ est la transposée de la colonne $i$ de $M$, soit ${}^t C_i$.
+
+Donc :
+
+$$P_{ij} = {}^t C_i C_j$$
+
+Or, pour le produit scalaire canonique sur $\mathbb{R}^n$, on a $(C_i | C_j) = {}^t C_i C_j$.
+
+Ainsi, $P_{ij} = (C_i | C_j)$.
+
+**Étape 2 : Condition d'orthonormalité**
+
+La famille des colonnes $(C_1, \dots, C_n)$ est une base orthonormée si et seulement si :
+
+$$(C_i | C_j) = \delta_{ij} = \begin{cases} 1 & \text{si } i=j \\ 0 & \text{si } i \ne j \end{cases}$$
+
+**Conclusion :**
+
+Cette condition est équivalente à dire que $P_{ij} = \delta_{ij}$ pour tout $i, j$, ce qui signifie exactement que la matrice $P$ est la matrice identité $I_n$.
+
+D'où l'équivalence :
+
+$$(C_1, \dots, C_n) \text{ est orthonormée} \iff {}^t M M = I_n$$
+
+</details>
+
+---
+
+#### Dimension de l'orthogonal
+
+Soit $F$ un sous-espace vectoriel d'un espace euclidien $E$ de dimension finie $n$.
+
+Prouver que :
+
+$$\dim(F^\perp) = n - \dim(F)$$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Considérez une base orthonormée $(e_1, \dots, e_p)$ de $F$ (que l'on peut obtenir par Gram-Schmidt).
+
+Complétez cette base en une base orthonormée $(e_1, \dots, e_n)$ de $E$ entier.
+
+Montrez que $(e_{p+1}, \dots, e_n)$ est une base de $F^\perp$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $p = \dim(F)$.
+
+**Étape 1 : Base adaptée**
+
+Il existe une base orthonormée de $F$, notons-la $(e_1, \dots, e_p)$.
+
+D'après le théorème de la base incomplète (version orthonormée), on peut compléter cette famille en une base orthonormée $\mathfrak{B} = (e_1, \dots, e_p, e_{p+1}, \dots, e_n)$ de l'espace entier $E$.
+
+**Étape 2 : Identification de $F^\perp$**
+
+Montrons que $G = \text{Vect}(e_{p+1}, \dots, e_n)$ est égal à $F^\perp$.
+
+*   **Inclusion $G \subset F^\perp$ :**
+
+    Soit $v \in G$. $v$ est combinaison linéaire de $e_{p+1}, \dots, e_n$.
+
+    Pour tout $u \in F$, $u$ est combinaison linéaire de $e_1, \dots, e_p$.
+
+    Comme la base $\mathfrak{B}$ est orthonormée, tout vecteur de $\{e_{p+1}, \dots, e_n\}$ est orthogonal à tout vecteur de $\{e_1, \dots, e_p\}$. Par bilinéarité, $v \perp u$. Donc $v \in F^\perp$.
+
+*   **Dimension :**
+
+    La famille $(e_{p+1}, \dots, e_n)$ est libre (sous-famille d'une base) et engendre $G$. Donc $\dim(G) = n - p$.
+
+**Étape 3 : Argument de somme directe**
+
+On sait que $F \cap F^\perp = \{0\}$ (si un vecteur est dans $F$ et orthogonal à $F$, il est orthogonal à lui-même, donc nul par définition du produit scalaire défini positif).
+
+Donc $\dim(F \oplus F^\perp) = \dim(F) + \dim(F^\perp) \le n$.
+
+Comme $G \subset F^\perp$, on a $\dim(F^\perp) \ge n - p$.
+
+En réalité, dans un espace euclidien, $E = F \oplus F^\perp$.
+
+Tout $x$ s'écrit $x = \sum_{i=1}^n (x|e_i)e_i = \underbrace{\sum_{i=1}^p (x|e_i)e_i}_{\in F} + \underbrace{\sum_{i=p+1}^n (x|e_i)e_i}_{\in G}$.
+
+Comme $x$ quelconque se décompose, $F^\perp$ est exactement $G$.
+
+**Conclusion :**
+
+$$\dim(F^\perp) = \dim(G) = n - p = n - \dim(F)$$
+
+</details>
+
+---
+
+#### Base Duale
+
+Soit $V$ un espace vectoriel de dimension $n$ et $\mathfrak{B} = (e_1, \dots, e_n)$ une base de $V$.
+
+Prouver qu'il existe une unique famille de formes linéaires $(\varphi_1, \dots, \varphi_n)$ telle que $\varphi_i(e_j) = \delta_{i,j}$, et que cette famille forme une base de $V^*$ (l'espace dual).
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Pour l'existence et l'unicité, rappelez-vous qu'une application linéaire est entièrement déterminée par ses valeurs sur une base.
+
+Pour montrer que c'est une base, prouvez que la famille est libre, puis utilisez un argument de dimension ($\dim V^* = \dim V = n$).
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Existence et Unicité des $\varphi_i$**
+
+Une forme linéaire est une application linéaire de $V$ dans $K$. Une application linéaire est définie de manière unique par les images des vecteurs d'une base.
+
+Pour chaque $i$ fixé, définissons $\varphi_i$ par ses valeurs sur la base $\mathfrak{B}$ :
+
+$$\varphi_i(e_j) = \delta_{i,j} = \begin{cases} 1 & \text{si } i=j \\ 0 & \text{si } i \ne j \end{cases}$$
+
+Cette définition assure l'existence et l'unicité de chaque $\varphi_i$.
+
+**Étape 2 : Liberté de la famille**
+
+Soit $\lambda_1, \dots, \lambda_n$ des scalaires tels que la combinaison linéaire soit nulle :
+
+$$\sum_{i=1}^n \lambda_i \varphi_i = 0_{V^*}$$
+
+Cela signifie que pour tout vecteur $v \in V$, $\sum \lambda_i \varphi_i(v) = 0$.
+
+Appliquons cette égalité au vecteur de base $e_k$ :
+
+$$\sum_{i=1}^n \lambda_i \varphi_i(e_k) = 0$$
+
+Par définition, $\varphi_i(e_k) = \delta_{i,k}$. Seul le terme $i=k$ survit :
+
+$$\lambda_k \cdot 1 = 0 \implies \lambda_k = 0$$
+
+Ceci étant vrai pour tout $k \in \{1, \dots, n\}$, la famille est libre.
+
+**Étape 3 : Conclusion (Base)**
+
+La famille $(\varphi_1, \dots, \varphi_n)$ est une famille libre de $n$ vecteurs dans $V^*$.
+
+Comme $\dim(V^*) = \dim(V) = n$, toute famille libre de $n$ éléments est une base.
+
+Cette base est appelée la **base duale** de $\mathfrak{B}$.
+
+</details>

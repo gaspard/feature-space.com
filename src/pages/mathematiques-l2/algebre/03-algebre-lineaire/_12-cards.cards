@@ -1,0 +1,288 @@
+---
+id: a4a25672
+type: cards
+order: 12
+title: Rappels d’algèbre linéaire - fiches de révision (A)
+tags:
+  - Algèbre linéaire
+  - Espaces vectoriels
+  - Déterminant
+  - Endomorphismes
+  - Diagonalisation
+createdAt: '2025-11-27T07:58:43.842Z'
+level: regular
+course: Algèbre
+courseId: 3b74b601
+chapter: Rappels d’algèbre linéaire
+chapterId: 7e9b2b30
+---
+# Fiches de révision "Rappels d’algèbre linéaire" (A)
+
+---
+
+Qu'est-ce qu'un **sous-espace vectoriel** et comment démontrer qu'un ensemble en est un ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Un **sous-espace vectoriel** $W$ d'un espace vectoriel $V$ est un sous-ensemble non vide qui conserve la structure d'espace vectoriel (il est stable par les opérations).
+
+**Méthode de vérification (Stabilité) :**
+
+Pour prouver que $W \subset V$ est un sous-espace, il suffit de vérifier 3 points :
+
+1.  **Non-vacuité** : $W$ contient le vecteur nul $0_V$.
+2.  **Stabilité par addition** : Si $u, v \in W$, alors $u + v \in W$.
+3.  **Stabilité par multiplication scalaire** : Si $u \in W$ et $\lambda \in K$, alors $\lambda \cdot u \in W$.
+
+**Exemple :**
+
+Dans $\mathbb{R}^2$, la droite d'équation $y = 2x$ est un sous-espace vectoriel car elle passe par $(0,0)$ et toute combinaison linéaire de points de la droite reste sur la droite.
+
+</details>
+
+---
+
+Quelle est la définition d'une **famille libre** et d'une **famille génératrice** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Soit une famille de vecteurs $\mathcal{F} = \{v_1, \dots, v_n\}$ dans un espace $V$.
+
+1.  **Famille Génératrice** :
+
+    $\mathcal{F}$ engendre $V$ si **tout** vecteur de $V$ peut s'écrire comme une combinaison linéaire des vecteurs de $\mathcal{F}$.
+
+    $$ V = \text{Vect}(v_1, \dots, v_n) $$
+
+2.  **Famille Libre** (Linéairement indépendante) :
+
+    $\mathcal{F}$ est libre si la seule façon d'obtenir le vecteur nul par combinaison linéaire est de choisir tous les coefficients nuls.
+
+    $$ \lambda_1 v_1 + \dots + \lambda_n v_n = 0 \implies \lambda_1 = \dots = \lambda_n = 0 $$
+
+**Note :** Une famille qui est à la fois libre et génératrice est une **base**.
+
+</details>
+
+---
+
+Quelle est la définition d'une **application linéaire** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Une application $f : V \to W$ est dite **linéaire** si elle respecte les deux opérations de l'espace vectoriel (addition et multiplication externe).
+
+**Formule générale :**
+
+Pour tous vecteurs $u, v \in V$ et tout scalaire $\lambda \in K$ :
+
+$$ f(\lambda u + v) = \lambda f(u) + f(v) $$
+
+**Conséquence importante :**
+
+Une application linéaire envoie toujours l'origine sur l'origine :
+
+$$ f(0_V) = 0_W $$
+
+**Exemple :** La dérivation $P \mapsto P'$ dans l'espace des polynômes est linéaire.
+
+</details>
+
+---
+
+Quelle est la formule de changement de base pour un endomorphisme ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Si un endomorphisme $f$ est représenté par la matrice $A$ dans une base $\mathfrak{B}$ et par la matrice $B$ dans une base $\mathcal{C}$, alors :
+
+$$ B = P^{-1} A P $$
+
+**Où :**
+
+-   $B$ est la matrice dans la **nouvelle** base.
+-   $A$ est la matrice dans l'**ancienne** base.
+-   $P$ est la **matrice de passage** de l'ancienne base $\mathfrak{B}$ vers la nouvelle base $\mathcal{C}$ (ses colonnes sont les vecteurs de la nouvelle base exprimés dans l'ancienne).
+
+**Moyen mnémotechnique :** On "insère" la nouvelle base au milieu via $P$.
+
+</details>
+
+---
+
+Qu'est-ce que le **Théorème du rang** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le théorème du rang relie les dimensions de l'espace de départ, du noyau et de l'image d'une application linéaire $f: V \to W$ (lorsque $V$ est de dimension finie).
+
+**Formule :**
+
+$$ \dim(V) = \dim(\text{Ker}(f)) + \dim(\text{Im}(f)) $$
+
+**Interprétation :**
+
+La dimension totale de l'espace de départ se divise en deux parties :
+
+1.  Ce qui est "écrasé" sur 0 (le noyau).
+2.  Ce qui "survit" dans l'arrivée (l'image, ou le rang).
+
+**Rappel :** $\text{rang}(f) = \dim(\text{Im}(f))$.
+
+</details>
+
+---
+
+Comment définir le **Noyau** ($\text{Ker}$) et l'**Image** ($\text{Im}$) d'une application linéaire ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Soit $f : V \to W$ une application linéaire.
+
+1.  **Noyau ($\text{Ker}(f)$)** :
+
+    C'est l'ensemble des vecteurs de départ qui sont envoyés sur le vecteur nul de l'arrivée.
+
+    $$ \text{Ker}(f) = \{ v \in V \mid f(v) = 0_W \} $$
+
+    *Propriété :* $f$ est injective $\iff \text{Ker}(f) = \{0_V\}$.
+
+2.  **Image ($\text{Im}(f)$)** :
+
+    C'est l'ensemble des vecteurs d'arrivée qui sont atteints par l'application.
+
+    $$ \text{Im}(f) = \{ w \in W \mid \exists v \in V, f(v) = w \} $$
+
+    *Propriété :* $f$ est surjective $\iff \text{Im}(f) = W$.
+
+</details>
+
+---
+
+Qu'est-ce qu'un **espace vectoriel quotient** $V/W$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Si $W$ est un sous-espace vectoriel de $V$, l'espace quotient $V/W$ est l'ensemble constitué des "classes" de vecteurs modulo $W$. On "assimile" tous les vecteurs dont la différence appartient à $W$.
+
+**Éléments :**
+
+Un élément de $V/W$ s'écrit $v + W$.
+
+**Dimension (si finie) :**
+
+$$ \dim(V/W) = \dim(V) - \dim(W) $$
+
+**Intuition :**
+
+Si on imagine $V = \mathbb{R}^3$ et $W$ est une droite verticale (axe $z$), l'espace quotient $V/W$ correspond au plan horizontal (plan $xy$) obtenu en "écrasant" la dimension $z$.
+
+</details>
+
+---
+
+Comment calculer les **valeurs propres** d'une matrice (Polynôme caractéristique) ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Les valeurs propres d'une matrice carrée $A$ sont les racines de son **polynôme caractéristique**.
+
+**Étapes :**
+
+1.  Calculer le polynôme caractéristique $P_A(X)$ défini par le déterminant :
+
+    $$ P_A(X) = \det(A - X I_n) $$
+
+    (On soustrait l'inconnue $X$ sur la diagonale de $A$).
+
+2.  Résoudre l'équation $P_A(X) = 0$.
+
+    Les solutions $\lambda$ trouvées sont les valeurs propres.
+
+**Exemple :**
+
+Pour $A = \begin{pmatrix} 2 & 0 \\ 0 & 3 \end{pmatrix}$, $P_A(X) = (2-X)(3-X)$. Les valeurs propres sont 2 et 3.
+
+</details>
+
+---
+
+Que signifie que deux sous-espaces sont en **somme directe** ($E \oplus F$) ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Deux sous-espaces $E$ et $F$ de $V$ sont en somme directe si tout vecteur de leur somme se décompose de manière **unique** sur $E$ et $F$.
+
+**Condition pratique :**
+
+La somme est directe si et seulement si leur intersection est réduite au vecteur nul :
+
+$$ E \cap F = \{0_V\} $$
+
+Si de plus $E + F = V$, on dit que $E$ et $F$ sont **supplémentaires** dans $V$. On a alors $\dim(E) + \dim(F) = \dim(V)$ (en dimension finie).
+
+</details>
+
+---
+
+Quelles sont les conditions pour qu'une matrice soit **diagonalisable** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Une matrice carrée $A$ de taille $n$ est diagonalisable si elle est semblable à une matrice diagonale.
+
+**Critères principaux :**
+
+1.  **Somme des dimensions :** La somme des dimensions des espaces propres est égale à $n$ (dimension de l'espace entier).
+
+    $$ \sum \dim(V_\lambda) = n $$
+
+2.  **Condition suffisante (racines distinctes) :** Si $A$ possède $n$ valeurs propres **distinctes**, alors elle est automatiquement diagonalisable.
+
+**Note :** Si le polynôme caractéristique n'est pas scindé (ne se factorise pas complètement dans le corps $K$), la matrice n'est pas diagonalisable sur ce corps.
+
+</details>
+
+---
+
+Quelle est la relation entre le **déterminant** et l'**inversibilité** d'une matrice ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le déterminant est un scalaire qui indique si une matrice est inversible.
+
+**Propriété fondamentale :**
+
+Une matrice carrée $A$ est inversible si et seulement si son déterminant est **non nul**.
+
+$$ A \text{ est inversible} \iff \det(A) \neq 0 $$
+
+**Lien avec l'inverse :**
+
+Si $A$ est inversible, alors :
+
+$$ \det(A^{-1}) = \frac{1}{\det(A)} $$
+
+</details>

@@ -1,0 +1,584 @@
+---
+id: fce48ae1
+type: proofs
+order: 15
+title: Rappels d’algèbre linéaire - preuves (A)
+tags:
+  - Algèbre linéaire
+  - Espaces vectoriels
+  - Déterminant
+  - Endomorphismes
+  - Diagonalisation
+createdAt: '2025-11-27T07:58:43.842Z'
+level: regular
+course: Algèbre
+courseId: 3b74b601
+chapter: Rappels d’algèbre linéaire
+chapterId: 7e9b2b30
+---
+# Preuves "Rappels d’algèbre linéaire" (A)
+
+---
+
+#### Intersection de sous-espaces vectoriels
+
+Prouvez que l'intersection de deux sous-espaces vectoriels $W_1$ et $W_2$ d'un $K$-espace vectoriel $V$ est un sous-espace vectoriel de $V$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Pour montrer qu'un ensemble $W$ est un sous-espace vectoriel, vous devez vérifier deux choses principales :
+
+1. L'ensemble est non vide (il contient au moins le vecteur nul).
+2. L'ensemble est stable par combinaison linéaire (si $u, v \in W$ et $\lambda \in K$, alors $\lambda u + v \in W$).
+
+Appliquez ces critères à l'ensemble $W_1 \cap W_2$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $W = W_1 \cap W_2$. Nous devons montrer que $W$ est un sous-espace vectoriel de $V$.
+
+**Étape 1 : Le vecteur nul appartient à l'intersection**
+
+Puisque $W_1$ et $W_2$ sont des sous-espaces vectoriels, ils contiennent tous deux le vecteur nul $0_V$.
+
+Par conséquent, $0_V \in W_1$ et $0_V \in W_2$, ce qui implique $0_V \in W_1 \cap W_2$. L'intersection n'est donc pas vide.
+
+**Étape 2 : Stabilité par combinaison linéaire**
+
+Soient $u, v \in W$ et $\lambda \in K$.
+
+Puisque $u, v \in W_1 \cap W_2$, alors $u \in W_1$ et $v \in W_1$. Comme $W_1$ est un sous-espace vectoriel, il est stable par combinaison linéaire, donc $\lambda u + v \in W_1$.
+
+De même, $u \in W_2$ et $v \in W_2$. Comme $W_2$ est un sous-espace vectoriel, on a $\lambda u + v \in W_2$.
+
+Puisque $\lambda u + v$ appartient à la fois à $W_1$ et à $W_2$, il appartient à leur intersection.
+
+$$ \lambda u + v \in W_1 \cap W_2 $$
+
+**Conclusion :**
+
+$W_1 \cap W_2$ contient $0_V$ et est stable par combinaison linéaire. C'est donc un sous-espace vectoriel de $V$.
+
+</details>
+
+---
+
+#### Unicité des coordonnées dans une base
+
+Soit $V$ un espace vectoriel et $\mathfrak{B} = \{e_1, \dots, e_n\}$ une base de $V$. Prouvez que tout vecteur $v \in V$ s'écrit de manière unique comme combinaison linéaire des vecteurs de la base.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+L'existence de la décomposition vient du fait que la famille est génératrice.
+
+Pour l'unicité, supposez qu'il existe deux écritures différentes pour un même vecteur $v$. Soustrayez les deux égalités et utilisez le fait que la famille $\mathfrak{B}$ est libre (indépendante).
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Existence**
+
+Par définition d'une base, la famille $\mathfrak{B}$ est génératrice. Donc pour tout $v \in V$, il existe des scalaires $\lambda_1, \dots, \lambda_n$ tels que :
+
+$$ v = \sum_{i=1}^n \lambda_i e_i $$
+
+**Étape 2 : Unicité**
+
+Supposons que $v$ admette deux décompositions :
+
+$$ v = \sum_{i=1}^n \lambda_i e_i \quad \text{et} \quad v = \sum_{i=1}^n \mu_i e_i $$
+
+En soustrayant la deuxième égalité à la première, on obtient :
+
+$$ 0_V = v - v = \left(\sum_{i=1}^n \lambda_i e_i\right) - \left(\sum_{i=1}^n \mu_i e_i\right) = \sum_{i=1}^n (\lambda_i - \mu_i) e_i $$
+
+**Étape 3 : Utilisation de la liberté**
+
+Puisque $\mathfrak{B}$ est une base, c'est une famille libre. Par définition d'une famille libre, la seule combinaison linéaire nulle est celle dont tous les coefficients sont nuls.
+
+Ainsi, pour tout $i \in \{1, \dots, n\}$ :
+
+$$ \lambda_i - \mu_i = 0 \implies \lambda_i = \mu_i $$
+
+**Conclusion :**
+
+Les coefficients sont identiques, la décomposition est donc unique.
+
+</details>
+
+---
+
+#### Le noyau est un sous-espace vectoriel
+
+Soit $f : V \to W$ une application linéaire. Prouvez que le noyau de $f$, noté $\text{Ker}(f)$, est un sous-espace vectoriel de $V$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Rappelez-vous la définition du noyau : $\text{Ker}(f) = \{v \in V \mid f(v) = 0_W\}$.
+
+Utilisez la linéarité de $f$ (notamment $f(\lambda u + v) = \lambda f(u) + f(v)$) pour vérifier les propriétés de stabilité d'un sous-espace vectoriel.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Nous devons montrer que $\text{Ker}(f)$ contient $0_V$ et est stable par combinaison linéaire.
+
+**Étape 1 : Le vecteur nul**
+
+Comme $f$ est linéaire, on sait que l'image du vecteur nul est le vecteur nul : $f(0_V) = 0_W$.
+
+Donc $0_V \in \text{Ker}(f)$.
+
+**Étape 2 : Stabilité**
+
+Soient $u, v \in \text{Ker}(f)$ et $\lambda \in K$.
+
+Par définition du noyau, cela signifie que $f(u) = 0_W$ et $f(v) = 0_W$.
+
+Calculons l'image de la combinaison linéaire $\lambda u + v$ par $f$ :
+
+$$ f(\lambda u + v) = \lambda f(u) + f(v) \quad (\text{car } f \text{ est linéaire}) $$
+
+En remplaçant $f(u)$ et $f(v)$ par $0_W$ :
+
+$$ f(\lambda u + v) = \lambda \cdot 0_W + 0_W = 0_W $$
+
+**Conclusion :**
+
+Puisque $f(\lambda u + v) = 0_W$, le vecteur $\lambda u + v$ appartient à $\text{Ker}(f)$. $\text{Ker}(f)$ est bien un sous-espace vectoriel de $V$.
+
+</details>
+
+---
+
+#### Injectivité et Noyau
+
+Soit $f : V \to W$ une application linéaire. Prouvez que $f$ est injective si et seulement si $\text{Ker}(f) = \{0_V\}$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Cette preuve est une double implication ($\iff$).
+
+1. ($\Rightarrow$) Si $f$ est injective, montrez que le seul vecteur qui s'envoie sur $0_W$ est $0_V$.
+2. ($\Leftarrow$) Si le noyau est trivial, supposez $f(x) = f(y)$ et utilisez la linéarité pour montrer que $f(x-y) = 0$, puis concluez que $x=y$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Sens direct ($\Rightarrow$) :** Supposons $f$ injective.
+
+Soit $x \in \text{Ker}(f)$. Par définition, $f(x) = 0_W$.
+
+Or, nous savons que pour toute application linéaire, $f(0_V) = 0_W$.
+
+On a donc $f(x) = f(0_V)$.
+
+Puisque $f$ est injective, $f(x) = f(0_V)$ implique $x = 0_V$.
+
+Donc $\text{Ker}(f) = \{0_V\}$.
+
+**Sens réciproque ($\Leftarrow$) :** Supposons $\text{Ker}(f) = \{0_V\}$.
+
+Soient $x, y \in V$ tels que $f(x) = f(y)$.
+
+Par linéarité, cela implique :
+
+$$ f(x) - f(y) = 0_W \implies f(x - y) = 0_W $$
+
+Cela signifie que le vecteur $x - y$ appartient au noyau de $f$.
+
+Or, par hypothèse, $\text{Ker}(f) = \{0_V\}$, donc :
+
+$$ x - y = 0_V \implies x = y $$
+
+Nous avons montré que $f(x) = f(y) \implies x = y$, donc $f$ est injective.
+
+**Conclusion :**
+
+$f$ est injective $\iff \text{Ker}(f) = \{0_V\}$.
+
+</details>
+
+---
+
+#### Changement de coordonnées
+
+Soit $V$ un espace vectoriel muni d'une base $\mathfrak{B} = \{e_1, \dots, e_n\}$. Soit $\mathcal{C} = \{v_1, \dots, v_n\}$ une autre base de $V$. Soit $P$ la matrice de passage de $\mathfrak{B}$ à $\mathcal{C}$ (ses colonnes sont les composantes des $v_j$ dans $\mathfrak{B}$).
+
+Prouvez que si $X$ est la matrice colonne des coordonnées d'un vecteur $u$ dans $\mathfrak{B}$, et $X'$ celles dans $\mathcal{C}$, alors $X = P X'$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Écrivez le vecteur $u$ comme combinaison linéaire des éléments de la base $\mathcal{C}$ en utilisant les coordonnées $X'$.
+
+Ensuite, remplacez chaque vecteur de base $v_j$ de $\mathcal{C}$ par son expression en fonction de la base $\mathfrak{B}$ (qui utilise les coefficients de la matrice $P$).
+
+Identifiez le résultat avec l'expression de $u$ dans la base $\mathfrak{B}$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $u \in V$.
+
+Notons $X = \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}$ les coordonnées dans $\mathfrak{B}$, donc $u = \sum_{i=1}^n x_i e_i$.
+
+Notons $X' = \begin{pmatrix} x'_1 \\ \vdots \\ x'_n \end{pmatrix}$ les coordonnées dans $\mathcal{C}$, donc $u = \sum_{j=1}^n x'_j v_j$.
+
+**Étape 1 : Expression des vecteurs de la nouvelle base**
+
+La matrice de passage $P = (p_{ij})$ contient en $j$-ème colonne les coordonnées de $v_j$ dans la base $\mathfrak{B}$ :
+
+$$ v_j = \sum_{i=1}^n p_{ij} e_i $$
+
+**Étape 2 : Substitution**
+
+Remplaçons $v_j$ dans l'expression de $u$ :
+
+$$ u = \sum_{j=1}^n x'_j \left( \sum_{i=1}^n p_{ij} e_i \right) $$
+
+**Étape 3 : Réarrangement (interversion des sommes)**
+
+$$ u = \sum_{i=1}^n \left( \sum_{j=1}^n p_{ij} x'_j \right) e_i $$
+
+**Étape 4 : Identification**
+
+Par l'unicité des coordonnées dans la base $\mathfrak{B}$, le coefficient devant $e_i$ doit être $x_i$.
+
+$$ x_i = \sum_{j=1}^n p_{ij} x'_j $$
+
+Cette égalité pour tout $i$ correspond exactement au produit matriciel de la ligne $i$ de $P$ par la colonne $X'$.
+
+**Conclusion :**
+
+Sous forme matricielle, cela s'écrit $X = P X'$.
+
+</details>
+
+---
+
+#### Déterminant de l'inverse
+
+Prouvez que si une matrice $A \in M_n(K)$ est inversible, alors $\det(A^{-1}) = \frac{1}{\det(A)}$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez la propriété multiplicative du déterminant : $\det(AB) = \det(A)\det(B)$.
+
+Appliquez cette propriété à l'identité définissant l'inverse : $A A^{-1} = I_n$.
+
+Rappelez-vous que $\det(I_n) = 1$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Définition de l'inverse**
+
+Si $A$ est inversible, il existe $A^{-1}$ telle que :
+
+$$ A A^{-1} = I_n $$
+
+**Étape 2 : Application du déterminant**
+
+Appliquons la fonction déterminant de chaque côté de l'égalité :
+
+$$ \det(A A^{-1}) = \det(I_n) $$
+
+**Étape 3 : Propriétés du déterminant**
+
+Nous savons que $\det(I_n) = 1$ (normalisation).
+
+Nous savons aussi que le déterminant est multiplicatif, c'est-à-dire $\det(XY) = \det(X)\det(Y)$.
+
+Donc :
+
+$$ \det(A) \det(A^{-1}) = 1 $$
+
+**Étape 4 : Conclusion**
+
+Puisque le produit est 1, cela implique que $\det(A) \neq 0$ (ce qui est cohérent avec l'inversibilité) et que nous pouvons diviser par $\det(A)$.
+
+$$ \det(A^{-1}) = \frac{1}{\det(A)} = (\det(A))^{-1} $$
+
+</details>
+
+---
+
+#### Liberté des vecteurs propres
+
+Soit $u$ un endomorphisme de $V$. Prouvez que si $v_1, \dots, v_k$ sont des vecteurs propres associés à des valeurs propres distinctes $\lambda_1, \dots, \lambda_k$ (avec $\lambda_i \neq \lambda_j$ pour $i \neq j$), alors la famille $\{v_1, \dots, v_k\}$ est libre.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Procédez par récurrence sur le nombre $k$ de vecteurs.
+
+Pour l'hérédité (passage de $k-1$ à $k$), supposez une combinaison linéaire nulle $\sum_{i=1}^k \alpha_i v_i = 0$.
+
+Appliquez l'endomorphisme $f$ à cette équation, puis multipliez l'équation originale par une valeur propre (par exemple $\lambda_k$). En soustrayant les deux résultats, vous éliminerez un terme et pourrez utiliser l'hypothèse de récurrence.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Nous procédons par récurrence sur $k$.
+
+**Initialisation ($k=1$) :**
+
+Si $v_1$ est un vecteur propre, il est non nul par définition. La famille $\{v_1\}$ est donc libre.
+
+**Hérédité :**
+
+Supposons la propriété vraie pour toute famille de $k-1$ vecteurs propres associés à des valeurs propres distinctes.
+
+Soient $v_1, \dots, v_k$ des vecteurs propres associés à des valeurs propres distinctes $\lambda_1, \dots, \lambda_k$.
+
+Considérons une combinaison linéaire nulle :
+
+(1) $$ \alpha_1 v_1 + \alpha_2 v_2 + \dots + \alpha_k v_k = 0_V $$
+
+Appliquons l'endomorphisme $u$ à cette égalité. Par linéarité et définition des vecteurs propres ($u(v_i) = \lambda_i v_i$) :
+
+(2) $$ \alpha_1 \lambda_1 v_1 + \alpha_2 \lambda_2 v_2 + \dots + \alpha_k \lambda_k v_k = 0_V $$
+
+Multiplions l'équation (1) par le scalaire $\lambda_k$ :
+
+(3) $$ \alpha_1 \lambda_k v_1 + \alpha_2 \lambda_k v_2 + \dots + \alpha_k \lambda_k v_k = 0_V $$
+
+Soustrayons l'équation (3) de l'équation (2) :
+
+$$ \alpha_1 (\lambda_1 - \lambda_k) v_1 + \dots + \alpha_{k-1} (\lambda_{k-1} - \lambda_k) v_k + \alpha_k (\lambda_k - \lambda_k) v_k = 0_V $$
+
+Le dernier terme s'annule. Il reste :
+
+$$ \sum_{i=1}^{k-1} \alpha_i (\lambda_i - \lambda_k) v_i = 0_V $$
+
+Ceci est une combinaison linéaire de $k-1$ vecteurs propres. Par hypothèse de récurrence, cette famille est libre, donc tous les coefficients sont nuls :
+
+$$ \forall i \in \{1, \dots, k-1\}, \quad \alpha_i (\lambda_i - \lambda_k) = 0 $$
+
+Comme les valeurs propres sont distinctes, $\lambda_i - \lambda_k \neq 0$ pour tout $i < k$. Donc nécessairement $\alpha_i = 0$ pour $i=1, \dots, k-1$.
+
+En reportant dans (1), il reste $\alpha_k v_k = 0$. Comme $v_k \neq 0$, alors $\alpha_k = 0$.
+
+**Conclusion :**
+
+Tous les $\alpha_i$ sont nuls, la famille est libre.
+
+</details>
+
+---
+
+#### Caractérisation de la somme directe (intersection)
+
+Soient $E$ et $F$ deux sous-espaces vectoriels de $V$. Prouvez que la somme $E + F$ est directe (notée $E \oplus F$) si et seulement si $E \cap F = \{0_V\}$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Rappelez-vous la définition de la somme directe : pour tout $w \in E+F$, il existe une **unique** décomposition $w = u + v$ avec $u \in E, v \in F$.
+
+($\Rightarrow$) Si $x$ est dans l'intersection, considérez sa décomposition comme $x + 0$ et $0 + x$.
+
+($\Leftarrow$) Si l'intersection est nulle, supposez deux décompositions $u+v = u'+v'$ et montrez que $u-u'$ appartient à l'intersection.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Sens direct ($\Rightarrow$) :** Supposons la somme directe.
+
+Soit $x \in E \cap F$.
+
+On peut écrire $x$ comme élément de la somme $E+F$ de deux manières :
+
+1. $x = x + 0_V$ (avec $x \in E$ et $0_V \in F$).
+2. $x = 0_V + x$ (avec $0_V \in E$ et $x \in F$).
+
+Puisque la somme est directe, la décomposition est unique. Donc le premier terme de la somme doit être le même : $x = 0_V$.
+
+Ainsi, $E \cap F = \{0_V\}$.
+
+**Sens réciproque ($\Leftarrow$) :** Supposons $E \cap F = \{0_V\}$.
+
+Soit $w \in E + F$. Supposons qu'il existe deux décompositions :
+
+$$ w = u + v = u' + v' \quad \text{avec } u, u' \in E \text{ et } v, v' \in F $$
+
+On peut réarranger l'égalité :
+
+$$ u - u' = v' - v $$
+
+Le terme de gauche ($u - u'$) appartient à $E$ (car $E$ est un sous-espace).
+
+Le terme de droite ($v' - v$) appartient à $F$ (car $F$ est un sous-espace).
+
+Donc, ce vecteur commun appartient à $E \cap F$.
+
+Par hypothèse, $E \cap F = \{0_V\}$, donc :
+
+$$ u - u' = 0_V \implies u = u' $$
+
+$$ v' - v = 0_V \implies v = v' $$
+
+L'unicité de la décomposition est prouvée.
+
+**Conclusion :**
+
+La somme est directe si et seulement si l'intersection est réduite au vecteur nul.
+
+</details>
+
+---
+
+#### Matrice d'un endomorphisme diagonalisable
+
+Prouvez que si $\mathfrak{B} = \{v_1, \dots, v_n\}$ est une base de $V$ constituée de vecteurs propres d'un endomorphisme $f$, alors la matrice de $f$ dans cette base est diagonale.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+La $j$-ème colonne de la matrice de $f$ dans la base $\mathfrak{B}$ contient les coordonnées du vecteur $f(v_j)$ exprimé dans la base $\mathfrak{B}$.
+
+Utilisez la définition d'un vecteur propre : $f(v_j) = \lambda_j v_j$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $A = \text{Mat}_{\mathfrak{B}}(f)$. Par définition, la colonne $j$ de $A$ correspond aux coordonnées du vecteur $f(v_j)$ dans la base $\mathfrak{B} = \{v_1, \dots, v_n\}$.
+
+**Étape 1 : Image des vecteurs de base**
+
+Puisque les $v_j$ sont des vecteurs propres, il existe des scalaires $\lambda_j$ (les valeurs propres) tels que :
+
+$$ f(v_j) = \lambda_j v_j $$
+
+**Étape 2 : Coordonnées dans la base**
+
+Le vecteur $\lambda_j v_j$ s'écrit comme combinaison linéaire des éléments de la base :
+
+$$ f(v_j) = 0 \cdot v_1 + \dots + \lambda_j \cdot v_j + \dots + 0 \cdot v_n $$
+
+Les coordonnées sont donc nulles partout sauf à la $j$-ème position, où la coordonnée est $\lambda_j$.
+
+**Étape 3 : Construction de la matrice**
+
+La matrice $A$ a donc la forme :
+
+$$ A = \begin{pmatrix}
+
+\lambda_1 & 0 & \dots & 0 \\
+
+0 & \lambda_2 & \dots & 0 \\
+
+\vdots & \vdots & \ddots & \vdots \\
+
+0 & 0 & \dots & \lambda_n
+
+\end{pmatrix} $$
+
+Les termes hors de la diagonale sont nuls ($a_{ij} = 0$ pour $i \neq j$) et les termes diagonaux sont les valeurs propres ($a_{jj} = \lambda_j$).
+
+**Conclusion :**
+
+La matrice est diagonale.
+
+</details>
+
+---
+
+#### Dimension d'une somme directe
+
+Prouvez que si $E$ et $F$ sont deux sous-espaces de dimension finie en somme directe, alors $\dim(E \oplus F) = \dim(E) + \dim(F)$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Considérez une base $\mathfrak{B}_E = \{e_1, \dots, e_p\}$ de $E$ et une base $\mathfrak{B}_F = \{f_1, \dots, f_q\}$ de $F$.
+
+Montrez que la réunion de ces deux familles forme une base de $E \oplus F$. Vous devrez prouver que cette réunion est génératrice et libre.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $\mathfrak{B}_E = \{u_1, \dots, u_p\}$ une base de $E$ ($\dim E = p$) et $\mathfrak{B}_F = \{v_1, \dots, v_q\}$ une base de $F$ ($\dim F = q$).
+
+Posons $\mathcal{B} = \{u_1, \dots, u_p, v_1, \dots, v_q\}$.
+
+**Étape 1 : Famille génératrice**
+
+Soit $w \in E \oplus F$. Par définition de la somme, $w = u + v$ avec $u \in E$ et $v \in F$.
+
+$u$ est combinaison linéaire de $\mathfrak{B}_E$ et $v$ est combinaison linéaire de $\mathfrak{B}_F$.
+
+Donc $w$ est combinaison linéaire de $\mathcal{B}$. La famille engendre $E \oplus F$.
+
+**Étape 2 : Famille libre**
+
+Supposons une combinaison linéaire nulle :
+
+$$ \sum_{i=1}^p \alpha_i u_i + \sum_{j=1}^q \beta_j v_j = 0_V $$
+
+Posons $x = \sum \alpha_i u_i \in E$ et $y = \sum \beta_j v_j \in F$.
+
+L'équation devient $x + y = 0_V$, soit $x = -y$.
+
+Comme $x \in E$ et $-y \in F$ (car $F$ est un sous-espace), on a $x \in E \cap F$.
+
+La somme étant directe, $E \cap F = \{0_V\}$, donc $x = 0_V$ et $y = 0_V$.
+
+Puisque $x = \sum \alpha_i u_i = 0_V$ et que $\mathfrak{B}_E$ est une base (donc libre), tous les $\alpha_i = 0$.
+
+Puisque $y = \sum \beta_j v_j = 0_V$ et que $\mathfrak{B}_F$ est une base, tous les $\beta_j = 0$.
+
+**Conclusion :**
+
+La famille $\mathcal{B}$ est une base de $E \oplus F$. Elle contient $p+q$ éléments.
+
+Donc $\dim(E \oplus F) = p + q = \dim(E) + \dim(F)$.
+
+</details>

@@ -12,7 +12,7 @@ tags:
   - structures algébriques
 createdAt: '2025-10-23T16:31:20.229Z'
 level: regular
-course: Algèbre I - TD1
+course: Algèbre - TD
 courseId: 4b53c5fb
 chapter: 'Groupes, anneaux et corps'
 chapterId: a172ec8a
