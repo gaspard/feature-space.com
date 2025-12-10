@@ -299,17 +299,12 @@ On définit deux entiers :
 
 Le point singulier est dit **non dégénéré** si de tels entiers $p$ et $q$ existent. La nature géométrique du point dépend alors de la **parité** de $p$ et $q$.
 
-| Parité de p | Parité de q | Type de singularité              | Allure locale                                      |
-
-| :---------- | :---------- | :------------------------------- | :------------------------------------------------- |
-
-| $p$ pair    | $q$ impair  | **Rebroussement de 1ère espèce** | Deux branches de part et d'autre de la tangente.   |
-
-| $p$ pair    | $q$ pair    | **Rebroussement de 2ème espèce** | Deux branches du même côté de la tangente.         |
-
-| $p$ impair  | $q$ pair    | **Point méplat** (concavité)     | Semblable à $y=x^4$, plus plat qu'une parabole.    |
-
-| $p$ impair  | $q$ impair  | **Point d'inflexion**            | La courbe traverse sa tangente.                    |
+| Parité de p | Parité de q | Type de singularité              | Allure locale                                    |
+| :---------- | :---------- | :------------------------------- | :----------------------------------------------- |
+| $p$ pair    | $q$ impair  | **Rebroussement de 1ère espèce** | Deux branches de part et d'autre de la tangente. |
+| $p$ pair    | $q$ pair    | **Rebroussement de 2ème espèce** | Deux branches du même côté de la tangente.       |
+| $p$ impair  | $q$ pair    | **Point méplat** (concavité)     | Semblable à $y=x^4$, plus plat qu'une parabole.  |
+| $p$ impair  | $q$ impair  | **Point d'inflexion**            | La courbe traverse sa tangente.                  |
 
 ### Explications Détaillées
 
