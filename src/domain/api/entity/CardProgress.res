@@ -15,13 +15,17 @@ type t = {
   state: state, // Last evaluation
 }
 
-let recallTime = (timestamp, state, ~dayLength=3600. *. 24. *. 1000.) =>
+let noop = (_timestamp, mu: float) => mu
+
+let recallTime = (timestamp, state, ~dayLength=3600. *. 24. *. 1000., ~sample=noop) => {
+  let dayLength = sample(timestamp, dayLength)
   switch state {
   | Again => timestamp +. again *. dayLength
   | Hard => timestamp +. hard *. dayLength
   | Good => timestamp +. good *. dayLength
   | Easy(i) => timestamp +. easy *. dayLength *. 2.->Math.pow(~exp=i->Int.toFloat)
   }
+}
 
 let next = (prev, state, ~now) => {
   let state = switch (prev, state) {

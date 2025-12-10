@@ -3,18 +3,24 @@
 import * as S from "sury/src/S.mjs";
 import * as Core__Int from "@rescript/core/src/Core__Int.mjs";
 
-function recallTime(timestamp, state, dayLengthOpt) {
+function noop(_timestamp, mu) {
+  return mu;
+}
+
+function recallTime(timestamp, state, dayLengthOpt, sampleOpt) {
   var dayLength = dayLengthOpt !== undefined ? dayLengthOpt : 3600 * 24 * 1000;
+  var sample = sampleOpt !== undefined ? sampleOpt : noop;
+  var dayLength$1 = sample(timestamp, dayLength);
   if (typeof state === "object") {
-    return timestamp + 6 * dayLength * Math.pow(2, state._0);
+    return timestamp + 6 * dayLength$1 * Math.pow(2, state._0);
   }
   switch (state) {
     case "again" :
-        return timestamp + 0 * dayLength;
+        return timestamp + 0 * dayLength$1;
     case "hard" :
-        return timestamp + 1 * dayLength;
+        return timestamp + 1 * dayLength$1;
     case "good" :
-        return timestamp + 3 * dayLength;
+        return timestamp + 3 * dayLength$1;
     
   }
 }
@@ -110,6 +116,7 @@ export {
   hard ,
   good ,
   easy ,
+  noop ,
   recallTime ,
   next ,
   ofString ,

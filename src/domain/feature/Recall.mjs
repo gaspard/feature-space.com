@@ -2,6 +2,7 @@
 
 import * as Tilia from "tilia/src/Tilia.mjs";
 import * as Js_exn from "rescript/lib/es6/js_exn.js";
+import * as Random from "./Random.mjs";
 import * as Core__Array from "@rescript/core/src/Core__Array.mjs";
 import * as CardProgress from "../api/entity/CardProgress.mjs";
 
@@ -41,11 +42,14 @@ var Ui = {
 
 function sort(cards, dayLengthOpt) {
   var dayLength = dayLengthOpt !== undefined ? dayLengthOpt : 24 * 3600 * 1000;
+  var sample = function (timestamp, v) {
+    return Random.Gaussian.ofSeed(timestamp, v, 0.5);
+  };
   return cards.toSorted(function (param, param$1) {
               var b = param$1[1];
               var a = param[1];
-              var aProgress = CardProgress.recallTime(a.timestamp, a.state, dayLength);
-              var bProgress = CardProgress.recallTime(b.timestamp, b.state, dayLength);
+              var aProgress = CardProgress.recallTime(a.timestamp, a.state, dayLength, sample);
+              var bProgress = CardProgress.recallTime(b.timestamp, b.state, dayLength, sample);
               if (aProgress < bProgress) {
                 return -1.0;
               } else if (aProgress === bProgress) {
@@ -62,7 +66,7 @@ function recallCount(progs, nowOpt, dayLengthOpt) {
   return progs.flatMap(function (prog) {
                 return Object.values(prog.cards);
               }).filter(function (param) {
-              return CardProgress.recallTime(param.timestamp, param.state, dayLength) <= now;
+              return CardProgress.recallTime(param.timestamp, param.state, dayLength, undefined) <= now;
             }).length;
 }
 
@@ -88,7 +92,7 @@ function toRecall(stacks, nowOpt, dayLengthOpt) {
   var seenCards$1 = sort(seenCards, dayLength);
   var afterIdx = seenCards$1.findIndex(function (param) {
         var match = param[1];
-        return CardProgress.recallTime(match.timestamp, match.state, dayLength) > now;
+        return CardProgress.recallTime(match.timestamp, match.state, dayLength, undefined) > now;
       });
   return [
           (

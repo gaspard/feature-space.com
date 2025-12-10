@@ -83,9 +83,10 @@ let sort = (cards: array<(Card.t, CardProgress.t)>, ~dayLength=24. *. 3600. *. 1
   Card.t,
   CardProgress.t,
 )> => {
+  let sample = (timestamp, v) => Random.Gaussian.ofSeed(timestamp, v, 0.5)
   cards->Array.toSorted(((_, a), (_, b)) => {
-    let aProgress = CardProgress.recallTime(a.timestamp, a.state, ~dayLength)
-    let bProgress = CardProgress.recallTime(b.timestamp, b.state, ~dayLength)
+    let aProgress = CardProgress.recallTime(a.timestamp, a.state, ~dayLength, ~sample)
+    let bProgress = CardProgress.recallTime(b.timestamp, b.state, ~dayLength, ~sample)
     aProgress < bProgress ? -1.0 : aProgress === bProgress ? 0.0 : 1.0
   })
 }
