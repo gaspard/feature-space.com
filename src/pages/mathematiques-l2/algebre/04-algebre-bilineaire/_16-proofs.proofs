@@ -626,3 +626,153 @@ Comme $\dim(V^*) = \dim(V) = n$, toute famille libre de $n$ éléments est une b
 Cette base est appelée la **base duale** de $\mathfrak{B}$.
 
 </details>
+
+---
+
+#### Matrice définie positive $\implies$ Inversible
+
+Prouver qu'une matrice définie positive est inversible.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+$A$ est définie positive si pour tout vecteur $x \neq 0$, le produit scalaire $\langle Ax, x \rangle > 0$.
+
+Pour montrer que $A$ est inversible, il suffit de montrer que son noyau est réduit à $\{0\}$.
+
+Prenez un vecteur $x \in \text{Ker}(A)$ et calculez $\langle Ax, x \rangle$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Nous allons prouver que si une matrice symétrique $A$ est définie positive, alors son noyau est réduit au vecteur nul.
+
+**Preuve par le Noyau (Algébrique)**
+
+Rappelons la définition : $A$ est définie positive si pour tout vecteur $x \neq 0$, le produit scalaire $\langle Ax, x \rangle > 0$.
+
+Supposons que $x$ soit un vecteur du noyau de $A$, c'est-à-dire $Ax = 0$.
+
+Calculons la quantité $\langle Ax, x \rangle$.
+Puisque $Ax = 0$, alors $\langle 0, x \rangle = 0$.
+
+Or, l'hypothèse "$A$ est définie positive" impose que si $x \neq 0$, alors $\langle Ax, x \rangle$ doit être strictement supérieur à 0.
+
+Le seul moyen d'avoir $\langle Ax, x \rangle = 0$ sans contredire la définition est que $x$ soit le vecteur nul.
+
+**Conclusion :**
+$\text{Ker}(A) = \{0\}$, donc $A$ est inversible.
+
+*(Autre approche possible : via le théorème spectral, toutes les valeurs propres sont strictement positives, donc leur produit - le déterminant - est non nul)*.
+
+</details>
+
+---
+
+#### Théorème Spectral (Matrices symétriques réelles)
+
+Prouver que tout endomorphisme symétrique (ou matrice symétrique réelle) est diagonalisable dans une base orthonormée.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Procédez par récurrence sur la dimension de l'espace $n$.
+
+Utilisez deux résultats intermédiaires (à admettre ou à prouver rapidement) :
+1. Les valeurs propres d'une matrice symétrique réelle sont réelles.
+2. Si un sous-espace est stable par un endomorphisme symétrique, alors son orthogonal l'est aussi.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Nous allons prouver la propriété $P(n)$ : "Toute matrice symétrique de taille $n$ est diagonalisable dans une base orthonormée" par récurrence sur $n$.
+
+**Préliminaires**
+
+*   **Lemme 1 :** Les valeurs propres d'une matrice symétrique réelle sont réelles.
+    *Preuve :* Soit $AX = \lambda X$. On a ${}^t\bar{X} A X = \lambda \|X\|^2$. Par symétrie et réalité de $A$, ${}^t\bar{X} A X = {}^t(A\bar{X}) X = \bar{\lambda} \|X\|^2$. Donc $\lambda = \bar{\lambda}$.
+*   **Lemme 2 :** Si un sous-espace $F$ est stable par $A$, alors $F^\perp$ l'est aussi.
+    *Preuve :* Soit $y \in F^\perp$. Pour tout $x \in F$, $\langle Ay, x \rangle = \langle y, Ax \rangle = 0$ car $Ax \in F$. Donc $Ay \in F^\perp$.
+
+**Initialisation ($n=1$)**
+
+Une matrice $1 \times 1$ est déjà diagonale. La propriété est vraie.
+
+**Hérédité**
+
+Supposons que $P(n-1)$ soit vraie. Soit $A$ une matrice symétrique de taille $n$.
+
+1.  **Trouver un premier vecteur :** D'après le Lemme 1, le polynôme caractéristique de $A$ a des racines réelles. Il existe au moins une valeur propre réelle $\lambda_1$ et un vecteur propre associé $e_1$ que l'on normalise ($\|e_1\|=1$).
+2.  **Créer les espaces :** Soit $D = \text{Vect}(e_1)$. $D$ est stable par $A$.
+3.  **Utiliser l'orthogonal :** D'après le Lemme 2, l'hyperplan $H = D^\perp$ (de dimension $n-1$) est aussi stable par $A$.
+4.  **Restriction :** On considère la restriction $A_H$ de $A$ à $H$. C'est un endomorphisme symétrique de $H$.
+5.  **Hypothèse de récurrence :** On applique $P(n-1)$ à $A_H$. Il existe une base orthonormée $(e_2, \dots, e_n)$ de $H$ constituée de vecteurs propres de $A$.
+
+**Conclusion**
+
+La famille $\mathcal{B} = (e_1, e_2, \dots, e_n)$ est constituée de vecteurs propres. Elle est orthonormée car $e_1 \perp H$ et $(e_2, \dots, e_n)$ est orthonormée.
+$A$ est donc diagonalisable dans une base orthonormée.
+
+</details>
+
+---
+
+#### Racine carrée d'une matrice symétrique définie positive
+
+Prouver qu'il existe une unique matrice symétrique définie positive $R$ telle que $R^2 = A$, pour toute matrice symétrique définie positive $A$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Pour l'existence, diagonalisez $A$ grâce au théorème spectral ($A = P D P^{-1}$) et construisez $R$ en prenant la racine carrée des éléments diagonaux.
+
+Pour l'unicité, montrez que si $R$ est une racine carrée symétrique définie positive, elle commute avec $A$ et donc stabilise les sous-espaces propres de $A$, sur lesquels elle agit comme une homothétie positive.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $A$ une matrice symétrique réelle définie positive.
+
+**Partie 1 : Existence**
+
+D'après le théorème spectral, il existe une matrice orthogonale $P$ et une matrice diagonale $D = \text{diag}(\lambda_1, \dots, \lambda_n)$ telles que $A = P D P^{-1}$.
+Comme $A$ est définie positive, toutes ses valeurs propres $\lambda_i$ sont strictement positives.
+
+Posons $\mu_i = \sqrt{\lambda_i}$ pour tout $i$. Soit $\Delta = \text{diag}(\mu_1, \dots, \mu_n)$.
+Définissons la matrice $R = P \Delta P^{-1}$.
+
+*   **$R^2 = A$ :** $R^2 = (P \Delta P^{-1})(P \Delta P^{-1}) = P \Delta^2 P^{-1} = P D P^{-1} = A$.
+*   **$R$ est symétrique :** ${}^t R = {}^t (P \Delta {}^t P) = P {}^t \Delta {}^t P = P \Delta {}^t P = R$.
+*   **$R$ est définie positive :** Les valeurs propres de $R$ sont les $\mu_i > 0$.
+
+La matrice $R$ convient.
+
+**Partie 2 : Unicité**
+
+Soit $M$ une matrice symétrique définie positive telle que $M^2 = A$.
+Comme $M$ commute avec $M^2$, $M$ commute avec $A$ ($MA = M^3 = AM$).
+Donc $M$ laisse stable les sous-espaces propres de $A$.
+
+Soit $E_\lambda(A)$ un sous-espace propre de $A$ associé à la valeur propre $\lambda$.
+La restriction de $M$ à $E_\lambda(A)$ est un endomorphisme symétrique $M_\lambda$ tel que $(M_\lambda)^2 = \lambda \text{Id}_{E_\lambda}$.
+Puisque $M$ est définie positive, ses valeurs propres sont positives. Or les valeurs propres de $M_\lambda$ doivent vérifier $x^2 = \lambda$, donc $x = \sqrt{\lambda}$ (car $x>0$).
+L'unique endomorphisme diagonalisable à valeurs propres positives vérifiant ceci est l'homothétie de rapport $\sqrt{\lambda}$.
+
+Ainsi, sur chaque sous-espace propre de $A$, $M$ est uniquement déterminé (c'est l'homothétie de rapport $\sqrt{\lambda}$). Comme $E$ est la somme directe orthogonale de ces sous-espaces, $M$ est unique sur tout $E$.
+
+**Conclusion :**
+Il existe une unique racine carrée symétrique définie positive, notée $\sqrt{A}$.
+
+</details>
