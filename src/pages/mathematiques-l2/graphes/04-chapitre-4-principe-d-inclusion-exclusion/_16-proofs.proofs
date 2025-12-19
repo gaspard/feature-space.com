@@ -1,0 +1,639 @@
+---
+id: 0e730c15
+type: proofs
+order: 15
+title: Principe d'inclusion-exclusion - preuves (A)
+tags:
+  - combinatoire
+  - inclusion-exclusion
+  - dénombrement
+  - surjections
+  - dérangements
+  - formule du crible
+createdAt: '2025-12-16T17:04:57.312Z'
+level: regular
+course: Graphes et Combinatoire
+courseId: 7027276b
+chapter: Principe d'inclusion-exclusion
+chapterId: e535f58d
+---
+# Preuves "Principe d'inclusion-exclusion" (A)
+
+---
+
+#### Formule du Binôme Multivariée
+
+Prouvez par récurrence sur $n$ la formule suivante, pour des éléments $a_i, b_i$ d'un anneau commutatif :
+
+$$ \prod_{i=1}^n (a_i + b_i) = \sum_{I \subseteq \llbracket n \rrbracket} \left( \prod_{i \in I} a_i \right) \left( \prod_{j \in \llbracket n \rrbracket \setminus I} b_j \right) $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Procédez par récurrence (induction).
+
+Pour l'initialisation, vérifiez le cas $n=1$.
+
+Pour l'hérédité, écrivez le produit pour $n+1$ comme le produit pour $n$ multiplié par $(a_{n+1} + b_{n+1})$. Utilisez l'hypothèse de récurrence, développez, et séparez la somme en deux parties (selon que l'indice $n+1$ est dans l'ensemble $I$ ou non).
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Nous allons prouver la propriété par récurrence sur l'entier $n \ge 1$.
+
+**Étape 1 : Initialisation**
+
+Pour $n=1$, le membre de gauche est $(a_1 + b_1)$.
+
+Le membre de droite est la somme sur les sous-ensembles de $\{1\}$. Les sous-ensembles sont $\emptyset$ et $\{1\}$.
+
+- Pour $I = \emptyset$ : le terme est $(\prod_{\emptyset} a_i)(\prod_{\{1\}} b_j) = 1 \cdot b_1 = b_1$.
+- Pour $I = \{1\}$ : le terme est $(\prod_{\{1\}} a_i)(\prod_{\emptyset} b_j) = a_1 \cdot 1 = a_1$.
+
+La somme est $b_1 + a_1$, ce qui est égal au membre de gauche. La propriété est vraie pour $n=1$.
+
+**Étape 2 : Hérédité**
+
+Supposons la formule vraie pour un rang $n$. Considérons le rang $n+1$ :
+
+$$ \prod_{i=1}^{n+1} (a_i + b_i) = \left( \prod_{i=1}^n (a_i + b_i) \right) (a_{n+1} + b_{n+1}) $$
+
+Par hypothèse de récurrence :
+
+$$ = \left[ \sum_{K \subseteq \llbracket n \rrbracket} \left( \prod_{i \in K} a_i \right) \left( \prod_{j \in \llbracket n \rrbracket \setminus K} b_j \right) \right] (a_{n+1} + b_{n+1}) $$
+
+En distribuant $(a_{n+1} + b_{n+1})$, nous obtenons deux sommes :
+
+1. Une somme où chaque terme est multiplié par $b_{n+1}$ (correspondant aux sous-ensembles de $\llbracket n+1 \rrbracket$ ne contenant pas $n+1$).
+2. Une somme où chaque terme est multiplié par $a_{n+1}$ (correspondant aux sous-ensembles de $\llbracket n+1 \rrbracket$ contenant $n+1$).
+
+Soit $I$ un sous-ensemble de $\llbracket n+1 \rrbracket$.
+
+- Si $n+1 \notin I$, alors $I \subseteq \llbracket n \rrbracket$. Le terme correspondant est $\left( \prod_{i \in I} a_i \right) \left( \prod_{j \in \llbracket n \rrbracket \setminus I} b_j \right) b_{n+1}$.
+- Si $n+1 \in I$, posons $K = I \setminus \{n+1\} \subseteq \llbracket n \rrbracket$. Le terme est $\left( \prod_{i \in K} a_i \right) a_{n+1} \left( \prod_{j \in \llbracket n \rrbracket \setminus K} b_j \right)$.
+
+En regroupant ces deux cas, nous couvrons exactement tous les sous-ensembles $I \subseteq \llbracket n+1 \rrbracket$ :
+
+$$ = \sum_{I \subseteq \llbracket n+1 \rrbracket} \left( \prod_{i \in I} a_i \right) \left( \prod_{j \in \llbracket n+1 \rrbracket \setminus I} b_j \right) $$
+
+**Conclusion :**
+
+La formule est vraie pour tout $n \ge 1$.
+
+</details>
+
+---
+
+#### Principe d'Inclusion-Exclusion (Forme Complémentaire)
+
+Soit $E$ un ensemble fini et $A_1, \ldots, A_n$ des sous-ensembles de $E$. Prouvez la forme complémentaire du principe d'inclusion-exclusion :
+
+$$ \left| \bigcap_{i=1}^n \overline{A_i} \right| = \sum_{I \subseteq \llbracket n \rrbracket} (-1)^{|I|} \left|\bigcap_{i \in I} A_i\right| $$
+
+On utilisera la méthode des fonctions caractéristiques (ou indicatrices).
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez la fonction indicatrice d'un ensemble, notée $\mathbb{1}_A(x)$, qui vaut 1 si $x \in A$ et 0 sinon.
+
+Rappelez-vous que $\mathbb{1}_{\overline{A}} = 1 - \mathbb{1}_A$ et que $\mathbb{1}_{A \cap B} = \mathbb{1}_A \mathbb{1}_B$.
+
+Exprimez l'indicatrice de l'intersection des complémentaires comme un produit, développez ce produit (à l'aide de la formule du binôme multivariée), puis somme sur tous les éléments $x \in E$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $\mathbb{1}_S$ la fonction caractéristique (indicatrice) d'un ensemble $S$.
+
+**Étape 1 : Expression de l'indicatrice**
+
+Un élément $x$ appartient à $\bigcap_{i=1}^n \overline{A_i}$ si et seulement si $x \in \overline{A_i}$ pour tout $i$.
+
+Algébriquement, cela se traduit par le produit des indicatrices :
+
+$$ \mathbb{1}_{\bigcap \overline{A_i}}(x) = \prod_{i=1}^n \mathbb{1}_{\overline{A_i}}(x) = \prod_{i=1}^n (1 - \mathbb{1}_{A_i}(x)) $$
+
+**Étape 2 : Développement algébrique**
+
+Appliquons la formule du binôme multivariée (Concept 3) avec $a_i = -\mathbb{1}_{A_i}(x)$ et $b_i = 1$.
+
+$$ \prod_{i=1}^n (1 - \mathbb{1}_{A_i}(x)) = \sum_{I \subseteq \llbracket n \rrbracket} \left( \prod_{i \in I} (-\mathbb{1}_{A_i}(x)) \right) \left( \prod_{j \notin I} 1 \right) $$
+
+Puisque $(-1)^{|I|}$ peut être sorti et que $\prod_{i \in I} \mathbb{1}_{A_i} = \mathbb{1}_{\bigcap_{i \in I} A_i}$ :
+
+$$ \mathbb{1}_{\bigcap \overline{A_i}}(x) = \sum_{I \subseteq \llbracket n \rrbracket} (-1)^{|I|} \mathbb{1}_{\bigcap_{i \in I} A_i}(x) $$
+
+**Étape 3 : Passage au cardinal**
+
+Le cardinal d'un ensemble est la somme de sa fonction indicatrice sur tous les éléments de l'univers $E$ : $|S| = \sum_{x \in E} \mathbb{1}_S(x)$.
+
+Sommons l'égalité précédente sur tous les $x \in E$ :
+
+$$ \sum_{x \in E} \mathbb{1}_{\bigcap \overline{A_i}}(x) = \sum_{x \in E} \sum_{I \subseteq \llbracket n \rrbracket} (-1)^{|I|} \mathbb{1}_{\bigcap_{i \in I} A_i}(x) $$
+
+Par linéarité de la somme :
+
+$$ \left| \bigcap_{i=1}^n \overline{A_i} \right| = \sum_{I \subseteq \llbracket n \rrbracket} (-1)^{|I|} \sum_{x \in E} \mathbb{1}_{\bigcap_{i \in I} A_i}(x) $$
+
+**Conclusion :**
+
+$$ \left| \bigcap_{i=1}^n \overline{A_i} \right| = \sum_{I \subseteq \llbracket n \rrbracket} (-1)^{|I|} \left| \bigcap_{i \in I} A_i \right| $$
+
+</details>
+
+---
+
+#### Principe d'Inclusion-Exclusion (Forme Réunion)
+
+En utilisant la forme complémentaire démontrée précédemment et les lois de De Morgan, prouvez la formule de la réunion :
+
+$$ \left|\bigcup_{i=1}^n A_i\right| = \sum_{\emptyset \neq I \subseteq \llbracket n \rrbracket} (-1)^{|I|+1} \left|\bigcap_{i \in I} A_i\right| $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Partez de la relation entre une réunion et l'intersection des complémentaires (Lois de De Morgan) : $\overline{\bigcup A_i} = \bigcap \overline{A_i}$.
+
+Utilisez le fait que pour tout sous-ensemble $S$ d'un univers $E$, $|S| = |E| - |\overline{S}|$.
+
+Appliquez la formule complémentaire et isolez le terme pour $I = \emptyset$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Relation avec le complémentaire**
+
+Soit $E$ l'univers contenant les ensembles $A_i$. On sait que le cardinal d'une réunion est le cardinal total moins le cardinal de son complémentaire :
+
+$$ \left|\bigcup_{i=1}^n A_i\right| = |E| - \left| \overline{\bigcup_{i=1}^n A_i} \right| $$
+
+D'après les lois de De Morgan, le complémentaire de la réunion est l'intersection des complémentaires :
+
+$$ \left|\bigcup_{i=1}^n A_i\right| = |E| - \left| \bigcap_{i=1}^n \overline{A_i} \right| $$
+
+**Étape 2 : Application de la forme complémentaire**
+
+D'après le concept 2 (forme complémentaire), nous avons :
+
+$$ \left| \bigcap_{i=1}^n \overline{A_i} \right| = \sum_{I \subseteq \llbracket n \rrbracket} (-1)^{|I|} \left| \bigcap_{i \in I} A_i \right| $$
+
+Le terme pour $I = \emptyset$ est $(-1)^0 |\bigcap_{i \in \emptyset} A_i| = 1 \cdot |E| = |E|$.
+
+Nous pouvons donc sortir ce terme de la somme :
+
+$$ \left| \bigcap_{i=1}^n \overline{A_i} \right| = |E| + \sum_{\emptyset \neq I \subseteq \llbracket n \rrbracket} (-1)^{|I|} \left| \bigcap_{i \in I} A_i \right| $$
+
+**Étape 3 : Substitution**
+
+Substituons ce résultat dans l'équation de l'étape 1 :
+
+$$ \left|\bigcup_{i=1}^n A_i\right| = |E| - \left( |E| + \sum_{\emptyset \neq I \subseteq \llbracket n \rrbracket} (-1)^{|I|} \left| \bigcap_{i \in I} A_i \right| \right) $$
+
+Les termes $|E|$ s'annulent. Il reste :
+
+$$ \left|\bigcup_{i=1}^n A_i\right| = - \sum_{\emptyset \neq I \subseteq \llbracket n \rrbracket} (-1)^{|I|} \left| \bigcap_{i \in I} A_i \right| $$
+
+On rentre le signe "$-$" dans la somme, ce qui change $(-1)^{|I|}$ en $(-1)^{|I|+1}$.
+
+**Conclusion :**
+
+$$ \left|\bigcup_{i=1}^n A_i\right| = \sum_{\emptyset \neq I \subseteq \llbracket n \rrbracket} (-1)^{|I|+1} \left| \bigcap_{i \in I} A_i \right| $$
+
+</details>
+
+---
+
+#### Application : Nombre de Surjections
+
+Soient $E$ un ensemble à $n$ éléments et $F$ un ensemble à $k$ éléments. Prouvez que le nombre de surjections de $E$ vers $F$ est :
+
+$$ S_{n,k} = \sum_{j=0}^{k} (-1)^{k-j} \binom{k}{j} j^n $$
+
+*(Indication : Notez que la formule peut aussi s'écrire en sommant sur le nombre d'éléments exclus).*
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez le principe d'inclusion-exclusion sous sa forme complémentaire.
+
+L'univers est l'ensemble de toutes les applications de $E$ dans $F$ (cardinal $k^n$).
+
+Définissez les propriétés "indésirables" : une fonction $f$ a la propriété $P_i$ si l'élément $y_i \in F$ n'est pas dans l'image de $f$ (c'est-à-dire $f(x) \neq y_i$ pour tout $x$).
+
+Une surjection est une fonction qui ne vérifie aucune propriété $P_i$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $F = \{y_1, \ldots, y_k\}$. Soit $\mathcal{F}$ l'ensemble de toutes les fonctions de $E$ vers $F$. On a $|\mathcal{F}| = k^n$.
+
+**Étape 1 : Définition des ensembles à exclure**
+
+Pour $i \in \{1, \ldots, k\}$, définissons l'ensemble $A_i$ comme l'ensemble des fonctions qui n'atteignent pas $y_i$ :
+
+$$ A_i = \{ f \in \mathcal{F} \mid y_i \notin \text{Im}(f) \} $$
+
+Une fonction est surjective si et seulement si son image est $F$ tout entier, c'est-à-dire qu'elle n'appartient à aucun $A_i$. On cherche donc $|\bigcap_{i=1}^k \overline{A_i}|$.
+
+**Étape 2 : Calcul des intersections**
+
+Considérons une intersection de $m$ ensembles $A_{i_1} \cap \dots \cap A_{i_m}$.
+
+Les fonctions dans cette intersection sont celles dont l'image ne contient aucun des éléments $\{y_{i_1}, \dots, y_{i_m}\}$.
+
+L'image doit être incluse dans $F \setminus \{y_{i_1}, \dots, y_{i_m}\}$, qui est un ensemble de cardinal $k - m$.
+
+Le nombre de telles fonctions est donc :
+
+$$ |A_{i_1} \cap \dots \cap A_{i_m}| = (k-m)^n $$
+
+**Étape 3 : Application de la formule**
+
+D'après le principe d'inclusion-exclusion :
+
+$$ |\text{Surjections}| = \sum_{I \subseteq \llbracket k \rrbracket} (-1)^{|I|} (k - |I|)^n $$
+
+Regroupons les termes selon la taille de l'ensemble $I$. Soit $m = |I|$. Il y a $\binom{k}{m}$ façons de choisir un sous-ensemble $I$ de taille $m$.
+
+$$ S_{n,k} = \sum_{m=0}^k (-1)^m \binom{k}{m} (k-m)^n $$
+
+**Conclusion :**
+
+En posant le changement de variable $j = k-m$ (si $m=0, j=k$; si $m=k, j=0$), on obtient la forme donnée :
+
+$$ S_{n,k} = \sum_{j=0}^k (-1)^{k-j} \binom{k}{k-j} j^n = \sum_{j=0}^k (-1)^{k-j} \binom{k}{j} j^n $$
+
+*(Car $\binom{k}{k-j} = \binom{k}{j}$)*.
+
+</details>
+
+---
+
+#### Application : Nombre de Dérangements
+
+Prouvez que le nombre de dérangements $D_n$ d'un ensemble à $n$ éléments est :
+
+$$ D_n = n! \sum_{k=0}^n \frac{(-1)^k}{k!} $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Un dérangement est une permutation sans point fixe.
+
+Considérez l'ensemble univers des permutations $S_n$ (cardinal $n!$).
+
+Définissez les ensembles $A_i = \{ \sigma \in S_n \mid \sigma(i) = i \}$ (permutations fixant l'élément $i$).
+
+On cherche le cardinal de $\bigcap \overline{A_i}$.
+
+Calculez le cardinal de l'intersection de $k$ ensembles $A_i$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Structure des intersections**
+
+Pour un sous-ensemble d'indices $I \subseteq \{1, \dots, n\}$ de cardinal $k$, l'intersection $\bigcap_{i \in I} A_i$ représente l'ensemble des permutations qui fixent **au moins** tous les éléments $i \in I$.
+
+Si on fixe $k$ éléments, les $n-k$ autres éléments peuvent être permutés de manière quelconque.
+
+Donc :
+
+$$ \left| \bigcap_{i \in I} A_i \right| = (n-k)! $$
+
+**Étape 2 : Application du Principe d'Inclusion-Exclusion**
+
+On cherche le nombre de permutations n'appartenant à aucun $A_i$ (aucun point fixe).
+
+$$ D_n = \sum_{I \subseteq \llbracket n \rrbracket} (-1)^{|I|} \left| \bigcap_{i \in I} A_i \right| $$
+
+Regroupons par taille de $I$. Pour une taille $k$ donnée ($0 \le k \le n$), il y a $\binom{n}{k}$ choix pour l'ensemble $I$. Tous ces choix donnent la même taille d'intersection $(n-k)!$.
+
+$$ D_n = \sum_{k=0}^n (-1)^k \binom{n}{k} (n-k)! $$
+
+**Étape 3 : Simplification**
+
+Utilisons la définition du coefficient binomial $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ :
+
+$$ D_n = \sum_{k=0}^n (-1)^k \frac{n!}{k!(n-k)!} (n-k)! $$
+
+Les termes $(n-k)!$ se simplifient :
+
+$$ D_n = \sum_{k=0}^n (-1)^k \frac{n!}{k!} $$
+
+**Conclusion :**
+
+En factorisant par $n!$, on obtient :
+
+$$ D_n = n! \sum_{k=0}^n \frac{(-1)^k}{k!} $$
+
+</details>
+
+---
+
+#### Cas particulier : Union de 3 ensembles (Vérification)
+
+Sans utiliser la formule générale, prouvez "à la main" pour trois ensembles finis $A, B, C$ que :
+
+$$ |A \cup B \cup C| = |A| + |B| + |C| - (|A \cap B| + |A \cap C| + |B \cap C|) + |A \cap B \cap C| $$
+
+en décomposant la réunion en ensembles disjoints ou en utilisant la formule pour 2 ensembles.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez la formule connue pour deux ensembles : $|X \cup Y| = |X| + |Y| - |X \cap Y|$.
+
+Posez $X = A \cup B$ et $Y = C$.
+
+Développez $|(A \cup B) \cap C|$ en utilisant la distributivité de l'intersection sur la réunion : $(A \cup B) \cap C = (A \cap C) \cup (B \cap C)$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Application itérative de la formule pour 2 ensembles**
+
+Considérons $A \cup B \cup C = (A \cup B) \cup C$. Appliquons la formule pour 2 ensembles :
+
+$$ |(A \cup B) \cup C| = |A \cup B| + |C| - |(A \cup B) \cap C| $$
+
+**Étape 2 : Développement des termes**
+
+On sait déjà que $|A \cup B| = |A| + |B| - |A \cap B|$.
+
+Pour le terme d'intersection, utilisons la distributivité : $(A \cup B) \cap C = (A \cap C) \cup (B \cap C)$.
+
+Appliquons à nouveau la formule pour 2 ensembles à cette nouvelle réunion :
+
+$$ |(A \cap C) \cup (B \cap C)| = |A \cap C| + |B \cap C| - |(A \cap C) \cap (B \cap C)| $$
+
+Le dernier terme se simplifie car l'intersection est associative et commutative :
+
+$$ (A \cap C) \cap (B \cap C) = A \cap B \cap C $$
+
+Donc $|(A \cup B) \cap C| = |A \cap C| + |B \cap C| - |A \cap B \cap C|$.
+
+**Étape 3 : Assemblage**
+
+Substituons tout dans l'équation de l'étape 1 :
+
+$$ |A \cup B \cup C| = (|A| + |B| - |A \cap B|) + |C| - (|A \cap C| + |B \cap C| - |A \cap B \cap C|) $$
+
+**Conclusion :**
+
+En distribuant le signe moins :
+
+$$ |A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C| $$
+
+</details>
+
+---
+
+#### Propriété de la Différence Symétrique
+
+Soit $\Delta$ la différence symétrique définie par $A \Delta B = (A \setminus B) \cup (B \setminus A)$.
+
+Prouvez en utilisant les fonctions caractéristiques que :
+
+$$ \mathbb{1}_{A \Delta B} = \mathbb{1}_A + \mathbb{1}_B - 2\mathbb{1}_A\mathbb{1}_B $$
+
+Et déduisez-en une relation sur le cardinal $|A \Delta B|$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Rappelez-vous que dans l'algèbre des fonctions indicatrices (valeurs dans $\{0,1\}$), l'addition correspond modulo 2 à la différence symétrique, mais ici nous travaillons avec l'addition réelle standard.
+
+Utilisez le fait que $A \Delta B$ correspond aux éléments qui sont dans $A$ ou dans $B$, mais pas dans les deux.
+
+On peut écrire $\mathbb{1}_{A \cup B} - \mathbb{1}_{A \cap B}$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Expression par réunion et intersection**
+
+Par définition, $A \Delta B = (A \cup B) \setminus (A \cap B)$.
+
+Comme $A \cap B$ est un sous-ensemble de $A \cup B$, on a pour les fonctions indicatrices :
+
+$$ \mathbb{1}_{A \Delta B} = \mathbb{1}_{A \cup B} - \mathbb{1}_{A \cap B} $$
+
+**Étape 2 : Utilisation des propriétés de base**
+
+On sait que $\mathbb{1}_{A \cap B} = \mathbb{1}_A \mathbb{1}_B$.
+
+On sait aussi (par Inclusion-Exclusion sur les indicatrices) que $\mathbb{1}_{A \cup B} = \mathbb{1}_A + \mathbb{1}_B - \mathbb{1}_A \mathbb{1}_B$.
+
+**Étape 3 : Substitution**
+
+$$ \mathbb{1}_{A \Delta B} = (\mathbb{1}_A + \mathbb{1}_B - \mathbb{1}_A \mathbb{1}_B) - \mathbb{1}_A \mathbb{1}_B $$
+
+$$ \mathbb{1}_{A \Delta B} = \mathbb{1}_A + \mathbb{1}_B - 2\mathbb{1}_A \mathbb{1}_B $$
+
+**Conclusion (Passage au cardinal) :**
+
+En sommant sur tous les éléments de l'univers :
+
+$$ |A \Delta B| = |A| + |B| - 2|A \cap B| $$
+
+Ceci est cohérent avec le principe d'inclusion-exclusion : on compte $A$ et $B$, mais on retire deux fois l'intersection (une fois pour $A$, une fois pour $B$) car ces éléments ne doivent pas y être.
+
+</details>
+
+---
+
+#### Application : Indicatrice d'Euler
+
+Soit $n = p_1 p_2 \dots p_k$ un produit de $k$ nombres premiers distincts.
+
+Prouvez en utilisant le principe d'inclusion-exclusion que le nombre d'entiers dans $\{1, \dots, n\}$ qui sont premiers avec $n$ est :
+
+$$ \phi(n) = n \prod_{i=1}^k \left(1 - \frac{1}{p_i}\right) $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Un entier est premier avec $n$ s'il n'est divisible par aucun des facteurs premiers $p_i$.
+
+Considérez l'ensemble univers $E = \{1, \dots, n\}$.
+
+Définissez les ensembles $A_i$ comme les multiples de $p_i$ dans $E$.
+
+Calculez $|A_i|$, $|A_i \cap A_j|$, etc., puis appliquez la forme complémentaire.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Cardinaux des multiples**
+
+L'ensemble $A_i$ contient les multiples de $p_i$ inférieurs ou égaux à $n$.
+
+$$ |A_i| = \frac{n}{p_i} $$
+
+L'intersection $A_i \cap A_j$ (pour $i \neq j$) contient les multiples de $p_i p_j$ (car $p_i, p_j$ sont premiers entre eux).
+
+$$ |A_i \cap A_j| = \frac{n}{p_i p_j} $$
+
+De manière générale, pour un ensemble d'indices $I$ :
+
+$$ \left| \bigcap_{i \in I} A_i \right| = \frac{n}{\prod_{i \in I} p_i} $$
+
+**Étape 2 : Application du Principe**
+
+On cherche le nombre d'éléments qui ne sont dans aucun $A_i$ (premiers avec $n$).
+
+$$ \phi(n) = \sum_{I \subseteq \llbracket k \rrbracket} (-1)^{|I|} \frac{n}{\prod_{i \in I} p_i} $$
+
+Factorisons par $n$ :
+
+$$ \phi(n) = n \sum_{I \subseteq \llbracket k \rrbracket} (-1)^{|I|} \frac{1}{\prod_{i \in I} p_i} $$
+
+On peut réécrire le terme sous la somme comme $\prod_{i \in I} \left( \frac{-1}{p_i} \right)$.
+
+**Étape 3 : Factorisation**
+
+La somme obtenue est exactement le développement du produit $\prod_{i=1}^k \left( 1 - \frac{1}{p_i} \right)$ d'après la formule du binôme multivariée (où on choisit soit $1$, soit $-1/p_i$).
+
+**Conclusion :**
+
+$$ \phi(n) = n \prod_{i=1}^k \left(1 - \frac{1}{p_i}\right) $$
+
+</details>
+
+---
+
+#### Probabilité limite d'un dérangement
+
+En utilisant la formule des dérangements, prouvez que la limite de la probabilité qu'une permutation tirée au hasard soit un dérangement quand $n$ tend vers l'infini est $1/e$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+La probabilité est $P_n = \frac{D_n}{n!}$.
+
+Utilisez la formule fermée de $D_n$ dérivée précédemment.
+
+Rappelez le développement en série de Taylor de la fonction exponentielle $e^x$ au voisinage de 0, évalué en $x = -1$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Expression de la probabilité**
+
+Le nombre total de permutations est $n!$. Le nombre de dérangements est $D_n$.
+
+La probabilité est :
+
+$$ P_n = \frac{D_n}{n!} = \frac{n! \sum_{k=0}^n \frac{(-1)^k}{k!}}{n!} $$
+
+$$ P_n = \sum_{k=0}^n \frac{(-1)^k}{k!} $$
+
+**Étape 2 : Limite**
+
+Cherchons la limite quand $n \to \infty$ :
+
+$$ \lim_{n \to \infty} P_n = \sum_{k=0}^{\infty} \frac{(-1)^k}{k!} $$
+
+**Étape 3 : Série de l'exponentielle**
+
+On reconnaît le développement en série de Taylor de la fonction $e^x$ autour de 0 :
+
+$$ e^x = \sum_{k=0}^{\infty} \frac{x^k}{k!} $$
+
+En posant $x = -1$, on obtient :
+
+$$ e^{-1} = \sum_{k=0}^{\infty} \frac{(-1)^k}{k!} $$
+
+**Conclusion :**
+
+$$ \lim_{n \to \infty} \frac{D_n}{n!} = \frac{1}{e} \approx 0.3679 $$
+
+</details>
+
+---
+
+#### Calcul exact d'éléments ayant au moins une propriété
+
+Supposons qu'on connaisse les sommes partielles $S_1 = \sum |A_i|$, $S_2 = \sum |A_i \cap A_j|$, etc.
+
+Montrez que si $S_k = 0$ pour tout $k \ge 2$ (les ensembles sont disjoints deux à deux), alors la formule d'inclusion-exclusion se réduit au principe d'addition simple.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+C'est une vérification de la cohérence de la formule.
+
+Écrivez la formule complète de la réunion et remplacez les termes d'intersection de taille $\ge 2$ par 0.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Écriture de la formule**
+
+$$ \left|\bigcup_{i=1}^n A_i\right| = \sum_{\emptyset \neq I \subseteq \llbracket n \rrbracket} (-1)^{|I|+1} \left|\bigcap_{i \in I} A_i\right| $$
+
+**Étape 2 : Séparation des termes par taille**
+
+$$ = \sum_{|I|=1} \left|\bigcap_{i \in I} A_i\right| - \sum_{|I|=2} \left|\bigcap_{i \in I} A_i\right| + \sum_{|I|=3} \dots $$
+
+$$ = \sum_{i=1}^n |A_i| - \sum_{1 \le i < j \le n} |A_i \cap A_j| + \dots $$
+
+**Étape 3 : Hypothèse d'ensembles disjoints**
+
+Si les ensembles sont disjoints deux à deux, alors pour tout $i \neq j$, $A_i \cap A_j = \emptyset$, donc $|A_i \cap A_j| = 0$.
+
+A fortiori, toute intersection de 3 ensembles ou plus est aussi vide (car contenue dans une intersection de 2 ensembles).
+
+Tous les termes avec $|I| \ge 2$ sont nuls.
+
+**Conclusion :**
+
+Il ne reste que le premier terme :
+
+$$ \left|\bigcup_{i=1}^n A_i\right| = \sum_{i=1}^n |A_i| $$
+
+On retrouve bien le principe d'addition.
+
+</details>

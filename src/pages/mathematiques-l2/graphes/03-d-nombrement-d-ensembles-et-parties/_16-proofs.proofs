@@ -1,0 +1,546 @@
+---
+id: d4c86a10
+type: proofs
+order: 15
+title: Dénombrement d’ensembles et parties - preuves (A)
+tags:
+  - combinatoire
+  - dénombrement
+  - coefficients binomiaux
+  - ensembles
+  - formule du binôme
+  - coefficients multinomiaux
+createdAt: '2025-12-16T16:58:51.096Z'
+level: regular
+course: Graphes et Combinatoire
+courseId: 7027276b
+chapter: Dénombrement d’ensembles et parties
+chapterId: 1c5df22e
+---
+# Preuves "Dénombrement d’ensembles et parties" (A)
+
+---
+
+#### Somme des coefficients binomiaux
+
+Prouver que la somme de tous les coefficients binomiaux pour un entier $n$ donné est égale à $2^n$ :
+
+$$ \sum_{k=0}^n \binom{n}{k} = 2^n $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Vous pouvez utiliser le Théorème du Binôme de Newton en choisissant des valeurs spécifiques pour $a$ et $b$. Alternativement, réfléchissez à ce que représente la somme de toutes les parties de toutes les tailles possibles d'un ensemble de cardinal $n$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Nous allons utiliser le **Théorème du Binôme de Newton**.
+
+Pour tous réels $a$ et $b$ et pour tout entier naturel $n$, on a :
+
+$$ (a+b)^n = \sum_{k=0}^n \binom{n}{k} a^k b^{n-k} $$
+
+**Étape 1 : Choix des valeurs**
+
+Posons $a = 1$ et $b = 1$.
+
+**Étape 2 : Substitution dans la formule**
+
+Le membre de gauche devient :
+
+$$ (1+1)^n = 2^n $$
+
+Le membre de droite devient :
+
+$$ \sum_{k=0}^n \binom{n}{k} (1)^k (1)^{n-k} = \sum_{k=0}^n \binom{n}{k} \cdot 1 \cdot 1 = \sum_{k=0}^n \binom{n}{k} $$
+
+**Conclusion**
+
+En égalant les deux membres, nous obtenons directement :
+
+$$ 2^n = \sum_{k=0}^n \binom{n}{k} $$
+
+Cela confirme que le nombre total de parties d'un ensemble à $n$ éléments est bien $2^n$.
+
+</details>
+
+---
+
+#### Symétrie des coefficients binomiaux
+
+Prouver la propriété de symétrie suivante pour $0 \leq k \leq n$ :
+
+$$ \binom{n}{k} = \binom{n}{n-k} $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez la définition algébrique du coefficient binomial faisant intervenir la factorielle. Observez les termes au dénominateur.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Nous utilisons la formule de définition basée sur les factorielles.
+
+**Étape 1 : Écriture de la formule pour le membre de gauche**
+
+$$ \binom{n}{k} = \frac{n!}{k!(n-k)!} $$
+
+**Étape 2 : Écriture de la formule pour le membre de droite**
+
+Substituons $k$ par $(n-k)$ dans la formule :
+
+$$ \binom{n}{n-k} = \frac{n!}{(n-k)!(n-(n-k))!} $$
+
+**Étape 3 : Simplification**
+
+Dans le dénominateur, simplifions le terme $(n-(n-k))$ :
+
+$$ n - (n - k) = n - n + k = k $$
+
+Donc :
+
+$$ \binom{n}{n-k} = \frac{n!}{(n-k)!k!} $$
+
+**Conclusion**
+
+La multiplication étant commutative ($k!(n-k)! = (n-k)!k!$), les deux expressions sont identiques :
+
+$$ \binom{n}{k} = \binom{n}{n-k} $$
+
+</details>
+
+---
+
+#### Identité de Pascal
+
+Prouver la relation de récurrence (Identité de Pascal) pour $1 \leq k \leq n-1$ :
+
+$$ \binom{n}{k} = \binom{n-1}{k} + \binom{n-1}{k-1} $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Partez du membre de droite (la somme). Exprimez chaque terme avec des factorielles, mettez au même dénominateur, puis factorisez pour retrouver l'expression de $\binom{n}{k}$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Calculons la somme du membre de droite : $S = \binom{n-1}{k} + \binom{n-1}{k-1}$.
+
+**Étape 1 : Utilisation des factorielles**
+
+$$ S = \frac{(n-1)!}{k!(n-1-k)!} + \frac{(n-1)!}{(k-1)!(n-1-(k-1))!} $$
+
+$$ S = \frac{(n-1)!}{k!(n-k-1)!} + \frac{(n-1)!}{(k-1)!(n-k)!} $$
+
+**Étape 2 : Mise au même dénominateur**
+
+Le dénominateur commun est $k!(n-k)!$.
+
+*   Pour le premier terme, on multiplie numérateur et dénominateur par $(n-k)$ (car $(n-k)! = (n-k)(n-k-1)!$).
+*   Pour le second terme, on multiplie par $k$ (car $k! = k(k-1)!$).
+
+$$ S = \frac{(n-1)!(n-k)}{k!(n-k)!} + \frac{(n-1)!k}{k!(n-k)!} $$
+
+**Étape 3 : Factorisation et simplification**
+
+$$ S = \frac{(n-1)! \times [(n-k) + k]}{k!(n-k)!} $$
+
+$$ S = \frac{(n-1)! \times n}{k!(n-k)!} $$
+
+Puisque $n \times (n-1)! = n!$, nous avons :
+
+$$ S = \frac{n!}{k!(n-k)!} $$
+
+**Conclusion**
+
+On reconnaît la définition de $\binom{n}{k}$. Donc $\binom{n}{k} = \binom{n-1}{k} + \binom{n-1}{k-1}$.
+
+</details>
+
+---
+
+#### Formule d'absorption
+
+Prouver la formule d'absorption pour $k \geq 1$ :
+
+$$ k \binom{n}{k} = n \binom{n-1}{k-1} $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Développez $\binom{n}{k}$ avec les factorielles. Extrayez $n$ du numérateur et $k$ du dénominateur pour faire apparaître les factorielles correspondant à $n-1$ et $k-1$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Partons du membre de gauche : $k \binom{n}{k}$.
+
+**Étape 1 : Développement factoriel**
+
+$$ k \binom{n}{k} = k \frac{n!}{k!(n-k)!} $$
+
+**Étape 2 : Simplification par k**
+
+Puisque $k! = k \times (k-1)!$, nous pouvons simplifier le $k$ au numérateur avec celui du dénominateur :
+
+$$ k \binom{n}{k} = \frac{n!}{(k-1)!(n-k)!} $$
+
+**Étape 3 : Extraction de n**
+
+Écrivons $n! = n \times (n-1)!$ :
+
+$$ k \binom{n}{k} = n \frac{(n-1)!}{(k-1)!(n-k)!} $$
+
+**Étape 4 : Identification du terme binomial**
+
+Observons le dénominateur : $(n-k)! = ((n-1) - (k-1))!$.
+
+La fraction restante est donc :
+
+$$ \frac{(n-1)!}{(k-1)!((n-1)-(k-1))!} = \binom{n-1}{k-1} $$
+
+**Conclusion**
+
+En remplaçant, on obtient :
+
+$$ k \binom{n}{k} = n \binom{n-1}{k-1} $$
+
+</details>
+
+---
+
+#### Somme alternée des coefficients binomiaux
+
+Prouver que la somme alternée des coefficients binomiaux est nulle pour $n \geq 1$ :
+
+$$ \sum_{k=0}^n (-1)^k \binom{n}{k} = 0 $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+C'est une application directe du binôme de Newton. Quelles valeurs faut-il donner à $a$ et $b$ pour obtenir des termes $(-1)^k$ ?
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Utilisons la formule du binôme de Newton :
+
+$$ (a+b)^n = \sum_{k=0}^n \binom{n}{k} a^k b^{n-k} $$
+
+**Étape 1 : Choix des variables**
+
+Posons $a = -1$ et $b = 1$.
+
+**Étape 2 : Substitution**
+
+Le membre de gauche devient :
+
+$$ (-1 + 1)^n = 0^n = 0 \quad (\text{car } n \geq 1) $$
+
+Le membre de droite devient :
+
+$$ \sum_{k=0}^n \binom{n}{k} (-1)^k (1)^{n-k} = \sum_{k=0}^n \binom{n}{k} (-1)^k \cdot 1 $$
+
+**Conclusion**
+
+$$ 0 = \sum_{k=0}^n (-1)^k \binom{n}{k} $$
+
+Ce qui prouve la proposition.
+
+</details>
+
+---
+
+#### Démonstration du Binôme de Newton (par récurrence)
+
+Prouver par récurrence sur $n$ que pour tous $a, b$ :
+
+$$ (a+b)^n = \sum_{k=0}^n \binom{n}{k} a^k b^{n-k} $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Initialisez pour $n=1$. Pour l'hérédité, écrivez $(a+b)^{n+1} = (a+b)(a+b)^n$, utilisez l'hypothèse de récurrence, développez, puis utilisez l'identité de Pascal pour regrouper les termes.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Initialisation :**
+
+Pour $n=1$, $(a+b)^1 = a+b$.
+
+La formule donne $\binom{1}{0}a^0b^1 + \binom{1}{1}a^1b^0 = 1\cdot b + 1\cdot a = a+b$. C'est vérifié.
+
+**Hérédité :**
+
+Supposons la propriété vraie au rang $n$. Calculons au rang $n+1$ :
+
+$$ (a+b)^{n+1} = (a+b) \sum_{k=0}^n \binom{n}{k} a^k b^{n-k} $$
+
+$$ = a \sum_{k=0}^n \binom{n}{k} a^k b^{n-k} + b \sum_{k=0}^n \binom{n}{k} a^k b^{n-k} $$
+
+$$ = \sum_{k=0}^n \binom{n}{k} a^{k+1} b^{n-k} + \sum_{k=0}^n \binom{n}{k} a^k b^{n-k+1} $$
+
+**Étape 1 : Changement d'indice**
+
+Dans la première somme, posons $j = k+1$ (quand $k=0, j=1$; quand $k=n, j=n+1$).
+
+$$ \sum_{j=1}^{n+1} \binom{n}{j-1} a^j b^{n-(j-1)} + \sum_{k=0}^n \binom{n}{k} a^k b^{n-k+1} $$
+
+Renommons l'indice muet $j$ en $k$ pour fusionner les sommes :
+
+$$ \sum_{k=1}^{n+1} \binom{n}{k-1} a^k b^{n+1-k} + \sum_{k=0}^n \binom{n}{k} a^k b^{n+1-k} $$
+
+**Étape 2 : Isolement des termes extrêmes**
+
+Isolons $k=n+1$ dans la première somme et $k=0$ dans la deuxième :
+
+$$ \binom{n}{n} a^{n+1} + \sum_{k=1}^{n} \left[ \binom{n}{k-1} + \binom{n}{k} \right] a^k b^{n+1-k} + \binom{n}{0} b^{n+1} $$
+
+**Étape 3 : Utilisation de Pascal**
+
+On sait que $\binom{n}{k-1} + \binom{n}{k} = \binom{n+1}{k}$. De plus, $\binom{n}{n}=1=\binom{n+1}{n+1}$ et $\binom{n}{0}=1=\binom{n+1}{0}$.
+
+$$ = \binom{n+1}{n+1} a^{n+1} + \sum_{k=1}^{n} \binom{n+1}{k} a^k b^{n+1-k} + \binom{n+1}{0} b^{n+1} $$
+
+**Conclusion**
+
+En réintégrant les termes extrêmes dans la somme :
+
+$$ = \sum_{k=0}^{n+1} \binom{n+1}{k} a^k b^{n+1-k} $$
+
+La propriété est héréditaire, donc vraie pour tout $n$.
+
+</details>
+
+---
+
+#### Nombre de multi-ensembles (Méthode des Étoiles et Barres)
+
+Justifier pourquoi le nombre de solutions entières positives ($x_i \geq 0$) de l'équation $x_1 + x_2 + \dots + x_n = k$ est donné par $\binom{n+k-1}{k}$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Essayez de représenter une solution particulière (par exemple $3+1+0+2=6$) par un code visuel utilisant des symboles pour les unités (les "balles" ou "étoiles") et des symboles pour séparer les variables (les "barres"). Combien y a-t-il de symboles au total ? Combien de positions pour les balles ?
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Nous allons établir une bijection entre les solutions de l'équation et des arrangements de symboles.
+
+**Étape 1 : Représentation graphique**
+
+Imaginons que les $k$ unités (la somme totale) sont représentées par $k$ balles ($\bullet$).
+
+Pour séparer ces balles en $n$ groupes (correspondant aux variables $x_1, \dots, x_n$), nous avons besoin de $n-1$ barres de séparation ($|$).
+
+Par exemple, si $n=3$ et $k=4$, la solution $x_1=2, x_2=0, x_3=2$ se note : $\bullet \bullet | | \bullet \bullet$.
+
+(2 balles pour $x_1$, séparation, 0 balle pour $x_2$, séparation, 2 balles pour $x_3$).
+
+**Étape 2 : Comptage des positions**
+
+Tout arrangement valide est une suite de symboles contenant exactement :
+
+*   $k$ balles ($\bullet$)
+*   $n-1$ barres ($|$)
+
+La longueur totale de la suite est donc $L = k + (n-1)$.
+
+**Étape 3 : Choix des positions**
+
+Pour construire une telle suite, il suffit de choisir où placer les $k$ balles parmi les $n+k-1$ positions totales. Les positions restantes seront automatiquement remplies par des barres.
+
+Le nombre de façons de choisir ces $k$ positions est donné par le coefficient binomial :
+
+$$ \binom{\text{nombre total de positions}}{\text{nombre de balles}} = \binom{n+k-1}{k} $$
+
+**Conclusion**
+
+Le nombre de multi-ensembles (ou solutions de l'équation) est $\binom{n+k-1}{k}$.
+
+</details>
+
+---
+
+#### Relation entre Arrangements et Combinaisons
+
+Prouver la relation suivante en utilisant le raisonnement combinatoire (sans partir de la formule factorielle) :
+
+$$ A_n^k = k! \times \binom{n}{k} $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Considérez le processus de formation d'un arrangement (liste ordonnée) en deux étapes : d'abord choisir les éléments, puis les ordonner.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $E$ un ensemble de cardinal $n$.
+
+**Étape 1 : Définitions**
+
+*   $A_n^k$ compte le nombre de listes ordonnées de $k$ éléments distincts de $E$.
+*   $\binom{n}{k}$ compte le nombre de sous-ensembles de $k$ éléments de $E$ (sans ordre).
+
+**Étape 2 : Construction en deux temps**
+
+Pour former un arrangement de $k$ éléments, on peut procéder ainsi :
+
+1.  Choisir un sous-ensemble de $k$ éléments parmi les $n$. Il y a $\binom{n}{k}$ façons de faire ce choix.
+2.  Une fois les $k$ éléments choisis, il faut les ordonner (leur donner une position de 1 à $k$). Le nombre de permutations de $k$ éléments est $k!$.
+
+**Conclusion**
+
+D'après le principe multiplicatif, le nombre total d'arrangements est le produit du nombre de choix d'éléments et du nombre d'ordres possibles :
+
+$$ A_n^k = \binom{n}{k} \times k! $$
+
+(Cela permet de retrouver la formule classique $\binom{n}{k} = \frac{A_n^k}{k!} = \frac{n!}{k!(n-k)!}$).
+
+</details>
+
+---
+
+#### Formule du Coefficient Multinomial
+
+Prouver que le nombre de façons de partitionner $n$ objets distincts en $r$ groupes de tailles $k_1, k_2, \dots, k_r$ (avec $\sum k_i = n$) est :
+
+$$ \frac{n!}{k_1! k_2! \cdots k_r!} $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Procédez par étapes successives. Choisissez d'abord le groupe 1, puis le groupe 2 parmi les éléments restants, et ainsi de suite. Utilisez le produit des coefficients binomiaux.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+On veut former $r$ groupes distincts.
+
+**Étape 1 : Choix successifs**
+
+*   Pour le groupe 1 de taille $k_1$, on choisit $k_1$ éléments parmi $n$. Nombre de choix : $\binom{n}{k_1}$.
+
+    Il reste $n - k_1$ éléments.
+
+*   Pour le groupe 2 de taille $k_2$, on choisit $k_2$ éléments parmi les $n-k_1$ restants. Nombre de choix : $\binom{n-k_1}{k_2}$.
+*   ...
+*   Pour le groupe $i$, on choisit $k_i$ éléments parmi $n - (k_1 + \dots + k_{i-1})$.
+
+**Étape 2 : Produit des combinaisons**
+
+Le nombre total de façons est le produit :
+
+$$ N = \binom{n}{k_1} \times \binom{n-k_1}{k_2} \times \binom{n-k_1-k_2}{k_3} \times \dots $$
+
+En utilisant la formule factorielle :
+
+$$ N = \frac{n!}{k_1!(n-k_1)!} \times \frac{(n-k_1)!}{k_2!(n-k_1-k_2)!} \times \dots $$
+
+**Étape 3 : Simplification télescopique**
+
+Le numérateur du terme $i$ simplifie le dénominateur $(...)$ du terme $i-1$.
+
+Par exemple, le $(n-k_1)!$ s'annule.
+
+Le dernier terme sera $\binom{k_r}{k_r} = 1$ (ou $\frac{k_r!}{k_r! 0!}$).
+
+Il ne reste que $n!$ au numérateur initial et tous les $k_i!$ aux dénominateurs.
+
+**Conclusion**
+
+$$ N = \frac{n!}{k_1! k_2! \cdots k_r!} $$
+
+</details>
+
+---
+
+#### Espérance mathématique (Application de la moyenne)
+
+Prouver l'identité suivante, souvent utilisée pour calculer l'espérance d'une loi binomiale :
+
+$$ \sum_{k=0}^n k \binom{n}{k} = n 2^{n-1} $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez d'abord la formule d'absorption ($k\binom{n}{k} = n\binom{n-1}{k-1}$) pour transformer le terme général, puis factorisez par $n$. Ce qui reste dans la somme devrait vous être familier.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+On cherche à calculer $S = \sum_{k=0}^n k \binom{n}{k}$. Notez que pour $k=0$, le terme est nul, donc on peut sommer de $k=1$ à $n$.
+
+**Étape 1 : Application de l'absorption**
+
+On utilise l'identité $k \binom{n}{k} = n \binom{n-1}{k-1}$.
+
+$$ S = \sum_{k=1}^n n \binom{n-1}{k-1} $$
+
+**Étape 2 : Factorisation**
+
+Le terme $n$ ne dépend pas de $k$, on peut le sortir de la somme :
+
+$$ S = n \sum_{k=1}^n \binom{n-1}{k-1} $$
+
+**Étape 3 : Changement d'indice**
+
+Posons $j = k-1$. Quand $k=1, j=0$ et quand $k=n, j=n-1$.
+
+$$ S = n \sum_{j=0}^{n-1} \binom{n-1}{j} $$
+
+**Étape 4 : Somme des coefficients binomiaux**
+
+On reconnaît la somme totale des coefficients binomiaux pour un ensemble de taille $n-1$. D'après la première preuve de ce chapitre, cette somme vaut $2^{n-1}$.
+
+**Conclusion**
+
+$$ \sum_{k=0}^n k \binom{n}{k} = n 2^{n-1} $$
+
+</details>

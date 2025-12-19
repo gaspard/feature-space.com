@@ -1,0 +1,284 @@
+---
+id: da60443d
+type: quiz
+order: 13
+title: Séries formelles - quiz (A)
+tags:
+  - Combinatoire
+  - Séries formelles
+  - Fonction génératrice
+  - Récurrence
+  - Binôme de Newton
+createdAt: '2025-12-16T17:13:00.030Z'
+level: regular
+course: Graphes et Combinatoire
+courseId: 7027276b
+chapter: Séries formelles
+chapterId: 4af35d6d
+---
+# Quiz: Séries formelles
+
+---
+
+#### Question 1 : Nature des Séries Formelles
+
+Quelle est la différence fondamentale entre une série formelle $\sum a_n X^n$ et une série entière étudiée en analyse ?
+
+- [ ] **A)** Une série formelle ne peut avoir qu'un nombre fini de coefficients non nuls.
+- [x] **B)** Pour une série formelle, la variable $X$ est symbolique et on ne se préoccupe pas de la convergence.
+- [ ] **C)** Une série formelle doit toujours converger pour $X=1$.
+- [x] **D)** L'ensemble des séries formelles contient l'ensemble des polynômes.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : B, D**
+
+Explication détaillée :
+
+- **A.** Incorrect. C'est la définition d'un *polynôme*. Une série formelle peut avoir une infinité de coefficients (ex: $\sum X^n$).
+- **B.** Correct. C'est la définition même du concept. $X$ est un "marque-page" pour les coefficients, pas un nombre.
+- **C.** Incorrect. La convergence est une notion d'analyse. En algèbre des séries formelles, on ne remplace pas $X$ par une valeur.
+- **D.** Correct. Un polynôme est une série formelle particulière où tous les coefficients sont nuls à partir d'un certain rang.
+
+</details>
+
+---
+
+## Question 2 : Produit de Cauchy
+
+Soient deux séries $A(X) = \sum a_n X^n$ et $B(X) = \sum b_n X^n$. Quel est le coefficient $c_n$ devant $X^n$ dans leur produit $A(X)B(X)$ ?
+
+- [ ] **A)** $c_n = a_n \cdot b_n$
+- [ ] **B)** $c_n = a_n + b_n$
+- [x] **C)** $c_n = \sum_{k=0}^n a_k b_{n-k}$
+- [ ] **D)** $c_n = \sum_{k=0}^{\infty} a_k b_n$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : C**
+
+Explication détaillée :
+
+- **A.** Incorrect. Cela correspondrait au produit d'Hadamard (terme à terme), pas au produit usuel des séries.
+- **B.** Incorrect. C'est la formule pour l'addition des séries.
+- **C.** Correct. C'est la définition du **produit de Cauchy** (ou convolution). Pour obtenir $X^n$, on multiplie $a_k X^k$ par $b_{n-k} X^{n-k}$ pour toutes les combinaisons où la somme des exposants fait $n$.
+- **D.** Incorrect. Cette formule ne correspond pas à la structure du produit de convolution.
+
+</details>
+
+---
+
+## Question 3 : Inversibilité
+
+À quelle condition une série formelle $A(X) = \sum_{n \ge 0} a_n X^n$ admet-elle un inverse multiplicatif $A(X)^{-1}$ ?
+
+- [ ] **A)** Si et seulement si tous les coefficients $a_n$ sont non nuls.
+- [ ] **B)** Si et seulement si $A(X)$ est un polynôme.
+- [x] **C)** Si et seulement si son terme constant $a_0$ est inversible (non nul dans un corps).
+- [ ] **D)** Si et seulement si $a_0 = 0$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : C**
+
+Explication détaillée :
+
+- **A.** Incorrect. Par exemple, $1-X$ est inversible même si des coefficients sont nuls ou non (ici $a_n=0$ pour $n>1$).
+- **B.** Incorrect. L'inverse d'un polynôme (ex: $1-X$) est souvent une série infinie ($\sum X^n$), donc on ne reste pas dans les polynômes, mais la série de départ peut en être un. Ce n'est pas la condition d'existence.
+- **C.** Correct. C'est le théorème fondamental d'inversibilité. Si $a_0 b_0 = 1$, alors $a_0$ doit être inversible.
+- **D.** Incorrect. Au contraire, si $a_0 = 0$ (comme pour la série $X$), la série n'est **jamais** inversible multiplicativement.
+
+</details>
+
+---
+
+## Question 4 : Série Géométrique et Inverse
+
+Quelle est l'expression en série formelle de l'inverse $\frac{1}{1+X}$ ?
+
+- [ ] **A)** $1 + X + X^2 + X^3 + \cdots$
+- [x] **B)** $\sum_{n \ge 0} (-1)^n X^n$
+- [ ] **C)** $1 - X$
+- [x] **D)** $1 - X + X^2 - X^3 + \cdots$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : B, D**
+
+Explication détaillée :
+
+- **A.** Incorrect. Ceci est le développement de $\frac{1}{1-X}$.
+- **B.** Correct. En remplaçant $X$ par $-X$ dans la série géométrique, on obtient $\sum (-X)^n = \sum (-1)^n X^n$.
+- **C.** Incorrect. $(1-X)(1+X) = 1 - X^2 \neq 1$.
+- **D.** Correct. C'est l'écriture développée de la réponse B.
+
+</details>
+
+---
+
+## Question 5 : Composition de séries
+
+Soient $A(X)$ et $B(X) = \sum b_n X^n$ deux séries formelles. Quelle condition est indispensable pour que la composée $A(B(X))$ soit bien définie ?
+
+- [ ] **A)** $B(X)$ doit être un polynôme.
+- [x] **B)** Le terme constant de $B$ doit être nul ($b_0 = 0$).
+- [ ] **C)** $A(X)$ et $B(X)$ doivent être inversibles.
+- [ ] **D)** Les coefficients de $A$ doivent être positifs.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : B**
+
+Explication détaillée :
+
+- **A.** Incorrect. $B(X)$ peut être une série infinie tant que $b_0=0$.
+- **B.** Correct. Si $b_0 \neq 0$, le calcul du terme constant de la composée impliquerait une somme infinie ($a_0 + a_1 b_0 + a_2 b_0^2 + \dots$), ce qui n'est pas défini en algèbre formelle.
+- **C.** Incorrect. L'inversibilité n'a pas de lien direct avec la possibilité de composer.
+- **D.** Incorrect. Le signe des coefficients n'a aucune importance algébrique ici.
+
+</details>
+
+---
+
+## Question 6 : Dérivation Formelle
+
+Quelle est la dérivée formelle de la série $A(X) = \sum_{n \ge 0} X^n = 1 + X + X^2 + X^3 + \cdots$ ?
+
+- [ ] **A)** $\sum_{n \ge 0} X^n$
+- [ ] **B)** $\sum_{n \ge 0} \frac{X^{n+1}}{n+1}$
+- [x] **C)** $\sum_{n \ge 1} n X^{n-1}$
+- [x] **D)** $1 + 2X + 3X^2 + \cdots$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : C, D**
+
+Explication détaillée :
+
+- **A.** Incorrect. C'est la fonction exponentielle qui est sa propre dérivée, pas la série géométrique.
+- **B.** Incorrect. Ceci correspond à l'opération inverse (primitive/intégration).
+- **C.** Correct. C'est l'application directe de la définition de la dérivée : le terme $X^n$ devient $n X^{n-1}$.
+- **D.** Correct. C'est l'écriture développée de la réponse C ($1 \cdot X^0 + 2 \cdot X^1 + 3 \cdot X^2 \dots$).
+
+</details>
+
+---
+
+## Question 7 : Coefficients binomiaux généralisés
+
+Combien vaut le coefficient binomial généralisé $\binom{-1}{n}$ pour un entier $n \ge 0$ ?
+
+- [ ] **A)** $1$
+- [ ] **B)** $n$
+- [ ] **C)** $-1$
+- [x] **D)** $(-1)^n$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : D**
+
+Explication détaillée :
+
+- **A.** Incorrect. Ce serait vrai pour $\binom{n}{0}$ ou si l'exposant était différent.
+- **B.** Incorrect.
+- **C.** Incorrect. Le signe dépend de la parité de $n$.
+- **D.** Correct. Par définition : $\binom{-1}{n} = \frac{(-1)(-2)\cdots(-n)}{n!} = \frac{(-1)^n n!}{n!} = (-1)^n$.
+
+</details>
+
+---
+
+## Question 8 : Théorème du Binôme Négatif
+
+Quel est le développement en série de $\frac{1}{(1-X)^2} = (1-X)^{-2}$ ?
+
+- [x] **A)** $\sum_{n \ge 0} (n+1) X^n$
+- [ ] **B)** $\sum_{n \ge 0} X^{2n}$
+- [ ] **C)** $\sum_{n \ge 0} \frac{1}{n!} X^n$
+- [ ] **D)** $1 + 2X + 4X^2 + 8X^3 + \cdots$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : A**
+
+Explication détaillée :
+
+- **A.** Correct. Selon le théorème du binôme généralisé avec $m=2$, le coefficient est $\binom{n+2-1}{n} = \binom{n+1}{n} = n+1$.
+- **B.** Incorrect. Ceci serait le développement de $\frac{1}{1-X^2}$.
+- **C.** Incorrect. Ceci est la série de l'exponentielle.
+- **D.** Incorrect. Ceci est le développement de $\frac{1}{1-2X}$.
+
+</details>
+
+---
+
+## Question 9 : Résolution de Récurrences (Méthode)
+
+Si une suite $(a_n)$ vérifie la récurrence $a_n = 3a_{n-1}$ pour $n \ge 1$ avec $a_0 = 1$, quelle équation vérifie sa série génératrice $A(X)$ ?
+
+- [ ] **A)** $A(X) = 3 A(X)$
+- [x] **B)** $A(X) - 1 = 3X A(X)$
+- [ ] **C)** $A(X) = 3X A(X)$
+- [ ] **D)** $A(X) - 3 = X A(X)$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : B**
+
+Explication détaillée :
+
+- **A.** Incorrect. Il manque le décalage de l'indice dû à $n-1$ (qui introduit un facteur $X$) et la condition initiale.
+- **B.** Correct. On multiplie la récurrence par $X^n$ et on somme pour $n \ge 1$.
+
+  Gauche : $\sum_{n \ge 1} a_n X^n = A(X) - a_0 = A(X) - 1$.
+
+  Droite : $\sum_{n \ge 1} 3 a_{n-1} X^n = 3X \sum_{n \ge 1} a_{n-1} X^{n-1} = 3X A(X)$.
+
+- **C.** Incorrect. Oubli de la condition initiale $a_0$. Cette équation impliquerait $A(X)(1-3X)=0$, donc $A(X)=0$.
+- **D.** Incorrect. Mauvais placement des coefficients.
+
+</details>
+
+---
+
+## Question 10 : Fraction Rationnelle et Suite
+
+Quelle est la suite $(a_n)$ dont la série génératrice est $A(X) = \frac{2}{1-5X}$ ?
+
+- [ ] **A)** $a_n = 2 + 5^n$
+- [ ] **B)** $a_n = (2 \cdot 5)^n$
+- [x] **C)** $a_n = 2 \cdot 5^n$
+- [ ] **D)** $a_n = \binom{n}{5}$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : C**
+
+Explication détaillée :
+
+- **A.** Incorrect. L'addition dans la formule de la suite correspondrait à une addition de fractions rationnelles.
+- **B.** Incorrect. Cela correspondrait à la série $\frac{1}{1-10X}$.
+- **C.** Correct. On reconnait une série géométrique modifiée : $\frac{2}{1-5X} = 2 \sum (5X)^n = \sum 2 \cdot 5^n X^n$. Donc $a_n = 2 \cdot 5^n$.
+- **D.** Incorrect. Rien à voir avec les coefficients binomiaux ici.
+
+</details>

@@ -1,0 +1,404 @@
+---
+id: f29162c2
+type: podcast
+order: 14
+title: Comptage des applications - Podcast (regular)
+tags:
+  - Combinatoire
+  - Applications
+  - Injections
+  - Surjections
+  - Stirling
+  - Factorielle
+createdAt: '2025-12-16T16:50:01.715Z'
+level: regular
+course: Graphes et Combinatoire
+courseId: 7027276b
+chapter: Comptage des applications
+chapterId: 586f5519
+duration: '[estimated duration in minutes]'
+hosts:
+  - noe
+  - alma
+  - linda
+setting: café
+---
+# Podcast : Comptage des applications
+
+## Episode Overview
+
+**Duration:** environ 25 minutes
+
+**Level:** regular
+
+**Topics:** Nombre d'applications, Ensemble des parties, Factorielles, Injections, Nombres de Stirling, Surjections
+
+**Setting:** Réunion au café entre trois passionnés de mathématiques
+
+### Character Descriptions
+
+- **Noé** - Homme d'âge moyen en reconversion professionnelle. Enthousiaste et curieux, il apporte son expérience de vie aux discussions.
+- **Alma** - Professeure de mathématiques de 30 ans. Cultivée, patiente et excellente pour expliquer clairement des concepts complexes.
+- **Linda** - Brillante étudiante en mathématiques. Vive d'esprit, elle fournit souvent des solutions élégantes et des intuitions rapides.
+
+---
+
+## Podcast Script
+
+### Introduction
+
+[Bruit de fond : Ambiance douce de café, tintement de tasses, léger murmure de conversations, bruit de vapeur d'une machine à expresso]
+
+**Noé :** [joyeux] Ah, quel plaisir de vous retrouver ici ! Il n'y a rien de tel qu'un bon café chaud pour attaquer les mathématiques. J'ai déjà commandé nos boissons habituelles.
+
+**Alma :** [chaleureusement] Merci Noé, c'est très gentil. Bonjour Linda, tu as l'air en pleine forme !
+
+**Linda :** [enthousiaste] Bonjour Alma ! Bonjour Noé ! Oui, j'ai relu le chapitre sur le "Comptage des applications" ce matin. C'est fascinant de voir comment on peut dénombrer les liens entre deux ensembles.
+
+**Noé :** [curieux] Justement, j'ai jeté un œil aussi, mais je t'avoue que je me mélange un peu les pinceaux entre les arrangements, les injections, les surjections... Pour moi, c'est un peu comme essayer de ranger mon garage : je ne sais jamais où mettre quoi !
+
+**Alma :** [riant doucement] Ne t'inquiète pas Noé, c'est tout à fait normal. Le but aujourd'hui, c'est de mettre de l'ordre dans tout ça, justement. On va y aller étape par étape.
+
+### Main Content
+
+#### Concept 1 : Le nombre d'applications ($n^k$)
+
+**Alma :** [posément] Commençons par la base. Imaginons deux ensembles finis. Disons un ensemble de départ $E$ et un ensemble d'arrivée $F$.
+
+**Linda :** [précisant] Pour simplifier, disons que l'ensemble de départ $E$ contient $k$ éléments, et l'ensemble d'arrivée $F$ contient $n$ éléments.
+
+**Noé :** [réfléchissant] D'accord. $k$ au départ, $n$ à l'arrivée. On cherche combien il y a de façons de relier tout le monde ?
+
+**Alma :** C'est ça. Pour chaque élément de ton ensemble de départ, tu dois choisir une cible, une "image", dans l'ensemble d'arrivée.
+
+**Linda :** [analytique] Et comme pour chaque élément de départ, tu as le choix parmi *tous* les éléments de l'arrivée, tu multiplies les possibilités.
+
+**Noé :** Attendez, un exemple concret s'il vous plaît.
+
+**Alma :** [pédagogue] Imagine que tu as 5 objets différents à peindre, et tu as 3 pots de peinture de couleurs différentes : Rouge, Vert, Bleu.
+
+Ici, ton ensemble de départ $E$, ce sont les 5 objets. Donc $|E| = 5$.
+
+Ton ensemble d'arrivée $F$, ce sont les 3 couleurs. Donc $|F| = 3$.
+
+**Noé :** [comprenant] D'accord. Donc pour le premier objet, j'ai 3 choix de couleur. Pour le deuxième objet, j'ai encore 3 choix...
+
+**Linda :** [complétant] Exactement ! Et comme tu as 5 objets, tu fais $3 \times 3 \times 3 \times 3 \times 3$.
+
+**Alma :** Ce qui nous donne la formule générale : le nombre d'éléments de l'arrivée puissance le nombre d'éléments du départ. Soit $|F|^{|E|}$. Dans notre exemple, c'est $3^5$.
+
+**Noé :** [sifflant] $3$ puissance $5$... ça fait $243$ possibilités juste pour peindre 5 objets ? C'est énorme.
+
+**Linda :** [amusée] Et oui, ça grimpe vite ! C'est le principe multiplicatif.
+
+[Bruit de tasse qu'on pose sur une soucoupe]
+
+#### Concept 2 : Ensemble des parties ($2^{|E|}$)
+
+**Alma :** Maintenant, gardons cette idée en tête. Noé, imagine que tu as un panneau avec 10 interrupteurs chez toi.
+
+**Noé :** [riant] Ah, comme dans mon couloir où je ne sais jamais lequel allume la lumière du fond !
+
+**Alma :** [souriant] Exactement. Chaque interrupteur a deux positions : allumé ou éteint. On peut voir ça comme une application vers un ensemble à deux éléments : $\{0, 1\}$.
+
+**Linda :** [intervenant] C'est ce qu'on appelle la **fonction caractéristique**. Si on considère l'ensemble de tes interrupteurs, chaque configuration (quels interrupteurs sont allumés) correspond à un sous-ensemble, ou une "partie", de tes interrupteurs.
+
+**Noé :** Je te suis. Si l'interrupteur 1 et 3 sont allumés, c'est une configuration.
+
+**Alma :** Voilà. Et combien de configurations possibles as-tu ? Pour chaque interrupteur, tu as 2 choix.
+
+**Noé :** [calculant] Donc $2 \times 2 \times 2$... dix fois ?
+
+**Linda :** C'est ça ! $2^{10}$.
+
+**Noé :** Ça fait... 1024 configurations ?
+
+**Alma :** Exactement. C'est pour cela que le cardinal de l'ensemble des parties d'un ensemble $E$, qu'on note $\mathcal{P}(E)$, vaut toujours $2^{|E|}$.
+
+**Linda :** C'est aussi la base du binaire en informatique !
+
+### Examples and Applications
+
+#### Concept 3 : Factorielle et Permutations ($n!$)
+
+**Noé :** D'accord, donc les puissances, c'est quand on a le choix libre et qu'on peut répéter (plusieurs objets peuvent avoir la même couleur). Mais si je veux classer des choses ?
+
+**Alma :** Ah ! Là, on entre dans le monde des **permutations**. L'ordre devient important et on ne peut pas se répéter.
+
+**Linda :** [vivement] L'outil clé ici, c'est la **factorielle**. Tu te souviens du point d'exclamation après un nombre ? $n!$.
+
+**Noé :** Oui ! $5!$ c'est $5 \times 4 \times 3 \times 2 \times 1$.
+
+**Alma :** Parfait. Utilisons l'exemple d'une course. Imagine 8 coureurs. Combien d'ordres d'arrivée possibles y a-t-il, en supposant qu'il n'y ait pas d'ex aequo ?
+
+**Noé :** Voyons... Pour le premier arrivé, j'ai 8 candidats possibles. Une fois qu'il est arrivé, il en reste 7 pour la deuxième place. Puis 6 pour la troisième...
+
+**Linda :** Tu as tout compris. C'est $8!$. Et devine combien ça fait ?
+
+**Noé :** [hésitant] Quelques milliers ?
+
+**Linda :** [excitée] Ça fait 40 320 !
+
+**Noé :** [choqué] Quoi ? Pour juste 8 personnes ? C'est incroyable comme ça explose plus vite que les puissances.
+
+**Alma :** Oui, la factorielle croît très très vite. C'est le nombre de bijections d'un ensemble dans lui-même.
+
+#### Concept 4 : Injections et Arrangements ($A_n^k$)
+
+**Alma :** Continuons sur notre lancée. Imaginons maintenant une course avec 10 athlètes, mais on ne s'intéresse qu'au podium : Or, Argent, Bronze.
+
+**Noé :** Donc on choisit 3 personnes parmi 10, et l'ordre compte car la médaille n'est pas la même.
+
+**Linda :** Exactement. C'est ce qu'on appelle une **injection** ou un **arrangement**. On choisit 3 gagnants distincts.
+
+**Alma :** La formule est logique. Pour la médaille d'Or, 10 choix. Pour l'Argent, il en reste 9. Pour le Bronze, il en reste 8.
+
+**Noé :** Donc $10 \times 9 \times 8 = 720$ podiums possibles.
+
+**Linda :** [précisant] Mathématiquement, on note ça $A_{10}^3$ ou on utilise la formule avec les factorielles : $\frac{10!}{(10-3)!}$. Mais ton calcul direct est souvent plus intuitif, Noé.
+
+**Noé :** Je préfère ma méthode "intuitive" ! C'est comme un code de cadenas où on n'a pas le droit de réutiliser le même chiffre.
+
+**Alma :** C'est exactement ça. Une injection, c'est quand chaque élément de départ atterrit sur une cible différente. C'est le principe du "pas de répétition".
+
+[Petit temps de pause, bruit de cuillère dans une tasse]
+
+#### Concept 5 & 6 : Stirling et Surjections
+
+**Alma :** [changeant de ton, plus doux] Maintenant, accrochez-vous un peu, on attaque la partie la plus subtile : les partitions et les surjections.
+
+**Linda :** [enthousiaste] Oh, les nombres de Stirling ! C'est mes préférés.
+
+**Noé :** Stirling ? Ça sonne comme un nom de Lord anglais.
+
+**Alma :** [riant] Presque ! Imagine, Noé, que tu as 4 étudiants (disons $a, b, c, d$) et tu veux les répartir en 2 groupes de travail. Les groupes ne sont pas numérotés, ce sont juste des tas. Et aucun groupe ne doit être vide.
+
+**Linda :** C'est ça une **partition**. On découpe l'ensemble. Le nombre de façons de faire ça, c'est le nombre de **Stirling de seconde espèce**, noté $S(4, 2)$.
+
+**Noé :** Attends... Si je mets $a$ et $b$ ensemble, et $c$ et $d$ ensemble, c'est une possibilité.
+
+**Alma :** Oui. Et si tu mets $a$ tout seul, et les trois autres ensemble, c'est une autre possibilité. Pour 4 éléments en 2 groupes, le calcul donne 7 façons possibles.
+
+**Noé :** D'accord. Mais quel est le rapport avec les applications ?
+
+**Linda :** [brillamment] C'est là que la magie opère ! Imagine maintenant que tes groupes ne sont plus "juste des tas", mais des salles de classe nommées : Salle A et Salle B.
+
+**Alma :** Là, les groupes deviennent distincts. On appelle ça une **surjection**. Tu envoies tes 4 élèves dans 2 salles, et aucune salle ne doit rester vide.
+
+**Noé :** Ah ! Donc, d'abord je fais mes tas (mes partitions), et ensuite je décide quel tas va dans quelle salle ?
+
+**Linda :** Exactement ! Tu as 7 façons de faire les tas (Stirling), et ensuite tu as 2 façons d'attribuer les tas aux salles (soit Tas 1 dans Salle A, Tas 2 dans Salle B, ou l'inverse).
+
+**Alma :** Donc on multiplie le nombre de Stirling par la factorielle du nombre de salles. Ici $2! \times 7 = 14$ surjections.
+
+**Noé :** [illuminé] Ah, c'est génial ! La partition, c'est quand l'ordre des groupes ne compte pas, et la surjection, c'est quand on étiquette les groupes.
+
+**Alma :** [fière] Tu as tout compris, Noé. C'est une excellente synthèse.
+
+### Key Takeaways
+
+**Alma :** [résumant] Faisons un petit bilan avant de finir nos cafés.
+
+**Linda :** [comptant sur ses doigts]
+
+1.  **Applications quelconques** : On a le choix total, on peut répéter. Formule : $|F|^{|E|}$ ou $n^k$. Exemple : Les couleurs.
+2.  **Ensemble des parties** : C'est $2^{|E|}$. Exemple : Les interrupteurs.
+
+**Noé :** [continuant]
+
+3.  **Permutations** : On classe tout le monde, l'ordre compte. Formule : $n!$. Exemple : La course complète.
+4.  **Arrangements (Injections)** : On choisit un petit groupe ordonné sans répétition. Exemple : Le podium.
+
+**Alma :** [concluant]
+
+5.  **Stirling et Surjections** : On regroupe les éléments. Si les groupes sont anonymes, c'est Stirling (partitions). Si les groupes sont identifiés (comme des salles), c'est une Surjection, et on multiplie par la factorielle.
+
+**Linda :** N'oubliez pas le piège classique : pour les applications $n^k$, c'est bien (Taille Arrivée)^(Taille Départ). Ne les inversez pas !
+
+**Noé :** "Arrivée puissance Départ". Je vais me le tatouer... ou au moins l'écrire sur ma serviette en papier !
+
+### Conclusion
+
+**Noé :** [satisfait] Eh bien, je ne verrai plus jamais mes interrupteurs ou mes pots de peinture de la même façon. Merci à vous deux, c'était limpide.
+
+**Alma :** [chaleureusement] C'est toujours un plaisir d'échanger avec vous. Les mathématiques sont tellement plus vivantes quand on en discute.
+
+**Linda :** [enjouée] Carrément ! La prochaine fois, on pourra peut-être parler de probabilités avec tout ça ?
+
+**Noé :** [riant] Doucement Linda, laisse-moi digérer mes factorielles d'abord !
+
+**Alma :** [riant] Allez, à la semaine prochaine !
+
+**Linda :** À bientôt !
+
+[Bruit de chaises qu'on recule, pas qui s'éloignent, fondu sonore]
+
+---
+
+## Audio Production Notes
+
+- **Pacing:** La conversation doit être fluide mais laisser le temps à l'auditeur de visualiser les calculs. Après chaque exemple numérique (comme $10 \times 9 \times 8$), laisser une micro-pause d'une demi-seconde.
+- **Emphasis:**
+    - Accentuer les mots clés : "Mutiplicatif", "Factorielle", "Ordre", "Sans répétition", "Partition".
+    - Noé doit vraiment avoir l'air de chercher la réponse, puis d'avoir un "Aha moment".
+- **Pauses:** Laisser des pauses naturelles quand Noé réfléchit ou calcule.
+- **Pronunciation:**
+    - $|F|^{|E|}$ : "Cardinal de F puissance Cardinal de E".
+    - $n!$ : "Factorielle N" ou "N factorielle".
+    - $A_n^k$ : "A, N, K" ou "Arrangement de K parmi N".
+    - $S(n, k)$ : "S de N virgule K" ou "Nombre de Stirling N, K".
+- **Character Voices:**
+    - **Noé:** Voix un peu plus grave, chaleureuse, rythme posé, ton curieux et parfois amusé par sa propre confusion.
+    - **Alma:** Voix claire, articulée, rassurante, ton professoral mais bienveillant, pas autoritaire.
+    - **Linda:** Voix plus jeune, débit légèrement plus rapide, ton enthousiaste et dynamique.
+- **Café Atmosphere:** Garder le bruit de fond très bas pour ne pas gêner la compréhension des formules, mais présent pour l'immersion. Utiliser des sons spécifiques (tasse, cuillère) pour marquer les transitions.
+
+## Transcript for Audio Generation
+
+**Noé :** Ah, quel plaisir de vous retrouver ici ! Il n'y a rien de tel qu'un bon café chaud pour attaquer les mathématiques. J'ai déjà commandé nos boissons habituelles.
+
+**Alma :** Merci Noé, c'est très gentil. Bonjour Linda, tu as l'air en pleine forme !
+
+**Linda :** Bonjour Alma ! Bonjour Noé ! Oui, j'ai relu le chapitre sur le "Comptage des applications" ce matin. C'est fascinant de voir comment on peut dénombrer les liens entre deux ensembles.
+
+**Noé :** Justement, j'ai jeté un œil aussi, mais je t'avoue que je me mélange un peu les pinceaux entre les arrangements, les injections, les surjections... Pour moi, c'est un peu comme essayer de ranger mon garage : je ne sais jamais où mettre quoi !
+
+**Alma :** Ne t'inquiète pas Noé, c'est tout à fait normal. Le but aujourd'hui, c'est de mettre de l'ordre dans tout ça, justement. On va y aller étape par étape.
+
+**Alma :** Commençons par la base. Imaginons deux ensembles finis. Disons un ensemble de départ E et un ensemble d'arrivée F.
+
+**Linda :** Pour simplifier, disons que l'ensemble de départ E contient k éléments, et l'ensemble d'arrivée F contient n éléments.
+
+**Noé :** D'accord. k au départ, n à l'arrivée. On cherche combien il y a de façons de relier tout le monde ?
+
+**Alma :** C'est ça. Pour chaque élément de ton ensemble de départ, tu dois choisir une cible, une "image", dans l'ensemble d'arrivée.
+
+**Linda :** Et comme pour chaque élément de départ, tu as le choix parmi *tous* les éléments de l'arrivée, tu multiplies les possibilités.
+
+**Noé :** Attendez, un exemple concret s'il vous plaît.
+
+**Alma :** Imagine que tu as 5 objets différents à peindre, et tu as 3 pots de peinture de couleurs différentes : Rouge, Vert, Bleu. Ici, ton ensemble de départ E, ce sont les 5 objets. Donc le cardinal de E vaut 5. Ton ensemble d'arrivée F, ce sont les 3 couleurs. Donc le cardinal de F vaut 3.
+
+**Noé :** D'accord. Donc pour le premier objet, j'ai 3 choix de couleur. Pour le deuxième objet, j'ai encore 3 choix...
+
+**Linda :** Exactement ! Et comme tu as 5 objets, tu fais 3 fois 3 fois 3 fois 3 fois 3.
+
+**Alma :** Ce qui nous donne la formule générale : le nombre d'éléments de l'arrivée puissance le nombre d'éléments du départ. Soit cardinal de F puissance cardinal de E. Dans notre exemple, c'est 3 puissance 5.
+
+**Noé :** 3 puissance 5... ça fait 243 possibilités juste pour peindre 5 objets ? C'est énorme.
+
+**Linda :** Et oui, ça grimpe vite ! C'est le principe multiplicatif.
+
+**Alma :** Maintenant, gardons cette idée en tête. Noé, imagine que tu as un panneau avec 10 interrupteurs chez toi.
+
+**Noé :** Ah, comme dans mon couloir où je ne sais jamais lequel allume la lumière du fond !
+
+**Alma :** Exactement. Chaque interrupteur a deux positions : allumé ou éteint. On peut voir ça comme une application vers un ensemble à deux éléments : 0 et 1.
+
+**Linda :** C'est ce qu'on appelle la **fonction caractéristique**. Si on considère l'ensemble de tes interrupteurs, chaque configuration correspond à un sous-ensemble, ou une "partie", de tes interrupteurs.
+
+**Noé :** Je te suis. Si l'interrupteur 1 et 3 sont allumés, c'est une configuration.
+
+**Alma :** Voilà. Et combien de configurations possibles as-tu ? Pour chaque interrupteur, tu as 2 choix.
+
+**Noé :** Donc 2 fois 2 fois 2... dix fois ?
+
+**Linda :** C'est ça ! 2 puissance 10.
+
+**Noé :** Ça fait... 1024 configurations ?
+
+**Alma :** Exactement. C'est pour cela que le cardinal de l'ensemble des parties d'un ensemble E, qu'on note P de E, vaut toujours 2 puissance le cardinal de E.
+
+**Linda :** C'est aussi la base du binaire en informatique !
+
+**Noé :** D'accord, donc les puissances, c'est quand on a le choix libre et qu'on peut répéter. Mais si je veux classer des choses ?
+
+**Alma :** Ah ! Là, on entre dans le monde des **permutations**. L'ordre devient important et on ne peut pas se répéter.
+
+**Linda :** L'outil clé ici, c'est la **factorielle**. Tu te souviens du point d'exclamation après un nombre ? N factorielle.
+
+**Noé :** Oui ! 5 factorielle c'est 5 fois 4 fois 3 fois 2 fois 1.
+
+**Alma :** Parfait. Utilisons l'exemple d'une course. Imagine 8 coureurs. Combien d'ordres d'arrivée possibles y a-t-il, en supposant qu'il n'y ait pas d'ex aequo ?
+
+**Noé :** Voyons... Pour le premier arrivé, j'ai 8 candidats possibles. Une fois qu'il est arrivé, il en reste 7 pour la deuxième place. Puis 6 pour la troisième...
+
+**Linda :** Tu as tout compris. C'est 8 factorielle. Et devine combien ça fait ?
+
+**Noé :** Quelques milliers ?
+
+**Linda :** Ça fait 40 320 !
+
+**Noé :** Quoi ? Pour juste 8 personnes ? C'est incroyable comme ça explose plus vite que les puissances.
+
+**Alma :** Oui, la factorielle croît très très vite. C'est le nombre de bijections d'un ensemble dans lui-même.
+
+**Alma :** Continuons sur notre lancée. Imaginons maintenant une course avec 10 athlètes, mais on ne s'intéresse qu'au podium : Or, Argent, Bronze.
+
+**Noé :** Donc on choisit 3 personnes parmi 10, et l'ordre compte car la médaille n'est pas la même.
+
+**Linda :** Exactement. C'est ce qu'on appelle une **injection** ou un **arrangement**. On choisit 3 gagnants distincts.
+
+**Alma :** La formule est logique. Pour la médaille d'Or, 10 choix. Pour l'Argent, il en reste 9. Pour le Bronze, il en reste 8.
+
+**Noé :** Donc 10 fois 9 fois 8 égale 720 podiums possibles.
+
+**Linda :** Mathématiquement, on note ça A, 10, 3 ou on utilise la formule avec les factorielles : 10 factorielle divisé par 7 factorielle. Mais ton calcul direct est souvent plus intuitif, Noé.
+
+**Noé :** Je préfère ma méthode "intuitive" ! C'est comme un code de cadenas où on n'a pas le droit de réutiliser le même chiffre.
+
+**Alma :** C'est exactement ça. Une injection, c'est quand chaque élément de départ atterrit sur une cible différente. C'est le principe du "pas de répétition".
+
+**Alma :** Maintenant, accrochez-vous un peu, on attaque la partie la plus subtile : les partitions et les surjections.
+
+**Linda :** Oh, les nombres de Stirling ! C'est mes préférés.
+
+**Noé :** Stirling ? Ça sonne comme un nom de Lord anglais.
+
+**Alma :** Presque ! Imagine, Noé, que tu as 4 étudiants et tu veux les répartir en 2 groupes de travail. Les groupes ne sont pas numérotés, ce sont juste des tas. Et aucun groupe ne doit être vide.
+
+**Linda :** C'est ça une **partition**. On découpe l'ensemble. Le nombre de façons de faire ça, c'est le nombre de **Stirling de seconde espèce**.
+
+**Noé :** Attends... Si je mets les deux premiers ensemble, et les deux autres ensemble, c'est une possibilité.
+
+**Alma :** Oui. Pour 4 éléments en 2 groupes, le calcul donne 7 façons possibles.
+
+**Noé :** D'accord. Mais quel est le rapport avec les applications ?
+
+**Linda :** C'est là que la magie opère ! Imagine maintenant que tes groupes ne sont plus "juste des tas", mais des salles de classe nommées : Salle A et Salle B.
+
+**Alma :** Là, les groupes deviennent distincts. On appelle ça une **surjection**. Tu envoies tes 4 élèves dans 2 salles, et aucune salle ne doit rester vide.
+
+**Noé :** Ah ! Donc, d'abord je fais mes tas, mes partitions, et ensuite je décide quel tas va dans quelle salle ?
+
+**Linda :** Exactement ! Tu as 7 façons de faire les tas, les nombres de Stirling, et ensuite tu as 2 façons d'attribuer les tas aux salles.
+
+**Alma :** Donc on multiplie le nombre de Stirling par la factorielle du nombre de salles. Ici 2 factorielle fois 7 égale 14 surjections.
+
+**Noé :** Ah, c'est génial ! La partition, c'est quand l'ordre des groupes ne compte pas, et la surjection, c'est quand on étiquette les groupes.
+
+**Alma :** Tu as tout compris, Noé. C'est une excellente synthèse.
+
+**Alma :** Faisons un petit bilan avant de finir nos cafés.
+
+**Linda :** 1. **Applications quelconques** : On a le choix total, on peut répéter. Formule : n puissance k. Exemple : Les couleurs. 2. **Ensemble des parties** : C'est 2 puissance n. Exemple : Les interrupteurs.
+
+**Noé :** 3. **Permutations** : On classe tout le monde, l'ordre compte. Formule : n factorielle. Exemple : La course complète. 4. **Arrangements ou Injections** : On choisit un petit groupe ordonné sans répétition. Exemple : Le podium.
+
+**Alma :** 5. **Stirling et Surjections** : On regroupe les éléments. Si les groupes sont anonymes, c'est Stirling. Si les groupes sont identifiés, c'est une Surjection, et on multiplie par la factorielle.
+
+**Linda :** N'oubliez pas le piège classique : pour les applications n puissance k, c'est bien Taille Arrivée puissance Taille Départ. Ne les inversez pas !
+
+**Noé :** "Arrivée puissance Départ". Je vais me le tatouer... ou au moins l'écrire sur ma serviette en papier !
+
+**Noé :** Eh bien, je ne verrai plus jamais mes interrupteurs ou mes pots de peinture de la même façon. Merci à vous deux, c'était limpide.
+
+**Alma :** C'est toujours un plaisir d'échanger avec vous. Les mathématiques sont tellement plus vivantes quand on en discute.
+
+**Linda :** Carrément ! La prochaine fois, on pourra peut-être parler de probabilités avec tout ça ?
+
+**Noé :** Doucement Linda, laisse-moi digérer mes factorielles d'abord !
+
+**Alma :** Allez, à la semaine prochaine !
+
+**Linda :** À bientôt !

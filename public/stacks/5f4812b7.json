@@ -1,0 +1,100 @@
+{
+  "info": {
+    "id": "5f4812b7",
+    "title": "Introduction à la théorie de graphes - fiches de révision (A)",
+    "type": "cards",
+    "level": "regular",
+    "chapter": "Introduction à la théorie de graphes",
+    "course": "Graphes et Combinatoire",
+    "tags": [
+      "Graphes",
+      "Isomorphisme",
+      "Degrés",
+      "Lemme des poignées de main",
+      "Havel-Hakimi",
+      "Théorie extrémale",
+      "Turán",
+      "Ramsey"
+    ],
+    "count": 11
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "5f4812b7",
+      "content": "Qu'est-ce qu'un **graphe simple non-orienté** ?",
+      "solution": "\n\nUn graphe simple non-orienté est un couple $G = (S, A)$ où :\n\n- $S$ est un ensemble fini non vide de **sommets** (ou nœuds).\n- $A$ est un sous-ensemble de $\\mathcal{P}_2(S)$ (l'ensemble des paires de $S$), appelé l'ensemble des **arêtes**.\n\nUne arête est une paire $\\{x, y\\}$ de sommets distincts.\n\n**Propriétés :**\n\n- Pas de boucles (une arête ne relie pas un sommet à lui-même).\n- Pas d'arêtes multiples (au plus une arête entre deux sommets).\n- La relation d'adjacence est symétrique.\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "5f4812b7",
+      "content": "Qu'est-ce que l'**ordre** d'un graphe ?",
+      "solution": "\n\nL'**ordre** d'un graphe est simplement le nombre total de ses sommets.\n\nOn le note généralement $|S|$ ou parfois $n$.\n\n**Exemple :**\n\nSi $S = \\{a, b, c, d\\}$, l'ordre du graphe est 4.\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "5f4812b7",
+      "content": "Quand dit-on que deux graphes $G$ et $G'$ sont **isomorphes** ?",
+      "solution": "\n\nDeux graphes $G=(S,A)$ et $G'=(S',A')$ sont **isomorphes** (noté $G \\cong G'$) s'il existe une **bijection** $\\varphi : S \\to S'$ qui préserve l'adjacence.\n\nCela signifie que pour tous sommets $x, y \\in S$ :\n\n$$ \\{x, y\\} \\in A \\iff \\{\\varphi(x), \\varphi(y)\\} \\in A' $$\n\n**Intuition :**\n\nDeux graphes sont isomorphes s'ils ont la même structure topologique, même si les sommets portent des noms différents ou s'ils sont dessinés différemment.\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "5f4812b7",
+      "content": "Qu'est-ce qu'un **graphe complet** ($K_n$) et combien d'arêtes possède-t-il ?",
+      "solution": "\n\nUn graphe complet d'ordre $n$, noté $K_n$ (ou clique), est un graphe où **tous les sommets sont connectés deux à deux**.\n\n**Nombre d'arêtes :**\n\nIl possède le maximum d'arêtes possible pour un graphe simple d'ordre $n$ :\n\n$$ |A| = \\binom{n}{2} = \\frac{n(n-1)}{2} $$\n\n**Exemple :**\n\n$K_3$ est un triangle (3 sommets, 3 arêtes).\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "5f4812b7",
+      "content": "Quelle est la définition d'un **graphe biparti complet** ($K_{n,m}$) ?",
+      "solution": "\n\nUn graphe biparti complet $K_{n,m}$ est un graphe dont les sommets sont partitionnés en deux ensembles disjoints $U$ (de taille $n$) et $V$ (de taille $m$).\n\n**Règles de connexion :**\n\n- Chaque sommet de $U$ est relié à **tous** les sommets de $V$.\n- Il n'y a **aucune** arête reliant deux sommets de $U$ entre eux.\n- Il n'y a **aucune** arête reliant deux sommets de $V$ entre eux.\n\nSon nombre total d'arêtes est $n \\times m$.\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "5f4812b7",
+      "content": "Quelle est la formule du **Lemme des Poignées de Main** ?",
+      "solution": "\n\nPour un graphe $G=(S, A)$, la somme des degrés des sommets est égale à deux fois le nombre d'arêtes :\n\n$$ \\sum_{s \\in S} d(s) = 2|A| $$\n\n**Où :**\n\n- $d(s)$ est le degré du sommet $s$ (nombre de voisins).\n- $|A|$ est le nombre total d'arêtes.\n\n**Conséquence :**\n\nLa somme des degrés est toujours un nombre **pair**. Le nombre de sommets ayant un degré impair est nécessairement pair.\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "5f4812b7",
+      "content": "Comment construit-on la **Matrice d'Adjacence** d'un graphe ?",
+      "solution": "\n\nPour un graphe avec $n$ sommets $\\{s_1, \\dots, s_n\\}$, la matrice d'adjacence $A_G$ est une matrice carrée de taille $n \\times n$ définie par :\n\n$$ a_{i,j} = \\begin{cases} 1 & \\text{si } \\{s_i, s_j\\} \\in A \\text{ (les sommets sont reliés)} \\\\ 0 & \\text{sinon} \\end{cases} $$\n\n**Propriétés clés :**\n\n- La matrice est **symétrique** pour les graphes non-orientés ($a_{i,j} = a_{j,i}$).\n- La diagonale est nulle ($a_{i,i} = 0$) car il n'y a pas de boucles.\n- La somme des éléments de la ligne $i$ donne le degré $d(s_i)$.\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "5f4812b7",
+      "content": "Comment vérifier si une suite d'entiers est graphique (Théorème de **Havel-Hakimi**) ?",
+      "solution": "\n\n**Méthode :**\n\n1.  Trier la suite dans l'ordre **décroissant** : $d_1 \\geq d_2 \\geq \\dots \\geq d_n$.\n2.  Supprimer le premier terme $d_1$.\n3.  Soustraire 1 aux $d_1$ termes suivants de la suite.\n4.  Répéter l'opération (en réordonnant si nécessaire) jusqu'à obtenir :\n    - Une suite de zéros (la suite est **graphique**).\n    - Des nombres négatifs ou une impossibilité de soustraire (la suite n'est **pas graphique**).\n\n**Exemple :**\n\nPour $(3, 3, 2, 2, 2)$ : on retire 3, on réduit les 3 suivants $\\rightarrow (2, 1, 1, 2) \\rightarrow$ tri $\\rightarrow (2, 2, 1, 1)$...\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "5f4812b7",
+      "content": "Quelle est la différence entre un **sous-graphe** et un **sous-graphe induit** ?",
+      "solution": "\n\nSoit un graphe $G=(S, A)$.\n\n- **Sous-graphe :** On choisit un sous-ensemble de sommets et un sous-ensemble d'arêtes existantes. On peut choisir de ne pas inclure certaines arêtes même si leurs extrémités sont présentes.\n- **Sous-graphe induit :** On choisit un sous-ensemble de sommets $S' \\subseteq S$, et on doit garder **toutes** les arêtes de $G$ qui relient des sommets de $S'$.\n\n$$ A' = A \\cap \\mathcal{P}_2(S') $$\n\nUn sous-graphe induit est entièrement déterminé par le choix de ses sommets.\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "5f4812b7",
+      "content": "Que dit le **Théorème de Turán** ?",
+      "solution": "\n\nLe théorème de Turán donne le nombre maximum d'arêtes qu'un graphe d'ordre $n$ peut avoir sans contenir de clique de taille $r$ ($K_r$).\n\n**Formule :**\n\nSi $G$ ne contient pas de $K_r$, alors :\n\n$$ |A| \\leq \\left( 1 - \\frac{1}{r - 1} \\right) \\frac{n^2}{2} $$\n\n**Application :**\n\nIl sert à comprendre la densité maximale d'un graphe avant qu'une certaine structure (le triangle $K_3$, le tétraèdre $K_4$, etc.) n'apparaisse obligatoirement.\n\n",
+      "options": []
+    },
+    {
+      "id": "11",
+      "stackId": "5f4812b7",
+      "content": "Qu'est-ce que le **Nombre de Ramsey** $R(s, t)$ ?",
+      "solution": "\n\nLe nombre de Ramsey $R(s, t)$ est le plus petit entier $n$ tel que n'importe quel graphe d'ordre $n$ contienne obligatoirement :\n\n- Soit une **clique** d'ordre $s$ ($K_s$, $s$ sommets tous reliés).\n- Soit un **stable** d'ordre $t$ ($S_t$, $t$ sommets dont aucun n'est relié).\n\n**Exemple célèbre :**\n\n$R(3, 3) = 6$. Dans tout groupe de 6 personnes, soit 3 se connaissent toutes, soit 3 ne se connaissent pas du tout.\n\n",
+      "options": []
+    }
+  ]
+}

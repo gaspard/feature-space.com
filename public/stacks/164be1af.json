@@ -1,0 +1,91 @@
+{
+  "info": {
+    "id": "164be1af",
+    "title": "Comptage des applications - preuves (A)",
+    "type": "proofs",
+    "level": "regular",
+    "chapter": "Comptage des applications",
+    "course": "Graphes et Combinatoire",
+    "tags": [
+      "Combinatoire",
+      "Applications",
+      "Injections",
+      "Surjections",
+      "Stirling",
+      "Factorielle"
+    ],
+    "count": 10
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "164be1af",
+      "content": "#### Le cardinal de l'ensemble des applications\n\nDémontrer que si $E$ et $F$ sont deux ensembles finis de cardinaux respectifs $k$ et $n$, alors le nombre d'applications de $E$ dans $F$ est $|\\mathcal{F}(E, F)| = n^k$.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nUtilisez le **principe multiplicatif**.\n\nConsidérez les éléments de $E$ comme étant $x_1, x_2, \\dots, x_k$. Pour définir une application $f$, vous devez choisir une image $f(x_i)$ dans $F$ pour chaque élément de $E$. Combien de choix avez-vous pour $x_1$ ? Pour $x_2$ ? Ces choix sont-ils indépendants ?\n\n</details>",
+      "solution": "\n\nSoit $E = \\{x_1, x_2, \\dots, x_k\\}$ et $|F| = n$.\n\nPour construire une application $f : E \\to F$, nous devons déterminer l'image de chaque élément de $E$.\n\n**Étape 1 : Choix des images**\n\n- Pour l'élément $x_1$, il y a $n$ choix possibles pour $f(x_1)$ (n'importe quel élément de $F$).\n- Pour l'élément $x_2$, il y a également $n$ choix possibles pour $f(x_2)$ (les répétitions sont autorisées dans une application simple).\n- ...\n- Pour l'élément $x_k$, il y a $n$ choix possibles pour $f(x_k)$.\n\n**Étape 2 : Application du principe multiplicatif**\n\nPuisque le choix de l'image de chaque élément est indépendant des autres, le nombre total de façons de construire l'application est le produit des nombres de choix à chaque étape.\n\nNombre total $= \\underbrace{n \\times n \\times \\dots \\times n}_{k \\text{ fois}}$\n\n**Conclusion :**\n\n$$|\\mathcal{F}(E, F)| = n^k$$\n\nC'est-à-dire $|F|^{|E|}$.\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "164be1af",
+      "content": "#### Cardinal de l'ensemble des parties via la fonction caractéristique\n\nDémontrer que le cardinal de l'ensemble des parties $\\mathcal{P}(E)$ d'un ensemble fini $E$ est $2^{|E|}$, en utilisant les fonctions caractéristiques.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nEssayez d'établir une **bijection** entre l'ensemble des parties $\\mathcal{P}(E)$ et l'ensemble des applications de $E$ dans $\\{0, 1\\}$.\n\nRappelez-vous que la fonction caractéristique $f_A$ d'un sous-ensemble $A$ vaut 1 si l'élément est dans $A$, et 0 sinon. Utilisez le résultat de la preuve précédente sur le nombre d'applications.\n\n</details>",
+      "solution": "\n\nSoit $E$ un ensemble fini. Nous cherchons à déterminer $|\\mathcal{P}(E)|$.\n\n**Étape 1 : Définition de la fonction caractéristique**\n\nÀ chaque sous-ensemble $A \\subseteq E$, on associe sa fonction caractéristique $\\mathbf{1}_A : E \\to \\{0, 1\\}$ définie par :\n\n$$\\mathbf{1}_A(x) = \\begin{cases} 1 & \\text{si } x \\in A \\\\ 0 & \\text{si } x \\notin A \\end{cases}$$\n\n**Étape 2 : Établissement de la bijection**\n\nConsidérons l'application $\\Phi : \\mathcal{P}(E) \\to \\mathcal{F}(E, \\{0, 1\\})$ qui associe $A \\mapsto \\mathbf{1}_A$.\n\n- Cette application est **injective** : Si deux parties $A$ et $B$ sont différentes, il existe un $x$ qui est dans l'une mais pas dans l'autre, donc $\\mathbf{1}_A(x) \\neq \\mathbf{1}_B(x)$.\n- Cette application est **surjective** : Pour toute fonction $f : E \\to \\{0, 1\\}$, on peut construire l'ensemble $A = \\{x \\in E \\mid f(x) = 1\\}$, dont la fonction caractéristique est exactement $f$.\n\nAinsi, $\\Phi$ est une bijection.\n\n**Étape 3 : Calcul du cardinal**\n\nPuisque $\\Phi$ est une bijection, $|\\mathcal{P}(E)| = |\\mathcal{F}(E, \\{0, 1\\})|$.\n\nD'après la formule du nombre d'applications (Concept 1), avec $|F|=|\\{0, 1\\}|=2$ :\n\n$$|\\mathcal{F}(E, \\{0, 1\\})| = 2^{|E|}$$\n\n**Conclusion :**\n\n$$|\\mathcal{P}(E)| = 2^{|E|}$$\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "164be1af",
+      "content": "#### Cardinal de l'ensemble des parties par récurrence\n\nDémontrer par récurrence que pour tout ensemble fini $E$ de cardinal $n$, $|\\mathcal{P}(E)| = 2^n$.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\n**Initialisation :** Vérifiez pour $n=0$ (l'ensemble vide).\n\n**Hérédité :** Supposez que la propriété est vraie pour un ensemble de taille $n$.\n\nConsidérez un ensemble $E'$ de taille $n+1$. On peut écrire $E' = E \\cup \\{x\\}$ où $|E|=n$.\n\nDivisez les sous-ensembles de $E'$ en deux catégories : ceux qui ne contiennent pas $x$ et ceux qui contiennent $x$.\n\n</details>",
+      "solution": "\n\nDémontrons par récurrence sur $n$ la proposition $P(n) :$ \"Si $|E|=n$, alors $|\\mathcal{P}(E)| = 2^n$\".\n\n**Étape 1 : Initialisation ($n=0$)**\n\nSi $E = \\varnothing$, alors la seule partie de $E$ est $\\varnothing$.\n\n$|\\mathcal{P}(\\varnothing)| = 1$.\n\nOr $2^0 = 1$. La propriété est vraie pour $n=0$.\n\n**Étape 2 : Hérédité**\n\nSupposons que pour tout ensemble de cardinal $n$, le nombre de parties soit $2^n$.\n\nSoit $E'$ un ensemble de cardinal $n+1$. Fixons un élément $a \\in E'$ et posons $E = E' \\setminus \\{a\\}$. Alors $|E| = n$.\n\nLes parties de $E'$ peuvent être classées en deux types disjoints :\n\n1. Les parties qui ne contiennent pas $a$ : ce sont exactement les parties de $E$. Il y en a $|\\mathcal{P}(E)| = 2^n$ (par hypothèse de récurrence).\n2. Les parties qui contiennent $a$ : chaque telle partie est de la forme $X \\cup \\{a\\}$ où $X$ est une partie de $E$. Il y a autant de telles parties que de choix pour $X$, soit $2^n$.\n\n**Étape 3 : Somme**\n\nLe nombre total de parties de $E'$ est la somme des parties des deux types :\n\n$$|\\mathcal{P}(E')| = 2^n + 2^n = 2 \\times 2^n = 2^{n+1}$$\n\n**Conclusion :**\n\nPar le principe de récurrence, pour tout $n \\in \\mathbb{N}$, $|\\mathcal{P}(E)| = 2^n$.\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "164be1af",
+      "content": "#### Nombre de permutations (Factorielle)\n\nDémontrer que le nombre de bijections d'un ensemble $E$ de cardinal $n$ dans lui-même (permutations) est égal à $n!$.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nImaginez que vous devez placer les $n$ éléments de $E$ dans $n$ \"cases\" ordonnées (les images).\n\nCombien de choix avez-vous pour la première case ?\n\nUne fois le premier élément choisi, combien en reste-t-il pour la deuxième case (puisque c'est une bijection/injection) ?\n\nContinuez ainsi jusqu'à la dernière case.\n\n</details>",
+      "solution": "\n\nSoit $E = \\{x_1, \\dots, x_n\\}$. Une permutation est une bijection $\\sigma : E \\to E$. Cela revient à ordonner les éléments de $E$ dans une liste $(\\sigma(x_1), \\sigma(x_2), \\dots, \\sigma(x_n))$.\n\n**Étape 1 : Construction pas à pas**\n\n- Pour définir $\\sigma(x_1)$, nous avons $n$ choix possibles parmi les éléments de $E$.\n- Pour définir $\\sigma(x_2)$, $\\sigma$ devant être injective, nous ne pouvons pas reprendre la valeur de $\\sigma(x_1)$. Il reste donc $n-1$ choix.\n- Pour définir $\\sigma(x_3)$, nous devons choisir une image distincte des deux précédentes. Il reste $n-2$ choix.\n- ...\n- Pour $\\sigma(x_n)$, il ne reste plus qu'un seul élément disponible ($1$ choix).\n\n**Étape 2 : Calcul**\n\nD'après le principe multiplicatif, le nombre total de permutations est :\n\n$$n \\times (n-1) \\times (n-2) \\times \\dots \\times 1$$\n\n**Conclusion :**\n\nCe produit correspond exactement à la définition de la factorielle.\n\n$$|\\mathcal{S}_n| = n!$$\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "164be1af",
+      "content": "#### Formule des injections (Arrangements)\n\nDémontrer que le nombre d'injections d'un ensemble $E$ ($|E|=k$) dans un ensemble $F$ ($|F|=n$), avec $k \\le n$, est $\\frac{n!}{(n-k)!}$.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nC'est une généralisation des permutations.\n\nVous devez choisir $k$ images distinctes dans $F$ et les ordonner.\n\nProcédez élément par élément pour les $k$ éléments de $E$.\n\nPour le 1er : $n$ choix.\n\nPour le 2ème : $n-1$ choix.\n\nPour le $k$-ième : combien de choix déjà \"utilisés\" ?\n\n</details>",
+      "solution": "\n\nSoit $E=\\{x_1, \\dots, x_k\\}$ et $|F|=n$. Nous cherchons à construire une injection $f: E \\to F$.\n\n**Étape 1 : Dénombrement des choix successifs**\n\n- Choix de $f(x_1)$ : $n$ possibilités dans $F$.\n- Choix de $f(x_2)$ : Doit être différent de $f(x_1)$, donc $n-1$ possibilités.\n- ...\n- Choix de $f(x_i)$ : Doit être différent des $i-1$ images précédentes, donc $n-(i-1)$ possibilités.\n- ...\n- Choix de $f(x_k)$ : Doit être différent des $k-1$ images précédentes, donc $n-(k-1) = n - k + 1$ possibilités.\n\n**Étape 2 : Produit**\n\nLe nombre d'injections est :\n\n$$A_n^k = n \\times (n-1) \\times \\dots \\times (n-k+1)$$\n\n**Étape 3 : Relation avec la factorielle**\n\nPour exprimer cela avec des factorielles, on multiplie et divise par $(n-k)!$ :\n\n$$A_n^k = \\frac{n(n-1)\\dots(n-k+1) \\times (n-k)(n-k-1)\\dots 1}{(n-k)(n-k-1)\\dots 1}$$\n\nLe numérateur devient le produit de $n$ jusqu'à $1$, soit $n!$.\n\nLe dénominateur est le produit de $(n-k)$ jusqu'à $1$, soit $(n-k)!$.\n\n**Conclusion :**\n\n$$|\\mathcal{F}_{inj}(E, F)| = \\frac{n!}{(n-k)!}$$\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "164be1af",
+      "content": "#### Principe des tiroirs (Inexistence d'injections)\n\nDémontrer formellement que si $|E| = k$ et $|F| = n$ avec $k > n$, alors le nombre d'injections de $E$ dans $F$ est nul.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nUtilisez la formule des arrangements établie précédemment ou un raisonnement logique sur les choix disponibles. Que se passe-t-il mathématiquement dans le produit $n(n-1)\\dots$ si on continue plus de $n$ fois ?\n\n</details>",
+      "solution": "\n\nNous cherchons le nombre d'injections pour $k > n$.\n\n**Étape 1 : Raisonnement par le produit**\n\nComme vu pour les arrangements, le nombre d'injections est le produit :\n\n$$P = n \\times (n-1) \\times \\dots \\times (n - k + 1)$$\n\nCe produit contient $k$ termes (un pour chaque élément de $E$).\n\n**Étape 2 : Analyse des facteurs**\n\nPuisque $k > n$, c'est-à-dire $k \\ge n+1$, la suite des facteurs va inclure le terme correspondant à l'étape $n+1$.\n\nRegardons le terme général $(n - i + 1)$.\n\nPour $i = n+1$ (le $(n+1)$-ième élément à placer), le facteur est :\n\n$$n - (n+1) + 1 = 0$$\n\n**Étape 3 : Annulation du produit**\n\nL'un des facteurs du produit est $0$. Par conséquent, le produit total est nul.\n\nAlternativement, cela signifie qu'au moment de choisir une image pour le $(n+1)$-ième élément, toutes les $n$ valeurs de $F$ ont déjà été utilisées par les éléments précédents.\n\n**Conclusion :**\n\nSi $k > n$, $|\\mathcal{F}_{inj}(E, F)| = 0$.\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "164be1af",
+      "content": "#### Relation de récurrence de Stirling\n\nDémontrer la relation de récurrence des nombres de Stirling de seconde espèce : $S(n, k) = S(n-1, k-1) + k \\cdot S(n-1, k)$ pour $1 < k < n$.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nRappel : $S(n, k)$ est le nombre de façons de partitionner un ensemble de $n$ éléments en $k$ sous-ensembles non vides.\n\nConsidérez un ensemble $E$ de $n$ éléments et fixez un élément particulier $x \\in E$.\n\nIl y a deux cas possibles pour $x$ dans une partition :\n\n1. Soit $x$ forme un singleton $\\{x\\}$ (il est tout seul dans son groupe).\n2. Soit $x$ n'est pas seul (il appartient à un groupe contenant d'autres éléments).\n\nAnalysez ce qui reste des $n-1$ autres éléments dans chaque cas.\n\n</details>",
+      "solution": "\n\nSoit $E = \\{x_1, \\dots, x_{n-1}, x_n\\}$. Notons $x_n$ l'élément distingué.\n\nOn cherche à partitionner $E$ en $k$ parties non vides.\n\n**Cas 1 : Le singleton $\\{x_n\\}$ est une partie de la partition.**\n\nSi $\\{x_n\\}$ est l'un des $k$ sous-ensembles, alors les $n-1$ autres éléments doivent être partitionnés en les $k-1$ sous-ensembles restants.\n\nLe nombre de façons de faire cela est par définition :\n\n$$S(n-1, k-1)$$\n\n**Cas 2 : $\\{x_n\\}$ n'est pas une partie ( $x_n$ n'est pas seul).**\n\nCela signifie que $x_n$ appartient à l'un des sous-ensembles formés par les autres éléments.\n\nD'abord, on partitionne les $n-1$ autres éléments en $k$ sous-ensembles non vides. Il y a $S(n-1, k)$ façons de le faire.\n\nEnsuite, on doit insérer $x_n$ dans l'un de ces $k$ groupes existants. Il y a $k$ choix possibles pour placer $x_n$.\n\nLe nombre de façons pour ce cas est donc :\n\n$$k \\times S(n-1, k)$$\n\n**Conclusion :**\n\nLes deux cas étant disjoints et couvrant toutes les possibilités, on somme les résultats :\n\n$$S(n, k) = S(n-1, k-1) + k \\cdot S(n-1, k)$$\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "164be1af",
+      "content": "#### Valeurs aux bornes des nombres de Stirling\n\nDémontrer que pour $n \\ge 1$, $S(n, 1) = 1$ et $S(n, n) = 1$.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nRevenez strictement à la définition de $S(n, k)$ : partitionner $n$ éléments en $k$ sous-ensembles non vides.\n\n- Pour $k=1$, combien de façons y a-t-il de mettre tous les éléments dans 1 seule boîte ?\n- Pour $k=n$, combien de façons y a-t-il de mettre $n$ éléments dans $n$ boîtes (sachant qu'aucune ne doit être vide) ?\n\n</details>",
+      "solution": "\n\n**Pour $S(n, 1)$ :**\n\nOn cherche le nombre de partitions de l'ensemble $E$ ($|E|=n$) en 1 seule partie.\n\nLa seule partie possible est $E$ lui-même (qui est non vide car $n \\ge 1$).\n\nLa partition est donc $\\{E\\}$. Il n'y en a qu'une seule.\n\nDonc $S(n, 1) = 1$.\n\n**Pour $S(n, n)$ :**\n\nOn cherche le nombre de partitions de $E$ en $n$ parties non vides.\n\nPuisqu'il y a $n$ éléments et $n$ parties, et qu'aucune partie ne doit être vide, chaque partie doit contenir exactement 1 élément.\n\nLa partition est donc nécessairement $\\{ \\{x_1\\}, \\{x_2\\}, \\dots, \\{x_n\\} \\}$.\n\nL'ordre des parties ne compte pas dans un ensemble (une partition est un *ensemble* de sous-ensembles). Il n'y a donc qu'une seule façon de former cette partition.\n\nDonc $S(n, n) = 1$.\n\n**Conclusion :**\n\nLes égalités sont vérifiées.\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "164be1af",
+      "content": "#### Formule du nombre de surjections\n\nDémontrer que le nombre de surjections d'un ensemble $E$ ($|E|=n$) vers un ensemble $F$ ($|F|=k$) est égal à $k! \\cdot S(n, k)$.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nPensez à la relation entre une surjection et une partition.\n\nUne surjection $f: E \\to F$ regroupe les éléments de $E$ qui ont la même image. Cela crée une partition de $E$ en $k$ groupes (puisque chaque élément de $F$ a au moins un antécédent).\n\nCependant, dans une partition (Stirling), les groupes ne sont pas étiquetés. Dans une surjection, les groupes sont associés à des valeurs précises de $F$ (image $y_1$, image $y_2$, etc.).\n\n</details>",
+      "solution": "\n\nSoit $\\mathcal{S}$ l'ensemble des surjections de $E$ dans $F$.\n\n**Étape 1 : Partition induite par une surjection**\n\nToute application $f$ définit une relation d'équivalence sur $E$ : $x \\sim x' \\iff f(x) = f(x')$.\n\nLes classes d'équivalence sont les ensembles $f^{-1}(\\{y\\})$ pour $y \\in F$.\n\nSi $f$ est surjective, aucun de ces ensembles $f^{-1}(\\{y\\})$ n'est vide. De plus, il y a exactement $k$ classes d'équivalence (une pour chaque élément de $F$).\n\nAinsi, $f$ induit une partition de $E$ en $k$ parties non vides.\n\n**Étape 2 : De la partition à la surjection**\n\nIl y a $S(n, k)$ façons de partitionner $E$ en $k$ parties non vides $\\{A_1, A_2, \\dots, A_k\\}$.\n\nPour construire une surjection à partir d'une telle partition, nous devons attribuer à chaque partie $A_i$ une image unique $y_j \\in F$.\n\nCela revient à établir une bijection entre l'ensemble des parties de la partition (qui a $k$ éléments) et l'ensemble $F$ (qui a $k$ éléments).\n\n**Étape 3 : Calcul**\n\nLe nombre de bijections entre deux ensembles de taille $k$ est $k!$.\n\nPour chaque partition possible ($S(n, k)$ choix), il y a $k!$ façons d'assigner les images.\n\nNombre de surjections = (Nombre de partitions) $\\times$ (Nombre d'assignations)\n\n$$|\\mathcal{F}_{surj}(E, F)| = S(n, k) \\times k!$$\n\n**Conclusion :**\n\nLa formule est prouvée.\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "164be1af",
+      "content": "#### Somme des coefficients binomiaux et cardinal de l'ensemble des parties\n\nDémontrer que $\\sum_{k=0}^n \\binom{n}{k} = 2^n$ en utilisant un argument combinatoire sur les ensembles.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nNous savons déjà que $2^n$ est le nombre total de sous-ensembles de $E$ (Concept 2).\n\nQue représente le coefficient binomial $\\binom{n}{k}$ ? C'est le nombre de sous-ensembles de taille exactement $k$.\n\nSi on groupe les sous-ensembles par leur taille, quelle relation obtient-on ?\n\n</details>",
+      "solution": "\n\nSoit $E$ un ensemble tel que $|E| = n$.\n\n**Étape 1 : Partition de $\\mathcal{P}(E)$ par cardinal**\n\nL'ensemble des parties $\\mathcal{P}(E)$ peut être partitionné selon le nombre d'éléments dans chaque partie.\n\nSoit $\\mathcal{P}_k(E)$ l'ensemble des parties de $E$ ayant exactement $k$ éléments.\n\nPuisque chaque partie a une taille unique comprise entre $0$ et $n$ :\n\n$$|\\mathcal{P}(E)| = \\sum_{k=0}^n |\\mathcal{P}_k(E)|$$\n\n**Étape 2 : Identification des termes**\n\n- Nous savons (Concept 2) que $|\\mathcal{P}(E)| = 2^n$.\n- Par définition des coefficients binomiaux, le nombre de parties de taille $k$ dans un ensemble de taille $n$ est $\\binom{n}{k}$. Donc $|\\mathcal{P}_k(E)| = \\binom{n}{k}$.\n\n**Étape 3 : Égalité**\n\nEn remplaçant dans l'équation de l'étape 1 :\n\n$$2^n = \\sum_{k=0}^n \\binom{n}{k}$$\n\n**Conclusion :**\n\nLa somme des coefficients binomiaux est bien égale à $2^n$.\n\n",
+      "options": []
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "info": {
+    "id": "ccbae014",
+    "title": "Dénombrement d’ensembles et parties - fiches de révision (A)",
+    "type": "cards",
+    "level": "regular",
+    "chapter": "Dénombrement d’ensembles et parties",
+    "course": "Graphes et Combinatoire",
+    "tags": [
+      "combinatoire",
+      "dénombrement",
+      "coefficients binomiaux",
+      "ensembles",
+      "formule du binôme",
+      "coefficients multinomiaux"
+    ],
+    "count": 10
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "ccbae014",
+      "content": "Qu'est-ce que le **coefficient binomial** $\\binom{n}{k}$ ?",
+      "solution": "\n\nLe coefficient binomial, noté $\\binom{n}{k}$ (lire \"$k$ parmi $n$\"), représente le nombre de façons de choisir $k$ éléments parmi un ensemble de $n$ éléments.\n\n**Points clés :**\n\n- L'**ordre** des éléments choisis ne compte pas.\n- Il n'y a **pas de répétition** (on ne peut pas choisir deux fois le même élément).\n- Cela correspond au nombre de parties (sous-ensembles) de cardinal $k$ dans un ensemble de cardinal $n$.\n\n**Notation formelle :**\n\nSi $E$ est un ensemble fini de taille $n$, alors :\n\n$$ \\binom{n}{k} = |\\mathcal{P}_k(E)| $$\n\n**Exemple :**\n\nPour choisir 2 délégués parmi 4 élèves $\\{A, B, C, D\\}$, on a $\\binom{4}{2} = 6$ paires possibles ($\\{A,B\\}, \\{A,C\\}, \\dots$).\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "ccbae014",
+      "content": "Quelle est la **formule algébrique** permettant de calculer $\\binom{n}{k}$ avec des factorielles ?",
+      "solution": "\n\nPour tous entiers $n$ et $k$ tels que $0 \\leq k \\leq n$ :\n\n$$ \\binom{n}{k} = \\frac{n!}{k!(n-k)!} $$\n\n**Où :**\n\n- $n!$ est la factorielle de $n$ ($n \\times (n-1) \\times \\dots \\times 1$).\n- Le numérateur $n!$ correspond aux permutations totales.\n- Le dénominateur divise par $k!$ (pour annuler l'ordre des éléments choisis) et par $(n-k)!$ (pour annuler l'ordre des éléments non choisis).\n\n**Exemple :**\n\n$$ \\binom{5}{2} = \\frac{5!}{2!(5-2)!} = \\frac{120}{2 \\times 6} = 10 $$\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "ccbae014",
+      "content": "Quelle est la **propriété de symétrie** des coefficients binomiaux ?",
+      "solution": "\n\nPour tout $0 \\leq k \\leq n$ :\n\n$$ \\binom{n}{k} = \\binom{n}{n-k} $$\n\n**Explication intuitive :**\n\nChoisir les $k$ éléments que l'on garde revient exactement à choisir les $n-k$ éléments que l'on laisse de côté. Il y a autant de façons de faire l'un que l'autre.\n\n**Exemple :**\n\n$$ \\binom{5}{2} = \\binom{5}{3} = 10 $$\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "ccbae014",
+      "content": "Quelle est l'**Identité de Pascal** (relation de récurrence) ?",
+      "solution": "\n\n$$ \\binom{n}{k} = \\binom{n-1}{k} + \\binom{n-1}{k-1} $$\n\n**Utilité :**\n\n- Cette formule permet de calculer les coefficients de proche en proche sans utiliser de factorielles (additions simples).\n- Elle permet de construire le **Triangle de Pascal**.\n\n**Interprétation combinatoire :**\n\nPour choisir $k$ éléments parmi $n$, on fixe un élément $x$ spécifique.\n\n- Soit on ne prend pas $x$ : il faut choisir $k$ éléments parmi les $n-1$ restants ($\\binom{n-1}{k}$).\n- Soit on prend $x$ : il faut choisir les $k-1$ autres parmi les $n-1$ restants ($\\binom{n-1}{k-1}$).\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "ccbae014",
+      "content": "Que vaut la **somme totale** des coefficients binomiaux pour un $n$ donné ($\\sum_{k=0}^n \\binom{n}{k}$) ?",
+      "solution": "\n\n$$ \\sum_{k=0}^n \\binom{n}{k} = 2^n $$\n\n**Explication :**\n\nLa somme de tous les coefficients binomiaux pour un $n$ donné correspond au nombre total de sous-ensembles possibles d'un ensemble à $n$ éléments (l'ensemble des parties $\\mathcal{P}(E)$).\n\n**Exemple :**\n\nPour $n=3$ :\n\n$$ \\binom{3}{0} + \\binom{3}{1} + \\binom{3}{2} + \\binom{3}{3} = 1 + 3 + 3 + 1 = 8 = 2^3 $$\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "ccbae014",
+      "content": "Qu'est-ce que le **Théorème du Binôme de Newton** ?",
+      "solution": "\n\nC'est une formule qui permet de développer la puissance $n$-ième d'une somme de deux termes.\n\nPour tout entier naturel $n$ et tous réels $a, b$ :\n\n$$ (a+b)^n = \\sum_{k=0}^n \\binom{n}{k} a^k b^{n-k} $$\n\n**Points clés :**\n\n- Les coefficients du développement sont les coefficients binomiaux (ligne $n$ du triangle de Pascal).\n- La somme des exposants de $a$ et $b$ vaut toujours $n$ dans chaque terme ($k + (n-k) = n$).\n\n**Exemple pour $n=2$ :**\n\n$$ (a+b)^2 = 1\\cdot a^0 b^2 + 2\\cdot a^1 b^1 + 1\\cdot a^2 b^0 = b^2 + 2ab + a^2 $$\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "ccbae014",
+      "content": "Comment développer l'expression $(x+1)^3$ avec le **Binôme de Newton** ?",
+      "solution": "\n\n**Étapes :**\n\n1.  Identifier $n=3$. Les coefficients sont ceux de la ligne 3 de Pascal : $1, 3, 3, 1$.\n2.  Appliquer la formule : $(x+1)^3 = \\sum_{k=0}^3 \\binom{3}{k} x^k 1^{3-k}$.\n3.  Développer les termes :\n\n    $$ \\binom{3}{0}x^0 + \\binom{3}{1}x^1 + \\binom{3}{2}x^2 + \\binom{3}{3}x^3 $$\n\n    *(Note : les puissances de 1 valent 1 et sont omises)*\n\n4.  Remplacer les coefficients :\n\n    $$ 1 + 3x + 3x^2 + 1x^3 $$\n\n**Résultat final :**\n\n$$ x^3 + 3x^2 + 3x + 1 $$\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "ccbae014",
+      "content": "Comment calculer le nombre de **combinaisons avec répétition** (Multi-ensembles) ?",
+      "solution": "\n\nLe nombre de façons de choisir $k$ objets parmi $n$ types d'objets distincts, **avec répétition autorisée** et sans ordre, est donné par :\n\n$$ \\left(\\!\\binom{n}{k}\\!\\right) = \\binom{n+k-1}{k} $$\n\n**Application typique :**\n\nRépartir $k$ objets identiques dans $n$ boîtes distinctes, ou trouver le nombre de solutions entières de $x_1 + \\dots + x_n = k$.\n\n**Exemple :**\n\nChoisir 2 boules de glace parmi 3 parfums (on peut prendre 2 fois le même) :\n\n$$ \\binom{3+2-1}{2} = \\binom{4}{2} = 6 \\text{ combinaisons.} $$\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "ccbae014",
+      "content": "Qu'est-ce qu'un **coefficient multinomial** et quelle est sa formule ?",
+      "solution": "\n\nLe coefficient multinomial compte le nombre de façons de partitionner un ensemble de $n$ objets en $r$ groupes **étiquetés** (distincts) de tailles $k_1, k_2, \\dots, k_r$ (avec $\\sum k_i = n$).\n\n**Formule :**\n\n$$ \\binom{n}{k_1, k_2, \\dots, k_r} = \\frac{n!}{k_1! k_2! \\cdots k_r!} $$\n\n**Utilisation :**\n\nSouvent utilisé pour compter les anagrammes de mots contenant des lettres répétées.\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "ccbae014",
+      "content": "Comment calculer le nombre d'**anagrammes** du mot \"PAPA\" ?",
+      "solution": "\n\nOn utilise le coefficient multinomial (permutations avec répétition).\n\n**Étapes :**\n\n1.  Compter le nombre total de lettres : $n = 4$.\n2.  Identifier les répétitions :\n    - P apparaît 2 fois ($k_1 = 2$)\n    - A apparaît 2 fois ($k_2 = 2$)\n3.  Appliquer la formule :\n\n    $$ \\frac{n!}{k_1! k_2!} = \\frac{4!}{2! 2!} $$\n\n4.  Calculer :\n\n    $$ \\frac{24}{2 \\times 2} = \\frac{24}{4} = 6 $$\n\nIl y a **6** anagrammes possibles (PAPA, PPAA, APPA, APAP, AAPP, PAAP).\n\n",
+      "options": []
+    }
+  ]
+}

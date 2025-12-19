@@ -1,0 +1,212 @@
+---
+id: 2716bbbc
+type: cards
+order: 12
+title: Principe d'inclusion-exclusion - fiches de révision (A)
+tags:
+  - combinatoire
+  - inclusion-exclusion
+  - dénombrement
+  - surjections
+  - dérangements
+  - formule du crible
+createdAt: '2025-12-16T17:04:57.312Z'
+level: regular
+course: Graphes et Combinatoire
+courseId: 7027276b
+chapter: Principe d'inclusion-exclusion
+chapterId: e535f58d
+---
+# Fiches de révision "Principe d'inclusion-exclusion" (A)
+
+---
+
+Qu'est-ce que le **Principe d'Inclusion-Exclusion** (forme de la réunion) ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le Principe d'Inclusion-Exclusion (ou formule du crible) est une formule qui permet de calculer le cardinal de la réunion d'ensembles finis qui ne sont pas disjoints.
+
+Pour une famille d'ensembles finis $A_1, \ldots, A_n$, la formule est :
+
+$$ \left|\bigcup_{i=1}^n A_i\right| = \sum_{\emptyset \neq I \subseteq \llbracket n \rrbracket} (-1)^{|I|+1} \left|\bigcap_{i \in I} A_i\right| $$
+
+Cela signifie que l'on fait une somme alternée des cardinaux de toutes les intersections possibles.
+
+**Mots-clés :** Réunion, Intersection, Somme alternée.
+
+</details>
+
+---
+
+Quelle est l'**intuition** derrière l'alternance des signes dans le Principe d'Inclusion-Exclusion ?
+
+<details>
+
+<summary>Réponse</summary>
+
+L'objectif est de corriger le comptage excessif (surcomptage).
+
+**Processus étape par étape :**
+
+1.  **Ajout (+)** : On additionne les tailles des ensembles individuels ($\sum |A_i|$). Cela compte plusieurs fois les éléments communs.
+2.  **Soustraction (-)** : On retire les intersections par paires ($\sum |A_i \cap A_j|$) pour compenser les éléments comptés en double.
+3.  **Ajout (+)** : En retirant les paires, on a trop retiré les éléments communs à trois ensembles, il faut donc les rajouter ($\sum |A_i \cap A_j \cap A_k|$).
+4.  On continue ainsi jusqu'à l'intersection totale.
+
+</details>
+
+---
+
+Quelle est la formule développée du principe d'inclusion-exclusion pour **trois ensembles** $A, B, C$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour calculer $|A \cup B \cup C|$, la formule est :
+
+$$ |A \cup B \cup C| = (|A| + |B| + |C|) - (|A \cap B| + |A \cap C| + |B \cap C|) + |A \cap B \cap C| $$
+
+**Méthode :**
+
+1. Somme des singletons.
+2. Moins somme des paires.
+3. Plus intersection des trois.
+
+</details>
+
+---
+
+Comment appliquer le principe d'inclusion-exclusion à un problème de **divisibilité** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour compter le nombre d'entiers dans un intervalle divisibles par $a$ **ou** $b$ :
+
+1.  Définir $A$ l'ensemble des multiples de $a$ et $B$ l'ensemble des multiples de $b$.
+2.  Calculer $|A|$ et $|B|$ (division entière de la borne par le diviseur).
+3.  Calculer $|A \cap B|$. Notez que $A \cap B$ contient les multiples du **PPCM** de $a$ et $b$ (ou $a \times b$ s'ils sont premiers entre eux).
+4.  Appliquer la formule : $|A \cup B| = |A| + |B| - |A \cap B|$.
+
+</details>
+
+---
+
+Qu'est-ce que la **Forme Complémentaire** du Principe d'Inclusion-Exclusion ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Cette forme permet de compter le nombre d'éléments d'un ensemble univers $E$ qui n'appartiennent à **aucun** des sous-ensembles $A_i$.
+
+$$ \left|\bigcap_{i=1}^n \overline{A_i}\right| = \sum_{I \subseteq \llbracket n \rrbracket} (-1)^{|I|} \left|\bigcap_{i \in I} A_i\right| $$
+
+C'est équivalent à calculer :
+
+$$ \text{Total} - (\text{Réunion des } A_i) $$
+
+**Utilisé pour :** Les problèmes demandant "combien d'objets ne possèdent aucune propriété".
+
+</details>
+
+---
+
+Qu'est-ce que la **Formule du Binôme Multivariée** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+C'est une généralisation algébrique utilisée pour prouver le principe d'inclusion-exclusion. Pour des éléments $a_i, b_i$ d'un anneau commutatif :
+
+$$ \prod_{i=1}^n (a_i + b_i) = \sum_{I \subseteq \llbracket n \rrbracket} \left( \prod_{i \in I} a_i \right) \left( \prod_{i \in \llbracket n \rrbracket \setminus I} b_i \right) $$
+
+Elle exprime le développement d'un produit de sommes en fonction de toutes les parties $I$ de l'ensemble d'indices.
+
+</details>
+
+---
+
+Quelle est la formule pour calculer le **nombre de surjections** d'un ensemble de taille $n$ vers un ensemble de taille $k$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour $n \ge k$, le nombre de surjections est :
+
+$$ S_{n,k} = \sum_{j=0}^{k} (-1)^{k-j} \binom{k}{j} j^n $$
+
+**Explication des termes :**
+
+*   $j^n$ : Nombre total de fonctions vers un sous-ensemble de taille $j$.
+*   $\binom{k}{j}$ : Nombre de façons de choisir ce sous-ensemble.
+*   $(-1)^{k-j}$ : Coefficient d'alternance pour l'inclusion-exclusion.
+
+**Note :** Si $n < k$, le nombre de surjections est 0.
+
+</details>
+
+---
+
+Qu'est-ce qu'un **dérangement** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Un dérangement est une permutation $\sigma$ d'un ensemble fini qui n'a **aucun point fixe**.
+
+Cela signifie que pour tout élément $i$, on a $\sigma(i) \neq i$. Aucun élément ne reste à sa position initiale.
+
+**Exemple :**
+
+Pour $\{1, 2, 3\}$, la permutation $(2, 3, 1)$ est un dérangement, mais $(2, 1, 3)$ ne l'est pas (car 3 est fixe).
+
+</details>
+
+---
+
+Quelle est la formule du **nombre de dérangements** $D_n$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le nombre de dérangements d'un ensemble de taille $n$ est donné par :
+
+$$ D_n = n! \sum_{j=0}^n \frac{(-1)^j}{j!} = n! \left( 1 - \frac{1}{1!} + \frac{1}{2!} - \dots + \frac{(-1)^n}{n!} \right) $$
+
+**Propriété asymptotique :**
+
+Quand $n$ tend vers l'infini, la probabilité qu'une permutation soit un dérangement ($D_n/n!$) tend vers $1/e \approx 0.368$.
+
+</details>
+
+---
+
+Dans le contexte du **problème des chapeaux**, comment calcule-t-on le nombre de cas où **personne** ne récupère son propre chapeau ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Ce problème correspond exactement au calcul du nombre de **dérangements** ($D_n$).
+
+**Méthode :**
+
+1.  Identifier $n$ (le nombre de personnes/chapeaux).
+2.  Appliquer la formule des dérangements ou utiliser la forme complémentaire du principe d'inclusion-exclusion.
+3.  Univers $E$ = toutes les permutations ($n!$).
+4.  Propriété $P_i$ = la personne $i$ a son chapeau.
+5.  On cherche le nombre de permutations ne vérifiant aucune propriété $P_i$.
+
+**Pour n=3 :** $D_3 = 3! (\frac{1}{2} - \frac{1}{6}) = 2$.
+
+</details>

@@ -1,0 +1,285 @@
+---
+id: ccbae014
+type: cards
+order: 12
+title: Dénombrement d’ensembles et parties - fiches de révision (A)
+tags:
+  - combinatoire
+  - dénombrement
+  - coefficients binomiaux
+  - ensembles
+  - formule du binôme
+  - coefficients multinomiaux
+createdAt: '2025-12-16T16:58:51.096Z'
+level: regular
+course: Graphes et Combinatoire
+courseId: 7027276b
+chapter: Dénombrement d’ensembles et parties
+chapterId: 1c5df22e
+---
+# Fiches de révision "Dénombrement d’ensembles et parties" (A)
+
+---
+
+Qu'est-ce que le **coefficient binomial** $\binom{n}{k}$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le coefficient binomial, noté $\binom{n}{k}$ (lire "$k$ parmi $n$"), représente le nombre de façons de choisir $k$ éléments parmi un ensemble de $n$ éléments.
+
+**Points clés :**
+
+- L'**ordre** des éléments choisis ne compte pas.
+- Il n'y a **pas de répétition** (on ne peut pas choisir deux fois le même élément).
+- Cela correspond au nombre de parties (sous-ensembles) de cardinal $k$ dans un ensemble de cardinal $n$.
+
+**Notation formelle :**
+
+Si $E$ est un ensemble fini de taille $n$, alors :
+
+$$ \binom{n}{k} = |\mathcal{P}_k(E)| $$
+
+**Exemple :**
+
+Pour choisir 2 délégués parmi 4 élèves $\{A, B, C, D\}$, on a $\binom{4}{2} = 6$ paires possibles ($\{A,B\}, \{A,C\}, \dots$).
+
+</details>
+
+#définition #ensembles #dénombrement
+
+---
+
+Quelle est la **formule algébrique** permettant de calculer $\binom{n}{k}$ avec des factorielles ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour tous entiers $n$ et $k$ tels que $0 \leq k \leq n$ :
+
+$$ \binom{n}{k} = \frac{n!}{k!(n-k)!} $$
+
+**Où :**
+
+- $n!$ est la factorielle de $n$ ($n \times (n-1) \times \dots \times 1$).
+- Le numérateur $n!$ correspond aux permutations totales.
+- Le dénominateur divise par $k!$ (pour annuler l'ordre des éléments choisis) et par $(n-k)!$ (pour annuler l'ordre des éléments non choisis).
+
+**Exemple :**
+
+$$ \binom{5}{2} = \frac{5!}{2!(5-2)!} = \frac{120}{2 \times 6} = 10 $$
+
+</details>
+
+#formule #calcul #factorielle
+
+---
+
+Quelle est la **propriété de symétrie** des coefficients binomiaux ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour tout $0 \leq k \leq n$ :
+
+$$ \binom{n}{k} = \binom{n}{n-k} $$
+
+**Explication intuitive :**
+
+Choisir les $k$ éléments que l'on garde revient exactement à choisir les $n-k$ éléments que l'on laisse de côté. Il y a autant de façons de faire l'un que l'autre.
+
+**Exemple :**
+
+$$ \binom{5}{2} = \binom{5}{3} = 10 $$
+
+</details>
+
+#propriété #symétrie #théorème
+
+---
+
+Quelle est l'**Identité de Pascal** (relation de récurrence) ?
+
+<details>
+
+<summary>Réponse</summary>
+
+$$ \binom{n}{k} = \binom{n-1}{k} + \binom{n-1}{k-1} $$
+
+**Utilité :**
+
+- Cette formule permet de calculer les coefficients de proche en proche sans utiliser de factorielles (additions simples).
+- Elle permet de construire le **Triangle de Pascal**.
+
+**Interprétation combinatoire :**
+
+Pour choisir $k$ éléments parmi $n$, on fixe un élément $x$ spécifique.
+
+- Soit on ne prend pas $x$ : il faut choisir $k$ éléments parmi les $n-1$ restants ($\binom{n-1}{k}$).
+- Soit on prend $x$ : il faut choisir les $k-1$ autres parmi les $n-1$ restants ($\binom{n-1}{k-1}$).
+
+</details>
+
+#formule #pascal #récurrence
+
+---
+
+Que vaut la **somme totale** des coefficients binomiaux pour un $n$ donné ($\sum_{k=0}^n \binom{n}{k}$) ?
+
+<details>
+
+<summary>Réponse</summary>
+
+$$ \sum_{k=0}^n \binom{n}{k} = 2^n $$
+
+**Explication :**
+
+La somme de tous les coefficients binomiaux pour un $n$ donné correspond au nombre total de sous-ensembles possibles d'un ensemble à $n$ éléments (l'ensemble des parties $\mathcal{P}(E)$).
+
+**Exemple :**
+
+Pour $n=3$ :
+
+$$ \binom{3}{0} + \binom{3}{1} + \binom{3}{2} + \binom{3}{3} = 1 + 3 + 3 + 1 = 8 = 2^3 $$
+
+</details>
+
+#propriété #somme #ensembles
+
+---
+
+Qu'est-ce que le **Théorème du Binôme de Newton** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+C'est une formule qui permet de développer la puissance $n$-ième d'une somme de deux termes.
+
+Pour tout entier naturel $n$ et tous réels $a, b$ :
+
+$$ (a+b)^n = \sum_{k=0}^n \binom{n}{k} a^k b^{n-k} $$
+
+**Points clés :**
+
+- Les coefficients du développement sont les coefficients binomiaux (ligne $n$ du triangle de Pascal).
+- La somme des exposants de $a$ et $b$ vaut toujours $n$ dans chaque terme ($k + (n-k) = n$).
+
+**Exemple pour $n=2$ :**
+
+$$ (a+b)^2 = 1\cdot a^0 b^2 + 2\cdot a^1 b^1 + 1\cdot a^2 b^0 = b^2 + 2ab + a^2 $$
+
+</details>
+
+#théorème #algèbre #newton
+
+---
+
+Comment développer l'expression $(x+1)^3$ avec le **Binôme de Newton** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+**Étapes :**
+
+1.  Identifier $n=3$. Les coefficients sont ceux de la ligne 3 de Pascal : $1, 3, 3, 1$.
+2.  Appliquer la formule : $(x+1)^3 = \sum_{k=0}^3 \binom{3}{k} x^k 1^{3-k}$.
+3.  Développer les termes :
+
+    $$ \binom{3}{0}x^0 + \binom{3}{1}x^1 + \binom{3}{2}x^2 + \binom{3}{3}x^3 $$
+
+    *(Note : les puissances de 1 valent 1 et sont omises)*
+
+4.  Remplacer les coefficients :
+
+    $$ 1 + 3x + 3x^2 + 1x^3 $$
+
+**Résultat final :**
+
+$$ x^3 + 3x^2 + 3x + 1 $$
+
+</details>
+
+#application #exemple #calcul
+
+---
+
+Comment calculer le nombre de **combinaisons avec répétition** (Multi-ensembles) ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le nombre de façons de choisir $k$ objets parmi $n$ types d'objets distincts, **avec répétition autorisée** et sans ordre, est donné par :
+
+$$ \left(\!\binom{n}{k}\!\right) = \binom{n+k-1}{k} $$
+
+**Application typique :**
+
+Répartir $k$ objets identiques dans $n$ boîtes distinctes, ou trouver le nombre de solutions entières de $x_1 + \dots + x_n = k$.
+
+**Exemple :**
+
+Choisir 2 boules de glace parmi 3 parfums (on peut prendre 2 fois le même) :
+
+$$ \binom{3+2-1}{2} = \binom{4}{2} = 6 \text{ combinaisons.} $$
+
+</details>
+
+#formule #multiensemble #répétition
+
+---
+
+Qu'est-ce qu'un **coefficient multinomial** et quelle est sa formule ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le coefficient multinomial compte le nombre de façons de partitionner un ensemble de $n$ objets en $r$ groupes **étiquetés** (distincts) de tailles $k_1, k_2, \dots, k_r$ (avec $\sum k_i = n$).
+
+**Formule :**
+
+$$ \binom{n}{k_1, k_2, \dots, k_r} = \frac{n!}{k_1! k_2! \cdots k_r!} $$
+
+**Utilisation :**
+
+Souvent utilisé pour compter les anagrammes de mots contenant des lettres répétées.
+
+</details>
+
+#définition #formule #multinomial
+
+---
+
+Comment calculer le nombre d'**anagrammes** du mot "PAPA" ?
+
+<details>
+
+<summary>Réponse</summary>
+
+On utilise le coefficient multinomial (permutations avec répétition).
+
+**Étapes :**
+
+1.  Compter le nombre total de lettres : $n = 4$.
+2.  Identifier les répétitions :
+    - P apparaît 2 fois ($k_1 = 2$)
+    - A apparaît 2 fois ($k_2 = 2$)
+3.  Appliquer la formule :
+
+    $$ \frac{n!}{k_1! k_2!} = \frac{4!}{2! 2!} $$
+
+4.  Calculer :
+
+    $$ \frac{24}{2 \times 2} = \frac{24}{4} = 6 $$
+
+Il y a **6** anagrammes possibles (PAPA, PPAA, APPA, APAP, AAPP, PAAP).
+
+</details>
+
+#application #exemple #anagrammes

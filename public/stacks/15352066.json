@@ -106,7 +106,7 @@
       "id": "4",
       "stackId": "15352066",
       "content": "#### Forme non valide comme produit scalaire\n\nLesquelles de ces formes définies sur $\\mathbb{R}^2 \\times \\mathbb{R}^2$ ne sont PAS des produits scalaires ? On note $x=(x_1, x_2)$ et $y=(y_1, y_2)$.\n",
-      "solution": "\n\n**Réponses : [B, D]**\n\nPour être un produit scalaire, une forme bilinéaire symétrique doit être définie positive.\n\n- **A)** Incorrect. C'est un produit scalaire valide.\n    - Symétrie : évidente.\n    - Définie positive : $\\langle x, x \\rangle = 2x_1^2 + 3x_2^2 \\ge 0$. Cette somme est nulle si et seulement si $x_1^2=0$ et $x_2^2=0$, c'est-à-dire $x=(0,0)$.\n\n- **B)** Correct. Cette forme n'est pas un produit scalaire car elle n'est pas positive. Pour le vecteur $x=(0, 1)$, on a $\\langle x, x \\rangle = 0^2 - 1^2 = -1 < 0$.\n\n- **C)** Incorrect. C'est un produit scalaire valide.\n    - Symétrie : évidente.\n    - Définie positive : $\\langle x, x \\rangle = (x_1+x_2)^2 + x_2^2 \\ge 0$. Si $\\langle x, x \\rangle=0$, alors $(x_1+x_2)^2=0$ et $x_2^2=0$. Cela implique $x_2=0$, et donc $x_1+0=0 \\implies x_1=0$. Le seul vecteur pour lequel c'est nul est $x=(0,0)$.\n\n- **D)** Correct. Cette forme n'est pas symétrique ($\\langle y,x \\rangle = y_1x_1 + y_1x_2 + y_2x_1 \\neq \\langle x,y \\rangle$). De plus, elle n'est pas positive. Par exemple, pour $x=(1,-1)$, $\\langle x,x \\rangle = 1^2 + 1(-1)+(-1)1 = 1-1-1 = -1 < 0$. Elle ne peut donc pas être un produit scalaire.\n\n",
+      "solution": "\n\n**Réponses : [C, D]**\n\nPour être un produit scalaire, une forme bilinéaire symétrique doit être définie positive.\n\n- **A)** Incorrect. C'est un produit scalaire valide.\n    - Symétrie : évidente.\n    - Définie positive : $\\langle x, x \\rangle = 2x_1^2 + 3x_2^2 \\ge 0$. Cette somme est nulle si et seulement si $x_1^2=0$ et $x_2^2=0$, c'est-à-dire $x=(0,0)$.\n\n- **B)** Incorrect. C'est un produit scalaire valide.\n    - Symétrie : évidente.\n    - Définie positive : $\\langle x, x \\rangle = (x_1+x_2)^2 + x_2^2 \\ge 0$. Si $\\langle x, x \\rangle=0$, alors $(x_1+x_2)^2=0$ et $x_2^2=0$. Cela implique $x_2=0$, et donc $x_1+0=0 \\implies x_1=0$. Le seul vecteur pour lequel c'est nul est $x=(0,0)$.\n\n- **C)** Correct. Cette forme n'est pas un produit scalaire car elle n'est pas positive. Pour le vecteur $x=(0, 1)$, on a $\\langle x, x \\rangle = 0^2 - 1^2 = -1 < 0$.\n\n- **D)** Correct. Cette forme est symétrique ($\\langle y,x \\rangle = y_1x_1 + y_1x_2 + y_2x_1 = \\langle x,y \\rangle$), mais elle n'est pas positive. Par exemple, pour $x=(1,-1)$, $\\langle x,x \\rangle = 1^2 + 1(-1)+(-1)1 = 1-1-1 = -1 < 0$. Elle ne peut donc pas être un produit scalaire.\n\n",
       "options": [
         {
           "id": "1",
@@ -115,13 +115,13 @@
         },
         {
           "id": "2",
-          "content": "**B)** $\\langle x, y \\rangle = x_1 y_1 - x_2 y_2$",
-          "correct": true
+          "content": "**B)** $\\langle x, y \\rangle = (x_1+x_2)(y_1+y_2) + x_2 y_2$",
+          "correct": false
         },
         {
           "id": "3",
-          "content": "**C)** $\\langle x, y \\rangle = (x_1+x_2)(y_1+y_2) + x_2 y_2$",
-          "correct": false
+          "content": "**C)** $\\langle x, y \\rangle = x_1 y_1 - x_2 y_2$",
+          "correct": true
         },
         {
           "id": "4",

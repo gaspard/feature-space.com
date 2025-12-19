@@ -1,0 +1,90 @@
+{
+  "info": {
+    "id": "1102c2cb",
+    "title": "Séries formelles - preuves (A)",
+    "type": "proofs",
+    "level": "regular",
+    "chapter": "Séries formelles",
+    "course": "Graphes et Combinatoire",
+    "tags": [
+      "Combinatoire",
+      "Séries formelles",
+      "Fonction génératrice",
+      "Récurrence",
+      "Binôme de Newton"
+    ],
+    "count": 10
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "1102c2cb",
+      "content": "#### Distributivité du Produit de Cauchy\n\nSoient $A(X) = \\sum a_n X^n$, $B(X) = \\sum b_n X^n$ et $C(X) = \\sum c_n X^n$ trois séries formelles. Montrer que la multiplication est distributive par rapport à l'addition, c'est-à-dire :\n\n$$ A(X) \\cdot (B(X) + C(X)) = A(X)B(X) + A(X)C(X) $$\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nL'égalité entre deux séries formelles se vérifie coefficient par coefficient.\n\nUtilisez la définition du coefficient $n$-ième du produit de Cauchy : $d_n = \\sum_{k=0}^n u_k v_{n-k}$.\n\nAppliquez d'abord l'addition dans $B+C$, puis le produit, et comparez avec la somme des deux produits séparés.\n\n</details>",
+      "solution": "\n\nSoit $S(X) = B(X) + C(X)$. Le coefficient de $X^n$ dans $S(X)$ est, par définition de l'addition :\n\n$$ s_n = b_n + c_n $$\n\n**Étape 1 : Coefficient du membre de gauche**\n\nCalculons le coefficient de $X^n$ dans le produit $P(X) = A(X) \\cdot S(X)$.\n\nD'après la formule du produit de Cauchy :\n\n$$ [X^n]P(X) = \\sum_{k=0}^n a_k s_{n-k} = \\sum_{k=0}^n a_k (b_{n-k} + c_{n-k}) $$\n\n**Étape 2 : Utilisation de la distributivité dans l'anneau des coefficients**\n\nPuisque les coefficients proviennent d'un anneau commutatif $\\mathcal{A}$, on peut distribuer $a_k$ :\n\n$$ [X^n]P(X) = \\sum_{k=0}^n (a_k b_{n-k} + a_k c_{n-k}) $$\n\nPar linéarité de la somme finie :\n\n$$ [X^n]P(X) = \\sum_{k=0}^n a_k b_{n-k} + \\sum_{k=0}^n a_k c_{n-k} $$\n\n**Conclusion**\n\nLe premier terme est exactement le coefficient de $X^n$ dans $A(X)B(X)$, et le second est le coefficient de $X^n$ dans $A(X)C(X)$.\n\nAinsi, pour tout $n$, les coefficients sont identiques. Les séries sont donc égales.\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "1102c2cb",
+      "content": "#### Critère d'Inversibilité\n\nMontrer qu'une série formelle $A(X) = \\sum_{n \\ge 0} a_n X^n$ est inversible pour le produit de Cauchy si et seulement si son terme constant $a_0$ est inversible dans l'anneau des coefficients $\\mathcal{A}$.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nIl y a deux implications à montrer ($\\Rightarrow$ et $\\Leftarrow$).\n\nPour le sens direct, regardez le terme constant de l'équation $A(X)B(X)=1$.\n\nPour le sens indirect, essayez de construire les coefficients $(b_n)$ de l'inverse par récurrence en utilisant l'équation $\\sum_{k=0}^n a_k b_{n-k} = 0$ pour $n \\ge 1$.\n\n</details>",
+      "solution": "\n\nOn cherche une série $B(X) = \\sum b_n X^n$ telle que $A(X)B(X) = 1$.\n\nLe produit s'écrit $\\sum_{n \\ge 0} c_n X^n = 1$, où $c_n = \\sum_{k=0}^n a_k b_{n-k}$.\n\n**Étape 1 : Sens direct ($\\Rightarrow$)**\n\nSi $A(X)$ est inversible, il existe $B(X)$ tel que $A(X)B(X) = 1$.\n\nEn identifiant les termes constants (coefficient de $X^0$) de cette égalité :\n\n$$ c_0 = a_0 b_0 = 1 $$\n\nCeci implique directement que $a_0$ est inversible dans $\\mathcal{A}$ et que $b_0 = a_0^{-1}$.\n\n**Étape 2 : Sens indirect ($\\Leftarrow$)**\n\nSupposons $a_0$ inversible. Nous devons construire la suite $(b_n)$ des coefficients de $B(X)$.\n\nL'équation $A(X)B(X)=1$ impose :\n\n1. Pour $n=0$ : $a_0 b_0 = 1 \\implies b_0 = a_0^{-1}$ (possible car $a_0$ inversible).\n2. Pour $n \\ge 1$ : le coefficient de $X^n$ dans le produit doit être nul.\n\n$$ \\sum_{k=0}^n a_k b_{n-k} = 0 $$\n\nIsolons le terme contenant $b_n$ (qui correspond à $k=0$) :\n\n$$ a_0 b_n + \\sum_{k=1}^n a_k b_{n-k} = 0 $$\n\n$$ a_0 b_n = - \\sum_{k=1}^n a_k b_{n-k} $$\n\nComme $a_0$ est inversible, on peut multiplier par $a_0^{-1}$ :\n\n$$ b_n = - a_0^{-1} \\sum_{k=1}^n a_k b_{n-k} $$\n\n**Conclusion**\n\nLa formule de récurrence permet de calculer $b_n$ de manière unique pour tout $n$ en fonction des termes précédents $b_0, \\dots, b_{n-1}$. La série $B(X)$ existe donc bien.\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "1102c2cb",
+      "content": "#### Unicité de l'Inverse Multiplicatif\n\nSoit $A(X)$ une série formelle inversible. Montrer que son inverse est unique.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nSupposerez qu'il existe deux inverses $B(X)$ et $C(X)$ tels que $A(X)B(X) = 1$ et $A(X)C(X) = 1$.\n\nCalculez le produit $B(X)A(X)C(X)$ de deux manières différentes en utilisant l'associativité.\n\n</details>",
+      "solution": "\n\nSupposons que $B(X)$ et $C(X)$ soient deux inverses de $A(X)$. Par définition (et commutativité) :\n\n$$ B(X)A(X) = 1 \\quad \\text{et} \\quad A(X)C(X) = 1 $$\n\n**Étape 1 : Calcul associatif**\n\nConsidérons le produit $B(X)A(X)C(X)$.\n\nEn groupant les premiers termes :\n\n$$ (B(X)A(X))C(X) = 1 \\cdot C(X) = C(X) $$\n\n**Étape 2 : Autre groupement**\n\nEn groupant les derniers termes :\n\n$$ B(X)(A(X)C(X)) = B(X) \\cdot 1 = B(X) $$\n\n**Conclusion**\n\nPuisque l'anneau $\\mathcal{A}[[X]]$ est associatif, $(BA)C = B(AC)$.\n\nOn en déduit donc que $C(X) = B(X)$. L'inverse est unique.\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "1102c2cb",
+      "content": "#### Série Géométrique Formelle\n\nMontrer que l'inverse de la série $1-X$ est la série $\\sum_{n \\ge 0} X^n$.\n\nC'est-à-dire, prouver que :\n\n$$ (1-X) \\cdot \\left(\\sum_{n \\ge 0} X^n\\right) = 1 $$\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nDéveloppez le produit de $(1-X)$ par la série somme. Vous obtiendrez la différence de deux sommes. Effectuez un changement d'indice (décalage) pour voir les termes s'annuler (télescopage).\n\n</details>",
+      "solution": "\n\nSoit $S(X) = \\sum_{n \\ge 0} X^n$. Nous voulons calculer $P(X) = (1-X)S(X)$.\n\n**Étape 1 : Distribution**\n\n$$ P(X) = 1 \\cdot S(X) - X \\cdot S(X) = \\sum_{n \\ge 0} X^n - \\sum_{n \\ge 0} X^{n+1} $$\n\n**Étape 2 : Changement d'indice**\n\nDans la deuxième somme, posons $k = n+1$. Quand $n=0$, $k=1$.\n\n$$ \\sum_{n \\ge 0} X^{n+1} = \\sum_{k \\ge 1} X^k $$\n\nNous pouvons donc écrire $P(X)$ comme :\n\n$$ P(X) = (1 + X + X^2 + \\dots) - (X + X^2 + X^3 + \\dots) $$\n\nOu formellement :\n\n$$ P(X) = 1 + \\sum_{n \\ge 1} X^n - \\sum_{k \\ge 1} X^k $$\n\n**Conclusion**\n\nLes deux sommes infinies $\\sum_{n \\ge 1} X^n$ s'annulent exactement.\n\nIl ne reste que le terme constant :\n\n$$ P(X) = 1 $$\n\nLa série $\\sum_{n \\ge 0} X^n$ est bien l'inverse de $1-X$.\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "1102c2cb",
+      "content": "#### Règle du Produit pour la Dérivation\n\nSoient $A(X)$ et $B(X)$ deux séries formelles. Montrer la règle de Leibniz pour la dérivation formelle :\n\n$$ (A(X)B(X))' = A'(X)B(X) + A(X)B'(X) $$\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nIl suffit de vérifier cette propriété pour des monômes $A(X) = X^m$ et $B(X) = X^p$.\n\nEnsuite, utilisez la linéarité de la dérivation et la bilinéarité du produit pour étendre le résultat à toutes les séries (car tout coefficient est une somme finie de contributions).\n\n</details>",
+      "solution": "\n\nLa dérivation est une opération linéaire. Il suffit de prouver la formule pour $A(X) = X^m$ et $B(X) = X^p$ avec $m, p \\in \\mathbb{N}$.\n\n**Étape 1 : Calcul du membre de gauche**\n\nLe produit est $A(X)B(X) = X^m \\cdot X^p = X^{m+p}$.\n\nLa dérivée est :\n\n$$ (X^{m+p})' = (m+p) X^{m+p-1} $$\n\n**Étape 2 : Calcul du membre de droite**\n\nOn sait que $(X^k)' = kX^{k-1}$.\n\n$$ A'(X)B(X) + A(X)B'(X) = (mX^{m-1})X^p + X^m(pX^{p-1}) $$\n\nEn utilisant les règles de puissances :\n\n$$ = m X^{m-1+p} + p X^{m+p-1} $$\n\n$$ = m X^{m+p-1} + p X^{m+p-1} $$\n\n$$ = (m+p) X^{m+p-1} $$\n\n**Conclusion**\n\nL'égalité est vérifiée pour les monômes.\n\nPour des séries générales $A = \\sum a_m X^m$ et $B = \\sum b_p X^p$, le coefficient de $X^k$ dans $(AB)'$ dépend linéairement des coefficients de $A$ et $B$. Comme l'égalité tient terme à terme, elle tient pour les séries entières par linéarité.\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "1102c2cb",
+      "content": "#### Dérivée de l'Inverse\n\nSoit $A(X)$ une série formelle inversible. Montrer que la dérivée de son inverse est donnée par :\n\n$$ (A(X)^{-1})' = - A(X)^{-2} A'(X) $$\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nNe calculez pas les coefficients explicitement.\n\nPartez de la définition de l'inverse : $A(X) \\cdot A(X)^{-1} = 1$.\n\nDérivez les deux côtés de cette égalité en utilisant la règle du produit prouvée précédemment.\n\n</details>",
+      "solution": "\n\nSoit $B(X) = A(X)^{-1}$. On a donc l'identité :\n\n$$ A(X)B(X) = 1 $$\n\n**Étape 1 : Dérivation de l'équation**\n\nDérivons les deux membres par rapport à $X$.\n\nLa dérivée de la constante $1$ est $0$.\n\nPour le membre de gauche, on utilise la règle du produit $(UV)' = U'V + UV'$ :\n\n$$ A'(X)B(X) + A(X)B'(X) = 0 $$\n\n**Étape 2 : Isolation de $B'(X)$**\n\nNous voulons trouver $B'(X)$ (qui est $(A^{-1})'$).\n\n$$ A(X)B'(X) = - A'(X)B(X) $$\n\nPuisque $A(X)$ est inversible, on multiplie par $A(X)^{-1}$ (c'est-à-dire $B(X)$) :\n\n$$ B'(X) = - A(X)^{-1} A'(X) B(X) $$\n\n**Conclusion**\n\nComme la multiplication est commutative et $B(X) = A(X)^{-1}$ :\n\n$$ B'(X) = - A(X)^{-1} B(X) A'(X) = - (A(X)^{-1})^2 A'(X) $$\n\nCe qui correspond à la formule $-A^{-2}A'$.\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "1102c2cb",
+      "content": "#### Identité des Coefficients Binomiaux Négatifs\n\nPour tout entier $m > 0$ et tout entier $k \\ge 0$, prouver la formule de transformation :\n\n$$ \\binom{-m}{k} = (-1)^k \\binom{m+k-1}{k} $$\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nUtilisez la définition généralisée : $\\binom{r}{k} = \\frac{r(r-1)\\cdots(r-k+1)}{k!}$.\n\nRemplacez $r$ par $-m$, factorisez $-1$ dans chaque terme du numérateur, et reconnaissez la formule classique d'un coefficient binomial positif.\n\n</details>",
+      "solution": "\n\n**Étape 1 : Écriture de la définition**\n\nAppliquons la définition avec $r = -m$ :\n\n$$ \\binom{-m}{k} = \\frac{(-m)(-m-1)(-m-2)\\cdots(-m-k+1)}{k!} $$\n\n**Étape 2 : Factorisation des signes**\n\nIl y a $k$ facteurs au numérateur. Chaque facteur est de la forme $-(m+j)$.\n\nOn peut sortir $-1$ de chacun des $k$ facteurs :\n\n$$ \\binom{-m}{k} = \\frac{(-1)^k \\cdot m(m+1)(m+2)\\cdots(m+k-1)}{k!} $$\n\n**Étape 3 : Réarrangement**\n\nLe produit $m(m+1)\\cdots(m+k-1)$ peut être lu à l'envers : $(m+k-1)(m+k-2)\\cdots(m)$.\n\nC'est le produit de $k$ entiers consécutifs décroissants partant de $m+k-1$.\n\nCela correspond exactement au numérateur de $\\binom{n}{k}$ où $n = m+k-1$.\n\n$$ \\frac{(m+k-1)(m+k-2)\\cdots m}{k!} = \\binom{m+k-1}{k} $$\n\n**Conclusion**\n\nEn combinant les résultats :\n\n$$ \\binom{-m}{k} = (-1)^k \\binom{m+k-1}{k} $$\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "1102c2cb",
+      "content": "#### Développement de $(1-X)^{-2}$\n\nProuver que le carré de la série géométrique est donné par :\n\n$$ \\frac{1}{(1-X)^2} = \\sum_{n \\ge 0} (n+1) X^n $$\n\nVous devez utiliser le produit de Cauchy de $\\sum X^n$ par elle-même.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nCalculez $\\left(\\sum_{k \\ge 0} X^k\\right) \\cdot \\left(\\sum_{j \\ge 0} X^j\\right)$.\n\nLe coefficient $c_n$ du produit est $\\sum_{k=0}^n a_k b_{n-k}$. Ici, tous les $a_k$ et $b_k$ valent 1.\n\nQue vaut la somme de $1$ répétée $n+1$ fois ?\n\n</details>",
+      "solution": "\n\nOn sait que $\\frac{1}{1-X} = \\sum_{n \\ge 0} 1 \\cdot X^n$.\n\nPosons $A(X) = \\sum_{n \\ge 0} a_n X^n$ avec $a_n = 1$ pour tout $n$.\n\nOn cherche $A(X)^2$.\n\n**Étape 1 : Formule du produit de Cauchy**\n\nLe coefficient $c_n$ de $X^n$ dans $A(X)A(X)$ est :\n\n$$ c_n = \\sum_{k=0}^n a_k a_{n-k} $$\n\n**Étape 2 : Évaluation de la somme**\n\nPuisque $a_i = 1$ pour tout $i \\ge 0$ :\n\n$$ c_n = \\sum_{k=0}^n 1 \\cdot 1 = \\sum_{k=0}^n 1 $$\n\nCette somme comporte $n+1$ termes (de $k=0$ à $k=n$), chacun valant 1.\n\n$$ c_n = n + 1 $$\n\n**Conclusion**\n\nAinsi,\n\n$$ \\frac{1}{(1-X)^2} = \\sum_{n \\ge 0} (n+1) X^n = 1 + 2X + 3X^2 + \\dots $$\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "1102c2cb",
+      "content": "#### Série Génératrice d'une Suite Géométrique\n\nSoit la suite définie par $u_0 = A$ et $u_n = \\lambda u_{n-1}$ pour $n \\ge 1$.\n\nProuver en utilisant la méthode des séries génératrices que le terme général est $u_n = A \\lambda^n$.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nPosez $U(X) = \\sum_{n \\ge 0} u_n X^n$.\n\nÉcrivez la relation de récurrence $u_n = \\lambda u_{n-1}$ et multipliez par $X^n$.\n\nSommez pour $n \\ge 1$ pour obtenir une équation fonctionnelle liant $U(X)$ et $X U(X)$.\n\nRésolvez pour $U(X)$ et développez en série.\n\n</details>",
+      "solution": "\n\nSoit $U(X) = \\sum_{n \\ge 0} u_n X^n$.\n\n**Étape 1 : Équation fonctionnelle**\n\nLa récurrence est $u_n = \\lambda u_{n-1}$ pour $n \\ge 1$.\n\nMultiplions par $X^n$ et sommons de $n=1$ à $+\\infty$ :\n\n$$ \\sum_{n=1}^\\infty u_n X^n = \\lambda \\sum_{n=1}^\\infty u_{n-1} X^n $$\n\nLe membre de gauche est $U(X) - u_0$.\n\nLe membre de droite peut être réécrit en sortant un $X$ :\n\n$$ \\lambda X \\sum_{n=1}^\\infty u_{n-1} X^{n-1} = \\lambda X \\sum_{k=0}^\\infty u_k X^k = \\lambda X U(X) $$\n\nDonc :\n\n$$ U(X) - u_0 = \\lambda X U(X) $$\n\n**Étape 2 : Résolution pour $U(X)$**\n\n$$ U(X) (1 - \\lambda X) = u_0 $$\n\nComme $u_0 = A$ :\n\n$$ U(X) = \\frac{A}{1 - \\lambda X} $$\n\n**Étape 3 : Développement en série**\n\nOn reconnait la forme de la série géométrique $\\frac{1}{1-Y} = \\sum Y^n$ avec $Y = \\lambda X$.\n\n$$ U(X) = A \\sum_{n \\ge 0} (\\lambda X)^n = \\sum_{n \\ge 0} (A \\lambda^n) X^n $$\n\n**Conclusion**\n\nEn identifiant les coefficients de $X^n$, on retrouve bien $u_n = A \\lambda^n$.\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "1102c2cb",
+      "content": "#### Série Génératrice de Fibonacci\n\nSoit la suite de Fibonacci définie par $f_0=0, f_1=1$ et $f_n = f_{n-1} + f_{n-2}$ pour $n \\ge 2$.\n\nMontrer que la série génératrice $F(X) = \\sum_{n \\ge 0} f_n X^n$ est égale à :\n\n$$ F(X) = \\frac{X}{1 - X - X^2} $$\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nPartez de $f_n X^n = f_{n-1} X^n + f_{n-2} X^n$.\n\nSommez pour $n \\ge 2$.\n\nExprimez $\\sum_{n \\ge 2} f_{n-1} X^n$ en fonction de $X$ et $F(X)$.\n\nExprimez $\\sum_{n \\ge 2} f_{n-2} X^n$ en fonction de $X^2$ et $F(X)$.\n\nN'oubliez pas de soustraire les termes initiaux ($f_0, f_1$) du membre de gauche.\n\n</details>",
+      "solution": "\n\n**Étape 1 : Sommation de la récurrence**\n\nPour $n \\ge 2$, on a $f_n = f_{n-1} + f_{n-2}$. Multiplions par $X^n$ et sommons :\n\n$$ \\sum_{n=2}^\\infty f_n X^n = \\sum_{n=2}^\\infty f_{n-1} X^n + \\sum_{n=2}^\\infty f_{n-2} X^n $$\n\n**Étape 2 : Expression en fonction de $F(X)$**\n\n*   Membre de gauche : $\\sum_{n=2}^\\infty f_n X^n = F(X) - f_0 - f_1 X$.\n*   Premier terme de droite : $\\sum_{n=2}^\\infty f_{n-1} X^n = X \\sum_{n=2}^\\infty f_{n-1} X^{n-1} = X (F(X) - f_0)$.\n*   Second terme de droite : $\\sum_{n=2}^\\infty f_{n-2} X^n = X^2 \\sum_{n=2}^\\infty f_{n-2} X^{n-2} = X^2 F(X)$.\n\n**Étape 3 : Résolution algébrique**\n\nEn remplaçant les valeurs initiales $f_0=0$ et $f_1=1$ :\n\n$$ F(X) - X = X F(X) + X^2 F(X) $$\n\nRegroupons les termes en $F(X)$ :\n\n$$ F(X) - X F(X) - X^2 F(X) = X $$\n\n$$ F(X) (1 - X - X^2) = X $$\n\n**Conclusion**\n\n$$ F(X) = \\frac{X}{1 - X - X^2} $$\n\n",
+      "options": []
+    }
+  ]
+}

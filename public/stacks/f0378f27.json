@@ -301,18 +301,18 @@
     {
       "id": "11",
       "stackId": "f0378f27",
-      "content": "#### Identification d'une base indirecte\n\nDans $\\mathbb{R}^2$, la base canonique $\\mathcal{B}_{can} = (e_1, e_2)$ est considérée comme directe. Parmi les bases suivantes, laquelle est indirecte ?\n",
-      "solution": "\n\n**Réponse : [B]**\n\nPour déterminer l'orientation d'une base $\\mathcal{B}'$ par rapport à $\\mathcal{B}_{can}$, il faut calculer le déterminant de la matrice de passage $P_{\\mathcal{B}_{can},\\mathcal{B}'}$, dont les colonnes sont les coordonnées des vecteurs de $\\mathcal{B}'$ dans la base $\\mathcal{B}_{can}$. Si le déterminant est négatif, la base est indirecte.\n\n- **A)** La matrice de passage est $P_1 = \\begin{pmatrix} 2 & 0 \\\\ 0 & 1 \\end{pmatrix}$. $\\det(P_1) = 2 > 0$. La base est directe.\n\n- **B)** La matrice de passage est $P_2 = \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}$. $\\det(P_2) = -1 < 0$. La base est indirecte. C'est la bonne réponse.\n\n- **C)** La matrice de passage est $P_3 = \\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$. $\\det(P_3) = 1 > 0$. La base est directe.\n\n- **D)** La matrice de passage est $P_4 = \\begin{pmatrix} 1 & 1 \\\\ 1 & -1 \\end{pmatrix}$. $\\det(P_4) = (1)(-1) - (1)(1) = -2 < 0$.\n\nAttendez, il semble y avoir deux bonnes réponses. Vérifions à nouveau l'énoncé. Ah, non, il ne faut qu'une seule bonne réponse. Je vais modifier l'option D pour qu'elle soit directe, afin qu'il n'y ait qu'une seule bonne réponse (B).\n\nModification de D : $\\mathcal{B}_4 = (e_1+e_2, -e_1+e_2)$. La matrice de passage est $P_4 = \\begin{pmatrix} 1 & -1 \\\\ 1 & 1 \\end{pmatrix}$. $\\det(P_4) = 1 - (-1) = 2 > 0$. C'est une base directe.\n\n*Note: Le quiz a été ajusté pour avoir une seule réponse correcte comme dans une épreuve standard. Avec la question originale, D serait également une réponse correcte.*\n\nDonc, avec la version corrigée de D, B est la seule réponse correcte.\n\n",
+      "content": "#### Identification d'une base indirecte\n\nDans $\\mathbb{R}^2$, la base canonique $\\mathcal{B}_{can} = (e_1, e_2)$ est considérée comme directe. Parmi les bases suivantes, lesquelles sont indirectes ?\n",
+      "solution": "\n\n**Réponses : [A, D]**\n\nPour déterminer l'orientation d'une base $\\mathcal{B}'$ par rapport à $\\mathcal{B}_{can}$, il faut calculer le déterminant de la matrice de passage $P_{\\mathcal{B}_{can},\\mathcal{B}'}$, dont les colonnes sont les coordonnées des vecteurs de $\\mathcal{B}'$ dans la base $\\mathcal{B}_{can}$. Si le déterminant est négatif, la base est indirecte.\n\n- **A)** La matrice de passage est $P_1 = \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}$. $\\det(P_1) = -1 < 0$. La base est indirecte.\n\n- **B)** La matrice de passage est $P_2 = \\begin{pmatrix} 2 & 0 \\\\ 0 & 1 \\end{pmatrix}$. $\\det(P_2) = 2 > 0$. La base est directe.\n\n- **C)** La matrice de passage est $P_3 = \\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$. $\\det(P_3) = 1 > 0$. La base est directe.\n\n- **D)** La matrice de passage est $P_4 = \\begin{pmatrix} 1 & 1 \\\\ 0 & -1 \\end{pmatrix}$. $\\det(P_4) = 1(-1) - 0(1) = -1 < 0$. C'est une base indirecte.\n\n",
       "options": [
         {
           "id": "1",
-          "content": "**A)** $\\mathcal{B}_1 = (2e_1, e_2)$",
-          "correct": false
+          "content": "**A)** $\\mathcal{B}_2 = (e_1, -e_2)$",
+          "correct": true
         },
         {
           "id": "2",
-          "content": "**B)** $\\mathcal{B}_2 = (e_1, -e_2)$",
-          "correct": true
+          "content": "**B)** $\\mathcal{B}_1 = (2e_1, e_2)$",
+          "correct": false
         },
         {
           "id": "3",
@@ -321,8 +321,8 @@
         },
         {
           "id": "4",
-          "content": "**D)** $\\mathcal{B}_4 = (e_1+e_2, e_1-e_2)$",
-          "correct": false
+          "content": "**D)** $\\mathcal{B}_4 = (e_1, e_1-e_2)$",
+          "correct": true
         }
       ]
     }

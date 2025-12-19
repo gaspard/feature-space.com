@@ -1,0 +1,49 @@
+{
+  "info": {
+    "id": "79a14632",
+    "title": "Comptage des applications - quiz (A)",
+    "type": "quiz",
+    "level": "regular",
+    "chapter": "Comptage des applications",
+    "course": "Graphes et Combinatoire",
+    "tags": [
+      "Combinatoire",
+      "Applications",
+      "Injections",
+      "Surjections",
+      "Stirling",
+      "Factorielle"
+    ],
+    "count": 1
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "79a14632",
+      "content": "#### Question 1 : Le nombre d'applications\n\nSoient deux ensembles finis $E$ et $F$. On pose $|E| = k$ et $|F| = n$.\n\nQuelle est la formule donnant le nombre total d'applications de $E$ dans $F$, noté $|\\mathcal{F}(E, F)|$ ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nL'explication repose sur le principe multiplicatif.\n\n- **A.** Incorrect. C'est l'erreur classique d'inversion. Cette formule correspondrait au nombre d'applications de $F$ dans $E$.\n- **B.** Incorrect. Cela correspondrait au cardinal du produit cartésien $E \\times F$ (nombre de couples), pas au nombre d'applications.\n- **C.** Correct. Pour chaque élément de l'ensemble de départ $E$ (il y en a $k$), nous avons $n$ choix possibles pour son image dans $F$. Cela donne $n \\times n \\times \\dots \\times n$ ($k$ fois), soit $n^k$. On retient : $|\\text{Arrivée}|^{|\\text{Départ}|}$.\n- **D.** Incorrect. La factorielle compte les permutations (bijections d'un ensemble sur lui-même), pas les applications générales entre deux ensembles de tailles différentes.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $k^n$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $n \\times k$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $n^k$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $n!$",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

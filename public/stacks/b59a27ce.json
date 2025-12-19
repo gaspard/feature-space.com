@@ -327,27 +327,27 @@
     {
       "id": "12",
       "stackId": "b59a27ce",
-      "content": "#### Erreur Classique de Récurrence\n\nUn étudiant veut prouver par récurrence que pour tout $n \\ge 1$, la somme des angles d'un polygone à $n$ côtés est $(n-2) \\times 180°$.\n\nIl commence son hérédité ainsi : \"Supposons que la propriété est vraie pour un polygone à $k$ côtés. Prenons un polygone à $k+1$ côtés. Si on lui enlève un sommet, on obtient un polygone à $k$ côtés. Par hypothèse de récurrence, la somme de ses angles est $(k-2) \\times 180°$. Donc...\"\n\nPourquoi ce début de raisonnement est-il potentiellement problématique pour $n=3$ (le triangle) ?\n",
-      "solution": "\n\n**Réponse : [B]**\n\nCette question illustre un point subtil dans les raisonnements par récurrence : la construction utilisée dans l'hérédité doit être valide pour tous les cas, y compris pour passer du cas de base au suivant.\n\nLa formule $\\sum \\text{angles} = (n-2) \\times 180°$ est correcte pour les polygones convexes, pour $n \\ge 3$.\n\nLe cas de base est donc $n_0=3$ (triangle), pour lequel la somme est $180°$. La formule donne $(3-2) \\times 180° = 180°$. L'initialisation est correcte.\n\nAnalysons l'hérédité proposée : \"prendre un polygone à $k+1$ côtés et lui enlever un sommet pour obtenir un polygone à $k$ côtés\".\n\n- **B) Correcte.** Le problème se pose pour la première étape de l'hérédité : prouver $P(3) \\implies P(4)$. Pour cela, on suppose $P(3)$ vraie et on doit montrer $P(4)$. L'étudiant, lui, part d'un polygone à $k+1$ côtés (un quadrilatère si $k=3$) et lui \"enlève un sommet\". Enlever un sommet à un quadrilatère ne donne pas un triangle, cela donne une ligne brisée avec 3 côtés. La construction est mal choisie. La bonne méthode est de partir d'un polygone à $k+1$ côtés et de le couper pour faire apparaître un polygone à $k$ côtés ET un triangle.\n\n- **A) Incorrecte.** L'hypothèse \"Supposons que la propriété est vraie pour un polygone à $k$ côtés\" est formulée de manière standard. Le problème n'est pas dans la formulation mais dans l'application qui en est faite.\n\n- **C) Incorrecte.** La formule elle-même est correcte pour les polygones convexes.\n\n- **D) Incorrecte.** La récurrence est un principe de démonstration très général qui s'applique à toute propriété dépendant des entiers, que ce soit en arithmétique, en analyse ou en géométrie.\n\n",
+      "content": "#### Erreur de Récurrence (Polygones)\n\nUn étudiant veut prouver par récurrence que pour tout $n \\ge 3$, la somme des angles d'un polygone à $n$ côtés est $(n-2) \\times 180°$.\n\nIl propose le raisonnement suivant pour l'hérédité : \"Supposons la propriété vraie pour un polygone à $k$ côtés. Prenons un polygone à $k+1$ côtés. Si on enlève un sommet (en reliant ses voisins), on obtient un polygone à $k$ côtés. Par hypothèse, la somme de ses angles est $(k-2) \\times 180°$. En ajoutant le triangle enlevé ($180°$), on retrouve bien la formule pour $k+1$.\"\n\nPourquoi ce raisonnement est-il problématique si on veut l'utiliser pour prouver le cas $n=3$ (le triangle) ?\n",
+      "solution": "\n\n**Réponse : [A]**\n\nLe raisonnement par récurrence \"descendante\" (ramener le cas $k+1$ au cas $k$) est valide tant que le cas $k$ existe.\n\n- Pour passer du quadrilatère ($k+1=4$) au triangle ($k=3$), ça marche : on coupe un quadrilatère pour obtenir un triangle.\n- Mais pour prouver le cas du triangle ($k+1=3$) avec ce raisonnement, il faudrait le ramener à un polygone à $k=2$ côtés. Or, un \"digone\" (polygone à 2 côtés) n'existe pas en géométrie plane euclidienne standard (c'est un segment aplati).\n\nLe cas $n=3$ ne peut donc pas être prouvé par cette hérédité. Il doit être traité comme **l'initialisation** (le cas de base) de la récurrence, vérifié séparément (la somme des angles d'un triangle est $180°$, ce qui correspond bien à $(3-2)\\times 180°$).\n\n",
       "options": [
         {
           "id": "1",
-          "content": "**A)** L'hypothèse de récurrence est mal formulée.",
-          "correct": false
-        },
-        {
-          "id": "2",
-          "content": "**B)** Le passage de $k+1$ à $k$ ne fonctionne pas pour le cas de base (de 4 à 3 côtés).",
+          "content": "**A)** Cela supposerait l'existence d'un polygone à 2 côtés (cas $k=2$).",
           "correct": true
         },
         {
+          "id": "2",
+          "content": "**B)** La somme des angles d'un triangle n'est pas $180°$.",
+          "correct": false
+        },
+        {
           "id": "3",
-          "content": "**C)** La formule est fausse pour les polygones.",
+          "content": "**C)** La formule est fausse pour les quadrilatères.",
           "correct": false
         },
         {
           "id": "4",
-          "content": "**D)** La récurrence ne s'applique pas à la géométrie.",
+          "content": "**D)** On ne peut pas toujours couper un triangle dans un polygone.",
           "correct": false
         }
       ]

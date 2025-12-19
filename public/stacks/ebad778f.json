@@ -1,0 +1,90 @@
+{
+  "info": {
+    "id": "ebad778f",
+    "title": "Séries formelles - fiches de révision (A)",
+    "type": "cards",
+    "level": "regular",
+    "chapter": "Séries formelles",
+    "course": "Graphes et Combinatoire",
+    "tags": [
+      "Combinatoire",
+      "Séries formelles",
+      "Fonction génératrice",
+      "Récurrence",
+      "Binôme de Newton"
+    ],
+    "count": 10
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "ebad778f",
+      "content": "Qu'est-ce qu'une **série formelle** ?",
+      "solution": "\n\nUne série formelle est une expression de la forme d'une somme infinie, représentant une suite de coefficients $(a_n)_{n \\in \\mathbb{N}}$ :\n\n$$\n\nA(X) = \\sum_{n \\ge 0} a_n X^n = a_0 + a_1 X + a_2 X^2 + \\cdots\n\n$$\n\n**Points clés :**\n\n- $X$ est une variable purement **symbolique** (un \"marque-page\" pour la position).\n- On ne remplace **jamais** $X$ par une valeur ; on ne se soucie pas de la **convergence**.\n- L'ensemble des séries formelles à coefficients dans $\\mathcal{A}$ est noté $\\mathcal{A}[[X]]$.\n\n**Différence avec un polynôme :** Une série peut avoir une infinité de coefficients non nuls, alors qu'un polynôme n'en a qu'un nombre fini.\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "ebad778f",
+      "content": "Quelle est la formule du **produit de Cauchy** de deux séries formelles ?",
+      "solution": "\n\nLe produit de $A(X) = \\sum a_n X^n$ et $B(X) = \\sum b_n X^n$ est la série $C(X) = \\sum c_n X^n$ où :\n\n$$\n\nc_n = \\sum_{k=0}^n a_k b_{n-k} = a_0 b_n + a_1 b_{n-1} + \\cdots + a_n b_0\n\n$$\n\n**Explication :**\n\nLe coefficient $c_n$ rassemble toutes les combinaisons possibles pour obtenir une puissance totale de $X^n$ en multipliant un terme de $A$ par un terme de $B$ (convolution).\n\n**Exemple :**\n\nSi $A(X)=1+X$ et $B(X)=1+X$, le coefficient de $X^1$ est $1\\cdot1 + 1\\cdot1 = 2$.\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "ebad778f",
+      "content": "Quelle est la **condition nécessaire et suffisante** pour qu'une série formelle soit **inversible** ?",
+      "solution": "\n\nUne série formelle $A(X) = \\sum_{n \\ge 0} a_n X^n$ admet un inverse multiplicatif $A(X)^{-1}$ si et seulement si :\n\n$$\n\n\\text{Son terme constant } a_0 \\text{ est inversible dans l'anneau des coefficients } \\mathcal{A}.\n\n$$\n\nSi les coefficients sont dans un corps (comme $\\mathbb{R}$ ou $\\mathbb{C}$), cela signifie simplement que **$a_0 \\neq 0$**.\n\n**Exemples :**\n\n- $1 - X$ est inversible (terme constant $1 \\neq 0$).\n- $X + X^2$ n'est pas inversible (terme constant $0$).\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "ebad778f",
+      "content": "Quelle est la formule de l'inverse de la **série géométrique** (Inverse fondamental) ?",
+      "solution": "\n\nL'inverse de $(1-X)$ est la somme de toutes les puissances de $X$ :\n\n$$\n\n\\frac{1}{1 - X} = \\sum_{n \\ge 0} X^n = 1 + X + X^2 + X^3 + \\cdots\n\n$$\n\n**Généralisation :**\n\nPour tout scalaire $\\alpha$ :\n\n$$\n\n\\frac{1}{1 - \\alpha X} = \\sum_{n \\ge 0} \\alpha^n X^n\n\n$$\n\nCette formule est essentielle pour développer des fractions rationnelles en séries.\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "ebad778f",
+      "content": "Comment définit-on la **dérivée formelle** d'une série ?",
+      "solution": "\n\nPour une série $A(X) = \\sum_{n \\ge 0} a_n X^n$, la dérivée formelle est définie algébriquement par :\n\n$$\n\nA'(X) = \\sum_{n \\ge 1} n a_n X^{n-1} = 1a_1 + 2a_2 X + 3a_3 X^2 + \\cdots\n\n$$\n\n**Propriétés :**\n\nElle suit les mêmes règles que la dérivée en analyse (linéarité, règle du produit, règle de la chaîne), mais sans notion de limite.\n\n**Exemple :**\n\n$$\n\n(e^X)' = \\left(\\sum \\frac{X^n}{n!}\\right)' = \\sum \\frac{n X^{n-1}}{n!} = \\sum \\frac{X^{n-1}}{(n-1)!} = e^X\n\n$$\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "ebad778f",
+      "content": "Quelle est la condition pour pouvoir effectuer la **composition** $A(B(X))$ de deux séries ?",
+      "solution": "\n\nPour composer $A(X)$ avec $B(X)$ (c'est-à-dire calculer $A(B(X))$), il faut impérativement que :\n\n$$\n\n\\text{Le terme constant de } B(X) \\text{ soit nul } (b_0 = 0).\n\n$$\n\n**Pourquoi ?**\n\nSi $b_0 \\neq 0$, le calcul du terme constant de la composée impliquerait une somme infinie ($a_0 + a_1 b_0 + a_2 b_0^2 + \\dots$), ce qui n'est pas défini dans l'anneau des séries formelles.\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "ebad778f",
+      "content": "Quelle est la formule du **coefficient binomial généralisé** $\\binom{r}{k}$ ?",
+      "solution": "\n\nPour un réel $r$ quelconque et un entier $k \\ge 0$ :\n\n$$\n\n\\binom{r}{k} = \\frac{r(r-1)(r-2)\\cdots(r-k+1)}{k!}\n\n$$\n\nSi $k=0$, $\\binom{r}{0} = 1$.\n\n**Usage :**\n\nCette définition permet de calculer des coefficients binomiaux même quand $r$ est négatif ou fractionnaire.\n\n**Exemple pour $r=-1$ :**\n\n$$\n\n\\binom{-1}{k} = \\frac{-1(-2)\\cdots(-k)}{k!} = (-1)^k\n\n$$\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "ebad778f",
+      "content": "Quelle est la formule du **Binôme Généralisé** pour un exposant entier négatif $(1-X)^{-m}$ ?",
+      "solution": "\n\nPour un entier $m \\ge 1$ :\n\n$$\n\n(1-X)^{-m} = \\frac{1}{(1-X)^m} = \\sum_{n \\ge 0} \\binom{n+m-1}{n} X^n\n\n$$\n\n**Interprétation combinatoire :**\n\nLe coefficient $\\binom{n+m-1}{n}$ correspond au nombre de façons de choisir $n$ objets parmi $m$ types avec répétition (multiensembles).\n\n**Exemple ($m=2$) :**\n\n$$\n\n\\frac{1}{(1-X)^2} = \\sum_{n \\ge 0} (n+1) X^n\n\n$$\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "ebad778f",
+      "content": "Comment résoudre une **récurrence linéaire** à l'aide des séries génératrices ?",
+      "solution": "\n\n**Étapes :**\n\n1.  **Série génératrice :** Poser $A(X) = \\sum_{n \\ge 0} a_n X^n$.\n2.  **Équation fonctionnelle :** Utiliser la relation de récurrence pour trouver une équation liant $A(X)$ (souvent en multipliant par $X^n$ et en sommant). Insérer les conditions initiales.\n3.  **Résolution algébrique :** Isoler $A(X)$ pour obtenir une fraction rationnelle $\\frac{P(X)}{Q(X)}$.\n4.  **Développement :** Utiliser la décomposition en éléments simples et le développement en série (type binôme négatif) pour trouver le coefficient de $X^n$, qui est la formule explicite de $a_n$.\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "ebad778f",
+      "content": "Comment extraire le coefficient de $X^n$ de la série $A(X) = \\frac{1}{1-2X}$ ?",
+      "solution": "\n\nOn utilise la série géométrique $\\frac{1}{1-U} = \\sum U^n$ avec $U = 2X$.\n\n**Calcul :**\n\n$$\n\nA(X) = \\frac{1}{1-(2X)} = \\sum_{n \\ge 0} (2X)^n = \\sum_{n \\ge 0} 2^n X^n\n\n$$\n\n**Résultat :**\n\nLe coefficient de $X^n$, noté $[X^n]A(X)$, est $2^n$.\n\nSi c'était une suite récurrente, on aurait $a_n = 2^n$.\n\n",
+      "options": []
+    }
+  ]
+}

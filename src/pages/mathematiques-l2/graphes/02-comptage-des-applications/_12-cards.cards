@@ -1,0 +1,269 @@
+---
+id: 1737fdd9
+type: cards
+order: 12
+title: Comptage des applications - fiches de révision (A)
+tags:
+  - Combinatoire
+  - Applications
+  - Injections
+  - Surjections
+  - Stirling
+  - Factorielle
+createdAt: '2025-12-16T16:50:01.715Z'
+level: regular
+course: Graphes et Combinatoire
+courseId: 7027276b
+chapter: Comptage des applications
+chapterId: 586f5519
+---
+# Fiches de révision "Comptage des applications" (A)
+
+---
+
+Quelle est la formule du nombre d'**applications** d'un ensemble fini $E$ vers un ensemble fini $F$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le nombre total d'applications de $E$ dans $F$, noté $|\mathcal{F}(E, F)|$ ou $|F^E|$, est :
+
+$$|F|^{|E|}$$
+
+Si on note $|E| = k$ (ensemble de départ) et $|F| = n$ (ensemble d'arrivée), la formule est :
+
+$$n^k$$
+
+**Explication :**
+
+Pour chaque élément de $E$, il y a $|F|$ choix possibles pour son image. D'après le principe multiplicatif, on multiplie ces choix $|E|$ fois.
+
+**Tags :** formule, applications
+
+</details>
+
+---
+
+Comment calcule-t-on le nombre de **sous-ensembles** (ou parties) d'un ensemble fini $E$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le cardinal de l'ensemble des parties de $E$, noté $|\mathcal{P}(E)|$, est donné par :
+
+$$2^{|E|}$$
+
+**Où :**
+
+- $|E|$ est le nombre d'éléments dans l'ensemble.
+
+**Pourquoi ?**
+
+Cela correspond au nombre d'applications de $E$ vers $\{0, 1\}$. Pour chaque élément, on a 2 choix : soit il est dans le sous-ensemble (1), soit il n'y est pas (0).
+
+**Tags :** formule, ensemble des parties
+
+</details>
+
+---
+
+Qu'est-ce qu'une **factorielle** et que dénombre-t-elle ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La factorielle de $n$, notée $n!$, est le produit des entiers de 1 à $n$ :
+
+$$n! = 1 \times 2 \times \dots \times n$$
+
+**Signification combinatoire :**
+
+Elle représente le nombre de **permutations** d'un ensemble à $n$ éléments. C'est-à-dire le nombre de façons d'ordonner ces $n$ éléments distincts (ou le nombre de bijections de $E$ dans $E$).
+
+**Exemple :**
+
+Pour ordonner les lettres $\{A, B, C\}$, il y a $3! = 6$ façons.
+
+**Tags :** définition, permutations
+
+</details>
+
+---
+
+Quelle est la formule du nombre d'**injections** (ou arrangements) de $E$ vers $F$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Si $|E| = k$ et $|F| = n$, le nombre d'injections est noté $A_n^k$ et vaut :
+
+$$A_n^k = \frac{n!}{(n-k)!} = n \times (n-1) \times \dots \times (n-k+1)$$
+
+**Conditions :**
+
+- Il faut que $k \le n$ (sinon le nombre est 0).
+- L'ordre compte et il n'y a pas de répétition.
+
+**Tags :** formule, injections, arrangements
+
+</details>
+
+---
+
+Dans quel cas le nombre d'injections de $E$ vers $F$ est-il égal à **zéro** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le nombre d'injections est nul si :
+
+$$|E| > |F|$$
+
+**Explication (Principe des tiroirs) :**
+
+Si l'ensemble de départ a plus d'éléments que l'ensemble d'arrivée, il est impossible d'associer une image distincte à chaque élément de départ. Au moins deux éléments auront la même image.
+
+**Tags :** concept, injections
+
+</details>
+
+---
+
+Que comptent les **Nombres de Stirling de seconde espèce**, notés $S(n, k)$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Les nombres $S(n, k)$ (ou $\left\{ {n \atop k} \right\}$) comptent le nombre de façons de **partitionner** un ensemble de $n$ éléments en $k$ sous-ensembles **non vides**.
+
+**Points clés :**
+
+- L'ordre des sous-ensembles ne compte pas (les groupes sont indiscernables).
+- Aucun sous-ensemble n'est vide.
+- La réunion des sous-ensembles reforme l'ensemble total.
+
+**Tags :** définition, partitions, stirling
+
+</details>
+
+---
+
+Quelle est la formule pour calculer le nombre de **surjections** de $E$ vers $F$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Si $|E| = n$ et $|F| = k$, le nombre de surjections est :
+
+$$k! \times S(n, k)$$
+
+**Où :**
+
+- $S(n, k)$ est le nombre de Stirling de seconde espèce (façons de grouper les $n$ éléments en $k$ paquets).
+- $k!$ correspond aux façons d'attribuer (ordonner) ces $k$ paquets aux $k$ éléments distincts de l'arrivée.
+
+**Condition :** Il faut $n \ge k$.
+
+**Tags :** formule, surjections
+
+</details>
+
+---
+
+**Exemple d'application :** Lancer de dés
+
+On lance un dé à 6 faces 4 fois de suite. Quel concept utiliser pour compter les résultats possibles ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Il s'agit d'une **application quelconque** (ou tirage avec remise).
+
+**Calcul :**
+
+- Ensemble de départ $E$ : les 4 lancers ($|E|=4$).
+- Ensemble d'arrivée $F$ : les 6 faces possibles ($|F|=6$).
+
+Le nombre de séquences est :
+
+$$|F|^{|E|} = 6^4 = 1296$$
+
+On n'utilise pas les arrangements car on peut obtenir le même chiffre plusieurs fois.
+
+**Tags :** exemple, applications
+
+</details>
+
+---
+
+Comment différencier une **injection**, une **surjection** et une **bijection** en termes de comptage ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Soit $f: E \to F$, avec $|E|=n$ et $|F|=k$.
+
+1.  **Injection ($n \le k$) :** Chaque élément de l'arrivée est atteint au maximum une fois.
+    *   Formule : $\frac{k!}{(k-n)!}$ (Arrangements).
+2.  **Surjection ($n \ge k$) :** Chaque élément de l'arrivée est atteint au moins une fois.
+    *   Formule : $k! \cdot S(n, k)$.
+3.  **Bijection ($n = k$) :** Chaque élément de l'arrivée est atteint exactement une fois.
+    *   Formule : $n!$ (Permutations).
+
+**Tags :** concept, comparaison
+
+</details>
+
+---
+
+Qu'est-ce que la **fonction caractéristique** d'un sous-ensemble ?
+
+<details>
+
+<summary>Réponse</summary>
+
+C'est une application qui permet de définir un sous-ensemble $A \subseteq E$. Elle est notée $\mathbf{1}_A : E \to \{0, 1\}$.
+
+**Définition :**
+
+$$\mathbf{1}_A(x) = \begin{cases} 1 & \text{si } x \in A \\ 0 & \text{si } x \notin A \end{cases}$$
+
+Elle établit une bijection entre l'ensemble des parties $\mathcal{P}(E)$ et l'ensemble des applications $\mathcal{F}(E, \{0, 1\})$, justifiant la formule $2^{|E|}$.
+
+**Tags :** définition, fonction caractéristique
+
+</details>
+
+---
+
+**Exemple d'application :** Code secret sans répétition
+
+Combien de codes à 3 chiffres **distincts** peut-on former avec les chiffres $\{1, 2, 3, 4, 5\}$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Il s'agit d'un problème d'**Arrangement** (Injection), car l'ordre compte et il n'y a pas de répétition.
+
+**Données :**
+
+- On choisit $k=3$ chiffres.
+- Parmi $n=5$ chiffres disponibles.
+
+**Calcul :**
+
+$$A_5^3 = \frac{5!}{(5-3)!} = 5 \times 4 \times 3 = 60 \text{ codes.}$$
+
+**Tags :** exemple, arrangements
+
+</details>

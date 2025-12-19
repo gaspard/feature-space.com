@@ -1,0 +1,93 @@
+{
+  "info": {
+    "id": "697fc7e4",
+    "title": "Introduction à la théorie de graphes - preuves (A)",
+    "type": "proofs",
+    "level": "regular",
+    "chapter": "Introduction à la théorie de graphes",
+    "course": "Graphes et Combinatoire",
+    "tags": [
+      "Graphes",
+      "Isomorphisme",
+      "Degrés",
+      "Lemme des poignées de main",
+      "Havel-Hakimi",
+      "Théorie extrémale",
+      "Turán",
+      "Ramsey"
+    ],
+    "count": 10
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "697fc7e4",
+      "content": "#### Le Lemme des Poignées de Main\n\nProuvez que pour tout graphe simple non-orienté $G = (S, A)$, la somme des degrés des sommets est égale à deux fois le nombre d'arêtes :\n\n$$ \\sum_{s \\in S} d(s) = 2|A| $$\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nEssayez de compter le nombre d'incidences (les paires formée d'un sommet et d'une arête reliée) de deux manières différentes.\n\nD'une part, considérez la contribution de chaque sommet. D'autre part, considérez la contribution de chaque arête.\n\n</details>",
+      "solution": "\n\nNous allons compter le nombre total d'extrémités d'arêtes dans le graphe de deux manières.\n\n**Étape 1 : Compter par les sommets**\n\nPar définition, le degré $d(s)$ d'un sommet $s$ est le nombre d'arêtes incidentes à ce sommet. Si nous faisons la somme des degrés $\\sum_{s \\in S} d(s)$, nous comptons combien de fois chaque sommet touche une arête.\n\n**Étape 2 : Compter par les arêtes**\n\nConsidérons maintenant l'ensemble des arêtes $A$. Chaque arête $a \\in A$ est une paire de sommets $\\{u, v\\}$. Une arête possède donc exactement 2 extrémités.\n\nLorsqu'on parcourt toutes les arêtes du graphe, le nombre total d'extrémités est donc $2 \\times |A|$.\n\n**Conclusion :**\n\nPuisque chaque extrémité d'arête est connectée à un unique sommet, la somme des degrés compte exactement l'ensemble des extrémités des arêtes du graphe. Ainsi :\n\n$$ \\sum_{s \\in S} d(s) = 2|A| $$\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "697fc7e4",
+      "content": "#### Parité des sommets de degré impair\n\nProuvez que dans tout graphe simple non-orienté $G$, le nombre de sommets ayant un degré impair est un nombre pair.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nUtilisez le Lemme des Poignées de Main.\n\nDivisez la somme des degrés en deux parties : la somme sur les sommets de degré pair et la somme sur les sommets de degré impair. Analysez la parité de l'équation globale.\n\n</details>",
+      "solution": "\n\nSoit $S_{pair}$ l'ensemble des sommets de degré pair et $S_{impair}$ l'ensemble des sommets de degré impair. $S = S_{pair} \\cup S_{impair}$.\n\n**Étape 1 : Utilisation du Lemme des Poignées de Main**\n\nD'après le lemme précédent :\n\n$$ \\sum_{s \\in S} d(s) = 2|A| $$\n\nCe total est un nombre pair (car multiple de 2).\n\n**Étape 2 : Décomposition de la somme**\n\nOn peut écrire la somme comme :\n\n$$ \\sum_{s \\in S_{pair}} d(s) + \\sum_{s \\in S_{impair}} d(s) = 2|A| $$\n\n**Étape 3 : Analyse de la parité**\n\n1.  Le terme de droite ($2|A|$) est **pair**.\n2.  Dans la première somme ($\\sum_{s \\in S_{pair}} d(s)$), chaque terme $d(s)$ est pair par définition. La somme de nombres pairs est **paire**.\n3.  Pour que l'équation soit équilibrée (Pair + X = Pair), le terme $\\sum_{s \\in S_{impair}} d(s)$ doit nécessairement être **pair**.\n\n**Conclusion :**\n\nLa somme $\\sum_{s \\in S_{impair}} d(s)$ est composée de termes qui sont tous impairs. Pour qu'une somme de nombres impairs donne un résultat pair, il faut nécessairement qu'il y ait un nombre **pair** de termes dans la somme.\n\nPar conséquent, $|S_{impair}|$ est pair.\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "697fc7e4",
+      "content": "#### Nombre maximum d'arêtes d'un graphe simple\n\nProuvez que pour un graphe simple non-orienté $G=(S, A)$ d'ordre $n$ (où $|S|=n$), le nombre maximum d'arêtes possible est $\\frac{n(n-1)}{2}$.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nRevenez à la définition de l'ensemble des arêtes $A$ comme sous-ensemble de $\\mathcal{P}_2(S)$. Quel est le cardinal de $\\mathcal{P}_2(S)$ ?\n\n</details>",
+      "solution": "\n\n**Étape 1 : Définition des arêtes**\n\nDans un graphe simple, $A$ est un sous-ensemble de $\\mathcal{P}_2(S)$, qui est l'ensemble de toutes les paires possibles de sommets distincts. Le nombre d'arêtes $|A|$ est donc maximisé lorsque $A = \\mathcal{P}_2(S)$ (c'est le cas du graphe complet $K_n$).\n\n**Étape 2 : Calcul combinatoire**\n\nNous cherchons le nombre de façons de choisir 2 éléments distincts parmi $n$ éléments, sans ordre (car $\\{x, y\\} = \\{y, x\\}$).\n\nCeci correspond au coefficient binomial \"2 parmi n\", noté $\\binom{n}{2}$.\n\n**Étape 3 : Application de la formule**\n\n$$ \\binom{n}{2} = \\frac{n!}{2!(n-2)!} = \\frac{n \\times (n-1)}{2} $$\n\n**Conclusion :**\n\nLe nombre maximum d'arêtes est $\\frac{n(n-1)}{2}$.\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "697fc7e4",
+      "content": "#### Préservation des degrés par isomorphisme\n\nProuvez que si deux graphes $G=(S, A)$ et $G'=(S', A')$ sont isomorphes via l'isomorphisme $\\varphi: S \\to S'$, alors pour tout sommet $x \\in S$, $d_G(x) = d_{G'}(\\varphi(x))$.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nUtilisez la définition de l'isomorphisme : $\\{x, y\\} \\in A \\iff \\{\\varphi(x), \\varphi(y)\\} \\in A'$.\n\nConsidérez l'ensemble des voisins de $x$ dans $G$ et montrez qu'il est en bijection avec l'ensemble des voisins de $\\varphi(x)$ dans $G'$.\n\n</details>",
+      "solution": "\n\nSoit $V_G(x)$ l'ensemble des voisins de $x$ dans $G$, c'est-à-dire $\\{y \\in S \\mid \\{x, y\\} \\in A\\}$. Par définition, $d_G(x) = |V_G(x)|$.\n\n**Étape 1 : Image des voisins**\n\nConsidérons l'image de cet ensemble par la bijection $\\varphi$. Soit $Y = \\{\\varphi(y) \\mid y \\in V_G(x)\\}$.\n\nPuisque $\\varphi$ est une bijection, $|Y| = |V_G(x)|$.\n\n**Étape 2 : Utilisation de la propriété d'isomorphisme**\n\nL'isomorphisme assure que :\n\n$$ \\{x, y\\} \\in A \\iff \\{\\varphi(x), \\varphi(y)\\} \\in A' $$\n\nCela signifie que $y$ est un voisin de $x$ dans $G$ si et seulement si $\\varphi(y)$ est un voisin de $\\varphi(x)$ dans $G'$.\n\n**Étape 3 : Identification des voisinages**\n\nL'ensemble $Y$ est donc exactement l'ensemble des voisins de $\\varphi(x)$ dans $G'$, noté $V_{G'}(\\varphi(x))$.\n\n**Conclusion :**\n\n$$ d_{G'}(\\varphi(x)) = |V_{G'}(\\varphi(x))| = |Y| = |V_G(x)| = d_G(x) $$\n\nLes degrés sont conservés par l'isomorphisme.\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "697fc7e4",
+      "content": "#### Nombre d'arêtes du graphe biparti complet\n\nProuvez que le graphe biparti complet $K_{n,m}$ possède exactement $n \\times m$ arêtes.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nLe graphe $K_{n,m}$ divise ses sommets en deux ensembles $U$ (taille $n$) et $V$ (taille $m$). Chaque sommet de $U$ est relié à tous les sommets de $V$. Faites une somme des degrés.\n\n</details>",
+      "solution": "\n\nSoit $U$ et $V$ la partition des sommets avec $|U|=n$ et $|V|=m$.\n\n**Étape 1 : Analyse des degrés dans $U$**\n\nDans un graphe biparti complet, chaque sommet $u \\in U$ est relié à **tous** les sommets de $V$, et à aucun sommet de $U$.\n\nDonc, pour tout $u \\in U$, le degré est $d(u) = |V| = m$.\n\n**Étape 2 : Somme partielle**\n\nCalculons le nombre d'arêtes en sommant les degrés des sommets de $U$. Attention, chaque arête a exactement une extrémité dans $U$ et une extrémité dans $V$.\n\nEn sommant les degrés des sommets de $U$, nous comptons chaque arête exactement une fois (l'extrémité côté $U$).\n\n$$ |A| = \\sum_{u \\in U} d(u) = \\sum_{u \\in U} m $$\n\n**Conclusion :**\n\nPuisqu'il y a $n$ sommets dans $U$ :\n\n$$ |A| = n \\times m $$\n\n*(Note : On peut aussi utiliser le lemme des poignées de main sur tout le graphe : Somme degrés = $n \\times m + m \\times n = 2nm$, donc $|A| = nm$)*.\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "697fc7e4",
+      "content": "#### Régularité de l'Hypercube $Q_d$\n\nProuvez que l'hypercube de dimension $d$, noté $Q_d$, est un graphe $d$-régulier (chaque sommet a un degré $d$).\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nLes sommets de $Q_d$ sont les chaînes binaires de longueur $d$ (ex: $010...1$).\n\nDeux sommets sont reliés s'ils diffèrent d'exactement un bit. Pour une chaîne donnée, combien de chaînes différentes peut-on créer en changeant exactement un bit ?\n\n</details>",
+      "solution": "\n\nSoit $v$ un sommet quelconque de $Q_d$. On peut représenter $v$ par une suite de bits $(b_1, b_2, \\dots, b_d)$ où $b_i \\in \\{0, 1\\}$.\n\n**Étape 1 : Définition de l'adjacence**\n\nUn sommet $w$ est voisin de $v$ si et seulement si $w$ diffère de $v$ en exactement une position.\n\n**Étape 2 : Construction des voisins**\n\nPour construire un voisin de $v$, nous devons choisir une position $k \\in \\{1, \\dots, d\\}$ et inverser le bit $b_k$ (si c'est 0, il devient 1 ; si c'est 1, il devient 0).\n\nLa chaîne obtenue sera différente de $v$ par exactement le $k$-ième bit.\n\n**Étape 3 : Dénombrement**\n\nPuisqu'il y a $d$ positions possibles dans la chaîne (de 1 à $d$), il y a exactement $d$ façons de modifier un seul bit.\n\nIl y a donc exactement $d$ voisins distincts pour le sommet $v$.\n\n**Conclusion :**\n\nQuel que soit le sommet $v$, $d(v) = d$. Le graphe $Q_d$ est donc $d$-régulier.\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "697fc7e4",
+      "content": "#### Absence de triangles dans les graphes bipartis\n\nProuvez qu'un graphe biparti $G=(U \\cup V, A)$ ne contient aucun sous-graphe isomorphe à $K_3$ (un triangle).\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nRappelez-vous qu'un graphe biparti ne possède des arêtes qu'entre $U$ et $V$.\n\nEssayez de placer 3 sommets $x, y, z$ formant un triangle dans les ensembles $U$ et $V$ et cherchez une contradiction sur l'existence des arêtes.\n\n</details>",
+      "solution": "\n\nSupposons par l'absurde que $G$ contienne un triangle formé par les sommets $\\{x, y, z\\}$. Cela signifie que les arêtes $\\{x, y\\}$, $\\{y, z\\}$ et $\\{z, x\\}$ existent toutes dans $A$.\n\n**Étape 1 : Placement du premier sommet**\n\nSans perte de généralité, supposons que $x \\in U$.\n\n**Étape 2 : Analyse des voisins de $x$**\n\nComme le graphe est biparti, les voisins de $x$ doivent nécessairement appartenir à l'autre ensemble de la partition, $V$.\n\nPuisque $\\{x, y\\} \\in A$, alors $y \\in V$.\n\nPuisque $\\{x, z\\} \\in A$, alors $z \\in V$.\n\n**Étape 3 : Contradiction**\n\nNous avons maintenant $y \\in V$ et $z \\in V$. Pour former un triangle, il faut que l'arête $\\{y, z\\}$ existe.\n\nOr, dans un graphe biparti, il n'existe aucune arête reliant deux éléments du même ensemble $V$.\n\nDonc $\\{y, z\\} \\notin A$.\n\n**Conclusion :**\n\nIl est impossible d'avoir trois arêtes connectant trois sommets deux à deux dans un graphe biparti. $G$ ne contient pas de $K_3$.\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "697fc7e4",
+      "content": "#### Somme des lignes de la Matrice d'Incidence\n\nSoit $M$ la matrice d'incidence d'un graphe simple $G$ où les lignes représentent les sommets $s_1, \\dots, s_n$. Prouvez que la somme des éléments de la ligne $i$ est égale au degré du sommet $s_i$.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nUtilisez la définition de $m_{i,j}$. La matrice $M$ est de taille $n \\times m$. Les colonnes sont les arêtes $a_j$. Que vaut $m_{i,j}$ ?\n\n</details>",
+      "solution": "\n\nSoit $M = (m_{i,j})$ la matrice d'incidence.\n\nPar définition :\n\n$$ m_{i,j} = \\begin{cases} 1 & \\text{si le sommet } s_i \\text{ est incident à l'arête } a_j \\\\ 0 & \\text{sinon} \\end{cases} $$\n\n**Étape 1 : Calcul de la somme**\n\nLa somme des éléments de la ligne $i$ est :\n\n$$ S_i = \\sum_{j=1}^{m} m_{i,j} $$\n\n**Étape 2 : Interprétation**\n\nCette somme compte combien de fois $m_{i,j} = 1$ quand on parcourt toutes les arêtes $j=1 \\dots m$.\n\nCela revient à compter le nombre d'arêtes $a_j$ auxquelles le sommet $s_i$ appartient.\n\n**Conclusion :**\n\nLe nombre d'arêtes incidentes à $s_i$ est exactement la définition du degré $d(s_i)$.\n\n$$ \\sum_{j=1}^{m} m_{i,j} = d(s_i) $$\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "697fc7e4",
+      "content": "#### Le Théorème de Ramsey R(3,3) (Borne supérieure)\n\nProuvez que $R(3,3) \\leq 6$. C'est-à-dire, prouvez que tout graphe d'ordre 6 contient soit un triangle ($K_3$), soit un stable de taille 3 ($S_3$).\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nChoisissez un sommet arbitraire $v$. Il a 5 voisins potentiels.\n\nAppliquez le principe des tiroirs sur le statut de ces voisins (adjacents ou non à $v$).\n\nSi $d(v) \\geq 3$ ou si $d(v) \\leq 2$ (ce qui implique $\\geq 3$ non-voisins), analysez les connexions entre ces voisins.\n\n</details>",
+      "solution": "\n\nSoit $G$ un graphe d'ordre 6. Soit $v$ un sommet quelconque de $G$.\n\nLes 5 autres sommets du graphe sont soit voisins de $v$, soit non-voisins de $v$.\n\n**Étape 1 : Principe des tiroirs**\n\nParmi les 5 autres sommets, par le principe des tiroirs, l'une des deux situations suivantes est vraie :\n\n1.  $v$ a au moins 3 voisins.\n2.  $v$ a au moins 3 non-voisins.\n\n**Cas 1 : $v$ a au moins 3 voisins**\n\nSoient $x, y, z$ trois voisins de $v$.\n\nRegardons les arêtes entre $\\{x, y, z\\}$.\n\n*   Si **au moins une** arête existe (disons $\\{x, y\\}$), alors $v, x, y$ forment un triangle ($K_3$).\n*   Si **aucune** arête n'existe entre eux, alors $\\{x, y, z\\}$ forment un stable de taille 3 ($S_3$).\n\nDans les deux cas, la propriété est vérifiée.\n\n**Cas 2 : $v$ a au moins 3 non-voisins**\n\nSoient $x, y, z$ trois non-voisins de $v$.\n\nRegardons les arêtes entre $\\{x, y, z\\}$.\n\n*   Si **toutes** les arêtes existent ($\\{x, y\\}, \\{y, z\\}, \\{x, z\\}$), alors $\\{x, y, z\\}$ forment un triangle ($K_3$).\n*   Si **au moins une** arête manque (disons $\\{x, y\\}$ n'existe pas), alors $v, x, y$ forment un stable de taille 3 ($S_3$) car $v$ n'est relié ni à $x$ ni à $y$, et $x$ n'est pas relié à $y$.\n\n**Conclusion :**\n\nDans toutes les configurations possibles, le graphe contient soit un $K_3$, soit un $S_3$. Donc $R(3,3) \\leq 6$.\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "697fc7e4",
+      "content": "#### Borne inférieure de Turán pour les triangles\n\nProuvez qu'il est possible de construire un graphe d'ordre 4 avec 4 arêtes sans créer de triangle ($K_3$).\n\n*Note : Ceci montre que la borne du théorème de Turán ($n^2/4$ pour $r=3$) est atteinte.*\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nEssayez de construire un graphe biparti. Les graphes bipartis n'ont pas de triangles. Essayez de maximiser les arêtes avec 4 sommets (2 dans chaque partie).\n\n</details>",
+      "solution": "\n\nNous devons exhiber un graphe $G=(S, A)$ tel que $|S|=4$, $|A|=4$ et qui ne contient aucun $K_3$.\n\n**Étape 1 : Construction**\n\nConsidérons le graphe biparti complet $K_{2,2}$.\n\nSoit $S = \\{1, 2, 3, 4\\}$. Partitionnons $S$ en $U=\\{1, 2\\}$ et $V=\\{3, 4\\}$.\n\nLes arêtes sont toutes les connexions entre $U$ et $V$ :\n\n$A = \\{ \\{1, 3\\}, \\{1, 4\\}, \\{2, 3\\}, \\{2, 4\\} \\}$.\n\n**Étape 2 : Vérification du nombre d'arêtes**\n\nLe nombre d'arêtes est $|A| = 4$.\n\n**Étape 3 : Vérification de l'absence de triangle**\n\nComme prouvé dans l'exercice précédent, un graphe biparti ne peut pas contenir de triangle.\n\nVisuellement, ce graphe est un cycle de longueur 4 ($1-3-2-4-1$, un carré), qui ne contient pas de sous-graphe $K_3$.\n\n**Conclusion :**\n\nLe graphe $K_{2,2}$ prouve qu'il est possible d'avoir 4 arêtes sur 4 sommets sans triangle.\n\n",
+      "options": []
+    }
+  ]
+}
