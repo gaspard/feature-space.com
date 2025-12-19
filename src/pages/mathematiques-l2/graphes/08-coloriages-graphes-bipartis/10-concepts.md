@@ -2,7 +2,7 @@
 id: a7750579
 type: concepts
 order: 10
-title: Chapitre 8 Coloration et graphes bipartis - concepts (A)
+title: Coloration et graphes bipartis - concepts (A)
 tags:
   - Graphes
   - Coloration
@@ -11,12 +11,12 @@ tags:
   - Graphes bipartis
 course: Graphes et Combinatoire
 courseId: 7027276b
-chapter: Chapitre 8 Coloration et graphes bipartis
+chapter: Coloration et graphes bipartis
 chapterId: dc0134f0
 level: regular
 createdAt: '2025-12-19T13:11:44.697Z'
 ---
-# Chapitre 8 Coloration et graphes bipartis (A)
+# Coloration et graphes bipartis (A)
 
 ---
 

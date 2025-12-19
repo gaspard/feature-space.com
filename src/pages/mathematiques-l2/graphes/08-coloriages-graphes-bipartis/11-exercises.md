@@ -2,7 +2,7 @@
 id: 4de6b062
 type: exercises
 order: 11
-title: Chapitre 8 Coloration et graphes bipartis - exercices (A)
+title: Coloration et graphes bipartis - exercices (A)
 tags:
   - Graphes
   - Coloration
@@ -13,10 +13,10 @@ createdAt: '2025-12-19T13:11:44.697Z'
 level: regular
 course: Graphes et Combinatoire
 courseId: 7027276b
-chapter: Chapitre 8 Coloration et graphes bipartis
+chapter: Coloration et graphes bipartis
 chapterId: dc0134f0
 ---
-# Exercices "Chapitre 8 Coloration et graphes bipartis" (A)
+# Exercices "Coloration et graphes bipartis" (A)
 
 ---
 

@@ -2,7 +2,7 @@
 id: fd8ad67c
 type: concepts
 order: 10
-title: Chapitre 10 - Planarité - concepts (A)
+title: Planarité - concepts (A)
 tags:
   - Graphes planaires
   - Formule d'Euler
@@ -11,12 +11,12 @@ tags:
   - Théorème des 4 couleurs
 course: Graphes et Combinatoire
 courseId: 7027276b
-chapter: Chapitre 10 - Planarité
+chapter: Planarité
 chapterId: '40818759'
 level: regular
 createdAt: '2025-12-19T13:24:26.380Z'
 ---
-# Chapitre 10 - Planarité (A)
+# Planarité (A)
 
 ---
 

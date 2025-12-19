@@ -2,7 +2,7 @@
 id: 2eecd17f
 type: exercises
 order: 11
-title: Chapitre 10 - Planarité - exercices (A)
+title: Planarité - exercices (A)
 tags:
   - Graphes planaires
   - Formule d'Euler
@@ -13,12 +13,12 @@ createdAt: '2025-12-19T13:24:26.380Z'
 level: regular
 course: Graphes et Combinatoire
 courseId: 7027276b
-chapter: Chapitre 10 - Planarité
+chapter: Planarité
 chapterId: '40818759'
 ---
-Voici une série d'exercices de niveau "Régulier" couvrant l'ensemble des concepts du Chapitre 10 - Planarité. Ces exercices visent à renforcer la compréhension fondamentale et l'application des théorèmes.
+Voici une série d'exercices de niveau "Régulier" couvrant l'ensemble des concepts du Planarité. Ces exercices visent à renforcer la compréhension fondamentale et l'application des théorèmes.
 
-# Exercices "Chapitre 10 - Planarité" (A)
+# Exercices "Planarité" (A)
 
 ---
 
