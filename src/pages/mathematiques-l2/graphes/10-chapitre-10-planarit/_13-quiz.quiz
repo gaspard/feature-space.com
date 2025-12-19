@@ -1,0 +1,287 @@
+---
+id: '98e96731'
+type: quiz
+order: 13
+title: Chapitre 10 - Planarité - quiz (A)
+tags:
+  - Graphes planaires
+  - Formule d'Euler
+  - Théorème de Kuratowski
+  - Coloration
+  - Théorème des 4 couleurs
+createdAt: '2025-12-19T13:24:26.380Z'
+level: regular
+course: Graphes et Combinatoire
+courseId: 7027276b
+chapter: Chapitre 10 - Planarité
+chapterId: '40818759'
+---
+# Quiz : Chapitre 10 - Planarité
+
+---
+
+#### Définition d'un graphe planaire
+
+Quelle est la définition exacte d'un graphe planaire ?
+
+- [ ] **A)** C'est un graphe où toutes les arêtes sont des lignes droites.
+- [ ] **B)** C'est un graphe qui ne contient aucun cycle.
+- [x] **C)** C'est un graphe pour lequel il **existe** un dessin dans le plan sans que les arêtes ne se croisent.
+- [ ] **D)** C'est un graphe dessiné de telle sorte que ses arêtes se croisent le moins possible.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Explication détaillée :
+
+- **A.** Faux. Les arêtes peuvent être des courbes (arcs). Le théorème de Fáry dit qu'on *peut* le dessiner avec des droites, mais la définition de base autorise les courbes.
+- **B.** Faux. Les arbres sont planaires, mais des graphes avec cycles (comme $K_4$) peuvent aussi être planaires.
+- **C.** Vrai. La propriété de planarité concerne l'**existence** d'une représentation sans croisement, même si le dessin actuel en comporte.
+- **D.** Faux. Ce n'est pas une question de minimisation, mais d'absence totale de croisement.
+
+</details>
+
+---
+
+#### La Formule d'Euler
+
+Pour un graphe planaire **connexe** avec $s$ sommets, $a$ arêtes et $f$ faces, quelle est la relation correcte (Formule d'Euler) ?
+
+- [ ] **A)** $s + a - f = 2$
+- [x] **B)** $s - a + f = 2$
+- [ ] **C)** $s - a + f = 1$
+- [ ] **D)** $a \leq 3s - 6$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Explication détaillée :
+
+- **A.** Faux. Mauvais signes.
+- **B.** Vrai. C'est la formule d'Euler classique pour les graphes planaires connexes.
+- **C.** Faux. Le résultat vaut 2 pour les graphes connexes (1 pour la composante connexe + 1 pour l'extérieur "infini" en topologie, mais la formule standard est égalée à 2). Si le graphe n'était pas connexe, ce serait $1 + k$ (composantes).
+- **D.** Faux. Ceci est l'inégalité de densité d'arêtes (corollaire), pas la formule d'Euler sur les faces.
+
+</details>
+
+---
+
+#### Obstructions à la planarité
+
+Quels graphes parmi les suivants sont connus comme les obstructions fondamentales à la planarité (c'est-à-dire qu'ils ne sont jamais planaires) ?
+
+- [x] **A)** $K_5$ (Graphe complet à 5 sommets)
+- [ ] **B)** $K_4$ (Graphe complet à 4 sommets)
+- [x] **C)** $K_{3,3}$ (Graphe biparti complet avec 3 sommets de chaque côté)
+- [ ] **D)** $C_5$ (Cycle à 5 sommets)
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, C]**
+
+Explication détaillée :
+
+- **A.** Vrai. $K_5$ ne peut pas être dessiné sans croisement (densité d'arêtes trop élevée et topologie).
+- **B.** Faux. $K_4$ est planaire (on peut le dessiner comme un triangle avec un point au centre relié aux 3 coins).
+- **C.** Vrai. $K_{3,3}$ est l'autre obstruction fondamentale (problème des 3 maisons et 3 usines).
+- **D.** Faux. Tous les cycles simples sont planaires (polygones).
+
+</details>
+
+---
+
+#### Application de la formule d'Euler
+
+Un graphe planaire connexe possède 6 sommets et 9 arêtes. Combien de faces comporte un dessin plan de ce graphe ?
+
+- [ ] **A)** 3 faces
+- [ ] **B)** 4 faces
+- [x] **C)** 5 faces
+- [ ] **D)** 2 faces
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Explication détaillée :
+
+On utilise la formule d'Euler : $s - a + f = 2$.
+
+Ici, $s = 6$ et $a = 9$.
+
+$$6 - 9 + f = 2$$
+
+$$-3 + f = 2$$
+
+$$f = 5$$
+
+- **A, B, D.** Faux, erreur de calcul.
+- **C.** Vrai. Le dessin aura 5 faces (en comptant la face externe).
+
+</details>
+
+---
+
+#### Théorème de Kuratowski
+
+Selon le théorème de Kuratowski, quelle condition est nécessaire et suffisante pour qu'un graphe soit planaire ?
+
+- [ ] **A)** Le graphe doit satisfaire $a \leq 3s - 6$.
+- [x] **B)** Le graphe ne doit contenir aucun sous-graphe isomorphe à une subdivision de $K_5$ ou de $K_{3,3}$.
+- [ ] **C)** Le graphe doit être coloriable avec 4 couleurs au maximum.
+- [ ] **D)** Le graphe ne doit pas contenir de triangles.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Explication détaillée :
+
+- **A.** Faux. C'est une condition nécessaire, mais pas suffisante (un graphe peut respecter l'inégalité et contenir un motif non planaire).
+- **B.** Vrai. C'est l'énoncé exact du théorème de Kuratowski (ou en utilisant les mineurs pour le théorème de Wagner).
+- **C.** Faux. C'est une conséquence de la planarité (Théorème des 4 couleurs), pas une définition ni un critère topologique direct.
+- **D.** Faux. Les graphes planaires peuvent contenir des triangles (ex: $K_3, K_4$).
+
+</details>
+
+---
+
+#### Densité d'arêtes et condition nécessaire
+
+Quelle inégalité doit nécessairement être vérifiée pour tout graphe planaire simple avec $s \geq 3$ sommets ?
+
+- [ ] **A)** $a \leq 2s - 4$
+- [ ] **B)** $a \leq s + 6$
+- [x] **C)** $a \leq 3s - 6$
+- [ ] **D)** $a \geq 3s - 6$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Explication détaillée :
+
+- **A.** Faux. Cette inégalité ($a \leq 2s - 4$) est spécifique aux graphes planaires **sans triangles** (bipartis), mais pas à tous les graphes planaires.
+- **B.** Faux.
+- **C.** Vrai. C'est la borne supérieure du nombre d'arêtes dérivée de la formule d'Euler ($3f \leq 2a$).
+- **D.** Faux. Le signe de l'inégalité est inversé.
+
+</details>
+
+---
+
+#### Théorème de la courbe de Jordan
+
+Que stipule le Théorème de la courbe de Jordan, essentiel pour comprendre les faces d'un graphe ?
+
+- [ ] **A)** Toute courbe fermée simple peut être colorée avec 2 couleurs.
+- [x] **B)** Toute courbe fermée simple divise le plan en exactement deux régions connexes disjointes : l'intérieur et l'extérieur.
+- [ ] **C)** Toute courbe reliant deux points distincts est une ligne droite.
+- [ ] **D)** L'intersection de deux courbes fermées est toujours vide.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Explication détaillée :
+
+- **A.** Faux.
+- **B.** Vrai. C'est le fondement topologique qui définit ce qu'est une "face" interne et externe. Une arête reliant un point de l'intérieur à un point de l'extérieur doit forcément croiser la courbe.
+- **C.** Faux.
+- **D.** Faux. Deux courbes peuvent se croiser.
+
+</details>
+
+---
+
+#### Coloration des graphes planaires
+
+Quel est le nombre minimal de couleurs suffisant pour colorier les sommets de n'importe quel graphe planaire (Théorème des 4 couleurs) ?
+
+- [ ] **A)** 3 couleurs
+- [x] **B)** 4 couleurs
+- [ ] **C)** 5 couleurs
+- [ ] **D)** 6 couleurs
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Explication détaillée :
+
+- **A.** Faux. $K_4$ est planaire et nécessite 4 couleurs. 3 ne suffisent pas.
+- **B.** Vrai. C'est le célèbre Théorème des 4 couleurs prouvé en 1976.
+- **C.** Faux. On sait prouver facilement que 5 couleurs suffisent (Heawood), mais ce n'est pas le minimum absolu garanti par le théorème le plus fort.
+- **D.** Faux. Tous les graphes planaires sont 6-coloriables (facile à prouver), mais on peut faire mieux.
+
+</details>
+
+---
+
+#### Notion de Face Externe
+
+Dans un dessin plan d'un graphe fini :
+
+- [ ] **A)** Il n'y a pas toujours de face externe.
+- [ ] **B)** La face externe est la région bornée la plus grande.
+- [ ] **C)** Un graphe peut avoir plusieurs faces externes disjointes.
+- [x] **D)** Il y a toujours exactement une région non bornée appelée face externe.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+Explication détaillée :
+
+- **A.** Faux. Tout dessin borné dans le plan laisse le reste du plan (infini) vide.
+- **B.** Faux. La face externe est **non bornée** (elle s'étend à l'infini).
+- **C.** Faux. Le complémentaire d'un dessin borné contient une seule composante connexe non bornée.
+- **D.** Vrai. C'est la définition topologique de la face externe.
+
+</details>
+
+---
+
+#### Analyse de $K_{3,3}$ et Inégalités
+
+Considérons le graphe $K_{3,3}$ (6 sommets, 9 arêtes). Pourquoi l'inégalité standard $a \leq 3s - 6$ ne permet-elle pas de prouver qu'il est non-planaire ?
+
+- [ ] **A)** Car $K_{3,3}$ est en réalité planaire.
+- [x] **B)** Car $9 \leq 3(6) - 6$ (soit $9 \leq 12$) est vraie. L'inégalité est une condition nécessaire mais pas suffisante.
+- [ ] **C)** Car la formule d'Euler ne s'applique pas aux graphes bipartis.
+- [ ] **D)** Car $K_{3,3}$ a trop de sommets pour utiliser cette formule.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Explication détaillée :
+
+- **A.** Faux. $K_{3,3}$ n'est pas planaire.
+- **B.** Vrai. Si on remplace les valeurs : $s=6, a=9$. La borne est $18-6=12$. Comme $9 \le 12$, le test "passe", mais le graphe n'est quand même pas planaire. Cela montre que respecter cette inégalité ne suffit pas à garantir la planarité. (Il faudrait utiliser $a \le 2s-4$ pour les graphes sans triangles pour prouver la non-planarité de $K_{3,3}$).
+- **C.** Faux. La formule d'Euler s'applique à tout graphe planaire connexe.
+- **D.** Faux.
+
+</details>

@@ -20,7 +20,7 @@
     {
       "id": "1",
       "stackId": "5886db28",
-      "content": "#### Question 1 : Formule de la réunion pour 3 ensembles\n\nQuelle est la formule correcte pour calculer le cardinal de la réunion de trois ensembles finis $A, B$ et $C$ ?\n",
+      "content": "#### Formule de la réunion pour 3 ensembles\n\nQuelle est la formule correcte pour calculer le cardinal de la réunion de trois ensembles finis $A, B$ et $C$ ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nLe Principe d'Inclusion-Exclusion stipule que l'on doit alterner les signes en fonction de la taille de l'intersection.\n\n- **A.** Incorrect. Le dernier terme (intersection triple) doit être ajouté ($+$), car il a été soustrait trop de fois par les intersections doubles.\n- **B.** Correct. On ajoute les singletons, on soustrait les paires, on ajoute le triplet.\n- **C.** Incorrect. Cette formule ne tient pas compte des intersections deux à deux.\n- **D.** Incorrect. Les signes sont inversés (on ne peut pas ajouter les intersections doubles, sinon on compte les éléments communs encore plus de fois).\n\n",
       "options": [
         {
@@ -48,7 +48,7 @@
     {
       "id": "2",
       "stackId": "5886db28",
-      "content": "#### Question 2 : Application simple (2 ensembles)\n\nDans une classe, 12 étudiants étudient l'anglais ($A$) et 15 étudient l'espagnol ($B$). On sait que 5 étudiants étudient les deux langues ($A \\cap B$). Combien d'étudiants étudient au moins une de ces deux langues ?\n",
+      "content": "#### Application simple (2 ensembles)\n\nDans une classe, 12 étudiants étudient l'anglais ($A$) et 15 étudient l'espagnol ($B$). On sait que 5 étudiants étudient les deux langues ($A \\cap B$). Combien d'étudiants étudient au moins une de ces deux langues ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nOn applique la formule pour deux ensembles : $|A \\cup B| = |A| + |B| - |A \\cap B|$.\n\n- **A.** Incorrect. C'est simplement $12 + 15$. Cela compte deux fois les étudiants qui font les deux langues.\n- **B.** Correct. $12 + 15 - 5 = 22$.\n- **C.** Incorrect. Cela correspondrait uniquement à $|B| - |A| + |A \\cap B|$ ou une autre erreur de calcul.\n- **D.** Incorrect. C'est $12 + 15 + 5$, ce qui est faux.\n\n",
       "options": [
         {
@@ -76,7 +76,7 @@
     {
       "id": "3",
       "stackId": "5886db28",
-      "content": "#### Question 3 : Forme complémentaire\n\nSi $E$ est un ensemble univers fini et $A_1, A_2$ sont des sous-ensembles de $E$. Que calcule la formule suivante ?\n\n$$ |E| - (|A_1| + |A_2|) + |A_1 \\cap A_2| $$\n",
+      "content": "#### Forme complémentaire\n\nSi $E$ est un ensemble univers fini et $A_1, A_2$ sont des sous-ensembles de $E$. Que calcule la formule suivante ?\n\n$$ |E| - (|A_1| + |A_2|) + |A_1 \\cap A_2| $$\n",
       "solution": "\n\n**Réponse : [C]**\n\nCette formule est la forme complémentaire du principe d'inclusion-exclusion pour 2 ensembles.\n\n- **A.** Incorrect. L'union serait $|A_1| + |A_2| - |A_1 \\cap A_2|$.\n- **B.** Incorrect. Cela nécessiterait une formule différente (différence symétrique).\n- **C.** Correct. C'est le calcul de $|\\overline{A_1 \\cup A_2}|$. On part du total, on retire ceux qui ont une propriété, et on corrige en rajoutant l'intersection. Cela compte les éléments qui ne sont dans \"aucun\" des ensembles.\n- **D.** Incorrect. L'intersection est $|A_1 \\cap A_2|$.\n\n",
       "options": [
         {
@@ -104,7 +104,7 @@
     {
       "id": "4",
       "stackId": "5886db28",
-      "content": "#### Question 4 : Divisibilité\n\nCombien d'entiers dans l'ensemble $\\{1, 2, \\dots, 20\\}$ sont divisibles par 2 ou par 5 ?\n",
+      "content": "#### Divisibilité\n\nCombien d'entiers dans l'ensemble $\\{1, 2, \\dots, 20\\}$ sont divisibles par 2 ou par 5 ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nSoit $A_2$ les multiples de 2 et $A_5$ les multiples de 5 dans l'intervalle.\n\n$|A_2| = 20/2 = 10$.\n\n$|A_5| = 20/5 = 4$.\n\nL'intersection $A_2 \\cap A_5$ contient les multiples de 10 : $|A_{10}| = 20/10 = 2$.\n\n- **A.** Incorrect. Somme simple $10+4$.\n- **B.** Correct. $|A_2 \\cup A_5| = 10 + 4 - 2 = 12$.\n- **C.** Incorrect.\n- **D.** Incorrect.\n\n",
       "options": [
         {
@@ -132,7 +132,7 @@
     {
       "id": "5",
       "stackId": "5886db28",
-      "content": "#### Question 5 : Dérangements (Définition)\n\nQu'est-ce qu'un **dérangement** d'un ensemble fini ?\n",
+      "content": "#### Dérangements (Définition)\n\nQu'est-ce qu'un **dérangement** d'un ensemble fini ?\n",
       "solution": "\n\n**Réponse : [C]**\n\n- **A.** Incorrect. C'est l'identité.\n- **B.** Incorrect. Un dérangement est une bijection (permutation), donc elle est surjective.\n- **C.** Correct. Par définition, un dérangement $\\sigma$ vérifie $\\sigma(i) \\neq i$ pour tout $i$.\n- **D.** Incorrect. Cela s'appelle une permutation avec 1 point fixe, pas un dérangement.\n\n",
       "options": [
         {
@@ -160,7 +160,7 @@
     {
       "id": "6",
       "stackId": "5886db28",
-      "content": "#### Question 6 : Calcul de dérangements\n\nQuel est le nombre de dérangements $D_3$ pour un ensemble de 3 éléments $\\{1, 2, 3\\}$ ?\n",
+      "content": "#### Calcul de dérangements\n\nQuel est le nombre de dérangements $D_3$ pour un ensemble de 3 éléments $\\{1, 2, 3\\}$ ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nOn applique la formule $D_n = n! \\sum_{j=0}^n \\frac{(-1)^j}{j!}$ pour $n=3$.\n\n$D_3 = 6 \\times (\\frac{1}{1} - \\frac{1}{1} + \\frac{1}{2} - \\frac{1}{6}) = 6 \\times (\\frac{1}{2} - \\frac{1}{6}) = 3 - 1 = 2$.\n\nLes deux dérangements sont les permutations : $(2, 3, 1)$ et $(3, 1, 2)$.\n\n- **A.** Incorrect.\n- **B.** Incorrect. C'est la valeur pour $n=2$.\n- **C.** Correct.\n- **D.** Incorrect.\n\n",
       "options": [
         {
@@ -188,7 +188,7 @@
     {
       "id": "7",
       "stackId": "5886db28",
-      "content": "#### Question 7 : Nombre de Surjections\n\nQuelle condition doit être remplie pour que le nombre de surjections d'un ensemble de cardinal $n$ vers un ensemble de cardinal $k$ soit non nul ?\n",
+      "content": "#### Nombre de Surjections\n\nQuelle condition doit être remplie pour que le nombre de surjections d'un ensemble de cardinal $n$ vers un ensemble de cardinal $k$ soit non nul ?\n",
       "solution": "\n\n**Réponse : [C]**\n\n- **A.** Incorrect. Si $n > k$, il existe aussi des surjections.\n- **B.** Incorrect. Si $n < k$, on ne peut pas \"couvrir\" tous les éléments de l'arrivée. Le nombre de surjections est 0.\n- **C.** Correct. Il faut au moins autant d'éléments au départ qu'à l'arrivée pour pouvoir atteindre chaque élément de l'ensemble d'arrivée au moins une fois.\n- **D.** Incorrect. Inclut le cas $n < k$ où le résultat est 0.\n\n",
       "options": [
         {
@@ -216,7 +216,7 @@
     {
       "id": "8",
       "stackId": "5886db28",
-      "content": "#### Question 8 : Formule du binôme multivariée\n\nLa formule $\\prod_{i=1}^n (a_i + b_i) = \\sum_{I \\subseteq \\llbracket n \\rrbracket} \\left( \\prod_{i \\in I} a_i \\right) \\left( \\prod_{i \\in \\llbracket n \\rrbracket \\setminus I} b_i \\right)$ est utilisée pour :\n",
+      "content": "#### Formule du binôme multivariée\n\nLa formule $\\prod_{i=1}^n (a_i + b_i) = \\sum_{I \\subseteq \\llbracket n \\rrbracket} \\left( \\prod_{i \\in I} a_i \\right) \\left( \\prod_{i \\in \\llbracket n \\rrbracket \\setminus I} b_i \\right)$ est utilisée pour :\n",
       "solution": "\n\n**Réponse : [A]**\n\n- **A.** Correct. En choisissant $a_i = -f_{A_i}(x)$ et $b_i = 1$, on retrouve la structure du principe d'inclusion-exclusion.\n- **B.** Incorrect.\n- **C.** Incorrect.\n- **D.** Incorrect.\n\n",
       "options": [
         {
@@ -244,7 +244,7 @@
     {
       "id": "9",
       "stackId": "5886db28",
-      "content": "#### Question 9 : Calcul de Surjections (Petit cas)\n\nCombien y a-t-il de surjections de l'ensemble $\\{1, 2, 3\\}$ vers l'ensemble $\\{a, b\\}$ ?\n\n(Rappel : Total des fonctions = $k^n$)\n",
+      "content": "#### Calcul de Surjections (Petit cas)\n\nCombien y a-t-il de surjections de l'ensemble $\\{1, 2, 3\\}$ vers l'ensemble $\\{a, b\\}$ ?\n\n(Rappel : Total des fonctions = $k^n$)\n",
       "solution": "\n\n**Réponse : [B]**\n\nIci $n=3$ et $k=2$.\n\nNombre total de fonctions = $2^3 = 8$.\n\nFonctions non surjectives = celles qui n'atteignent pas $a$ (toutes vers $b$) + celles qui n'atteignent pas $b$ (toutes vers $a$). Il y en a 2 (les fonctions constantes).\n\nNombre de surjections = Total - Non surjectives = $8 - 2 = 6$.\n\n- **A.** Incorrect. C'est le nombre total de fonctions.\n- **B.** Correct.\n- **C.** Incorrect.\n- **D.** Incorrect.\n\n",
       "options": [
         {
@@ -272,7 +272,7 @@
     {
       "id": "10",
       "stackId": "5886db28",
-      "content": "#### Question 10 : Signification des termes\n\nDans la formule générale du principe d'inclusion-exclusion pour la réunion $\\left|\\bigcup_{i=1}^n A_i\\right|$, quel est le signe devant la somme des cardinaux des intersections triples $\\sum |A_i \\cap A_j \\cap A_k|$ ?\n",
+      "content": "#### Signification des termes\n\nDans la formule générale du principe d'inclusion-exclusion pour la réunion $\\left|\\bigcup_{i=1}^n A_i\\right|$, quel est le signe devant la somme des cardinaux des intersections triples $\\sum |A_i \\cap A_j \\cap A_k|$ ?\n",
       "solution": "\n\n**Réponse : [A]**\n\nLa formule alterne les signes selon la taille de l'intersection ($|I|$).\n\nTaille 1 ($|A_i|$) : $+$\n\nTaille 2 ($|A_i \\cap A_j|$) : $-$\n\nTaille 3 ($|A_i \\cap A_j \\cap A_k|$) : $+$\n\n- **A.** Correct. Les intersections de taille impaire ont un signe positif.\n- **B.** Incorrect. Ce sont les intersections de taille paire qui ont un signe négatif.\n- **C.** Incorrect. Le signe dépend de la taille de l'intersection ($|I|$), pas du nombre total d'ensembles ($n$).\n- **D.** Incorrect.\n\n",
       "options": [
         {

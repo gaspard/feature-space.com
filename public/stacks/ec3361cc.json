@@ -22,7 +22,7 @@
     {
       "id": "1",
       "stackId": "ec3361cc",
-      "content": "#### Question 1 : Définition d'un Graphe Simple\n\nQuelle est la définition formelle correcte de l'ensemble des arêtes $A$ pour un **graphe simple non-orienté** $G=(S, A)$ ?\n",
+      "content": "#### Définition d'un Graphe Simple\n\nQuelle est la définition formelle correcte de l'ensemble des arêtes $A$ pour un **graphe simple non-orienté** $G=(S, A)$ ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nUn graphe simple non-orienté est défini par un ensemble de sommets $S$ et un ensemble d'arêtes $A$.\n\n- **C.** C'est la définition correcte. Les arêtes sont des paires non ordonnées de sommets distincts (éléments de $\\mathcal{P}_2(S)$). Cela garantit l'absence d'orientation et de boucles.\n- **A.** Cette définition correspond aux graphes **orientés** (arcs $(x,y)$ au lieu de paires $\\{x,y\\}$).\n- **B.** Cela correspond aux **multigraphes**, qui autorisent plusieurs arêtes entre les mêmes sommets.\n- **D.** Cela correspondrait à un graphe avec des boucles (arêtes reliant un sommet à lui-même), ce qui est interdit dans un graphe *simple*.\n\n",
       "options": [
         {
@@ -50,7 +50,7 @@
     {
       "id": "2",
       "stackId": "ec3361cc",
-      "content": "#### Question 2 : Nombre d'arêtes dans un Graphe Complet\n\nCombien d'arêtes possède le graphe complet $K_5$ (un graphe simple à 5 sommets où tous les sommets sont reliés entre eux) ?\n",
+      "content": "#### Nombre d'arêtes dans un Graphe Complet\n\nCombien d'arêtes possède le graphe complet $K_5$ (un graphe simple à 5 sommets où tous les sommets sont reliés entre eux) ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nDans un graphe complet $K_n$, chaque sommet est relié à tous les autres. Le nombre d'arêtes est donné par la formule du nombre de paires possibles : $\\binom{n}{2} = \\frac{n(n-1)}{2}$.\n\n- **A.** 5 est le nombre de sommets (ou d'arêtes dans un cycle $C_5$), pas d'arêtes dans $K_5$.\n- **B.** Pour $n=5$ : $\\frac{5 \\times 4}{2} = \\frac{20}{2} = 10$. C'est la bonne réponse.\n- **C.** 20 correspond à $n(n-1)$, c'est-à-dire le nombre d'arcs dans un graphe orienté complet (où $(a,b)$ est différent de $(b,a)$), ou la somme des degrés.\n- **D.** 25 correspond à $n^2$, ce qui inclurait des boucles et compterait les arêtes deux fois.\n\n",
       "options": [
         {
@@ -78,7 +78,7 @@
     {
       "id": "3",
       "stackId": "ec3361cc",
-      "content": "#### Question 3 : Lemme des Poignées de Main\n\nSoit un graphe dont la somme des degrés des sommets est égale à 28. Quel est le nombre d'arêtes de ce graphe ?\n",
+      "content": "#### Lemme des Poignées de Main\n\nSoit un graphe dont la somme des degrés des sommets est égale à 28. Quel est le nombre d'arêtes de ce graphe ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nLe Lemme des Poignées de Main stipule que la somme des degrés est égale à deux fois le nombre d'arêtes : $\\sum d(s) = 2|A|$.\n\n- **A.** 7 est $28/4$, calcul incorrect.\n- **B.** Si la somme des degrés est 28, alors $2|A| = 28$, donc $|A| = 14$. C'est la bonne réponse.\n- **C.** 28 est la somme des degrés, pas le nombre d'arêtes.\n- **D.** 56 serait le résultat si on multipliait par 2 au lieu de diviser.\n\n",
       "options": [
         {
@@ -106,7 +106,7 @@
     {
       "id": "4",
       "stackId": "ec3361cc",
-      "content": "#### Question 4 : Matrice d'Adjacence\n\nQuelle propriété est **toujours vraie** pour la matrice d'adjacence $M$ d'un graphe simple non-orienté ?\n",
+      "content": "#### Matrice d'Adjacence\n\nQuelle propriété est **toujours vraie** pour la matrice d'adjacence $M$ d'un graphe simple non-orienté ?\n",
       "solution": "\n\n**Réponse : [D]**\n\nLa matrice d'adjacence représente les connexions entre les sommets.\n\n- **A.** Une matrice d'adjacence standard contient des 0 et des 1.\n- **B.** La somme d'une ligne $i$ est égale au degré du sommet $i$, pas au nombre total de sommets.\n- **C.** Une diagonale non nulle impliquerait l'existence de boucles (sommet relié à lui-même), ce qui est interdit dans un graphe *simple*.\n- **D.** Dans un graphe non-orienté, si $i$ est voisin de $j$, alors $j$ est voisin de $i$. Donc $m_{i,j} = m_{j,i}$. C'est la propriété fondamentale.\n\n",
       "options": [
         {
@@ -134,7 +134,7 @@
     {
       "id": "5",
       "stackId": "ec3361cc",
-      "content": "#### Question 5 : Suites de Degrés (Validité)\n\nLaquelle des suites de degrés suivantes est **impossible** pour un graphe simple ?\n",
+      "content": "#### Suites de Degrés (Validité)\n\nLaquelle des suites de degrés suivantes est **impossible** pour un graphe simple ?\n",
       "solution": "\n\n**Réponse : [A]**\n\nOn utilise le corollaire du Lemme des Poignées de Main : \"Le nombre de sommets de degré impair doit être pair\" (car la somme totale des degrés doit être paire).\n\n- **A.** Degrés impairs : 3, 3, 3. Il y a **trois** sommets de degré impair. 3 est un nombre impair. C'est impossible. (Somme = $3+3+3+2 = 11$, impair).\n- **B.** Degrés impairs : 0. Possible (Cycle $C_4$).\n- **C.** Degrés impairs : 1, 1. Il y en a 2 (nombre pair). Possible (Une arête et un sommet isolé).\n- **D.** Degrés impairs : 1, 1. Il y en a 2 (nombre pair). Possible (Chaîne $P_3$).\n\n",
       "options": [
         {
@@ -162,7 +162,7 @@
     {
       "id": "6",
       "stackId": "ec3361cc",
-      "content": "#### Question 6 : Isomorphisme de Graphes\n\nDeux graphes $G$ et $H$ sont dits **isomorphes** si :\n",
+      "content": "#### Isomorphisme de Graphes\n\nDeux graphes $G$ et $H$ sont dits **isomorphes** si :\n",
       "solution": "\n\n**Réponse : [C]**\n\nL'isomorphisme définit l'équivalence structurelle.\n\n- **A.** Avoir le même ordre et la même taille est une condition nécessaire (invariants), mais pas suffisante (exemple : un cycle $C_4$ et l'union de deux triangles ne sont pas isomorphes bien qu'ayant 4 sommets et 4 arêtes... attendez, deux triangles font 6 sommets. Prenons $C_6$ vs $2 \\times K_3$).\n- **B.** La planarité (dessiner sans croisement) est une propriété spécifique, pas la définition de l'isomorphisme.\n- **C.** C'est la définition exacte : une bijection $\\varphi$ telle que $\\{u,v\\} \\in A(G) \\iff \\{\\varphi(u),\\varphi(v)\\} \\in A(H)$.\n- **D.** Les noms des sommets n'importent pas pour la structure (isomorphisme = renommage possible).\n\n",
       "options": [
         {
@@ -190,7 +190,7 @@
     {
       "id": "7",
       "stackId": "ec3361cc",
-      "content": "#### Question 7 : Graphes Bipartis Complets\n\nCombien d'arêtes possède le graphe biparti complet $K_{3,4}$ ?\n",
+      "content": "#### Graphes Bipartis Complets\n\nCombien d'arêtes possède le graphe biparti complet $K_{3,4}$ ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nUn graphe biparti complet $K_{n,m}$ possède un groupe de $n$ sommets et un groupe de $m$ sommets. Chaque sommet du groupe $n$ est relié à chaque sommet du groupe $m$.\n\n- **A.** 7 est le nombre de sommets ($n+m$).\n- **B.** Le nombre d'arêtes est le produit des tailles des groupes : $n \\times m = 3 \\times 4 = 12$.\n- **C.** Concaténation des chiffres (distracteur).\n- **D.** Distracteur arbitraire.\n\n",
       "options": [
         {
@@ -218,7 +218,7 @@
     {
       "id": "8",
       "stackId": "ec3361cc",
-      "content": "#### Question 8 : Sous-graphe Induit\n\nSoit $G$ un graphe. Comment obtient-on le **sous-graphe induit** par un ensemble de sommets $S' \\subseteq S$ ?\n",
+      "content": "#### Sous-graphe Induit\n\nSoit $G$ un graphe. Comment obtient-on le **sous-graphe induit** par un ensemble de sommets $S' \\subseteq S$ ?\n",
       "solution": "\n\n**Réponse : [A]**\n\n- **A.** C'est la définition d'un sous-graphe **induit**. La présence des arêtes est dictée par le graphe original : si deux sommets gardés sont reliés dans $G$, ils **doivent** être reliés dans le sous-graphe induit.\n- **B.** Ceci décrit un sous-graphe partiel quelconque, mais pas nécessairement \"induit\".\n- **C.** Ceci décrirait un sous-graphe vide ou stable.\n- **D.** Impossible pour un graphe standard : une arête doit avoir ses deux extrémités dans l'ensemble des sommets du graphe.\n\n",
       "options": [
         {
@@ -246,7 +246,7 @@
     {
       "id": "9",
       "stackId": "ec3361cc",
-      "content": "#### Question 9 : Théorème de Turán\n\nQue cherche à déterminer le théorème de Turán ?\n",
+      "content": "#### Théorème de Turán\n\nQue cherche à déterminer le théorème de Turán ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nLe théorème de Turán est un résultat central de la théorie des graphes extrémaux.\n\n- **A.** Algorithme de Dijkstra ou BFS.\n- **B.** Théorème de Havel-Hakimi.\n- **C.** C'est l'énoncé du théorème de Turán : la densité maximale d'arêtes sous la contrainte d'exclusion d'un sous-graphe $K_r$.\n- **D.** Problème de la coloration (nombre chromatique).\n\n",
       "options": [
         {
@@ -274,7 +274,7 @@
     {
       "id": "10",
       "stackId": "ec3361cc",
-      "content": "#### Question 10 : Nombres de Ramsey\n\nQue signifie l'affirmation $R(3, 3) = 6$ dans le contexte d'un groupe de personnes (amis/étrangers) ?\n",
+      "content": "#### Nombres de Ramsey\n\nQue signifie l'affirmation $R(3, 3) = 6$ dans le contexte d'un groupe de personnes (amis/étrangers) ?\n",
       "solution": "\n\n**Réponse : [C]**\n\n$R(s, t) = n$ signifie que tout graphe d'ordre $n$ contient soit une clique de taille $s$ ($K_s$, amis mutuels), soit un stable de taille $t$ ($S_t$, étrangers mutuels).\n\n- **A.** Confusion avec le nombre d'arêtes.\n- **B.** Problème de couplage.\n- **C.** C'est l'interprétation exacte. $K_3$ (triangle) représente 3 amis mutuels, $S_3$ (stable) représente 3 inconnus mutuels. Avec 6 personnes, l'une de ces configurations est inévitable.\n- **D.** Ramsey garantit l'existence d'une sous-structure, pas une partition complète du groupe.\n\n",
       "options": [
         {
@@ -302,7 +302,7 @@
     {
       "id": "11",
       "stackId": "ec3361cc",
-      "content": "#### Question 11 : L'Hypercube $Q_3$\n\nQuelle est le degré de chaque sommet dans un hypercube de dimension 3 ($Q_3$) ?\n",
+      "content": "#### L'Hypercube $Q_3$\n\nQuelle est le degré de chaque sommet dans un hypercube de dimension 3 ($Q_3$) ?\n",
       "solution": "\n\n**Réponse : [B]**\n\nL'hypercube $Q_d$ est un graphe $d$-régulier.\n\n- **A.** Degré d'un cycle.\n- **B.** Dans $Q_3$, les sommets sont des mots binaires de longueur 3 (ex: 000). Chaque sommet a 3 voisins (ceux qui diffèrent d'exactement 1 bit, ex: 001, 010, 100).\n- **C.** Degré dans $Q_4$.\n- **D.** 8 est le nombre de sommets ($2^3$), pas le degré.\n\n",
       "options": [
         {
@@ -330,7 +330,7 @@
     {
       "id": "12",
       "stackId": "ec3361cc",
-      "content": "#### Question 12 : Algorithme de Havel-Hakimi\n\nQuel est le principe de l'algorithme de Havel-Hakimi pour vérifier si une suite est graphique ?\n",
+      "content": "#### Algorithme de Havel-Hakimi\n\nQuel est le principe de l'algorithme de Havel-Hakimi pour vérifier si une suite est graphique ?\n",
       "solution": "\n\n**Réponse : [B]**\n\n- **A.** C'est le Lemme des Poignées de Main (condition nécessaire mais pas suffisante).\n- **B.** C'est la procédure exacte de Havel-Hakimi. Elle réduit le problème étape par étape jusqu'à obtenir une suite triviale (zéros).\n- **C.** Méthode algébrique non liée à Havel-Hakimi.\n- **D.** Formule pour les graphes planaires, sans rapport direct avec la validité d'une suite de degrés.\n\n",
       "options": [
         {

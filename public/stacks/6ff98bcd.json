@@ -1,0 +1,90 @@
+{
+  "info": {
+    "id": "6ff98bcd",
+    "title": "Chapitre 8 Coloration et graphes bipartis - preuves (A)",
+    "type": "proofs",
+    "level": "regular",
+    "chapter": "Chapitre 8 Coloration et graphes bipartis",
+    "course": "Graphes et Combinatoire",
+    "tags": [
+      "Graphes",
+      "Coloration",
+      "Nombre chromatique",
+      "Algorithme glouton",
+      "Graphes bipartis"
+    ],
+    "count": 10
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "6ff98bcd",
+      "content": "#### Le nombre chromatique d'une clique\n\nProuvez que pour une clique de taille $n$, notée $K_n$, le nombre chromatique est $\\chi(K_n) = n$.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nRappelez-vous de la définition d'une clique : tous les sommets sont connectés deux à deux.\n\nUtilisez un argument par l'absurde ou le principe des tiroirs : que se passe-t-il si vous essayez d'utiliser $n-1$ couleurs pour $n$ sommets ?\n\n</details>",
+      "solution": "\n\nSoit $G = (S, A)$ un graphe complet $K_n$ avec $|S| = n$.\n\n**Étape 1 : Montrer que $\\chi(K_n) \\le n$**\n\nIl est trivial de colorier $K_n$ avec $n$ couleurs. Il suffit d'assigner une couleur distincte $\\{1, 2, \\dots, n\\}$ à chaque sommet. Puisque chaque sommet a une couleur unique, la condition $f(u) \\neq f(v)$ est satisfaite pour toute arête.\n\n**Étape 2 : Montrer que $\\chi(K_n) \\ge n$**\n\nSupposons par l'absurde que $\\chi(K_n) \\le n-1$. Cela signifie qu'il existe une coloration valide utilisant $k$ couleurs avec $k < n$.\n\nD'après le principe des tiroirs, si l'on distribue $n$ sommets dans $k$ classes de couleurs (avec $n > k$), alors au moins une classe de couleur doit contenir au moins deux sommets, disons $u$ et $v$.\n\nPuisque $u$ et $v$ ont la même couleur, ils ne doivent pas être reliés par une arête.\n\nOr, par définition de la clique $K_n$, tous les sommets sont reliés entre eux. Donc l'arête $\\{u, v\\}$ existe.\n\nCela crée une contradiction : $u$ et $v$ sont reliés mais ont la même couleur.\n\n**Conclusion :**\n\nIl est impossible d'utiliser moins de $n$ couleurs. Ainsi, $\\chi(K_n) = n$.\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "6ff98bcd",
+      "content": "#### Le nombre chromatique du graphe étoile\n\nProuvez que pour tout graphe étoile $K_{1,n}$ avec $n \\ge 1$, le nombre chromatique est $\\chi(K_{1,n}) = 2$.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nUn graphe étoile possède un sommet central relié à $n$ feuilles. Les feuilles ne sont pas reliées entre elles.\n\nEssayez de colorier le centre d'une couleur et toutes les feuilles d'une autre.\n\n</details>",
+      "solution": "\n\nSoit $K_{1,n}$ un graphe constitué d'un sommet central $c$ et de $n$ feuilles $f_1, \\dots, f_n$.\n\nLes arêtes sont de la forme $\\{c, f_i\\}$ pour tout $i$. Il n'y a pas d'arête entre $f_i$ et $f_j$.\n\n**Étape 1 : Montrer que $\\chi(K_{1,n}) \\le 2$**\n\nProposons la coloration suivante avec l'ensemble de couleurs $\\{1, 2\\}$ :\n\n- $f(c) = 1$\n- $f(f_i) = 2$ pour tout $i \\in \\{1, \\dots, n\\}$\n\nVérifions les arêtes :\n\n- Toute arête relie $c$ (couleur 1) à une feuille $f_i$ (couleur 2).\n- Comme $1 \\neq 2$, la condition est respectée.\n\nIl n'y a pas d'autres arêtes à vérifier. La coloration est valide avec 2 couleurs.\n\n**Étape 2 : Montrer que $\\chi(K_{1,n}) > 1$**\n\nPuisque $n \\ge 1$, le graphe contient au moins une arête $\\{c, f_1\\}$.\n\nUn graphe contenant au moins une arête ne peut pas être colorié avec 1 seule couleur (les deux extrémités auraient la même couleur). Donc $\\chi(K_{1,n}) \\ge 2$.\n\n**Conclusion :**\n\nPuisque $\\chi(K_{1,n}) \\le 2$ et $\\chi(K_{1,n}) \\ge 2$, on a $\\chi(K_{1,n}) = 2$.\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "6ff98bcd",
+      "content": "#### Borne inférieure liée au sous-graphe\n\nSoit $G$ un graphe et $H$ un sous-graphe de $G$. Prouvez que $\\chi(H) \\le \\chi(G)$.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nUne coloration valide pour le graphe entier $G$ attribue une couleur à chaque sommet, y compris ceux qui appartiennent à $H$.\n\nSi on ne regarde que les sommets et arêtes de $H$, cette attribution reste-t-elle valide ?\n\n</details>",
+      "solution": "\n\nSoit $G=(S, A)$ et $H=(S', A')$ un sous-graphe, c'est-à-dire $S' \\subseteq S$ et $A' \\subseteq A$.\n\nSoit $k = \\chi(G)$. Par définition, il existe une coloration valide $f : S \\to \\{1, \\dots, k\\}$ pour $G$.\n\nCela signifie que pour toute arête $\\{u, v\\} \\in A$, on a $f(u) \\neq f(v)$.\n\n**Étape 1 : Restriction de la coloration**\n\nConsidérons la restriction de $f$ à l'ensemble des sommets de $H$, notée $f|_H : S' \\to \\{1, \\dots, k\\}$.\n\nCette fonction utilise au plus $k$ couleurs.\n\n**Étape 2 : Validité pour H**\n\nPour toute arête $\\{u, v\\} \\in A'$ (arête de $H$) :\n\nPuisque $A' \\subseteq A$, alors $\\{u, v\\}$ est aussi une arête de $G$.\n\nComme $f$ est une coloration valide de $G$, on a $f(u) \\neq f(v)$.\n\nPar conséquent, la restriction $f|_H$ assigne bien des couleurs différentes aux extrémités de toutes les arêtes de $H$.\n\n**Conclusion :**\n\n$H$ est $k$-coloriable. Puisque le nombre chromatique $\\chi(H)$ est le *plus petit* nombre de couleurs nécessaires pour $H$, on a nécessairement $\\chi(H) \\le k$, soit $\\chi(H) \\le \\chi(G)$.\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "6ff98bcd",
+      "content": "#### Borne supérieure de l'algorithme glouton\n\nProuvez que pour tout graphe $G$, $\\chi(G) \\le \\Delta(G) + 1$, où $\\Delta(G)$ est le degré maximum du graphe.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nUtilisez la logique de l'algorithme glouton. Lorsqu'on considère un sommet $v$ pour lui attribuer une couleur, combien de ses voisins ont déjà été coloriés ?\n\nQuel est le nombre maximum de couleurs \"interdites\" pour ce sommet ?\n\n</details>",
+      "solution": "\n\nConsidérons l'algorithme glouton qui colorie les sommets $v_1, v_2, \\dots, v_n$ dans un ordre quelconque.\n\n**Étape 1 : Analyse de l'étape de coloration d'un sommet**\n\nSoit $v_i$ le sommet considéré à l'étape $i$.\n\nL'algorithme attribue à $v_i$ la plus petite couleur (entier positif) qui n'est pas déjà présente parmi ses voisins $N(v_i)$.\n\nSeuls les voisins déjà traités (dans $\\{v_1, \\dots, v_{i-1}\\}$) imposent une contrainte.\n\nSoit $k$ le nombre de voisins de $v_i$ déjà coloriés. On sait que $k \\le d(v_i)$ (degré de $v_i$).\n\n**Étape 2 : Majoration des couleurs interdites**\n\nPar définition du degré maximum, pour tout sommet $v$, $d(v) \\le \\Delta(G)$.\n\nDonc, au moment de choisir la couleur pour $v_i$, il y a au maximum $\\Delta(G)$ voisins déjà coloriés.\n\nDans le pire des cas, ces $\\Delta(G)$ voisins utilisent tous des couleurs différentes : $1, 2, \\dots, \\Delta(G)$.\n\n**Étape 3 : Existence d'une couleur libre**\n\nMême dans ce pire cas, la couleur $\\Delta(G) + 1$ reste disponible.\n\nL'algorithme glouton pourra donc toujours trouver une couleur valide dans l'ensemble $\\{1, 2, \\dots, \\Delta(G) + 1\\}$.\n\n**Conclusion :**\n\nL'algorithme glouton produit une coloration valide utilisant au plus $\\Delta(G) + 1$ couleurs.\n\nPuisque $\\chi(G)$ est le minimum possible, on a bien $\\chi(G) \\le \\text{Glouton}(G) \\le \\Delta(G) + 1$.\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "6ff98bcd",
+      "content": "#### Nombre chromatique d'un cycle pair\n\nProuvez que pour un cycle $C_n$ où $n$ est pair ($n \\ge 3$), $\\chi(C_n) = 2$.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nNotez les sommets $v_1, v_2, \\dots, v_n$ dans l'ordre du cycle.\n\nEssayez d'alterner les couleurs 1 et 2. Vérifiez ce qui se passe pour la dernière arête $\\{v_n, v_1\\}$.\n\n</details>",
+      "solution": "\n\nSoit le cycle $C_n$ avec les sommets $v_1, \\dots, v_n$ et les arêtes $\\{v_1, v_2\\}, \\{v_2, v_3\\}, \\dots, \\{v_{n-1}, v_n\\}, \\{v_n, v_1\\}$.\n\n**Étape 1 : Borne inférieure**\n\nUn cycle contient des arêtes, donc $\\chi(C_n) \\ge 2$.\n\n**Étape 2 : Construction de la coloration**\n\nTentons une coloration alternée avec 2 couleurs $\\{0, 1\\}$.\n\nDéfinissons $f(v_i) = i \\pmod 2$.\n\nAinsi :\n\n- $v_1$ a la couleur 1.\n- $v_2$ a la couleur 0.\n- $v_3$ a la couleur 1.\n\n...\n\n**Étape 3 : Vérification des arêtes**\n\nPour toute arête $\\{v_i, v_{i+1}\\}$ (pour $1 \\le i < n$) :\n\nL'un est pair, l'autre est impair. Leurs couleurs sont donc différentes ($1 \\neq 0$).\n\nReste l'arête de fermeture du cycle : $\\{v_n, v_1\\}$.\n\n- $f(v_1) = 1$ (car 1 est impair).\n- $f(v_n)$ dépend de la parité de $n$.\n\nPuisque **$n$ est pair**, $n \\pmod 2 = 0$, donc $f(v_n) = 0$.\n\nLes couleurs sont différentes ($0 \\neq 1$). La coloration est valide.\n\n**Conclusion :**\n\nLe cycle pair est 2-coloriable, donc $\\chi(C_n) = 2$.\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "6ff98bcd",
+      "content": "#### Nombre chromatique d'un cycle impair\n\nProuvez que pour un cycle $C_n$ où $n$ est impair ($n \\ge 3$), $\\chi(C_n) = 3$.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nEssayez de colorier avec 2 couleurs comme pour le cycle pair. Que se passe-t-il à la jonction entre le dernier et le premier sommet ?\n\nMontrez ensuite qu'avec 3 couleurs, cela fonctionne.\n\n</details>",
+      "solution": "\n\nSoit le cycle $C_n$ avec $n$ impair.\n\n**Étape 1 : Montrer que $\\chi(C_n) > 2$**\n\nSupposons que l'on puisse colorier $C_n$ avec 2 couleurs ($A$ et $B$).\n\nFixons la couleur de $v_1$ à $A$.\n\n- $v_2$ doit être $B$.\n- $v_3$ doit être $A$.\n- Par récurrence, $v_k$ doit avoir la couleur $A$ si $k$ est impair et $B$ si $k$ est pair.\n\nRegardons le sommet $v_n$. Comme $n$ est impair, $v_n$ doit avoir la couleur $A$.\n\nOr, $v_n$ est relié à $v_1$ (arête de fermeture du cycle).\n\nNous avons $f(v_n)=A$ et $f(v_1)=A$. C'est une contradiction car deux voisins ont la même couleur.\n\nDonc $\\chi(C_n) \\ge 3$.\n\n**Étape 2 : Montrer que $\\chi(C_n) \\le 3$**\n\nConstruisons une coloration valide avec 3 couleurs $\\{1, 2, 3\\}$.\n\n- Pour $v_1$ jusqu'à $v_{n-1}$, utilisons l'alternance 1, 2, 1, 2...\n    - $v_1 \\to 1$\n    - $v_{n-1}$ (qui est pair car $n$ est impair) $\\to 2$.\n- Pour le dernier sommet $v_n$, ses voisins sont $v_{n-1}$ (Couleur 2) et $v_1$ (Couleur 1).\n- Attribuons la couleur 3 à $v_n$.\n\nCette couleur est différente de celle de ses deux voisins.\n\n**Conclusion :**\n\nOn a besoin d'au moins 3 couleurs et 3 couleurs suffisent. Donc $\\chi(C_n) = 3$.\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "6ff98bcd",
+      "content": "#### Propriété fondamentale des graphes bipartis (Sens direct)\n\nProuvez que si un graphe $G$ est biparti, alors il ne contient aucun cycle de longueur impaire.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nPar définition, un graphe biparti a ses sommets partitionnés en deux ensembles $X$ et $Y$ tels que toutes les arêtes relient un sommet de $X$ à un sommet de $Y$.\n\nSuivez un chemin le long d'un cycle et regardez l'alternance entre $X$ et $Y$.\n\n</details>",
+      "solution": "\n\nSoit $G=(S, A)$ un graphe biparti. Par définition, $S$ peut être partitionné en deux ensembles disjoints $X$ et $Y$ tels que chaque arête relie un sommet de $X$ à un sommet de $Y$.\n\nCela équivaut à dire que $G$ est 2-coloriable (couleur $X$ et couleur $Y$).\n\n**Étape 1 : Analyse d'un cycle**\n\nSupposons que $G$ contienne un cycle $C = (v_1, v_2, \\dots, v_k, v_1)$ de longueur $k$.\n\nSans perte de généralité, supposons que $v_1 \\in X$.\n\n**Étape 2 : Alternance des ensembles**\n\n- Puisque $v_1 \\in X$ et $\\{v_1, v_2\\}$ est une arête, alors $v_2$ doit être dans $Y$.\n- Puisque $v_2 \\in Y$ et $\\{v_2, v_3\\}$ est une arête, alors $v_3$ doit être dans $X$.\n- Par récurrence, on observe que $v_i \\in X$ si $i$ est impair, et $v_i \\in Y$ si $i$ est pair.\n\n**Étape 3 : Fermeture du cycle**\n\nPour que le cycle se ferme, il faut considérer l'arête $\\{v_k, v_1\\}$.\n\nNous savons que $v_1 \\in X$.\n\nPour qu'une arête existe entre $v_k$ et $v_1$, il faut impérativement que $v_k \\in Y$.\n\nD'après notre récurrence établie à l'étape 2 ($v_k \\in Y \\iff k$ est pair), cela implique que la longueur $k$ du cycle doit être paire.\n\n**Conclusion :**\n\nSi un cycle existe dans un graphe biparti, sa longueur est nécessairement paire. Il est impossible d'avoir un cycle de longueur impaire.\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "6ff98bcd",
+      "content": "#### Triangle et graphe biparti\n\nProuvez qu'un graphe contenant un triangle ($K_3$) ne peut pas être biparti.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nC'est un cas particulier de la preuve précédente (un triangle est un cycle de longueur 3).\n\nEssayez de le prouver directement avec le principe des tiroirs sur les ensembles $X$ et $Y$ de la bipartition.\n\n</details>",
+      "solution": "\n\nSupposons par l'absurde que $G$ contient un triangle $K_3$ (sommets $u, v, w$ tous reliés entre eux) et que $G$ est biparti.\n\n**Étape 1 : La partition**\n\nSi $G$ est biparti, ses sommets $S$ sont divisés en deux ensembles stables $X$ et $Y$.\n\nLes 3 sommets du triangle $\\{u, v, w\\}$ doivent être répartis dans ces deux ensembles.\n\n**Étape 2 : Principe des tiroirs**\n\nNous avons 3 objets (les sommets) à placer dans 2 boîtes (les ensembles $X$ et $Y$).\n\nD'après le principe des tiroirs, l'un des ensembles doit contenir au moins 2 sommets du triangle.\n\nDisons, sans perte de généralité, que $u \\in X$ et $v \\in X$.\n\n**Étape 3 : Contradiction**\n\nPuisque $u$ et $v$ sont des sommets du triangle, il existe une arête $\\{u, v\\}$.\n\nOr, $X$ est un ensemble stable dans une bipartition (aucune arête ne relie deux sommets de $X$).\n\nL'existence de l'arête $\\{u, v\\}$ à l'intérieur de $X$ contredit la définition de la bipartition.\n\n**Conclusion :**\n\nUn graphe contenant un $K_3$ ne peut pas être biparti.\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "6ff98bcd",
+      "content": "#### Cas trivial : Graphe vide\n\nProuvez que $\\chi(G) = 1$ si et seulement si $G$ ne contient aucune arête.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nProcédez par double implication.\n\n1. Si pas d'arête $\\implies$ 1 couleur suffit.\n2. Si 1 couleur suffit $\\implies$ pas d'arête (raisonnement par contraposée : s'il y a une arête, peut-on avoir 1 couleur ?).\n\n</details>",
+      "solution": "\n\nSoit $G=(S, A)$.\n\n**Sens $\\Leftarrow$ : Si $A = \\emptyset$, alors $\\chi(G) = 1$**\n\nSi l'ensemble des arêtes est vide, il n'y a aucune contrainte de voisinage $f(u) \\neq f(v)$.\n\nOn peut attribuer la couleur 1 à tous les sommets ($f(s) = 1, \\forall s \\in S$).\n\nC'est une coloration valide. Comme il y a au moins un sommet, on ne peut pas utiliser 0 couleur, donc le minimum est 1.\n\n**Sens $\\Rightarrow$ : Si $\\chi(G) = 1$, alors $A = \\emptyset$**\n\nSupposons que $\\chi(G) = 1$. Cela signifie qu'il existe une coloration valide $f$ telle que pour tout sommet $s$, $f(s) = 1$.\n\nSupposons par l'absurde qu'il existe une arête $\\{u, v\\} \\in A$.\n\nLa condition de validité impose $f(u) \\neq f(v)$.\n\nOr ici, $f(u) = 1$ et $f(v) = 1$, donc $f(u) = f(v)$.\n\nC'est une contradiction. Donc il ne peut exister aucune arête.\n\n**Conclusion :**\n\nLe nombre chromatique vaut 1 si et seulement si le graphe est un stable (sans arêtes).\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "6ff98bcd",
+      "content": "#### Les arbres sont bipartis\n\nProuvez que tout arbre (graphe connexe sans cycle) est un graphe biparti.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nUn graphe est biparti s'il ne contient pas de cycle impair. Or, un arbre ne contient *aucun* cycle.\n\nAlternativement, construisez la bipartition en utilisant la distance par rapport à la racine (niveau pair / niveau impair).\n\n</details>",
+      "solution": "\n\nIl existe deux manières de prouver cela selon les propriétés utilisées.\n\n**Preuve 1 : Par la caractérisation des cycles**\n\nD'après le théorème caractérisant les graphes bipartis : \"Un graphe est biparti si et seulement s'il ne contient pas de cycle de longueur impaire\".\n\nUn arbre est par définition un graphe sans cycle (acyclique).\n\nPuisqu'il ne contient aucun cycle, il ne contient a fortiori aucun cycle de longueur impaire.\n\nLa condition est vérifiée, donc tout arbre est biparti.\n\n**Preuve 2 : Par construction (plus explicite)**\n\nSoit $T$ un arbre enraciné en un sommet $r$.\n\nPour tout sommet $v$, il existe un unique chemin de $r$ à $v$. Notons $d(r, v)$ la longueur de ce chemin.\n\nDéfinissons deux ensembles :\n\n- $X = \\{v \\in S \\mid d(r, v) \\text{ est pair}\\}$\n- $Y = \\{v \\in S \\mid d(r, v) \\text{ est impair}\\}$\n\nConsidérons une arête quelconque $\\{u, v\\}$ de l'arbre. Dans un arbre, les sommets adjacents sont nécessairement à des niveaux consécutifs par rapport à la racine (l'un est le père, l'autre le fils).\n\nDonc $d(r, u)$ et $d(r, v)$ ont une différence de 1.\n\nPar conséquent, l'un est pair et l'autre est impair.\n\nCela signifie que toute arête relie un sommet de $X$ à un sommet de $Y$.\n\nC'est exactement la définition d'un graphe biparti.\n\n",
+      "options": []
+    }
+  ]
+}

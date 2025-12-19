@@ -1,0 +1,97 @@
+{
+  "info": {
+    "id": "8f39f911",
+    "title": "Chapitre 10 - Planarité - fiches de révision (A)",
+    "type": "cards",
+    "level": "regular",
+    "chapter": "Chapitre 10 - Planarité",
+    "course": "Graphes et Combinatoire",
+    "tags": [
+      "Graphes planaires",
+      "Formule d'Euler",
+      "Théorème de Kuratowski",
+      "Coloration",
+      "Théorème des 4 couleurs"
+    ],
+    "count": 11
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "8f39f911",
+      "content": "Qu'est-ce qu'un **graphe planaire** ?",
+      "solution": "\n\nUn graphe $G$ est dit **planaire** s'il **admet** un dessin plan.\n\nCela signifie qu'il est *possible* de le représenter géométriquement dans le plan $\\mathbb{R}^2$ tel que :\n\n1.  Les sommets sont des points distincts.\n2.  Les arêtes sont des courbes reliant ces points.\n3.  **Les arêtes ne se croisent pas** (sauf à leurs extrémités communes).\n\n**Note importante :** Un graphe peut être planaire même si on le dessine mal (avec des croisements). La propriété dépend de l'existence d'au moins un \"bon\" dessin.\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "8f39f911",
+      "content": "Quelle est la différence entre un **graphe** et un **dessin plan** ?",
+      "solution": "\n\n- **Le Graphe ($G$) :** C'est un objet abstrait défini par un ensemble de sommets et un ensemble d'arêtes (relations). Il ne possède pas de position géométrique intrinsèque.\n- **Le Dessin plan :** C'est une représentation géométrique particulière du graphe dans $\\mathbb{R}^2$ où aucune arête ne se croise.\n\n**Exemple :** Le graphe complet $K_4$ est planaire.\n\n- On peut le dessiner comme un carré avec une croix à l'intérieur (les diagonales se croisent $\\to$ ce n'est pas un dessin plan).\n- On peut le dessiner comme un triangle avec un point au centre relié aux 3 coins (aucun croisement $\\to$ c'est un dessin plan).\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "8f39f911",
+      "content": "Que stipule le **Théorème de la courbe de Jordan** ?",
+      "solution": "\n\nToute courbe fermée simple (une courbe de Jordan) $\\alpha$ divise le plan en exactement deux régions connexes disjointes :\n\n1.  L'**intérieur** (région bornée).\n2.  L'**extérieur** (région non bornée).\n\n**Application aux graphes :** Dans un dessin plan, tout cycle agit comme une frontière. Une arête reliant un sommet intérieur à un sommet extérieur doit nécessairement croiser le cycle, ce qui est interdit dans un dessin plan.\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "8f39f911",
+      "content": "Quels sont les deux graphes fondamentaux **non planaires** (les obstructions) ?",
+      "solution": "\n\nIl existe deux graphes qui ne peuvent jamais être dessinés sans croisement :\n\n1.  **$K_5$ :** Le graphe complet à 5 sommets (5 sommets, 10 arêtes).\n2.  **$K_{3,3}$ :** Le graphe biparti complet (3 sommets à gauche, 3 sommets à droite, toutes les connexions possibles entre les deux groupes).\n\nIls constituent les \"briques de base\" de la non-planarité.\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "8f39f911",
+      "content": "Quelle est la **Formule d'Euler** pour les graphes planaires ?",
+      "solution": "\n\nPour un dessin plan d'un graphe planaire **connexe**, la relation suivante est toujours vérifiée :\n\n$$s - a + f = 2$$\n\n**Où :**\n\n- $s$ : nombre de sommets (sommets)\n- $a$ : nombre d'arêtes\n- $f$ : nombre de faces (y compris la face externe)\n\n**Note :** Pour un arbre (qui a 1 seule face), on a bien $s - (s-1) + 1 = 2$.\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "8f39f911",
+      "content": "Comment définit-on une **face** dans un graphe planaire ?",
+      "solution": "\n\nLes **faces** sont les régions délimitées par les arêtes dans un dessin plan.\n\nCe sont les composantes connexes du plan si on retire le dessin du graphe.\n\n- Il y a toujours une **face externe** (la région infinie qui entoure le graphe).\n- Les autres sont des **faces internes** (bornées par des cycles).\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "8f39f911",
+      "content": "Quelle est la condition nécessaire de **densité d'arêtes** pour qu'un graphe soit planaire ?",
+      "solution": "\n\nSi un graphe simple connexe est planaire et possède $s \\ge 3$ sommets, alors le nombre d'arêtes $a$ est limité par :\n\n$$a \\leq 3s - 6$$\n\n**Utilisation :**\n\nCette formule est très utile pour prouver qu'un graphe n'est **pas** planaire. Si $a > 3s - 6$, le graphe ne peut pas être planaire.\n\n**Attention :** La réciproque est fausse. Respecter l'inégalité ne garantit pas la planarité (ex: $K_{3,3}$ respecte cette formule mais n'est pas planaire).\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "8f39f911",
+      "content": "Comment prouver que **$K_5$ n'est pas planaire** en utilisant la densité d'arêtes ?",
+      "solution": "\n\n**Étapes :**\n\n1.  Identifier les paramètres de $K_5$ :\n    - Sommets $s = 5$\n    - Arêtes $a = \\frac{5 \\times 4}{2} = 10$\n2.  Calculer la borne maximale d'arêtes pour un graphe planaire à 5 sommets :\n    - $Max = 3s - 6 = 3(5) - 6 = 15 - 6 = 9$\n3.  Comparer :\n    - On a $a = 10$ et la limite est $9$.\n    - Comme $10 > 9$, la condition nécessaire n'est pas respectée.\n\n**Conclusion :** $K_5$ n'est pas planaire.\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "8f39f911",
+      "content": "Que dit le **Théorème de Kuratowski** ?",
+      "solution": "\n\nUn graphe $G$ est planaire **si et seulement si** il ne contient pas de sous-graphe qui est une **subdivision** de $K_5$ ou de $K_{3,3}$.\n\n**En termes simples :** Un graphe est planaire sauf s'il \"cache\" une structure de type $K_5$ ou $K_{3,3}$ à l'intérieur (même si on a rajouté des sommets sur les arêtes de ces structures). C'est une caractérisation complète de la planarité.\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "8f39f911",
+      "content": "Qu'est-ce qu'une **subdivision** d'une arête ?",
+      "solution": "\n\nLa **subdivision** d'une arête $\\{u, v\\}$ consiste à :\n\n1. Supprimer l'arête $\\{u, v\\}$.\n2. Ajouter un nouveau sommet $x$.\n3. Ajouter les arêtes $\\{u, x\\}$ et $\\{x, v\\}$.\n\nGéométriquement, cela revient simplement à placer un point au milieu d'un segment. Cela ne change pas les propriétés de croisement (planarité) du graphe.\n\n",
+      "options": []
+    },
+    {
+      "id": "11",
+      "stackId": "8f39f911",
+      "content": "Que disent les théorèmes de **coloration** pour les graphes planaires ?",
+      "solution": "\n\nCes théorèmes déterminent le nombre chromatique $\\chi(G)$ des graphes planaires.\n\n1.  **Propriété structurelle :** Tout graphe planaire possède au moins un sommet de degré $\\le 5$.\n2.  **Théorème des 6 couleurs :** Tout graphe planaire est 6-coloriable (facile à prouver).\n3.  **Théorème des 4 couleurs :** Tout graphe planaire est 4-coloriable (résultat célèbre, preuve très complexe).\n\nCela signifie qu'on peut colorier n'importe quelle carte géographique avec seulement 4 couleurs sans que deux pays voisins aient la même couleur.\n\n",
+      "options": []
+    }
+  ]
+}

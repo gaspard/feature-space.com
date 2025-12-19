@@ -1,0 +1,90 @@
+{
+  "info": {
+    "id": "5310d0bd",
+    "title": "Chapitre 10 - Planarité - preuves (A)",
+    "type": "proofs",
+    "level": "regular",
+    "chapter": "Chapitre 10 - Planarité",
+    "course": "Graphes et Combinatoire",
+    "tags": [
+      "Graphes planaires",
+      "Formule d'Euler",
+      "Théorème de Kuratowski",
+      "Coloration",
+      "Théorème des 4 couleurs"
+    ],
+    "count": 10
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "5310d0bd",
+      "content": "#### Somme des degrés des faces\n\nProuver que dans un dessin plan d'un graphe planaire $G=(S, A)$, la somme des degrés des faces est égale à deux fois le nombre d'arêtes : $\\sum_{F \\in \\mathcal{F}} \\deg(F) = 2|A|$.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nConsidérez comment chaque arête contribue à la frontière des faces. Une arête sépare-t-elle toujours deux faces différentes ? Que se passe-t-il pour une arête qui est un \"isthme\" (qui pend dans le vide à l'intérieur d'une face) ?\n\n</details>",
+      "solution": "\n\nSoit $G$ un graphe planaire avec un ensemble de faces $\\mathcal{F}$ et un nombre d'arêtes $a = |A|$.\n\n**Étape 1 : Contribution d'une arête standard**\n\nDans un dessin plan, une arête appartient généralement à la frontière commune entre deux faces distinctes. En parcourant la frontière de la première face, on compte cette arête une fois. En parcourant la frontière de la seconde face, on compte cette arête une seconde fois. Cette arête contribue donc pour 2 à la somme des degrés.\n\n**Étape 2 : Cas particulier des isthmes**\n\nSi une arête n'appartient pas à un cycle (c'est un pont ou un isthme), elle se trouve entièrement à l'intérieur d'une seule face (ou de la face externe si c'est un arbre). Cependant, lors du parcours de la frontière de cette face, on doit longer l'arête pour aller au bout et revenir. L'arête est donc parcourue deux fois pour la même face. Elle contribue donc aussi pour 2 à la somme des degrés.\n\n**Conclusion :**\n\nPuisque chaque arête contribue exactement pour 2 à la somme totale des degrés des frontières des faces, nous avons :\n\n$$ \\sum_{F \\in \\mathcal{F}} \\deg(F) = 2a $$\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "5310d0bd",
+      "content": "#### Formule d'Euler\n\nProuver la formule d'Euler : Pour tout graphe planaire connexe $G=(S, A)$ avec $f$ faces, on a $s - a + f = 2$, où $s=|S|$ et $a=|A|$.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nProcédez par récurrence sur le nombre d'arêtes $a$ ou sur le nombre de faces $f$.\n\nCommencez par le cas de base où le graphe est un arbre ($f=1$). Ensuite, considérez l'ajout d'une arête qui crée un cycle.\n\n</details>",
+      "solution": "\n\nNous allons prouver ce résultat par récurrence sur le nombre de faces $f$.\n\n**Étape 1 : Cas de base ($f=1$)**\n\nSi le graphe connexe possède exactement une face (la face externe), il ne contient aucun cycle (sinon le cycle définirait une face interne par le théorème de Jordan).\n\nUn graphe connexe sans cycle est un **arbre**.\n\nPour un arbre, nous savons que le nombre d'arêtes est $a = s - 1$.\n\nEn substituant dans la formule :\n\n$$ s - a + f = s - (s - 1) + 1 = s - s + 1 + 1 = 2 $$\n\nLa formule est vraie pour $f=1$.\n\n**Étape 2 : Hérédité**\n\nSupposons la formule vraie pour tout graphe planaire connexe ayant $k$ faces. Soit $G$ un graphe ayant $k+1$ faces.\n\nPuisque $f > 1$, le graphe n'est pas un arbre, il contient donc au moins un cycle.\n\nChoisissons une arête $e$ appartenant à un cycle. Cette arête sépare deux faces distinctes.\n\nSi nous retirons cette arête $e$ (opération $G - e$), nous fusionnons ces deux faces en une seule.\n\nLe nouveau graphe $G'$ a :\n\n- $s' = s$ (mêmes sommets)\n- $a' = a - 1$ (une arête en moins)\n- $f' = f - 1$ (une face en moins)\n\n$G'$ reste connexe car retirer une arête d'un cycle ne déconnecte pas le graphe.\n\nPar hypothèse de récurrence appliquée à $G'$ (qui a $k$ faces) :\n\n$$ s' - a' + f' = 2 $$\n\n$$ s - (a - 1) + (f - 1) = 2 $$\n\n$$ s - a + 1 + f - 1 = 2 $$\n\n$$ s - a + f = 2 $$\n\n**Conclusion :**\n\nLa formule est vérifiée pour tout graphe planaire connexe.\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "5310d0bd",
+      "content": "#### Majorant du nombre d'arêtes (Graphes Planaires)\n\nProuver que pour tout graphe planaire simple connexe avec $s \\geq 3$ sommets, le nombre d'arêtes vérifie $a \\leq 3s - 6$.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nUtilisez la formule d'Euler ($s - a + f = 2$) et la relation entre les arêtes et les faces.\n\nDans un graphe simple, quel est le degré minimum d'une face ? Utilisez l'inégalité $3f \\leq 2a$.\n\n</details>",
+      "solution": "\n\nSoit $G$ un graphe planaire simple avec $s \\ge 3$.\n\n**Étape 1 : Relation entre faces et arêtes**\n\nChaque face est délimitée par un cycle d'arêtes. Dans un graphe simple (pas d'arêtes multiples, pas de boucles) avec $s \\ge 3$, la plus petite face possible est un triangle. Donc, le degré de chaque face est au moins 3 ($\\deg(F) \\ge 3$).\n\nD'après la preuve sur la somme des degrés des faces :\n\n$$ \\sum \\deg(F) = 2a $$\n\nComme $\\deg(F) \\ge 3$ pour tout $F$, nous avons :\n\n$$ 3f \\leq \\sum \\deg(F) = 2a \\implies f \\leq \\frac{2}{3}a $$\n\n**Étape 2 : Substitution dans Euler**\n\nLa formule d'Euler stipule $s - a + f = 2$.\n\nIsolons $f$ : $f = 2 - s + a$.\n\nSubstituons cette expression dans l'inégalité précédente :\n\n$$ 2 - s + a \\leq \\frac{2}{3}a $$\n\n**Étape 3 : Simplification**\n\nMultiplions par 3 pour éliminer la fraction :\n\n$$ 6 - 3s + 3a \\leq 2a $$\n\n$$ 3a - 2a \\leq 3s - 6 $$\n\n$$ a \\leq 3s - 6 $$\n\n**Conclusion :**\n\nUn graphe planaire simple à au moins 3 sommets ne peut pas avoir plus de $3s - 6$ arêtes.\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "5310d0bd",
+      "content": "#### Non-planarité de $K_5$\n\nProuver que le graphe complet $K_5$ n'est pas planaire.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nUtilisez le corollaire sur la densité maximale d'arêtes ($a \\leq 3s - 6$) démontré précédemment. Comptez les sommets et les arêtes de $K_5$ et vérifiez si l'inégalité tient.\n\n</details>",
+      "solution": "\n\nNous raisonnons par l'absurde. Supposons que $K_5$ soit planaire.\n\n**Étape 1 : Caractéristiques de $K_5$**\n\nLe graphe complet $K_5$ possède :\n\n- Nombre de sommets : $s = 5$.\n- Nombre d'arêtes : Chaque sommet est relié aux 4 autres. $a = \\frac{5 \\times 4}{2} = 10$.\n\n**Étape 2 : Test de la condition nécessaire**\n\nSi $K_5$ est planaire, il doit satisfaire l'inégalité $a \\leq 3s - 6$ (puisque $s=5 \\ge 3$).\n\nCalculons le membre de droite :\n\n$$ 3(5) - 6 = 15 - 6 = 9 $$\n\nObservons le nombre d'arêtes :\n\n$$ a = 10 $$\n\n**Conclusion :**\n\nNous avons $10 \\not\\leq 9$. L'inégalité est violée.\n\nPar conséquent, l'hypothèse de départ est fausse : $K_5$ n'est pas planaire.\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "5310d0bd",
+      "content": "#### Majorant du nombre d'arêtes (Graphes Bipartis)\n\nProuver que pour tout graphe planaire simple, connexe et **biparti** (ou sans triangle) avec $s \\geq 3$, le nombre d'arêtes vérifie $a \\leq 2s - 4$.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nDans un graphe biparti, il n'y a pas de cycles de longueur impaire. Quelle est la longueur minimale d'un cycle (et donc le degré minimal d'une face) dans ce cas ? Adaptez la preuve de la borne $3s-6$ en modifiant le coefficient.\n\n</details>",
+      "solution": "\n\n**Étape 1 : Degré minimal des faces**\n\nUn graphe biparti ne contient pas de cycle de longueur impaire. Il ne contient donc pas de triangle ($C_3$).\n\nLa plus petite longueur possible pour un cycle est donc 4 ($C_4$).\n\nPar conséquent, chaque face dans un dessin plan d'un graphe biparti est bordée par au moins 4 arêtes : $\\deg(F) \\ge 4$.\n\n**Étape 2 : Relation Faces-Arêtes**\n\nEn utilisant la somme des degrés :\n\n$$ 4f \\leq \\sum \\deg(F) = 2a \\implies f \\leq \\frac{2}{4}a = \\frac{1}{2}a $$\n\n**Étape 3 : Utilisation d'Euler**\n\nD'après la formule d'Euler : $f = 2 - s + a$.\n\nSubstituons dans l'inégalité :\n\n$$ 2 - s + a \\leq \\frac{1}{2}a $$\n\n**Étape 4 : Simplification**\n\nMultiplions par 2 :\n\n$$ 4 - 2s + 2a \\leq a $$\n\n$$ 2a - a \\leq 2s - 4 $$\n\n$$ a \\leq 2s - 4 $$\n\n**Conclusion :**\n\nPour un graphe planaire sans triangle (comme les bipartis), le nombre d'arêtes est limité à $2s - 4$.\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "5310d0bd",
+      "content": "#### Non-planarité de $K_{3,3}$\n\nProuver que le graphe biparti complet $K_{3,3}$ n'est pas planaire.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nAttention : L'inégalité standard $a \\leq 3s - 6$ ne permet pas de conclure (essayez, vous verrez que ça marche).\n\nUtilisez plutôt la propriété spécifique aux graphes bipartis démontrée précédemment ($a \\leq 2s - 4$).\n\n</details>",
+      "solution": "\n\nSupposons par l'absurde que $K_{3,3}$ soit planaire.\n\n**Étape 1 : Caractéristiques de $K_{3,3}$**\n\nC'est un graphe biparti complet avec deux ensembles de 3 sommets.\n\n- Sommets : $s = 3 + 3 = 6$.\n- Arêtes : Chaque sommet de gauche est relié aux 3 de droite. $a = 3 \\times 3 = 9$.\n- Nature : Le graphe est biparti (il ne contient pas de triangles).\n\n**Étape 2 : Test de la condition nécessaire (Biparti)**\n\nPuisque $K_{3,3}$ est biparti, s'il est planaire, il doit respecter $a \\leq 2s - 4$.\n\nCalculons le membre de droite :\n\n$$ 2(6) - 4 = 12 - 4 = 8 $$\n\nObservons le nombre d'arêtes :\n\n$$ a = 9 $$\n\n**Conclusion :**\n\nNous avons $9 \\not\\leq 8$. L'inégalité est violée.\n\nDonc $K_{3,3}$ n'est pas planaire.\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "5310d0bd",
+      "content": "#### Degré minimum dans un graphe planaire\n\nProuver que tout graphe planaire simple $G$ possède au moins un sommet $v$ tel que $\\deg(v) \\leq 5$.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nRaisonnez par l'absurde. Si tous les sommets avaient un degré $\\ge 6$, que vaudrait la somme des degrés ? Comparez cela à la borne supérieure du nombre d'arêtes $a \\leq 3s - 6$.\n\n</details>",
+      "solution": "\n\nSoit $G=(S, A)$ un graphe planaire simple avec $s$ sommets et $a$ arêtes.\n\n**Étape 1 : Hypothèse par l'absurde**\n\nSupposons que pour tout sommet $v \\in S$, $\\deg(v) \\geq 6$.\n\n**Étape 2 : Lemme des poignées de mains**\n\nLa somme des degrés est égale à deux fois le nombre d'arêtes :\n\n$$ \\sum_{v \\in S} \\deg(v) = 2a $$\n\nD'après notre hypothèse :\n\n$$ \\sum_{v \\in S} \\deg(v) \\geq \\sum_{v \\in S} 6 = 6s $$\n\nDonc :\n\n$$ 2a \\geq 6s \\implies a \\geq 3s $$\n\n**Étape 3 : Contradiction avec la densité planaire**\n\nNous savons que pour tout graphe planaire simple ($s \\ge 3$), $a \\leq 3s - 6$.\n\nCela implique $a < 3s$.\n\nOr, notre hypothèse conduit à $a \\geq 3s$.\n\nC'est une contradiction impossible ($3s \\le a \\le 3s - 6$ est absurde).\n\n**Conclusion :**\n\nL'hypothèse que tous les sommets ont un degré $\\ge 6$ est fausse. Il existe donc au moins un sommet de degré inférieur ou égal à 5.\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "5310d0bd",
+      "content": "#### Théorème des 6 couleurs\n\nProuver que tout graphe planaire est 6-coloriable (son nombre chromatique vérifie $\\chi(G) \\leq 6$).\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nUtilisez une récurrence sur le nombre de sommets $s$.\n\nUtilisez le résultat précédent : il existe toujours un sommet $v$ de petit degré ($\\le 5$). Retirez-le, coloriez le reste, puis essayez de remettre $v$.\n\n</details>",
+      "solution": "\n\nNous procédons par récurrence sur le nombre de sommets $s$.\n\n**Étape 1 : Base**\n\nPour $s \\le 6$, le graphe peut être colorié avec $s$ couleurs, donc 6 couleurs suffisent largement.\n\n**Étape 2 : Hérédité**\n\nSupposons que tout graphe planaire à $s-1$ sommets est 6-coloriable.\n\nSoit $G$ un graphe planaire à $s$ sommets.\n\nD'après la propriété démontrée précédemment, $G$ contient un sommet $v$ tel que $\\deg(v) \\leq 5$.\n\nConsidérons le graphe $G' = G - \\{v\\}$ (obtenu en retirant $v$ et ses arêtes incidentes).\n\n$G'$ est un sous-graphe d'un graphe planaire, il est donc planaire et possède $s-1$ sommets.\n\nPar hypothèse de récurrence, $G'$ est 6-coloriable.\n\n**Étape 3 : Extension de la coloration**\n\nReprenons la coloration de $G'$ et réinsérons $v$.\n\nLe sommet $v$ possède au plus 5 voisins dans $G$.\n\nCes 5 voisins utilisent au maximum 5 couleurs distinctes parmi les 6 disponibles.\n\nIl reste donc au moins une couleur (6 - 5 = 1) non utilisée par les voisins de $v$.\n\nOn attribue cette couleur libre à $v$.\n\n**Conclusion :**\n\nOn a réussi à colorier $G$ avec 6 couleurs. Par récurrence, tout graphe planaire est 6-coloriable.\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "5310d0bd",
+      "content": "#### Planarité des Arbres\n\nProuver que tout arbre est un graphe planaire.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nVous pouvez utiliser une preuve par récurrence ou une preuve constructive.\n\nRappelez-vous qu'un arbre peut être dessiné sans cycle. Essayez d'ajouter les sommets feuille par feuille.\n\n</details>",
+      "solution": "\n\nNous allons prouver par récurrence sur le nombre de sommets $s$ qu'un arbre admet un dessin plan.\n\n**Étape 1 : Cas de base**\n\nPour $s=1$ (un point) ou $s=2$ (un segment), le dessin est trivialement plan (aucun croisement possible).\n\n**Étape 2 : Hérédité**\n\nSupposons que tout arbre à $s-1$ sommets est planaire.\n\nSoit $T$ un arbre à $s$ sommets.\n\nUn arbre possède toujours au moins une \"feuille\" (un sommet $v$ de degré 1).\n\nSoit $u$ l'unique voisin de $v$.\n\nConsidérons l'arbre $T' = T - \\{v\\}$. Il a $s-1$ sommets.\n\nPar hypothèse, $T'$ admet un dessin plan.\n\n**Étape 3 : Construction**\n\nDans le dessin plan de $T'$, le sommet $u$ est un point du plan. Puisque l'ensemble des sommets est fini et les arêtes sont des courbes, il existe un voisinage autour de $u$ (aussi petit soit-il) où l'on peut tracer un petit segment partant de $u$ vers un nouvel emplacement pour $v$ sans couper aucune autre arête existante.\n\nOn place $v$ à cet endroit et on trace l'arête $\\{u, v\\}$.\n\nAucun cycle n'est créé (c'est un arbre), et aucun croisement n'est ajouté.\n\n**Conclusion :**\n\n$T$ admet un dessin plan. Tout arbre est planaire.\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "5310d0bd",
+      "content": "#### Conservation de la Planarité par Subdivision\n\nProuver que si un graphe $G$ est planaire, alors tout graphe $H$ obtenu par subdivision d'une arête de $G$ est également planaire.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nC'est un argument géométrique. Si vous avez un dessin sans croisement, et que vous ajoutez un point *sur* une ligne existante, cela crée-t-il des croisements ?\n\n</details>",
+      "solution": "\n\nSoit $G=(S, A)$ un graphe planaire et $H$ obtenu en subdivisant l'arête $e = \\{u, v\\}$ par un sommet $w$.\n\n**Étape 1 : Dessin existant**\n\nPuisque $G$ est planaire, il existe un dessin plan $D$ de $G$. Dans ce dessin, l'arête $e$ est représentée par une courbe continue $\\gamma$ reliant le point $u$ au point $v$, sans croiser aucune autre arête.\n\n**Étape 2 : Modification du dessin**\n\nPour obtenir un dessin de $H$, nous modifions $D$ de la manière suivante :\n\n1. On choisit un point $P$ sur la courbe $\\gamma$ (distinct de $u$ et $v$).\n2. Ce point $P$ représente le nouveau sommet $w$.\n3. La courbe $\\gamma$ est maintenant vue comme la réunion de deux courbes : une de $u$ à $P$ (arête $\\{u, w\\}$) et une de $P$ à $v$ (arête $\\{w, v\\}$).\n\n**Étape 3 : Vérification**\n\nPuisque la courbe $\\gamma$ ne croisait aucune autre arête dans $D$, ses sous-parties (les nouvelles arêtes) ne croisent aucune autre arête non plus.\n\nLe nouveau dessin respecte toutes les conditions de planarité.\n\n**Conclusion :**\n\n$H$ admet un dessin plan, donc $H$ est planaire.\n\n",
+      "options": []
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+---
+id: 45edb053
+type: cards
+order: 12
+title: Chapitre 9 Couplages - fiches de révision (A)
+tags:
+  - Couplages
+  - Théorème de Berge
+  - Théorème de Hall
+  - Graphes bipartis
+  - Algorithme de Gale et Shapley
+  - Couplages stables
+createdAt: '2025-12-19T13:18:01.776Z'
+level: regular
+course: Graphes et Combinatoire
+courseId: 7027276b
+chapter: Chapitre 9 Couplages
+chapterId: c89a6b95
+---
+# Fiches de révision "Chapitre 9 Couplages" (A)
+
+---
+
+Qu'est-ce qu'un **couplage** dans un graphe ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Soit un graphe $G=(S, A)$. Un **couplage** (ou appariement) $M$ est un sous-ensemble d'arêtes ($M \subseteq A$) tel que **deux arêtes distinctes de $M$ n'ont jamais d'extrémité en commun**.
+
+**Points clés :**
+
+- Chaque sommet du graphe touche au plus une arête du couplage.
+- Les arêtes sont dites "indépendantes".
+
+**Exemple :**
+
+Dans un chemin $1-2-3-4$, l'ensemble $M=\{\{1,2\}, \{3,4\}\}$ est un couplage car les arêtes ne se touchent pas.
+
+</details>
+
+---
+
+Qu'est-ce qu'un **couplage parfait** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Un couplage $M$ est dit **parfait** si l'ensemble de tous les sommets $S$ est **saturé**.
+
+Cela signifie que **chaque sommet** du graphe est l'extrémité d'une arête du couplage.
+
+**Conditions :**
+
+- Un couplage parfait ne peut exister que si le graphe possède un nombre **pair** de sommets.
+- Si $|S| = 2n$, alors un couplage parfait contient exactement $n$ arêtes.
+
+</details>
+
+---
+
+Quelle est la différence entre un couplage **maximal** et un couplage **maximum** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Il ne faut pas confondre ces deux notions d'optimalité :
+
+1.  **Couplage Maximal (Optimum local) :**
+    - On ne peut plus ajouter d'arête au couplage sans briser la règle d'indépendance.
+    - C'est un couplage qu'on ne peut pas inclure dans un couplage plus grand.
+
+2.  **Couplage Maximum (Optimum global) :**
+    - C'est un couplage qui a la **plus grande cardinalité possible** (le plus grand nombre d'arêtes) parmi tous les couplages du graphe.
+
+**Relation :** Tout couplage maximum est maximal, mais un couplage maximal n'est pas forcément maximum (il peut être bloqué trop tôt).
+
+</details>
+
+---
+
+Qu'est-ce qu'une **chaîne augmentante** par rapport à un couplage $M$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Une chaîne est dite **augmentante** si elle remplit deux conditions :
+
+1.  Elle est **alternée** : les arêtes appartiennent alternativement à $M$ et hors de $M$ ($A \setminus M$).
+2.  Ses deux extrémités (sommet de départ et de fin) sont des sommets **insaturés** (libres, non couverts par $M$).
+
+**Importance :**
+
+L'existence d'une chaîne augmentante prouve que le couplage n'est pas maximum.
+
+</details>
+
+---
+
+Que stipule le **Théorème de Berge** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le **Théorème de Berge (1957)** donne une condition nécessaire et suffisante pour qu'un couplage soit maximum.
+
+**Énoncé :**
+
+Un couplage $M$ est **maximum** si et seulement s'il n'existe pas de **chaîne augmentante** par rapport à $M$ dans le graphe.
+
+**Application :**
+
+Si on ne trouve plus de chaîne augmentante, on est certain d'avoir atteint l'optimum global.
+
+</details>
+
+---
+
+Comment améliorer un couplage à l'aide d'une chaîne augmentante ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Si l'on trouve une chaîne augmentante par rapport à un couplage $M$, on peut créer un couplage $M'$ plus grand.
+
+**Méthode (Différence symétrique) :**
+
+On "inverse" les arêtes le long de la chaîne :
+
+- Les arêtes qui étaient dans $M$ sont retirées.
+- Les arêtes qui n'étaient pas dans $M$ sont ajoutées.
+
+**Résultat :**
+
+Le nouveau couplage $M'$ possède exactement **une arête de plus** que $M$.
+
+$$ |M'| = |M| + 1 $$
+
+</details>
+
+---
+
+Quelle est la condition du **Théorème de Hall** (Condition des mariages) ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le théorème de Hall concerne les graphes bipartis $G=(X \cup Y, A)$. Il existe un couplage qui sature $X$ si et seulement si :
+
+$$ \forall U \subseteq X, \quad |N(U)| \ge |U| $$
+
+**Où :**
+
+- $U$ est un sous-ensemble quelconque de sommets de $X$.
+- $N(U)$ est le voisinage de $U$ (l'ensemble des voisins de $U$ dans $Y$).
+
+**Interprétation :**
+
+Tout groupe de personnes dans $X$ doit connaître collectivement au moins autant de personnes dans $Y$.
+
+</details>
+
+---
+
+Comment utiliser le Théorème de Hall pour prouver qu'un couplage saturant n'existe pas ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour montrer qu'il est impossible de coupler tous les sommets de $X$, il suffit de trouver un **contre-exemple** (ou *bottleneck*) à la condition de Hall.
+
+**Méthode :**
+
+1. Chercher un sous-ensemble $U \subseteq X$.
+2. Calculer son voisinage $N(U)$.
+3. Montrer que $|N(U)| < |U|$.
+
+Si un tel ensemble existe (ex: 3 personnes ne connaissent que 2 chaises disponibles), alors le couplage saturant est impossible.
+
+</details>
+
+---
+
+Qu'est-ce qu'un **couplage stable** (problème des mariages stables) ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Dans un graphe biparti complet où chaque élément a une liste de préférences ordonnée, un couplage $M$ est **stable** s'il est parfait et ne contient aucune **paire instable**.
+
+Une paire $(x, y)$ est instable (ou bloquante) si :
+
+1. $x$ et $y$ ne sont pas mariés ensemble dans $M$.
+2. $x$ préfère $y$ à son partenaire actuel.
+3. $y$ préfère $x$ à son partenaire actuel.
+
+**Note :** Il existe toujours au moins un couplage stable (Théorème 9.9).
+
+</details>
+
+---
+
+Comment fonctionne l'**Algorithme de Gale-Shapley** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+C'est un algorithme glouton qui trouve toujours un couplage stable.
+
+**Étapes (version où $X$ propose) :**
+
+1.  **Propositions :** Tant qu'il y a un $x \in X$ célibataire, il propose à son préféré dans $Y$ à qui il n'a pas encore proposé.
+2.  **Choix de $Y$ :** Chaque $y \in Y$ qui reçoit une proposition :
+    - S'il est libre, il accepte (temporairement).
+    - S'il est déjà couplé mais préfère le nouveau prétendant, il rejette l'ancien et accepte le nouveau.
+    - Sinon, il rejette la proposition.
+3.  **Répétition :** Les éléments rejetés de $X$ continuent de proposer au suivant sur leur liste.
+
+**Propriété :** Le résultat est stable et optimal pour ceux qui proposent (ici $X$).
+
+</details>

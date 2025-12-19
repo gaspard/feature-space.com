@@ -1,0 +1,355 @@
+---
+id: 6506d310
+type: podcast
+order: 14
+title: Chapitre 10 - Planarité - Podcast (regular)
+tags:
+  - Graphes planaires
+  - Formule d'Euler
+  - Théorème de Kuratowski
+  - Coloration
+  - Théorème des 4 couleurs
+createdAt: '2025-12-19T13:24:26.380Z'
+level: regular
+course: Graphes et Combinatoire
+courseId: 7027276b
+chapter: Chapitre 10 - Planarité
+chapterId: '40818759'
+duration: '[estimated duration in minutes]'
+hosts:
+  - noe
+  - alma
+  - linda
+setting: café
+---
+# Podcast: Chapitre 10 - Planarité
+
+## Episode Overview
+
+**Duration:** environ 25 minutes
+
+**Level:** regular
+
+**Topics:** Graphes planaires, Théorème de Jordan, Obstructions ($K_5$ et $K_{3,3}$), Théorème de Kuratowski, Formule d'Euler, Coloration.
+
+**Setting:** Réunion au café entre trois passionnés de mathématiques.
+
+### Character Descriptions
+
+- **Noé** - Homme d'âge moyen en reconversion. Enthousiaste et curieux, il fait souvent des liens avec son expérience technique.
+- **Alma** - Professeure de mathématiques, trentenaire. Pédagogue, patiente et chaleureuse.
+- **Linda** - Étudiante brillante en mathématiques. Rapide à comprendre, elle apporte des solutions élégantes et une énergie vive.
+
+---
+
+## Podcast Script
+
+### Introduction
+
+**Noé:** [enthousiaste] Salut tout le monde ! Ah, ça fait du bien de se retrouver au chaud. Il commence à faire frisquet dehors.
+
+**Alma:** [chaleureusement] Bonjour Noé ! Bonjour Linda ! Oui, c'est le temps idéal pour un café bien chaud et... un peu de théorie des graphes, non ?
+
+**Linda:** [riant] Toujours, Alma ! J'ai déjà commandé nos boissons. J'étais en train de relire mes notes sur le Chapitre 10. La "Planarité". C'est un sujet super visuel, j'adore.
+
+**Noé:** [curieux] La planarité... Ça me fait penser à de la géométrie pure. On parle de rendre les choses plates, c'est ça ?
+
+**Alma:** C'est exactement l'idée de départ, Noé. Aujourd'hui, on va voir comment dessiner des réseaux complexes sur une feuille de papier sans que les fils ne s'emmêlent.
+
+### Main Content : Graphes Planaires et Dessins
+
+**Noé:** [pensif] Sans que les fils ne s'emmêlent ? Tu veux dire, sans que les lignes se croisent ?
+
+**Alma:** Précisément. Un graphe est dit **planaire** s'il est possible de le dessiner sur une feuille de papier de sorte que les arêtes ne se croisent jamais, sauf aux sommets où elles se rejoignent.
+
+**Linda:** [précisant] Et attention Noé, il y a un piège ! Ce n'est pas parce que tu dessines un graphe avec des croisements qu'il n'est *pas* planaire.
+
+**Noé:** [confus] Attends, je ne te suis plus. Si je le dessine avec des croisements, il n'est pas plat... si ?
+
+**Alma:** [patiente] Imagine le graphe complet à 4 sommets, $K_4$. Quatre points tous reliés entre eux. Si tu les dessines en carré et que tu traces les diagonales à l'intérieur...
+
+**Noé:** [visualisant] Les diagonales forment une croix au milieu. Elles se coupent.
+
+**Linda:** Exactement. Ce dessin-là n'est pas un "dessin plan". Mais, si tu prends une des diagonales et que tu la fais passer à l'*extérieur* du carré, en contournant...
+
+**Noé:** [s'illuminant] Ah ! Alors elle ne coupe plus l'autre diagonale !
+
+**Alma:** Voilà ! Comme il *existe* une façon de le dessiner sans croisement, le graphe $K_4$ est officiellement planaire. C'est le potentiel qui compte, pas ton premier brouillon.
+
+**Noé:** [souriant] C'est marrant, ça me rappelle mon ancien boulot dans l'électronique. Quand on concevait des circuits imprimés, les pistes de cuivre ne devaient jamais se croiser sur une simple couche, sinon... court-circuit !
+
+**Linda:** [enthousiaste] C'est l'application parfaite ! La conception de PCB, ou même la cartographie, ce sont des problèmes de planarité.
+
+### Le Théorème de Jordan et les Obstructions
+
+**Alma:** Pour comprendre pourquoi certains graphes refusent d'être planaires, il faut parler d'un concept un peu plus topologique : le **Théorème de la courbe de Jordan**.
+
+**Noé:** Ouh là, "topologique", c'est le moment où ça devient abstrait ?
+
+**Alma:** [rassurante] Non, c'est très intuitif. Imagine une boucle fermée dessinée par terre, comme un cerceau. Le théorème dit simplement que cette courbe divise le monde en deux : l'intérieur et l'extérieur.
+
+**Linda:** Et si tu es à l'intérieur, Noé, tu ne peux pas sortir rejoindre quelqu'un à l'extérieur sans traverser le cerceau. C'est une frontière infranchissable.
+
+**Noé:** Logique. Et le rapport avec nos graphes ?
+
+**Alma:** Eh bien, certains graphes sont impossibles à dessiner sans croisement à cause de ça. Il y a deux "vilains petits canards" célèbres en théorie des graphes. Linda, tu veux présenter le premier ?
+
+**Linda:** Avec plaisir ! C'est l'énigme des trois maisons. On l'appelle le graphe $K_{3,3}$ [prononcé "K trois trois"]. Imaginez trois maisons d'un côté, et trois usines de l'autre : Eau, Gaz, Électricité.
+
+**Noé:** Je connais ça ! Il faut relier chaque maison à chaque usine.
+
+**Linda:** C'est ça. Ça fait 9 tuyaux en tout. Essaie de les dessiner sans qu'ils se croisent.
+
+**Noé:** [réfléchissant] Je fais un cycle... maison 1, eau, maison 2, gaz... ça va. Mais quand j'essaie de brancher la dernière maison à l'électricité... Mince. Je suis coincé soit à l'intérieur de mon cycle, soit à l'extérieur. Je coupe forcément un tuyau.
+
+**Alma:** C'est inévitable. $K_{3,3}$ n'est pas planaire. Le théorème de Jordan prouve qu'il y aura toujours un conflit.
+
+**Linda:** Et l'autre coupable, c'est $K_5$ [prononcé "K cinq"]. Cinq sommets, tous reliés entre eux. Une étoile dans un pentagone. Impossible à mettre à plat.
+
+### Kuratowski et Subdivision
+
+**Noé:** Donc si je comprends bien, $K_5$ et $K_{3,3}$ sont les "bêtes noires".
+
+**Alma:** C'est pire que ça, ce sont les *seules* sources de problèmes. C'est le **Théorème de Kuratowski**.
+
+**Linda:** [admirative] Ce théorème est magnifique. Il dit qu'un graphe est planaire SI et SEULEMENT SI il ne contient pas, caché en lui, une structure qui ressemble à $K_5$ ou $K_{3,3}$.
+
+**Noé:** "Qui ressemble" ?
+
+**Alma:** Oui. Si tu prends un $K_5$ et que tu rajoutes des points au milieu des arêtes – on appelle ça une **subdivision** – ça ne change rien au problème de croisement. Si la route est bloquée, rajouter des étapes sur la route ne débloque pas le passage.
+
+**Noé:** D'accord. Donc si je trouve une de ces deux structures dans mon graphe géant, c'est fini, je sais qu'il n'est pas planaire.
+
+**Linda:** Exactement. Ce sont les obstructions fondamentales.
+
+### Formule d'Euler et Applications
+
+**Alma:** [avec un sourire dans la voix] Maintenant, passons à ma partie préférée. La magie des nombres. Quand un graphe est planaire et qu'on le dessine, il délimite des régions. On appelle ça des **faces**.
+
+**Noé:** Comme les cases d'une marelle ?
+
+**Alma:** Oui ! Et n'oublie pas la région tout autour du dessin, la "face externe". Euler, un grand mathématicien, a trouvé une formule incroyable qui relie tout ça.
+
+**Linda:** [récitant] $s - a + f = 2$.
+
+**Noé:** Attends, doucement.
+
+**Alma:** $s$ c'est le nombre de sommets. $a$ c'est le nombre d'arêtes. Et $f$ c'est le nombre de faces.
+
+Sommets moins Arêtes plus Faces égale toujours 2.
+
+**Noé:** Toujours 2 ? Pour n'importe quel dessin ?
+
+**Linda:** Tant que le graphe est connexe (en un seul morceau) et planaire, oui !
+
+**Alma:** Essayons. Prends un carré, Noé.
+
+4 sommets ($s=4$).
+
+4 arêtes ($a=4$).
+
+Combien de faces ?
+
+**Noé:** [comptant] Il y a l'intérieur du carré... et tu as dit qu'il y avait l'extérieur. Donc 2 faces.
+
+Alors... $4 - 4 + 2$... ça fait bien 2 ! C'est dingue que ça marche tout le temps.
+
+**Linda:** Ça marche même pour les solides ! Un cube, c'est un graphe planaire si tu l'écrases à plat. 8 sommets, 12 arêtes, 6 faces.
+
+$8 - 12 + 6 = 2$.
+
+**Noé:** [impressionné] C'est puissant comme formule.
+
+### Densité et Coloration
+
+**Alma:** Cette formule nous permet de prouver quelque chose de très pratique. Si un graphe a trop d'arêtes par rapport à ses sommets, il ne peut pas être planaire. Il y a une limite de densité.
+
+**Linda:** La règle est : le nombre d'arêtes ne peut pas dépasser 3 fois le nombre de sommets moins 6.
+
+$a \le 3s - 6$.
+
+**Noé:** Ah, c'est un bon test rapide ça ! Si j'ai trop de connexions, je sais direct que ça va coincer.
+
+**Alma:** Exactement. Si tu testes ça sur $K_5$... 5 sommets, donc $3 \times 5 - 6 = 9$. Le maximum d'arêtes permis serait 9. Mais $K_5$ a 10 arêtes ! Donc... impossible qu'il soit planaire.
+
+**Noé:** [satisfait] CQFD !
+
+**Linda:** Et pour finir sur une note colorée... Noé, tu as déjà fait du coloriage de cartes géographiques ?
+
+**Noé:** À l'école, oui. Il ne fallait pas que deux pays voisins aient la même couleur.
+
+**Alma:** C'est un problème de graphes planaires ! Les pays sont les sommets, les frontières sont les arêtes. On a longtemps cherché combien de couleurs suffisaient pour n'importe quelle carte.
+
+**Linda:** On a prouvé assez vite qu'avec 6 couleurs, c'est facile. Puis 5... Mais le fameux **Théorème des 4 couleurs** a été un cauchemar à prouver.
+
+**Noé:** Seulement 4 couleurs pour n'importe quelle carte, aussi complexe soit-elle ?
+
+**Alma:** Oui. Il a fallu attendre 1976 et l'aide d'ordinateurs pour vérifier des milliers de configurations et le prouver. C'est le premier grand théorème prouvé par informatique.
+
+### Conclusion
+
+**Noé:** [content] Eh bien, je ne regarderai plus mes circuits imprimés de la même façon. Entre les ponts infranchissables de Jordan et la formule magique d'Euler, ça fait beaucoup de choses logiques.
+
+**Linda:** [enthousiaste] C'est ça qui est génial avec la planarité, c'est visuel mais très rigoureux.
+
+**Alma:** [concluant] Pour résumer : un graphe planaire se dessine sans croisement. Les ennemis sont $K_5$ et $K_{3,3}$. Et Euler veille sur tout ça avec sa formule $s - a + f = 2$.
+
+**Noé:** Merci Alma, merci Linda. C'était limpide. On se refait ça la semaine prochaine ?
+
+**Linda:** Compte sur moi !
+
+**Alma:** Avec grand plaisir. À bientôt !
+
+---
+
+## Audio Production Notes
+
+- **Pacing:** Conversation should feel natural but slightly slower than normal speech to allow the listener to visualize the shapes (squares, pentagons). Leave brief pauses after formulas are stated.
+- **Emphasis:**
+    - Emphasize distinct words like **"Planaire"**, **"Intérieur/Extérieur"**, and the numbers in the formulas.
+    - When Linda says "$K_{3,3}$", clearly pronounce "K trois trois".
+    - When checking the Euler calculation ($4 - 4 + 2$), allow a tiny beat of thinking time for Noé.
+- **Pronunciation:**
+    - $K_4$: "K quatre"
+    - $K_5$: "K cinq"
+    - $K_{3,3}$: "K trois trois" (standard graph theory pronunciation in French).
+    - $s - a + f = 2$: "s moins a plus f égale deux".
+    - PCB: "Pé-Cé-Bé" (or "circuits imprimés" as written).
+- **Character Voices:**
+    - **Noé:** Deeper, textured voice, sounds genuinely interested but processing new info.
+    - **Alma:** Clear, melodic, calm authority, pacing is very controlled.
+    - **Linda:** Higher pitch, faster pace, energetic, slightly eager.
+- **Café Atmosphere:**
+    - Start with the sound of a ceramic cup touching a saucer.
+    - Low hum of background chatter (indistinct).
+    - Occasional espresso machine hiss in the transition between sections.
+
+## Transcript for Audio Generation
+
+**Noé:** Salut tout le monde ! Ah, ça fait du bien de se retrouver au chaud. Il commence à faire frisquet dehors.
+
+**Alma:** Bonjour Noé ! Bonjour Linda ! Oui, c'est le temps idéal pour un café bien chaud et... un peu de théorie des graphes, non ?
+
+**Linda:** Toujours, Alma ! J'ai déjà commandé nos boissons. J'étais en train de relire mes notes sur le Chapitre 10. La "Planarité". C'est un sujet super visuel, j'adore.
+
+**Noé:** La planarité... Ça me fait penser à de la géométrie pure. On parle de rendre les choses plates, c'est ça ?
+
+**Alma:** C'est exactement l'idée de départ, Noé. Aujourd'hui, on va voir comment dessiner des réseaux complexes sur une feuille de papier sans que les fils ne s'emmêlent.
+
+**Noé:** Sans que les fils ne s'emmêlent ? Tu veux dire, sans que les lignes se croisent ?
+
+**Alma:** Précisément. Un graphe est dit planaire s'il est possible de le dessiner sur une feuille de papier de sorte que les arêtes ne se croisent jamais, sauf aux sommets où elles se rejoignent.
+
+**Linda:** Et attention Noé, il y a un piège ! Ce n'est pas parce que tu dessines un graphe avec des croisements qu'il n'est *pas* planaire.
+
+**Noé:** Attends, je ne te suis plus. Si je le dessine avec des croisements, il n'est pas plat... si ?
+
+**Alma:** Imagine le graphe complet à 4 sommets, K quatre. Quatre points tous reliés entre eux. Si tu les dessines en carré et que tu traces les diagonales à l'intérieur...
+
+**Noé:** Les diagonales forment une croix au milieu. Elles se coupent.
+
+**Linda:** Exactement. Ce dessin-là n'est pas un "dessin plan". Mais, si tu prends une des diagonales et que tu la fais passer à l'*extérieur* du carré, en contournant...
+
+**Noé:** Ah ! Alors elle ne coupe plus l'autre diagonale !
+
+**Alma:** Voilà ! Comme il *existe* une façon de le dessiner sans croisement, le graphe K quatre est officiellement planaire. C'est le potentiel qui compte, pas ton premier brouillon.
+
+**Noé:** C'est marrant, ça me rappelle mon ancien boulot dans l'électronique. Quand on concevait des circuits imprimés, les pistes de cuivre ne devaient jamais se croiser sur une simple couche, sinon... court-circuit !
+
+**Linda:** C'est l'application parfaite ! La conception de PCB, ou même la cartographie, ce sont des problèmes de planarité.
+
+**Alma:** Pour comprendre pourquoi certains graphes refusent d'être planaires, il faut parler d'un concept un peu plus topologique : le Théorème de la courbe de Jordan.
+
+**Noé:** Ouh là, "topologique", c'est le moment où ça devient abstrait ?
+
+**Alma:** Non, c'est très intuitif. Imagine une boucle fermée dessinée par terre, comme un cerceau. Le théorème dit simplement que cette courbe divise le monde en deux : l'intérieur et l'extérieur.
+
+**Linda:** Et si tu es à l'intérieur, Noé, tu ne peux pas sortir rejoindre quelqu'un à l'extérieur sans traverser le cerceau. C'est une frontière infranchissable.
+
+**Noé:** Logique. Et le rapport avec nos graphes ?
+
+**Alma:** Eh bien, certains graphes sont impossibles à dessiner sans croisement à cause de ça. Il y a deux "vilains petits canards" célèbres en théorie des graphes. Linda, tu veux présenter le premier ?
+
+**Linda:** Avec plaisir ! C'est l'énigme des trois maisons. On l'appelle le graphe K trois trois. Imaginez trois maisons d'un côté, et trois usines de l'autre : Eau, Gaz, Électricité.
+
+**Noé:** Je connais ça ! Il faut relier chaque maison à chaque usine.
+
+**Linda:** C'est ça. Ça fait 9 tuyaux en tout. Essaie de les dessiner sans qu'ils se croisent.
+
+**Noé:** Je fais un cycle... maison 1, eau, maison 2, gaz... ça va. Mais quand j'essaie de brancher la dernière maison à l'électricité... Mince. Je suis coincé soit à l'intérieur de mon cycle, soit à l'extérieur. Je coupe forcément un tuyau.
+
+**Alma:** C'est inévitable. K trois trois n'est pas planaire. Le théorème de Jordan prouve qu'il y aura toujours un conflit.
+
+**Linda:** Et l'autre coupable, c'est K cinq. Cinq sommets, tous reliés entre eux. Une étoile dans un pentagone. Impossible à mettre à plat.
+
+**Noé:** Donc si je comprends bien, K cinq et K trois trois sont les "bêtes noires".
+
+**Alma:** C'est pire que ça, ce sont les *seules* sources de problèmes. C'est le Théorème de Kuratowski.
+
+**Linda:** Ce théorème est magnifique. Il dit qu'un graphe est planaire SI et SEULEMENT SI il ne contient pas, caché en lui, une structure qui ressemble à K cinq ou K trois trois.
+
+**Noé:** "Qui ressemble" ?
+
+**Alma:** Oui. Si tu prends un K cinq et que tu rajoutes des points au milieu des arêtes – on appelle ça une subdivision – ça ne change rien au problème de croisement. Si la route est bloquée, rajouter des étapes sur la route ne débloque pas le passage.
+
+**Noé:** D'accord. Donc si je trouve une de ces deux structures dans mon graphe géant, c'est fini, je sais qu'il n'est pas planaire.
+
+**Linda:** Exactement. Ce sont les obstructions fondamentales.
+
+**Alma:** Maintenant, passons à ma partie préférée. La magie des nombres. Quand un graphe est planaire et qu'on le dessine, il délimite des régions. On appelle ça des faces.
+
+**Noé:** Comme les cases d'une marelle ?
+
+**Alma:** Oui ! Et n'oublie pas la région tout autour du dessin, la "face externe". Euler, un grand mathématicien, a trouvé une formule incroyable qui relie tout ça.
+
+**Linda:** S moins A plus F égale deux.
+
+**Noé:** Attends, doucement.
+
+**Alma:** S c'est le nombre de sommets. A c'est le nombre d'arêtes. Et F c'est le nombre de faces. Sommets moins Arêtes plus Faces égale toujours 2.
+
+**Noé:** Toujours 2 ? Pour n'importe quel dessin ?
+
+**Linda:** Tant que le graphe est connexe, en un seul morceau, et planaire, oui !
+
+**Alma:** Essayons. Prends un carré, Noé. Quatre sommets, S égale 4. Quatre arêtes, A égale 4. Combien de faces ?
+
+**Noé:** Il y a l'intérieur du carré... et tu as dit qu'il y avait l'extérieur. Donc 2 faces. Alors... quatre moins quatre plus deux... ça fait bien 2 ! C'est dingue que ça marche tout le temps.
+
+**Linda:** Ça marche même pour les solides ! Un cube, c'est un graphe planaire si tu l'écrases à plat. 8 sommets, 12 arêtes, 6 faces. Huit moins douze plus six égale deux.
+
+**Noé:** C'est puissant comme formule.
+
+**Alma:** Cette formule nous permet de prouver quelque chose de très pratique. Si un graphe a trop d'arêtes par rapport à ses sommets, il ne peut pas être planaire. Il y a une limite de densité.
+
+**Linda:** La règle est : le nombre d'arêtes ne peut pas dépasser 3 fois le nombre de sommets moins 6. A doit être inférieur ou égal à trois S moins six.
+
+**Noé:** Ah, c'est un bon test rapide ça ! Si j'ai trop de connexions, je sais direct que ça va coincer.
+
+**Alma:** Exactement. Si tu testes ça sur K cinq... 5 sommets, donc trois fois cinq moins six égale neuf. Le maximum d'arêtes permis serait 9. Mais K cinq a 10 arêtes ! Donc... impossible qu'il soit planaire.
+
+**Noé:** CQFD !
+
+**Linda:** Et pour finir sur une note colorée... Noé, tu as déjà fait du coloriage de cartes géographiques ?
+
+**Noé:** À l'école, oui. Il ne fallait pas que deux pays voisins aient la même couleur.
+
+**Alma:** C'est un problème de graphes planaires ! Les pays sont les sommets, les frontières sont les arêtes. On a longtemps cherché combien de couleurs suffisaient pour n'importe quelle carte.
+
+**Linda:** On a prouvé assez vite qu'avec 6 couleurs, c'est facile. Puis 5... Mais le fameux Théorème des 4 couleurs a été un cauchemar à prouver.
+
+**Noé:** Seulement 4 couleurs pour n'importe quelle carte, aussi complexe soit-elle ?
+
+**Alma:** Oui. Il a fallu attendre 1976 et l'aide d'ordinateurs pour vérifier des milliers de configurations et le prouver. C'est le premier grand théorème prouvé par informatique.
+
+**Noé:** Eh bien, je ne regarderai plus mes circuits imprimés de la même façon. Entre les ponts infranchissables de Jordan et la formule magique d'Euler, ça fait beaucoup de choses logiques.
+
+**Linda:** C'est ça qui est génial avec la planarité, c'est visuel mais très rigoureux.
+
+**Alma:** Pour résumer : un graphe planaire se dessine sans croisement. Les ennemis sont K cinq et K trois trois. Et Euler veille sur tout ça avec sa formule S moins A plus F égale 2.
+
+**Noé:** Merci Alma, merci Linda. C'était limpide. On se refait ça la semaine prochaine ?
+
+**Linda:** Compte sur moi !
+
+**Alma:** Avec grand plaisir. À bientôt !

@@ -1,0 +1,283 @@
+---
+id: b62d0f46
+type: quiz
+order: 13
+title: 'Chapitre 7 - Chaînes, parcours, cycles et tours - quiz (A)'
+tags:
+  - Graphes
+  - Chaînes
+  - Parcours
+  - Connexité
+  - Distance
+  - Dijkstra
+  - Eulérien
+  - Hamiltonien
+  - Arbres
+createdAt: '2025-12-19T13:05:28.995Z'
+level: regular
+course: Graphes et Combinatoire
+courseId: 7027276b
+chapter: 'Chapitre 7 - Chaînes, parcours, cycles et tours'
+chapterId: b866ccc5
+---
+# Quiz: Chapitre 7 - Chaînes, parcours, cycles et tours
+
+---
+
+#### Définition d'une Chaîne
+
+Dans le cadre de ce cours, quelle est la caractéristique principale qui distingue une **chaîne** d'un parcours quelconque dans un graphe ?
+
+- [ ] **A)** Une chaîne doit revenir à son point de départ.
+- [ ] **B)** Une chaîne ne peut pas emprunter la même arête deux fois, mais peut repasser par un sommet.
+- [x] **C)** Une chaîne est un parcours où tous les sommets sont distincts deux à deux.
+- [ ] **D)** Une chaîne doit passer par tous les sommets du graphe.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : C**
+
+**Explication détaillée :**
+
+- **A.** Un parcours qui revient à son point de départ est un parcours "fermé" (ou un tour/cycle). Une chaîne n'est pas nécessairement fermée.
+- **B.** Cette définition correspond à un **tour** (si fermé) ou un sentier (vocabulaire parfois utilisé ailleurs), mais dans ce cours, la distinction clé pour une **chaîne** est l'unicité des sommets.
+- **C.** C'est la définition exacte donnée dans le cours : une $k$-chaîne est un parcours où tous les **sommets sont distincts**. Cela implique aussi que les arêtes sont distinctes.
+- **D.** Cela décrirait une chaîne hamiltonienne, ce qui est une propriété spécifique et rare, pas la définition générale d'une chaîne.
+
+</details>
+
+---
+
+#### Cycle vs Tour
+
+Quelle est la différence fondamentale entre un **cycle** et un **tour** ?
+
+- [ ] **A)** Un tour est ouvert ($s_0 \neq s_k$) alors qu'un cycle est fermé ($s_0 = s_k$).
+- [x] **B)** Un cycle ne repasse jamais par le même sommet (sauf le départ/arrivée), alors qu'un tour peut repasser par un sommet tant que les arêtes sont distinctes.
+- [ ] **C)** Un cycle doit avoir une longueur paire, alors qu'un tour peut avoir une longueur impaire.
+- [ ] **D)** Il n'y a aucune différence, ce sont des synonymes parfaits.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : B**
+
+**Explication détaillée :**
+
+- **A.** Faux, les deux définitions (cycle et tour) impliquent un déplacement "fermé" où l'origine est égale à l'extrémité ($s_0 = s_k$).
+- **B.** C'est la distinction correcte. Un **tour** exige seulement que les arêtes soient distinctes (on peut croiser sa propre route sur un sommet, comme dans un "8"). Un **cycle** est plus strict : tous les sommets intermédiaires doivent être distincts.
+- **C.** La parité de la longueur n'entre pas dans la définition générale.
+- **D.** Faux, tout cycle est un tour, mais tout tour n'est pas un cycle.
+
+</details>
+
+---
+
+#### Connexité
+
+Quand dit-on qu'un graphe non orienté est **connexe** ?
+
+- [ ] **A)** Lorsque tous les sommets ont le même degré.
+- [ ] **B)** Lorsqu'il contient au moins un cycle.
+- [x] **C)** Lorsque pour toute paire de sommets $\{x, y\}$, il existe une chaîne reliant $x$ à $y$.
+- [ ] **D)** Lorsque le nombre d'arêtes est égal au nombre de sommets moins un.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : C**
+
+**Explication détaillée :**
+
+- **A.** C'est la définition d'un graphe *régulier*.
+- **B.** Un graphe peut être connexe sans cycle (c'est alors un arbre), ou non connexe avec des cycles.
+- **C.** C'est la définition fondamentale de la connexité : le graphe est "d'un seul tenant", on peut aller de n'importe où à n'importe où.
+- **D.** C'est une propriété des arbres (qui sont connexes), mais un graphe connexe général peut avoir beaucoup plus d'arêtes.
+
+</details>
+
+---
+
+#### Distance dans un graphe
+
+Soit $G$ un graphe simple. Comment définit-on la **distance** $d_G(s, t)$ entre deux sommets $s$ et $t$ ?
+
+- [ ] **A)** Le nombre total de chaînes différentes reliant $s$ à $t$.
+- [x] **B)** La longueur (nombre d'arêtes) de la chaîne la plus courte reliant $s$ à $t$.
+- [ ] **C)** La longueur de la chaîne la plus longue reliant $s$ à $t$ sans boucle.
+- [ ] **D)** La différence absolue entre les indices des sommets $|s - t|$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : B**
+
+**Explication détaillée :**
+
+- **A.** Le nombre de chaînes n'est pas une distance (il peut être très grand).
+- **B.** C'est la définition correcte. La distance correspond au chemin optimal (géodésique) en termes de nombre d'arêtes (ou somme des poids pour un graphe valué).
+- **C.** Le chemin le plus long est un concept différent (souvent lié à des problèmes NP-difficiles).
+- **D.** Les étiquettes/indices des sommets sont arbitraires et n'ont pas de lien géométrique ou topologique avec la structure du graphe.
+
+</details>
+
+---
+
+#### Matrice d'Adjacence et Parcours
+
+Soit $A_G$ la matrice d'adjacence d'un graphe $G$. Que représente le coefficient $(i, j)$ de la matrice $A_G^3$ (la matrice élevée à la puissance 3) ?
+
+- [ ] **A)** La distance entre le sommet $i$ et le sommet $j$.
+- [ ] **B)** Il vaut 1 si $i$ et $j$ sont reliés, 0 sinon.
+- [x] **C)** Le nombre de parcours de longueur exactement 3 reliant le sommet $i$ au sommet $j$.
+- [ ] **D)** Le degré du sommet $i$ multiplié par 3.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : C**
+
+**Explication détaillée :**
+
+- **A.** La distance serait le plus petit $k$ tel que $(A^k)_{ij} > 0$, pas la valeur du coefficient lui-même.
+- **B.** Cela correspondrait à la matrice de fermeture transitive (ou de connectivité), pas spécifiquement à $A^3$.
+- **C.** C'est une propriété algébrique fondamentale : $(A^k)_{ij}$ compte le nombre de parcours de longueur $k$ entre $i$ et $j$.
+- **D.** Aucun rapport avec la définition du produit matriciel dans ce contexte.
+
+</details>
+
+---
+
+#### Graphes Eulériens
+
+Quelle est la condition nécessaire et suffisante pour qu'un graphe connexe soit **Eulérien** (possède un tour fermé passant par toutes les arêtes une seule fois) ?
+
+- [x] **A)** Tous ses sommets doivent être de degré pair.
+- [ ] **B)** Tous ses sommets doivent être de degré impair.
+- [ ] **C)** Il doit posséder exactement 2 sommets de degré impair.
+- [ ] **D)** Le graphe doit être un arbre.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : A**
+
+**Explication détaillée :**
+
+- **A.** C'est le Théorème d'Euler (7.11). Pour entrer et sortir de chaque sommet sans rester coincé et en utilisant toutes les arêtes, chaque sommet doit avoir autant d'arêtes "entrantes" que "sortantes" dans le tour, donc un degré pair.
+- **B.** Impossible pour un cycle eulérien fermé.
+- **C.** C'est la condition pour un graphe **semi-eulérien** (qui admet un chemin ouvert, mais pas fermé).
+- **D.** Un arbre (sauf trivial à 1 sommet) a des feuilles de degré 1 (impair), donc il n'est jamais eulérien.
+
+</details>
+
+---
+
+#### Graphes Hamiltoniens
+
+Qu'est-ce qu'un **cycle hamiltonien** dans un graphe $G$ ?
+
+- [ ] **A)** Un cycle qui passe par toutes les arêtes de $G$ exactement une fois.
+- [x] **B)** Un cycle qui passe par tous les sommets de $G$ exactement une fois.
+- [ ] **C)** Le cycle le plus court du graphe.
+- [ ] **D)** Un cycle qui contient un nombre impair de sommets.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : B**
+
+**Explication détaillée :**
+
+- **A.** C'est la définition d'un tour **Eulérien**.
+- **B.** C'est la définition correcte. Hamiltonien concerne la visite des **sommets**, Eulérien concerne la visite des **arêtes**.
+- **C.** C'est la maille du graphe.
+- **D.** C'est simplement un cycle impair, sans rapport direct avec la propriété hamiltonienne.
+
+</details>
+
+---
+
+#### Propriétés des Arbres
+
+Si un graphe $G$ d'ordre $n$ (ayant $n$ sommets) est un **arbre**, combien possède-t-il d'arêtes ?
+
+- [ ] **A)** $n$ arêtes.
+- [x] **B)** $n - 1$ arêtes.
+- [ ] **C)** $n + 1$ arêtes.
+- [ ] **D)** $n(n-1)/2$ arêtes.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : B**
+
+**Explication détaillée :**
+
+- **A.** Un graphe connexe avec $n$ arêtes contient nécessairement au moins un cycle.
+- **B.** C'est une propriété fondamentale (Théorème 7.19) : un arbre est un graphe connexe minimal, et pour relier $n$ sommets sans cycle, il faut exactement $n-1$ arêtes.
+- **C.** Incorrect.
+- **D.** C'est le nombre d'arêtes d'un graphe complet $K_n$ (le maximum possible), pas d'un arbre.
+
+</details>
+
+---
+
+#### Unicité de la chaîne dans les arbres
+
+Quelle propriété concernant les chaînes caractérise un **arbre** ?
+
+- [x] **A)** Il existe une chaîne unique entre toute paire de sommets.
+- [ ] **B)** Il existe au moins deux chaînes distinctes entre toute paire de sommets.
+- [ ] **C)** Il n'existe aucune chaîne entre certaines paires de sommets.
+- [ ] **D)** La chaîne la plus courte est toujours de longueur 1.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : A**
+
+**Explication détaillée :**
+
+- **A.** C'est une définition équivalente de l'arbre. La connexité assure qu'il y a au moins une chaîne, et l'absence de cycle assure qu'il n'y en a pas plus d'une.
+- **B.** Si deux chaînes distinctes existent entre deux points, leur réunion forme un cycle, ce qui est impossible dans un arbre.
+- **C.** Cela décrirait un graphe non connexe (une forêt).
+- **D.** Cela signifierait que tous les sommets sont voisins (graphe complet), ce qui n'est pas le cas des arbres en général.
+
+</details>
+
+---
+
+#### Algorithme de Dijkstra
+
+Quel est le but principal de l'**Algorithme de Dijkstra** ?
+
+- [ ] **A)** Trouver si un graphe est connexe.
+- [ ] **B)** Trouver un cycle hamiltonien dans le graphe.
+- [x] **C)** Trouver le chemin le plus court d'un sommet de départ vers tous les autres dans un graphe valué positivement.
+- [ ] **D)** Trouver le chemin passant par toutes les arêtes (eulérien).
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : C**
+
+**Explication détaillée :**
+
+- **A.** On peut utiliser des algorithmes de parcours plus simples (BFS/DFS) pour la connexité.
+- **B.** C'est un problème complexe pour lequel Dijkstra n'est pas conçu.
+- **C.** C'est l'application exacte : calculer les distances minimales dans un graphe où les arêtes ont des poids (coûts).
+- **D.** C'est le problème du tour eulérien (ou problème du facteur chinois), pas Dijkstra.
+
+</details>

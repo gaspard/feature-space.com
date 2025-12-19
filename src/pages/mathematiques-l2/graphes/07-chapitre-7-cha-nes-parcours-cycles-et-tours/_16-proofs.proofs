@@ -1,0 +1,536 @@
+---
+id: 260a363e
+type: proofs
+order: 15
+title: 'Chapitre 7 - Chaînes, parcours, cycles et tours - preuves (A)'
+tags:
+  - Graphes
+  - Chaînes
+  - Parcours
+  - Connexité
+  - Distance
+  - Dijkstra
+  - Eulérien
+  - Hamiltonien
+  - Arbres
+createdAt: '2025-12-19T13:05:28.995Z'
+level: regular
+course: Graphes et Combinatoire
+courseId: 7027276b
+chapter: 'Chapitre 7 - Chaînes, parcours, cycles et tours'
+chapterId: b866ccc5
+---
+# Preuves "Chapitre 7 - Chaînes, parcours, cycles et tours" (A)
+
+---
+
+#### Lemme de réduction : Du parcours à la chaîne
+
+Prouvez que si, dans un graphe $G$, il existe un **parcours** reliant deux sommets $x$ et $y$, alors il existe nécessairement une **chaîne** (parcours à sommets distincts) reliant $x$ et $y$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Considérez l'ensemble de tous les parcours reliant $x$ à $y$. Si un parcours contient des sommets répétés, peut-on le raccourcir ? Raisonnez sur la longueur minimale.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $P$ un parcours reliant $x$ à $y$.
+
+**Étape 1 : Considérer le parcours de longueur minimale**
+
+Parmi tous les parcours existants reliant $x$ à $y$ (il en existe au moins un par hypothèse), choisissons-en un, noté $\mu = (s_0, s_1, \dots, s_k)$, dont la longueur $k$ est **minimale**. Ici $s_0 = x$ et $s_k = y$.
+
+**Étape 2 : Raisonnement par l'absurde sur la répétition des sommets**
+
+Supposons que $\mu$ ne soit pas une chaîne. Par définition, cela signifie que tous ses sommets ne sont pas distincts.
+
+Il existe donc deux indices $i$ et $j$ avec $0 \leq i < j \leq k$ tels que $s_i = s_j$.
+
+**Étape 3 : Construction d'un parcours plus court**
+
+Puisque $s_i = s_j$, le parcours fait une "boucle" entre l'étape $i$ et l'étape $j$. Nous pouvons supprimer cette section.
+
+Construisons le nouveau parcours $\mu'$ en "court-circuitant" la boucle :
+
+$\mu' = (s_0, \dots, s_i, s_{j+1}, \dots, s_k)$.
+
+Notez que $s_i$ est directement relié à $s_{j+1}$ dans $\mu'$ uniquement si $j=i$, ce qui est impossible ici car $i<j$. Plus précisément, la suite devient la concaténation de la section de $s_0$ à $s_i$ et de la section de $s_j$ (qui est égal à $s_i$) à $s_k$.
+
+La longueur de $\mu'$ est $k - (j - i)$. Comme $i < j$, on a $j - i \geq 1$, donc la longueur de $\mu'$ est strictement inférieure à $k$.
+
+**Conclusion**
+
+Nous avons construit un parcours $\mu'$ reliant $x$ à $y$ strictement plus court que $\mu$. Cela contredit l'hypothèse que $\mu$ était de longueur minimale.
+
+Par conséquent, le parcours de longueur minimale ne peut pas contenir de sommets répétés. C'est donc une chaîne.
+
+</details>
+
+---
+
+#### Transitivité de la relation de connexité
+
+Prouvez que la relation "être relié à" est transitive. C'est-à-dire : si $x$ est relié à $y$ et $y$ est relié à $z$, alors $x$ est relié à $z$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez la définition d'un parcours (une suite de sommets adjacents). Si vous avez un chemin de $x$ à $y$ et un autre de $y$ à $z$, comment pouvez-vous construire un chemin de $x$ à $z$ ? Pensez à la concaténation.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soient $x, y, z$ trois sommets du graphe $G$.
+
+**Étape 1 : Existence des parcours initiaux**
+
+Puisque $x$ est relié à $y$, il existe un parcours $P_1 = (u_0, u_1, \dots, u_m)$ tel que $u_0 = x$ et $u_m = y$.
+
+Puisque $y$ est relié à $z$, il existe un parcours $P_2 = (v_0, v_1, \dots, v_k)$ tel que $v_0 = y$ et $v_k = z$.
+
+**Étape 2 : Concaténation (Mise bout à bout)**
+
+Observons que l'extrémité de $P_1$ est l'origine de $P_2$ ($u_m = v_0 = y$).
+
+Nous pouvons définir une nouvelle suite de sommets $P_{total}$ en mettant $P_2$ à la suite de $P_1$ :
+
+$P_{total} = (u_0, u_1, \dots, u_{m-1}, u_m, v_1, v_2, \dots, v_k)$.
+
+*(Note : on ne répète pas $y$ deux fois dans la liste des sommets, on fusionne le point de jonction).*
+
+**Étape 3 : Vérification de la validité**
+
+- Pour la première partie $(u_0, \dots, u_m)$, chaque paire consécutive est une arête car $P_1$ est un parcours valide.
+- Pour la seconde partie $(u_m, v_1, \dots, v_k)$, rappelons que $u_m = v_0$. Donc la paire $\{u_m, v_1\}$ est l'arête $\{v_0, v_1\}$ de $G$. Les paires suivantes sont aussi des arêtes car $P_2$ est valide.
+
+**Conclusion**
+
+La suite $P_{total}$ est un parcours valide commençant par $u_0 = x$ et finissant par $v_k = z$. Donc $x$ est relié à $z$.
+
+</details>
+
+---
+
+#### Connexité et Partition (Théorème 7.5)
+
+Soit $G=(S, A)$ un graphe. Prouvez que si $G$ est connexe, alors pour toute partition de l'ensemble des sommets $S$ en deux ensembles non vides $U$ et $V$ ($U \cup V = S$ et $U \cap V = \emptyset$), il existe au moins une arête reliant un sommet de $U$ à un sommet de $V$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Raisonnez par l'absurde. S'il n'y avait aucune arête entre $U$ et $V$, pourrait-on aller d'un point $u \in U$ à un point $v \in V$ ?
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Hypothèse :** $G$ est connexe. $S$ est partitionné en $U$ et $V$ non vides.
+
+**Étape 1 : Raisonnement par l'absurde**
+
+Supposons qu'il n'existe **aucune arête** reliant un sommet de $U$ à un sommet de $V$. Cela signifie que pour tout $u \in U$ et $v \in V$, $\{u, v\} \notin A$.
+
+**Étape 2 : Utilisation de la connexité**
+
+Choisissons un sommet arbitraire $x \in U$ et un sommet arbitraire $y \in V$ (possible car les ensembles sont non vides).
+
+Comme $G$ est connexe, il existe un parcours $(s_0, s_1, \dots, s_k)$ reliant $x$ à $y$ (avec $s_0 = x$ et $s_k = y$).
+
+**Étape 3 : Analyse du parcours**
+
+Puisque le parcours commence dans $U$ ($s_0 \in U$) et finit dans $V$ ($s_k \in V$), il doit y avoir un moment où le parcours "saute" de l'ensemble $U$ à l'ensemble $V$.
+
+Mathématiquement, il doit exister un indice $i$ tel que $s_i \in U$ et $s_{i+1} \in V$.
+
+Or, $\{s_i, s_{i+1}\}$ est une arête du parcours, donc une arête du graphe.
+
+**Conclusion**
+
+L'existence de l'arête $\{s_i, s_{i+1}\}$ contredit notre hypothèse de départ (qu'il n'y a pas d'arête entre $U$ et $V$).
+
+Il est donc nécessaire qu'il existe au moins une arête entre $U$ et $V$.
+
+</details>
+
+---
+
+#### Inégalité triangulaire pour la distance dans un graphe
+
+Prouvez que pour tout triplet de sommets $x, y, z$ d'un graphe connexe $G$, la distance satisfait :
+
+$d_G(x, z) \leq d_G(x, y) + d_G(y, z)$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+La distance est définie comme la longueur du plus court chemin. Si vous mettez bout à bout le chemin optimal de $x$ à $y$ et celui de $y$ à $z$, que pouvez-vous dire de la longueur de ce nouveau chemin par rapport à $d_G(x, z)$ ?
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Définition des chemins optimaux**
+
+Soit $P_{xy}$ une chaîne de longueur minimale reliant $x$ à $y$. Sa longueur est $L(P_{xy}) = d_G(x, y)$.
+
+Soit $P_{yz}$ une chaîne de longueur minimale reliant $y$ à $z$. Sa longueur est $L(P_{yz}) = d_G(y, z)$.
+
+**Étape 2 : Construction d'un chemin candidat**
+
+En concaténant $P_{xy}$ et $P_{yz}$ au point $y$, nous formons un parcours $P_{xz}$ reliant $x$ à $z$.
+
+La longueur de ce parcours concaténé est exactement la somme des longueurs :
+
+$L(P_{xz}) = d_G(x, y) + d_G(y, z)$.
+
+**Étape 3 : Comparaison avec la distance**
+
+Par définition, la distance $d_G(x, z)$ est la longueur du **plus court** parcours possible entre $x$ et $z$.
+
+Le parcours $P_{xz}$ que nous venons de construire est *un* chemin possible, mais pas nécessairement le plus court.
+
+Par conséquent, la distance réelle doit être inférieure ou égale à la longueur de ce candidat :
+
+$d_G(x, z) \leq L(P_{xz})$.
+
+**Conclusion**
+
+En substituant la longueur, on obtient :
+
+$d_G(x, z) \leq d_G(x, y) + d_G(y, z)$.
+
+</details>
+
+---
+
+#### Puissances de la matrice d'adjacence
+
+Soit $A_G$ la matrice d'adjacence d'un graphe $G$. Prouvez que le coefficient $(A_G^k)_{ij}$ est égal au nombre de parcours de longueur exactement $k$ reliant le sommet $i$ au sommet $j$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez un raisonnement par récurrence sur la longueur $k$.
+
+Pour l'hérédité ($k \to k+1$), rappelez-vous de la définition du produit matriciel : $(M \times N)_{ij} = \sum_p M_{ip} N_{pj}$. Interprétez cette somme en termes de parcours.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Procédons par récurrence sur $k$.
+
+**Étape 1 : Cas de base ($k=1$)**
+
+$(A_G^1)_{ij} = (A_G)_{ij}$.
+
+Par définition de la matrice d'adjacence, ce coefficient vaut 1 s'il existe une arête (parcours de longueur 1) entre $i$ et $j$, et 0 sinon. La propriété est vraie pour $k=1$.
+
+**Étape 2 : Hypothèse de récurrence**
+
+Supposons que pour un entier $k \geq 1$, le terme $(A_G^k)_{il}$ représente le nombre de parcours de longueur $k$ entre $i$ et $l$, pour toute paire $(i, l)$.
+
+**Étape 3 : Hérédité ($k+1$)**
+
+On sait que $A_G^{k+1} = A_G^k \times A_G$.
+
+Selon la formule du produit matriciel :
+
+$(A_G^{k+1})_{ij} = \sum_{l \in S} (A_G^k)_{il} \times (A_G)_{lj}$
+
+Analysons les termes de cette somme :
+
+- $(A_G^k)_{il}$ est le nombre de parcours de longueur $k$ allant de $i$ à $l$.
+- $(A_G)_{lj}$ vaut 1 si $\{l, j\}$ est une arête, 0 sinon.
+
+Le produit $(A_G^k)_{il} \times (A_G)_{lj}$ compte donc le nombre de parcours de longueur $k$ allant de $i$ à $l$ qui peuvent être prolongés par l'arête $\{l, j\}$ pour atteindre $j$.
+
+Un parcours de longueur $k+1$ de $i$ à $j$ est nécessairement formé d'un parcours de longueur $k$ de $i$ à un voisin $l$ de $j$, suivi de l'arête $\{l, j\}$.
+
+En sommant sur tous les sommets intermédiaires $l$ possibles, on comptabilise exactement tous les parcours de longueur $k+1$ reliant $i$ à $j$.
+
+**Conclusion**
+
+La propriété est vraie pour $k=1$ et est héréditaire. Elle est donc vraie pour tout $k \geq 1$.
+
+</details>
+
+---
+
+#### Sous-optimalité des plus courts chemins
+
+Soit $P = (s, v_1, v_2, \dots, v_k, t)$ un plus court chemin (chaîne de longueur minimale) entre $s$ et $t$ dans un graphe. Prouvez que la sous-section $(s, v_1, \dots, v_k)$ est un plus court chemin entre $s$ et $v_k$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Raisonnez par l'absurde (contradiction). Si on pouvait aller de $s$ à $v_k$ plus vite, que cela impliquerait-il pour le trajet total de $s$ à $t$ ?
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $d(u, v)$ la distance entre deux sommets.
+
+La longueur du chemin $P$ est $L_{total} = d(s, t)$.
+
+Notons $P_{sub}$ la sous-partie du chemin reliant $s$ à $v_k$.
+
+La longueur de $P$ est la somme de la longueur de $P_{sub}$ et de la dernière arête $\{v_k, t\}$ (de poids 1 ou $w(v_k, t)$ si le graphe est valué positivement).
+
+$L(P) = L(P_{sub}) + cost(v_k, t)$.
+
+**Étape 1 : Hypothèse contradictoire**
+
+Supposons que $P_{sub}$ n'est **pas** le plus court chemin entre $s$ et $v_k$.
+
+Alors il existe un autre chemin $P'_{sub}$ reliant $s$ à $v_k$ tel que $L(P'_{sub}) < L(P_{sub})$.
+
+**Étape 2 : Construction d'un nouveau chemin**
+
+Construisons un nouveau chemin $P'$ de $s$ à $t$ en empruntant $P'_{sub}$ puis l'arête $\{v_k, t\}$.
+
+La longueur de ce nouveau chemin est :
+
+$L(P') = L(P'_{sub}) + cost(v_k, t)$.
+
+**Étape 3 : Comparaison**
+
+Puisque $L(P'_{sub}) < L(P_{sub})$, nous avons :
+
+$L(P') < L(P_{sub}) + cost(v_k, t) = L(P) = d(s, t)$.
+
+**Conclusion**
+
+Nous avons trouvé un chemin $P'$ reliant $s$ à $t$ dont la longueur est strictement inférieure à la distance $d(s, t)$, ce qui est impossible par définition de la distance.
+
+L'hypothèse est fausse. La sous-section d'un plus court chemin est donc elle-même un plus court chemin.
+
+</details>
+
+---
+
+#### Condition nécessaire pour les graphes Eulériens
+
+Prouvez que si un graphe connexe $G$ admet un **tour eulérien** (un cycle passant par toutes les arêtes exactement une fois), alors le degré de chaque sommet est **pair**.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Imaginez que vous parcourez le tour eulérien. Considérez un sommet $v$. À chaque fois que vous "entrez" dans $v$ par une arête, que devez-vous faire ensuite ? Quelle est l'implication sur le nombre d'arêtes incidentes à $v$ ?
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $G=(S, A)$ un graphe possédant un tour eulérien $T$.
+
+Le tour $T$ est une suite d'arêtes qui commence et finit au même sommet et contient chaque arête de $A$ exactement une fois.
+
+**Étape 1 : Analyse des passages par un sommet**
+
+Considérons un sommet arbitraire $v \in S$.
+
+Chaque fois que le tour passe par le sommet $v$, il doit :
+
+1. Arriver par une arête incidente $e_{in}$.
+2. Repartir par une autre arête incidente $e_{out}$.
+
+**Étape 2 : Comptage des arêtes**
+
+Le passage par $v$ consomme donc exactement **2 arêtes** incidentes à $v$ (une pour entrer, une pour sortir).
+
+Si le tour passe $k$ fois par le sommet $v$, alors $2k$ arêtes incidentes à $v$ sont utilisées.
+
+**Conclusion**
+
+Comme le tour est eulérien, il utilise **toutes** les arêtes incidentes à $v$ exactement une fois.
+
+Le nombre total d'arêtes incidentes à $v$, c'est-à-dire le degré $d(v)$, doit donc être égal à la somme des arêtes consommées lors des passages.
+
+$d(v) = 2k$.
+
+Puisque $2k$ est un multiple de 2, le degré de $v$ est nécessairement pair.
+
+*(Note : Pour le sommet de départ/arrivée, le raisonnement est le même : le tout premier départ et la toute dernière arrivée comptent ensemble comme un passage).*
+
+</details>
+
+---
+
+#### Feuilles dans un arbre
+
+Prouvez que tout arbre (graphe connexe sans cycle) possédant au moins 2 sommets ($n \geq 2$) possède au moins deux **feuilles** (sommets de degré 1).
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Considérez la chaîne la plus longue possible dans l'arbre. Regardez les extrémités de cette chaîne. Peuvent-elles avoir d'autres voisins que ceux qui sont sur la chaîne ?
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $T$ un arbre avec $n \geq 2$.
+
+**Étape 1 : Considérer une chaîne maximale**
+
+Comme $n \geq 2$ et $T$ est connexe, il existe des chaînes. Considérons une chaîne élémentaire de longueur maximale dans le graphe :
+
+$C = (x_0, x_1, \dots, x_k)$.
+
+(Note : "maximale" signifie qu'on ne peut pas l'étendre sans répéter un sommet, elle n'est pas forcément unique).
+
+**Étape 2 : Analyse de l'extrémité $x_0$**
+
+Regardons le sommet $x_0$.
+
+- Il a au moins un voisin, $x_1$, qui est sur la chaîne.
+- Supposons que $x_0$ ait un autre voisin $y$ ($y \neq x_1$).
+
+Deux cas possibles pour $y$ :
+
+1.  **$y$ est déjà dans la chaîne ($y = x_i$ avec $i > 1$) :** Cela créerait un cycle $(x_0, x_1, \dots, x_i, x_0)$. Or, un arbre est acyclique. Impossible.
+2.  **$y$ n'est pas dans la chaîne :** Alors nous pourrions étendre la chaîne en $(y, x_0, x_1, \dots, x_k)$, ce qui contredit l'hypothèse que $C$ est de longueur maximale. Impossible.
+
+**Conclusion**
+
+Puisque $x_0$ ne peut pas avoir de voisin dans la chaîne (autre que $x_1$) ni hors de la chaîne, son seul voisin est $x_1$.
+
+Donc $d(x_0) = 1$. $x_0$ est une feuille.
+
+Le même raisonnement s'applique à l'autre extrémité $x_k$, qui est aussi une feuille (et $x_0 \neq x_k$ car $n \geq 2$, donc la chaîne a une longueur $\geq 1$).
+
+Il y a donc au moins deux feuilles.
+
+</details>
+
+---
+
+#### Unicité de la chaîne dans un arbre
+
+Prouvez que dans un arbre, il existe une **unique** chaîne reliant toute paire de sommets $x$ et $y$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+L'existence est garantie par la connexité. Pour l'unicité, raisonnez par l'absurde : si vous aviez deux chaînes distinctes entre $x$ et $y$, que formerait leur union ?
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $G$ un arbre.
+
+**Étape 1 : Existence**
+
+Par définition, un arbre est connexe. Donc, pour tous $x, y$, il existe au moins une chaîne reliant $x$ à $y$.
+
+**Étape 2 : Unicité (par l'absurde)**
+
+Supposons qu'il existe deux chaînes distinctes $C_1$ et $C_2$ reliant $x$ et $y$.
+
+Puisqu'elles sont distinctes, il existe un moment où elles se séparent et un moment où elles se retrouvent.
+
+Considérons le premier sommet $u$ où les chemins divergent, et le premier sommet $v$ où ils se rejoignent ensuite.
+
+Les segments de $C_1$ et $C_2$ entre $u$ et $v$ sont disjoints (ne partagent aucun sommet intermédiaire).
+
+En concaténant le segment $u \to v$ de $C_1$ et le segment $v \to u$ de $C_2$ (parcouru à l'envers), on forme un cycle fermé.
+
+**Conclusion**
+
+L'existence de deux chaînes distinctes implique l'existence d'un cycle.
+
+Or, un arbre est par définition acyclique.
+
+C'est une contradiction. La chaîne reliant $x$ à $y$ est donc unique.
+
+</details>
+
+---
+
+#### Nombre d'arêtes dans un arbre
+
+Prouvez par récurrence que tout arbre d'ordre $n$ (avec $n \geq 1$) possède exactement $n-1$ arêtes.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez le résultat précédent sur l'existence des feuilles. Si vous retirez une feuille et son arête unique, que devient le graphe ? Appliquez l'hypothèse de récurrence sur le graphe réduit.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Notons $P(n)$ la propriété : "Un arbre à $n$ sommets possède $n-1$ arêtes".
+
+**Étape 1 : Cas de base ($n=1$)**
+
+Un arbre à 1 sommet n'a pas de boucle, donc 0 arête.
+
+$n-1 = 1-1 = 0$. La propriété est vraie.
+
+**Étape 2 : Hérédité**
+
+Supposons la propriété vraie pour tout arbre de taille $k$. Soit $T$ un arbre de taille $k+1$.
+
+Nous avons prouvé précédemment que tout arbre avec au moins 2 sommets possède au moins une feuille.
+
+Soit $v$ une feuille de $T$ et $e$ l'unique arête incidente à $v$.
+
+Considérons le graphe $T' = T - \{v\}$. On retire le sommet $v$ et l'arête $e$.
+
+- $T'$ a $k$ sommets.
+- $T'$ est toujours connexe (retirer une feuille ne déconnecte pas les autres sommets).
+- $T'$ est toujours sans cycle (retirer des éléments ne crée pas de cycle).
+
+Donc $T'$ est un arbre d'ordre $k$.
+
+Par hypothèse de récurrence, $T'$ possède $k-1$ arêtes.
+
+**Conclusion**
+
+Le nombre d'arêtes de $T$ est le nombre d'arêtes de $T'$ plus l'arête $e$ que nous avions retirée.
+
+$m(T) = (k-1) + 1 = k$.
+
+Pour un ordre $n = k+1$, nous avons trouvé $n-1 = k$ arêtes.
+
+La propriété est démontrée.
+
+</details>

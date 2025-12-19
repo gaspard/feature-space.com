@@ -1,0 +1,97 @@
+{
+  "info": {
+    "id": "8530635b",
+    "title": "Chapitre 8 Coloration et graphes bipartis - fiches de révision (A)",
+    "type": "cards",
+    "level": "regular",
+    "chapter": "Chapitre 8 Coloration et graphes bipartis",
+    "course": "Graphes et Combinatoire",
+    "tags": [
+      "Graphes",
+      "Coloration",
+      "Nombre chromatique",
+      "Algorithme glouton",
+      "Graphes bipartis"
+    ],
+    "count": 11
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "8530635b",
+      "content": "Qu'est-ce qu'une **coloration** valide d'un graphe ?",
+      "solution": "\n\nUne **coloration** d'un graphe $G=(S, A)$ est une attribution de couleurs (souvent des entiers $\\{1, 2, \\dots, k\\}$) à chaque sommet du graphe, en respectant une règle stricte :\n\n**Deux sommets reliés par une arête (voisins) doivent toujours avoir des couleurs différentes.**\n\nFormellement, si $f$ est la fonction de coloration :\n\n$$ \\forall \\{u, v\\} \\in A, \\quad f(u) \\neq f(v) $$\n\nOn dit que le graphe est **$k$-coloriable** s'il est possible de le colorier avec au plus $k$ couleurs.\n\n**Tags :** définition, concept\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "8530635b",
+      "content": "Qu'est-ce que le **nombre chromatique** $\\chi(G)$ ?",
+      "solution": "\n\nLe **nombre chromatique** d'un graphe $G$, noté $\\chi(G)$ (prononcé \"khi de G\"), est le **plus petit entier $k$** nécessaire pour colorier validement le graphe.\n\nC'est une mesure de \"l'efficacité\" maximale de la coloration.\n\n**Exemples :**\n\n*   Si $\\chi(G) = 1$, le graphe n'a aucune arête.\n*   Si $\\chi(G) = 3$, on a besoin d'au moins 3 couleurs (impossible de le faire avec 2).\n\n**Tags :** définition, notation\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "8530635b",
+      "content": "Quelle est la valeur du nombre chromatique $\\chi(G)$ pour un **cycle** $C_n$ ?",
+      "solution": "\n\nLa valeur dépend de la **parité** du nombre de sommets $n$ (la longueur du cycle) :\n\n1.  **Si $n$ est pair :** $\\chi(C_n) = 2$\n    *   On peut simplement alterner les couleurs (ex: Bleu, Rouge, Bleu, Rouge...).\n2.  **Si $n$ est impair :** $\\chi(C_n) = 3$\n    *   En alternant, le dernier sommet aura la même couleur que le premier. Il faut donc introduire une 3ème couleur pour fermer le cycle.\n\n**Exemple :**\n\n*   Un carré ($C_4$) nécessite 2 couleurs.\n*   Un triangle ($C_3$) nécessite 3 couleurs.\n\n**Tags :** formule, exemple, cycles\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "8530635b",
+      "content": "Comment fonctionne l'**Algorithme glouton** pour colorier un graphe ?",
+      "solution": "\n\nC'est une méthode pas à pas pour colorier un graphe.\n\n**Étapes :**\n\n1.  On choisit un ordre pour parcourir les sommets : $v_1, v_2, \\dots, v_n$.\n2.  On dispose de couleurs numérotées $\\{1, 2, 3, \\dots\\}$.\n3.  Pour chaque sommet $v_i$, on regarde ses voisins **déjà coloriés**.\n4.  On attribue à $v_i$ la **plus petite couleur disponible** (celle qui n'est pas utilisée par ses voisins déjà traités).\n\n**Point clé :** Le résultat (nombre de couleurs utilisées) dépend fortement de l'ordre des sommets choisi au départ.\n\n**Tags :** méthode, algorithme\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "8530635b",
+      "content": "Quelle est la borne supérieure du nombre chromatique liée au **degré maximum** $\\Delta(G)$ ?",
+      "solution": "\n\nPour tout graphe $G$, le nombre chromatique est borné par :\n\n$$ \\chi(G) \\le \\Delta(G) + 1 $$\n\n**Où :**\n\n*   $\\Delta(G)$ est le degré maximum du graphe (le nombre maximum de voisins qu'un sommet possède).\n\n**Explication :**\n\nMême dans le pire des cas, lorsqu'on colorie un sommet, il a au plus $\\Delta(G)$ voisins. Si tous ces voisins ont des couleurs différentes, ils bloquent $\\Delta(G)$ couleurs. Il restera toujours la $(\\Delta(G)+1)$-ième couleur disponible.\n\n**Tags :** formule, théorème\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "8530635b",
+      "content": "Qu'est-ce qu'un **graphe biparti** ?",
+      "solution": "\n\nUn graphe est **biparti** si ses sommets peuvent être divisés en deux ensembles disjoints $X$ et $Y$ (deux classes) tels que :\n\n*   Toutes les arêtes relient un sommet de $X$ à un sommet de $Y$.\n*   Il n'y a aucune arête à l'intérieur de $X$ ni à l'intérieur de $Y$.\n\nEn termes de coloration, un graphe biparti est un graphe qui est **2-coloriable** ($\\chi(G) \\le 2$). On peut colorier tous les sommets de $X$ en couleur 1 et ceux de $Y$ en couleur 2.\n\n**Tags :** définition, concept\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "8530635b",
+      "content": "Quelle est la propriété fondamentale liant les **cycles** et les **graphes bipartis** ?",
+      "solution": "\n\nC'est un théorème de caractérisation très important :\n\n**Un graphe est biparti si et seulement s'il ne contient aucun cycle de longueur impaire.**\n\n*   Si un graphe contient un triangle ($C_3$), un pentagone ($C_5$), etc., il **n'est pas** biparti.\n*   Si tous les cycles du graphe sont de longueur paire (ou s'il n'a pas de cycle), alors il est biparti.\n\n**Tags :** théorème, propriété\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "8530635b",
+      "content": "Quel est le lien entre une **coloration** et les **ensembles stables** ?",
+      "solution": "\n\nUne coloration correspond à une partition des sommets en ensembles stables (ou *independent sets*).\n\n**Explication :**\n\nSi on regroupe tous les sommets qui ont la couleur \"Rouge\", aucun d'entre eux ne peut être relié à un autre (sinon ils auraient des couleurs différentes).\n\nDonc, l'ensemble des sommets \"Rouges\" forme un **stable**.\n\nSi un graphe est coloré avec $k$ couleurs, cela signifie que l'ensemble des sommets $S$ est découpé en $k$ ensembles stables disjoints.\n\n**Tags :** concept, définition\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "8530635b",
+      "content": "Quelle est la valeur du nombre chromatique $\\chi(G)$ pour une **clique** $K_n$ ?",
+      "solution": "\n\nPour un graphe complet (clique) à $n$ sommets $K_n$ :\n\n$$ \\chi(K_n) = n $$\n\n**Explication :**\n\nDans une clique, chaque sommet est relié à **tous** les autres. Par conséquent, chaque sommet doit obligatoirement avoir une couleur unique différente de tous les autres. Il faut donc $n$ couleurs distinctes.\n\n**Tags :** formule, exemple\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "8530635b",
+      "content": "Un **arbre** est-il toujours un graphe biparti ?",
+      "solution": "\n\n**Oui.**\n\n**Raisonnement :**\n\n1.  Un arbre est un graphe connexe sans cycle.\n2.  Comme il ne contient **aucun cycle**, il ne contient a fortiori **aucun cycle impair**.\n3.  D'après le théorème de caractérisation, l'absence de cycle impair garantit que le graphe est biparti.\n\nOn peut toujours colorier un arbre avec 2 couleurs (en alternant les couleurs à chaque niveau de profondeur depuis la racine).\n\n**Tags :** exemple, application\n\n",
+      "options": []
+    },
+    {
+      "id": "11",
+      "stackId": "8530635b",
+      "content": "L'algorithme glouton donne-t-il toujours le **nombre chromatique minimal** ?",
+      "solution": "\n\n**Non**, pas toujours.\n\nL'algorithme glouton est une **heuristique**. Le nombre de couleurs qu'il utilise dépend de l'ordre des sommets :\n\n*   Avec un **bon ordre**, il peut trouver $\\chi(G)$.\n*   Avec un **mauvais ordre**, il peut utiliser beaucoup plus de couleurs que nécessaire (mais jamais plus de $\\Delta(G)+1$).\n\nC'est pour cela que calculer $\\chi(G)$ de manière exacte est un problème algorithmique difficile (NP-complet).\n\n**Tags :** concept, piège\n\n",
+      "options": []
+    }
+  ]
+}

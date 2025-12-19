@@ -14,13 +14,13 @@
       "Stirling",
       "Factorielle"
     ],
-    "count": 1
+    "count": 11
   },
   "cards": [
     {
       "id": "1",
       "stackId": "79a14632",
-      "content": "#### Question 1 : Le nombre d'applications\n\nSoient deux ensembles finis $E$ et $F$. On pose $|E| = k$ et $|F| = n$.\n\nQuelle est la formule donnant le nombre total d'applications de $E$ dans $F$, noté $|\\mathcal{F}(E, F)|$ ?\n",
+      "content": "#### Le nombre d'applications\n\nSoient deux ensembles finis $E$ et $F$. On pose $|E| = k$ et $|F| = n$.\n\nQuelle est la formule donnant le nombre total d'applications de $E$ dans $F$, noté $|\\mathcal{F}(E, F)|$ ?\n",
       "solution": "\n\n**Réponse : [C]**\n\nL'explication repose sur le principe multiplicatif.\n\n- **A.** Incorrect. C'est l'erreur classique d'inversion. Cette formule correspondrait au nombre d'applications de $F$ dans $E$.\n- **B.** Incorrect. Cela correspondrait au cardinal du produit cartésien $E \\times F$ (nombre de couples), pas au nombre d'applications.\n- **C.** Correct. Pour chaque élément de l'ensemble de départ $E$ (il y en a $k$), nous avons $n$ choix possibles pour son image dans $F$. Cela donne $n \\times n \\times \\dots \\times n$ ($k$ fois), soit $n^k$. On retient : $|\\text{Arrivée}|^{|\\text{Départ}|}$.\n- **D.** Incorrect. La factorielle compte les permutations (bijections d'un ensemble sur lui-même), pas les applications générales entre deux ensembles de tailles différentes.\n\n",
       "options": [
         {
@@ -41,6 +41,286 @@
         {
           "id": "4",
           "content": "**D)** $n!$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "stackId": "79a14632",
+      "content": "#### Question 2\n\nOn souhaite colorier 4 objets distincts en utilisant une palette de 3 couleurs (Rouge, Vert, Bleu). Chaque objet doit recevoir exactement une couleur. Combien de coloriages différents sont possibles ?\n",
+      "solution": "\n\n**Réponse : [A]**\n\nCeci est une application directe du comptage des applications.\n\n- **A.** Correct. L'ensemble de départ $E$ est l'ensemble des objets ($|E|=4$) et l'ensemble d'arrivée $F$ est l'ensemble des couleurs ($|F|=3$). Pour chaque objet, on choisit une couleur parmi 3. Le calcul est $|F|^{|E|} = 3^4 = 81$.\n- **B.** Incorrect. C'est l'inversion base/exposant. On ne choisit pas un objet pour chaque couleur, mais une couleur pour chaque objet.\n- **C.** Incorrect. Cela correspond au produit cartésien.\n- **D.** Incorrect. Cela correspondrait aux permutations de 3 objets.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $3^4 = 81$",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** $4^3 = 64$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $4 \\times 3 = 12$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $3! = 6$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "stackId": "79a14632",
+      "content": "#### Question 3\n\nQuel est le cardinal de l'ensemble des parties $\\mathcal{P}(E)$ d'un ensemble $E$ contenant 5 éléments ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nLe nombre de sous-ensembles est donné par la formule $2^{|E|}$.\n\n- **A.** Incorrect. C'est simplement le cardinal de $E$.\n- **B.** Incorrect. Cela correspond à $5^2$.\n- **C.** Correct. Le nombre de parties est $2^{|E|} = 2^5 = 32$. Chaque élément est soit présent, soit absent (2 choix) dans un sous-ensemble.\n- **D.** Incorrect. C'est $5!$ (factorielle), qui compterait les permutations.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $5$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $25$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $32$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $120$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "stackId": "79a14632",
+      "content": "#### Question 4\n\nQuelle notion mathématique permet de démontrer que $|\\mathcal{P}(E)| = 2^{|E|}$ en établissant une bijection avec l'ensemble des applications de $E$ dans $\\{0, 1\\}$ ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nLa démonstration classique repose sur le codage binaire des sous-ensembles.\n\n- **A.** Incorrect. Le principe des tiroirs concerne l'existence de collisions dans les applications, pas le dénombrement des parties.\n- **B.** Correct. La fonction caractéristique $\\mathbf{1}_A$ associe 1 si un élément appartient à la partie $A$ et 0 sinon. Il y a bijection entre les parties et les suites de 0 et 1 de longueur $|E|$.\n- **C.** Incorrect. Les nombres de Stirling comptent les partitions, pas les parties quelconques.\n- **D.** Incorrect. La formule de Stirling sert à approximer $n!$ pour $n$ grand.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Le principe des tiroirs",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** La fonction caractéristique",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Les nombres de Stirling",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** La formule de Stirling",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "stackId": "79a14632",
+      "content": "#### Question 5\n\nDe combien de façons peut-on ordonner les lettres du mot \"LION\" ? (Les 4 lettres sont distinctes).\n",
+      "solution": "\n\n**Réponse : [C]**\n\nIl s'agit de compter les permutations d'un ensemble de 4 éléments distincts.\n\n- **A.** Incorrect. C'est juste le nombre de lettres.\n- **B.** Incorrect. C'est $4^2$.\n- **C.** Correct. Le nombre de permutations est $n! = 4! = 4 \\times 3 \\times 2 \\times 1 = 24$.\n- **D.** Incorrect. C'est $4^4$ (nombre de mots de 4 lettres avec répétition autorisée).\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** 4",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** 16",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** 24",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** 256",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "stackId": "79a14632",
+      "content": "#### Question 6\n\nOn souhaite former un code secret de 3 chiffres choisis parmi l'ensemble $\\{1, 2, 3, 4, 5\\}$. Les chiffres doivent être **distincts** (pas de répétition, l'ordre compte). Quel calcul doit-on effectuer ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nC'est un problème de dénombrement d'injections (ou arrangements).\n\n- **A.** Incorrect. $5^3$ autoriserait les répétitions (ex: 1-1-2).\n- **B.** Incorrect. $\\binom{5}{3}$ correspondrait aux combinaisons, où l'ordre du code ne compterait pas (ex: 1-2-3 serait le même code que 3-2-1).\n- **C.** Correct. C'est le nombre d'arrangements de 3 éléments parmi 5, noté $A_5^3$. La formule est $\\frac{5!}{2!} = 5 \\times 4 \\times 3 = 60$.\n- **D.** Incorrect. Formule sans signification directe ici.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $5^3$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\binom{5}{3}$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $\\frac{5!}{(5-3)!}$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $3! \\times 5$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "stackId": "79a14632",
+      "content": "#### Question 7\n\nSoit $E$ un ensemble de cardinal $k$ et $F$ un ensemble de cardinal $n$.\n\nSi $k > n$ (plus d'éléments au départ qu'à l'arrivée), quel est le nombre d'injections de $E$ dans $F$ ?\n",
+      "solution": "\n\n**Réponse : [A]**\n\nCette question teste la compréhension du principe des tiroirs appliqué aux injections.\n\n- **A.** Correct. Une injection nécessite que chaque élément de $E$ ait une image distincte dans $F$. Si $|E| > |F|$, il n'y a pas assez de places dans $F$ pour tout le monde. Par le principe des tiroirs, au moins deux éléments auraient la même image, donc l'application ne peut pas être injective.\n- **B.** Incorrect. C'est le nombre de bijections si $k=n$.\n- **C.** Incorrect. C'est le nombre total d'applications (injectives ou non).\n- **D.** Incorrect. C'est la formule des arrangements si on inversait les rôles, mais ici c'est mathématiquement impossible.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** 0",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** $n!$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $n^k$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $k! / (k-n)!$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "stackId": "79a14632",
+      "content": "#### Question 8\n\nQue comptent les nombres de Stirling de seconde espèce, notés $S(n, k)$ ou $\\left\\{ {n \\atop k} \\right\\}$ ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\n- **A.** Incorrect. Cela correspond aux coefficients binomiaux $\\binom{n}{k}$.\n- **B.** Correct. C'est la définition exacte. Par exemple, partitionner $\\{a, b, c\\}$ en 2 groupes donne $S(3,2)$ possibilités. L'ordre des groupes ne compte pas.\n- **C.** Incorrect. Cela correspond aux arrangements $A_n^k$.\n- **D.** Incorrect. Cela concerne les dérangements ou permutations partielles, pas Stirling.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Le nombre de sous-ensembles de taille $k$ dans un ensemble de taille $n$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Le nombre de partitions d'un ensemble de taille $n$ en $k$ sous-ensembles non vides.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Le nombre d'injections d'un ensemble de taille $k$ vers un ensemble de taille $n$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Le nombre de permutations de $n$ éléments avec $k$ points fixes.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "stackId": "79a14632",
+      "content": "#### Question 9\n\nCalculez le nombre de façons de partitionner l'ensemble $E = \\{a, b, c\\}$ en 2 sous-ensembles non vides (c'est-à-dire la valeur de $S(3, 2)$).\n",
+      "solution": "\n\n**Réponse : [C]**\n\nOn peut lister les partitions ou utiliser la récurrence.\n\n- **A.** Incorrect. C'est la valeur de $S(3, 1)$ (tout le monde ensemble).\n- **B.** Incorrect.\n- **C.** Correct. Les partitions possibles sont : $\\{ \\{a,b\\}, \\{c\\} \\}$, $\\{ \\{a,c\\}, \\{b\\} \\}$, $\\{ \\{b,c\\}, \\{a\\} \\}$. Il y en a 3. Formule : $S(3,2) = S(2,1) + 2 S(2,2) = 1 + 2(1) = 3$.\n- **D.** Incorrect. Ce serait le nombre de surjections vers 2 éléments discernables ($2! \\times S(3,2)$).\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** 1",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** 2",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** 3",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** 6",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "stackId": "79a14632",
+      "content": "#### Question 10\n\nQuelle est la formule donnant le nombre de **surjections** d'un ensemble $E$ (de cardinal $n$) vers un ensemble $F$ (de cardinal $k$) ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nLa relation entre partitions et surjections est fondamentale.\n\n- **A.** Incorrect. $S(n, k)$ compte les partitions où les groupes ne sont pas ordonnés (indiscernables). Dans une surjection vers $F$, les éléments de l'arrivée sont distincts.\n- **B.** Correct. Pour construire une surjection, on partitionne d'abord $E$ en $k$ groupes ($S(n, k)$ façons), puis on attribue chaque groupe à un élément distinct de $F$. Comme il y a $k$ groupes et $k$ éléments d'arrivée, il y a $k!$ façons de faire cette attribution.\n- **C.** Incorrect. On multiplie par la factorielle de l'ensemble d'arrivée ($k$), pas de départ ($n$).\n- **D.** Incorrect. C'est la formule des injections (arrangements).\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $S(n, k)$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $k! \\times S(n, k)$",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $n! \\times S(n, k)$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $\\frac{n!}{(n-k)!}$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "stackId": "79a14632",
+      "content": "#### Question 11\n\nOn dispose de 3 employés ($E$) et on doit réaliser 2 projets différents ($F$). On veut répartir les employés sur les projets de sorte que chaque projet ait au moins un employé assigné. Combien y a-t-il de répartitions possibles ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nC'est un problème de surjections de $E$ ($n=3$) vers $F$ ($k=2$).\n\n- **A.** Incorrect. C'est le nombre total d'applications. Cela inclut les cas où un projet n'a aucun employé.\n- **B.** Correct. On cherche le nombre de surjections. Formule : $k! S(n, k) = 2! S(3, 2) = 2 \\times 3 = 6$.\n\n  Alternativement : Total des applications ($2^3 = 8$) moins les applications non surjectives (tous sur le projet A ou tous sur le projet B, soit 2 cas). $8 - 2 = 6$.\n\n- **C.** Incorrect. C'est $S(3, 2)$, qui ne tient pas compte du fait que les projets sont différents (Project A vs Projet B).\n- **D.** Incorrect.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $2^3 = 8$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** 6",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** 3",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** 2",
           "correct": false
         }
       ]

@@ -13,13 +13,13 @@
       "Récurrence",
       "Binôme de Newton"
     ],
-    "count": 1
+    "count": 10
   },
   "cards": [
     {
       "id": "1",
       "stackId": "da60443d",
-      "content": "#### Question 1 : Nature des Séries Formelles\n\nQuelle est la différence fondamentale entre une série formelle $\\sum a_n X^n$ et une série entière étudiée en analyse ?\n",
+      "content": "#### Nature des Séries Formelles\n\nQuelle est la différence fondamentale entre une série formelle $\\sum a_n X^n$ et une série entière étudiée en analyse ?\n",
       "solution": "\n\n**Réponses : B, D**\n\nExplication détaillée :\n\n- **A.** Incorrect. C'est la définition d'un *polynôme*. Une série formelle peut avoir une infinité de coefficients (ex: $\\sum X^n$).\n- **B.** Correct. C'est la définition même du concept. $X$ est un \"marque-page\" pour les coefficients, pas un nombre.\n- **C.** Incorrect. La convergence est une notion d'analyse. En algèbre des séries formelles, on ne remplace pas $X$ par une valeur.\n- **D.** Correct. Un polynôme est une série formelle particulière où tous les coefficients sont nuls à partir d'un certain rang.\n\n",
       "options": [
         {
@@ -41,6 +41,258 @@
           "id": "4",
           "content": "**D)** L'ensemble des séries formelles contient l'ensemble des polynômes.",
           "correct": true
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "stackId": "da60443d",
+      "content": "#### Produit de Cauchy\n\nSoient deux séries $A(X) = \\sum a_n X^n$ et $B(X) = \\sum b_n X^n$. Quel est le coefficient $c_n$ devant $X^n$ dans leur produit $A(X)B(X)$ ?\n",
+      "solution": "\n\n**Réponses : C**\n\nExplication détaillée :\n\n- **A.** Incorrect. Cela correspondrait au produit d'Hadamard (terme à terme), pas au produit usuel des séries.\n- **B.** Incorrect. C'est la formule pour l'addition des séries.\n- **C.** Correct. C'est la définition du **produit de Cauchy** (ou convolution). Pour obtenir $X^n$, on multiplie $a_k X^k$ par $b_{n-k} X^{n-k}$ pour toutes les combinaisons où la somme des exposants fait $n$.\n- **D.** Incorrect. Cette formule ne correspond pas à la structure du produit de convolution.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $c_n = a_n \\cdot b_n$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $c_n = a_n + b_n$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $c_n = \\sum_{k=0}^n a_k b_{n-k}$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $c_n = \\sum_{k=0}^{\\infty} a_k b_n$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "stackId": "da60443d",
+      "content": "#### Inversibilité\n\nÀ quelle condition une série formelle $A(X) = \\sum_{n \\ge 0} a_n X^n$ admet-elle un inverse multiplicatif $A(X)^{-1}$ ?\n",
+      "solution": "\n\n**Réponses : C**\n\nExplication détaillée :\n\n- **A.** Incorrect. Par exemple, $1-X$ est inversible même si des coefficients sont nuls ou non (ici $a_n=0$ pour $n>1$).\n- **B.** Incorrect. L'inverse d'un polynôme (ex: $1-X$) est souvent une série infinie ($\\sum X^n$), donc on ne reste pas dans les polynômes, mais la série de départ peut en être un. Ce n'est pas la condition d'existence.\n- **C.** Correct. C'est le théorème fondamental d'inversibilité. Si $a_0 b_0 = 1$, alors $a_0$ doit être inversible.\n- **D.** Incorrect. Au contraire, si $a_0 = 0$ (comme pour la série $X$), la série n'est **jamais** inversible multiplicativement.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Si et seulement si tous les coefficients $a_n$ sont non nuls.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Si et seulement si $A(X)$ est un polynôme.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Si et seulement si son terme constant $a_0$ est inversible (non nul dans un corps).",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Si et seulement si $a_0 = 0$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "stackId": "da60443d",
+      "content": "#### Série Géométrique et Inverse\n\nQuelle est l'expression en série formelle de l'inverse $\\frac{1}{1+X}$ ?\n",
+      "solution": "\n\n**Réponses : B, D**\n\nExplication détaillée :\n\n- **A.** Incorrect. Ceci est le développement de $\\frac{1}{1-X}$.\n- **B.** Correct. En remplaçant $X$ par $-X$ dans la série géométrique, on obtient $\\sum (-X)^n = \\sum (-1)^n X^n$.\n- **C.** Incorrect. $(1-X)(1+X) = 1 - X^2 \\neq 1$.\n- **D.** Correct. C'est l'écriture développée de la réponse B.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $1 + X + X^2 + X^3 + \\cdots$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\sum_{n \\ge 0} (-1)^n X^n$",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $1 - X$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $1 - X + X^2 - X^3 + \\cdots$",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "stackId": "da60443d",
+      "content": "#### Composition de séries\n\nSoient $A(X)$ et $B(X) = \\sum b_n X^n$ deux séries formelles. Quelle condition est indispensable pour que la composée $A(B(X))$ soit bien définie ?\n",
+      "solution": "\n\n**Réponses : B**\n\nExplication détaillée :\n\n- **A.** Incorrect. $B(X)$ peut être une série infinie tant que $b_0=0$.\n- **B.** Correct. Si $b_0 \\neq 0$, le calcul du terme constant de la composée impliquerait une somme infinie ($a_0 + a_1 b_0 + a_2 b_0^2 + \\dots$), ce qui n'est pas défini en algèbre formelle.\n- **C.** Incorrect. L'inversibilité n'a pas de lien direct avec la possibilité de composer.\n- **D.** Incorrect. Le signe des coefficients n'a aucune importance algébrique ici.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $B(X)$ doit être un polynôme.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Le terme constant de $B$ doit être nul ($b_0 = 0$).",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $A(X)$ et $B(X)$ doivent être inversibles.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Les coefficients de $A$ doivent être positifs.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "stackId": "da60443d",
+      "content": "#### Dérivation Formelle\n\nQuelle est la dérivée formelle de la série $A(X) = \\sum_{n \\ge 0} X^n = 1 + X + X^2 + X^3 + \\cdots$ ?\n",
+      "solution": "\n\n**Réponses : C, D**\n\nExplication détaillée :\n\n- **A.** Incorrect. C'est la fonction exponentielle qui est sa propre dérivée, pas la série géométrique.\n- **B.** Incorrect. Ceci correspond à l'opération inverse (primitive/intégration).\n- **C.** Correct. C'est l'application directe de la définition de la dérivée : le terme $X^n$ devient $n X^{n-1}$.\n- **D.** Correct. C'est l'écriture développée de la réponse C ($1 \\cdot X^0 + 2 \\cdot X^1 + 3 \\cdot X^2 \\dots$).\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\sum_{n \\ge 0} X^n$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\sum_{n \\ge 0} \\frac{X^{n+1}}{n+1}$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $\\sum_{n \\ge 1} n X^{n-1}$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $1 + 2X + 3X^2 + \\cdots$",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "stackId": "da60443d",
+      "content": "#### Coefficients binomiaux généralisés\n\nCombien vaut le coefficient binomial généralisé $\\binom{-1}{n}$ pour un entier $n \\ge 0$ ?\n",
+      "solution": "\n\n**Réponses : D**\n\nExplication détaillée :\n\n- **A.** Incorrect. Ce serait vrai pour $\\binom{n}{0}$ ou si l'exposant était différent.\n- **B.** Incorrect.\n- **C.** Incorrect. Le signe dépend de la parité de $n$.\n- **D.** Correct. Par définition : $\\binom{-1}{n} = \\frac{(-1)(-2)\\cdots(-n)}{n!} = \\frac{(-1)^n n!}{n!} = (-1)^n$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $1$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $n$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $-1$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $(-1)^n$",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "stackId": "da60443d",
+      "content": "#### Théorème du Binôme Négatif\n\nQuel est le développement en série de $\\frac{1}{(1-X)^2} = (1-X)^{-2}$ ?\n",
+      "solution": "\n\n**Réponses : A**\n\nExplication détaillée :\n\n- **A.** Correct. Selon le théorème du binôme généralisé avec $m=2$, le coefficient est $\\binom{n+2-1}{n} = \\binom{n+1}{n} = n+1$.\n- **B.** Incorrect. Ceci serait le développement de $\\frac{1}{1-X^2}$.\n- **C.** Incorrect. Ceci est la série de l'exponentielle.\n- **D.** Incorrect. Ceci est le développement de $\\frac{1}{1-2X}$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\sum_{n \\ge 0} (n+1) X^n$",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\sum_{n \\ge 0} X^{2n}$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $\\sum_{n \\ge 0} \\frac{1}{n!} X^n$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $1 + 2X + 4X^2 + 8X^3 + \\cdots$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "stackId": "da60443d",
+      "content": "#### Résolution de Récurrences (Méthode)\n\nSi une suite $(a_n)$ vérifie la récurrence $a_n = 3a_{n-1}$ pour $n \\ge 1$ avec $a_0 = 1$, quelle équation vérifie sa série génératrice $A(X)$ ?\n",
+      "solution": "\n\n**Réponses : B**\n\nExplication détaillée :\n\n- **A.** Incorrect. Il manque le décalage de l'indice dû à $n-1$ (qui introduit un facteur $X$) et la condition initiale.\n- **B.** Correct. On multiplie la récurrence par $X^n$ et on somme pour $n \\ge 1$.\n\n  Gauche : $\\sum_{n \\ge 1} a_n X^n = A(X) - a_0 = A(X) - 1$.\n\n  Droite : $\\sum_{n \\ge 1} 3 a_{n-1} X^n = 3X \\sum_{n \\ge 1} a_{n-1} X^{n-1} = 3X A(X)$.\n\n- **C.** Incorrect. Oubli de la condition initiale $a_0$. Cette équation impliquerait $A(X)(1-3X)=0$, donc $A(X)=0$.\n- **D.** Incorrect. Mauvais placement des coefficients.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $A(X) = 3 A(X)$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $A(X) - 1 = 3X A(X)$",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $A(X) = 3X A(X)$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $A(X) - 3 = X A(X)$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "stackId": "da60443d",
+      "content": "#### Fraction Rationnelle et Suite\n\nQuelle est la suite $(a_n)$ dont la série génératrice est $A(X) = \\frac{2}{1-5X}$ ?\n",
+      "solution": "\n\n**Réponses : C**\n\nExplication détaillée :\n\n- **A.** Incorrect. L'addition dans la formule de la suite correspondrait à une addition de fractions rationnelles.\n- **B.** Incorrect. Cela correspondrait à la série $\\frac{1}{1-10X}$.\n- **C.** Correct. On reconnait une série géométrique modifiée : $\\frac{2}{1-5X} = 2 \\sum (5X)^n = \\sum 2 \\cdot 5^n X^n$. Donc $a_n = 2 \\cdot 5^n$.\n- **D.** Incorrect. Rien à voir avec les coefficients binomiaux ici.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $a_n = 2 + 5^n$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $a_n = (2 \\cdot 5)^n$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $a_n = 2 \\cdot 5^n$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $a_n = \\binom{n}{5}$",
+          "correct": false
         }
       ]
     }

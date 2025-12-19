@@ -1,0 +1,91 @@
+{
+  "info": {
+    "id": "411b2a0f",
+    "title": "Chapitre 9 Couplages - preuves (A)",
+    "type": "proofs",
+    "level": "regular",
+    "chapter": "Chapitre 9 Couplages",
+    "course": "Graphes et Combinatoire",
+    "tags": [
+      "Couplages",
+      "Théorème de Berge",
+      "Théorème de Hall",
+      "Graphes bipartis",
+      "Algorithme de Gale et Shapley",
+      "Couplages stables"
+    ],
+    "count": 10
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "411b2a0f",
+      "content": "#### Relation entre cardinalité et sommets saturés\n\nProuvez que pour tout couplage $M$ d'un graphe $G=(S, A)$, le nombre de sommets saturés par $M$ est exactement $2|M|$.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nRappelez-vous de la définition d'un couplage et de la nature d'une arête. Chaque arête relie combien de sommets ? Les arêtes d'un couplage peuvent-elles partager des sommets ?\n\n</details>",
+      "solution": "\n\nSoit $M = \\{e_1, e_2, \\dots, e_k\\}$ un couplage de taille $k = |M|$.\n\n**Étape 1 : Définition des arêtes**\n\nPar définition, chaque arête $e_i \\in M$ possède exactement deux extrémités (deux sommets).\n\n**Étape 2 : Propriété d'indépendance**\n\nLa définition d'un couplage impose que deux arêtes distinctes de $M$ n'ont jamais d'extrémité en commun. Cela signifie que les ensembles de sommets incidents à chaque arête $e_i$ sont disjoints deux à deux.\n\n**Étape 3 : Somme des sommets**\n\nLe nombre total de sommets saturés est la somme des extrémités de chaque arête du couplage.\n\nPuisque les ensembles d'extrémités sont disjoints :\n\n$$ \\text{Nombre de sommets saturés} = \\sum_{e \\in M} 2 = 2 \\times |M| $$\n\n**Conclusion :**\n\nLe nombre de sommets saturés est toujours égal à deux fois la cardinalité du couplage.\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "411b2a0f",
+      "content": "#### Parité des graphes admettant un couplage parfait\n\nProuvez que si un graphe $G=(S, A)$ admet un couplage parfait, alors l'ordre du graphe $|S|$ est nécessairement pair.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nUtilisez la propriété prouvée précédemment reliant le nombre de sommets saturés à la taille du couplage, et la définition de \"parfait\".\n\n</details>",
+      "solution": "\n\nSoit $M$ un couplage parfait dans $G$.\n\n**Étape 1 : Définition de la saturation totale**\n\nUn couplage est dit parfait si l'ensemble de tous les sommets $S$ est saturé. Autrement dit, l'ensemble des sommets saturés par $M$ est exactement $S$.\n\n**Étape 2 : Utilisation de la relation de cardinalité**\n\nD'après la propriété fondamentale des couplages, le nombre de sommets saturés par un couplage $M$ est $2|M|$.\n\n**Étape 3 : Conclusion**\n\nPuisque $S$ est l'ensemble des sommets saturés :\n\n$$ |S| = 2|M| $$\n\nComme $|M|$ est un entier, $|S|$ est un multiple de 2.\n\n**Conclusion :**\n\nUn graphe possédant un couplage parfait a nécessairement un nombre pair de sommets.\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "411b2a0f",
+      "content": "#### Maximum implique Maximal\n\nProuvez que tout couplage maximum $M$ dans un graphe $G$ est nécessairement un couplage maximal.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nRaisonnez par l'absurde. Supposez que $M$ est maximum (cardinalité la plus grande possible) mais n'est pas maximal (on peut ajouter une arête). Que cela implique-t-il sur la taille du nouveau couplage ?\n\n</details>",
+      "solution": "\n\nSoit $M$ un couplage maximum de $G$. Supposons par l'absurde que $M$ ne soit pas maximal.\n\n**Étape 1 : Définition de la non-maximalité**\n\nSi $M$ n'est pas maximal (au sens de l'inclusion), cela signifie qu'il existe une arête $e \\in A \\setminus M$ telle que $M' = M \\cup \\{e\\}$ est encore un couplage valide.\n\n**Étape 2 : Comparaison des cardinalités**\n\nSi $M' = M \\cup \\{e\\}$ avec $e \\notin M$, alors :\n\n$$ |M'| = |M| + 1 $$\n\nDonc $|M'| > |M|$.\n\n**Étape 3 : Contradiction**\n\nNous avons trouvé un couplage $M'$ de taille strictement supérieure à $M$. Or, $M$ est supposé être un couplage *maximum* (c'est-à-dire qu'il n'existe aucun couplage de taille supérieure). C'est une contradiction.\n\n**Conclusion :**\n\nL'hypothèse que $M$ n'est pas maximal est fausse. Tout couplage maximum est donc maximal.\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "411b2a0f",
+      "content": "#### Maximal n'implique pas Maximum (Contre-exemple)\n\nProuvez que la propriété \"Tout couplage maximal est un couplage maximum\" est fausse.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nIl suffit de trouver un contre-exemple. Cherchez un petit graphe (comme un chemin $P_4$) et trouvez un couplage qu'on ne peut plus agrandir (maximal) mais qui est plus petit qu'un autre couplage possible (non maximum).\n\n</details>",
+      "solution": "\n\nPour prouver qu'une implication universelle est fausse, il suffit d'exhiber un contre-exemple.\n\n**Étape 1 : Construction du graphe**\n\nConsidérons le graphe chemin $P_4$ avec les sommets $S=\\{1, 2, 3, 4\\}$ et les arêtes $A=\\{\\{1,2\\}, \\{2,3\\}, \\{3,4\\}\\}$.\n\n**Étape 2 : Choix d'un couplage maximal**\n\nSoit $M_1 = \\{\\{2,3\\}\\}$.\n\n- Les sommets 2 et 3 sont saturés.\n- L'arête $\\{1,2\\}$ ne peut être ajoutée car 2 est déjà saturé.\n- L'arête $\\{3,4\\}$ ne peut être ajoutée car 3 est déjà saturé.\n- Donc $M_1$ est **maximal** (on ne peut rien ajouter). Sa taille est 1.\n\n**Étape 3 : Existence d'un couplage plus grand**\n\nConsidérons $M_2 = \\{\\{1,2\\}, \\{3,4\\}\\}$.\n\n- C'est un couplage valide.\n- Sa taille est 2.\n\n**Conclusion :**\n\n$M_1$ est un couplage maximal, mais il n'est pas maximum car $|M_1| < |M_2|$. La proposition est donc fausse.\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "411b2a0f",
+      "content": "#### Chaîne augmentante et amélioration du couplage (Lemme de Berge - Partie 1)\n\nSoit $G$ un graphe et $M$ un couplage. Prouvez que s'il existe une chaîne augmentante $P$ par rapport à $M$, alors $M$ n'est pas un couplage maximum.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nUtilisez la différence symétrique ou simplement l'opération d'échange le long de la chaîne. Montrez qu'en inversant les arêtes de la chaîne (celles dans $M$ deviennent hors de $M$, et inversement), on obtient un nouveau couplage valide avec une arête de plus.\n\n</details>",
+      "solution": "\n\nSoit $P = (x_0, x_1, \\dots, x_{2k+1})$ une chaîne augmentante par rapport à $M$.\n\n**Étape 1 : Propriétés de la chaîne augmentante**\n\nPar définition :\n\n1. Les extrémités $x_0$ et $x_{2k+1}$ sont insaturées (libres).\n2. La chaîne est alternée : les arêtes de rang impair $\\{x_0, x_1\\}, \\{x_2, x_3\\}, \\dots$ ne sont pas dans $M$, et les arêtes de rang pair $\\{x_1, x_2\\}, \\{x_3, x_4\\}, \\dots$ sont dans $M$.\n3. La longueur de la chaîne est impaire. Elle contient $k$ arêtes de $M$ et $k+1$ arêtes hors de $M$.\n\n**Étape 2 : Construction du nouveau couplage $M'$**\n\nConsidérons l'ensemble $M'$ obtenu en prenant la différence symétrique $M \\Delta P$ (les arêtes de la chaîne qui étaient dans $M$ en sortent, celles qui n'y étaient pas y entrent).\n\n$$ M' = (M \\setminus P) \\cup (P \\setminus M) $$\n\n**Étape 3 : Vérification de la validité**\n\n- Les sommets internes de la chaîne ($x_1, \\dots, x_{2k}$) gardent leur degré (1) dans le couplage (on remplace une arête incidente par l'autre).\n- Les extrémités $x_0$ et $x_{2k+1}$, initialement de degré 0 dans $M$ (insaturés), deviennent de degré 1 dans $M'$ (saturés par la première et la dernière arête de la chaîne).\n- Les sommets hors de la chaîne ne sont pas affectés.\n\nDonc $M'$ est bien un couplage.\n\n**Étape 4 : Cardinalité**\n\n$M$ contenait $k$ arêtes de la chaîne. $M'$ en contient $k+1$.\n\n$$ |M'| = |M| - k + (k+1) = |M| + 1 $$\n\n**Conclusion :**\n\nNous avons construit un couplage $M'$ strictement plus grand que $M$. Donc $M$ n'était pas maximum.\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "411b2a0f",
+      "content": "#### Condition nécessaire du Théorème de Hall\n\nSoit $G=(X \\cup Y, A)$ un graphe biparti. Prouvez que s'il existe un couplage saturant $X$, alors la condition de Hall $\\forall U \\subseteq X, |N(U)| \\ge |U|$ est vérifiée.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nConsidérez un sous-ensemble $U$ de $X$. Si chaque élément de $U$ est marié à un élément distinct de $Y$ (ce qui est le cas s'il y a un couplage saturant $X$), comparez la taille de l'ensemble $U$ et celle de l'ensemble de leurs partenaires.\n\n</details>",
+      "solution": "\n\nSupposons qu'il existe un couplage $M$ qui sature $X$. Soit $U \\subseteq X$ un sous-ensemble quelconque de sommets.\n\n**Étape 1 : Définition de l'application injective**\n\nPuisque $M$ sature $X$, chaque sommet $x \\in U$ est l'extrémité d'une arête $\\{x, y\\} \\in M$.\n\nDéfinissons l'ensemble $M(U) = \\{ y \\in Y \\mid \\exists x \\in U, \\{x, y\\} \\in M \\}$. C'est l'ensemble des partenaires des sommets de $U$ dans le couplage.\n\n**Étape 2 : Propriété d'un couplage**\n\nDans un couplage, deux sommets distincts de $X$ ne peuvent pas être reliés au même sommet de $Y$. L'association définie par $M$ est donc une bijection entre $U$ et $M(U)$.\n\nPar conséquent, $|M(U)| = |U|$.\n\n**Étape 3 : Relation d'inclusion**\n\nPar définition, si $y$ est un partenaire d'un $x \\in U$, alors $y$ est un voisin de $x$.\n\nDonc, l'ensemble des partenaires $M(U)$ est un sous-ensemble de l'ensemble des voisins $N(U)$.\n\n$$ M(U) \\subseteq N(U) $$\n\n**Étape 4 : Conclusion sur les cardinalités**\n\nPuisque $M(U) \\subseteq N(U)$, on a $|M(U)| \\le |N(U)|$.\n\nEn combinant avec l'étape 2 ($|M(U)| = |U|$), on obtient :\n\n$$ |U| \\le |N(U)| $$\n\n**Conclusion :**\n\nLa condition de Hall est une condition nécessaire pour l'existence d'un couplage saturant $X$.\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "411b2a0f",
+      "content": "#### Couplage parfait dans les graphes bipartis réguliers\n\nProuvez que tout graphe biparti $k$-régulier ($k \\ge 1$) vérifie la condition de Hall (et admet donc un couplage parfait).\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nComptez le nombre d'arêtes sortant d'un sous-ensemble $U \\subseteq X$. Ces arêtes arrivent nécessairement dans $N(U)$. Utilisez la régularité (chaque sommet a degré $k$) pour établir une inégalité entre $|U|$ et $|N(U)|$.\n\n</details>",
+      "solution": "\n\nSoit $G=(X \\cup Y, A)$ un graphe biparti $k$-régulier avec $k \\ge 1$.\n\n**Étape 1 : Comptage des arêtes incidentes à $U$**\n\nSoit $U \\subseteq X$. Calculons le nombre d'arêtes $m$ ayant une extrémité dans $U$.\n\nPuisque chaque sommet a un degré $k$ :\n\n$$ m = k \\times |U| $$\n\n**Étape 2 : Destination des arêtes**\n\nPar définition du voisinage $N(U)$, toutes ces $m$ arêtes ont leur autre extrémité dans $N(U) \\subseteq Y$.\n\n**Étape 3 : Majoration par les sommets de $N(U)$**\n\nLe nombre maximal d'arêtes pouvant arriver dans $N(U)$ est la somme des degrés des sommets de $N(U)$.\n\nPuisque le graphe est $k$-régulier, chaque sommet de $N(U)$ a un degré $k$.\n\nLe nombre d'arêtes incidentes à $N(U)$ est donc $k \\times |N(U)|$.\n\nLes $m$ arêtes partant de $U$ étant un sous-ensemble des arêtes incidentes à $N(U)$, on a :\n\n$$ m \\le k \\times |N(U)| $$\n\n**Étape 4 : Combinaison**\n\nOn remplace $m$ par sa valeur :\n\n$$ k \\times |U| \\le k \\times |N(U)| $$\n\nPuisque $k \\ge 1$, on peut diviser par $k$ :\n\n$$ |U| \\le |N(U)| $$\n\n**Conclusion :**\n\nLa condition de Hall est vérifiée pour tout $U \\subseteq X$. D'après le théorème de Hall, le graphe admet un couplage saturant $X$. Comme le graphe est régulier, $|X|=|Y|$, donc ce couplage est parfait.\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "411b2a0f",
+      "content": "#### Existence d'un couplage stable (Terminaison de Gale-Shapley)\n\nProuvez que l'algorithme de Gale-Shapley (propositions différées) se termine toujours en un nombre fini d'étapes.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nObservez l'évolution des propositions. Un élément de $X$ peut-il proposer deux fois à la même personne ? Combien de propositions possibles existe-t-il au total ?\n\n</details>",
+      "solution": "\n\nConsidérons l'algorithme où les hommes ($X$) proposent aux femmes ($Y$).\n\n**Étape 1 : Monotonie des propositions**\n\nChaque homme $x \\in X$ propose aux femmes dans l'ordre décroissant de sa liste de préférences.\n\nIl ne propose à une femme suivante que s'il a été rejeté par la précédente.\n\nIl ne propose jamais deux fois à la même femme.\n\n**Étape 2 : Finitude de l'espace de recherche**\n\nSoit $n$ la taille des ensembles $X$ et $Y$. Chaque homme a une liste de préférences de longueur $n$.\n\nLe nombre total de propositions possibles que l'ensemble des hommes peut faire est donc borné par $n \\times n = n^2$.\n\n**Étape 3 : Progression**\n\nÀ chaque étape de l'algorithme (si celui-ci ne s'est pas arrêté), au moins une nouvelle proposition est faite. Le nombre total de propositions faites augmente donc strictement.\n\n**Conclusion :**\n\nPuisque le nombre total de propositions ne peut dépasser $n^2$, l'algorithme doit nécessairement s'arrêter après un nombre fini d'étapes.\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "411b2a0f",
+      "content": "#### Validité de Gale-Shapley (Couplage Parfait)\n\nProuvez qu'à la fin de l'algorithme de Gale-Shapley, le couplage obtenu est parfait (tous les participants sont mariés).\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nRaisonnez par l'absurde. Si un homme $x$ est célibataire à la fin, cela signifie qu'il a été rejeté par toutes les femmes. Que peut-on dire de l'état des femmes dans ce cas ? Rappelez-vous qu'une femme qui reçoit une proposition reste \"fiancée\" jusqu'à trouver mieux, mais ne redevient jamais seule.\n\n</details>",
+      "solution": "\n\nSupposons que l'algorithme se termine et qu'il existe un homme $x \\in X$ qui n'est pas couplé (libre).\n\n**Étape 1 : Analyse de l'homme libre**\n\nSi $x$ est libre à la fin, cela signifie qu'il a proposé à toutes les femmes de sa liste (tous les $y \\in Y$) et qu'il a été rejeté par chacune d'elles.\n\n**Étape 2 : Analyse des femmes**\n\nUne femme ne rejette une proposition que si :\n\n1. Elle en tient déjà une meilleure (fiancée).\n2. Elle reçoit une meilleure proposition (elle change de fiancé mais reste fiancée).\n\nUne fois qu'une femme reçoit une première proposition, elle reste fiancée (à quelqu'un) jusqu'à la fin. Elle ne redevient jamais libre.\n\n**Étape 3 : Contradiction (Principe des tiroirs)**\n\nPour que $x$ ait été rejeté par toutes les femmes, il faut que toutes les femmes soient fiancées à d'autres hommes à la fin de l'algorithme.\n\nIl y a $n$ femmes et elles sont toutes fiancées. Cela requiert $n$ hommes distincts.\n\nOr, si $x$ est libre, il n'y a que $n-1$ hommes fiancés au maximum.\n\nIl est impossible que $n$ femmes soient fiancées avec seulement $n-1$ hommes disponibles.\n\n**Conclusion :**\n\nL'hypothèse est fausse. Tous les hommes (et donc toutes les femmes) sont couplés. Le couplage est parfait.\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "411b2a0f",
+      "content": "#### Stabilité du couplage de Gale-Shapley\n\nProuvez que le couplage $M$ produit par l'algorithme de Gale-Shapley (où $X$ propose) est stable.\n\n<details class=\"hint\">\n\n<summary>Indice</summary>\n\nSupposons qu'il existe une paire instable $(x, y) \\notin M$. Cela signifie que $x$ préfère $y$ à sa femme actuelle, et $y$ préfère $x$ à son mari actuel. Analysez pourquoi $x$ n'est pas avec $y$ : il a dû lui proposer avant... Pourquoi a-t-il été rejeté ?\n\n</details>",
+      "solution": "\n\nSoit $M$ le couplage final. Raisonnons par l'absurde en supposant qu'il existe une paire instable $(x, y) \\notin M$.\n\nSoient $(x, y_{current}) \\in M$ et $(x_{current}, y) \\in M$ les couples formés par l'algorithme.\n\n**Hypothèse d'instabilité :**\n\n1. $x$ préfère $y$ à $y_{current}$.\n2. $y$ préfère $x$ à $x_{current}$.\n\n**Étape 1 : Historique des propositions de $x$**\n\nPuisque $x$ propose aux femmes dans l'ordre décroissant de ses préférences et qu'il a fini avec $y_{current}$, il a nécessairement proposé à $y$ **avant** de proposer à $y_{current}$ (car il préfère $y$).\n\n**Étape 2 : Réaction de $y$**\n\nSi $x$ a proposé à $y$ et qu'ils ne sont pas mariés ensemble à la fin, c'est que $y$ a rejeté $x$ (soit immédiatement, soit plus tard).\n\nUne femme ne rejette $x$ que si elle a une proposition d'un homme $z$ qu'elle préfère à $x$.\n\n**Étape 3 : Évolution des fiançailles de $y$**\n\nLes femmes améliorent (ou gardent) la qualité de leur partenaire au fil de l'algorithme. Si $y$ a rejeté $x$ pour un certain $z$, alors son partenaire final $x_{current}$ est soit $z$, soit quelqu'un qu'elle préfère encore plus que $z$.\n\nPar transitivité, $y$ préfère $x_{current}$ à $x$.\n\n**Étape 4 : Contradiction**\n\nL'étape 3 contredit la deuxième condition de l'hypothèse d'instabilité ($y$ préfère $x$ à $x_{current}$).\n\n**Conclusion :**\n\nIl ne peut pas exister de paire instable. Le couplage $M$ est stable.\n\n",
+      "options": []
+    }
+  ]
+}

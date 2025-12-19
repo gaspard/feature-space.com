@@ -1,0 +1,101 @@
+{
+  "info": {
+    "id": "c4fe2fc0",
+    "title": "Chapitre 7 - Chaînes, parcours, cycles et tours - fiches de révision (A)",
+    "type": "cards",
+    "level": "regular",
+    "chapter": "Chapitre 7 - Chaînes, parcours, cycles et tours",
+    "course": "Graphes et Combinatoire",
+    "tags": [
+      "Graphes",
+      "Chaînes",
+      "Parcours",
+      "Connexité",
+      "Distance",
+      "Dijkstra",
+      "Eulérien",
+      "Hamiltonien",
+      "Arbres"
+    ],
+    "count": 11
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "c4fe2fc0",
+      "content": "Quelle est la différence entre un **parcours** et une **chaîne** dans un graphe ?",
+      "solution": "\n\nDans un graphe $G=(S,A)$, la différence réside dans l'unicité des sommets visités :\n\n1.  **Un parcours** est une suite de sommets $(s_0, s_1, \\dots, s_k)$ reliés par des arêtes. On a le droit de repasser plusieurs fois par le même sommet ou la même arête.\n2.  **Une chaîne** est un parcours particulier où tous les **sommets sont distincts** deux à deux.\n\n**Note :** Une chaîne est toujours un parcours, mais un parcours n'est pas forcément une chaîne.\n\n**Exemple :**\n\nDans un triangle $1-2-3-1$ :\n\n- $(1, 2, 3)$ est une **chaîne** (sommets distincts).\n- $(1, 2, 3, 1, 2)$ est un **parcours** (répétition de 1 et 2), mais pas une chaîne.\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "c4fe2fc0",
+      "content": "Qu'est-ce qu'un **cycle** dans un graphe et quelle est sa différence avec un **tour** ?",
+      "solution": "\n\nCe sont des déplacements fermés (le point de départ est le point d'arrivée, $s_0 = s_k$).\n\n-   **Un tour** : Un parcours fermé où toutes les **arêtes** empruntées sont distinctes (mais on peut repasser par un sommet).\n-   **Un cycle** : Un tour particulier où tous les **sommets** intermédiaires sont distincts. Seul le sommet de départ/fin est répété.\n\n**En résumé :**\n\n-   Cycle : Sommets distincts (ordre $k \\geq 3$).\n-   Tour : Arêtes distinctes.\n\n**Hiérarchie :** Tout cycle est un tour, mais tout tour n'est pas un cycle.\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "c4fe2fc0",
+      "content": "Comment définir la **connexité** d'un graphe ?",
+      "solution": "\n\nUn graphe est dit **connexe** si, pour n'importe quelle paire de sommets $\\{x, y\\}$, il existe une **chaîne** (ou un parcours) reliant $x$ à $y$.\n\nSi le graphe n'est pas connexe, il est formé de plusieurs sous-ensembles disjoints appelés **composantes connexes**.\n\n**Propriété visuelle :** Un graphe est connexe s'il est \"d'un seul tenant\".\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "c4fe2fc0",
+      "content": "Quelle est la relation entre la **Matrice d'Adjacence** et le nombre de parcours ?",
+      "solution": "\n\nSi $A_G$ est la matrice d'adjacence d'un graphe, alors le coefficient $(A_G^k)_{ij}$ de la matrice élevée à la puissance $k$ donne une information précise sur les parcours.\n\n**Formule :**\n\n$(A_G^k)_{ij} = \\text{nombre de parcours de longueur } k \\text{ reliant le sommet } i \\text{ au sommet } j$\n\n**Utilisation :**\n\nPour savoir s'il existe un chemin de longueur 3 entre le sommet 1 et le sommet 4, on calcule $A_G^3$ et on regarde la valeur à la ligne 1, colonne 4.\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "c4fe2fc0",
+      "content": "Quelle est la condition nécessaire et suffisante pour qu'un graphe soit **Eulérien** ?",
+      "solution": "\n\nD'après le **Théorème d'Euler (7.11)**, un graphe connexe est eulérien (possède un tour fermé passant par toutes les arêtes une seule fois) si et seulement si :\n\n**Tous ses sommets sont de degré pair.**\n\n**Moyen mnémotechnique :** Pour ne pas rester coincé dans un sommet ou ne pas laisser d'arête non parcourue en y entrant, il faut pouvoir en ressortir. Chaque passage consomme 2 arêtes (entrée + sortie), donc le degré doit être pair.\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "c4fe2fc0",
+      "content": "Quelle est la définition de la **distance** $d_G(s, t)$ entre deux sommets ?",
+      "solution": "\n\nLa distance $d_G(s, t)$ est la longueur de la **chaîne la plus courte** (nombre d'arêtes minimal) reliant le sommet $s$ au sommet $t$.\n\n**Cas particuliers :**\n\n-   Si $s = t$, alors $d_G(s, t) = 0$.\n-   Si $s$ et $t$ ne sont pas reliés (pas dans la même composante connexe), alors $d_G(s, t) = \\infty$.\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "c4fe2fc0",
+      "content": "Qu'est-ce qu'un **graphe Hamiltonien** ?",
+      "solution": "\n\nUn graphe est **Hamiltonien** s'il contient un **cycle hamiltonien**, c'est-à-dire un cycle qui passe par **chaque sommet** du graphe exactement une fois.\n\n**Différence avec Eulérien :**\n\n-   Eulérien : On veut parcourir toutes les **arêtes**.\n-   Hamiltonien : On veut parcourir tous les **sommets**.\n\n**Note :** Savoir si un graphe est hamiltonien est un problème algorithmique difficile (pas de condition simple \"si et seulement si\" comme pour les degrés pairs).\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "c4fe2fc0",
+      "content": "Qu'est-ce qu'un **arbre** en théorie des graphes ?",
+      "solution": "\n\nUn arbre est un graphe qui vérifie deux propriétés fondamentales simultanément :\n\n1.  Il est **connexe** (d'un seul tenant).\n2.  Il est **acyclique** (ne contient aucun cycle).\n\n**Vocabulaire :** Une collection d'arbres disjoints (un graphe acyclique mais non connexe) est appelée une **forêt**.\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "c4fe2fc0",
+      "content": "Quelles sont les propriétés équivalentes définissant un **arbre** d'ordre $n$ ?",
+      "solution": "\n\nPour un graphe $G$ à $n$ sommets, les propriétés suivantes sont équivalentes (Théorème 7.19) :\n\n1.  $G$ est connexe et sans cycle.\n2.  Il existe une **chaîne unique** entre toute paire de sommets.\n3.  $G$ est connexe et possède exactement **$n-1$ arêtes**.\n4.  $G$ est sans cycle et possède exactement **$n-1$ arêtes**.\n\n**Formule clé :** Nombre d'arêtes $m = n - 1$.\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "c4fe2fc0",
+      "content": "À quoi sert l'**Algorithme de Dijkstra** ?",
+      "solution": "\n\nL'algorithme de Dijkstra sert à trouver le **plus court chemin** entre un sommet de départ et tous les autres sommets dans un **graphe valué** (où les arêtes ont des poids).\n\n**Condition d'utilisation :**\n\nLes poids des arêtes doivent être **positifs**.\n\n**Principe :**\n\nIl explore le graphe de proche en proche (\"glouton\") en validant définitivement le sommet le plus proche non encore visité à chaque étape.\n\n",
+      "options": []
+    },
+    {
+      "id": "11",
+      "stackId": "c4fe2fc0",
+      "content": "Quand un graphe est-il **semi-eulérien** ?",
+      "solution": "\n\nUn graphe est semi-eulérien s'il existe un **parcours** (ouvert, départ $\\neq$ arrivée) qui passe par toutes les arêtes exactement une fois.\n\n**Condition :**\n\nLe graphe doit être connexe et posséder exactement **2 sommets de degré impair**.\n\n**Explication :**\n\nLe parcours doit obligatoirement commencer sur l'un des sommets de degré impair et se terminer sur l'autre.\n\n",
+      "options": []
+    }
+  ]
+}

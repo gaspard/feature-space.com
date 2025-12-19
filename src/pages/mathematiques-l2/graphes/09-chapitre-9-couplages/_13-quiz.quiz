@@ -1,0 +1,332 @@
+---
+id: a626279d
+type: quiz
+order: 13
+title: Chapitre 9 Couplages - quiz (A)
+tags:
+  - Couplages
+  - Théorème de Berge
+  - Théorème de Hall
+  - Graphes bipartis
+  - Algorithme de Gale et Shapley
+  - Couplages stables
+createdAt: '2025-12-19T13:18:01.776Z'
+level: regular
+course: Graphes et Combinatoire
+courseId: 7027276b
+chapter: Chapitre 9 Couplages
+chapterId: c89a6b95
+---
+# Quiz: Chapitre 9 Couplages
+
+---
+
+#### Définition d'un couplage
+
+Soit un graphe $G=(S, A)$. Qu'est-ce qui caractérise un sous-ensemble d'arêtes $M \subseteq A$ pour qu'il soit considéré comme un **couplage** ?
+
+- [ ] **A)** Toutes les arêtes de $M$ doivent former un cycle.
+- [x] **B)** Deux arêtes distinctes de $M$ n'ont jamais d'extrémité en commun.
+- [ ] **C)** L'ensemble $M$ doit toucher tous les sommets du graphe.
+- [ ] **D)** Les arêtes de $M$ doivent toutes être connectées entre elles (former une chaîne).
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B]**
+
+Explication détaillée :
+
+- **A.** Faux. Un couplage n'a pas besoin de former de cycle.
+- **B.** Vrai. C'est la définition fondamentale. Chaque sommet du graphe ne peut toucher qu'au plus une arête du couplage (indépendance des arêtes).
+- **C.** Faux. C'est la définition d'un couplage *parfait*, pas d'un couplage en général.
+- **D.** Faux. Au contraire, les arêtes d'un couplage sont disjointes et ne se touchent pas.
+
+</details>
+
+---
+
+#### Sommets saturés et parité
+
+Si un couplage $M$ contient exactement 5 arêtes ($|M|=5$), combien de sommets sont **saturés** par ce couplage ?
+
+- [ ] **A)** 5 sommets.
+- [x] **B)** 10 sommets.
+- [ ] **C)** Cela dépend de la taille totale du graphe.
+- [ ] **D)** 0 sommet (ils sont insaturés).
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B]**
+
+Explication détaillée :
+
+- **A.** Faux. Une arête relie 2 sommets.
+- **B.** Vrai. Chaque arête du couplage a deux extrémités. Donc, si $|M|=5$, le nombre de sommets touchés (saturés) est $2 \times 5 = 10$.
+- **C.** Faux. Le nombre de sommets saturés dépend uniquement de la taille du couplage, pas de la taille du graphe (les autres sommets sont simplement insaturés).
+- **D.** Faux. Les sommets touchés par le couplage sont dits saturés.
+
+</details>
+
+---
+
+#### Couplage Parfait
+
+Quelle est une condition nécessaire (obligatoire) pour qu'un graphe admette un **couplage parfait** ?
+
+- [ ] **A)** Le graphe doit être biparti.
+- [x] **B)** Le nombre de sommets du graphe doit être pair.
+- [ ] **C)** Le graphe doit être un cycle.
+- [ ] **D)** Le nombre d'arêtes doit être égal au nombre de sommets.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B]**
+
+Explication détaillée :
+
+- **A.** Faux. Des graphes non bipartis peuvent avoir un couplage parfait (ex: $K_4$).
+- **B.** Vrai. Un couplage parfait groupe tous les sommets par paires. Si le nombre de sommets est impair (ex: 3), il restera toujours au moins un sommet tout seul.
+- **C.** Faux. Ce n'est pas une condition nécessaire.
+- **D.** Faux. Cela n'a pas de lien direct obligatoire.
+
+</details>
+
+---
+
+#### Maximal vs Maximum
+
+Considérons le graphe chemin $P_4$ avec les arêtes $1-2$, $2-3$, $3-4$. On choisit le couplage $M = \{\{2,3\}\}$. Quelle affirmation est correcte ?
+
+- [ ] **A)** $M$ est un couplage maximum.
+- [x] **B)** $M$ est un couplage maximal mais non maximum.
+- [ ] **C)** $M$ n'est pas un couplage maximal car on peut ajouter l'arête $\{1,2\}$.
+- [ ] **D)** $M$ est un couplage parfait.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B]**
+
+Explication détaillée :
+
+- **A.** Faux. Un couplage de taille 2 existe ($\{\{1,2\}, \{3,4\}\}$), donc une taille de 1 n'est pas le maximum global.
+- **B.** Vrai. C'est maximal car on ne peut ajouter aucune arête sans briser la règle (si on ajoute $\{1,2\}$, le sommet 2 est utilisé deux fois. Idem pour $\{3,4\}$). Ce n'est pas maximum car il existe un couplage plus grand.
+- **C.** Faux. On ne peut pas ajouter $\{1,2\}$ car le sommet 2 est déjà saturé par $\{2,3\}$.
+- **D.** Faux. Les sommets 1 et 4 ne sont pas saturés.
+
+</details>
+
+---
+
+#### Distinction théorique Maximal/Maximum
+
+Quelle est la relation logique correcte entre couplage maximal et couplage maximum ?
+
+- [ ] **A)** Tout couplage maximal est nécessairement maximum.
+- [x] **B)** Tout couplage maximum est nécessairement maximal.
+- [ ] **C)** Un couplage ne peut pas être à la fois maximal et maximum.
+- [ ] **D)** Il n'y a aucun lien entre ces deux concepts.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B]**
+
+Explication détaillée :
+
+- **A.** Faux. Voir l'exemple précédent (Question 4). On peut être bloqué (maximal) sans avoir la plus grande taille possible.
+- **B.** Vrai. Si un couplage a la taille la plus grande possible (maximum), on ne peut sûrement plus lui ajouter d'arêtes (sinon il serait encore plus grand), donc il est maximal.
+- **C.** Faux. Le couplage maximum est un cas particulier de couplage maximal.
+- **D.** Faux. L'implication existe dans un sens.
+
+</details>
+
+---
+
+#### Chaîne augmentante (Théorème de Berge)
+
+Selon le concept de chaîne augmentante, qu'est-ce qui caractérise une telle chaîne par rapport à un couplage $M$ ?
+
+- [ ] **A)** C'est une chaîne dont toutes les arêtes appartiennent à $M$.
+- [ ] **B)** C'est une chaîne alternée qui commence par un sommet saturé et finit par un sommet saturé.
+- [x] **C)** C'est une chaîne alternée qui relie deux sommets insaturés distincts.
+- [ ] **D)** C'est une chaîne qui forme un cycle avec des arêtes de $M$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [C]**
+
+Explication détaillée :
+
+- **A.** Faux. Une chaîne augmentante doit alterner (dans $M$, hors $M$, etc.).
+- **B.** Faux. Si elle finit sur des sommets saturés, on ne peut pas améliorer le couplage.
+- **C.** Vrai. Si on part d'un sommet libre, qu'on alterne, et qu'on arrive à un autre sommet libre, on peut "inverser" les arêtes pour gagner une arête de plus dans le couplage.
+- **D.** Faux. Une chaîne augmentante est un chemin simple, pas un cycle.
+
+</details>
+
+---
+
+#### Application du Théorème de Berge
+
+Si l'on trouve une **chaîne augmentante** dans un graphe pour un couplage $M$ donné, que peut-on conclure ?
+
+- [x] **A)** Le couplage $M$ n'est pas maximum et on peut l'agrandir.
+- [ ] **B)** Le couplage $M$ est déjà maximum (Théorème de Berge).
+- [ ] **C)** Le graphe ne possède pas de couplage parfait.
+- [ ] **D)** Le couplage $M$ n'est plus valide.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A]**
+
+Explication détaillée :
+
+- **A.** Vrai. Le théorème de Berge stipule qu'un couplage est maximum *si et seulement s'il n'existe pas* de chaîne augmentante. Si on en trouve une, on peut augmenter la taille de $M$.
+- **B.** Faux. C'est l'inverse : l'absence de chaîne augmentante prouve qu'il est maximum.
+- **C.** Faux. Cela indique juste que le couplage actuel peut être amélioré.
+- **D.** Faux. Le couplage actuel est valide, mais pas optimal.
+
+</details>
+
+---
+
+#### Théorème de Hall (Condition)
+
+Soit $G=(X \cup Y, A)$ un graphe biparti. Quelle est la condition de Hall pour qu'il existe un couplage saturant $X$ ?
+
+- [ ] **A)** Le nombre de sommets dans $X$ doit être égal au nombre de sommets dans $Y$.
+- [x] **B)** Pour tout sous-ensemble $U \subseteq X$, son voisinage $N(U)$ doit vérifier $|N(U)| \ge |U|$.
+- [ ] **C)** Pour tout sous-ensemble $U \subseteq X$, son voisinage $N(U)$ doit vérifier $|N(U)| \le |U|$.
+- [ ] **D)** Le graphe doit être complet ($K_{n,n}$).
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B]**
+
+Explication détaillée :
+
+- **A.** Faux. C'est une condition pour un couplage *parfait*, mais pour saturer $X$, $Y$ peut être plus grand.
+- **B.** Vrai. C'est la condition des mariages : tout groupe de $k$ personnes doit connaître au moins $k$ personnes en face pour que chacun puisse être couplé.
+- **C.** Faux. L'inégalité est dans l'autre sens.
+- **D.** Faux. Ce n'est pas nécessaire, c'est juste un cas particulier qui marche.
+
+</details>
+
+---
+
+#### Application de Hall (Goulot d'étranglement)
+
+Dans un graphe biparti représentant des candidats ($X$) et des postes ($Y$), 3 candidats ($U=\{c_1, c_2, c_3\}$) ne sont qualifiés que pour 2 postes ($N(U)=\{p_1, p_2\}$). Que peut-on dire ?
+
+- [ ] **A)** Il est possible d'attribuer un poste à chaque candidat.
+- [ ] **B)** C'est un couplage stable.
+- [x] **C)** Il est impossible de satisfaire tous les candidats (Condition de Hall violée).
+- [ ] **D)** On doit utiliser l'algorithme de Gale-Shapley.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [C]**
+
+Explication détaillée :
+
+- **A.** Faux. Principe des tiroirs : on ne peut pas mettre 3 objets dans 2 cases sans chevauchement.
+- **B.** Faux. Rien à voir avec la stabilité des préférences ici, c'est un problème de faisabilité.
+- **C.** Vrai. Ici $|U|=3$ et $|N(U)|=2$. Comme $2 < 3$, la condition de Hall n'est pas respectée. Le couplage saturant $X$ est impossible.
+- **D.** Faux. Gale-Shapley sert pour les préférences, pas pour vérifier l'existence basique liée à la structure du graphe.
+
+</details>
+
+---
+
+#### Graphes Bipartis Réguliers
+
+Un corollaire important du théorème de Hall concerne les graphes bipartis $k$-réguliers (où chaque sommet a le même degré $k > 0$). Quelle propriété possèdent-ils toujours ?
+
+- [x] **A)** Ils admettent toujours un couplage parfait.
+- [ ] **B)** Ils n'admettent jamais de couplage parfait si $k$ est impair.
+- [ ] **C)** Ils admettent un couplage maximal mais jamais maximum.
+- [ ] **D)** Ils ne respectent pas la condition de Hall.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A]**
+
+Explication détaillée :
+
+- **A.** Vrai. C'est un résultat classique : la régularité assure que la condition de Hall est toujours vérifiée, donc un couplage parfait existe.
+- **B.** Faux. La parité de $k$ n'importe pas (tant que $k>0$).
+- **C.** Faux. S'il est parfait, il est maximum.
+- **D.** Faux. Ils la respectent toujours.
+
+</details>
+
+---
+
+#### Couplage Stable (Définition)
+
+Dans le problème des mariages stables, qu'est-ce qu'une **paire instable** (ou bloquante) pour un couplage $M$ ?
+
+- [ ] **A)** Une paire $(x, y) \in M$ qui veut divorcer.
+- [ ] **B)** Une paire $(x, y)$ où $x$ n'a pas de partenaire dans $M$.
+- [x] **C)** Une paire $(x, y) \notin M$ telle que $x$ préfère $y$ à son partenaire actuel, ET $y$ préfère $x$ à son partenaire actuel.
+- [ ] **D)** Une paire $(x, y)$ telle que $x$ préfère $y$, mais $y$ préfère son partenaire actuel.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [C]**
+
+Explication détaillée :
+
+- **A.** Faux. L'instabilité vient d'une paire *extérieure* au couplage qui voudrait se former.
+- **B.** Faux. Dans le problème standard $K_{n,n}$, tout le monde est couplé (couplage parfait).
+- **C.** Vrai. C'est la définition. Ils ont tous les deux intérêt à quitter leur partenaire actuel pour se mettre ensemble.
+- **D.** Faux. Pour qu'il y ait instabilité, l'intérêt doit être réciproque. Si $y$ est heureux, il ne quittera pas son partenaire pour $x$.
+
+</details>
+
+---
+
+#### Algorithme de Gale-Shapley
+
+L'algorithme de Gale-Shapley (propositions différées) garantit de trouver un couplage stable. Si le groupe $X$ fait les propositions (proposants), quelle propriété d'optimalité observe-t-on ?
+
+- [ ] **A)** Le couplage est optimal pour $Y$ (ceux qui reçoivent).
+- [x] **B)** Le couplage est optimal pour $X$ (les proposants).
+- [ ] **C)** Le couplage maximise le bonheur moyen de tout le monde.
+- [ ] **D)** Le couplage est unique, peu importe qui propose.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B]**
+
+Explication détaillée :
+
+- **A.** Faux. Au contraire, c'est la solution "pessimale" pour ceux qui reçoivent (ils ont le moins bon partenaire parmi tous les couplages stables possibles).
+- **B.** Vrai. Les proposants obtiennent le meilleur partenaire possible qu'ils peuvent avoir dans *n'importe quel* couplage stable.
+- **C.** Faux. Il favorise un côté au détriment de l'autre.
+- **D.** Faux. Si on inverse les rôles (Y propose), on peut obtenir un couplage stable différent.
+
+</details>

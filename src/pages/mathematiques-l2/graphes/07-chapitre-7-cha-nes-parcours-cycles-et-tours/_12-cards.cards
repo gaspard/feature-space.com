@@ -1,0 +1,233 @@
+---
+id: c4fe2fc0
+type: cards
+order: 12
+title: 'Chapitre 7 - Chaînes, parcours, cycles et tours - fiches de révision (A)'
+tags:
+  - Graphes
+  - Chaînes
+  - Parcours
+  - Connexité
+  - Distance
+  - Dijkstra
+  - Eulérien
+  - Hamiltonien
+  - Arbres
+createdAt: '2025-12-19T13:05:28.995Z'
+level: regular
+course: Graphes et Combinatoire
+courseId: 7027276b
+chapter: 'Chapitre 7 - Chaînes, parcours, cycles et tours'
+chapterId: b866ccc5
+---
+# Fiches de révision "Chapitre 7 - Chaînes, parcours, cycles et tours" (A)
+
+---
+
+Quelle est la différence entre un **parcours** et une **chaîne** dans un graphe ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Dans un graphe $G=(S,A)$, la différence réside dans l'unicité des sommets visités :
+
+1.  **Un parcours** est une suite de sommets $(s_0, s_1, \dots, s_k)$ reliés par des arêtes. On a le droit de repasser plusieurs fois par le même sommet ou la même arête.
+2.  **Une chaîne** est un parcours particulier où tous les **sommets sont distincts** deux à deux.
+
+**Note :** Une chaîne est toujours un parcours, mais un parcours n'est pas forcément une chaîne.
+
+**Exemple :**
+
+Dans un triangle $1-2-3-1$ :
+
+- $(1, 2, 3)$ est une **chaîne** (sommets distincts).
+- $(1, 2, 3, 1, 2)$ est un **parcours** (répétition de 1 et 2), mais pas une chaîne.
+
+</details>
+
+---
+
+Qu'est-ce qu'un **cycle** dans un graphe et quelle est sa différence avec un **tour** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Ce sont des déplacements fermés (le point de départ est le point d'arrivée, $s_0 = s_k$).
+
+-   **Un tour** : Un parcours fermé où toutes les **arêtes** empruntées sont distinctes (mais on peut repasser par un sommet).
+-   **Un cycle** : Un tour particulier où tous les **sommets** intermédiaires sont distincts. Seul le sommet de départ/fin est répété.
+
+**En résumé :**
+
+-   Cycle : Sommets distincts (ordre $k \geq 3$).
+-   Tour : Arêtes distinctes.
+
+**Hiérarchie :** Tout cycle est un tour, mais tout tour n'est pas un cycle.
+
+</details>
+
+---
+
+Comment définir la **connexité** d'un graphe ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Un graphe est dit **connexe** si, pour n'importe quelle paire de sommets $\{x, y\}$, il existe une **chaîne** (ou un parcours) reliant $x$ à $y$.
+
+Si le graphe n'est pas connexe, il est formé de plusieurs sous-ensembles disjoints appelés **composantes connexes**.
+
+**Propriété visuelle :** Un graphe est connexe s'il est "d'un seul tenant".
+
+</details>
+
+---
+
+Quelle est la relation entre la **Matrice d'Adjacence** et le nombre de parcours ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Si $A_G$ est la matrice d'adjacence d'un graphe, alors le coefficient $(A_G^k)_{ij}$ de la matrice élevée à la puissance $k$ donne une information précise sur les parcours.
+
+**Formule :**
+
+$(A_G^k)_{ij} = \text{nombre de parcours de longueur } k \text{ reliant le sommet } i \text{ au sommet } j$
+
+**Utilisation :**
+
+Pour savoir s'il existe un chemin de longueur 3 entre le sommet 1 et le sommet 4, on calcule $A_G^3$ et on regarde la valeur à la ligne 1, colonne 4.
+
+</details>
+
+---
+
+Quelle est la condition nécessaire et suffisante pour qu'un graphe soit **Eulérien** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+D'après le **Théorème d'Euler (7.11)**, un graphe connexe est eulérien (possède un tour fermé passant par toutes les arêtes une seule fois) si et seulement si :
+
+**Tous ses sommets sont de degré pair.**
+
+**Moyen mnémotechnique :** Pour ne pas rester coincé dans un sommet ou ne pas laisser d'arête non parcourue en y entrant, il faut pouvoir en ressortir. Chaque passage consomme 2 arêtes (entrée + sortie), donc le degré doit être pair.
+
+</details>
+
+---
+
+Quelle est la définition de la **distance** $d_G(s, t)$ entre deux sommets ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La distance $d_G(s, t)$ est la longueur de la **chaîne la plus courte** (nombre d'arêtes minimal) reliant le sommet $s$ au sommet $t$.
+
+**Cas particuliers :**
+
+-   Si $s = t$, alors $d_G(s, t) = 0$.
+-   Si $s$ et $t$ ne sont pas reliés (pas dans la même composante connexe), alors $d_G(s, t) = \infty$.
+
+</details>
+
+---
+
+Qu'est-ce qu'un **graphe Hamiltonien** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Un graphe est **Hamiltonien** s'il contient un **cycle hamiltonien**, c'est-à-dire un cycle qui passe par **chaque sommet** du graphe exactement une fois.
+
+**Différence avec Eulérien :**
+
+-   Eulérien : On veut parcourir toutes les **arêtes**.
+-   Hamiltonien : On veut parcourir tous les **sommets**.
+
+**Note :** Savoir si un graphe est hamiltonien est un problème algorithmique difficile (pas de condition simple "si et seulement si" comme pour les degrés pairs).
+
+</details>
+
+---
+
+Qu'est-ce qu'un **arbre** en théorie des graphes ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Un arbre est un graphe qui vérifie deux propriétés fondamentales simultanément :
+
+1.  Il est **connexe** (d'un seul tenant).
+2.  Il est **acyclique** (ne contient aucun cycle).
+
+**Vocabulaire :** Une collection d'arbres disjoints (un graphe acyclique mais non connexe) est appelée une **forêt**.
+
+</details>
+
+---
+
+Quelles sont les propriétés équivalentes définissant un **arbre** d'ordre $n$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour un graphe $G$ à $n$ sommets, les propriétés suivantes sont équivalentes (Théorème 7.19) :
+
+1.  $G$ est connexe et sans cycle.
+2.  Il existe une **chaîne unique** entre toute paire de sommets.
+3.  $G$ est connexe et possède exactement **$n-1$ arêtes**.
+4.  $G$ est sans cycle et possède exactement **$n-1$ arêtes**.
+
+**Formule clé :** Nombre d'arêtes $m = n - 1$.
+
+</details>
+
+---
+
+À quoi sert l'**Algorithme de Dijkstra** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+L'algorithme de Dijkstra sert à trouver le **plus court chemin** entre un sommet de départ et tous les autres sommets dans un **graphe valué** (où les arêtes ont des poids).
+
+**Condition d'utilisation :**
+
+Les poids des arêtes doivent être **positifs**.
+
+**Principe :**
+
+Il explore le graphe de proche en proche ("glouton") en validant définitivement le sommet le plus proche non encore visité à chaque étape.
+
+</details>
+
+---
+
+Quand un graphe est-il **semi-eulérien** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Un graphe est semi-eulérien s'il existe un **parcours** (ouvert, départ $\neq$ arrivée) qui passe par toutes les arêtes exactement une fois.
+
+**Condition :**
+
+Le graphe doit être connexe et posséder exactement **2 sommets de degré impair**.
+
+**Explication :**
+
+Le parcours doit obligatoirement commencer sur l'un des sommets de degré impair et se terminer sur l'autre.
+
+</details>

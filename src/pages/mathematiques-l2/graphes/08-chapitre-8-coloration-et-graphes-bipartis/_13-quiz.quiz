@@ -1,0 +1,303 @@
+---
+id: 805598b7
+type: quiz
+order: 13
+title: Chapitre 8 Coloration et graphes bipartis - quiz (A)
+tags:
+  - Graphes
+  - Coloration
+  - Nombre chromatique
+  - Algorithme glouton
+  - Graphes bipartis
+createdAt: '2025-12-19T13:11:44.697Z'
+level: regular
+course: Graphes et Combinatoire
+courseId: 7027276b
+chapter: Chapitre 8 Coloration et graphes bipartis
+chapterId: dc0134f0
+---
+# Quiz: Chapitre 8 Coloration et graphes bipartis
+
+---
+
+#### Définition d'une coloration valide
+
+Quelle condition fondamentale une application $f: S \to \{1, \dots, k\}$ doit-elle respecter pour être considérée comme une **coloration valide** d'un graphe $G=(S, A)$ ?
+
+- [ ] **A)** Tous les sommets du graphe doivent avoir une couleur différente ($f(u) \neq f(v)$ pour tout couple $u, v$).
+- [ ] **B)** Deux sommets ayant la même couleur doivent obligatoirement être reliés par une arête.
+- [x] **C)** Deux sommets reliés par une arête doivent toujours avoir des couleurs différentes.
+- [ ] **D)** Le nombre de couleurs utilisées doit être égal au nombre de sommets.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+La définition formelle d'une coloration stipule que pour toute arête $\{u, v\} \in A$, on doit avoir $f(u) \neq f(v)$.
+
+- **A.** Ceci décrirait une coloration où chaque sommet est unique, nécessaire seulement pour un graphe complet ($K_n$), mais pas pour un graphe général.
+- **B.** C'est l'inverse de la propriété des ensembles stables. Dans une coloration valide, deux sommets de même couleur ne doivent *jamais* être reliés.
+- **C.** C'est la définition exacte : deux voisins ne peuvent pas partager la même couleur.
+- **D.** C'est une borne supérieure triviale, mais pas la définition d'une coloration valide (on cherche généralement à utiliser beaucoup moins de couleurs).
+
+</details>
+
+---
+
+#### Le nombre chromatique
+
+Que représente le **nombre chromatique** $\chi(G)$ d'un graphe $G$ ?
+
+- [ ] **A)** Le nombre maximum de couleurs qu'on peut utiliser pour colorier le graphe.
+- [x] **B)** Le plus petit entier $k$ pour lequel le graphe est $k$-coloriable.
+- [ ] **C)** Le nombre de sommets du graphe divisé par 2.
+- [ ] **D)** Le degré maximum $\Delta(G)$ du graphe.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Le nombre chromatique $\chi(G)$ est défini comme le nombre **minimum** de couleurs nécessaires pour colorier validement le graphe.
+
+- **A.** Il n'y a pas vraiment de maximum (on peut toujours utiliser $n$ couleurs), on s'intéresse au minimum.
+- **B.** C'est la définition correcte.
+- **C.** Cette formule n'a pas de sens général pour la coloration.
+- **D.** Le degré maximum est lié à la coloration (borne supérieure) mais n'est pas la définition du nombre chromatique.
+
+</details>
+
+---
+
+#### Coloration des cycles
+
+Quel est le nombre chromatique $\chi(C_5)$ d'un cycle de longueur 5 (un pentagone) ?
+
+- [ ] **A)** 2
+- [x] **B)** 3
+- [ ] **C)** 4
+- [ ] **D)** 5
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Pour les cycles $C_n$ :
+
+- Si $n$ est pair, il faut 2 couleurs.
+- Si $n$ est impair, il faut 3 couleurs.
+
+Ici, $n=5$ est impair. Si on essaie d'alterner les couleurs (1, 2, 1, 2...), le 5ème sommet sera voisin du 4ème (couleur 2) et du 1er (couleur 1). Il lui faut donc une 3ème couleur.
+
+</details>
+
+---
+
+#### Graphes complets
+
+Soit $K_6$ un graphe complet à 6 sommets (chaque sommet est relié à tous les autres). Quel est son nombre chromatique ?
+
+- [ ] **A)** 1
+- [ ] **B)** 3
+- [ ] **C)** 5
+- [x] **D)** 6
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+Dans un graphe complet $K_n$, chaque sommet est voisin de tous les autres. Par conséquent, aucun sommet ne peut partager la couleur d'un autre. Chaque sommet doit avoir sa propre couleur unique.
+
+Ainsi, pour $K_n$, $\chi(G) = n$. Ici, $\chi(K_6) = 6$.
+
+</details>
+
+---
+
+#### Bornes et Algorithme Glouton
+
+Si un graphe $G$ possède un degré maximum $\Delta(G) = 4$, que peut-on affirmer avec certitude concernant son nombre chromatique $\chi(G)$ grâce aux propriétés de l'algorithme glouton ?
+
+- [ ] **A)** $\chi(G)$ est exactement égal à 5.
+- [x] **B)** $\chi(G) \le 5$.
+- [ ] **C)** $\chi(G) \le 4$.
+- [ ] **D)** $\chi(G) \ge 4$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+L'algorithme glouton garantit de trouver une coloration utilisant au plus $\Delta(G) + 1$ couleurs.
+
+Donc, on a toujours la borne supérieure : $\chi(G) \le \Delta(G) + 1$.
+
+Avec $\Delta(G) = 4$, on a $\chi(G) \le 4 + 1 = 5$.
+
+- **A.** Faux, le nombre chromatique peut être bien inférieur (par exemple pour une étoile, $\chi=2$ même si $\Delta$ est grand).
+- **C.** Faux, on ne peut pas garantir $\le \Delta$. Exemple : $C_5$ a un degré max de 2, mais nécessite 3 couleurs ($3 > 2$).
+- **D.** Faux, $\chi(G)$ peut être petit.
+
+</details>
+
+---
+
+#### Propriétés de l'algorithme glouton
+
+Parmi les affirmations suivantes concernant l'algorithme de coloration glouton, lesquelles sont vraies ? (Cochez toutes les réponses correctes)
+
+- [x] **A)** Le nombre de couleurs obtenues dépend de l'ordre dans lequel on traite les sommets.
+- [ ] **B)** L'algorithme glouton donne toujours le nombre chromatique minimal $\chi(G)$.
+- [x] **C)** L'algorithme glouton fournit toujours une coloration valide (mais pas forcément optimale).
+- [ ] **D)** L'algorithme glouton nécessite toujours plus de couleurs que le degré maximum du graphe.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, C]**
+
+- **A.** Vrai. Un "mauvais" ordre peut augmenter le nombre de couleurs utilisées, alors qu'un ordre optimal existe.
+- **B.** Faux. C'est une heuristique. Il peut utiliser plus de couleurs que nécessaire si l'ordre des sommets n'est pas idéal (voir contre-exemples du cours).
+- **C.** Vrai. La construction assure que la couleur choisie pour un sommet n'est pas utilisée par ses voisins déjà traités. La coloration finale est donc valide.
+- **D.** Faux. Il utilise *au plus* $\Delta(G)+1$, mais souvent moins.
+
+</details>
+
+---
+
+#### Définition d'un graphe biparti
+
+Quelle est la définition exacte d'un **graphe biparti** en termes de coloration ?
+
+- [ ] **A)** C'est un graphe dont le nombre chromatique est exactement 1.
+- [x] **B)** C'est un graphe qui est 2-coloriable ($\chi(G) \le 2$).
+- [ ] **C)** C'est un graphe qui contient deux cycles disjoints.
+- [ ] **D)** C'est un graphe où chaque sommet a exactement deux voisins.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Un graphe biparti est un graphe dont l'ensemble des sommets peut être partitionné en deux ensembles stables $X$ et $Y$. Cela équivaut à dire qu'on peut colorier les sommets de $X$ en couleur 1 et ceux de $Y$ en couleur 2 sans conflit. Donc $\chi(G) \le 2$.
+
+- **A.** Un graphe avec $\chi(G)=1$ n'a aucune arête. Bien qu'il soit techniquement biparti, ce n'est pas la définition générale (la plupart des graphes bipartis ont des arêtes et nécessitent 2 couleurs).
+- **C.** Rien à voir avec la définition.
+- **D.** Ceci décrit un graphe 2-régulier (une union de cycles), ce qui n'est pas la définition de biparti.
+
+</details>
+
+---
+
+#### Caractérisation des graphes bipartis
+
+Quel type de sous-graphe est **interdit** dans un graphe biparti ?
+
+- [ ] **A)** Les cycles de longueur paire (exemple : $C_4$).
+- [x] **B)** Les cycles de longueur impaire (exemple : $C_3, C_5$).
+- [ ] **C)** Les arbres.
+- [ ] **D)** Les sommets de degré élevé.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+D'après le théorème fondamental (Théorème 8.5 mentionné dans les concepts) : **Un graphe est biparti si et seulement s'il ne contient aucun cycle de longueur impaire.**
+
+- **A.** Les cycles pairs sont autorisés (ex: $C_4$ est biparti).
+- **B.** Un cycle impair nécessite 3 couleurs, ce qui rend impossible la 2-coloration nécessaire pour être biparti.
+- **C.** Les arbres ne contiennent aucun cycle, ils sont donc toujours bipartis.
+- **D.** Le degré des sommets n'empêche pas un graphe d'être biparti (ex: graphe étoile).
+
+</details>
+
+---
+
+#### Reconnaissance de graphes
+
+Parmi les graphes suivants, lesquels sont bipartis ? (Plusieurs réponses possibles)
+
+- [x] **A)** Un arbre (graphe connexe sans cycle).
+- [ ] **B)** Un triangle ($K_3$).
+- [x] **C)** Un carré ($C_4$).
+- [ ] **D)** Le graphe complet $K_4$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, C]**
+
+- **A. Arbre :** Correct. Un arbre n'a pas de cycle, donc pas de cycle impair. Il est toujours 2-coloriable.
+- **B. Triangle ($K_3$) :** Incorrect. C'est un cycle de longueur 3 (impair). $\chi(K_3)=3$.
+- **C. Carré ($C_4$) :** Correct. C'est un cycle de longueur 4 (pair). On peut alterner les couleurs.
+- **D. $K_4$ :** Incorrect. C'est une clique de taille 4, chaque sommet est relié aux autres. $\chi(K_4)=4$.
+
+</details>
+
+---
+
+#### Partition en stables
+
+Si l'on dispose d'une coloration valide d'un graphe avec $k$ couleurs, que peut-on dire de l'ensemble des sommets ayant tous la couleur "1" ?
+
+- [x] **A)** Ils forment un ensemble stable (indépendant).
+- [ ] **B)** Ils forment une clique.
+- [ ] **C)** Ils forment un chemin connexe.
+- [ ] **D)** Ils sont tous voisins les uns des autres.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+Par définition de la coloration, deux sommets de la même couleur ne peuvent pas être reliés par une arête.
+
+Un ensemble de sommets sans aucune arête entre eux est appelé un **ensemble stable** (ou independent set).
+
+Une coloration est donc une partition des sommets en $k$ ensembles stables.
+
+</details>
+
+---
+
+#### Graphe Étoile
+
+Considérons un graphe étoile $K_{1, 10}$ composé d'un sommet central relié à 10 feuilles (les feuilles ne sont pas reliées entre elles). Quel est son nombre chromatique ?
+
+- [ ] **A)** 11
+- [ ] **B)** 10
+- [x] **C)** 2
+- [ ] **D)** 3
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Pour colorier une étoile :
+
+1. On assigne la couleur A au sommet central.
+2. Le sommet central est voisin de toutes les feuilles, donc les feuilles ne peuvent pas être A.
+3. Les feuilles ne sont pas voisines entre elles. On peut donc toutes leur assigner la couleur B.
+
+On utilise 2 couleurs (A et B). $\chi(K_{1, n}) = 2$ pour tout $n \ge 1$.
+
+- **A.** 11 correspondrait à la borne $\Delta+1$, mais on peut faire beaucoup mieux.
+- **B.** 10 correspond au degré max $\Delta$, mais ce n'est pas le nombre chromatique.
+
+</details>

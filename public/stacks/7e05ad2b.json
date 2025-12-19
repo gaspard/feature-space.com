@@ -20,7 +20,7 @@
     {
       "id": "1",
       "stackId": "7e05ad2b",
-      "content": "#### Question 1 : Définition du Coefficient Binomial\n\nQue représente exactement le coefficient binomial $\\binom{n}{k}$ pour un ensemble fini $E$ de cardinal $n$ ?\n",
+      "content": "#### Définition du Coefficient Binomial\n\nQue représente exactement le coefficient binomial $\\binom{n}{k}$ pour un ensemble fini $E$ de cardinal $n$ ?\n",
       "solution": "\n\n**Réponses : [A]**\n\nExplication détaillée :\n\n- **A.** C'est la définition exacte. $\\binom{n}{k}$ compte le nombre de parties (sous-ensembles) de taille $k$. L'ordre des éléments ne compte pas et il n'y a pas de répétition.\n- **B.** Ceci correspond aux **arrangements** ($A_n^k$), où l'ordre compte.\n- **C.** Ceci correspond aux combinaisons avec répétition (multi-ensembles).\n- **D.** Ceci correspond à la factorielle $n!$.\n\n",
       "options": [
         {
@@ -48,7 +48,7 @@
     {
       "id": "2",
       "stackId": "7e05ad2b",
-      "content": "#### Question 2 : Formule de la Factorielle\n\nQuelle est la formule correcte pour calculer $\\binom{n}{k}$ en utilisant les factorielles (pour $0 \\leq k \\leq n$) ?\n",
+      "content": "#### Formule de la Factorielle\n\nQuelle est la formule correcte pour calculer $\\binom{n}{k}$ en utilisant les factorielles (pour $0 \\leq k \\leq n$) ?\n",
       "solution": "\n\n**Réponses : [C]**\n\nExplication détaillée :\n\n- **A.** Cette formule est incomplète, il manque la division par $(n-k)!$.\n- **B.** Cette formule correspond au calcul des arrangements (où l'ordre compte).\n- **C.** C'est la formule correcte. Le terme $(n-k)!$ au dénominateur gère les éléments non choisis, et $k!$ \"oublie\" l'ordre des éléments choisis.\n- **D.** Cette formule donnerait un nombre beaucoup trop grand.\n\n",
       "options": [
         {
@@ -76,7 +76,7 @@
     {
       "id": "3",
       "stackId": "7e05ad2b",
-      "content": "#### Question 3 : Propriété de Symétrie\n\nLaquelle des égalités suivantes est toujours vraie et reflète la propriété de symétrie des coefficients binomiaux ?\n",
+      "content": "#### Propriété de Symétrie\n\nLaquelle des égalités suivantes est toujours vraie et reflète la propriété de symétrie des coefficients binomiaux ?\n",
       "solution": "\n\n**Réponses : [C]**\n\nExplication détaillée :\n\n- **A.** C'est généralement faux (sauf cas très particuliers ou erreurs d'indices).\n- **B.** C'est faux car $n$ est généralement plus grand que $k$. Si $k < n$, $\\binom{k}{n} = 0$.\n- **C.** C'est la symétrie fondamentale : choisir les $k$ éléments que l'on garde revient à choisir les $n-k$ éléments que l'on rejette.\n- **D.** C'est une simple soustraction, rien à voir avec le coefficient binomial.\n\n",
       "options": [
         {
@@ -104,7 +104,7 @@
     {
       "id": "4",
       "stackId": "7e05ad2b",
-      "content": "#### Question 4 : Identité de Pascal\n\nL'identité de Pascal permet de calculer les coefficients par récurrence (comme dans le Triangle de Pascal). Quelle est cette relation ?\n",
+      "content": "#### Identité de Pascal\n\nL'identité de Pascal permet de calculer les coefficients par récurrence (comme dans le Triangle de Pascal). Quelle est cette relation ?\n",
       "solution": "\n\n**Réponses : [A]**\n\nExplication détaillée :\n\n- **A.** C'est l'identité correcte. Un élément donné est soit choisi (on prend alors $k-1$ autres éléments parmi les $n-1$ restants), soit non choisi (on prend $k$ éléments parmi les $n-1$ restants).\n- **B.** L'identité de Pascal est additive, pas multiplicative.\n- **C.** Cette relation mélange les indices sur la même ligne $n$, ce n'est pas la construction du triangle.\n- **D.** Les indices ne correspondent pas à la récurrence standard (elle relierait $n$ à $n-1$ et $n+1$).\n\n",
       "options": [
         {
@@ -132,7 +132,7 @@
     {
       "id": "5",
       "stackId": "7e05ad2b",
-      "content": "#### Question 5 : Calcul Numérique\n\nCombien vaut $\\binom{5}{2}$ (choisir 2 éléments parmi 5) ?\n",
+      "content": "#### Calcul Numérique\n\nCombien vaut $\\binom{5}{2}$ (choisir 2 éléments parmi 5) ?\n",
       "solution": "\n\n**Réponses : [B]**\n\nExplication détaillée :\n\n- **A.** 20 correspond aux arrangements $A_5^2 = 5 \\times 4$.\n- **B.** Correct. $\\binom{5}{2} = \\frac{5 \\times 4}{2 \\times 1} = 10$.\n- **C.** 5 correspond à $\\binom{5}{1}$.\n- **D.** 60 correspond à $5 \\times 4 \\times 3$ (Arrangement de 3 parmi 5).\n\n",
       "options": [
         {
@@ -160,7 +160,7 @@
     {
       "id": "6",
       "stackId": "7e05ad2b",
-      "content": "#### Question 6 : Somme des Coefficients\n\nQuelle est la valeur de la somme totale des coefficients binomiaux pour un entier $n$ donné, c'est-à-dire $\\sum_{k=0}^n \\binom{n}{k}$ ?\n",
+      "content": "#### Somme des Coefficients\n\nQuelle est la valeur de la somme totale des coefficients binomiaux pour un entier $n$ donné, c'est-à-dire $\\sum_{k=0}^n \\binom{n}{k}$ ?\n",
       "solution": "\n\n**Réponses : [C]**\n\nExplication détaillée :\n\n- **A.** Incorrect.\n- **B.** Incorrect, c'est le nombre de permutations.\n- **C.** Correct. Cela représente le nombre total de parties (sous-ensembles) d'un ensemble à $n$ éléments. C'est aussi $(1+1)^n$ par le binôme de Newton.\n- **D.** Incorrect.\n\n",
       "options": [
         {
@@ -188,7 +188,7 @@
     {
       "id": "7",
       "stackId": "7e05ad2b",
-      "content": "#### Question 7 : Multi-ensembles (Combinaisons avec répétition)\n\nUn glacier propose 3 parfums. Vous voulez commander une coupe de 2 boules. Vous pouvez choisir deux fois le même parfum. Quelle formule donne le nombre de combinaisons possibles (multi-ensembles) ?\n",
+      "content": "#### Multi-ensembles (Combinaisons avec répétition)\n\nUn glacier propose 3 parfums. Vous voulez commander une coupe de 2 boules. Vous pouvez choisir deux fois le même parfum. Quelle formule donne le nombre de combinaisons possibles (multi-ensembles) ?\n",
       "solution": "\n\n**Réponses : [C]**\n\nExplication détaillée :\n\n- **A.** $\\binom{3}{2}=3$ correspond au choix de 2 parfums *distincts* (sans répétition).\n- **B.** $3^2=9$ correspondrait au cas où l'ordre des boules compte (ex: Vanille-Chocolat différent de Chocolat-Vanille).\n- **C.** Correct. C'est la formule des combinaisons avec répétition $\\binom{n+k-1}{k}$ avec $n=3$ parfums et $k=2$ boules. $\\binom{4}{2} = 6$.\n- **D.** Incorrect.\n\n",
       "options": [
         {
@@ -216,7 +216,7 @@
     {
       "id": "8",
       "stackId": "7e05ad2b",
-      "content": "#### Question 8 : Binôme de Newton\n\nDans le développement de $(a+b)^3$, quel est le coefficient devant le terme $a^2b$ ?\n",
+      "content": "#### Binôme de Newton\n\nDans le développement de $(a+b)^3$, quel est le coefficient devant le terme $a^2b$ ?\n",
       "solution": "\n\n**Réponses : [A]**\n\nExplication détaillée :\n\n- **A.** Correct. Le terme général est $\\binom{n}{k}a^k b^{n-k}$. Pour $n=3$ et le terme $a^2b^1$ (donc $k=2$), le coefficient est $\\binom{3}{2} = 3$. Le développement est $a^3 + 3a^2b + 3ab^2 + b^3$.\n- **B.** 1 est le coefficient de $a^3$ ou $b^3$.\n- **C.** 6 n'apparaît pas dans la ligne 3 du triangle de Pascal.\n- **D.** Incorrect.\n\n",
       "options": [
         {
@@ -244,7 +244,7 @@
     {
       "id": "9",
       "stackId": "7e05ad2b",
-      "content": "#### Question 9 : Coefficient Multinomial (Anagrammes)\n\nCombien d'anagrammes (permutations distinctes) peut-on former avec le mot \"PAPA\" ?\n",
+      "content": "#### Coefficient Multinomial (Anagrammes)\n\nCombien d'anagrammes (permutations distinctes) peut-on former avec le mot \"PAPA\" ?\n",
       "solution": "\n\n**Réponses : [C]**\n\nExplication détaillée :\n\n- **A.** 24 correspond à $4!$, le nombre de permutations si toutes les lettres étaient distinctes (ex: PARC).\n- **B.** Incorrect.\n- **C.** Correct. On utilise le coefficient multinomial. Il y a 4 lettres au total, avec 2 'P' et 2 'A'.\n\n  Le calcul est $\\frac{4!}{2!2!} = \\frac{24}{2 \\times 2} = \\frac{24}{4} = 6$.\n\n  (Les mots sont : PAPA, PPAA, PAAP, APPA, APAP, AAP P).\n\n- **D.** Incorrect.\n\n",
       "options": [
         {
@@ -272,7 +272,7 @@
     {
       "id": "10",
       "stackId": "7e05ad2b",
-      "content": "#### Question 10 : Conditions aux limites\n\nQuelle est la valeur de $\\binom{4}{5}$ ?\n",
+      "content": "#### Conditions aux limites\n\nQuelle est la valeur de $\\binom{4}{5}$ ?\n",
       "solution": "\n\n**Réponses : [A]**\n\nExplication détaillée :\n\n- **A.** Correct. On ne peut pas choisir 5 éléments distincts dans un ensemble qui n'en contient que 4. Par convention et définition combinatoire, cela vaut 0.\n- **B.** Ce serait vrai pour $\\binom{4}{4}$ ou $\\binom{4}{0}$.\n- **C.** Un nombre de combinaisons ne peut pas être négatif.\n- **D.** La valeur est bien définie mathématiquement comme étant 0.\n\n",
       "options": [
         {

@@ -1,0 +1,91 @@
+{
+  "info": {
+    "id": "45edb053",
+    "title": "Chapitre 9 Couplages - fiches de révision (A)",
+    "type": "cards",
+    "level": "regular",
+    "chapter": "Chapitre 9 Couplages",
+    "course": "Graphes et Combinatoire",
+    "tags": [
+      "Couplages",
+      "Théorème de Berge",
+      "Théorème de Hall",
+      "Graphes bipartis",
+      "Algorithme de Gale et Shapley",
+      "Couplages stables"
+    ],
+    "count": 10
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "45edb053",
+      "content": "Qu'est-ce qu'un **couplage** dans un graphe ?",
+      "solution": "\n\nSoit un graphe $G=(S, A)$. Un **couplage** (ou appariement) $M$ est un sous-ensemble d'arêtes ($M \\subseteq A$) tel que **deux arêtes distinctes de $M$ n'ont jamais d'extrémité en commun**.\n\n**Points clés :**\n\n- Chaque sommet du graphe touche au plus une arête du couplage.\n- Les arêtes sont dites \"indépendantes\".\n\n**Exemple :**\n\nDans un chemin $1-2-3-4$, l'ensemble $M=\\{\\{1,2\\}, \\{3,4\\}\\}$ est un couplage car les arêtes ne se touchent pas.\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "45edb053",
+      "content": "Qu'est-ce qu'un **couplage parfait** ?",
+      "solution": "\n\nUn couplage $M$ est dit **parfait** si l'ensemble de tous les sommets $S$ est **saturé**.\n\nCela signifie que **chaque sommet** du graphe est l'extrémité d'une arête du couplage.\n\n**Conditions :**\n\n- Un couplage parfait ne peut exister que si le graphe possède un nombre **pair** de sommets.\n- Si $|S| = 2n$, alors un couplage parfait contient exactement $n$ arêtes.\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "45edb053",
+      "content": "Quelle est la différence entre un couplage **maximal** et un couplage **maximum** ?",
+      "solution": "\n\nIl ne faut pas confondre ces deux notions d'optimalité :\n\n1.  **Couplage Maximal (Optimum local) :**\n    - On ne peut plus ajouter d'arête au couplage sans briser la règle d'indépendance.\n    - C'est un couplage qu'on ne peut pas inclure dans un couplage plus grand.\n\n2.  **Couplage Maximum (Optimum global) :**\n    - C'est un couplage qui a la **plus grande cardinalité possible** (le plus grand nombre d'arêtes) parmi tous les couplages du graphe.\n\n**Relation :** Tout couplage maximum est maximal, mais un couplage maximal n'est pas forcément maximum (il peut être bloqué trop tôt).\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "45edb053",
+      "content": "Qu'est-ce qu'une **chaîne augmentante** par rapport à un couplage $M$ ?",
+      "solution": "\n\nUne chaîne est dite **augmentante** si elle remplit deux conditions :\n\n1.  Elle est **alternée** : les arêtes appartiennent alternativement à $M$ et hors de $M$ ($A \\setminus M$).\n2.  Ses deux extrémités (sommet de départ et de fin) sont des sommets **insaturés** (libres, non couverts par $M$).\n\n**Importance :**\n\nL'existence d'une chaîne augmentante prouve que le couplage n'est pas maximum.\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "45edb053",
+      "content": "Que stipule le **Théorème de Berge** ?",
+      "solution": "\n\nLe **Théorème de Berge (1957)** donne une condition nécessaire et suffisante pour qu'un couplage soit maximum.\n\n**Énoncé :**\n\nUn couplage $M$ est **maximum** si et seulement s'il n'existe pas de **chaîne augmentante** par rapport à $M$ dans le graphe.\n\n**Application :**\n\nSi on ne trouve plus de chaîne augmentante, on est certain d'avoir atteint l'optimum global.\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "45edb053",
+      "content": "Comment améliorer un couplage à l'aide d'une chaîne augmentante ?",
+      "solution": "\n\nSi l'on trouve une chaîne augmentante par rapport à un couplage $M$, on peut créer un couplage $M'$ plus grand.\n\n**Méthode (Différence symétrique) :**\n\nOn \"inverse\" les arêtes le long de la chaîne :\n\n- Les arêtes qui étaient dans $M$ sont retirées.\n- Les arêtes qui n'étaient pas dans $M$ sont ajoutées.\n\n**Résultat :**\n\nLe nouveau couplage $M'$ possède exactement **une arête de plus** que $M$.\n\n$$ |M'| = |M| + 1 $$\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "45edb053",
+      "content": "Quelle est la condition du **Théorème de Hall** (Condition des mariages) ?",
+      "solution": "\n\nLe théorème de Hall concerne les graphes bipartis $G=(X \\cup Y, A)$. Il existe un couplage qui sature $X$ si et seulement si :\n\n$$ \\forall U \\subseteq X, \\quad |N(U)| \\ge |U| $$\n\n**Où :**\n\n- $U$ est un sous-ensemble quelconque de sommets de $X$.\n- $N(U)$ est le voisinage de $U$ (l'ensemble des voisins de $U$ dans $Y$).\n\n**Interprétation :**\n\nTout groupe de personnes dans $X$ doit connaître collectivement au moins autant de personnes dans $Y$.\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "45edb053",
+      "content": "Comment utiliser le Théorème de Hall pour prouver qu'un couplage saturant n'existe pas ?",
+      "solution": "\n\nPour montrer qu'il est impossible de coupler tous les sommets de $X$, il suffit de trouver un **contre-exemple** (ou *bottleneck*) à la condition de Hall.\n\n**Méthode :**\n\n1. Chercher un sous-ensemble $U \\subseteq X$.\n2. Calculer son voisinage $N(U)$.\n3. Montrer que $|N(U)| < |U|$.\n\nSi un tel ensemble existe (ex: 3 personnes ne connaissent que 2 chaises disponibles), alors le couplage saturant est impossible.\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "45edb053",
+      "content": "Qu'est-ce qu'un **couplage stable** (problème des mariages stables) ?",
+      "solution": "\n\nDans un graphe biparti complet où chaque élément a une liste de préférences ordonnée, un couplage $M$ est **stable** s'il est parfait et ne contient aucune **paire instable**.\n\nUne paire $(x, y)$ est instable (ou bloquante) si :\n\n1. $x$ et $y$ ne sont pas mariés ensemble dans $M$.\n2. $x$ préfère $y$ à son partenaire actuel.\n3. $y$ préfère $x$ à son partenaire actuel.\n\n**Note :** Il existe toujours au moins un couplage stable (Théorème 9.9).\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "45edb053",
+      "content": "Comment fonctionne l'**Algorithme de Gale-Shapley** ?",
+      "solution": "\n\nC'est un algorithme glouton qui trouve toujours un couplage stable.\n\n**Étapes (version où $X$ propose) :**\n\n1.  **Propositions :** Tant qu'il y a un $x \\in X$ célibataire, il propose à son préféré dans $Y$ à qui il n'a pas encore proposé.\n2.  **Choix de $Y$ :** Chaque $y \\in Y$ qui reçoit une proposition :\n    - S'il est libre, il accepte (temporairement).\n    - S'il est déjà couplé mais préfère le nouveau prétendant, il rejette l'ancien et accepte le nouveau.\n    - Sinon, il rejette la proposition.\n3.  **Répétition :** Les éléments rejetés de $X$ continuent de proposer au suivant sur leur liste.\n\n**Propriété :** Le résultat est stable et optimal pour ceux qui proposent (ici $X$).\n\n",
+      "options": []
+    }
+  ]
+}

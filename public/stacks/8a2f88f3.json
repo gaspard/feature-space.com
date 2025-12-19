@@ -15,7 +15,7 @@
       "Diagonalisation",
       "Gram-Schmidt"
     ],
-    "count": 1
+    "count": 12
   },
   "cards": [
     {
@@ -43,6 +43,314 @@
           "id": "4",
           "content": "**D)** Une application $f$ telle que $f(v) = v + \\lambda$ pour un scalaire $\\lambda$.",
           "correct": false
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "stackId": "8a2f88f3",
+      "content": "#### Base duale\n\nSoit $\\mathfrak{B} = \\{e_1, \\dots, e_n\\}$ une base d'un espace vectoriel $V$ de dimension $n$. Comment est définie la **base duale** $\\{e_1^*, \\dots, e_n^*\\}$ ?\n",
+      "solution": "\n\n**Réponse : C**\n\n**Explication détaillée :**\n\n- **A.** Si $e_i^*(e_j) = 1$ pour tout $j$, alors les formes ne seraient pas indépendantes.\n- **B.** C'est l'inverse de la définition standard.\n- **C.** C'est la définition de la base duale. La forme $e_i^*$ est celle qui \"sélectionne\" la $i$-ème coordonnée d'un vecteur dans la base $\\mathfrak{B}$.\n- **D.** Les vecteurs $e_i$ sont dans $V$, tandis que les $e_i^*$ sont dans $V^*$ (ce sont des fonctions). Ils ne peuvent pas être égaux.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $e_i^*(e_j) = 1$ pour tout $i, j$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $e_i^*(e_j) = 0$ si $i = j$ et $1$ si $i \\ne j$.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $e_i^*(e_j) = \\delta_{i,j}$ (symbole de Kronecker : 1 si $i=j$, 0 sinon).",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Les vecteurs $e_i^*$ sont les mêmes que les vecteurs $e_i$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "stackId": "8a2f88f3",
+      "content": "#### Matrice d'une forme bilinéaire et changement de base\n\nSoit $\\varphi$ une forme bilinéaire de matrice $A$ dans une base $\\mathfrak{B}$. Soit $P$ la matrice de passage de $\\mathfrak{B}$ vers une nouvelle base $\\mathcal{C}$. Quelle est la matrice $A'$ de $\\varphi$ dans la base $\\mathcal{C}$ ?\n",
+      "solution": "\n\n**Réponse : B**\n\n**Explication détaillée :**\n\n- **A & C.** La formule $P^{-1} A P$ concerne le changement de base pour un **endomorphisme** (application linéaire de $V$ dans $V$).\n- **B.** Pour une **forme bilinéaire**, la relation de changement de base utilise la transposée : $A' = {}^t P A P$. On dit que les matrices sont congruentes.\n- **D.** Cette formule ne correspond à aucune règle de transformation standard.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $A' = P^{-1} A P$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $A' = {}^t P A P$",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $A' = P A P^{-1}$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $A' = {}^t P A {}^t P$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "stackId": "8a2f88f3",
+      "content": "#### Dimension de l'orthogonal\n\nDans un espace vectoriel $V$ de dimension finie $n$, muni d'une forme bilinéaire symétrique **non dégénérée**, quelle est la dimension de l'orthogonal $F^\\perp$ d'un sous-espace $F$ ?\n",
+      "solution": "\n\n**Réponse : B**\n\n**Explication détaillée :**\n\n- **A.** Faux en général (sauf si $\\dim(F) = n/2$).\n- **B.** C'est une propriété fondamentale lorsque la forme est non dégénérée. Les dimensions de $F$ et de son orthogonal sont complémentaires.\n- **C.** Impossible car la dimension d'un sous-espace ne peut pas dépasser $n$.\n- **D.** Faux, cela dépend de la dimension de $F$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\dim(F^\\perp) = \\dim(F)$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\dim(F^\\perp) = n - \\dim(F)$",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $\\dim(F^\\perp) = n + \\dim(F)$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $\\dim(F^\\perp) = 1$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "stackId": "8a2f88f3",
+      "content": "#### Lien entre forme quadratique et bilinéaire\n\nSi $q$ est une forme quadratique associée à une forme bilinéaire symétrique $\\varphi$, quelle est la relation qui les lie ?\n",
+      "solution": "\n\n**Réponses : A, D**\n\n**Explication détaillée :**\n\n- **A.** C'est la définition d'une forme quadratique à partir d'une forme bilinéaire.\n- **B.** Par linéarité, $\\varphi(u, 0) = 0$, donc cela donnerait une forme nulle.\n- **C.** Une forme quadratique est homogène de degré 2. Le carré d'une forme bilinéaire serait de degré 4.\n- **D.** C'est la **formule de polarisation**, qui permet de retrouver la forme bilinéaire symétrique à partir de la forme quadratique (si la caractéristique du corps n'est pas 2).\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $q(u) = \\varphi(u, u)$",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** $q(u) = \\varphi(u, 0)$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $q(u) = (\\varphi(u, u))^2$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $\\varphi(u, v) = \\frac{1}{2}(q(u+v) - q(u) - q(v))$",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "stackId": "8a2f88f3",
+      "content": "#### Définition d'un produit scalaire\n\nQuelle condition supplémentaire une forme bilinéaire symétrique doit-elle remplir pour être un **produit scalaire** (sur un espace vectoriel réel) ?\n",
+      "solution": "\n\n**Réponse : C**\n\n**Explication détaillée :**\n\n- **A.** Au contraire, un produit scalaire est toujours non dégénéré (le seul vecteur orthogonal à tout l'espace est le vecteur nul).\n- **B.** C'est la définition d'une forme antisymétrique (symplectique), pas d'un produit scalaire.\n- **C.** Un produit scalaire doit être **positif** ($\\varphi(x,x) \\ge 0$) et **défini** ($\\varphi(x,x) = 0 \\implies x=0$).\n- **D.** Cela décrirait une forme quadratique de signature mixte (comme Minkowski), mais un produit scalaire nécessite des coefficients strictement positifs (signature $(n, 0)$).\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Elle doit être dégénérée.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Elle doit être alternée ($\\varphi(u,u) = 0$).",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Elle doit être définie positive.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Sa matrice doit être diagonale avec des $-1$ et des $1$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "stackId": "8a2f88f3",
+      "content": "#### Inégalité de Cauchy-Schwarz\n\nSoit $E$ un espace euclidien muni du produit scalaire $( \\cdot | \\cdot )$ et de la norme associée $\\| \\cdot \\|$. Quelle inégalité est toujours vraie pour $x, y \\in E$ ?\n",
+      "solution": "\n\n**Réponse : B**\n\n**Explication détaillée :**\n\n- **A.** Incorrect dimensionnellement et conceptuellement.\n- **B.** C'est l'**inégalité de Cauchy-Schwarz**. Le produit scalaire est majoré par le produit des normes.\n- **C.** Incorrect, le produit scalaire peut être nul ou négatif.\n- **D.** C'est l'égalité (cas limite de l'inégalité triangulaire) qui n'est vraie que si les vecteurs sont colinéaires et de même sens.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $|(x | y)| \\le \\|x\\| + \\|y\\|$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $|(x | y)| \\le \\|x\\| \\cdot \\|y\\|$",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $(x | y) \\ge \\|x\\| \\cdot \\|y\\|$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $\\|x + y\\| = \\|x\\| + \\|y\\|$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "stackId": "8a2f88f3",
+      "content": "#### Coordonnées dans une base orthonormée\n\nSoit $(e_1, \\dots, e_n)$ une **base orthonormée** d'un espace euclidien $E$. Pour tout vecteur $x \\in E$, comment s'écrit $x$ ?\n",
+      "solution": "\n\n**Réponse : B**\n\n**Explication détaillée :**\n\n- **A.** Les coordonnées sont linéaires par rapport à $x$, le carré n'est pas correct.\n- **B.** Dans une base orthonormée, la $i$-ème coordonnée est simplement le produit scalaire avec le $i$-ème vecteur de base.\n- **C.** Cette formule serait vraie pour une base orthogonale quelconque (projection), mais comme la base est orthonormée, $\\|e_i\\|=1$, donc le dénominateur est inutile.\n- **D.** Ceci est une somme de scalaires, pas une décomposition vectorielle.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $x = \\sum_{i=1}^n (x | e_i)^2 e_i$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $x = \\sum_{i=1}^n (x | e_i) e_i$",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $x = \\sum_{i=1}^n \\frac{(x | e_i)}{\\|e_i\\|} e_i$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $x = \\sum_{i=1}^n x_i$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "stackId": "8a2f88f3",
+      "content": "#### Projection orthogonale\n\nSoit $F$ un sous-espace vectoriel de $E$. La projection orthogonale de $x$ sur $F$, notée $p(x)$, est l'unique vecteur de $F$ tel que :\n",
+      "solution": "\n\n**Réponse : B**\n\n**Explication détaillée :**\n\n- **A.** Si $x - p(x) \\in F$, alors $x \\in F$ (puisque $p(x) \\in F$), ce qui n'est pas vrai pour tout $x$.\n- **B.** C'est la caractérisation géométrique : le vecteur différence (l'erreur) est orthogonal au sous-espace de projection.\n- **C.** Faux, sauf si $x \\in F$ ou $x \\in F^\\perp$.\n- **D.** Au contraire, la projection orthogonale **minimise** la distance $\\|x - y\\|$ pour $y \\in F$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $x - p(x) \\in F$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $x - p(x) \\in F^\\perp$",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $p(x)$ est colinéaire à $x$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $\\|x - p(x)\\|$ est maximale",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "stackId": "8a2f88f3",
+      "content": "#### Théorème Spectral\n\nQue dit le Théorème Spectral pour une matrice symétrique réelle $A$ ?\n",
+      "solution": "\n\n**Réponses : A, D**\n\n**Explication détaillée :**\n\n- **A.** C'est l'énoncé géométrique du théorème : tout endomorphisme auto-adjoint (représenté par une matrice symétrique) admet une base orthonormée de vecteurs propres.\n- **B.** Faux. Une matrice symétrique peut avoir 0 comme valeur propre (ex: matrice nulle).\n- **C.** Faux. Les valeurs propres sont réelles, mais peuvent être négatives (sauf si la matrice est définie positive).\n- **D.** C'est la traduction matricielle exacte de la réponse A. Puisque $P$ est orthogonale, $P^{-1} = {}^tP$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $A$ est diagonalisable dans une base orthonormée.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** $A$ est inversible.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Toutes les valeurs propres de $A$ sont positives.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Il existe une matrice orthogonale $P$ et une matrice diagonale $D$ telles que $A = P D {}^tP$.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "stackId": "8a2f88f3",
+      "content": "#### Reconnaissance de forme quadratique\n\nParmi les expressions suivantes définies sur $\\mathbb{R}^2$ (avec $v=(x,y)$), laquelle est une **forme quadratique** ?\n",
+      "solution": "\n\n**Réponse : C**\n\n**Explication détaillée :**\n\n- **A.** Contient une constante ($+1$), donc $f(0,0) \\ne 0$. Ce n'est pas une forme quadratique.\n- **B.** C'est une forme linéaire (degré 1).\n- **C.** C'est un polynôme homogène de degré 2, ce qui correspond à la définition analytique d'une forme quadratique.\n- **D.** C'est homogène de degré 3, pas 2.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $f(x, y) = x^2 + y^2 + 1$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $f(x, y) = 2x - 3y$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $f(x, y) = x^2 - 4xy + 3y^2$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $f(x, y) = x^3 + y^3$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "stackId": "8a2f88f3",
+      "content": "#### Isométries vectorielles\n\nUne application linéaire $u : E \\to E$ est une **isométrie** (ou un endomorphisme orthogonal) si :\n",
+      "solution": "\n\n**Réponses : C, D**\n\n**Explication détaillée :**\n\n- **A.** Une isométrie est toujours bijective (injectivité garantie par la conservation de la norme), donc son déterminant est $\\pm 1$, jamais 0.\n- **B.** Cela impliquerait que l'image est nulle, ce qui est faux.\n- **C.** C'est la définition : conservation de la norme (les longueurs ne changent pas).\n- **D.** C'est une propriété équivalente à la conservation de la norme (via les identités de polarisation).\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\det(u) = 0$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $(u(x) | u(y)) = 0$ pour tout $x, y$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $\\|u(x)\\| = \\|x\\|$ pour tout $x \\in E$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Elle conserve le produit scalaire : $(u(x) | u(y)) = (x | y)$",
+          "correct": true
         }
       ]
     }

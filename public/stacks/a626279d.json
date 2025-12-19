@@ -1,0 +1,357 @@
+{
+  "info": {
+    "id": "a626279d",
+    "title": "Chapitre 9 Couplages - quiz (A)",
+    "type": "quiz",
+    "level": "regular",
+    "chapter": "Chapitre 9 Couplages",
+    "course": "Graphes et Combinatoire",
+    "tags": [
+      "Couplages",
+      "Théorème de Berge",
+      "Théorème de Hall",
+      "Graphes bipartis",
+      "Algorithme de Gale et Shapley",
+      "Couplages stables"
+    ],
+    "count": 12
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "a626279d",
+      "content": "#### Définition d'un couplage\n\nSoit un graphe $G=(S, A)$. Qu'est-ce qui caractérise un sous-ensemble d'arêtes $M \\subseteq A$ pour qu'il soit considéré comme un **couplage** ?\n",
+      "solution": "\n\n**Réponses : [B]**\n\nExplication détaillée :\n\n- **A.** Faux. Un couplage n'a pas besoin de former de cycle.\n- **B.** Vrai. C'est la définition fondamentale. Chaque sommet du graphe ne peut toucher qu'au plus une arête du couplage (indépendance des arêtes).\n- **C.** Faux. C'est la définition d'un couplage *parfait*, pas d'un couplage en général.\n- **D.** Faux. Au contraire, les arêtes d'un couplage sont disjointes et ne se touchent pas.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Toutes les arêtes de $M$ doivent former un cycle.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Deux arêtes distinctes de $M$ n'ont jamais d'extrémité en commun.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** L'ensemble $M$ doit toucher tous les sommets du graphe.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Les arêtes de $M$ doivent toutes être connectées entre elles (former une chaîne).",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "stackId": "a626279d",
+      "content": "#### Sommets saturés et parité\n\nSi un couplage $M$ contient exactement 5 arêtes ($|M|=5$), combien de sommets sont **saturés** par ce couplage ?\n",
+      "solution": "\n\n**Réponses : [B]**\n\nExplication détaillée :\n\n- **A.** Faux. Une arête relie 2 sommets.\n- **B.** Vrai. Chaque arête du couplage a deux extrémités. Donc, si $|M|=5$, le nombre de sommets touchés (saturés) est $2 \\times 5 = 10$.\n- **C.** Faux. Le nombre de sommets saturés dépend uniquement de la taille du couplage, pas de la taille du graphe (les autres sommets sont simplement insaturés).\n- **D.** Faux. Les sommets touchés par le couplage sont dits saturés.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** 5 sommets.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** 10 sommets.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Cela dépend de la taille totale du graphe.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** 0 sommet (ils sont insaturés).",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "stackId": "a626279d",
+      "content": "#### Couplage Parfait\n\nQuelle est une condition nécessaire (obligatoire) pour qu'un graphe admette un **couplage parfait** ?\n",
+      "solution": "\n\n**Réponses : [B]**\n\nExplication détaillée :\n\n- **A.** Faux. Des graphes non bipartis peuvent avoir un couplage parfait (ex: $K_4$).\n- **B.** Vrai. Un couplage parfait groupe tous les sommets par paires. Si le nombre de sommets est impair (ex: 3), il restera toujours au moins un sommet tout seul.\n- **C.** Faux. Ce n'est pas une condition nécessaire.\n- **D.** Faux. Cela n'a pas de lien direct obligatoire.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Le graphe doit être biparti.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Le nombre de sommets du graphe doit être pair.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Le graphe doit être un cycle.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Le nombre d'arêtes doit être égal au nombre de sommets.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "stackId": "a626279d",
+      "content": "#### Maximal vs Maximum\n\nConsidérons le graphe chemin $P_4$ avec les arêtes $1-2$, $2-3$, $3-4$. On choisit le couplage $M = \\{\\{2,3\\}\\}$. Quelle affirmation est correcte ?\n",
+      "solution": "\n\n**Réponses : [B]**\n\nExplication détaillée :\n\n- **A.** Faux. Un couplage de taille 2 existe ($\\{\\{1,2\\}, \\{3,4\\}\\}$), donc une taille de 1 n'est pas le maximum global.\n- **B.** Vrai. C'est maximal car on ne peut ajouter aucune arête sans briser la règle (si on ajoute $\\{1,2\\}$, le sommet 2 est utilisé deux fois. Idem pour $\\{3,4\\}$). Ce n'est pas maximum car il existe un couplage plus grand.\n- **C.** Faux. On ne peut pas ajouter $\\{1,2\\}$ car le sommet 2 est déjà saturé par $\\{2,3\\}$.\n- **D.** Faux. Les sommets 1 et 4 ne sont pas saturés.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $M$ est un couplage maximum.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $M$ est un couplage maximal mais non maximum.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $M$ n'est pas un couplage maximal car on peut ajouter l'arête $\\{1,2\\}$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $M$ est un couplage parfait.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "stackId": "a626279d",
+      "content": "#### Distinction théorique Maximal/Maximum\n\nQuelle est la relation logique correcte entre couplage maximal et couplage maximum ?\n",
+      "solution": "\n\n**Réponses : [B]**\n\nExplication détaillée :\n\n- **A.** Faux. Voir l'exemple précédent (Question 4). On peut être bloqué (maximal) sans avoir la plus grande taille possible.\n- **B.** Vrai. Si un couplage a la taille la plus grande possible (maximum), on ne peut sûrement plus lui ajouter d'arêtes (sinon il serait encore plus grand), donc il est maximal.\n- **C.** Faux. Le couplage maximum est un cas particulier de couplage maximal.\n- **D.** Faux. L'implication existe dans un sens.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Tout couplage maximal est nécessairement maximum.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Tout couplage maximum est nécessairement maximal.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Un couplage ne peut pas être à la fois maximal et maximum.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Il n'y a aucun lien entre ces deux concepts.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "stackId": "a626279d",
+      "content": "#### Chaîne augmentante (Théorème de Berge)\n\nSelon le concept de chaîne augmentante, qu'est-ce qui caractérise une telle chaîne par rapport à un couplage $M$ ?\n",
+      "solution": "\n\n**Réponses : [C]**\n\nExplication détaillée :\n\n- **A.** Faux. Une chaîne augmentante doit alterner (dans $M$, hors $M$, etc.).\n- **B.** Faux. Si elle finit sur des sommets saturés, on ne peut pas améliorer le couplage.\n- **C.** Vrai. Si on part d'un sommet libre, qu'on alterne, et qu'on arrive à un autre sommet libre, on peut \"inverser\" les arêtes pour gagner une arête de plus dans le couplage.\n- **D.** Faux. Une chaîne augmentante est un chemin simple, pas un cycle.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** C'est une chaîne dont toutes les arêtes appartiennent à $M$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** C'est une chaîne alternée qui commence par un sommet saturé et finit par un sommet saturé.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** C'est une chaîne alternée qui relie deux sommets insaturés distincts.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** C'est une chaîne qui forme un cycle avec des arêtes de $M$.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "stackId": "a626279d",
+      "content": "#### Application du Théorème de Berge\n\nSi l'on trouve une **chaîne augmentante** dans un graphe pour un couplage $M$ donné, que peut-on conclure ?\n",
+      "solution": "\n\n**Réponses : [A]**\n\nExplication détaillée :\n\n- **A.** Vrai. Le théorème de Berge stipule qu'un couplage est maximum *si et seulement s'il n'existe pas* de chaîne augmentante. Si on en trouve une, on peut augmenter la taille de $M$.\n- **B.** Faux. C'est l'inverse : l'absence de chaîne augmentante prouve qu'il est maximum.\n- **C.** Faux. Cela indique juste que le couplage actuel peut être amélioré.\n- **D.** Faux. Le couplage actuel est valide, mais pas optimal.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Le couplage $M$ n'est pas maximum et on peut l'agrandir.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** Le couplage $M$ est déjà maximum (Théorème de Berge).",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Le graphe ne possède pas de couplage parfait.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Le couplage $M$ n'est plus valide.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "stackId": "a626279d",
+      "content": "#### Théorème de Hall (Condition)\n\nSoit $G=(X \\cup Y, A)$ un graphe biparti. Quelle est la condition de Hall pour qu'il existe un couplage saturant $X$ ?\n",
+      "solution": "\n\n**Réponses : [B]**\n\nExplication détaillée :\n\n- **A.** Faux. C'est une condition pour un couplage *parfait*, mais pour saturer $X$, $Y$ peut être plus grand.\n- **B.** Vrai. C'est la condition des mariages : tout groupe de $k$ personnes doit connaître au moins $k$ personnes en face pour que chacun puisse être couplé.\n- **C.** Faux. L'inégalité est dans l'autre sens.\n- **D.** Faux. Ce n'est pas nécessaire, c'est juste un cas particulier qui marche.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Le nombre de sommets dans $X$ doit être égal au nombre de sommets dans $Y$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Pour tout sous-ensemble $U \\subseteq X$, son voisinage $N(U)$ doit vérifier $|N(U)| \\ge |U|$.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Pour tout sous-ensemble $U \\subseteq X$, son voisinage $N(U)$ doit vérifier $|N(U)| \\le |U|$.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Le graphe doit être complet ($K_{n,n}$).",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "stackId": "a626279d",
+      "content": "#### Application de Hall (Goulot d'étranglement)\n\nDans un graphe biparti représentant des candidats ($X$) et des postes ($Y$), 3 candidats ($U=\\{c_1, c_2, c_3\\}$) ne sont qualifiés que pour 2 postes ($N(U)=\\{p_1, p_2\\}$). Que peut-on dire ?\n",
+      "solution": "\n\n**Réponses : [C]**\n\nExplication détaillée :\n\n- **A.** Faux. Principe des tiroirs : on ne peut pas mettre 3 objets dans 2 cases sans chevauchement.\n- **B.** Faux. Rien à voir avec la stabilité des préférences ici, c'est un problème de faisabilité.\n- **C.** Vrai. Ici $|U|=3$ et $|N(U)|=2$. Comme $2 < 3$, la condition de Hall n'est pas respectée. Le couplage saturant $X$ est impossible.\n- **D.** Faux. Gale-Shapley sert pour les préférences, pas pour vérifier l'existence basique liée à la structure du graphe.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Il est possible d'attribuer un poste à chaque candidat.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** C'est un couplage stable.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Il est impossible de satisfaire tous les candidats (Condition de Hall violée).",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** On doit utiliser l'algorithme de Gale-Shapley.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "stackId": "a626279d",
+      "content": "#### Graphes Bipartis Réguliers\n\nUn corollaire important du théorème de Hall concerne les graphes bipartis $k$-réguliers (où chaque sommet a le même degré $k > 0$). Quelle propriété possèdent-ils toujours ?\n",
+      "solution": "\n\n**Réponses : [A]**\n\nExplication détaillée :\n\n- **A.** Vrai. C'est un résultat classique : la régularité assure que la condition de Hall est toujours vérifiée, donc un couplage parfait existe.\n- **B.** Faux. La parité de $k$ n'importe pas (tant que $k>0$).\n- **C.** Faux. S'il est parfait, il est maximum.\n- **D.** Faux. Ils la respectent toujours.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Ils admettent toujours un couplage parfait.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** Ils n'admettent jamais de couplage parfait si $k$ est impair.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Ils admettent un couplage maximal mais jamais maximum.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Ils ne respectent pas la condition de Hall.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "stackId": "a626279d",
+      "content": "#### Couplage Stable (Définition)\n\nDans le problème des mariages stables, qu'est-ce qu'une **paire instable** (ou bloquante) pour un couplage $M$ ?\n",
+      "solution": "\n\n**Réponses : [C]**\n\nExplication détaillée :\n\n- **A.** Faux. L'instabilité vient d'une paire *extérieure* au couplage qui voudrait se former.\n- **B.** Faux. Dans le problème standard $K_{n,n}$, tout le monde est couplé (couplage parfait).\n- **C.** Vrai. C'est la définition. Ils ont tous les deux intérêt à quitter leur partenaire actuel pour se mettre ensemble.\n- **D.** Faux. Pour qu'il y ait instabilité, l'intérêt doit être réciproque. Si $y$ est heureux, il ne quittera pas son partenaire pour $x$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Une paire $(x, y) \\in M$ qui veut divorcer.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Une paire $(x, y)$ où $x$ n'a pas de partenaire dans $M$.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Une paire $(x, y) \\notin M$ telle que $x$ préfère $y$ à son partenaire actuel, ET $y$ préfère $x$ à son partenaire actuel.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Une paire $(x, y)$ telle que $x$ préfère $y$, mais $y$ préfère son partenaire actuel.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "stackId": "a626279d",
+      "content": "#### Algorithme de Gale-Shapley\n\nL'algorithme de Gale-Shapley (propositions différées) garantit de trouver un couplage stable. Si le groupe $X$ fait les propositions (proposants), quelle propriété d'optimalité observe-t-on ?\n",
+      "solution": "\n\n**Réponses : [B]**\n\nExplication détaillée :\n\n- **A.** Faux. Au contraire, c'est la solution \"pessimale\" pour ceux qui reçoivent (ils ont le moins bon partenaire parmi tous les couplages stables possibles).\n- **B.** Vrai. Les proposants obtiennent le meilleur partenaire possible qu'ils peuvent avoir dans *n'importe quel* couplage stable.\n- **C.** Faux. Il favorise un côté au détriment de l'autre.\n- **D.** Faux. Si on inverse les rôles (Y propose), on peut obtenir un couplage stable différent.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Le couplage est optimal pour $Y$ (ceux qui reçoivent).",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Le couplage est optimal pour $X$ (les proposants).",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Le couplage maximise le bonheur moyen de tout le monde.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Le couplage est unique, peu importe qui propose.",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}
