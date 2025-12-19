@@ -2,7 +2,7 @@
 id: d8b6589d
 type: exercises
 order: 11
-title: 'Chapitre 7 - Chaînes, parcours, cycles et tours - exercices (A)'
+title: 'Chaînes, parcours, cycles et tours - exercices (A)'
 tags:
   - Graphes
   - Chaînes
@@ -17,10 +17,10 @@ createdAt: '2025-12-19T13:05:28.995Z'
 level: regular
 course: Graphes et Combinatoire
 courseId: 7027276b
-chapter: 'Chapitre 7 - Chaînes, parcours, cycles et tours'
+chapter: 'Chaînes, parcours, cycles et tours'
 chapterId: b866ccc5
 ---
-# Exercices "Chapitre 7 - Chaînes, parcours, cycles et tours" (A)
+# Exercices "Chaînes, parcours, cycles et tours" (A)
 
 ---
 

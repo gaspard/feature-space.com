@@ -2,7 +2,7 @@
 id: 8f9423aa
 type: concepts
 order: 10
-title: 'Chapitre 7 - Chaînes, parcours, cycles et tours - concepts (A)'
+title: 'Chaînes, parcours, cycles et tours - concepts (A)'
 tags:
   - Graphes
   - Chaînes
@@ -15,12 +15,12 @@ tags:
   - Arbres
 course: Graphes et Combinatoire
 courseId: 7027276b
-chapter: 'Chapitre 7 - Chaînes, parcours, cycles et tours'
+chapter: 'Chaînes, parcours, cycles et tours'
 chapterId: b866ccc5
 level: regular
 createdAt: '2025-12-19T13:05:28.995Z'
 ---
-# Chapitre 7 - Chaînes, parcours, cycles et tours (A)
+# Chaînes, parcours, cycles et tours (A)
 
 ---
 

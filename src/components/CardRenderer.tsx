@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
-import type { ParsedCards, Card, QuizOption } from '../domain/api/entity/card.type';
+import React, {useState, useEffect, useRef} from 'react';
+import type {ParsedCards, Card, QuizOption} from '../domain/api/entity/card.type';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import remarkGfm from 'remark-gfm';
 import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
-import { useQuizStorage } from '../hooks/useStorage';
+import {useQuizStorage} from '../hooks/useStorage';
 
 interface CardRendererProps {
   cards: ParsedCards;
@@ -27,7 +27,7 @@ export function toggleCheck() {
 }
 
 
-export default function CardRenderer({ cards, static: isStatic = false }: CardRendererProps) {
+export default function CardRenderer({cards, static: isStatic = false}: CardRendererProps) {
   const [quiz, setOption, resetQuiz] = useQuizStorage(cards.id);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [shuffledCards, setShuffledCards] = useState<Card[]>([...cards.cards]);
@@ -95,7 +95,7 @@ export default function CardRenderer({ cards, static: isStatic = false }: CardRe
   );
 }
 
-function Card({ card, onClick, quiz, setOption }: { card: Card, onClick?: () => void, quiz: Record<string, boolean>, setOption: (key: string, value: boolean) => void }) {
+function Card({card, onClick, quiz, setOption}: {card: Card, onClick?: () => void, quiz: Record<string, boolean>, setOption: (key: string, value: boolean) => void}) {
   const ref = useRef<HTMLDetailsElement>(null);
   const handleClick = onClick ? (e: React.MouseEvent<HTMLDivElement>) => {
     if (ref.current) {
@@ -116,7 +116,7 @@ function Card({ card, onClick, quiz, setOption }: { card: Card, onClick?: () => 
           rehypePlugins={[rehypeRaw, rehypeKatex]}
           children={card.content}
         />
-        {card.options && <ul>{card.options.map((option) => (
+        {card.options && <ul className="options">{card.options.map((option) => (
           <Option key={option.id} option={option} quiz={quiz} setOption={setOption} />
         ))}</ul>}
       </div>
@@ -132,7 +132,7 @@ function Card({ card, onClick, quiz, setOption }: { card: Card, onClick?: () => 
   );
 }
 
-function Option({ option, quiz, setOption }: { option: QuizOption, quiz: Record<string, boolean>, setOption: (key: string, value: boolean) => void }) {
+function Option({option, quiz, setOption}: {option: QuizOption, quiz: Record<string, boolean>, setOption: (key: string, value: boolean) => void}) {
   return (
     <li key={option.text} onClick={() => setOption(option.id, !quiz[option.id])}>
       <input type="checkbox" checked={quiz[option.id] || false} onChange={() => setOption(option.id, !quiz[option.id])} className={option.isCorrect ? "correct" : ""} />

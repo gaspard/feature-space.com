@@ -2,7 +2,7 @@
 id: b0d5051e
 type: concepts
 order: 10
-title: Chapitre 9 Couplages - concepts (A)
+title: Couplages - concepts (A)
 tags:
   - Couplages
   - Théorème de Berge
@@ -12,12 +12,12 @@ tags:
   - Couplages stables
 course: Graphes et Combinatoire
 courseId: 7027276b
-chapter: Chapitre 9 Couplages
+chapter: Couplages
 chapterId: c89a6b95
 level: regular
 createdAt: '2025-12-19T13:18:01.776Z'
 ---
-# Chapitre 9 Couplages (A)
+# Couplages (A)
 
 ---
 

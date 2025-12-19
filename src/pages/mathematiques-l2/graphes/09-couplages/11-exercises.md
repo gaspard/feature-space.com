@@ -2,7 +2,7 @@
 id: 74c7140e
 type: exercises
 order: 11
-title: Chapitre 9 Couplages - exercices (A)
+title: Couplages - exercices (A)
 tags:
   - Couplages
   - Théorème de Berge
@@ -14,10 +14,10 @@ createdAt: '2025-12-19T13:18:01.776Z'
 level: regular
 course: Graphes et Combinatoire
 courseId: 7027276b
-chapter: Chapitre 9 Couplages
+chapter: Couplages
 chapterId: c89a6b95
 ---
-# Exercices "Chapitre 9 Couplages" (A)
+# Exercices "Couplages" (A)
 
 ---
 

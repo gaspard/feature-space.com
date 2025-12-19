@@ -47,7 +47,7 @@
     {
       "id": "2",
       "stackId": "93d81323",
-      "content": "#### Question 2\n\nSoit $V$ un espace vectoriel de dimension finie $n$. Quelle est la définition exacte d'une **base** de $V$ ?\n",
+      "content": "#### Définition d'une base\n\nSoit $V$ un espace vectoriel de dimension finie $n$. Quelle est la définition exacte d'une **base** de $V$ ?\n",
       "solution": "\n\n**Réponses : [B]**\n\nUne base combine deux propriétés essentielles : l'indépendance linéaire et la capacité à engendrer tout l'espace.\n\n- **A.** Incorrect. Cette définition est incomplète. Une famille génératrice de $n$ éléments est bien une base, mais la définition fondamentale ne présuppose pas la connaissance de la dimension $n$ a priori, elle définit la structure. De plus, sans préciser \"libre\", l'énoncé est techniquement une conséquence (théorème), pas la définition première donnée dans le cours. Cependant, la réponse B est la définition formelle complète.\n- **B.** Correct. C'est la définition exacte : une famille libre (indépendance linéaire) et génératrice (couvre tout l'espace).\n- **C.** Incorrect. Une famille libre n'est pas nécessairement génératrice (ex: un seul vecteur non nul dans un plan).\n- **D.** Incorrect. Ceci décrit une propriété triviale mal formulée. La définition d'une famille libre est que la *seule* combinaison linéaire nulle est celle dont les coefficients sont tous nuls.\n\n",
       "options": [
         {
@@ -75,7 +75,7 @@
     {
       "id": "3",
       "stackId": "93d81323",
-      "content": "#### Question 3\n\nLaquelle des applications suivantes $f : \\mathbb{R} \\to \\mathbb{R}$ est une **application linéaire** ?\n",
+      "content": "#### Application linéaire\n\nLaquelle des applications suivantes $f : \\mathbb{R} \\to \\mathbb{R}$ est une **application linéaire** ?\n",
       "solution": "\n\n**Réponses : [B]**\n\nUne application linéaire doit satisfaire $f(\\lambda x + y) = \\lambda f(x) + f(y)$ pour tous scalaires et vecteurs. Une conséquence immédiate est que $f(0) = 0$.\n\n- **A.** Incorrect. C'est une application affine. $f(0) = 2 \\neq 0$, donc elle n'est pas linéaire.\n- **B.** Correct. Vérifions : $f(\\lambda x + y) = -3(\\lambda x + y) = \\lambda(-3x) + (-3y) = \\lambda f(x) + f(y)$.\n- **C.** Incorrect. $f(2x) = (2x)^2 = 4x^2 \\neq 2f(x)$, donc non linéaire.\n- **D.** Incorrect. $f(2x) = \\sin(2x) \\neq 2\\sin(x)$ en général.\n\n",
       "options": [
         {
@@ -103,7 +103,7 @@
     {
       "id": "4",
       "stackId": "93d81323",
-      "content": "#### Question 4\n\nSoit $f$ un endomorphisme de $V$. Soit $A$ sa matrice dans une base $\\mathfrak{B}$ et $B$ sa matrice dans une base $\\mathcal{C}$. Si $P$ est la **matrice de passage** de $\\mathfrak{B}$ vers $\\mathcal{C}$ (contenant les vecteurs de $\\mathcal{C}$ exprimés dans $\\mathfrak{B}$), quelle est la relation entre $A$ et $B$ ?\n",
+      "content": "#### Changement de base\n\nSoit $f$ un endomorphisme de $V$. Soit $A$ sa matrice dans une base $\\mathfrak{B}$ et $B$ sa matrice dans une base $\\mathcal{C}$. Si $P$ est la **matrice de passage** de $\\mathfrak{B}$ vers $\\mathcal{C}$ (contenant les vecteurs de $\\mathcal{C}$ exprimés dans $\\mathfrak{B}$), quelle est la relation entre $A$ et $B$ ?\n",
       "solution": "\n\n**Réponses : [C]**\n\nC'est la formule de changement de base pour un endomorphisme.\n\n- **A.** Incorrect. L'ordre des matrices inverses est inversé par rapport à la convention standard où $P$ contient les colonnes de la nouvelle base.\n- **B.** Incorrect. Ce n'est pas une formule de conjugaison valide (les dimensions ne correspondraient même pas pour une application vers un autre espace).\n- **C.** Correct. Si $X$ sont les coordonnées dans $\\mathfrak{B}$ et $X'$ dans $\\mathcal{C}$, on a $X = P X'$. L'équation $Y = AX$ devient $P Y' = A (P X')$, soit $Y' = (P^{-1} A P) X'$. Donc $B = P^{-1} A P$.\n- **D.** Incorrect. Manque l'inverse et la multiplication à droite.\n\n",
       "options": [
         {
@@ -131,7 +131,7 @@
     {
       "id": "5",
       "stackId": "93d81323",
-      "content": "#### Question 5\n\nSoit une application linéaire $f : \\mathbb{R}^5 \\to \\mathbb{R}^3$. On sait que la dimension du noyau de $f$ est 2 ($\\dim(\\text{Ker}(f)) = 2$). Quel est le **rang** de $f$ ?\n",
+      "content": "#### Théorème du rang\n\nSoit une application linéaire $f : \\mathbb{R}^5 \\to \\mathbb{R}^3$. On sait que la dimension du noyau de $f$ est 2 ($\\dim(\\text{Ker}(f)) = 2$). Quel est le **rang** de $f$ ?\n",
       "solution": "\n\n**Réponses : [B]**\n\nOn utilise le **Théorème du rang**.\n\n- **A.** Incorrect. Ce serait vrai si la dimension de l'espace de départ était 4.\n- **B.** Correct. Le théorème stipule : $\\dim(\\text{Espace de départ}) = \\dim(\\text{Ker}(f)) + \\dim(\\text{Im}(f))$.\n\n  Ici : $5 = 2 + \\text{rang}(f)$. Donc $\\text{rang}(f) = 5 - 2 = 3$.\n\n- **C.** Incorrect. Le rang ne peut pas dépasser la dimension de l'espace d'arrivée (3) ni être égal à la dimension de départ si le noyau n'est pas nul.\n- **D.** Incorrect. Mauvais calcul.\n\n",
       "options": [
         {
@@ -159,7 +159,7 @@
     {
       "id": "6",
       "stackId": "93d81323",
-      "content": "#### Question 6\n\nSoit $V$ un espace vectoriel de dimension finie et $W$ un sous-espace vectoriel de $V$. Quelle est la dimension de l'**espace quotient** $V/W$ ?\n",
+      "content": "#### Dimension de l'espace quotient\n\nSoit $V$ un espace vectoriel de dimension finie et $W$ un sous-espace vectoriel de $V$. Quelle est la dimension de l'**espace quotient** $V/W$ ?\n",
       "solution": "\n\n**Réponses : [B]**\n\nLa dimension de l'espace quotient correspond à la \"différence\" de degrés de liberté.\n\n- **A.** Incorrect. Ceci correspondrait à la dimension d'un produit cartésien $V \\times W$.\n- **B.** Correct. Si l'on complète une base de $W$ en une base de $V$, les vecteurs ajoutés forment une base de $V/W$. La formule est $\\dim(V/W) = \\dim(V) - \\dim(W)$.\n- **C.** Incorrect. Une dimension ne peut pas être négative (puisque $W \\subset V$, $\\dim(W) \\le \\dim(V)$).\n- **D.** Incorrect. Il n'y a pas de division de dimensions en algèbre linéaire standard.\n\n",
       "options": [
         {
@@ -187,7 +187,7 @@
     {
       "id": "7",
       "stackId": "93d81323",
-      "content": "#### Question 7\n\nQuelle condition est nécessaire et suffisante pour qu'une matrice carrée $A$ soit **inversible** ?\n",
+      "content": "#### Inversibilité d'une matrice\n\nQuelle condition est nécessaire et suffisante pour qu'une matrice carrée $A$ soit **inversible** ?\n",
       "solution": "\n\n**Réponses : [C]**\n\nLe déterminant mesure si la matrice \"écrase\" le volume (si elle n'est pas injective).\n\n- **A.** Incorrect. $\\det(A) = 0$ signifie que la matrice est singulière (non inversible).\n- **B.** Incorrect. La trace n'a pas de lien direct systématique avec l'inversibilité (ex: $\\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$ a une trace nulle mais est inversible).\n- **C.** Correct. Une matrice est inversible si et seulement si son déterminant est non nul.\n- **D.** Incorrect. Une matrice peut être inversible sans être diagonalisable (ex: $\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$) et inversement.\n\n",
       "options": [
         {
@@ -215,7 +215,7 @@
     {
       "id": "8",
       "stackId": "93d81323",
-      "content": "#### Question 8\n\nSoit $u$ un endomorphisme et $\\lambda$ une valeur propre de $u$. Qu'est-ce qu'un **vecteur propre** associé à $\\lambda$ ?\n",
+      "content": "#### Vecteur propre\n\nSoit $u$ un endomorphisme et $\\lambda$ une valeur propre de $u$. Qu'est-ce qu'un **vecteur propre** associé à $\\lambda$ ?\n",
       "solution": "\n\n**Réponses : [B]**\n\nLa définition stricte d'un vecteur propre exclut le vecteur nul.\n\n- **A.** Incorrect. Cette définition inclut le vecteur nul $0_V$ (car $u(0) = 0 = \\lambda \\cdot 0$), or le vecteur nul n'est pas considéré comme un vecteur propre.\n- **B.** Correct. Il faut que $v \\neq 0_V$ et que l'image de $v$ soit proportionnelle à $v$ avec le rapport $\\lambda$.\n- **C.** Incorrect. Ceci définit les vecteurs du noyau (associés à la valeur propre 0 uniquement).\n- **D.** Incorrect. C'est la relation inverse (ou fausse).\n\n",
       "options": [
         {
@@ -243,7 +243,7 @@
     {
       "id": "9",
       "stackId": "93d81323",
-      "content": "#### Question 9\n\nQuand dit-on que deux sous-espaces vectoriels $E$ et $F$ de $V$ sont **supplémentaires** ($V = E \\oplus F$) ?\n",
+      "content": "#### Sous-espaces supplémentaires\n\nQuand dit-on que deux sous-espaces vectoriels $E$ et $F$ de $V$ sont **supplémentaires** ($V = E \\oplus F$) ?\n",
       "solution": "\n\n**Réponses : [C]**\n\nLa supplémentarité requiert deux conditions : l'intersection triviale (somme directe) et la somme totale (génératrice).\n\n- **A.** Incorrect. Cela signifie seulement que la somme est directe ($E \\oplus F$), mais pas forcément égale à tout l'espace $V$.\n- **B.** Incorrect. Cela signifie qu'ils engendrent $V$, mais l'intersection pourrait ne pas être nulle (somme non directe).\n- **C.** Correct. C'est la définition exacte : tout vecteur de $V$ se décompose de manière unique comme somme d'un élément de $E$ et d'un élément de $F$.\n- **D.** Incorrect. L'union de deux sous-espaces n'est pas un sous-espace (sauf inclusion), et ce n'est pas la définition de la somme directe.\n\n",
       "options": [
         {
@@ -271,7 +271,7 @@
     {
       "id": "10",
       "stackId": "93d81323",
-      "content": "#### Question 10\n\nSoit $A$ une matrice carrée $n \\times n$. Quelle condition garantit que $A$ est **diagonalisable** ?\n",
+      "content": "#### Diagonalisation\n\nSoit $A$ une matrice carrée $n \\times n$. Quelle condition garantit que $A$ est **diagonalisable** ?\n",
       "solution": "\n\n**Réponses : [B]**\n\nIl existe plusieurs critères, mais celui sur les dimensions est une condition nécessaire et suffisante fondamentale.\n\n- **A.** Incorrect. Cela garantit l'inversibilité, pas la diagonalisation.\n- **B.** Correct. Si la somme des multiplicités géométriques ($\\dim V_\\lambda$) vaut la dimension de l'espace ($n$), alors il existe une base de vecteurs propres.\n- **C.** Incorrect. Avoir $n$ racines dans le polynôme caractéristique (polynôme scindé) est nécessaire, mais pas suffisant. Il faut aussi que pour chaque racine, la dimension de l'espace propre soit égale à la multiplicité algébrique.\n- **D.** Incorrect. C'est la condition pour être trigonalisable, pas nécessairement diagonalisable (ex: $\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$ a un polynôme scindé $(1-X)^2$ mais n'est pas diagonalisable).\n\n",
       "options": [
         {
