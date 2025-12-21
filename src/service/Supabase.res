@@ -18,18 +18,13 @@ module Browser = {
     }
   }
 }
+
 module Supabase = {
   type client
   type table
   type query
   type error = {message: string}
   type response<'a> = {data: option<'a>, error: option<error>}
-
-  type authOptions = {
-    autoRefreshToken: bool,
-    persistSession: bool,
-  }
-  type dbOptions = {schema: string}
 
   @module("@supabase/supabase-js")
   external createClient: (string, string) => client = "createClient"
@@ -39,6 +34,17 @@ module Supabase = {
   @send external eq: (query, string, string) => query = "eq"
   @send external maybeSingle: query => promise<response<'a>> = "maybeSingle"
   @send external upsert: (table, 'a) => query = "upsert"
+}
+
+type progressRow = {
+  stack_id: string,
+  active: bool,
+  cards: Js.Json.t,
+}
+
+type settingsRow = {
+  key: string,
+  value: string,
 }
 
 let make: (string, string) => RepositoryType.t = (url: string, anonKey: string) => {
@@ -51,15 +57,38 @@ let make: (string, string) => RepositoryType.t = (url: string, anonKey: string) 
   {
     stack: {
       toc: async path => {
-        switch await Browser.fetchData(`${path === "/" ? "/" : `${path}/`}stacks-toc.json`) {
+        let fullPath = path === "/" ? "/stacks-toc.json" : `${path}/stacks-toc.json`
+        switch await Browser.fetchData(fullPath) {
         | None => []
-        | Some(body) => body->S.parseJsonStringOrThrow(Stack.tocSchema)
+        | Some(body) =>
+          try {
+            let json = Js.Json.parseExn(body)
+            json->S.parseOrThrow(Stack.tocSchema)
+          } catch {
+          | Js.Exn.Error(e) =>
+            Js.log2("Error parsing TOC:", Js.Exn.message(e))
+            []
+          | _ =>
+            Js.log("Error parsing TOC JSON")
+            []
+          }
         }
       },
       get: async id => {
         switch await Browser.fetchData(`${stacksPath}/${id}.json`) {
         | None => None
-        | Some(body) => Some(body->S.parseJsonStringOrThrow(Stack.stackSchema))
+        | Some(body) =>
+          try {
+            let json = Js.Json.parseExn(body)
+            Some(json->S.parseOrThrow(Stack.stackSchema))
+          } catch {
+          | Js.Exn.Error(e) =>
+            Js.log2("Error parsing stack:", Js.Exn.message(e))
+            None
+          | _ =>
+            Js.log("Error parsing stack JSON")
+            None
+          }
         }
       },
     },
@@ -68,52 +97,60 @@ let make: (string, string) => RepositoryType.t = (url: string, anonKey: string) 
         open Supabase
         let table = client->from("progress")
         let query = table->select("*")->eq("stack_id", id)
-        let response = await query->maybeSingle
+        let response: response<progressRow> = await query->maybeSingle
+
         switch response.data {
         | None => None
         | Some(row) =>
-          let rowDict = (row: Js.Dict.t<'a>)
-          let active = Js.Dict.unsafeGet(rowDict, "active")
-          let cards = Js.Dict.unsafeGet(rowDict, "cards")
-          let activeStr = if Obj.magic(active) {
-            "true"
-          } else {
-            "false"
-          }
-          let cardsStr = Obj.magic(cards)
-          let fullProgressJson = `{"id":"${id}","active":${activeStr},"cards":${cardsStr}`
           try {
-            Some(fullProgressJson->S.parseJsonStringOrThrow(Stack.progressSchema))
+            let cards = row.cards->S.parseOrThrow(S.dict(CardProgress.progressSchema))
+            Some({
+              Stack.id: row.stack_id,
+              active: row.active,
+              cards,
+            })
           } catch {
+          | Js.Exn.Error(e) =>
+            Js.log2("Error parsing progress cards from DB:", Js.Exn.message(e))
+            None
           | _ => None
           }
         }
       },
       save: async progress => {
         open Supabase
-        let progressJson = progress->S.reverseConvertOrThrow(Stack.progressSchema)
-        let progressDict: Js.Dict.t<'a> = Obj.magic(progressJson)
-        let cards = Js.Dict.unsafeGet(progressDict, "cards")
-        let cardsJson = Obj.magic(cards)->stringify
-        let row = {
-          "stack_id": progress.id,
-          "active": progress.active,
-          "cards": cardsJson,
-        }
-        let table = client->from("progress")
-        let query = table->upsert(row)
-        let response = await query->maybeSingle
-        switch response.error {
-        | Some(error) => Js.log2("[Supabase.saveProgress] Error saving progress: ", error.message)
-        | None => ()
+
+        try {
+          // Serialize cards using the schema
+          let cardsJsonUnknown =
+            progress.cards->S.reverseConvertOrThrow(S.dict(CardProgress.progressSchema))
+
+          // Cast to Js.Json.t
+          let cardsJson: Js.Json.t = Obj.magic(cardsJsonUnknown)
+
+          let row: progressRow = {
+            stack_id: progress.id,
+            active: progress.active,
+            cards: cardsJson,
+          }
+
+          let table = client->from("progress")
+          let query = table->upsert(row)
+          let response = await query->maybeSingle
+          switch response.error {
+          | Some(error) => Js.log2("[Supabase.saveProgress] Error saving progress: ", error.message)
+          | None => ()
+          }
+        } catch {
+        | Js.Exn.Error(e) =>
+          Js.log2("[Supabase.saveProgress] Error serializing cards: ", Js.Exn.message(e))
+        | _ => ()
         }
       },
     },
     settings: {
       get: key => {
         // Return from cache (synchronous)
-        // Note: Cache is populated on first access or save
-        // For full Supabase integration, this would need to be async
         switch settingsCache->Dict.get(key) {
         | Some(value) => Value(value)
         | None => Null
@@ -126,9 +163,9 @@ let make: (string, string) => RepositoryType.t = (url: string, anonKey: string) 
         ignore(async () => {
           open Supabase
           let table = client->from("settings")
-          let row = {
-            "key": key,
-            "value": value,
+          let row: settingsRow = {
+            key,
+            value,
           }
           let query = table->upsert(row)
           let response = await query->maybeSingle
