@@ -31,12 +31,19 @@ module Ui = {
     solution: string,
     options: array<correctedOption>,
     evaluate: CardProgress.state => unit,
+    prevState: option<CardProgress.state>,
     turn: unit => unit,
   }
 
   type view = Front(front) | Back(back) | Done
 
-  let back = (evaluate, card, boptions: array<questionOption>, setShowBack: bool => unit) => {
+  let back = (
+    evaluate,
+    card,
+    boptions: array<questionOption>,
+    prevState,
+    setShowBack: bool => unit,
+  ) => {
     let options = boptions->Array.map(option => {
       let correction = switch (option.checked, option.correct) {
       | (true, true) => Correct
@@ -56,6 +63,7 @@ module Ui = {
       options,
       solution: card.Card.solution,
       evaluate,
+      prevState,
       turn: () => setShowBack(false),
     })
   }
@@ -186,7 +194,7 @@ let make = (
       switch prog->Dict.get(card.Card.stackId) {
       | None => Js.Exn.raiseError(`No progress found for card ${card.stackId}`)
       | Some(p) => {
-          let c = CardProgress.next(p.cards->Dict.get(card.id), state, ~now=now())
+          let c = CardProgress.next(state, ~now=now())
           p.cards->Dict.set(card.id, c)
           ignore(repo.progress.save(p))
           setShowBack(false)
@@ -195,6 +203,21 @@ let make = (
       }
     }
   }
+
+  let prevState = derived(() => {
+    switch card.value {
+    | None => None
+    | Some(card) =>
+      switch prog->Dict.get(card.Card.stackId) {
+      | None => None
+      | Some(p) =>
+        switch p.cards->Dict.get(card.id) {
+        | None => None
+        | Some(c) => Some(c.state)
+        }
+      }
+    }
+  })
 
   let stats = derived(() => {
     let total = Array.reduce(stacks, 0, (acc, {stack}: rstack) => acc + stack.cards->Array.length)
@@ -234,7 +257,7 @@ let make = (
     | None => Ui.Done
     | Some(card) =>
       switch showBack.value {
-      | true => Ui.back(evaluate, card, options.value, setShowBack)
+      | true => Ui.back(evaluate, card, options.value, prevState.value, setShowBack)
       | false =>
         Front({
           content: card.content,

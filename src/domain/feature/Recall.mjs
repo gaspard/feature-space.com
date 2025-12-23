@@ -6,7 +6,7 @@ import * as Random from "./Random.mjs";
 import * as Core__Array from "@rescript/core/src/Core__Array.mjs";
 import * as CardProgress from "../api/entity/CardProgress.mjs";
 
-function back(evaluate, card, boptions, setShowBack) {
+function back(evaluate, card, boptions, prevState, setShowBack) {
   var options = boptions.map(function (option) {
         var match = option.checked;
         var match$1 = option.correct;
@@ -29,6 +29,7 @@ function back(evaluate, card, boptions, setShowBack) {
             solution: card.solution,
             options: options,
             evaluate: evaluate,
+            prevState: prevState,
             turn: (function () {
                 setShowBack(false);
               })
@@ -157,7 +158,7 @@ function make(repo, stacks, shuffleOpt, nowOpt, maxOpt, dayLengthOpt) {
     if (p === undefined) {
       return Js_exn.raiseError("No progress found for card " + card$1.stackId);
     }
-    var c = CardProgress.next(p.cards[card$1.id], state, now());
+    var c = CardProgress.next(state, now());
     p.cards[card$1.id] = c;
     repo.progress.save(p);
     setShowBack(false);
@@ -168,6 +169,21 @@ function make(repo, stacks, shuffleOpt, nowOpt, maxOpt, dayLengthOpt) {
     }
     
   };
+  var prevState = Tilia.derived(function () {
+        var card$1 = card.value;
+        if (card$1 === undefined) {
+          return ;
+        }
+        var p = prog[card$1.stackId];
+        if (p === undefined) {
+          return ;
+        }
+        var c = p.cards[card$1.id];
+        if (c !== undefined) {
+          return c.state;
+        }
+        
+      });
   var stats = Tilia.derived(function () {
         var total = Core__Array.reduce(stacks$1, 0, (function (acc, param) {
                 return acc + param.stack.cards.length | 0;
@@ -203,7 +219,7 @@ function make(repo, stacks, shuffleOpt, nowOpt, maxOpt, dayLengthOpt) {
         var card$1 = card.value;
         if (card$1 !== undefined) {
           if (showBack.value) {
-            return back(evaluate, card$1, options.value, setShowBack);
+            return back(evaluate, card$1, options.value, prevState.value, setShowBack);
           } else {
             return {
                     TAG: "Front",

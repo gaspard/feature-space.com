@@ -27,12 +27,7 @@ let recallTime = (timestamp, state, ~dayLength=3600. *. 24. *. 1000., ~sample=no
   }
 }
 
-let next = (prev, state, ~now) => {
-  let state = switch (prev, state) {
-  | (Some({state: Easy(i)}), Easy(_)) => Easy(i + 1)
-  | (_, Easy(_)) => Easy(0)
-  | _ => state
-  }
+let next = (state, ~now) => {
   let timestamp = now
   {timestamp, state}
 }

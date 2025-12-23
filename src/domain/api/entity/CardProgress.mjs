@@ -25,31 +25,10 @@ function recallTime(timestamp, state, dayLengthOpt, sampleOpt) {
   }
 }
 
-function next(prev, state, now) {
-  var state$1;
-  var exit = 0;
-  if (prev !== undefined) {
-    var i = prev.state;
-    if (typeof i !== "object") {
-      exit = 1;
-    } else {
-      state$1 = typeof state !== "object" ? state : ({
-            kind: "easy",
-            _0: i._0 + 1 | 0
-          });
-    }
-  } else {
-    exit = 1;
-  }
-  if (exit === 1) {
-    state$1 = typeof state !== "object" ? state : ({
-          kind: "easy",
-          _0: 0
-        });
-  }
+function next(state, now) {
   return {
           timestamp: now,
-          state: state$1
+          state: state
         };
 }
 

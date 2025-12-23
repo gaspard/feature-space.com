@@ -104,9 +104,19 @@ module Evaluate = {
             <button className="eval good" onClick={_ => evaluate(CardProgress.Good)}>
               {"Bien"->React.string}
             </button>
-            <button className="eval easy" onClick={_ => evaluate(CardProgress.Easy(1))}>
+            <button className="eval easy" onClick={_ => evaluate(CardProgress.Easy(0))}>
               {"Facile"->React.string}
             </button>
+            {switch back.prevState {
+            | Some(CardProgress.Easy(i)) =>
+              <>
+                <button
+                  className="eval easy-plus" onClick={_ => evaluate(CardProgress.Easy(i + 1))}>
+                  {`Facile ${(i + 2)->Int.toString}x`->React.string}
+                </button>
+              </>
+            | _ => <> </>
+            }}
           </>}
     </div>
   }

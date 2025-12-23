@@ -144,6 +144,52 @@ function RecallView$Evaluate(props) {
     back.evaluate(state);
     Browser.scrollTo("recall", "instant");
   };
+  var tmp;
+  if (hasErrors) {
+    tmp = JsxRuntime.jsx(JsxRuntime.Fragment, {});
+  } else {
+    var match = back.prevState;
+    var tmp$1;
+    if (match !== undefined && typeof match === "object") {
+      var i = match._0;
+      tmp$1 = JsxRuntime.jsx(JsxRuntime.Fragment, {
+            children: Caml_option.some(JsxRuntime.jsx("button", {
+                      children: "Facile " + (i + 2 | 0).toString() + "x",
+                      className: "eval easy-plus",
+                      onClick: (function (param) {
+                          evaluate({
+                                kind: "easy",
+                                _0: i + 1 | 0
+                              });
+                        })
+                    }))
+          });
+    } else {
+      tmp$1 = JsxRuntime.jsx(JsxRuntime.Fragment, {});
+    }
+    tmp = JsxRuntime.jsxs(JsxRuntime.Fragment, {
+          children: [
+            JsxRuntime.jsx("button", {
+                  children: "Bien",
+                  className: "eval good",
+                  onClick: (function (param) {
+                      evaluate("good");
+                    })
+                }),
+            JsxRuntime.jsx("button", {
+                  children: "Facile",
+                  className: "eval easy",
+                  onClick: (function (param) {
+                      evaluate({
+                            kind: "easy",
+                            _0: 0
+                          });
+                    })
+                }),
+            tmp$1
+          ]
+        });
+  }
   return JsxRuntime.jsxs("div", {
               children: [
                 JsxRuntime.jsx("button", {
@@ -160,27 +206,7 @@ function RecallView$Evaluate(props) {
                           evaluate("hard");
                         })
                     }),
-                hasErrors ? JsxRuntime.jsx(JsxRuntime.Fragment, {}) : JsxRuntime.jsxs(JsxRuntime.Fragment, {
-                        children: [
-                          JsxRuntime.jsx("button", {
-                                children: "Bien",
-                                className: "eval good",
-                                onClick: (function (param) {
-                                    evaluate("good");
-                                  })
-                              }),
-                          JsxRuntime.jsx("button", {
-                                children: "Facile",
-                                className: "eval easy",
-                                onClick: (function (param) {
-                                    evaluate({
-                                          kind: "easy",
-                                          _0: 1
-                                        });
-                                  })
-                              })
-                        ]
-                      })
+                tmp
               ],
               className: "card-evaluate"
             });
