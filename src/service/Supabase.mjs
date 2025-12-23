@@ -2,319 +2,157 @@
 
 import * as S from "sury/src/S.mjs";
 import * as Stack from "../domain/api/entity/Stack.mjs";
+import * as Js_exn from "rescript/lib/es6/js_exn.js";
+import * as CardProgress from "../domain/api/entity/CardProgress.mjs";
+import * as Caml_js_exceptions from "rescript/lib/es6/caml_js_exceptions.js";
 import * as SupabaseJs from "@supabase/supabase-js";
 
-var Client = {};
-
-var Auth = {};
-
-var Query = {};
-
-var $$Navigator = {};
-
-var client = SupabaseJs.createClient("https://ymasvqhkmgrhwfpvojgk.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InltYXN2cWhrbWdyaHdmcHZvamdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIxOTIwMDQsImV4cCI6MjA3Nzc2ODAwNH0.dFmQKiq7ce8uZ_iGP03OTxwWQ6eIRW9lT3xpwiMBDHU");
-
-function getClient() {
-  return client;
-}
-
-async function getSession(client) {
-  var auth = client.auth;
-  var response = await auth.getSession();
-  var data = response.data;
-  if (data !== undefined) {
-    return data.session;
-  }
-  
-}
-
-async function signIn(client, email, password) {
-  var auth = client.auth;
-  var response = await auth.signInWithPassword({
-        email: email,
-        password: password
-      });
-  var _error = response.error;
-  if (_error !== undefined) {
-    return ;
-  }
-  var data = response.data;
-  if (data !== undefined) {
-    return data.session;
-  }
-  
-}
-
-async function signInResult(client, email, password) {
-  var auth = client.auth;
-  var response = await auth.signInWithPassword({
-        email: email,
-        password: password
-      });
-  var hasError = (response.error !== null && response.error !== undefined);
-  if (hasError) {
-    var errorMsg = ((response.error && response.error !== null && response.error.message && response.error.message !== null && response.error.message !== "null") 
-        ? response.error.message 
-        : (response.error && response.error !== null && response.error.msg && response.error.msg !== null && response.error.msg !== "null")
-          ? response.error.msg
-          : "La connexion a échoué. Veuillez vérifier vos identifiants.");
-    return {
-            TAG: "Error",
-            _0: errorMsg
-          };
-  }
-  var data = response.data;
-  if (data === undefined) {
-    return {
-            TAG: "Error",
-            _0: "La connexion a échoué. Veuillez vérifier vos identifiants."
-          };
-  }
-  var session = data.session;
-  if (session !== undefined) {
-    return {
-            TAG: "Success",
-            _0: session
-          };
-  } else {
-    return {
-            TAG: "Error",
-            _0: "La connexion a échoué. Veuillez vérifier vos identifiants."
-          };
-  }
-}
-
-async function signUp(client, email, password) {
-  var auth = client.auth;
-  var response = await auth.signUp({
-        email: email,
-        password: password
-      });
-  var _error = response.error;
-  if (_error !== undefined) {
-    return ;
-  }
-  var data = response.data;
-  if (data !== undefined) {
-    return data.session;
-  }
-  
-}
-
-async function signUpResult(client, email, password) {
-  var auth = client.auth;
-  var response = await auth.signUp({
-        email: email,
-        password: password
-      });
-  var hasError = (response.error !== null && response.error !== undefined);
-  if (hasError) {
-    var errorMsg = ((response.error && response.error !== null && response.error.message && response.error.message !== null && response.error.message !== "null") 
-        ? response.error.message 
-        : (response.error && response.error !== null && response.error.msg && response.error.msg !== null && response.error.msg !== "null")
-          ? response.error.msg
-          : "L'inscription a échoué. Veuillez réessayer.");
-    return {
-            TAG: "Error",
-            _0: errorMsg
-          };
-  }
-  var data = response.data;
-  if (data === undefined) {
-    return {
-            TAG: "Error",
-            _0: "L'inscription a échoué. Veuillez réessayer."
-          };
-  }
-  var sessionExists = (data.session !== null && data.session !== undefined);
-  if (!sessionExists) {
-    return "EmailConfirmationRequired";
-  }
-  var session = data.session;
-  if (session !== undefined) {
-    return {
-            TAG: "Success",
-            _0: session
-          };
-  } else {
-    return "EmailConfirmationRequired";
-  }
-}
-
-async function signUpWithError(client, email, password) {
-  var result = await signUpResult(client, email, password);
-  if (typeof result !== "object") {
-    return [
-            undefined,
-            "Veuillez vérifier votre email pour confirmer votre compte. Un email de confirmation a été envoyé."
-          ];
-  } else if (result.TAG === "Success") {
-    return [
-            result._0,
-            undefined
-          ];
-  } else {
-    return [
-            undefined,
-            result._0
-          ];
-  }
-}
-
-async function signOut(client) {
-  var auth = client.auth;
-  var response = await auth.signOut();
-  var match = response.error;
-  return match === undefined;
-}
-
-function onAuthStateChange(client, callback) {
-  var auth = client.auth;
-  var supabaseCallback = function ($$event, sessionOpt) {
-    var mappedEvent;
-    switch ($$event) {
-      case "INITIAL_SESSION" :
-          if (sessionOpt !== undefined) {
-            console.log("[Supabase] INITIAL_SESSION event received with session, userId=" + sessionOpt.user.id);
-            mappedEvent = {
-              TAG: "SignedIn",
-              _0: sessionOpt
-            };
-          } else {
-            console.log("[Supabase] INITIAL_SESSION event received but no session");
-            mappedEvent = "SignedOut";
-          }
-          break;
-      case "SIGNED_IN" :
-          if (sessionOpt !== undefined) {
-            console.log("[Supabase] SIGNED_IN event received, session.user.id=" + sessionOpt.user.id);
-            mappedEvent = {
-              TAG: "SignedIn",
-              _0: sessionOpt
-            };
-          } else {
-            console.log("[Supabase] SIGNED_IN event received but session is null");
-            mappedEvent = "SignedOut";
-          }
-          break;
-      case "SIGNED_OUT" :
-          console.log("[Supabase] SIGNED_OUT event received");
-          mappedEvent = "SignedOut";
-          break;
-      case "TOKEN_REFRESHED" :
-          mappedEvent = sessionOpt !== undefined ? ({
-                TAG: "TokenRefreshed",
-                _0: sessionOpt
-              }) : "SignedOut";
-          break;
-      case "USER_UPDATED" :
-          mappedEvent = sessionOpt !== undefined ? ({
-                TAG: "UserUpdated",
-                _0: sessionOpt
-              }) : "SignedOut";
-          break;
-      default:
-        console.log("[Supabase] Unknown auth event: " + $$event);
-        mappedEvent = "SignedOut";
-    }
-    callback(mappedEvent);
-  };
-  auth.onAuthStateChange(supabaseCallback);
-}
-
-async function getProgress(client, userId, stackId) {
-  var table = client.from("progress");
-  var select = table.select("*");
-  var query = select.eq("user_id", userId);
-  var eqQuery = query.eq("stack_id", stackId);
-  var response = await eqQuery.maybeSingle();
-  var row = response.data;
-  if (row === undefined) {
-    return ;
-  }
-  var activeStr = row.active ? "true" : "false";
-  var fullProgressJson = "{\"id\":\"" + stackId + "\",\"active\":" + activeStr + ",\"cards\":" + row.cards + "}";
+async function fetchData(path) {
   try {
-    return S.parseJsonStringOrThrow(fullProgressJson, Stack.progressSchema);
+    var response = await fetch(path);
+    return await response.text();
   }
-  catch (exn){
+  catch (raw_error){
+    var error = Caml_js_exceptions.internalToOCamlException(raw_error);
+    if (error.RE_EXN_ID === Js_exn.$$Error) {
+      console.log("Error fetching data: ", error._1);
+    } else {
+      console.log("Unknown error");
+    }
     return ;
   }
 }
 
-async function getAllProgress(client, userId) {
-  var table = client.from("progress");
-  var select = table.select("*");
-  var query = select.eq("user_id", userId);
-  await query.maybeSingle();
-  return [];
-}
+var Browser = {
+  fetchData: fetchData
+};
 
-async function saveProgress(client, userId, progress) {
-  S.reverseConvertOrThrow(progress, Stack.progressSchema);
-  var cardsJson = (JSON.stringify(progressJson.cards));
-  var row = {
-    user_id: userId,
-    stack_id: progress.id,
-    active: progress.active,
-    cards: cardsJson
-  };
-  console.log("[Supabase.saveProgress] Saving progress for stack " + progress.id);
-  var table = client.from("progress");
-  var upsert = table.upsert(row);
-  var response = await upsert.maybeSingle();
-  var error = response.error;
-  if (error !== undefined) {
-    console.log("[Supabase.saveProgress] Error saving progress for " + progress.id + ": " + error.message);
-    return false;
-  } else {
-    console.log("[Supabase.saveProgress] Successfully saved progress for " + progress.id);
-    return true;
-  }
-}
+var Supabase = {};
 
-function online() {
-  return navigator.onLine;
-}
-
-function onOnline(callback) {
-  window.addEventListener("online", callback);
-}
-
-function onOffline(callback) {
-  window.addEventListener("offline", callback);
-}
-
-function removeOnOnline(callback) {
-  window.removeEventListener("online", callback);
-}
-
-function removeOnOffline(callback) {
-  window.removeEventListener("offline", callback);
+function make(url, anonKey) {
+  var client = SupabaseJs.createClient(url, anonKey);
+  var settingsCache = {};
+  return {
+          stack: {
+            toc: (async function (path) {
+                var fullPath = path === "/" ? "/stacks-toc.json" : path + "/stacks-toc.json";
+                var body = await fetchData(fullPath);
+                if (body === undefined) {
+                  return [];
+                }
+                try {
+                  var json = JSON.parse(body);
+                  return S.parseOrThrow(json, Stack.tocSchema);
+                }
+                catch (raw_e){
+                  var e = Caml_js_exceptions.internalToOCamlException(raw_e);
+                  if (e.RE_EXN_ID === Js_exn.$$Error) {
+                    console.log("Error parsing TOC:", e._1.message);
+                    return [];
+                  } else {
+                    console.log("Error parsing TOC JSON");
+                    return [];
+                  }
+                }
+              }),
+            get: (async function (id) {
+                var body = await fetchData("/stacks/" + id + ".json");
+                if (body === undefined) {
+                  return ;
+                }
+                try {
+                  var json = JSON.parse(body);
+                  return S.parseOrThrow(json, Stack.stackSchema);
+                }
+                catch (raw_e){
+                  var e = Caml_js_exceptions.internalToOCamlException(raw_e);
+                  if (e.RE_EXN_ID === Js_exn.$$Error) {
+                    console.log("Error parsing stack:", e._1.message);
+                  } else {
+                    console.log("Error parsing stack JSON");
+                  }
+                  return ;
+                }
+              })
+          },
+          progress: {
+            get: (async function (id) {
+                var table = client.from("progress");
+                var query = table.select("*").eq("stack_id", id);
+                var response = await query.maybeSingle();
+                var row = response.data;
+                if (row === undefined) {
+                  return ;
+                }
+                try {
+                  var cards = S.parseOrThrow(row.cards, S.dict(CardProgress.progressSchema));
+                  return {
+                          id: row.stack_id,
+                          active: row.active,
+                          cards: cards
+                        };
+                }
+                catch (raw_e){
+                  var e = Caml_js_exceptions.internalToOCamlException(raw_e);
+                  if (e.RE_EXN_ID === Js_exn.$$Error) {
+                    console.log("Error parsing progress cards from DB:", e._1.message);
+                    return ;
+                  } else {
+                    return ;
+                  }
+                }
+              }),
+            save: (async function (progress) {
+                try {
+                  var cardsJsonUnknown = S.reverseConvertOrThrow(progress.cards, S.dict(CardProgress.progressSchema));
+                  var row_stack_id = progress.id;
+                  var row_active = progress.active;
+                  var row = {
+                    stack_id: row_stack_id,
+                    active: row_active,
+                    cards: cardsJsonUnknown
+                  };
+                  var table = client.from("progress");
+                  var query = table.upsert(row);
+                  var response = await query.maybeSingle();
+                  var error = response.error;
+                  if (error !== undefined) {
+                    console.log("[Supabase.saveProgress] Error saving progress: ", error.message);
+                    return ;
+                  } else {
+                    return ;
+                  }
+                }
+                catch (raw_e){
+                  var e = Caml_js_exceptions.internalToOCamlException(raw_e);
+                  if (e.RE_EXN_ID === Js_exn.$$Error) {
+                    console.log("[Supabase.saveProgress] Error serializing cards: ", e._1.message);
+                    return ;
+                  } else {
+                    return ;
+                  }
+                }
+              })
+          },
+          settings: {
+            get: (function (key) {
+                var value = settingsCache[key];
+                if (value !== undefined) {
+                  return value;
+                } else {
+                  return null;
+                }
+              }),
+            save: (function (key, value) {
+                settingsCache[key] = value;
+              })
+          }
+        };
 }
 
 export {
-  Client ,
-  Auth ,
-  Query ,
-  $$Navigator ,
-  client ,
-  getClient ,
-  getSession ,
-  signIn ,
-  signInResult ,
-  signUp ,
-  signUpResult ,
-  signUpWithError ,
-  signOut ,
-  onAuthStateChange ,
-  getProgress ,
-  getAllProgress ,
-  saveProgress ,
-  online ,
-  onOnline ,
-  onOffline ,
-  removeOnOnline ,
-  removeOnOffline ,
+  Browser ,
+  Supabase ,
+  make ,
 }
-/* client Not a pure module */
+/* S Not a pure module */

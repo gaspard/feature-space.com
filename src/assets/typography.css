@@ -110,38 +110,47 @@ main {
     color: #606;
   }
 
-  .stats, .settings {
+  .stats,
+  .settings {
     @apply bg-slate-100 grid grid-cols-[2fr_0fr_1fr_0fr] gap-2 text-xs text-gray-500 w-auto my-4 mb-8 mx-4 border-1 p-2 rounded-md border-slate-200 float-right min-w-48;
+
     .num {
       @apply text-right;
     }
   }
+
   .settings {
     @apply grid grid-cols-[2fr_1fr_4fr] gap-2 w-auto;
+
     input {
       @apply w-full;
     }
   }
+
   .toc {
     @apply clear-both;
-    h2.regular, h2.Regular {
+
+    h2.regular,
+    h2.Regular {
       @apply font-semibold text-2xl text-blue-600 saturate-30 opacity-40;
     }
 
-    h2.pro, h2.Pro {
+    h2.pro,
+    h2.Pro {
       @apply font-semibold text-2xl text-red-800 saturate-30 opacity-40;
     }
 
     h3 {
-      @apply text-left m-0 border-b border-slate-700 p-2 bg-amber-50 text-xl ;
+      @apply text-left m-0 border-b border-slate-700 p-2 bg-amber-50 text-xl;
 
-      a  {
+      a {
         @apply text-slate-500 border-0;
       }
     }
 
     h4 {
       @apply text-lg text-slate-500 border-0 font-medium;
+
       a {
         @apply text-slate-500 border-0;
       }
@@ -455,12 +464,14 @@ main {
 
     .card-question {
       @apply p-4 cursor-pointer;
+
       p:first-child {
         @apply m-0;
       }
 
       ul {
         @apply m-0 mt-8;
+
         &.options {
           p {
             @apply my-0;
@@ -471,20 +482,28 @@ main {
 
     .eval {
       @apply cursor-pointer rounded-md bg-gray-100 md:px-4 md:py-2 text-center text-sm text-gray-500 border-gray-400 border md:m-4 px-2 py-1 mt-1 mx-2;
+
       &.again {
         @apply bg-red-100;
       }
+
       &.hard {
         @apply bg-yellow-100;
       }
+
       &.good {
         @apply bg-green-100;
       }
+
       &.easy {
         @apply bg-cyan-100;
       }
+
+      &.easy-plus {
+        background: linear-gradient(110deg, #fbffe8, #f2fff6, #eaffff, #eefaff);
+      }
     }
-    
+
     .card-evaluate {
       @apply mt-0;
     }
@@ -526,7 +545,8 @@ li:not(:has(input)) {
   @apply list-disc p-0;
 }
 
-li:has(input), .card li:has(input) {
+li:has(input),
+.card li:has(input) {
   @apply list-none flex items-start;
   cursor: pointer;
   padding: 2px 7px;
@@ -542,7 +562,8 @@ li:has(input:checked) {
   background-color: rgb(239, 246, 252);
 }
 
-.check li:has(input:not(.correct):checked), li.incorrect:has(input) {
+.check li:has(input:not(.correct):checked),
+li.incorrect:has(input) {
   background-color: rgb(255, 225, 213);
 
   input {
@@ -550,11 +571,13 @@ li:has(input:checked) {
   }
 }
 
-.check li:has(input.correct:not(:checked)), li.missed:has(input) {
+.check li:has(input.correct:not(:checked)),
+li.missed:has(input) {
   background-color: rgb(254, 251, 222);
 }
 
-.check li:has(input.correct:checked), li.correct:has(input) {
+.check li:has(input.correct:checked),
+li.correct:has(input) {
   background-color: rgb(225, 254, 222);
 
   input {
@@ -574,16 +597,16 @@ span.correct:empty {
 
 summary {
   @apply cursor-pointer text-slate-500 list-none mt-0 mb-0 py-3;
-  
+
   /* Hide default marker and use custom one */
   &::-webkit-details-marker {
     display: none;
   }
-  
+
   &::marker {
     display: none;
   }
-  
+
   /* Custom arrow marker */
   &::before {
     content: '▶';
@@ -598,6 +621,7 @@ details {
   background: hsla(204, 50%, 96%, 50%);
   padding-left: 22px;
   padding-right: 22px;
+
   &.hint {
     @apply -mb-5 -mx-4;
     background: hsla(55, 35%, 93%, 0.5);
@@ -606,17 +630,19 @@ details {
 
 details[open] {
   background: hsl(204, 50%, 96%);
+
   &.hint {
     background: rgba(243, 242, 231, 0.723);
   }
-  
+
   summary {
     @apply mt-0 mb-0;
   }
-  
+
   summary::before {
     @apply rotate-90;
   }
+
   @apply pb-8;
 }
 
@@ -626,6 +652,7 @@ button.font-size-control {
   border: none;
   margin: 0;
   font-family: inherit;
+
   &:disabled {
     @apply opacity-10 cursor-not-allowed;
   }
@@ -638,6 +665,7 @@ button.more,
 button.reset,
 button.card-next {
   @apply cursor-pointer rounded-md bg-gray-100 md:px-4 md:py-2 text-center text-sm text-gray-500 border-gray-400 border md:m-4 px-2 py-1 mt-1 mx-2;
+
   &:disabled {
     @apply opacity-30 cursor-not-allowed;
   }
@@ -670,7 +698,7 @@ input[type='checkbox']:hover {
   @apply border-gray-400;
 }
 
-  input[type='checkbox']:checked:hover {
+input[type='checkbox']:checked:hover {
   @apply bg-blue-600 border-blue-600;
 }
 
@@ -691,7 +719,7 @@ input[type='checkbox']:hover {
   gap: 1rem;
   cursor: pointer;
   padding: 0.5rem;
-  margin: 1.5rem ;
+  margin: 1.5rem;
   background-color: #fef3c7;
   border: 1px solid #f59e0b;
   border-radius: 0.4rem;

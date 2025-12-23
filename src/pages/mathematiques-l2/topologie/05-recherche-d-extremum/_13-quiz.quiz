@@ -1,0 +1,277 @@
+---
+id: 198e187a
+type: quiz
+order: 13
+title: Chapitre 5 Recherche d'extremum - quiz (A)
+tags:
+  - Mathématiques
+  - Analyse
+  - Optimisation
+  - Extremum
+  - Hessienne
+  - Points critiques
+createdAt: '2025-12-22T10:45:14.964Z'
+level: regular
+course: Topologie et Calcul Différentiel I
+courseId: 34e61f8e
+chapter: Chapitre 5 Recherche d'extremum
+chapterId: 70efcabd
+---
+# Quiz: Chapitre 5 Recherche d'extremum
+
+---
+
+#### Définition d'un extremum local
+
+Soit une fonction $f$ définie sur un ensemble $D$. Quelle condition définit un **maximum local** au point $a$ ?
+
+- [ ] **A)** La valeur $f(a)$ est supérieure ou égale à $f(y)$ pour tous les points $y$ de l'ensemble de définition $D$.
+- [x] **B)** Il existe une petite boule centrée en $a$ telle que $f(a)$ est supérieure ou égale à $f(y)$ pour tous les points $y$ de cette boule appartenant à $D$.
+- [ ] **C)** Le gradient de la fonction est nul au point $a$, quelle que soit la valeur de la fonction.
+- [ ] **D)** La fonction $f$ est constante autour du point $a$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Un extremum est dit **local** s'il est "champion" uniquement dans son voisinage immédiat.
+
+- **A.** Cette définition correspond à un **maximum global** (sur tout l'ensemble $D$), pas seulement local.
+- **B.** C'est la définition exacte. On regarde ce qui se passe "proche" de $a$ (dans une boule de rayon $\varepsilon$).
+- **C.** Le gradient nul est une condition liée aux points critiques, pas la définition d'un maximum (un gradient nul peut aussi être un minimum ou un point selle).
+- **D.** Une fonction constante admet des maxima locaux, mais un maximum local n'implique pas que la fonction soit constante.
+
+</details>
+
+---
+
+#### Identification d'un point critique
+
+Soit $f: U \to \mathbb{R}$ une fonction différentiable sur un ouvert $U$. Qu'est-ce qu'un **point critique** ?
+
+- [x] **A)** Un point $a$ où le gradient s'annule : $\nabla f(a) = 0$.
+- [ ] **B)** Un point $a$ où la fonction atteint sa valeur maximale globale.
+- [ ] **C)** Un point $a$ situé sur la frontière de l'ensemble $U$.
+- [ ] **D)** Un point $a$ où la dérivée seconde est strictement positive.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+Un point critique est défini géométriquement comme un endroit où le plan tangent est horizontal, ce qui se traduit analytiquement par l'annulation du gradient.
+
+- **A.** C'est la définition : toutes les dérivées partielles sont nulles simultanément.
+- **B.** C'est un extremum global. Si c'est un point intérieur, c'est aussi un point critique, mais tous les points critiques ne sont pas des maxima globaux.
+- **C.** Les points critiques sont définis sur l'ouvert (l'intérieur). Les points frontières sont traités séparément.
+- **D.** Cela concerne la courbure (dérivée seconde) et non la pente (gradient). Cela aide à classer le point, pas à le définir comme critique.
+
+</details>
+
+---
+
+#### Relation entre extremum et point critique
+
+Si une fonction $f$ définie sur un ouvert admet un extremum local (minimum ou maximum) en un point $a$, quelle affirmation est nécessairement vraie ?
+
+- [ ] **A)** $a$ est un point selle.
+- [x] **B)** Le gradient de $f$ en $a$ est nul ($\nabla f(a) = 0$).
+- [ ] **C)** La fonction n'est pas dérivable en $a$.
+- [ ] **D)** $a$ est nécessairement un extremum global.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+C'est une condition nécessaire fondamentale (Théorème 5.6).
+
+- **A.** Faux. Un point selle n'est ni un min ni un max.
+- **B.** Vrai. "Si extremum local sur un ouvert, alors gradient nul". Imaginez le sommet d'une colline : le sol y est plat.
+- **C.** Faux. Nous supposons ici que la fonction est différentiable (cadre du cours).
+- **D.** Faux. Être le plus grand du quartier (local) ne signifie pas être le plus grand du monde (global).
+
+</details>
+
+---
+
+#### Optimisation sur un Compact (Théorème de Weierstrass)
+
+Soit $K$ un ensemble **compact** (fermé et borné) de $\mathbb{R}^n$ et $f$ une fonction **continue** sur $K$. Que garantit le théorème de Weierstrass ?
+
+- [ ] **A)** La fonction $f$ est constante sur $K$.
+- [ ] **B)** La fonction $f$ n'admet aucun point critique sur $K$.
+- [x] **C)** La fonction $f$ est bornée et atteint son maximum global et son minimum global sur $K$.
+- [ ] **D)** Le gradient de $f$ est nul partout sur $K$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+C'est le résultat central de l'optimisation sur un compact.
+
+- **A.** Faux, la fonction peut varier.
+- **B.** Faux, elle peut avoir des points critiques ou non.
+- **C.** Vrai. La compacité de l'ensemble et la continuité de la fonction garantissent l'existence des extrema globaux (atteinte des bornes).
+- **D.** Faux. Le gradient est nul seulement aux points critiques intérieurs, pas partout.
+
+</details>
+
+---
+
+#### Stratégie de recherche sur un Compact
+
+Vous cherchez le maximum global d'une fonction différentiable $f$ sur un disque fermé (qui est un ensemble compact). Quels points devez-vous tester ?
+
+- [ ] **A)** Uniquement les points où le gradient s'annule.
+- [ ] **B)** Uniquement les points situés sur le cercle bordant le disque.
+- [ ] **C)** N'importe quel point choisi au hasard.
+- [x] **D)** Les points critiques à l'intérieur du disque ET les points sur le bord du disque.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+L'optimisation sur un compact nécessite une double analyse.
+
+- **A.** Insuffisant. Le maximum pourrait se trouver sur le bord sans que le gradient y soit nul (comme le point le plus haut d'une rampe inclinée coupée net).
+- **B.** Insuffisant. Le maximum pourrait être un sommet de colline au centre du disque.
+- **C.** Inefficace et mathématiquement infondé.
+- **D.** Vrai. On compare les "candidats" intérieurs (points critiques) avec les valeurs sur la frontière pour trouver le "champion absolu".
+
+</details>
+
+---
+
+#### Théorème de Schwarz
+
+Pour une fonction $f$ de classe $\mathscr{C}^2$ (dérivées secondes continues), que stipule le théorème de Schwarz concernant les dérivées partielles croisées ?
+
+- [ ] **A)** $\frac{\partial^2 f}{\partial x \partial y} = 0$
+- [x] **B)** $\frac{\partial^2 f}{\partial x \partial y} = \frac{\partial^2 f}{\partial y \partial x}$
+- [ ] **C)** $\frac{\partial^2 f}{\partial x \partial y} = -\frac{\partial^2 f}{\partial y \partial x}$
+- [ ] **D)** Les dérivées croisées n'existent pas.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Le théorème de Schwarz affirme que l'ordre de dérivation n'importe pas pour les fonctions régulières ($\mathscr{C}^2$).
+
+- **A.** Faux. Elles ne sont pas forcément nulles (ex: $f(x,y)=xy \implies \partial_{xy}f = 1$).
+- **B.** Vrai. C'est l'énoncé du théorème (symétrie).
+- **C.** Faux. Cela correspondrait à une antisymétrie, ce qui n'est pas le cas ici.
+- **D.** Faux. La définition de la classe $\mathscr{C}^2$ implique leur existence.
+
+</details>
+
+---
+
+#### La Matrice Hessienne
+
+Quelle est la définition de la matrice Hessienne $H_f(a)$ d'une fonction $f$ de deux variables $x$ et $y$ ?
+
+- [x] **A)** La matrice des dérivées partielles secondes : $\begin{pmatrix} \frac{\partial^2 f}{\partial x^2} & \frac{\partial^2 f}{\partial x \partial y} \\ \frac{\partial^2 f}{\partial y \partial x} & \frac{\partial^2 f}{\partial y^2} \end{pmatrix}$
+- [ ] **B)** La matrice des dérivées premières : $\begin{pmatrix} \frac{\partial f}{\partial x} & \frac{\partial f}{\partial y} \end{pmatrix}$
+- [ ] **C)** La matrice identité multipliée par $f(a)$.
+- [ ] **D)** Une matrice contenant uniquement les carrés des dérivées premières : $\begin{pmatrix} (\frac{\partial f}{\partial x})^2 & 0 \\ 0 & (\frac{\partial f}{\partial y})^2 \end{pmatrix}$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+La Hessienne rassemble toute l'information sur la courbure locale (ordre 2).
+
+- **A.** Vrai. C'est la matrice carrée composée de toutes les dérivées secondes possibles.
+- **B.** Ceci est la Jacobienne (ou le gradient transposé).
+- **C.** Faux.
+- **D.** Faux.
+
+</details>
+
+---
+
+#### Formule de Taylor à l'ordre 2
+
+Dans la formule de Taylor à l'ordre 2 au voisinage d'un point critique $a$ (où $\nabla f(a)=0$), quel terme permet d'approximer la variation de la fonction $f(a+h) - f(a)$ ?
+
+- [ ] **A)** Le terme linéaire $\langle \nabla f(a), h \rangle$.
+- [x] **B)** Le terme quadratique $\frac{1}{2} \langle H_f(a)h, h \rangle$.
+- [ ] **C)** La valeur de la fonction $f(a)$ elle-même.
+- [ ] **D)** Le produit des coordonnées de $h$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+- **A.** Comme $a$ est un point critique, $\nabla f(a)=0$, donc le terme linéaire disparaît. Il ne donne aucune information sur la variation.
+- **B.** Vrai. C'est le premier terme non nul (si la Hessienne n'est pas nulle) qui dicte si la fonction monte ou descend quadratiquement autour de $a$.
+- **C.** $f(a)$ est la valeur de base, pas la variation.
+- **D.** Trop vague et incorrect.
+
+</details>
+
+---
+
+#### Classification des points critiques (Cas Général)
+
+Supposons que $a$ soit un point critique et que toutes les valeurs propres de la matrice Hessienne $H_f(a)$ soient **strictement positives**. Quelle est la nature de $a$ ?
+
+- [ ] **A)** Maximum local strict.
+- [x] **B)** Minimum local strict.
+- [ ] **C)** Point selle.
+- [ ] **D)** On ne peut pas conclure.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Les valeurs propres indiquent la courbure dans les directions principales.
+
+- **A.** Pour un maximum, il faudrait que la courbure soit négative partout (valeurs propres négatives, forme de colline).
+- **B.** Vrai. Des valeurs propres positives signifient que la fonction se "courbe vers le haut" dans toutes les directions (forme de bol). C'est donc un minimum.
+- **C.** Un point selle nécessite des valeurs propres de signes opposés.
+- **D.** Le critère est concluant si les valeurs propres sont non nulles (strictes).
+
+</details>
+
+---
+
+#### Classification en Dimension 2 (Critère du Déterminant)
+
+Pour une fonction de deux variables, si le déterminant de la matrice Hessienne en un point critique est **strictement négatif** ($\det(H_f) < 0$), que peut-on dire ?
+
+- [ ] **A)** C'est un minimum local.
+- [ ] **B)** C'est un maximum local.
+- [x] **C)** C'est un point selle (ni minimum, ni maximum).
+- [ ] **D)** C'est un extremum global.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+En dimension 2, le déterminant est le produit des deux valeurs propres ($\lambda_1 \lambda_2$).
+
+- **A. & B.** Pour un extremum (min ou max), les deux valeurs propres doivent être de même signe, donc leur produit (le déterminant) doit être positif.
+- **C.** Vrai. Si le déterminant est négatif, cela signifie que $\lambda_1$ et $\lambda_2$ sont de signes opposés (l'une positive, l'autre négative). C'est la définition d'un point selle.
+- **D.** Faux.
+
+</details>

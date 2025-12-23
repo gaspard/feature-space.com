@@ -1,0 +1,239 @@
+---
+id: 4d7f013e
+type: cards
+order: 12
+title: Chapitre 5 Recherche d'extremum - fiches de révision (A)
+tags:
+  - Mathématiques
+  - Analyse
+  - Optimisation
+  - Extremum
+  - Hessienne
+  - Points critiques
+createdAt: '2025-12-22T10:45:14.964Z'
+level: regular
+course: Topologie et Calcul Différentiel I
+courseId: 34e61f8e
+chapter: Chapitre 5 Recherche d'extremum
+chapterId: 70efcabd
+---
+# Fiches de révision "Chapitre 5 Recherche d'extremum" (A)
+
+---
+
+Qu'est-ce qu'un **extremum global** (maximum ou minimum) ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Soit $f : D \to \mathbb{R}$. Un point $a \in D$ est un extremum global si la valeur de la fonction en $a$ est extrême par rapport à **tous** les autres points de l'ensemble de définition.
+
+**Maximum global :**
+
+$$ \forall y \in D, \quad f(a) \geq f(y) $$
+
+**Minimum global :**
+
+$$ \forall y \in D, \quad f(a) \leq f(y) $$
+
+**Analogie :** C'est le point culminant (le sommet le plus haut) de toute une chaîne de montagnes.
+
+tags: #définition #extremum #global
+
+</details>
+
+---
+
+Qu'est-ce qu'un **extremum local** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Un point $a \in D$ est un extremum local si la valeur de la fonction en $a$ est extrême par rapport aux points situés **dans son voisinage** (c'est-à-dire dans une petite boule centrée en $a$).
+
+**Maximum local :**
+
+Il existe un rayon $\varepsilon > 0$ tel que pour tout $y$ dans la boule $B(a, \varepsilon)$ :
+
+$$ f(a) \geq f(y) $$
+
+**Analogie :** C'est le sommet d'une colline. Ce n'est pas forcément le point le plus haut du monde, mais c'est le plus haut des environs immédiats.
+
+tags: #définition #extremum #local
+
+</details>
+
+---
+
+Qu'est-ce qu'un **point critique** d'une fonction $f$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour une fonction $f$ différentiable sur un ouvert, un point $a$ est critique si son **gradient s'annule** en ce point.
+
+**Formule :**
+
+$$ \nabla f(a) = \vec{0} $$
+
+Cela signifie que toutes les dérivées partielles sont nulles simultanément :
+
+$$ \frac{\partial f}{\partial x_1}(a) = 0, \quad \dots, \quad \frac{\partial f}{\partial x_n}(a) = 0 $$
+
+**Interprétation géométrique :** Le plan tangent à la surface en ce point est horizontal.
+
+tags: #définition #point_critique #gradient
+
+</details>
+
+---
+
+Un point critique est-il toujours un extremum local ?
+
+<details>
+
+<summary>Réponse</summary>
+
+**Non.**
+
+Être un point critique est une **condition nécessaire** pour être un extremum local (sur un ouvert), mais ce n'est pas une condition suffisante.
+
+**Contre-exemple : Le point-selle**
+
+Pour la fonction $f(x,y) = x^2 - y^2$, le point $(0,0)$ est un point critique ($\nabla f(0,0) = (0,0)$).
+
+Cependant, ce n'est ni un maximum (la fonction croît selon l'axe des $x$), ni un minimum (la fonction décroît selon l'axe des $y$).
+
+tags: #concept #point_critique #piège
+
+</details>
+
+---
+
+Comment trouver les extrema globaux d'une fonction continue sur un **compact** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Sur un ensemble compact $K$ (fermé et borné), une fonction continue atteint toujours ses bornes (Théorème de Weierstrass). Voici la méthode :
+
+**Étapes :**
+
+1.  **L'intérieur ($\mathring{K}$) :** Chercher les **points critiques** à l'intérieur de l'ensemble (résoudre $\nabla f = 0$).
+2.  **La frontière ($K \setminus \mathring{K}$) :** Étudier la fonction sur le bord du domaine (souvent en paramétrant le bord).
+3.  **Comparaison :** Calculer la valeur de $f$ pour tous les candidats trouvés (points critiques intérieurs et points remarquables du bord).
+4.  **Conclusion :** La plus grande valeur est le maximum global, la plus petite est le minimum global.
+
+tags: #méthode #compact #optimisation
+
+</details>
+
+---
+
+Qu'est-ce que la **Matrice Hessienne** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+C'est la matrice carrée qui regroupe toutes les **dérivées partielles d'ordre 2** d'une fonction $f$ en un point $a$.
+
+**Formule :**
+
+$$ H_f(a) = \begin{pmatrix} \frac{\partial^2 f}{\partial x_1^2}(a) & \cdots & \frac{\partial^2 f}{\partial x_1 \partial x_n}(a) \\ \vdots & \ddots & \vdots \\ \frac{\partial^2 f}{\partial x_n \partial x_1}(a) & \cdots & \frac{\partial^2 f}{\partial x_n^2}(a) \end{pmatrix} $$
+
+Pour une fonction de classe $\mathscr{C}^2$, cette matrice est **symétrique** (grâce au théorème de Schwarz). Elle renseigne sur la courbure de la fonction.
+
+tags: #définition #hessienne #dérivées
+
+</details>
+
+---
+
+Que dit le **Théorème de Schwarz** concernant les dérivées secondes ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Si une fonction $f$ est de classe $\mathscr{C}^2$ sur un ouvert (c'est-à-dire que ses dérivées secondes existent et sont continues), alors l'ordre de dérivation n'importe pas.
+
+**Formule :**
+
+$$ \frac{\partial^2 f}{\partial x_i \partial x_j} = \frac{\partial^2 f}{\partial x_j \partial x_i} $$
+
+Cela implique que la matrice Hessienne est symétrique.
+
+tags: #théorème #schwarz #propriété
+
+</details>
+
+---
+
+Quelle est la **formule de Taylor à l'ordre 2** pour une fonction de plusieurs variables ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Au voisinage d'un point $a$, pour un petit déplacement $h$ :
+
+$$ f(a + h) \approx f(a) + \underbrace{\langle \nabla f(a), h \rangle}_{\text{Terme linéaire}} + \underbrace{\frac{1}{2} \langle H_f(a)h, h \rangle}_{\text{Terme quadratique}} $$
+
+**Où :**
+
+*   $\nabla f(a)$ est le gradient (pente).
+*   $H_f(a)$ est la matrice Hessienne (courbure).
+*   $\langle \cdot, \cdot \rangle$ est le produit scalaire.
+
+Si $a$ est un point critique, le terme linéaire s'annule et le comportement est dicté par le terme quadratique (la Hessienne).
+
+tags: #formule #taylor #approximation
+
+</details>
+
+---
+
+Comment déterminer la nature d'un point critique à l'aide des **valeurs propres** de la Hessienne ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Soit $a$ un point critique. On calcule les valeurs propres de la matrice Hessienne $H_f(a)$.
+
+*   **Minimum local strict :** Toutes les valeurs propres sont **strictement positives** (courbure positive partout, comme un bol).
+*   **Maximum local strict :** Toutes les valeurs propres sont **strictement négatives** (courbure négative partout, comme une colline).
+*   **Point Selle :** Il y a des valeurs propres **positives ET négatives** (courbure mixte).
+*   **Cas douteux :** Si une valeur propre est nulle, on ne peut pas conclure avec ce critère.
+
+tags: #théorème #classification #valeurs_propres
+
+</details>
+
+---
+
+Comment classer un point critique en **dimension 2** sans calculer les valeurs propres ?
+
+<details>
+
+<summary>Réponse</summary>
+
+En dimension 2, on peut utiliser le déterminant ($\det$) et la trace ($\text{Tr}$) de la matrice Hessienne $H_f(a)$ :
+
+1.  Calculer $\det(H_f(a))$.
+    *   Si **$\det < 0$** : C'est un **Point Selle** (directement).
+    *   Si **$\det > 0$** : C'est un extremum (Max ou Min). Il faut regarder la Trace (ou simplement $\frac{\partial^2 f}{\partial x^2}$).
+2.  Si $\det > 0$, regarder le signe de $\text{Tr}(H_f(a))$ :
+    *   **$\text{Tr} > 0$** : **Minimum local**.
+    *   **$\text{Tr} < 0$** : **Maximum local**.
+
+Si $\det = 0$, le test n'est pas concluant.
+
+tags: #méthode #dimension2 #hessienne
+
+</details>

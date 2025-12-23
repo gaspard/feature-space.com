@@ -1,0 +1,612 @@
+---
+id: 10189ead
+type: proofs
+order: 15
+title: Chapitre 5 Recherche d'extremum - preuves (A)
+tags:
+  - Mathématiques
+  - Analyse
+  - Optimisation
+  - Extremum
+  - Hessienne
+  - Points critiques
+createdAt: '2025-12-22T10:45:14.964Z'
+level: regular
+course: Topologie et Calcul Différentiel I
+courseId: 34e61f8e
+chapter: Chapitre 5 Recherche d'extremum
+chapterId: 70efcabd
+---
+# Preuves "Chapitre 5 Recherche d'extremum" (A)
+
+---
+
+#### Preuve : Extremum global implique extremum local
+
+Prouver que si une fonction $f: D \to \mathbb{R}$ admet un maximum global en un point $a \in D$, alors elle admet un maximum local en ce point.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Revenez strictement aux définitions. La définition d'un maximum global impose une inégalité sur tout l'ensemble $D$. La définition locale impose la même inégalité sur une intersection de $D$ avec une boule.
+
+Est-ce que l'inégalité "pour tout $y$" implique l'inégalité "pour certains $y$" ?
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Nous devons montrer que la définition du maximum global implique celle du maximum local.
+
+**Étape 1 : Écrire l'hypothèse (Global)**
+
+Supposons que $f$ admet un maximum global en $a$. Par définition :
+
+$$ \forall y \in D, \quad f(a) \geq f(y) $$
+
+**Étape 2 : Écrire la conclusion souhaitée (Local)**
+
+Nous cherchons à montrer qu'il existe un $\varepsilon > 0$ tel que :
+
+$$ \forall y \in D \cap B(a, \varepsilon), \quad f(a) \geq f(y) $$
+
+**Étape 3 : Démonstration**
+
+Prenons n'importe quel $\varepsilon > 0$ (par exemple $\varepsilon = 1$).
+
+Considérons un point $y$ quelconque appartenant au voisinage $D \cap B(a, \varepsilon)$.
+
+Puisque $y \in D \cap B(a, \varepsilon)$, on a en particulier que $y \in D$.
+
+Or, l'hypothèse de l'étape 1 nous dit que l'inégalité $f(a) \geq f(y)$ est vraie pour **tous** les points de $D$. Elle est donc vraie *a fortiori* pour les points du sous-ensemble $D \cap B(a, \varepsilon)$.
+
+**Conclusion :**
+
+L'existence d'un maximum global implique directement l'existence d'un maximum local (pour n'importe quel rayon $\varepsilon$).
+
+</details>
+
+---
+
+#### Condition nécessaire du premier ordre (Points critiques)
+
+Soit $U$ un ouvert de $\mathbb{R}^n$ et $f: U \to \mathbb{R}$ une fonction différentiable en $a \in U$.
+
+Prouver que si $f$ admet un extremum local en $a$, alors $\nabla f(a) = 0$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+L'idée est de se ramener au cas d'une seule variable (calcul différentiel classique).
+
+Considérez les fonctions partielles $g_i(t) = f(a + t e_i)$ où $e_i$ est un vecteur de la base canonique.
+
+Si $f$ a un maximum en $a$, quel comportement a $g_i$ en $t=0$ ?
+
+Utilisez le théorème de Fermat pour les fonctions d'une variable réelle ($g'(0)=0$).
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Supposons sans perte de généralité que $f$ admet un maximum local en $a$.
+
+**Étape 1 : Restriction à une variable**
+
+Soit $e_i = (0, \dots, 1, \dots, 0)$ le $i$-ème vecteur de la base canonique.
+
+Comme $U$ est ouvert, il existe $\varepsilon > 0$ tel que pour tout $t \in ]-\varepsilon, \varepsilon[$, le point $a + t e_i$ appartient à $U$.
+
+Définissons la fonction d'une variable réelle :
+
+$$ g_i(t) = f(a + t e_i) $$
+
+**Étape 2 : Application du théorème de Fermat (1D)**
+
+Puisque $f$ admet un maximum local en $a$, pour $t$ suffisamment petit, on a :
+
+$$ g_i(t) = f(a + t e_i) \leq f(a) = g_i(0) $$
+
+La fonction $g_i$ admet donc un maximum local en $t=0$.
+
+De plus, $f$ est différentiable, donc $g_i$ est dérivable en 0. D'après le théorème classique d'analyse réelle, sa dérivée s'annule :
+
+$$ g_i'(0) = 0 $$
+
+**Étape 3 : Lien avec les dérivées partielles**
+
+Par définition de la dérivée partielle, $g_i'(0)$ correspond exactement à la dérivée partielle de $f$ par rapport à $x_i$ au point $a$ :
+
+$$ g_i'(0) = \lim_{t \to 0} \frac{f(a+te_i) - f(a)}{t} = \frac{\partial f}{\partial x_i}(a) $$
+
+Donc, pour tout $i \in \{1, \dots, n\}$, on a $\frac{\partial f}{\partial x_i}(a) = 0$.
+
+**Conclusion :**
+
+Le vecteur gradient, composé des dérivées partielles, est nul :
+
+$$ \nabla f(a) = \left( \frac{\partial f}{\partial x_1}(a), \dots, \frac{\partial f}{\partial x_n}(a) \right) = (0, \dots, 0) $$
+
+</details>
+
+---
+
+#### Symétrie de la Hessienne (Théorème de Schwarz)
+
+Soit $f$ une fonction de classe $\mathscr{C}^2$ sur un ouvert $U \subset \mathbb{R}^2$.
+
+Prouver que $\frac{\partial^2 f}{\partial x \partial y}(a) = \frac{\partial^2 f}{\partial y \partial x}(a)$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Nous ne ferons pas la démonstration complète formelle qui est longue, mais l'argument clé.
+
+Considérez la quantité "différence seconde" :
+
+$$ \Delta = f(x+h, y+k) - f(x+h, y) - f(x, y+k) + f(x, y) $$
+
+L'idée est d'exprimer $\Delta$ de deux façons différentes en utilisant le Théorème des Accroissements Finis (TAF) deux fois :
+
+1. D'abord en fixant $y$ et en faisant varier $x$.
+2. Puis en fixant $x$ et en faisant varier $y$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Cette preuve repose sur l'application répétée du Théorème des Accroissements Finis (TAF).
+
+**Étape 1 : Définition de la fonction auxiliaire**
+
+Soit $h, k$ petits. Posons la fonction auxiliaire $\varphi(t) = f(x+t, y+k) - f(x+t, y)$.
+
+Alors la quantité $\Delta$ (définie dans l'indice) s'écrit $\Delta = \varphi(h) - \varphi(0)$.
+
+**Étape 2 : Première application du TAF**
+
+Comme $f$ est dérivable, $\varphi$ l'est aussi. Par le TAF, il existe $\theta_1 \in ]0, 1[$ tel que :
+
+$$ \Delta = \varphi(h) - \varphi(0) = h \varphi'(\theta_1 h) $$
+
+Or $\varphi'(t) = \frac{\partial f}{\partial x}(x+t, y+k) - \frac{\partial f}{\partial x}(x+t, y)$.
+
+Donc :
+
+$$ \Delta = h \left[ \frac{\partial f}{\partial x}(x+\theta_1 h, y+k) - \frac{\partial f}{\partial x}(x+\theta_1 h, y) \right] $$
+
+**Étape 3 : Seconde application du TAF**
+
+Appliquons le TAF à la fonction $k \mapsto \frac{\partial f}{\partial x}(x+\theta_1 h, y+k)$ entre $y$ et $y+k$. Il existe $\theta_2 \in ]0, 1[$ tel que :
+
+$$ \frac{\partial f}{\partial x}(x+\theta_1 h, y+k) - \frac{\partial f}{\partial x}(x+\theta_1 h, y) = k \frac{\partial}{\partial y} \left( \frac{\partial f}{\partial x} \right) (x+\theta_1 h, y+\theta_2 k) $$
+
+Ainsi :
+
+$$ \Delta = hk \frac{\partial^2 f}{\partial y \partial x}(x+\theta_1 h, y+\theta_2 k) $$
+
+**Étape 4 : Symétrie et Conclusion**
+
+Si nous avions commencé par définir $\psi(t) = f(x+h, y+t) - f(x, y+t)$, nous aurions obtenu de manière symétrique (avec d'autres $\theta_3, \theta_4$) :
+
+$$ \Delta = kh \frac{\partial^2 f}{\partial x \partial y}(x+\theta_3 h, y+\theta_4 k) $$
+
+En égalant les deux expressions de $\Delta$ et en divisant par $hk$ (non nul), puis en faisant tendre $(h, k) \to (0, 0)$, la continuité des dérivées secondes (classe $\mathscr{C}^2$) assure que les limites sont égales à la valeur au point $(x, y)$.
+
+**Conclusion :**
+
+$$ \frac{\partial^2 f}{\partial y \partial x}(x, y) = \frac{\partial^2 f}{\partial x \partial y}(x, y) $$
+
+</details>
+
+---
+
+#### Dérivation de la Formule de Taylor à l'ordre 2
+
+Prouver la formule de Taylor à l'ordre 2 pour une fonction $f: U \to \mathbb{R}$ de classe $\mathscr{C}^2$ au voisinage de $a$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez la paramétrisation du segment reliant $a$ à $a+h$.
+
+Soit $\phi(t) = f(a + th)$ pour $t \in [0, 1]$.
+
+Appliquez la formule de Maclaurin (Taylor-Young en 0) à la fonction $\phi$ d'une seule variable :
+
+$\phi(1) = \phi(0) + \phi'(0) + \frac{1}{2}\phi''(0) + o(1)$.
+
+Le travail consiste à calculer $\phi'(t)$ et $\phi''(t)$ en utilisant la règle de la chaîne (chain rule).
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+On cherche à exprimer $f(a+h)$ en fonction de $f(a)$ et de ses dérivées.
+
+**Étape 1 : Paramétrisation et Taylor 1D**
+
+Soit $\phi(t) = f(a + th)$. C'est une fonction de $\mathbb{R}$ dans $\mathbb{R}$.
+
+Puisque $f$ est $\mathscr{C}^2$, $\phi$ l'est aussi. La formule de Taylor-Young en $t=0$ pour $\phi$ évaluée en $t=1$ donne :
+
+$$ \phi(1) = \phi(0) + \phi'(0) \cdot (1-0) + \frac{1}{2}\phi''(0) \cdot (1-0)^2 + o(1) $$
+
+Ce qui revient à dire, puisque $\phi(1) = f(a+h)$ et $\phi(0) = f(a)$ :
+
+$$ f(a+h) = f(a) + \phi'(0) + \frac{1}{2}\phi''(0) + o(\|h\|^2) $$
+
+**Étape 2 : Calcul de la dérivée première**
+
+En utilisant la règle de la chaîne pour la composée de fonctions :
+
+$$ \phi'(t) = \langle \nabla f(a+th), h \rangle = \sum_{i=1}^n \frac{\partial f}{\partial x_i}(a+th) h_i $$
+
+Donc pour $t=0$ :
+
+$$ \phi'(0) = \langle \nabla f(a), h \rangle $$
+
+**Étape 3 : Calcul de la dérivée seconde**
+
+Dérivons $\phi'(t)$ une seconde fois par rapport à $t$ :
+
+$$ \phi''(t) = \frac{d}{dt} \left( \sum_{i=1}^n \frac{\partial f}{\partial x_i}(a+th) h_i \right) $$
+
+On applique à nouveau la règle de la chaîne sur chaque dérivée partielle :
+
+$$ \phi''(t) = \sum_{i=1}^n \left( \sum_{j=1}^n \frac{\partial^2 f}{\partial x_j \partial x_i}(a+th) h_j \right) h_i $$
+
+Pour $t=0$ :
+
+$$ \phi''(0) = \sum_{i,j} \frac{\partial^2 f}{\partial x_j \partial x_i}(a) h_i h_j = \langle H_f(a)h, h \rangle $$
+
+**Conclusion :**
+
+En remplaçant dans l'expression de l'étape 1, on obtient la formule de Taylor vectorielle :
+
+$$ f(a+h) = f(a) + \langle \nabla f(a), h \rangle + \frac{1}{2} \langle H_f(a)h, h \rangle + o(\|h\|^2) $$
+
+</details>
+
+---
+
+#### Gradient orthogonal aux lignes de niveau
+
+Prouver que si $c$ est une valeur régulière et $S = \{ x \in \mathbb{R}^n \mid f(x) = c \}$ est la ligne de niveau associée, alors le gradient $\nabla f(x)$ est orthogonal à $S$ en tout point $x \in S$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+L'orthogonalité à une surface (ou courbe) se définit par l'orthogonalité au vecteur tangent d'une courbe tracée sur cette surface.
+
+Considérez une courbe dérivable $\gamma : ]-\varepsilon, \varepsilon[ \to S$ telle que $\gamma(0) = x$.
+
+Quelle équation vérifie la fonction composée $t \mapsto f(\gamma(t))$ ?
+
+Dérivez cette équation par rapport à $t$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Nous devons montrer que le gradient est orthogonal à tout vecteur tangent à la ligne de niveau.
+
+**Étape 1 : Caractérisation de la courbe sur le niveau**
+
+Soit $\gamma(t)$ une courbe différentiable tracée entièrement sur la ligne de niveau $S$, passant par $x$ à l'instant $t=0$ (c'est-à-dire $\gamma(0) = x$).
+
+Par définition de la ligne de niveau, la valeur de $f$ est constante sur cette courbe :
+
+$$ \forall t, \quad f(\gamma(t)) = c $$
+
+**Étape 2 : Dérivation**
+
+Dérivons cette égalité par rapport à $t$ en utilisant la règle de la chaîne (chain rule) :
+
+$$ \frac{d}{dt} (f(\gamma(t))) = \frac{d}{dt}(c) = 0 $$
+
+D'autre part :
+
+$$ \frac{d}{dt} (f(\gamma(t))) = \langle \nabla f(\gamma(t)), \gamma'(t) \rangle $$
+
+**Étape 3 : Évaluation en $t=0$**
+
+En $t=0$, on a $\gamma(0) = x$. Le vecteur $\gamma'(0)$ représente un vecteur tangent arbitraire à la surface $S$ au point $x$. L'équation devient :
+
+$$ \langle \nabla f(x), \gamma'(0) \rangle = 0 $$
+
+**Conclusion :**
+
+Le produit scalaire entre le gradient $\nabla f(x)$ et tout vecteur tangent $\gamma'(0)$ est nul. Le gradient est donc bien orthogonal à la ligne de niveau (ou surface de niveau) en $x$.
+
+</details>
+
+---
+
+#### Condition suffisante de minimum local (Critère de la Hessienne)
+
+Soit $a$ un point critique d'une fonction $f$ de classe $\mathscr{C}^2$.
+
+Prouver que si la matrice Hessienne $H_f(a)$ est définie positive, alors $a$ est un minimum local strict.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez la formule de Taylor à l'ordre 2 :
+
+$f(a+h) - f(a) \approx \frac{1}{2} \langle H_f(a)h, h \rangle$.
+
+Une matrice définie positive $H$ vérifie une propriété de coercivité : il existe $\lambda > 0$ (la plus petite valeur propre) tel que $\langle Hh, h \rangle \geq \lambda \|h\|^2$.
+
+Comparez le terme quadratique avec le reste $o(\|h\|^2)$. Le terme quadratique doit "gagner" proche de 0.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+On veut montrer que $f(a+h) > f(a)$ pour tout petit $h \neq 0$.
+
+**Étape 1 : Développement de Taylor**
+
+Comme $a$ est un point critique, $\nabla f(a) = 0$. La formule de Taylor donne :
+
+$$ f(a+h) - f(a) = \frac{1}{2} \langle H_f(a)h, h \rangle + \|h\|^2 \varepsilon(h) $$
+
+où $\varepsilon(h) \to 0$ quand $h \to 0$.
+
+**Étape 2 : Propriété de la Hessienne définie positive**
+
+Soit $\lambda_{\min}$ la plus petite valeur propre de $H_f(a)$. Puisque la matrice est définie positive, toutes ses valeurs propres sont strictement positives, donc $\lambda_{\min} > 0$.
+
+Une propriété d'algèbre linéaire pour les matrices symétriques donne :
+
+$$ \forall h \in \mathbb{R}^n, \quad \langle H_f(a)h, h \rangle \geq \lambda_{\min} \|h\|^2 $$
+
+**Étape 3 : Inégalité**
+
+Substituons cette inégalité dans Taylor :
+
+$$ f(a+h) - f(a) \geq \frac{1}{2} \lambda_{\min} \|h\|^2 + \|h\|^2 \varepsilon(h) $$
+
+$$ f(a+h) - f(a) \geq \|h\|^2 \left( \frac{\lambda_{\min}}{2} + \varepsilon(h) \right) $$
+
+**Étape 4 : Argument de domination**
+
+Comme $\varepsilon(h) \to 0$ quand $h \to 0$, il existe un voisinage de $0$ (une petite boule) dans lequel $|\varepsilon(h)| < \frac{\lambda_{\min}}{4}$.
+
+Dans ce voisinage, le terme entre parenthèses est strictement positif (au moins $\frac{\lambda_{\min}}{4}$).
+
+Donc, pour $h \neq 0$ dans ce voisinage :
+
+$$ f(a+h) - f(a) > 0 \implies f(a+h) > f(a) $$
+
+**Conclusion :**
+
+$f(a)$ est strictement inférieur aux valeurs voisines. $a$ est donc un minimum local strict.
+
+</details>
+
+---
+
+#### Nature indéterminée pour Hessienne avec valeurs propres de signes opposés (Point Selle)
+
+Soit $a$ un point critique tel que $H_f(a)$ admette une valeur propre strictement positive $\lambda > 0$ et une valeur propre strictement négative $\mu < 0$.
+
+Prouver que $a$ n'est ni un maximum local, ni un minimum local.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Il suffit de trouver deux directions d'approche différentes.
+
+Si on s'éloigne de $a$ dans la direction du vecteur propre associé à $\lambda > 0$, la fonction croît (convexité).
+
+Si on s'éloigne de $a$ dans la direction du vecteur propre associé à $\mu < 0$, la fonction décroît (concavité).
+
+Utilisez Taylor restreint à ces droites.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Pour prouver que ce n'est pas un extremum, nous allons montrer que $f$ prend des valeurs supérieures à $f(a)$ et des valeurs inférieures à $f(a)$ dans tout voisinage de $a$.
+
+**Étape 1 : Direction de croissance**
+
+Soit $u$ un vecteur propre normé associé à la valeur propre $\lambda > 0$. Donc $H_f(a)u = \lambda u$.
+
+Considérons $f$ sur la droite passant par $a$ dirigée par $u$ ($h = tu$).
+
+$$ f(a+tu) - f(a) = \frac{1}{2} \langle H_f(a)(tu), (tu) \rangle + o(t^2) $$
+
+$$ f(a+tu) - f(a) = \frac{t^2}{2} \lambda \langle u, u \rangle + o(t^2) = \frac{\lambda}{2} t^2 + t^2 \varepsilon(t) $$
+
+Comme $\lambda > 0$, pour $t$ assez petit, cette expression est positive. Donc il existe des points arbitrairement proches tels que $f(x) > f(a)$. Donc $a$ n'est pas un maximum.
+
+**Étape 2 : Direction de décroissance**
+
+Soit $v$ un vecteur propre normé associé à la valeur propre $\mu < 0$.
+
+De manière analogue :
+
+$$ f(a+tv) - f(a) = \frac{t^2}{2} \mu \|v\|^2 + o(t^2) = \frac{\mu}{2} t^2 + o(t^2) $$
+
+Comme $\mu < 0$, pour $t$ assez petit, cette expression est négative. Donc il existe des points arbitrairement proches tels que $f(x) < f(a)$. Donc $a$ n'est pas un minimum.
+
+**Conclusion :**
+
+Puisque dans tout voisinage de $a$, $f$ prend des valeurs supérieures et inférieures à $f(a)$, $a$ n'est ni un minimum ni un maximum. C'est un point selle (ou col).
+
+</details>
+
+---
+
+#### Lien entre Matrice Hessienne et Forme Quadratique
+
+Prouver que l'expression matricielle $\langle H_f(a)h, h \rangle$ correspond bien à la somme pondérée des dérivées secondes.
+
+C'est-à-dire : $\langle H_f(a)h, h \rangle = \sum_{i,j} \frac{\partial^2 f}{\partial x_i \partial x_j}(a) h_i h_j$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+C'est un exercice d'algèbre linéaire et de notation.
+
+Écrivez le vecteur $v = H_f(a)h$ composante par composante en utilisant la règle du produit matrice-vecteur.
+
+Ensuite, faites le produit scalaire de $v$ avec $h$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $H = H_f(a)$ pour simplifier les notations, et $h = (h_1, \dots, h_n)^T$.
+
+**Étape 1 : Produit Matrice-Vecteur**
+
+Calculons le vecteur $v = Hh$. La $i$-ème composante de ce vecteur est le produit scalaire de la $i$-ème ligne de $H$ par le vecteur $h$.
+
+Les éléments de la matrice sont $H_{ij} = \frac{\partial^2 f}{\partial x_i \partial x_j}$.
+
+Donc :
+
+$$ v_i = (Hh)_i = \sum_{j=1}^n H_{ij} h_j = \sum_{j=1}^n \frac{\partial^2 f}{\partial x_i \partial x_j} h_j $$
+
+**Étape 2 : Produit Scalaire final**
+
+Calculons maintenant $\langle v, h \rangle = \sum_{i=1}^n v_i h_i$.
+
+$$ \langle Hh, h \rangle = \sum_{i=1}^n \left( \sum_{j=1}^n \frac{\partial^2 f}{\partial x_i \partial x_j} h_j \right) h_i $$
+
+**Conclusion :**
+
+En regroupant les sommes, on obtient bien la forme quadratique associée aux dérivées secondes :
+
+$$ \langle H_f(a)h, h \rangle = \sum_{i=1}^n \sum_{j=1}^n \frac{\partial^2 f}{\partial x_i \partial x_j}(a) h_i h_j $$
+
+</details>
+
+---
+
+#### Unicité de l'extremum pour une fonction convexe
+
+Soit $f: \mathbb{R}^n \to \mathbb{R}$ une fonction convexe et différentiable.
+
+Prouver que si $a$ est un point critique de $f$, alors $a$ est un minimum global.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez la définition différentielle de la convexité (premier ordre).
+
+Une fonction différentiable est convexe si et seulement si son graphe est au-dessus de ses plans tangents :
+
+$$ \forall x, y \in \mathbb{R}^n, \quad f(y) \geq f(x) + \langle \nabla f(x), y-x \rangle $$
+
+Appliquez cette inégalité en prenant $x=a$ (le point critique).
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Propriété de convexité**
+
+Puisque $f$ est convexe et différentiable, elle satisfait l'inégalité du gradient pour tous points $a$ et $y$ dans le domaine :
+
+$$ f(y) \geq f(a) + \langle \nabla f(a), y-a \rangle $$
+
+**Étape 2 : Utilisation du point critique**
+
+L'hypothèse est que $a$ est un point critique, donc $\nabla f(a) = 0$.
+
+Le terme du produit scalaire s'annule :
+
+$$ \langle \nabla f(a), y-a \rangle = \langle 0, y-a \rangle = 0 $$
+
+**Étape 3 : Conclusion**
+
+L'inégalité devient simplement :
+
+$$ \forall y \in \mathbb{R}^n, \quad f(y) \geq f(a) $$
+
+Cela correspond exactement à la définition d'un **minimum global**.
+
+*Note : Si la fonction est strictement convexe, ce minimum est de plus unique.*
+
+</details>
+
+---
+
+#### Le problème de la moindre distance (Application)
+
+Soit $K$ un fermé de $\mathbb{R}^n$ et $p \in \mathbb{R}^n$ un point extérieur. On cherche $x \in K$ minimisant la distance à $p$.
+
+Prouver que minimiser la distance $d(x, p)$ revient à minimiser la distance au carré $f(x) = \|x-p\|^2$, et calculer le gradient de cette fonction.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+1. La fonction racine carrée $t \mapsto \sqrt{t}$ est strictement croissante sur $\mathbb{R}^+$.
+2. Pour le gradient, développez $\|x-p\|^2 = \langle x-p, x-p \rangle$ et utilisez les règles de dérivation du produit scalaire, ou les dérivées partielles.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Équivalence des problèmes**
+
+Soit $g(x) = \|x-p\|$. Comme $\|x-p\| \geq 0$, minimiser $g(x)$ est équivalent à minimiser $(g(x))^2$. En effet, si $0 \le A < B$, alors $A^2 < B^2$. L'ordre est préservé.
+
+Il est plus simple de travailler avec $f(x) = \|x-p\|^2$ car la racine carrée n'est pas dérivable en 0, alors que le carré de la norme est $\mathscr{C}^\infty$ partout.
+
+**Étape 2 : Calcul du gradient de $f$**
+
+On peut écrire $f(x) = \sum_{i=1}^n (x_i - p_i)^2$.
+
+Calculons la dérivée partielle par rapport à $x_k$ :
+
+$$ \frac{\partial f}{\partial x_k} = \frac{\partial}{\partial x_k} \left( (x_k - p_k)^2 + \sum_{i \neq k} (x_i - p_i)^2 \right) $$
+
+Les termes où $i \neq k$ sont constants par rapport à $x_k$.
+
+$$ \frac{\partial f}{\partial x_k} = 2(x_k - p_k) $$
+
+**Conclusion :**
+
+Le vecteur gradient est composé des dérivées partielles :
+
+$$ \nabla f(x) = (2(x_1 - p_1), \dots, 2(x_n - p_n)) = 2(x - p) $$
+
+Cela signifie que le gradient pointe dans la direction opposée à $p$.
+
+</details>
