@@ -112,7 +112,7 @@ module Evaluate = {
               <>
                 <button
                   className="eval easy-plus" onClick={_ => evaluate(CardProgress.Easy(i + 1))}>
-                  {`Facile ${(i + 2)->Int.toString}x`->React.string}
+                  {`${(i + 2)->Int.toString}x`->React.string}
                 </button>
               </>
             | _ => <> </>

@@ -154,7 +154,7 @@ function RecallView$Evaluate(props) {
       var i = match._0;
       tmp$1 = JsxRuntime.jsx(JsxRuntime.Fragment, {
             children: Caml_option.some(JsxRuntime.jsx("button", {
-                      children: "Facile " + (i + 2 | 0).toString() + "x",
+                      children: (i + 2 | 0).toString() + "x",
                       className: "eval easy-plus",
                       onClick: (function (param) {
                           evaluate({
