@@ -12,7 +12,7 @@ tags:
   - Points critiques
 createdAt: '2025-12-22T10:45:14.964Z'
 level: regular
-course: Topologie et Calcul Différentiel I
+course: Topologie
 courseId: 34e61f8e
 chapter: Chapitre 5 Recherche d'extremum
 chapterId: 70efcabd

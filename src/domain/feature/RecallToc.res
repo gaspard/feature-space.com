@@ -14,7 +14,8 @@ type stats = {
 
 type t = {
   stacks: array<tstack>,
-  setActive: (string, bool) => unit,
+  setActive: (tstack, bool) => unit,
+  toggle: array<tstack> => unit,
   start: (option<Recall.t> => unit) => promise<unit>,
   setDayLength: float => unit,
   setMaxCards: int => unit,
@@ -39,7 +40,7 @@ let stats = (~now) => ({stacks, dayLengthH}: t) => {
     | _ => 0
     }
   )
-  let seen =
+  let progs =
     stacks
     ->Array.map(({prog}) =>
       switch prog {
@@ -49,14 +50,14 @@ let stats = (~now) => ({stacks, dayLengthH}: t) => {
     )
     ->Array.keepSome
 
-  let seenCount = Array.reduce(seen, 0, (acc, prog) =>
+  let seen = Array.reduce(progs, 0, (acc, prog) =>
     acc + prog.cards->Dict.valuesToArray->Array.length
   )
   {
     total,
-    seen: seenCount,
-    new: total - seenCount,
-    toRecall: Recall.recallCount(seen, ~now=now(), ~dayLength=dayLengthH *. 3600. *. 1000.),
+    seen,
+    new: total - seen,
+    toRecall: Recall.recallCount(progs, ~now=now(), ~dayLength=dayLengthH *. 3600. *. 1000.),
   }
 }
 
@@ -106,8 +107,8 @@ let stacks = (repo: RepositoryType.t, path: string) => {
   }
 }
 
-let setActive = ({save}: RepositoryType.progress) => ({stacks}) => (id, active) => {
-  switch stacks->Array.findIndex(v => v.info.id == id) {
+let setActive = ({save}: RepositoryType.progress) => ({stacks}: t) => (stack, active) => {
+  switch stacks->Array.findIndex(v => v.info.id == stack.info.id) {
   | -1 => () // Not found: ignore for now
   | i =>
     switch stacks[i] {
@@ -128,6 +129,17 @@ let setActive = ({save}: RepositoryType.progress) => ({stacks}) => (id, active) 
     | None => () // Unreachable
     }
   }
+}
+
+let toggle = (state: t) => (stacks: array<tstack>) => {
+  let count = stacks->Array.reduce(0, (acc, stack) => {
+    switch stack.prog {
+    | Started(p) if p.active => acc + 1
+    | _ => acc
+    }
+  })
+  let active = count !== stacks->Array.length
+  stacks->Array.forEach(stack => state.setActive(stack, active))
 }
 
 let make = (repo: RepositoryType.t, path: string): t => {
@@ -157,6 +169,7 @@ let make = (repo: RepositoryType.t, path: string): t => {
   carve(({derived}) => {
     stacks: source([], stacks(repo, path)),
     setActive: derived(setActive(repo.progress)),
+    toggle: derived(toggle),
     start: derived(start(repo)),
     setDayLength,
     setMaxCards,

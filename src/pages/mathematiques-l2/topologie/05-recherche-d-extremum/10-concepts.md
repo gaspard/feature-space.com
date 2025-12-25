@@ -10,7 +10,7 @@ tags:
   - Extremum
   - Hessienne
   - Points critiques
-course: Topologie et Calcul Différentiel I
+course: Topologie
 courseId: 34e61f8e
 chapter: Chapitre 5 Recherche d'extremum
 chapterId: 70efcabd

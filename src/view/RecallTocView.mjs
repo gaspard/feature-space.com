@@ -73,10 +73,10 @@ function RecallTocView$ChapterItem(props) {
       if (prog === "Loading") {
         return ;
       } else {
-        return setActive(chapter.info.id, true);
+        return setActive(chapter, true);
       }
     } else {
-      return setActive(chapter.info.id, !prog._0.active);
+      return setActive(chapter, !prog._0.active);
     }
   };
   return JsxRuntime.jsxs("li", {
@@ -105,10 +105,17 @@ var ChapterItem = {
 function RecallTocView$CourseGroup(props) {
   var courseGroup = props.courseGroup;
   TiliaReact.useTilia();
+  var match = App.app.toc;
+  var toggle = match.toggle;
   return JsxRuntime.jsxs("section", {
               children: [
                 JsxRuntime.jsx("h4", {
-                      children: courseGroup.key
+                      children: courseGroup.key,
+                      className: "clickable",
+                      onClick: (function (e) {
+                          e.preventDefault();
+                          toggle(courseGroup.list);
+                        })
                     }),
                 JsxRuntime.jsx("ul", {
                       children: courseGroup.list.map(function (chapter) {
@@ -128,6 +135,9 @@ var CourseGroup = {
 
 function RecallTocView$TypeGroup(props) {
   var typeGroup = props.typeGroup;
+  TiliaReact.useTilia();
+  var match = App.app.toc;
+  var toggle = match.toggle;
   return JsxRuntime.jsxs("section", {
               children: [
                 JsxRuntime.jsx("h3", {
@@ -140,8 +150,13 @@ function RecallTocView$TypeGroup(props) {
                               " ",
                               translateType(typeGroup.key)
                             ],
+                            className: "clickable",
                             id: Stack.stackTypeToString(typeGroup.key),
-                            href: "/#" + Stack.stackTypeToString(typeGroup.key)
+                            href: "/#" + Stack.stackTypeToString(typeGroup.key),
+                            onClick: (function (e) {
+                                e.preventDefault();
+                                toggle(typeGroup.list);
+                              })
                           })
                     }),
                 Utils.partition(typeGroup.list, (function (v) {
@@ -162,11 +177,17 @@ var TypeGroup = {
 
 function RecallTocView$LevelGroup(props) {
   var levelGroup = props.levelGroup;
+  TiliaReact.useTilia();
+  var match = App.app.toc;
+  var toggle = match.toggle;
   return JsxRuntime.jsxs("section", {
               children: [
                 JsxRuntime.jsx("h2", {
                       children: translateLevel(levelGroup.key),
-                      className: Stack.levelToString(levelGroup.key)
+                      className: Stack.levelToString(levelGroup.key) + " clickable",
+                      onClick: (function (param) {
+                          toggle(levelGroup.list);
+                        })
                     }),
                 Utils.partition(levelGroup.list, (function (v) {
                           return v.info.kind;
@@ -197,7 +218,7 @@ function RecallTocView(props) {
   TiliaReact.useTilia();
   var toc = App.app.toc;
   var stats = toc.stats;
-  var levelGroups = Utils.partition(toc.stacks, (function (v) {
+  var groups = Utils.partition(toc.stacks, (function (v) {
           return v.info.level;
         }));
   var start = function () {
@@ -307,15 +328,15 @@ function RecallTocView(props) {
                         })
                     }),
                 JsxRuntime.jsx("nav", {
-                      children: levelGroups.toSorted(function (a, b) {
-                              var levelOrder = function (level) {
+                      children: groups.toSorted(function (a, b) {
+                              var order = function (level) {
                                 if (level === "regular") {
                                   return 0;
                                 } else {
                                   return 1;
                                 }
                               };
-                              return levelOrder(a.key) - levelOrder(b.key);
+                              return order(a.key) - order(b.key);
                             }).map(function (levelGroup) {
                             return JsxRuntime.jsx(RecallTocView$LevelGroup, {
                                         levelGroup: levelGroup

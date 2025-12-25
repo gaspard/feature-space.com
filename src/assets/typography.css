@@ -133,11 +133,19 @@ main {
     h2.regular,
     h2.Regular {
       @apply font-semibold text-2xl text-blue-600 saturate-30 opacity-40;
+
+      &.clickable {
+        cursor: pointer;
+      }
     }
 
     h2.pro,
     h2.Pro {
       @apply font-semibold text-2xl text-red-800 saturate-30 opacity-40;
+
+      &.clickable {
+        cursor: pointer;
+      }
     }
 
     h3 {
@@ -145,6 +153,10 @@ main {
 
       a {
         @apply text-slate-500 border-0;
+
+        &.clickable {
+          cursor: pointer;
+        }
       }
     }
 
@@ -153,6 +165,10 @@ main {
 
       a {
         @apply text-slate-500 border-0;
+      }
+
+      &.clickable {
+        cursor: pointer;
       }
     }
 

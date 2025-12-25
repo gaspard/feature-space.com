@@ -39,8 +39,8 @@ module ChapterItem = {
     let toggle = _ =>
       switch chapter.prog {
       | Loading => ()
-      | NotStarted => setActive(chapter.info.id, true)
-      | Started(prog) => setActive(chapter.info.id, !prog.active)
+      | NotStarted => setActive(chapter, true)
+      | Started(prog) => setActive(chapter, !prog.active)
       }
 
     <li key={chapter.info.id} onClick={toggle}>
@@ -58,8 +58,16 @@ module CourseGroup = {
   @react.component
   let make = (~courseGroup: group<RecallToc.tstack, string>) => {
     useTilia()
+    let {toggle} = App.app.toc
     <section className="course" key={courseGroup.key}>
-      <h4> {courseGroup.key->React.string} </h4>
+      <h4
+        onClick={e => {
+          ReactEvent.Mouse.preventDefault(e)
+          toggle(courseGroup.list)
+        }}
+        className="clickable">
+        {courseGroup.key->React.string}
+      </h4>
       <ul>
         {courseGroup.list
         ->Array.map(chapter => <ChapterItem chapter key={chapter.info.id} />)
@@ -72,11 +80,18 @@ module CourseGroup = {
 module TypeGroup = {
   @react.component
   let make = (~typeGroup: group<RecallToc.tstack, Stack.stackType>) => {
+    useTilia()
+    let {toggle} = App.app.toc
     <section className="type" key={typeGroup.key->Stack.stackTypeToString}>
       <h3>
         <a
           href={`/#${typeGroup.key->Stack.stackTypeToString}`}
-          id={typeGroup.key->Stack.stackTypeToString}>
+          id={typeGroup.key->Stack.stackTypeToString}
+          onClick={e => {
+            ReactEvent.Mouse.preventDefault(e)
+            toggle(typeGroup.list)
+          }}
+          className="clickable">
           <span className="emoji"> {typeGroup.key->Stack.stackTypeToEmoji->React.string} </span>
           {" "->React.string}
           {typeGroup.key->translateType->React.string}
@@ -93,11 +108,15 @@ module TypeGroup = {
 module LevelGroup = {
   @react.component
   let make = (~levelGroup: group<RecallToc.tstack, Stack.level>) => {
+    useTilia()
+    let {toggle} = App.app.toc
     <section
       className="level"
       id={levelGroup.key->Stack.levelToString}
       key={levelGroup.key->Stack.levelToString}>
-      <h2 className={levelGroup.key->Stack.levelToString}>
+      <h2
+        className={levelGroup.key->Stack.levelToString ++ " clickable"}
+        onClick={_ => toggle(levelGroup.list)}>
         {levelGroup.key->translateLevel->React.string}
       </h2>
       {levelGroup.list
@@ -123,7 +142,7 @@ let make = () => {
   let {stats} = toc
 
   // Group by level first
-  let levelGroups = toc.stacks->partition(v => v.info.level)
+  let groups = toc.stacks->partition(v => v.info.level)
   let start = () => {
     App.app.start()
     ignore(setTimeout(() => {
@@ -177,15 +196,15 @@ let make = () => {
       {"Start"->React.string}
     </button>
     <nav ariaLabel="Table des matières" className="toc">
-      {levelGroups
+      {groups
       ->Array.toSorted((a, b) => {
         // Sort levels: Regular (0) before Pro (1)
-        let levelOrder = level =>
+        let order = level =>
           switch level {
           | Stack.Regular => 0.
           | Stack.Pro => 1.
           }
-        levelOrder(a.key) -. levelOrder(b.key)
+        order(a.key) -. order(b.key)
       })
       ->Array.map(levelGroup => <LevelGroup levelGroup key={levelGroup.key->Stack.levelToString} />)
       ->React.array}

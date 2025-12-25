@@ -26,7 +26,7 @@ function stats(now) {
             tmp = typeof p !== "object" || !p._0.active ? 0 : Core__Option.getOr(elem.info.count, 0);
             return acc + tmp | 0;
           }));
-    var seen = Core__Array.keepSome(stacks.map(function (param) {
+    var progs = Core__Array.keepSome(stacks.map(function (param) {
               var prog = param.prog;
               if (typeof prog !== "object") {
                 return ;
@@ -34,13 +34,13 @@ function stats(now) {
                 return prog._0;
               }
             }));
-    var seenCount = Core__Array.reduce(seen, 0, (function (acc, prog) {
+    var seen = Core__Array.reduce(progs, 0, (function (acc, prog) {
             return acc + Object.values(prog.cards).length | 0;
           }));
     return {
-            toRecall: Recall.recallCount(seen, now(), param.dayLengthH * 3600 * 1000),
-            seen: seenCount,
-            new: total - seenCount | 0,
+            toRecall: Recall.recallCount(progs, now(), param.dayLengthH * 3600 * 1000),
+            seen: seen,
+            new: total - seen | 0,
             total: total
           };
   };
@@ -117,9 +117,9 @@ function setActive(param) {
   var save = param.save;
   return function (param) {
     var stacks = param.stacks;
-    return function (id, active) {
+    return function (stack, active) {
       var i = stacks.findIndex(function (v) {
-            return v.info.id === id;
+            return v.info.id === stack.info.id;
           });
       if (i === -1) {
         return ;
@@ -158,6 +158,22 @@ function setActive(param) {
   };
 }
 
+function toggle(state) {
+  return function (stacks) {
+    var count = Core__Array.reduce(stacks, 0, (function (acc, stack) {
+            var p = stack.prog;
+            if (typeof p !== "object" || !p._0.active) {
+              return acc;
+            } else {
+              return acc + 1 | 0;
+            }
+          }));
+    stacks.forEach(function (stack) {
+          state.setActive(stack, count !== stacks.length);
+        });
+  };
+}
+
 function make(repo, path) {
   var day = Core__Option.getOr(Core__Float.fromString(Core__Nullable.getOr(repo.settings.get("dayLength"), "24")), 24);
   var maxCards = Core__Option.getOr(Core__Int.fromString(Core__Nullable.getOr(repo.settings.get("maxCards"), "20"), undefined), 20);
@@ -180,6 +196,7 @@ function make(repo, path) {
               return {
                       stacks: Tilia.source([], stacks(repo, path)),
                       setActive: derived(setActive(repo.progress)),
+                      toggle: derived(toggle),
                       start: derived(start(repo)),
                       setDayLength: setDayLength,
                       setMaxCards: setMaxCards$1,
@@ -199,6 +216,7 @@ export {
   loadProgress ,
   stacks ,
   setActive ,
+  toggle ,
   make ,
 }
 /* Tilia Not a pure module */
