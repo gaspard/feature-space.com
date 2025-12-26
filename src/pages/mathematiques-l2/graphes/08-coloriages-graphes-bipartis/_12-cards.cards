@@ -36,7 +36,6 @@ $$ \forall \{u, v\} \in A, \quad f(u) \neq f(v) $$
 
 On dit que le graphe est **$k$-coloriable** s'il est possible de le colorier avec au plus $k$ couleurs.
 
-**Tags :** définition, concept
 
 </details>
 
@@ -57,7 +56,6 @@ C'est une mesure de "l'efficacité" maximale de la coloration.
 *   Si $\chi(G) = 1$, le graphe n'a aucune arête.
 *   Si $\chi(G) = 3$, on a besoin d'au moins 3 couleurs (impossible de le faire avec 2).
 
-**Tags :** définition, notation
 
 </details>
 
@@ -81,7 +79,6 @@ La valeur dépend de la **parité** du nombre de sommets $n$ (la longueur du cyc
 *   Un carré ($C_4$) nécessite 2 couleurs.
 *   Un triangle ($C_3$) nécessite 3 couleurs.
 
-**Tags :** formule, exemple, cycles
 
 </details>
 
@@ -104,7 +101,6 @@ C'est une méthode pas à pas pour colorier un graphe.
 
 **Point clé :** Le résultat (nombre de couleurs utilisées) dépend fortement de l'ordre des sommets choisi au départ.
 
-**Tags :** méthode, algorithme
 
 </details>
 
@@ -128,7 +124,6 @@ $$ \chi(G) \le \Delta(G) + 1 $$
 
 Même dans le pire des cas, lorsqu'on colorie un sommet, il a au plus $\Delta(G)$ voisins. Si tous ces voisins ont des couleurs différentes, ils bloquent $\Delta(G)$ couleurs. Il restera toujours la $(\Delta(G)+1)$-ième couleur disponible.
 
-**Tags :** formule, théorème
 
 </details>
 
@@ -147,7 +142,6 @@ Un graphe est **biparti** si ses sommets peuvent être divisés en deux ensemble
 
 En termes de coloration, un graphe biparti est un graphe qui est **2-coloriable** ($\chi(G) \le 2$). On peut colorier tous les sommets de $X$ en couleur 1 et ceux de $Y$ en couleur 2.
 
-**Tags :** définition, concept
 
 </details>
 
@@ -166,7 +160,6 @@ C'est un théorème de caractérisation très important :
 *   Si un graphe contient un triangle ($C_3$), un pentagone ($C_5$), etc., il **n'est pas** biparti.
 *   Si tous les cycles du graphe sont de longueur paire (ou s'il n'a pas de cycle), alors il est biparti.
 
-**Tags :** théorème, propriété
 
 </details>
 
@@ -188,7 +181,6 @@ Donc, l'ensemble des sommets "Rouges" forme un **stable**.
 
 Si un graphe est coloré avec $k$ couleurs, cela signifie que l'ensemble des sommets $S$ est découpé en $k$ ensembles stables disjoints.
 
-**Tags :** concept, définition
 
 </details>
 
@@ -208,7 +200,6 @@ $$ \chi(K_n) = n $$
 
 Dans une clique, chaque sommet est relié à **tous** les autres. Par conséquent, chaque sommet doit obligatoirement avoir une couleur unique différente de tous les autres. Il faut donc $n$ couleurs distinctes.
 
-**Tags :** formule, exemple
 
 </details>
 
@@ -230,7 +221,6 @@ Un **arbre** est-il toujours un graphe biparti ?
 
 On peut toujours colorier un arbre avec 2 couleurs (en alternant les couleurs à chaque niveau de profondeur depuis la racine).
 
-**Tags :** exemple, application
 
 </details>
 
@@ -251,6 +241,5 @@ L'algorithme glouton est une **heuristique**. Le nombre de couleurs qu'il utilis
 
 C'est pour cela que calculer $\chi(G)$ de manière exacte est un problème algorithmique difficile (NP-complet).
 
-**Tags :** concept, piège
 
 </details>

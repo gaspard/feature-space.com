@@ -1,0 +1,237 @@
+---
+id: 491b00c5
+type: cards
+order: 12
+title: Courbes et surfaces dans R3 - fiches de révision (A)
+tags:
+  - chapter
+  - mathematics
+createdAt: '2025-12-26T14:44:17.580Z'
+level: regular
+course: Géométrie
+courseId: d9494343
+chapter: Courbes et surfaces dans R3
+chapterId: 15daf020
+---
+# Fiches de révision "Courbes et surfaces dans $\mathbb{R}^3$" (A)
+
+---
+
+Qu'est-ce que le **repère de Frenet** pour une courbe gauche ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le **repère de Frenet** est une base orthonormée mobile $(\tau, \nu, \beta)$ associée à chaque point d'une courbe birégulière, permettant de décrire sa géométrie locale.
+
+Pour un arc paramétré par la longueur d'arc $s$, les vecteurs sont définis ainsi :
+
+1.  **Vecteur tangent unitaire** : $\tau(s) = f'(s)$ (indique la direction du mouvement).
+2.  **Vecteur normal unitaire** : $\nu(s) = \frac{f''(s)}{\|f''(s)\|}$ (indique la direction vers laquelle la courbe tourne).
+3.  **Vecteur binormal** : $\beta(s) = \tau(s) \wedge \nu(s)$ (orthogonal au plan osculateur).
+
+**Condition :** La courbe doit être **birégulière**, c'est-à-dire que $f'(t)$ et $f''(t)$ doivent être linéairement indépendants.
+
+</details>
+
+---
+
+Quelle est la formule de la **courbure** ($K$) d'une courbe gauche ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La courbure mesure la vitesse à laquelle la courbe change de direction.
+
+**Pour un paramétrage quelconque $\gamma(t)$ :**
+
+$$ K(t) = \frac{\|\gamma'(t) \wedge \gamma''(t)\|}{\|\gamma'(t)\|^3} $$
+
+**Cas particulier (longueur d'arc $s$) :**
+
+$K(s) = \|f''(s)\|$.
+
+**Propriétés :**
+
+- $K > 0$ pour une courbe birégulière.
+- Si $K=0$ partout, la courbe est une droite.
+- Pour un cercle de rayon $R$, $K = 1/R$.
+
+</details>
+
+---
+
+Qu'est-ce que la **torsion** ($T$) et quelle est sa signification géométrique ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La **torsion** est un scalaire qui mesure à quel point une courbe s'écarte de son plan osculateur (son défaut de planéité). C'est la vitesse de rotation du plan osculateur autour du vecteur tangent.
+
+**Formule pour un arc $g(t)$ :**
+
+$$ T(t) = -\frac{\det(g'(t), g''(t), g'''(t))}{\|g'(t) \wedge g''(t)\|^2} $$
+
+**Signification :**
+
+- Si $T(t) = 0$ pour tout $t$, la courbe est **plane**.
+- Si $T \neq 0$, la courbe est "gauche" (elle sort de son plan, comme une hélice).
+
+</details>
+
+---
+
+Quelles sont les **Formules de Frenet** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Ce sont les équations différentielles qui relient les dérivées des vecteurs du repère de Frenet $(\tau, \nu, \beta)$ à la courbure $K$ et à la torsion $T$.
+
+$$ \begin{cases} \tau' &=& K\nu \\ \nu' &=& -K\tau - T\beta \\ \beta' &=& T\nu \end{cases} $$
+
+**Utilité :** Elles sont fondamentales pour étudier la cinématique le long de la courbe et prouvent que la courbure et la torsion déterminent entièrement la géométrie de la courbe (à un déplacement près).
+
+</details>
+
+---
+
+Comment définit-on une **surface paramétrée régulière** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Une surface paramétrée est définie par une application $f : U \subset \mathbb{R}^2 \to \mathbb{R}^3$ de classe $C^1$.
+
+Elle est dite **régulière** en un point $p=(u,v)$ si les vecteurs dérivées partielles sont **linéairement indépendants** :
+
+$$ \frac{\partial f}{\partial u}(p) \wedge \frac{\partial f}{\partial v}(p) \neq 0 $$
+
+Cela signifie que la matrice jacobienne $D_p f$ est de rang 2.
+
+**Conséquence :** Cette condition assure l'existence d'un **plan tangent** unique en ce point.
+
+</details>
+
+---
+
+Comment déterminer le **Plan Tangent** à une surface en un point régulier ?
+
+<details>
+
+<summary>Réponse</summary>
+
+En un point $m = f(u,v)$, le plan tangent $T_m S$ est le sous-espace vectoriel engendré par les dérivées partielles par rapport aux paramètres.
+
+**Base du plan tangent :**
+
+$\left( \frac{\partial f}{\partial u}, \frac{\partial f}{\partial v} \right)$
+
+**Vecteur normal à la surface :**
+
+Le vecteur normal $N$ est donné par le produit vectoriel de ces vecteurs de base :
+
+$$ N = \frac{\partial f}{\partial u} \wedge \frac{\partial f}{\partial v} $$
+
+</details>
+
+---
+
+Qu'est-ce que la **Première Forme Fondamentale** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+C'est l'expression du produit scalaire de $\mathbb{R}^3$ restreint au plan tangent de la surface. Elle permet de mesurer des longueurs, des angles et des aires sur la surface.
+
+Elle est représentée par la matrice symétrique des coefficients $(E, F, G)$ :
+
+$$ E = \left\| \frac{\partial f}{\partial u} \right\|^2, \quad F = \left\langle \frac{\partial f}{\partial u}, \frac{\partial f}{\partial v} \right\rangle, \quad G = \left\| \frac{\partial f}{\partial v} \right\|^2 $$
+
+**Note :** C'est une propriété intrinsèque de la surface (ne dépend pas de la courbure dans l'espace, mais de la métrique interne).
+
+</details>
+
+---
+
+Quelle est la formule de la **longueur d'un arc** tracé sur une surface ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour une courbe paramétrée par $u(t)$ et $v(t)$ sur une surface caractérisée par sa première forme fondamentale $(E, F, G)$, la longueur $\ell$ entre $t_0$ et $t_1$ est :
+
+$$ \ell = \int_{t_0}^{t_1} \sqrt{E \left(\frac{du}{dt}\right)^2 + 2F \frac{du}{dt}\frac{dv}{dt} + G \left(\frac{dv}{dt}\right)^2} \, dt $$
+
+**Interprétation :** C'est une généralisation du théorème de Pythagore adaptée à la géométrie locale de la surface déformée.
+
+</details>
+
+---
+
+Qu'est-ce que la **Courbure de Gauss** ($K$) ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La courbure de Gauss est une mesure intrinsèque de la courbure d'une surface. C'est le produit des deux courbures principales ($\lambda_1, \lambda_2$).
+
+**Formule avec les formes fondamentales :**
+
+$$ K = \frac{LN - M^2}{EG - F^2} $$
+
+(Où $L, M, N$ sont les coefficients de la seconde forme fondamentale et $E, F, G$ ceux de la première).
+
+**Classification locale selon le signe de $K$ :**
+
+- **$K > 0$** : Point elliptique (forme de bol, ex: sphère).
+- **$K < 0$** : Point hyperbolique (forme de selle de cheval).
+- **$K = 0$** : Point parabolique ou plat (ex: cylindre, plan).
+
+</details>
+
+---
+
+Qu'est-ce que le **Theorema Egregium** (Théorème Remarquable) de Gauss ?
+
+<details>
+
+<summary>Réponse</summary>
+
+C'est un résultat fondamental qui stipule que la **Courbure de Gauss** $K$ ne dépend que de la **première forme fondamentale** (coefficients $E, F, G$ et leurs dérivées).
+
+**Signification :**
+
+La courbure de Gauss est une propriété **intrinsèque**. Elle peut être déterminée par des mesures de distances et d'angles sur la surface sans avoir besoin de sortir de la surface ou de savoir comment elle est plongée dans l'espace $\mathbb{R}^3$.
+
+**Exemple :** On peut rouler une feuille de papier (plan, $K=0$) pour former un cylindre ($K=0$) sans déchirure car ils ont la même courbure de Gauss intrinsèque. On ne peut pas faire de même avec une sphère ($K > 0$).
+
+</details>
+
+---
+
+Qu'est-ce que la **Seconde Forme Fondamentale** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La seconde forme fondamentale mesure comment la surface s'éloigne de son plan tangent au voisinage d'un point, c'est-à-dire sa courbure "spatiale".
+
+Elle est définie à partir des dérivées secondes du paramétrage projetées sur le vecteur normal unitaire $N$. Ses coefficients sont :
+
+- $L = \langle \frac{\partial^2 f}{\partial u^2}, N \rangle$
+- $M = \langle \frac{\partial^2 f}{\partial u \partial v}, N \rangle$
+- $N_{coeff} = \langle \frac{\partial^2 f}{\partial v^2}, N \rangle$ (Noté parfois $e, f, g$)
+
+Elle est liée à l'endomorphisme de Weingarten.
+
+</details>

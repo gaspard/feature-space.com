@@ -1,0 +1,579 @@
+---
+id: 2a511c90
+type: proofs
+order: 15
+title: Courbes et surfaces dans R3 - preuves (A)
+tags:
+  - chapter
+  - mathematics
+createdAt: '2025-12-26T14:44:17.580Z'
+level: regular
+course: Géométrie
+courseId: d9494343
+chapter: Courbes et surfaces dans R3
+chapterId: 15daf020
+---
+# Preuves Courbes et surfaces dans $\mathbb{R}^3$ (A)
+
+---
+
+#### Orthogonalité de la dérivée d'un vecteur de norme constante
+
+Prouver que pour toute fonction vectorielle dérivable $u : I \to \mathbb{R}^3$, si la norme $\|u(t)\|$ est constante sur $I$, alors pour tout $t \in I$, le vecteur dérivé $u'(t)$ est orthogonal au vecteur $u(t)$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Considérez le carré de la norme $\|u(t)\|^2$.
+
+Exprimez ce carré à l'aide du produit scalaire $\langle u(t), u(t) \rangle$.
+
+Dérivez cette expression par rapport à $t$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $u(t)$ un vecteur de norme constante $C$.
+
+**Étape 1 :** Relation avec le produit scalaire
+
+On a $\|u(t)\| = C$, donc $\|u(t)\|^2 = C^2$.
+
+En termes de produit scalaire, cela s'écrit :
+
+$$ \langle u(t), u(t) \rangle = C^2 $$
+
+**Étape 2 :** Dérivation
+
+Dérivons les deux membres de l'équation par rapport à $t$. Rappelons que la dérivée d'un produit scalaire suit la règle du produit : $\frac{d}{dt}\langle u, v \rangle = \langle u', v \rangle + \langle u, v' \rangle$.
+
+$$ \frac{d}{dt} \langle u(t), u(t) \rangle = \frac{d}{dt} (C^2) $$
+
+$$ \langle u'(t), u(t) \rangle + \langle u(t), u'(t) \rangle = 0 $$
+
+Par symétrie du produit scalaire :
+
+$$ 2 \langle u(t), u'(t) \rangle = 0 $$
+
+**Conclusion :**
+
+On obtient $\langle u(t), u'(t) \rangle = 0$. Par définition de l'orthogonalité, $u(t)$ et $u'(t)$ sont orthogonaux pour tout $t$.
+
+</details>
+
+---
+
+#### Première formule de Frenet
+
+Soit $\gamma(s)$ une courbe paramétrée par la longueur d'arc $s$. Prouver la première formule de Frenet : $\tau'(s) = K(s)\nu(s)$, en justifiant la direction de $\tau'(s)$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez la définition du vecteur tangent unitaire $\tau(s) = \gamma'(s)$.
+
+Appliquez le résultat sur la dérivée d'un vecteur de norme constante.
+
+Utilisez la définition de la courbure $K(s) = \|\gamma''(s)\|$ et du vecteur normal $\nu$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 :** Orthogonalité de $\tau$ et $\tau'$
+
+Le paramétrage étant par longueur d'arc, le vecteur tangent est unitaire : $\|\tau(s)\| = \|\gamma'(s)\| = 1$.
+
+D'après la propriété des vecteurs de norme constante, $\tau'(s)$ est orthogonal à $\tau(s)$.
+
+Le vecteur $\tau'(s)$ appartient donc au plan normal à la courbe.
+
+**Étape 2 :** Définition de la courbure et du vecteur normal
+
+La courbure est définie par $K(s) = \|\gamma''(s)\|$. Or $\gamma''(s) = \tau'(s)$, donc $K(s) = \|\tau'(s)\|$.
+
+Si $K(s) \neq 0$ (courbe birégulière), le vecteur normal principal $\nu(s)$ est défini comme le vecteur unitaire colinéaire et de même sens que $\gamma''(s)$ :
+
+$$ \nu(s) = \frac{\gamma''(s)}{\|\gamma''(s)\|} = \frac{\tau'(s)}{K(s)} $$
+
+**Conclusion :**
+
+En réarrangeant l'égalité, on obtient directement la première formule de Frenet :
+
+$$ \tau'(s) = K(s)\nu(s) $$
+
+(Si $K(s)=0$, alors $\tau'(s)=0$, et la formule tient trivialement en considérant $\nu$ comme un vecteur unitaire arbitraire orthogonal à $\tau$).
+
+</details>
+
+---
+
+#### Caractérisation des droites par la courbure
+
+Prouver qu'une courbe paramétrée régulière est un segment de droite (ou une droite entière) si et seulement si sa courbure $K$ est identiquement nulle.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Pour l'implication directe, calculez la dérivée seconde d'une droite paramétrée.
+
+Pour l'implication réciproque, utilisez le paramétrage par longueur d'arc et intégrez deux fois l'équation différentielle $f''(s) = 0$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $f : I \to \mathbb{R}^3$ une courbe régulière.
+
+**Sens direct ($\Rightarrow$) :**
+
+Si la courbe est une droite, elle peut s'écrire $f(t) = P + tV$ avec $V \neq 0$.
+
+Alors $f'(t) = V$ et $f''(t) = 0$.
+
+La formule de la courbure est $K = \frac{\|f' \wedge f''\|}{\|f'\|^3}$.
+
+Puisque $f''=0$, le numérateur est nul, donc $K(t) = 0$ pour tout $t$.
+
+**Sens réciproque ($\Leftarrow$) :**
+
+Supposons $K(s) = 0$ pour tout $s$, où $s$ est l'abscisse curviligne.
+
+Par définition, $K(s) = \|f''(s)\|$.
+
+Donc $\|f''(s)\| = 0 \implies f''(s) = \vec{0}$.
+
+En intégrant par rapport à $s$ :
+
+$$ f'(s) = \mathbf{c}_1 $$
+
+où $\mathbf{c}_1$ est un vecteur constant (unitaire car paramétrage par longueur d'arc).
+
+En intégrant une seconde fois :
+
+$$ f(s) = s\mathbf{c}_1 + \mathbf{c}_2 $$
+
+où $\mathbf{c}_2$ est un point constant.
+
+**Conclusion :**
+
+L'équation $f(s) = \mathbf{c}_2 + s\mathbf{c}_1$ est l'équation paramétrique d'une droite passant par $\mathbf{c}_2$ de vecteur directeur $\mathbf{c}_1$. La courbe est donc une droite.
+
+</details>
+
+---
+
+#### Torsion nulle d'une courbe plane
+
+Prouver que si une courbe birégulière est plane (contenue entièrement dans un plan), alors sa torsion $T(s)$ est identiquement nulle.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Écrivez l'équation du plan contenant la courbe.
+
+Montrez que le vecteur binormal $\beta(s)$ est constant et orthogonal à ce plan.
+
+Utilisez la définition de la torsion liée à la dérivée de $\beta$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 :** Propriété géométrique
+
+Soit une courbe $\gamma(s)$ contenue dans un plan $\Pi$ défini par un point $P_0$ et un vecteur normal unitaire $\mathbf{n}$.
+
+On a pour tout $s$ : $\langle \gamma(s) - P_0, \mathbf{n} \rangle = 0$.
+
+**Étape 2 :** Analyse des vecteurs de Frenet
+
+Dérivons la relation par rapport à $s$ :
+
+$\langle \gamma'(s), \mathbf{n} \rangle = 0 \implies \langle \tau(s), \mathbf{n} \rangle = 0$.
+
+Dérivons encore une fois :
+
+$\langle \tau'(s), \mathbf{n} \rangle = 0$.
+
+Comme $\tau' = K\nu$ et $K > 0$ (birégularité), on a $\langle \nu(s), \mathbf{n} \rangle = 0$.
+
+Puisque $\tau(s)$ et $\nu(s)$ sont tous deux orthogonaux à $\mathbf{n}$, le vecteur $\mathbf{n}$ est colinéaire à leur produit vectoriel $\tau(s) \wedge \nu(s)$.
+
+Or, $\beta(s) = \tau(s) \wedge \nu(s)$.
+
+Donc $\beta(s) = \pm \mathbf{n}$.
+
+**Étape 3 :** Calcul de la torsion
+
+Puisque le plan est fixe, $\mathbf{n}$ est un vecteur constant. Donc $\beta(s)$ est un vecteur constant.
+
+Sa dérivée est nulle : $\beta'(s) = 0$.
+
+D'après la troisième formule de Frenet, $\beta'(s) = T(s)\nu(s)$.
+
+**Conclusion :**
+
+On a $T(s)\nu(s) = 0$. Comme $\nu(s)$ est un vecteur unitaire, cela implique nécessairement $T(s) = 0$.
+
+</details>
+
+---
+
+#### Composantes tangentielle et normale de l'accélération
+
+Prouver que pour une courbe $\gamma(t)$ quelconque (pas forcément paramétrée par la longueur d'arc), le vecteur accélération $\gamma''(t)$ se décompose dans le repère de Frenet sous la forme :
+
+$$ \gamma''(t) = \frac{d^2s}{dt^2} \tau + \left(\frac{ds}{dt}\right)^2 K \nu $$
+
+où $v = \frac{ds}{dt} = \|\gamma'(t)\|$ est la vitesse scalaire.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Partez de $\gamma'(t) = v(t) \tau(t)$.
+
+Dérivez cette expression par rapport au temps en utilisant la règle du produit.
+
+Utilisez la règle de la chaîne pour dériver $\tau(t)$ : $\frac{d}{dt}\tau(t) = \frac{d\tau}{ds}\frac{ds}{dt}$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 :** Expression de la vitesse
+
+Le vecteur vitesse est tangent à la trajectoire :
+
+$$ \gamma'(t) = v(t) \tau(t) $$
+
+où $v(t) = \frac{ds}{dt}$ est la vitesse scalaire.
+
+**Étape 2 :** Dérivation pour l'accélération
+
+Dérivons par rapport à $t$ :
+
+$$ \gamma''(t) = \frac{d}{dt}(v(t) \tau(t)) = v'(t)\tau(t) + v(t) \frac{d}{dt}(\tau(t)) $$
+
+Pour le terme $\frac{d}{dt}(\tau(t))$, on utilise la règle de la chaîne et la première formule de Frenet ($\frac{d\tau}{ds} = K\nu$) :
+
+$$ \frac{d}{dt}(\tau(t)) = \frac{d\tau}{ds} \cdot \frac{ds}{dt} = (K \nu) \cdot v $$
+
+**Conclusion :**
+
+En substituant dans l'expression de l'accélération :
+
+$$ \gamma''(t) = v'(t)\tau + v(t)(v K \nu) $$
+
+$$ \gamma''(t) = \frac{d^2s}{dt^2} \tau + v^2 K \nu $$
+
+Ceci démontre que l'accélération a une composante tangentielle (variation de la vitesse scalaire) et une composante normale (changement de direction lié à la courbure et au carré de la vitesse).
+
+</details>
+
+---
+
+#### Démonstration de la formule générale de la courbure
+
+Prouver que pour une courbe birégulière $\gamma(t)$, la courbure est donnée par :
+
+$$ K(t) = \frac{\|\gamma'(t) \wedge \gamma''(t)\|}{\|\gamma'(t)\|^3} $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez la décomposition de l'accélération $\gamma''(t)$ trouvée dans la preuve précédente.
+
+Calculez le produit vectoriel $\gamma'(t) \wedge \gamma''(t)$.
+
+Rappelez-vous que $\tau \wedge \tau = 0$ et $\|\tau \wedge \nu\| = \|\beta\| = 1$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 :** Utilisation des expressions dans le repère de Frenet
+
+On sait que :
+
+1. $\gamma'(t) = v \tau$
+2. $\gamma''(t) = \dot{v} \tau + v^2 K \nu$ (où $\dot{v} = dv/dt$)
+
+**Étape 2 :** Calcul du produit vectoriel
+
+$$ \gamma' \wedge \gamma'' = (v \tau) \wedge (\dot{v} \tau + v^2 K \nu) $$
+
+Par distributivité :
+
+$$ \gamma' \wedge \gamma'' = v\dot{v}(\tau \wedge \tau) + v(v^2 K)(\tau \wedge \nu) $$
+
+Puisque $\tau \wedge \tau = 0$ et $\tau \wedge \nu = \beta$ :
+
+$$ \gamma' \wedge \gamma'' = v^3 K \beta $$
+
+**Étape 3 :** Passage à la norme
+
+Prenons la norme des deux côtés :
+
+$$ \|\gamma' \wedge \gamma''\| = \|v^3 K \beta\| = |v^3 K| \|\beta\| $$
+
+Comme la courbure $K$ est positive et $v = \|\gamma'\| > 0$, et $\|\beta\|=1$, on a :
+
+$$ \|\gamma' \wedge \gamma''\| = v^3 K = \|\gamma'\|^3 K $$
+
+**Conclusion :**
+
+En isolant $K$, on obtient :
+
+$$ K = \frac{\|\gamma' \wedge \gamma''\|}{\|\gamma'\|^3} $$
+
+</details>
+
+---
+
+#### Caractère défini positif de la première forme fondamentale
+
+Prouver que pour une surface régulière, le déterminant de la première forme fondamentale $EG - F^2$ est strictement positif.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Rappelez les définitions de $E, F, G$ à l'aide des dérivées partielles $f_u$ et $f_v$.
+
+Utilisez l'identité de Lagrange reliant le produit scalaire et le produit vectoriel : $\|A \wedge B\|^2 = \|A\|^2 \|B\|^2 - \langle A, B \rangle^2$.
+
+Utilisez la condition de régularité de la surface.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 :** Définitions
+
+Soit $f(u,v)$ le paramétrage. On note $f_u = \frac{\partial f}{\partial u}$ et $f_v = \frac{\partial f}{\partial v}$.
+
+Les coefficients sont :
+
+$E = \|f_u\|^2 = \langle f_u, f_u \rangle$
+
+$F = \langle f_u, f_v \rangle$
+
+$G = \|f_v\|^2 = \langle f_v, f_v \rangle$
+
+**Étape 2 :** Calcul de $EG - F^2$
+
+$$ EG - F^2 = \|f_u\|^2 \|f_v\|^2 - \langle f_u, f_v \rangle^2 $$
+
+D'après l'identité de Lagrange (propriété algébrique dans $\mathbb{R}^3$), cette expression est égale au carré de la norme du produit vectoriel :
+
+$$ EG - F^2 = \|f_u \wedge f_v\|^2 $$
+
+**Étape 3 :** Condition de régularité
+
+Par définition, une surface est régulière en un point si les vecteurs $f_u$ et $f_v$ sont linéairement indépendants.
+
+Cela est équivalent à dire que leur produit vectoriel est non nul :
+
+$$ f_u \wedge f_v \neq \vec{0} \implies \|f_u \wedge f_v\| > 0 $$
+
+**Conclusion :**
+
+Par conséquent, $\|f_u \wedge f_v\|^2 > 0$, ce qui prouve que :
+
+$$ EG - F^2 > 0 $$
+
+</details>
+
+---
+
+#### Orthogonalité du gradient aux lignes de niveau
+
+Soit $g : \mathbb{R}^2 \to \mathbb{R}$ une fonction différentiable. On considère la courbe plane définie implicitement par la ligne de niveau $g(x, y) = c$. Prouver que le gradient $\nabla g$ est orthogonal au vecteur tangent de la courbe en tout point régulier.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Paramétrez la courbe de niveau par $\gamma(t) = (x(t), y(t))$ tel que $g(x(t), y(t)) = c$.
+
+Dérivez cette équation par rapport à $t$ en utilisant la règle de la chaîne (formule de la dérivée composée).
+
+Identifiez le produit scalaire résultant.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 :** Paramétrage et dérivation
+
+Soit $\gamma(t) = (x(t), y(t))$ une courbe paramétrée tracée sur la ligne de niveau $c$.
+
+On a donc l'identité :
+
+$$ g(x(t), y(t)) = c $$
+
+Dérivons cette équation par rapport à $t$ :
+
+$$ \frac{d}{dt} [g(x(t), y(t))] = \frac{d}{dt} (c) = 0 $$
+
+**Étape 2 :** Règle de la chaîne
+
+L'expression de la dérivée composée donne :
+
+$$ \frac{\partial g}{\partial x} \frac{dx}{dt} + \frac{\partial g}{\partial y} \frac{dy}{dt} = 0 $$
+
+**Étape 3 :** Interprétation vectorielle
+
+On reconnaît le produit scalaire entre le gradient de $g$ et le vecteur vitesse de la courbe $\gamma'$ :
+
+$$ \nabla g(\gamma(t)) \cdot \gamma'(t) = 0 $$
+
+où $\nabla g = (\frac{\partial g}{\partial x}, \frac{\partial g}{\partial y})$ et $\gamma'(t) = (x'(t), y'(t))$.
+
+**Conclusion :**
+
+Le vecteur $\gamma'(t)$ est le vecteur tangent à la courbe de niveau. L'équation montre que le gradient $\nabla g$ est orthogonal à ce vecteur tangent.
+
+</details>
+
+---
+
+#### Courbure de Gauss d'un cylindre
+
+Prouver que la courbure de Gauss d'un cylindre circulaire droit de rayon $R$ est nulle en tout point.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez le paramétrage $f(u, v) = (R\cos u, R\sin u, v)$.
+
+Calculez les dérivées premières $f_u, f_v$ et secondes $f_{uu}, f_{uv}, f_{vv}$.
+
+Calculez le vecteur normal $N$.
+
+Déterminez les coefficients de la seconde forme fondamentale ($L, M, N_{coeff}$) et utilisez la formule $K = \frac{LN_{coeff} - M^2}{EG - F^2}$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 :** Paramétrage et dérivées premières
+
+$$ f(u, v) = (R\cos u, R\sin u, v) $$
+
+$$ f_u = (-R\sin u, R\cos u, 0) $$
+
+$$ f_v = (0, 0, 1) $$
+
+**Étape 2 :** Calcul du vecteur normal $N$
+
+$$ f_u \wedge f_v = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ -R\sin u & R\cos u & 0 \\ 0 & 0 & 1 \end{vmatrix} = (R\cos u, R\sin u, 0) $$
+
+La norme est $\|f_u \wedge f_v\| = R$.
+
+Donc $N = (\cos u, \sin u, 0)$.
+
+**Étape 3 :** Dérivées secondes
+
+$$ f_{uu} = (-R\cos u, -R\sin u, 0) $$
+
+$$ f_{uv} = (0, 0, 0) $$
+
+$$ f_{vv} = (0, 0, 0) $$
+
+**Étape 4 :** Coefficients de la seconde forme fondamentale
+
+$$ L = \langle N, f_{uu} \rangle = -R\cos^2 u - R\sin^2 u = -R $$
+
+$$ M = \langle N, f_{uv} \rangle = 0 $$
+
+$$ N_{coeff} = \langle N, f_{vv} \rangle = 0 $$
+
+**Conclusion :**
+
+Le déterminant de la seconde forme fondamentale est $LN_{coeff} - M^2 = (-R)(0) - 0^2 = 0$.
+
+La courbure de Gauss est :
+
+$$ K = \frac{0}{EG-F^2} = 0 $$
+
+</details>
+
+---
+
+#### Indépendance du plan tangent par rapport au paramétrage
+
+Soit $S$ une surface régulière. Prouver que le plan tangent défini par $T_p S = \text{Vect}(f_u, f_v)$ reste le même si on effectue un changement de paramètre admissible (difféomorphisme).
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Soit $f(u, v)$ un paramétrage et $(u, v) = \phi(s, t)$ un changement de variables.
+
+Considérez le nouveau paramétrage $g(s, t) = f(\phi(s, t))$.
+
+Utilisez la règle de la chaîne pour exprimer $g_s$ et $g_t$ comme combinaisons linéaires de $f_u$ et $f_v$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 :** Relation entre les bases
+
+Soit $f : U \to \mathbb{R}^3$ le paramétrage initial et $g = f \circ \phi$ le nouveau paramétrage, avec $\phi(s, t) = (u(s, t), v(s, t))$ un difféomorphisme.
+
+Calculons les vecteurs tangents de $g$ en utilisant la règle de la chaîne :
+
+$$ \frac{\partial g}{\partial s} = \frac{\partial f}{\partial u} \frac{\partial u}{\partial s} + \frac{\partial f}{\partial v} \frac{\partial v}{\partial s} $$
+
+$$ \frac{\partial g}{\partial t} = \frac{\partial f}{\partial u} \frac{\partial u}{\partial t} + \frac{\partial f}{\partial v} \frac{\partial v}{\partial t} $$
+
+**Étape 2 :** Interprétation vectorielle
+
+Ces équations montrent que les vecteurs $\frac{\partial g}{\partial s}$ et $\frac{\partial g}{\partial t}$ sont des combinaisons linéaires de $\frac{\partial f}{\partial u}$ et $\frac{\partial f}{\partial v}$.
+
+Autrement dit, $\text{Vect}(\frac{\partial g}{\partial s}, \frac{\partial g}{\partial t}) \subseteq \text{Vect}(\frac{\partial f}{\partial u}, \frac{\partial f}{\partial v})$.
+
+**Étape 3 :** Inversibilité
+
+Puisque $\phi$ est un difféomorphisme, la matrice jacobienne de passage est inversible. On peut exprimer $\frac{\partial f}{\partial u}, \frac{\partial f}{\partial v}$ en fonction de $\frac{\partial g}{\partial s}, \frac{\partial g}{\partial t}$. L'inclusion réciproque est donc vraie.
+
+**Conclusion :**
+
+Les espaces vectoriels engendrés sont identiques :
+
+$$ \text{Vect}\left(\frac{\partial g}{\partial s}, \frac{\partial g}{\partial t}\right) = \text{Vect}\left(\frac{\partial f}{\partial u}, \frac{\partial f}{\partial v}\right) $$
+
+Le plan tangent est un objet géométrique invariant.
+
+</details>

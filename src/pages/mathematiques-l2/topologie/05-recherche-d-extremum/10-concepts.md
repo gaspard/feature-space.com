@@ -2,7 +2,7 @@
 id: c524657f
 type: concepts
 order: 10
-title: Chapitre 5 Recherche d'extremum - concepts (A)
+title: Recherche d'extremum - concepts (A)
 tags:
   - Mathématiques
   - Analyse
@@ -12,12 +12,12 @@ tags:
   - Points critiques
 course: Topologie
 courseId: 34e61f8e
-chapter: Chapitre 5 Recherche d'extremum
+chapter: Recherche d'extremum
 chapterId: 70efcabd
 level: regular
 createdAt: '2025-12-22T10:45:14.964Z'
 ---
-# Chapitre 5 Recherche d'extremum
+# Recherche d'extremum
 
 ---
 

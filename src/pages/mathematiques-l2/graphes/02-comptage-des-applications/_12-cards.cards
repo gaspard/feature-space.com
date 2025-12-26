@@ -39,7 +39,6 @@ $$n^k$$
 
 Pour chaque élément de $E$, il y a $|F|$ choix possibles pour son image. D'après le principe multiplicatif, on multiplie ces choix $|E|$ fois.
 
-**Tags :** formule, applications
 
 </details>
 
@@ -63,7 +62,6 @@ $$2^{|E|}$$
 
 Cela correspond au nombre d'applications de $E$ vers $\{0, 1\}$. Pour chaque élément, on a 2 choix : soit il est dans le sous-ensemble (1), soit il n'y est pas (0).
 
-**Tags :** formule, ensemble des parties
 
 </details>
 
@@ -87,7 +85,6 @@ Elle représente le nombre de **permutations** d'un ensemble à $n$ éléments. 
 
 Pour ordonner les lettres $\{A, B, C\}$, il y a $3! = 6$ façons.
 
-**Tags :** définition, permutations
 
 </details>
 
@@ -103,12 +100,13 @@ Si $|E| = k$ et $|F| = n$, le nombre d'injections est noté $A_n^k$ et vaut :
 
 $$A_n^k = \frac{n!}{(n-k)!} = n \times (n-1) \times \dots \times (n-k+1)$$
 
+Mais aussi $A_n^k = \binom{n}{k} \times k! = C_n^k \times k!$: c'est choisir $k$ éléments parmi $n$ (combinaison), puis les ordonner ($k!$ permutations).
+
 **Conditions :**
 
 - Il faut que $k \le n$ (sinon le nombre est 0).
 - L'ordre compte et il n'y a pas de répétition.
 
-**Tags :** formule, injections, arrangements
 
 </details>
 
@@ -128,7 +126,6 @@ $$|E| > |F|$$
 
 Si l'ensemble de départ a plus d'éléments que l'ensemble d'arrivée, il est impossible d'associer une image distincte à chaque élément de départ. Au moins deux éléments auront la même image.
 
-**Tags :** concept, injections
 
 </details>
 
@@ -148,7 +145,6 @@ Les nombres $S(n, k)$ (ou $\left\{ {n \atop k} \right\}$) comptent le nombre de 
 - Aucun sous-ensemble n'est vide.
 - La réunion des sous-ensembles reforme l'ensemble total.
 
-**Tags :** définition, partitions, stirling
 
 </details>
 
@@ -171,13 +167,10 @@ $$k! \times S(n, k)$$
 
 **Condition :** Il faut $n \ge k$.
 
-**Tags :** formule, surjections
 
 </details>
 
 ---
-
-**Exemple d'application :** Lancer de dés
 
 On lance un dé à 6 faces 4 fois de suite. Quel concept utiliser pour compter les résultats possibles ?
 
@@ -198,7 +191,6 @@ $$|F|^{|E|} = 6^4 = 1296$$
 
 On n'utilise pas les arrangements car on peut obtenir le même chiffre plusieurs fois.
 
-**Tags :** exemple, applications
 
 </details>
 
@@ -219,7 +211,6 @@ Soit $f: E \to F$, avec $|E|=n$ et $|F|=k$.
 3.  **Bijection ($n = k$) :** Chaque élément de l'arrivée est atteint exactement une fois.
     *   Formule : $n!$ (Permutations).
 
-**Tags :** concept, comparaison
 
 </details>
 
@@ -239,7 +230,6 @@ $$\mathbf{1}_A(x) = \begin{cases} 1 & \text{si } x \in A \\ 0 & \text{si } x \no
 
 Elle établit une bijection entre l'ensemble des parties $\mathcal{P}(E)$ et l'ensemble des applications $\mathcal{F}(E, \{0, 1\})$, justifiant la formule $2^{|E|}$.
 
-**Tags :** définition, fonction caractéristique
 
 </details>
 
@@ -264,6 +254,5 @@ Il s'agit d'un problème d'**Arrangement** (Injection), car l'ordre compte et il
 
 $$A_5^3 = \frac{5!}{(5-3)!} = 5 \times 4 \times 3 = 60 \text{ codes.}$$
 
-**Tags :** exemple, arrangements
 
 </details>

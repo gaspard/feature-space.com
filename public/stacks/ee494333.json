@@ -20,7 +20,7 @@
     {
       "id": "1",
       "stackId": "ee494333",
-      "content": "Qu'est-ce que le domaine de définition d'une fonction de plusieurs variables ?",
+      "content": "Qu'est-ce que le domaine de définition d'une fonction de plusieurs variables ? Donner également 4 contraintes.",
       "solution": "\n\nLe **domaine de définition** d'une fonction $f: D \\subseteq \\mathbb{R}^n \\to \\mathbb{R}^p$, noté $D_f$, est le plus grand sous-ensemble de $\\mathbb{R}^n$ pour lequel l'expression de $f(x_1, \\dots, x_n)$ a un sens mathématique. C'est l'ensemble de tous les points pour lesquels la fonction peut être calculée.\n\nPour le déterminer, on identifie toutes les contraintes mathématiques imposées par l'expression de la fonction. Les plus courantes sont :\n\n1.  **Dénominateurs non nuls** : Pour une fraction $\\frac{N(x)}{D(x)}$, on doit avoir $D(x) \\neq 0$.\n2.  **Arguments de logarithmes strictement positifs** : Pour $\\ln(u(x))$, on doit avoir $u(x) > 0$.\n3.  **Arguments de racines carrées positifs ou nuls** : Pour $\\sqrt{u(x)}$, on doit avoir $u(x) \\ge 0$.\n4.  **Autres fonctions** : Fonctions comme $\\tan(u(x))$ ou $\\arcsin(u(x))$ ont aussi des contraintes spécifiques.\n\n**Exemple :**\n\nSoit la fonction $f(x, y) = \\frac{\\sqrt{x-1}}{y-2}$.\n\nLes contraintes sont :\n\n1.  L'argument de la racine carrée doit être positif ou nul : $x-1 \\ge 0 \\implies x \\ge 1$.\n2.  Le dénominateur doit être non nul : $y-2 \\neq 0 \\implies y \\neq 2$.\n\nLe domaine de définition est donc $D_f = \\{ (x, y) \\in \\mathbb{R}^2 \\mid x \\ge 1 \\text{ et } y \\neq 2 \\}$. C'est le demi-plan à droite de la droite verticale $x=1$ (incluse), privé de la droite horizontale $y=2$.\n\n",
       "options": []
     },

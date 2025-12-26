@@ -1,0 +1,585 @@
+---
+id: 204b199e
+type: proofs
+order: 15
+title: Suites et séries de fonctions - preuves (A)
+tags:
+  - suites de fonctions
+  - séries de fonctions
+  - convergence simple
+  - convergence uniforme
+  - convergence normale
+  - continuité
+  - dérivabilité
+  - intégration
+createdAt: '2025-12-26T21:13:38.058Z'
+level: regular
+course: Analyse
+courseId: 79d3ec6b
+chapter: Suites et séries de fonctions
+chapterId: 8e0d527b
+---
+# Preuves "Suites et séries de fonctions" (A)
+
+---
+
+#### Convergence simple de la suite $f_n(t) = t^n$
+
+Prouvez que la suite de fonctions définie sur $D = [0, 1]$ par $f_n(t) = t^n$ converge simplement vers la fonction $f$ définie par $f(t) = 0$ si $t \in [0, 1[$ et $f(1) = 1$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Pour la convergence simple, il faut fixer $t$ et étudier la limite de la suite numérique $(f_n(t))_{n \in \mathbb{N}}$.
+
+Distinguez deux cas selon la valeur de $t$ :
+
+1. Le cas où $0 \le t < 1$.
+2. Le cas où $t = 1$.
+
+Rappelez-vous du comportement des suites géométriques.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Nous devons étudier la limite de $f_n(t) = t^n$ lorsque $n \to +\infty$ pour chaque $t \in [0, 1]$ fixé.
+
+**Étape 1 : Cas où $0 \le t < 1$**
+
+Soit $t$ fixé dans l'intervalle $[0, 1[$.
+
+La suite numérique $(t^n)_{n \in \mathbb{N}}$ est une suite géométrique de raison $t$.
+
+Puisque $0 \le t < 1$, nous savons que :
+
+$$ \lim_{n \to +\infty} t^n = 0 $$
+
+Donc, pour tout $t \in [0, 1[$, $f_n(t)$ converge vers $0$.
+
+**Étape 2 : Cas où $t = 1$**
+
+Si $t = 1$, alors pour tout $n \in \mathbb{N}$ :
+
+$$ f_n(1) = 1^n = 1 $$
+
+La suite est constante égale à 1, donc sa limite est 1.
+
+$$ \lim_{n \to +\infty} f_n(1) = 1 $$
+
+**Conclusion :**
+
+La suite de fonctions $(f_n)$ converge simplement sur $[0, 1]$ vers la fonction $f$ définie par :
+
+$$ f(t) = \begin{cases} 0 & \text{si } 0 \le t < 1 \\ 1 & \text{si } t = 1 \end{cases} $$
+
+</details>
+
+---
+
+#### Convergence uniforme implique convergence simple
+
+Prouvez que si une suite de fonctions $(f_n)_{n \in \mathbb{N}}$ converge uniformément vers $f$ sur un domaine $D$, alors elle converge simplement vers $f$ sur $D$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez les définitions.
+
+La convergence uniforme contrôle la "distance maximale" $\|f_n - f\|_\infty$.
+
+La convergence simple regarde la distance $|f_n(t) - f(t)|$ pour un $t$ particulier.
+
+Utilisez l'inégalité évidente entre une valeur particulière et la borne supérieure (le sup).
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $(f_n)_{n \in \mathbb{N}}$ une suite convergeant uniformément vers $f$ sur $D$.
+
+**Étape 1 : Définition de la convergence uniforme**
+
+Par hypothèse, la norme infinie de la différence tend vers 0 :
+
+$$ \lim_{n \to +\infty} \|f_n - f\|_\infty = 0 $$
+
+où $\|f_n - f\|_\infty = \sup_{x \in D} |f_n(x) - f(x)|$.
+
+**Étape 2 : Relation avec la convergence ponctuelle**
+
+Fixons un point $t \in D$. Par définition de la borne supérieure (sup), pour tout $t \in D$, la valeur en ce point est inférieure ou égale au sup sur tout le domaine :
+
+$$ |f_n(t) - f(t)| \le \sup_{x \in D} |f_n(x) - f(x)| = \|f_n - f\|_\infty $$
+
+**Étape 3 : Passage à la limite**
+
+Puisque $\|f_n - f\|_\infty \to 0$ quand $n \to +\infty$, par le théorème des gendarmes (ou de comparaison) appliqué à l'inégalité $0 \le |f_n(t) - f(t)| \le \|f_n - f\|_\infty$, on a :
+
+$$ \lim_{n \to +\infty} |f_n(t) - f(t)| = 0 $$
+
+Ce qui équivaut à $\lim_{n \to +\infty} f_n(t) = f(t)$.
+
+**Conclusion :**
+
+La suite $(f_n)$ converge simplement vers $f$ pour tout $t \in D$.
+
+</details>
+
+---
+
+#### Défaut de convergence uniforme (Contre-exemple)
+
+Prouvez que la suite de fonctions $f_n(t) = t^n$ sur $D = [0, 1]$ ne converge **pas** uniformément vers sa limite simple $f$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+La limite simple $f$ vaut 0 sur $[0, 1[$ et 1 en $t=1$.
+
+Pour montrer la non-convergence uniforme, étudiez la quantité $\|f_n - f\|_\infty = \sup_{t \in [0, 1]} |f_n(t) - f(t)|$.
+
+Essayez de trouver la valeur maximale de cette différence pour un $n$ fixé. Regardez ce qui se passe quand $t$ est proche de 1 (mais strictement inférieur).
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+La limite simple est $f(t) = 0$ si $t \in [0, 1[$ et $f(1) = 1$.
+
+Nous devons calculer $\|f_n - f\|_\infty = \sup_{t \in [0, 1]} |t^n - f(t)|$.
+
+**Étape 1 : Étude de la différence sur $[0, 1]$**
+
+- Pour $t \in [0, 1[$, on a $f(t) = 0$, donc $|f_n(t) - f(t)| = |t^n - 0| = t^n$.
+- Pour $t = 1$, on a $f(1) = 1$ et $f_n(1) = 1$, donc $|f_n(1) - f(1)| = 0$.
+
+Ainsi, la quantité à maximiser est :
+
+$$ \sup_{t \in [0, 1]} |f_n(t) - f(t)| = \sup_{t \in [0, 1[} t^n $$
+
+**Étape 2 : Calcul du Sup**
+
+La fonction $t \mapsto t^n$ est strictement croissante sur $[0, 1[$.
+
+Sa borne supérieure est sa limite en $1^-$ :
+
+$$ \sup_{t \in [0, 1[} t^n = \lim_{t \to 1^-} t^n = 1 $$
+
+Donc $\|f_n - f\|_\infty = 1$.
+
+**Conclusion :**
+
+La suite numérique $(\|f_n - f\|_\infty)_{n \in \mathbb{N}}$ est la suite constante égale à 1. Elle ne tend pas vers 0.
+
+$$ \lim_{n \to +\infty} \|f_n - f\|_\infty = 1 \neq 0 $$
+
+La convergence n'est donc pas uniforme sur $[0, 1]$.
+
+</details>
+
+---
+
+#### Continuité de la limite uniforme
+
+Prouvez que si une suite de fonctions continues $(f_n)_{n \in \mathbb{N}}$ converge uniformément vers $f$ sur $D$, alors $f$ est continue sur $D$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+C'est la démonstration classique en "3 epsilon".
+
+Pour montrer que $f$ est continue en $t_0$, on veut majorer $|f(t) - f(t_0)|$ pour $t$ proche de $t_0$.
+
+Intercalez $f_n(t)$ et $f_n(t_0)$ en utilisant l'inégalité triangulaire :
+
+$|f(t) - f(t_0)| \le |f(t) - f_n(t)| + |f_n(t) - f_n(t_0)| + |f_n(t_0) - f(t_0)|$.
+
+Choisissez $n$ assez grand pour contrôler les termes extrêmes, puis utilisez la continuité de $f_n$ pour le terme central.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $t_0 \in D$. Nous voulons montrer que $\forall \varepsilon > 0, \exists \delta > 0, \forall t \in D, |t - t_0| < \delta \Rightarrow |f(t) - f(t_0)| < \varepsilon$.
+
+Soit $\varepsilon > 0$ fixé.
+
+**Étape 1 : Décomposition par l'inégalité triangulaire**
+
+Pour tout $n \in \mathbb{N}$ et tout $t \in D$ :
+
+$$ |f(t) - f(t_0)| \le \underbrace{|f(t) - f_n(t)|}_{(A)} + \underbrace{|f_n(t) - f_n(t_0)|}_{(B)} + \underbrace{|f_n(t_0) - f(t_0)|}_{(C)} $$
+
+**Étape 2 : Contrôle grâce à la convergence uniforme (Termes A et C)**
+
+Comme $f_n$ converge uniformément vers $f$, il existe un rang $N$ tel que pour tout $n \ge N$ et tout $x \in D$, $|f_n(x) - f(x)| < \varepsilon/3$.
+
+Fixons un tel entier $N$. Alors :
+
+- $(A) = |f(t) - f_N(t)| < \varepsilon/3$
+- $(C) = |f_N(t_0) - f(t_0)| < \varepsilon/3$
+
+**Étape 3 : Contrôle grâce à la continuité de $f_N$ (Terme B)**
+
+La fonction $f_N$ est continue en $t_0$ (par hypothèse). Il existe donc $\delta > 0$ tel que :
+
+$$ |t - t_0| < \delta \Rightarrow |f_N(t) - f_N(t_0)| < \varepsilon/3 $$
+
+Ceci contrôle le terme $(B)$.
+
+**Conclusion :**
+
+En combinant les étapes, pour $|t - t_0| < \delta$ :
+
+$$ |f(t) - f(t_0)| < \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} = \varepsilon $$
+
+Donc $f$ est continue en $t_0$.
+
+</details>
+
+---
+
+#### Théorème d'intégration sous convergence uniforme
+
+Prouvez que si une suite de fonctions continues $f_n$ converge uniformément vers $f$ sur un segment $[a, b]$, alors :
+
+$$ \lim_{n \to +\infty} \int_a^b f_n(t) dt = \int_a^b f(t) dt $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Étudiez la différence $|\int_a^b f_n(t) dt - \int_a^b f(t) dt|$.
+
+Utilisez la linéarité de l'intégrale pour tout regrouper en une seule intégrale : $\int_a^b (f_n(t) - f(t)) dt$.
+
+Utilisez l'inégalité triangulaire pour les intégrales : $|\int g| \le \int |g|$.
+
+Majorez l'intégrande par $\|f_n - f\|_\infty$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Nous voulons montrer que $\left| \int_a^b f_n(t) dt - \int_a^b f(t) dt \right| \to 0$.
+
+**Étape 1 : Majoration de la différence des intégrales**
+
+$$ \left| \int_a^b f_n(t) dt - \int_a^b f(t) dt \right| = \left| \int_a^b (f_n(t) - f(t)) dt \right| $$
+
+On utilise l'inégalité $\left| \int_a^b g(t) dt \right| \le \int_a^b |g(t)| dt$ :
+
+$$ \le \int_a^b |f_n(t) - f(t)| dt $$
+
+**Étape 2 : Utilisation de la convergence uniforme**
+
+Pour tout $t \in [a, b]$, on a $|f_n(t) - f(t)| \le \sup_{x \in [a, b]} |f_n(x) - f(x)| = \|f_n - f\|_\infty$.
+
+On peut donc majorer l'intégrande par cette constante (qui ne dépend pas de $t$) :
+
+$$ \int_a^b |f_n(t) - f(t)| dt \le \int_a^b \|f_n - f\|_\infty dt $$
+
+**Étape 3 : Calcul de l'intégrale de la constante**
+
+$$ \int_a^b \|f_n - f\|_\infty dt = \|f_n - f\|_\infty \times (b - a) $$
+
+**Conclusion :**
+
+On a obtenu :
+
+$$ \left| \int_a^b f_n(t) dt - \int_a^b f(t) dt \right| \le (b-a) \|f_n - f\|_\infty $$
+
+Puisque $f_n$ converge uniformément vers $f$, $\|f_n - f\|_\infty \to 0$.
+
+Donc le terme de droite tend vers 0, ce qui prouve le résultat.
+
+</details>
+
+---
+
+#### Convergence normale implique convergence uniforme
+
+Prouvez que si une série de fonctions $\sum u_n$ converge normalement sur $D$, alors elle converge uniformément sur $D$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+La convergence uniforme d'une série équivaut à la convergence uniforme de la suite de ses restes vers 0.
+
+Le reste d'ordre $n$ est $r_n(t) = \sum_{k=n+1}^{+\infty} u_k(t)$.
+
+Majorez $|r_n(t)|$ en utilisant l'inégalité triangulaire puis la définition de la norme infinie $\|u_k\|_\infty$.
+
+Utilisez le fait que le reste d'une série numérique convergente tend vers 0.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $\sum u_n$ une série convergeant normalement sur $D$.
+
+Cela signifie que la série numérique $\sum \|u_n\|_\infty$ est convergente.
+
+**Étape 1 : Majoration du reste de la série de fonctions**
+
+Soit $r_n(t) = \sum_{k=n+1}^{+\infty} u_k(t)$ le reste de la série au point $t$.
+
+Par l'inégalité triangulaire (étendue aux sommes infinies) :
+
+$$ |r_n(t)| = \left| \sum_{k=n+1}^{+\infty} u_k(t) \right| \le \sum_{k=n+1}^{+\infty} |u_k(t)| $$
+
+Par définition de la norme infinie, $|u_k(t)| \le \|u_k\|_\infty$ pour tout $t \in D$. Donc :
+
+$$ |r_n(t)| \le \sum_{k=n+1}^{+\infty} \|u_k\|_\infty $$
+
+**Étape 2 : Passage à la norme infinie**
+
+Le majorant ci-dessus (appelons-le $R_n$) ne dépend pas de $t$.
+
+$$ R_n = \sum_{k=n+1}^{+\infty} \|u_k\|_\infty $$
+
+Donc, $\sup_{t \in D} |r_n(t)| \le R_n$. C'est-à-dire :
+
+$$ \|r_n\|_\infty \le R_n $$
+
+**Étape 3 : Convergence vers 0**
+
+Puisque la série numérique $\sum \|u_n\|_\infty$ converge (hypothèse de convergence normale), la suite de ses restes $R_n$ tend vers 0 quand $n \to +\infty$.
+
+Par comparaison, $\lim_{n \to +\infty} \|r_n\|_\infty = 0$.
+
+**Conclusion :**
+
+La suite des restes converge uniformément vers 0, ce qui signifie que la série $\sum u_n$ converge uniformément sur $D$.
+
+</details>
+
+---
+
+#### Non-transmission de l'intégrale (convergence simple)
+
+Prouvez par un contre-exemple que la convergence simple ne suffit pas à intervertir limite et intégrale.
+
+Utilisez la suite $f_n(t) = n t (1-t^2)^n$ sur $[0, 1]$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+1. Montrez que $f_n(t)$ converge simplement vers 0 pour tout $t$. (Traitez $t=0$, $t=1$, et $t \in ]0,1[$ séparément).
+2. Calculez explicitement l'intégrale $I_n = \int_0^1 n t (1-t^2)^n dt$. Un changement de variable $u = 1-t^2$ ou une reconnaissance de dérivée $(u^{n+1})'$ simplifie le calcul.
+3. Comparez la limite de $I_n$ avec l'intégrale de la limite (0).
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Convergence simple vers 0**
+
+- Si $t=0$ ou $t=1$, $f_n(t) = 0$, la limite est 0.
+- Si $t \in ]0, 1[$, alors $0 < 1-t^2 < 1$. Soit $q = 1-t^2$. On a $f_n(t) = t \times n q^n$.
+
+C'est une limite classique de croissances comparées : l'exponentielle ($q^n$ avec $q<1$) l'emporte sur le polynôme ($n$). $\lim_{n \to \infty} n q^n = 0$.
+
+Donc $f_n$ converge simplement vers la fonction nulle $f=0$.
+
+L'intégrale de la limite est $\int_0^1 0 dt = 0$.
+
+**Étape 2 : Calcul de l'intégrale $\int_0^1 f_n(t) dt$**
+
+$$ I_n = \int_0^1 n t (1-t^2)^n dt $$
+
+On remarque que la dérivée de $(1-t^2)^{n+1}$ est $(n+1)(1-t^2)^n (-2t)$.
+
+Donc $t(1-t^2)^n = -\frac{1}{2(n+1)} \frac{d}{dt} \left( (1-t^2)^{n+1} \right)$.
+
+$$ I_n = n \int_0^1 -\frac{1}{2(n+1)} \left[ (1-t^2)^{n+1} \right]' dt $$
+
+$$ I_n = -\frac{n}{2(n+1)} \left[ (1-t^2)^{n+1} \right]_0^1 $$
+
+$$ I_n = -\frac{n}{2(n+1)} (0 - 1) = \frac{n}{2n+2} $$
+
+**Conclusion :**
+
+$$ \lim_{n \to +\infty} I_n = \lim_{n \to +\infty} \frac{n}{2n+2} = \frac{1}{2} $$
+
+On a $\frac{1}{2} \neq 0$. L'intégrale de la limite n'est pas la limite des intégrales.
+
+</details>
+
+---
+
+#### Convergence uniforme d'une série géométrique
+
+Prouvez que la série de terme général $u_n(z) = z^n$ converge uniformément sur le disque fermé $D_r = \{z \in \mathbb{C} : |z| \le r\}$ pour tout $r < 1$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Essayez de prouver la convergence **normale**.
+
+Calculez $\|u_n\|_\infty = \sup_{|z| \le r} |z^n|$.
+
+Vérifiez si la série numérique résultante converge.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Nous allons utiliser le critère de convergence normale.
+
+**Étape 1 : Calcul de la norme infinie sur $D_r$**
+
+Le terme général est $u_n(z) = z^n$.
+
+$$ \|u_n\|_\infty = \sup_{z \in D_r} |z^n| = \sup_{|z| \le r} |z|^n $$
+
+La fonction $x \mapsto x^n$ étant croissante pour $x \ge 0$, le supremum est atteint sur le bord $|z| = r$.
+
+$$ \|u_n\|_\infty = r^n $$
+
+**Étape 2 : Convergence de la série des normes**
+
+La série $\sum_{n=0}^{+\infty} \|u_n\|_\infty = \sum_{n=0}^{+\infty} r^n$ est une série géométrique de raison $r$.
+
+Comme $0 \le r < 1$ (hypothèse donnée), cette série numérique converge.
+
+**Conclusion :**
+
+La série de fonctions converge normalement sur $D_r$.
+
+Comme la convergence normale implique la convergence uniforme, la série converge uniformément sur $D_r$.
+
+</details>
+
+---
+
+#### Application de la dérivation sous convergence uniforme
+
+Prouvez que la fonction définie par la série $S(t) = \sum_{n=1}^{+\infty} \frac{\sin(nt)}{n^3}$ est de classe $\mathcal{C}^1$ sur $\mathbb{R}$ et donnez l'expression de sa dérivée.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez le théorème de dérivation terme à terme. Il faut vérifier deux conditions :
+
+1. La série $\sum u_n(t)$ converge simplement (au moins en un point).
+2. La série des dérivées $\sum u'_n(t)$ converge **uniformément** sur $\mathbb{R}$.
+
+Pour le point 2, montrez que la série des dérivées converge **normalement**.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $u_n(t) = \frac{\sin(nt)}{n^3}$. Les fonctions $u_n$ sont $\mathcal{C}^1$ sur $\mathbb{R}$.
+
+**Étape 1 : Convergence de la série initiale**
+
+On a $|u_n(t)| \le \frac{1}{n^3}$. La série de Riemann $\sum \frac{1}{n^3}$ converge.
+
+Donc $\sum u_n$ converge normalement (donc simplement) sur $\mathbb{R}$.
+
+**Étape 2 : Convergence uniforme de la série des dérivées**
+
+Calculons la dérivée :
+
+$$ u'_n(t) = \frac{n \cos(nt)}{n^3} = \frac{\cos(nt)}{n^2} $$
+
+Étudions la convergence normale de $\sum u'_n$.
+
+$$ \|u'_n\|_\infty = \sup_{t \in \mathbb{R}} \left| \frac{\cos(nt)}{n^2} \right| \le \frac{1}{n^2} $$
+
+La série numérique $\sum \frac{1}{n^2}$ converge (Riemann avec $2 > 1$).
+
+Donc la série des dérivées $\sum u'_n$ converge normalement, et donc uniformément sur $\mathbb{R}$.
+
+**Conclusion :**
+
+D'après le théorème de dérivabilité sous convergence uniforme :
+
+1. $S(t)$ est dérivable (et $\mathcal{C}^1$ car la limite uniforme de fonctions continues est continue).
+2. On peut dériver terme à terme :
+
+$$ S'(t) = \sum_{n=1}^{+\infty} \frac{\cos(nt)}{n^2} $$
+
+</details>
+
+---
+
+#### Contre-exemple de dérivabilité (Suite de Weierstrass)
+
+Prouvez que la suite $f_n(t) = \frac{\sin(nt)}{\sqrt{n}}$ converge uniformément vers 0 sur $\mathbb{R}$, mais que la suite des dérivées $(f'_n(0))_{n \in \mathbb{N}}$ diverge.
+
+(Ceci montre l'importance de l'hypothèse de convergence uniforme des dérivées).
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+1. Pour la convergence uniforme de $f_n$, majorez $|\sin(nt)|$ par 1.
+2. Calculez $f'_n(t)$ puis évaluez en $t=0$. Observez la limite quand $n \to \infty$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Convergence uniforme de $(f_n)$**
+
+$$ |f_n(t) - 0| = \left| \frac{\sin(nt)}{\sqrt{n}} \right| \le \frac{1}{\sqrt{n}} $$
+
+Le majorant est indépendant de $t$.
+
+Donc $\|f_n - 0\|_\infty \le \frac{1}{\sqrt{n}}$.
+
+Comme $\lim_{n \to \infty} \frac{1}{\sqrt{n}} = 0$, la suite $(f_n)$ converge uniformément vers la fonction nulle $f(t) = 0$ sur $\mathbb{R}$.
+
+La fonction limite $f$ est dérivable et $f'(0) = 0$.
+
+**Étape 2 : Comportement des dérivées en 0**
+
+Calculons la dérivée de $f_n$ :
+
+$$ f'_n(t) = \frac{d}{dt} \left( \frac{\sin(nt)}{\sqrt{n}} \right) = \frac{n \cos(nt)}{\sqrt{n}} = \sqrt{n} \cos(nt) $$
+
+Évaluons en $t=0$ :
+
+$$ f'_n(0) = \sqrt{n} \cos(0) = \sqrt{n} $$
+
+**Conclusion :**
+
+$$ \lim_{n \to +\infty} f'_n(0) = \lim_{n \to +\infty} \sqrt{n} = +\infty $$
+
+La suite des dérivées diverge. On a bien $\lim f'_n(0) \neq f'(0)$ (l'infini $\neq$ 0).
+
+Le théorème de dérivation ne s'applique pas car la suite $(f'_n)$ ne converge pas uniformément.
+
+</details>

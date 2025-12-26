@@ -1,0 +1,260 @@
+---
+id: cf3305ce
+type: cards
+order: 12
+title: Suites et séries de fonctions - fiches de révision (A)
+tags:
+  - suites de fonctions
+  - séries de fonctions
+  - convergence simple
+  - convergence uniforme
+  - convergence normale
+  - continuité
+  - dérivabilité
+  - intégration
+createdAt: '2025-12-26T21:13:38.058Z'
+level: regular
+course: Analyse
+courseId: 79d3ec6b
+chapter: Suites et séries de fonctions
+chapterId: 8e0d527b
+---
+# Fiches de révision "Suites et séries de fonctions" (A)
+
+---
+
+Qu'est-ce que la **convergence simple** d'une suite de fonctions ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La convergence simple est la forme la plus intuitive de convergence. Elle consiste à regarder la convergence point par point, en fixant la variable.
+
+Pour une suite de fonctions $(f_n)_{n \in \mathbb{N}}$ définies sur un domaine $D$, elle converge simplement vers $f$ si, pour tout $t$ fixé dans $D$, la suite numérique $(f_n(t))$ converge vers le nombre $f(t)$.
+
+**Définition formelle :**
+
+$$ \forall t \in D, \lim_{n \to +\infty} f_n(t) = f(t) $$
+
+**Exemple :**
+
+Si $f_n(t) = \frac{t}{n}$ sur $\mathbb{R}$.
+
+Pour tout $t$ fixé, $\frac{t}{n}$ tend vers 0 quand $n \to +\infty$. La suite converge simplement vers la fonction nulle.
+
+</details>
+
+---
+
+Quelle est la formule de la **norme infinie** (ou norme de la convergence uniforme) ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour une fonction $f$ bornée sur un domaine $D$, la norme infinie est la valeur maximale (ou la borne supérieure) de la valeur absolue de la fonction sur ce domaine.
+
+$$ \|f\|_\infty = \sup_{t \in D} |f(t)| $$
+
+**Où :**
+
+- $\sup$ désigne la borne supérieure (le plus petit des majorants).
+- $|f(t)|$ est le module ou la valeur absolue de l'image.
+
+**Utilisation :**
+
+Elle sert à mesurer la "distance maximale" entre deux fonctions pour étudier la convergence uniforme.
+
+</details>
+
+---
+
+Qu'est-ce que la **convergence uniforme** d'une suite de fonctions ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La convergence uniforme est une convergence "globale". Contrairement à la convergence simple, elle exige que la suite de fonctions s'approche de la limite avec une "vitesse" commune pour tous les points du domaine.
+
+Une suite $(f_n)$ converge uniformément vers $f$ sur $D$ si la distance maximale entre $f_n$ et $f$ tend vers 0.
+
+**Formule :**
+
+$$ \lim_{n \to +\infty} \|f_n - f\|_\infty = 0 $$
+
+C'est-à-dire :
+
+$$ \lim_{n \to +\infty} \left( \sup_{t \in D} |f_n(t) - f(t)| \right) = 0 $$
+
+</details>
+
+---
+
+Comment déterminer si une suite de fonctions converge **uniformément** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+**Étapes :**
+
+1.  **Trouver la limite simple :** Fixer $t$ et calculer $f(t) = \lim_{n \to \infty} f_n(t)$.
+2.  **Former la différence :** Calculer l'expression de l'écart $d_n(t) = |f_n(t) - f(t)|$.
+3.  **Calculer le Sup :** Chercher le maximum ou la borne supérieure de $d_n(t)$ sur le domaine $D$. On obtient une suite numérique $M_n = \sup_{t \in D} d_n(t) = \|f_n - f\|_\infty$.
+4.  **Conclure :**
+    - Si $\lim_{n \to \infty} M_n = 0$, il y a convergence uniforme.
+    - Si la limite n'est pas 0, il n'y a pas convergence uniforme.
+
+</details>
+
+---
+
+Qu'est-ce que la **convergence normale** pour une série de fonctions ?
+
+<details>
+
+<summary>Réponse</summary>
+
+C'est un critère très fort pour les séries de fonctions. Une série de fonctions $\sum u_n$ converge normalement sur $D$ si la série numérique des normes infinies converge.
+
+**Condition :**
+
+$$ \sum_{n=0}^{+\infty} \|u_n\|_\infty < +\infty $$
+
+C'est-à-dire :
+
+$$ \sum_{n=0}^{+\infty} \left( \sup_{t \in D} |u_n(t)| \right) \text{ est une série convergente.} $$
+
+C'est la méthode la plus pratique pour prouver la convergence uniforme d'une série.
+
+</details>
+
+---
+
+Quel est le lien logique entre convergence **Normale**, **Uniforme** et **Simple** pour les séries ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Il existe une hiérarchie stricte entre ces types de convergence :
+
+$$ \text{Convergence Normale} \implies \text{Convergence Uniforme} \implies \text{Convergence Simple} $$
+
+**Points clés :**
+
+- Si une série converge normalement, elle converge forcément uniformément et simplement.
+- La réciproque est fausse (ex: une série peut converger uniformément sans converger normalement).
+
+</details>
+
+---
+
+Quel théorème lie la **convergence uniforme** et la **continuité** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La convergence uniforme préserve la continuité lors du passage à la limite.
+
+**Théorème :**
+
+Si une suite de fonctions $(f_n)$ continues converge **uniformément** vers $f$ sur un domaine $D$, alors la fonction limite $f$ est **continue** sur $D$.
+
+(Ce résultat est identique pour la somme d'une série de fonctions continues).
+
+**Application (Contraposée) :**
+
+Si une suite de fonctions continues converge vers une fonction discontinue, alors la convergence n'est **pas** uniforme.
+
+</details>
+
+---
+
+Comment utiliser la contraposée de la continuité pour montrer la **non-convergence uniforme** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+**Méthode :**
+
+1.  Vérifier que les fonctions $f_n$ (ou $u_n$) sont continues sur le domaine.
+2.  Calculer la limite simple $f(t)$ pour tout $t$.
+3.  Observer si la fonction limite $f$ présente une discontinuité (un "saut").
+4.  **Conclusion :** Si $f_n$ est continue et $f$ est discontinue, alors la convergence ne peut pas être uniforme.
+
+**Exemple :** $f_n(t) = t^n$ sur $[0, 1]$. Les $f_n$ sont continues, mais la limite vaut 0 sur $[0, 1[$ et 1 en $t=1$. La limite étant discontinue, la convergence n'est pas uniforme.
+
+</details>
+
+---
+
+Quel est le théorème d'**intégration** sous convergence uniforme ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Ce théorème permet d'intervertir le symbole intégrale et la limite (ou la somme).
+
+**Énoncé :**
+
+Si une suite de fonctions $(f_n)$ continues converge **uniformément** vers $f$ sur un segment $[a, b]$, alors :
+
+$$ \lim_{n \to +\infty} \int_a^b f_n(t) dt = \int_a^b \left( \lim_{n \to +\infty} f_n(t) \right) dt = \int_a^b f(t) dt $$
+
+Pour les séries, cela signifie qu'on peut intégrer "terme à terme" :
+
+$$ \int_a^b \left( \sum u_n(t) \right) dt = \sum \left( \int_a^b u_n(t) dt \right) $$
+
+</details>
+
+---
+
+Quelles sont les conditions pour **dériver** une série de fonctions terme à terme ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Attention, la convergence uniforme de la série seule ne suffit pas. Il faut contrôler la série des dérivées.
+
+**Théorème :**
+
+Soit $\sum u_n$ une série de fonctions de classe $\mathcal{C}^1$ sur un intervalle $I$.
+
+On peut dériver terme à terme (c'est-à-dire $(\sum u_n)' = \sum u'_n$) si deux conditions sont réunies :
+
+1.  La série $\sum u_n(t)$ converge simplement en au moins un point $t_0$.
+2.  La série des dérivées $\sum u'_n(t)$ converge **uniformément** sur tout sous-intervalle compact (borné).
+
+**Résultat :**
+
+La fonction somme $S(t)$ est alors dérivable et sa dérivée est la somme des dérivées.
+
+</details>
+
+---
+
+Donnez un **contre-exemple** montrant que la convergence simple ne préserve pas l'intégrale.
+
+<details>
+
+<summary>Réponse</summary>
+
+Il est possible que $\lim \int f_n \neq \int \lim f_n$ si la convergence n'est que simple.
+
+**Exemple "Bosse glissante" :**
+
+Soit $f_n(t) = n t (1-t^2)^n$ sur $[0, 1]$.
+
+- **Limite simple :** Pour tout $t$, $f_n(t) \to 0$. L'intégrale de la limite est 0.
+- **Intégrale des fonctions :** Par calcul direct, $\int_0^1 f_n(t) dt \to \frac{1}{2}$.
+
+Comme $1/2 \neq 0$, on voit que l'intégrale de la limite n'est pas la limite des intégrales. La convergence uniforme manquait ici.
+
+</details>

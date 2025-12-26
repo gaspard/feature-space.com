@@ -21,77 +21,77 @@
       "id": "1",
       "stackId": "1737fdd9",
       "content": "Quelle est la formule du nombre d'**applications** d'un ensemble fini $E$ vers un ensemble fini $F$ ?",
-      "solution": "\n\nLe nombre total d'applications de $E$ dans $F$, noté $|\\mathcal{F}(E, F)|$ ou $|F^E|$, est :\n\n$$|F|^{|E|}$$\n\nSi on note $|E| = k$ (ensemble de départ) et $|F| = n$ (ensemble d'arrivée), la formule est :\n\n$$n^k$$\n\n**Explication :**\n\nPour chaque élément de $E$, il y a $|F|$ choix possibles pour son image. D'après le principe multiplicatif, on multiplie ces choix $|E|$ fois.\n\n**Tags :** formule, applications\n\n",
+      "solution": "\n\nLe nombre total d'applications de $E$ dans $F$, noté $|\\mathcal{F}(E, F)|$ ou $|F^E|$, est :\n\n$$|F|^{|E|}$$\n\nSi on note $|E| = k$ (ensemble de départ) et $|F| = n$ (ensemble d'arrivée), la formule est :\n\n$$n^k$$\n\n**Explication :**\n\nPour chaque élément de $E$, il y a $|F|$ choix possibles pour son image. D'après le principe multiplicatif, on multiplie ces choix $|E|$ fois.\n\n\n",
       "options": []
     },
     {
       "id": "2",
       "stackId": "1737fdd9",
       "content": "Comment calcule-t-on le nombre de **sous-ensembles** (ou parties) d'un ensemble fini $E$ ?",
-      "solution": "\n\nLe cardinal de l'ensemble des parties de $E$, noté $|\\mathcal{P}(E)|$, est donné par :\n\n$$2^{|E|}$$\n\n**Où :**\n\n- $|E|$ est le nombre d'éléments dans l'ensemble.\n\n**Pourquoi ?**\n\nCela correspond au nombre d'applications de $E$ vers $\\{0, 1\\}$. Pour chaque élément, on a 2 choix : soit il est dans le sous-ensemble (1), soit il n'y est pas (0).\n\n**Tags :** formule, ensemble des parties\n\n",
+      "solution": "\n\nLe cardinal de l'ensemble des parties de $E$, noté $|\\mathcal{P}(E)|$, est donné par :\n\n$$2^{|E|}$$\n\n**Où :**\n\n- $|E|$ est le nombre d'éléments dans l'ensemble.\n\n**Pourquoi ?**\n\nCela correspond au nombre d'applications de $E$ vers $\\{0, 1\\}$. Pour chaque élément, on a 2 choix : soit il est dans le sous-ensemble (1), soit il n'y est pas (0).\n\n\n",
       "options": []
     },
     {
       "id": "3",
       "stackId": "1737fdd9",
       "content": "Qu'est-ce qu'une **factorielle** et que dénombre-t-elle ?",
-      "solution": "\n\nLa factorielle de $n$, notée $n!$, est le produit des entiers de 1 à $n$ :\n\n$$n! = 1 \\times 2 \\times \\dots \\times n$$\n\n**Signification combinatoire :**\n\nElle représente le nombre de **permutations** d'un ensemble à $n$ éléments. C'est-à-dire le nombre de façons d'ordonner ces $n$ éléments distincts (ou le nombre de bijections de $E$ dans $E$).\n\n**Exemple :**\n\nPour ordonner les lettres $\\{A, B, C\\}$, il y a $3! = 6$ façons.\n\n**Tags :** définition, permutations\n\n",
+      "solution": "\n\nLa factorielle de $n$, notée $n!$, est le produit des entiers de 1 à $n$ :\n\n$$n! = 1 \\times 2 \\times \\dots \\times n$$\n\n**Signification combinatoire :**\n\nElle représente le nombre de **permutations** d'un ensemble à $n$ éléments. C'est-à-dire le nombre de façons d'ordonner ces $n$ éléments distincts (ou le nombre de bijections de $E$ dans $E$).\n\n**Exemple :**\n\nPour ordonner les lettres $\\{A, B, C\\}$, il y a $3! = 6$ façons.\n\n\n",
       "options": []
     },
     {
       "id": "4",
       "stackId": "1737fdd9",
       "content": "Quelle est la formule du nombre d'**injections** (ou arrangements) de $E$ vers $F$ ?",
-      "solution": "\n\nSi $|E| = k$ et $|F| = n$, le nombre d'injections est noté $A_n^k$ et vaut :\n\n$$A_n^k = \\frac{n!}{(n-k)!} = n \\times (n-1) \\times \\dots \\times (n-k+1)$$\n\n**Conditions :**\n\n- Il faut que $k \\le n$ (sinon le nombre est 0).\n- L'ordre compte et il n'y a pas de répétition.\n\n**Tags :** formule, injections, arrangements\n\n",
+      "solution": "\n\nSi $|E| = k$ et $|F| = n$, le nombre d'injections est noté $A_n^k$ et vaut :\n\n$$A_n^k = \\frac{n!}{(n-k)!} = n \\times (n-1) \\times \\dots \\times (n-k+1)$$\n\nMais aussi $A_n^k = \\binom{n}{k} \\times k! = C_n^k \\times k!$: c'est choisir $k$ éléments parmi $n$ (combinaison), puis les ordonner ($k!$ permutations).\n\n**Conditions :**\n\n- Il faut que $k \\le n$ (sinon le nombre est 0).\n- L'ordre compte et il n'y a pas de répétition.\n\n\n",
       "options": []
     },
     {
       "id": "5",
       "stackId": "1737fdd9",
       "content": "Dans quel cas le nombre d'injections de $E$ vers $F$ est-il égal à **zéro** ?",
-      "solution": "\n\nLe nombre d'injections est nul si :\n\n$$|E| > |F|$$\n\n**Explication (Principe des tiroirs) :**\n\nSi l'ensemble de départ a plus d'éléments que l'ensemble d'arrivée, il est impossible d'associer une image distincte à chaque élément de départ. Au moins deux éléments auront la même image.\n\n**Tags :** concept, injections\n\n",
+      "solution": "\n\nLe nombre d'injections est nul si :\n\n$$|E| > |F|$$\n\n**Explication (Principe des tiroirs) :**\n\nSi l'ensemble de départ a plus d'éléments que l'ensemble d'arrivée, il est impossible d'associer une image distincte à chaque élément de départ. Au moins deux éléments auront la même image.\n\n\n",
       "options": []
     },
     {
       "id": "6",
       "stackId": "1737fdd9",
       "content": "Que comptent les **Nombres de Stirling de seconde espèce**, notés $S(n, k)$ ?",
-      "solution": "\n\nLes nombres $S(n, k)$ (ou $\\left\\{ {n \\atop k} \\right\\}$) comptent le nombre de façons de **partitionner** un ensemble de $n$ éléments en $k$ sous-ensembles **non vides**.\n\n**Points clés :**\n\n- L'ordre des sous-ensembles ne compte pas (les groupes sont indiscernables).\n- Aucun sous-ensemble n'est vide.\n- La réunion des sous-ensembles reforme l'ensemble total.\n\n**Tags :** définition, partitions, stirling\n\n",
+      "solution": "\n\nLes nombres $S(n, k)$ (ou $\\left\\{ {n \\atop k} \\right\\}$) comptent le nombre de façons de **partitionner** un ensemble de $n$ éléments en $k$ sous-ensembles **non vides**.\n\n**Points clés :**\n\n- L'ordre des sous-ensembles ne compte pas (les groupes sont indiscernables).\n- Aucun sous-ensemble n'est vide.\n- La réunion des sous-ensembles reforme l'ensemble total.\n\n\n",
       "options": []
     },
     {
       "id": "7",
       "stackId": "1737fdd9",
       "content": "Quelle est la formule pour calculer le nombre de **surjections** de $E$ vers $F$ ?",
-      "solution": "\n\nSi $|E| = n$ et $|F| = k$, le nombre de surjections est :\n\n$$k! \\times S(n, k)$$\n\n**Où :**\n\n- $S(n, k)$ est le nombre de Stirling de seconde espèce (façons de grouper les $n$ éléments en $k$ paquets).\n- $k!$ correspond aux façons d'attribuer (ordonner) ces $k$ paquets aux $k$ éléments distincts de l'arrivée.\n\n**Condition :** Il faut $n \\ge k$.\n\n**Tags :** formule, surjections\n\n",
+      "solution": "\n\nSi $|E| = n$ et $|F| = k$, le nombre de surjections est :\n\n$$k! \\times S(n, k)$$\n\n**Où :**\n\n- $S(n, k)$ est le nombre de Stirling de seconde espèce (façons de grouper les $n$ éléments en $k$ paquets).\n- $k!$ correspond aux façons d'attribuer (ordonner) ces $k$ paquets aux $k$ éléments distincts de l'arrivée.\n\n**Condition :** Il faut $n \\ge k$.\n\n\n",
       "options": []
     },
     {
       "id": "8",
       "stackId": "1737fdd9",
-      "content": "**Exemple d'application :** Lancer de dés\n\nOn lance un dé à 6 faces 4 fois de suite. Quel concept utiliser pour compter les résultats possibles ?",
-      "solution": "\n\nIl s'agit d'une **application quelconque** (ou tirage avec remise).\n\n**Calcul :**\n\n- Ensemble de départ $E$ : les 4 lancers ($|E|=4$).\n- Ensemble d'arrivée $F$ : les 6 faces possibles ($|F|=6$).\n\nLe nombre de séquences est :\n\n$$|F|^{|E|} = 6^4 = 1296$$\n\nOn n'utilise pas les arrangements car on peut obtenir le même chiffre plusieurs fois.\n\n**Tags :** exemple, applications\n\n",
+      "content": "On lance un dé à 6 faces 4 fois de suite. Quel concept utiliser pour compter les résultats possibles ?",
+      "solution": "\n\nIl s'agit d'une **application quelconque** (ou tirage avec remise).\n\n**Calcul :**\n\n- Ensemble de départ $E$ : les 4 lancers ($|E|=4$).\n- Ensemble d'arrivée $F$ : les 6 faces possibles ($|F|=6$).\n\nLe nombre de séquences est :\n\n$$|F|^{|E|} = 6^4 = 1296$$\n\nOn n'utilise pas les arrangements car on peut obtenir le même chiffre plusieurs fois.\n\n\n",
       "options": []
     },
     {
       "id": "9",
       "stackId": "1737fdd9",
       "content": "Comment différencier une **injection**, une **surjection** et une **bijection** en termes de comptage ?",
-      "solution": "\n\nSoit $f: E \\to F$, avec $|E|=n$ et $|F|=k$.\n\n1.  **Injection ($n \\le k$) :** Chaque élément de l'arrivée est atteint au maximum une fois.\n    *   Formule : $\\frac{k!}{(k-n)!}$ (Arrangements).\n2.  **Surjection ($n \\ge k$) :** Chaque élément de l'arrivée est atteint au moins une fois.\n    *   Formule : $k! \\cdot S(n, k)$.\n3.  **Bijection ($n = k$) :** Chaque élément de l'arrivée est atteint exactement une fois.\n    *   Formule : $n!$ (Permutations).\n\n**Tags :** concept, comparaison\n\n",
+      "solution": "\n\nSoit $f: E \\to F$, avec $|E|=n$ et $|F|=k$.\n\n1.  **Injection ($n \\le k$) :** Chaque élément de l'arrivée est atteint au maximum une fois.\n    *   Formule : $\\frac{k!}{(k-n)!}$ (Arrangements).\n2.  **Surjection ($n \\ge k$) :** Chaque élément de l'arrivée est atteint au moins une fois.\n    *   Formule : $k! \\cdot S(n, k)$.\n3.  **Bijection ($n = k$) :** Chaque élément de l'arrivée est atteint exactement une fois.\n    *   Formule : $n!$ (Permutations).\n\n\n",
       "options": []
     },
     {
       "id": "10",
       "stackId": "1737fdd9",
       "content": "Qu'est-ce que la **fonction caractéristique** d'un sous-ensemble ?",
-      "solution": "\n\nC'est une application qui permet de définir un sous-ensemble $A \\subseteq E$. Elle est notée $\\mathbf{1}_A : E \\to \\{0, 1\\}$.\n\n**Définition :**\n\n$$\\mathbf{1}_A(x) = \\begin{cases} 1 & \\text{si } x \\in A \\\\ 0 & \\text{si } x \\notin A \\end{cases}$$\n\nElle établit une bijection entre l'ensemble des parties $\\mathcal{P}(E)$ et l'ensemble des applications $\\mathcal{F}(E, \\{0, 1\\})$, justifiant la formule $2^{|E|}$.\n\n**Tags :** définition, fonction caractéristique\n\n",
+      "solution": "\n\nC'est une application qui permet de définir un sous-ensemble $A \\subseteq E$. Elle est notée $\\mathbf{1}_A : E \\to \\{0, 1\\}$.\n\n**Définition :**\n\n$$\\mathbf{1}_A(x) = \\begin{cases} 1 & \\text{si } x \\in A \\\\ 0 & \\text{si } x \\notin A \\end{cases}$$\n\nElle établit une bijection entre l'ensemble des parties $\\mathcal{P}(E)$ et l'ensemble des applications $\\mathcal{F}(E, \\{0, 1\\})$, justifiant la formule $2^{|E|}$.\n\n\n",
       "options": []
     },
     {
       "id": "11",
       "stackId": "1737fdd9",
       "content": "**Exemple d'application :** Code secret sans répétition\n\nCombien de codes à 3 chiffres **distincts** peut-on former avec les chiffres $\\{1, 2, 3, 4, 5\\}$ ?",
-      "solution": "\n\nIl s'agit d'un problème d'**Arrangement** (Injection), car l'ordre compte et il n'y a pas de répétition.\n\n**Données :**\n\n- On choisit $k=3$ chiffres.\n- Parmi $n=5$ chiffres disponibles.\n\n**Calcul :**\n\n$$A_5^3 = \\frac{5!}{(5-3)!} = 5 \\times 4 \\times 3 = 60 \\text{ codes.}$$\n\n**Tags :** exemple, arrangements\n\n",
+      "solution": "\n\nIl s'agit d'un problème d'**Arrangement** (Injection), car l'ordre compte et il n'y a pas de répétition.\n\n**Données :**\n\n- On choisit $k=3$ chiffres.\n- Parmi $n=5$ chiffres disponibles.\n\n**Calcul :**\n\n$$A_5^3 = \\frac{5!}{(5-3)!} = 5 \\times 4 \\times 3 = 60 \\text{ codes.}$$\n\n\n",
       "options": []
     }
   ]

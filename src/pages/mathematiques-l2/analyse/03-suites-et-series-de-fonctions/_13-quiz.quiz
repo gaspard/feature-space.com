@@ -1,0 +1,288 @@
+---
+id: 11c431de
+type: quiz
+order: 13
+title: Suites et séries de fonctions - quiz (A)
+tags:
+  - suites de fonctions
+  - séries de fonctions
+  - convergence simple
+  - convergence uniforme
+  - convergence normale
+  - continuité
+  - dérivabilité
+  - intégration
+createdAt: '2025-12-26T21:13:38.058Z'
+level: regular
+course: Analyse
+courseId: 79d3ec6b
+chapter: Suites et séries de fonctions
+chapterId: 8e0d527b
+---
+# Quiz: Suites et séries de fonctions
+
+---
+
+#### Définition de la convergence simple
+
+Quelle est la condition fondamentale pour affirmer qu'une suite de fonctions $(f_n)_{n \in \mathbb{N}}$ converge **simplement** vers une fonction $f$ sur un domaine $D$ ?
+
+- [ ] **A)** La distance maximale entre les courbes de $f_n$ et $f$ doit tendre vers 0.
+- [ ] **B)** La suite numérique $(f_n(t))_{n \in \mathbb{N}}$ doit être bornée pour tout $t$.
+- [x] **C)** Pour tout réel $t$ fixé dans $D$, la suite numérique $(f_n(t))_{n \in \mathbb{N}}$ converge vers le nombre $f(t)$.
+- [ ] **D)** La série des normes $\sum \|f_n\|_\infty$ doit être convergente.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+La convergence simple est une convergence "point par point". On fixe la variable $t$ et on regarde la limite de la suite de nombres obtenue.
+
+- **A.** Cette option décrit la convergence **uniforme** (distance globale), qui est une condition plus forte que la convergence simple.
+- **B.** Le fait d'être borné ne garantit pas la convergence (par exemple $(-1)^n$ est bornée mais ne converge pas).
+- **C.** C'est la définition exacte de la convergence simple : $\forall t \in D, \lim_{n \to +\infty} f_n(t) = f(t)$.
+- **D.** Cette option fait référence à la convergence normale pour les séries, ce qui n'a pas de lien direct avec la définition de base de la convergence simple d'une suite.
+
+</details>
+
+---
+
+#### Critère de convergence uniforme
+
+Soit $(f_n)$ une suite de fonctions bornées sur $D$ et $f$ une fonction bornée. Quelle limite doit être égale à 0 pour assurer la **convergence uniforme** de $f_n$ vers $f$ ?
+
+- [x] **A)** $\lim_{n \to +\infty} \left( \sup_{t \in D} |f_n(t) - f(t)| \right) = 0$
+- [ ] **B)** $\lim_{n \to +\infty} |f_n(t) - f(t)| = 0$ pour un $t$ fixé.
+- [ ] **C)** $\lim_{n \to +\infty} \int_D (f_n(t) - f(t)) dt = 0$
+- [ ] **D)** $\lim_{n \to +\infty} (f_n(t) - f_n(a)) = 0$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+La convergence uniforme exige que la "pire" erreur (la borne supérieure de l'écart) sur tout le domaine tende vers 0.
+
+- **A.** C'est la définition utilisant la norme infinie : $\lim \|f_n - f\|_\infty = 0$. C'est la condition nécessaire et suffisante.
+- **B.** Ceci est la définition de la convergence **simple** (dépendance de $t$).
+- **C.** La convergence en moyenne (intégrale) est différente de la convergence uniforme. La convergence uniforme implique celle-ci sur un segment, mais la définition repose sur le `sup`, pas l'intégrale.
+- **D.** Cette expression ne mesure pas la distance entre $f_n$ et la limite $f$.
+
+</details>
+
+---
+
+#### Lien entre convergence simple et uniforme
+
+Quelle est la relation logique correcte entre la convergence simple et la convergence uniforme sur un domaine $D$ ?
+
+- [ ] **A)** La convergence simple implique toujours la convergence uniforme.
+- [ ] **B)** Si une suite converge simplement, elle ne peut pas converger uniformément.
+- [x] **C)** La convergence uniforme implique toujours la convergence simple.
+- [ ] **D)** Il n'y a aucun lien logique entre les deux concepts.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+La convergence uniforme est plus "forte" que la convergence simple.
+
+- **A.** C'est faux. L'exemple classique $f_n(t) = t^n$ sur $[0, 1[$ converge simplement mais pas uniformément (le sup vaut 1).
+- **B.** C'est faux, une suite peut très bien vérifier les deux (puisque l'uniforme implique la simple).
+- **C.** C'est correct. Si la distance maximale (uniforme) tend vers 0, alors la distance en chaque point (simple) tend forcément vers 0.
+- **D.** Faux, l'implication existe dans un sens.
+
+</details>
+
+---
+
+#### Convergence Normale des séries
+
+Quand dit-on qu'une série de fonctions $\sum u_n$ converge **normalement** sur $D$ ?
+
+- [ ] **A)** Lorsque la suite des sommes partielles converge simplement vers 0.
+- [ ] **B)** Lorsque la série numérique $\sum u_n(t)$ converge pour tout $t$.
+- [ ] **C)** Lorsque la suite $(u_n)$ converge uniformément vers 0.
+- [x] **D)** Lorsque la série numérique des normes $\sum \|u_n\|_\infty$ est convergente.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+La convergence normale est définie par la convergence de la série des "maximums" (normes infinies).
+
+- **A.** Cela concernerait la convergence simple de la suite vers 0, pas la convergence de la série.
+- **B.** C'est la définition de la convergence simple de la série.
+- **C.** C'est une condition nécessaire pour la convergence uniforme, mais ce n'est pas la définition de la convergence normale.
+- **D.** C'est la définition exacte : $\sum \sup_{t \in D} |u_n(t)| < +\infty$. C'est un critère très fort qui implique la convergence uniforme.
+
+</details>
+
+---
+
+#### Exemple : Suite de puissances
+
+Considérons la suite de fonctions $f_n(t) = t^n$ sur l'intervalle $[0, 1]$. Quelle affirmation est vraie concernant sa convergence ?
+
+- [ ] **A)** Elle converge uniformément vers la fonction nulle sur tout l'intervalle $[0, 1]$.
+- [ ] **B)** Elle converge simplement vers la fonction constante $f(t) = 0$.
+- [x] **C)** Elle converge simplement vers une fonction discontinue, donc la convergence n'est pas uniforme sur $[0, 1]$.
+- [ ] **D)** Elle ne converge pas simplement en $t=1$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Analysons la suite $f_n(t) = t^n$ sur $[0, 1]$.
+
+Si $0 \le t < 1$, $t^n \to 0$.
+
+Si $t = 1$, $1^n \to 1$.
+
+La limite simple $f(t)$ vaut 0 sur $[0, 1[$ et 1 en $t=1$.
+
+- **A.** Faux. $\sup |t^n - f(t)| = 1$ pour tout $n$, donc pas de convergence uniforme.
+- **B.** Faux. La limite n'est pas 0 partout (elle vaut 1 en $t=1$).
+- **C.** Vrai. La limite simple présente un "saut" (discontinuité) en 1. Or, une limite uniforme de fonctions continues doit être continue. Comme la limite est discontinue, la convergence n'est pas uniforme.
+- **D.** Faux. Elle converge bien en $t=1$ (vers 1).
+
+</details>
+
+---
+
+#### Continuité de la limite
+
+Soit $(f_n)$ une suite de fonctions continues sur $D$. Quelle condition garantit que la fonction limite $f$ sera **continue** sur $D$ ?
+
+- [ ] **A)** La convergence simple.
+- [x] **B)** La convergence uniforme.
+- [ ] **C)** La convergence de la suite des dérivées.
+- [ ] **D)** Le fait que $D$ soit un intervalle fermé borné.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+C'est le théorème de continuité sous convergence uniforme.
+
+- **A.** La convergence simple ne suffit pas (voir l'exemple $t^n$ sur $[0, 1]$ dont la limite est discontinue).
+- **B.** C'est la condition suffisante standard donnée dans le cours : la convergence uniforme transmet la continuité.
+- **C.** Cela concerne la dérivabilité, pas directement la continuité de la fonction elle-même.
+- **D.** Le domaine compact est utile pour certaines propriétés, mais sans convergence uniforme, la continuité n'est pas garantie.
+
+</details>
+
+---
+
+#### Intégration terme à terme
+
+Dans quel cas a-t-on le droit d'écrire $\lim_{n \to +\infty} \int_a^b f_n(t) dt = \int_a^b \left( \lim_{n \to +\infty} f_n(t) \right) dt$ pour des fonctions continues sur un segment $[a, b]$ ?
+
+- [ ] **A)** Dès que la suite $(f_n)$ converge simplement.
+- [x] **B)** Si la suite $(f_n)$ converge uniformément sur $[a, b]$.
+- [ ] **C)** Uniquement si les fonctions $f_n$ sont positives.
+- [ ] **D)** Si la limite $f$ est dérivable.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Le théorème d'intégration sous convergence uniforme permet d'intervertir limite et intégrale.
+
+- **A.** La convergence simple est insuffisante (voir contre-exemple "bosse glissante" ou $nt(1-t^2)^n$).
+- **B.** C'est l'hypothèse correcte du théorème sur un segment (intervalle compact).
+- **C.** La positivité n'est pas le critère déterminant pour ce théorème (bien qu'elle serve dans d'autres théorèmes comme la convergence monotone, hors de ce concept spécifique).
+- **D.** La dérivabilité de la limite n'est pas requise pour l'intégration.
+
+</details>
+
+---
+
+#### Dérivation d'une série de fonctions
+
+Pour justifier que la somme $S(t) = \sum u_n(t)$ est dérivable et que $S'(t) = \sum u'_n(t)$, quelle hypothèse clé doit-on vérifier sur les **dérivées** ?
+
+- [ ] **A)** La série des dérivées $\sum u'_n$ doit converger simplement.
+- [ ] **B)** La série $\sum u_n$ doit converger uniformément.
+- [x] **C)** La série des dérivées $\sum u'_n$ doit converger uniformément sur tout borné.
+- [ ] **D)** Les termes $u_n$ doivent être des polynômes.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Le théorème de dérivation est exigeant : il faut contrôler la convergence de la suite/série des dérivées.
+
+- **A.** La convergence simple des dérivées ne suffit pas.
+- **B.** La convergence uniforme de la série d'origine $\sum u_n$ assure la continuité, mais pas la dérivabilité.
+- **C.** C'est la condition cruciale : la convergence uniforme des dérivées $u'_n$ garantit que la limite est dérivable et que la dérivée est la limite des dérivées.
+- **D.** Ce théorème s'applique aux fonctions de classe $\mathcal{C}^1$ en général, pas seulement aux polynômes.
+
+</details>
+
+---
+
+#### Calcul de la Norme Infinie
+
+Pour montrer qu'une suite de fonctions $(f_n)$ converge uniformément vers 0 sur un ensemble $D$, on doit souvent calculer ou majorer $\|f_n\|_\infty$. Que représente $\|f_n\|_\infty$ ?
+
+- [ ] **A)** La limite de $f_n(t)$ quand $t$ tend vers l'infini.
+- [ ] **B)** L'intégrale de $|f_n(t)|$ sur $D$.
+- [x] **C)** La borne supérieure de $|f_n(t)|$ pour $t$ parcourant $D$.
+- [ ] **D)** La valeur de $f_n(t)$ au point $t=0$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+C'est la définition de la norme de la convergence uniforme (norme sup).
+
+- **A.** Ceci est une limite en une borne du domaine, pas une norme sur la fonction.
+- **B.** Ceci définit la norme 1 (convergence en moyenne), pas la norme infinie.
+- **C.** C'est la définition : $\|f_n\|_\infty = \sup_{t \in D} |f_n(t)|$.
+- **D.** C'est simplement une évaluation ponctuelle.
+
+</details>
+
+---
+
+#### Hiérarchie des convergences pour les séries
+
+Parmi les implications suivantes concernant les séries de fonctions, laquelle est **fausse** ?
+
+- [x] **A)** Convergence Simple $\Rightarrow$ Convergence Uniforme.
+- [ ] **B)** Convergence Normale $\Rightarrow$ Convergence Uniforme.
+- [ ] **C)** Convergence Uniforme $\Rightarrow$ Convergence Simple.
+- [ ] **D)** Convergence Normale $\Rightarrow$ Convergence Simple.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+On cherche l'implication fausse.
+
+- **A.** **Faux.** La convergence simple est la plus faible. Elle n'implique pas la convergence uniforme (contre-exemple : série géométrique sur $]-1, 1[$ converge simplement mais pas uniformément sur l'ensemble ouvert).
+- **B.** Vrai. La convergence normale (convergence de la série des normes) est la plus forte et implique l'uniforme.
+- **C.** Vrai. L'uniforme implique toujours la simple (si c'est vrai globalement, c'est vrai ponctuellement).
+- **D.** Vrai. Par transitivité (Normale $\to$ Uniforme $\to$ Simple).
+
+</details>

@@ -1,0 +1,280 @@
+---
+id: c1a28ebb
+type: quiz
+order: 13
+title: Courbes et surfaces dans R3 - quiz (A)
+tags:
+  - chapter
+  - mathematics
+createdAt: '2025-12-26T14:44:17.580Z'
+level: regular
+course: Géométrie
+courseId: d9494343
+chapter: Courbes et surfaces dans R3
+chapterId: 15daf020
+---
+# Quiz: Courbes et surfaces dans $\mathbb{R}^3$
+
+---
+
+#### Condition de Birégularité
+
+Pour construire le repère de Frenet d'une courbe gauche paramétrée $f: I \to \mathbb{R}^3$, la courbe doit être **birégulière**. Quelle condition cela impose-t-il sur les dérivées de $f$ ?
+
+- [ ] **A)** Le vecteur vitesse $f'(t)$ ne doit jamais être nul.
+- [x] **B)** Les vecteurs dérivée première $f'(t)$ et dérivée seconde $f''(t)$ doivent être linéairement indépendants.
+- [ ] **C)** Les vecteurs $f'(t)$ et $f''(t)$ doivent être orthogonaux en tout point.
+- [ ] **D)** La dérivée troisième $f'''(t)$ ne doit jamais être nulle.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B]**
+
+La birégularité est l'hypothèse fondamentale pour définir de manière unique le repère de Frenet, en particulier le vecteur normal $\nu$.
+
+- **A.** Cette condition correspond à la **régularité** simple de l'arc, qui permet de définir la tangente, mais pas nécessairement la normale si l'accélération est colinéaire à la vitesse.
+- **B.** C'est la définition exacte de la **birégularité**. Si $f'$ et $f''$ sont indépendants, ils engendrent un plan unique (le plan osculateur), ce qui permet de construire $\nu$ par le procédé de Gram-Schmidt ou par projection.
+- **C.** C'est une propriété qui est vraie si l'arc est paramétré par la longueur d'arc ($s$), mais ce n'est pas la définition générale de la birégularité.
+- **D.** La dérivée troisième est liée à la torsion, mais n'est pas requise pour la définition initiale du repère $(\tau, \nu, \beta)$.
+
+</details>
+
+---
+
+#### Définition de la Courbure
+
+Pour une courbe $\gamma(s)$ paramétrée par sa **longueur d'arc** $s$, comment est définie la courbure $K(s)$ ?
+
+- [ ] **A)** $K(s) = \|\gamma'(s)\|$
+- [x] **B)** $K(s) = \|\gamma''(s)\|$
+- [ ] **C)** $K(s) = \gamma'(s) \cdot \gamma''(s)$
+- [ ] **D)** $K(s) = \frac{\|\gamma''(s)\|}{\|\gamma'(s)\|^3}$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B]**
+
+La courbure mesure l'intensité du changement de direction de la tangente.
+
+- **A.** Pour un paramétrage par longueur d'arc, $\|\gamma'(s)\| = 1$ (norme du vecteur tangent unitaire). Ce n'est pas la courbure.
+- **B.** C'est la définition correcte. Puisque $\tau(s) = \gamma'(s)$ est unitaire, sa dérivée $\tau'(s) = \gamma''(s)$ est normale à la courbe et sa norme quantifie la vitesse de rotation de la tangente, c'est-à-dire la courbure $K$.
+- **C.** Ce produit scalaire est toujours nul pour un paramétrage par longueur d'arc (dérivée d'un vecteur de norme constante).
+- **D.** C'est la formule pour un paramétrage **quelconque** $\gamma(t)$. Si $t=s$, alors le dénominateur vaut 1, ce qui redonne $\|\gamma''(s)\|$, mais l'option B est la définition directe et plus simple dans ce contexte.
+
+</details>
+
+---
+
+#### Interprétation de la Torsion
+
+Que signifie géométriquement le fait qu'une courbe birégulière ait une **torsion identiquement nulle** ($T(t) = 0$ pour tout $t$) ?
+
+- [ ] **A)** La courbe est une droite.
+- [ ] **B)** La courbe est un cercle.
+- [x] **C)** La courbe est plane (entièrement contenue dans un plan).
+- [ ] **D)** La courbe a une vitesse constante.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [C]**
+
+La torsion mesure la vitesse à laquelle la courbe s'écarte de son plan osculateur.
+
+- **A.** Une droite a une courbure nulle $K=0$. Sa torsion n'est pas définie de la même manière car le repère n'est pas unique, mais une torsion nulle n'implique pas nécessairement une droite (un cercle a aussi une torsion nulle).
+- **B.** Un cercle est une courbe plane particulière (courbure constante), mais toute courbe plane (ellipse, parabole, courbe quelconque tracée sur une feuille) a une torsion nulle.
+- **C.** C'est la propriété fondamentale. Si $T=0$, alors $\beta'(s) = 0$ (d'après les formules de Frenet), donc le vecteur binormal $\beta$ est constant. La courbe reste dans le plan orthogonal à ce vecteur constant.
+- **D.** La vitesse constante concerne le paramétrage, pas la forme géométrique de la courbe.
+
+</details>
+
+---
+
+#### Relations du Repère de Frenet
+
+Dans le repère de Frenet orthonormé $(\tau, \nu, \beta)$, laquelle de ces relations vectorielles est correcte pour définir le vecteur binormal $\beta$ ?
+
+- [ ] **A)** $\beta = \tau + \nu$
+- [ ] **B)** $\beta = \nu \wedge \tau$
+- [x] **C)** $\beta = \tau \wedge \nu$
+- [ ] **D)** $\beta = \frac{f''}{\|f''\|}$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [C]**
+
+Le trièdre de Frenet $(\tau, \nu, \beta)$ est construit pour être une base orthonormée **directe**.
+
+- **A.** La somme de deux vecteurs unitaires orthogonaux a une norme de $\sqrt{2}$, ce n'est pas un vecteur unitaire.
+- **B.** Le produit vectoriel est antisymétrique. $\nu \wedge \tau = - (\tau \wedge \nu) = -\beta$. Cette option donnerait un repère indirect.
+- **C.** C'est la définition correcte pour compléter le trièdre direct (règle de la main droite : pouce sur $\tau$, index sur $\nu$, majeur sur $\beta$).
+- **D.** Cette formule correspond à la définition du vecteur normal principal $\nu$ (si $s$ est la longueur d'arc).
+
+</details>
+
+---
+
+#### Calcul Différentiel et Lemme de Schwarz
+
+Soit $f: \mathbb{R}^2 \to \mathbb{R}$ une fonction de classe $C^2$. Que stipule le **Lemme de Schwarz** concernant ses dérivées partielles ?
+
+- [ ] **A)** $\frac{\partial f}{\partial x} = \frac{\partial f}{\partial y}$
+- [ ] **B)** La somme des dérivées secondes est nulle (Laplacien nul).
+- [ ] **C)** La différentielle est inversible.
+- [x] **D)** L'ordre de dérivation pour les dérivées croisées n'importe pas : $\frac{\partial^2 f}{\partial x \partial y} = \frac{\partial^2 f}{\partial y \partial x}$.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [D]**
+
+Le Lemme de Schwarz est un résultat fondamental sur la symétrie de la matrice hessienne.
+
+- **A.** Ceci n'est vrai que pour des fonctions très particulières symétriques par rapport à la bissectrice $y=x$.
+- **B.** Ceci est la définition d'une fonction harmonique, pas le Lemme de Schwarz.
+- **C.** Ceci concerne le théorème d'inversion locale.
+- **D.** C'est l'énoncé exact du Lemme de Schwarz : si les dérivées partielles secondes sont continues ($C^2$), alors on peut intervertir l'ordre de dérivation par rapport à $x$ et $y$.
+
+</details>
+
+---
+
+#### Formules de Frenet
+
+Parmi les équations suivantes, laquelle décrit correctement l'évolution du vecteur normal $\nu$ dans les **formules de Frenet** (pour un paramétrage par longueur d'arc) ?
+
+- [ ] **A)** $\nu' = K\tau + T\beta$
+- [x] **B)** $\nu' = -K\tau - T\beta$ (ou $\nu' = -K\tau + T\beta$ selon la convention de signe de la torsion)
+- [ ] **C)** $\nu' = T\tau - K\beta$
+- [ ] **D)** $\nu' = K\beta$
+
+*Note : La convention usuelle présentée dans le cours est $\nu' = -K\tau - T\beta$ ou $\nu' = -K\tau + \tau_g \beta$ selon l'auteur, la structure -Tangente -Binormale est la clé.*
+
+*Dans le contexte extrait : $\nu' = -K\tau - T\beta$ est la formule donnée.*
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B]**
+
+Les formules de Frenet relient les dérivées des vecteurs de base aux vecteurs eux-mêmes via la courbure $K$ et la torsion $T$.
+
+- **A.** Incorrect. $\nu'$ doit avoir une composante négative sur $\tau$ pour compenser la rotation de $\tau$ vers $\nu$ ($\tau' = K\nu$).
+- **B.** Correct. Puisque $\tau' = K\nu$, par antisymétrie, la composante de $\nu'$ sur $\tau$ est $-K$. De même, la relation avec $\beta$ fait intervenir la torsion $T$. La formule donnée dans le cours est $\nu' = -K\tau - T\beta$.
+- **C.** Incorrect, confusion entre les coefficients.
+- **D.** Incorrect, il manque la composante tangentielle.
+
+</details>
+
+---
+
+#### Surface Régulière et Plan Tangent
+
+Soit une surface paramétrée par $f(u, v)$. Quelle est la condition nécessaire et suffisante pour que le point $p$ soit un **point régulier**, permettant de définir un plan tangent unique ?
+
+- [ ] **A)** Les dérivées partielles $\frac{\partial f}{\partial u}$ et $\frac{\partial f}{\partial v}$ sont orthogonales.
+- [x] **B)** Les vecteurs $\frac{\partial f}{\partial u}$ et $\frac{\partial f}{\partial v}$ sont linéairement indépendants.
+- [ ] **C)** Le produit scalaire $\langle \frac{\partial f}{\partial u}, \frac{\partial f}{\partial v} \rangle$ est nul.
+- [ ] **D)** La courbure de Gauss est non nulle en ce point.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B]**
+
+Un point est régulier si l'application $f$ est une immersion en ce point, c'est-à-dire que sa différentielle est injective.
+
+- **A.** L'orthogonalité facilite les calculs (paramétrage orthogonal) mais n'est pas requise pour l'existence du plan tangent.
+- **B.** Si les vecteurs tangents de coordonnées sont indépendants, ils engendrent un plan vectoriel de dimension 2, qui est le plan tangent $T_p S$. C'est équivalent à dire que leur produit vectoriel est non nul.
+- **C.** C'est la condition $F=0$ (paramétrage orthogonal), pas une condition de régularité.
+- **D.** Un plan ($K=0$) ou un cylindre ($K=0$) sont des surfaces régulières. La courbure n'a pas de lien avec la régularité du paramétrage.
+
+</details>
+
+---
+
+#### Première Forme Fondamentale
+
+La première forme fondamentale est définie par la matrice des produits scalaires des vecteurs tangents de base. Que représente le coefficient $F$ ?
+
+- [ ] **A)** $F = \left\| \frac{\partial f}{\partial u} \right\|^2$
+- [x] **B)** $F = \left\langle \frac{\partial f}{\partial u}, \frac{\partial f}{\partial v} \right\rangle$
+- [ ] **C)** $F = \left\| \frac{\partial f}{\partial v} \right\|^2$
+- [ ] **D)** $F = \left\| \frac{\partial f}{\partial u} \wedge \frac{\partial f}{\partial v} \right\|$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B]**
+
+La première forme fondamentale s'écrit dans la base locale comme $\begin{pmatrix} E & F \\ F & G \end{pmatrix}$.
+
+- **A.** Ceci correspond au coefficient $E$.
+- **B.** C'est la définition de $F$. Il représente le produit scalaire entre les deux vecteurs tangents de coordonnées. Si $F=0$, le maillage de coordonnées est orthogonal sur la surface.
+- **C.** Ceci correspond au coefficient $G$.
+- **D.** Ceci représente la norme du produit vectoriel, qui est égale à $\sqrt{EG-F^2}$, l'élément d'aire.
+
+</details>
+
+---
+
+#### Courbure de Gauss du Cylindre
+
+Quelle est la valeur de la **courbure de Gauss** $K$ pour un cylindre de révolution ?
+
+- [ ] **A)** Strictement positive ($K > 0$)
+- [ ] **B)** Strictement négative ($K < 0$)
+- [x] **C)** Nulle ($K = 0$)
+- [ ] **D)** Elle varie sinusoïdalement le long du cylindre.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [C]**
+
+La courbure de Gauss est le produit des deux courbures principales $k_1$ et $k_2$.
+
+- **A.** Caractéristique d'une sphère ou d'un ellipsoïde (courbe dans le même sens dans toutes les directions).
+- **B.** Caractéristique d'une selle de cheval (courbe vers le haut dans une direction, vers le bas dans l'autre).
+- **C.** Pour un cylindre, l'une des directions principales est le cercle (courbure $1/R$) et l'autre est la droite génératrice (courbure $0$). Le produit est donc $K = (1/R) \times 0 = 0$. C'est une surface développable (on peut l'aplatir sans déchirure).
+- **D.** Sur un cylindre de révolution, la géométrie locale est la même partout, $K$ est constante.
+
+</details>
+
+---
+
+#### Propriétés du Repère de Frenet
+
+Quelles propriétés sont vraies pour le repère de Frenet $(\tau, \nu, \beta)$ associé à une courbe gauche paramétrée par la longueur d'arc ?
+
+- [x] **A)** C'est une base orthonormée directe.
+- [ ] **B)** Le vecteur $\tau$ est toujours colinéaire au vecteur accélération $f''$.
+- [x] **C)** Le vecteur $\beta$ est orthogonal au plan osculateur engendré par $\tau$ et $\nu$.
+- [ ] **D)** Le vecteur $\nu$ indique la direction de la vitesse de la particule.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, C]**
+
+Analyse des propriétés du trièdre mobile :
+
+- **A.** Vrai. Par construction, les trois vecteurs sont unitaires et mutuellement orthogonaux, formant une base standard de $\mathbb{R}^3$ en chaque point.
+- **B.** Faux. L'accélération $f''$ se décompose en une composante tangentielle (variation de norme de vitesse) et une composante normale (variation de direction). $f'' = v' \tau + v^2 K \nu$. Elle n'est colinéaire à $\tau$ que si la trajectoire est rectiligne.
+- **C.** Vrai. Le plan osculateur contient la vitesse et l'accélération (et donc $\tau$ et $\nu$). $\beta$ est défini par $\tau \wedge \nu$, il est donc normal à ce plan.
+- **D.** Faux. C'est le vecteur $\tau$ (tangent) qui indique la direction de la vitesse. $\nu$ indique la direction du "tournant" (vers le centre de courbure).
+
+</details>

@@ -2,7 +2,7 @@
 id: 191336b2
 type: exercises
 order: 11
-title: Chapitre 5 Recherche d'extremum - exercices (A)
+title: Recherche d'extremum - exercices (A)
 tags:
   - Mathématiques
   - Analyse
@@ -14,10 +14,10 @@ createdAt: '2025-12-22T10:45:14.964Z'
 level: regular
 course: Topologie
 courseId: 34e61f8e
-chapter: Chapitre 5 Recherche d'extremum
+chapter: Recherche d'extremum
 chapterId: 70efcabd
 ---
-# Exercices "Chapitre 5 Recherche d'extremum" (A)
+# Exercices "Recherche d'extremum" (A)
 
 ---
 
