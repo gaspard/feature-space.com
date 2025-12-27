@@ -1,0 +1,508 @@
+---
+id: 0c873fae
+type: proofs
+order: 15
+title: Séries Numériques - preuves (A)
+tags:
+  - séries numériques
+  - convergence
+  - critère de Cauchy
+  - séries à termes positifs
+  - intégrales généralisées
+  - théorème d'Abel
+createdAt: '2025-10-12T17:47:40.884Z'
+level: regular
+course: Analyse
+courseId: 9c2d50b3
+chapter: Séries Numériques
+chapterId: c9bf30da
+---
+# Preuves "Séries Numériques" (A)
+
+---
+
+#### Linéarité des séries convergentes
+
+Prouver que si deux séries $\sum u_n$ et $\sum v_n$ convergent respectivement vers les sommes $S_u$ et $S_v$, et si $\lambda \in \mathbb{K}$, alors la série $\sum (u_n + \lambda v_n)$ converge vers $S_u + \lambda S_v$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Revenez à la définition de la convergence d'une série via la suite de ses sommes partielles.
+
+Utilisez les propriétés de linéarité de la somme finie et les propriétés des limites de suites (limite d'une somme, limite d'un produit).
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soient $(S_{n, u})$ et $(S_{n, v})$ les suites des sommes partielles respectives des séries $\sum u_n$ et $\sum v_n$.
+
+**Étape 1 :** Expression de la somme partielle de la combinaison linéaire
+
+Notons $S_n$ la somme partielle de la série $\sum (u_n + \lambda v_n)$. Par linéarité de la somme finie, on a pour tout $n \in \mathbb{N}$ :
+
+$$ S_n = \sum_{k=0}^{n} (u_k + \lambda v_k) = \sum_{k=0}^{n} u_k + \lambda \sum_{k=0}^{n} v_k = S_{n, u} + \lambda S_{n, v} $$
+
+**Étape 2 :** Passage à la limite
+
+Puisque $\sum u_n$ converge vers $S_u$, on a $\lim_{n \to \infty} S_{n, u} = S_u$.
+
+Puisque $\sum v_n$ converge vers $S_v$, on a $\lim_{n \to \infty} S_{n, v} = S_v$.
+
+D'après les théorèmes sur les opérations sur les limites de suites :
+
+$$ \lim_{n \to \infty} S_n = \lim_{n \to \infty} (S_{n, u} + \lambda S_{n, v}) = \lim_{n \to \infty} S_{n, u} + \lambda \lim_{n \to \infty} S_{n, v} = S_u + \lambda S_v $$
+
+**Conclusion :**
+
+La suite des sommes partielles $S_n$ converge vers $S_u + \lambda S_v$. La série $\sum (u_n + \lambda v_n)$ est donc convergente et sa somme est $S_u + \lambda S_v$.
+
+</details>
+
+---
+
+#### Convergence de la série géométrique
+
+Prouver que la série géométrique $\sum_{n=0}^{\infty} r^n$ converge si et seulement si $|r| < 1$, et que dans ce cas sa somme vaut $\frac{1}{1-r}$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Traitez séparément le cas $r=1$.
+
+Pour $r \neq 1$, utilisez la formule explicite de la somme partielle d'une suite géométrique : $1 + r + \dots + r^n = \frac{1-r^{n+1}}{1-r}$.
+
+Étudiez ensuite la limite de $r^{n+1}$ selon les valeurs de $r$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $S_n = \sum_{k=0}^{n} r^k$.
+
+**Cas 1 :** $r = 1$
+
+$$ S_n = \sum_{k=0}^{n} 1 = n+1 $$
+
+La suite $(S_n)$ tend vers $+\infty$, donc la série diverge.
+
+**Cas 2 :** $r \neq 1$
+
+On utilise l'identité algébrique classique pour la somme des termes d'une suite géométrique :
+
+$$ S_n = \frac{1 - r^{n+1}}{1 - r} = \frac{1}{1-r} - \frac{r^{n+1}}{1-r} $$
+
+La convergence de la suite $(S_n)$ dépend uniquement de la convergence de la suite $(r^{n+1})$.
+
+*   Si $|r| < 1$, alors $\lim_{n \to \infty} r^{n+1} = 0$.
+
+    Donc $\lim_{n \to \infty} S_n = \frac{1 - 0}{1-r} = \frac{1}{1-r}$.
+
+*   Si $|r| > 1$, alors $|r|^{n+1} \to +\infty$, donc la suite $(S_n)$ diverge.
+*   Si $r = -1$, alors $r^{n+1}$ oscille entre $1$ et $-1$. La suite $(S_n)$ n'a pas de limite.
+
+**Conclusion :**
+
+La série géométrique converge si et seulement si $|r| < 1$. Sa somme est alors $\sum_{n=0}^{\infty} r^n = \frac{1}{1-r}$.
+
+</details>
+
+---
+
+#### Condition nécessaire de convergence
+
+Prouver que si une série $\sum u_n$ converge, alors $\lim_{n \to \infty} u_n = 0$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Exprimez le terme général $u_n$ en fonction des sommes partielles $S_n$ et $S_{n-1}$.
+
+Si la série converge vers une somme $S$, vers quelle valeur tendent $S_n$ et $S_{n-1}$ ?
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $S_n = \sum_{k=0}^{n} u_k$ la somme partielle d'ordre $n$.
+
+On suppose que la série converge vers une somme $S$, c'est-à-dire que $\lim_{n \to \infty} S_n = S$.
+
+**Étape 1 :** Relation entre terme général et sommes partielles
+
+Pour tout $n \ge 1$, on peut écrire :
+
+$$ S_n - S_{n-1} = \sum_{k=0}^{n} u_k - \sum_{k=0}^{n-1} u_k = u_n $$
+
+**Étape 2 :** Passage à la limite
+
+Puisque $n \to \infty$ implique $n-1 \to \infty$, on a également $\lim_{n \to \infty} S_{n-1} = S$.
+
+En passant à la limite dans l'égalité précédente :
+
+$$ \lim_{n \to \infty} u_n = \lim_{n \to \infty} (S_n - S_{n-1}) = \lim_{n \to \infty} S_n - \lim_{n \to \infty} S_{n-1} $$
+
+$$ \lim_{n \to \infty} u_n = S - S = 0 $$
+
+**Conclusion :**
+
+Si la série converge, son terme général tend nécessairement vers 0.
+
+</details>
+
+---
+
+#### Convergence absolue implique convergence
+
+Prouver que toute série numérique absolument convergente est convergente.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez le **Critère de Cauchy** pour les séries.
+
+Rappelez l'inégalité triangulaire pour une somme finie : $|\sum a_k| \le \sum |a_k|$.
+
+Montrez que si la série des modules satisfait le critère de Cauchy, alors la série d'origine le satisfait aussi.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $\sum u_n$ une série absolument convergente, c'est-à-dire que la série $\sum |u_n|$ converge.
+
+**Étape 1 :** Application du critère de Cauchy à $\sum |u_n|$
+
+Comme $\sum |u_n|$ converge, elle vérifie le critère de Cauchy.
+
+Pour tout $\varepsilon > 0$, il existe un entier $N$ tel que pour tous $q \ge p > N$ :
+
+$$ \sum_{k=p}^{q} |u_k| < \varepsilon $$
+
+(Note : on peut enlever la valeur absolue autour de la somme car les termes $|u_k|$ sont positifs).
+
+**Étape 2 :** Utilisation de l'inégalité triangulaire
+
+On cherche à montrer que $\sum u_n$ vérifie le critère de Cauchy. Considérons la valeur absolue de la tranche de Cauchy pour la série $\sum u_n$ :
+
+$$ \left| \sum_{k=p}^{q} u_k \right| $$
+
+D'après l'inégalité triangulaire généralisée :
+
+$$ \left| \sum_{k=p}^{q} u_k \right| \le \sum_{k=p}^{q} |u_k| $$
+
+**Étape 3 :** Conclusion
+
+En combinant les deux étapes, pour le même $N$, si $q \ge p > N$ :
+
+$$ \left| \sum_{k=p}^{q} u_k \right| \le \sum_{k=p}^{q} |u_k| < \varepsilon $$
+
+La série $\sum u_n$ vérifie le critère de Cauchy. Comme $\mathbb{R}$ et $\mathbb{C}$ sont complets, la série $\sum u_n$ est convergente.
+
+</details>
+
+---
+
+#### Convergence des séries à termes positifs
+
+Prouver qu'une série à termes positifs $\sum u_n$ converge si et seulement si la suite de ses sommes partielles est majorée.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Étudiez la monotonie de la suite des sommes partielles $(S_n)$.
+
+Rappelez le théorème de la limite monotone pour les suites réelles.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $\sum u_n$ une série telle que pour tout $n$, $u_n \ge 0$.
+
+Soit $(S_n)$ la suite des sommes partielles définie par $S_n = \sum_{k=0}^{n} u_k$.
+
+**Étape 1 :** Monotonie de $(S_n)$
+
+Calculons la différence entre deux termes consécutifs :
+
+$$ S_{n+1} - S_n = u_{n+1} $$
+
+Comme $u_{n+1} \ge 0$, on a $S_{n+1} \ge S_n$.
+
+La suite $(S_n)$ est donc **croissante**.
+
+**Étape 2 :** Application du théorème de la limite monotone
+
+D'après le théorème de convergence des suites monotones :
+
+*   Si une suite croissante est **majorée**, alors elle converge vers une limite finie.
+*   Si une suite croissante n'est **pas majorée**, alors elle tend vers $+\infty$.
+
+**Conclusion :**
+
+La série $\sum u_n$ converge (c'est-à-dire que la suite $(S_n)$ a une limite finie) si et seulement si la suite $(S_n)$ est majorée.
+
+</details>
+
+---
+
+#### Théorème de Comparaison (Cas de convergence)
+
+Soient $\sum u_n$ et $\sum v_n$ deux séries à termes positifs telles que pour tout $n$, $0 \le u_n \le v_n$.
+
+Prouver que si $\sum v_n$ converge, alors $\sum u_n$ converge.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez le résultat précédent : une série à termes positifs converge ssi ses sommes partielles sont majorées.
+
+Montrez que les sommes partielles de $\sum u_n$ sont majorées par la somme totale de $\sum v_n$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soient $S_n = \sum_{k=0}^{n} u_k$ et $T_n = \sum_{k=0}^{n} v_k$ les sommes partielles respectives.
+
+On suppose que $\sum v_n$ converge. Notons $T = \sum_{k=0}^{\infty} v_k$ sa somme.
+
+**Étape 1 :** Comparaison des sommes partielles
+
+Puisque $0 \le u_k \le v_k$ pour tout $k$, en sommant ces inégalités, on obtient :
+
+$$ S_n = \sum_{k=0}^{n} u_k \le \sum_{k=0}^{n} v_k = T_n $$
+
+**Étape 2 :** Majoration
+
+Puisque la série $\sum v_n$ est à termes positifs et converge vers $T$, la suite $(T_n)$ est croissante et tend vers $T$. Donc pour tout $n$, $T_n \le T$.
+
+Il s'ensuit que :
+
+$$ \forall n \in \mathbb{N}, \quad S_n \le T $$
+
+**Conclusion :**
+
+La suite $(S_n)$ est croissante (car $u_n \ge 0$) et majorée par $T$. D'après le théorème de convergence des séries à termes positifs, la série $\sum u_n$ converge.
+
+</details>
+
+---
+
+#### Divergence de la série harmonique
+
+Prouver que la série harmonique $\sum_{n=1}^{\infty} \frac{1}{n}$ diverge.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Une méthode classique consiste à montrer que la série ne vérifie pas le critère de Cauchy.
+
+Estimez la différence $S_{2n} - S_n = \sum_{k=n+1}^{2n} \frac{1}{k}$. Essayez de minorer chaque terme de cette somme par le plus petit d'entre eux.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $S_n = \sum_{k=1}^{n} \frac{1}{k}$. Nous allons montrer que la suite $(S_n)$ n'est pas de Cauchy.
+
+**Étape 1 :** Estimation de $S_{2n} - S_n$
+
+Considérons la tranche de termes entre $n+1$ et $2n$ :
+
+$$ S_{2n} - S_n = \frac{1}{n+1} + \frac{1}{n+2} + \dots + \frac{1}{2n} $$
+
+Cette somme contient $n$ termes.
+
+Pour tout $k$ compris entre $n+1$ et $2n$, on a $k \le 2n$, donc $\frac{1}{k} \ge \frac{1}{2n}$.
+
+**Étape 2 :** Minoration
+
+$$ S_{2n} - S_n = \sum_{k=n+1}^{2n} \frac{1}{k} \ge \sum_{k=n+1}^{2n} \frac{1}{2n} = n \times \frac{1}{2n} = \frac{1}{2} $$
+
+**Conclusion :**
+
+Pour tout $n$, la différence $|S_{2n} - S_n| \ge 1/2$.
+
+Le critère de Cauchy impose que pour tout $\varepsilon > 0$, $|S_q - S_p| < \varepsilon$ pour $p, q$ assez grands.
+
+Ici, si on prend $\varepsilon = 1/2$, on ne pourra jamais satisfaire la condition. La suite des sommes partielles n'est pas de Cauchy, donc la série diverge.
+
+</details>
+
+---
+
+#### Critère de d'Alembert (Cas de convergence)
+
+Soit $\sum u_n$ une série à termes strictement positifs. Prouver que si $\lim_{n \to \infty} \frac{u_{n+1}}{u_n} = L < 1$, alors la série $\sum u_n$ converge.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+L'idée est de comparer la série $\sum u_n$ à une série géométrique convergente.
+
+Puisque la limite est $L < 1$, choisissez un $r$ tel que $L < r < 1$.
+
+Utilisez la définition de la limite pour montrer qu'à partir d'un certain rang $N$, $u_{n+1} \le r u_n$.
+
+Déduisez-en une majoration de $u_n$ par le terme d'une suite géométrique.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 :** Choix d'une raison géométrique
+
+Comme $\lim_{n \to \infty} \frac{u_{n+1}}{u_n} = L < 1$, nous pouvons choisir un nombre réel $r$ tel que $L < r < 1$.
+
+Par définition de la limite, il existe un rang $N \in \mathbb{N}$ tel que pour tout $n \ge N$ :
+
+$$ \frac{u_{n+1}}{u_n} < r \implies u_{n+1} < r u_n $$
+
+**Étape 2 :** Récurrence et comparaison
+
+Par récurrence, pour tout $k \ge 1$ :
+
+$$ u_{N+k} < r^k u_N $$
+
+Pour tout $n > N$, posons $n = N+k$. Alors :
+
+$$ u_n < u_N \cdot r^{n-N} = \frac{u_N}{r^N} \cdot r^n $$
+
+Posons $C = \frac{u_N}{r^N}$ (une constante). On a donc $u_n < C r^n$ pour $n > N$.
+
+**Conclusion :**
+
+Le terme général $u_n$ est majoré (à partir du rang $N$) par $C r^n$.
+
+La série $\sum C r^n$ est une série géométrique convergente (car $|r| < 1$).
+
+D'après le théorème de comparaison pour les séries à termes positifs, $\sum u_n$ converge.
+
+</details>
+
+---
+
+#### Critère de Cauchy (Règle de la racine) - Cas de divergence
+
+Soit $\sum u_n$ une série à termes positifs. Prouver que si $\lim_{n \to \infty} \sqrt[n]{u_n} = L > 1$, alors la série $\sum u_n$ diverge.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Si la limite est strictement supérieure à 1, comment se comportent les termes $u_n$ par rapport à 1 pour $n$ grand ?
+
+Utilisez le test de divergence grossière (condition nécessaire de convergence).
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 :** Utilisation de la définition de la limite
+
+Puisque $\lim_{n \to \infty} \sqrt[n]{u_n} = L > 1$, il existe un rang $N$ tel que pour tout $n \ge N$ :
+
+$$ \sqrt[n]{u_n} > 1 $$
+
+(On peut par exemple prendre $\varepsilon = L-1 > 0$, alors $\sqrt[n]{u_n} > L - \varepsilon = 1$).
+
+**Étape 2 :** Comportement du terme général
+
+Si $\sqrt[n]{u_n} > 1$, en élevant à la puissance $n$, on obtient :
+
+$$ u_n > 1^n = 1 $$
+
+Pour tout $n \ge N$, $u_n > 1$.
+
+**Conclusion :**
+
+La suite $(u_n)$ ne peut pas converger vers 0 (puisqu'elle reste supérieure à 1).
+
+La condition nécessaire de convergence ($\lim u_n = 0$) n'est pas satisfaite.
+
+Donc, la série $\sum u_n$ diverge.
+
+</details>
+
+---
+
+#### Somme d'une série télescopique
+
+Soit $(a_n)_{n \in \mathbb{N}}$ une suite convergente vers une limite $a$. Prouver que la série $\sum_{n=0}^{\infty} (a_n - a_{n+1})$ converge et que sa somme est $a_0 - a$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Écrivez explicitement la somme partielle $S_n$.
+
+Observez comment les termes s'annulent (télescopage).
+
+Passez à la limite.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $u_n = a_n - a_{n+1}$.
+
+Calculons la somme partielle d'ordre $N$, notée $S_N$.
+
+**Étape 1 :** Calcul de la somme partielle
+
+$$ S_N = \sum_{n=0}^{N} (a_n - a_{n+1}) $$
+
+En développant la somme :
+
+$$ S_N = (a_0 - a_1) + (a_1 - a_2) + (a_2 - a_3) + \dots + (a_N - a_{N+1}) $$
+
+Les termes intermédiaires s'annulent deux à deux : $-a_1$ avec $a_1$, $-a_2$ avec $a_2$, etc.
+
+Il ne reste que le premier terme de la première parenthèse et le dernier terme de la dernière parenthèse :
+
+$$ S_N = a_0 - a_{N+1} $$
+
+**Étape 2 :** Passage à la limite
+
+On sait que $\lim_{N \to \infty} a_N = a$. Cela implique que $\lim_{N \to \infty} a_{N+1} = a$.
+
+Donc :
+
+$$ \lim_{N \to \infty} S_N = a_0 - \lim_{N \to \infty} a_{N+1} = a_0 - a $$
+
+**Conclusion :**
+
+La suite des sommes partielles converge. La série est convergente et sa somme vaut $\sum_{n=0}^{\infty} (a_n - a_{n+1}) = a_0 - a$.
+
+</details>

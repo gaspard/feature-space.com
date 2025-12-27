@@ -1,0 +1,286 @@
+---
+id: faa81e7b
+type: quiz
+order: 13
+title: Chapitre 4 Séries entières - quiz (A)
+tags:
+  - analyse
+  - séries entières
+  - rayon de convergence
+  - développement en série entière
+  - séries de Taylor
+  - exponentielle complexe
+createdAt: '2025-12-27T05:23:14.784Z'
+level: regular
+course: Mathématiques - Analyse
+courseId: 1b8174cc
+chapter: Chapitre 4 Séries entières
+chapterId: 3dcc70fe
+---
+# Quiz: Chapitre 4 Séries entières
+
+---
+
+#### Définition d'une Série Entière
+
+Quelle est la forme du terme général $u_n(z)$ d'une série entière définie par la suite de coefficients $(a_n)_{n \in \mathbb{N}}$ ?
+
+- [ ] **A)** $u_n(z) = a_n + z^n$
+- [x] **B)** $u_n(z) = a_n z^n$
+- [ ] **C)** $u_n(z) = \frac{a_n}{z^n}$
+- [ ] **D)** $u_n(z) = z^{a_n}$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B]**
+
+Une série entière est définie comme une série de fonctions dont le terme général est un monôme $a_n z^n$, ce qui s'apparente à un polynôme de degré infini.
+
+- **A.** Ceci correspond à une somme de deux termes, pas à un produit coefficient-puissance.
+- **B.** C'est la définition exacte : une suite de scalaires multipliant les puissances successives de la variable.
+- **C.** Ceci correspondrait à une série de Laurent (puissances négatives), utilisée dans d'autres contextes.
+- **D.** Ceci est une exponentielle dépendant de la suite, ce n'est pas la forme standard d'une série entière.
+
+</details>
+
+---
+
+#### Comportement dans le Disque de Convergence
+
+Soit une série entière de rayon de convergence $R > 0$. Quelle propriété est vérifiée pour tout $z$ tel que $|z| < R$ ?
+
+- [x] **A)** La série converge absolument.
+- [ ] **B)** La série diverge.
+- [ ] **C)** Le terme général tend vers l'infini.
+- [ ] **D)** La série converge, mais pas absolument.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A]**
+
+D'après le Lemme d'Abel et la définition du disque de convergence, pour tout point situé strictement à l'intérieur du disque (c'est-à-dire $|z| < R$), la série converge absolument.
+
+- **A.** C'est une propriété fondamentale du disque de convergence.
+- **B.** La divergence se produit pour $|z| > R$.
+- **C.** Si la série converge, le terme général doit tendre vers 0, pas vers l'infini.
+- **D.** À l'intérieur du disque, la convergence est toujours absolue. La convergence semi-convergente (non absolue) ne peut se produire que sur le bord $|z| = R$.
+
+</details>
+
+---
+
+#### Calcul du Rayon (Règle de d'Alembert)
+
+Considérons la série entière $\sum_{n=0}^{+\infty} n 2^n z^n$. Quel est son rayon de convergence $R$ ?
+
+- [ ] **A)** $R = 2$
+- [x] **B)** $R = 1/2$
+- [ ] **C)** $R = 1$
+- [ ] **D)** $R = +\infty$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B]**
+
+On utilise la règle de d'Alembert sur les coefficients $a_n = n 2^n$.
+
+On calcule la limite du quotient $\left| \frac{a_{n+1}}{a_n} \right|$ :
+
+$$ \frac{(n+1) 2^{n+1}}{n 2^n} = \frac{n+1}{n} \cdot \frac{2^{n+1}}{2^n} = \left(1 + \frac{1}{n}\right) \cdot 2 \xrightarrow{n \to \infty} 2 $$
+
+La limite est $L = 2$. Le rayon de convergence est $R = \frac{1}{L} = \frac{1}{2}$.
+
+- **A.** Correspondrait à $L=1/2$, ce qui est l'inverse de la limite trouvée.
+- **B.** C'est la bonne réponse ($1/2$).
+- **C.** Le facteur $2^n$ influence le rayon, il n'est pas 1.
+- **D.** Cela signifierait que $L=0$, ce qui n'est pas le cas ici.
+
+</details>
+
+---
+
+#### Rayon de la Série Géométrique
+
+Quel est le rayon de convergence de la série géométrique $\sum_{n=0}^{+\infty} z^n$ ?
+
+- [ ] **A)** $0$
+- [x] **B)** $1$
+- [ ] **C)** $\pi$
+- [ ] **D)** $+\infty$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B]**
+
+La série géométrique converge si et seulement si le module de la raison est strictement inférieur à 1 ($|z| < 1$).
+
+- **A.** Un rayon nul signifierait qu'elle ne converge qu'en 0.
+- **B.** C'est l'exemple de référence : convergence pour $|z| < 1$, divergence pour $|z| > 1$.
+- **C.** $\pi$ n'a pas de lien ici.
+- **D.** Elle diverge pour $|z| > 1$, donc le rayon n'est pas infini.
+
+</details>
+
+---
+
+#### Dérivation d'une Série Entière
+
+Si une série entière $\sum a_n x^n$ a un rayon de convergence $R$, quel est le rayon de convergence de sa série dérivée $\sum n a_n x^{n-1}$ ?
+
+- [ ] **A)** Le rayon devient infini.
+- [ ] **B)** Le rayon diminue strictement.
+- [x] **C)** Le rayon reste exactement $R$.
+- [ ] **D)** Le rayon devient 0.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [C]**
+
+Le théorème de dérivation terme à terme des séries entières stipule que la série dérivée possède le **même** rayon de convergence que la série originale.
+
+- **A.** La dérivation ne change pas le domaine de convergence principal.
+- **B.** Faux, le rayon est conservé.
+- **C.** C'est une propriété clé : les opérations de dérivation et d'intégration conservent $R$.
+- **D.** Faux.
+
+</details>
+
+---
+
+#### Lien entre Coefficients et Dérivées
+
+Soit $f(x) = \sum_{n=0}^{+\infty} a_n x^n$ une fonction développable en série entière sur son intervalle de convergence. Quelle formule lie les coefficients $a_n$ aux dérivées de $f$ en 0 ?
+
+- [ ] **A)** $a_n = f^{(n)}(0)$
+- [x] **B)** $a_n = \frac{f^{(n)}(0)}{n!}$
+- [ ] **C)** $a_n = n! f^{(n)}(0)$
+- [ ] **D)** $a_n = f(0)^n$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [B]**
+
+C'est la définition de la série de Taylor. L'unicité du développement en série entière implique que les coefficients sont nécessairement ceux de Taylor.
+
+- **A.** Il manque la factorielle au dénominateur.
+- **B.** C'est la formule exacte. Par exemple pour $n=2$, $f''(0) = 2 a_2$, donc $a_2 = f''(0)/2!$.
+- **C.** La factorielle est du mauvais côté (multiplication au lieu de division).
+- **D.** Cette formule n'a pas de sens mathématique général pour les séries entières.
+
+</details>
+
+---
+
+#### Série de l'Exponentielle
+
+Quelle est l'expression de la série entière définissant la fonction exponentielle complexe $e^z$ ?
+
+- [x] **A)** $\sum_{n=0}^{+\infty} \frac{z^n}{n!}$
+- [ ] **B)** $\sum_{n=0}^{+\infty} z^n$
+- [ ] **C)** $\sum_{n=0}^{+\infty} \frac{z^n}{n}$
+- [ ] **D)** $\sum_{n=0}^{+\infty} n! z^n$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A]**
+
+L'exponentielle est définie par la série $\sum \frac{z^n}{n!}$, qui a un rayon de convergence infini.
+
+- **A.** C'est la définition correcte.
+- **B.** C'est la série géométrique ($1/(1-z)$).
+- **C.** C'est liée au logarithme ($-\ln(1-z)$).
+- **D.** Cette série a un rayon de convergence nul (série factorielle).
+
+</details>
+
+---
+
+#### Formule d'Euler
+
+Quelle est la relation correcte liant l'exponentielle complexe et les fonctions trigonométriques pour $x \in \mathbb{R}$ ?
+
+- [ ] **A)** $e^{ix} = \cos(x) - \sin(x)$
+- [ ] **B)** $e^{ix} = \sin(x) + i\cos(x)$
+- [x] **C)** $e^{ix} = \cos(x) + i\sin(x)$
+- [ ] **D)** $e^{x} = \cos(x) + i\sin(x)$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [C]**
+
+La formule d'Euler stipule que $e^{ix} = \cos(x) + i\sin(x)$. C'est le fondement de la notation complexe en trigonométrie.
+
+- **A.** La partie imaginaire est manquante ou incorrecte.
+- **B.** Les parties réelle et imaginaire sont inversées.
+- **C.** C'est la formule d'Euler correcte.
+- **D.** Ceci confond l'exponentielle réelle $e^x$ avec l'exponentielle imaginaire $e^{ix}$.
+
+</details>
+
+---
+
+#### Rayon de Convergence d'une Somme
+
+Soient deux séries entières de rayons de convergence respectifs $R_a$ et $R_b$. Si $R_a \neq R_b$, quel est le rayon de convergence $R$ de leur somme ?
+
+- [ ] **A)** $R = R_a + R_b$
+- [ ] **B)** $R = \max(R_a, R_b)$
+- [x] **C)** $R = \min(R_a, R_b)$
+- [ ] **D)** $R = R_a R_b$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [C]**
+
+Le rayon de convergence d'une somme est au moins égal au minimum des deux rayons : $R \geq \min(R_a, R_b)$. Dans le cas où les rayons sont distincts ($R_a \neq R_b$), l'égalité est stricte : $R = \min(R_a, R_b)$, car la série ayant le plus petit rayon diverge là où l'autre converge.
+
+- **A.** Les rayons ne s'additionnent pas.
+- **B.** Le rayon est limité par la série "la moins convergente", donc le min, pas le max.
+- **C.** C'est la bonne réponse (dans le cas $R_a \neq R_b$).
+- **D.** Le produit des rayons n'est pas pertinent ici.
+
+</details>
+
+---
+
+#### Condition de Développabilité (Fonction Plate)
+
+La fonction $f(t) = e^{-1/t^2}$ (prolongée par 0 en 0) est indéfiniment dérivable ($C^\infty$) sur $\mathbb{R}$. Est-elle développable en série entière au voisinage de 0 ?
+
+- [ ] **A)** Oui, car elle est $C^\infty$.
+- [ ] **B)** Oui, car elle est continue.
+- [x] **C)** Non, car ses dérivées en 0 sont nulles mais la fonction n'est pas nulle.
+- [ ] **D)** Non, car elle n'est pas définie en 0.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [C]**
+
+C'est un contre-exemple classique. Toutes les dérivées de cette fonction en 0 sont nulles ($f^{(n)}(0) = 0$). Sa série de Taylor est donc la série nulle ($0+0x+0x^2...$), qui converge vers 0. Or, la fonction $f(t)$ n'est pas nulle au voisinage de 0. Elle n'est donc pas égale à sa série de Taylor.
+
+- **A.** Être $C^\infty$ est une condition nécessaire, mais pas suffisante.
+- **B.** La continuité ne suffit pas.
+- **C.** C'est l'explication correcte : la série de Taylor converge, mais pas vers la fonction.
+- **D.** Elle est prolongeable par continuité en 0, donc définie.
+
+</details>

@@ -1,0 +1,98 @@
+{
+  "info": {
+    "id": "99ef90a5",
+    "title": "Chapitre 4 Séries entières - fiches de révision (A)",
+    "type": "cards",
+    "level": "regular",
+    "chapter": "Chapitre 4 Séries entières",
+    "course": "Mathématiques - Analyse",
+    "tags": [
+      "analyse",
+      "séries entières",
+      "rayon de convergence",
+      "développement en série entière",
+      "séries de Taylor",
+      "exponentielle complexe"
+    ],
+    "count": 11
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "99ef90a5",
+      "content": "Qu'est-ce qu'une **série entière** ?",
+      "solution": "\n\nUne série entière est une série de fonctions particulière, souvent décrite comme un \"polynôme de degré infini\".\n\nElle est définie par une suite de scalaires $(a_n)_{n \\in \\mathbb{N}}$ et une variable $z$ (réelle ou complexe). Son terme général est de la forme :\n\n$$ u_n(z) = a_n z^n $$\n\nLa série est notée $\\sum a_n z^n$.\n\n**Exemple :**\n\nLa série géométrique $\\sum z^n$ (où $a_n = 1$ pour tout $n$) est une série entière.\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "99ef90a5",
+      "content": "Qu'est-ce que le **rayon de convergence** $R$ et le **disque de convergence** ?",
+      "solution": "\n\nD'après le **Lemme d'Abel**, pour toute série entière, il existe un unique nombre $R \\in [0, +\\infty]$ appelé **rayon de convergence** qui détermine le comportement de la série :\n\n1.  **Convergence absolue :** Pour tout $|z| < R$, la série converge absolument. L'ensemble des $z$ vérifiant cela est le **disque de convergence**.\n2.  **Divergence :** Pour tout $|z| > R$, la série diverge grossièrement (le terme général ne tend pas vers 0).\n\n**Cas limites :**\n\nSi $|z| = R$, le comportement est incertain et doit être étudié au cas par cas.\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "99ef90a5",
+      "content": "Comment calcule-t-on le rayon de convergence $R$ avec la **Règle de d'Alembert** ?",
+      "solution": "\n\nC'est la méthode la plus pratique lorsque les coefficients $a_n$ sont non nuls.\n\n**Étapes :**\n\n1.  Calculer la limite du rapport des coefficients :\n\n    $$ L = \\lim_{n \\to \\infty} \\left| \\frac{a_{n+1}}{a_n} \\right| $$\n\n2.  En déduire le rayon $R$ :\n\n    $$ R = \\frac{1}{L} $$\n\n**Conventions :**\n\n- Si $L = 0$, alors $R = +\\infty$.\n- Si $L = +\\infty$, alors $R = 0$.\n\n**Exemple :**\n\nPour $\\sum \\frac{z^n}{n!}$, on a $\\left| \\frac{a_{n+1}}{a_n} \\right| = \\frac{n!}{(n+1)!} = \\frac{1}{n+1} \\to 0$. Donc $R = +\\infty$.\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "99ef90a5",
+      "content": "Quelles sont les propriétés de la **somme** d'une série entière (continuité, dérivation) ?",
+      "solution": "\n\nSur son disque de convergence ouvert $D_R$ (c'est-à-dire pour $|z| < R$), la fonction somme $s(z) = \\sum_{n=0}^{+\\infty} a_n z^n$ est très régulière :\n\n1.  **Continuité :** La fonction $s$ est continue.\n2.  **Dérivation (variable réelle) :** La fonction est indéfiniment dérivable ($C^\\infty$). On obtient la dérivée en dérivant **terme à terme** :\n\n    $$ s'(t) = \\sum_{n=1}^{+\\infty} n a_n t^{n-1} $$\n\n**Point clé :**\n\nLe rayon de convergence de la série dérivée (et de la série primitive) est **le même** que celui de la série d'origine ($R$).\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "99ef90a5",
+      "content": "Quelle est la formule des coefficients $a_n$ en fonction des dérivées de la fonction (Série de Taylor) ?",
+      "solution": "\n\nSi une fonction $f$ est développable en série entière au voisinage de 0, son développement est unique et correspond à sa **Série de Taylor**.\n\nLes coefficients $a_n$ sont donnés par la formule :\n\n$$ a_n = \\frac{f^{(n)}(0)}{n!} $$\n\nC'est-à-dire :\n\n$$ f(t) = f(0) + f'(0)t + \\frac{f''(0)}{2!}t^2 + \\dots + \\frac{f^{(n)}(0)}{n!}t^n + \\dots $$\n\nCela implique que $f$ doit être de classe $C^\\infty$ (indéfiniment dérivable).\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "99ef90a5",
+      "content": "Quels sont les développements en série entière usuels de l'**exponentielle** et de la **série géométrique** ?",
+      "solution": "\n\n**1. Série Géométrique ($R=1$) :**\n\nPour $|z| < 1$ :\n\n$$ \\frac{1}{1-z} = \\sum_{n=0}^{+\\infty} z^n = 1 + z + z^2 + \\dots $$\n\n**2. Exponentielle ($R=+\\infty$) :**\n\nPour tout $z \\in \\mathbb{C}$ :\n\n$$ e^z = \\sum_{n=0}^{+\\infty} \\frac{z^n}{n!} = 1 + z + \\frac{z^2}{2} + \\frac{z^3}{6} + \\dots $$\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "99ef90a5",
+      "content": "Quels sont les développements en série entière de **sinus** et **cosinus** ?",
+      "solution": "\n\nCes séries ont un rayon de convergence **infini** ($R=+\\infty$).\n\n**1. Sinus (fonction impaire) :**\n\nNe contient que des puissances impaires.\n\n$$ \\sin(t) = \\sum_{n=0}^{+\\infty} (-1)^n \\frac{t^{2n+1}}{(2n+1)!} = t - \\frac{t^3}{3!} + \\frac{t^5}{5!} - \\dots $$\n\n**2. Cosinus (fonction paire) :**\n\nNe contient que des puissances paires.\n\n$$ \\cos(t) = \\sum_{n=0}^{+\\infty} (-1)^n \\frac{t^{2n}}{(2n)!} = 1 - \\frac{t^2}{2!} + \\frac{t^4}{4!} - \\dots $$\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "99ef90a5",
+      "content": "Quelle est la formule du développement en série entière de $(1+t)^\\alpha$ (Série du binôme) ?",
+      "solution": "\n\nPour tout réel $\\alpha$, la fonction est développable sur $]-1, 1[$ ($R=1$) :\n\n$$ (1+t)^\\alpha = 1 + \\sum_{n=1}^{+\\infty} \\frac{\\alpha(\\alpha-1)\\dots(\\alpha-n+1)}{n!} t^n $$\n\n**Cas particulier important :**\n\nSi $\\alpha = -1$, on retrouve la série géométrique alternée $\\frac{1}{1+t} = \\sum (-1)^n t^n$.\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "99ef90a5",
+      "content": "Comment définit-on l'**exponentielle complexe** et quelle est la **formule d'Euler** ?",
+      "solution": "\n\nL'exponentielle complexe est définie par la série entière $e^z = \\sum_{n=0}^{+\\infty} \\frac{z^n}{n!}$ pour tout $z \\in \\mathbb{C}$.\n\n**Formule d'Euler :**\n\nPour tout réel $x \\in \\mathbb{R}$, l'exponentielle imaginaire relie l'analyse à la trigonométrie :\n\n$$ e^{ix} = \\cos(x) + i \\sin(x) $$\n\nCela permet d'exprimer le cosinus et le sinus :\n\n$$ \\cos(x) = \\frac{e^{ix} + e^{-ix}}{2} \\quad \\text{et} \\quad \\sin(x) = \\frac{e^{ix} - e^{-ix}}{2i} $$\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "99ef90a5",
+      "content": "Comment effectuer le **Produit de Cauchy** de deux séries entières ?",
+      "solution": "\n\nLe produit de deux séries $\\sum a_n z^n$ et $\\sum b_n z^n$ est une nouvelle série entière $\\sum c_n z^n$.\n\nLes coefficients $c_n$ sont calculés par convolution :\n\n$$ c_n = \\sum_{k=0}^n a_k b_{n-k} $$\n\nLe rayon de convergence de la série produit vérifie $R \\geq \\min(R_a, R_b)$.\n\n**Exemple :**\n\nPour multiplier $e^z \\cdot e^z$, on utilise cette formule qui redonne le développement de $e^{2z}$.\n\n",
+      "options": []
+    },
+    {
+      "id": "11",
+      "stackId": "99ef90a5",
+      "content": "Comment résoudre une **équation différentielle** à l'aide des séries entières ?",
+      "solution": "\n\nC'est une méthode puissante pour trouver des solutions analytiques.\n\n**Méthode pas à pas :**\n\n1.  **Supposition :** On suppose que la solution s'écrit sous la forme $y(x) = \\sum_{n=0}^{+\\infty} a_n x^n$.\n2.  **Dérivation :** On exprime $y'(x)$, $y''(x)$, etc., sous forme de séries.\n3.  **Substitution :** On injecte ces séries dans l'équation différentielle.\n4.  **Identification :** On regroupe les termes de même puissance $x^n$ et on identifie les coefficients à 0. Cela donne une **relation de récurrence** sur les $a_n$.\n5.  **Conclusion :** On détermine les $a_n$ (souvent en fonction de $a_0$) et on reconnait, si possible, une fonction usuelle.\n\n",
+      "options": []
+    }
+  ]
+}

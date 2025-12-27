@@ -1,0 +1,551 @@
+---
+id: 3a869907
+type: proofs
+order: 15
+title: Chapitre 4 Séries entières - preuves (A)
+tags:
+  - analyse
+  - séries entières
+  - rayon de convergence
+  - développement en série entière
+  - séries de Taylor
+  - exponentielle complexe
+createdAt: '2025-12-27T05:23:14.784Z'
+level: regular
+course: Mathématiques - Analyse
+courseId: 1b8174cc
+chapter: Chapitre 4 Séries entières
+chapterId: 3dcc70fe
+---
+# Preuves "Chapitre 4 Séries entières" (A)
+
+---
+
+#### Lemme d'Abel
+
+Prouvez le lemme d'Abel : Soit $\sum a_n z^n$ une série entière. S'il existe un point $z_0 \in \mathbb{C}^*$ tel que la suite $(a_n z_0^n)_n$ soit bornée, alors pour tout $z \in \mathbb{C}$ tel que $|z| < |z_0|$, la série $\sum a_n z^n$ est absolument convergente.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Essayez de majorer le module du terme général $|a_n z^n|$ en faisant apparaître $|a_n z_0^n|$.
+
+Utilisez le fait que la suite $(a_n z_0^n)$ est bornée par une constante $M$.
+
+Vous devriez obtenir une comparaison avec une série géométrique convergente.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $z_0 \neq 0$ tel que la suite $(a_n z_0^n)_n$ soit bornée.
+
+Il existe donc un réel $M > 0$ tel que pour tout entier $n$, $|a_n z_0^n| \le M$.
+
+Soit $z \in \mathbb{C}$ tel que $|z| < |z_0|$. Étudions la convergence absolue de la série en ce point.
+
+On écrit le terme général ainsi :
+
+$$ a_n z^n = a_n z_0^n \left( \frac{z}{z_0} \right)^n $$
+
+En passant au module :
+
+$$ |a_n z^n| = |a_n z_0^n| \cdot \left| \frac{z}{z_0} \right|^n $$
+
+**Étape 1 : Majoration**
+
+Puisque $|a_n z_0^n| \le M$, on a :
+
+$$ |a_n z^n| \le M \cdot \left| \frac{z}{z_0} \right|^n $$
+
+**Étape 2 : Comparaison avec une série géométrique**
+
+Posons $q = \left| \frac{z}{z_0} \right|$. Comme $|z| < |z_0|$, on a $0 \le q < 1$.
+
+Le terme de droite $M q^n$ est le terme général d'une série géométrique convergente (car la raison $q < 1$).
+
+**Conclusion :**
+
+Par le théorème de comparaison des séries à termes positifs, la série $\sum |a_n z^n|$ converge.
+
+Donc, la série entière $\sum a_n z^n$ converge absolument pour tout $z$ tel que $|z| < |z_0|$.
+
+</details>
+
+---
+
+#### Rayon de convergence de la série géométrique
+
+Prouvez que le rayon de convergence de la série $\sum_{n=0}^{+\infty} z^n$ est $R=1$ et donnez l'expression de sa somme pour $|z|<1$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Ceci est une série géométrique standard.
+
+Utilisez la formule de la somme partielle $S_N = \sum_{n=0}^N z^n$.
+
+Analysez la limite de $S_N$ quand $N \to \infty$ selon les valeurs de $|z|$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Considérons la série entière $\sum z^n$ où $a_n = 1$ pour tout $n$.
+
+**Étape 1 : Calcul de la somme partielle**
+
+Pour $z \neq 1$, la somme partielle d'ordre $N$ est donnée par la formule classique :
+
+$$ S_N(z) = \sum_{n=0}^N z^n = \frac{1 - z^{N+1}}{1 - z} $$
+
+**Étape 2 : Analyse de la convergence**
+
+*   **Cas $|z| < 1$ :** On a $\lim_{N \to \infty} z^{N+1} = 0$.
+
+    Donc $\lim_{N \to \infty} S_N(z) = \frac{1}{1-z}$. La série converge.
+
+*   **Cas $|z| > 1$ :** On a $|z|^{N+1} \to +\infty$, donc le terme général $z^n$ ne tend pas vers 0. La série diverge grossièrement.
+*   **Cas $|z| = 1$ :** $|z^n| = 1$ ne tend pas vers 0. La série diverge grossièrement.
+
+**Conclusion :**
+
+Le disque de convergence est exactement l'ensemble des $z$ tels que $|z| < 1$.
+
+Le rayon de convergence est donc $R=1$, et pour tout $z \in D_1$, la somme vaut $\frac{1}{1-z}$.
+
+</details>
+
+---
+
+#### Calcul du rayon par la règle de d'Alembert
+
+Soit $\sum a_n z^n$ une série entière avec $a_n \neq 0$. Prouvez que si $\lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right| = L \in ]0, +\infty[$, alors le rayon de convergence est $R = \frac{1}{L}$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Appliquez la règle de d'Alembert pour les **séries numériques** au terme général $u_n = |a_n z^n|$.
+
+Cherchez la condition sur $|z|$ pour que le rapport $|u_{n+1}/u_n|$ soit strictement inférieur à 1 à la limite.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Fixons un $z \in \mathbb{C}^*$ et considérons la série numérique de terme général $u_n = a_n z^n$. Étudions sa convergence absolue en utilisant le critère de d'Alembert.
+
+**Étape 1 : Calcul du rapport**
+
+Formons le rapport des modules de deux termes consécutifs :
+
+$$ \left| \frac{u_{n+1}}{u_n} \right| = \left| \frac{a_{n+1} z^{n+1}}{a_n z^n} \right| = \left| \frac{a_{n+1}}{a_n} \right| \cdot |z| $$
+
+**Étape 2 : Passage à la limite**
+
+Par hypothèse, $\lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right| = L$.
+
+Donc :
+
+$$ \lim_{n \to \infty} \left| \frac{u_{n+1}}{u_n} \right| = L \cdot |z| $$
+
+**Conclusion :**
+
+D'après la règle de d'Alembert pour les séries numériques :
+
+*   Si $L|z| < 1$, c'est-à-dire $|z| < \frac{1}{L}$, la série converge absolument.
+*   Si $L|z| > 1$, c'est-à-dire $|z| > \frac{1}{L}$, la série diverge.
+
+Cela correspond exactement à la définition du rayon de convergence.
+
+Donc $R = \frac{1}{L}$.
+
+</details>
+
+---
+
+#### Rayon de convergence de l'exponentielle
+
+Prouvez que la série définie par $\sum_{n=0}^{+\infty} \frac{z^n}{n!}$ a un rayon de convergence infini ($R=+\infty$).
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Identifiez le coefficient $a_n$.
+
+Utilisez la règle de d'Alembert calculée dans la preuve précédente.
+
+Calculez la limite de $|a_{n+1}/a_n|$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Ici, le terme général est $u_n(z) = \frac{z^n}{n!}$, donc le coefficient est $a_n = \frac{1}{n!}$.
+
+**Étape 1 : Rapport des coefficients**
+
+Calculons le rapport pour la règle de d'Alembert :
+
+$$ \left| \frac{a_{n+1}}{a_n} \right| = \frac{1/(n+1)!}{1/n!} = \frac{n!}{(n+1)!} = \frac{1}{n+1} $$
+
+**Étape 2 : Limite**
+
+$$ \lim_{n \to \infty} \frac{1}{n+1} = 0 $$
+
+Ici, $L=0$.
+
+**Conclusion :**
+
+Le rayon de convergence est $R = \frac{1}{L} = \frac{1}{0} = +\infty$ (par convention).
+
+Cela signifie que la série converge pour tout $z \in \mathbb{C}$.
+
+</details>
+
+---
+
+#### Unicité des coefficients (Principe d'identification)
+
+Prouvez que si une fonction somme $f(x) = \sum_{n=0}^{+\infty} a_n x^n$ est nulle sur l'intervalle ouvert $]-R, R[$ (avec $R>0$), alors tous les coefficients $a_n$ sont nuls.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Procédez par récurrence ou de proche en proche.
+
+Commencez par évaluer $f(0)$ pour trouver $a_0$.
+
+Ensuite, utilisez la dérivée ou factorisez par $x$ pour trouver $a_1$, et ainsi de suite.
+
+Rappelez-vous que $f$ est continue et dérivable sur son intervalle de convergence.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Supposons que pour tout $x \in ]-R, R[$, $f(x) = \sum_{n=0}^{+\infty} a_n x^n = 0$.
+
+**Étape 1 : Le terme constant $a_0$**
+
+La fonction $f$ est définie en $0$ (car $R>0$). Évaluons l'expression en $x=0$ :
+
+$$ f(0) = a_0 + \sum_{n=1}^{+\infty} a_n 0^n = a_0 $$
+
+Or, par hypothèse $f(x)=0$ pour tout $x$, donc $f(0)=0$.
+
+D'où $a_0 = 0$.
+
+**Étape 2 : Le terme $a_1$**
+
+Puisque $a_0 = 0$, on a pour $x \neq 0$ :
+
+$$ f(x) = x \left( a_1 + a_2 x + a_3 x^2 + \dots \right) = x \sum_{n=1}^{+\infty} a_n x^{n-1} = 0 $$
+
+En divisant par $x$, on obtient $\sum_{k=0}^{+\infty} a_{k+1} x^k = 0$ sur $]-R, R[\setminus\{0\}$.
+
+Par continuité de la somme d'une série entière en 0, cette égalité reste vraie en 0.
+
+En évaluant cette nouvelle série en 0, on trouve $a_1 = 0$.
+
+**Alternative avec les dérivées :**
+
+On sait que $f$ est infiniment dérivable sur $]-R, R[$ et que l'on peut dériver terme à terme.
+
+$$ f'(x) = \sum_{n=1}^{+\infty} n a_n x^{n-1} = 0 $$
+
+En évaluant en $0$, on a $f'(0) = 1 \cdot a_1 = 0 \implies a_1 = 0$.
+
+De même, $f^{(k)}(0) = k! a_k = 0 \implies a_k = 0$.
+
+**Conclusion :**
+
+Pour tout $n \in \mathbb{N}$, $a_n = 0$. Le développement en série entière est unique.
+
+</details>
+
+---
+
+#### Rayon de convergence de la dérivée
+
+Prouvez que la série entière $\sum a_n z^n$ et sa série dérivée $\sum n a_n z^{n-1}$ ont le même rayon de convergence.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Il faut montrer deux inégalités.
+
+1. Montrez que si la dérivée converge, la série originale converge (comparaison simple).
+2. Pour l'autre sens, si la série originale converge absolument pour un $|z| < R$, montrez que la dérivée converge pour tout $|z'| < |z|$ (le facteur $n$ "ne pèse pas lourd" face à la puissance géométrique).
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Notons $R$ le rayon de la série $\sum a_n z^n$ et $R'$ celui de la série dérivée $\sum n a_n z^{n-1}$ (qui a le même rayon que $\sum n a_n z^n$ car multiplier par $z$ ne change pas $R$).
+
+**Étape 1 : $R' \le R$**
+
+Pour $n \ge 1$, on a $|a_n| \le n |a_n|$.
+
+Donc si la série $\sum n a_n z^n$ converge, alors par comparaison $\sum a_n z^n$ converge aussi.
+
+L'ensemble de convergence de la dérivée est inclus dans celui de la série initiale. Donc $R' \le R$.
+
+**Étape 2 : $R \le R'$**
+
+Soit $z$ tel que $|z| < R$. Choisissons $\rho$ tel que $|z| < \rho < R$.
+
+La série $\sum a_n \rho^n$ converge (et son terme général est borné, disons par $M$).
+
+Regardons le terme de la dérivée en $z$ :
+
+$$ |n a_n z^n| = n \left| a_n \rho^n \right| \cdot \left| \frac{z}{\rho} \right|^n \le M \cdot n \cdot \left| \frac{z}{\rho} \right|^n $$
+
+Posons $q = |z/\rho| < 1$. La série $\sum n q^n$ est convergente (règle de d'Alembert ou référence série dérivée géométrique).
+
+Donc $\sum n a_n z^n$ converge absolument pour tout $z$ tel que $|z| < R$. Donc $R \le R'$.
+
+**Conclusion :**
+
+On a $R \le R'$ et $R' \le R$, donc $R=R'$. Le rayon est conservé par dérivation.
+
+</details>
+
+---
+
+#### Intégration et Logarithme
+
+Prouvez le développement en série entière de $\ln(1+x)$ sur $]-1, 1[$ en intégrant la série géométrique.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Partez du développement de $\frac{1}{1+t}$.
+
+Intégrez terme à terme entre $0$ et $x$ (justifié car on est à l'intérieur du rayon de convergence).
+
+Rappelez-vous que $\ln(1+x) = \int_0^x \frac{1}{1+t} dt$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Série géométrique alternée**
+
+On sait que pour $|t| < 1$ :
+
+$$ \frac{1}{1-u} = \sum_{n=0}^{+\infty} u^n $$
+
+En posant $u = -t$ (avec $|-t| = |t| < 1$), on obtient :
+
+$$ \frac{1}{1+t} = \sum_{n=0}^{+\infty} (-t)^n = \sum_{n=0}^{+\infty} (-1)^n t^n $$
+
+**Étape 2 : Intégration terme à terme**
+
+Soit $x \in ]-1, 1[$. La fonction est continue et la série converge uniformément sur tout segment inclus dans $]-1, 1[$. On peut intégrer terme à terme :
+
+$$ \ln(1+x) = \int_0^x \frac{1}{1+t} dt = \int_0^x \left( \sum_{n=0}^{+\infty} (-1)^n t^n \right) dt $$
+
+$$ \ln(1+x) = \sum_{n=0}^{+\infty} (-1)^n \left( \int_0^x t^n dt \right) $$
+
+**Étape 3 : Calcul de la primitive**
+
+$$ \int_0^x t^n dt = \left[ \frac{t^{n+1}}{n+1} \right]_0^x = \frac{x^{n+1}}{n+1} $$
+
+**Conclusion :**
+
+$$ \ln(1+x) = \sum_{n=0}^{+\infty} (-1)^n \frac{x^{n+1}}{n+1} = x - \frac{x^2}{2} + \frac{x^3}{3} - \dots $$
+
+Le rayon de convergence est le même que celui de la série géométrique, soit $R=1$.
+
+</details>
+
+---
+
+#### Formule d'Euler
+
+Prouvez la formule d'Euler $e^{ix} = \cos(x) + i \sin(x)$ pour $x \in \mathbb{R}$ en utilisant les définitions par séries entières.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Écrivez la série de $e^z$ en remplaçant $z$ par $ix$.
+
+Séparez la somme en deux parties : les indices pairs ($n=2k$) et les indices impairs ($n=2k+1$).
+
+Utilisez le fait que $i^{2k} = (-1)^k$ et $i^{2k+1} = i(-1)^k$.
+
+Reconnaissez les séries de Taylor du cosinus et du sinus.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Par définition, pour tout $z \in \mathbb{C}$, $e^z = \sum_{n=0}^{+\infty} \frac{z^n}{n!}$.
+
+Posons $z = ix$ avec $x \in \mathbb{R}$.
+
+**Étape 1 : Substitution**
+
+$$ e^{ix} = \sum_{n=0}^{+\infty} \frac{(ix)^n}{n!} $$
+
+Comme la série converge absolument, on peut réarranger les termes. Séparons les indices pairs et impairs.
+
+**Étape 2 : Séparation pairs/impairs**
+
+Les termes pairs ($n=2k$) : $\frac{(ix)^{2k}}{(2k)!} = \frac{(i^2)^k x^{2k}}{(2k)!} = \frac{(-1)^k x^{2k}}{(2k)!}$.
+
+Les termes impairs ($n=2k+1$) : $\frac{(ix)^{2k+1}}{(2k+1)!} = \frac{i \cdot (i^2)^k x^{2k+1}}{(2k+1)!} = i \frac{(-1)^k x^{2k+1}}{(2k+1)!}$.
+
+**Étape 3 : Sommation**
+
+$$ e^{ix} = \sum_{k=0}^{+\infty} (-1)^k \frac{x^{2k}}{(2k)!} + i \sum_{k=0}^{+\infty} (-1)^k \frac{x^{2k+1}}{(2k+1)!} $$
+
+**Conclusion :**
+
+On reconnaît les développements en série entière de $\cos(x)$ et $\sin(x)$ :
+
+$$ e^{ix} = \cos(x) + i \sin(x) $$
+
+</details>
+
+---
+
+#### Produit de séries (Propriété de l'exponentielle)
+
+Prouvez que $e^a \cdot e^b = e^{a+b}$ en utilisant le produit de Cauchy des séries entières.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Multipliez les deux séries $\sum \frac{a^n}{n!}$ et $\sum \frac{b^n}{n!}$.
+
+Le terme général du produit $c_n$ est donné par la formule du produit de Cauchy : $c_n = \sum_{k=0}^n u_k v_{n-k}$.
+
+Faites apparaître la formule du binôme de Newton $\binom{n}{k}$ en multipliant et divisant par $n!$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soient $e^a = \sum_{n=0}^{+\infty} \frac{a^n}{n!}$ et $e^b = \sum_{n=0}^{+\infty} \frac{b^n}{n!}$.
+
+Ces séries convergent absolument pour tout $a,b$. On peut appliquer le produit de Cauchy.
+
+**Étape 1 : Terme général du produit**
+
+La série produit $\sum c_n$ a pour terme général :
+
+$$ c_n = \sum_{k=0}^n \left( \frac{a^k}{k!} \right) \left( \frac{b^{n-k}}{(n-k)!} \right) $$
+
+**Étape 2 : Utilisation du binôme**
+
+On sait que $\binom{n}{k} = \frac{n!}{k!(n-k)!}$, donc $\frac{1}{k!(n-k)!} = \frac{1}{n!} \binom{n}{k}$.
+
+Substituons cela dans l'expression de $c_n$ :
+
+$$ c_n = \sum_{k=0}^n \frac{1}{n!} \binom{n}{k} a^k b^{n-k} = \frac{1}{n!} \sum_{k=0}^n \binom{n}{k} a^k b^{n-k} $$
+
+**Étape 3 : Reconstitution**
+
+La somme interne est exactement le développement du binôme de Newton pour $(a+b)^n$.
+
+$$ c_n = \frac{1}{n!} (a+b)^n $$
+
+**Conclusion :**
+
+Le produit des deux séries est donc :
+
+$$ \sum_{n=0}^{+\infty} c_n = \sum_{n=0}^{+\infty} \frac{(a+b)^n}{n!} $$
+
+On reconnaît la définition de $e^{a+b}$.
+
+</details>
+
+---
+
+#### Résolution d'équation différentielle
+
+Déterminez la fonction $f$ développable en série entière solution de $f'(x) = f(x)$ avec la condition initiale $f(0)=1$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Supposez que $f(x) = \sum a_n x^n$.
+
+Calculez $f'(x)$ sous forme de série.
+
+Écrivez l'égalité $f'(x) - f(x) = 0$ et identifiez les coefficients de chaque puissance $x^n$.
+
+Trouvez une relation de récurrence entre $a_{n+1}$ et $a_n$.
+
+Utilisez $f(0)=1$ pour trouver $a_0$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Posons $f(x) = \sum_{n=0}^{+\infty} a_n x^n$.
+
+Alors $f'(x) = \sum_{n=1}^{+\infty} n a_n x^{n-1} = \sum_{k=0}^{+\infty} (k+1) a_{k+1} x^k$ (changement d'indice $k=n-1$).
+
+**Étape 1 : Identification**
+
+L'équation $f'(x) = f(x)$ s'écrit :
+
+$$ \sum_{n=0}^{+\infty} (n+1) a_{n+1} x^n = \sum_{n=0}^{+\infty} a_n x^n $$
+
+Par unicité du développement en série entière, on identifie les coefficients terme à terme :
+
+$$ (n+1) a_{n+1} = a_n \implies a_{n+1} = \frac{a_n}{n+1} $$
+
+**Étape 2 : Récurrence**
+
+On a $a_0 = f(0) = 1$.
+
+$a_1 = \frac{a_0}{1} = 1$
+
+$a_2 = \frac{a_1}{2} = \frac{1}{2}$
+
+...
+
+Par récurrence immédiate : $a_n = \frac{a_0}{n!} = \frac{1}{n!}$.
+
+**Conclusion :**
+
+La solution est $f(x) = \sum_{n=0}^{+\infty} \frac{x^n}{n!}$.
+
+On reconnaît la fonction exponentielle $f(x) = e^x$. Le rayon de convergence est infini, ce qui valide la solution sur $\mathbb{R}$.
+
+</details>

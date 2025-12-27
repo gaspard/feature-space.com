@@ -1,0 +1,267 @@
+---
+id: ee79c1b6
+type: cards
+order: 12
+title: Chapitre 5 Séries de Fourier - fiches de révision (A)
+tags:
+  - Séries de Fourier
+  - Analyse
+  - Séries trigonométriques
+  - Théorème de Dirichlet
+  - Théorème de Parseval
+createdAt: '2025-12-27T05:31:47.061Z'
+level: regular
+course: Analyse
+courseId: aed2b890
+chapter: Chapitre 5 Séries de Fourier
+chapterId: 5a588ba0
+---
+# Fiches de révision "Chapitre 5 Séries de Fourier" (A)
+
+---
+
+Qu'est-ce qu'une **Série de Fourier** (définition générale) ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Une série de Fourier est une représentation d'une fonction périodique comme une somme infinie de fonctions trigonométriques simples ($\cos$ et $\sin$) ou d'exponentielles complexes.
+
+Elle s'applique généralement à une fonction d'une variable réelle $t$, **$2\pi$-périodique**.
+
+**Elle existe sous deux formes équivalentes :**
+
+1.  **Forme trigonométrique :** Somme de sinus et cosinus.
+2.  **Forme exponentielle :** Somme d'exponentielles imaginaires $e^{int}$.
+
+</details>
+
+---
+
+Quelle est la formule de la **forme trigonométrique** d'une série de Fourier ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La série de Fourier associée à une fonction $f$ s'écrit :
+
+$$S(t) = a_0 + \sum_{n=1}^{+\infty} (a_n \cos(nt) + b_n \sin(nt))$$
+
+**Où :**
+
+*   $a_0$ est le terme constant (valeur moyenne).
+*   $a_n$ et $b_n$ sont les coefficients de Fourier réels.
+*   $n$ représente l'ordre de l'harmonique (la fréquence).
+
+</details>
+
+---
+
+Quelle est la formule de la **forme exponentielle** d'une série de Fourier ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La forme exponentielle, souvent plus simple pour les calculs, s'écrit :
+
+$$S(t) = \sum_{n=-\infty}^{+\infty} c_n e^{int}$$
+
+**Où :**
+
+*   $c_n$ sont les coefficients de Fourier complexes.
+*   La sommation se fait sur tous les entiers relatifs $\mathbb{Z}$.
+
+**Lien avec le signal :**
+
+Le terme pour $n=0$ ($c_0$) est la moyenne, et les termes $n$ et $-n$ se combinent pour former les oscillations réelles.
+
+</details>
+
+---
+
+Comment calcule-t-on les coefficients **$a_n$ et $b_n$** (forme trigonométrique) ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour une fonction $f$ $2\pi$-périodique, on utilise les intégrales sur une période (souvent $[-\pi, \pi]$) :
+
+**Pour le terme constant :**
+
+$$a_0 = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t) \, dt$$
+
+**Pour les coefficients cosinus ($n \ge 1$) :**
+
+$$a_n = \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \cos(nt) \, dt$$
+
+**Pour les coefficients sinus ($n \ge 1$) :**
+
+$$b_n = \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \sin(nt) \, dt$$
+
+</details>
+
+---
+
+Comment calcule-t-on les coefficients complexes **$c_n$** (forme exponentielle) ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour tout entier $n \in \mathbb{Z}$, le coefficient est donné par :
+
+$$c_n = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t) e^{-int} \, dt$$
+
+**Note :**
+
+Le facteur est toujours $\frac{1}{2\pi}$ dans cette formule, contrairement aux formules trigonométriques pour $a_n$ et $b_n$ qui utilisent $\frac{1}{\pi}$ (sauf pour $a_0$).
+
+</details>
+
+---
+
+Comment la **parité** d'une fonction simplifie-t-elle le calcul des coefficients de Fourier ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La parité permet de savoir à l'avance quels coefficients sont nuls :
+
+1.  **Si $f$ est PAIRE ($f(-t) = f(t)$) :**
+    *   $b_n = 0$ pour tout $n$ (pas de sinus).
+    *   On ne calcule que $a_0$ et les $a_n$.
+    *   $c_n = c_{-n}$.
+
+2.  **Si $f$ est IMPAIRE ($f(-t) = -f(t)$) :**
+    *   $a_n = 0$ pour tout $n$ (pas de cosinus, terme moyen nul).
+    *   On ne calcule que les $b_n$.
+    *   $c_n = -c_{-n}$.
+
+**Exemple :** Pour un signal "créneau" impair, on n'aura que des termes en $\sin(nt)$.
+
+</details>
+
+---
+
+Quelles sont les relations de passage (Euler) entre les coefficients $a_n, b_n$ et $c_n$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Les coefficients des deux formes sont liés par :
+
+**De Trigonométrique vers Exponentielle :**
+
+$$c_0 = a_0$$
+
+$$c_n = \frac{a_n - i b_n}{2} \quad (\text{pour } n \ge 1)$$
+
+$$c_{-n} = \frac{a_n + i b_n}{2} \quad (\text{pour } n \ge 1)$$
+
+**D'Exponentielle vers Trigonométrique :**
+
+$$a_n = c_n + c_{-n}$$
+
+$$b_n = i(c_n - c_{-n})$$
+
+</details>
+
+---
+
+Qu'énonce le **Théorème de Dirichlet** (Convergence Ponctuelle) ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Si $f$ est $2\pi$-périodique et de classe $\mathcal{C}^1$ par morceaux, alors la série de Fourier converge en tout point $t_0$ vers la **moyenne des limites** à gauche et à droite :
+
+$$\lim_{N \to +\infty} S_N(t_0) = \frac{f(t_0^+) + f(t_0^-)}{2}$$
+
+**Conséquences :**
+
+*   Si $f$ est **continue** en $t_0$, la série converge vers $f(t_0)$.
+*   Si $f$ a un **saut** en $t_0$, la série converge vers le milieu du saut.
+
+</details>
+
+---
+
+Qu'est-ce que la **Convergence Normale** pour une série de Fourier et quand a-t-elle lieu ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La convergence normale est un type de convergence très fort qui implique la convergence uniforme et la continuité de la somme.
+
+Elle a lieu si la série des valeurs absolues des coefficients converge :
+
+$$\sum |c_n| < +\infty \quad \text{ou} \quad \sum |a_n| + \sum |b_n| < +\infty$$
+
+Cela se produit généralement si la fonction est suffisamment régulière (continue et dérivable). Si la série converge normalement, alors $S(t)$ est une fonction **continue**.
+
+</details>
+
+---
+
+Quelle est la formule de **Parseval** (Identité énergétique) ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Le théorème de Parseval relie l'énergie du signal (intégrale du carré) à la somme des carrés de ses coefficients.
+
+**Forme exponentielle :**
+
+$$\frac{1}{2\pi} \int_{-\pi}^{\pi} |f(t)|^2 \, dt = \sum_{n=-\infty}^{+\infty} |c_n|^2$$
+
+**Forme trigonométrique :**
+
+$$\frac{1}{2\pi} \int_{-\pi}^{\pi} |f(t)|^2 \, dt = |a_0|^2 + \frac{1}{2} \sum_{n=1}^{+\infty} (|a_n|^2 + |b_n|^2)$$
+
+</details>
+
+---
+
+Comment utilise-t-on les séries de Fourier pour **calculer des sommes de séries numériques** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+**Méthode :**
+
+1.  Calculer la série de Fourier d'une fonction simple (comme $t^2$ ou $|t|$).
+2.  Appliquer le **Théorème de Dirichlet** en un point précis $t_0$ (souvent $0$ ou $\pi$) pour trouver une égalité entre $f(t_0)$ et une somme infinie.
+3.  Ou appliquer le **Théorème de Parseval** pour relier l'intégrale de $f^2$ à la somme des carrés des coefficients (utile pour les sommes en $1/n^2$ ou $1/n^4$).
+
+**Exemple :**
+
+Utiliser $f(t)=t^2$ et le théorème de Dirichlet en $\pi$ permet de montrer que $\sum \frac{1}{n^2} = \frac{\pi^2}{6}$.
+
+</details>
+
+---
+
+Que signifie le terme **$\mathcal{C}^1$ par morceaux** dans les conditions de Dirichlet ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Une fonction est $\mathcal{C}^1$ par morceaux sur un intervalle si :
+
+1.  Elle est continue et dérivable partout, sauf peut-être en un nombre **fini** de points.
+2.  En ces points de discontinuité, la fonction et sa dérivée admettent des **limites finies** à gauche et à droite.
+
+**Intuition :** Le graphe est constitué d'un nombre fini de morceaux de courbes lisses reliés (ou non) entre eux. Le signal créneau ou triangulaire sont des exemples typiques.
+
+</details>

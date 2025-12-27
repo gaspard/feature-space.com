@@ -1,0 +1,104 @@
+{
+  "info": {
+    "id": "ee79c1b6",
+    "title": "Chapitre 5 Séries de Fourier - fiches de révision (A)",
+    "type": "cards",
+    "level": "regular",
+    "chapter": "Chapitre 5 Séries de Fourier",
+    "course": "Analyse",
+    "tags": [
+      "Séries de Fourier",
+      "Analyse",
+      "Séries trigonométriques",
+      "Théorème de Dirichlet",
+      "Théorème de Parseval"
+    ],
+    "count": 12
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "ee79c1b6",
+      "content": "Qu'est-ce qu'une **Série de Fourier** (définition générale) ?",
+      "solution": "\n\nUne série de Fourier est une représentation d'une fonction périodique comme une somme infinie de fonctions trigonométriques simples ($\\cos$ et $\\sin$) ou d'exponentielles complexes.\n\nElle s'applique généralement à une fonction d'une variable réelle $t$, **$2\\pi$-périodique**.\n\n**Elle existe sous deux formes équivalentes :**\n\n1.  **Forme trigonométrique :** Somme de sinus et cosinus.\n2.  **Forme exponentielle :** Somme d'exponentielles imaginaires $e^{int}$.\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "ee79c1b6",
+      "content": "Quelle est la formule de la **forme trigonométrique** d'une série de Fourier ?",
+      "solution": "\n\nLa série de Fourier associée à une fonction $f$ s'écrit :\n\n$$S(t) = a_0 + \\sum_{n=1}^{+\\infty} (a_n \\cos(nt) + b_n \\sin(nt))$$\n\n**Où :**\n\n*   $a_0$ est le terme constant (valeur moyenne).\n*   $a_n$ et $b_n$ sont les coefficients de Fourier réels.\n*   $n$ représente l'ordre de l'harmonique (la fréquence).\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "ee79c1b6",
+      "content": "Quelle est la formule de la **forme exponentielle** d'une série de Fourier ?",
+      "solution": "\n\nLa forme exponentielle, souvent plus simple pour les calculs, s'écrit :\n\n$$S(t) = \\sum_{n=-\\infty}^{+\\infty} c_n e^{int}$$\n\n**Où :**\n\n*   $c_n$ sont les coefficients de Fourier complexes.\n*   La sommation se fait sur tous les entiers relatifs $\\mathbb{Z}$.\n\n**Lien avec le signal :**\n\nLe terme pour $n=0$ ($c_0$) est la moyenne, et les termes $n$ et $-n$ se combinent pour former les oscillations réelles.\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "ee79c1b6",
+      "content": "Comment calcule-t-on les coefficients **$a_n$ et $b_n$** (forme trigonométrique) ?",
+      "solution": "\n\nPour une fonction $f$ $2\\pi$-périodique, on utilise les intégrales sur une période (souvent $[-\\pi, \\pi]$) :\n\n**Pour le terme constant :**\n\n$$a_0 = \\frac{1}{2\\pi} \\int_{-\\pi}^{\\pi} f(t) \\, dt$$\n\n**Pour les coefficients cosinus ($n \\ge 1$) :**\n\n$$a_n = \\frac{1}{\\pi} \\int_{-\\pi}^{\\pi} f(t) \\cos(nt) \\, dt$$\n\n**Pour les coefficients sinus ($n \\ge 1$) :**\n\n$$b_n = \\frac{1}{\\pi} \\int_{-\\pi}^{\\pi} f(t) \\sin(nt) \\, dt$$\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "ee79c1b6",
+      "content": "Comment calcule-t-on les coefficients complexes **$c_n$** (forme exponentielle) ?",
+      "solution": "\n\nPour tout entier $n \\in \\mathbb{Z}$, le coefficient est donné par :\n\n$$c_n = \\frac{1}{2\\pi} \\int_{-\\pi}^{\\pi} f(t) e^{-int} \\, dt$$\n\n**Note :**\n\nLe facteur est toujours $\\frac{1}{2\\pi}$ dans cette formule, contrairement aux formules trigonométriques pour $a_n$ et $b_n$ qui utilisent $\\frac{1}{\\pi}$ (sauf pour $a_0$).\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "ee79c1b6",
+      "content": "Comment la **parité** d'une fonction simplifie-t-elle le calcul des coefficients de Fourier ?",
+      "solution": "\n\nLa parité permet de savoir à l'avance quels coefficients sont nuls :\n\n1.  **Si $f$ est PAIRE ($f(-t) = f(t)$) :**\n    *   $b_n = 0$ pour tout $n$ (pas de sinus).\n    *   On ne calcule que $a_0$ et les $a_n$.\n    *   $c_n = c_{-n}$.\n\n2.  **Si $f$ est IMPAIRE ($f(-t) = -f(t)$) :**\n    *   $a_n = 0$ pour tout $n$ (pas de cosinus, terme moyen nul).\n    *   On ne calcule que les $b_n$.\n    *   $c_n = -c_{-n}$.\n\n**Exemple :** Pour un signal \"créneau\" impair, on n'aura que des termes en $\\sin(nt)$.\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "ee79c1b6",
+      "content": "Quelles sont les relations de passage (Euler) entre les coefficients $a_n, b_n$ et $c_n$ ?",
+      "solution": "\n\nLes coefficients des deux formes sont liés par :\n\n**De Trigonométrique vers Exponentielle :**\n\n$$c_0 = a_0$$\n\n$$c_n = \\frac{a_n - i b_n}{2} \\quad (\\text{pour } n \\ge 1)$$\n\n$$c_{-n} = \\frac{a_n + i b_n}{2} \\quad (\\text{pour } n \\ge 1)$$\n\n**D'Exponentielle vers Trigonométrique :**\n\n$$a_n = c_n + c_{-n}$$\n\n$$b_n = i(c_n - c_{-n})$$\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "ee79c1b6",
+      "content": "Qu'énonce le **Théorème de Dirichlet** (Convergence Ponctuelle) ?",
+      "solution": "\n\nSi $f$ est $2\\pi$-périodique et de classe $\\mathcal{C}^1$ par morceaux, alors la série de Fourier converge en tout point $t_0$ vers la **moyenne des limites** à gauche et à droite :\n\n$$\\lim_{N \\to +\\infty} S_N(t_0) = \\frac{f(t_0^+) + f(t_0^-)}{2}$$\n\n**Conséquences :**\n\n*   Si $f$ est **continue** en $t_0$, la série converge vers $f(t_0)$.\n*   Si $f$ a un **saut** en $t_0$, la série converge vers le milieu du saut.\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "ee79c1b6",
+      "content": "Qu'est-ce que la **Convergence Normale** pour une série de Fourier et quand a-t-elle lieu ?",
+      "solution": "\n\nLa convergence normale est un type de convergence très fort qui implique la convergence uniforme et la continuité de la somme.\n\nElle a lieu si la série des valeurs absolues des coefficients converge :\n\n$$\\sum |c_n| < +\\infty \\quad \\text{ou} \\quad \\sum |a_n| + \\sum |b_n| < +\\infty$$\n\nCela se produit généralement si la fonction est suffisamment régulière (continue et dérivable). Si la série converge normalement, alors $S(t)$ est une fonction **continue**.\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "ee79c1b6",
+      "content": "Quelle est la formule de **Parseval** (Identité énergétique) ?",
+      "solution": "\n\nLe théorème de Parseval relie l'énergie du signal (intégrale du carré) à la somme des carrés de ses coefficients.\n\n**Forme exponentielle :**\n\n$$\\frac{1}{2\\pi} \\int_{-\\pi}^{\\pi} |f(t)|^2 \\, dt = \\sum_{n=-\\infty}^{+\\infty} |c_n|^2$$\n\n**Forme trigonométrique :**\n\n$$\\frac{1}{2\\pi} \\int_{-\\pi}^{\\pi} |f(t)|^2 \\, dt = |a_0|^2 + \\frac{1}{2} \\sum_{n=1}^{+\\infty} (|a_n|^2 + |b_n|^2)$$\n\n",
+      "options": []
+    },
+    {
+      "id": "11",
+      "stackId": "ee79c1b6",
+      "content": "Comment utilise-t-on les séries de Fourier pour **calculer des sommes de séries numériques** ?",
+      "solution": "\n\n**Méthode :**\n\n1.  Calculer la série de Fourier d'une fonction simple (comme $t^2$ ou $|t|$).\n2.  Appliquer le **Théorème de Dirichlet** en un point précis $t_0$ (souvent $0$ ou $\\pi$) pour trouver une égalité entre $f(t_0)$ et une somme infinie.\n3.  Ou appliquer le **Théorème de Parseval** pour relier l'intégrale de $f^2$ à la somme des carrés des coefficients (utile pour les sommes en $1/n^2$ ou $1/n^4$).\n\n**Exemple :**\n\nUtiliser $f(t)=t^2$ et le théorème de Dirichlet en $\\pi$ permet de montrer que $\\sum \\frac{1}{n^2} = \\frac{\\pi^2}{6}$.\n\n",
+      "options": []
+    },
+    {
+      "id": "12",
+      "stackId": "ee79c1b6",
+      "content": "Que signifie le terme **$\\mathcal{C}^1$ par morceaux** dans les conditions de Dirichlet ?",
+      "solution": "\n\nUne fonction est $\\mathcal{C}^1$ par morceaux sur un intervalle si :\n\n1.  Elle est continue et dérivable partout, sauf peut-être en un nombre **fini** de points.\n2.  En ces points de discontinuité, la fonction et sa dérivée admettent des **limites finies** à gauche et à droite.\n\n**Intuition :** Le graphe est constitué d'un nombre fini de morceaux de courbes lisses reliés (ou non) entre eux. Le signal créneau ou triangulaire sont des exemples typiques.\n\n",
+      "options": []
+    }
+  ]
+}

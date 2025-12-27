@@ -1,0 +1,561 @@
+---
+id: e91fc00a
+type: proofs
+order: 15
+title: Chapitre 5 Séries de Fourier - preuves (A)
+tags:
+  - Séries de Fourier
+  - Analyse
+  - Séries trigonométriques
+  - Théorème de Dirichlet
+  - Théorème de Parseval
+createdAt: '2025-12-27T05:31:47.061Z'
+level: regular
+course: Analyse
+courseId: aed2b890
+chapter: Chapitre 5 Séries de Fourier
+chapterId: 5a588ba0
+---
+# Preuves "Chapitre 5 Séries de Fourier" (A)
+
+---
+
+#### Relation entre coefficients complexes et réels
+
+Prouvez les relations d'Euler liant les coefficients de Fourier exponentiels $(c_n)$ aux coefficients trigonométriques $(a_n, b_n)$ :
+
+$$c_n = \frac{a_n - i b_n}{2} \quad \text{et} \quad c_{-n} = \frac{a_n + i b_n}{2} \quad (\text{pour } n \ge 1)$$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez les formules d'Euler pour les fonctions trigonométriques : $\cos(nt) = \frac{e^{int} + e^{-int}}{2}$ et $\sin(nt) = \frac{e^{int} - e^{-int}}{2i}$.
+
+Substituez ces expressions dans la forme trigonométrique de la série de Fourier et identifiez les termes en $e^{int}$ et $e^{-int}$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+On part de la forme trigonométrique de la série de Fourier pour $n \ge 1$ :
+
+$$a_n \cos(nt) + b_n \sin(nt)$$
+
+**Étape 1 :** Substitution par les exponentielles complexes
+
+En utilisant les formules d'Euler :
+
+$$a_n \left(\frac{e^{int} + e^{-int}}{2}\right) + b_n \left(\frac{e^{int} - e^{-int}}{2i}\right)$$
+
+Rappelons que $\frac{1}{i} = -i$. L'expression devient :
+
+$$\frac{a_n}{2} e^{int} + \frac{a_n}{2} e^{-int} - \frac{i b_n}{2} e^{int} + \frac{i b_n}{2} e^{-int}$$
+
+**Étape 2 :** Regroupement des termes
+
+On regroupe les termes selon les puissances de l'exponentielle ($e^{int}$ et $e^{-int}$) :
+
+$$\left( \frac{a_n - i b_n}{2} \right) e^{int} + \left( \frac{a_n + i b_n}{2} \right) e^{-int}$$
+
+**Conclusion :**
+
+En comparant avec la définition de la forme exponentielle $\sum c_k e^{ikt}$, le coefficient devant $e^{int}$ correspond à $c_n$ et le coefficient devant $e^{-int}$ correspond à $c_{-n}$.
+
+On a donc bien :
+
+$$c_n = \frac{a_n - i b_n}{2} \quad \text{et} \quad c_{-n} = \frac{a_n + i b_n}{2}$$
+
+</details>
+
+---
+
+#### Simplification pour les fonctions paires
+
+Soit $f$ une fonction $2\pi$-périodique et continue par morceaux. Prouvez que si $f$ est **paire**, alors ses coefficients de Fourier $b_n$ sont nuls pour tout $n \ge 1$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez la définition intégrale de $b_n$. Découpez l'intégrale sur $[-\pi, \pi]$ en deux parties : $[-\pi, 0]$ et $[0, \pi]$.
+
+Effectuez un changement de variable $u = -t$ dans l'intégrale sur la partie négative et utilisez la parité de $f$ et l'imparité de sinus.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+La définition du coefficient $b_n$ est :
+
+$$b_n = \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \sin(nt) dt$$
+
+**Étape 1 :** Décomposition de l'intégrale
+
+$$b_n = \frac{1}{\pi} \left( \int_{-\pi}^{0} f(t) \sin(nt) dt + \int_{0}^{\pi} f(t) \sin(nt) dt \right)$$
+
+**Étape 2 :** Changement de variable
+
+Dans la première intégrale, posons $u = -t$. Alors $dt = -du$.
+
+Les bornes changent : de $-\pi$ à $0$ devient de $\pi$ à $0$.
+
+$$\int_{-\pi}^{0} f(t) \sin(nt) dt = \int_{\pi}^{0} f(-u) \sin(-nu) (-du) = \int_{0}^{\pi} f(-u) \sin(-nu) du$$
+
+**Étape 3 :** Utilisation des propriétés de parité
+
+Comme $f$ est paire, $f(-u) = f(u)$.
+
+La fonction sinus est impaire, donc $\sin(-nu) = -\sin(nu)$.
+
+L'intégrale devient :
+
+$$\int_{0}^{\pi} f(u) (-\sin(nu)) du = - \int_{0}^{\pi} f(u) \sin(nu) du$$
+
+**Conclusion :**
+
+En remplaçant dans l'expression de $b_n$ :
+
+$$b_n = \frac{1}{\pi} \left( - \int_{0}^{\pi} f(t) \sin(nt) dt + \int_{0}^{\pi} f(t) \sin(nt) dt \right) = 0$$
+
+Donc, pour une fonction paire, tous les coefficients $b_n$ sont nuls.
+
+</details>
+
+---
+
+#### Lemme de Riemann-Lebesgue (Cas $\mathcal{C}^1$)
+
+Soit $f$ une fonction $2\pi$-périodique de classe $\mathcal{C}^1$. Prouvez que les coefficients de Fourier $c_n(f)$ tendent vers 0 lorsque $|n| \to +\infty$, et plus précisément que $c_n(f) = O(1/n)$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez la définition intégrale de $c_n(f)$ et effectuez une **intégration par parties**.
+
+Exploitez le fait que la dérivée $f'$ est continue (et bornée sur le segment) et que le terme de bord s'annule par périodicité.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $n \neq 0$. Par définition :
+
+$$c_n(f) = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t) e^{-int} dt$$
+
+**Étape 1 :** Intégration par parties
+
+On pose $u(t) = f(t)$ donc $u'(t) = f'(t)$.
+
+On pose $v'(t) = e^{-int}$ donc $v(t) = \frac{e^{-int}}{-in}$.
+
+$$c_n(f) = \frac{1}{2\pi} \left( \left[ f(t) \frac{e^{-int}}{-in} \right]_{-\pi}^{\pi} - \int_{-\pi}^{\pi} f'(t) \frac{e^{-int}}{-in} dt \right)$$
+
+**Étape 2 :** Analyse du terme de bord
+
+Le terme entre crochets est :
+
+$$\frac{1}{-in} (f(\pi)e^{-in\pi} - f(-\pi)e^{in\pi})$$
+
+Puisque $f$ est $2\pi$-périodique, $f(\pi) = f(-\pi)$. De plus $e^{-in\pi} = e^{in\pi} = (-1)^n$.
+
+Le terme de bord est donc nul.
+
+**Étape 3 :** Majoration
+
+Il reste :
+
+$$c_n(f) = \frac{1}{2\pi in} \int_{-\pi}^{\pi} f'(t) e^{-int} dt = \frac{1}{in} c_n(f')$$
+
+Comme $f$ est $\mathcal{C}^1$, $f'$ est continue sur $[-\pi, \pi]$, donc bornée. Soit $M = \sup |f'(t)|$.
+
+$$|c_n(f)| \le \frac{1}{2\pi |n|} \int_{-\pi}^{\pi} |f'(t)| |e^{-int}| dt \le \frac{1}{2\pi |n|} \int_{-\pi}^{\pi} M \cdot 1 dt = \frac{M}{|n|}$$
+
+**Conclusion :**
+
+On a montré que $|c_n(f)| \le \frac{M}{|n|}$, donc $c_n(f) \to 0$ quand $|n| \to \infty$.
+
+</details>
+
+---
+
+#### Convergence Normale et Continuité
+
+Prouvez que si la série des coefficients de Fourier est absolument convergente (c'est-à-dire $\sum_{n \in \mathbb{Z}} |c_n| < \infty$), alors la série de Fourier converge normalement sur $\mathbb{R}$ vers une fonction continue.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Rappelez la définition de la convergence normale pour une série de fonctions : la série des normes infinies doit converger.
+
+Utilisez le fait que $|c_n e^{int}| = |c_n|$.
+
+Invoquez le théorème de continuité d'une limite uniforme de fonctions continues.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $u_n(t) = c_n e^{int}$ le terme général de la série de Fourier.
+
+**Étape 1 :** Majoration uniforme (Convergence Normale)
+
+Pour tout $t \in \mathbb{R}$, on a :
+
+$$|u_n(t)| = |c_n e^{int}| = |c_n| \cdot |e^{int}| = |c_n|$$
+
+Ainsi, la norme infinie de $u_n$ est $\|u_n\|_\infty = \sup_{t \in \mathbb{R}} |u_n(t)| = |c_n|$.
+
+Par hypothèse, la série numérique $\sum |c_n|$ converge.
+
+Donc, la série de fonctions $\sum u_n(t)$ converge **normalement** sur $\mathbb{R}$.
+
+**Étape 2 :** Conséquence sur la continuité
+
+La convergence normale implique la convergence uniforme sur $\mathbb{R}$.
+
+Les fonctions partielles $u_n(t) = c_n e^{int}$ sont continues (ce sont des exponentielles complexes).
+
+D'après le théorème de continuité des séries de fonctions : si une série de fonctions continues converge uniformément sur un intervalle, alors sa somme $S(t)$ est continue sur cet intervalle.
+
+**Conclusion :**
+
+La série de Fourier converge vers une fonction $S(t)$ qui est continue sur $\mathbb{R}$.
+
+</details>
+
+---
+
+#### Expression intégrale de la somme partielle (Noyau de Dirichlet)
+
+Prouvez que la $N$-ième somme partielle de la série de Fourier de $f$ peut s'écrire comme un produit de convolution :
+
+$$S_N(f)(x) = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x-t) D_N(t) dt$$
+
+où $D_N(t) = \sum_{n=-N}^{N} e^{int}$ est le **Noyau de Dirichlet**.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Partez de la définition de $S_N(f)(x) = \sum_{n=-N}^{N} c_n e^{inx}$.
+
+Remplacez $c_n$ par sa forme intégrale $\frac{1}{2\pi} \int_{-\pi}^{\pi} f(u) e^{-inu} du$.
+
+Intervertissez la somme et l'intégrale (somme finie), puis effectuez un changement de variable approprié.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 :** Substitution des coefficients
+
+$$S_N(f)(x) = \sum_{n=-N}^{N} c_n e^{inx} = \sum_{n=-N}^{N} \left( \frac{1}{2\pi} \int_{-\pi}^{\pi} f(u) e^{-inu} du \right) e^{inx}$$
+
+**Étape 2 :** Linéarité de l'intégrale
+
+Comme la somme est finie, on peut entrer la somme sous l'intégrale et regrouper les termes exponentiels :
+
+$$S_N(f)(x) = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(u) \left( \sum_{n=-N}^{N} e^{in(x-u)} \right) du$$
+
+**Étape 3 :** Changement de variable et périodicité
+
+Posons $t = x - u$. Alors $u = x - t$ et $du = -dt$.
+
+L'intégrale sur une période $[-\pi, \pi]$ (pour $u$) reste une intégrale sur une période de longueur $2\pi$ pour $t$ (par exemple $[x-\pi, x+\pi]$).
+
+Comme l'intégrande est $2\pi$-périodique, on peut recentrer l'intégrale sur $[-\pi, \pi]$.
+
+$$S_N(f)(x) = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x-t) \left( \sum_{n=-N}^{N} e^{int} \right) dt$$
+
+**Conclusion :**
+
+En identifiant le noyau de Dirichlet $D_N(t) = \sum_{n=-N}^{N} e^{int}$, on obtient :
+
+$$S_N(f)(x) = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x-t) D_N(t) dt$$
+
+</details>
+
+---
+
+#### Forme fermée du Noyau de Dirichlet
+
+Prouvez que pour $t \not\equiv 0 \pmod{2\pi}$, le noyau de Dirichlet s'écrit :
+
+$$D_N(t) = \sum_{n=-N}^{N} e^{int} = \frac{\sin((N + 1/2)t)}{\sin(t/2)}$$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Reconnaissez une suite géométrique de raison $q = e^{it}$.
+
+Utilisez la formule de la somme $\sum_{n=-N}^{N} q^n = q^{-N} \frac{1-q^{2N+1}}{1-q}$.
+
+Factorisez par les "arcs moitié" ($e^{it/2}$ et $e^{-it/2}$) pour faire apparaître les sinus.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 :** Somme géométrique
+
+$$D_N(t) = \sum_{n=-N}^{N} (e^{it})^n = e^{-iNt} + \dots + e^{iNt}$$
+
+C'est une suite géométrique de raison $q = e^{it}$ comportant $2N+1$ termes, commençant à $e^{-iNt}$.
+
+$$D_N(t) = e^{-iNt} \frac{1 - (e^{it})^{2N+1}}{1 - e^{it}} = \frac{e^{-iNt} - e^{i(N+1)t}}{1 - e^{it}}$$
+
+**Étape 2 :** Utilisation de l'arc moitié
+
+On factorise le numérateur par $e^{it/2}$ et le dénominateur par $e^{it/2}$ (technique de l'arc moitié) :
+
+Numérateur : $e^{-iNt} - e^{i(N+1)t} = e^{it/2} (e^{-i(N+1/2)t} - e^{i(N+1/2)t})$
+
+Dénominateur : $1 - e^{it} = e^{it/2} (e^{-it/2} - e^{it/2})$
+
+L'expression devient :
+
+$$D_N(t) = \frac{e^{it/2} (e^{-i(N+1/2)t} - e^{i(N+1/2)t})}{e^{it/2} (e^{-it/2} - e^{it/2})} = \frac{-(e^{i(N+1/2)t} - e^{-i(N+1/2)t})}{-(e^{it/2} - e^{-it/2})}$$
+
+**Étape 3 :** Conversion en sinus
+
+On utilise la formule d'Euler $2i \sin(\theta) = e^{i\theta} - e^{-i\theta}$.
+
+$$D_N(t) = \frac{2i \sin((N+1/2)t)}{2i \sin(t/2)}$$
+
+**Conclusion :**
+
+En simplifiant par $2i$, on obtient :
+
+$$D_N(t) = \frac{\sin((N + 1/2)t)}{\sin(t/2)}$$
+
+</details>
+
+---
+
+#### Intégrale du Noyau de Dirichlet
+
+Prouvez que la moyenne du noyau de Dirichlet sur une période vaut 1 :
+
+$$\frac{1}{2\pi} \int_{-\pi}^{\pi} D_N(t) dt = 1$$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+N'utilisez pas la forme fermée avec les sinus (plus compliquée à intégrer).
+
+Utilisez la forme somme $D_N(t) = \sum_{n=-N}^{N} e^{int}$ et intégrez terme à terme.
+
+Rappelez-vous que l'intégrale de $e^{int}$ sur une période est nulle si $n \neq 0$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 :** Intégration terme à terme
+
+$$I = \frac{1}{2\pi} \int_{-\pi}^{\pi} \left( \sum_{n=-N}^{N} e^{int} \right) dt = \sum_{n=-N}^{N} \left( \frac{1}{2\pi} \int_{-\pi}^{\pi} e^{int} dt \right)$$
+
+**Étape 2 :** Analyse des termes
+
+- Si $n \neq 0$ :
+
+  $$\int_{-\pi}^{\pi} e^{int} dt = \left[ \frac{e^{int}}{in} \right]_{-\pi}^{\pi} = \frac{e^{in\pi} - e^{-in\pi}}{in} = 0$$
+
+  (car $e^{in\pi} = (-1)^n$ et $e^{-in\pi} = (-1)^n$).
+
+- Si $n = 0$ :
+
+  Le terme est $e^{i \cdot 0 \cdot t} = 1$.
+
+  $$\frac{1}{2\pi} \int_{-\pi}^{\pi} 1 dt = \frac{1}{2\pi} [t]_{-\pi}^{\pi} = 1$$
+
+**Conclusion :**
+
+Dans la somme, seul le terme pour $n=0$ survit et vaut 1.
+
+$$\frac{1}{2\pi} \int_{-\pi}^{\pi} D_N(t) dt = 1$$
+
+</details>
+
+---
+
+#### Équivalence des formules de Parseval
+
+Prouvez que la somme des carrés des modules des coefficients exponentiels équivaut à la formule avec les coefficients trigonométriques :
+
+$$\sum_{n=-\infty}^{+\infty} |c_n|^2 = |a_0|^2 + \frac{1}{2} \sum_{n=1}^{+\infty} (|a_n|^2 + |b_n|^2)$$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Séparez le terme $c_0$ de la somme.
+
+Regroupez les termes $n$ et $-n$ pour $n \ge 1$ : $|c_n|^2 + |c_{-n}|^2$.
+
+Utilisez les relations $c_n = \frac{a_n - ib_n}{2}$ et le fait que $|z|^2 = z \bar{z}$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 :** Décomposition de la somme
+
+$$\sum_{n=-\infty}^{+\infty} |c_n|^2 = |c_0|^2 + \sum_{n=1}^{+\infty} (|c_n|^2 + |c_{-n}|^2)$$
+
+On sait que $c_0 = a_0$.
+
+**Étape 2 :** Calcul de $|c_n|^2 + |c_{-n}|^2$
+
+On utilise $c_n = \frac{a_n - i b_n}{2}$ et $c_{-n} = \frac{a_n + i b_n}{2}$.
+
+$$|c_n|^2 = \left| \frac{a_n - i b_n}{2} \right|^2 = \frac{a_n^2 + b_n^2}{4}$$
+
+(car le module au carré de $x+iy$ est $x^2+y^2$).
+
+De même :
+
+$$|c_{-n}|^2 = \left| \frac{a_n + i b_n}{2} \right|^2 = \frac{a_n^2 + b_n^2}{4}$$
+
+**Étape 3 :** Sommation
+
+La somme des deux termes pour un $n$ fixé est :
+
+$$|c_n|^2 + |c_{-n}|^2 = \frac{a_n^2 + b_n^2}{4} + \frac{a_n^2 + b_n^2}{4} = \frac{a_n^2 + b_n^2}{2}$$
+
+**Conclusion :**
+
+En réinsérant dans la somme totale :
+
+$$\sum_{n=-\infty}^{+\infty} |c_n|^2 = |a_0|^2 + \sum_{n=1}^{+\infty} \frac{a_n^2 + b_n^2}{2} = a_0^2 + \frac{1}{2} \sum_{n=1}^{+\infty} (a_n^2 + b_n^2)$$
+
+Ce qui correspond bien à la formule de Parseval trigonométrique.
+
+</details>
+
+---
+
+#### Inégalité de Bessel
+
+Soit $f$ une fonction $2\pi$-périodique et de carré intégrable. Prouvez que pour tout entier $N$, la somme partielle des énergies des coefficients est bornée par l'énergie de la fonction :
+
+$$\sum_{n=-N}^{N} |c_n|^2 \le \frac{1}{2\pi} \int_{-\pi}^{\pi} |f(t)|^2 dt$$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Considérez la somme partielle $S_N(t) = \sum_{k=-N}^N c_k e^{ikt}$.
+
+Calculez la quantité positive $\|f - S_N\|^2 = \frac{1}{2\pi} \int |f(t) - S_N(t)|^2 dt$.
+
+Développez le produit scalaire $\langle f - S_N, f - S_N \rangle$ en utilisant l'orthonormalité de la famille $(e^{int})$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Notons $\langle f, g \rangle = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t) \overline{g(t)} dt$ le produit scalaire hermitien et $\|f\|^2 = \langle f, f \rangle$.
+
+Les fonctions $e_n(t) = e^{int}$ forment une famille orthonormée : $\langle e_n, e_m \rangle = \delta_{nm}$.
+
+**Étape 1 :** Orthogonalité
+
+La somme partielle est $S_N = \sum_{k=-N}^N c_k e_k$, avec $c_k = \langle f, e_k \rangle$.
+
+Calculons $\|f - S_N\|^2$ :
+
+$$\|f - S_N\|^2 = \langle f - S_N, f - S_N \rangle = \|f\|^2 - \langle f, S_N \rangle - \langle S_N, f \rangle + \|S_N\|^2$$
+
+**Étape 2 :** Simplification des termes
+
+- $\|S_N\|^2 = \langle \sum c_k e_k, \sum c_j e_j \rangle = \sum |c_k|^2$ (théorème de Pythagore pour une famille orthonormée finie).
+- $\langle f, S_N \rangle = \langle f, \sum c_k e_k \rangle = \sum \overline{c_k} \langle f, e_k \rangle = \sum \overline{c_k} c_k = \sum |c_k|^2$.
+- $\langle S_N, f \rangle = \overline{\langle f, S_N \rangle} = \sum |c_k|^2$.
+
+**Étape 3 :** Combinaison
+
+$$\|f - S_N\|^2 = \|f\|^2 - 2 \sum_{n=-N}^N |c_n|^2 + \sum_{n=-N}^N |c_n|^2 = \|f\|^2 - \sum_{n=-N}^N |c_n|^2$$
+
+**Conclusion :**
+
+Comme une norme au carré est toujours positive ou nulle ($\|f - S_N\|^2 \ge 0$) :
+
+$$\|f\|^2 - \sum_{n=-N}^N |c_n|^2 \ge 0 \implies \sum_{n=-N}^N |c_n|^2 \le \|f\|^2$$
+
+Soit :
+
+$$\sum_{n=-N}^{N} |c_n|^2 \le \frac{1}{2\pi} \int_{-\pi}^{\pi} |f(t)|^2 dt$$
+
+</details>
+
+---
+
+#### Propriété de décalage temporel
+
+Soit $f$ une fonction $2\pi$-périodique et $g$ la fonction définie par $g(t) = f(t - \tau)$ (translation de $\tau$). Prouvez que les coefficients de Fourier de $g$ sont liés à ceux de $f$ par :
+
+$$c_n(g) = c_n(f) e^{-in\tau}$$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Écrivez la définition intégrale de $c_n(g)$.
+
+Faites le changement de variable $u = t - \tau$ dans l'intégrale.
+
+N'oubliez pas d'utiliser la périodicité pour recentrer les bornes de l'intégrale.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 :** Définition
+
+$$c_n(g) = \frac{1}{2\pi} \int_{-\pi}^{\pi} g(t) e^{-int} dt = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t-\tau) e^{-int} dt$$
+
+**Étape 2 :** Changement de variable
+
+Posons $u = t - \tau$, donc $t = u + \tau$ et $dt = du$.
+
+$$c_n(g) = \frac{1}{2\pi} \int_{-\pi-\tau}^{\pi-\tau} f(u) e^{-in(u+\tau)} du$$
+
+**Étape 3 :** Factorisation et Périodicité
+
+On sort le terme constant par rapport à $u$ : $e^{-in(u+\tau)} = e^{-inu} e^{-in\tau}$.
+
+$$c_n(g) = e^{-in\tau} \left( \frac{1}{2\pi} \int_{-\pi-\tau}^{\pi-\tau} f(u) e^{-inu} du \right)$$
+
+Comme l'intégrande $f(u)e^{-inu}$ est $2\pi$-périodique, l'intégrale sur un intervalle de longueur $2\pi$ ($[-\pi-\tau, \pi-\tau]$) est égale à l'intégrale sur $[-\pi, \pi]$.
+
+**Conclusion :**
+
+$$c_n(g) = e^{-in\tau} \left( \frac{1}{2\pi} \int_{-\pi}^{\pi} f(u) e^{-inu} du \right) = e^{-in\tau} c_n(f)$$
+
+</details>

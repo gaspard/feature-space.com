@@ -1,0 +1,635 @@
+---
+id: da2e366c
+type: proofs
+order: 15
+title: Rappels de logique et suites numériques - preuves (A)
+tags:
+  - logique
+  - suites numériques
+  - analyse
+  - mathématiques
+createdAt: '2025-10-12T14:18:16.499Z'
+level: regular
+course: Analyse
+courseId: 99c39a0d
+chapter: Rappels de logique et suites numériques
+chapterId: 684d8511
+---
+# Preuves "Rappels de logique et suites numériques" (A)
+
+---
+
+#### Raisonnement par Contraposée
+
+Montrer que pour tout entier $n \in \mathbb{N}$, si $3n + 2$ est un entier impair, alors $n$ est un entier impair.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Au lieu de démontrer l'implication directe $A \Rightarrow B$ (qui nécessiterait de manipuler la propriété "être impair"), utilisez la **contraposée**.
+
+La contraposée de "$A \Rightarrow B$" est "$\text{non}(B) \Rightarrow \text{non}(A)$".
+
+Ici, quelle est la négation de "$n$ est impair" ?
+
+Supposez que $n$ vérifie cette négation et montrez que $3n+2$ vérifie la négation de l'hypothèse de départ.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Nous allons utiliser un raisonnement par **contraposée**.
+
+L'implication à démontrer est : $P \Rightarrow Q$ avec :
+
+$P$ : "$3n+2$ est impair"
+
+$Q$ : "$n$ est impair"
+
+La contraposée est $\text{non}(Q) \Rightarrow \text{non}(P)$, c'est-à-dire :
+
+"Si $n$ est pair, alors $3n+2$ est pair".
+
+**Étape 1 : Hypothèse**
+
+Supposons que $n$ est pair.
+
+Par définition, il existe un entier $k$ tel que $n = 2k$.
+
+**Étape 2 : Calcul**
+
+Substituons $n$ dans l'expression $3n + 2$ :
+
+$$ 3n + 2 = 3(2k) + 2 = 6k + 2 $$
+
+**Étape 3 : Conclusion sur la parité**
+
+On peut factoriser par 2 :
+
+$$ 6k + 2 = 2(3k + 1) $$
+
+Posons $k' = 3k + 1$. Comme $k$ est entier, $k'$ est entier.
+
+On a donc $3n + 2 = 2k'$, ce qui signifie que $3n + 2$ est pair.
+
+**Conclusion :**
+
+Nous avons démontré que si $n$ est pair, alors $3n+2$ est pair. Par le principe de la contraposée, cela équivaut à dire que si $3n+2$ est impair, alors $n$ est impair.
+
+</details>
+
+---
+
+#### Raisonnement par l'Absurde (Irrationalité)
+
+Montrer que $\sqrt{2}$ n'est pas un nombre rationnel (c'est-à-dire $\sqrt{2} \notin \mathbb{Q}$).
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez un **raisonnement par l'absurde**.
+
+Supposez le contraire : $\sqrt{2} \in \mathbb{Q}$.
+
+Cela signifie qu'on peut écrire $\sqrt{2} = \frac{p}{q}$ sous forme d'une fraction irréductible (où $p$ et $q$ sont des entiers premiers entre eux).
+
+Élevez au carré et utilisez des arguments de parité pour montrer que $p$ et $q$ seraient tous deux pairs, ce qui contredit l'hypothèse que la fraction est irréductible.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Supposons par l'absurde que $\sqrt{2}$ est rationnel.
+
+**Étape 1 : Formulation de l'hypothèse absurde**
+
+Il existe deux entiers $p$ et $q$ (avec $q \neq 0$), **premiers entre eux** (fraction irréductible), tels que :
+
+$$ \sqrt{2} = \frac{p}{q} $$
+
+**Étape 2 : Analyse de la parité de $p$**
+
+En élevant au carré, on obtient $2 = \frac{p^2}{q^2}$, soit :
+
+$$ p^2 = 2q^2 $$
+
+L'équation montre que $p^2$ est un nombre pair. Par conséquent, $p$ doit être pair (car le carré d'un impair est impair).
+
+On peut donc écrire $p = 2k$ pour un entier $k$.
+
+**Étape 3 : Analyse de la parité de $q$**
+
+Substituons $p = 2k$ dans l'équation $p^2 = 2q^2$ :
+
+$$ (2k)^2 = 2q^2 $$
+
+$$ 4k^2 = 2q^2 $$
+
+En divisant par 2 :
+
+$$ 2k^2 = q^2 $$
+
+Cette équation montre que $q^2$ est pair, et donc que $q$ doit aussi être pair.
+
+**Conclusion :**
+
+Nous avons montré que $p$ est pair et que $q$ est pair. Ils ont donc un diviseur commun (2). Cela contredit l'hypothèse initiale selon laquelle la fraction $\frac{p}{q}$ était irréductible.
+
+L'hypothèse de départ est donc fausse : $\sqrt{2}$ n'est pas rationnel.
+
+</details>
+
+---
+
+#### Récurrence : Somme des premiers entiers
+
+Montrer par récurrence que pour tout $n \in \mathbb{N}^*$ (entier naturel non nul) :
+
+$$ \sum_{k=1}^n k = 1 + 2 + \dots + n = \frac{n(n+1)}{2} $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Suivez les deux étapes du raisonnement par récurrence :
+
+1. **Initialisation** : Vérifiez la formule pour $n=1$.
+2. **Hérédité** : Supposez que la formule est vraie pour un certain entier $k$. Montrez qu'elle reste vraie pour $k+1$.
+
+Lors de l'étape d'hérédité, écrivez la somme pour $k+1$ comme étant la somme pour $k$ (qui vaut $\frac{k(k+1)}{2}$ par hypothèse) plus le terme $(k+1)$. Factorisez ensuite.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $P(n)$ la propriété : $\sum_{k=1}^n k = \frac{n(n+1)}{2}$.
+
+**Étape 1 : Initialisation**
+
+Pour $n=1$ :
+
+Membre de gauche : $\sum_{k=1}^1 k = 1$.
+
+Membre de droite : $\frac{1(1+1)}{2} = \frac{2}{2} = 1$.
+
+La propriété est vraie pour $n=1$.
+
+**Étape 2 : Hérédité**
+
+Supposons que pour un entier $n \ge 1$ fixé, on ait $\sum_{k=1}^n k = \frac{n(n+1)}{2}$ (Hypothèse de Récurrence - HR).
+
+Montrons que $\sum_{k=1}^{n+1} k = \frac{(n+1)(n+2)}{2}$.
+
+On décompose la somme :
+
+$$ \sum_{k=1}^{n+1} k = \left( \sum_{k=1}^n k \right) + (n+1) $$
+
+D'après l'HR, on remplace la somme par la formule :
+
+$$ = \frac{n(n+1)}{2} + (n+1) $$
+
+On factorise par $(n+1)$ :
+
+$$ = (n+1) \left[ \frac{n}{2} + 1 \right] $$
+
+$$ = (n+1) \left[ \frac{n + 2}{2} \right] $$
+
+$$ = \frac{(n+1)(n+2)}{2} $$
+
+C'est exactement la formule attendue au rang $n+1$.
+
+**Conclusion :**
+
+Par le principe de récurrence, la formule est vraie pour tout $n \ge 1$.
+
+</details>
+
+---
+
+#### Récurrence : Somme géométrique
+
+Soit $q$ un nombre réel tel que $q \neq 1$. Montrer par récurrence que pour tout $n \in \mathbb{N}$ :
+
+$$ \sum_{k=0}^n q^k = 1 + q + q^2 + \dots + q^n = \frac{1-q^{n+1}}{1-q} $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+**Initialisation** : Testez pour $n=0$. Rappelez-vous que $q^0 = 1$.
+
+**Hérédité** : Séparez le dernier terme de la somme au rang $n+1$ ($q^{n+1}$). Utilisez l'hypothèse de récurrence pour remplacer la somme jusqu'à $n$. Mettez tout au même dénominateur ($1-q$) pour simplifier l'expression.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $P(n)$ la propriété : $\sum_{k=0}^n q^k = \frac{1-q^{n+1}}{1-q}$.
+
+**Étape 1 : Initialisation**
+
+Pour $n=0$ :
+
+Gauche : $q^0 = 1$.
+
+Droite : $\frac{1-q^{0+1}}{1-q} = \frac{1-q}{1-q} = 1$.
+
+$P(0)$ est vraie.
+
+**Étape 2 : Hérédité**
+
+Supposons $P(n)$ vraie. Montrons $P(n+1)$, c'est-à-dire $\sum_{k=0}^{n+1} q^k = \frac{1-q^{n+2}}{1-q}$.
+
+$$ \sum_{k=0}^{n+1} q^k = \left( \sum_{k=0}^n q^k \right) + q^{n+1} $$
+
+Utilisons l'HR :
+
+$$ = \frac{1-q^{n+1}}{1-q} + q^{n+1} $$
+
+Mettons au même dénominateur :
+
+$$ = \frac{1-q^{n+1} + q^{n+1}(1-q)}{1-q} $$
+
+$$ = \frac{1-q^{n+1} + q^{n+1} - q^{n+2}}{1-q} $$
+
+Les termes $q^{n+1}$ s'annulent :
+
+$$ = \frac{1 - q^{n+2}}{1-q} $$
+
+La propriété est donc héréditaire.
+
+**Conclusion :**
+
+La formule est vraie pour tout $n \in \mathbb{N}$.
+
+</details>
+
+---
+
+#### Définition de la limite ($\epsilon-N$)
+
+En utilisant la définition formelle de la limite (avec $\epsilon$ et $N$), montrer que la suite $(u_n)$ définie par $u_n = \frac{2n+1}{n+1}$ converge vers $l=2$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+1.  Écrivez l'expression $|u_n - 2|$ et simplifiez-la algébriquement.
+2.  Vous devez montrer que pour tout $\epsilon > 0$, on peut rendre cette quantité plus petite que $\epsilon$ dès que $n$ est assez grand.
+3.  Cherchez une condition sur $n$ de la forme $n > \dots$ (en fonction de $\epsilon$) pour satisfaire l'inégalité.
+4.  Le rang $N$ sera la partie entière de cette valeur.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Nous devons montrer : $\forall \epsilon > 0, \exists N \in \mathbb{N}, \forall n \ge N, |u_n - 2| \le \epsilon$.
+
+**Étape 1 : Simplification de $|u_n - l|$**
+
+Calculons la différence :
+
+$$ |u_n - 2| = \left| \frac{2n+1}{n+1} - 2 \right| = \left| \frac{2n+1 - 2(n+1)}{n+1} \right| $$
+
+$$ = \left| \frac{2n+1 - 2n - 2}{n+1} \right| = \left| \frac{-1}{n+1} \right| $$
+
+Comme $n \in \mathbb{N}$, $n+1 > 0$, donc :
+
+$$ |u_n - 2| = \frac{1}{n+1} $$
+
+**Étape 2 : Recherche de $N$**
+
+Soit $\epsilon > 0$ fixé. Nous cherchons $n$ tel que :
+
+$$ \frac{1}{n+1} \le \epsilon $$
+
+En inversant l'inégalité (car tout est positif) :
+
+$$ n+1 \ge \frac{1}{\epsilon} $$
+
+$$ n \ge \frac{1}{\epsilon} - 1 $$
+
+**Étape 3 : Conclusion**
+
+Il suffit de choisir un entier $N$ supérieur ou égal à $\frac{1}{\epsilon} - 1$.
+
+Posons par exemple $N = \lfloor \frac{1}{\epsilon} \rfloor + 1$.
+
+Pour tout $n \ge N$, l'inégalité $|u_n - 2| \le \epsilon$ est vérifiée.
+
+La suite converge donc vers 2.
+
+</details>
+
+---
+
+#### Unicité de la Limite
+
+Montrer que si une suite $(u_n)$ converge, alors sa limite est unique.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez un **raisonnement par l'absurde**.
+
+Supposez que la suite converge vers deux limites distinctes $l_1$ et $l_2$ (avec $l_1 \neq l_2$).
+
+Posez $\epsilon = \frac{|l_1 - l_2|}{2}$. C'est la moitié de la distance entre les deux limites.
+
+Utilisez la définition de la convergence pour $l_1$ et $l_2$ pour trouver un rang $N$ où les termes de la suite devraient être simultanément "proches" de $l_1$ (à distance $\epsilon$) et de $l_2$ (à distance $\epsilon$).
+
+Utilisez l'inégalité triangulaire pour montrer une contradiction : les "bulles" de rayon $\epsilon$ autour de $l_1$ et $l_2$ ne se touchent pas.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Supposons que $(u_n)$ converge vers deux limites distinctes $l_1$ et $l_2$.
+
+Supposons $l_1 \neq l_2$, donc $|l_1 - l_2| > 0$.
+
+**Étape 1 : Choix de $\epsilon$**
+
+Choisissons $\epsilon = \frac{|l_1 - l_2|}{3}$ (une valeur suffisamment petite pour séparer les voisinages).
+
+**Étape 2 : Application de la définition**
+
+Comme $u_n \to l_1$, $\exists N_1, \forall n \ge N_1, |u_n - l_1| \le \epsilon$.
+
+Comme $u_n \to l_2$, $\exists N_2, \forall n \ge N_2, |u_n - l_2| \le \epsilon$.
+
+Soit $n \ge \max(N_1, N_2)$. Pour ce $n$, on a à la fois $|u_n - l_1| \le \epsilon$ et $|u_n - l_2| \le \epsilon$.
+
+**Étape 3 : Inégalité triangulaire**
+
+Évaluons la distance entre $l_1$ et $l_2$ :
+
+$$ |l_1 - l_2| = |(l_1 - u_n) + (u_n - l_2)| $$
+
+Par l'inégalité triangulaire ($|a+b| \le |a|+|b|$) :
+
+$$ |l_1 - l_2| \le |l_1 - u_n| + |u_n - l_2| $$
+
+$$ |l_1 - l_2| \le |u_n - l_1| + |u_n - l_2| $$
+
+$$ |l_1 - l_2| \le \epsilon + \epsilon = 2\epsilon $$
+
+**Étape 4 : Contradiction**
+
+Nous avons choisi $\epsilon = \frac{|l_1 - l_2|}{3}$, donc $2\epsilon = \frac{2}{3}|l_1 - l_2|$.
+
+L'inégalité précédente devient :
+
+$$ |l_1 - l_2| \le \frac{2}{3}|l_1 - l_2| $$
+
+Puisque $|l_1 - l_2| > 0$, nous pouvons diviser par ce nombre, obtenant $1 \le \frac{2}{3}$, ce qui est impossible.
+
+**Conclusion :**
+
+L'hypothèse de départ est fausse. La limite doit être unique.
+
+</details>
+
+---
+
+#### Convergence et Bornage
+
+Montrer que toute suite convergente est bornée.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Soit $(u_n)$ une suite convergeant vers $l$.
+
+Appliquez la définition de la convergence avec une valeur fixe pour $\epsilon$, par exemple $\epsilon = 1$.
+
+Cela vous donne un rang $N$ à partir duquel $|u_n - l| \le 1$. Utilisez l'inégalité triangulaire inverse pour borner $|u_n|$ pour $n \ge N$.
+
+Pour les termes avant $N$ ($u_0, u_1, \dots, u_{N-1}$), il n'y en a qu'un nombre fini. Une collection finie de nombres admet toujours un maximum.
+
+Combinez ces deux faits pour trouver une borne globale pour toute la suite.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $(u_n)$ une suite convergeant vers $l$. Nous voulons trouver un réel $M > 0$ tel que $\forall n \in \mathbb{N}, |u_n| \le M$.
+
+**Étape 1 : Comportement à l'infini (la "queue" de la suite)**
+
+Prenons $\epsilon = 1$. D'après la définition de la convergence, il existe un rang $N$ tel que :
+
+$$ \forall n \ge N, |u_n - l| \le 1 $$
+
+D'après l'inégalité triangulaire ($|a| - |b| \le |a-b|$), on a :
+
+$$ |u_n| - |l| \le |u_n - l| \le 1 $$
+
+Donc, pour tout $n \ge N$ :
+
+$$ |u_n| \le |l| + 1 $$
+
+**Étape 2 : Comportement initial (les premiers termes)**
+
+Considérons l'ensemble des termes avant le rang $N$ : $\{ |u_0|, |u_1|, \dots, |u_{N-1}| \}$.
+
+Cet ensemble est fini, il possède donc un maximum.
+
+**Étape 3 : Construction de la borne globale**
+
+Soit $M = \max(|u_0|, |u_1|, \dots, |u_{N-1}|, |l|+1)$.
+
+- Si $n < N$, alors $|u_n| \le \max(|u_0|, \dots, |u_{N-1}|) \le M$.
+- Si $n \ge N$, alors $|u_n| \le |l| + 1 \le M$.
+
+**Conclusion :**
+
+Pour tout $n \in \mathbb{N}$, $|u_n| \le M$. La suite est donc bornée.
+
+</details>
+
+---
+
+#### Divergence d'une suite oscillante
+
+En utilisant la négation de la définition de la limite, montrer que la suite $u_n = (-1)^n$ ne converge pas vers $l=1$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+La définition de "$u_n \to 1$" est : $\forall \epsilon > 0, \exists N, \forall n \ge N, |u_n - 1| \le \epsilon$.
+
+La négation est : $\exists \epsilon > 0, \forall N, \exists n \ge N, |u_n - 1| > \epsilon$.
+
+Vous devez trouver (choisir) une valeur de $\epsilon$ assez petite pour que le terme $-1$ (qui apparaît infiniment souvent dans la suite) soit "hors" de l'intervalle $[1-\epsilon, 1+\epsilon]$.
+
+Essayez $\epsilon = 1$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Nous voulons montrer que la proposition "$u_n \to 1$" est fausse.
+
+Négation à prouver : $\exists \epsilon > 0, \forall N \in \mathbb{N}, \exists n \ge N, |u_n - 1| > \epsilon$.
+
+**Étape 1 : Choix de $\epsilon$**
+
+Choisissons $\epsilon = 1$.
+
+**Étape 2 : Démonstration pour tout $N$**
+
+Soit $N \in \mathbb{N}$ un rang quelconque. Nous devons trouver un entier $n \ge N$ tel que $|u_n - 1| > 1$.
+
+La suite $(u_n)$ alterne entre $-1$ et $1$.
+
+Nous avons besoin d'un terme égal à $-1$. Les termes impairs valent $-1$.
+
+Choisissons un entier impair $n$ tel que $n \ge N$. (Par exemple $n=N$ si $N$ est impair, ou $n=N+1$ si $N$ est pair).
+
+**Étape 3 : Vérification de l'inégalité**
+
+Pour ce $n$ impair, $u_n = -1$.
+
+Calculons la distance :
+
+$$ |u_n - 1| = |-1 - 1| = |-2| = 2 $$
+
+Or, $2 > 1$ (donc $> \epsilon$).
+
+**Conclusion :**
+
+Nous avons trouvé un $\epsilon$ tel que, quel que soit le rang $N$, il existe un terme ultérieur qui sort de l'intervalle $[1-\epsilon, 1+\epsilon]$. La suite ne converge pas vers 1.
+
+</details>
+
+---
+
+#### Algèbre des Limites : Somme
+
+Soient $(u_n)$ et $(v_n)$ deux suites convergeant respectivement vers $l_1$ et $l_2$. Montrer que la suite $(u_n + v_n)$ converge vers $l_1 + l_2$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Vous devez majorer $|(u_n + v_n) - (l_1 + l_2)|$.
+
+Regroupez les termes : $|(u_n - l_1) + (v_n - l_2)|$.
+
+Utilisez l'inégalité triangulaire pour séparer la somme.
+
+Puisque vous voulez que la somme totale soit inférieure à $\epsilon$, faites en sorte que chaque partie ($|u_n - l_1|$ et $|v_n - l_2|$) soit inférieure à $\epsilon/2$ pour $n$ assez grand.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $\epsilon > 0$. Nous cherchons $N$ tel que $\forall n \ge N, |(u_n + v_n) - (l_1 + l_2)| \le \epsilon$.
+
+**Étape 1 : Inégalité triangulaire**
+
+$$ |(u_n + v_n) - (l_1 + l_2)| = |(u_n - l_1) + (v_n - l_2)| $$
+
+$$ \le |u_n - l_1| + |v_n - l_2| $$
+
+**Étape 2 : Utilisation des convergences individuelles**
+
+Puisque $u_n \to l_1$, pour $\epsilon' = \epsilon/2$, il existe $N_1$ tel que :
+
+$\forall n \ge N_1, |u_n - l_1| \le \epsilon/2$.
+
+Puisque $v_n \to l_2$, pour $\epsilon' = \epsilon/2$, il existe $N_2$ tel que :
+
+$\forall n \ge N_2, |v_n - l_2| \le \epsilon/2$.
+
+**Étape 3 : Combinaison**
+
+Posons $N = \max(N_1, N_2)$.
+
+Pour tout $n \ge N$, les deux conditions sont vérifiées simultanément.
+
+$$ |(u_n + v_n) - (l_1 + l_2)| \le |u_n - l_1| + |v_n - l_2| $$
+
+$$ \le \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon $$
+
+**Conclusion :**
+
+La suite $(u_n + v_n)$ converge vers $l_1 + l_2$.
+
+</details>
+
+---
+
+#### Algèbre des Limites : Produit par une suite bornée
+
+Soient $(u_n)$ une suite qui converge vers 0 et $(v_n)$ une suite bornée (mais pas nécessairement convergente). Montrer que la suite produit $(u_n v_n)$ converge vers 0.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Comme $(v_n)$ est bornée, il existe $M > 0$ tel que $|v_n| \le M$ pour tout $n$.
+
+Vous devez évaluer $|u_n v_n - 0| = |u_n| |v_n|$.
+
+Majorez cette expression en utilisant $M$.
+
+Puisque $u_n \to 0$, vous pouvez rendre $|u_n|$ aussi petit que vous le souhaitez (par exemple inférieur à $\epsilon/M$).
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Nous voulons montrer que $\lim (u_n v_n) = 0$. Soit $\epsilon > 0$.
+
+**Étape 1 : Utilisation de la propriété "bornée"**
+
+La suite $(v_n)$ est bornée, donc il existe un réel $M > 0$ tel que $\forall n \in \mathbb{N}, |v_n| \le M$.
+
+**Étape 2 : Majoration du produit**
+
+$$ |u_n v_n - 0| = |u_n| \cdot |v_n| \le |u_n| \cdot M $$
+
+**Étape 3 : Utilisation de la convergence de $u_n$**
+
+Puisque $u_n \to 0$, pour tout $\epsilon' > 0$, il existe un rang à partir duquel $|u_n| \le \epsilon'$.
+
+Choisissons $\epsilon' = \frac{\epsilon}{M}$.
+
+Il existe $N \in \mathbb{N}$ tel que $\forall n \ge N, |u_n| \le \frac{\epsilon}{M}$.
+
+**Étape 4 : Conclusion**
+
+Pour tout $n \ge N$ :
+
+$$ |u_n v_n| \le |u_n| M \le \frac{\epsilon}{M} \cdot M = \epsilon $$
+
+La définition de la convergence vers 0 est vérifiée.
+
+</details>

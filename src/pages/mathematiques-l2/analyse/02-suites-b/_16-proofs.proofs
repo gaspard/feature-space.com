@@ -1,0 +1,596 @@
+---
+id: c42906ee
+type: proofs
+order: 15
+title: Séries Numériques (suite) - preuves (A)
+tags:
+  - séries numériques
+  - convergence
+  - critère de Cauchy
+  - séries à termes positifs
+  - intégrales généralisées
+  - théorème d'Abel
+createdAt: '2025-10-12T17:44:18.176Z'
+level: regular
+course: Analyse
+courseId: 9c2d50b3
+chapter: Séries Numériques (suite)
+chapterId: c9bf30da
+---
+# Preuves "Séries Numériques (suite)" (A)
+
+---
+
+#### Convergence de l'intégrale de Riemann en $+\infty$
+
+Montrer que l'intégrale généralisée $\int_1^{+\infty} \frac{1}{t^\alpha} dt$ converge si et seulement si $\alpha > 1$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez la définition de l'intégrale généralisée sur un intervalle non borné : calculez l'intégrale sur un segment $[1, X]$, puis étudiez la limite de ce résultat lorsque $X$ tend vers $+\infty$.
+
+Vous devrez distinguer le cas $\alpha = 1$ des cas $\alpha \neq 1$ pour le calcul de la primitive.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $f(t) = \frac{1}{t^\alpha}$ définie sur $[1, +\infty[$. La fonction est continue sur cet intervalle.
+
+On étudie la limite $I = \lim_{X \to +\infty} \int_1^X \frac{1}{t^\alpha} dt$.
+
+**Étape 1 : Calcul de la primitive pour $\alpha \neq 1$**
+
+Si $\alpha \neq 1$, une primitive de $t^{-\alpha}$ est $\frac{t^{1-\alpha}}{1-\alpha}$.
+
+$$ \int_1^X t^{-\alpha} dt = \left[ \frac{t^{1-\alpha}}{1-\alpha} \right]_1^X = \frac{X^{1-\alpha}}{1-\alpha} - \frac{1}{1-\alpha} $$
+
+**Étape 2 : Étude de la limite pour $\alpha \neq 1$**
+
+On cherche $\lim_{X \to +\infty} X^{1-\alpha}$.
+
+*   **Si $\alpha > 1$ :** Alors $1-\alpha < 0$. On peut écrire $X^{1-\alpha} = \frac{1}{X^{\alpha-1}}$. Puisque $\alpha-1 > 0$, $\lim_{X \to +\infty} X^{1-\alpha} = 0$.
+
+    Dans ce cas, $\lim_{X \to +\infty} \int_1^X f(t)dt = 0 - \frac{1}{1-\alpha} = \frac{1}{\alpha-1}$. La limite est finie, l'intégrale **converge**.
+
+*   **Si $\alpha < 1$ :** Alors $1-\alpha > 0$.
+
+    Dans ce cas, $\lim_{X \to +\infty} X^{1-\alpha} = +\infty$. L'intégrale **diverge**.
+
+**Étape 3 : Étude du cas $\alpha = 1$**
+
+Si $\alpha = 1$, la fonction est $\frac{1}{t}$. Une primitive est $\ln(t)$.
+
+$$ \int_1^X \frac{1}{t} dt = [\ln(t)]_1^X = \ln(X) - \ln(1) = \ln(X) $$
+
+Or, $\lim_{X \to +\infty} \ln(X) = +\infty$. L'intégrale **diverge**.
+
+**Conclusion :**
+
+L'intégrale $\int_1^{+\infty} \frac{1}{t^\alpha} dt$ admet une limite finie si et seulement si $\alpha > 1$.
+
+</details>
+
+---
+
+#### Relation de Chasles pour les intégrales généralisées
+
+Soit $f$ une fonction continue par morceaux sur $[a, +\infty[$. Montrer que pour tout $c > a$, l'intégrale $\int_a^{+\infty} f(t)dt$ converge si et seulement si $\int_c^{+\infty} f(t)dt$ converge.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez la relation de Chasles sur un segment fini $[a, X]$ (où $X > c$), puis passez à la limite. Rappelez-vous que l'intégrale sur le segment fini $[a, c]$ est une constante bien définie.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $X$ un réel tel que $X > c > a$.
+
+Puisque $f$ est continue par morceaux, l'intégrale sur le segment $[a, X]$ existe. D'après la relation de Chasles pour l'intégrale de Riemann classique :
+
+$$ \int_a^X f(t)dt = \int_a^c f(t)dt + \int_c^X f(t)dt $$
+
+**Étape 1 : Passage à la limite**
+
+On cherche à faire tendre $X$ vers $+\infty$.
+
+Le terme $\int_a^c f(t)dt$ est une intégrale sur un intervalle fermé et borné d'une fonction continue par morceaux. C'est donc une constante réelle $K$ (elle ne dépend pas de $X$).
+
+L'égalité devient :
+
+$$ F(X) = K + G(X) $$
+
+où $F(X) = \int_a^X f(t)dt$ et $G(X) = \int_c^X f(t)dt$.
+
+**Étape 2 : Analyse de la convergence**
+
+*   Si $\lim_{X \to +\infty} G(X)$ existe et vaut une valeur finie $L$, alors $\lim_{X \to +\infty} F(X)$ existe et vaut $K + L$.
+*   Si $\lim_{X \to +\infty} F(X)$ existe et vaut une valeur finie $M$, alors $\lim_{X \to +\infty} G(X)$ existe et vaut $M - K$.
+
+**Conclusion :**
+
+L'existence (et la finitude) de la limite de $\int_a^X f(t)dt$ est équivalente à l'existence de la limite de $\int_c^X f(t)dt$. Les deux intégrales généralisées sont donc de même nature.
+
+</details>
+
+---
+
+#### Encadrement fondamental Série-Intégrale
+
+Soit $f$ une fonction continue, positive et décroissante sur $[1, +\infty[$.
+
+Montrer que pour tout entier $k \ge 1$ :
+
+$$ f(k+1) \le \int_k^{k+1} f(t)dt \le f(k) $$
+
+En déduire que pour tout entier $n \ge 1$ :
+
+$$ \int_1^{n+1} f(t)dt \le \sum_{k=1}^n f(k) \le f(1) + \int_1^n f(t)dt $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Pour la première inégalité, utilisez la décroissance de la fonction sur l'intervalle $[k, k+1]$ pour encadrer $f(t)$ par des constantes, puis intégrez cet encadrement.
+
+Pour la seconde partie, il faut sommer les inégalités obtenues pour $k$ allant de $1$ à $n$ (ou $n-1$). Faites attention aux indices lors de la sommation (relation de Chasles).
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Encadrement sur un intervalle unité**
+
+La fonction $f$ est décroissante sur $[1, +\infty[$.
+
+Pour tout $t \in [k, k+1]$ (avec $k$ entier), on a :
+
+$$ k \le t \le k+1 \implies f(k+1) \le f(t) \le f(k) $$
+
+En intégrant cette inégalité par rapport à $t$ sur l'intervalle $[k, k+1]$ (de longueur 1) :
+
+$$ \int_k^{k+1} f(k+1) dt \le \int_k^{k+1} f(t) dt \le \int_k^{k+1} f(k) dt $$
+
+Puisque $f(k)$ et $f(k+1)$ sont constants par rapport à $t$ :
+
+$$ f(k+1) \cdot (k+1-k) \le \int_k^{k+1} f(t) dt \le f(k) \cdot (k+1-k) $$
+
+$$ f(k+1) \le \int_k^{k+1} f(t) dt \le f(k) \quad (\star) $$
+
+**Étape 2 : Sommation pour la borne supérieure**
+
+Prenons la partie droite de l'inégalité $(\star)$ : $\int_k^{k+1} f(t) dt \le f(k)$.
+
+Sommons cette inégalité pour $k$ allant de $1$ à $n$ :
+
+$$ \sum_{k=1}^n \int_k^{k+1} f(t) dt \le \sum_{k=1}^n f(k) $$
+
+D'après la relation de Chasles, le terme de gauche est $\int_1^{n+1} f(t) dt$.
+
+Donc : $\int_1^{n+1} f(t)dt \le \sum_{k=1}^n f(k)$.
+
+**Étape 3 : Sommation pour la borne inférieure**
+
+Prenons la partie gauche de l'inégalité $(\star)$ : $f(k+1) \le \int_k^{k+1} f(t) dt$.
+
+Pour faire apparaître $\sum f(k)$, posons le changement d'indice $j = k+1$. L'inégalité devient $f(j) \le \int_{j-1}^j f(t)dt$.
+
+Sommons pour $k$ allant de $1$ à $n-1$ :
+
+$$ \sum_{k=1}^{n-1} f(k+1) \le \sum_{k=1}^{n-1} \int_k^{k+1} f(t) dt $$
+
+Le membre de gauche est $\sum_{j=2}^n f(j) = \left(\sum_{j=1}^n f(j)\right) - f(1)$.
+
+Le membre de droite est $\int_1^n f(t) dt$.
+
+Donc :
+
+$$ \sum_{k=1}^n f(k) - f(1) \le \int_1^n f(t) dt $$
+
+$$ \sum_{k=1}^n f(k) \le f(1) + \int_1^n f(t) dt $$
+
+**Conclusion :**
+
+En combinant les résultats, on obtient l'encadrement fondamental :
+
+$$ \int_1^{n+1} f(t)dt \le \sum_{k=1}^n f(k) \le f(1) + \int_1^n f(t)dt $$
+
+</details>
+
+---
+
+#### Convergence de la Série de Riemann par comparaison intégrale
+
+Montrer en utilisant le critère de comparaison série-intégrale que la série $\sum_{n=1}^\infty \frac{1}{n^\alpha}$ converge si et seulement si $\alpha > 1$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Associez la série à la fonction $f(t) = \frac{1}{t^\alpha}$. Vérifiez que les hypothèses du critère (continuité, positivité, décroissance) sont respectées.
+
+Utilisez ensuite le résultat de l'intégrale de Riemann généralisée prouvé précédemment.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $f(t) = \frac{1}{t^\alpha}$ pour $t \ge 1$.
+
+**Étape 1 : Vérification des hypothèses**
+
+*   $f$ est continue sur $[1, +\infty[$.
+*   $f$ est positive car $t > 0$.
+*   $f'(t) = -\alpha t^{-\alpha-1}$. Pour $t \ge 1$ et $\alpha \in \mathbb{R}$, le signe dépend de $\alpha$.
+    *   Si $\alpha > 0$, $f$ est strictement décroissante (hypothèse vérifiée).
+    *   Si $\alpha \le 0$, le terme général $1/n^\alpha$ ne tend pas vers 0, la série diverge grossièrement. (On se concentre donc sur le cas $\alpha > 0$ pour l'application du critère).
+
+**Étape 2 : Application du critère**
+
+Puisque $f$ est continue, positive et décroissante pour $\alpha > 0$, le critère de comparaison série-intégrale affirme que $\sum f(n)$ et $\int_1^{+\infty} f(t)dt$ sont de même nature.
+
+**Étape 3 : Conclusion via l'intégrale**
+
+Nous avons précédemment démontré que $\int_1^{+\infty} \frac{1}{t^\alpha} dt$ converge si et seulement si $\alpha > 1$.
+
+Par conséquent :
+
+*   Si $\alpha > 1$, la série $\sum \frac{1}{n^\alpha}$ converge.
+*   Si $0 < \alpha \le 1$, la série $\sum \frac{1}{n^\alpha}$ diverge.
+*   (Rappel : Si $\alpha \le 0$, divergence grossière).
+
+**Conclusion :** La série de Riemann converge si et seulement si $\alpha > 1$.
+
+</details>
+
+---
+
+#### Critère des Équivalents (Cas de la convergence)
+
+Soient $(u_n)$ et $(v_n)$ deux suites à termes strictement positifs. On suppose que $u_n \sim v_n$ quand $n \to +\infty$.
+
+Montrer que si la série $\sum v_n$ converge, alors la série $\sum u_n$ converge.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Traduisez la définition de l'équivalence $u_n \sim v_n$ : le quotient $\frac{u_n}{v_n}$ tend vers 1.
+
+Cela signifie que pour $n$ assez grand, $\frac{u_n}{v_n}$ est borné, par exemple majoré par 2.
+
+Utilisez cette majoration pour appliquer le critère de comparaison classique.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Traduction de l'équivalence**
+
+L'hypothèse $u_n \sim v_n$ signifie que $\lim_{n \to +\infty} \frac{u_n}{v_n} = 1$.
+
+Par définition de la limite, pour tout $\varepsilon > 0$, il existe un rang $N$ tel que pour tout $n \ge N$ :
+
+$$ 1 - \varepsilon \le \frac{u_n}{v_n} \le 1 + \varepsilon $$
+
+**Étape 2 : Majoration**
+
+Choisissons $\varepsilon = 1$ (ou n'importe quelle valeur positive). Il existe $N$ tel que pour $n \ge N$ :
+
+$$ \frac{u_n}{v_n} \le 1 + 1 = 2 $$
+
+Puisque $v_n > 0$, on peut multiplier l'inégalité :
+
+$$ u_n \le 2 v_n $$
+
+**Étape 3 : Comparaison**
+
+Nous savons que :
+
+1.  $0 < u_n \le 2 v_n$ pour $n \ge N$.
+2.  La série $\sum v_n$ converge par hypothèse.
+3.  Par les propriétés de linéarité, la série $\sum 2v_n$ converge également.
+
+D'après le théorème de comparaison des séries à termes positifs, si la série majorante converge ($\sum 2v_n$), alors la série majorée ($\sum u_n$) converge.
+
+**Conclusion :**
+
+Si $u_n \sim v_n$ et $\sum v_n$ converge, alors $\sum u_n$ converge.
+
+</details>
+
+---
+
+#### Critère des Équivalents (Cas de la divergence)
+
+Soient $(u_n)$ et $(v_n)$ deux suites à termes strictement positifs avec $u_n \sim v_n$.
+
+Montrer que si la série $\sum v_n$ diverge, alors la série $\sum u_n$ diverge.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez la même définition de l'équivalence que précédemment, mais intéressez-vous cette fois à la minoration de $\frac{u_n}{v_n}$ pour $n$ assez grand. Choisissez un $\varepsilon$ adéquat (par exemple $1/2$).
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Minoration via l'équivalence**
+
+Comme $\lim_{n \to +\infty} \frac{u_n}{v_n} = 1$, choisissons $\varepsilon = \frac{1}{2}$.
+
+Il existe un entier $N$ tel que pour tout $n \ge N$ :
+
+$$ 1 - \frac{1}{2} \le \frac{u_n}{v_n} $$
+
+$$ \frac{1}{2} \le \frac{u_n}{v_n} $$
+
+**Étape 2 : Comparaison**
+
+Puisque $v_n > 0$, on a :
+
+$$ \frac{1}{2} v_n \le u_n $$
+
+Nous avons les conditions suivantes :
+
+1.  $u_n \ge \frac{1}{2} v_n > 0$ pour $n \ge N$.
+2.  La série $\sum v_n$ diverge par hypothèse, donc $\sum \frac{1}{2}v_n$ diverge aussi.
+
+D'après le théorème de comparaison des séries à termes positifs, si la série minorante diverge vers $+\infty$, alors la série minorée ($\sum u_n$) diverge également.
+
+**Conclusion :**
+
+Si $u_n \sim v_n$ et $\sum v_n$ diverge, alors $\sum u_n$ diverge.
+
+</details>
+
+---
+
+#### Convergence des Séries Alternées (Critère de Leibniz)
+
+Soit une série $\sum (-1)^n b_n$ où $(b_n)$ est une suite de réels.
+
+Montrer que si $(b_n)$ est décroissante et tend vers 0, alors la série converge.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Considérez la suite des sommes partielles $S_n = \sum_{k=0}^n (-1)^k b_k$.
+
+Étudiez les deux sous-suites $(S_{2n})$ (termes pairs) et $(S_{2n+1})$ (termes impairs).
+
+Montrez que l'une est décroissante, l'autre est croissante, et que leur différence tend vers 0 (suites adjacentes).
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $S_n = \sum_{k=0}^n (-1)^k b_n$.
+
+**Étape 1 : Monotonie des sous-suites**
+
+Étudions la suite des indices pairs $(S_{2n})$ :
+
+$$ S_{2n+2} - S_{2n} = (-1)^{2n+2}b_{2n+2} + (-1)^{2n+1}b_{2n+1} = b_{2n+2} - b_{2n+1} $$
+
+Comme la suite $(b_n)$ est décroissante, $b_{2n+2} \le b_{2n+1}$, donc $S_{2n+2} - S_{2n} \le 0$.
+
+La suite $(S_{2n})$ est **décroissante**.
+
+Étudions la suite des indices impairs $(S_{2n+1})$ :
+
+$$ S_{2n+3} - S_{2n+1} = (-1)^{2n+3}b_{2n+3} + (-1)^{2n+2}b_{2n+2} = -b_{2n+3} + b_{2n+2} $$
+
+Comme $(b_n)$ est décroissante, $b_{2n+3} \le b_{2n+2}$, donc $b_{2n+2} - b_{2n+3} \ge 0$.
+
+La suite $(S_{2n+1})$ est **croissante**.
+
+**Étape 2 : Différence des suites**
+
+Calculons la différence entre les deux sous-suites :
+
+$$ S_{2n+1} - S_{2n} = (-1)^{2n+1}b_{2n+1} = -b_{2n+1} $$
+
+Par hypothèse, $\lim_{n \to +\infty} b_n = 0$, donc $\lim_{n \to +\infty} (S_{2n+1} - S_{2n}) = 0$.
+
+**Conclusion :**
+
+Les suites $(S_{2n})$ et $(S_{2n+1})$ sont adjacentes (l'une croît, l'autre décroît, leur différence tend vers 0). Elles convergent donc vers une même limite commune $S$.
+
+Comme les sommes partielles paires et impaires convergent vers $S$, la suite complète $(S_n)$ converge vers $S$. La série est convergente.
+
+</details>
+
+---
+
+#### Majoration de l'erreur pour une Série Alternée
+
+Soit $S = \sum_{n=0}^\infty (-1)^n b_n$ une série alternée satisfaisant le critère de convergence (avec $b_n \ge 0$, décroissante, vers 0).
+
+Montrer que la valeur absolue du reste $R_n = S - S_n$ est majorée par le premier terme négligé $b_{n+1}$.
+
+C'est-à-dire : $|S - S_n| \le b_{n+1}$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez le fait que les suites $(S_{2n})$ et $(S_{2n+1})$ sont adjacentes et encadrent la somme totale $S$.
+
+Visualisez ou écrivez l'inégalité : pour tout $n$, $S$ est compris entre $S_n$ et $S_{n+1}$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+D'après la preuve précédente sur le critère des séries alternées, les sommes partielles paires $(S_{2p})$ forment une suite décroissante convergeant vers $S$, et les sommes partielles impaires $(S_{2p+1})$ forment une suite croissante convergeant vers $S$.
+
+On a donc l'encadrement pour tout $p$ :
+
+$$ S_{2p+1} \le S \le S_{2p} $$
+
+**Étape 1 : Cas où $n$ est pair**
+
+Posons $n = 2p$. On a $S_{2p+1} \le S \le S_{2p}$.
+
+Donc $S - S_{2p}$ est négatif ou nul, et $S_{2p+1} - S_{2p} \le S - S_{2p} \le 0$.
+
+En valeur absolue :
+
+$$ |S - S_{2p}| = S_{2p} - S \le S_{2p} - S_{2p+1} $$
+
+Or $S_{2p+1} = S_{2p} + (-1)^{2p+1} b_{2p+1} = S_{2p} - b_{2p+1}$.
+
+Donc $S_{2p} - S_{2p+1} = b_{2p+1}$.
+
+Ainsi : $|R_n| \le b_{n+1}$.
+
+**Étape 2 : Cas où $n$ est impair**
+
+Posons $n = 2p+1$. On a $S_{n} \le S \le S_{n+1}$ (car $S_{n+1}$ est une somme paire, donc au-dessus de $S$).
+
+Donc $0 \le S - S_n \le S_{n+1} - S_n$.
+
+Or $S_{n+1} - S_n = (-1)^{n+1} b_{n+1}$. Comme $n$ est impair, $n+1$ est pair, donc $(-1)^{n+1}=1$.
+
+$S_{n+1} - S_n = b_{n+1}$.
+
+Ainsi : $|R_n| \le b_{n+1}$.
+
+**Conclusion :**
+
+Dans tous les cas, l'erreur commise en approximant la somme $S$ par la somme partielle $S_n$ est inférieure ou égale à la valeur absolue du premier terme non sommé : $|R_n| \le b_{n+1}$.
+
+</details>
+
+---
+
+#### Sommation par paquets pour une série convergente
+
+Soit $\sum u_n$ une série convergente de somme $S$.
+
+Montrer que la série obtenue en sommant les termes deux par deux, $\sum v_k$ avec $v_k = u_{2k} + u_{2k+1}$, converge également vers $S$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Exprimez les sommes partielles de la nouvelle série $V_m = \sum_{k=0}^m v_k$ en fonction des sommes partielles $S_n$ de la série originale.
+
+Montrez que la suite $(V_m)$ est une sous-suite extraite de $(S_n)$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $S_n = \sum_{i=0}^n u_i$ la suite des sommes partielles de la série initiale.
+
+Par hypothèse, $\lim_{n \to +\infty} S_n = S$.
+
+**Étape 1 : Expression des sommes partielles des paquets**
+
+Considérons la somme partielle $V_m$ de la série des paquets pour un entier $m$ :
+
+$$ V_m = \sum_{k=0}^m v_k = \sum_{k=0}^m (u_{2k} + u_{2k+1}) $$
+
+En développant la somme :
+
+$$ V_m = (u_0 + u_1) + (u_2 + u_3) + \dots + (u_{2m} + u_{2m+1}) $$
+
+On reconnaît exactement la somme partielle de la série originale jusqu'à l'indice $2m+1$.
+
+$$ V_m = S_{2m+1} $$
+
+**Étape 2 : Convergence**
+
+La suite $(V_m)_{m \ge 0}$ est donc la suite extraite $(S_{2m+1})_{m \ge 0}$ de la suite $(S_n)$.
+
+Dans un espace métrique (comme $\mathbb{R}$), si une suite converge vers une limite $S$, alors toute sous-suite extraite converge vers la même limite $S$.
+
+Comme $S_n \to S$, alors $S_{2m+1} \to S$.
+
+Donc $V_m \to S$.
+
+**Conclusion :**
+
+La série regroupée par paquets de deux converge vers la même somme que la série initiale.
+
+</details>
+
+---
+
+#### Divergence de la Série Harmonique (Preuve par l'intégrale)
+
+Montrer que la série $\sum_{n=1}^\infty \frac{1}{n}$ diverge en utilisant une comparaison avec l'intégrale de la fonction $t \mapsto 1/t$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez l'inégalité démontrée précédemment : $\sum_{k=1}^n f(k) \ge \int_1^{n+1} f(t)dt$.
+
+Appliquez-la à la fonction $f(t) = 1/t$ et calculez l'intégrale.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+Soit $f(t) = \frac{1}{t}$. Cette fonction est continue, positive et décroissante sur $[1, +\infty[$.
+
+**Étape 1 : Utilisation de la minoration**
+
+Nous avons vu dans la preuve de l'encadrement série-intégrale que :
+
+$$ \sum_{k=1}^n f(k) \ge \int_1^{n+1} f(t)dt $$
+
+En remplaçant $f(t)$ par $1/t$ :
+
+$$ S_n = \sum_{k=1}^n \frac{1}{k} \ge \int_1^{n+1} \frac{1}{t} dt $$
+
+**Étape 2 : Calcul de l'intégrale**
+
+$$ \int_1^{n+1} \frac{1}{t} dt = [\ln(t)]_1^{n+1} = \ln(n+1) - \ln(1) = \ln(n+1) $$
+
+**Étape 3 : Passage à la limite**
+
+On a donc l'inégalité :
+
+$$ S_n \ge \ln(n+1) $$
+
+Or, $\lim_{n \to +\infty} \ln(n+1) = +\infty$.
+
+Par comparaison, $\lim_{n \to +\infty} S_n = +\infty$.
+
+**Conclusion :**
+
+La série harmonique diverge vers $+\infty$.
+
+</details>

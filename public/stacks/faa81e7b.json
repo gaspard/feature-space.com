@@ -1,0 +1,301 @@
+{
+  "info": {
+    "id": "faa81e7b",
+    "title": "Chapitre 4 Séries entières - quiz (A)",
+    "type": "quiz",
+    "level": "regular",
+    "chapter": "Chapitre 4 Séries entières",
+    "course": "Mathématiques - Analyse",
+    "tags": [
+      "analyse",
+      "séries entières",
+      "rayon de convergence",
+      "développement en série entière",
+      "séries de Taylor",
+      "exponentielle complexe"
+    ],
+    "count": 10
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "faa81e7b",
+      "content": "#### Définition d'une Série Entière\n\nQuelle est la forme du terme général $u_n(z)$ d'une série entière définie par la suite de coefficients $(a_n)_{n \\in \\mathbb{N}}$ ?\n",
+      "solution": "\n\n**Réponses : [B]**\n\nUne série entière est définie comme une série de fonctions dont le terme général est un monôme $a_n z^n$, ce qui s'apparente à un polynôme de degré infini.\n\n- **A.** Ceci correspond à une somme de deux termes, pas à un produit coefficient-puissance.\n- **B.** C'est la définition exacte : une suite de scalaires multipliant les puissances successives de la variable.\n- **C.** Ceci correspondrait à une série de Laurent (puissances négatives), utilisée dans d'autres contextes.\n- **D.** Ceci est une exponentielle dépendant de la suite, ce n'est pas la forme standard d'une série entière.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $u_n(z) = a_n + z^n$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $u_n(z) = a_n z^n$",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $u_n(z) = \\frac{a_n}{z^n}$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $u_n(z) = z^{a_n}$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "stackId": "faa81e7b",
+      "content": "#### Comportement dans le Disque de Convergence\n\nSoit une série entière de rayon de convergence $R > 0$. Quelle propriété est vérifiée pour tout $z$ tel que $|z| < R$ ?\n",
+      "solution": "\n\n**Réponses : [A]**\n\nD'après le Lemme d'Abel et la définition du disque de convergence, pour tout point situé strictement à l'intérieur du disque (c'est-à-dire $|z| < R$), la série converge absolument.\n\n- **A.** C'est une propriété fondamentale du disque de convergence.\n- **B.** La divergence se produit pour $|z| > R$.\n- **C.** Si la série converge, le terme général doit tendre vers 0, pas vers l'infini.\n- **D.** À l'intérieur du disque, la convergence est toujours absolue. La convergence semi-convergente (non absolue) ne peut se produire que sur le bord $|z| = R$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** La série converge absolument.",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** La série diverge.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Le terme général tend vers l'infini.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** La série converge, mais pas absolument.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "stackId": "faa81e7b",
+      "content": "#### Calcul du Rayon (Règle de d'Alembert)\n\nConsidérons la série entière $\\sum_{n=0}^{+\\infty} n 2^n z^n$. Quel est son rayon de convergence $R$ ?\n",
+      "solution": "\n\n**Réponses : [B]**\n\nOn utilise la règle de d'Alembert sur les coefficients $a_n = n 2^n$.\n\nOn calcule la limite du quotient $\\left| \\frac{a_{n+1}}{a_n} \\right|$ :\n\n$$ \\frac{(n+1) 2^{n+1}}{n 2^n} = \\frac{n+1}{n} \\cdot \\frac{2^{n+1}}{2^n} = \\left(1 + \\frac{1}{n}\\right) \\cdot 2 \\xrightarrow{n \\to \\infty} 2 $$\n\nLa limite est $L = 2$. Le rayon de convergence est $R = \\frac{1}{L} = \\frac{1}{2}$.\n\n- **A.** Correspondrait à $L=1/2$, ce qui est l'inverse de la limite trouvée.\n- **B.** C'est la bonne réponse ($1/2$).\n- **C.** Le facteur $2^n$ influence le rayon, il n'est pas 1.\n- **D.** Cela signifierait que $L=0$, ce qui n'est pas le cas ici.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $R = 2$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $R = 1/2$",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $R = 1$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $R = +\\infty$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "stackId": "faa81e7b",
+      "content": "#### Rayon de la Série Géométrique\n\nQuel est le rayon de convergence de la série géométrique $\\sum_{n=0}^{+\\infty} z^n$ ?\n",
+      "solution": "\n\n**Réponses : [B]**\n\nLa série géométrique converge si et seulement si le module de la raison est strictement inférieur à 1 ($|z| < 1$).\n\n- **A.** Un rayon nul signifierait qu'elle ne converge qu'en 0.\n- **B.** C'est l'exemple de référence : convergence pour $|z| < 1$, divergence pour $|z| > 1$.\n- **C.** $\\pi$ n'a pas de lien ici.\n- **D.** Elle diverge pour $|z| > 1$, donc le rayon n'est pas infini.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $0$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $1$",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $\\pi$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $+\\infty$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "stackId": "faa81e7b",
+      "content": "#### Dérivation d'une Série Entière\n\nSi une série entière $\\sum a_n x^n$ a un rayon de convergence $R$, quel est le rayon de convergence de sa série dérivée $\\sum n a_n x^{n-1}$ ?\n",
+      "solution": "\n\n**Réponses : [C]**\n\nLe théorème de dérivation terme à terme des séries entières stipule que la série dérivée possède le **même** rayon de convergence que la série originale.\n\n- **A.** La dérivation ne change pas le domaine de convergence principal.\n- **B.** Faux, le rayon est conservé.\n- **C.** C'est une propriété clé : les opérations de dérivation et d'intégration conservent $R$.\n- **D.** Faux.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Le rayon devient infini.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Le rayon diminue strictement.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Le rayon reste exactement $R$.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Le rayon devient 0.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "stackId": "faa81e7b",
+      "content": "#### Lien entre Coefficients et Dérivées\n\nSoit $f(x) = \\sum_{n=0}^{+\\infty} a_n x^n$ une fonction développable en série entière sur son intervalle de convergence. Quelle formule lie les coefficients $a_n$ aux dérivées de $f$ en 0 ?\n",
+      "solution": "\n\n**Réponses : [B]**\n\nC'est la définition de la série de Taylor. L'unicité du développement en série entière implique que les coefficients sont nécessairement ceux de Taylor.\n\n- **A.** Il manque la factorielle au dénominateur.\n- **B.** C'est la formule exacte. Par exemple pour $n=2$, $f''(0) = 2 a_2$, donc $a_2 = f''(0)/2!$.\n- **C.** La factorielle est du mauvais côté (multiplication au lieu de division).\n- **D.** Cette formule n'a pas de sens mathématique général pour les séries entières.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $a_n = f^{(n)}(0)$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $a_n = \\frac{f^{(n)}(0)}{n!}$",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $a_n = n! f^{(n)}(0)$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $a_n = f(0)^n$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "stackId": "faa81e7b",
+      "content": "#### Série de l'Exponentielle\n\nQuelle est l'expression de la série entière définissant la fonction exponentielle complexe $e^z$ ?\n",
+      "solution": "\n\n**Réponses : [A]**\n\nL'exponentielle est définie par la série $\\sum \\frac{z^n}{n!}$, qui a un rayon de convergence infini.\n\n- **A.** C'est la définition correcte.\n- **B.** C'est la série géométrique ($1/(1-z)$).\n- **C.** C'est liée au logarithme ($-\\ln(1-z)$).\n- **D.** Cette série a un rayon de convergence nul (série factorielle).\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\sum_{n=0}^{+\\infty} \\frac{z^n}{n!}$",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\sum_{n=0}^{+\\infty} z^n$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $\\sum_{n=0}^{+\\infty} \\frac{z^n}{n}$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $\\sum_{n=0}^{+\\infty} n! z^n$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "stackId": "faa81e7b",
+      "content": "#### Formule d'Euler\n\nQuelle est la relation correcte liant l'exponentielle complexe et les fonctions trigonométriques pour $x \\in \\mathbb{R}$ ?\n",
+      "solution": "\n\n**Réponses : [C]**\n\nLa formule d'Euler stipule que $e^{ix} = \\cos(x) + i\\sin(x)$. C'est le fondement de la notation complexe en trigonométrie.\n\n- **A.** La partie imaginaire est manquante ou incorrecte.\n- **B.** Les parties réelle et imaginaire sont inversées.\n- **C.** C'est la formule d'Euler correcte.\n- **D.** Ceci confond l'exponentielle réelle $e^x$ avec l'exponentielle imaginaire $e^{ix}$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $e^{ix} = \\cos(x) - \\sin(x)$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $e^{ix} = \\sin(x) + i\\cos(x)$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $e^{ix} = \\cos(x) + i\\sin(x)$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $e^{x} = \\cos(x) + i\\sin(x)$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "stackId": "faa81e7b",
+      "content": "#### Rayon de Convergence d'une Somme\n\nSoient deux séries entières de rayons de convergence respectifs $R_a$ et $R_b$. Si $R_a \\neq R_b$, quel est le rayon de convergence $R$ de leur somme ?\n",
+      "solution": "\n\n**Réponses : [C]**\n\nLe rayon de convergence d'une somme est au moins égal au minimum des deux rayons : $R \\geq \\min(R_a, R_b)$. Dans le cas où les rayons sont distincts ($R_a \\neq R_b$), l'égalité est stricte : $R = \\min(R_a, R_b)$, car la série ayant le plus petit rayon diverge là où l'autre converge.\n\n- **A.** Les rayons ne s'additionnent pas.\n- **B.** Le rayon est limité par la série \"la moins convergente\", donc le min, pas le max.\n- **C.** C'est la bonne réponse (dans le cas $R_a \\neq R_b$).\n- **D.** Le produit des rayons n'est pas pertinent ici.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $R = R_a + R_b$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $R = \\max(R_a, R_b)$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $R = \\min(R_a, R_b)$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $R = R_a R_b$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "stackId": "faa81e7b",
+      "content": "#### Condition de Développabilité (Fonction Plate)\n\nLa fonction $f(t) = e^{-1/t^2}$ (prolongée par 0 en 0) est indéfiniment dérivable ($C^\\infty$) sur $\\mathbb{R}$. Est-elle développable en série entière au voisinage de 0 ?\n",
+      "solution": "\n\n**Réponses : [C]**\n\nC'est un contre-exemple classique. Toutes les dérivées de cette fonction en 0 sont nulles ($f^{(n)}(0) = 0$). Sa série de Taylor est donc la série nulle ($0+0x+0x^2...$), qui converge vers 0. Or, la fonction $f(t)$ n'est pas nulle au voisinage de 0. Elle n'est donc pas égale à sa série de Taylor.\n\n- **A.** Être $C^\\infty$ est une condition nécessaire, mais pas suffisante.\n- **B.** La continuité ne suffit pas.\n- **C.** C'est l'explication correcte : la série de Taylor converge, mais pas vers la fonction.\n- **D.** Elle est prolongeable par continuité en 0, donc définie.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Oui, car elle est $C^\\infty$.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Oui, car elle est continue.",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** Non, car ses dérivées en 0 sont nulles mais la fonction n'est pas nulle.",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** Non, car elle n'est pas définie en 0.",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

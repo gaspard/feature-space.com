@@ -1,0 +1,277 @@
+---
+id: ec1cf9ef
+type: quiz
+order: 13
+title: Chapitre 5 Séries de Fourier - quiz (A)
+tags:
+  - Séries de Fourier
+  - Analyse
+  - Séries trigonométriques
+  - Théorème de Dirichlet
+  - Théorème de Parseval
+createdAt: '2025-12-27T05:31:47.061Z'
+level: regular
+course: Analyse
+courseId: aed2b890
+chapter: Chapitre 5 Séries de Fourier
+chapterId: 5a588ba0
+---
+# Quiz: Chapitre 5 Séries de Fourier
+
+---
+
+#### Forme Trigonométrique de la Série
+
+Quelle est l'expression générale correcte d'une série de Fourier $S(t)$ sous forme trigonométrique pour une fonction $2\pi$-périodique ?
+
+- [x] **A)** $S(t) = a_0 + \sum_{n=1}^{+\infty} (a_n \cos(nt) + b_n \sin(nt))$
+- [ ] **B)** $S(t) = \sum_{n=0}^{+\infty} (a_n \cos(nt) + b_n \sin(nt))$
+- [ ] **C)** $S(t) = a_0 + \sum_{n=1}^{+\infty} (a_n \cos(nt) - b_n \sin(nt))$
+- [ ] **D)** $S(t) = \sum_{n=-\infty}^{+\infty} c_n e^{int}$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [x] A**
+
+La forme trigonométrique classique décompose la fonction en une somme d'un terme constant et d'harmoniques cosinus et sinus.
+
+- **A.** C'est la définition exacte donnée dans le cours. Le terme $a_0$ est séparé car il correspond à $n=0$ (moyenne), et la somme commence à $n=1$.
+- **B.** Cette option est incorrecte car elle intègre le terme $n=0$ dans la somme générale, or $\sin(0)=0$ mais $b_0$ n'est généralement pas défini de la même manière ou est nul, et surtout cela rendrait la notation confuse par rapport à la convention standard où $a_0$ est à part.
+- **C.** Le signe standard devant $b_n$ est positif (+). Changer le signe modifierait la définition des coefficients $b_n$.
+- **D.** Ceci est la **forme exponentielle** de la série de Fourier, pas la forme trigonométrique.
+
+</details>
+
+---
+
+#### Calcul du Terme Constant
+
+Que représente le coefficient $a_0$ dans la décomposition en série de Fourier d'une fonction $f$ $2\pi$-périodique et comment se calcule-t-il ?
+
+- [ ] **A)** Il représente l'amplitude de la fondamentale : $a_0 = \int_{-\pi}^{\pi} f(t) dt$
+- [x] **B)** Il représente la valeur moyenne du signal : $a_0 = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t) dt$
+- [ ] **C)** Il représente la valeur moyenne du signal : $a_0 = \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) dt$
+- [ ] **D)** Il est toujours nul pour les fonctions périodiques.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [x] B**
+
+Le terme $a_0$ correspond à la composante continue ou valeur moyenne de la fonction sur une période.
+
+- **B.** La formule de la moyenne sur un intervalle de longueur $2\pi$ est bien l'intégrale divisée par la longueur de l'intervalle ($2\pi$). C'est la relation d'Euler pour $n=0$ (ou $c_0$).
+- **A.** Il manque le facteur de division pour obtenir une moyenne. Sans division, c'est l'aire sous la courbe, qui dépend de la largeur de la période.
+- **C.** Cette formule (division par $\pi$) est celle utilisée pour les coefficients $a_n$ ($n \ge 1$), pas pour $a_0$. Utiliser cette formule doublerait la valeur moyenne.
+- **D.** C'est faux. $a_0$ n'est nul que si la fonction a une moyenne nulle (par exemple un signal purement alternatif comme $\sin(t)$), mais ce n'est pas le cas général (ex: $f(t) = \cos(t) + 2$ a pour moyenne 2).
+
+</details>
+
+---
+
+#### Relations d'Euler (Coefficients complexes)
+
+Quelle est la relation correcte liant le coefficient complexe $c_n$ (pour $n \ge 1$) aux coefficients réels $a_n$ et $b_n$ ?
+
+- [ ] **A)** $c_n = a_n + i b_n$
+- [ ] **B)** $c_n = \sqrt{a_n^2 + b_n^2}$
+- [x] **C)** $c_n = \frac{a_n - i b_n}{2}$
+- [ ] **D)** $c_n = \frac{a_n + i b_n}{2}$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [x] C**
+
+Cette relation découle des formules d'Euler exprimant $\cos(nt)$ et $\sin(nt)$ en fonction des exponentielles complexes $e^{int}$ et $e^{-int}$.
+
+- **C.** C'est la formule correcte. En identifiant les termes dans la forme exponentielle et trigonométrique, on trouve $c_n = (a_n - i b_n)/2$ et $c_{-n} = (a_n + i b_n)/2$.
+- **A.** Il manque le facteur $1/2$ et le signe est incorrect pour $c_n$ (cette forme ressemble plus à $2c_{-n}$).
+- **B.** Ceci représente le module du coefficient complexe (à un facteur près), lié à l'amplitude de l'harmonique, mais ce n'est pas l'expression du coefficient lui-même.
+- **D.** Cette formule correspond en réalité à $c_{-n}$ (le coefficient pour la fréquence négative).
+
+</details>
+
+---
+
+#### Propriété de Parité
+
+Si une fonction $f$ est **paire** sur l'intervalle $[-\pi, \pi]$ (c'est-à-dire $f(-t) = f(t)$), quelle simplification s'opère sur ses coefficients de Fourier ?
+
+- [ ] **A)** Tous les coefficients sont nuls ($a_n = 0$ et $b_n = 0$).
+- [ ] **B)** $a_n = 0$ pour tout $n$ (il ne reste que des sinus).
+- [x] **C)** $b_n = 0$ pour tout $n$ (il ne reste que des cosinus).
+- [ ] **D)** $a_0 = 0$ (la moyenne est nulle).
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [x] C**
+
+Une fonction paire est symétrique par rapport à l'axe des ordonnées.
+
+- **C.** La série de Fourier d'une fonction paire ne contient que des fonctions paires (les cosinus). Les termes en sinus (fonctions impaires) s'annulent car l'intégrale d'une fonction paire multipliée par une fonction impaire sur un intervalle symétrique est nulle.
+- **A.** Une fonction paire non nulle a des coefficients $a_n$ non nuls.
+- **B.** C'est la propriété pour une fonction **impaire**.
+- **D.** La parité n'implique rien sur la moyenne ($a_0$). Une fonction paire peut avoir une moyenne non nulle (ex: $f(t) = t^2$).
+
+</details>
+
+---
+
+#### Théorème de Dirichlet (Discontinuité)
+
+Soit $f$ une fonction $2\pi$-périodique et $\mathcal{C}^1$ par morceaux. Vers quelle valeur la série de Fourier converge-t-elle en un point de discontinuité $t_0$ ?
+
+- [ ] **A)** $f(t_0)$
+- [x] **B)** $\frac{f(t_0^+) + f(t_0^-)}{2}$
+- [ ] **C)** $f(t_0^+) - f(t_0^-)$
+- [ ] **D)** $0$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [x] B**
+
+Le théorème de Dirichlet assure la convergence simple de la série de Fourier.
+
+- **B.** En un point de discontinuité (un saut), la série converge vers la **demi-somme des limites à gauche et à droite** (le milieu du saut). On note souvent cette valeur régularisée $\tilde{f}(t_0)$.
+- **A.** La série ne converge vers $f(t_0)$ que si la fonction est continue en $t_0$ (ou si on a redéfini $f(t_0)$ comme étant la demi-somme). Si $f(t_0)$ est défini arbitrairement au point de saut, la série ne convergera pas forcément vers cette valeur.
+- **C.** Ceci représente la hauteur du saut, pas la valeur de convergence.
+- **D.** Il n'y a aucune raison pour que la série converge vers 0, sauf cas particulier de symétrie spécifique au point $t_0$.
+
+</details>
+
+---
+
+#### Convergence Normale
+
+Quelle condition portant sur les coefficients de Fourier assure la **convergence normale** de la série sur $\mathbb{R}$ ?
+
+- [x] **A)** La série $\sum |c_n|$ (ou $\sum (|a_n| + |b_n|)$) est convergente.
+- [ ] **B)** La suite des coefficients tend vers 0 ($\lim c_n = 0$).
+- [ ] **C)** La série des carrés $\sum |c_n|^2$ est convergente.
+- [ ] **D)** La fonction $f$ est simplement continue.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [x] A**
+
+La convergence normale est un type de convergence forte qui implique la convergence uniforme.
+
+- **A.** Par définition, une série de fonctions $\sum u_n(t)$ converge normalement si la série numérique des normes sup $\sum \|u_n\|_\infty$ converge. Pour les séries de Fourier, $\|c_n e^{int}\|_\infty = |c_n|$. Donc la convergence absolue de la série des coefficients suffit.
+- **B.** C'est une condition nécessaire mais pas suffisante. La suite harmonique $1/n$ tend vers 0 mais la série ne converge pas absolument.
+- **C.** C'est la condition de l'énergie finie (théorème de Parseval), qui est vraie pour toute fonction de carré intégrable ($L^2$), mais cela n'assure que la convergence quadratique, pas la convergence normale ou uniforme (ex: fonction créneau).
+- **D.** La continuité de $f$ ne suffit pas à assurer la convergence normale de sa série de Fourier (il existe des fonctions continues dont la série de Fourier diverge en certains points).
+
+</details>
+
+---
+
+#### Identité de Parseval
+
+Que signifie physiquement ou géométriquement l'identité de Parseval : $\frac{1}{2\pi} \int_{-\pi}^{\pi} |f(t)|^2 dt = \sum_{n=-\infty}^{+\infty} |c_n|^2$ ?
+
+- [ ] **A)** La moyenne de la fonction est égale à la somme des coefficients.
+- [x] **B)** L'énergie totale du signal est égale à la somme des énergies de ses harmoniques.
+- [ ] **C)** La fonction converge uniformément vers sa série de Fourier.
+- [ ] **D)** Les coefficients $c_n$ décroissent exponentiellement vite.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [x] B**
+
+- **B.** L'intégrale du carré du module représente l'énergie (ou la puissance moyenne) du signal sur une période. Parseval dit que cette énergie se conserve lorsqu'on passe du domaine temporel au domaine fréquentiel (somme des carrés des modules des coefficients).
+- **A.** C'est faux. La moyenne est donnée par le seul coefficient $c_0$ (ou $a_0$).
+- **C.** Parseval concerne la convergence en moyenne quadratique (norme $L^2$), pas la convergence uniforme (norme infinie).
+- **D.** Parseval ne donne pas d'information sur la vitesse de décroissance individuelle des coefficients, seulement sur la convergence de leur somme quadratique.
+
+</details>
+
+---
+
+#### Régularité et Décroissance
+
+Si la série $\sum_{n \in \mathbb{Z}} |n c_n|$ converge, que peut-on dire de la fonction somme $S(t)$ ?
+
+- [ ] **A)** Elle est discontinue.
+- [ ] **B)** Elle est de carré intégrable mais pas forcément continue.
+- [ ] **C)** Elle est constante.
+- [x] **D)** Elle est de classe $\mathcal{C}^1$ (continûment dérivable).
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [x] D**
+
+La vitesse de décroissance des coefficients est liée à la régularité (lissité) de la fonction.
+
+- **D.** Si $\sum |n c_n|$ converge, alors la série des dérivées (terme général $in c_n e^{int}$) converge normalement. D'après le théorème de dérivation terme à terme, $S(t)$ est donc dérivable et sa dérivée est continue ($C^1$).
+- **A.** Au contraire, la convergence de cette série (qui est plus forte que $\sum |c_n|$) implique la continuité.
+- **B.** La condition donnée est bien plus forte que la simple intégrabilité au carré.
+- **C.** Une fonction non constante peut très bien vérifier cette propriété (ex: $\sin(t)$ a un seul coefficient non nul, la somme converge évidemment).
+
+</details>
+
+---
+
+#### Adaptation à la Période T
+
+Pour une fonction de période $T$ (différente de $2\pi$), quel est l'argument des fonctions trigonométriques $\cos(\dots)$ dans la série de Fourier ?
+
+- [ ] **A)** $nt$
+- [x] **B)** $\frac{2\pi n t}{T}$
+- [ ] **C)** $\frac{n t}{T}$
+- [ ] **D)** $2\pi n T t$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [x] B**
+
+Il s'agit d'un changement d'échelle temporelle pour ramener la période $T$ à $2\pi$.
+
+- **B.** La pulsation fondamentale est $\omega = \frac{2\pi}{T}$. Les harmoniques sont des multiples entiers de cette pulsation : $n\omega t = \frac{2\pi n t}{T}$. Quand $t$ varie de $0$ à $T$, l'argument varie de $0$ à $2\pi n$.
+- **A.** C'est la formule pour la période standard $2\pi$.
+- **C.** Il manque le facteur $2\pi$ nécessaire pour la périodicité trigonométrique.
+- **D.** Cette formule donnerait une fréquence beaucoup trop élevée et incorrecte dimensionnellement.
+
+</details>
+
+---
+
+#### Lemme de Riemann-Lebesgue
+
+Quelle propriété fondamentale concernant le comportement asymptotique des coefficients de Fourier est énoncée par le lemme de Riemann-Lebesgue ?
+
+- [ ] **A)** $\lim_{n \to \infty} c_n = 1$
+- [ ] **B)** La série des coefficients diverge toujours.
+- [x] **C)** $\lim_{n \to \infty} c_n = 0$
+- [ ] **D)** Les coefficients $a_n$ et $b_n$ sont constants à partir d'un certain rang.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [x] C**
+
+Ce lemme est vrai pour toute fonction intégrable (continue par morceaux ici).
+
+- **C.** Les coefficients de Fourier tendent vers 0 quand $n$ tend vers l'infini (plus ou moins vite selon la régularité de la fonction). Cela traduit le fait que les oscillations très rapides s'annulent en moyenne par intégration.
+- **A.** Faux. Si la limite était 1, le terme général de la série ne tendrait pas vers 0, donc la série divergerait grossièrement.
+- **B.** Faux. La série $\sum c_n$ peut converger ou diverger, mais le lemme parle de la limite du terme général, pas de la somme.
+- **D.** C'est le cas uniquement pour les polynômes trigonométriques (sommes finies). Pour une série générale, les coefficients ne sont pas constants (sauf s'ils sont tous nuls).
+
+</details>
