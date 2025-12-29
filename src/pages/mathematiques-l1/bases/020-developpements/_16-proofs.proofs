@@ -1,0 +1,631 @@
+---
+id: 670f1416
+type: proofs
+order: 15
+title: Développements Limités - preuves (A)
+tags:
+  - développements limités
+  - analyse
+  - Taylor
+  - approximation
+  - limites
+  - mathématiques
+createdAt: '2025-12-28T12:00:00.000Z'
+level: regular
+course: Bases mathématiques
+courseId: 4e5f6a7b
+chapter: Développements Limités
+chapterId: 8b9c0d1e
+---
+# Preuves "Développements Limités" (A)
+
+---
+
+#### Unicité du développement limité
+
+Démontrer que si une fonction $f$ admet un développement limité d'ordre $n$ au voisinage de 0, alors la partie régulière $P_n$ est unique.
+
+C'est-à-dire, supposons que $f(x) = P_n(x) + o(x^n)$ et $f(x) = Q_n(x) + o(x^n)$ où $P_n$ et $Q_n$ sont des polynômes de degré au plus $n$. Prouver que $P_n = Q_n$.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Considérez la différence $D_n(x) = P_n(x) - Q_n(x)$.
+
+Écrivez cette différence en utilisant les propriétés des petits o ($o(x^n) - o(x^n) = o(x^n)$).
+
+Raisonnez par l'absurde en supposant que $D_n$ n'est pas le polynôme nul et considérez son monôme de plus bas degré $a_k x^k$. Étudiez la limite de $D_n(x)/x^k$ quand $x$ tend vers 0.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Écriture de la différence**
+
+Supposons que $f$ admette deux écritures :
+
+$$ f(x) = P_n(x) + o(x^n) $$
+
+$$ f(x) = Q_n(x) + o(x^n) $$
+
+Par soustraction, nous obtenons :
+
+$$ 0 = P_n(x) - Q_n(x) + o(x^n) - o(x^n) $$
+
+Soit $D_n(x) = P_n(x) - Q_n(x)$. Comme la différence de deux fonctions négligeables devant $x^n$ reste négligeable devant $x^n$, on a :
+
+$$ D_n(x) = o(x^n) $$
+
+**Étape 2 : Raisonnement sur les coefficients**
+
+$D_n$ est un polynôme de degré au plus $n$. Supposons que $D_n$ ne soit pas le polynôme nul.
+
+Il existe alors un terme non nul de plus bas degré $k$ (avec $0 \le k \le n$).
+
+$$ D_n(x) = a_k x^k + a_{k+1} x^{k+1} + \dots + a_m x^m $$
+
+avec $a_k \neq 0$.
+
+Divisons l'égalité $D_n(x) = o(x^n)$ par $x^k$ :
+
+$$ \frac{D_n(x)}{x^k} = a_k + a_{k+1} x + \dots + a_m x^{m-k} $$
+
+**Étape 3 : Passage à la limite**
+
+Or, on sait que $D_n(x) = o(x^n)$, ce qui implique $D_n(x) = x^n \epsilon(x)$ avec $\epsilon(x) \to 0$.
+
+$$ \frac{D_n(x)}{x^k} = x^{n-k} \epsilon(x) $$
+
+Comme $k \le n$, la limite de cette expression quand $x \to 0$ est 0.
+
+Ainsi, en passant à la limite dans l'expression polynomiale :
+
+$$ \lim_{x \to 0} (a_k + a_{k+1} x + \dots) = a_k = 0 $$
+
+Cela contredit l'hypothèse $a_k \neq 0$.
+
+**Conclusion**
+
+Le polynôme différence $D_n$ doit avoir tous ses coefficients nuls. Donc $P_n = Q_n$. La partie régulière est unique.
+
+</details>
+
+---
+
+#### Parité du développement limité
+
+Soit $f$ une fonction paire admettant un développement limité d'ordre $n$ en 0, noté $f(x) = P_n(x) + o(x^n)$.
+
+Démontrer que le polynôme $P_n$ ne contient que des monômes de degrés pairs (i.e., $P_n$ est un polynôme pair).
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez la définition de la parité : $f(x) = f(-x)$.
+
+Écrivez le DL pour $f(x)$ et le DL pour $f(-x)$ en remplaçant $x$ par $-x$ dans l'expression $P_n(x) + o(x^n)$.
+
+Utilisez ensuite l'unicité du développement limité prouvée précédemment.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Expression en $-x$**
+
+On a le DL en 0 :
+
+$$ f(x) = P_n(x) + o(x^n) $$
+
+Puisque cette égalité est vraie au voisinage de 0, elle est vraie pour $-x$. Remplaçons $x$ par $-x$ :
+
+$$ f(-x) = P_n(-x) + o((-x)^n) $$
+
+On sait que $o((-x)^n) = o((-1)^n x^n) = o(x^n)$ (le signe n'importe pas pour la négligeabilité).
+
+Donc :
+
+$$ f(-x) = P_n(-x) + o(x^n) $$
+
+**Étape 2 : Utilisation de la parité**
+
+Comme $f$ est paire, $f(x) = f(-x)$. En égalisant les deux expressions :
+
+$$ P_n(x) + o(x^n) = P_n(-x) + o(x^n) $$
+
+Cela signifie que $f$ admet $P_n(-x)$ comme partie régulière de son DL.
+
+**Étape 3 : Conclusion par unicité**
+
+D'après la propriété d'unicité du DL, la partie régulière est unique. Donc :
+
+$$ P_n(x) = P_n(-x) $$
+
+Un polynôme qui vérifie $P(x) = P(-x)$ est un polynôme pair (il ne contient que des puissances paires de $x$).
+
+En effet, si $P_n(x) = \sum a_k x^k$, alors $\sum a_k x^k = \sum a_k (-1)^k x^k$. Par identification des coefficients, pour tout $k$ impair, $a_k = -a_k$, d'où $a_k = 0$.
+
+**Conclusion**
+
+La partie régulière du DL d'une fonction paire est paire.
+
+</details>
+
+---
+
+#### Propriété de troncature
+
+Soit $f$ une fonction admettant un développement limité d'ordre $n$ en 0 :
+
+$$ f(x) = a_0 + a_1 x + \dots + a_n x^n + o(x^n) $$
+
+Démontrer que pour tout entier $p$ tel que $p < n$, $f$ admet un développement limité d'ordre $p$ donné par la troncature du polynôme :
+
+$$ f(x) = a_0 + a_1 x + \dots + a_p x^p + o(x^p) $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Il faut montrer que les termes "supplémentaires" du polynôme (de degré $p+1$ à $n$) et le reste $o(x^n)$ peuvent être regroupés dans un seul terme qui est négligeable devant $x^p$.
+
+Utilisez la propriété des puissances : si $k > p$, alors $x^k = o(x^p)$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Décomposition du polynôme**
+
+On sépare la partie régulière $P_n(x)$ en deux parties : les termes de degré $\le p$ et ceux de degré $> p$.
+
+$$ f(x) = \left( \sum_{k=0}^p a_k x^k \right) + \left( \sum_{k=p+1}^n a_k x^k \right) + o(x^n) $$
+
+**Étape 2 : Analyse de la négligeabilité**
+
+Regardons la deuxième somme. Chaque terme est de la forme $a_k x^k$ avec $k \ge p+1 > p$.
+
+On sait que si $k > p$, $\lim_{x \to 0} \frac{x^k}{x^p} = \lim_{x \to 0} x^{k-p} = 0$.
+
+Donc $x^k = o(x^p)$ pour tout $k > p$.
+
+La somme finie de termes négligeables devant $x^p$ est elle-même un $o(x^p)$.
+
+$$ \sum_{k=p+1}^n a_k x^k = o(x^p) $$
+
+**Étape 3 : Analyse du reste initial**
+
+On a le terme $o(x^n)$.
+
+Comme $n > p$, on a a fortiori $o(x^n) \subset o(x^p)$.
+
+(En effet, si une fonction est négligeable devant $x^n$, elle tend vers 0 encore plus vite que $x^p$, donc elle est négligeable devant $x^p$).
+
+**Conclusion**
+
+$$ f(x) = \left( \sum_{k=0}^p a_k x^k \right) + o(x^p) + o(x^p) $$
+
+$$ f(x) = P_p(x) + o(x^p) $$
+
+Cela prouve que l'on obtient le DL d'ordre inférieur simplement en supprimant les termes de haut degré.
+
+</details>
+
+---
+
+#### Opérations sur les "petits o" : Produit par une puissance
+
+Démontrer la règle de calcul suivante pour la notation de Landau :
+
+$$ x^p \cdot o(x^n) = o(x^{n+p}) $$
+
+pour $p$ entier naturel.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Revenez à la définition formelle du petit o.
+
+$f(x) = o(g(x))$ signifie qu'il existe une fonction $\epsilon(x)$ tendant vers 0 en 0 telle que $f(x) = \epsilon(x) g(x)$.
+
+Appliquez cela à l'expression de gauche.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Définition**
+
+Soit $u(x)$ une fonction telle que $u(x) = o(x^n)$.
+
+Par définition, il existe une fonction $\epsilon$ définie au voisinage de 0 telle que :
+
+$$ u(x) = x^n \epsilon(x) \quad \text{avec} \quad \lim_{x \to 0} \epsilon(x) = 0 $$
+
+**Étape 2 : Multiplication**
+
+Considérons le produit $v(x) = x^p \cdot u(x)$.
+
+En remplaçant $u(x)$, on obtient :
+
+$$ v(x) = x^p \cdot (x^n \epsilon(x)) = x^{p+n} \epsilon(x) $$
+
+**Étape 3 : Conclusion**
+
+L'expression obtenue est exactement de la forme $x^{N} \epsilon(x)$ avec $N = n+p$ et $\epsilon(x) \to 0$.
+
+C'est donc la définition de $o(x^{n+p})$.
+
+$$ x^p \cdot o(x^n) = o(x^{n+p}) $$
+
+</details>
+
+---
+
+#### Preuve du DL de l'exponentielle (Taylor-Young)
+
+Démontrer, en utilisant le théorème de Taylor-Young, que le développement limité de $f(x) = e^x$ à l'ordre $n$ en 0 est :
+
+$$ e^x = \sum_{k=0}^n \frac{x^k}{k!} + o(x^n) $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Rappelez l'énoncé de la formule de Taylor-Young.
+
+Calculez les dérivées successives $f^{(k)}(x)$ de la fonction exponentielle.
+
+Évaluez ces dérivées en 0.
+
+Substituez dans la formule.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Dérivées successives**
+
+Soit $f(x) = e^x$. La fonction exponentielle est de classe $\mathcal{C}^\infty$ sur $\mathbb{R}$.
+
+Calculons ses dérivées :
+
+$$ f'(x) = e^x $$
+
+$$ f''(x) = e^x $$
+
+Par récurrence, pour tout entier $k \ge 0$, la dérivée $k$-ième est :
+
+$$ f^{(k)}(x) = e^x $$
+
+**Étape 2 : Évaluation en 0**
+
+On évalue ces dérivées au point $x=0$ :
+
+$$ f^{(k)}(0) = e^0 = 1 $$
+
+Ceci est valable pour tout $k$ de 0 à $n$.
+
+**Étape 3 : Application de Taylor-Young**
+
+Le théorème de Taylor-Young énonce que :
+
+$$ f(x) = \sum_{k=0}^n \frac{f^{(k)}(0)}{k!} x^k + o(x^n) $$
+
+En remplaçant $f^{(k)}(0)$ par 1 :
+
+$$ e^x = \sum_{k=0}^n \frac{1}{k!} x^k + o(x^n) $$
+
+**Conclusion**
+
+$$ e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \dots + \frac{x^n}{n!} + o(x^n) $$
+
+</details>
+
+---
+
+#### Preuve du DL de $\cos(x)$
+
+Démontrer que le développement limité de $\cos(x)$ à l'ordre $2n$ en 0 est :
+
+$$ \cos(x) = \sum_{k=0}^n (-1)^k \frac{x^{2k}}{(2k)!} + o(x^{2n}) $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Calculez les dérivées successives de $\cos(x)$. Observez le cycle de longueur 4 : $\cos, -\sin, -\cos, \sin$.
+
+Évaluez en 0 (sachant que $\sin(0)=0$ et $\cos(0)=1$).
+
+Appliquez la formule de Taylor-Young.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Calcul des dérivées**
+
+Soit $f(x) = \cos(x)$.
+
+$f^{(0)}(x) = \cos(x)$
+
+$f^{(1)}(x) = -\sin(x)$
+
+$f^{(2)}(x) = -\cos(x)$
+
+$f^{(3)}(x) = \sin(x)$
+
+$f^{(4)}(x) = \cos(x)$
+
+Le cycle recommence.
+
+**Étape 2 : Évaluation en 0**
+
+$f^{(0)}(0) = \cos(0) = 1$
+
+$f^{(1)}(0) = -\sin(0) = 0$
+
+$f^{(2)}(0) = -1$
+
+$f^{(3)}(0) = 0$
+
+$f^{(4)}(0) = 1$
+
+Généralisation :
+
+- Si $k$ est impair ($k=2p+1$), $f^{(k)}(0) = 0$.
+- Si $k$ est pair ($k=2p$), $f^{(2p)}(0) = (-1)^p$.
+
+**Étape 3 : Formule de Taylor-Young**
+
+$$ \cos(x) = \sum_{j=0}^{2n} \frac{f^{(j)}(0)}{j!} x^j + o(x^{2n}) $$
+
+Les termes impairs sont nuls. On ne garde que les indices pairs $j=2k$.
+
+Le coefficient du terme $x^{2k}$ est $\frac{(-1)^k}{(2k)!}$.
+
+**Conclusion**
+
+$$ \cos(x) = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \dots + (-1)^n \frac{x^{2n}}{(2n)!} + o(x^{2n}) $$
+
+</details>
+
+---
+
+#### Preuve algébrique du DL de $\frac{1}{1-x}$
+
+Démontrer, sans utiliser Taylor-Young mais par une identité algébrique, que :
+
+$$ \frac{1}{1-x} = 1 + x + x^2 + \dots + x^n + o(x^n) $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez l'identité remarquable pour la somme des termes d'une suite géométrique :
+
+$$ 1 - q^{n+1} = (1-q)(1 + q + \dots + q^n) $$
+
+Isolez la somme et analysez le reste.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Identité géométrique**
+
+Pour tout $x \neq 1$, on a l'identité algébrique exacte :
+
+$$ \sum_{k=0}^n x^k = 1 + x + x^2 + \dots + x^n = \frac{1 - x^{n+1}}{1-x} $$
+
+**Étape 2 : Réécriture**
+
+On peut réécrire cette égalité pour isoler $\frac{1}{1-x}$ :
+
+$$ \frac{1}{1-x} - \frac{x^{n+1}}{1-x} = \sum_{k=0}^n x^k $$
+
+$$ \frac{1}{1-x} = \left( \sum_{k=0}^n x^k \right) + \frac{x^{n+1}}{1-x} $$
+
+**Étape 3 : Analyse du reste**
+
+Analysons le terme $R(x) = \frac{x^{n+1}}{1-x}$.
+
+On veut montrer que $R(x) = o(x^n)$, c'est-à-dire que $\frac{R(x)}{x^n} \to 0$ quand $x \to 0$.
+
+$$ \frac{R(x)}{x^n} = \frac{x^{n+1}}{x^n (1-x)} = \frac{x}{1-x} $$
+
+Quand $x \to 0$, $\frac{x}{1-x} \to 0$.
+
+Donc le terme $\frac{x^{n+1}}{1-x}$ est bien un $o(x^n)$.
+
+**Conclusion**
+
+$$ \frac{1}{1-x} = 1 + x + x^2 + \dots + x^n + o(x^n) $$
+
+</details>
+
+---
+
+#### Preuve du DL de $\ln(1+x)$ par intégration
+
+Démontrer le développement limité de $\ln(1+x)$ à l'ordre $n+1$ en utilisant le DL de $\frac{1}{1+t}$.
+
+$$ \ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \dots + (-1)^{n} \frac{x^{n+1}}{n+1} + o(x^{n+1}) $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+1.  Écrivez le DL de la dérivée $(\ln(1+x))' = \frac{1}{1+x}$. Pour cela, utilisez le résultat connu sur $\frac{1}{1-u}$ avec $u=-x$.
+2.  Intégrez terme à terme ce polynôme entre 0 et $x$.
+3.  Utilisez la propriété qu'une primitive d'un $o(t^n)$ est un $o(x^{n+1})$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : DL de la dérivée**
+
+On sait que $(\ln(1+x))' = \frac{1}{1+x}$.
+
+Le DL de $\frac{1}{1+x}$ (somme géométrique alternée) à l'ordre $n$ est :
+
+$$ \frac{1}{1+x} = 1 - x + x^2 - x^3 + \dots + (-1)^n x^n + o(x^n) $$
+
+**Étape 2 : Intégration**
+
+On intègre cette égalité entre 0 et $x$.
+
+$$ \int_0^x \frac{1}{1+t} dt = \int_0^x \left( \sum_{k=0}^n (-1)^k t^k \right) dt + \int_0^x o(t^n) dt $$
+
+Le membre de gauche donne : $[\ln(1+t)]_0^x = \ln(1+x) - \ln(1) = \ln(1+x)$.
+
+Le membre de droite (partie polynomiale) donne :
+
+$$ \sum_{k=0}^n (-1)^k \left[ \frac{t^{k+1}}{k+1} \right]_0^x = \sum_{k=0}^n (-1)^k \frac{x^{k+1}}{k+1} $$
+
+Ce qui développe en : $x - \frac{x^2}{2} + \frac{x^3}{3} - \dots$
+
+**Étape 3 : Intégration du reste**
+
+La primitive d'une fonction négligeable devant $x^n$ est négligeable devant $x^{n+1}$ (propriété d'intégration des DL).
+
+$$ \int_0^x o(t^n) dt = o(x^{n+1}) $$
+
+**Conclusion**
+
+$$ \ln(1+x) = \sum_{k=0}^n \frac{(-1)^k}{k+1} x^{k+1} + o(x^{n+1}) $$
+
+En changeant l'indice $j=k+1$, on retrouve la formule classique.
+
+</details>
+
+---
+
+#### Preuve du DL de $\arctan(x)$
+
+En utilisant le développement limité de $\frac{1}{1+u}$ et le théorème d'intégration, établir le DL de $\arctan(x)$ à l'ordre 3.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Rappelez que $\arctan'(x) = \frac{1}{1+x^2}$.
+
+Posez $u = x^2$ pour trouver le DL de la dérivée.
+
+Intégrez le résultat. N'oubliez pas la constante d'intégration $\arctan(0)$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : DL de la dérivée**
+
+La dérivée est $f'(x) = \frac{1}{1+x^2}$.
+
+On utilise le DL usuel de $\frac{1}{1+u}$ en 0 à l'ordre 1 (car $u=x^2$, cela donnera de l'ordre 2 en $x$) :
+
+$$ \frac{1}{1+u} = 1 - u + o(u) $$
+
+En posant $u = x^2$ (qui tend vers 0) :
+
+$$ \frac{1}{1+x^2} = 1 - x^2 + o(x^2) $$
+
+**Étape 2 : Intégration**
+
+On intègre l'égalité :
+
+$$ \arctan(x) - \arctan(0) = \int_0^x (1 - t^2 + o(t^2)) dt $$
+
+Comme $\arctan(0) = 0$ :
+
+$$ \arctan(x) = [t - \frac{t^3}{3}]_0^x + \int_0^x o(t^2) dt $$
+
+**Étape 3 : Conclusion**
+
+L'intégrale du reste $o(t^2)$ devient $o(x^3)$.
+
+$$ \arctan(x) = x - \frac{x^3}{3} + o(x^3) $$
+
+*(Note : On remarque qu'il n'y a pas de terme en $x^2$ dans le résultat final, ce qui est cohérent car $\arctan$ est une fonction impaire).*
+
+</details>
+
+---
+
+#### Application au calcul de limite
+
+Démontrer que :
+
+$$ \lim_{x \to 0} \frac{e^x - 1 - x}{x^2} = \frac{1}{2} $$
+
+en utilisant un développement limité approprié.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Écrivez le développement limité de $e^x$ à l'ordre 2.
+
+Injectez-le dans le numérateur.
+
+Simplifiez l'expression et calculez la limite du reste.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : DL de $e^x$**
+
+On utilise le DL de l'exponentielle à l'ordre 2 en 0 :
+
+$$ e^x = 1 + x + \frac{x^2}{2} + o(x^2) $$
+
+**Étape 2 : Substitution dans le quotient**
+
+Substituons cette expression dans la fraction :
+
+$$ \frac{e^x - 1 - x}{x^2} = \frac{(1 + x + \frac{x^2}{2} + o(x^2)) - 1 - x}{x^2} $$
+
+Les termes constants et en $x$ s'annulent :
+
+$$ = \frac{\frac{x^2}{2} + o(x^2)}{x^2} $$
+
+**Étape 3 : Simplification et limite**
+
+On divise chaque terme par $x^2$ :
+
+$$ = \frac{1}{2} + \frac{o(x^2)}{x^2} $$
+
+Par définition du petit o, $\lim_{x \to 0} \frac{o(x^2)}{x^2} = 0$.
+
+**Conclusion**
+
+$$ \lim_{x \to 0} \left( \frac{1}{2} + \epsilon(x) \right) = \frac{1}{2} $$
+
+</details>

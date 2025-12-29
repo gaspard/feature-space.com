@@ -2,7 +2,7 @@
 id: b3f79c7a
 type: concepts
 order: 10
-title: Chapitre 5 Séries de Fourier - concepts (A)
+title: Séries de Fourier - concepts (A)
 tags:
   - Séries de Fourier
   - Analyse
@@ -11,12 +11,12 @@ tags:
   - Théorème de Parseval
 course: Analyse
 courseId: aed2b890
-chapter: Chapitre 5 Séries de Fourier
+chapter: Séries de Fourier
 chapterId: 5a588ba0
 level: regular
 createdAt: '2025-12-27T05:31:47.061Z'
 ---
-# Chapitre 5 Séries de Fourier
+# Séries de Fourier
 
 ---
 

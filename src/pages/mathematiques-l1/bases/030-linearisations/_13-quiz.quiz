@@ -1,0 +1,273 @@
+---
+id: b22c7a59
+type: quiz
+order: 13
+title: Linéarisations - quiz (A)
+tags:
+  - trigonométrie
+  - linéarisation
+  - hyperbolique
+  - formules
+  - mathématiques
+createdAt: '2025-12-28T00:00:00.000Z'
+level: regular
+course: Bases mathématiques
+courseId: 4e5f6a7b
+chapter: Linéarisations
+chapterId: 8b9c0d1e
+---
+# Quiz: Linéarisations et Trigonométrie
+
+---
+
+#### Formule d'addition du cosinus
+
+Quelle est la formule correcte pour développer $\cos(a + b)$ ?
+
+- [ ] **A)** $\cos(a)\cos(b) + \sin(a)\sin(b)$
+- [ ] **B)** $\sin(a)\cos(b) + \cos(a)\sin(b)$
+- [x] **C)** $\cos(a)\cos(b) - \sin(a)\sin(b)$
+- [ ] **D)** $\cos(a) + \cos(b)$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+La formule d'addition pour le cosinus transforme une somme d'angles en un produit de cosinus moins un produit de sinus.
+
+- **A.** Incorrect. C'est la formule pour $\cos(a - b)$. Notez que pour le cosinus, le signe s'inverse (plus devient moins).
+- **B.** Incorrect. C'est la formule pour $\sin(a + b)$. Le cosinus ne mélange pas les sinus et cosinus dans ses produits (c'est "cos cos - sin sin").
+- **C.** Correct. C'est la formule fondamentale d'addition : $\cos(a + b) = \cos(a)\cos(b) - \sin(a)\sin(b)$.
+- **D.** Incorrect. C'est une erreur classique de linéarité. Le cosinus n'est pas une fonction linéaire ($\cos(a+b) \neq \cos(a) + \cos(b)$).
+
+</details>
+
+---
+
+#### Formules de duplication du cosinus
+
+Parmi les expressions suivantes, lesquelles sont égales à $\cos(2a)$ ? (Plusieurs réponses possibles)
+
+- [x] **A)** $\cos^2(a) - \sin^2(a)$
+- [x] **B)** $2\cos^2(a) - 1$
+- [x] **C)** $1 - 2\sin^2(a)$
+- [ ] **D)** $2\sin(a)\cos(a)$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponses : [A, B, C]**
+
+Le cosinus de l'angle double possède trois formes équivalentes très utiles.
+
+- **A.** Correct. C'est la forme directe obtenue en posant $b=a$ dans la formule d'addition : $\cos(a+a) = \cos(a)\cos(a) - \sin(a)\sin(a)$.
+- **B.** Correct. Obtenue en remplaçant $\sin^2(a)$ par $1-\cos^2(a)$. Utile pour exprimer $\cos(2a)$ en fonction de $\cos(a)$ uniquement.
+- **C.** Correct. Obtenue en remplaçant $\cos^2(a)$ par $1-\sin^2(a)$. Utile pour exprimer $\cos(2a)$ en fonction de $\sin(a)$ uniquement.
+- **D.** Incorrect. C'est la formule de duplication pour le sinus : $\sin(2a)$.
+
+</details>
+
+---
+
+#### Objectif de la linéarisation
+
+Quel est l'objectif principal de la "linéarisation" en trigonométrie ?
+
+- [ ] **A)** Transformer une somme de fonctions trigonométriques en un produit.
+- [x] **B)** Transformer des produits ou des puissances de cosinus/sinus en sommes de termes du premier degré.
+- [ ] **C)** Calculer la dérivée d'une fonction composée.
+- [ ] **D)** Remplacer les cosinus par des sinus pour simplifier les équations.
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+- **A.** Incorrect. Transformer une somme en produit s'appelle la "factorisation" (ou transformation somme-produit).
+- **B.** Correct. La linéarisation vise à éliminer les exposants (comme $\cos^2 x$) et les produits (comme $\cos x \sin x$) pour obtenir une somme simple de termes de la forme $A\cos(kx)$ ou $B\sin(kx)$. C'est crucial pour le calcul d'intégrales.
+- **C.** Incorrect. Bien que la linéarisation puisse aider avant de dériver ou intégrer, ce n'est pas une méthode de dérivation en soi.
+- **D.** Incorrect. Ce n'est pas l'objectif principal, bien que l'on passe souvent de l'un à l'autre.
+
+</details>
+
+---
+
+#### Linéarisation du carré
+
+Quelle formule permet de linéariser $\sin^2(x)$ ?
+
+- [ ] **A)** $\frac{1 + \cos(2x)}{2}$
+- [ ] **B)** $2\sin(x)\cos(x)$
+- [x] **C)** $\frac{1 - \cos(2x)}{2}$
+- [ ] **D)** $1 - \cos^2(x)$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+Cette formule est issue de la formule de duplication $\cos(2x) = 1 - 2\sin^2(x)$.
+
+- **A.** Incorrect. Cette formule correspond à la linéarisation de $\cos^2(x)$ (notez le signe "+").
+- **B.** Incorrect. Ceci est égal à $\sin(2x)$, ce n'est pas une expression du carré.
+- **C.** Correct. En isolant $\sin^2(x)$ dans $\cos(2x) = 1 - 2\sin^2(x)$, on obtient $\sin^2(x) = \frac{1 - \cos(2x)}{2}$.
+- **D.** Incorrect. C'est l'identité fondamentale ($\sin^2 + \cos^2 = 1$). Bien que vraie, elle ne "linéarise" pas car il reste un terme au carré ($\cos^2(x)$).
+
+</details>
+
+---
+
+#### Transformation Produit en Somme
+
+Quelle est la formule de linéarisation pour le produit $\cos(a)\cos(b)$ ?
+
+- [x] **A)** $\frac{1}{2}[\cos(a+b) + \cos(a-b)]$
+- [ ] **B)** $\frac{1}{2}[\cos(a-b) - \cos(a+b)]$
+- [ ] **C)** $\cos(a+b) + \cos(a-b)$
+- [ ] **D)** $\frac{1}{2}[\sin(a+b) + \sin(a-b)]$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+Cette formule permet de transformer un produit de cosinus en une somme.
+
+- **A.** Correct. On additionne les formules de $\cos(a+b)$ et $\cos(a-b)$ : les termes en sinus s'annulent, il reste $2\cos(a)\cos(b)$, que l'on divise par 2.
+- **B.** Incorrect. Cette formule correspond à $\sin(a)\sin(b)$.
+- **C.** Incorrect. Il manque le facteur $\frac{1}{2}$. $\cos(a+b) + \cos(a-b) = 2\cos(a)\cos(b)$.
+- **D.** Incorrect. Cette formule correspond au produit mixte $\sin(a)\cos(b)$.
+
+</details>
+
+---
+
+#### Définition du Cosinus Hyperbolique
+
+Comment définit-on la fonction $\cosh(x)$ à l'aide de la fonction exponentielle ?
+
+- [ ] **A)** $\frac{e^x - e^{-x}}{2}$
+- [x] **B)** $\frac{e^x + e^{-x}}{2}$
+- [ ] **C)** $\frac{e^{ix} + e^{-ix}}{2}$
+- [ ] **D)** $e^x + e^{-x}$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+- **A.** Incorrect. C'est la définition du sinus hyperbolique, $\sinh(x)$.
+- **B.** Correct. Le cosinus hyperbolique est la partie paire de l'exponentielle : $\cosh(x) = \frac{e^x + e^{-x}}{2}$.
+- **C.** Incorrect. C'est la formule d'Euler pour le cosinus trigonométrique classique ($\cos x$), qui utilise des complexes ($i$).
+- **D.** Incorrect. Il manque la division par 2.
+
+</details>
+
+---
+
+#### Relation fondamentale hyperbolique
+
+Quelle est la relation fondamentale qui lie $\cosh(x)$ et $\sinh(x)$ ?
+
+- [ ] **A)** $\cosh^2(x) + \sinh^2(x) = 1$
+- [x] **B)** $\cosh^2(x) - \sinh^2(x) = 1$
+- [ ] **C)** $\sinh^2(x) - \cosh^2(x) = 1$
+- [ ] **D)** $\cosh(x) - \sinh(x) = 1$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [B]**
+
+Les fonctions hyperboliques paramètrent une hyperbole d'équation $x^2 - y^2 = 1$.
+
+- **A.** Incorrect. C'est la relation pour la trigonométrie circulaire ($\cos^2 + \sin^2 = 1$). En hyperbolique, $\cosh^2(x) + \sinh^2(x) = \cosh(2x)$.
+- **B.** Correct. Pour tout réel $x$, $\cosh^2(x) - \sinh^2(x) = 1$.
+- **C.** Incorrect. Le signe est inversé. Comme $\cosh(x) \geq 1$ et $\sinh(0)=0$, $\sinh^2 - \cosh^2$ serait négatif.
+- **D.** Incorrect. $\cosh(x) - \sinh(x) = e^{-x}$, ce n'est pas égal à 1 (sauf si $x=0$).
+
+</details>
+
+---
+
+#### Formules d'Euler (Sinus)
+
+Selon les formules d'Euler, comment s'écrit $\sin(x)$ ?
+
+- [ ] **A)** $\frac{e^{ix} + e^{-ix}}{2}$
+- [ ] **B)** $\frac{e^{ix} - e^{-ix}}{2}$
+- [ ] **C)** $\frac{e^{ix} + e^{-ix}}{2i}$
+- [x] **D)** $\frac{e^{ix} - e^{-ix}}{2i}$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [D]**
+
+- **A.** Incorrect. C'est la formule pour $\cos(x)$.
+- **B.** Incorrect. Il manque le $i$ au dénominateur. Cette expression correspondrait à $\sinh(ix)$ (à un facteur $i$ près) ou simplement n'est pas la formule du sinus réel.
+- **C.** Incorrect. Le signe est faux (c'est une soustraction pour le sinus) et c'est le cosinus qui a une addition.
+- **D.** Correct. $\sin(x) = \frac{e^{ix} - e^{-ix}}{2i}$. La présence du $2i$ au dénominateur est une différence cruciale avec la formule du cosinus ou des fonctions hyperboliques.
+
+</details>
+
+---
+
+#### Formule de Moivre
+
+Que vaut l'expression $(\cos x + i \sin x)^n$ pour un entier $n$ ?
+
+- [x] **A)** $\cos(nx) + i \sin(nx)$
+- [ ] **B)** $\cos^n(x) + i \sin^n(x)$
+- [ ] **C)** $\cos(nx) - i \sin(nx)$
+- [ ] **D)** $n(\cos x + i \sin x)$
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [A]**
+
+C'est la formule de Moivre, qui traduit le fait que l'argument d'une puissance est la somme des arguments.
+
+- **A.** Correct. $(\cos x + i \sin x)^n = (e^{ix})^n = e^{inx} = \cos(nx) + i \sin(nx)$.
+- **B.** Incorrect. On ne peut pas distribuer la puissance $n$ directement sur les termes de la somme.
+- **C.** Incorrect. Le signe reste positif (sauf si $n$ est négatif, mais la formule générale garde le "plus" lié à $nx$).
+- **D.** Incorrect. Ce n'est pas une multiplication par un scalaire.
+
+</details>
+
+---
+
+#### Application Numérique
+
+Si $\cos(x) = 0.6$ et $\sin(x) = 0.8$, que vaut $\sin(2x)$ ?
+
+- [ ] **A)** 1.4
+- [ ] **B)** 0.48
+- [x] **C)** 0.96
+- [ ] **D)** -0.28
+
+<details>
+
+<summary>Solution</summary>
+
+**Réponse : [C]**
+
+On applique la formule de duplication du sinus : $\sin(2x) = 2\sin(x)\cos(x)$.
+
+- **A.** Incorrect. Correspond à $0.6 + 0.8$.
+- **B.** Incorrect. Correspond simplement au produit $0.6 \times 0.8$ sans le facteur 2.
+- **C.** Correct. $\sin(2x) = 2 \times 0.8 \times 0.6 = 2 \times 0.48 = 0.96$.
+- **D.** Incorrect. Cette valeur correspond à $\cos(2x) = \cos^2 x - \sin^2 x = 0.36 - 0.64 = -0.28$.
+
+</details>

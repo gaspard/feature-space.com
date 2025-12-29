@@ -1,0 +1,563 @@
+---
+id: '53616377'
+type: proofs
+order: 15
+title: Linéarisations - preuves (A)
+tags:
+  - trigonométrie
+  - linéarisation
+  - hyperbolique
+  - formules
+  - mathématiques
+createdAt: '2025-12-28T00:00:00.000Z'
+level: regular
+course: Bases mathématiques
+courseId: 4e5f6a7b
+chapter: Linéarisations
+chapterId: 8b9c0d1e
+---
+# Preuves "Linéarisations" (A)
+
+---
+
+#### Formules de Duplication du Cosinus
+
+Prouver que pour tout réel $a$ :
+
+1. $\cos(2a) = \cos^2(a) - \sin^2(a)$
+2. $\cos(2a) = 2\cos^2(a) - 1$
+3. $\cos(2a) = 1 - 2\sin^2(a)$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Pour la première égalité, partez de la formule d'addition du cosinus $\cos(x+y)$ en posant $x=a$ et $y=a$.
+
+Pour les deux autres, utilisez l'identité fondamentale de la trigonométrie $\cos^2(a) + \sin^2(a) = 1$ pour substituer soit $\sin^2(a)$, soit $\cos^2(a)$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Formule d'addition**
+
+On utilise la formule d'addition connue :
+
+$$ \cos(x + y) = \cos(x)\cos(y) - \sin(x)\sin(y) $$
+
+En posant $x = a$ et $y = a$, on obtient :
+
+$$ \cos(a + a) = \cos(a)\cos(a) - \sin(a)\sin(a) $$
+
+$$ \cos(2a) = \cos^2(a) - \sin^2(a) $$
+
+**Étape 2 : Expression en fonction du cosinus**
+
+On sait que $\sin^2(a) = 1 - \cos^2(a)$. En substituant dans le résultat précédent :
+
+$$ \cos(2a) = \cos^2(a) - (1 - \cos^2(a)) $$
+
+$$ \cos(2a) = \cos^2(a) - 1 + \cos^2(a) $$
+
+$$ \cos(2a) = 2\cos^2(a) - 1 $$
+
+**Étape 3 : Expression en fonction du sinus**
+
+On repart de la première égalité et on utilise $\cos^2(a) = 1 - \sin^2(a)$ :
+
+$$ \cos(2a) = (1 - \sin^2(a)) - \sin^2(a) $$
+
+$$ \cos(2a) = 1 - 2\sin^2(a) $$
+
+**Conclusion :**
+
+Les trois formes de la duplication du cosinus sont démontrées.
+
+</details>
+
+---
+
+#### Formule d'Addition de la Tangente
+
+Prouver que pour tous réels $a, b$ tels que la tangente est définie :
+
+$$ \tan(a + b) = \frac{\tan(a) + \tan(b)}{1 - \tan(a)\tan(b)} $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Écrivez $\tan(a+b)$ comme le quotient $\frac{\sin(a+b)}{\cos(a+b)}$.
+
+Développez le numérateur et le dénominateur à l'aide des formules d'addition.
+
+Enfin, divisez le numérateur et le dénominateur par le terme $\cos(a)\cos(b)$ pour faire apparaître les tangentes.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Définition et développement**
+
+Par définition de la tangente :
+
+$$ \tan(a+b) = \frac{\sin(a+b)}{\cos(a+b)} $$
+
+En utilisant les formules d'addition pour le sinus et le cosinus :
+
+$$ \tan(a+b) = \frac{\sin(a)\cos(b) + \cos(a)\sin(b)}{\cos(a)\cos(b) - \sin(a)\sin(b)} $$
+
+**Étape 2 : Factorisation pour faire apparaître la tangente**
+
+Pour obtenir des tangentes ($\frac{\sin}{\cos}$), on divise le numérateur et le dénominateur par le produit $\cos(a)\cos(b)$ (supposé non nul) :
+
+$$ \tan(a+b) = \frac{\frac{\sin(a)\cos(b)}{\cos(a)\cos(b)} + \frac{\cos(a)\sin(b)}{\cos(a)\cos(b)}}{\frac{\cos(a)\cos(b)}{\cos(a)\cos(b)} - \frac{\sin(a)\sin(b)}{\cos(a)\cos(b)}} $$
+
+**Étape 3 : Simplification**
+
+On simplifie chaque fraction :
+
+- $\frac{\sin(a)\cos(b)}{\cos(a)\cos(b)} = \frac{\sin(a)}{\cos(a)} \cdot 1 = \tan(a)$
+- $\frac{\cos(a)\sin(b)}{\cos(a)\cos(b)} = 1 \cdot \frac{\sin(b)}{\cos(b)} = \tan(b)$
+- $\frac{\cos(a)\cos(b)}{\cos(a)\cos(b)} = 1$
+- $\frac{\sin(a)\sin(b)}{\cos(a)\cos(b)} = \frac{\sin(a)}{\cos(a)} \cdot \frac{\sin(b)}{\cos(b)} = \tan(a)\tan(b)$
+
+**Conclusion :**
+
+$$ \tan(a + b) = \frac{\tan(a) + \tan(b)}{1 - \tan(a)\tan(b)} $$
+
+</details>
+
+---
+
+#### Transformation de Produit en Somme (Linéarisation)
+
+Prouver la formule de linéarisation suivante :
+
+$$ \sin(a)\cos(b) = \frac{1}{2}[\sin(a+b) + \sin(a-b)] $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Écrivez les formules d'addition pour $\sin(a+b)$ et $\sin(a-b)$.
+
+Additionnez ces deux équations membre à membre pour éliminer l'un des termes.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Rappel des formules d'addition**
+
+Écrivons les développements de sinus pour une somme et une différence :
+
+1. $\sin(a+b) = \sin(a)\cos(b) + \cos(a)\sin(b)$
+2. $\sin(a-b) = \sin(a)\cos(b) - \cos(a)\sin(b)$
+
+**Étape 2 : Addition des équations**
+
+Additionnons les équations (1) et (2) membre à membre :
+
+$$ \sin(a+b) + \sin(a-b) = [\sin(a)\cos(b) + \cos(a)\sin(b)] + [\sin(a)\cos(b) - \cos(a)\sin(b)] $$
+
+Les termes en $\cos(a)\sin(b)$ s'annulent :
+
+$$ \sin(a+b) + \sin(a-b) = 2\sin(a)\cos(b) $$
+
+**Étape 3 : Isolement du produit**
+
+En divisant par 2, on obtient la formule recherchée :
+
+$$ \sin(a)\cos(b) = \frac{1}{2}[\sin(a+b) + \sin(a-b)] $$
+
+**Conclusion :**
+
+La formule permet de transformer un produit sinus-cosinus en une somme de sinus.
+
+</details>
+
+---
+
+#### Transformation de Somme en Produit (Factorisation)
+
+Prouver la formule de factorisation suivante :
+
+$$ \cos(p) + \cos(q) = 2 \cos\left(\frac{p+q}{2}\right) \cos\left(\frac{p-q}{2}\right) $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Cette preuve utilise un changement de variable inverse à la linéarisation.
+
+Posez $p = a + b$ et $q = a - b$.
+
+Exprimez $a$ et $b$ en fonction de $p$ et $q$, puis utilisez la formule de linéarisation de $\cos(a)\cos(b)$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Changement de variable**
+
+On cherche à exprimer $p$ et $q$ sous forme de somme et différence. Posons :
+
+$$ p = a + b $$
+
+$$ q = a - b $$
+
+En additionnant ces deux équations : $p+q = 2a \implies a = \frac{p+q}{2}$.
+
+En soustrayant la seconde à la première : $p-q = 2b \implies b = \frac{p-q}{2}$.
+
+**Étape 2 : Utilisation de la formule de linéarisation**
+
+Rappelons la formule de linéarisation pour un produit de cosinus (démontrable en additionnant $\cos(a+b)$ et $\cos(a-b)$) :
+
+$$ \cos(a+b) + \cos(a-b) = 2\cos(a)\cos(b) $$
+
+**Étape 3 : Substitution**
+
+Remplaçons $a$ et $b$ par leurs expressions en fonction de $p$ et $q$ dans l'égalité ci-dessus :
+
+- Terme de gauche : $\cos(a+b) + \cos(a-b)$ devient $\cos(p) + \cos(q)$.
+- Terme de droite : $2\cos(a)\cos(b)$ devient $2\cos\left(\frac{p+q}{2}\right)\cos\left(\frac{p-q}{2}\right)$.
+
+**Conclusion :**
+
+$$ \cos(p) + \cos(q) = 2 \cos\left(\frac{p+q}{2}\right) \cos\left(\frac{p-q}{2}\right) $$
+
+</details>
+
+---
+
+#### Relation Fondamentale Hyperbolique
+
+Prouver que pour tout réel $x$ :
+
+$$ \cosh^2(x) - \sinh^2(x) = 1 $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez les définitions exponentielles : $\cosh(x) = \frac{e^x + e^{-x}}{2}$ et $\sinh(x) = \frac{e^x - e^{-x}}{2}$.
+
+Calculez les carrés séparément, puis effectuez la soustraction. Rappelez-vous que $e^x \cdot e^{-x} = 1$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Calcul de $\cosh^2(x)$**
+
+$$ \cosh(x) = \frac{e^x + e^{-x}}{2} $$
+
+$$ \cosh^2(x) = \left(\frac{e^x + e^{-x}}{2}\right)^2 = \frac{(e^x)^2 + 2e^xe^{-x} + (e^{-x})^2}{4} = \frac{e^{2x} + 2 + e^{-2x}}{4} $$
+
+**Étape 2 : Calcul de $\sinh^2(x)$**
+
+$$ \sinh(x) = \frac{e^x - e^{-x}}{2} $$
+
+$$ \sinh^2(x) = \left(\frac{e^x - e^{-x}}{2}\right)^2 = \frac{(e^x)^2 - 2e^xe^{-x} + (e^{-x})^2}{4} = \frac{e^{2x} - 2 + e^{-2x}}{4} $$
+
+**Étape 3 : Soustraction**
+
+$$ \cosh^2(x) - \sinh^2(x) = \frac{e^{2x} + 2 + e^{-2x}}{4} - \frac{e^{2x} - 2 + e^{-2x}}{4} $$
+
+On met tout sur le même dénominateur :
+
+$$ = \frac{(e^{2x} - e^{2x}) + (2 - (-2)) + (e^{-2x} - e^{-2x})}{4} $$
+
+$$ = \frac{0 + 4 + 0}{4} = 1 $$
+
+**Conclusion :**
+
+$$ \cosh^2(x) - \sinh^2(x) = 1 $$
+
+</details>
+
+---
+
+#### Formule d'Addition du Cosinus Hyperbolique
+
+Prouver que :
+
+$$ \cosh(a+b) = \cosh(a)\cosh(b) + \sinh(a)\sinh(b) $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Développez le membre de droite (RHS) en utilisant les définitions exponentielles de $\cosh$ et $\sinh$.
+
+Effectuez les produits, simplifiez les termes croisés et comparez le résultat à la définition de $\cosh(a+b)$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Expressions exponentielles**
+
+On utilise les définitions :
+
+$\cosh(a) = \frac{e^a + e^{-a}}{2}$, $\sinh(a) = \frac{e^a - e^{-a}}{2}$ (idem pour $b$).
+
+**Étape 2 : Calcul du produit $\cosh(a)\cosh(b)$**
+
+$$ \cosh(a)\cosh(b) = \frac{e^a + e^{-a}}{2} \cdot \frac{e^b + e^{-b}}{2} = \frac{e^{a+b} + e^{a-b} + e^{-a+b} + e^{-a-b}}{4} $$
+
+**Étape 3 : Calcul du produit $\sinh(a)\sinh(b)$**
+
+$$ \sinh(a)\sinh(b) = \frac{e^a - e^{-a}}{2} \cdot \frac{e^b - e^{-b}}{2} = \frac{e^{a+b} - e^{a-b} - e^{-a+b} + e^{-a-b}}{4} $$
+
+**Étape 4 : Somme des deux produits**
+
+$$ \cosh(a)\cosh(b) + \sinh(a)\sinh(b) = \frac{(e^{a+b} + e^{a-b} + e^{-a+b} + e^{-a-b}) + (e^{a+b} - e^{a-b} - e^{-a+b} + e^{-a-b})}{4} $$
+
+Les termes mixtes $e^{a-b}$ et $e^{-a+b}$ s'annulent :
+
+$$ = \frac{2e^{a+b} + 2e^{-(a+b)}}{4} = \frac{2(e^{a+b} + e^{-(a+b)})}{4} = \frac{e^{a+b} + e^{-(a+b)}}{2} $$
+
+**Conclusion :**
+
+On reconnaît la définition de $\cosh(a+b)$.
+
+$$ \cosh(a)\cosh(b) + \sinh(a)\sinh(b) = \cosh(a+b) $$
+
+</details>
+
+---
+
+#### Parité des Fonctions Hyperboliques
+
+Prouver à partir des définitions que :
+
+1. $\cosh(-x) = \cosh(x)$ (fonction paire)
+2. $\sinh(-x) = -\sinh(x)$ (fonction impaire)
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Remplacez $x$ par $-x$ directement dans les expressions $\frac{e^x + e^{-x}}{2}$ et $\frac{e^x - e^{-x}}{2}$.
+
+Notez que $e^{-(-x)} = e^x$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Parité du cosinus hyperbolique**
+
+Par définition : $\cosh(x) = \frac{e^x + e^{-x}}{2}$.
+
+Calculons $\cosh(-x)$ :
+
+$$ \cosh(-x) = \frac{e^{(-x)} + e^{-(-x)}}{2} $$
+
+$$ \cosh(-x) = \frac{e^{-x} + e^{x}}{2} $$
+
+L'addition étant commutative, $\frac{e^{-x} + e^{x}}{2} = \frac{e^{x} + e^{-x}}{2} = \cosh(x)$.
+
+Donc $\cosh$ est paire.
+
+**Étape 2 : Imparité du sinus hyperbolique**
+
+Par définition : $\sinh(x) = \frac{e^x - e^{-x}}{2}$.
+
+Calculons $\sinh(-x)$ :
+
+$$ \sinh(-x) = \frac{e^{(-x)} - e^{-(-x)}}{2} $$
+
+$$ \sinh(-x) = \frac{e^{-x} - e^{x}}{2} $$
+
+Factorisons par $-1$ au numérateur :
+
+$$ \sinh(-x) = \frac{-(e^{x} - e^{-x})}{2} = - \left( \frac{e^{x} - e^{-x}}{2} \right) = -\sinh(x) $$
+
+Donc $\sinh$ est impaire.
+
+</details>
+
+---
+
+#### Linéarisation du Sinus Carré via Euler
+
+En utilisant les formules d'Euler, prouver que :
+
+$$ \sin^2(x) = \frac{1 - \cos(2x)}{2} $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Utilisez la formule d'Euler pour le sinus : $\sin(x) = \frac{e^{ix} - e^{-ix}}{2i}$.
+
+Élevez cette expression au carré.
+
+Attention au dénominateur : $(2i)^2 = 4i^2 = -4$.
+
+Regroupez les termes exponentiels pour faire apparaître un cosinus.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Application de la formule d'Euler**
+
+$$ \sin(x) = \frac{e^{ix} - e^{-ix}}{2i} $$
+
+**Étape 2 : Élévation au carré**
+
+$$ \sin^2(x) = \left( \frac{e^{ix} - e^{-ix}}{2i} \right)^2 = \frac{(e^{ix} - e^{-ix})^2}{(2i)^2} $$
+
+Développons le numérateur (identité remarquable $(a-b)^2$) :
+
+$$ (e^{ix} - e^{-ix})^2 = (e^{ix})^2 - 2(e^{ix})(e^{-ix}) + (e^{-ix})^2 = e^{i2x} - 2 + e^{-i2x} $$
+
+Calculons le dénominateur :
+
+$$ (2i)^2 = 4i^2 = -4 $$
+
+**Étape 3 : Simplification et regroupement**
+
+$$ \sin^2(x) = \frac{e^{i2x} - 2 + e^{-i2x}}{-4} = -\frac{1}{4}(e^{i2x} + e^{-i2x}) + \frac{2}{4} $$
+
+$$ \sin^2(x) = \frac{1}{2} - \frac{1}{2} \left( \frac{e^{i2x} + e^{-i2x}}{2} \right) $$
+
+Or, d'après la formule d'Euler pour le cosinus, $\cos(2x) = \frac{e^{i2x} + e^{-i2x}}{2}$.
+
+**Conclusion :**
+
+$$ \sin^2(x) = \frac{1}{2} - \frac{1}{2}\cos(2x) = \frac{1 - \cos(2x)}{2} $$
+
+</details>
+
+---
+
+#### Linéarisation de $\cos^3(x)$
+
+Prouver que :
+
+$$ \cos^3(x) = \frac{3}{4}\cos(x) + \frac{1}{4}\cos(3x) $$
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Partez de la formule d'Euler $\cos(x) = \frac{e^{ix} + e^{-ix}}{2}$.
+
+Élevez le tout au cube en utilisant $(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$.
+
+Regroupez les termes pour former $\cos(3x)$ et $\cos(x)$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Formule d'Euler au cube**
+
+$$ \cos^3(x) = \left(\frac{e^{ix} + e^{-ix}}{2}\right)^3 = \frac{1}{8} (e^{ix} + e^{-ix})^3 $$
+
+**Étape 2 : Développement du binôme**
+
+On utilise l'identité $(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$ avec $a=e^{ix}$ et $b=e^{-ix}$.
+
+Notez que $a \cdot b = e^{ix}e^{-ix} = 1$.
+
+$$ (e^{ix} + e^{-ix})^3 = (e^{ix})^3 + 3(e^{ix})^2(e^{-ix}) + 3(e^{ix})(e^{-ix})^2 + (e^{-ix})^3 $$
+
+$$ = e^{i3x} + 3e^{i2x}e^{-ix} + 3e^{ix}e^{-i2x} + e^{-i3x} $$
+
+$$ = e^{i3x} + 3e^{ix} + 3e^{-ix} + e^{-i3x} $$
+
+**Étape 3 : Regroupement des termes conjugués**
+
+On regroupe les termes pour faire réapparaître les formules d'Euler :
+
+$$ = (e^{i3x} + e^{-i3x}) + 3(e^{ix} + e^{-ix}) $$
+
+On substitue dans l'expression de $\cos^3(x)$ divisée par 8 :
+
+$$ \cos^3(x) = \frac{1}{8} [ (e^{i3x} + e^{-i3x}) + 3(e^{ix} + e^{-ix}) ] $$
+
+$$ \cos^3(x) = \frac{1}{4} \frac{e^{i3x} + e^{-i3x}}{2} + \frac{3}{4} \frac{e^{ix} + e^{-ix}}{2} $$
+
+**Conclusion :**
+
+On identifie les définitions de $\cos(3x)$ et $\cos(x)$ :
+
+$$ \cos^3(x) = \frac{1}{4}\cos(3x) + \frac{3}{4}\cos(x) $$
+
+</details>
+
+---
+
+#### Cohérence Euler-Trigonométrie
+
+Prouver la validité de la relation $\sin(2x) = 2\sin(x)\cos(x)$ en utilisant exclusivement les définitions exponentielles complexes.
+
+<details class="hint">
+
+<summary>Indice</summary>
+
+Calculez le produit $2 \cdot \left(\frac{e^{ix} - e^{-ix}}{2i}\right) \cdot \left(\frac{e^{ix} + e^{-ix}}{2}\right)$.
+
+Développez le numérateur (identité remarquable $(a-b)(a+b)$) et simplifiez.
+
+Comparez le résultat à la définition exponentielle de $\sin(2x)$.
+
+</details>
+
+<details>
+
+<summary>Solution</summary>
+
+**Étape 1 : Écriture du produit avec Euler**
+
+On cherche à calculer le terme de droite $2\sin(x)\cos(x)$ :
+
+$$ 2 \sin(x) \cos(x) = 2 \cdot \left( \frac{e^{ix} - e^{-ix}}{2i} \right) \cdot \left( \frac{e^{ix} + e^{-ix}}{2} \right) $$
+
+**Étape 2 : Simplification algébrique**
+
+Le facteur $2$ au numérateur simplifie l'un des $2$ au dénominateur :
+
+$$ = \frac{(e^{ix} - e^{-ix})(e^{ix} + e^{-ix})}{2i} $$
+
+Au numérateur, on reconnaît l'identité $(a-b)(a+b) = a^2 - b^2$ :
+
+$$ (e^{ix} - e^{-ix})(e^{ix} + e^{-ix}) = (e^{ix})^2 - (e^{-ix})^2 = e^{i2x} - e^{-i2x} $$
+
+**Étape 3 : Conclusion**
+
+L'expression devient :
+
+$$ \frac{e^{i2x} - e^{-i2x}}{2i} $$
+
+Ceci correspond exactement à la définition d'Euler de $\sin(2x)$.
+
+L'égalité est donc vérifiée.
+
+</details>

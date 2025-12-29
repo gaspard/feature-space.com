@@ -1,0 +1,302 @@
+---
+id: 5fdfca3d
+type: cards
+order: 12
+title: Linéarisations - fiches de révision (A)
+tags:
+  - trigonométrie
+  - linéarisation
+  - hyperbolique
+  - formules
+  - mathématiques
+createdAt: '2025-12-28T00:00:00.000Z'
+level: regular
+course: Bases mathématiques
+courseId: 4e5f6a7b
+chapter: Linéarisations
+chapterId: 8b9c0d1e
+---
+# Fiches de révision "Linéarisations" (A)
+
+---
+
+Quelles sont les **formules d'addition** pour le cosinus et le sinus ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Les formules d'addition permettent de développer le cosinus ou le sinus d'une somme d'angles ($a+b$) ou d'une différence ($a-b$).
+
+**Cosinus :**
+
+$$ \cos(a + b) = \cos(a)\cos(b) - \sin(a)\sin(b) $$
+
+$$ \cos(a - b) = \cos(a)\cos(b) + \sin(a)\sin(b) $$
+
+*Note : Le cosinus "change" le signe (+ devient -).*
+
+**Sinus :**
+
+$$ \sin(a + b) = \sin(a)\cos(b) + \cos(a)\sin(b) $$
+
+$$ \sin(a - b) = \sin(a)\cos(b) - \cos(a)\sin(b) $$
+
+*Note : Le sinus "conserve" le signe et mélange les fonctions.*
+
+</details>
+
+---
+
+Quelle est la formule d'addition pour la **tangente** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Pour la tangente, la formule s'exprime sous forme de fraction :
+
+$$ \tan(a + b) = \frac{\tan(a) + \tan(b)}{1 - \tan(a)\tan(b)} $$
+
+**Moyen mnémotechnique :**
+
+Au numérateur, on a la "somme" des tangentes (comme le signe dans la parenthèse). Au dénominateur, le signe est opposé ($1 - \dots$).
+
+Pour la différence $\tan(a-b)$, on inverse simplement les signes :
+
+$$ \tan(a - b) = \frac{\tan(a) - \tan(b)}{1 + \tan(a)\tan(b)} $$
+
+</details>
+
+---
+
+Quelles sont les **formules de duplication** pour $\cos(2a)$ et $\sin(2a)$ ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Ces formules sont des cas particuliers des formules d'addition où $a=b$.
+
+**Pour le sinus :**
+
+$$ \sin(2a) = 2\sin(a)\cos(a) $$
+
+**Pour le cosinus (3 formes possibles) :**
+
+La forme de base :
+
+$$ \cos(2a) = \cos^2(a) - \sin^2(a) $$
+
+En utilisant $\cos^2(a) + \sin^2(a) = 1$, on obtient deux autres formes utiles :
+
+1. En fonction du cosinus uniquement : $\cos(2a) = 2\cos^2(a) - 1$
+2. En fonction du sinus uniquement : $\cos(2a) = 1 - 2\sin^2(a)$
+
+</details>
+
+---
+
+Qu'est-ce que la **linéarisation** et à quoi sert-elle ?
+
+<details>
+
+<summary>Réponse</summary>
+
+**Définition :**
+
+La linéarisation est l'opération qui consiste à transformer un **produit** ou une **puissance** de fonctions trigonométriques (comme $\cos^2(x)$ ou $\sin(x)\cos(x)$) en une **somme** de termes du premier degré (comme $\cos(2x)$, $\sin(3x)$, etc.).
+
+**Utilité principale :**
+
+Elle est essentielle pour le **calcul intégral**.
+
+Il est difficile d'intégrer directement $\int \cos^2(x) dx$, mais très facile d'intégrer sa forme linéarisée $\int \frac{1+\cos(2x)}{2} dx$.
+
+</details>
+
+---
+
+Quelles sont les formules de **linéarisation des carrés** ($\cos^2$ et $\sin^2$) ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Ces formules permettent d'abaisser le degré de 2 à 1. Elles sont issues des formules de $\cos(2a)$.
+
+**Formules :**
+
+$$ \cos^2(a) = \frac{1 + \cos(2a)}{2} $$
+
+$$ \sin^2(a) = \frac{1 - \cos(2a)}{2} $$
+
+**Détails :**
+
+* Pour le **cosinus**, on utilise un signe **plus** ($+$).
+* Pour le **sinus**, on utilise un signe **moins** ($-$).
+
+</details>
+
+---
+
+Quelles sont les formules de **linéarisation des produits** ($\cos a \cos b$, etc.) ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Ces formules transforment un produit de deux fonctions en une somme (ou différence).
+
+**Formules :**
+
+$$ \cos(a)\cos(b) = \frac{1}{2}[\cos(a+b) + \cos(a-b)] $$
+
+$$ \sin(a)\sin(b) = \frac{1}{2}[\cos(a-b) - \cos(a+b)] $$
+
+*(Attention à l'ordre dans le crochet pour le produit de sinus)*
+
+$$ \sin(a)\cos(b) = \frac{1}{2}[\sin(a+b) + \sin(a-b)] $$
+
+</details>
+
+---
+
+Quelles sont les formules de **factorisation** (transformation de somme en produit) ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La factorisation est l'opération inverse de la linéarisation. Elle est utile pour résoudre des équations type $f(x)=0$.
+
+**Formules (souvent appelées formules de Simpson) :**
+
+$$ \cos(p) + \cos(q) = 2 \cos\left(\frac{p+q}{2}\right) \cos\left(\frac{p-q}{2}\right) $$
+
+$$ \cos(p) - \cos(q) = -2 \sin\left(\frac{p+q}{2}\right) \sin\left(\frac{p-q}{2}\right) $$
+
+$$ \sin(p) + \sin(q) = 2 \sin\left(\frac{p+q}{2}\right) \cos\left(\frac{p-q}{2}\right) $$
+
+$$ \sin(p) - \sin(q) = 2 \cos\left(\frac{p+q}{2}\right) \sin\left(\frac{p-q}{2}\right) $$
+
+</details>
+
+---
+
+Comment définir les fonctions **cosinus hyperbolique** et **sinus hyperbolique** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Les fonctions hyperboliques sont définies à partir de la fonction exponentielle réelle $e^x$.
+
+**Cosinus hyperbolique ($\cosh$) :**
+
+$$ \cosh(x) = \frac{e^x + e^{-x}}{2} $$
+
+*(C'est la partie paire de l'exponentielle)*
+
+**Sinus hyperbolique ($\sinh$) :**
+
+$$ \sinh(x) = \frac{e^x - e^{-x}}{2} $$
+
+*(C'est la partie impaire de l'exponentielle)*
+
+**Note :** Elles paramètrent une hyperbole ($x^2 - y^2 = 1$).
+
+</details>
+
+---
+
+Quelle est la **relation fondamentale** de la trigonométrie hyperbolique ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Contrairement à la trigonométrie circulaire où $\cos^2 + \sin^2 = 1$, en hyperbolique on a :
+
+$$ \cosh^2(x) - \sinh^2(x) = 1 $$
+
+**Autres propriétés :**
+
+* $(\cosh x)' = \sinh x$
+* $(\sinh x)' = \cosh x$ (pas de signe moins ici)
+
+</details>
+
+---
+
+Que sont les **formules d'Euler** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+Les formules d'Euler relient la trigonométrie aux nombres complexes (exponentielle complexe). Elles sont fondamentales pour linéariser n'importe quelle puissance.
+
+**Formules :**
+
+$$ \cos(x) = \frac{e^{ix} + e^{-ix}}{2} $$
+
+$$ \sin(x) = \frac{e^{ix} - e^{-ix}}{2i} $$
+
+**Attention :**
+
+Ne pas oublier le nombre imaginaire **$i$** au dénominateur pour le sinus.
+
+</details>
+
+---
+
+Quelle est la **formule de Moivre** ?
+
+<details>
+
+<summary>Réponse</summary>
+
+La formule de Moivre permet de calculer une puissance d'un nombre complexe de module 1.
+
+Pour tout entier $n$ :
+
+$$ (\cos x + i \sin x)^n = \cos(nx) + i \sin(nx) $$
+
+**Utilisation :**
+
+Elle est souvent utilisée en combinaison avec le binôme de Newton pour exprimer $\cos(nx)$ et $\sin(nx)$ en fonction de puissances de $\cos(x)$ et $\sin(x)$.
+
+</details>
+
+---
+
+Comment **linéariser** une expression comme $\sin^3(x)$ en utilisant la méthode d'Euler ?
+
+<details>
+
+<summary>Réponse</summary>
+
+**Étapes :**
+
+1.  **Remplacer** la fonction par sa formule d'Euler :
+
+    $\sin^3(x) = \left(\frac{e^{ix} - e^{-ix}}{2i}\right)^3$
+
+2.  **Développer** le numérateur (Binôme de Newton $(a-b)^3$) :
+
+    $= \frac{1}{(2i)^3} (e^{i3x} - 3e^{i2x}e^{-ix} + 3e^{ix}e^{-i2x} - e^{-i3x})$
+
+    $= \frac{-1}{8i} (e^{i3x} - 3e^{ix} + 3e^{-ix} - e^{-i3x})$
+
+3.  **Regrouper** les termes conjugués ($e^{ikx}$ et $e^{-ikx}$) :
+
+    $= \frac{-1}{8i} [(e^{i3x} - e^{-i3x}) - 3(e^{ix} - e^{-ix})]$
+
+4.  **Reconnaître** les formules d'Euler inverses ($2i\sin(kx) = e^{ikx} - e^{-ikx}$) :
+
+    $= \frac{-1}{8i} [2i\sin(3x) - 3(2i\sin(x))]$
+
+    $= -\frac{1}{4}\sin(3x) + \frac{3}{4}\sin(x)$
+
+</details>

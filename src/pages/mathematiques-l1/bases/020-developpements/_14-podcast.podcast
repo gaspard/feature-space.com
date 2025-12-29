@@ -1,0 +1,339 @@
+---
+id: 812dc289
+type: podcast
+order: 14
+title: Développements Limités - Podcast (regular)
+tags:
+  - développements limités
+  - analyse
+  - Taylor
+  - approximation
+  - limites
+  - mathématiques
+createdAt: '2025-12-28T12:00:00.000Z'
+level: regular
+course: Bases mathématiques
+courseId: 4e5f6a7b
+chapter: Développements Limités
+chapterId: 8b9c0d1e
+duration: '[estimated duration in minutes]'
+hosts:
+  - noe
+  - alma
+  - linda
+setting: café
+---
+# Podcast: Développements Limités
+
+## Episode Overview
+
+**Duration:** 15-20 minutes
+
+**Level:** regular
+
+**Topics:** Définition des DL, Formule de Taylor-Young, Opérations, DL usuels, Applications aux limites
+
+**Setting:** Café meeting between three mathematics enthusiasts
+
+### Character Descriptions
+
+- **Noé** - Middle-aged man studying mathematics as a second education. Enthusiastic and curious, brings life experience to discussions.
+- **Alma** - 30-year-old mathematics professor. Knowledgeable, patient, and excellent at explaining complex concepts clearly.
+- **Linda** - Brilliant young mathematics student. Quick to grasp concepts and provides elegant insights and solutions.
+
+---
+
+## Podcast Script
+
+### Introduction
+
+**Noé:** [excitedly] Bonjour tout le monde ! Ah, quel plaisir de vous retrouver. L'odeur du café, la pluie contre la vitre... et des mathématiques au menu !
+
+**Alma:** [warmly] Bonjour Noé, bonjour Linda. C'est vrai que c'est l'endroit idéal pour discuter. Tu as l'air en forme aujourd'hui, Noé !
+
+**Linda:** [enthusiastically] Salut ! On a un gros morceau aujourd'hui, non ? Les "Développements Limités". J'adore ce sujet, c'est comme avoir une boîte à outils pour simplifier les fonctions compliquées.
+
+**Noé:** [curiously] Justement, j'ai regardé le titre du chapitre : "Développements Limités". Ça sonne un peu... restrictif, non ? De quoi s'agit-il exactement ?
+
+**Alma:** [patiently] Pas restrictif, Noé, plutôt "local". L'idée centrale, c'est d'approcher une fonction complexe par quelque chose de beaucoup plus simple à manipuler : un polynôme. Mais cette approximation n'est valable qu'autour d'un point précis, souvent autour de zéro.
+
+**Linda:** [thoughtfully] Imagine que tu as une courbe très compliquée. Si tu zoomes très, très fort dessus en un point, elle commence à ressembler à une ligne droite, n'est-ce pas ? C'est la tangente. Mais si tu dézoomes un peu, tu vois la courbure. Le développement limité, c'est la version mathématique de ce zoom pour décrire la courbe avec de plus en plus de précision.
+
+### Main Content: Définition et Taylor-Young
+
+**Noé:** [concentrating] D'accord, je visualise le zoom. Donc, on remplace une fonction compliquée, disons un cosinus ou une exponentielle, par un polynôme ?
+
+**Alma:** [explanatory] Exactement. On dit qu'une fonction $f$ admet un développement limité à l'ordre $n$ en 0 si on peut l'écrire comme la somme d'un polynôme $P_n(x)$ et d'un terme d'erreur.
+
+**Noé:** [asking] Un terme d'erreur ?
+
+**Linda:** [interjecting] Oui ! C'est crucial. On l'appelle le "petit o". On l'écrit $o(x^n)$. Ça se prononce "petit o de x puissance n".
+
+**Alma:** [clarifying] Ce "petit o" représente tout ce qui est négligeable par rapport à $x^n$. C'est la façon mathématique de dire : "plus des miettes qui sont minuscules quand x est tout petit". Donc la formule c'est : $f(x) = P_n(x) + o(x^n)$.
+
+**Noé:** [relieved] Ah, je vois. C'est comme quand je fais du bricolage. Si je coupe une planche de 2 mètres, je dis "2 mètres", mais en réalité c'est "2 mètres plus ou moins un millimètre". Le polynôme c'est mes 2 mètres, et le petit o, c'est la sciure qui reste !
+
+**Linda:** [laughing] J'aime bien l'analogie de la sciure ! C'est exactement ça. Tant que tu restes proche de zéro, la "sciure" ne compte pas.
+
+**Alma:** [transitioning] Maintenant, la grande question est : comment trouve-t-on ce polynôme magique ? C'est là qu'intervient un monsieur nommé Taylor.
+
+**Noé:** [curiously] Le fameux théorème de Taylor-Young ?
+
+**Alma:** [affirming] Oui. Si ta fonction est suffisamment régulière — c'est-à-dire qu'on peut la dériver plusieurs fois — les coefficients du polynôme sont donnés par les dérivées successives de la fonction en 0.
+
+**Linda:** [reciting] La formule est élégante. Le terme constant c'est $f(0)$. Le terme en $x$ c'est $f'(0)$ fois $x$. Le terme en $x^2$, c'est la dérivée seconde $f''(0)$ divisée par "factorielle 2", soit 2. Et ainsi de suite.
+
+**Noé:** [calculating] Attends, donc pour avoir le terme devant $x^k$, je prends la dérivée k-ième en 0, et je divise par factorielle k ?
+
+**Alma:** [encouragingly] C'est exactement ça, Noé. C'est pour ça que connaître ses dérivées est un prérequis indispensable ici.
+
+### Exemples et "Petit o"
+
+**Noé:** [thoughtfully] Prenons un exemple concret. L'exponentielle, $e^x$. C'est ma fonction préférée, elle est facile à dériver.
+
+**Linda:** [quickly] Oh oui ! La dérivée de $e^x$, c'est $e^x$. Et en 0, $e^0$ vaut 1. Donc toutes les dérivées valent 1 !
+
+**Alma:** [guiding] Parfait. Donc, si on applique la formule de Taylor-Young, que devient le polynôme ?
+
+**Noé:** [slowly] Alors... $f(0)$ c'est 1. Plus $f'(0)$ fois $x$, donc $1 \cdot x$. Plus $f''(0)$ sur 2... donc $x^2/2$. Ça donnerait $1 + x + x^2/2$ ?
+
+**Alma:** [gentle correction] Attention Noé, n'oublie pas la "sciure" ! Si tu écris égal, c'est faux. Il faut ajouter le $+ o(x^2)$.
+
+**Noé:** [correcting] Ah oui ! $e^x = 1 + x + x^2/2 + o(x^2)$. C'est bien ça ?
+
+**Alma:** [warmly] C'est parfait. Et tu vois, cette formule te dit que près de 0, la courbe de l'exponentielle ressemble à une parabole.
+
+**Linda:** [adding] Et petite astuce : $e^x$ contient toutes les puissances. Mais pour le cosinus et le sinus, c'est différent à cause de la parité.
+
+**Noé:** [intrigued] La parité ? Tu veux dire pair et impair ?
+
+**Linda:** [explaining] Exactement. Le cosinus est une fonction paire. Sa courbe est symétrique par rapport à l'axe vertical. Donc son polynôme ne contient que des puissances paires : $x^2, x^4$, etc. Pas de $x$ ou de $x^3$.
+
+**Alma:** [adding] Et le sinus est impair, donc il ne contient que des puissances impaires : $x, x^3, x^5$... C'est un excellent moyen de vérifier si on ne s'est pas trompé !
+
+### Opérations sur les DL
+
+**Noé:** [sipping coffee] C'est fascinant. Mais si j'ai une fonction plus complexe, comme $e^x$ multiplié par $\sin(x)$... Je dois recalculer toutes les dérivées du produit ? Ça va être l'enfer !
+
+**Alma:** [reassuring] Pas du tout ! C'est là toute la puissance de la méthode. On peut faire des opérations directement sur les polynômes. On additionne, on multiplie, on compose... comme avec des Lego.
+
+**Linda:** [enthusiastically] Pour le produit $e^x \sin(x)$, tu prends le polynôme de $e^x$ et celui de $\sin(x)$, et tu les multiplies simplement entre eux.
+
+**Noé:** [skeptical] Juste comme ça ? Mais ça va faire énormément de termes, non ?
+
+**Alma:** [clarifying] L'astuce, c'est la "troncature". Si tu cherches un développement à l'ordre 3, par exemple, dès que tu tombes sur une puissance supérieure à 3, hop ! À la poubelle ! Ça part dans le "petit o".
+
+**Linda:** [giving example] Regarde. $e^x$ commence par $1 + x...$ et $\sin(x)$ commence par $x...$. Quand tu fais $1$ fois $x$, ça donne $x$. C'est ton premier terme. Tu n'as pas besoin de calculer les termes en $x^4$ ou $x^5$ car ils sont négligeables pour l'ordre 3.
+
+**Noé:** [realizing] C'est génial ! On économise énormément de calculs. On ne garde que ce qui est significatif.
+
+**Alma:** [warning] Une petite mise en garde cependant pour la division et la composition : il faut être rigoureux sur l'ordre. On perd parfois de la précision si on soustrait deux choses très proches. Mais l'idée générale reste : on manipule des polynômes, c'est bien plus simple que des fonctions transcendantes.
+
+### Le Tableau des DL Usuels
+
+**Noé:** [curiously] J'imagine qu'il y a des formules à apprendre par cœur ? Comme les tables de multiplication ?
+
+**Alma:** [nodding] Oui, il y a un "tableau des DL usuels" en 0. C'est votre alphabet. Il faut connaître $e^x, \cos(x), \sin(x), \ln(1+x)$ et $(1+x)^\alpha$.
+
+**Linda:** [tip] Pour les mémoriser, j'ai des trucs.
+
+Pour $\sin(x)$, c'est impair, donc : $x - x^3/3! + x^5/5!$... Notez que les signes alternent : plus, moins, plus.
+
+Pour $\cos(x)$, c'est pair : $1 - x^2/2! + x^4/4!$... Signes alternés aussi.
+
+**Noé:** [observing] Attends, je vois une différence dans mes notes. Pour le Logarithme, $\ln(1+x)$, il n'y a pas de points d'exclamation au dénominateur. Pas de factorielles ?
+
+**Alma:** [impressed] Très bonne observation Noé ! C'est un piège classique.
+
+Les fonctions Exponentielle, Sinus et Cosinus ont des factorielles ($2!, 3!$...).
+
+Mais $\ln(1+x)$ et $\arctan(x)$ ont des entiers simples ($2, 3, 4$).
+
+**Linda:** [explaining why] C'est parce qu'ils viennent de l'intégration ! Par exemple, $\ln(1+x)$ est la primitive de la série géométrique $1/(1+x)$. Quand on intègre $x^n$, on obtient $x^{n+1}/(n+1)$, pas de factorielle.
+
+**Noé:** [grateful] Merci pour le tuyau ! Factorielles pour les "grandes" fonctions, entiers simples pour Log et Arctan. Je note.
+
+### Applications et Conclusion
+
+**Alma:** [transitioning] Alors, à quoi ça sert tout ça ? Pourquoi se donner tant de mal ?
+
+**Linda:** [excitedly] Pour lever des indéterminations ! Vous savez, les limites du type "0 divisé par 0" qui nous bloquent tout le temps ?
+
+**Alma:** [example] Prenons la limite quand $x$ tend vers 0 de $\frac{\sin(x) - x}{x^3}$.
+
+Si on remplace $x$ par 0, on a $\sin(0) - 0$ sur $0^3$, ça fait $0/0$. On est bloqué.
+
+**Noé:** [following] OK. Donc on utilise le DL. On sait que $\sin(x) \approx x - x^3/6$.
+
+**Linda:** [solving] Exactement ! Remplace $\sin(x)$ par son polynôme dans la fraction.
+
+Ça fait $(x - x^3/6) - x$.
+
+Les $x$ s'annulent ! Il reste juste $-x^3/6$.
+
+**Noé:** [amazed] Et on divise par $x^3$... donc il reste $-1/6$ ?
+
+**Alma:** [proudly] Et voilà ! La limite est $-1/6$. En une ligne, c'est réglé. C'est d'une puissance redoutable pour l'étude locale des fonctions.
+
+### Key Takeaways
+
+**Alma:** [summarizing] Résumons ce que nous avons vu aujourd'hui.
+
+Premièrement, un développement limité permet d'approcher une fonction par un polynôme plus un terme d'erreur négligeable, le "petit o".
+
+**Linda:** [adding] Deuxièmement, la formule de Taylor-Young nous donne les coefficients grâce aux dérivées. Mais en pratique, on utilise surtout les opérations sur les DL usuels qu'on connaît par cœur.
+
+**Noé:** [concluding] Et troisièmement, c'est l'outil roi pour calculer des limites compliquées ou comprendre comment une courbe se comporte très près de zéro. Et attention aux factorielles !
+
+**Alma:** [warmly] C'est un excellent résumé. Vous avez très bien travaillé.
+
+**Noé:** [contentedly] J'ai l'impression d'avoir un nouveau super-pouvoir mathématique. Merci à vous deux !
+
+**Linda:** [laughing] Le pouvoir du "Petit o" ! À la prochaine pour de nouvelles aventures ?
+
+**Alma:** [closing] Avec plaisir. À bientôt au café !
+
+---
+
+## Audio Production Notes
+
+- **Pacing:** Maintain a relaxed, moderate pace. Alma should speak slightly slower when defining concepts. Noé should have natural pauses when "thinking" or calculating.
+- **Emphasis:**
+    - Emphasize the "o" in "petit o" clearly.
+    - Stress the difference between "Factorielles" and "Entiers simples".
+    - Clearly articulate the powers ($x$ au carré, $x$ cube).
+- **Pauses:** Leave a small beat of silence after Noé asks a question before Alma or Linda answers, to simulate natural thought processing.
+- **Pronunciation:**
+    - "Petit o" : [pə-ti-o]
+    - "Taylor-Young" : [tɛ-lɔʁ jɔŋ]
+    - "Sinus" : [si-nys]
+    - "Cosinus" : [kɔ-si-nys]
+- **Character Voices:**
+    - **Noé:** Deep, warm voice, sounds genuinely curious and sometimes hesitant but happy when he understands.
+    - **Alma:** Soft, clear, authoritative but very kind. A "teacher" voice but friendly.
+    - **Linda:** Higher pitch, faster pace, energetic, enthusiastic.
+- **Café Atmosphere:** Faint background clinking of cups and low hum of conversation. A rain sound effect against the window mentioned in the intro adds coziness.
+
+## Transcript for Audio Generation
+
+[SCENE START]
+
+**Noé:** Bonjour tout le monde ! Ah, quel plaisir de vous retrouver. L'odeur du café, la pluie contre la vitre... et des mathématiques au menu !
+
+**Alma:** Bonjour Noé, bonjour Linda. C'est vrai que c'est l'endroit idéal pour discuter. Tu as l'air en forme aujourd'hui, Noé !
+
+**Linda:** Salut ! On a un gros morceau aujourd'hui, non ? Les "Développements Limités". J'adore ce sujet, c'est comme avoir une boîte à outils pour simplifier les fonctions compliquées.
+
+**Noé:** Justement, j'ai regardé le titre du chapitre : "Développements Limités". Ça sonne un peu... restrictif, non ? De quoi s'agit-il exactement ?
+
+**Alma:** Pas restrictif, Noé, plutôt "local". L'idée centrale, c'est d'approcher une fonction complexe par quelque chose de beaucoup plus simple à manipuler : un polynôme. Mais cette approximation n'est valable qu'autour d'un point précis, souvent autour de zéro.
+
+**Linda:** Imagine que tu as une courbe très compliquée. Si tu zoomes très, très fort dessus en un point, elle commence à ressembler à une ligne droite, n'est-ce pas ? C'est la tangente. Mais si tu dézoomes un peu, tu vois la courbure. Le développement limité, c'est la version mathématique de ce zoom pour décrire la courbe avec de plus en plus de précision.
+
+**Noé:** D'accord, je visualise le zoom. Donc, on remplace une fonction compliquée, disons un cosinus ou une exponentielle, par un polynôme ?
+
+**Alma:** Exactement. On dit qu'une fonction f admet un développement limité à l'ordre n en 0 si on peut l'écrire comme la somme d'un polynôme P n de x et d'un terme d'erreur.
+
+**Noé:** Un terme d'erreur ?
+
+**Linda:** Oui ! C'est crucial. On l'appelle le "petit o". On l'écrit o de x puissance n.
+
+**Alma:** Ce "petit o" représente tout ce qui est négligeable par rapport à x puissance n. C'est la façon mathématique de dire : "plus des miettes qui sont minuscules quand x est tout petit". Donc la formule c'est : f de x égale P n de x plus petit o de x puissance n.
+
+**Noé:** Ah, je vois. C'est comme quand je fais du bricolage. Si je coupe une planche de 2 mètres, je dis "2 mètres", mais en réalité c'est "2 mètres plus ou moins un millimètre". Le polynôme c'est mes 2 mètres, et le petit o, c'est la sciure qui reste !
+
+**Linda:** J'aime bien l'analogie de la sciure ! C'est exactement ça. Tant que tu restes proche de zéro, la "sciure" ne compte pas.
+
+**Alma:** Maintenant, la grande question est : comment trouve-t-on ce polynôme magique ? C'est là qu'intervient un monsieur nommé Taylor.
+
+**Noé:** Le fameux théorème de Taylor-Young ?
+
+**Alma:** Oui. Si ta fonction est suffisamment régulière — c'est-à-dire qu'on peut la dériver plusieurs fois — les coefficients du polynôme sont donnés par les dérivées successives de la fonction en 0.
+
+**Linda:** La formule est élégante. Le terme constant c'est f de 0. Le terme en x c'est f prime de 0 fois x. Le terme en x carré, c'est la dérivée seconde f seconde de 0 divisée par "factorielle 2", soit 2. Et ainsi de suite.
+
+**Noé:** Attends, donc pour avoir le terme devant x puissance k, je prends la dérivée k-ième en 0, et je divise par factorielle k ?
+
+**Alma:** C'est exactement ça, Noé. C'est pour ça que connaître ses dérivées est un prérequis indispensable ici.
+
+**Noé:** Prenons un exemple concret. L'exponentielle, e puissance x. C'est ma fonction préférée, elle est facile à dériver.
+
+**Linda:** Oh oui ! La dérivée de e puissance x, c'est e puissance x. Et en 0, e puissance 0 vaut 1. Donc toutes les dérivées valent 1 !
+
+**Alma:** Parfait. Donc, si on applique la formule de Taylor-Young, que devient le polynôme ?
+
+**Noé:** Alors... f de 0 c'est 1. Plus f prime de 0 fois x, donc 1 fois x. Plus f seconde de 0 sur 2... donc x carré sur 2. Ça donnerait 1 plus x plus x carré sur 2 ?
+
+**Alma:** Attention Noé, n'oublie pas la "sciure" ! Si tu écris égal, c'est faux. Il faut ajouter le plus petit o de x carré.
+
+**Noé:** Ah oui ! e puissance x égale 1 plus x plus x carré sur 2 plus petit o de x carré. C'est bien ça ?
+
+**Alma:** C'est parfait. Et tu vois, cette formule te dit que près de 0, la courbe de l'exponentielle ressemble à une parabole.
+
+**Linda:** Et petite astuce : e puissance x contient toutes les puissances. Mais pour le cosinus et le sinus, c'est différent à cause de la parité.
+
+**Noé:** La parité ? Tu veux dire pair et impair ?
+
+**Linda:** Exactement. Le cosinus est une fonction paire. Sa courbe est symétrique par rapport à l'axe vertical. Donc son polynôme ne contient que des puissances paires : x carré, x puissance 4, etc. Pas de x ou de x cube.
+
+**Alma:** Et le sinus est impair, donc il ne contient que des puissances impaires : x, x cube, x puissance 5... C'est un excellent moyen de vérifier si on ne s'est pas trompé !
+
+**Noé:** C'est fascinant. Mais si j'ai une fonction plus complexe, comme e puissance x multiplié par sinus de x... Je dois recalculer toutes les dérivées du produit ? Ça va être l'enfer !
+
+**Alma:** Pas du tout ! C'est là toute la puissance de la méthode. On peut faire des opérations directement sur les polynômes. On additionne, on multiplie, on compose... comme avec des Lego.
+
+**Linda:** Pour le produit e puissance x sinus de x, tu prends le polynôme de e puissance x et celui de sinus de x, et tu les multiplies simplement entre eux.
+
+**Noé:** Juste comme ça ? Mais ça va faire énormément de termes, non ?
+
+**Alma:** L'astuce, c'est la "troncature". Si tu cherches un développement à l'ordre 3, par exemple, dès que tu tombes sur une puissance supérieure à 3, hop ! À la poubelle ! Ça part dans le "petit o".
+
+**Linda:** Regarde. e puissance x commence par 1 plus x... et sinus de x commence par x... Quand tu fais 1 fois x, ça donne x. C'est ton premier terme. Tu n'as pas besoin de calculer les termes en x puissance 4 ou 5 car ils sont négligeables pour l'ordre 3.
+
+**Noé:** C'est génial ! On économise énormément de calculs. On ne garde que ce qui est significatif.
+
+**Alma:** Une petite mise en garde cependant pour la division et la composition : il faut être rigoureux sur l'ordre. On perd parfois de la précision si on soustrait deux choses très proches. Mais l'idée générale reste : on manipule des polynômes, c'est bien plus simple que des fonctions transcendantes.
+
+**Noé:** J'imagine qu'il y a des formules à apprendre par cœur ? Comme les tables de multiplication ?
+
+**Alma:** Oui, il y a un "tableau des DL usuels" en 0. C'est votre alphabet. Il faut connaître e puissance x, cosinus x, sinus x, ln de 1 plus x et 1 plus x puissance alpha.
+
+**Linda:** Pour les mémoriser, j'ai des trucs. Pour sinus x, c'est impair, donc : x moins x cube sur factorielle 3 plus x puissance 5 sur factorielle 5... Notez que les signes alternent : plus, moins, plus. Pour cosinus x, c'est pair : 1 moins x carré sur factorielle 2 plus x puissance 4 sur factorielle 4... Signes alternés aussi.
+
+**Noé:** Attends, je vois une différence dans mes notes. Pour le Logarithme, ln de 1 plus x, il n'y a pas de points d'exclamation au dénominateur. Pas de factorielles ?
+
+**Alma:** Très bonne observation Noé ! C'est un piège classique. Les fonctions Exponentielle, Sinus et Cosinus ont des factorielles. Mais ln de 1 plus x et arctangente x ont des entiers simples.
+
+**Linda:** C'est parce qu'ils viennent de l'intégration ! Par exemple, ln de 1 plus x est la primitive de la série géométrique 1 sur 1 plus x. Quand on intègre x puissance n, on obtient x puissance n plus 1 sur n plus 1, pas de factorielle.
+
+**Noé:** Merci pour le tuyau ! Factorielles pour les "grandes" fonctions, entiers simples pour Log et Arctan. Je note.
+
+**Alma:** Alors, à quoi ça sert tout ça ? Pourquoi se donner tant de mal ?
+
+**Linda:** Pour lever des indéterminations ! Vous savez, les limites du type "0 divisé par 0" qui nous bloquent tout le temps ?
+
+**Alma:** Prenons la limite quand x tend vers 0 de sinus x moins x, le tout divisé par x cube. Si on remplace x par 0, on a sinus 0 moins 0 sur 0 au cube, ça fait 0 sur 0. On est bloqué.
+
+**Noé:** OK. Donc on utilise le DL. On sait que sinus x est environ égal à x moins x cube sur 6.
+
+**Linda:** Exactement ! Remplace sinus x par son polynôme dans la fraction. Ça fait x moins x cube sur 6, moins x. Les x s'annulent ! Il reste juste moins x cube sur 6.
+
+**Noé:** Et on divise par x cube... donc il reste moins 1 sixième ?
+
+**Alma:** Et voilà ! La limite est moins 1 sixième. En une ligne, c'est réglé. C'est d'une puissance redoutable pour l'étude locale des fonctions.
+
+**Alma:** Résumons ce que nous avons vu aujourd'hui. Premièrement, un développement limité permet d'approcher une fonction par un polynôme plus un terme d'erreur négligeable, le "petit o".
+
+**Linda:** Deuxièmement, la formule de Taylor-Young nous donne les coefficients grâce aux dérivées. Mais en pratique, on utilise surtout les opérations sur les DL usuels qu'on connaît par cœur.
+
+**Noé:** Et troisièmement, c'est l'outil roi pour calculer des limites compliquées ou comprendre comment une courbe se comporte très près de zéro. Et attention aux factorielles !
+
+**Alma:** C'est un excellent résumé. Vous avez très bien travaillé.
+
+**Noé:** J'ai l'impression d'avoir un nouveau super-pouvoir mathématique. Merci à vous deux !
+
+**Linda:** Le pouvoir du "Petit o" ! À la prochaine pour de nouvelles aventures ?
+
+**Alma:** Avec plaisir. À bientôt au café !
+
+[SCENE END]

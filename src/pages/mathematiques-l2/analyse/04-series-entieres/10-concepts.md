@@ -2,7 +2,7 @@
 id: 2737be0f
 type: concepts
 order: 10
-title: Chapitre 4 Séries entières - concepts (A)
+title: Séries entières - concepts (A)
 tags:
   - analyse
   - séries entières
@@ -10,14 +10,14 @@ tags:
   - développement en série entière
   - séries de Taylor
   - exponentielle complexe
-course: Mathématiques - Analyse
+course: Analyse
 courseId: 1b8174cc
-chapter: Chapitre 4 Séries entières
+chapter: Séries entières
 chapterId: 3dcc70fe
 level: regular
 createdAt: '2025-12-27T05:23:14.784Z'
 ---
-# Chapitre 4 Séries entières (A)
+# Séries entières (A)
 
 ---
 

@@ -1,0 +1,300 @@
+{
+  "info": {
+    "id": "b22c7a59",
+    "title": "Linéarisations - quiz (A)",
+    "type": "quiz",
+    "level": "regular",
+    "chapter": "Linéarisations",
+    "course": "Bases mathématiques",
+    "tags": [
+      "trigonométrie",
+      "linéarisation",
+      "hyperbolique",
+      "formules",
+      "mathématiques"
+    ],
+    "count": 10
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "b22c7a59",
+      "content": "#### Formule d'addition du cosinus\n\nQuelle est la formule correcte pour développer $\\cos(a + b)$ ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nLa formule d'addition pour le cosinus transforme une somme d'angles en un produit de cosinus moins un produit de sinus.\n\n- **A.** Incorrect. C'est la formule pour $\\cos(a - b)$. Notez que pour le cosinus, le signe s'inverse (plus devient moins).\n- **B.** Incorrect. C'est la formule pour $\\sin(a + b)$. Le cosinus ne mélange pas les sinus et cosinus dans ses produits (c'est \"cos cos - sin sin\").\n- **C.** Correct. C'est la formule fondamentale d'addition : $\\cos(a + b) = \\cos(a)\\cos(b) - \\sin(a)\\sin(b)$.\n- **D.** Incorrect. C'est une erreur classique de linéarité. Le cosinus n'est pas une fonction linéaire ($\\cos(a+b) \\neq \\cos(a) + \\cos(b)$).\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\cos(a)\\cos(b) + \\sin(a)\\sin(b)$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\sin(a)\\cos(b) + \\cos(a)\\sin(b)$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $\\cos(a)\\cos(b) - \\sin(a)\\sin(b)$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $\\cos(a) + \\cos(b)$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "stackId": "b22c7a59",
+      "content": "#### Formules de duplication du cosinus\n\nParmi les expressions suivantes, lesquelles sont égales à $\\cos(2a)$ ? (Plusieurs réponses possibles)\n",
+      "solution": "\n\n**Réponses : [A, B, C]**\n\nLe cosinus de l'angle double possède trois formes équivalentes très utiles.\n\n- **A.** Correct. C'est la forme directe obtenue en posant $b=a$ dans la formule d'addition : $\\cos(a+a) = \\cos(a)\\cos(a) - \\sin(a)\\sin(a)$.\n- **B.** Correct. Obtenue en remplaçant $\\sin^2(a)$ par $1-\\cos^2(a)$. Utile pour exprimer $\\cos(2a)$ en fonction de $\\cos(a)$ uniquement.\n- **C.** Correct. Obtenue en remplaçant $\\cos^2(a)$ par $1-\\sin^2(a)$. Utile pour exprimer $\\cos(2a)$ en fonction de $\\sin(a)$ uniquement.\n- **D.** Incorrect. C'est la formule de duplication pour le sinus : $\\sin(2a)$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\cos^2(a) - \\sin^2(a)$",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** $2\\cos^2(a) - 1$",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $1 - 2\\sin^2(a)$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $2\\sin(a)\\cos(a)$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "stackId": "b22c7a59",
+      "content": "#### Objectif de la linéarisation\n\nQuel est l'objectif principal de la \"linéarisation\" en trigonométrie ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\n- **A.** Incorrect. Transformer une somme en produit s'appelle la \"factorisation\" (ou transformation somme-produit).\n- **B.** Correct. La linéarisation vise à éliminer les exposants (comme $\\cos^2 x$) et les produits (comme $\\cos x \\sin x$) pour obtenir une somme simple de termes de la forme $A\\cos(kx)$ ou $B\\sin(kx)$. C'est crucial pour le calcul d'intégrales.\n- **C.** Incorrect. Bien que la linéarisation puisse aider avant de dériver ou intégrer, ce n'est pas une méthode de dérivation en soi.\n- **D.** Incorrect. Ce n'est pas l'objectif principal, bien que l'on passe souvent de l'un à l'autre.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** Transformer une somme de fonctions trigonométriques en un produit.",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** Transformer des produits ou des puissances de cosinus/sinus en sommes de termes du premier degré.",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** Calculer la dérivée d'une fonction composée.",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** Remplacer les cosinus par des sinus pour simplifier les équations.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "stackId": "b22c7a59",
+      "content": "#### Linéarisation du carré\n\nQuelle formule permet de linéariser $\\sin^2(x)$ ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nCette formule est issue de la formule de duplication $\\cos(2x) = 1 - 2\\sin^2(x)$.\n\n- **A.** Incorrect. Cette formule correspond à la linéarisation de $\\cos^2(x)$ (notez le signe \"+\").\n- **B.** Incorrect. Ceci est égal à $\\sin(2x)$, ce n'est pas une expression du carré.\n- **C.** Correct. En isolant $\\sin^2(x)$ dans $\\cos(2x) = 1 - 2\\sin^2(x)$, on obtient $\\sin^2(x) = \\frac{1 - \\cos(2x)}{2}$.\n- **D.** Incorrect. C'est l'identité fondamentale ($\\sin^2 + \\cos^2 = 1$). Bien que vraie, elle ne \"linéarise\" pas car il reste un terme au carré ($\\cos^2(x)$).\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\frac{1 + \\cos(2x)}{2}$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $2\\sin(x)\\cos(x)$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $\\frac{1 - \\cos(2x)}{2}$",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** $1 - \\cos^2(x)$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "stackId": "b22c7a59",
+      "content": "#### Transformation Produit en Somme\n\nQuelle est la formule de linéarisation pour le produit $\\cos(a)\\cos(b)$ ?\n",
+      "solution": "\n\n**Réponse : [A]**\n\nCette formule permet de transformer un produit de cosinus en une somme.\n\n- **A.** Correct. On additionne les formules de $\\cos(a+b)$ et $\\cos(a-b)$ : les termes en sinus s'annulent, il reste $2\\cos(a)\\cos(b)$, que l'on divise par 2.\n- **B.** Incorrect. Cette formule correspond à $\\sin(a)\\sin(b)$.\n- **C.** Incorrect. Il manque le facteur $\\frac{1}{2}$. $\\cos(a+b) + \\cos(a-b) = 2\\cos(a)\\cos(b)$.\n- **D.** Incorrect. Cette formule correspond au produit mixte $\\sin(a)\\cos(b)$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\frac{1}{2}[\\cos(a+b) + \\cos(a-b)]$",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\frac{1}{2}[\\cos(a-b) - \\cos(a+b)]$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $\\cos(a+b) + \\cos(a-b)$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $\\frac{1}{2}[\\sin(a+b) + \\sin(a-b)]$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "stackId": "b22c7a59",
+      "content": "#### Définition du Cosinus Hyperbolique\n\nComment définit-on la fonction $\\cosh(x)$ à l'aide de la fonction exponentielle ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\n- **A.** Incorrect. C'est la définition du sinus hyperbolique, $\\sinh(x)$.\n- **B.** Correct. Le cosinus hyperbolique est la partie paire de l'exponentielle : $\\cosh(x) = \\frac{e^x + e^{-x}}{2}$.\n- **C.** Incorrect. C'est la formule d'Euler pour le cosinus trigonométrique classique ($\\cos x$), qui utilise des complexes ($i$).\n- **D.** Incorrect. Il manque la division par 2.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\frac{e^x - e^{-x}}{2}$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\frac{e^x + e^{-x}}{2}$",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $\\frac{e^{ix} + e^{-ix}}{2}$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $e^x + e^{-x}$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "stackId": "b22c7a59",
+      "content": "#### Relation fondamentale hyperbolique\n\nQuelle est la relation fondamentale qui lie $\\cosh(x)$ et $\\sinh(x)$ ?\n",
+      "solution": "\n\n**Réponse : [B]**\n\nLes fonctions hyperboliques paramètrent une hyperbole d'équation $x^2 - y^2 = 1$.\n\n- **A.** Incorrect. C'est la relation pour la trigonométrie circulaire ($\\cos^2 + \\sin^2 = 1$). En hyperbolique, $\\cosh^2(x) + \\sinh^2(x) = \\cosh(2x)$.\n- **B.** Correct. Pour tout réel $x$, $\\cosh^2(x) - \\sinh^2(x) = 1$.\n- **C.** Incorrect. Le signe est inversé. Comme $\\cosh(x) \\geq 1$ et $\\sinh(0)=0$, $\\sinh^2 - \\cosh^2$ serait négatif.\n- **D.** Incorrect. $\\cosh(x) - \\sinh(x) = e^{-x}$, ce n'est pas égal à 1 (sauf si $x=0$).\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\cosh^2(x) + \\sinh^2(x) = 1$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\cosh^2(x) - \\sinh^2(x) = 1$",
+          "correct": true
+        },
+        {
+          "id": "3",
+          "content": "**C)** $\\sinh^2(x) - \\cosh^2(x) = 1$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $\\cosh(x) - \\sinh(x) = 1$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "stackId": "b22c7a59",
+      "content": "#### Formules d'Euler (Sinus)\n\nSelon les formules d'Euler, comment s'écrit $\\sin(x)$ ?\n",
+      "solution": "\n\n**Réponse : [D]**\n\n- **A.** Incorrect. C'est la formule pour $\\cos(x)$.\n- **B.** Incorrect. Il manque le $i$ au dénominateur. Cette expression correspondrait à $\\sinh(ix)$ (à un facteur $i$ près) ou simplement n'est pas la formule du sinus réel.\n- **C.** Incorrect. Le signe est faux (c'est une soustraction pour le sinus) et c'est le cosinus qui a une addition.\n- **D.** Correct. $\\sin(x) = \\frac{e^{ix} - e^{-ix}}{2i}$. La présence du $2i$ au dénominateur est une différence cruciale avec la formule du cosinus ou des fonctions hyperboliques.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\frac{e^{ix} + e^{-ix}}{2}$",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\frac{e^{ix} - e^{-ix}}{2}$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $\\frac{e^{ix} + e^{-ix}}{2i}$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $\\frac{e^{ix} - e^{-ix}}{2i}$",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "stackId": "b22c7a59",
+      "content": "#### Formule de Moivre\n\nQue vaut l'expression $(\\cos x + i \\sin x)^n$ pour un entier $n$ ?\n",
+      "solution": "\n\n**Réponse : [A]**\n\nC'est la formule de Moivre, qui traduit le fait que l'argument d'une puissance est la somme des arguments.\n\n- **A.** Correct. $(\\cos x + i \\sin x)^n = (e^{ix})^n = e^{inx} = \\cos(nx) + i \\sin(nx)$.\n- **B.** Incorrect. On ne peut pas distribuer la puissance $n$ directement sur les termes de la somme.\n- **C.** Incorrect. Le signe reste positif (sauf si $n$ est négatif, mais la formule générale garde le \"plus\" lié à $nx$).\n- **D.** Incorrect. Ce n'est pas une multiplication par un scalaire.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** $\\cos(nx) + i \\sin(nx)$",
+          "correct": true
+        },
+        {
+          "id": "2",
+          "content": "**B)** $\\cos^n(x) + i \\sin^n(x)$",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** $\\cos(nx) - i \\sin(nx)$",
+          "correct": false
+        },
+        {
+          "id": "4",
+          "content": "**D)** $n(\\cos x + i \\sin x)$",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "stackId": "b22c7a59",
+      "content": "#### Application Numérique\n\nSi $\\cos(x) = 0.6$ et $\\sin(x) = 0.8$, que vaut $\\sin(2x)$ ?\n",
+      "solution": "\n\n**Réponse : [C]**\n\nOn applique la formule de duplication du sinus : $\\sin(2x) = 2\\sin(x)\\cos(x)$.\n\n- **A.** Incorrect. Correspond à $0.6 + 0.8$.\n- **B.** Incorrect. Correspond simplement au produit $0.6 \\times 0.8$ sans le facteur 2.\n- **C.** Correct. $\\sin(2x) = 2 \\times 0.8 \\times 0.6 = 2 \\times 0.48 = 0.96$.\n- **D.** Incorrect. Cette valeur correspond à $\\cos(2x) = \\cos^2 x - \\sin^2 x = 0.36 - 0.64 = -0.28$.\n\n",
+      "options": [
+        {
+          "id": "1",
+          "content": "**A)** 1.4",
+          "correct": false
+        },
+        {
+          "id": "2",
+          "content": "**B)** 0.48",
+          "correct": false
+        },
+        {
+          "id": "3",
+          "content": "**C)** 0.96",
+          "correct": true
+        },
+        {
+          "id": "4",
+          "content": "**D)** -0.28",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

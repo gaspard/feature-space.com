@@ -2,7 +2,7 @@
 id: 2f020dbc
 type: exercises
 order: 11
-title: Chapitre 4 Séries entières - exercices (A)
+title: Séries entières - exercices (A)
 tags:
   - analyse
   - séries entières
@@ -12,12 +12,12 @@ tags:
   - exponentielle complexe
 createdAt: '2025-12-27T05:23:14.784Z'
 level: regular
-course: Mathématiques - Analyse
+course: Analyse
 courseId: 1b8174cc
-chapter: Chapitre 4 Séries entières
+chapter: Séries entières
 chapterId: 3dcc70fe
 ---
-# Exercices "Chapitre 4 Séries entières" (A)
+# Exercices "Séries entières" (A)
 
 ---
 

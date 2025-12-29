@@ -1,0 +1,104 @@
+{
+  "info": {
+    "id": "5fdfca3d",
+    "title": "Linéarisations - fiches de révision (A)",
+    "type": "cards",
+    "level": "regular",
+    "chapter": "Linéarisations",
+    "course": "Bases mathématiques",
+    "tags": [
+      "trigonométrie",
+      "linéarisation",
+      "hyperbolique",
+      "formules",
+      "mathématiques"
+    ],
+    "count": 12
+  },
+  "cards": [
+    {
+      "id": "1",
+      "stackId": "5fdfca3d",
+      "content": "Quelles sont les **formules d'addition** pour le cosinus et le sinus ?",
+      "solution": "\n\nLes formules d'addition permettent de développer le cosinus ou le sinus d'une somme d'angles ($a+b$) ou d'une différence ($a-b$).\n\n**Cosinus :**\n\n$$ \\cos(a + b) = \\cos(a)\\cos(b) - \\sin(a)\\sin(b) $$\n\n$$ \\cos(a - b) = \\cos(a)\\cos(b) + \\sin(a)\\sin(b) $$\n\n*Note : Le cosinus \"change\" le signe (+ devient -).*\n\n**Sinus :**\n\n$$ \\sin(a + b) = \\sin(a)\\cos(b) + \\cos(a)\\sin(b) $$\n\n$$ \\sin(a - b) = \\sin(a)\\cos(b) - \\cos(a)\\sin(b) $$\n\n*Note : Le sinus \"conserve\" le signe et mélange les fonctions.*\n\n",
+      "options": []
+    },
+    {
+      "id": "2",
+      "stackId": "5fdfca3d",
+      "content": "Quelle est la formule d'addition pour la **tangente** ?",
+      "solution": "\n\nPour la tangente, la formule s'exprime sous forme de fraction :\n\n$$ \\tan(a + b) = \\frac{\\tan(a) + \\tan(b)}{1 - \\tan(a)\\tan(b)} $$\n\n**Moyen mnémotechnique :**\n\nAu numérateur, on a la \"somme\" des tangentes (comme le signe dans la parenthèse). Au dénominateur, le signe est opposé ($1 - \\dots$).\n\nPour la différence $\\tan(a-b)$, on inverse simplement les signes :\n\n$$ \\tan(a - b) = \\frac{\\tan(a) - \\tan(b)}{1 + \\tan(a)\\tan(b)} $$\n\n",
+      "options": []
+    },
+    {
+      "id": "3",
+      "stackId": "5fdfca3d",
+      "content": "Quelles sont les **formules de duplication** pour $\\cos(2a)$ et $\\sin(2a)$ ?",
+      "solution": "\n\nCes formules sont des cas particuliers des formules d'addition où $a=b$.\n\n**Pour le sinus :**\n\n$$ \\sin(2a) = 2\\sin(a)\\cos(a) $$\n\n**Pour le cosinus (3 formes possibles) :**\n\nLa forme de base :\n\n$$ \\cos(2a) = \\cos^2(a) - \\sin^2(a) $$\n\nEn utilisant $\\cos^2(a) + \\sin^2(a) = 1$, on obtient deux autres formes utiles :\n\n1. En fonction du cosinus uniquement : $\\cos(2a) = 2\\cos^2(a) - 1$\n2. En fonction du sinus uniquement : $\\cos(2a) = 1 - 2\\sin^2(a)$\n\n",
+      "options": []
+    },
+    {
+      "id": "4",
+      "stackId": "5fdfca3d",
+      "content": "Qu'est-ce que la **linéarisation** et à quoi sert-elle ?",
+      "solution": "\n\n**Définition :**\n\nLa linéarisation est l'opération qui consiste à transformer un **produit** ou une **puissance** de fonctions trigonométriques (comme $\\cos^2(x)$ ou $\\sin(x)\\cos(x)$) en une **somme** de termes du premier degré (comme $\\cos(2x)$, $\\sin(3x)$, etc.).\n\n**Utilité principale :**\n\nElle est essentielle pour le **calcul intégral**.\n\nIl est difficile d'intégrer directement $\\int \\cos^2(x) dx$, mais très facile d'intégrer sa forme linéarisée $\\int \\frac{1+\\cos(2x)}{2} dx$.\n\n",
+      "options": []
+    },
+    {
+      "id": "5",
+      "stackId": "5fdfca3d",
+      "content": "Quelles sont les formules de **linéarisation des carrés** ($\\cos^2$ et $\\sin^2$) ?",
+      "solution": "\n\nCes formules permettent d'abaisser le degré de 2 à 1. Elles sont issues des formules de $\\cos(2a)$.\n\n**Formules :**\n\n$$ \\cos^2(a) = \\frac{1 + \\cos(2a)}{2} $$\n\n$$ \\sin^2(a) = \\frac{1 - \\cos(2a)}{2} $$\n\n**Détails :**\n\n* Pour le **cosinus**, on utilise un signe **plus** ($+$).\n* Pour le **sinus**, on utilise un signe **moins** ($-$).\n\n",
+      "options": []
+    },
+    {
+      "id": "6",
+      "stackId": "5fdfca3d",
+      "content": "Quelles sont les formules de **linéarisation des produits** ($\\cos a \\cos b$, etc.) ?",
+      "solution": "\n\nCes formules transforment un produit de deux fonctions en une somme (ou différence).\n\n**Formules :**\n\n$$ \\cos(a)\\cos(b) = \\frac{1}{2}[\\cos(a+b) + \\cos(a-b)] $$\n\n$$ \\sin(a)\\sin(b) = \\frac{1}{2}[\\cos(a-b) - \\cos(a+b)] $$\n\n*(Attention à l'ordre dans le crochet pour le produit de sinus)*\n\n$$ \\sin(a)\\cos(b) = \\frac{1}{2}[\\sin(a+b) + \\sin(a-b)] $$\n\n",
+      "options": []
+    },
+    {
+      "id": "7",
+      "stackId": "5fdfca3d",
+      "content": "Quelles sont les formules de **factorisation** (transformation de somme en produit) ?",
+      "solution": "\n\nLa factorisation est l'opération inverse de la linéarisation. Elle est utile pour résoudre des équations type $f(x)=0$.\n\n**Formules (souvent appelées formules de Simpson) :**\n\n$$ \\cos(p) + \\cos(q) = 2 \\cos\\left(\\frac{p+q}{2}\\right) \\cos\\left(\\frac{p-q}{2}\\right) $$\n\n$$ \\cos(p) - \\cos(q) = -2 \\sin\\left(\\frac{p+q}{2}\\right) \\sin\\left(\\frac{p-q}{2}\\right) $$\n\n$$ \\sin(p) + \\sin(q) = 2 \\sin\\left(\\frac{p+q}{2}\\right) \\cos\\left(\\frac{p-q}{2}\\right) $$\n\n$$ \\sin(p) - \\sin(q) = 2 \\cos\\left(\\frac{p+q}{2}\\right) \\sin\\left(\\frac{p-q}{2}\\right) $$\n\n",
+      "options": []
+    },
+    {
+      "id": "8",
+      "stackId": "5fdfca3d",
+      "content": "Comment définir les fonctions **cosinus hyperbolique** et **sinus hyperbolique** ?",
+      "solution": "\n\nLes fonctions hyperboliques sont définies à partir de la fonction exponentielle réelle $e^x$.\n\n**Cosinus hyperbolique ($\\cosh$) :**\n\n$$ \\cosh(x) = \\frac{e^x + e^{-x}}{2} $$\n\n*(C'est la partie paire de l'exponentielle)*\n\n**Sinus hyperbolique ($\\sinh$) :**\n\n$$ \\sinh(x) = \\frac{e^x - e^{-x}}{2} $$\n\n*(C'est la partie impaire de l'exponentielle)*\n\n**Note :** Elles paramètrent une hyperbole ($x^2 - y^2 = 1$).\n\n",
+      "options": []
+    },
+    {
+      "id": "9",
+      "stackId": "5fdfca3d",
+      "content": "Quelle est la **relation fondamentale** de la trigonométrie hyperbolique ?",
+      "solution": "\n\nContrairement à la trigonométrie circulaire où $\\cos^2 + \\sin^2 = 1$, en hyperbolique on a :\n\n$$ \\cosh^2(x) - \\sinh^2(x) = 1 $$\n\n**Autres propriétés :**\n\n* $(\\cosh x)' = \\sinh x$\n* $(\\sinh x)' = \\cosh x$ (pas de signe moins ici)\n\n",
+      "options": []
+    },
+    {
+      "id": "10",
+      "stackId": "5fdfca3d",
+      "content": "Que sont les **formules d'Euler** ?",
+      "solution": "\n\nLes formules d'Euler relient la trigonométrie aux nombres complexes (exponentielle complexe). Elles sont fondamentales pour linéariser n'importe quelle puissance.\n\n**Formules :**\n\n$$ \\cos(x) = \\frac{e^{ix} + e^{-ix}}{2} $$\n\n$$ \\sin(x) = \\frac{e^{ix} - e^{-ix}}{2i} $$\n\n**Attention :**\n\nNe pas oublier le nombre imaginaire **$i$** au dénominateur pour le sinus.\n\n",
+      "options": []
+    },
+    {
+      "id": "11",
+      "stackId": "5fdfca3d",
+      "content": "Quelle est la **formule de Moivre** ?",
+      "solution": "\n\nLa formule de Moivre permet de calculer une puissance d'un nombre complexe de module 1.\n\nPour tout entier $n$ :\n\n$$ (\\cos x + i \\sin x)^n = \\cos(nx) + i \\sin(nx) $$\n\n**Utilisation :**\n\nElle est souvent utilisée en combinaison avec le binôme de Newton pour exprimer $\\cos(nx)$ et $\\sin(nx)$ en fonction de puissances de $\\cos(x)$ et $\\sin(x)$.\n\n",
+      "options": []
+    },
+    {
+      "id": "12",
+      "stackId": "5fdfca3d",
+      "content": "Comment **linéariser** une expression comme $\\sin^3(x)$ en utilisant la méthode d'Euler ?",
+      "solution": "\n\n**Étapes :**\n\n1.  **Remplacer** la fonction par sa formule d'Euler :\n\n    $\\sin^3(x) = \\left(\\frac{e^{ix} - e^{-ix}}{2i}\\right)^3$\n\n2.  **Développer** le numérateur (Binôme de Newton $(a-b)^3$) :\n\n    $= \\frac{1}{(2i)^3} (e^{i3x} - 3e^{i2x}e^{-ix} + 3e^{ix}e^{-i2x} - e^{-i3x})$\n\n    $= \\frac{-1}{8i} (e^{i3x} - 3e^{ix} + 3e^{-ix} - e^{-i3x})$\n\n3.  **Regrouper** les termes conjugués ($e^{ikx}$ et $e^{-ikx}$) :\n\n    $= \\frac{-1}{8i} [(e^{i3x} - e^{-i3x}) - 3(e^{ix} - e^{-ix})]$\n\n4.  **Reconnaître** les formules d'Euler inverses ($2i\\sin(kx) = e^{ikx} - e^{-ikx}$) :\n\n    $= \\frac{-1}{8i} [2i\\sin(3x) - 3(2i\\sin(x))]$\n\n    $= -\\frac{1}{4}\\sin(3x) + \\frac{3}{4}\\sin(x)$\n\n",
+      "options": []
+    }
+  ]
+}

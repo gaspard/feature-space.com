@@ -2,7 +2,7 @@
 id: f69d69a7
 type: exercises
 order: 11
-title: Chapitre 5 Séries de Fourier - exercices (A)
+title: Séries de Fourier - exercices (A)
 tags:
   - Séries de Fourier
   - Analyse
@@ -13,10 +13,10 @@ createdAt: '2025-12-27T05:31:47.061Z'
 level: regular
 course: Analyse
 courseId: aed2b890
-chapter: Chapitre 5 Séries de Fourier
+chapter: Séries de Fourier
 chapterId: 5a588ba0
 ---
-# Exercices "Chapitre 5 Séries de Fourier"
+# Exercices "Séries de Fourier"
 
 ---
 
