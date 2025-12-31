@@ -262,21 +262,21 @@ La supplémentarité requiert deux conditions : l'intersection triviale (somme d
 Soit $A$ une matrice carrée $n \times n$. Quelle condition garantit que $A$ est **diagonalisable** ?
 
 - [ ] **A)** $\det(A) \neq 0$.
-- [x] **B)** La somme des dimensions des espaces propres est égale à $n$.
+- [ ] **B)** Le polynôme caractéristique est scindé (se factorise entièrement).
 - [ ] **C)** $A$ possède $n$ valeurs propres (comptées avec multiplicité) même si certaines sont confondues.
-- [ ] **D)** Le polynôme caractéristique est scindé (se factorise entièrement).
+- [x] **D)** La somme des dimensions des espaces propres est égale à $n$.
 
 <details>
 
 <summary>Solution</summary>
 
-**Réponses : [B]**
+**Réponses : [D]**
 
 Il existe plusieurs critères, mais celui sur les dimensions est une condition nécessaire et suffisante fondamentale.
 
 - **A.** Incorrect. Cela garantit l'inversibilité, pas la diagonalisation.
-- **B.** Correct. Si la somme des multiplicités géométriques ($\dim V_\lambda$) vaut la dimension de l'espace ($n$), alors il existe une base de vecteurs propres.
+- **B.** Incorrect. C'est la condition pour être trigonalisable, pas nécessairement diagonalisable (ex: $\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$ a un polynôme scindé $(1-X)^2$ mais n'est pas diagonalisable).
 - **C.** Incorrect. Avoir $n$ racines dans le polynôme caractéristique (polynôme scindé) est nécessaire, mais pas suffisant. Il faut aussi que pour chaque racine, la dimension de l'espace propre soit égale à la multiplicité algébrique.
-- **D.** Incorrect. C'est la condition pour être trigonalisable, pas nécessairement diagonalisable (ex: $\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$ a un polynôme scindé $(1-X)^2$ mais n'est pas diagonalisable).
+- **D.** Correct. Si la somme des multiplicités géométriques ($\dim V_\lambda$) vaut la dimension de l'espace ($n$), alors il existe une base de vecteurs propres.
 
 </details>

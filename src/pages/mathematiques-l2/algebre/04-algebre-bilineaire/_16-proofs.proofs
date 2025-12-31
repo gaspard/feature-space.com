@@ -132,11 +132,11 @@ $$A' = {}^t P A P$$
 
 #### Inégalité de Cauchy-Schwarz
 
-Soit $E$ un espace euclidien muni d'un produit scalaire noté $(x | y)$ et de la norme associée $\|x\| = \sqrt{(x | x)}$.
+Soit $E$ un espace euclidien muni d'un produit scalaire noté $\langle x, y \rangle$ et de la norme associée $\|x\| = \sqrt{\langle x, x \rangle}$.
 
 Prouver que pour tous $x, y \in E$ :
 
-$$|(x | y)| \le \|x\| \cdot \|y\|$$
+$$|\langle x, y \rangle| \le \|x\| \cdot \|y\|$$
 
 <details class="hint">
 
@@ -156,39 +156,39 @@ Soient $x, y \in E$.
 
 **Étape 1 : Cas trivial**
 
-Si $y = 0$, alors $(x | 0) = 0$ et $\|x\| \cdot \|0\| = 0$. L'égalité $0 \le 0$ est vérifiée. Supposons donc $y \ne 0$.
+Si $y = 0$, alors $\langle x, 0 \rangle = 0$ et $\|x\| \cdot \|0\| = 0$. L'égalité $0 \le 0$ est vérifiée. Supposons donc $y \ne 0$.
 
 **Étape 2 : Étude du polynôme quadratique**
 
 Pour tout réel $t \in \mathbb{R}$, considérons le vecteur $x + ty$. Par la propriété de positivité du produit scalaire :
 
-$$\|x + ty\|^2 = (x + ty | x + ty) \ge 0$$
+$$\|x + ty\|^2 = \langle x + ty, x + ty \rangle \ge 0$$
 
 Développons cette expression grâce à la bilinéarité et la symétrie :
 
-$$(x | x) + 2t(x | y) + t^2(y | y) \ge 0$$
+$$\langle x, x \rangle + 2t\langle x, y \rangle + t^2\langle y, y \rangle \ge 0$$
 
-$$\|x\|^2 + 2t(x | y) + t^2\|y\|^2 \ge 0$$
+$$\|x\|^2 + 2t\langle x, y \rangle + t^2\|y\|^2 \ge 0$$
 
 **Étape 3 : Discriminant**
 
-Il s'agit d'un polynôme du second degré en $t$ de la forme $At^2 + Bt + C$ avec $A = \|y\|^2$, $B = 2(x | y)$ et $C = \|x\|^2$.
+Il s'agit d'un polynôme du second degré en $t$ de la forme $At^2 + Bt + C$ avec $A = \|y\|^2$, $B = 2\langle x, y \rangle$ et $C = \|x\|^2$.
 
 Puisque ce polynôme est toujours positif ou nul pour tout $t \in \mathbb{R}$, il ne peut pas avoir deux racines réelles distinctes. Son discriminant $\Delta$ doit donc être négatif ou nul ($\Delta \le 0$).
 
-$$\Delta = B^2 - 4AC = (2(x | y))^2 - 4\|y\|^2 \|x\|^2 \le 0$$
+$$\Delta = B^2 - 4AC = (2\langle x, y \rangle)^2 - 4\|y\|^2 \|x\|^2 \le 0$$
 
-$$4(x | y)^2 - 4\|x\|^2 \|y\|^2 \le 0$$
+$$4\langle x, y \rangle^2 - 4\|x\|^2 \|y\|^2 \le 0$$
 
 **Conclusion :**
 
 En divisant par 4 et en réarrangeant :
 
-$$(x | y)^2 \le \|x\|^2 \|y\|^2$$
+$$\langle x, y \rangle^2 \le \|x\|^2 \|y\|^2$$
 
 En prenant la racine carrée (croissante sur $\mathbb{R}^+$) :
 
-$$|(x | y)| \le \|x\| \cdot \|y\|$$
+$$|\langle x, y \rangle| \le \|x\| \cdot \|y\|$$
 
 </details>
 
@@ -200,7 +200,7 @@ Soit $(e_1, \dots, e_n)$ une base orthonormée d'un espace euclidien $E$.
 
 Prouver que pour tout vecteur $x \in E$, ses coordonnées sont données par les produits scalaires avec les vecteurs de la base, c'est-à-dire :
 
-$$x = \sum_{i=1}^n (x | e_i) e_i$$
+$$x = \sum_{i=1}^n \langle x, e_i \rangle e_i$$
 
 <details class="hint">
 
@@ -208,7 +208,7 @@ $$x = \sum_{i=1}^n (x | e_i) e_i$$
 
 Écrivez $x$ comme une combinaison linéaire quelconque $x = \sum_{j=1}^n \lambda_j e_j$.
 
-Calculez le produit scalaire $(x | e_i)$ en utilisant cette expression et la propriété d'orthonormalité $(e_j | e_i) = \delta_{ji}$.
+Calculez le produit scalaire $\langle x, e_i \rangle$ en utilisant cette expression et la propriété d'orthonormalité $\langle e_j, e_i \rangle = \delta_{ji}$.
 
 </details>
 
@@ -222,29 +222,29 @@ $$x = \sum_{j=1}^n \lambda_j e_j$$
 
 **Étape 1 : Calcul du produit scalaire**
 
-Fixons un indice $i \in \{1, \dots, n\}$ et calculons le produit scalaire $(x | e_i)$ :
+Fixons un indice $i \in \{1, \dots, n\}$ et calculons le produit scalaire $\langle x, e_i \rangle$ :
 
-$$(x | e_i) = \left( \sum_{j=1}^n \lambda_j e_j \;\Bigg|\; e_i \right)$$
+$$\langle x, e_i \rangle = \left\langle \sum_{j=1}^n \lambda_j e_j, e_i \right\rangle$$
 
 **Étape 2 : Utilisation de la linéarité**
 
 Par linéarité à gauche du produit scalaire :
 
-$$(x | e_i) = \sum_{j=1}^n \lambda_j (e_j | e_i)$$
+$$\langle x, e_i \rangle = \sum_{j=1}^n \lambda_j \langle e_j, e_i \rangle$$
 
 **Étape 3 : Utilisation de l'orthonormalité**
 
-La famille est orthonormée, donc $(e_j | e_i) = \delta_{ji}$ (vaut 1 si $j=i$, 0 sinon).
+La famille est orthonormée, donc $\langle e_j, e_i \rangle = \delta_{ji}$ (vaut 1 si $j=i$, 0 sinon).
 
 Dans la somme, tous les termes sont nuls sauf celui où $j=i$ :
 
-$$(x | e_i) = \lambda_i (e_i | e_i) = \lambda_i \cdot 1 = \lambda_i$$
+$$\langle x, e_i \rangle = \lambda_i \langle e_i, e_i \rangle = \lambda_i \cdot 1 = \lambda_i$$
 
 **Conclusion :**
 
-Nous avons montré que le coefficient $\lambda_i$ est exactement $(x | e_i)$. Ainsi :
+Nous avons montré que le coefficient $\lambda_i$ est exactement $\langle x, e_i \rangle$. Ainsi :
 
-$$x = \sum_{i=1}^n (x | e_i) e_i$$
+$$x = \sum_{i=1}^n \langle x, e_i \rangle e_i$$
 
 </details>
 
@@ -260,12 +260,12 @@ Prouver que si $v_1$ et $v_2$ sont deux vecteurs propres de $A$ associés à des
 
 <summary>Indice</summary>
 
-Considérez le produit scalaire $(Av_1 | v_2)$ (qui matriciellement est ${}^t(Av_1)v_2$).
+Considérez le produit scalaire $\langle Av_1, v_2 \rangle$ (qui matriciellement est ${}^t(Av_1)v_2$).
 
 Calculez ce produit de deux façons :
 
 1. En utilisant $Av_1 = \lambda_1 v_1$.
-2. En utilisant la propriété de symétrie $(Av_1 | v_2) = (v_1 | Av_2)$ et $Av_2 = \lambda_2 v_2$.
+2. En utilisant la propriété de symétrie $\langle Av_1, v_2 \rangle = \langle v_1, Av_2 \rangle$ et $Av_2 = \lambda_2 v_2$.
 
 Comparez les résultats.
 
@@ -277,43 +277,43 @@ Comparez les résultats.
 
 Soient $v_1, v_2$ tels que $Av_1 = \lambda_1 v_1$ et $Av_2 = \lambda_2 v_2$ avec $\lambda_1 \ne \lambda_2$.
 
-Dans $\mathbb{R}^n$, le produit scalaire canonique est $(x|y) = {}^tx y$.
+Dans $\mathbb{R}^n$, le produit scalaire canonique est $\langle x, y \rangle = {}^tx y$.
 
-**Étape 1 : Calcul du produit scalaire $(Av_1 | v_2)$**
+**Étape 1 : Calcul du produit scalaire $\langle Av_1, v_2 \rangle$**
 
 En remplaçant $Av_1$ :
 
-$$(Av_1 | v_2) = (\lambda_1 v_1 | v_2) = \lambda_1 (v_1 | v_2)$$
+$$\langle Av_1, v_2 \rangle = \langle \lambda_1 v_1, v_2 \rangle = \lambda_1 \langle v_1, v_2 \rangle$$
 
 **Étape 2 : Utilisation de la symétrie de la matrice**
 
-Pour une matrice symétrique réelle $A$, on a l'identité $(Ax | y) = (x | Ay)$ pour tout $x, y$.
+Pour une matrice symétrique réelle $A$, on a l'identité $\langle Ax, y \rangle = \langle x, Ay \rangle$ pour tout $x, y$.
 
-En effet : ${}^t(Ax)y = {}^tx {}^tA y = {}^tx A y = (x | Ay)$.
+En effet : ${}^t(Ax)y = {}^tx {}^tA y = {}^tx A y = \langle x, Ay \rangle$.
 
 Donc :
 
-$$(Av_1 | v_2) = (v_1 | Av_2)$$
+$$\langle Av_1, v_2 \rangle = \langle v_1, Av_2 \rangle$$
 
 En remplaçant $Av_2$ :
 
-$$(v_1 | Av_2) = (v_1 | \lambda_2 v_2) = \lambda_2 (v_1 | v_2)$$
+$$\langle v_1, Av_2 \rangle = \langle v_1, \lambda_2 v_2 \rangle = \lambda_2 \langle v_1, v_2 \rangle$$
 
 **Étape 3 : Comparaison**
 
 Nous avons obtenu :
 
-$$\lambda_1 (v_1 | v_2) = \lambda_2 (v_1 | v_2)$$
+$$\lambda_1 \langle v_1, v_2 \rangle = \lambda_2 \langle v_1, v_2 \rangle$$
 
 Ce qui équivaut à :
 
-$$(\lambda_1 - \lambda_2) (v_1 | v_2) = 0$$
+$$(\lambda_1 - \lambda_2) \langle v_1, v_2 \rangle = 0$$
 
 **Conclusion :**
 
 Puisque $\lambda_1 \ne \lambda_2$, le terme $(\lambda_1 - \lambda_2)$ n'est pas nul. On peut diviser par ce terme, ce qui impose :
 
-$$(v_1 | v_2) = 0$$
+$$\langle v_1, v_2 \rangle = 0$$
 
 Les vecteurs propres sont donc orthogonaux.
 
@@ -362,7 +362,7 @@ Posons $u = x - \pi_F(x)$ et $v = \pi_F(x) - y$.
 *   Le vecteur $u = x - \pi_F(x)$ appartient à $F^\perp$ par définition de la projection orthogonale.
 *   Le vecteur $v = \pi_F(x) - y$ appartient à $F$ car $\pi_F(x) \in F$ et $y \in F$, et $F$ est un sous-espace vectoriel.
 
-Donc $u$ et $v$ sont orthogonaux : $(u | v) = 0$.
+Donc $u$ et $v$ sont orthogonaux : $\langle u, v \rangle = 0$.
 
 **Étape 3 : Théorème de Pythagore**
 
@@ -390,14 +390,14 @@ L'égalité a lieu si et seulement si le terme positif ajouté est nul, c'est-à
 
 Soit $u$ un endomorphisme d'un espace euclidien $E$.
 
-Prouver que $u$ conserve la norme ($\forall x, \|u(x)\| = \|x\|$) si et seulement si $u$ conserve le produit scalaire ($\forall x, y, (u(x) | u(y)) = (x | y)$).
+Prouver que $u$ conserve la norme ($\forall x, \|u(x)\| = \|x\|$) si et seulement si $u$ conserve le produit scalaire ($\forall x, y, \langle u(x), u(y) \rangle = \langle x, y \rangle$).
 
 <details class="hint">
 
 <summary>Indice</summary>
 
 *   Pour le sens "conserve le produit scalaire $\implies$ conserve la norme", c'est immédiat par définition de la norme.
-*   Pour le sens inverse, utilisez l'identité de polarisation qui exprime le produit scalaire en fonction de la norme : $(x|y) = \frac{1}{2}(\|x+y\|^2 - \|x\|^2 - \|y\|^2)$.
+*   Pour le sens inverse, utilisez l'identité de polarisation qui exprime le produit scalaire en fonction de la norme : $\langle x, y \rangle = \frac{1}{2}(\|x+y\|^2 - \|x\|^2 - \|y\|^2)$.
 
 </details>
 
@@ -407,11 +407,11 @@ Prouver que $u$ conserve la norme ($\forall x, \|u(x)\| = \|x\|$) si et seulemen
 
 **Sens direct ($\Longleftarrow$) :**
 
-Supposons que $u$ conserve le produit scalaire : $\forall x, y \in E, (u(x) | u(y)) = (x | y)$.
+Supposons que $u$ conserve le produit scalaire : $\forall x, y \in E, \langle u(x), u(y) \rangle = \langle x, y \rangle$.
 
 En prenant $y = x$, on obtient :
 
-$$(u(x) | u(x)) = (x | x) \implies \|u(x)\|^2 = \|x\|^2$$
+$$\langle u(x), u(x) \rangle = \langle x, x \rangle \implies \|u(x)\|^2 = \|x\|^2$$
 
 Comme la norme est positive, $\|u(x)\| = \|x\|$.
 
@@ -421,23 +421,23 @@ Supposons que $u$ conserve la norme : $\forall v \in E, \|u(v)\| = \|v\|$.
 
 Utilisons l'identité de polarisation pour le produit scalaire réel :
 
-$$(x | y) = \frac{1}{2} \left( \|x+y\|^2 - \|x\|^2 - \|y\|^2 \right)$$
+$$\langle x, y \rangle = \frac{1}{2} \left( \|x+y\|^2 - \|x\|^2 - \|y\|^2 \right)$$
 
-Calculons $(u(x) | u(y))$ :
+Calculons $\langle u(x), u(y) \rangle$ :
 
-$$(u(x) | u(y)) = \frac{1}{2} \left( \|u(x)+u(y)\|^2 - \|u(x)\|^2 - \|u(y)\|^2 \right)$$
+$$\langle u(x), u(y) \rangle = \frac{1}{2} \left( \|u(x)+u(y)\|^2 - \|u(x)\|^2 - \|u(y)\|^2 \right)$$
 
 Par linéarité de $u$, $u(x)+u(y) = u(x+y)$, donc :
 
-$$(u(x) | u(y)) = \frac{1}{2} \left( \|u(x+y)\|^2 - \|u(x)\|^2 - \|u(y)\|^2 \right)$$
+$$\langle u(x), u(y) \rangle = \frac{1}{2} \left( \|u(x+y)\|^2 - \|u(x)\|^2 - \|u(y)\|^2 \right)$$
 
 Par l'hypothèse de conservation de la norme, $\|u(v)\| = \|v\|$ pour tout $v$, donc :
 
-$$(u(x) | u(y)) = \frac{1}{2} \left( \|x+y\|^2 - \|x\|^2 - \|y\|^2 \right)$$
+$$\langle u(x), u(y) \rangle = \frac{1}{2} \left( \|x+y\|^2 - \|x\|^2 - \|y\|^2 \right)$$
 
-Le membre de droite est exactement la définition de $(x | y)$.
+Le membre de droite est exactement la définition de $\langle x, y \rangle$.
 
-Donc $(u(x) | u(y)) = (x | y)$.
+Donc $\langle u(x), u(y) \rangle = \langle x, y \rangle$.
 
 </details>
 
@@ -477,15 +477,15 @@ Donc :
 
 $$P_{ij} = {}^t C_i C_j$$
 
-Or, pour le produit scalaire canonique sur $\mathbb{R}^n$, on a $(C_i | C_j) = {}^t C_i C_j$.
+Or, pour le produit scalaire canonique sur $\mathbb{R}^n$, on a $\langle C_i, C_j \rangle = {}^t C_i C_j$.
 
-Ainsi, $P_{ij} = (C_i | C_j)$.
+Ainsi, $P_{ij} = \langle C_i, C_j \rangle$.
 
 **Étape 2 : Condition d'orthonormalité**
 
 La famille des colonnes $(C_1, \dots, C_n)$ est une base orthonormée si et seulement si :
 
-$$(C_i | C_j) = \delta_{ij} = \begin{cases} 1 & \text{si } i=j \\ 0 & \text{si } i \ne j \end{cases}$$
+$$\langle C_i, C_j \rangle = \delta_{ij} = \begin{cases} 1 & \text{si } i=j \\ 0 & \text{si } i \ne j \end{cases}$$
 
 **Conclusion :**
 
@@ -557,7 +557,7 @@ Comme $G \subset F^\perp$, on a $\dim(F^\perp) \ge n - p$.
 
 En réalité, dans un espace euclidien, $E = F \oplus F^\perp$.
 
-Tout $x$ s'écrit $x = \sum_{i=1}^n (x|e_i)e_i = \underbrace{\sum_{i=1}^p (x|e_i)e_i}_{\in F} + \underbrace{\sum_{i=p+1}^n (x|e_i)e_i}_{\in G}$.
+Tout $x$ s'écrit $x = \sum_{i=1}^n \langle x, e_i \rangle e_i = \underbrace{\sum_{i=1}^p \langle x, e_i \rangle e_i}_{\in F} + \underbrace{\sum_{i=p+1}^n \langle x, e_i \rangle e_i}_{\in G}$.
 
 Comme $x$ quelconque se décompose, $F^\perp$ est exactement $G$.
 
