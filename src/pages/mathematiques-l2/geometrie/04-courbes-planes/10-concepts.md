@@ -31,6 +31,23 @@ createdAt: '2025-11-26T16:55:39.654Z'
 
 ### Définition
 
+<div class="graph">
+
+<iframe src="https://www.desmos.com/calculator/vws2tdx6fy?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+
+$$
+\begin{align*}
+\gamma(t) & = \left(
+    \frac{\left(\cos\left(t\right)+2\right)t}{8\pi},\
+    \frac{\left(\sin\left(t\right)+1\right)\left(t\right)}{8\pi}\right) \\
+\gamma'(t) &= \left(
+    \frac{\left(-\sin\left(t\right)t+\left(\cos\left(t\right)+2\right)\right)}{8\pi},\ 
+\frac{\left(\cos\left(t\right)t+\left(\sin\left(t\right)+1\right)\right)}{8\pi}\right)
+\end{align*}
+$$
+
+</div>
+
 Une **courbe paramétrée** (ou arc paramétré) de classe $C^k$ dans $\mathbb{R}^n$ est un couple $(I, \gamma)$ où :
 
 1.  $I$ est un intervalle de $\mathbb{R}$ (l'ensemble des paramètres).
@@ -85,6 +102,19 @@ Soit la courbe paramétrée par $\gamma: \mathbb{R} \to \mathbb{R}^2$ avec $\gam
 
 **Exemple 3 : L'astroïde (avec points singuliers)**
 
+<div class="graph">
+
+<iframe src="https://www.desmos.com/calculator/5aonunzxow?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+
+$$
+\begin{align*}
+\gamma(t) & = \left(\sin^3(t),\ \cos^3(t)\right) \\
+\gamma'(t) & = \left(3\sin^2(t)\cos(t),\ -3\cos^2(t)\sin(t)\right) \\
+\end{align*}
+$$
+
+</div>
+
 Soit la courbe paramétrée par $\gamma(t) = (\cos^3(t), \sin^3(t))$ pour $t \in [0, 2\pi]$.
 
 -   **Dérivée :** $\gamma'(t) = (-3\cos^2(t)\sin(t), 3\sin^2(t)\cos(t))$.
@@ -119,6 +149,20 @@ Soit la courbe paramétrée par $\gamma(t) = (\cos^3(t), \sin^3(t))$ pour $t \in
 -   **Calcul différentiel :** Dérivée de fonctions composées et théorème d'inversion locale pour les fonctions d'une variable.
 
 ### Définition
+
+<div class="graph">
+
+<iframe src="https://www.desmos.com/calculator/a37r4v09gc?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+
+$$
+\begin{align*}
+f(t) & = \left(\sin^3(3t+3),\ \cos^3(3t+2)\right) \\
+g(t) & = \left(\sin^3(t+2),\ \cos^3(t+1)\right) \\
+\theta(t) & = 3t + 1
+\end{align*}
+$$
+
+</div>
 
 Deux courbes paramétrées de classe $C^k$, $(I, f)$ et $(J, g)$, sont dites **$C^k$-équivalentes** s'il existe un **$C^k$-difféomorphisme** $\theta : I \to J$ tel que $f = g \circ \theta$.
 
@@ -174,6 +218,26 @@ Considérons l'hélice circulaire dans $\mathbb{R}^3$ : $f(t) = (R\cos(t), R\sin
     On peut vérifier que $\|g'(s)\| = 1$.
 
 **Exemple 3 : La spirale logarithmique**
+
+C'est l'histoire du lièvre et de la tortue. La tortue (en vert) avance toujours, tranquillement mais régulièrement. Le lièvre (en noir) avance parfois très vite mais aussi parfois si lentement qu'il n'y arrive pas.
+
+Plus la dérivée est petite, plus on **roule lentement**: il faut beaucoup de "temps" $t$ pour que $s$ avance.
+
+Le point vert "roule" à vitesse constante.
+
+<div class="graph"> 
+
+<iframe src="https://www.desmos.com/calculator/cga0f2xu32?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+
+$$
+\begin{align*}
+\gamma(t) & = (e^{-t}\cos(t), e^{-t}\sin(t)) \\
+s & = \sqrt{2}(1 - e^{-t}) \\
+t & = -\ln\left(1 - \frac{s}{\sqrt{2}}\right)
+\end{align*}
+$$
+
+</div>
 
 Soit $f(t) = (e^{-t}\cos(t), e^{-t}\sin(t))$ pour $t \in [0, \infty[$.
 

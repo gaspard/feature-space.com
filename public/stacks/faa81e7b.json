@@ -161,17 +161,17 @@
       "id": "6",
       "stackId": "faa81e7b",
       "content": "#### Lien entre Coefficients et Dérivées\n\nSoit $f(x) = \\sum_{n=0}^{+\\infty} a_n x^n$ une fonction développable en série entière sur son intervalle de convergence. Quelle formule lie les coefficients $a_n$ aux dérivées de $f$ en 0 ?\n",
-      "solution": "\n\n**Réponses : [B]**\n\nC'est la définition de la série de Taylor. L'unicité du développement en série entière implique que les coefficients sont nécessairement ceux de Taylor.\n\n- **A.** Il manque la factorielle au dénominateur.\n- **B.** C'est la formule exacte. Par exemple pour $n=2$, $f''(0) = 2 a_2$, donc $a_2 = f''(0)/2!$.\n- **C.** La factorielle est du mauvais côté (multiplication au lieu de division).\n- **D.** Cette formule n'a pas de sens mathématique général pour les séries entières.\n\n",
+      "solution": "\n\n**Réponses : [A]**\n\nC'est la définition de la série de Taylor. L'unicité du développement en série entière implique que les coefficients sont nécessairement ceux de Taylor.\n\n- **A.** C'est la formule exacte. Par exemple pour $n=2$, $f''(0) = 2 a_2$, donc $a_2 = f''(0)/2!$.\n- **B.** Il manque la factorielle au dénominateur.\n- **C.** La factorielle est du mauvais côté (multiplication au lieu de division).\n- **D.** Cette formule n'a pas de sens mathématique général pour les séries entières.\n\n",
       "options": [
         {
           "id": "1",
-          "content": "**A)** $a_n = f^{(n)}(0)$",
-          "correct": false
+          "content": "**A)** $a_n = \\frac{f^{(n)}(0)}{n!}$",
+          "correct": true
         },
         {
           "id": "2",
-          "content": "**B)** $a_n = \\frac{f^{(n)}(0)}{n!}$",
-          "correct": true
+          "content": "**B)** $a_n = f^{(n)}(0)$",
+          "correct": false
         },
         {
           "id": "3",

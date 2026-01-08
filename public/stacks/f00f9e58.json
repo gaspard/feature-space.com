@@ -58,13 +58,13 @@
         },
         {
           "id": "2",
-          "content": "**C)** $\\alpha > 1$",
-          "correct": true
+          "content": "**B)** $\\alpha \\le 1$",
+          "correct": false
         },
         {
           "id": "3",
-          "content": "**B)** $\\alpha \\le 1$",
-          "correct": false
+          "content": "**C)** $\\alpha > 1$",
+          "correct": true
         },
         {
           "id": "4",
@@ -105,7 +105,7 @@
       "id": "4",
       "stackId": "f00f9e58",
       "content": "#### Application du critère série-intégrale\n\nSelon le critère de comparaison série-intégrale, la nature de la série $\\sum_{n \\ge 2} \\frac{1}{n \\ln(n)}$ est la même que la nature de quelle intégrale ?\n",
-      "solution": "\n\n**Réponse : [C]**\n\nLe critère de comparaison série-intégrale relie la nature de la série $\\sum f(n)$ à celle de l'intégrale $\\int f(t)dt$, à condition que la fonction $f$ respecte les hypothèses (continuité, positivité, décroissance).\n\nPour la série $\\sum_{n \\ge 2} \\frac{1}{n \\ln(n)}$, le terme général est $u_n = f(n)$ avec $f(t) = \\frac{1}{t \\ln(t)}$.\n\nLa fonction $f(t) = \\frac{1}{t \\ln(t)}$ est bien continue, positive et décroissante sur $[2, +\\infty[$. Le critère s'applique.\n\nLa série a donc la même nature que l'intégrale $\\int_2^{+\\infty} \\frac{1}{t \\ln(t)} dt$.\n\n- **A)** C'est l'intégrale associée à la série $\\sum 1/n^2$. Incorrect.\n- **B)** C'est l'intégrale associée à la série $\\sum 1/\\ln(n)$. Incorrect.\n- **C)** C'est l'intégrale correspondant exactement à la fonction $f(t)$ associée au terme général de la série. Correct.\n- **D)** La borne inférieure de l'intégrale doit correspondre au début de l'intervalle où la fonction est définie et respecte les hypothèses. Ici, $\\ln(1)=0$, donc la fonction n'est pas définie en $t=1$. La borne doit être supérieure à 1, par exemple 2, comme dans la série.\n\n",
+      "solution": "\n\n**Réponse : [C]**\n\nLe critère de comparaison série-intégrale relie la nature de la série $\\sum f(n)$ à celle de l'intégrale $\\int f(t)dt$.\n\nPour la série $\\sum_{n \\ge 2} \\frac{1}{n \\ln(n)}$, le terme général est $u_n = f(n)$ avec $f(t) = \\frac{1}{t \\ln(t)}$.\nLa fonction $f(t) = \\frac{1}{t \\ln(t)}$ est bien continue, positive et décroissante sur $[2, +\\infty[$. Le critère s'applique.\n\nLe critère repose sur un **encadrement** de la somme partielle par l'intégrale (via des rectangles), ce qui permet de montrer que la série et l'intégrale sont de **même nature** (si l'une converge, l'autre aussi ; si l'une diverge, l'autre aussi).\n\nIci, la série a la même nature que l'intégrale $\\int_2^{+\\infty} \\frac{1}{t \\ln(t)} dt$.\n\n- **A)** C'est l'intégrale associée à la série $\\sum 1/n^2$. Incorrect.\n- **B)** C'est l'intégrale associée à la série $\\sum 1/\\ln(n)$. Incorrect.\n- **C)** C'est l'intégrale correspondant exactement à la fonction $f(t)$ associée au terme général de la série. Correct.\n- **D)** La borne inférieure de l'intégrale doit correspondre au domaine de définition de $f$. Ici, $\\ln(1)=0$, donc $f$ n'est pas définie en $t=1$. Il faut commencer l'intégration sur un intervalle où $f$ est définie et décroissante, par exemple à partir de 2.\n\n",
       "options": [
         {
           "id": "1",
@@ -133,7 +133,7 @@
       "id": "5",
       "stackId": "f00f9e58",
       "content": "#### Hypothèse du critère des équivalents\n\nLe critère des équivalents pour les séries stipule que si $u_n \\sim v_n$, alors les séries $\\sum u_n$ et $\\sum v_n$ sont de même nature. Quelle est une hypothèse cruciale pour que ce théorème soit valide ?\n",
-      "solution": "\n\n**Réponse : [B]**\n\n- **A)** La monotonie n'est pas une condition requise pour le critère des équivalents.\n\n- **B)** C'est l'hypothèse fondamentale. Le critère n'est vrai que pour les séries à termes de signe constant (positif ou négatif) à partir d'un certain rang. Si les termes changent de signe, le critère peut être mis en défaut, comme le montre le contre-exemple $u_n = \\frac{(-1)^n}{\\sqrt{n}}$ et $v_n = \\frac{(-1)^n}{\\sqrt{n}} + \\frac{1}{n}$.\n\n- **C)** Le théorème sert justement à déterminer la nature (convergence OU divergence) d'une série. On ne peut pas supposer la convergence au départ.\n\n- **D)** Le critère n'est pas toujours vrai. L'hypothèse de signe constant est indispensable.\n\n",
+      "solution": "\n\n**Réponse : [C]**\n\n- **A)** La monotonie n'est pas une condition requise pour le critère des équivalents.\n- **B)** Le théorème sert justement à déterminer la nature (convergence OU divergence) d'une série. On ne peut pas supposer la convergence au départ.\n- **C)** C'est l'hypothèse fondamentale. Le critère n'est vrai que pour les séries à termes de signe constant (positif ou négatif) à partir d'un certain rang. Si les termes changent de signe, le critère peut être mis en défaut, comme le montre le contre-exemple $u_n = \\frac{(-1)^n}{\\sqrt{n}}$ et $v_n = \\frac{(-1)^n}{\\sqrt{n}} + \\frac{1}{n}$.\n- **D)** Le critère n'est pas toujours vrai. L'hypothèse de signe constant est indispensable.\n\n",
       "options": [
         {
           "id": "1",
@@ -142,13 +142,13 @@
         },
         {
           "id": "2",
-          "content": "**B)** Les termes $u_n$ (et donc $v_n$) doivent être de signe constant à partir d'un certain rang.",
-          "correct": true
+          "content": "**B)** Les séries $\\sum u_n$ et $\\sum v_n$ doivent converger.",
+          "correct": false
         },
         {
           "id": "3",
-          "content": "**C)** Les séries $\\sum u_n$ et $\\sum v_n$ doivent converger.",
-          "correct": false
+          "content": "**C)** Les termes $u_n$ (et donc $v_n$) doivent être de signe constant à partir d'un certain rang.",
+          "correct": true
         },
         {
           "id": "4",
@@ -301,7 +301,7 @@
       "id": "11",
       "stackId": "f00f9e58",
       "content": "#### Convergence et absolue convergence\n\nQuelle est la différence fondamentale entre une série absolument convergente et une série semi-convergente ?\n",
-      "solution": "\n\n**Réponse : [B]**\n\n- **A)** Le signe de la somme ne dépend pas du type de convergence. Par exemple, $\\sum (-1/2)^n$ est absolument convergente et sa somme est positive, tandis que $\\sum (-1)^n/n^2$ est aussi absolument convergente mais a une somme négative.\n\n- **B)** C'est la propriété clé démontrée par le théorème de réarrangement de Riemann. La convergence absolue garantit la \"commutativité\" de la somme infinie : on peut réarranger les termes sans changer la somme. Pour une série semi-convergente, l'ordre des termes est crucial et peut changer la valeur de la somme, voire sa nature.\n\n- **C)** C'est une simplification excessive. Une série absolument convergente peut très bien avoir des termes de signes quelconques (par exemple $\\sum \\sin(n)/n^2$). Une série semi-convergente est souvent alternée, mais pas toujours.\n\n- **D)** Bien que souvent vrai en pratique, ce n'est pas une définition ou une propriété fondamentale. La vitesse de convergence dépend du comportement du terme général, pas seulement du type de convergence.\n\n",
+      "solution": "\n\n**Réponse : [D]**\n\n- **A)** Le signe de la somme ne dépend pas du type de convergence. Par exemple, $\\sum (-1/2)^n$ est absolument convergente et sa somme est positive, tandis que $\\sum (-1)^n/n^2$ est aussi absolument convergente mais a une somme négative.\n- **B)** Bien que souvent vrai en pratique, ce n'est pas une définition ou une propriété fondamentale. La vitesse de convergence dépend du comportement du terme général, pas seulement du type de convergence.\n- **C)** C'est une simplification excessive. Une série absolument convergente peut très bien avoir des termes de signes quelconques (par exemple $\\sum \\sin(n)/n^2$). Une série semi-convergente est souvent alternée, mais pas toujours.\n- **D)** C'est la propriété clé démontrée par le théorème de réarrangement de Riemann. La convergence absolue garantit la \"commutativité\" de la somme infinie : on peut réarranger les termes sans changer la somme. Pour une série semi-convergente, l'ordre des termes est crucial et peut changer la valeur de la somme, voire sa nature.\n\n",
       "options": [
         {
           "id": "1",
@@ -310,18 +310,18 @@
         },
         {
           "id": "2",
-          "content": "**B)** La somme d'une série absolument convergente ne dépend pas de l'ordre des termes, contrairement à une série semi-convergente.",
-          "correct": true
+          "content": "**B)** Une série semi-convergente converge plus lentement qu'une série absolument convergente.",
+          "correct": false
         },
         {
           "id": "3",
-          "content": "**C)** Les séries absolument convergentes concernent des termes positifs, les séries semi-convergentes des termes de signe alterné.",
+          "content": "**C)** Une série absolument convergente est composée de termes positifs, tandis qu'une série semi-convergente est composée de termes de signe alterné.",
           "correct": false
         },
         {
           "id": "4",
-          "content": "**D)** Une série semi-convergente converge plus lentement qu'une série absolument convergente.",
-          "correct": false
+          "content": "**D)** La somme d'une série absolument convergente ne dépend pas de l'ordre des termes, contrairement à celle d'une série semi-convergente.",
+          "correct": true
         }
       ]
     },

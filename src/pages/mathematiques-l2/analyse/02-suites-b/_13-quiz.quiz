@@ -53,8 +53,8 @@ Comment la convergence de l'intégrale généralisée $\int_a^{+\infty} f(t)dt$ 
 Pour quelles valeurs du paramètre réel $\alpha$ l'intégrale de Riemann $\int_1^{+\infty} \frac{1}{t^\alpha} dt$ est-elle convergente ?
 
 - [ ] **A)** $\alpha < 1$
-- [x] **C)** $\alpha > 1$
 - [ ] **B)** $\alpha \le 1$
+- [x] **C)** $\alpha > 1$
 - [ ] **D)** Uniquement pour $\alpha = 2$
 
 <details>
@@ -124,18 +124,19 @@ Selon le critère de comparaison série-intégrale, la nature de la série $\sum
 
 **Réponse : [C]**
 
-Le critère de comparaison série-intégrale relie la nature de la série $\sum f(n)$ à celle de l'intégrale $\int f(t)dt$, à condition que la fonction $f$ respecte les hypothèses (continuité, positivité, décroissance).
+Le critère de comparaison série-intégrale relie la nature de la série $\sum f(n)$ à celle de l'intégrale $\int f(t)dt$.
 
 Pour la série $\sum_{n \ge 2} \frac{1}{n \ln(n)}$, le terme général est $u_n = f(n)$ avec $f(t) = \frac{1}{t \ln(t)}$.
-
 La fonction $f(t) = \frac{1}{t \ln(t)}$ est bien continue, positive et décroissante sur $[2, +\infty[$. Le critère s'applique.
 
-La série a donc la même nature que l'intégrale $\int_2^{+\infty} \frac{1}{t \ln(t)} dt$.
+Le critère repose sur un **encadrement** de la somme partielle par l'intégrale (via des rectangles), ce qui permet de montrer que la série et l'intégrale sont de **même nature** (si l'une converge, l'autre aussi ; si l'une diverge, l'autre aussi).
+
+Ici, la série a la même nature que l'intégrale $\int_2^{+\infty} \frac{1}{t \ln(t)} dt$.
 
 - **A)** C'est l'intégrale associée à la série $\sum 1/n^2$. Incorrect.
 - **B)** C'est l'intégrale associée à la série $\sum 1/\ln(n)$. Incorrect.
 - **C)** C'est l'intégrale correspondant exactement à la fonction $f(t)$ associée au terme général de la série. Correct.
-- **D)** La borne inférieure de l'intégrale doit correspondre au début de l'intervalle où la fonction est définie et respecte les hypothèses. Ici, $\ln(1)=0$, donc la fonction n'est pas définie en $t=1$. La borne doit être supérieure à 1, par exemple 2, comme dans la série.
+- **D)** La borne inférieure de l'intégrale doit correspondre au domaine de définition de $f$. Ici, $\ln(1)=0$, donc $f$ n'est pas définie en $t=1$. Il faut commencer l'intégration sur un intervalle où $f$ est définie et décroissante, par exemple à partir de 2.
 
 </details>
 
@@ -146,22 +147,19 @@ La série a donc la même nature que l'intégrale $\int_2^{+\infty} \frac{1}{t \
 Le critère des équivalents pour les séries stipule que si $u_n \sim v_n$, alors les séries $\sum u_n$ et $\sum v_n$ sont de même nature. Quelle est une hypothèse cruciale pour que ce théorème soit valide ?
 
 - [ ] **A)** Les suites $(u_n)$ et $(v_n)$ doivent être monotones.
-- [x] **B)** Les termes $u_n$ (et donc $v_n$) doivent être de signe constant à partir d'un certain rang.
-- [ ] **C)** Les séries $\sum u_n$ et $\sum v_n$ doivent converger.
+- [ ] **B)** Les séries $\sum u_n$ et $\sum v_n$ doivent converger.
+- [x] **C)** Les termes $u_n$ (et donc $v_n$) doivent être de signe constant à partir d'un certain rang.
 - [ ] **D)** Ce théorème est toujours vrai, sans hypothèse supplémentaire.
 
 <details>
 
 <summary>Solution</summary>
 
-**Réponse : [B]**
+**Réponse : [C]**
 
 - **A)** La monotonie n'est pas une condition requise pour le critère des équivalents.
-
-- **B)** C'est l'hypothèse fondamentale. Le critère n'est vrai que pour les séries à termes de signe constant (positif ou négatif) à partir d'un certain rang. Si les termes changent de signe, le critère peut être mis en défaut, comme le montre le contre-exemple $u_n = \frac{(-1)^n}{\sqrt{n}}$ et $v_n = \frac{(-1)^n}{\sqrt{n}} + \frac{1}{n}$.
-
-- **C)** Le théorème sert justement à déterminer la nature (convergence OU divergence) d'une série. On ne peut pas supposer la convergence au départ.
-
+- **B)** Le théorème sert justement à déterminer la nature (convergence OU divergence) d'une série. On ne peut pas supposer la convergence au départ.
+- **C)** C'est l'hypothèse fondamentale. Le critère n'est vrai que pour les séries à termes de signe constant (positif ou négatif) à partir d'un certain rang. Si les termes changent de signe, le critère peut être mis en défaut, comme le montre le contre-exemple $u_n = \frac{(-1)^n}{\sqrt{n}}$ et $v_n = \frac{(-1)^n}{\sqrt{n}} + \frac{1}{n}$.
 - **D)** Le critère n'est pas toujours vrai. L'hypothèse de signe constant est indispensable.
 
 </details>
@@ -329,23 +327,20 @@ Laquelle des affirmations suivantes concernant la sommation par paquets (regroup
 Quelle est la différence fondamentale entre une série absolument convergente et une série semi-convergente ?
 
 - [ ] **A)** Une série absolument convergente a une somme positive, tandis qu'une série semi-convergente a une somme négative.
-- [x] **B)** La somme d'une série absolument convergente ne dépend pas de l'ordre des termes, contrairement à une série semi-convergente.
-- [ ] **C)** Les séries absolument convergentes concernent des termes positifs, les séries semi-convergentes des termes de signe alterné.
-- [ ] **D)** Une série semi-convergente converge plus lentement qu'une série absolument convergente.
+- [ ] **B)** Une série semi-convergente converge plus lentement qu'une série absolument convergente.
+- [ ] **C)** Une série absolument convergente est composée de termes positifs, tandis qu'une série semi-convergente est composée de termes de signe alterné.
+- [x] **D)** La somme d'une série absolument convergente ne dépend pas de l'ordre des termes, contrairement à celle d'une série semi-convergente.
 
 <details>
 
 <summary>Solution</summary>
 
-**Réponse : [B]**
+**Réponse : [D]**
 
 - **A)** Le signe de la somme ne dépend pas du type de convergence. Par exemple, $\sum (-1/2)^n$ est absolument convergente et sa somme est positive, tandis que $\sum (-1)^n/n^2$ est aussi absolument convergente mais a une somme négative.
-
-- **B)** C'est la propriété clé démontrée par le théorème de réarrangement de Riemann. La convergence absolue garantit la "commutativité" de la somme infinie : on peut réarranger les termes sans changer la somme. Pour une série semi-convergente, l'ordre des termes est crucial et peut changer la valeur de la somme, voire sa nature.
-
+- **B)** Bien que souvent vrai en pratique, ce n'est pas une définition ou une propriété fondamentale. La vitesse de convergence dépend du comportement du terme général, pas seulement du type de convergence.
 - **C)** C'est une simplification excessive. Une série absolument convergente peut très bien avoir des termes de signes quelconques (par exemple $\sum \sin(n)/n^2$). Une série semi-convergente est souvent alternée, mais pas toujours.
-
-- **D)** Bien que souvent vrai en pratique, ce n'est pas une définition ou une propriété fondamentale. La vitesse de convergence dépend du comportement du terme général, pas seulement du type de convergence.
+- **D)** C'est la propriété clé démontrée par le théorème de réarrangement de Riemann. La convergence absolue garantit la "commutativité" de la somme infinie : on peut réarranger les termes sans changer la somme. Pour une série semi-convergente, l'ordre des termes est crucial et peut changer la valeur de la somme, voire sa nature.
 
 </details>
 

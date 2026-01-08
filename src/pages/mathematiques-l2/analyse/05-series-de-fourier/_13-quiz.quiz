@@ -33,7 +33,7 @@ Quelle est l'expression générale correcte d'une série de Fourier $S(t)$ sous 
 
 <summary>Solution</summary>
 
-**Réponse : [x] A**
+**Réponse : [A]**
 
 La forme trigonométrique classique décompose la fonction en une somme d'un terme constant et d'harmoniques cosinus et sinus.
 
@@ -50,8 +50,8 @@ La forme trigonométrique classique décompose la fonction en une somme d'un ter
 
 Que représente le coefficient $a_0$ dans la décomposition en série de Fourier d'une fonction $f$ $2\pi$-périodique et comment se calcule-t-il ?
 
-- [ ] **A)** Il représente l'amplitude de la fondamentale : $a_0 = \int_{-\pi}^{\pi} f(t) dt$
-- [x] **B)** Il représente la valeur moyenne du signal : $a_0 = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t) dt$
+- [x] **A)** Il représente la valeur moyenne du signal : $a_0 = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t) dt$
+- [ ] **B)** Il représente l'amplitude de la fondamentale : $a_0 = \int_{-\pi}^{\pi} f(t) dt$
 - [ ] **C)** Il représente la valeur moyenne du signal : $a_0 = \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) dt$
 - [ ] **D)** Il est toujours nul pour les fonctions périodiques.
 
@@ -59,12 +59,12 @@ Que représente le coefficient $a_0$ dans la décomposition en série de Fourier
 
 <summary>Solution</summary>
 
-**Réponse : [x] B**
+**Réponse : [A] **
 
 Le terme $a_0$ correspond à la composante continue ou valeur moyenne de la fonction sur une période.
 
-- **B.** La formule de la moyenne sur un intervalle de longueur $2\pi$ est bien l'intégrale divisée par la longueur de l'intervalle ($2\pi$). C'est la relation d'Euler pour $n=0$ (ou $c_0$).
-- **A.** Il manque le facteur de division pour obtenir une moyenne. Sans division, c'est l'aire sous la courbe, qui dépend de la largeur de la période.
+- **A.** La formule de la moyenne sur un intervalle de longueur $2\pi$ est bien l'intégrale divisée par la longueur de l'intervalle ($2\pi$). C'est la relation d'Euler pour $n=0$ (ou $c_0$).
+- **B.** Il manque le facteur de division pour obtenir une moyenne. Sans division, c'est l'aire sous la courbe, qui dépend de la largeur de la période.
 - **C.** Cette formule (division par $\pi$) est celle utilisée pour les coefficients $a_n$ ($n \ge 1$), pas pour $a_0$. Utiliser cette formule doublerait la valeur moyenne.
 - **D.** C'est faux. $a_0$ n'est nul que si la fonction a une moyenne nulle (par exemple un signal purement alternatif comme $\sin(t)$), mais ce n'est pas le cas général (ex: $f(t) = \cos(t) + 2$ a pour moyenne 2).
 
@@ -85,7 +85,7 @@ Quelle est la relation correcte liant le coefficient complexe $c_n$ (pour $n \ge
 
 <summary>Solution</summary>
 
-**Réponse : [x] C**
+**Réponse : [C]**
 
 Cette relation découle des formules d'Euler exprimant $\cos(nt)$ et $\sin(nt)$ en fonction des exponentielles complexes $e^{int}$ et $e^{-int}$.
 
@@ -111,7 +111,7 @@ Si une fonction $f$ est **paire** sur l'intervalle $[-\pi, \pi]$ (c'est-à-dire 
 
 <summary>Solution</summary>
 
-**Réponse : [x] C**
+**Réponse : [C]**
 
 Une fonction paire est symétrique par rapport à l'axe des ordonnées.
 
@@ -137,7 +137,7 @@ Soit $f$ une fonction $2\pi$-périodique et $\mathcal{C}^1$ par morceaux. Vers q
 
 <summary>Solution</summary>
 
-**Réponse : [x] B**
+**Réponse : [B]**
 
 Le théorème de Dirichlet assure la convergence simple de la série de Fourier.
 
@@ -163,7 +163,7 @@ Quelle condition portant sur les coefficients de Fourier assure la **convergence
 
 <summary>Solution</summary>
 
-**Réponse : [x] A**
+**Réponse : [B]**
 
 La convergence normale est un type de convergence forte qui implique la convergence uniforme.
 
@@ -189,7 +189,7 @@ Que signifie physiquement ou géométriquement l'identité de Parseval : $\frac{
 
 <summary>Solution</summary>
 
-**Réponse : [x] B**
+**Réponse : [B]**
 
 - **B.** L'intégrale du carré du module représente l'énergie (ou la puissance moyenne) du signal sur une période. Parseval dit que cette énergie se conserve lorsqu'on passe du domaine temporel au domaine fréquentiel (somme des carrés des modules des coefficients).
 - **A.** C'est faux. La moyenne est donnée par le seul coefficient $c_0$ (ou $a_0$).
@@ -202,7 +202,7 @@ Que signifie physiquement ou géométriquement l'identité de Parseval : $\frac{
 
 #### Régularité et Décroissance
 
-Si la série $\sum_{n \in \mathbb{Z}} |n c_n|$ converge, que peut-on dire de la fonction somme $S(t)$ ?
+Si la série $\sum_{n \in \mathbb{Z}} |n c_n|$ des coefficients de Fourier d'une fonction $2\pi$-périodique converge, que peut-on dire de la fonction somme $S(t)$ ?
 
 - [ ] **A)** Elle est discontinue.
 - [ ] **B)** Elle est de carré intégrable mais pas forcément continue.
@@ -213,7 +213,7 @@ Si la série $\sum_{n \in \mathbb{Z}} |n c_n|$ converge, que peut-on dire de la 
 
 <summary>Solution</summary>
 
-**Réponse : [x] D**
+**Réponse : [D] **
 
 La vitesse de décroissance des coefficients est liée à la régularité (lissité) de la fonction.
 
@@ -230,8 +230,8 @@ La vitesse de décroissance des coefficients est liée à la régularité (lissi
 
 Pour une fonction de période $T$ (différente de $2\pi$), quel est l'argument des fonctions trigonométriques $\cos(\dots)$ dans la série de Fourier ?
 
-- [ ] **A)** $nt$
-- [x] **B)** $\frac{2\pi n t}{T}$
+- [x] **A)** $\frac{2\pi n t}{T}$
+- [ ] **B)** $nt$
 - [ ] **C)** $\frac{n t}{T}$
 - [ ] **D)** $2\pi n T t$
 
@@ -239,12 +239,12 @@ Pour une fonction de période $T$ (différente de $2\pi$), quel est l'argument d
 
 <summary>Solution</summary>
 
-**Réponse : [x] B**
+**Réponse : [A]**
 
 Il s'agit d'un changement d'échelle temporelle pour ramener la période $T$ à $2\pi$.
 
-- **B.** La pulsation fondamentale est $\omega = \frac{2\pi}{T}$. Les harmoniques sont des multiples entiers de cette pulsation : $n\omega t = \frac{2\pi n t}{T}$. Quand $t$ varie de $0$ à $T$, l'argument varie de $0$ à $2\pi n$.
-- **A.** C'est la formule pour la période standard $2\pi$.
+- **A.** La pulsation fondamentale est $\omega = \frac{2\pi}{T}$. Les harmoniques sont des multiples entiers de cette pulsation : $n\omega t = \frac{2\pi n t}{T}$. Quand $t$ varie de $0$ à $T$, l'argument varie de $0$ à $2\pi n$.
+- **B.** C'est la formule pour la période standard $2\pi$.
 - **C.** Il manque le facteur $2\pi$ nécessaire pour la périodicité trigonométrique.
 - **D.** Cette formule donnerait une fréquence beaucoup trop élevée et incorrecte dimensionnellement.
 
@@ -265,7 +265,7 @@ Quelle propriété fondamentale concernant le comportement asymptotique des coef
 
 <summary>Solution</summary>
 
-**Réponse : [x] C**
+**Réponse : [C]**
 
 Ce lemme est vrai pour toute fonction intégrable (continue par morceaux ici).
 
